@@ -2,4 +2,4 @@ FreeCAD İçerisinde Komut Dosyası Oluşturma (Scripting) Konusunda Temel seviy
 
 # İçindekiler
 [Python'a Giriş](https://github.com/mhalil/mhalil.github.io/blob/gh-pages/Python'a%20Giris.md)
-[FreeCAD için Python](FreeCAD_icin_Python.md)
+[FreeCAD için Python](https://github.com/mhalil/mhalil.github.io/blob/gh-pages/FreeCAD_icin_Python.md)
