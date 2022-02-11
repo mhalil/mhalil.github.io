@@ -5,11 +5,16 @@ Aşağıda bağlantı adreslerini göreceğiniz web sitelerini inceleyerek, Free
 
 Konu anlatımları esnasında yazdığımız kodları / betik dosyalarını ve FreeCAD kullanıcıları tarafından oluşturulmuş betik (script) dosyalarını da incelemeniz amacıyla paylaşmayı düşünüyorum.
 
-İçeriğe [index.md](https://github.com/mhalil/mhalil.github.io/blob/gh-pages/index.md) dosyasından ulaşabilirsiniz.
 
 ![FreeCAD_Python](img/FreeCAD_Python.png)
+
+# İçindekiler
+[Python'a Giriş](Python'a Giriş.html)
+[FreeCAD icin Python](FreeCAD icin Python.html)
+
 ___
+
 Referans Sayfalar;
-+ https://wiki.freecadweb.org/Python_scripting_tutorial
-+ https://wiki.freecadweb.org/Introduction_to_Python
+    + https://wiki.freecadweb.org/Python_scripting_tutorial
+    + https://wiki.freecadweb.org/Introduction_to_Python
 
