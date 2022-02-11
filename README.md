@@ -8,8 +8,8 @@ Konu anlatımları esnasında yazdığımız kodları / betik dosyalarını ve F
 ![FreeCAD_Python](img/FreeCAD_Python.png)
 
 ## Konu Başlıkları
-+ [Python'a Giriş](https://mhalil.github.io/Python'a%20Giris.html)
-+ [FreeCAD için Python](https://mhalil.github.io/FreeCAD%20icin%20Python.html)
++ [Python'a Giriş](https://mhalil.github.io/02%20Python'a%20Giris.html)
++ [FreeCAD için Python](https://mhalil.github.io/03%20FreeCAD%20icin%20Python.html)
 
 ___
 
