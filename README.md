@@ -10,9 +10,10 @@ Konu anlatımları esnasında yazdığımız kodları / betik dosyalarını ve F
 ## Konu Başlıkları
 + [Python'a Giriş](https://mhalil.github.io/Python'a%20Giris.html)
 + [FreeCAD için Python](https://mhalil.github.io/FreeCAD%20icin%20Python.html)
+
 ___
 
-Referans Sayfalar;
-+ https://wiki.freecadweb.org/Python_scripting_tutorial
-+ https://wiki.freecadweb.org/Introduction_to_Python
+#### Referans (Kaynak) Sayfalar;
++ [Python_scripting_tutorial](https://wiki.freecadweb.org/Python_scripting_tutorial)
++ [Introduction_to_Python](https://wiki.freecadweb.org/Introduction_to_Python)
 
