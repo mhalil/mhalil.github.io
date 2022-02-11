@@ -8,13 +8,12 @@ Konu anlatımları esnasında yazdığımız kodları / betik dosyalarını ve F
 
 ![FreeCAD_Python](img/FreeCAD_Python.png)
 
-# İçindekiler
-## [Python'a Giriş](Python'a Giris.html)
-## [FreeCAD için Python](FreeCAD icin Python.html)
-
+## Konu Başlıkları
++ [Python'a Giriş](https://mhalil.github.io/Python'a%20Giris.html)
++ [FreeCAD için Python](https://mhalil.github.io/FreeCAD%20icin%20Python.html)
 ___
 
 Referans Sayfalar;
-    + https://wiki.freecadweb.org/Python_scripting_tutorial
-    + https://wiki.freecadweb.org/Introduction_to_Python
++ https://wiki.freecadweb.org/Python_scripting_tutorial
++ https://wiki.freecadweb.org/Introduction_to_Python
 
