@@ -9,8 +9,8 @@ Konu anlatımları esnasında yazdığımız kodları / betik dosyalarını ve F
 ![FreeCAD_Python](img/FreeCAD_Python.png)
 
 # İçindekiler
-[Python'a Giriş](Python'a Giriş.html)
-[FreeCAD icin Python](FreeCAD icin Python.html)
+## [Python'a Giriş](Python'a Giris.html)
+## [FreeCAD için Python](FreeCAD icin Python.html)
 
 ___
 
