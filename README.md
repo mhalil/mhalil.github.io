@@ -5,7 +5,7 @@
 
 ![SolveSpace](/img/Solvespace_logo.png)
 
-[SolveSpace Eğitimleri]([solvespace.html](https://github.com/mhalil/Solvespace_basvuru_kilavuzu/wiki))
+[SolveSpace Eğitimleri](https://github.com/mhalil/Solvespace_basvuru_kilavuzu/wiki)
 
 ![FreeCAD](/img/FreeCAD_logo.png)
 
@@ -17,4 +17,4 @@
 
 ![LibreCAD](/img/LibreCAD_logo.png)
 
-[LibreCAD Eğitimleri]([librecad.html](https://github.com/mhalil/LibreCAD))
+[LibreCAD Eğitimleri](https://github.com/mhalil/LibreCAD)
