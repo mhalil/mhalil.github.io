@@ -20,3 +20,6 @@ Ardından Görünüm → Paneller'e gidin ve şunları kontrol edin:
 + **Rapor görünümü. (Report view. )**
 
 # Python kodu yazma
+
+---
+Kaynak: [Python scripting tutorial](https://wiki.freecadweb.org/Python_scripting_tutorial)

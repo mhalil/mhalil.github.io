@@ -137,3 +137,6 @@ Terminal / konsol içerisinde yazdığınızda, bu iki komut aynı sonucu verece
 
 # Modüller
 
+---
+Kaynak: [Discovering Python](https://wiki.freecadweb.org/Introduction_to_Python)
+
