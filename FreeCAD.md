@@ -2,16 +2,16 @@
 
 ## FreeCAD için Python ile Komut Dosyası Oluşturma (Scripting) Eğitimi
 
-Aşağıda bağlantı adreslerini göreceğiniz web sitelerini inceleyerek, FreeCAD içerisinde **Komut Dosyası Oluşturma (Scripting)** Konusunda Temel Seviye Bilgilerini öğrenmek ve öğrendiklerimi **Türkçe içerikli olarak** sizlerle paylaşmak istiyorum. İlk etapta Python programlama dili hakkında kısa bir bilgi verecek ardından betik (komut dosyası) yazma konusundan devam edeceğiz.
+Aşağıda bağlantı adreslerini göreceğiniz web sitelerini inceleyerek, FreeCAD içerisinde **Komut Dosyası Oluşturma (Scripting)** Konusunda Temel Seviye Bilgilerini öğrenmek ve öğrendiklerimi **Türkçe içerikli olarak** sizlerle paylaşmak istiyorum. İlk etapta Python programlama dili hakkında kısa bir bilgi verecek ardından betik (komut dosyası) yazma konusundan devam edeceğim.
 
-Konu anlatımları esnasında yazdığımız kodları / betik dosyalarını ve FreeCAD kullanıcıları tarafından oluşturulmuş betik (script) dosyalarını da incelemeniz amacıyla paylaşmayı düşünüyorum.
+Konu anlatımları esnasında yazdığım kodları / betik dosyalarını ve FreeCAD kullanıcıları tarafından oluşturulmuş betik (script) dosyalarını da incelemeniz amacıyla paylaşmayı düşünüyorum.
 
 
-![FreeCAD_Python](img/FreeCAD_Python.png)
+![FreeCAD_Python](/FreeCAD/img/FreeCAD_Python.png)
 
 ## Konu Başlıkları
-+ [Python'a Giriş](https://mhalil.github.io/FreeCAD/02%20Python'a%20Giris.html)
-+ [FreeCAD için Python](https://mhalil.github.io/FreeCAD/03%20FreeCAD%20icin%20Python.html)
++ [Python'a Giriş](FreeCAD/02%20Python'a%20Giris.html)
++ [FreeCAD için Python](FreeCAD/03%20Python%20Komut%20Dosyası%20Oluşturma.html)
 
 ___
 
