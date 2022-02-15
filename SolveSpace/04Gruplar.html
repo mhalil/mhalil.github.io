@@ -1,0 +1,373 @@
+<!DOCTYPE html><html><head>
+      <title>04 Gruplar</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:////home/mhalil/.vscode/extensions/shd101wyy.markdown-preview-enhanced-0.6.1/node_modules/@shd101wyy/mume/dependencies/katex/katex.min.css">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <style>
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}
+
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+}
+
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+pre[data-line] .line-highlight:before, 
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h1 class="mume-header" id="b%C3%B6l%C3%BCm-4-gruplar">B&#xF6;l&#xFC;m 4: Gruplar</h1>
+
+<p>Gruplar&#x131;n listesini g&#xF6;r&#xFC;nt&#xFC;lemek i&#xE7;in &#xD6;zellik penceresinin ana sayfas&#x131;na gidin. Buna, &#xD6;zellik penceresinin <code>sol &#xFC;st k&#xF6;&#x15F;esindeki ba&#x11F;lant&#x131;</code>dan veya <code>ESC</code> tu&#x15F;una basarak eri&#x15F;ilebilir. Bir grubun sayfas&#x131;n&#x131; g&#xF6;r&#xFC;nt&#xFC;lemek i&#xE7;in listede ad&#x131;n&#x131; t&#x131;klay&#x131;n.<br>
+T&#xFC;m gruplar&#x131;n bir ad&#x131; vard&#x131;r. Grup olu&#x15F;turuldu&#x11F;unda varsay&#x131;lan bir ad atan&#x131;r (&#xF6;r. &quot;g008-extrude&quot;). Kullan&#x131;c&#x131; bu ismi de&#x11F;i&#x15F;tirebilir; bunu yapmak i&#xE7;in &#xD6;zellik penceresinde grubun sayfas&#x131;na gidin ve [<code>rename</code> (yeniden adland&#x131;r)] &#xF6;&#x11F;esini se&#xE7;in.</p>
+<p><img src="https://github.com/mhalil/Solvespace_basvuru_kilavuzu/raw/main/grafikler/17%20Grubu%20yeniden%20adlandir.png" alt="Grubu yeniden adland&#x131;r"></p>
+<p>Bir kat&#x131; olu&#x15F;turan (&#xF6;rn. Ekstr&#xFC;zyon ile veya d&#xF6;nd&#xFC;rerek) gruplar, &#xD6;zellik penceresindeki sayfada g&#xF6;r&#xFC;nt&#xFC;lenen bir &quot;<code>solid model as</code> (<em>kat&#x131; model olarak</em>)&quot; se&#xE7;ene&#x11F;ine sahiptir. Grup, modele malzeme ekleyerek <code>birle&#x15F;im</code> veya malzemeyi &#xE7;&#x131;kararak <code>fark</code> olarak birle&#x15F;tirilebilir. &#xDC;&#xE7;&#xFC;nc&#xFC; bir se&#xE7;enek, yaln&#x131;zca her iki kat&#x131;n&#x131;n i&#xE7;ine giren malzemeyi koruyan <code>kesi&#x15F;im</code>dir. Yani burada bulunan se&#xE7;enekler ile iki kat&#x131; maddenin <code>birle&#x15F;imi</code>, <code>kesi&#x15F;imi</code> ya da <code>fark&#x131;</code> al&#x131;nabilir.</p>
+<p><code>Birle&#x15F;im</code>, <code>fark</code> ve <code>kesi&#x15F;im</code> i&#x15F;lemleri ya &#xFC;&#xE7;gen a&#x11F;lar olarak ya da tam NURBS y&#xFC;zeyleri olarak ger&#xE7;ekle&#x15F;tirilebilir. &#xDC;&#xE7;gen a&#x11F;lar&#x131;n hesaplanmas&#x131; h&#x131;zl&#x131; ve sa&#x11F;lamd&#x131;r, ancak par&#xE7;al&#x131; do&#x11F;rusal segmentler olarak yakla&#x15F;&#x131;lmas&#x131; i&#xE7;in herhangi bir d&#xFC;zg&#xFC;n e&#x11F;ri gerektirirler. NURBS y&#xFC;zey i&#x15F;lemleri o kadar sa&#x11F;lam de&#x11F;ildir ve baz&#x131; geometri t&#xFC;rleri i&#xE7;in ba&#x15F;ar&#x131;s&#x131;z olacakt&#x131;r; ancak bunlar tam olarak d&#xFC;zg&#xFC;n e&#x11F;rileri temsil eder, bu da &#xF6;rne&#x11F;in bir&#xE7;ok par&#xE7;al&#x131; do&#x11F;rusal kenar yerine dairesel bir yay&#x131;n tam bir daire olarak g&#xF6;r&#xFC;nd&#xFC;&#x11F;&#xFC; bir DXF&apos;yi d&#x131;&#x15F;a aktarmay&#x131; m&#xFC;mk&#xFC;n k&#x131;lar.</p>
+<p><img src="https://github.com/mhalil/Solvespace_basvuru_kilavuzu/raw/main/grafikler/18%20Kat%C4%B1%20model.png" alt="Kat&#x131; Model Olarak (Birle&#x15F;tir, &#xC7;&#x131;kar ya da Kesi&#x15F;imi al)"></p>
+<p>Bu gruplar&#x131;n da &#xFC;rettikleri y&#xFC;zeylerin (&#xF6;rne&#x11F;in fark / &#xE7;&#x131;karma i&#x15F;lemi) rengini belirleyen bir rengi vard&#x131;r. Rengi de&#x11F;i&#x15F;tirmek i&#xE7;in, &#xD6;zellik penceresinde grubun sayfas&#x131;ndaki renk &#xF6;rneklerinden birine t&#x131;klay&#x131;n. (&#x15E;ekil 18&#x2019;e bak&#x131;n, <code>solid model as</code> k&#x131;sm&#x131;ndaki <code>color</code> se&#xE7;ene&#x11F;i)<br>
+Grubun &#xF6;zellik penceresindeki sayfas&#x131;, ayr&#x131;ca t&#xFC;m isteklerin ve t&#xFC;m k&#x131;s&#x131;tlamalar&#x131;n bir listesini i&#xE7;erir. Bir k&#x131;s&#x131;tlamay&#x131; veya iste&#x11F;i tan&#x131;mlamak i&#xE7;in fareyi, (&#xF6;rne&#x11F;in bir k&#x131;s&#x131;tlama) ad&#x131;n&#x131;n &#xFC;zerine getirin; (farenin &#xFC;zerine geldi&#x11F;i k&#x131;s&#x131;tlama) grafik penceresinde vurgulanm&#x131;&#x15F; olarak g&#xF6;r&#xFC;necektir. Se&#xE7;mek i&#xE7;in &#xF6;zellik penceresindeki ba&#x11F;lant&#x131;ya t&#x131;klay&#x131;n. Bu, grafik penceresinde ger&#xE7;ek nesnenin &#xFC;zerine gelip t&#x131;klamaya e&#x15F;de&#x11F;erdir.</p>
+<h2 class="mume-header" id="3bde-cizim-yap">3B&#x2019;de Cizim Yap</h2>
+
+<p>Bu, kullan&#x131;c&#x131;n&#x131;n &#xE7;izgiler, daireler, yaylar ve di&#x11F;er e&#x11F;riler &#xE7;izebilece&#x11F;i yeni bir bo&#x15F; grup olu&#x15F;turur.<br>
+Nihai ama&#xE7;, genellikle kapal&#x131; b&#xF6;l&#xFC;mler (&#xFC;&#xE7;gen veya dairesel kesikli bir kare veya daha karma&#x15F;&#x131;k bir &#x15F;ekle sahip bir kare gibi) &#xE7;izmektir. Bu b&#xF6;l&#xFC;mler, sonraki gruplar i&#xE7;in bir girdidir. &#xD6;rne&#x11F;in, bir ekstr&#xFC;zyon grubu, d&#xFC;z bir b&#xF6;l&#xFC;m (kapal&#x131; bir dair, e&#x11F;ri ya da &#xE7;okgen &#xE7;izimi) al&#x131;r ve bunu bir kat&#x131; olu&#x15F;turmak i&#xE7;in kullan&#x131;r.</p>
+<p>Gruptaki t&#xFC;m &#xF6;&#x11F;eler kapal&#x131; d&#xF6;ng&#xFC;ler halinde birle&#x15F;tirilebiliyorsa, bu durumda d&#xF6;ng&#xFC;lerin kapsad&#x131;&#x11F;&#x131; alan &#xE7;ok koyu mavi renkte g&#xF6;lgelenir. Bu, sonraki bir grup taraf&#x131;ndan s&#xFC;p&#xFC;r&#xFC;lecek veya ekstr&#xFC;de edilecek veya d&#xF6;nd&#xFC;r&#xFC;lerek kat&#x131;lanacak aland&#x131;r.</p>
+<h2 class="mume-header" id="yeni-cal%C4%B1%C5%9Fma-d%C3%BCzleminde-cizim-yap">Yeni Cal&#x131;&#x15F;ma D&#xFC;zleminde Cizim Yap</h2>
+
+<p>Bu, yeni bir &quot;<code>3B&apos;de &#xC7;izim Yap</code>&quot;a benzer yeni bir bo&#x15F; grup olu&#x15F;turur. Aradaki fark, &quot;<code>Yeni &#xC7;al&#x131;&#x15F;ma D&#xFC;zleminde &#xC7;izim Yap</code>&quot;&#x131;n ayn&#x131; zamanda bir &#xE7;al&#x131;&#x15F;ma d&#xFC;zlemi olu&#x15F;turmas&#x131;d&#x131;r. &#xC7;al&#x131;&#x15F;ma d&#xFC;zlemi, &#xE7;izim olu&#x15F;turuldu&#x11F;unda se&#xE7;ilen objelere g&#xF6;re olu&#x15F;turulur. Bunlar &#x15F;unlar olabilir:</p>
+<p><strong>Bir nokta ve iki do&#x11F;ru par&#xE7;as&#x131;</strong><br>
+Yeni &#xE7;al&#x131;&#x15F;ma d&#xFC;zleminin ba&#x15F;lang&#x131;&#xE7; noktas&#x131; belirtilen noktadad&#x131;r. Bir nokta ve iki &#xE7;izgi par&#xE7;as&#x131; se&#xE7;iliyken ve <code>Yeni Grup &#x2192; Yeni &#xC7;al&#x131;&#x15F;ma D&#xFC;zleminde &#xC7;izim Yap</code> men&#xFC; yolu ile komut &#xE7;al&#x131;&#x15F;t&#x131;r&#x131;l&#x131;rsa, Se&#xE7;ilen nokta orijin yani merkez olmak &#xFC;zere, se&#xE7;ili iki &#xE7;izgi ile &#xE7;ak&#x131;&#x15F;&#x131;k bir &#xE7;al&#x131;&#x15F;ma d&#xFC;zlemi olu&#x15F;turulacak, &#xC7;al&#x131;&#x15F;ma d&#xFC;zlemi iki &#xE7;izgiye paraleldir.  (yani, kullan&#x131;c&#x131; o y&#xFC;zey/d&#xFC;zlem &#xFC;zerinde &#xE7;izim yapacakt&#x131;r).</p>
+<p><strong>Bir Nokta</strong><br>
+Yeni &#xE7;al&#x131;&#x15F;ma d&#xFC;zleminin ba&#x15F;lang&#x131;&#xE7; noktas&#x131;, belirtilen noktadad&#x131;r. &#xC7;al&#x131;&#x15F;ma d&#xFC;zlemi, taban koordinat sistemine diktir; &#xF6;rne&#x11F;in, yatay ve dikey eksenleri +y ve -z y&#xF6;nlerinde veya +x ve +z y&#xF6;nlerinde veya herhangi bir ba&#x15F;ka kombinasyonda olabilir.<br>
+&#xC7;al&#x131;&#x15F;ma d&#xFC;zleminin oryantasyonu, &#xE7;al&#x131;&#x15F;ma d&#xFC;zlemi olu&#x15F;turuldu&#x11F;unda g&#xF6;r&#xFC;n&#xFC;m&#xFC;n konumundan &#xE7;&#x131;kar&#x131;l&#x131;r; g&#xF6;r&#xFC;n&#xFC;m en yak&#x131;n ortografik g&#xF6;r&#xFC;n&#xFC;me yakalan&#x131;r ve &#xE7;al&#x131;&#x15F;ma d&#xFC;zlemi buna hizalan&#x131;r.<br>
+Bir par&#xE7;a &#xE7;o&#x11F;unlukla doksan derecelik a&#xE7;&#x131;lardan olu&#x15F;uyorsa, bu, &#xE7;al&#x131;&#x15F;ma d&#xFC;zlemleri olu&#x15F;turman&#x131;n h&#x131;zl&#x131; bir yoludur.</p>
+<p>Yeni grubun ili&#x15F;kili &#xE7;al&#x131;&#x15F;ma d&#xFC;zlemi, otomatik olarak etkin &#xE7;al&#x131;&#x15F;ma d&#xFC;zlemi olarak ayarlan&#x131;r.</p>
+<p>Bu gruptaki &#xF6;&#x11F;eler kapal&#x131; e&#x11F;riler olu&#x15F;turmuyorsa ekranda bir hata mesaj&#x131; g&#xF6;r&#xFC;nt&#xFC;lenir ve bo&#x15F;luk boyunca k&#x131;rm&#x131;z&#x131; bir &#xE7;izgi &#xE7;izilir. E&#x11F;rilerin t&#xFC;m&#xFC; e&#x15F; d&#xFC;zlemli de&#x11F;ilse de bir hata g&#xF6;r&#xFC;nt&#xFC;lenir. Konfig&#xFC;rasyon k&#x131;sm&#x131;ndan <code>check sketch for closed contour</code> (<em>kapal&#x131; kontur i&#xE7;in eskizi kontrol et</em>) ayar&#x131;n&#x131; kapat&#x131;rsan&#x131;z, olu&#x15F;turulan eskizin/&#xE7;izimin, kapal&#x131; geometri olu&#x15F;turup olu&#x15F;turmad&#x131;&#x11F;&#x131; kontrol edilmez ve ekranda hata mesaj&#x131; ve k&#x131;rm&#x131;z&#x131; &#xE7;izgi g&#xF6;sterilmez.</p>
+<p><img src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/19%20Kapali%20olmayan%20kontur.png" alt="Kapal&#x131; olmayan kontur"></p>
+<h2 class="mume-header" id="dogrusal-kopya">Dogrusal Kopya</h2>
+
+<p>Bu grup, aktif gruptaki geometriyi al&#x131;r ve d&#xFC;z bir &#xE7;izgi boyunca bir&#xE7;ok kez kopyalar.</p>
+<p>Do&#x11F;rusal Kopya grubu olu&#x15F;turuldu&#x11F;unda, bir &#xE7;al&#x131;&#x15F;ma d&#xFC;zlemi etkinse, &#xF6;teleme vekt&#xF6;r&#xFC; bu &#xE7;al&#x131;&#x15F;ma d&#xFC;zlemine paralel olmal&#x131;d&#x131;r. Aksi takdirde, &#xF6;teleme vekt&#xF6;r&#xFC; bo&#x15F; uzayda herhangi bir yere gidebilir.</p>
+<p>Olu&#x15F;turulacak kopya say&#x131;s&#x131; kullan&#x131;c&#x131; taraf&#x131;ndan belirlenir. Bu de&#x11F;eri de&#x11F;i&#x15F;tirmek i&#xE7;in grup sayfas&#x131;ndaki metin penceresindeki [change (de&#x11F;i&#x15F;tir)] ba&#x11F;lant&#x131;s&#x131;n&#x131; t&#x131;klay&#x131;n (&#x15E;ekil 20)</p>
+<p>Kopyalar tek tarafl&#x131; veya &#xE7;ift tarafl&#x131; &#xF6;telenebilir. Kopyalar tek tarafa &#xF6;telenmi&#x15F;se, orijinal eskiz (taslak), t&#xFC;m kopyalar&#x131;n solunda (veya &#xFC;st&#xFC;nde, alt&#x131;nda vb.) g&#xF6;r&#xFC;necektir. Kopyalar &#xE7;ift tarafa &#xF6;telenmi&#x15F;se, orijinal eskiz kopyalar&#x131;n ortas&#x131;nda g&#xF6;r&#xFC;necektir. (&#x15E;ekil 20 ve 21)</p>
+<p><img src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/20%20Dogrusal%20Kopyala.png" alt="Tek Tarafl&#x131; Do&#x11F;rusal Kopya"></p>
+<p><img src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/21%20Cift%20Tarafli%20Dogrusal%20Kopyala.png" alt="&#xC7;ift Tarafl&#x131; Do&#x11F;rusal Kopya"></p>
+<p>Do&#x11F;rusal Kopya komutu ile olu&#x15F;turulacak kopyalar, orijinalinden veya 1 numaral&#x131; kopyadan (copy #1) ba&#x15F;layarak &#xF6;telenebilir. &#xD6;teleme i&#x15F;lemi, orijinalden ba&#x15F;l&#x131;yorsa, &#xF6;teleme orijinal eskizi i&#xE7;erecektir. (Yani &#xF6;telemenin 1. eleman&#x131; her zaman &#xE7;izilen geometri olacak ve orijinal konumunda &#xFC;retilecektir.) &#xD6;teleme komutu 1 numaral&#x131; kopyadan (copy #1) ba&#x15F;l&#x131;yorsa, orijinal eskiz &#xE7;&#x131;kt&#x131;ya dahil edilmez. (B&#xF6;ylece 1 elemanl&#x131; bir kopya, giri&#x15F; geometrisinin tek bir kopyas&#x131;n&#x131; olu&#x15F;turur ve kullan&#x131;c&#x131;n&#x131;n bunu uzayda herhangi bir yere &#xE7;evirmesine olanak tan&#x131;r.)</p>
+<p>Etkin grup bir eskiz (taslak) &#xE7;izimiyse, (3d &#xE7;izim, yeni &#xE7;al&#x131;&#x15F;ma d&#xFC;zleminde &#xE7;izim), &#xE7;izim kademeli olarak tekrarlan&#x131;r. Bu durumda, kullan&#x131;c&#x131; tipik olarak bir b&#xF6;l&#xFC;m &#xE7;izer, ad&#x131;m atar ve o b&#xF6;l&#xFC;m&#xFC; tekrar eder ve ard&#x131;ndan ad&#x131;m&#x131; &#xE7;&#x131;kar&#x131;r ve tekrar eder.</p>
+<p>Aktif grup bir kat&#x131; ise (ekstr&#xFC;de edilmi&#x15F;, helislenmi&#x15F;, d&#xF6;nd&#xFC;rm&#xFC;&#x15F;), kat&#x131; model ad&#x131;mlan&#x131;r ve tekrarlan&#x131;r (ad&#x131;m ad&#x131;m kopyas&#x131; &#xE7;&#x131;kar&#x131;l&#x131;r). Bu durumda, kullan&#x131;c&#x131; bir b&#xF6;l&#xFC;m &#xE7;izecek, b&#xF6;l&#xFC;m&#xFC; ekstr&#xFC;de edecek ve ard&#x131;ndan ekstr&#xFC;zyonu ad&#x131;m ad&#x131;m tekrarlayacakt&#x131;r.</p>
+<p>Baz&#x131; durumlarda, bu iki olas&#x131;l&#x131;k (ad&#x131;m ekstr&#xFC;zyonla &amp; ekstr&#xFC;zyonu ad&#x131;mla) e&#x15F;de&#x11F;erdir. &#xC7;evirme vekt&#xF6;r&#xFC; kesit d&#xFC;zlemine paralel de&#x11F;ilse, o zaman sadece ikinci se&#xE7;enek &#xE7;al&#x131;&#x15F;acakt&#x131;r.</p>
+<p><img src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/22%20Katiyi%20Otele.png" alt="Kat&#x131;y&#x131; do&#x11F;rusal olarak kopyala"></p>
+<h2 class="mume-header" id="dairesel-kopya">Dairesel Kopya</h2>
+
+<p>Bu grup, aktif gruptaki geometriyi al&#x131;r ve bir daire boyunca defalarca kopyalar.</p>
+<p>Grubu olu&#x15F;turmadan &#xF6;nce, kullan&#x131;c&#x131; d&#xF6;nme eksenini se&#xE7;melidir. Bunu yapman&#x131;n bir yolu, bir nokta ve bir do&#x11F;ru par&#xE7;as&#x131; veya bir normal (normal do&#x11F;rusu) se&#xE7;mektir; d&#xF6;nme ekseni noktadan ge&#xE7;er ve do&#x11F;ru par&#xE7;as&#x131;na paralel veya normaldir.</p>
+<p>Bir &#xE7;al&#x131;&#x15F;ma d&#xFC;zlemi aktifse, sadece bir noktay&#x131; se&#xE7;mek de m&#xFC;mk&#xFC;nd&#xFC;r; bu durumda, d&#xF6;nme ekseni o noktadan ge&#xE7;er ve &#xE7;al&#x131;&#x15F;ma d&#xFC;zlemine diktir. Bu, d&#xF6;n&#xFC;&#x15F;&#xFC;n &#xE7;al&#x131;&#x15F;ma d&#xFC;zlemi d&#xFC;zlemi i&#xE7;inde kald&#x131;&#x11F;&#x131; anlam&#x131;na gelir.</p>
+<p><img src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/23%20Aktif%20Calisma%20Duzleminde%20Dairesel%20Kopya.png" alt="Aktif &#xC7;al&#x131;&#x15F;ma D&#xFC;zleminde Dairesel Olarak &#xC7;o&#x11F;alt / Kopyala"></p>
+<p>Bir &#xE7;al&#x131;&#x15F;ma d&#xFC;zlemi aktifse, sadece bir noktay&#x131; se&#xE7;mek de m&#xFC;mk&#xFC;nd&#xFC;r; bu durumda, d&#xF6;nme ekseni o noktadan ge&#xE7;er ve &#xE7;al&#x131;&#x15F;ma d&#xFC;zlemine diktir. Bu, d&#xF6;n&#xFC;&#x15F;&#xFC;n &#xE7;al&#x131;&#x15F;ma d&#xFC;zlemi i&#xE7;inde kald&#x131;&#x11F;&#x131; anlam&#x131;na gelir.</p>
+<p>Ad&#x131;m ve tekrar se&#xE7;enekleri (tek tarafl&#x131; / &#xE7;ift taraf, orijinal ile / kopya #1 ile), do&#x11F;rusal kopyalama gruplar&#x131;yla ayn&#x131;d&#x131;r.</p>
+<p>Kopya say&#x131;s&#x131;, <strong>Do&#x11F;rusal Kopya</strong> ile ayn&#x131; &#x15F;ekilde belirtilir. D&#xF6;nd&#xFC;r&#xFC;lm&#xFC;&#x15F; geometri hen&#xFC;z s&#x131;n&#x131;rland&#x131;r&#x131;lmam&#x131;&#x15F;sa, kopyalar bir daire etraf&#x131;nda e&#x15F;it aral&#x131;klarla yerle&#x15F;tirilecektir; &#xF6;rne&#x11F;in 5 kopya istenirse kopyalar aras&#x131;ndaki a&#xE7;&#x131; de&#x11F;eri (bo&#x15F;luk) 360 / 5 = 72 derece olur.</p>
+<p>Kopyalar&#x131; tam bir daireden daha az (veya daha fazla) de&#x11F;er boyunca yerle&#x15F;tirmek i&#xE7;in, fare ile kopyalardan birinin &#xFC;zerindeki bir noktay&#x131; s&#xFC;r&#xFC;kleyin;  d&#xF6;n&#xFC;&#x15F; a&#xE7;&#x131;s&#x131; ad&#x131;m&#x131; de&#x11F;i&#x15F;tirildi&#x11F;i i&#xE7;in geri kalan her &#x15F;ey bunu takip edecektir. K&#x131;s&#x131;tlamalar (&#xF6;rne&#x11F;in bir a&#xE7;&#x131; k&#x131;s&#x131;tlamas&#x131; veya bir konum &#xFC;zerinde nokta k&#x131;s&#x131;tlamas&#x131;) d&#xF6;n&#xFC;&#x15F; a&#xE7;&#x131;s&#x131;n&#x131; tam olarak belirtmek i&#xE7;in kullan&#x131;labilir.</p>
+<p><img src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/24%20Dairesel%20Kopya.png" alt="Dairesel olarak kopyala ve k&#x131;s&#x131;tla"></p>
+<p><img src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/25%20Dairesel%20Kopya%20Cikart.png" alt="Dairesel olarak kopyala ve &#xC7;&#x131;kart"></p>
+<h2 class="mume-header" id="uzatarak-kat%C4%B1la-ekstrude">Uzatarak Kat&#x131;la (Ekstrude)</h2>
+
+<p>Bu grup d&#xFC;z bir b&#xF6;l&#xFC;m al&#x131;r ve onu bir kat&#x131; olu&#x15F;turmak i&#xE7;in ekstr&#xFC;de eder, (d&#xFC;zlemi, normali y&#xF6;n&#xFC;nde uzatarak kat&#x131;lar). D&#xFC;z k&#x131;s&#x131;m, Uzatarak Kat&#x131;la grubu olu&#x15F;turuldu&#x11F;unda grubun aktif olan k&#x131;sm&#x131;ndan al&#x131;n&#x131;r. (Bu genellikle &#xE7;al&#x131;&#x15F;ma d&#xFC;zleminde bir &#xE7;izimdir veya 3B&apos;de bir &#xE7;izimdir, ancak bir ad&#x131;m ve tekrar da olabilir.)</p>
+<p>Eskiz (&#xC7;izim) tek tarafl&#x131; veya &#xE7;ift tarafl&#x131; (simetrik) ekstr&#xFC;de edilebilir. &#xC7;izim tek tarafl&#x131; ekstr&#xFC;de edilirse, olu&#x15F;an yeni kat&#x131; par&#xE7;a, orijinal &#xE7;izimin tamamen &#xFC;st veya  alt k&#x131;sm&#x131;nda olu&#x15F;ur. Ekstr&#xFC;zyon y&#xF6;n&#xFC;n&#xFC; ve ayr&#x131;ca ekstr&#xFC;zyon derinli&#x11F;ini belirlemek i&#xE7;in yeni y&#xFC;zeyde bir noktay&#x131; s&#xFC;r&#xFC;kleyin. Ekstr&#xFC;zyon derinli&#x11F;i yakla&#x15F;&#x131;k olarak do&#x11F;ru g&#xF6;r&#xFC;nd&#xFC;&#x11F;&#xFC;nde, k&#x131;s&#x131;tlamalar kullan&#x131;larak tam olarak belirlenebilir. &#xD6;rne&#x11F;in, kullan&#x131;c&#x131; yeni ekstr&#xFC;de edilmi&#x15F; kenarlardan birinin uzunlu&#x11F;unu s&#x131;n&#x131;rlayabilir.</p>
+<p>&#xC7;izim &#xE7;ift tarafl&#x131; (simetrik) ekstr&#xFC;de edilirse, orijinal &#xE7;izim, yeni kat&#x131;n&#x131;n tam orta noktas&#x131;nda yer al&#x131;r. Bu, kat&#x131;n&#x131;n orijinal &#xE7;izim d&#xFC;zlemine g&#xF6;re simetrik oldu&#x11F;u anlam&#x131;na gelir. Par&#xE7;a simetriye sahip oldu&#x11F;unda sonraki boyutland&#x131;rma genellikle daha basit hale gelir, bu nedenle m&#xFC;mk&#xFC;n oldu&#x11F;unda &#xE7;ift tarafl&#x131; ekstr&#xFC;zyon yapmak yararl&#x131;d&#x131;r.</p>
+<p>Uzatarak Kat&#x131;lama (Ekstr&#xFC;de) Grubu olu&#x15F;turuldu&#x11F;unda, bir &#xE7;al&#x131;&#x15F;ma d&#xFC;zlemi etkin olmal&#x131;d&#x131;r ve ekstr&#xFC;zyon yolu otomatik olarak o &#xE7;al&#x131;&#x15F;ma d&#xFC;zlemine normal (y&#xF6;nde) olacak &#x15F;ekilde s&#x131;n&#x131;rland&#x131;r&#x131;l&#x131;r. Bu &#xF6;rne&#x11F;in, bir dikd&#xF6;rtgenin, bir dikd&#xF6;rtgen prizma olu&#x15F;turacak &#x15F;ekilde ekstr&#xFC;de edildi&#x11F;i anlam&#x131;na gelir. Ekstr&#xFC;zyon bir serbestlik derecesine sahiptir, bu nedenle tek bir mesafe k&#x131;s&#x131;tlamas&#x131; onu tamamen s&#x131;n&#x131;rlayacakt&#x131;r. (E&#x11F;er <code>Yeni Grup &#x2192; 3d&#x2019;de &#xC7;izim Yap</code> (k&#x131;sayol tu&#x15F;u: <code>Shift+3</code>) se&#xE7;ene&#x11F;i kullan&#x131;larak 3B uzay&#x131;nda, yani ekrana bak&#x131;&#x15F; a&#xE7;&#x131;m&#x131;z  d&#xFC;zleminde bir eskiz &#xE7;izer, &#xE7;izim yaparsak) Ekstr&#xFC;zyon olu&#x15F;turmadan &#xF6;nce di&#x11F;er &#xE7;al&#x131;&#x15F;ma d&#xFC;zlemi se&#xE7;ilerek (<code>&#xC7;izim &#x2192; &#xC7;al&#x131;&#x15F;ma D&#xFC;zleminde</code>), &#xE7;izimin, &#xE7;izildi&#x11F;i &#xE7;al&#x131;&#x15F;ma d&#xFC;zleminden farkl&#x131; bir &#xE7;al&#x131;&#x15F;ma d&#xFC;zlemine dik ekstr&#xFC;zyon olu&#x15F;turmak m&#xFC;mk&#xFC;nd&#xFC;r. Bu, e&#x11F;ri ekstr&#xFC;zyonlar olu&#x15F;turmak i&#xE7;in kullan&#x131;labilir.</p>
+<p>Varsay&#x131;lan olarak, yeni bir ekstr&#xFC;zyon grubunda hi&#xE7;bir &#xE7;al&#x131;&#x15F;ma d&#xFC;zlemi etkin de&#x11F;ildir. Bu, k&#x131;s&#x131;tlamalar&#x131;n 3 boyutlu olarak uygulanaca&#x11F;&#x131; anlam&#x131;na gelir; &#xF6;rne&#x11F;in, bir uzunluk k&#x131;s&#x131;tlamas&#x131;, bir d&#xFC;zleme yans&#x131;t&#x131;lan uzunluk &#xFC;zerinde de&#x11F;il, ger&#xE7;ek uzunluk &#xFC;zerinde bir k&#x131;s&#x131;tlamad&#x131;r. Bu genellikle istenen davran&#x131;&#x15F;t&#x131;r, ancak bir &#xE7;al&#x131;&#x15F;ma d&#xFC;zlemini ola&#x11F;an &#x15F;ekilde etkinle&#x15F;tirmek m&#xFC;mk&#xFC;nd&#xFC;r (onu se&#xE7;ip ard&#x131;ndan <code>&#xC7;izim &#x2192; &#xC7;al&#x131;&#x15F;ma D&#xFC;zleminde</code>&apos;yi se&#xE7;erek).</p>
+<p><img src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/26%203d&apos;de%20eskiz.png" alt="3d&apos;de Eskiz &#xC7;iz"></p>
+<p><img src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/27%20XZ%20Duzleminde%20Uzatarak%20Katila.png" alt="Eskizi, XZ D&#xFC;zleminde Uzatarak Kat&#x131;la"></p>
+<p><img src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/28%20YZ%20Duzleminde%20Uzatarak%20Katila.png" alt="Eskizi, YZ D&#xFC;zleminde Uzatarak Kat&#x131;la"></p>
+<h2 class="mume-header" id="tam-d%C3%B6nd%C3%BCrerek-kat%C4%B1la">Tam D&#xF6;nd&#xFC;rerek Kat&#x131;la</h2>
+
+<p>Bu grup, d&#xFC;z bir &#xE7;izimi (d&#xFC;zleme &#xE7;izilmi&#x15F; 2 boyutlu kapal&#x131; kontura sahip bir eskizi) al&#x131;r ve bunu belirli bir eksen etraf&#x131;nda s&#xFC;p&#xFC;rerek / d&#xF6;nd&#xFC;rerek bir kat&#x131;ya d&#xF6;n&#xFC;&#x15F;t&#xFC;r&#xFC;r. Tam D&#xF6;nd&#xFC;rerek Kat&#x131;lama grubu olu&#x15F;turuldu&#x11F;unda aktif olan gruptan kesit al&#x131;n&#x131;r , yani aktif grupta &#xE7;izilen eskiz, Tam D&#xF6;nd&#xFC;rerek Kat&#x131;lama kesit yap&#x131;s&#x131;d&#x131;r.</p>
+<p>Tam D&#xF6;nd&#xFC;rerek Kat&#x131;lama grubu olu&#x15F;turmak i&#xE7;in bir &#xE7;izgiyi se&#xE7;ip <code>Yeni Grup &#x2192; Tam d&#xF6;nd&#xFC;rerek kat&#x131;la</code>&apos;&#x131; se&#xE7;in (k&#x131;sayol tu&#x15F;u: <code>Shift+L</code>). Se&#xE7;ilen do&#x11F;ru par&#xE7;as&#x131;, d&#xF6;n&#xFC;&#x15F; eksenini belirtir. &#xC7;ark grubu olu&#x15F;turman&#x131;n bir ba&#x15F;ka y&#xF6;ntemi ise bir nokta ve bir &#xE7;izgi par&#xE7;as&#x131; ya da normal do&#x11F;rultusu se&#xE7;mek, sonras&#x131;nda <code>Shift+L</code> k&#x131;sayolunu kullanmakt&#x131;r.</p>
+<p>Kesit, e&#x11F;ri boyunca s&#xFC;p&#xFC;r&#xFC;ld&#xFC;&#x11F;&#xFC; i&#xE7;in kendi kendisiyle kesi&#x15F;memelidir. Kesit d&#xF6;nme eksenini keserse, kendisini kesece&#x11F;i i&#xE7;in  i&#x15F;lem ba&#x15F;ar&#x131;s&#x131;z olur.</p>
+<p><img src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/29%20Kesit.png" alt="Tam D&#xF6;nd&#xFC;rerek Kat&#x131;la komutu uygulanacak eskiz (kesit)"></p>
+<p><img src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/30%20Tam%20Dondurerek%20Katila.png" alt="Tam D&#xF6;nd&#xFC;rerek Kat&#x131;la komutu sonras&#x131; olu&#x15F;an Kat&#x131; Model"></p>
+<h2 class="mume-header" id="k%C4%B1smi-d%C3%B6nd%C3%BCrerek-kat%C4%B1la">K&#x131;smi D&#xF6;nd&#xFC;rerek Kat&#x131;la</h2>
+
+<p>Bu grup d&#xFC;z bir &#xE7;izim al&#x131;r ve bunu belirli bir eksen etraf&#x131;nda s&#xFC;p&#xFC;rerek / d&#xF6;nd&#xFC;rerek bir kat&#x131; model olu&#x15F;turur. Bu grup ile Tam D&#xF6;nd&#xFC;rerek Kat&#x131;la grubu aras&#x131;ndaki fark, K&#x131;smi D&#xF6;nd&#xFC;rerek Kat&#x131;la komutunun eskizi (&#xE7;izimi) tam 360 derece s&#xFC;p&#xFC;rmemesidir. Ortaya &#xE7;&#x131;kan kat&#x131; model, belirli bir a&#xE7;&#x131;yla s&#xFC;r&#xFC;klenebilir veya k&#x131;s&#x131;tlanabilir. 360 derecenin &#xF6;tesine s&#xFC;r&#xFC;klenirse, bu, Tam D&#xF6;nd&#xFC;rerek Kat&#x131;la  grubuyla tamamen ayn&#x131; kat&#x131;y&#x131; olu&#x15F;turacakt&#x131;r.</p>
+<p>Tam D&#xF6;nd&#xFC;rerek Kat&#x131;la komutu anlat&#x131;l&#x131;rken &#xE7;izilen eskize, K&#x131;smi D&#xF6;nd&#xFC;rerek Kat&#x131;la komutu uygulan&#x131;p kesit belirli bir a&#xE7;&#x131;ya kadar s&#xFC;r&#xFC;klenirse olu&#x15F;an &#xF6;rnek g&#xF6;r&#xFC;nt&#xFC;y&#xFC; a&#x15F;a&#x11F;&#x131;da (Resim 31) g&#xF6;rebilirsiniz.</p>
+<p><img src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/31%20K%C4%B1smen%20Dondurerek%20Katila.png" alt="K&#x131;smi D&#xF6;nd&#xFC;rerek Kat&#x131;la komutu sonras&#x131; olu&#x15F;an kat&#x131; model"></p>
+<h2 class="mume-header" id="helis">Helis</h2>
+
+<p>Bu grup, d&#xFC;z bir &#xE7;izimi (d&#xFC;zlem y&#xFC;zeyde yap&#x131;lan iki boyutlu kapal&#x131; kontura sahip bir eskizi) al&#x131;r ve belirli bir eksen etraf&#x131;nda s&#xFC;p&#xFC;r&#xFC;rken ayn&#x131; zamanda o eksen boyunca &#xF6;teler. Sonu&#xE7; olarak, vida di&#x15F;leri veya di&#x11F;er b&#xFC;k&#xFC;lm&#xFC;&#x15F; y&#xFC;zeyleri modellemek i&#xE7;in kullan&#x131;labilen sarmal bir y&#xFC;zey olu&#x15F;ur. En yayg&#x131;n iki yakla&#x15F;&#x131;m, spiral bir &#x15F;ekil olu&#x15F;turmak i&#xE7;in &#xE7;izim d&#xFC;zleminde bir eksen veya standart ekstr&#xFC;zyonun b&#xFC;k&#xFC;lm&#xFC;&#x15F; bir versiyonu gibi davranan bir &#x15F;ey olu&#x15F;turmak i&#xE7;in &#xE7;izim d&#xFC;zlemine dik bir eksen kullanmakt&#x131;r.</p>
+<p><img src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/32%20Helis%20Yay.png" alt="Helis Yay"></p>
+<p>Bir Helis grubu olu&#x15F;turuldu&#x11F;unda, sarmal&#x131;n ekseni boyunca bir yap&#x131; hatt&#x131; da olu&#x15F;turulacakt&#x131;r. Bu &#xE7;izginin u&#xE7;lar&#x131;n&#x131; veya eksen &#xFC;zerindeki di&#x11F;er noktalar&#x131; s&#xFC;r&#xFC;klemek, sarmal ekstr&#xFC;zyonun uzunlu&#x11F;unu de&#x11F;i&#x15F;tirecektir. Eksen &#xFC;zerinde olmayan noktalar&#x131; s&#xFC;r&#xFC;klemek, bir <strong>K&#x131;smi D&#xF6;nd&#xFC;rerek Kat&#x131;la</strong> grubuna benzer &#x15F;ekilde sarmal&#x131;n a&#xE7;&#x131;s&#x131;n&#x131; de&#x11F;i&#x15F;tirir. Bir sarmal&#x131;n a&#xE7;&#x131;s&#x131;, &#xE7;ok uzun spiral &#x15F;ekillerin veya bir c&#x131;vata &#xFC;zerindeki t&#xFC;m di&#x15F;lerin tek bir grupta olu&#x15F;turulmas&#x131;na izin vermek i&#xE7;in 360 dereceden &#xE7;ok daha fazla olabilir.</p>
+<p><img src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/33%20Helis%20Civata.png" alt="Helis C&#x131;vata"></p>
+<h2 class="mume-header" id="bagla-montajla">Bagla / Montajla</h2>
+
+<p>SolveSpace&apos;de &quot;par&#xE7;a&quot; dosyalar&#x131; ve &quot;montaj&quot; dosyalar&#x131; aras&#x131;nda bir ayr&#x131;m yoktur; bir dosyay&#x131; di&#x11F;erine ba&#x11F;lamak her zaman m&#xFC;mk&#xFC;nd&#xFC;r. Bir &quot;montaj&quot;, yaln&#x131;zca bir veya daha fazla par&#xE7;ay&#x131; birbirine ba&#x11F;layan bir par&#xE7;a dosyas&#x131;d&#x131;r.</p>
+<p>Ba&#x11F;lant&#x131;l&#x131; dosyas&#x131;, montaj (derleme) i&#xE7;inde d&#xFC;zenlenemez. Tam olarak kaynak dosyada g&#xF6;r&#xFC;nd&#xFC;&#x11F;&#xFC; gibi kar&#x15F;&#x131;m&#x131;za &#xE7;&#x131;kar, ancak iste&#x11F;e ba&#x11F;l&#x131; bir konum ve y&#xF6;nlendirme ile dahil edilmi&#x15F;tir. Bu, ba&#x11F;lant&#x131;l&#x131; par&#xE7;an&#x131;n alt&#x131; serbestlik derecesine sahip oldu&#x11F;u anlam&#x131;na gelir.</p>
+<p>Par&#xE7;ay&#x131; ta&#x15F;&#x131;mak (&#xE7;evirmek) i&#xE7;in &#xFC;zerinde herhangi bir noktay&#x131; t&#x131;klay&#x131;n ve s&#xFC;r&#xFC;kleyin. Par&#xE7;ay&#x131; d&#xF6;nd&#xFC;rmek i&#xE7;in herhangi bir noktay&#x131; t&#x131;klay&#x131;n ve <code>Shift+Farenin Sol tu&#x15F;u</code> ile S&#xFC;r&#xFC;kleyin veya <code>Ctrl+Farenin Sol tu&#x15F;u</code> ile S&#xFC;r&#xFC;kleyin. Par&#xE7;an&#x131;n konumu ve y&#xF6;n&#xFC;, di&#x11F;er herhangi bir geometrinin k&#x131;s&#x131;tland&#x131;&#x11F;&#x131; &#x15F;ekilde, k&#x131;s&#x131;tlamalarla sabitlenebilir.</p>
+<p>Par&#xE7;a ayr&#x131;ca alt&#x131; serbestlik dereceli bir 3Dconnexion kontrol&#xF6;r ile d&#xF6;n&#xFC;&#x15F;t&#xFC;r&#xFC;lebilir. Bir montajdaki bir par&#xE7;ay&#x131; manip&#xFC;le etmek i&#xE7;in, o par&#xE7;a i&#xE7;indeki herhangi bir objeyi se&#xE7;in (&#xF6;rne&#x11F;in, bir nokta, bir &#xE7;izgi par&#xE7;as&#x131; veya bir normal). 3Dba&#x11F;lant&#x131; denetleyicisi, g&#xF6;r&#xFC;n&#xFC;m&#xFC; d&#xF6;n&#xFC;&#x15F;t&#xFC;rmek yerine o k&#x131;sm&#x131; hareket ettirir.</p>
+<p>Ekran&#x131;n i&#xE7;ine veya d&#x131;&#x15F;&#x131;na istenmeyen bir d&#xF6;n&#xFC;&#x15F; yapmamaya dikkat edin, &#xE7;&#xFC;nk&#xFC; bu hareket kolayca alg&#x131;lanamayabilir.</p>
+<p>Par&#xE7;ay&#x131; ekrana dik olana en yak&#x131;n koordinat ekseni (x, y veya z ekseni) etraf&#x131;nda tam olarak doksan derece d&#xF6;nd&#xFC;rmek i&#xE7;in <code>D&#xFC;zen &#x2192; &#x130;&#xE7;e Aktar&#x131;lanlar&#x131; 90&#xB0; D&#xF6;nd&#xFC;r</code>&apos;&#xFC; se&#xE7;in. Ba&#x11F;l&#x131; gruptaki bir obje se&#xE7;ilirse, o gruptaki par&#xE7;a d&#xF6;nd&#xFC;r&#xFC;l&#xFC;r. Bir i&#xE7;e aktarma grubu etkinse, etkin gruptan par&#xE7;a d&#xF6;nd&#xFC;r&#xFC;l&#xFC;r.</p>
+<p><strong>Ayn&#x131; Y&#xF6;n</strong> k&#x131;s&#x131;tlamas&#x131;, &#xF6;zellikle montaj par&#xE7;alar&#x131; ba&#x11F;lan&#x131;rken kullan&#x131;&#x15F;l&#x131;d&#x131;r. Bu tek k&#x131;s&#x131;tlama, ba&#x11F;lant&#x131;l&#x131; par&#xE7;an&#x131;n d&#xF6;n&#xFC;&#x15F;&#xFC;n&#xFC; tamamen belirler. (Ba&#x11F;lant&#x131;l&#x131; k&#x131;s&#x131;mda bir normal se&#xE7;in, onu s&#x131;n&#x131;rlamak i&#xE7;in ba&#x15F;ka bir normal se&#xE7;in ve <code>K&#x131;s&#x131;tla &#x2192; Ayn&#x131; Y&#xF6;n</code>&apos;&#xFC; se&#xE7;in).</p>
+<p>Ba&#x11F;lant&#x131;l&#x131; k&#x131;s&#x131;m ayr&#x131;ca ili&#x15F;kili bir &#xF6;l&#xE7;ek fakt&#xF6;r&#xFC;ne sahiptir. Bu, par&#xE7;an&#x131;n daha k&#xFC;&#xE7;&#xFC;k veya daha b&#xFC;y&#xFC;k bir versiyonunu ba&#x11F;lamay&#x131; m&#xFC;mk&#xFC;n k&#x131;lar. &#xD6;l&#xE7;ek fakt&#xF6;r&#xFC; negatifse, par&#xE7;a &#xF6;l&#xE7;ek fakt&#xF6;r&#xFC;n&#xFC;n mutlak de&#x11F;eri ile &#xF6;l&#xE7;eklenir ve aynalan&#x131;r.</p>
+<p><img src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/34%20Montaj%20Olcek.png" alt="Montaj - &#xD6;l&#xE7;ek De&#x11F;eri"></p>
+<p>SolveSpace ayr&#x131;ca elektronik tasar&#x131;m ara&#xE7;lar&#x131;ndan bask&#x131;l&#x131; devre kartlar&#x131;n&#x131; tan&#x131;mlayan IDF (.emn) dosyalar&#x131;n&#x131; i&#xE7;e aktarma yetene&#x11F;ine de sahiptir. Bu, muhafazalar&#x131; tasarlamak ve bir montaj i&#xE7;indeki uyumu kontrol etmek i&#xE7;in kullan&#x131;&#x15F;l&#x131;d&#x131;r. &#xC7;izim objeleri ve devre kart&#x131;n&#x131; bir ekstr&#xFC;zyon olu&#x15F;turulacak ve &#xF6;l&#xE7;&#xFC;m almak i&#xE7;in kullan&#x131;labilir.</p>
+<p>D&#x131;&#x15F;a aktar&#x131;m gruplar&#x131;n&#x131;n &#xF6;zel bir &quot;<strong>solid model as</strong> (<em>kat&#x131; model olarak</em>)&quot; se&#xE7;ene&#x11F;i vard&#x131;r: ola&#x11F;an &quot;<strong>birle&#x15F;im</strong>&quot;, &quot;<strong>fark</strong>&quot; ve &quot;<strong>kesi&#x15F;im</strong>&quot;e ek olarak, &quot;birle&#x15F;tirme&quot; se&#xE7;ene&#x11F;ine sahiptirler. &quot;<strong>Montaj</strong>&quot; se&#xE7;ene&#x11F;i, birbiriyle kar&#x131;&#x15F;mamas&#x131; (engellememesi) gereken par&#xE7;alar bir montajda birle&#x15F;tirilirken kullan&#x131;lmal&#x131;d&#x131;r. Montaj&#x131;n kar&#x131;&#x15F;mad&#x131;&#x11F;&#x131;n&#x131; do&#x11F;rulamak i&#xE7;in, <code>Analiz &#x2192; Engelleyici Par&#xE7;alar&#x131; G&#xF6;ster</code>&apos;i se&#xE7;in.</p>
+<p>Montaj komutu ile olu&#x15F;turulan i&#xE7;e aktarma grubu, kapal&#x131; bir kontur olu&#x15F;turan bir &#xE7;izim i&#xE7;eriyorsa, bu grup, kontur ayn&#x131; dosya i&#xE7;inde &#xE7;izilmi&#x15F; gibi ayn&#x131; &#x15F;ekilde ekstr&#xFC;de edilebilir. Bu, A dosyas&#x131;na bir b&#xF6;l&#xFC;m &#xE7;izmenin, bu b&#xF6;l&#xFC;m&#xFC; B dosyas&#x131;na i&#xE7;e aktarman&#x131;n (baz&#x131; keyfi &#xF6;teleme ve d&#xF6;nd&#xFC;rmelerle) ve ard&#x131;ndan B dosyas&#x131;ndaki par&#xE7;an&#x131;n bir &#xF6;zelli&#x11F;ini olu&#x15F;turmak i&#xE7;in ekstr&#xFC;de etmenin m&#xFC;mk&#xFC;n oldu&#x11F;u anlam&#x131;na gelir. A dosyas&#x131;nda yap&#x131;lacak herhangi bir de&#x11F;i&#x15F;iklik, par&#xE7;a yeniden olu&#x15F;turuldu&#x11F;unda B dosyas&#x131;na iletilecektir.</p>
+<p>Benzer &#x15F;ekilde, A dosyas&#x131;na a&#xE7;&#x131;k bir b&#xF6;l&#xFC;m &#xE7;izmek, bu b&#xF6;l&#xFC;m&#xFC; B dosyas&#x131;na ba&#x11F;lamak ve daha sonra bu b&#xF6;l&#xFC;m&#xFC; kapatmak i&#xE7;in B dosyas&#x131;na ek &#xE7;izgiler veya e&#x11F;riler (ayn&#x131; grupta veya ba&#x15F;ka bir grupta) &#xE7;izmek m&#xFC;mk&#xFC;nd&#xFC;r. C dosyas&#x131; B dosyas&#x131;na ba&#x11F;lan&#x131;rsa, kapal&#x131; b&#xF6;l&#xFC;m ekstr&#xFC;de edilebilir. Bu, kullan&#x131;c&#x131;n&#x131;n orijinaldeki bir de&#x11F;i&#x15F;ikli&#x11F;in o geometriyi kullanan t&#xFC;m par&#xE7;alara yay&#x131;laca&#x11F;&#x131; &#x15F;ekilde birden &#xE7;ok dosyadaki b&#xF6;l&#xFC;mleri veya bir b&#xF6;l&#xFC;m&#xFC;n b&#xF6;l&#xFC;mlerini yeniden kullanmas&#x131;na olanak tan&#x131;r.</p>
+<p>Bir montaj dosyas&#x131; y&#xFC;klendi&#x11F;inde, SolveSpace ba&#x11F;lant&#x131;l&#x131; dosyalar&#x131;n t&#xFC;m&#xFC;n&#xFC; de y&#xFC;kler. Ba&#x11F;lant&#x131;l&#x131; dosyalar mevcut de&#x11F;ilse, bir hata olu&#x15F;ur. Bir montaj dosyas&#x131;n&#x131; ba&#x15F;ka bir bilgisayara aktar&#x131;rken, ba&#x11F;lant&#x131;l&#x131; t&#xFC;m dosyalar&#x131; da aktarmak gerekir.</p>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>

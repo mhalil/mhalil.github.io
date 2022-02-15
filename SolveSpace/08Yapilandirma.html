@@ -1,0 +1,361 @@
+<!DOCTYPE html><html><head>
+      <title>08 Yap&#x131;land&#x131;rma</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:////home/mhalil/.vscode/extensions/shd101wyy.markdown-preview-enhanced-0.6.1/node_modules/@shd101wyy/mume/dependencies/katex/katex.min.css">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <style>
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}
+
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+}
+
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+pre[data-line] .line-highlight:before, 
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h1 class="mume-header" id="b%C3%B6l%C3%BCm-8-yap%C4%B1land%C4%B1rma">B&#xF6;l&#xFC;m 8: Yap&#x131;land&#x131;rma</h1>
+
+<h2 class="mume-header" id="kullan%C4%B1c%C4%B1-malzeme-renkleri">Kullan&#x131;c&#x131; / Malzeme Renkleri</h2>
+
+<p><strong>&#xD6;zellik Penceresi</strong> ekran&#x131;nda, belirli gruplar i&#xE7;in (&#xF6;rne&#x11F;in uzatarak kat&#x131;la, tam ve k&#x131;smi d&#xF6;nd&#xFC;rerek kat&#x131;la) sekiz renkten olu&#x15F;an bir palet g&#xF6;r&#xFC;nt&#xFC;lenir (<code>User Color (r, g, b)</code>). Bu palet, kullan&#x131;c&#x131;n&#x131;n o grup taraf&#x131;ndan olu&#x15F;turulan herhangi bir y&#xFC;zeyin rengini se&#xE7;mesine izin verir.</p>
+<p>Bu sekiz renk, bile&#x15F;enleri ile burada belirtilmi&#x15F;tir. Bile&#x15F;enler 0&apos; ile 1.0 aral&#x131;&#x11F;&#x131;nda say&#x131; de&#x11F;erleri ile temsil edilir. &quot;0, 0, 0&quot; rengi siyah ve &quot;1, 1, 1&quot; beyazd&#x131;r. Bile&#x15F;enler &quot;k&#x131;rm&#x131;z&#x131;, ye&#x15F;il, mavi&#x201D; s&#x131;ras&#x131;na g&#xF6;re belirtilmi&#x15F;tir.</p>
+<p><img src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/50%20Kullanici%20renkleri.png" alt="Kullan&#x131;c&#x131; Renkleri"></p>
+<p>Palet renklerinde yap&#x131;lan bir de&#x11F;i&#x15F;iklik, palette varolan bir y&#xFC;zeyin rengi art&#x131;k g&#xF6;r&#xFC;nmese bile, &#xE7;izimdeki varolan y&#xFC;zeylerin rengini de&#x11F;i&#x15F;tirmez.</p>
+<h2 class="mume-header" id="i%C5%9F%C4%B1k-y%C3%B6nleri">I&#x15F;&#x131;k Y&#xF6;nleri</h2>
+
+<p>Derinlik izlenimi olu&#x15F;turmak i&#xE7;in 3 boyutlu k&#x131;s&#x131;m, sim&#xFC;le edilmi&#x15F; ayd&#x131;nlatma ile g&#xF6;r&#xFC;nt&#xFC;lenir. Y&#xF6;nl&#xFC; ve ortam &#x131;&#x15F;&#x131;&#x11F;&#x131; olmak &#xFC;zere iki t&#xFC;r &#x131;&#x15F;&#x131;k vard&#x131;r. Bu &#x131;&#x15F;&#x131;klar&#x131;n y&#xF6;nleri ve yo&#x11F;unluklar&#x131; (<code>Light Directions</code>) kullan&#x131;c&#x131; tercihine g&#xF6;re de&#x11F;i&#x15F;tirilebilir.</p>
+<p>I&#x15F;&#x131;k y&#xF6;nlerinin bir konumu yoktur; sanki &#xE7;ok uzaklardan geliyormu&#x15F; gibi d&#xFC;&#x15F;&#xFC;n&#xFC;n, &#x131;&#x15F;&#x131;&#x11F;&#x131;n sadece y&#xF6;n&#xFC; var. Bu y&#xF6;n &quot;<strong>sa&#x11F;, &#xFC;st, &#xF6;n</strong>&quot; olmak &#xFC;zere 3 bile&#x15F;ende belirtilmi&#x15F;tir. Ekran&#x131;n <strong>sa&#x11F;</strong> taraf&#x131;ndan gelen &#x131;&#x15F;&#x131;k &quot;<strong>1, 0, 0</strong>&quot; ile temsil edilir. Ekran&#x131;n <strong>solundan</strong> &#x131;&#x15F;&#x131;k gelmesi isteniyorsa &quot;<strong>-1, 0, 0</strong>&quot; &#x15F;eklinde ayarlama yap&#x131;lmal&#x131;d&#x131;r. Ekran&#x131;n <strong>&#xF6;n&#xFC;nden</strong> gelen &#x131;&#x15F;&#x131;&#x11F;&#x131; &quot;<strong>0, 0, 1</strong>&quot; ile ifade edebiliriz. Ortam &#x131;&#x15F;&#x131;&#x11F;&#x131;n&#x131;n y&#xF6;n&#xFC; yoktur ve dolgu &#x131;&#x15F;&#x131;&#x11F;&#x131; her y&#xF6;nden e&#x15F;it yo&#x11F;unlukta etki eder bir g&#xF6;revi g&#xF6;r&#xFC;r.</p>
+<p>Yo&#x11F;unluk 0 ile 1 aras&#x131;nda olmal&#x131;d&#x131;r. Yo&#x11F;unlu&#x11F;u 0 (s&#x131;f&#x131;r) olan bir &#x131;&#x15F;&#x131;&#x11F;&#x131;n etkisi yoktur ve 1 de&#x11F;eri tam parlak &#x131;&#x15F;&#x131;kt&#x131;r. Ortam &#x131;&#x15F;&#x131;&#x11F;&#x131;n&#x131;n yo&#x11F;unlu&#x11F;unu 1&apos;e ayarlan&#x131;rsa &quot;d&#xFC;z g&#xF6;lgeleme&quot; efekti elde edilir.</p>
+<p>&#x130;ki y&#xF6;nl&#xFC; &#x131;&#x15F;&#x131;k kullan&#x131;l&#x131;r. Yaln&#x131;zca biri isteniyorsa, yo&#x11F;unlu&#x11F;u s&#x131;f&#x131;ra ayarlanarak ikincisi devre d&#x131;&#x15F;&#x131; b&#x131;rak&#x131;labilir. Par&#xE7;a d&#xF6;nd&#xFC;r&#xFC;ld&#xFC;&#x11F;&#xFC;nde veya &#xE7;evrildi&#x11F;inde &#x131;&#x15F;&#x131;klar hareket etmez.</p>
+<p><img src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/51%20Isik%20yonleri.png" alt="I&#x15F;&#x131;k Y&#xF6;nleri ve yo&#x11F;unlu&#x11F;u"></p>
+<h2 class="mume-header" id="n%C3%BCansakor-chord-tolerans%C4%B1-ve-en-fazla-par%C3%A7a-say%C4%B1s%C4%B1">N&#xFC;ans/Akor (Chord) Tolerans&#x131; ve En Fazla Par&#xE7;a Say&#x131;s&#x131;</h2>
+
+<p>SolveSpace her zaman kavisli kenarlar&#x131; veya y&#xFC;zeyleri tam olarak temsil etmez. E&#x11F;riler bazen par&#xE7;al&#x131; do&#x11F;rusal b&#xF6;l&#xFC;mlere, y&#xFC;zeyler ise bazen &#xFC;&#xE7;genlere b&#xF6;l&#xFC;n&#xFC;r.</p>
+<p>Bu, baz&#x131; hatalar&#x131; ortaya &#xE7;&#x131;kar&#x131;r. N&#xFC;ans/Akor (Chord) tolerans&#x131;, ne kadar hatan&#x131;n ortaya &#xE7;&#x131;kt&#x131;&#x11F;&#x131;n&#x131; belirler; bu tolerans, tam e&#x11F;ri ile ona yakla&#x15F;&#x131;k do&#x11F;ru par&#xE7;alar&#x131; aras&#x131;ndaki en fazla mesafeyi ayarlar. N&#xFC;ans/Akor tolerans&#x131; azalt&#x131;l&#x131;rsa, daha iyi bir yakla&#x15F;&#x131;m elde etmek i&#xE7;in daha fazla &#xE7;izgi par&#xE7;as&#x131; olu&#x15F;turulacakt&#x131;r.</p>
+<p>Yap&#x131;land&#x131;rma ekran&#x131;nda iki N&#xFC;ans/Akor tolerans de&#x11F;eri vard&#x131;r. Birincisi, &#xE7;izimin toplam boyutunun y&#xFC;zdesi olarak belirtilir ve uzunluk birimlerindeki de&#x11F;eri de hesaplan&#x131;r ve g&#xF6;sterilir. Bu, tek bir daireden olu&#x15F;an bir &#xE7;izimin &#xE7;ok d&#xFC;zg&#xFC;n e&#x11F;rilere sahip olaca&#x11F;&#x131; anlam&#x131;na gelirken, k&#xFC;&#xE7;&#xFC;k delikli b&#xFC;y&#xFC;k bir nesnenin daha az segmenti olabilir, &#xE7;&#xFC;nk&#xFC; delik genel &#xE7;izimden &#xE7;ok daha k&#xFC;&#xE7;&#xFC;kt&#xFC;r ve boyut olarak N&#xFC;ans/Akor  tolerans&#x131;na daha yak&#x131;nd&#x131;r.</p>
+<p>&#x130;kinci de&#x11F;er, mm cinsinden mutlak bir de&#x11F;er olan &quot;<code>export chord tolerance</code>  (<em>d&#x131;&#x15F;a aktarma N&#xFC;ans/Akor tolerans&#x131;</em>)d&#x131;r&quot;. 3B yazd&#x131;rma i&#xE7;in bir <strong>&#xFC;&#xE7;gensel a&#x11F;&#x131; (mesh)</strong> veya i&#x15F;leme i&#xE7;in <strong>g kodu</strong>nu d&#x131;&#x15F;a aktar&#x131;rken, bu de&#x11F;er, ortaya &#xE7;&#x131;kan par&#xE7;an&#x131;n ideal kavisli y&#xFC;zeylerden ne kadar sapabilece&#x11F;ini belirleyecektir.</p>
+<p>SovleSpace, NURBS y&#xFC;zeyini veya farkl&#x131; gruplardan &#xFC;&#xE7;gensel a&#x11F;lar&#x131; birle&#x15F;tirirken baz&#x131; hesaplamalarda Akor (Kiri&#x15F;) tolerans&#x131;n&#x131; kullan&#x131;r. Bu, bir mant&#x131;ksal (boolean) i&#x15F;lemi ba&#x15F;ar&#x131;s&#x131;z oldu&#x11F;unda, baz&#x131; durumlarda N&#xFC;ans/Akor tolerans&#x131;nda ayarlamalar yapmak sorunu &quot;&#xE7;&#xF6;zebilir&quot; anlam&#x131;na gelir.</p>
+<p>A&#x11F;&#x131;n (Mesh) inceli&#x11F;i, belirtilen en fazla par&#xE7;al&#x131; do&#x11F;rusal par&#xE7;a say&#x131;s&#x131; ile de s&#x131;n&#x131;rl&#x131;d&#x131;r. N&#xFC;ans/Akor tolerans&#x131; ne kadar iyi olursa olsun, tek bir e&#x11F;ri asla bu say&#x131;da &#xE7;izgi par&#xE7;as&#x131;ndan fazlas&#x131;na b&#xF6;l&#xFC;nmeyecektir.</p>
+<p><img src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/52%20Nuans-Chord%20Toleransi.png" alt="N&#xFC;ans / Akor (Chord) Tolerans&#x131;"></p>
+<h2 class="mume-header" id="perspektif-fakt%C3%B6r%C3%BC">Perspektif Fakt&#xF6;r&#xFC;</h2>
+
+<p>3 boyutlu bir par&#xE7;ay&#x131; ekranda g&#xF6;r&#xFC;nt&#xFC;lemek i&#xE7;in, &#xE7;izimin 2 boyutlu olarak yans&#x131;t&#x131;lmas&#x131; gerekir. Ortak se&#xE7;im, paralel bir izd&#xFC;&#x15F;&#xFC;md&#xFC;r. Paralel izd&#xFC;&#x15F;&#xFC;m yakla&#x15F;&#x131;m&#x131;nda, ger&#xE7;ek hayatta paralel olan herhangi iki &#xE7;izgi, &#xE7;izimde de paraleldir. Paralel izd&#xFC;&#x15F;&#xFC;m, aksonometrik izd&#xFC;&#x15F;&#xFC;m olarak da bilinir. &#x130;zometrik ve ortografik g&#xF6;r&#xFC;n&#xFC;mler paralel izd&#xFC;&#x15F;&#xFC;mlerin &#xF6;rnekleridir.</p>
+<p>G&#xF6;r&#xFC;nt&#xFC;y&#xFC; 2B&apos;ye d&#xF6;n&#xFC;&#x15F;t&#xFC;rmenin ba&#x15F;ka bir yolu da perspektif projeksiyonudur (<code>Perspective Factor</code>). Perspektif projeksiyonda, &quot;kameraya&quot; yak&#x131;n olan nesneler, uzaktaki nesnelerden daha b&#xFC;y&#xFC;k g&#xF6;r&#xFC;n&#xFC;r. Bu, ger&#xE7;ek hayatta paralel olan baz&#x131; do&#x11F;rular&#x131;n &#xE7;izimde paralel olmayaca&#x11F;&#x131; anlam&#x131;na gelir; temel mant&#x131;k olarak paralel &#xE7;izgiler ya da uzant&#x131;lar&#x131; kameradan uzakla&#x15F;t&#x131;k&#xE7;a ileride, kaybolan bir noktada birle&#x15F;ecekler.</p>
+<p>A&#x15F;a&#x11F;&#x131;daki resim bir perspektif projeksiyondur. T&#xFC;m kare kesikler ayn&#x131; boyuttad&#x131;r, ancak &#xF6;ndekiler (izleyiciye daha yak&#x131;n olanlar) daha b&#xFC;y&#xFC;k, arkadakiler ise daha k&#xFC;&#xE7;&#xFC;k g&#xF6;sterilmi&#x15F;tir.</p>
+<p><img src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/53%20perspektif%20gorunum.png" alt="Perspektif G&#xF6;r&#xFC;n&#xFC;m"></p>
+<p>Bir sonraki g&#xF6;r&#xFC;nt&#xFC; paralel bir izd&#xFC;&#x15F;&#xFC;md&#xFC;r (Orto grafik yani dik g&#xF6;r&#xFC;n&#xFC;m). T&#xFC;m kare kesikler &#xE7;izimde ayn&#x131; boyuttad&#x131;r. (&#xDC;st k&#x131;s&#x131;mdaki kesikler biraz daha b&#xFC;y&#xFC;k g&#xF6;r&#xFC;nebilir, ancak bu bir optik ill&#xFC;zyondur, &#xE7;&#xFC;nk&#xFC; g&#xF6;z, g&#xF6;r&#xFC;nt&#xFC;leri perspektifle g&#xF6;rmeye al&#x131;&#x15F;m&#x131;&#x15F;t&#x131;r.)</p>
+<p><img src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/54%20ortho%20gorunum.png" alt="Paralel / Orto grafik / Dik G&#xF6;r&#xFC;n&#xFC;m"></p>
+<p>Perspektif projeksiyon genellikle daha ger&#xE7;ek&#xE7;i g&#xF6;r&#xFC;n&#xFC;r ve daha iyi bir derinlik izlenimi verir. Dezavantaj&#x131; ise, perspektifin g&#xF6;r&#xFC;nt&#xFC;y&#xFC; bozmas&#x131; ve kafa kar&#x131;&#x15F;&#x131;kl&#x131;&#x11F;&#x131;na neden olabilmesidir.</p>
+<p>Varsay&#x131;lan olarak, SolveSpace paralel (orthographic) bir projeksiyon g&#xF6;r&#xFC;nt&#xFC;ler. Bir perspektif projeksiyonu g&#xF6;r&#xFC;nt&#xFC;lemek i&#xE7;in <code>G&#xF6;r&#xFC;n&#xFC;m &#x2192; Perspektif Projeksiyonu Kullan</code>&apos;&#x131; se&#xE7;in ve perspektif fakt&#xF6;r&#xFC;n&#xFC;n s&#x131;f&#x131;r olmad&#x131;&#x11F;&#x131;ndan emin olun. Varsay&#x131;lan olarak, <strong>perspektif katsay&#x131;s&#x131;</strong> <em>(&#xE7;arpan&#x131;)</em> 0,3&apos;t&#xFC;r. &quot;Kameradan&quot; modele olan mesafe, perspektif katsay&#x131;s&#x131;na b&#xF6;l&#xFC;nen bin piksele e&#x15F;ittir.</p>
+<p><img src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/55%20Perspektif%20katsayisi.png" alt="Perspektif Katsay&#x131;s&#x131; (&#xC7;arpan&#x131;, Fakt&#xF6;r&#xFC;)"></p>
+<h2 class="mume-header" id="izgara-yakalama-mesafesiaral%C4%B1%C4%9F%C4%B1">Izgara Yakalama Mesafesi/Aral&#x131;&#x11F;&#x131;</h2>
+
+<p>Bu, &#x131;zgara yakalama mesafesinin ( <strong>Snap Grid Spacing</strong> ) in&#xE7; veya milimetre cinsinden derecesini belirtir. Varsay&#x131;lan olarak &#x131;zgara g&#xF6;r&#xFC;nt&#xFC;lenmez; <code>G&#xF6;r&#xFC;n&#xFC;m &#x2192; Yakalama Izgaras&#x131;n&#x131; G&#xF6;ster</code> se&#xE7;ilerek g&#xF6;sterilebilir. Noktalar hi&#xE7;bir zaman &#x131;zgaraya otomatik olarak tutturulmaz. Bir noktay&#x131;, &#x131;zgaraya tutturmak i&#xE7;in o noktay&#x131; se&#xE7;in ve ard&#x131;ndan <code>D&#xFC;zen &#x2192; Se&#xE7;imi Izgaraya Tuttur</code>&apos;u se&#xE7;in (K&#x131;sayol tu&#x15F;u: <code>. [nokta]</code>). Yorumlar da (<code>K&#x131;s&#x131;tla&#x2192; Yorum</code>) (K&#x131;sayol tu&#x15F;u: <code>; [noktal&#x131; virg&#xFC;l]</code>) &#x131;zgaraya ayn&#x131; &#x15F;ekilde tutturulabilir.</p>
+<h2 class="mume-header" id="d%C4%B1%C5%9Fa-aktar%C4%B1m-ol%C3%A7ek-katsay%C4%B1s%C4%B1">D&#x131;&#x15F;a Aktar&#x131;m Ol&#xE7;ek Katsay&#x131;s&#x131;</h2>
+
+<p>Dahili olarak, SolveSpace uzunluklar&#x131; milimetre cinsinden temsil eder. Geometriyi d&#x131;&#x15F;a aktarmadan &#xF6;nce, bu uzunluklar, d&#x131;&#x15F;a aktarma &#xF6;l&#xE7;ek katsay&#x131;s&#x131;na ( <strong>Export Scale Factor</strong> ) b&#xF6;l&#xFC;n&#xFC;r. Bu &#xF6;l&#xE7;ek katsay&#x131;s&#x131;, d&#x131;&#x15F;a aktar&#x131;lan dosyan&#x131;n birimlerini belirler.</p>
+<p>&#xD6;l&#xE7;ek katsay&#x131;s&#x131; 1&apos;e e&#x15F;it olarak ayarlan&#x131;rsa, d&#x131;&#x15F;a aktar&#x131;lan dosyalar milimetre birimindedir. &#xD6;l&#xE7;ek katsay&#x131;s&#x131; 25.4 olarak ayarlan&#x131;rsa, 1 in&#xE7; = 25,4 mm oldu&#x11F;undan dolay&#x131;, d&#x131;&#x15F;a aktar&#x131;lan dosyalar in&#xE7; biriminde olacakt&#x131;r.</p>
+<p>SolveSpace Sa&#x11F;-El koordinat sisteminde &#xE7;al&#x131;&#x15F;&#x131;r. &#xD6;l&#xE7;ek fakt&#xF6;r&#xFC; negatifse, d&#x131;&#x15F;a aktar&#x131;lan dosya Sol-El bir koordinat sisteminde g&#xF6;r&#xFC;n&#xFC;r (b&#xF6;ylece sa&#x11F; y&#xF6;nl&#xFC; bir vida di&#x15F;i sol y&#xF6;nl&#xFC; olur ve metin yans&#x131;t&#x131;lm&#x131;&#x15F;/aynalanm&#x131;&#x15F; olarak g&#xF6;r&#xFC;n&#xFC;r).</p>
+<p><img src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/56%20DisaAktarim-OlcekKatsayisi.png" alt="D&#x131;&#x15F;a Aktar&#x131;m &#xD6;l&#xE7;ek Katsay&#x131;s&#x131; (Fakt&#xF6;r&#xFC;)"></p>
+<h2 class="mume-header" id="kesici-yar%C4%B1%C3%A7ap%C4%B1-oteleme-miktar%C4%B1">Kesici Yar&#x131;&#xE7;ap&#x131; Oteleme Miktar&#x131;</h2>
+
+<p>Bir 2b (2d) g&#xF6;r&#xFC;n&#xFC;m&#xFC; veya kesiti d&#x131;&#x15F;a aktar&#x131;rken, bu se&#xE7;enek kesici yar&#x131;&#xE7;ap telafi miktar&#x131; (tolerans) ( <strong>Cutter Radius Offset</strong> ) uygulamak i&#xE7;in kullan&#x131;labilir. D&#x131;&#x15F;a aktar&#x131;lan geometrideki t&#xFC;m e&#x11F;riler, belirtilen yar&#x131;&#xE7;apla &#xF6;telenir/kayd&#x131;r&#x131;l&#x131;r. Bu, baz&#x131; durumlarda &#xF6;zel CAM yaz&#x131;l&#x131;m&#x131; olmadan &#xE7;al&#x131;&#x15F;may&#x131; m&#xFC;mk&#xFC;n k&#x131;labilir.</p>
+<p>Kesici yar&#x131;&#xE7;ap&#x131;, mevcut moda g&#xF6;re in&#xE7; veya milimetre olarak belirtilir. Kesici yar&#x131;&#xE7;ap telafisini devre d&#x131;&#x15F;&#x131; b&#x131;rakmak i&#xE7;in bu &#xF6;teleme / kayd&#x131;rma de&#x11F;erini (ofseti) s&#x131;f&#x131;ra ayarlay&#x131;n.</p>
+<p>Kesici yar&#x131;&#xE7;ap telafi de&#x11F;eri, yaln&#x131;z k&#x131;r&#x131;kl&#x131; do&#x11F;rusal par&#xE7;alarda uygulanabilir. Bu, &quot;<code>export curves as piecewise linear</code> (<em>e&#x11F;rileri, par&#xE7;al&#x131; do&#x11F;rular olarak d&#x131;&#x15F;a aktar</em>)&quot; &quot;<strong>hay&#x131;r</strong>&quot; olarak ayarlansa bile, &#xE7;&#x131;kt&#x131; dosyas&#x131;nda e&#x11F;rilerin (daireler, Beziers, vb.) &#xE7;izgi par&#xE7;alar&#x131; olarak yakla&#x15F;&#x131;laca&#x11F;&#x131; anlam&#x131;na gelir.</p>
+<p><img src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/57%20Kesici%20Y.Cap%20Otele.png" alt="Kesici Yar&#x131;&#xE7;ap&#x131; &#xD6;teleme Miktar&#x131;"></p>
+<h2 class="mume-header" id="2b-2d-u%C3%A7genleri-g%C3%B6lgeli-olarak-d%C4%B1%C5%9Fa-aktar">2b (2d) U&#xE7;genleri G&#xF6;lgeli olarak D&#x131;&#x15F;a Aktar</h2>
+
+<p>Par&#xE7;an&#x131;n g&#xF6;r&#xFC;n&#xFC;m&#xFC; d&#x131;&#x15F;a aktar&#x131;l&#x131;rken, kullan&#x131;c&#x131; yaln&#x131;zca par&#xE7;an&#x131;n kenarlar&#x131;n&#x131; d&#x131;&#x15F;a aktarabilir (tel kafes veya gizli &#xE7;izgileri kald&#x131;r&#x131;lm&#x131;&#x15F; &#xE7;izim &#xFC;retmek i&#xE7;in) veya kullan&#x131;c&#x131; par&#xE7;an&#x131;n y&#xFC;zlerinin rengini ve ayd&#x131;nlatmas&#x131;n&#x131; g&#xF6;stermek i&#xE7;in d&#xFC;z g&#xF6;lgeli y&#xFC;zeyleri d&#x131;&#x15F;a aktarabilir.</p>
+<p>T&#xFC;m d&#x131;&#x15F;a aktarma dosya bi&#xE7;imleri, g&#xF6;lgeli &#xFC;&#xE7;genleri desteklemez; G&#xF6;lgeli g&#xF6;r&#xFC;n&#xFC;m deste&#x11F;ini &#x15F;u anda SVG, EPS ve PDF dosya bi&#xE7;imleri destekliyor, ancak DXF ve HPGL desteklemiyor.</p>
+<p><img src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/58%20Golgeli%20Ucgenler.png" alt="2 Boyutlu &#xDC;&#xE7;genleri G&#xF6;lgeli Olarak D&#x131;&#x15F;a Aktar"></p>
+<h2 class="mume-header" id="e%C4%9Frileri-par%C3%A7al%C4%B1-do%C4%9Frular-olarak-d%C4%B1%C5%9Fa-aktar">E&#x11F;rileri Par&#xE7;al&#x131; Do&#x11F;rular Olarak D&#x131;&#x15F;a Aktar</h2>
+
+<p>D&#xFC;zg&#xFC;n bir e&#x11F;ri (daire veya Bezier e&#x11F;risi gibi) iki y&#xF6;ntem ile d&#x131;&#x15F;a aktar&#x131;labilir: ya tam olarak ya da ona yakla&#x15F;&#x131;k bir dizi do&#x11F;ru par&#xE7;as&#x131; olarak. Bu <code>Export Curves as Piecewise Linear</code> se&#xE7;ene&#x11F;i i&#x15F;aretlenmezse, m&#xFC;mk&#xFC;n oldu&#x11F;u s&#xFC;rece, geometri, mutlak e&#x11F;riler &#x15F;eklinde d&#x131;&#x15F;a aktar&#x131;lacakt&#x131;r. Se&#xE7;enek i&#x15F;aretlenirse, e&#x11F;riler her zaman par&#xE7;al&#x131; do&#x11F;rusal segmentler (do&#x11F;ru par&#xE7;alar&#x131;) olarak d&#x131;&#x15F;a aktar&#x131;l&#x131;r.</p>
+<p>Bu se&#xE7;enek yararl&#x131;d&#x131;r &#xE7;&#xFC;nk&#xFC; baz&#x131; CAM veya di&#x11F;er yaz&#x131;l&#x131;mlar mutlak/kesin e&#x11F;rileri i&#xE7;e aktaramaz, ancak hemen hemen t&#xFC;m yaz&#x131;l&#x131;mlar par&#xE7;al&#x131; do&#x11F;rusal segmentleri i&#xE7;e aktarabilir.</p>
+<p><img src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/59%20Parcali%20Dogrular.png" alt="E&#x11F;rileri Par&#xE7;al&#x131; Do&#x11F;rular Olarak D&#x131;&#x15F;a Aktar"></p>
+<h2 class="mume-header" id="tuval-boyutunu-d%C4%B1%C5%9Fa-aktar">Tuval Boyutunu D&#x131;&#x15F;a Aktar</h2>
+
+<p>Bu ayar ( <code>Export Canvas Size</code> ), d&#x131;&#x15F;a aktar&#x131;lan herhangi bir 2b (2d) geometrisi i&#xE7;in tuval boyutunu (&#xE7;izim alan&#x131;, s&#x131;n&#x131;r&#x131;, &#xE7;er&#xE7;eveyi) belirtir. &#xD6;rne&#x11F;in, bir PDF dosyas&#x131;ndaki tuval boyutu ka&#x11F;&#x131;t boyutudur ve bir PostScript dosyas&#x131;ndaki tuval boyutu EPS s&#x131;n&#x131;r kutusudur (BoundingBox). Bu se&#xE7;enek, iki yoldan biriyle belirtilebilir: ya sabit bir boyut olarak ya da d&#x131;&#x15F;a aktar&#x131;lan geometrinin etraf&#x131;ndaki bir dizi kenar bo&#x15F;lu&#x11F;u olarak.</p>
+<p><img src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/60%20Tuval%20Boyutu.png" alt="Tuval Boyutu Ayar&#x131;"></p>
+<h2 class="mume-header" id="d%C4%B1%C5%9Fa-aktar%C4%B1lan-beyaz-cizgileri-d%C3%BCzelt">D&#x131;&#x15F;a Aktar&#x131;lan Beyaz Cizgileri D&#xFC;zelt</h2>
+
+<p>Varsay&#x131;lan olarak, SolveSpace siyah bir arka plan &#xFC;zerine beyaz &#xE7;izgiler &#xE7;izer. Ancak &#xE7;o&#x11F;u d&#x131;&#x15F;a aktarma dosyas&#x131; bi&#xE7;imi, beyaz renkli bir arka plan varsayar; Bu, d&#x131;&#x15F;a aktar&#x131;lan beyaz &#xE7;izgilerin okunaks&#x131;z olaca&#x11F;&#x131; anlam&#x131;na gelir. Varsay&#x131;lan olarak, SolveSpace, bu t&#xFC;r bir dosya bi&#xE7;imini d&#x131;&#x15F;a aktar&#x131;rken, herhangi bir beyaz (yakla&#x15F;&#x131;k %75 griden daha a&#xE7;&#x131;k) renkleri siyah olarak yeniden olu&#x15F;turacakt&#x131;r. Bu se&#xE7;enek (<code>Fix White Exported Lines</code>) ile bu davran&#x131;&#x15F; devre d&#x131;&#x15F;&#x131; b&#x131;rak&#x131;labilir.</p>
+<p><img src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/61%20BeyazCizgileri%20Duzelt.png" alt="D&#x131;&#x15F;a Aktar&#x131;lan Beyaz &#xC7;izgileri D&#xFC;zelt"></p>
+<h2 class="mume-header" id="u%C3%A7genlerin-arka-y%C3%BCzeylerini-k%C4%B1rm%C4%B1z%C4%B1yla-g%C3%B6ster">U&#xE7;genlerin Arka Y&#xFC;zeylerini K&#x131;rm&#x131;z&#x131;yla G&#xF6;ster</h2>
+
+<p>SolveSpace her zaman kat&#x131; kabuklarla &#xE7;al&#x131;&#x15F;&#x131;r. Bu, normal &#xE7;al&#x131;&#x15F;mada, yaln&#x131;zca bir y&#xFC;zeyin d&#x131;&#x15F;&#x131;n&#x131;n g&#xF6;r&#xFC;n&#xFC;r olmas&#x131; gerekti&#x11F;i anlam&#x131;na gelir.</p>
+<p>Kendi kendisi ile kesi&#x15F;en bir kabuk &#xE7;izilirse, i&#xE7; y&#xFC;zeyler a&#xE7;&#x131;&#x11F;a &#xE7;&#x131;kabilir. Grafik kart&#x131;n&#x131;n &#xFC;&#xE7;genleri nas&#x131;l olu&#x15F;turdu&#x11F;una ba&#x11F;l&#x131; olarak, bir i&#xE7; y&#xFC;zeyden birka&#xE7; tane ba&#x15F;&#x131;bo&#x15F; piksel &quot;g&#xF6;r&#xFC;nebilir&quot;. Bu ayar (<code>Draw Triangle Back Faces in Red</code>), bu y&#xFC;zeylerin g&#xF6;zard&#x131; ediplip edilmeyece&#x11F;i veya k&#x131;rm&#x131;z&#x131;yla vurgulan&#x131;p vurgulanmayaca&#x11F;&#x131;n&#x131; belirler.</p>
+<p><img src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/62%20Kirmizi%20Arka%20Yuzeyler.png" alt="&#xDC;&#xE7;genlerin Arka Y&#xFC;zeylerini K&#x131;rm&#x131;z&#x131;yla G&#xF6;ster"></p>
+<p><img src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/63%20Kirmizi%20Arka%20Yuzeyler.png" alt="&#xDC;&#xE7;genlerin Arka Y&#xFC;zeylerini K&#x131;rm&#x131;z&#x131;yla G&#xF6;ster"></p>
+<h2 class="mume-header" id="kapal%C4%B1-konturlar-i%C3%A7in-%C3%A7izimi-denetle-kontrol-et">Kapal&#x131; Konturlar i&#xE7;in &#xC7;izimi Denetle / Kontrol Et</h2>
+
+<p>&#xC7;o&#x11F;u kat&#x131;lama i&#x15F;lemi (uzatarak kat&#x131;lama (ekstr&#xFC;zyon), tam ve k&#x131;smi d&#xF6;nd&#xFC;rerek kat&#x131;lama gibi) yaln&#x131;z kendi kendini kesmeyen kapal&#x131; kontura sahip, d&#xFC;zlemsel  (2 boyutlu) &#xE7;izimlerde &#xE7;al&#x131;&#x15F;&#x131;r. SolveSpace varsay&#x131;lan olarak, &#xE7;izimi denetler ve bu kurallardan herhangi birini ihlal eden bir &#x15F;ey g&#xF6;r&#xFC;rse, sorunu, &#xE7;izim &#xFC;zerinde belirterek kullan&#x131;c&#x131;y&#x131; uyar&#x131;r. Bu ayar (<code>Check for Closed Contours</code>) aktif ise ve bir kontur a&#xE7;&#x131;ksa, a&#xE7;&#x131;k (bo&#x15F;ta duran) u&#xE7; noktalar&#x131;ndan birinin yan&#x131;nda bir mesaj g&#xF6;r&#xFC;nt&#xFC;lenir. Bir kontur kendi kendini kesiyorsa, kesi&#x15F;me noktas&#x131;nda bir mesaj g&#xF6;r&#xFC;nt&#xFC;lenir.</p>
+<p><img src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/19%20Kapali%20olmayan%20kontur.png" alt="Kapal&#x131; Konturlar i&#xE7;in Eskizi (&#xC7;izimi) Kontrol Et / Denetle"></p>
+<h2 class="mume-header" id="g-kodu-parametreleri">G Kodu Parametreleri</h2>
+
+<p>SolveSpace bir CAM program&#x131; de&#x11F;ildir, ancak 2d par&#xE7;alar i&#xE7;in basit <strong>G kodu</strong>nu d&#x131;&#x15F;a aktarabilir. Do&#x11F;ru kesici yar&#x131;&#xE7;ap dengelemesi uygulayarak (veya &#xE7;izimi kesici yar&#x131;&#xE7;ap&#x131;n&#x131; g&#xF6;z &#xF6;n&#xFC;nde bulundurup &#xE7;izerek), ek CAM yaz&#x131;l&#x131;m&#x131; olmadan 2d par&#xE7;alar&#x131;n profilini &#xE7;&#x131;karmak m&#xFC;mk&#xFC;nd&#xFC;r. Par&#xE7;an&#x131;n XY d&#xFC;zleminde oldu&#x11F;u varsay&#x131;l&#x131;r. Z ekseni boyunca kesme derinli&#x11F;i burada belirtildi&#x11F;i gibidir; hangi i&#x15F;aretin a&#x15F;a&#x11F;&#x131;ya kar&#x15F;&#x131;l&#x131;k geldi&#x11F;ine ba&#x11F;l&#x131; olarak pozitif veya negatif bir de&#x11F;er yaz&#x131;n/belirtin. &#x130;&#x15F; par&#xE7;as&#x131;n&#x131;n &#xFC;st k&#x131;sm&#x131;n&#x131;n Z = 0&apos;da oldu&#x11F;u varsay&#x131;l&#x131;r ve kesici, d&#xF6;nerken i&#x15F; par&#xE7;as&#x131;n&#x131;n 5 mm yukar&#x131;s&#x131;ndaki bir bo&#x15F;luk d&#xFC;zleminde hareket eder.</p>
+<p>T&#xFC;m &#xF6;l&#xE7;&#xFC; birimleri, ge&#xE7;erli moda g&#xF6;re in&#xE7; veya milimetre (veya ilerlemeler/beslemeler i&#xE7;in in&#xE7; veya dakika ba&#x15F;&#x131;na milimetre) cinsindendir.</p>
+<p>G Kodu Parametrelerini (<code>G Code Parameters</code>) bu b&#xF6;l&#xFC;mden ayarlayabilirsiniz.</p>
+<p><img src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/65%20G%20Kod.png" alt="G Kodu Parametreleri"></p>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>

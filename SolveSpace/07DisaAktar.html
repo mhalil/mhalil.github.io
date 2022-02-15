@@ -1,0 +1,324 @@
+<!DOCTYPE html><html><head>
+      <title>07 D&#x131;&#x15F;a Aktar</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:////home/mhalil/.vscode/extensions/shd101wyy.markdown-preview-enhanced-0.6.1/node_modules/@shd101wyy/mume/dependencies/katex/katex.min.css">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <style>
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}
+
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+}
+
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+pre[data-line] .line-highlight:before, 
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h1 class="mume-header" id="b%C3%B6l%C3%BCm-7-d%C4%B1%C5%9Fa-aktar%C4%B1m">B&#xF6;l&#xFC;m 7: D&#x131;&#x15F;a Aktar&#x131;m</h1>
+
+<h2 class="mume-header" id="resim-olarak-d%C4%B1%C5%9Fa-aktar">Resim olarak d&#x131;&#x15F;a aktar...</h2>
+
+<p>Bu se&#xE7;enek, ekranda g&#xF6;r&#xFC;nt&#xFC;lenenlerin bitmap (vekt&#xF6;rel olmayan resim) g&#xF6;r&#xFC;nt&#xFC;s&#xFC;n&#xFC;  d&#x131;&#x15F;a aktar&#x131;r. Bu i&#x15F;lem, ekran g&#xF6;r&#xFC;nt&#xFC;s&#xFC; almaya e&#x15F;de&#x11F;erdir. Bu se&#xE7;enek, insan taraf&#x131;ndan okunabilir &#xE7;&#x131;kt&#x131; &#xFC;retmek i&#xE7;in kullan&#x131;&#x15F;l&#x131;d&#x131;r.</p>
+<p><code>Dosya &#x2192; Resim olarak d&#x131;&#x15F;a aktar...</code>&apos;&#x131; se&#xE7;in. G&#xF6;r&#xFC;nt&#xFC;, &#xE7;o&#x11F;u grafik yaz&#x131;l&#x131;m&#x131;n&#x131;n a&#xE7;abilece&#x11F;i bir <strong>PNG</strong> uzant&#x131;l&#x131;  dosya olarak d&#x131;&#x15F;a aktar&#x131;l&#x131;r.</p>
+<h2 class="mume-header" id="kesiti-2d-olarak-d%C4%B1%C5%9Far%C4%B1-aktar">Kesiti 2d olarak d&#x131;&#x15F;ar&#x131; aktar...</h2>
+
+<p>Bu se&#xE7;enek, kat&#x131; modeli belirli bir d&#xFC;zlem boyunca kesecektir. (Ekrana bak&#x131;ld&#x131;&#x11F;&#x131;nda g&#xF6;r&#xFC;nen 2 boyutlu &#xE7;izimin arka plan&#x131;nda kalan k&#x131;s&#x131;m g&#xF6;r&#xFC;nmeyecekir, g&#xF6;r&#xFC;nmeyen k&#x131;s&#x131;m ile g&#xF6;r&#xFC;nen k&#x131;sm&#x131; ay&#x131;ran hayali d&#xFC;zlemden bahsediliyor.) Bu d&#xFC;zlemde bulunan (Ekrana bak&#x131;ld&#x131;&#x11F;&#x131;nda g&#xF6;r&#xFC;nen 2 boyutlu &#xE7;izimin) kat&#x131; modeldeki t&#xFC;m &#xE7;izgiler ve e&#x11F;riler d&#x131;&#x15F;a aktar&#x131;lacakt&#x131;r. Kat&#x131; modelden bu d&#xFC;zlemde yer almayan &#xE7;izgiler ve e&#x11F;riler yok say&#x131;l&#x131;r. Bu se&#xE7;enek genel olarak, &#xF6;rne&#x11F;in bir lazer veya su jeti kesicisi i&#xE7;in bir 3B modelden 2B CAM verileri olu&#x15F;turulurken uygundur.<br>
+Bir b&#xF6;l&#xFC;m&#xFC; d&#x131;&#x15F;a aktarmadan &#xF6;nce, par&#xE7;an&#x131;n hangi d&#xFC;zleminin d&#x131;&#x15F;a aktar&#x131;laca&#x11F;&#x131;n&#x131; belirtmek gerekir. Bu &#x15F;u &#x15F;ekilde belirtilebilir:</p>
+<p><strong>Bir y&#xFC;zey;</strong><br>
+Bu d&#xFC;zlem y&#xFC;z&#xFC;yle ayn&#x131; d&#xFC;zlemde olan t&#xFC;m y&#xFC;zeyler dosyada g&#xF6;r&#xFC;necektir. Y&#xFC;zlerin se&#xE7;ilebilmesi i&#xE7;in &#xF6;nce g&#xF6;sterilmesi ve se&#xE7;ilebilir olmas&#x131; gerekir; Bunun i&#xE7;in &#xD6;zellik Penceresinin &#xFC;st sat&#x131;r&#x131;ndaki ilgili ba&#x11F;lant&#x131;ya t&#x131;klay&#x131;n.</p>
+<p><strong>Bir nokta ve iki &#xE7;izgi veya vekt&#xF6;r;</strong><br>
+D&#x131;&#x15F;a aktarma d&#xFC;zlemi noktadan ge&#xE7;er ve iki do&#x11F;ruya veya vekt&#xF6;re paraleldir. &#x130;ki &#xE7;izgi veya vekt&#xF6;r dikse, d&#x131;&#x15F;a aktar&#x131;lan dosyada x ve y ekseni haline gelirler. Ge&#xE7;erli g&#xF6;r&#xFC;n&#xFC;mde hangisi daha yataysa, x ekseni ve di&#x11F;eri y ekseni olur.<br>
+Bu, g&#xF6;r&#xFC;n&#xFC;m&#xFC; doksan derece d&#xF6;nd&#xFC;rerek (bu y&#xFC;zeyin d&#xFC;zleminde) d&#x131;&#x15F;a aktar&#x131;lan dosyay&#x131; doksan derece d&#xF6;nd&#xFC;rmenin m&#xFC;mk&#xFC;n oldu&#x11F;u anlam&#x131;na gelir. Benzer &#x15F;ekilde, &#xF6;n tarafa arkadan bakacak &#x15F;ekilde par&#xE7;ay&#x131; d&#xF6;nd&#xFC;rerek, &#xE7;al&#x131;&#x15F;ma d&#x131;&#x15F;a aktar&#x131;ld&#x131;&#x11F;&#x131;nda, olu&#x15F;an g&#xF6;r&#xFC;nt&#xFC; aynalanm&#x131;&#x15F; vaziyette olu&#x15F;turulur.</p>
+<p><strong>Aktif &#xE7;al&#x131;&#x15F;ma d&#xFC;zlemi;</strong><br>
+Bir &#xE7;al&#x131;&#x15F;ma d&#xFC;zlemi etkinse ve d&#x131;&#x15F;a aktarma komutu se&#xE7;ildi&#x11F;inde hi&#xE7;bir &#x15F;ey se&#xE7;ilmemi&#x15F;se, SolveSpace etkin &#xE7;al&#x131;&#x15F;ma d&#xFC;zlemi ile ayn&#x131; d&#xFC;zlemde olan t&#xFC;m y&#xFC;zeyleri d&#x131;&#x15F;a aktaracakt&#x131;r. &#xC7;al&#x131;&#x15F;ma d&#xFC;zleminin yatay ve dikey eksenleri, d&#x131;&#x15F;a aktar&#x131;lan dosyada x ve y ekseni haline gelir.</p>
+<p><img src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/44%20Egriler%20Parcali.png" alt="Se&#xE7;ili Y&#xFC;zeyi 2d olarak d&#x131;&#x15F;a aktar"></p>
+<p><img src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/45%20Kesiti%202d%20olarak%20aktar.png" alt=" Se&#xE7;ili Y&#xFC;zeyin PDF Uzant&#x131;l&#x131; D&#x131;&#x15F;a Aktar&#x131;lm&#x131;&#x15F; Hali"></p>
+<p>D&#x131;&#x15F;a aktar&#x131;lan dosyan&#x131;n birimleri, yap&#x131;land&#x131;rma ekran&#x131;nda belirtilebilecek d&#x131;&#x15F;a aktarma &#xF6;l&#xE7;ek fakt&#xF6;r&#xFC; taraf&#x131;ndan belirlenir.<br>
+&#xC7;izim e&#x11F;riler i&#xE7;eriyorsa, d&#x131;&#x15F;a aktar&#x131;lan dosya bu e&#x11F;rileri tam olarak temsil edebilir (SVG tam daireleri destekler), yakla&#x15F;&#x131;k olarak ancak d&#xFC;zg&#xFC;n bir e&#x11F;riyle (PDF yaln&#x131;zca bir daireyi tam olarak temsil edemeyen k&#xFC;bik e&#x11F;rileri destekler) veya par&#xE7;al&#x131; do&#x11F;rusal segmentler olarak temsil edebilir (HPGL dosyas&#x131;ndaki bir daire). E&#x11F;rileri par&#xE7;al&#x131; do&#x11F;rusal olarak &#xE7;&#x131;kt&#x131; almaya zorlamak i&#xE7;in yap&#x131;land&#x131;rma ekran&#x131;nda &apos;<code>curves as piecewise linear</code>  (<em>e&#x11F;rileri par&#xE7;al&#x131; do&#x11F;rusal olarak</em>)&apos; se&#xE7;ene&#x11F;ini aktifle&#x15F;tirin. &#xC7;&#x131;kt&#x131; dosyas&#x131;ndaki renkler, g&#xF6;r&#xFC;nt&#xFC;leyiciniz taraf&#x131;ndan kullan&#x131;lan renk alan&#x131;na ba&#x11F;l&#x131; olarak ekranda g&#xF6;r&#xFC;nt&#xFC;lenen modelin renklerine tam olarak uymayabilir.</p>
+<p><img src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/46%20Yuzey%20Kesiti.png" alt="E&#x11F;rileri par&#xE7;al&#x131; do&#x11F;rusal olarak"></p>
+<h2 class="mume-header" id="g%C3%B6r%C3%BCnt%C3%BCy%C3%BC-2d-olarak-d%C4%B1%C5%9Fa-aktar">G&#xF6;r&#xFC;nt&#xFC;y&#xFC; 2d olarak d&#x131;&#x15F;a aktar...</h2>
+
+<p>Bu se&#xE7;enek, modeli g&#xF6;r&#xFC;nt&#xFC;ledi&#x11F;inizde ekrana yans&#x131;t&#x131;ld&#x131;&#x11F;&#x131; gibi, 3B modeli bir d&#xFC;zleme yans&#x131;tacakt&#x131;r. Projeksiyon d&#xFC;zleminde yer alan &#xE7;izgiler ve e&#x11F;riler herhangi bir de&#x11F;i&#x15F;iklik yap&#x131;lmadan d&#x131;&#x15F;a aktar&#x131;l&#x131;r; projeksiyon d&#xFC;zleminde yer almayan &#xE7;izgiler ve e&#x11F;riler, projeksiyon nedeniyle k&#x131;salt&#x131;lm&#x131;&#x15F; g&#xF6;r&#xFC;necektir.</p>
+<p>Bu se&#xE7;enek genellikle vekt&#xF6;r format&#x131;nda, insan taraf&#x131;ndan okunabilir bir &#xE7;izim olu&#x15F;tururken uygundur. Yaln&#x131;zca kat&#x131; modeldeki &#xE7;izgileri de&#x11F;il, t&#xFC;m &#xE7;izgileri d&#x131;&#x15F;a aktard&#x131;&#x11F;&#x131; i&#xE7;in de yararl&#x131;d&#x131;r; bu nedenle, kullan&#x131;c&#x131; &#xE7;izgilerden ve e&#x11F;rilerden bir eskiz &#xE7;izerse, ancak bunu kat&#x131; bir model olu&#x15F;turmak i&#xE7;in ekstr&#xFC;de etmek istemezse, bu se&#xE7;ene&#x11F;i kullanarak yal&#x131;n &#xE7;izimlerini 2d bi&#xE7;iminde d&#x131;&#x15F;a aktarabilir.</p>
+<p>Projeksiyon d&#xFC;zlemi, ekrandaki model d&#xF6;nd&#xFC;r&#xFC;lerek, fare ile merkeze s&#xFC;r&#xFC;klenerek se&#xE7;ilir. D&#x131;&#x15F;a aktar&#x131;lan dosyan&#x131;n orijini (merkezi), ekrandaki g&#xF6;r&#xFC;n&#xFC;m&#xFC;n merkezine kar&#x15F;&#x131;l&#x131;k gelir ve bu nedenle kayd&#x131;rma ile (fare ile sa&#x11F;a s&#xFC;r&#xFC;klenerek) hareket ettirilebilir. Projeksiyon d&#xFC;zlemini tam olarak belirtmek i&#xE7;in, g&#xF6;r&#xFC;n&#xFC;m&#xFC; bir &#xE7;al&#x131;&#x15F;ma d&#xFC;zlemine y&#xF6;nlendirin veya <code>G&#xF6;r&#xFC;n&#xFC;m &#x2192; En Yak&#x131;n Dik / &#x130;zometrik G&#xF6;r&#xFC;n&#xFC;m</code> (k&#x131;sayol tu&#x15F;lar&#x131; <code>F2</code> ve <code>F3</code>) ve <code>G&#xF6;r&#xFC;n&#xFC;m &#x2192; Noktay&#x131; Merkezde G&#xF6;r&#xFC;nt&#xFC;le</code> (k&#x131;sayol tu&#x15F;lar&#x131; <code>F4</code>) komutlar&#x131;n&#x131; kullan&#x131;n.</p>
+<p>Varsay&#x131;lan olarak, g&#xF6;r&#xFC;n&#xFC;m&#xFC;n &#xE7;&#x131;kt&#x131;s&#x131;nda gizli &#xE7;izgiler kald&#x131;r&#x131;lm&#x131;&#x15F; olacak ve kavisli bir y&#xFC;zeyin &#xF6;ne bakan yerinden arkaya bakt&#x131;&#x11F;&#x131; her yere ek &#xE7;izgiler &#xE7;izilecektir. Bu genellikle istenen sonu&#xE7;tur. Par&#xE7;an&#x131;n tel kafes g&#xF6;r&#xFC;n&#xFC;m&#xFC;n&#xFC; olu&#x15F;turmak i&#xE7;in d&#x131;&#x15F;a aktarmadan &#xF6;nce &quot;<strong>hidden-lns</strong> (<em>gizli &#xE7;izgiler</em>)&quot; &#xF6;&#x11F;esini g&#xF6;sterin.</p>
+<p>EPS, SVG, PDF gibi	baz&#x131; dosya bi&#xE7;imleri, g&#xF6;lgeli y&#xFC;zeyleri destekler. Kullan&#x131;c&#x131; b&#xF6;yle bir dosya format&#x131;nda d&#x131;&#x15F;a aktar&#x131;m yap&#x131;yorsa ve yap&#x131;land&#x131;rma ekran&#x131;nda &quot;<code>export shaded 2d triangles</code>  (<em>g&#xF6;lgeli 2d &#xFC;&#xE7;genleri d&#x131;&#x15F;a aktar</em>)&quot; se&#xE7;ene&#x11F;i i&#x15F;aretlemi&#x15F;se, g&#xF6;r&#xFC;n&#xFC;m, modelin d&#xFC;z g&#xF6;lgeli y&#xFC;zeylerini i&#xE7;erecektir. Ayd&#x131;nlatma, modelin ekrandaki g&#xF6;r&#xFC;n&#xFC;m&#xFC;yle ayn&#x131; &#x15F;ekilde hesaplan&#x131;r. Bu nedenle, konfig&#xFC;rasyon ekran&#x131;ndaki &#x131;&#x15F;&#x131;k y&#xF6;nleri (<code>light direcition</code>) ve yo&#x11F;unluklar&#x131; (<code>intensity</code>) de&#x11F;i&#x15F;tirilerek, y&#xFC;zeylerin g&#xF6;lge y&#xF6;nleri de&#x11F;i&#x15F;tirilebilir.</p>
+<p><img src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/47%20Golgeli%202d%20ugcgenler.png" alt="G&#xF6;lgeli 2d &#xFC;&#xE7;genleri d&#x131;&#x15F;a aktar"></p>
+<p><img src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/48%20Isik%20yonleri.png" alt="I&#x15F;&#x131;k y&#xF6;nleri ve yo&#x11F;unluklar&#x131;"></p>
+<p>D&#x131;&#x15F;a aktar&#x131;lan dosyan&#x131;n birimleri, yap&#x131;land&#x131;rma ekran&#x131;nda belirtilebilecek d&#x131;&#x15F;a aktarma &#xF6;l&#xE7;ek fakt&#xF6;r&#xFC; taraf&#x131;ndan belirlenir. &#xC7;izimde bir kat&#x131; model varsa ve y&#xFC;zeyler gizlenip gizli &#xE7;izgiler g&#xF6;sterilerek d&#x131;&#x15F;a aktar&#x131;m yap&#x131;l&#x131;rsa, dosya yaln&#x131;zca &#xE7;izgi par&#xE7;alar&#x131;n&#x131; i&#xE7;erecektir; t&#xFC;m e&#x11F;riler, belirtilen n&#xFC;ans/akor tolerans&#x131;yla &#xE7;izgilere ayr&#x131;l&#x131;r. &#xC7;izimde do&#x11F;rusal uzatarak ya da tam/k&#x131;smi d&#xF6;nd&#xFC;rerek kat&#x131;lanm&#x131;&#x15F; kat&#x131; model mevcut de&#x11F;ilse ve gizli &#xE7;izgiler g&#xF6;r&#xFC;n&#xFC;r durumdaysa, e&#x11F;riler m&#xFC;mk&#xFC;n oldu&#x11F;unca tam bi&#xE7;imde d&#x131;&#x15F;a aktar&#x131;lacakt&#x131;r.</p>
+<p>Normaller, veri noktalar&#x131; ve resim &#xF6;&#x11F;eleri, vekt&#xF6;r bi&#xE7;imleri i&#xE7;in d&#x131;&#x15F;a aktar&#x131;lmaz.</p>
+<h2 class="mume-header" id="3d-telkafes-olarak-d%C4%B1%C5%9Fa-aktar">3d  TelKafes olarak d&#x131;&#x15F;a aktar...</h2>
+
+<p>Bu se&#xE7;enek, <code>Dosya &#x2192; G&#xF6;r&#xFC;nt&#xFC;y&#xFC; 2d olarak D&#x131;&#x15F;a Aktar...</code> ile hemen hemen ayn&#x131; &#x15F;ekilde davran&#x131;r; ancak &#xE7;izgileri ve e&#x11F;rileri belirtilen 2d d&#xFC;zleme yans&#x131;tmak yerine &#xE7;izgileri ve e&#x11F;rileri 3d olarak d&#x131;&#x15F;a aktar&#x131;r.</p>
+<p>3d TelKafes, herhangi bir y&#xFC;zey veya kat&#x131; i&#xE7;ermez. Bu aktar&#x131;m se&#xE7;ene&#x11F;i, genellikle kat&#x131; par&#xE7;alar&#x131;n g&#xF6;r&#xFC;nt&#xFC;lenmesi veya &#xFC;retilmesi i&#xE7;in uygun de&#x11F;ildir. Bunun i&#xE7;in bir &#xDC;&#xE7;gensel Mesh (a&#x11F;) veya bir NURBS y&#xFC;zey (STEP) dosyas&#x131; kullan&#x131;n.</p>
+<h2 class="mume-header" id="ucgensel-mesh-olarak-d%C4%B1%C5%9Fa-aktar-stl-obj">Ucgensel Mesh olarak d&#x131;&#x15F;a aktar (STL, OBJ)</h2>
+
+<p>Bu se&#xE7;enek, t&#xFC;m par&#xE7;ay&#x131; temsil eden bir 3B &#xFC;&#xE7;gensel a&#x11F; (mesh) olu&#x15F;turacakt&#x131;r. &#xC7;o&#x11F;u 3d yaz&#x131;c&#x131;n&#x131;n yaz&#x131;l&#x131;m&#x131; da dahil olmak &#xFC;zere, &#xE7;o&#x11F;u 3D CAM yaz&#x131;l&#x131;m&#x131; bir STL dosyas&#x131;n&#x131; kabul eder.</p>
+<p>Aktif gruptaki a&#x11F; (kafes yap&#x131;s&#x131;) d&#x131;&#x15F;a aktar&#x131;lacakt&#x131;r; bu, ekranda g&#xF6;r&#xFC;nt&#xFC;lenen ayn&#x131; a&#x11F;d&#x131;r (kafes yap&#x131;s&#x131;d&#x131;r). STL dosyas&#x131; i&#xE7;in koordinat sistemi, par&#xE7;an&#x131;n &#xE7;izildi&#x11F;i koordinat sistemiyle ayn&#x131;d&#x131;r. Farkl&#x131; bir koordinat sistemi kullanmak i&#xE7;in (&#xF6;rn. par&#xE7;ay&#x131; d&#xF6;nd&#xFC;rmek veya &#xE7;evirmek i&#xE7;in), par&#xE7;a istenen konumda olacak &#x15F;ekilde bir montaj olu&#x15F;turun ve ard&#x131;ndan montaj&#x131;n bir STL dosyas&#x131;n&#x131; d&#x131;&#x15F;a aktar&#x131;n.</p>
+<p>STL dosyas&#x131;n&#x131;n &#xF6;l&#xE7;&#xFC; birimleri, yap&#x131;land&#x131;rma ekran&#x131;nda belirtilebilecek olan d&#x131;&#x15F;a aktarma &#xF6;l&#xE7;ek fakt&#xF6;r&#xFC;/katsay&#x131;s&#x131; (<code>export scale factor</code>) taraf&#x131;ndan belirlenir.</p>
+<p><img src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/49%20Olcek%20Faktoru.png" alt="D&#x131;&#x15F;a aktarma &#xF6;l&#xE7;ek fakt&#xF6;r&#xFC; (katsay&#x131;s&#x131;)"></p>
+<h2 class="mume-header" id="y%C3%BCzeyleri-d%C4%B1%C5%9Fa-aktar-step">Y&#xFC;zeyleri d&#x131;&#x15F;a aktar (STEP)</h2>
+
+<p>Model, NURBS y&#xFC;zeyleri olarak temsil ediliyorsa (sadece bir &#xFC;&#xE7;gensel a&#x11F; olarak de&#x11F;il), kullan&#x131;c&#x131; bu tam y&#xFC;zeyleri bir STEP dosyas&#x131; olarak d&#x131;&#x15F;a aktarabilir. Bu t&#xFC;r d&#x131;&#x15F;a aktar&#x131;m i&#x15F;lemi m&#xFC;mk&#xFC;n oldu&#x11F;unda, i&#x15F;lem herhangi bir hata olu&#x15F;turmad&#x131;&#x11F;&#x131;ndan dolay&#x131; genellikle en iyi se&#xE7;imdir. Bir&#xE7;ok CAM, h&#x131;zl&#x131; prototipleme ve di&#x11F;er CAD ara&#xE7;lar&#x131; bir STEP dosyas&#x131;n&#x131; kabul edecektir.</p>
+<p>Hangi &#xF6;l&#xE7;ek fakt&#xF6;r&#xFC;/katsay&#x131;s&#x131; uygulan&#x131;rsa uygulans&#x131;n, STEP dosyas&#x131; her zaman milimetre birimlerini g&#xF6;sterecektir.</p>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>

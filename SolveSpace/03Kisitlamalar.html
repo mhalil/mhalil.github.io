@@ -1,0 +1,406 @@
+<!DOCTYPE html><html><head>
+      <title>03 K&#x131;s&#x131;tlamalar</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:////home/mhalil/.vscode/extensions/shd101wyy.markdown-preview-enhanced-0.6.1/node_modules/@shd101wyy/mume/dependencies/katex/katex.min.css">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <style>
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}
+
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+}
+
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+pre[data-line] .line-highlight:before, 
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h1 class="mume-header" id="b%C3%B6l%C3%BCm-3-k%C4%B1s%C4%B1tlamalar">B&#xF6;l&#xFC;m 3: K&#x131;s&#x131;tlamalar</h1>
+
+<p><img src="https://github.com/mhalil/Solvespace_basvuru_kilavuzu/raw/main/grafikler/10%20Kisitla.png" alt="kisitla"></p>
+<h2 class="mume-header" id="genel">Genel</h2>
+
+<p>Bir k&#x131;s&#x131;tlama olu&#x15F;turmak i&#xE7;in &#xF6;nce s&#x131;n&#x131;rland&#x131;r&#x131;lacak geometriyi se&#xE7;in. &#xD6;rne&#x11F;in, iki nokta aras&#x131;ndaki mesafeyi s&#x131;n&#x131;rland&#x131;r&#x131;rken, &#xF6;nce bu iki noktay&#x131; se&#xE7;in. Ard&#x131;ndan S&#x131;n&#x131;rland&#x131;r men&#xFC;s&#xFC;nden uygun k&#x131;s&#x131;tlamay&#x131; se&#xE7;in.<br>
+Neyin se&#xE7;ildi&#x11F;ine ba&#x11F;l&#x131; olarak, ayn&#x131; men&#xFC; se&#xE7;ene&#x11F;i farkl&#x131; k&#x131;s&#x131;tlamalar olu&#x15F;turabilir. &#xD6;rne&#x11F;in, Mesafe / &#xC7;ap men&#xFC; se&#xE7;ene&#x11F;i, bir daire se&#xE7;ilirse bir &#xE7;ap k&#x131;s&#x131;tlamas&#x131; olu&#x15F;turur, ancak bir &#xE7;izgi par&#xE7;as&#x131; se&#xE7;ilirse bir uzunluk k&#x131;s&#x131;tlamas&#x131; olu&#x15F;turur. Se&#xE7;ilen &#xF6;&#x11F;eler, uygulanmak istenen k&#x131;s&#x131;tlamaya kar&#x15F;&#x131;l&#x131;k gelmiyorsa (yanl&#x131;&#x15F; ya da hatal&#x131; se&#xE7;im ya da k&#x131;s&#x131;tlama se&#xE7;ene&#x11F;i se&#xE7;ilmi&#x15F;se), SolveSpace bir hata mesaj&#x131; g&#xF6;r&#xFC;nt&#xFC;ler ve mesajda mevcut k&#x131;s&#x131;tlamalar&#x131;n (neleri kapsad&#x131;&#x11F;&#x131;na dair) bir listesi sunar.<br>
+&#xC7;o&#x11F;u k&#x131;s&#x131;tlama, hem 3B hem de &#xF6;ng&#xF6;r&#xFC;len bi&#xE7;imde mevcuttur. Bir &#xE7;al&#x131;&#x15F;ma d&#xFC;zlemi etkinse, k&#x131;s&#x131;tlama, geometrinin o &#xE7;al&#x131;&#x15F;ma d&#xFC;zlemine izd&#xFC;&#x15F;&#xFC;m&#xFC;ne uygulan&#x131;r. Hi&#xE7;bir &#xE7;al&#x131;&#x15F;ma d&#xFC;zlemi aktif de&#x11F;ilse, bu durumda k&#x131;s&#x131;tlama, bo&#x15F; alandaki (&#xE7;izim uzay&#x131;ndaki) ger&#xE7;ek geometriye uygulan&#x131;r.<br>
+&#xD6;rne&#x11F;in, a&#x15F;a&#x11F;&#x131;da g&#xF6;sterilen &#xE7;izgiyi g&#xF6;z &#xF6;n&#xFC;nde bulundurun:</p>
+<p><img src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/10%20Sinirla.png" alt="S&#x131;n&#x131;rland&#x131;r / K&#x131;s&#x131;tla"></p>
+<p>&#xC7;izginin uzunlu&#x11F;u iki farkl&#x131; &#x15F;ekilde s&#x131;n&#x131;rland&#x131;r&#x131;lm&#x131;&#x15F;t&#x131;r. 50mm&#x2019;lik  &#xFC;st s&#x131;n&#x131;rlama, &#xE7;izginin ger&#xE7;ek uzunlu&#x11F;unu belirtir. 40mm&#x2019;lik alt k&#x131;s&#x131;tlama, &#xE7;izginin XY d&#xFC;zlemine olan izd&#xFC;&#x15F;&#xFC;m&#xFC;n&#xFC;n uzunlu&#x11F;unu belirtir. (XY d&#xFC;zlemi sar&#x131; renkle vurgulanm&#x131;&#x15F;t&#x131;r.) Noktal&#x131; mor &#xE7;izgiler, &#xE7;izgi par&#xE7;as&#x131;n&#x131;n &#xF6;ng&#xF6;r&#xFC;len u&#xE7; noktalar&#x131;n&#x131;n konumlar&#x131;n&#x131; (izd&#xFC;&#x15F;&#xFC;m do&#x11F;rular&#x131;n&#x131;) belirtmek i&#xE7;in &#xE7;izilir.<br>
+Normal &#xE7;al&#x131;&#x15F;mada, kullan&#x131;c&#x131; bir &#xE7;al&#x131;&#x15F;ma d&#xFC;zlemini etkinle&#x15F;tirir (veya &#xF6;rne&#x11F;in bir &quot;<code>Yeni &#xC7;al&#x131;&#x15F;ma D&#xFC;zleminde &#xC7;izim Yap</code>&quot; grubu olu&#x15F;turularak bir &#xE7;al&#x131;&#x15F;ma d&#xFC;zlemi otomatik olarak etkinle&#x15F;tirilir). Kullan&#x131;c&#x131; daha sonra bir &#xF6;&#x11F;e, &#xF6;rne&#x11F;in bir &#xE7;izgi &#xE7;izer. Bir &#xE7;al&#x131;&#x15F;ma d&#xFC;zlemi aktif oldu&#x11F;undan, &#xE7;izgi o &#xE7;al&#x131;&#x15F;ma d&#xFC;zleminde olu&#x15F;turulur. Kullan&#x131;c&#x131; daha sonra &#xF6;rne&#x11F;in uzunlu&#x11F;unu belirterek bu &#xE7;izgiyi s&#x131;n&#x131;rland&#x131;r&#x131;r. &#xC7;al&#x131;&#x15F;ma d&#xFC;zlemi h&#xE2;l&#xE2; aktif oldu&#x11F;undan, k&#x131;s&#x131;tlama asl&#x131;nda &#xE7;izgi par&#xE7;as&#x131;n&#x131;n &#xE7;al&#x131;&#x15F;ma d&#xFC;zlemine izd&#xFC;&#x15F;&#xFC;m&#xFC; i&#xE7;in ge&#xE7;erlidir.<br>
+Bu durumda, &#xF6;ng&#xF6;r&#xFC;len mesafe 3B mesafeye e&#x15F;de&#x11F;erdir. &#xC7;izgi par&#xE7;as&#x131; &#xE7;al&#x131;&#x15F;ma d&#xFC;zleminde bulunuyorsa, o &#xE7;izgi par&#xE7;as&#x131;n&#x131;n &#xE7;al&#x131;&#x15F;ma d&#xFC;zlemine izd&#xFC;&#x15F;&#xFC;m&#xFC; sadece o &#xE7;izgi par&#xE7;as&#x131; olur. (Yani &#xE7;al&#x131;&#x15F;ma d&#xFC;zlemi i&#xE7;erisinde yap&#x131;lan &#xE7;izim &#xF6;&#x11F;eleri, asl&#x131;nda &#xE7;al&#x131;&#x15F;&#x131;lan d&#xFC;zlemin izd&#xFC;&#x15F;&#xFC;m&#xFC;d&#xFC;r.) Bu, bir &#xE7;al&#x131;&#x15F;ma d&#xFC;zleminde &#xE7;izim yaparken bunlar&#x131;n &#xE7;o&#x11F;unun g&#xF6;z ard&#x131; edilebilece&#x11F;i anlam&#x131;na gelir.<br>
+Yine de, &#xF6;ng&#xF6;r&#xFC;len k&#x131;s&#x131;tlamalar&#x131; daha karma&#x15F;&#x131;k &#x15F;ekillerde kullanmak m&#xFC;mk&#xFC;nd&#xFC;r. &#xD6;rne&#x11F;in, kullan&#x131;c&#x131; &#xE7;al&#x131;&#x15F;ma d&#xFC;zlemi A&apos;da bir &#xE7;izgi par&#xE7;as&#x131; olu&#x15F;turabilir ve projeksiyonunu &#xE7;al&#x131;&#x15F;ma d&#xFC;zlemi B&apos;ye s&#x131;n&#x131;rlayabilir.<br>
+K&#x131;s&#x131;tlamalar eskiz &#xFC;zerinde mor renkle olu&#x15F;turulmu&#x15F;tur. Bir k&#x131;s&#x131;tlaman&#x131;n kendisiyle ili&#x15F;kili bir etiketi varsa (&#xF6;rne&#x11F;in mesafe veya a&#xE7;&#x131;), bu etiket fare ile s&#xFC;r&#xFC;klenerek yeniden konumland&#x131;r&#x131;labilir. Boyutu de&#x11F;i&#x15F;tirmek i&#xE7;in, etikete &#xE7;ift t&#x131;klay&#x131;n; ekranda yeni de&#x11F;erin girilebilece&#x11F;i bir metin kutusu belirecektir. De&#x11F;i&#x15F;ikli&#x11F;i uygulamak i&#xE7;in <code>Enter</code>&apos;a, iptal etmek i&#xE7;in <code>ESC</code>&apos;ye bas&#x131;n.</p>
+<h2 class="mume-header" id="otomatik-k%C4%B1s%C4%B1tlamalar">Otomatik K&#x131;s&#x131;tlamalar</h2>
+
+<p>Yap&#x131;land&#x131;rma ekran&#x131;nda &quot;<strong>enable automatic line constraints</strong> (otomatik &#xE7;izgi k&#x131;s&#x131;tlamalar&#x131;n&#x131; etkinle&#x15F;tir)&quot; etiketli bir se&#xE7;enek vard&#x131;r. Bu se&#xE7;enek i&#x15F;aretliyse ve &#xE7;izilen  &#xE7;izgi neredeyse yataysa, &#xE7;izginin ortas&#x131;nda yatay ve dikey bir k&#x131;s&#x131;tlama (H harfi) belirecek ve &#xE7;izginin ikinci noktas&#x131;n&#x131;n yerine t&#x131;kland&#x131;&#x11F;&#x131;nda k&#x131;s&#x131;tlama  uygulanacakt&#x131;r. Benzer &#x15F;ekilde, neredeyse dikey bir &#xE7;izgi &#xE7;izildi&#x11F;inde, otomatik olarak bir &quot;V&quot; k&#x131;s&#x131;tlamas&#x131; g&#xF6;r&#xFC;necektir. Do&#x11F;ru, yatay veya dikeye yeterince yak&#x131;n de&#x11F;ilse, herhangi bir k&#x131;s&#x131;tlama eklenmez. &#xC7;izim yaparken <code>CTRL</code> tu&#x15F;unu bas&#x131;l&#x131; tutmak da bu &#xF6;zelli&#x11F;i devre d&#x131;&#x15F;&#x131; b&#x131;rakacakt&#x131;r.</p>
+<p><img src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/11%20Otomatik%20sinirla.png" alt="Otomatik &#xC7;izgi K&#x131;s&#x131;tlamas&#x131;"></p>
+<p>Otomatik k&#x131;s&#x131;tlama fazlaysa veya &#xE7;izimin a&#x15F;&#x131;r&#x131; s&#x131;n&#x131;rland&#x131;r&#x131;lmas&#x131;na neden olacaksa, &#xE7;izgi yerle&#x15F;tirme s&#x131;ras&#x131;nda k&#x131;s&#x131;tlama harfi g&#xF6;sterilse bile olu&#x15F;turulmaz. Benzer &#x15F;ekilde, &#xE7;izimi a&#x15F;&#x131;r&#x131; s&#x131;n&#x131;rlayacak bir mesafe veya &#xE7;ap k&#x131;s&#x131;tlamas&#x131; eklenirse, bu k&#x131;s&#x131;tlama bir referans (REF) olarak olu&#x15F;turulacakt&#x131;r. (&#xD6;rne&#x11F;in dikd&#xF6;rtgenin k&#x131;sa kenarlar&#x131;ndan biri &#xF6;l&#xE7;&#xFC;lendirilip k&#x131;s&#x131;tland&#x131;ktan sonra, di&#x11F;er k&#x131;sa kenar da &#xF6;l&#xE7;&#xFC;lendirilmek istenildi&#x11F;inde, bu &#xF6;l&#xE7;&#xFC; REF etiketi ile g&#xF6;sterilecektir. Bu &#xF6;l&#xE7;&#xFC; de&#x11F;i&#x15F;tirilemez, de&#x11F;i&#x15F;tirilmesine imkan verilmiyor anlam&#x131; &#xE7;&#x131;kar.)<br>
+Yap&#x131;land&#x131;rma ekran&#x131;ndaki di&#x11F;er bir se&#xE7;enek de &quot;<strong>edit newly added dimensions</strong>  (yeni eklenen boyutlar&#x131; d&#xFC;zenle)&quot; se&#xE7;ene&#x11F;idir. Bu se&#xE7;enek etkinle&#x15F;tirildi&#x11F;inde, yeni bir Mesafe, Uzunluk Oran&#x131; veya Uzunluk Fark&#x131; k&#x131;s&#x131;tlamas&#x131; eklendi&#x11F;inde, belirli bir de&#x11F;erin girilebilmesi i&#xE7;in giri&#x15F; kutusu otomatik olarak g&#xF6;r&#xFC;n&#xFC;r. Se&#xE7;enek kapal&#x131;yken, kullan&#x131;c&#x131;n&#x131;n k&#x131;s&#x131;tlamay&#x131; olu&#x15F;turmas&#x131; ve ard&#x131;ndan de&#x11F;eri d&#xFC;zenlemek i&#xE7;in &#xFC;zerine &#xE7;ift t&#x131;klamas&#x131; gerekir ki, bu neredeyse her zaman yapmak istedi&#x11F;imiz &#x15F;eydir.</p>
+<p><img src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/12%20Eklenen%20boyutu%20duzenle.png" alt="Yeni Eklenen Boyutlar&#x131; D&#xFC;zenle"></p>
+<h2 class="mume-header" id="c%C3%B6z%C3%BCmlenememe-c%C3%B6z%C3%BCm-basar%C4%B1s%C4%B1zl%C4%B1g%C4%B1">C&#xF6;z&#xFC;mlenememe (C&#xF6;z&#xFC;m Basar&#x131;s&#x131;zl&#x131;g&#x131;)</h2>
+
+<p>Baz&#x131; durumlarda, &#xE7;&#xF6;z&#xFC;c&#xFC; ba&#x15F;ar&#x131;s&#x131;z olur. Bunun nedeni genellikle belirtilen k&#x131;s&#x131;tlamalar&#x131;n tutars&#x131;z veya gereksiz olmas&#x131;d&#x131;r. &#xD6;rne&#x11F;in, i&#xE7; a&#xE7;&#x131;lar&#x131; 30, 50 ve 90 derece olan bir &#xFC;&#xE7;gen tutars&#x131;zd&#x131;r - a&#xE7;&#x131;lar&#x131;n toplam&#x131; 180 de&#x11F;ildir, bu nedenle &#xFC;&#xE7;gen asla birle&#x15F;tirilemez. Bu bir hatad&#x131;r.<br>
+&#x130;&#xE7; a&#xE7;&#x131;lar&#x131; 30, 50 ve 100 derece ile s&#x131;n&#x131;rland&#x131;r&#x131;lm&#x131;&#x15F; bir &#xFC;&#xE7;gen de bir hatad&#x131;r. Bu tutars&#x131;z de&#x11F;ildir, &#xE7;&#xFC;nk&#xFC; a&#xE7;&#x131;lar&#x131;n toplam&#x131; 180 derecedir; ama gereksiz, &#xE7;&#xFC;nk&#xFC; bu a&#xE7;&#x131;lardan sadece ikisinin belirtilmesi gerekiyor.<br>
+&#xC7;izim tutars&#x131;z veya (k&#x131;s&#x131;tlamalar) fazlaysa, grafik penceresinin arka plan&#x131; (normal siyah renk yerine) k&#x131;rm&#x131;z&#x131;ya boyan&#x131;r ve &#xF6;zellik penceresinde bir hata g&#xF6;r&#xFC;nt&#xFC;lenir:</p>
+<p><img src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/13%20Cozucu%20Hatasi.png" alt="&#xC7;&#xF6;z&#xFC;c&#xFC; Hatas&#x131;"></p>
+<p>SolveSpace kolayl&#x131;k sa&#x11F;lamak ad&#x131;na, &#xE7;izimi tekrar tutarl&#x131; hale getirmek i&#xE7;in kald&#x131;r&#x131;labilecek bir k&#x131;s&#x131;tlama listesi hesaplar. Bunlar&#x131;n hangi k&#x131;s&#x131;tlamalar oldu&#x11F;unu g&#xF6;rmek i&#xE7;in fareyi &#xF6;zellik penceresindeki ba&#x11F;lant&#x131;lar&#x131;n &#xFC;zerine getirin; k&#x131;s&#x131;tlama, grafik penceresinde vurgulanm&#x131;&#x15F; olarak g&#xF6;r&#xFC;necektir. Bu listedeki bir veya daha fazla k&#x131;s&#x131;tlamay&#x131; silerek kullan&#x131;c&#x131;, &#xE7;izimi tekrar tutarl&#x131; hale getirebilir.<br>
+&#xC7;&#xF6;z&#xFC;c&#xFC; yak&#x131;nsayamad&#x131;&#x11F;&#x131;nda farkl&#x131; t&#xFC;rde bir hata olu&#x15F;ur. Bu, &#xE7;&#xF6;z&#xFC;c&#xFC;de bir kusur olabilir veya imkans&#x131;z geometri belirtildi&#x11F;i i&#xE7;in olu&#x15F;abilir (&#xF6;rne&#x11F;in, kenar uzunluklar&#x131; 3, 4 ve 10 olan bir &#xFC;&#xE7;gen; 3 + 4 = 7 &lt; 10). Bu durumda, benzer bir hata mesaj&#x131; g&#xF6;r&#xFC;nt&#xFC;lenir, ancak bir &#x15F;eyleri d&#xFC;zeltmek i&#xE7;in kald&#x131;r&#x131;lacak bir k&#x131;s&#x131;tlama listesi yoktur. Sorun, k&#x131;s&#x131;tlamalar&#x131; kald&#x131;rarak veya d&#xFC;zenleyerek veya <code>D&#xFC;zen &#x2192; Geri Al</code>&apos;&#x131; se&#xE7;erek &#xE7;&#xF6;z&#xFC;lebilir.</p>
+<h2 class="mume-header" id="referans-ol%C3%A7%C3%BCler">Referans Ol&#xE7;&#xFC;ler</h2>
+
+<p>( Men&#xFC; Yolu: <code>S&#x131;n&#x131;rland&#x131;r &#x2192; &#xD6;l&#xE7;&#xFC;y&#xFC; Referans Yap / Yapma</code> - K&#x131;sayol tu&#x15F;u: <code>E</code> )<br>
+Varsay&#x131;lan olarak, &#xF6;l&#xE7;&#xFC;lendirme geometriyi y&#xF6;nlendirir. Bir &#xE7;izgi par&#xE7;as&#x131; 20,00mm uzunlu&#x11F;a sahip olacak &#x15F;ekilde s&#x131;n&#x131;rland&#x131;r&#x131;lm&#x131;&#x15F;sa, bu uzunluk do&#x11F;ru olana kadar &#xE7;izgi par&#xE7;as&#x131; de&#x11F;i&#x15F;tirilir.<br>
+Referans &#xF6;l&#xE7;&#xFC;lendirme bunun tersidir: Geometri &#xF6;l&#xE7;&#xFC;lendirmeyi y&#xF6;nlendirir. Bir &#xE7;izgi par&#xE7;as&#x131;n&#x131;n uzunlu&#x11F;u &#xFC;zerinde bir referans boyutu varsa, bu uzunlu&#x11F;u serbest&#xE7;e de&#x11F;i&#x15F;tirmek yine de m&#xFC;mk&#xFC;nd&#xFC;r ve boyut, bu uzunluk ne olursa olsun g&#xF6;r&#xFC;nt&#xFC;lenir. Referans &#xF6;l&#xE7;&#xFC;mlendirme geometriyi k&#x131;s&#x131;tlamaz.<br>
+Bir &#xF6;l&#xE7;&#xFC;lendirmeyi referans &#xF6;l&#xE7;&#xFC;mlendirmeye d&#xF6;n&#xFC;&#x15F;t&#xFC;rmek i&#xE7;in, <code>S&#x131;n&#x131;rland&#x131;r &#x2192; &#xD6;l&#xE7;&#xFC;y&#xFC; Referans Yap / Yapma</code>&#x2019;y&#x131; se&#xE7;in. G&#xF6;r&#xFC;nt&#xFC;lenen uzunluk veya a&#xE7;&#x131;ya eklenen &quot;<strong>REF</strong>&quot; ibaresi ile bir referans boyuta d&#xF6;n&#xFC;&#x15F;&#xFC;r. Bir referans &#xF6;l&#xE7;&#xFC;ye &#xE7;ift t&#x131;klamak hi&#xE7;bir &#x15F;ey yapmaz (&#xF6;l&#xE7;&#xFC;y&#xFC; de&#x11F;i&#x15F;tirmek i&#xE7;in metin kutusu g&#xF6;r&#xFC;nt&#xFC;lenmez); &#xF6;l&#xE7;&#xFC; kullan&#x131;c&#x131; taraf&#x131;ndan de&#x11F;il geometri taraf&#x131;ndan belirlenir, bu nedenle referans &#xF6;l&#xE7;&#xFC; i&#xE7;in yeni bir de&#x11F;er girmek anlaml&#x131; de&#x11F;ildir.</p>
+<h2 class="mume-header" id="ozel-k%C4%B1s%C4%B1tlamalar">Ozel K&#x131;s&#x131;tlamalar</h2>
+
+<p>Belirli bir k&#x131;s&#x131;tlama hakk&#x131;nda bilgi / yard&#x131;m almak i&#xE7;in, &#xF6;ncelikle herhangi bir &#xF6;&#x11F;e se&#xE7;meden (hi&#xE7; bir &#x15F;ey se&#xE7;ili olmadan) <code>S&#x131;n&#x131;rland&#x131;r</code> men&#xFC;s&#xFC;nden ilgili se&#xE7;ene&#x11F;i se&#xE7;in. Se&#xE7;mi&#x15F; oldu&#x11F;unuz s&#x131;n&#x131;rland&#x131;rma se&#xE7;ene&#x11F;ine ait t&#xFC;m olas&#x131;l&#x131;klar&#x131; listeleyen bir hata mesaj&#x131; g&#xF6;r&#xFC;nt&#xFC;lenecektir.<br>
+Genel olarak, &#xF6;&#x11F;elerin se&#xE7;ilme s&#x131;ras&#x131; &#xF6;nemli de&#x11F;ildir. &#xD6;rne&#x11F;in, kullan&#x131;c&#x131; nokta-&#xE7;izgi aras&#x131;ndaki mesafeyi k&#x131;s&#x131;tl&#x131;yorsa, noktay&#x131; ve ard&#x131;ndan &#xE7;izgiyi veya &#xE7;izgiyi ve ard&#x131;ndan noktay&#x131; se&#xE7;ebilir ve sonu&#xE7; ayn&#x131; olur. Baz&#x131; istisnalar mevcuttur ve a&#x15F;a&#x11F;&#x131;da belirtilmi&#x15F;tir.</p>
+<h2 class="mume-header" id="mesafe-cap">Mesafe / Cap</h2>
+
+<p>( Men&#xFC; Yolu: <code>S&#x131;n&#x131;rland&#x131;r &#x2192; Mesafe / &#xC7;ap</code> - K&#x131;sayol tu&#x15F;u: <code>D</code> )<br>
+Bu k&#x131;s&#x131;tlama, bir yay&#x131;n veya dairenin &#xE7;ap&#x131;n&#x131; ya da bir do&#x11F;ru par&#xE7;as&#x131;n&#x131;n uzunlu&#x11F;unu veyahut bir nokta ile ba&#x15F;ka bir &#xF6;&#x11F;e aras&#x131;ndaki mesafeyi belirler.<br>
+Bir nokta ile bir d&#xFC;zlem veya bir nokta ile bir d&#xFC;zlem y&#xFC;zeyi ya da bir &#xE7;al&#x131;&#x15F;ma d&#xFC;zleminde bir nokta ile bir &#xE7;izgi aras&#x131;ndaki mesafe k&#x131;s&#x131;tlan&#x131;rken, mesafe i&#x15F;aretlenir. Mesafe, noktan&#x131;n d&#xFC;zlemin &#xFC;st&#xFC;nde veya alt&#x131;nda olmas&#x131;na ba&#x11F;l&#x131; olarak pozitif veya negatif olabilir. Mesafe &#xE7;izimde her zaman pozitif olarak g&#xF6;sterilir; di&#x11F;er tarafa &#xE7;evirmek i&#xE7;in negatif bir de&#x11F;er girin.</p>
+<h2 class="mume-header" id="a%C3%A7%C4%B1">A&#xE7;&#x131;</h2>
+
+<p>( Men&#xFC; Yolu: <code>S&#x131;n&#x131;rland&#x131;r &#x2192; A&#xE7;&#x131;</code> - K&#x131;sayol tu&#x15F;u: <code>N</code> )<br>
+Bu k&#x131;s&#x131;tlama, iki vekt&#xF6;r aras&#x131;ndaki a&#xE7;&#x131;y&#x131; belirler. Vekt&#xF6;r, y&#xF6;n&#xFC; olan herhangi bir &#x15F;eydir; SolveSpace&apos;de &#xE7;izgi par&#xE7;alar&#x131; ve normaller vekt&#xF6;rlerdir. (Yani k&#x131;s&#x131;tlama, iki do&#x11F;ru par&#xE7;as&#x131;na ya da bir do&#x11F;ru par&#xE7;as&#x131;na ve bir normale veyahut iki normale uygulanabilir.) A&#xE7;&#x131; k&#x131;s&#x131;tlamas&#x131; hem projeksiyonlu (&#x130;zd&#xFC;&#x15F;&#xFC;ml&#xFC;) hem de 3B uzay&#x131;nda mevcuttur.<br>
+A&#xE7;&#x131; daima 0 ile 180 derece aras&#x131;nda olmal&#x131;d&#x131;r. Daha b&#xFC;y&#xFC;k veya daha k&#xFC;&#xE7;&#xFC;k a&#xE7;&#x131;lar girilebilir, ancak bunlar 180 derecelik mod&#xFC;le al&#x131;nacakt&#x131;r. &#xD6;l&#xE7;&#xFC;lendirmede a&#xE7;&#x131; i&#x15F;areti (&#xB0;) g&#xF6;sterilmez.<br>
+&#x130;ki do&#x11F;ru kesi&#x15F;ti&#x11F;inde d&#xF6;rt a&#xE7;&#x131; olu&#x15F;ur. Bu a&#xE7;&#x131;lar iki e&#x15F;it &#xE7;ift olu&#x15F;turur. &#xD6;rne&#x11F;in, resimdeki &#xE7;izgiler 30 derece ve 150 derecede kesi&#x15F;iyor. Bu iki a&#xE7;&#x131; (30 ve 150) b&#xFC;t&#xFC;nler a&#xE7;&#x131;lar olarak bilinir ve her zaman 180 derecedir.</p>
+<p><img src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/14%20Aci%20-%20referans%20aci.png" alt="B&#xFC;t&#xFC;nler A&#xE7;&#x131;"></p>
+<p>(&#xC7;izimde a&#xE7;&#x131; k&#x131;s&#x131;tlamalar&#x131;ndan &#xFC;&#xE7;&#xFC;n&#xFC;n referans &#xF6;l&#xE7;&#xFC; oldu&#x11F;una dikkat edin. A&#xE7;&#x131;lardan herhangi biri verildi&#x11F;inde, di&#x11F;er &#xFC;&#xE7;&#xFC;n&#xFC; hesaplayabiliriz; bu nedenle, bu a&#xE7;&#x131;lardan birden fazlas&#x131;n&#x131; belirten bir &#xE7;izim a&#x15F;&#x131;r&#x131; k&#x131;s&#x131;tlanm&#x131;&#x15F; olur ve &#xE7;&#xF6;z&#xFC;lemez.)<br>
+Yeni bir a&#xE7;&#x131; k&#x131;s&#x131;tlamas&#x131; olu&#x15F;turuldu&#x11F;unda, SolveSpace hangi tamamlay&#x131;c&#x131; a&#xE7;&#x131;n&#x131;n s&#x131;n&#x131;rland&#x131;r&#x131;laca&#x11F;&#x131;n&#x131; keyfi olarak se&#xE7;er. Hangi a&#xE7;&#x131;n&#x131;n se&#xE7;ildi&#x11F;ini belirtmek i&#xE7;in &#xE7;izim &#xFC;zerinde bir yay &#xE7;izilir. K&#x131;s&#x131;tlama etiketi (&#xF6;l&#xE7;&#xFC; yaz&#x131;s&#x131;) s&#xFC;r&#xFC;klendik&#xE7;e yay, etiketi (&#xF6;l&#xE7;&#xFC;y&#xFC;) takip edecektir.<br>
+Yanl&#x131;&#x15F; tamamlay&#x131;c&#x131; a&#xE7;&#x131; s&#x131;n&#x131;rland&#x131;r&#x131;lm&#x131;&#x15F;sa (yani a&#xE7;&#x131; etiketi, di&#x11F;er b&#xFC;t&#xFC;nler a&#xE7;&#x131; ile g&#xF6;r&#xFC;nt&#xFC;lenmek istenirse), k&#x131;s&#x131;tlamay&#x131; (&#xF6;l&#xE7;&#xFC; etiketini) se&#xE7;ip ard&#x131;ndan <code>S&#x131;n&#x131;rland&#x131;r &#x2192; Di&#x11F;er T&#xFC;mler A&#xE7;&#x131;</code>&apos;y&#x131; se&#xE7;in. Bir b&#xFC;t&#xFC;nler a&#xE7;&#x131;da 30 derecelik bir k&#x131;s&#x131;tlama, di&#x11F;erinde 150 derecelik bir k&#x131;s&#x131;tlamaya tam olarak e&#x15F;de&#x11F;erdir.</p>
+<h2 class="mume-header" id="yatay-dikey">Yatay / Dikey</h2>
+
+<p>( Men&#xFC; Yolu: <code>S&#x131;n&#x131;rland&#x131;r &#x2192; Yatay</code> - K&#x131;sayol tu&#x15F;u: ``H )<br>
+( Men&#xFC; Yolu: <code>S&#x131;n&#x131;rland&#x131;r &#x2192; Dikey</code> - K&#x131;sayol tu&#x15F;u: <code>V</code> )<br>
+Bu k&#x131;s&#x131;tlama, bir &#xE7;izgi par&#xE7;as&#x131;n&#x131; yatay veya dikey olmaya zorlar. Bu k&#x131;s&#x131;tlama iki noktaya da uygulanabilir, bu durumda bu noktalar&#x131; birle&#x15F;tiren (sanal) do&#x11F;ru par&#xE7;as&#x131;na uygulan&#x131;r, yani noktalar yatay da ya da dikeyde ayn&#x131; hizaya g&#xF6;re s&#x131;n&#x131;rland&#x131;r&#x131;lm&#x131;&#x15F; olur.<br>
+Bu &#x131;s&#x131;tlama i&#xE7;in, bir &#xE7;al&#x131;&#x15F;ma d&#xFC;zlemi etkin olmal&#x131;d&#x131;r, &#xE7;&#xFC;nk&#xFC; &quot;yatay&quot; veya &quot;dikey&quot; (ibarelerinin anlam&#x131;), &#xE7;al&#x131;&#x15F;ma d&#xFC;zlemi taraf&#x131;ndan tan&#x131;mlan&#x131;r.<br>
+M&#xFC;mk&#xFC;n oldu&#x11F;unda yatay ve dikey k&#x131;s&#x131;tlamalar&#x131; kullanmak iyidir. Bu k&#x131;s&#x131;tlamalar&#x131;n &#xE7;&#xF6;z&#xFC;lmesi &#xE7;ok basittir ve yak&#x131;nsama sorunlar&#x131;na yol a&#xE7;maz. M&#xFC;mk&#xFC;n oldu&#x11F;unda, &#xE7;al&#x131;&#x15F;ma d&#xFC;zlemlerini, &#xE7;izgiler bu &#xE7;al&#x131;&#x15F;ma d&#xFC;zlemleri i&#xE7;inde yatay ve dikey olacak &#x15F;ekilde tan&#x131;mlay&#x131;n.</p>
+<h2 class="mume-header" id="noktada-e%C4%9Fride-d%C3%BCzlemde">Noktada / E&#x11F;ride / D&#xFC;zlemde</h2>
+
+<p>( Men&#xFC; Yolu: <code>S&#x131;n&#x131;rland&#x131;r &#x2192; Noktada / E&#x11F;ride / D&#xFC;zlemde</code> - K&#x131;sayol tu&#x15F;u: <code>O</code> )<br>
+Bu k&#x131;s&#x131;tlama, iki noktan&#x131;n &#xE7;ak&#x131;&#x15F;mas&#x131;n&#x131; veya bir noktan&#x131;n bir e&#x11F;ri &#xFC;zerinde ya da bir noktan&#x131;n bir d&#xFC;zlem &#xFC;zerinde bulunmas&#x131;n&#x131;/yerle&#x15F;mesini sa&#x11F;lar.<br>
+Nokta-&#xE7;ak&#x131;&#x15F;ma k&#x131;s&#x131;tlamas&#x131;, hem 3B hem de 2B (2 boyutlu, bir d&#xFC;zlem &#xFC;zerinde) &#xE7;izimde mevcuttur. 3B nokta-&#xE7;ak&#x131;&#x15F;ma k&#x131;s&#x131;tlamas&#x131;, &#xFC;&#xE7; serbestlik derecesini k&#x131;s&#x131;tlar; 2B yaln&#x131;zca iki tanesini k&#x131;s&#x131;tlar. Bir &#xE7;al&#x131;&#x15F;ma d&#xFC;zleminde iki nokta &#xE7;izilir ve ard&#x131;ndan 3B&apos;de &#xE7;ak&#x131;&#x15F;&#x131;k olarak s&#x131;n&#x131;rland&#x131;r&#x131;l&#x131;rsa, bir hata ortaya &#xE7;&#x131;kar - bunlar zaten bir boyutta (d&#xFC;zlemin normal boyutu) &#xE7;ak&#x131;&#x15F;&#x131;kt&#x131;r, bu nedenle &#xFC;&#xE7;&#xFC;nc&#xFC; k&#x131;s&#x131;tlama denklemi gereksizdir.  (2B&#x2019;de &#xE7;izim yap&#x131;ld&#x131;&#x11F;&#x131;nda zaten d&#xFC;zlem koordinat&#x131;, bir noktay&#x131; k&#x131;s&#x131;tlam&#x131;&#x15F; oluyor.)<br>
+Bir noktan&#x131;n bir daire (veya bir dairenin yay&#x131;) &#xFC;zerine yerle&#x15F;tirilerek k&#x131;s&#x131;tland&#x131;&#x11F;&#x131;nda, ger&#xE7;ek k&#x131;s&#x131;tlama noktay&#x131; bu daire boyunca silindirik y&#xFC;zey &#xFC;zerinde durmaya zorlar. Nokta ve daire zaten ayn&#x131; d&#xFC;zlemdeyse (&#xF6;rne&#x11F;in, her ikisi de ayn&#x131; &#xE7;al&#x131;&#x15F;ma d&#xFC;zleminde &#xE7;izilmi&#x15F;se), nokta e&#x11F;ri &#xFC;zerinde durur, aksi halde olmaz.</p>
+<h2 class="mume-header" id="e%C5%9Fit-uzunluk-yar%C4%B1%C3%A7ap-a%C3%A7%C4%B1">E&#x15F;it Uzunluk / Yar&#x131;&#xE7;ap / A&#xE7;&#x131;</h2>
+
+<p>( Men&#xFC; Yolu: <code>S&#x131;n&#x131;rland&#x131;r &#x2192; E&#x15F;it Uzunluk / Yar&#x131;&#xE7;ap / A&#xE7;&#x131;</code> - K&#x131;sayol tu&#x15F;u: <code>Q</code> )<br>
+Bu k&#x131;s&#x131;tlama, iki uzunlu&#x11F;u, a&#xE7;&#x131;y&#x131; veya yar&#x131;&#xE7;ap&#x131; e&#x15F;it olmaya zorlar.<br>
+E&#x15F;it a&#xE7;&#x131; k&#x131;s&#x131;tlamas&#x131;, girdi olarak d&#xF6;rt vekt&#xF6;r gerektirir: iki e&#x15F;it a&#xE7;&#x131;, her bir girdi &#xE7;ifti aras&#x131;ndaki a&#xE7;&#x131;d&#x131;r. &#xD6;rne&#x11F;in, A, B, C ve D do&#x11F;ru par&#xE7;alar&#x131;n&#x131; se&#xE7;in. K&#x131;s&#x131;tlama, A ve B do&#x11F;rular&#x131; aras&#x131;ndaki a&#xE7;&#x131;y&#x131;, C ve D do&#x11F;rular&#x131; aras&#x131;ndaki a&#xE7;&#x131;ya e&#x15F;it olmaya zorlar. Yanl&#x131;&#x15F; tamamlay&#x131;c&#x131; a&#xE7;&#x131; se&#xE7;ilirse, a&#xE7;&#x131; k&#x131;s&#x131;tlamas&#x131; i&#xE7;in oldu&#x11F;u gibi, <code>S&#x131;n&#x131;rland&#x131;r &#x2192; Di&#x11F;er B&#xFC;t&#xFC;nler A&#xE7;&#x131;</code>&apos;y&#x131; se&#xE7;in.<br>
+Bir &#xE7;izgi &#xF6;&#x11F;esi ve dairenin bir yay&#x131; se&#xE7;ilirse, &#xE7;izginin uzunlu&#x11F;u yay&#x131;n uzunlu&#x11F;una (yar&#x131;&#xE7;ap&#x131;na de&#x11F;il) e&#x15F;it olmaya zorlan&#x131;r.</p>
+<h2 class="mume-header" id="uzunluk-oran%C4%B1">Uzunluk Oran&#x131;</h2>
+
+<p>( Men&#xFC; Yolu: <code>S&#x131;n&#x131;rland&#x131;r &#x2192; Uzunluk Oran&#x131;</code> - K&#x131;sayol tu&#x15F;u: <code>Z</code> )<br>
+Bu k&#x131;s&#x131;tlama, iki do&#x11F;ru par&#xE7;as&#x131;n&#x131;n uzunluklar&#x131; aras&#x131;ndaki oran&#x131; belirler. &#xD6;rne&#x11F;in, A &#xE7;izgisi ve B &#xE7;izgisi 2:1 uzunluk oran&#x131;na sahipse, A 50 mm uzunlu&#x11F;unda ve B 25 mm uzunlu&#x11F;undaysa k&#x131;s&#x131;tlama kar&#x15F;&#x131;lan&#x131;r.<br>
+&#xC7;izgilerin se&#xE7;ilme s&#x131;ras&#x131; &#xF6;nemlidir; A &#xE7;izgisi B &#xE7;izgisinden &#xF6;nce se&#xE7;ilirse, oran A&apos;n&#x131;n uzunlu&#x11F;u: B&apos;nin uzunlu&#x11F;udur.</p>
+<h2 class="mume-header" id="uzunluk-fark%C4%B1">Uzunluk Fark&#x131;</h2>
+
+<p>( Men&#xFC; Yolu: <code>S&#x131;n&#x131;rland&#x131;r &#x2192; Uzunluk Fark&#x131;</code> - K&#x131;sayol tu&#x15F;u: <code>J</code> )<br>
+Bu k&#x131;s&#x131;tlama, iki do&#x11F;ru par&#xE7;as&#x131;n&#x131;n uzunluklar&#x131; aras&#x131;ndaki fark&#x131; belirler. &#xD6;rne&#x11F;in, A &#xE7;izgisi ve B &#xE7;izgisi 5 mm uzunluk fark&#x131;na sahipse, A 50 mm uzunlu&#x11F;unda ve B 55 mm uzunlu&#x11F;unda veya 45 mm uzunlu&#x11F;undaysa k&#x131;s&#x131;tlama kar&#x15F;&#x131;lan&#x131;r.<br>
+Daha k&#x131;sa olan &#xF6;&#x11F;enin k&#x131;s&#x131;tlamas&#x131;n&#x131; d&#xFC;zenlerken, negatif bir fark girilebilece&#x11F;ini/yaz&#x131;labilece&#x11F;ini unutmay&#x131;n. Ayn&#x131; zamanda de&#x11F;er, her zaman pozitif bir say&#x131; (mutlak fark) olarak g&#xF6;r&#xFC;nt&#xFC;lenir ve pozitif say&#x131;lar&#x131;n girilmesi/yaz&#x131;lmas&#x131; &quot;y&#xF6;n&#xFC;&quot; de&#x11F;i&#x15F;tirmez.</p>
+<h2 class="mume-header" id="orta-noktada">Orta Noktada</h2>
+
+<p>( Men&#xFC; Yolu: <code>S&#x131;n&#x131;rland&#x131;r &#x2192; Orta Noktada</code> - K&#x131;sayol tu&#x15F;u: <code>M</code> )<br>
+Bu k&#x131;s&#x131;tlama, bir noktay&#x131; bir &#xE7;izginin orta noktas&#x131;nda sabitlemeye/yerle&#x15F;tirmeye zorlar.<br>
+Orta nokta k&#x131;s&#x131;tlamas&#x131; ayr&#x131;ca bir &#xE7;izginin orta noktas&#x131;n&#x131; bir d&#xFC;zleme sabitlemeye/yerle&#x15F;tirmeye zorlayabilir; bu, bir nokta olu&#x15F;turmaya, o noktay&#x131; &#xE7;izginin orta noktas&#x131;nda s&#x131;n&#x131;rlamaya ve ard&#x131;ndan bu orta noktay&#x131; d&#xFC;zlemde sabitlemeye &#x15F;ekilde s&#x131;n&#x131;rlamaya e&#x15F;de&#x11F;erdir.</p>
+<h2 class="mume-header" id="simetrik">Simetrik</h2>
+
+<p>( Men&#xFC; Yolu: <code>S&#x131;n&#x131;rland&#x131;r &#x2192; Simetrik</code> - K&#x131;sayol tu&#x15F;u: <code>Y</code> )<br>
+Bu k&#x131;s&#x131;tlama, iki noktay&#x131; bir d&#xFC;zlem etraf&#x131;nda simetrik olmaya zorlar. Kavramsal olarak bu, simetri d&#xFC;zlemine bir ayna yerle&#x15F;tirirsek ve A noktas&#x131;n&#x131;n yans&#x131;mas&#x131;na bakarsak, o zaman B noktas&#x131;n&#x131;n &#xFC;zerinde duruyormu&#x15F; gibi g&#xF6;r&#xFC;nece&#x11F;i anlam&#x131;na gelir.<br>
+Simetri d&#xFC;zlemi, bir &#xE7;al&#x131;&#x15F;ma d&#xFC;zlemi se&#xE7;ilerek a&#xE7;&#x131;k&#xE7;a belirtilebilir. Veya simetri d&#xFC;zlemi, bir &#xE7;al&#x131;&#x15F;ma d&#xFC;zleminde bir &#xE7;izgi olarak belirtilebilir; simetri d&#xFC;zlemi bu &#xE7;izgiden ge&#xE7;er ve &#xE7;al&#x131;&#x15F;ma d&#xFC;zlemine diktir. Veya simetri d&#xFC;zlemi atlanabilir; bu durumda, aktif &#xE7;al&#x131;&#x15F;ma d&#xFC;zleminin dikey eksenine veya yatay eksenine paralel oldu&#x11F;u sonucuna var&#x131;l&#x131;r. Noktalar&#x131;n ba&#x15F;lang&#x131;&#xE7;ta &#xE7;izildi&#x11F;i konfig&#xFC;rasyona hangisinin daha yak&#x131;n oldu&#x11F;una ba&#x11F;l&#x131; olarak yatay veya dikey eksen se&#xE7;ilir.</p>
+<h2 class="mume-header" id="dik">Dik</h2>
+
+<p>( Men&#xFC; Yolu: <code>S&#x131;n&#x131;rland&#x131;r &#x2192; Dik</code> - K&#x131;sayol tu&#x15F;u: <code>[</code> )<br>
+Bu k&#x131;s&#x131;tlama, 90 (doksan) derecelik bir a&#xE7;&#x131; k&#x131;s&#x131;tlamas&#x131;na tam olarak e&#x15F;de&#x11F;erdir. (Bu k&#x131;s&#x131;tlama ile se&#xE7;ili &#xE7;izgiler bir birine 90&#xB0; olacak &#x15F;ekilde s&#x131;n&#x131;rland&#x131;r&#x131;l&#x131;r.)</p>
+<h2 class="mume-header" id="paralel-te%C4%9Fet">Paralel / Te&#x11F;et</h2>
+
+<p>( Men&#xFC; Yolu: <code>S&#x131;n&#x131;rland&#x131;r &#x2192; Paralel / Te&#x11F;et</code> - K&#x131;sayol tu&#x15F;u: <code>L</code> )<br>
+Bu k&#x131;s&#x131;tlama, iki vekt&#xF6;r&#xFC; paralel olmaya zorlar.<br>
+2B&apos;de (yani, bir &#xE7;al&#x131;&#x15F;ma d&#xFC;zlemi aktifken), s&#x131;f&#x131;r derecelik a&#xE7;&#x131; k&#x131;s&#x131;tlamas&#x131; paralel k&#x131;s&#x131;tlamaya e&#x15F;de&#x11F;erdir. 3B&apos;de &#xF6;yle de&#x11F;il.<br>
+Bir A birim vekt&#xF6;r&#xFC; ve bir teta a&#xE7;&#x131;s&#x131; verildi&#x11F;inde, genel olarak A ile bir teta a&#xE7;&#x131;s&#x131; yapan sonsuz say&#x131;da birim vekt&#xF6;r vard&#x131;r. (&#xD6;rne&#x11F;in, bize vekt&#xF6;r (1, 0, 0) verilmi&#x15F;se, o zaman (0, 1) , 0), (0, 0, 1) ve di&#x11F;er bir&#xE7;ok birim vekt&#xF6;r&#xFC;n t&#xFC;m&#xFC; A ile doksan derecelik bir a&#xE7;&#x131; yapar.) Ancak bu, teta = 0 i&#xE7;in do&#x11F;ru de&#x11F;ildir; bu durumda, sadece iki tane vard&#x131;r, A ve -A.<br>
+Bu, normal bir 3B a&#xE7;&#x131; k&#x131;s&#x131;tlamas&#x131;n&#x131;n yaln&#x131;zca bir serbestlik derecesini k&#x131;s&#x131;tlarken, bir 3B paralel k&#x131;s&#x131;tlaman&#x131;n iki serbestlik derecesini k&#x131;s&#x131;tlad&#x131;&#x11F;&#x131; anlam&#x131;na gelir.<br>
+Bu k&#x131;s&#x131;tlama ayn&#x131; zamanda bir do&#x11F;ruyu bir e&#x11F;riye te&#x11F;et olmaya zorlayabilir veya iki e&#x11F;riyi (&#xF6;rne&#x11F;in bir daire ve bir k&#xFC;bik e&#x11F;ri) birbirine te&#x11F;et olmaya zorlayabilir. Bunu yapmak i&#xE7;in, iki e&#x11F;rinin bir u&#xE7; noktas&#x131;n&#x131; payla&#x15F;mas&#x131; gerekir; bu genellikle bir nokta-&#xE7;ak&#x131;&#x15F;ma k&#x131;s&#x131;tlamas&#x131; ile elde edilir. K&#x131;s&#x131;tlama onlar&#x131; bu noktada da te&#x11F;et olmaya zorlayacakt&#x131;r.</p>
+<h2 class="mume-header" id="ayn%C4%B1-y%C3%B6n">Ayn&#x131; Y&#xF6;n</h2>
+
+<p>( Men&#xFC; Yolu: <code>S&#x131;n&#x131;rland&#x131;r &#x2192; Ayn&#x131; Y&#xF6;n</code> - K&#x131;sayol tu&#x15F;u: <code>X</code> )<br>
+Bu k&#x131;s&#x131;tlama, iki normali (normal do&#x11F;rultuyu) ayn&#x131; y&#xF6;nelime sahip olmaya zorlar.<br>
+Normalin bir y&#xF6;n&#xFC; vard&#x131;r; bu y&#xF6;nde bir ok olarak &#xE7;izilir. O okun y&#xF6;n&#xFC; iki a&#xE7;&#x131;yla belirtilebilir. Normal, bu iki a&#xE7;&#x131;y&#x131; ve bu okla ilgili b&#xFC;k&#xFC;lmeye kar&#x15F;&#x131;l&#x131;k gelen bir ek a&#xE7;&#x131;y&#x131; belirtir.<br>
+(Teknik olarak normal, bir koordinat sisteminden di&#x11F;erine d&#xF6;n&#xFC;&#x15F; matrisini temsil eder. Dahili olarak bir birim kuaterniyon (d&#xF6;rtl&#xFC; grup) olarak temsil edilir.)<br>
+&#xD6;rne&#x11F;in, a&#x15F;a&#x11F;&#x131;daki resim, normalleri paralel olacak &#x15F;ekilde s&#x131;n&#x131;rland&#x131;r&#x131;lm&#x131;&#x15F; iki &#xE7;al&#x131;&#x15F;ma d&#xFC;zlemini g&#xF6;stermektedir:</p>
+<p><img src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/15%20Normaller.png" alt="Normal Y&#xF6;nleri"></p>
+<p>Normaller paralel oldu&#x11F;undan, d&#xFC;zlemler paraleldir. Ancak bir d&#xFC;zlem di&#x11F;erine g&#xF6;re e&#x11F;ilmi&#x15F;tir/a&#xE7;&#x131;l&#x131;d&#x131;r, bu nedenle d&#xFC;zlemler ayn&#x131; de&#x11F;ildir. Soldaki &#xE7;izgi en soldaki d&#xFC;zlemde yatay olacak &#x15F;ekilde s&#x131;n&#x131;rland&#x131;r&#x131;l&#x131;r ve sa&#x11F;daki &#xE7;izgi en sa&#x11F;daki ile yatay olacak &#x15F;ekilde k&#x131;s&#x131;tlan&#x131;r. &#xC7;al&#x131;&#x15F;ma d&#xFC;zlemlerinin normalleri paralel olmas&#x131;na ra&#x11F;men bu &#xE7;izgiler paralel de&#x11F;ildir.<br>
+&quot;<strong>Ayn&#x131; Y&#xF6;n</strong>&quot; k&#x131;s&#x131;tlamas&#x131;n&#x131; &quot;<strong>Paralel</strong>&quot; k&#x131;s&#x131;tlamas&#x131;yla de&#x11F;i&#x15F;tirirsek, iki &#xE7;al&#x131;&#x15F;ma d&#xFC;zlemi ayn&#x131; olur ve iki yatay &#xE7;izgi paralel hale gelir.<br>
+Bu s&#x131;n&#x131;rlama, bir montaj i&#x15F;lemi olu&#x15F;tururken yararl&#x131; bir k&#x131;s&#x131;tlamad&#x131;r; tek bir &quot;ayn&#x131; y&#xF6;n&quot; k&#x131;s&#x131;tlamas&#x131;, ba&#x11F;lant&#x131;l&#x131; bir par&#xE7;an&#x131;n d&#xF6;nme serbestlik derecelerinin &#xFC;&#xE7;&#xFC;n&#xFC; de sabitleyecektir.</p>
+<h2 class="mume-header" id="s%C3%BCr%C3%BCklendi%C4%9Fi-yerde-montaj%C4%B1-kilitle">S&#xFC;r&#xFC;klendi&#x11F;i Yerde Montaj&#x131; Kilitle</h2>
+
+<p>( Men&#xFC; Yolu: <code>S&#x131;n&#x131;rland&#x131;r &#x2192; S&#xFC;r&#xFC;klendi&#x11F;i Yerde Montaj&#x131; Kilitle</code> - K&#x131;sayol tu&#x15F;u: <code>]</code> )<br>
+&#xC7;&#xF6;z&#xFC;c&#xFC;n&#xFC;n, konumunu de&#x11F;i&#x15F;tirmeyece&#x11F;i &#x15F;ekilde bir noktay&#x131; s&#x131;n&#x131;rlay&#x131;n. Bu, noktan&#x131;n, &#xFC;zerinde oldu&#x11F;u (ba&#x11F;l&#x131;, sahibi olan) &#xF6;&#x11F;eyi veya noktan&#x131;n kendisini s&#xFC;r&#xFC;kleyerek do&#x11F;rudan konumun de&#x11F;i&#x15F;tirilmesini engellemez. &#xC7;&#xF6;z&#xFC;c&#xFC;ye, noktay&#x131; tamamen s&#x131;n&#x131;rland&#x131;r&#x131;lm&#x131;&#x15F; olarak d&#xFC;&#x15F;&#xFC;nmesi talimat&#x131;n&#x131; verir. Bu, kenarlar&#x131; e&#x15F;it ve bir noktas&#x131; kilitli olan bir e&#x15F;kenar &#xFC;&#xE7;gen &#xE7;izerek kolayca g&#xF6;sterilebilir. Bu kilitli noktan&#x131;n kar&#x15F;&#x131;s&#x131;ndaki taraf&#x131; s&#xFC;r&#xFC;klemek konumunu de&#x11F;i&#x15F;tirmez, bunun yerine &#xFC;&#xE7;geni yeniden boyutland&#x131;r&#x131;r.</p>
+<h2 class="mume-header" id="yorum">Yorum</h2>
+
+<p>(Men&#xFC; Yolu: <code>S&#x131;n&#x131;rland&#x131;r &#x2192; Yorum</code> - K&#x131;sayol tu&#x15F;u: <code>;</code> [noktal&#x131; virg&#xFC;l] )<br>
+Yorum, &#xE7;izimde g&#xF6;r&#xFC;nen tek sat&#x131;rl&#x131;k bir metindir. Bir yorum olu&#x15F;turmak i&#xE7;in, <code>S&#x131;n&#x131;rland&#x131;r &#x2192; Yorum</code>&apos;u se&#xE7;in ve ard&#x131;ndan yeni yorumun orta noktas&#x131;n&#x131;n konumunu belirtmek i&#xE7;in <code>farenin sol tu&#x15F;u</code>na t&#x131;klay&#x131;n. Yorumu ta&#x15F;&#x131;mak i&#xE7;in fare ile s&#xFC;r&#xFC;kleyin. Metni de&#x11F;i&#x15F;tirmek i&#xE7;in &#xE7;ift t&#x131;klay&#x131;n.<br>
+Yorumun, geometri &#xFC;zerinde hi&#xE7;bir etkisi yoktur; sadece insanlar taraf&#x131;ndan okunabilen bir nottur. Varsay&#x131;lan olarak yorum, k&#x131;s&#x131;tlamalarla ayn&#x131; renkte g&#xF6;sterilir; ancak &#xE7;izgi geni&#x15F;li&#x11F;ini ve rengini, metin y&#xFC;ksekli&#x11F;ini, metin kayna&#x11F;&#x131;n&#x131; (sol, sa&#x11F;, &#xFC;st, alt, orta) ve metin a&#xE7;&#x131;s&#x131;n&#x131; belirledi&#x11F;imiz &#xF6;zel bir &#xE7;izgi bi&#xE7;imi olu&#x15F;turulup bu yeni bi&#xE7;imi yorum/a&#xE7;&#x131;klama bi&#xE7;imi olarak atayabiliriz.<br>
+Bir &#xE7;al&#x131;&#x15F;ma d&#xFC;zleminde bir yorum olu&#x15F;turulursa, metin o &#xE7;al&#x131;&#x15F;ma d&#xFC;zleminin y&#xFC;zeyi i&#xE7;inde &#xE7;izilecektir/konumlanacakt&#x131;r. Aksi takdirde (&#xF6;rne&#x11F;in; <code>Yeni Grup &#x2192; 3d&#x2019;de &#xC7;izim Yap</code> men&#xFC; yolu se&#xE7;ildikten sonra &#xE7;izim uzay&#x131;na bir yorum eklenirse), metin her zaman ekran d&#xFC;zleminde &#xF6;ne bakacak &#x15F;ekilde &#xE7;izilir, (yani g&#xF6;r&#xFC;nt&#xFC;y&#xFC; / modeli  d&#xF6;nd&#xFC;rsek/&#xE7;evirsek bile yorum metni d&#xFC;z, ve okunakl&#x131; g&#xF6;r&#xFC;n&#xFC;r).<br>
+Varsay&#x131;lan olarak yorumlar, gruplar&#x131; etkin/aktif olmad&#x131;&#x11F;&#x131;nda, di&#x11F;er t&#xFC;m k&#x131;s&#x131;tlamalarda oldu&#x11F;u gibi gizlenir. Bir yorum &#xF6;zel bir bi&#xE7;ime atanm&#x131;&#x15F;sa, bu yorum, bi&#xE7;im (ve grup ve genel olarak k&#x131;s&#x131;tlamalar) g&#xF6;sterildi&#x11F;i s&#xFC;rece, grubu etkin olmad&#x131;&#x11F;&#x131;nda bile g&#xF6;sterilecektir.</p>
+<p><img src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/16%20Yeni%20Yorum%20Bicimi.png" alt="Yeni Yorum Bi&#xE7;imi"></p>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>
