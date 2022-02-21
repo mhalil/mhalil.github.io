@@ -1,0 +1,506 @@
+<!DOCTYPE html><html><head>
+      <title>02 Python&apos;a Giris</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:///c:\Users\mhgorentas\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.6.1\node_modules\@shd101wyy\mume\dependencies\katex\katex.min.css">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <style>
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}
+
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+}
+
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+pre[data-line] .line-highlight:before, 
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h1 class="mume-header" id="pythona-giri%C5%9F">Python&apos;a Giri&#x15F;</h1>
+
+<p>Bu b&#xF6;l&#xFC;m&#xFC;n amac&#x131;, Python programlama dili hakk&#x131;nda k&#x131;saca bilgi vermek ve ard&#x131;ndan FreeCAD program&#x131; i&#xE7;erisinde Python kodu yazmay&#x131; ve/veya yazd&#x131;&#x11F;&#x131;m&#x131;z kodlar&#x131; &#xE7;al&#x131;&#x15F;t&#x131;rmay&#x131; &#xF6;&#x11F;renmektir.</p>
+<p>Bu, Python&apos;a yeni ba&#x15F;layanlar i&#xE7;in k&#x131;sa bir e&#x11F;itimdir. Python, a&#xE7;&#x131;k kaynakl&#x131;, &#xE7;ok platformlu bir programlama dilidir. Onu di&#x11F;er programlama dillerinden farkl&#x131; ve yeni kullan&#x131;c&#x131;lar i&#xE7;in &#xE7;ok eri&#x15F;ilebilir k&#x131;lan &#xE7;e&#x15F;itli &#xF6;zelliklere sahiptir:</p>
+<ul>
+<li>
+<p>Python, &#x130;nsanlar taraf&#x131;ndan okunabilecek &#x15F;ekilde tasarlanm&#x131;&#x15F;t&#x131;r, bu da &#xF6;&#x11F;renmeyi ve anlamas&#x131;n&#x131; nispeten kolayla&#x15F;t&#x131;r&#x131;r.</p>
+</li>
+<li>
+<p>Python, yorumlan&#x131;r bir dildir, bu, programlar&#x131;n &#xE7;al&#x131;&#x15F;t&#x131;r&#x131;lmadan &#xF6;nce derlenmesine gerek olmad&#x131;&#x11F;&#x131; anlam&#x131;na gelir. Python kodu, dilerseniz sat&#x131;r sat&#x131;r dahi olsa an&#x131;nda &#xE7;al&#x131;&#x15F;t&#x131;r&#x131;labilir.</p>
+</li>
+<li>
+<p>Python, bir betik (script) dili olarak di&#x11F;er programlara g&#xF6;m&#xFC;lebilir. FreeCAD, g&#xF6;m&#xFC;l&#xFC; bir Python yorumlay&#x131;c&#x131;s&#x131;na sahiptir. FreeCAD&apos;de par&#xE7;alar&#x131; i&#x15F;lemek i&#xE7;in Python kodu yazabilirsiniz. Bu, kendi ara&#xE7;lar&#x131;n&#x131;z&#x131; olu&#x15F;turabilece&#x11F;iniz anlam&#x131;na gelir.</p>
+</li>
+<li>
+<p>Geni&#x15F;letilebilir, yeni mod&#xFC;lleri kurulumunuza kolayca ba&#x11F;layabilir ve i&#x15F;levselli&#x11F;ini art&#x131;rabilirsiniz. &#xD6;rne&#x11F;in, Python&apos;un g&#xF6;r&#xFC;nt&#xFC;leri okumas&#x131;na ve yazmas&#x131;na, Twitter ile ileti&#x15F;im kurmas&#x131;na, i&#x15F;letim sisteminiz taraf&#x131;ndan ger&#xE7;ekle&#x15F;tirilecek g&#xF6;revleri zamanlamas&#x131;na ,... vb. izin veren mod&#xFC;ller vard&#x131;r.</p>
+</li>
+</ul>
+<p>A&#x15F;a&#x11F;&#x131;da python konusunda temel bilgiler verilmi&#x15F;tir ve bu dok&#xFC;man eksiksiz bir e&#x11F;itim de&#x11F;ildir. Ancak FreeCAD ve mekanizmalar&#x131; hakk&#x131;nda daha fazla ara&#x15F;t&#x131;rma yapmak i&#xE7;in iyi bir ba&#x15F;lang&#x131;&#xE7; noktas&#x131; sa&#x11F;layaca&#x11F;&#x131;n&#x131; umuyorum. A&#x15F;a&#x11F;&#x131;daki kod par&#xE7;ac&#x131;klar&#x131;n&#x131; bir <code>Python yorumlay&#x131;c&#x131;s&#x131;</code>na girmenizi &#x15F;iddetle tavsiye ederiz.</p>
+<h1 class="mume-header" id="yorumlay%C4%B1c%C4%B1-i%CC%87nterpreter">Yorumlay&#x131;c&#x131; (&#x130;nterpreter)</h1>
+
+<p>Genellikle bilgisayar programlar&#x131; yazarken, bir metin d&#xFC;zenleyici veya &#xF6;zel programlama ortam&#x131;n&#x131;z&#x131; (temelde baz&#x131; ek ara&#xE7;lar i&#xE7;eren bir metin d&#xFC;zenleyicidir) a&#xE7;ars&#x131;n&#x131;z, program&#x131;n&#x131;z&#x131; yazars&#x131;n&#x131;z, ard&#x131;ndan derler ve &#xE7;al&#x131;&#x15F;t&#x131;r&#x131;rs&#x131;n&#x131;z. Genellikle ba&#x15F;lang&#x131;&#xE7; seviyesinde bir veya daha fazla hata yap&#x131;l&#x131;r, bu nedenle program&#x131;n&#x131;z &#xE7;al&#x131;&#x15F;maz. Kodlar&#x131;n do&#x11F;ru &#xE7;al&#x131;&#x15F;mamas&#x131;na dair neyin yanl&#x131;&#x15F; gitti&#x11F;ini bildiren bir hata mesaj&#x131; alabilirsiniz. Ard&#x131;ndan metin d&#xFC;zenleyicinize geri d&#xF6;n&#xFC;n, hatalar&#x131; d&#xFC;zeltin, tekrar &#xE7;al&#x131;&#x15F;t&#x131;r&#x131;n, program&#x131;n&#x131;z istendi&#x11F;i gibi &#xE7;al&#x131;&#x15F;ana kadar tekrarlay&#x131;n.</p>
+<p>Python&apos;da t&#xFC;m s&#xFC;re&#xE7; <code>Python yorumlay&#x131;c&#x131;s&#x131;</code> i&#xE7;inde &#x15F;effaf bir &#x15F;ekilde yap&#x131;labilir. Yorumlay&#x131;c&#x131;, basit&#xE7;e Python kodunu yazabilece&#x11F;iniz komut istemine sahip bir Python penceresidir. Python&apos;u bilgisayar&#x131;n&#x131;za y&#xFC;klediyseniz (Windows veya Mac kullan&#x131;yorsan&#x131;z Python web sitesinden indirin, GNU/Linux kullan&#x131;yorsan&#x131;z paket havuzunuzdan y&#xFC;kleyin), ba&#x15F;lat men&#xFC;n&#xFC;zde bir Python yorumlay&#x131;c&#x131;s&#x131; olacakt&#x131;r. Ancak, daha &#xF6;nce de belirtildi&#x11F;i gibi, <strong>FreeCAD ayr&#x131;ca yerle&#x15F;ik bir Python yorumlay&#x131;c&#x131;s&#x131;na sahiptir</strong>.</p>
+<p><img src="img\01_freecad_python_konsol.png" alt="Python_konsolu"></p>
+<p>FreeCAD i&#xE7;erisinde Python konsolunu G&#xF6;remiyorsan&#x131;z, <strong>G&#xF6;r&#xFC;n&#xFC;m &#x2192; Paneller &#x2192; Python konsolu</strong>&apos;na t&#x131;klay&#x131;n. Python konsolu yeniden boyutland&#x131;r&#x131;labilir ve ayr&#x131;ca yerinden ayr&#x131;labilir / ta&#x15F;&#x131;n&#x131;p hareket ettirilebilir.</p>
+<p><strong>Yorumlay&#x131;c&#x131;</strong>, &#xF6;ncelikle bilgisayar&#x131;n&#x131;zda kurulu olan <strong>Python s&#xFC;r&#xFC;m bilgisini</strong>, ard&#x131;ndan komut istemi olan bir <code>&gt;&gt;&gt;</code> sembol&#xFC;n&#xFC; g&#xF6;sterir. Yorumlay&#x131;c&#x131; i&#xE7;erisinde kod yazmak basittir: her sat&#x131;r bir talimatt&#x131;r. Enter tu&#x15F;una bast&#x131;&#x11F;&#x131;n&#x131;zda, kod sat&#x131;r&#x131;n&#x131;z y&#xFC;r&#xFC;t&#xFC;l&#xFC;r/&#xE7;al&#x131;&#x15F;t&#x131;r&#x131;l&#x131;r. &#xD6;rne&#x11F;in, &#x15F;unu yazmay&#x131; deneyin:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python"><span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token string">&quot;merhaba&quot;</span><span class="token punctuation">)</span>
+</pre><p><code>print()</code>, ekrana bir &#x15F;ey yazd&#x131;ran bir Python komutudur. <code>Enter</code>&apos;a bast&#x131;&#x11F;&#x131;n&#x131;zda i&#x15F;lem ger&#xE7;ekle&#x15F;tirilir ve <code>merhaba</code> mesaj&#x131; yazd&#x131;r&#x131;l&#x131;r. Bir hata yaparsan&#x131;z, &#xF6;rne&#x11F;in &#x15F;unu yazal&#x131;m:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python"><span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>merhaba<span class="token punctuation">)</span>
+</pre><p>Python bunun hatal&#x131; bir kod oldu&#x11F;unu size hemen s&#xF6;yleyecektir. Bu durumda Python <code>merhaba</code> ifadesinin ne oldu&#x11F;unu bilmiyor. <code>&quot; &quot;</code> (&#xE7;ift t&#x131;rnak) karakterleri, i&#xE7;eri&#x11F;in bir metin par&#xE7;as&#x131;, programlama jargonunda <strong>dize (string)</strong> oldu&#x11F;unu belirtir. Bunlar olmadan <code>print()</code> komutu <code>merhaba</code>&apos;y&#x131; tan&#x131;m&#x131;yor. Python konsolunda iken klavyeden <code>yukar&#x131; ok</code> tu&#x15F;una basarak son kod sat&#x131;r&#x131;na geri d&#xF6;nebilir ve kodu d&#xFC;zeltebilirsiniz.</p>
+<p>Python yorumlay&#x131;c&#x131;s&#x131; ayr&#x131;ca yerle&#x15F;ik bir yard&#x131;m sistemine sahiptir. Diyelim ki <code>print(merhaba)</code> komutu sonucunda neyin yanl&#x131;&#x15F; gitti&#x11F;ini anlamad&#x131;k ve komut hakk&#x131;nda &#xF6;zel bilgi istiyoruz:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python"><span class="token builtin">help</span><span class="token punctuation">(</span><span class="token string">&quot;print&quot;</span><span class="token punctuation">)</span>
+</pre><p>Bu komutu yaz&#x131;p &#xE7;al&#x131;&#x15F;t&#x131;rd&#x131;&#x11F;&#x131;n&#x131;zda <code>print()</code> komutunun yapabilece&#x11F;i her &#x15F;eyin uzun ve eksiksiz bir a&#xE7;&#x131;klamas&#x131;n&#x131; alacaks&#x131;n&#x131;z (a&#xE7;&#x131;klamalar konsol ekran&#x131;nda g&#xF6;r&#xFC;nt&#xFC;lenecektir).<br>
+Art&#x131;k Python yorumlay&#x131;c&#x131;s&#x131;n&#x131; anlad&#x131;&#x11F;&#x131;n&#x131;za g&#xF6;re, daha ciddi &#x15F;eylerle devam edebiliriz.</p>
+<h1 class="mume-header" id="de%C4%9Fi%C5%9Fkenler">De&#x11F;i&#x15F;kenler</h1>
+
+<p>Programlamada s&#x131;kl&#x131;kla bir isim alt&#x131;nda bir de&#x11F;er saklaman&#x131;z gerekir. &#x130;&#x15F;te burada de&#x11F;i&#x15F;kenler devreye girer. &#xD6;rne&#x11F;in &#x15F;unu yaz&#x131;n:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python">a <span class="token operator">=</span> <span class="token string">&quot;merhaba&quot;</span>
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span>
+</pre><p>Muhtemelen burada ne oldu&#x11F;unu anlam&#x131;&#x15F;s&#x131;n&#x131;zd&#x131;r, <code>merhaba</code> dizesini (string) <code>a</code> ad&#x131; alt&#x131;nda kaydettik, <code>a</code> de&#x11F;i&#x15F;kenine atad&#x131;k. Art&#x131;k <code>a</code> bilindi&#x11F;ine g&#xF6;re, onu herhangi bir yerde kullanabiliriz, &#xF6;rne&#x11F;in <code>print()</code> komutunda. De&#x11F;i&#x15F;ken olarak istedi&#x11F;imiz herhangi bir ismi kullanabiliriz, sadece bo&#x15F;luk karakteri veya noktalama i&#x15F;aretleri kullanmamak (de&#x11F;i&#x15F;ken ad&#x131; rakam ile ba&#x15F;layamaz) ve Python anahtar kelimeleri kullanmamak gibi baz&#x131; basit kurallara uymam&#x131;z gerekiyor. &#xD6;rne&#x11F;in &#x15F;unu yazabiliriz:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python">merhaba <span class="token operator">=</span> <span class="token string">&quot;&#x15F;ahsi selamlama mesaj&#x131;m&quot;</span>
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>merhaba<span class="token punctuation">)</span>
+</pre><p>Art&#x131;k <code>merhaba</code> kelimesi tan&#x131;ms&#x131;z de&#x11F;il, bir de&#x11F;i&#x15F;ken olarak tan&#x131;mlanm&#x131;&#x15F; durumda. De&#x11F;i&#x15F;kenler herhangi bir zamanda de&#x11F;i&#x15F;tirilebilir, bu y&#xFC;zden <strong>de&#x11F;i&#x15F;kenler</strong> olarak adland&#x131;r&#x131;l&#x131;rlar, i&#xE7;erikleri de&#x11F;i&#x15F;ebilir. &#xD6;rne&#x11F;in:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python">degiskenim <span class="token operator">=</span> <span class="token string">&quot;merhaba&quot;</span>
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>degiskenim<span class="token punctuation">)</span>
+degiskenim <span class="token operator">=</span> <span class="token string">&quot;ho&#x15F;&#xE7;akal&quot;</span>
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>degiskenim<span class="token punctuation">)</span>
+</pre><p>G&#xF6;r&#xFC;ld&#xFC;&#x11F;&#xFC; &#xFC;zere <code>degiskenim</code> isimli de&#x11F;i&#x15F;kenin de&#x11F;erini de&#x11F;i&#x15F;tirdik.</p>
+<pre data-role="codeBlock" data-info="python" class="language-python">degisken1 <span class="token operator">=</span> <span class="token string">&quot;merhaba&quot;</span>
+degisken2 <span class="token operator">=</span> degisken1
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>degisken2<span class="token punctuation">)</span>
+</pre><p>De&#x11F;i&#x15F;kenlerinize anlaml&#x131; isimler vermenizi tavsiye edilir. Uzun s&#xFC;reli kodlama &#xE7;al&#x131;&#x15F;malar&#x131;nda, bir s&#xFC;re sonra de&#x11F;i&#x15F;keninizin neyi temsil etti&#x11F;ini hat&#x131;rlamayabilirsiniz. Ancak, &#xF6;rne&#x11F;in &quot;<strong>ho&#x15F;geldiniz mesaj&#x131;m</strong>&quot; ad&#x131;n&#x131; verdiyseniz, amac&#x131;n&#x131; kolayca hat&#x131;rlayacaks&#x131;n&#x131;z.</p>
+<p>Python&apos;da isimlendirme &#xE7;ok &#xF6;nemlidir; <code>Degiskenim</code> ile <code>degiskenim</code> ifadeleri ayn&#x131; &#x15F;ey de&#x11F;il. De&#x11F;i&#x15F;keni tan&#x131;mlarken isim olarak <code>Degiskenim</code> belirlemi&#x15F;seniz  <code>print(degiskenim)</code> komutunu &#xE7;al&#x131;&#x15F;t&#x131;rd&#x131;&#x11F;&#x131;n&#x131;zda, de&#x11F;i&#x15F;kenin  tan&#x131;mlanmad&#x131;&#x11F;&#x131;na dair hata alacaks&#x131;n&#x131;z. Python&#x2019;da B&#xFC;y&#xFC;k-k&#xFC;&#xE7;&#xFC;k harf duyarl&#x131;l&#x131;&#x11F;&#x131; vard&#x131;r.</p>
+<h1 class="mume-header" id="say%C4%B1lar">Say&#x131;lar</h1>
+
+<p>Tabii ki Python programlar&#x131; sadece metin dizeleriyle de&#x11F;il, her t&#xFC;rl&#xFC; veriyle u&#x11F;ra&#x15F;abilir. &#xD6;nemli olan, Python, ne t&#xFC;r verilerle u&#x11F;ra&#x15F;t&#x131;&#x11F;&#x131;n&#x131; bilmelidir. <code>Print(merhaba)</code> &#xF6;rne&#x11F;imizde <code>print()</code> komutunun <strong>&quot;merhaba&quot;</strong> dizemizi tan&#x131;d&#x131;&#x11F;&#x131;n&#x131; g&#xF6;rd&#xFC;k. <code>&quot; &quot;</code> karakterlerini kullanarak, a&#x15F;a&#x11F;&#x131;dakilerin bir metin dizesi oldu&#x11F;unu belirttik.</p>
+<p><code>type()</code> komutu ile bir de&#x11F;i&#x15F;kenin veri t&#xFC;r&#xFC;n&#xFC;/tipini her zaman kontrol edebiliriz:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python">deger <span class="token operator">=</span> <span class="token string">&quot;merhaba&quot;</span>
+<span class="token builtin">type</span><span class="token punctuation">(</span>deger<span class="token punctuation">)</span>
+</pre><p>Bu komut, <code>deger</code> de&#x11F;i&#x15F;keninin t&#xFC;r&#xFC;n&#xFC;n <strong>string</strong> oldu&#x11F;unu, <code>string</code> ifadesinin k&#x131;sa bi&#xE7;imi olan <code>&apos;str&apos;</code> ile g&#xF6;sterecektir.<br>
+Ayr&#x131;ca tamsay&#x131; ve ondal&#x131;kl&#x131; say&#x131;lar gibi ba&#x15F;ka temel veri t&#xFC;rleri de vard&#x131;r:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python">ilkSayi <span class="token operator">=</span> <span class="token number">10</span>
+ikinciSayi <span class="token operator">=</span> <span class="token number">20</span>
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>ilkSayi <span class="token operator">+</span> ikinciSayi<span class="token punctuation">)</span>
+<span class="token builtin">type</span><span class="token punctuation">(</span>ilkSayi<span class="token punctuation">)</span>
+</pre><p>Python, <code>10</code> ve <code>20</code>&apos;nin tamsay&#x131;lar oldu&#x11F;unu bilir, bu nedenle bu de&#x11F;erleri <code>&apos;int&apos;</code> (integer yani tam say&#x131;) olarak saklar ve Python, tamsay&#x131;larla yapabilece&#x11F;i her &#x15F;eyi bu de&#x11F;i&#x15F;kenlerle yapabilir. A&#x15F;a&#x11F;&#x131;daki kodu &#xE7;al&#x131;&#x15F;t&#x131;r&#x131;p sonucu g&#xF6;r&#xFC;n:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python">ilkSayi <span class="token operator">=</span> &#x201C;<span class="token number">10</span>&#x201D;
+ikinciSayi <span class="token operator">=</span> &#x201C;<span class="token number">20</span>&#x201D;
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>ilkSayi <span class="token operator">+</span> ikinciSayi<span class="token punctuation">)</span>
+</pre><p>Burada Python&apos;u, iki de&#x11F;i&#x15F;kenimizin <strong>say&#x131; de&#x11F;il metin par&#xE7;alar&#x131;</strong> oldu&#x11F;unu d&#xFC;&#x15F;&#xFC;nmeye zorlad&#x131;k (de&#x11F;erleri &quot;&quot; karakteri i&#xE7;esisine yazd&#x131;&#x11F;&#x131;m&#x131;z i&#xE7;in say&#x131; de&#x11F;il dize t&#xFC;r&#xFC;nde veri olu&#x15F;turduk). Python iki par&#xE7;a metni birbirine ekleyebilir, ancak bu durumda elbette herhangi bir aritmetik i&#x15F;lem  ger&#xE7;ekle&#x15F;tirmeyecektir, metinler yan yana yaz&#x131;lacakt&#x131;r.</p>
+<pre data-role="codeBlock" data-info="python" class="language-python">deger1 <span class="token operator">=</span> <span class="token number">13</span>
+deger2 <span class="token operator">=</span> <span class="token number">15.65</span>
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token string">&quot;deger1&apos;in t&#xFC;r&#xFC;  &quot;</span><span class="token punctuation">,</span> <span class="token builtin">type</span><span class="token punctuation">(</span>deger1<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token string">&quot;deger2&apos;nin t&#xFC;r&#xFC; &quot;</span><span class="token punctuation">,</span> <span class="token builtin">type</span><span class="token punctuation">(</span>deger2<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</pre><p>Tam say&#x131;lar ve Ondal&#x131;kl&#x131; say&#x131;lar sorunsuz bir &#x15F;ekilde toplanabilir:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python">toplam <span class="token operator">=</span> deger1 <span class="token operator">+</span> deger2
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>toplam<span class="token punctuation">)</span>
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token builtin">type</span><span class="token punctuation">(</span>toplam<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</pre><p><strong>deger2</strong> Ondal&#x131;kl&#x131; say&#x131; oldu&#x11F;u i&#xE7;in, Python otomatik olarak sonucun bir Ondal&#x131;kl&#x131; say&#x131; olmas&#x131; gerekti&#x11F;ine karar verir. Ancak Python&apos;un hangi t&#xFC;r&#xFC; kullanaca&#x11F;&#x131;n&#x131; bilmedi&#x11F;i durumlar da vard&#x131;r. &#xD6;rne&#x11F;in:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python">degerA <span class="token operator">=</span> <span class="token string">&quot;merhaba 123&quot;</span>
+degerB <span class="token operator">=</span> <span class="token number">456</span>
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>degerA <span class="token operator">+</span> degerB<span class="token punctuation">)</span>
+</pre><p>Bu kod &#xE7;al&#x131;&#x15F;t&#x131;r&#x131;ld&#x131;&#x11F;&#x131; zaman bir hata ile kar&#x15F;&#x131;la&#x15F;&#x131;l&#x131;r, <code>degerA</code> bir <strong>dizedir (string)</strong> ve <code>degerB</code> bir <strong>tamsay&#x131;d&#x131;r</strong> ve Python ne yapaca&#x11F;&#x131;n&#x131; bilmez. Ancak, Python&apos;u t&#xFC;rler aras&#x131;nda d&#xF6;n&#xFC;&#x15F;&#xFC;m yapmaya zorlayabiliriz:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python">degerB <span class="token operator">=</span> <span class="token builtin">str</span><span class="token punctuation">(</span>degerB<span class="token punctuation">)</span>
+</pre><p>Ayr&#x131;ca bir de&#x11F;i&#x15F;keni tamsay&#x131;ya d&#xF6;n&#xFC;&#x15F;t&#xFC;rmek i&#xE7;in <code>int()</code> ve ondal&#x131;kl&#x131; say&#x131;ya d&#xF6;n&#xFC;&#x15F;t&#xFC;rmek i&#xE7;in ise <code>float()</code> kullanabilir ve istersek <code>float</code> kullanabiliriz:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python">degerA <span class="token operator">=</span> <span class="token string">&quot;123&quot;</span>
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">(</span>degerA<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token builtin">float</span><span class="token punctuation">(</span>degerA<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</pre><p><code>print()</code> komutunu birka&#xE7; &#x15F;ekilde kulland&#x131;&#x11F;&#x131;m&#x131;z&#x131; fark etmi&#x15F; olmal&#x131;s&#x131;n&#x131;z. De&#x11F;i&#x15F;kenleri, toplamlar&#x131;, virg&#xFC;lle ayr&#x131;lm&#x131;&#x15F; birka&#xE7; &#x15F;eyi ve hatta ba&#x15F;ka bir Python komutunun sonucunu yazd&#x131;rd&#x131;k. Belki bu iki komutu da g&#xF6;rm&#xFC;&#x15F;s&#xFC;n&#xFC;zd&#xFC;r:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python"><span class="token builtin">type</span><span class="token punctuation">(</span>degerA<span class="token punctuation">)</span>
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token builtin">type</span><span class="token punctuation">(</span>degerA<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</pre><p>Terminal / konsol i&#xE7;erisinde yazd&#x131;&#x11F;&#x131;n&#x131;zda, bu iki komut ayn&#x131; sonucu verecektir. Bunun nedeni, yorumlay&#x131;c&#x131;da her &#x15F;eyin otomatik olarak yazd&#x131;r&#x131;lmas&#x131;d&#x131;r. Yorumlay&#x131;c&#x131;n&#x131;n d&#x131;&#x15F;&#x131;nda &#xE7;al&#x131;&#x15F;an daha karma&#x15F;&#x131;k programlar yazd&#x131;&#x11F;&#x131;m&#x131;zda, bunlar otomatik olarak yazd&#x131;r&#x131;lmayacakt&#x131;r, bu nedenle <code>print()</code> komutunu kullanmam&#x131;z gerekecek. Bunu ak&#x131;lda tutarak, burada <code>print()</code> komutu kullanmay&#x131; b&#x131;rakal&#x131;m. Bundan sonraki anlat&#x131;mlarda, kodlar&#x131; terminalde yazd&#x131;&#x11F;&#x131;n&#x131;z&#x131; d&#xFC;&#x15F;&#xFC;nerek &#x15F;u &#x15F;ekilde yazaca&#x11F;&#x131;z:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python">deger <span class="token operator">=</span> <span class="token string">&quot;merhaba arkada&#x15F;lar&quot;</span>
+deger
+</pre><h1 class="mume-header" id="listeler">Listeler</h1>
+
+<p>Bir ba&#x15F;ka kullan&#x131;&#x15F;l&#x131; veri t&#xFC;r&#xFC; de bir <strong>listedir</strong>. Liste, di&#x11F;er verilerin bir koleksiyonudur. Bir liste tan&#x131;mlamak i&#xE7;in <code>[ ]</code> kullan&#x131;r&#x131;z:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python">listem <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
+<span class="token builtin">type</span><span class="token punctuation">(</span>listem<span class="token punctuation">)</span>
+diger_listem <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">&quot;Mustafa&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Halil&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Ersin&quot;</span><span class="token punctuation">]</span>
+karma_listem <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">&quot;merhaba&quot;</span><span class="token punctuation">,</span> <span class="token number">345</span><span class="token punctuation">,</span> <span class="token number">34.567</span><span class="token punctuation">]</span>
+</pre><p>G&#xF6;rd&#xFC;&#x11F;&#xFC;n&#xFC;z gibi bir liste, her t&#xFC;rl&#xFC; veriyi (string, integer,...vb) i&#xE7;erebilir. Bir liste ile bir&#xE7;ok &#x15F;ey yap&#x131;labilir. &#xD6;rne&#x11F;in, listedeki &#xF6;&#x11F;elerin miktar&#x131;n&#x131; hesaplayabiliriz:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python"><span class="token builtin">len</span><span class="token punctuation">(</span>diger_listem<span class="token punctuation">)</span>
+</pre><p>Veya liste i&#xE7;erisindeki bir &#xF6;&#x11F;eyi al&#x131;n:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python">ismim <span class="token operator">=</span> diger_listem<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+arkadasimin_ismi <span class="token operator">=</span> diger_listem<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span>
+</pre><p><code>len()</code> komutu bir listedeki toplam &#xF6;&#x11F;e say&#x131;s&#x131;n&#x131; d&#xF6;nd&#xFC;r&#xFC;rken (de&#x11F;er olarak bize verirken), listedeki ilk &#xF6;&#x11F;e her zaman 0 (s&#x131;f&#x131;r) konumundad&#x131;r, bu nedenle <strong>diger_listem</strong> listemizde &quot;<strong>Ersin</strong>&quot; 2. konumda olacakt&#x131;r. Listeler i&#xE7;erisindeki &#xF6;&#x11F;eleri s&#x131;ralamak, silmek ve listeye ekleme yapmak ta m&#xFC;mk&#xFC;nd&#xFC;r.</p>
+<p>Bir metin dizesi (string ifade),  Python&apos;daki bir karakter listesine &#xE7;ok benzerdir. A&#x15F;a&#x11F;&#x131;daki kodlar&#x131; &#xE7;al&#x131;&#x15F;t&#x131;rmay&#x131; deneyin:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python">deger <span class="token operator">=</span> <span class="token string">&quot;merhaba&quot;</span>
+<span class="token builtin">len</span><span class="token punctuation">(</span>deger<span class="token punctuation">)</span>
+deger<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span>
+</pre><p><code>deger = &quot;merhaba&quot;</code> ifadesi, <code>deger = [&quot;m&quot;,&quot;e&quot;,&quot;r&quot;,&quot;h&quot;,&quot;a&quot;, &quot;b&quot;, &quot;a&quot;]</code> ile benzer &#x15F;ekilde kullan&#x131;labilir.<br>
+Genellikle listelerle yapabileceklerinizi <strong>string</strong>lerle de yapabilirsiniz. Asl&#x131;nda hem <code>listeler (list)</code> hem de <code>dizeler (string)</code> s&#x131;ral&#x131; yap&#x131;d&#x131;r.</p>
+<p><code>Dizeler, tamsay&#x131;lar, ondal&#x131;kl&#x131; say&#x131;lar</code> ve <code>listeler</code> d&#x131;&#x15F;&#x131;nda, <code>s&#xF6;zl&#xFC;kler</code> gibi  yerle&#x15F;ik veri t&#xFC;rleri vard&#x131;r ve hatta <code>s&#x131;n&#x131;f</code>larla kendi veri t&#xFC;rlerinizi olu&#x15F;turabilirsiniz.</p>
+<h1 class="mume-header" id="girinti-indentation">Girinti (Indentation)</h1>
+
+<p>Liste kullan&#x131;m&#x131;n&#x131;n &#xF6;nemli, liste i&#xE7;erisinde gezinip  &#xF6;&#x11F;lere s&#x131;rayla eri&#x15F;mek ve her bir &#xF6;&#x11F;e ile bir &#x15F;eyler yapma yetene&#x11F;idir. &#xD6;rne&#x11F;in &#x15F;una bak&#x131;n:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python">tum_daltonlar <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">&quot;Joe&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;William&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Jack&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Averell&quot;</span><span class="token punctuation">]</span>
+<span class="token keyword keyword-for">for</span> dalton <span class="token keyword keyword-in">in</span> tum_daltonlar<span class="token punctuation">:</span>
+	<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>dalton <span class="token operator">+</span> <span class="token string">&quot; Dalton&quot;</span><span class="token punctuation">)</span>
+</pre><p><code>for in</code> komutuyla listemizi d&#xF6;ng&#xFC;ye soktuk (programlama jargonu) ve her bir &#xF6;&#x11F;eyle bir &#x15F;eyler yapt&#x131;k. &#xD6;zel s&#xF6;zdizimine dikkat edin: <code>for</code> komutu <code>:</code> ile sonlan&#x131;r, bu i&#x15F;aret (iki nokta &#xFC;st&#xFC;ste), alt sat&#x131;rda bir kod blo&#x11F;u olaca&#x11F;&#x131;n&#x131; belirtir. Yorumlay&#x131;c&#x131;da, <code>:</code> ile biten komut sat&#x131;r&#x131;na girdikten hemen sonra komut istemi <code>...</code> olarak de&#x11F;i&#x15F;ecektir.</p>
+<p>Python,  <code>for</code> d&#xF6;ng&#xFC;s&#xFC; i&#xE7;inde, sonraki sat&#x131;rlardan ka&#xE7;&#x131;n&#x131;n &#xE7;al&#x131;&#x15F;t&#x131;r&#x131;lmas&#x131; gerekti&#x11F;ini nas&#x131;l bilecek? Bunun i&#xE7;in Python girintiye g&#xFC;venir. Sonraki sat&#x131;rlar bir bo&#x15F;luk veya birka&#xE7; bo&#x15F;luk veya bir sekme (TAB) veya birka&#xE7; sekme ile ba&#x15F;lamal&#x131;d&#x131;r. Girinti ayn&#x131; kald&#x131;&#x11F;&#x131; s&#xFC;rece sat&#x131;rlar <code>for in</code> blo&#x11F;unun bir par&#xE7;as&#x131; olarak kabul edilecektir. Kod blo&#x11F;unun bir sat&#x131;r&#x131;na 2, sonraki sat&#x131;r&#x131;na 4 bo&#x15F;luk b&#x131;rakarak  kod yazmaya ba&#x15F;larsan&#x131;z, bir hata mesaj&#x131; al&#x131;rs&#x131;n&#x131;z, kodlar&#x131;n&#x131;z &#xE7;al&#x131;&#x15F;maz. Blokta yazaca&#x11F;&#x131;n&#x131;z kodlar bitti&#x11F;inde, girintisiz ba&#x15F;ka bir sat&#x131;r yazman&#x131;z veya <code>for in</code> blo&#x11F;undan geri d&#xF6;nmek i&#xE7;in <code>Enter</code> tu&#x15F;una basman&#x131;z yeterlidir.</p>
+<p>Girinti ayr&#x131;ca program&#x131;n/kodlar&#x131;n okunabilirli&#x11F;ine de yard&#x131;mc&#x131; olur. B&#xFC;y&#xFC;k bir program yazarken b&#xFC;y&#xFC;k girintiler kullan&#x131;rsan&#x131;z (&#xF6;rne&#x11F;in bo&#x15F;luklar yerine sekmeler (Tab) kullan&#x131;rsan&#x131;z), neyin neyin i&#xE7;inde &#xE7;al&#x131;&#x15F;t&#x131;r&#x131;ld&#x131;&#x11F;&#x131;n&#x131; net bir &#x15F;ekilde g&#xF6;rebilirsiniz. Di&#x11F;er komutlar&#x131;n da girintili kod bloklar&#x131; kulland&#x131;&#x11F;&#x131;n&#x131; g&#xF6;rece&#x11F;iz.</p>
+<p><code>for in</code> komutu, birden fazla kez yap&#x131;lmas&#x131; gereken bir&#xE7;ok &#x15F;ey i&#xE7;in kullan&#x131;labilir. &#xD6;rne&#x11F;in, <code>range()</code> komutuyla birle&#x15F;tirilebilir:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python">seri <span class="token operator">=</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">)</span>
+toplam <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token string">&quot;toplam&quot;</span><span class="token punctuation">)</span>
+<span class="token keyword keyword-for">for</span> sayi <span class="token keyword keyword-in">in</span> seri<span class="token punctuation">:</span>
+	<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>sayi<span class="token punctuation">)</span>
+	toplam <span class="token operator">=</span> toplam <span class="token operator">+</span> sayi
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token string">&quot;----&quot;</span><span class="token punctuation">)</span>
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>toplam<span class="token punctuation">)</span>
+</pre><p>E&#x11F;er yorumlay&#x131;c&#x131;da <code>help(range)</code> yazarsan&#x131;z &#x15F;unu g&#xF6;receksiniz:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python"><span class="token builtin">range</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
+	<span class="token builtin">range</span><span class="token punctuation">(</span>stop<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">list</span> of integers
+	<span class="token builtin">range</span><span class="token punctuation">(</span>start<span class="token punctuation">,</span> stop<span class="token punctuation">[</span><span class="token punctuation">,</span> step<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">list</span> of integers
+</pre><p>Burada k&#xF6;&#x15F;eli parantezler iste&#x11F;e ba&#x11F;l&#x131; bir parametreyi belirtir. Ancak hepsinin tamsay&#x131; olmas&#x131; bekleniyor. A&#x15F;a&#x11F;&#x131;da ad&#x131;m (art&#x131;&#x15F; miktar&#x131;) parametresini <code>int()</code> kullanarak bir tamsay&#x131; olmaya zorlayaca&#x11F;&#x131;z:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python">sayi <span class="token operator">=</span> <span class="token number">1000</span>
+<span class="token keyword keyword-for">for</span> i <span class="token keyword keyword-in">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">180</span> <span class="token operator">*</span> sayi<span class="token punctuation">,</span> <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token number">0.5</span> <span class="token operator">*</span> sayi<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+	<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token builtin">float</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token operator">/</span> sayi<span class="token punctuation">)</span>
+</pre><p>Bir ba&#x15F;ka <code>range()</code> &#xF6;rne&#x11F;i:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python">tum_daltonlar <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">&quot;Joe&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;William&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Jack&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Averell&quot;</span><span class="token punctuation">]</span>
+<span class="token keyword keyword-for">for</span> n <span class="token keyword keyword-in">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+	<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>tum_daltonlar<span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">&quot; is Dalton number &quot;</span><span class="token punctuation">,</span> n<span class="token punctuation">)</span>
+</pre><p><code>range()</code> komutu, 0 (s&#x131;f&#x131;r) ile ba&#x15F;lamas&#x131; (ba&#x15F;lang&#x131;&#xE7; &#x200B;&#x200B;numaras&#x131;n&#x131; belirtmezseniz) ve son numaras&#x131;n&#x131;n belirtti&#x11F;iniz biti&#x15F; say&#x131;s&#x131;ndan bir eksik olmas&#x131; gibi garip bir &#xF6;zelli&#x11F;e sahiptir. Yani Biti&#x15F; de&#x11F;eri i&#x15F;leme dahil edilmez. Bu, elbette di&#x11F;er Python komutlar&#x131;yla iyi &#xE7;al&#x131;&#x15F;&#x131;r. &#xD6;rne&#x11F;in:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python">tum_daltonlar <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">&quot;Joe&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;William&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Jack&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Averell&quot;</span><span class="token punctuation">]</span>
+toplam <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>tum_daltonlar<span class="token punctuation">)</span>
+<span class="token keyword keyword-for">for</span> n <span class="token keyword keyword-in">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>toplam<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>tum_daltonlar<span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">)</span>
+</pre><p>Girintili bloklar&#x131;n bir ba&#x15F;ka ilgin&#xE7; kullan&#x131;m&#x131; ise <code>if</code> komutudur. Bu komut, yaln&#x131;zca belirli bir ko&#x15F;ul kar&#x15F;&#x131;land&#x131;&#x11F;&#x131;nda bir kod blo&#x11F;u &#xE7;al&#x131;&#x15F;t&#x131;r&#x131;l&#x131;r, &#xF6;rne&#x11F;in:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python">tum_daltonlar <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">&quot;Joe&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;William&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Jack&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Averell&quot;</span><span class="token punctuation">]</span>
+<span class="token keyword keyword-if">if</span> <span class="token string">&quot;Joe&quot;</span> <span class="token keyword keyword-in">in</span> tum_daltonlar<span class="token punctuation">:</span>
+    <span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token string">&quot;Joe Dalton&apos;u liste i&#xE7;inde bulduk!!!&quot;</span><span class="token punctuation">)</span>
+</pre><p>Elbette bu kod, &quot;<strong>Joe Dalton&apos;u liste i&#xE7;inde bulduk!!!</strong>&quot; c&#xFC;mlesini yazd&#x131;racakt&#x131;r, ancak ikinci sat&#x131;r&#x131; &#x15F;ununla de&#x11F;i&#x15F;tirmeyi deneyin:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python"><span class="token keyword keyword-if">if</span> <span class="token string">&quot;Lucky&quot;</span> <span class="token keyword keyword-in">in</span> tum_daltonlar<span class="token punctuation">:</span>
+</pre><p>O zaman hi&#xE7;bir &#x15F;ey yazd&#x131;r&#x131;lmaz &#xE7;&#xFC;nk&#xFC; <strong>Lucky</strong> ifadesi <strong>tum_daltonlar</strong> listesi i&#xE7;erisinde bulunmuyor. Ba&#x15F;ka bir ifade de belirtebiliriz:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python">tum_daltonlar <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">&quot;Joe&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;William&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Jack&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Averell&quot;</span><span class="token punctuation">]</span>
+<span class="token keyword keyword-if">if</span> <span class="token string">&quot;Lucky&quot;</span> <span class="token keyword keyword-in">in</span> tum_daltonlar<span class="token punctuation">:</span>
+    <span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token string">&quot;Bu Dalton&apos;u liste i&#xE7;inde bulduk!!!&quot;</span><span class="token punctuation">)</span>
+<span class="token keyword keyword-else">else</span><span class="token punctuation">:</span>
+    <span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token string">&quot;Bu isimde bir Dalton liste i&#xE7;inde yok&quot;</span><span class="token punctuation">)</span>
+</pre><h1 class="mume-header" id="fonksiyonlar">Fonksiyonlar</h1>
+
+<p>&#xC7;ok az <a href="https://docs.python.org/3/reference/lexical_analysis.html#identifiers">standart Python komutu</a> vard&#x131;r ve bunlar&#x131;n bir&#xE7;o&#x11F;unu zaten biliyoruz. Ancak Python&apos;da kendi komutlar&#x131;n&#x131;z&#x131; olu&#x15F;turabilirsiniz. Asl&#x131;nda, Python kurulumunuza ekleyebilece&#x11F;iniz ek mod&#xFC;llerin &#xE7;o&#x11F;u tam da bunu yapar, kullanabilece&#x11F;iniz komutlar eklerler. Python&apos;da &#xF6;zel komuta, <strong>fonksiyon</strong> denir ve &#x15F;u &#x15F;ekilde tan&#x131;mlan&#x131;r:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python"><span class="token keyword keyword-def">def</span> <span class="token function">printmkare</span><span class="token punctuation">(</span>deger<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token builtin">str</span><span class="token punctuation">(</span>deger<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">&quot; metrekare&quot;</span><span class="token punctuation">)</span>
+
+printmkare<span class="token punctuation">(</span><span class="token number">45</span><span class="token punctuation">)</span>
+</pre><p><code>def()</code> komutu yeni bir fonksiyon tan&#x131;mlar (<strong>def</strong> ifadesi, <strong>definition</strong> = tan&#x131;m, belirtme kelimesinin k&#x131;saltmas&#x131;d&#x131;r), ona bir isim verirsiniz, bu ismi siz belirlersiniz ve parantez i&#xE7;inde fonksiyonun kullanaca&#x11F;&#x131; arg&#xFC;manlar&#x131; tan&#x131;mlars&#x131;n&#x131;z. Ba&#x11F;&#x131;ms&#x131;z de&#x11F;i&#x15F;kenler, fonksiyona iletilecek verilerdir. &#xD6;rne&#x11F;in, <code>len()</code> komutuna bak&#x131;n. Sadece <code>len()</code> yazarsan&#x131;z, Python size bir arg&#xFC;mana ihtiyac&#x131; oldu&#x11F;unu s&#xF6;yleyecektir ki bu &#xE7;ok a&#xE7;&#x131;k: Bir &#x15F;eyin uzunlu&#x11F;unu bilmek, &#xF6;&#x11F;renemek istiyorsan&#x131;z, o &#x15F;eyi <code>len()</code> komutu i&#xE7;erisine yazmal&#x131;s&#x131;n&#x131;z. <code>len(listem)</code> yazd&#x131;&#x11F;&#x131;n&#x131;zda, <code>listem</code>, ibaresi <code>len()</code> fonksiyonuna iletti&#x11F;iniz arg&#xFC;man olur. <code>len()</code> fonksiyonu, bu arg&#xFC;manla ne yapaca&#x11F;&#x131;n&#x131; bilecek &#x15F;ekilde tan&#x131;mlan&#x131;r. Ayn&#x131; &#x15F;eyi <code>printmkare</code> fonksiyonumuzla da yapt&#x131;k.</p>
+<p><code>deger</code> ad&#x131;, herhangi bir &#x15F;ey olabilir ve yaln&#x131;zca fonksiyon i&#xE7;inde kullan&#x131;lacakt&#x131;r. Bu sadece arg&#xFC;mana verdi&#x11F;iniz bir isimdir, b&#xF6;ylece onunla bir &#x15F;eyler yapabilirsiniz. Arg&#xFC;manlar&#x131; tan&#x131;mlayarak, fonksiyona ka&#xE7; tane agr&#xFC;man bekleyece&#x11F;ini de s&#xF6;ylersiniz. &#xD6;rne&#x11F;in, bunu yaparsan&#x131;z:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python">printmkare<span class="token punctuation">(</span><span class="token number">45</span><span class="token punctuation">,</span> <span class="token number">34</span><span class="token punctuation">)</span>
+</pre><p>bu kodu yazd&#x131;&#x11F;&#x131;n&#x131;zda bir hata olu&#x15F;acakt&#x131;r. &#xC7;&#xFC;nk&#xFC; Fonksiyonumuz sadece bir arg&#xFC;man alacak &#x15F;ekilde programland&#x131;, ancak iki adet arg&#xFC;man (45 ve 34) ald&#x131;. Ba&#x15F;ka bir &#xF6;rnek deneyelim:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python"><span class="token keyword keyword-def">def</span> <span class="token function">topla</span><span class="token punctuation">(</span>deger1<span class="token punctuation">,</span> deger2<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    toplam <span class="token operator">=</span> deger1 <span class="token operator">+</span> deger2
+    <span class="token keyword keyword-return">return</span> toplam
+
+toplamDeger <span class="token operator">=</span> topla<span class="token punctuation">(</span><span class="token number">45</span><span class="token punctuation">,</span> <span class="token number">34</span><span class="token punctuation">)</span>
+</pre><p>Burada iki arg&#xFC;man alan,  arg&#xFC;manlar&#x131; toplayan ve bu de&#x11F;eri <strong>d&#xF6;nd&#xFC;ren</strong> (yani de&#x11F;eri, istenildi&#x11F;inde kullan&#x131;labilecek &#x15F;ekilde haf&#x131;zada tutan) bir fonksiyon yazd&#x131;k. Bir &#x15F;eyi <strong>d&#xF6;nd&#xFC;rmek</strong> &#xE7;ok yararl&#x131;d&#x131;r (bunun i&#xE7;in <code>return</code> ifadesini kullan&#x131;yoruz). yukar&#x131;daki kod ile yaz&#x131;lan iki say&#x131; de&#x11F;erinin toplam&#x131;n&#x131; <code>toplamDeger</code> de&#x11F;i&#x15F;kenine atad&#x131;k, bu de&#x11F;eri program i&#xE7;erisinde istedi&#x11F;imiz zaman kullanabilece&#x11F;iz.</p>
+<h1 class="mume-header" id="mod%C3%BCller">Mod&#xFC;ller</h1>
+
+<p>Art&#x131;k Python&apos;un nas&#x131;l &#xE7;al&#x131;&#x15F;t&#x131;&#x11F;&#x131; hakk&#x131;nda iyi bir fikriniz oldu&#x11F;una g&#xF6;re, bir &#x15F;eyi daha bilmeniz gerekecek: Dosyalar ve mod&#xFC;llerle nas&#x131;l &#xE7;al&#x131;&#x15F;&#x131;l&#x131;r.</p>
+<p>&#x15E;imdiye kadar Python komutlar&#x131;n&#x131;, yorumlay&#x131;c&#x131;da sat&#x131;r sat&#x131;r yazd&#x131;k. Bu y&#xF6;ntem, daha fazla kod bar&#x131;nd&#x131;ran, kapsaml&#x131; programlar i&#xE7;in uygun de&#x11F;ildir. Normalde Python programlar&#x131;n&#x131;n kodu, <code>.py</code> uzant&#x131;l&#x131; dosyalarda saklan&#x131;r. Yaln&#x131;z d&#xFC;z metin dosyalar&#x131; olan bu kodlar&#x131;, herhangi bir metin d&#xFC;zenleyici (Linux&apos;ta gedit, emacs, vi ve hatta Windows&apos;ta Not Defteri ile) yazmak/olu&#x15F;turmak ve d&#xFC;zenlemek m&#xFC;mk&#xFC;nd&#xFC;r.</p>
+<p>Bir Python program&#x131;n&#x131; &#xE7;al&#x131;&#x15F;t&#x131;rman&#x131;n birka&#xE7; yolu vard&#x131;r. Windows&apos;ta dosyan&#x131;za sa&#x11F; t&#x131;klay&#x131;n, Python ile a&#xE7;&#x131;n ve &#xE7;al&#x131;&#x15F;t&#x131;r&#x131;n. Ancak bunu <code>FreeCAD Python Yorumlay&#x131;c&#x131;s&#x131;</code>n&#x131;n kendisinden de &#xE7;al&#x131;&#x15F;t&#x131;rabilirsiniz. Bunun i&#xE7;in yorumlay&#x131;c&#x131;, program&#x131;n&#x131;z&#x131;n (kodlar&#x131;n&#x131;z&#x131;n) nerede oldu&#x11F;unu bilmelidir. FreeCAD&apos;de en kolay yol, program&#x131;n&#x131;z&#x131; FreeCAD&apos;in Python yorumlay&#x131;c&#x131;s&#x131;n&#x131;n varsay&#x131;lan olarak bildi&#x11F;i bir klas&#xF6;re, &#xF6;rne&#x11F;in <strong>FreeCAD&apos;in kullan&#x131;c&#x131; Mod</strong> klas&#xF6;r&#xFC;ne yerle&#x15F;tirmektir. Bu klas&#xF6;r, i&#x15F;letim sistemlerine g&#xF6;re genellikle &#x15F;u konumdad&#x131;r:</p>
+<ul>
+<li>Linux&apos;ta genellikle, <code>/home/&lt;username&gt;/.FreeCAD/Mod/</code>.</li>
+<li>Windows&apos;ta genellikle, <code>%APPDATA%\FreeCAD\Mod\</code>,  yani <code>C:\Users\&lt;username&gt;\Appdata\Roaming\FreeCAD\Mod\</code>.</li>
+<li>Mac OSX&apos;te genellikle, <code>/Users/&lt;username&gt;/Library/Preferences/FreeCAD/Mod/</code>.</li>
+</ul>
+<p>Buraya <strong>scripts</strong> ad&#x131;nda bir alt klas&#xF6;r ekleyelim ve ard&#x131;ndan &#x15F;&#xF6;yle bir kod yazal&#x131;m ve dosyay&#x131; buraya kaydedelim:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python"><span class="token keyword keyword-def">def</span> <span class="token function">topla</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span>b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword keyword-return">return</span> a <span class="token operator">+</span> b
+
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token string">&quot;test.py dosyas&#x131; ba&#x15F;ar&#x131;l&#x131; bir &#x15F;ekilde y&#xFC;klendi &quot;</span><span class="token punctuation">)</span>
+</pre><p>Dosyay&#x131; <strong>scripts</strong> (komut dosyalar&#x131;) klas&#xF6;r&#xFC;ne <code>test.py</code> ismiyle kaydedin ve yorumlay&#x131;c&#x131; penceresinde &#x15F;unu yaz&#x131;n:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python"><span class="token keyword keyword-import">import</span> test
+</pre><p><code>.py</code> uzant&#x131;s&#x131; olmadan yaz&#x131;ld&#x131;&#x11F;&#x131;na dikkat edin. Bu, dosyan&#x131;n i&#xE7;eri&#x11F;ini sanki yorumlay&#x131;c&#x131;da yazm&#x131;&#x15F;&#x131;z gibi sat&#x131;r sat&#x131;r &#xE7;al&#x131;&#x15F;t&#x131;r&#x131;lacakt&#x131;r. Toplama (sum) fonksiyonu olu&#x15F;turulacak ve yorumlay&#x131;c&#x131; i&#xE7;erisine mesaj yazd&#x131;r&#x131;lacakt&#x131;r. Bu yazd&#x131;&#x11F;&#x131;m&#x131;z gibi <code>fonksiyon</code> i&#xE7;eren dosyalara <code>mod&#xFC;l</code> denir.</p>
+<p>Yorumlay&#x131;c&#x131;ya bir <code>topla()</code> fonksiyonu yazd&#x131;&#x11F;&#x131;m&#x131;zda, onu &#x15F;u &#x15F;ekilde &#xE7;al&#x131;&#x15F;t&#x131;r&#x131;r&#x131;z:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python">topla<span class="token punctuation">(</span><span class="token number">14</span><span class="token punctuation">,</span> <span class="token number">45</span><span class="token punctuation">)</span>
+</pre><p>Ancak <code>topla()</code> i&#x15F;levi i&#xE7;eren bir mod&#xFC;l&#xFC; i&#xE7;e aktard&#x131;&#x11F;&#x131;m&#x131;zda s&#xF6;zdizimi biraz farkl&#x131;d&#x131;r:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python">test<span class="token punctuation">.</span>topla<span class="token punctuation">(</span><span class="token number">14</span><span class="token punctuation">,</span> <span class="token number">45</span><span class="token punctuation">)</span>
+</pre><p>Yani mod&#xFC;l bir <code>container</code> olarak i&#xE7;e aktar&#x131;l&#x131;r ve t&#xFC;m fonksiyonlar&#x131; o <code>konteyner</code>&#x131;n i&#xE7;indedir. Bu &#xE7;ok kullan&#x131;&#x15F;l&#x131;d&#x131;r, &#xE7;&#xFC;nk&#xFC; bir&#xE7;ok mod&#xFC;l&#xFC; i&#xE7;e aktarabilir ve her &#x15F;eyi iyi organize edebiliriz. Temel olarak, aralar&#x131;nda bir nokta olan <code>bir_&#x15F;ey.ba&#x15F;ka_bir_&#x15F;ey</code> g&#xF6;rd&#xFC;&#x11F;&#xFC;n&#xFC;zde, bu, <code>ba&#x15F;ka_bir_&#x15F;ey</code>&apos;in <code>bir_&#x15F;ey</code>&apos;in i&#xE7;inde oldu&#x11F;u anlam&#x131;na gelir.</p>
+<p>Ayr&#x131;ca <code>topla()</code> fonksiyonumuzu do&#x11F;rudan ana yorumlay&#x131;c&#x131; alan&#x131;na da aktarabiliriz:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python"><span class="token keyword keyword-from">from</span> test <span class="token keyword keyword-import">import</span> <span class="token operator">*</span>
+topla<span class="token punctuation">(</span><span class="token number">12</span><span class="token punctuation">,</span> <span class="token number">54</span><span class="token punctuation">)</span>
+</pre><p>Hemen hemen t&#xFC;m mod&#xFC;ller bunu yapar; Yorumlay&#x131;c&#x131;da veya kendi Python mod&#xFC;llerinizde kullanabilece&#x11F;iniz fonksiyonlar&#x131;, yeni veri t&#xFC;rlerini ve s&#x131;n&#x131;flar&#x131; tan&#x131;mlar, &#xE7;&#xFC;nk&#xFC; mod&#xFC;l&#xFC;n&#xFC;zdeki di&#x11F;er mod&#xFC;lleri i&#xE7;e aktarman&#x131;z&#x131; hi&#xE7;bir &#x15F;ey engelleyemez!</p>
+<p>Mevcut bilgisayar&#x131;n&#x131;zda, hangi mod&#xFC;llere sahip oldu&#x11F;unuzu (hangilerinin y&#xFC;kl&#xFC; oldu&#x11F;unu), hangi fonksiyonlar&#x131;n hangi mod&#xFC;l&#xFC;n i&#xE7;inde oldu&#x11F;unu ve bunlar&#x131;n nas&#x131;l kullan&#x131;laca&#x11F;&#x131;n&#x131; (yani ne t&#xFC;r arg&#xFC;manlara ihtiya&#xE7; duyduklar&#x131;n&#x131;) nas&#x131;l bilebiliriz? Python&apos;un bir <code>help()</code> fonksiyonu oldu&#x11F;unu g&#xF6;rm&#xFC;&#x15F;t&#xFC;k.</p>
+<pre data-role="codeBlock" data-info="python" class="language-python"><span class="token builtin">help</span><span class="token punctuation">(</span><span class="token string">&quot;modules&quot;</span><span class="token punctuation">)</span>
+</pre><p>Yukar&#x131;daki kodu konsolda yazd&#x131;&#x11F;&#x131;m&#x131;zda, bilgisayar&#x131;m&#x131;zda y&#xFC;kl&#xFC; olan mevcut t&#xFC;m mod&#xFC;ller listelenecektir. Bunlardan herhangi birini i&#xE7;e aktarabilir ve mod&#xFC;l i&#xE7;eriklerine <code>dir()</code> komutuyla g&#xF6;z atabiliriz:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python"><span class="token keyword keyword-import">import</span> math
+<span class="token builtin">dir</span><span class="token punctuation">(</span>math<span class="token punctuation">)</span>
+</pre><p><code>math</code> (Matematik) mod&#xFC;l&#xFC;nde bulunan t&#xFC;m i&#x15F;levlerin yan&#x131; s&#x131;ra <code>__doc__, __file__, __name__</code> adl&#x131; garip &#x15F;eyleri g&#xF6;rece&#x11F;iz. &#x130;yi olu&#x15F;turulmu&#x15F; bir mod&#xFC;ldeki her fonksiyonun, nas&#x131;l kullan&#x131;laca&#x11F;&#x131;n&#x131; a&#xE7;&#x131;klayan bir <code>__doc__</code> vard&#x131;r. &#xD6;rne&#x11F;in <code>math</code> (matematik) mod&#xFC;l&#xFC;n&#xFC;n i&#xE7;inde bir <code>sin()</code> fonksiyonu oldu&#x11F;unu g&#xF6;r&#xFC;yoruz. Nas&#x131;l kullan&#x131;laca&#x11F;&#x131;n&#x131; bilmek ister misiniz?</p>
+<pre data-role="codeBlock" data-info="python" class="language-python"><span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>math<span class="token punctuation">.</span>sin<span class="token punctuation">.</span>__doc__<span class="token punctuation">)</span>
+</pre><p>Ekrandaki yaz&#x131;da belirgin olmayabilir, ancak <code>doc</code> ifadesinin her iki taraf&#x131;nda <code>iki adet alt &#xE7;izgi (__)</code> karakteri vard&#x131;r.</p>
+<p><strong>Ve son bir ipucu</strong>: Yeni veya mevcut kod &#xFC;zerinde &#xE7;al&#x131;&#x15F;&#x131;rken, FreeCAD&apos;in makro dosyas&#x131; uzant&#x131;s&#x131; olan <code>.FCMacro</code>&apos;yu kullanmamak, bunun yerine standart <code>.py</code> (python) uzant&#x131;s&#x131;n&#x131; kullanmak daha iyidir. Bunun nedeni Python&apos;un <code>.FCMacro</code> uzant&#x131;s&#x131;n&#x131; tan&#x131;mamas&#x131;d&#x131;r. Kodlar&#x131;n&#x131;z&#x131; (mod&#xFC;llerinizi, fonksiyonlar&#x131;n&#x131;z&#x131;) kaydederken <code>.py</code> uzant&#x131;l&#x131; dosya kullan&#x131;rsan&#x131;z, kodunuz daha &#xF6;nce g&#xF6;rd&#xFC;&#x11F;&#xFC;m&#xFC;z gibi <code>import</code> y&#xF6;ntemi ile kolayca FreeCAD i&#xE7;erisine  dahil edilebilir ve ayr&#x131;ca <code>importlib.reload()</code> ile yeniden y&#xFC;klenebilir:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python"><span class="token keyword keyword-import">import</span> importlib
+importlib<span class="token punctuation">.</span><span class="token builtin">reload</span><span class="token punctuation">(</span>test<span class="token punctuation">)</span>
+</pre><p>Ancak bir alternatif var:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python"><span class="token keyword keyword-exec">exec</span><span class="token punctuation">(</span><span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">&quot;C:/PathToMyMacro/myMacro.FCMacro&quot;</span><span class="token punctuation">)</span><span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</pre><h1 class="mume-header" id="freecad-ile-ba%C5%9Flamak">FreeCAD ile ba&#x15F;lamak</h1>
+
+<p>Umar&#x131;m art&#x131;k Python&apos;un nas&#x131;l &#xE7;al&#x131;&#x15F;t&#x131;&#x11F;&#x131; hakk&#x131;nda iyi bir fikriniz vard&#x131;r ve FreeCAD&apos;in neler sunabilece&#x11F;ini ke&#x15F;fetmeye ba&#x15F;layabilirsiniz. FreeCAD&apos;in Python i&#x15F;levlerinin t&#xFC;m&#xFC; farkl&#x131; mod&#xFC;llerde iyi organize edilmi&#x15F;tir. FreeCAD&apos;i ba&#x15F;latt&#x131;&#x11F;&#x131;n&#x131;zda baz&#x131;lar&#x131; zaten y&#xFC;klenir (i&#xE7;e aktar&#x131;l&#x131;r). Bunlar&#x131;n neler oldu&#x11F;unu g&#xF6;rmek i&#xE7;in FreeCAD Python konsolunda &#x15F;unu yazabilirsiniz:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python"><span class="token builtin">dir</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</pre><h1 class="mume-header" id="not">Not</h1>
+
+<ul>
+<li>FreeCAD, orijinal olarak Python 2 ile &#xE7;al&#x131;&#x15F;mak &#xFC;zere tasarlanm&#x131;&#x15F;t&#x131;. Python 2, 2020&apos;de &#xF6;mr&#xFC;n&#xFC;n sonuna ula&#x15F;t&#x131;&#x11F;&#x131; i&#xE7;in, FreeCAD&apos;in gelecekteki geli&#x15F;imi yaln&#x131;zca Python 3 ile yap&#x131;lacak ve geriye d&#xF6;n&#xFC;k uyumluluk desteklenmeyecektir.</li>
+<li>Python hakk&#x131;nda &#xE7;ok daha fazla bilgiyi <a href="https://docs.python.org/3/tutorial/index.html">Resmi Python e&#x11F;itiminde</a> , <a href="https://docs.python.org/3/reference/">Resmi Python referans&#x131;nda</a> ve en kapsaml&#x131; T&#xFC;rk&#xE7;e kaynak olan <a href="https://python-istihza.yazbel.com/">&#x130;stihza Python 3 Belgelerinde</a> bulabilirsiniz.</li>
+</ul>
+<p>Kaynak: <a href="https://wiki.freecadweb.org/Introduction_to_Python">Discovering Python</a></p>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>
