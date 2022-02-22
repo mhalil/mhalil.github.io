@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>03 Python Komut Dosyası Oluşturmak</title>
+  <style>
+  @font-face {
+  font-family: octicons-link;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+.markdown-body .octicon {
+  display: inline-block;
+  fill: currentColor;
+  vertical-align: text-bottom;
+}
+
+.markdown-body .anchor {
+  float: left;
+  line-height: 1;
+  margin-left: -20px;
+  padding-right: 4px;
+}
+
+.markdown-body .anchor:focus {
+  outline: none;
+}
+
+.markdown-body h1 .octicon-link,
+.markdown-body h2 .octicon-link,
+.markdown-body h3 .octicon-link,
+.markdown-body h4 .octicon-link,
+.markdown-body h5 .octicon-link,
+.markdown-body h6 .octicon-link {
+  color: #1b1f23;
+  vertical-align: middle;
+  visibility: hidden;
+}
+
+.markdown-body h1:hover .anchor,
+.markdown-body h2:hover .anchor,
+.markdown-body h3:hover .anchor,
+.markdown-body h4:hover .anchor,
+.markdown-body h5:hover .anchor,
+.markdown-body h6:hover .anchor {
+  text-decoration: none;
+}
+
+.markdown-body h1:hover .anchor .octicon-link,
+.markdown-body h2:hover .anchor .octicon-link,
+.markdown-body h3:hover .anchor .octicon-link,
+.markdown-body h4:hover .anchor .octicon-link,
+.markdown-body h5:hover .anchor .octicon-link,
+.markdown-body h6:hover .anchor .octicon-link {
+  visibility: visible;
+}
+
+.markdown-body {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: #24292e;
+  line-height: 1.5;
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+  font-size: 16px;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+.markdown-body .pl-c {
+  color: #6a737d;
+}
+
+.markdown-body .pl-c1,
+.markdown-body .pl-s .pl-v {
+  color: #005cc5;
+}
+
+.markdown-body .pl-e,
+.markdown-body .pl-en {
+  color: #6f42c1;
+}
+
+.markdown-body .pl-s .pl-s1,
+.markdown-body .pl-smi {
+  color: #24292e;
+}
+
+.markdown-body .pl-ent {
+  color: #22863a;
+}
+
+.markdown-body .pl-k {
+  color: #d73a49;
+}
+
+.markdown-body .pl-pds,
+.markdown-body .pl-s,
+.markdown-body .pl-s .pl-pse .pl-s1,
+.markdown-body .pl-sr,
+.markdown-body .pl-sr .pl-cce,
+.markdown-body .pl-sr .pl-sra,
+.markdown-body .pl-sr .pl-sre {
+  color: #032f62;
+}
+
+.markdown-body .pl-smw,
+.markdown-body .pl-v {
+  color: #e36209;
+}
+
+.markdown-body .pl-bu {
+  color: #b31d28;
+}
+
+.markdown-body .pl-ii {
+  background-color: #b31d28;
+  color: #fafbfc;
+}
+
+.markdown-body .pl-c2 {
+  background-color: #d73a49;
+  color: #fafbfc;
+}
+
+.markdown-body .pl-c2:before {
+  content: "^M";
+}
+
+.markdown-body .pl-sr .pl-cce {
+  color: #22863a;
+  font-weight: 700;
+}
+
+.markdown-body .pl-ml {
+  color: #735c0f;
+}
+
+.markdown-body .pl-mh,
+.markdown-body .pl-mh .pl-en,
+.markdown-body .pl-ms {
+  color: #005cc5;
+  font-weight: 700;
+}
+
+.markdown-body .pl-mi {
+  color: #24292e;
+  font-style: italic;
+}
+
+.markdown-body .pl-mb {
+  color: #24292e;
+  font-weight: 700;
+}
+
+.markdown-body .pl-md {
+  background-color: #ffeef0;
+  color: #b31d28;
+}
+
+.markdown-body .pl-mi1 {
+  background-color: #f0fff4;
+  color: #22863a;
+}
+
+.markdown-body .pl-mc {
+  background-color: #ffebda;
+  color: #e36209;
+}
+
+.markdown-body .pl-mi2 {
+  background-color: #005cc5;
+  color: #f6f8fa;
+}
+
+.markdown-body .pl-mdr {
+  color: #6f42c1;
+  font-weight: 700;
+}
+
+.markdown-body .pl-ba {
+  color: #586069;
+}
+
+.markdown-body .pl-sg {
+  color: #959da5;
+}
+
+.markdown-body .pl-corl {
+  color: #032f62;
+  text-decoration: underline;
+}
+
+.markdown-body details {
+  display: block;
+}
+
+.markdown-body summary {
+  display: list-item;
+}
+
+.markdown-body a {
+  background-color: transparent;
+}
+
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline-width: 0;
+}
+
+.markdown-body strong {
+  font-weight: inherit;
+  font-weight: bolder;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  margin: .67em 0;
+}
+
+.markdown-body img {
+  border-style: none;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre {
+  font-family: monospace,monospace;
+  font-size: 1em;
+}
+
+.markdown-body hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+}
+
+.markdown-body input {
+  font: inherit;
+  margin: 0;
+}
+
+.markdown-body input {
+  overflow: visible;
+}
+
+.markdown-body [type=checkbox] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body * {
+  box-sizing: border-box;
+}
+
+.markdown-body input {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.markdown-body a {
+  color: #0366d6;
+  text-decoration: none;
+}
+
+.markdown-body a:hover {
+  text-decoration: underline;
+}
+
+.markdown-body strong {
+  font-weight: 600;
+}
+
+.markdown-body hr {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #dfe2e5;
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+}
+
+.markdown-body hr:before {
+  content: "";
+  display: table;
+}
+
+.markdown-body hr:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.markdown-body table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body details summary {
+  cursor: pointer;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.markdown-body h1 {
+  font-size: 32px;
+}
+
+.markdown-body h1,
+.markdown-body h2 {
+  font-weight: 600;
+}
+
+.markdown-body h2 {
+  font-size: 24px;
+}
+
+.markdown-body h3 {
+  font-size: 20px;
+}
+
+.markdown-body h3,
+.markdown-body h4 {
+  font-weight: 600;
+}
+
+.markdown-body h4 {
+  font-size: 16px;
+}
+
+.markdown-body h5 {
+  font-size: 14px;
+}
+
+.markdown-body h5,
+.markdown-body h6 {
+  font-weight: 600;
+}
+
+.markdown-body h6 {
+  font-size: 12px;
+}
+
+.markdown-body p {
+  margin-bottom: 10px;
+  margin-top: 0;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+}
+
+.markdown-body ol,
+.markdown-body ul {
+  margin-bottom: 0;
+  margin-top: 0;
+  padding-left: 0;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ol ol ol,
+.markdown-body ol ul ol,
+.markdown-body ul ol ol,
+.markdown-body ul ul ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body code,
+.markdown-body pre {
+  font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+  font-size: 12px;
+}
+
+.markdown-body pre {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.markdown-body input::-webkit-inner-spin-button,
+.markdown-body input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+.markdown-body .border {
+  border: 1px solid #e1e4e8!important;
+}
+
+.markdown-body .border-0 {
+  border: 0!important;
+}
+
+.markdown-body .border-bottom {
+  border-bottom: 1px solid #e1e4e8!important;
+}
+
+.markdown-body .rounded-1 {
+  border-radius: 3px!important;
+}
+
+.markdown-body .bg-white {
+  background-color: #fff!important;
+}
+
+.markdown-body .bg-gray-light {
+  background-color: #fafbfc!important;
+}
+
+.markdown-body .text-gray-light {
+  color: #6a737d!important;
+}
+
+.markdown-body .mb-0 {
+  margin-bottom: 0!important;
+}
+
+.markdown-body .my-2 {
+  margin-bottom: 8px!important;
+  margin-top: 8px!important;
+}
+
+.markdown-body .pl-0 {
+  padding-left: 0!important;
+}
+
+.markdown-body .py-0 {
+  padding-bottom: 0!important;
+  padding-top: 0!important;
+}
+
+.markdown-body .pl-1 {
+  padding-left: 4px!important;
+}
+
+.markdown-body .pl-2 {
+  padding-left: 8px!important;
+}
+
+.markdown-body .py-2 {
+  padding-bottom: 8px!important;
+  padding-top: 8px!important;
+}
+
+.markdown-body .pl-3,
+.markdown-body .px-3 {
+  padding-left: 16px!important;
+}
+
+.markdown-body .px-3 {
+  padding-right: 16px!important;
+}
+
+.markdown-body .pl-4 {
+  padding-left: 24px!important;
+}
+
+.markdown-body .pl-5 {
+  padding-left: 32px!important;
+}
+
+.markdown-body .pl-6 {
+  padding-left: 40px!important;
+}
+
+.markdown-body .f6 {
+  font-size: 12px!important;
+}
+
+.markdown-body .lh-condensed {
+  line-height: 1.25!important;
+}
+
+.markdown-body .text-bold {
+  font-weight: 600!important;
+}
+
+.markdown-body:before {
+  content: "";
+  display: table;
+}
+
+.markdown-body:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.markdown-body>:first-child {
+  margin-top: 0!important;
+}
+
+.markdown-body>:last-child {
+  margin-bottom: 0!important;
+}
+
+.markdown-body a:not([href]) {
+  color: inherit;
+  text-decoration: none;
+}
+
+.markdown-body blockquote,
+.markdown-body dl,
+.markdown-body ol,
+.markdown-body p,
+.markdown-body pre,
+.markdown-body table,
+.markdown-body ul {
+  margin-bottom: 16px;
+  margin-top: 0;
+}
+
+.markdown-body hr {
+  background-color: #e1e4e8;
+  border: 0;
+  height: .25em;
+  margin: 24px 0;
+  padding: 0;
+}
+
+.markdown-body blockquote {
+  border-left: .25em solid #dfe2e5;
+  color: #6a737d;
+  padding: 0 1em;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body kbd {
+  background-color: #fafbfc;
+  border: 1px solid #c6cbd1;
+  border-bottom-color: #959da5;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #959da5;
+  color: #444d56;
+  display: inline-block;
+  font-size: 11px;
+  line-height: 10px;
+  padding: 3px 5px;
+  vertical-align: middle;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  font-weight: 600;
+  line-height: 1.25;
+  margin-bottom: 16px;
+  margin-top: 24px;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+}
+
+.markdown-body h1,
+.markdown-body h2 {
+  border-bottom: 1px solid #eaecef;
+  padding-bottom: .3em;
+}
+
+.markdown-body h2 {
+  font-size: 1.5em;
+}
+
+.markdown-body h3 {
+  font-size: 1.25em;
+}
+
+.markdown-body h4 {
+  font-size: 1em;
+}
+
+.markdown-body h5 {
+  font-size: .875em;
+}
+
+.markdown-body h6 {
+  color: #6a737d;
+  font-size: .85em;
+}
+
+.markdown-body ol,
+.markdown-body ul {
+  padding-left: 2em;
+}
+
+.markdown-body ol ol,
+.markdown-body ol ul,
+.markdown-body ul ol,
+.markdown-body ul ul {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.markdown-body li {
+  word-wrap: break-all;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body li+li {
+  margin-top: .25em;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  font-size: 1em;
+  font-style: italic;
+  font-weight: 600;
+  margin-top: 16px;
+  padding: 0;
+}
+
+.markdown-body dl dd {
+  margin-bottom: 16px;
+  padding: 0 16px;
+}
+
+.markdown-body table {
+  display: block;
+  overflow: auto;
+  width: 100%;
+}
+
+.markdown-body table th {
+  font-weight: 600;
+}
+
+.markdown-body table td,
+.markdown-body table th {
+  border: 1px solid #dfe2e5;
+  padding: 6px 13px;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #c6cbd1;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f6f8fa;
+}
+
+.markdown-body img {
+  background-color: #fff;
+  box-sizing: content-box;
+  max-width: 100%;
+}
+
+.markdown-body img[align=right] {
+  padding-left: 20px;
+}
+
+.markdown-body img[align=left] {
+  padding-right: 20px;
+}
+
+.markdown-body code {
+  background-color: rgba(27,31,35,.05);
+  border-radius: 3px;
+  font-size: 85%;
+  margin: 0;
+  padding: .2em .4em;
+}
+
+.markdown-body pre {
+  word-wrap: normal;
+}
+
+.markdown-body pre>code {
+  background: transparent;
+  border: 0;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  word-break: normal;
+}
+
+.markdown-body .highlight {
+  margin-bottom: 16px;
+}
+
+.markdown-body .highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body .highlight pre,
+.markdown-body pre {
+  background-color: #f6f8fa;
+  border-radius: 3px;
+  font-size: 85%;
+  line-height: 1.45;
+  overflow: auto;
+  padding: 16px;
+}
+
+.markdown-body pre code {
+  background-color: transparent;
+  border: 0;
+  display: inline;
+  line-height: inherit;
+  margin: 0;
+  max-width: auto;
+  overflow: visible;
+  padding: 0;
+  word-wrap: normal;
+}
+
+.markdown-body .commit-tease-sha {
+  color: #444d56;
+  display: inline-block;
+  font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+  font-size: 90%;
+}
+
+.markdown-body .blob-wrapper {
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.markdown-body .blob-wrapper-embedded {
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.markdown-body .blob-num {
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  color: rgba(27,31,35,.3);
+  cursor: pointer;
+  font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+  font-size: 12px;
+  line-height: 20px;
+  min-width: 50px;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: right;
+  user-select: none;
+  vertical-align: top;
+  white-space: nowrap;
+  width: 1%;
+}
+
+.markdown-body .blob-num:hover {
+  color: rgba(27,31,35,.6);
+}
+
+.markdown-body .blob-num:before {
+  content: attr(data-line-number);
+}
+
+.markdown-body .blob-code {
+  line-height: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  position: relative;
+  vertical-align: top;
+}
+
+.markdown-body .blob-code-inner {
+  color: #24292e;
+  font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+  font-size: 12px;
+  overflow: visible;
+  white-space: pre;
+  word-wrap: normal;
+}
+
+.markdown-body .pl-token.active,
+.markdown-body .pl-token:hover {
+  background: #ffea7f;
+  cursor: pointer;
+}
+
+.markdown-body kbd {
+  background-color: #fafbfc;
+  border: 1px solid #d1d5da;
+  border-bottom-color: #c6cbd1;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #c6cbd1;
+  color: #444d56;
+  display: inline-block;
+  font: 11px SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+  line-height: 10px;
+  padding: 3px 5px;
+  vertical-align: middle;
+}
+
+.markdown-body :checked+.radio-label {
+  border-color: #0366d6;
+  position: relative;
+  z-index: 1;
+}
+
+.markdown-body .tab-size[data-tab-size="1"] {
+  -moz-tab-size: 1;
+  tab-size: 1;
+}
+
+.markdown-body .tab-size[data-tab-size="2"] {
+  -moz-tab-size: 2;
+  tab-size: 2;
+}
+
+.markdown-body .tab-size[data-tab-size="3"] {
+  -moz-tab-size: 3;
+  tab-size: 3;
+}
+
+.markdown-body .tab-size[data-tab-size="4"] {
+  -moz-tab-size: 4;
+  tab-size: 4;
+}
+
+.markdown-body .tab-size[data-tab-size="5"] {
+  -moz-tab-size: 5;
+  tab-size: 5;
+}
+
+.markdown-body .tab-size[data-tab-size="6"] {
+  -moz-tab-size: 6;
+  tab-size: 6;
+}
+
+.markdown-body .tab-size[data-tab-size="7"] {
+  -moz-tab-size: 7;
+  tab-size: 7;
+}
+
+.markdown-body .tab-size[data-tab-size="8"] {
+  -moz-tab-size: 8;
+  tab-size: 8;
+}
+
+.markdown-body .tab-size[data-tab-size="9"] {
+  -moz-tab-size: 9;
+  tab-size: 9;
+}
+
+.markdown-body .tab-size[data-tab-size="10"] {
+  -moz-tab-size: 10;
+  tab-size: 10;
+}
+
+.markdown-body .tab-size[data-tab-size="11"] {
+  -moz-tab-size: 11;
+  tab-size: 11;
+}
+
+.markdown-body .tab-size[data-tab-size="12"] {
+  -moz-tab-size: 12;
+  tab-size: 12;
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item input {
+  margin: 0 .2em .25em -1.6em;
+  vertical-align: middle;
+}
+
+.markdown-body hr {
+  border-bottom-color: #eee;
+}
+
+.markdown-body .pl-0 {
+  padding-left: 0!important;
+}
+
+.markdown-body .pl-1 {
+  padding-left: 4px!important;
+}
+
+.markdown-body .pl-2 {
+  padding-left: 8px!important;
+}
+
+.markdown-body .pl-3 {
+  padding-left: 16px!important;
+}
+
+.markdown-body .pl-4 {
+  padding-left: 24px!important;
+}
+
+.markdown-body .pl-5 {
+  padding-left: 32px!important;
+}
+
+.markdown-body .pl-6 {
+  padding-left: 40px!important;
+}
+
+.markdown-body .pl-7 {
+  padding-left: 48px!important;
+}
+
+.markdown-body .pl-8 {
+  padding-left: 64px!important;
+}
+
+.markdown-body .pl-9 {
+  padding-left: 80px!important;
+}
+
+.markdown-body .pl-10 {
+  padding-left: 96px!important;
+}
+
+.markdown-body .pl-11 {
+  padding-left: 112px!important;
+}
+
+.markdown-body .pl-12 {
+  padding-left: 128px!important;
+}
+
+  </style>
+  <style>
+  /**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: black;
+	background: none;
+	text-shadow: 0 1px white;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-size: 1em;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+@media print {
+	code[class*="language-"],
+	pre[class*="language-"] {
+		text-shadow: none;
+	}
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #f5f2f0;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: slategray;
+}
+
+.token.punctuation {
+	color: #999;
+}
+
+.token.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+	color: #9a6e3a;
+	/* This background color was intended by the author of this theme. */
+	background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+	color: #07a;
+}
+
+.token.function,
+.token.class-name {
+	color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+	color: #e90;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+
+  </style>
+  <style>
+  
+  </style>
+  <style>
+    .markdown-body {
+      font-family: -apple-system,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+
+    @media not print {
+      .markdown-body {
+        padding: 45px;
+      }
+
+      @media (max-width: 767px) {
+        .markdown-body {
+          padding: 15px;
+        }
+      }
+    }
+
+    .hf-container {
+      color: #24292e;
+      line-height: 1.3;
+    }
+
+    .markdown-body .highlight pre,
+    .markdown-body pre {
+      white-space: pre-wrap;
+    }
+    .markdown-body table {
+      display: table;
+    }
+    .markdown-body img[data-align="center"] {
+      display: block;
+      margin: 0 auto;
+    }
+    .markdown-body img[data-align="right"] {
+      display: block;
+      margin: 0 0 0 auto;
+    }
+    .markdown-body li.task-list-item {
+      list-style-type: none;
+    }
+    .markdown-body li > [type=checkbox] {
+      margin: 0 0 0 -1.3em;
+    }
+    .markdown-body input[type="checkbox"] ~ p {
+      margin-top: 0;
+      display: inline-block;
+    }
+    .markdown-body ol ol,
+    .markdown-body ul ol {
+      list-style-type: decimal;
+    }
+    .markdown-body ol ol ol,
+    .markdown-body ol ul ol,
+    .markdown-body ul ol ol,
+    .markdown-body ul ul ol {
+      list-style-type: decimal;
+    }
+  </style>
+  <style>.markdown-body a.footnote-ref {
+  text-decoration: none;
+}
+
+.footnotes {
+  font-size: .85em;
+  opacity: .8;
+}
+
+.footnotes li[role="doc-endnote"] {
+  position: relative;
+}
+
+.footnotes .footnote-back {
+  position: absolute;
+  font-family: initial;
+  top: .2em;
+  right: 1em;
+  text-decoration: none;
+}
+
+.inline-math.invalid,
+.multiple-math.invalid {
+  color: rgb(255, 105, 105);
+}
+
+.toc-container {
+  width: 100%;
+}
+
+.toc-container .toc-title {
+  font-weight: 700;
+  font-size: 1.2em;
+  margin-bottom: 0;
+}
+
+.toc-container li,
+.toc-container ul,
+.toc-container ul li {
+  list-style: none !important;
+}
+
+.toc-container > ul {
+  padding-left: 0;
+}
+
+.toc-container ul li span {
+  display : flex;
+}
+
+.toc-container ul li span a {
+  color: inherit;
+  text-decoration: none;
+}
+.toc-container ul li span a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+
+.toc-container ul li span span.dots {
+  flex: 1;
+  height: 0.65em;
+  margin: 0 10px;
+  border-bottom: 2px dotted black;
+}
+</style>
+  <style>.hf-container{font-family:"Calibri","Open Sans","Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";}.markdown-body{font-family:"Calibri","Open Sans","Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";font-size:16px;line-height:1.5;}pre.front-matter{display:none!important;}</style>
+</head>
+<body>
+  <article class="markdown-body"><h1 class="atx" id="python-komut-dosyasi-olusturma-scripting-egitimi">Python Komut Dosyası Oluşturma (Scripting) Eğitimi</h1>
+<p><a href="http://en.wikipedia.org/wiki/Python_%28programming_language%29">Python</a> kullanımı ve öğrenilmesi çok kolay bir programlama dilidir. Açık kaynak kodlu, çok platformlu ve basit kabuk komut dosyalarının programlanmasından, çok karmaşık programlara kadar pek çok şey için tek başına kullanılabilir. Ancak en yaygın kullanım yönteminden biri, diğer uygulamalara gömülerek kullanılmasıdır. FreeCAD içinde tam olarak böyle kullanılır. Python konsolundan veya özel komut dosyalarınızdan FreeCAD'e kılavuzluk yapabilir ve grafik kullanıcı arabirimi aracı olmayan çok karmaşık eylemler gerçekleştirmesini sağlayabilirsiniz.
+Örneğin, bir python betiğinden (script) şunları yapabilirsiniz:</p>
+<ul>
+<li>Yeni nesneler oluşturabilirsiniz,</li>
+<li>Mevcut nesneleri değiştirebilirsiniz,</li>
+<li>Nesnelerin 3B görünümünü değiştirebilirsiniz,</li>
+<li>FreeCAD arayüzünü değiştirebilirsiniz.</li>
+</ul>
+<p>FreeCAD'de Python'u kullanmanın birkaç farklı yolu vardır:</p>
+<ul>
+<li><strong>Komut satırı</strong> tarzı bir arayüzde komutlar verebileceğiniz <strong>FreeCAD'in Python Yorumlayıcısından</strong>.</li>
+<li>Eksik bir aracı FreeCAD arayüzüne hızlı bir şekilde eklemenin uygun bir yolu olan <strong>makrolardan</strong>.</li>
+<li>Oldukça karmaşık çözümler oluşturmak için kullanılabilen <strong>harici komut dosyalarından</strong>, hatta tüm <strong>Çalışma Tezgahlarından</strong> (WorkBench'lerden).</li>
+</ul>
+<p>Bu eğitimde, başlamanıza yardımcı olacak birkaç temel örnek üzerinde çalışacağız, ancak orijinal Wiki sayfasında <a href="https://wiki.freecadweb.org/Power_users_hub">Python komut dosyası oluşturma</a> hakkında çok daha fazla belge / bilgi bulunmaktadır. Python'da tamamen yeniyseniz ve Python'un nasıl çalıştığını anlamak istiyorsanız, temel <a href="/02_Python'a_Giris.html">Python'a Giriş</a> eğitimimiz de var.</p>
+<p>Python komut dosyası oluşturmaya devam etmeden önce <code>Düzenle → Seçenekler → Genel → Çıktı penceresi</code>ne gidin ve aşağıda açıklaması bulunan iki seçeneği işaretleyin / aktifleştirin :</p>
+<ul>
+<li><strong>Dahili Python çıktısını rapor görünümüne yönlendirin. (Redirect internal Python output to report view.)</strong></li>
+<li><strong>Dahili Python hatalarını rapor görünümüne yönlendirin. (Redirect internal Python errors to report view.)</strong></li>
+</ul>
+<p>Ardından <code>Görünüm → Paneller</code>'e gidin ve şunları kontrol edin:</p>
+<ul>
+<li><strong>Rapor görünümü (Report view)</strong></li>
+</ul>
+<h1 class="atx" id="python-kodu-yazma">Python kodu yazma</h1>
+<p>FreeCAD'de Python kodu yazmanın iki yolu vardır. <strong>Python konsolunda</strong> (menüden <code>Görünüm → Paneller → Python konsolu</code>'nu seçin) veya <strong>Makro düzenleyicide</strong> (menüden <code>Makro → Makrolar...</code>'ı seçin). Konsolda Python komutlarını birer birer yazar, <code>Enter</code>'a basarak çalıştırırsınız (yürütürsünüz), makrolar ise yalnızca makro çalıştırıldığında yürütülen birkaç satırdan oluşan daha karmaşık kodlar içerebilir.</p>
+<p><img alt="Python konsolu" src="img/01_freecad_python_konsol.png"></p>
+<p><em>FreeCAD Python konsolu</em></p>
+<p>Her iki yöntemi de kullanabilirsiniz. Her satırı kopyalayıp Python konsoluna yapıştırır ve ardından <code>Enter</code> tuşuna basabilir veya kodun tamamını yeni bir <strong>Makro penceresine</strong> kopyalayıp yapıştırabilirsiniz.</p>
+<h1 class="atx" id="freecadand39i-kesfetmek">FreeCAD'i Keşfetmek</h1>
+<p>Yeni boş bir belge oluşturarak kod yazmaya başlayalım:</p>
+<pre><code class="fenced-code-block language-python">doc <span class="token operator">=</span> FreeCAD<span class="token punctuation">.</span>newDocument<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>FreeCAD Python konsoluna <code>FreeCAD.</code> yazdığınız anda FreeCAD bunu fark edecektir. Satırın (kodun) geri kalanını hızlı bir şekilde otomatik tamamlamanıza izin veren bir pencere açılır. Daha da iyisi, otomatik tamamlama listesindeki her girişin ne yaptığını açıklayan bir ipucu vardır. Bu, mevcut işlevselliği keşfetmeyi kolaylaştırır. <code>newDocument</code>'ı seçmeden önce diğer seçeneklere bir göz atın.</p>
+<p><img alt="kod_tamamlama" src="img/02_freecad.newdocument.png"></p>
+<p><em>FreeCAD Python konsolunun otomatik tamamlama mekanizması</em></p>
+<p>Şimdi (bu kodu yazdıktan sonra) yeni belgemiz FreeCAD tarafından oluşturulacak. Bu, araç çubuğundaki <code>Std New (Yeni)</code> düğmesine basmaya benzer. Aslında FreeCAD'deki çoğu düğme, bir veya daha fazla Python kodu satırını çalıştırmaktan başka bir şey yapmaz. Daha da iyisi, python konsolunda betik (script) dosyası komutlarını göstermek için <code>Düzenle → Seçenekler → Genel → Makro</code> bölümünden <code>Betik komutlarını python konsolunda göster</code> seçeneği ile ayarlayabilirsiniz. Bu, düğmelere bastığınızda çalıştırılan tüm Python kodunu, konsolda yazdıracaktır. Bu yöntem, Python'da eylemlerin nasıl üretileceğini öğrenmek için çok kullanışlıdır.</p>
+<p>Şimdi belgemize geri dönelim ve onunla neler yapabileceğimize bakalım:</p>
+<p>doc.
+Mevcut seçenekleri keşfedin. Genellikle <strong>büyük harfle başlayan</strong> isimler niteliklerdir, bir değer içerirler, <strong>küçük harfle başlayan</strong> isimler ise fonksiyondur (yöntem olarak da adlandırılır), "bir şey yaparlar". <strong>Alt çizgi ile başlayan</strong> isimler genellikle modülün dahili çalışması için vardır ve bunları önemsememelisiniz. Belgemize yeni bir nesne eklemek için yöntemlerden birini kullanalım:</p>
+<pre><code class="fenced-code-block language-python">box <span class="token operator">=</span> doc<span class="token punctuation">.</span>addObject<span class="token punctuation">(</span><span class="token string">"Part::Box"</span><span class="token punctuation">,</span> <span class="token string">"myBox"</span><span class="token punctuation">)</span></code></pre>
+<p>Kod yazılıp <code>Enter</code> tuşuna basılmasına rağmen hiçbir şey olmadığını göreceksiniz.  Bunun sebebini açıklamak gerekirse; FreeCAD birbirine bağlı yüzlerce karmaşık nesneyle çalışabilir, bir yerde küçük bir değişiklik yapmak büyük bir etki oluşturabilir; bu da, uzun zaman alabilecek tüm belgeyi yeniden hesaplamanız anlamına gelir. Bu nedenle neredeyse hiçbir komut sahneyi otomatik olarak güncellemez. Güncellemeyi el ile (komut yazarak) yapmak gerekir:</p>
+<pre><code class="fenced-code-block language-python">doc<span class="token punctuation">.</span>recompute<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>Şimdi (güncelleme komutunu çalıştırınca), sahneye eklediğimiz kutu görünür hale geldi. FreeCAD'de sahneye nesne ekleyen düğmelerin çoğu aslında iki şey yapar: nesneyi ekler ve yeniden hesaplar. Yukarıda bahsedildiği gibi <strong>Betik komutlarını python konsolunda göster (Show script commands in python console)</strong> seçeneğini açtıysanız, GUI düğmesiyle (araç çubuğunda bulunan düğmesini kullanara) sahneye bir küre eklemeyi deneyin; Python kodunun iki satırının birbiri ardına çalıştırıldığını göreceksiniz.</p>
+<p><img alt="ekle_guncelle" src="img/03_ekle_guncelle.png">
+<em>Nesne eklendi ve yeniden hesaplandı (Güncellendi)</em></p>
+<p>Şimdi kutumuzun içeriğini inceleyelim:</p>
+<pre><code class="fenced-code-block language-python">box<span class="token punctuation">.</span></code></pre>
+<p>Hemen aşağıdakiler gibi birkaç ilginç şey göreceksiniz:</p>
+<pre><code class="fenced-code-block language-python">box<span class="token punctuation">.</span>Height</code></pre>
+<p>Bu, kutumuzun mevcut yüksekliğini yazdıracaktır. Şimdi bunu değiştirmeye çalışalım:</p>
+<pre><code class="fenced-code-block language-python">box<span class="token punctuation">.</span>Height <span class="token operator">=</span> <span class="token number">5</span></code></pre>
+<p>Kutunuzu fare ile seçerseniz, <code>Özellik Düzenleyici</code>de, <code>Veri (Data)</code> sekmesinde <code>Yükseklik (Height)</code> özelliğimizin göründüğünü göreceksiniz (ayrıca <code>Görünüm (View)</code> sekmesindeki özelliklerle alakalı, daha sonra bilgi verilecektir). Orada görünen bir FreeCAD nesnesinin tüm özelliklerine, <em>Veri (Data)</em> <code>Height</code> özelliğinde yaptığımız gibi, adlarıyla Python ile de doğrudan erişilebilir. Kutunun diğer boyutlarını değiştirmeyi deneyin.</p>
+<p><img alt="veri_ozellikleri" src="img/04_veri_ozellikleri.png"></p>
+<h1 class="atx" id="vektorler-ve-yerlesimler">Vektörler ve yerleşimler</h1>
+<p><a href="https://tr.wikipedia.org/wiki/Vekt%C3%B6r">Vektör</a>, herhangi bir 3B (3D) uygulamada çok temel bir kavramdır. Bir vektör, 3B uzayında bir noktayı veya konumu tanımlayan 3 sayıdan (x, y ve z) oluşan bir listedir. Vektörlerle toplamalar, çıkarmalar, projeksiyonlar ve <a href="https://tr.wikipedia.org/wiki/Vekt%C3%B6r_uzay%C4%B1">çok daha fazlası</a> birçok şey yapılabilir. FreeCAD'de vektörler şu şekilde çalışır:</p>
+<pre><code class="fenced-code-block language-python">myvec <span class="token operator">=</span> FreeCAD<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+myvec<span class="token punctuation">.</span>x
+myvec<span class="token punctuation">.</span>y
+othervec <span class="token operator">=</span> FreeCAD<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+sumvec <span class="token operator">=</span> myvec<span class="token punctuation">.</span>add<span class="token punctuation">(</span>othervec<span class="token punctuation">)</span></code></pre>
+<p>FreeCAD nesnelerinin diğer bir ortak özelliği de <a href="https://wiki.freecadweb.org/Placement">yerleşimleridir (placement)</a>. Her nesnenin, bir <em>Data</em> <code>Base</code> <em>(Konum - position)</em> ve <em>Data</em> <code>Rotation</code> <em>(Oryantasyon, dönüş açısı)</em> bilgilerini içeren bir <em>Data</em> <code>Placement</code> <em>(Veri Yerleşim)</em> özelliği vardır.</p>
+<p><img alt="data_base" src="img/05_data_base.png"></p>
+<p><code>Placement</code> (<em>Yerleşim</em>) özelliğini kullanarak nesnemizi hareket ettirmek kolaydır:</p>
+<pre><code class="fenced-code-block language-python">box<span class="token punctuation">.</span>Placement    <span class="token comment"># Kutunun Konum ve Oryantasyon bilgilerini verir</span>
+box<span class="token punctuation">.</span>Placement<span class="token punctuation">.</span>Base    <span class="token comment"># Kutunun Vektörel Konum Bilgisini verir</span>
+box<span class="token punctuation">.</span>Placement<span class="token punctuation">.</span>Base <span class="token operator">=</span> sumvec    <span class="token comment"># Kutunun Vektörel Konum Bilgisini, sumvec vektörü ile değiştirir</span>
+otherpla <span class="token operator">=</span> FreeCAD<span class="token punctuation">.</span>Placement<span class="token punctuation">(</span><span class="token punctuation">)</span>    <span class="token comment"># FreeCAD orijin bilgisini “otherpla”a ata</span>
+box<span class="token punctuation">.</span>Placement <span class="token operator">=</span> otherpla    <span class="token comment"># Kutunun konum/açı bilgilerini, FreeCAD orijin bilgileri ile eşle/ata</span></code></pre>
+<p>Şimdi daha ileri gitmeden önce birkaç önemli kavramı anlamalıyız.</p>
+<h1 class="atx" id="uygulama-ve-grafiksel-kullanici-arayuzu-app-and-gui">Uygulama ve Grafiksel Kullanıcı Arayüzü (App and Gui)</h1>
+<p>FreeCAD, bir komut satırı uygulaması olarak kullanıcı arayüzü olmadan da kullanılabilecek şekilde tasarlanmıştır. Bu nedenle FreeCAD'deki hemen hemen her nesne iki bölümden oluşur: Nesnenin "<strong>geometri</strong>" bileşeni ifade eden <code>Object</code> (<em>Nesne</em>),  ve "<strong>görsel</strong>" bileşeni ifede eden <code>ViewObject</code> (<em>NesneGörünümü</em>). FreeCAD'i, komut satırı modunda çalıştığınızda, geometri kısmı mevcuttur, ancak görsel kısım devre dışı bırakılır.</p>
+<p>Konsepti açıklamak için <strong>küp (box)</strong> nesnemize bakalım. Küpün boyutları, konumu ,... vb. geometrik özellikleri <em>Nesne'de</em> (<code>Object</code>) saklanır. Rengi, çizgi kalınlığı ,... vb. görsel özellikleri ise <strong>NesneGörünümü</strong>’nde (<code>ViewObject</code>)'de saklanır. Bu, Özellik düzenleyicisindeki <code>Veri (Data)</code> ve <code>Görünüm (View)</code> sekmelerine karşılık gelir. Bir unsurun görünüm nesnesine şu şekilde erişilir:</p>
+<pre><code class="fenced-code-block language-python">vo <span class="token operator">=</span> box<span class="token punctuation">.</span>ViewObject</code></pre>
+<p>Artık Görünüm sekmesindeki özellikleri de değiştirebilirsiniz:</p>
+<pre><code class="fenced-code-block language-python">vo<span class="token punctuation">.</span>Transparency <span class="token operator">=</span> <span class="token number">80</span>
+vo<span class="token punctuation">.</span>hide<span class="token punctuation">(</span><span class="token punctuation">)</span>
+vo<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>FreeCAD'i başlattığınızda, Python konsolu zaten iki temel modül yükler: <strong>FreeCAD</strong> ve <strong>FreeCADGui</strong> (<code>App</code> ve <code>Gui</code> kısayolları ile de erişilebilir). Bu modüller belgeler ve nesnelerle çalışmak için her türlü genel işlevi içerir. Konseptimizi göstermek için, hem <strong>FreeCAD</strong> hem de <strong>FreeCADGui</strong>'nin şu anda açık olan belge bir <code>ActiveDocument</code> özniteliği içerdiğine bakın. Ancak <code>FreeCAD.ActiveDocument</code> ve <code>FreeCADGui.ActiveDocument</code> aynı nesne değildir. Bunlar bir FreeCAD belgesinin iki bileşenidir ve farklı nitelikler ve yöntemler içerirler. Örneğin, <code>FreeCADGui.ActiveDocument</code>, şu anda açık olan 3B görünüm olan <code>ActiveView</code>'i içerir.</p>
+<h1 class="atx" id="moduller">Modüller</h1>
+<p>FreeCAD'in gerçek gücü, ilgili çalışma tezgahlarıyla birlikte sadık modüllerinde yatmaktadır. FreeCAD temel uygulaması aşağı yukarı boş bir kaptır/kutudur. Modülleri olmadan yeni, boş belgeler oluşturmaktan biraz daha fazlasını yapabilir. Her modül, arayüze yalnızca yeni çalışma tezgahları eklemekle kalmaz, aynı zamanda yeni Python komutları ve yeni nesne türleri de ekler. Sonuç olarak, birkaç farklı ve hatta tamamen uyumsuz nesne türleri aynı belgede bir arada bulunabilir. Bu eğitimde inceleyeceğimiz FreeCAD'deki en önemli modüller şunlardır: <a href="https://wiki.freecadweb.org/Part_Module">Part</a>, <a href="https://wiki.freecadweb.org/Mesh_Workbench">Mesh</a>, <a href="https://wiki.freecadweb.org/Sketcher_Workbench">Sketcher</a> ve <a href="https://wiki.freecadweb.org/Draft_Workbench">Draft</a>.</p>
+<p> <a href="https://wiki.freecadweb.org/Sketcher_Workbench">Sketcher</a> ve <a href="https://wiki.freecadweb.org/Draft_Workbench">Draft</a> geometrilerini oluşturmak ve işlemek için <a href="https://wiki.freecadweb.org/Part_Module">Part</a> modülünü kullanır. <a href="https://wiki.freecadweb.org/Mesh_Workbench">Mesh</a> tamamen bağımsızdır ve kendi nesnelerini yönetir. Aşağıda bununla ilgili daha fazla bilgi var.</p>
+<p>Geçerli belge için mevcut tüm temel nesne türlerini aşağıdaki gibi kontrol edebilirsiniz:</p>
+<pre><code class="fenced-code-block language-python">doc<span class="token punctuation">.</span>supportedTypes<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>Farklı FreeCAD modülleri, Python konsoluna otomatik olarak yüklenmez. Bu, FreeCAD’in açılışta çok yavaş bir başlangıç ​​yapmaktan kaçınması içindir. Modüller yalnızca ihtiyacınız olduğunda yüklenir. Örneğin, <code>Part (Parça)</code> modülünün içinde ne olduğunu keşfetmek için aşağıdaki kodu yazabilirsiniz:</p>
+<pre><code class="fenced-code-block">import Part
+Part.</code></pre>
+<p>Ancak aşağıda Parça modülü hakkında daha fazla konuşacağız.</p>
+<h1 class="atx" id="mesh-kafes--ag-modulu">Mesh (Kafes / Ağ) Modulü</h1>
+<p><a href="https://en.wikipedia.org/wiki/Polygon_mesh">Mesh’ler (Kafes yapıları)</a>, örneğin <strong>Sketchup, Blender</strong> ve <strong>3D Studio Max</strong> tarafından kullanılan çok basit bir 3B nesne türüdür. 3 öğeden oluşurlar: <strong>noktalar</strong> (köşeler de denir), <strong>çizgiler</strong> (kenarlar da denir) ve <strong>yüzler</strong>. FreeCAD dahil birçok uygulamada, yüzlerin yalnız 3 köşesi olabilir. Elbette, birkaç eş düzlemli üçgenden oluşan daha büyük bir yüzeye sahip olmanızı hiçbir şey engelleyemez.</p>
+<p>Kafesler (Mesh) basittir, ancak basit oldukları için tek bir belgede milyonlarcasına kolayca sahip olabilirsiniz. Bununla birlikte, FreeCAD'de daha az kullanımları vardır ve diğer uygulamalardan kafes (mesh) biçimlerinde (<code>.stl, .obj</code>) nesneleri içe aktarabilirsiniz. <code>Mesh</code> modülü, FreeCAD'in ömrünün ilk ayında ana test modülü olarak da yoğun bir şekilde kullanıldı.</p>
+<p>Mesh nesneleri ve FreeCAD nesneleri farklı şeylerdir. FreeCAD nesnesini, Mesh nesnesi için bir kap olarak görebilirsiniz (aşağıda göreceğimiz gibi, Part (Parça) nesneleri için de bu geçerlidir). Bu yüzden FreeCAD'e bir mesh nesnesi eklemek için önce bir FreeCAD nesnesi ve bir Mesh nesnesi oluşturmalı, ardından Mesh nesnesini FreeCAD nesnesine eklemeliyiz:</p>
+<pre><code class="fenced-code-block language-python"><span class="token keyword">import</span> Mesh
+mymesh <span class="token operator">=</span> Mesh<span class="token punctuation">.</span>createSphere<span class="token punctuation">(</span><span class="token punctuation">)</span>
+mymesh<span class="token punctuation">.</span>Facets
+mymesh<span class="token punctuation">.</span>Points
+
+meshobj <span class="token operator">=</span> doc<span class="token punctuation">.</span>addObject<span class="token punctuation">(</span><span class="token string">"Mesh::Feature"</span><span class="token punctuation">,</span> <span class="token string">"MyMesh"</span><span class="token punctuation">)</span>
+meshobj<span class="token punctuation">.</span>Mesh <span class="token operator">=</span> mymesh
+doc<span class="token punctuation">.</span>recompute<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>Bu, bir küre oluşturmak için <code>createSphere()</code> yöntemini kullanan standart bir örnektir, ancak köşelerini ve yüzlerini tanımlayarak sıfırdan özel kafesler (mesh) de oluşturabilirsiniz.</p>
+<p><a href="https://wiki.freecadweb.org/Mesh_Scripting">Mesh komut dosyası (script) oluşturma hakkında daha fazla bilgi edinmek için tıklayın... </a></p>
+<h1 class="atx" id="part-parca-modulu">Part (Parça) Modülü</h1>
+<p><code>Part (Parça)</code> modülü, FreeCAD içerisindeki en güçlü modüldür. <strong>BRep</strong> nesneleri oluşturmanıza ve değiştirmenize olanak tanır. <strong>BREP, "Sınır Temsili"</strong> anlamına gelir. Bir <strong>BREP</strong> nesnesi, bir iç hacmi çevreleyen ve tanımlayan yüzeyler tarafından tanımlanır. Meshlerin (Ağların/Kafes yapılarının) aksine, BREP nesneleri düzlemsel yüzlerden çok karmaşık <strong>NURBS</strong> yüzeylerine kadar çok çeşitli bileşenlere sahip olabilir.</p>
+<p><code>Part (Parça)</code> modülü, nesneler üzerinde mantıksal (boole), yani ekleme, çıkarma, kesişim alma gibi işlemler gerçekleştirme, kenarları yuvarlama, radyus oluşturma (filleting), farklı geometriye sahip düzlemleri bir birine bağlayarak çatılama (loft), ...vb. çok çeşitli karmaşık işlemlerin gerçekleştirilmesine izin veren güçlü <a href="https://en.wikipedia.org/wiki/Open_CASCADE_Technology">OpenCasCade</a> kitaplığına dayanmaktadır.</p>
+<p><code>Part (Parça)</code> modülü, <code>Mesh (Kafes/Ağ)</code> modülüyle aynı şekilde çalışır: Bir FreeCAD nesnesi ve bir Part (Parça) nesnesi oluşturursunuz, ardından Part (Parça) nesnesini FreeCAD nesnesine eklersiniz:</p>
+<pre><code class="fenced-code-block language-python"><span class="token keyword">import</span> Part
+myshape <span class="token operator">=</span> Part<span class="token punctuation">.</span>makeSphere<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span>
+myshape<span class="token punctuation">.</span>Volume
+myshape<span class="token punctuation">.</span>Area
+
+shapeobj <span class="token operator">=</span> doc<span class="token punctuation">.</span>addObject<span class="token punctuation">(</span><span class="token string">"Part::Feature"</span><span class="token punctuation">,</span> <span class="token string">"MyShape"</span><span class="token punctuation">)</span>
+shapeobj<span class="token punctuation">.</span>Shape <span class="token operator">=</span> myshape
+doc<span class="token punctuation">.</span>recompute<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p><code>Part</code> modülü (<code>Mesh</code> modülü gibi) ayrıca otomatik olarak bir FreeCAD nesnesi oluşturan ve ona bir şekil ekleyen bir kısayola sahiptir, böylece son üç satırı şu şekilde kısaltabilirsiniz:</p>
+<pre><code class="fenced-code-block language-python">Part<span class="token punctuation">.</span>show<span class="token punctuation">(</span>myshape<span class="token punctuation">)</span></code></pre>
+<p><strong>myshape</strong>'in içeriğini keşfederek, Yüzeyler, Kenarlar, Noktalar, Katılar ve Kabuklar gibi birçok ilginç alt bileşeni ve kesme/çıkarma (cut), kesişim (common) veya  birleştirme (fuse) gibi çok çeşitli geometri işlemlerini fark edeceksiniz. Topolojik veri komut dosyası oluşturma (scripting) sayfası tüm bunları ayrıntılı olarak açıklar.</p>
+<h1 class="atx" id="draft-taslak-modulu">Draft (Taslak) Modülü</h1>
+<p>FreeCAD, aynı zamanda <code>Parça (Part)</code> nesneleri oluşturan <code>Sketcher</code> ve <code>Draft</code> gibi daha birçok modüle sahiptir. Bu modüller, oluşturulan nesnelere ek parametreler ekler, hatta içlerindeki Parça geometrisini işlemek için tamamen yeni bir yol uygular. Yukarıdaki anlatımlar esnasında oluşturduğumuz <strong>kutu (box nesnesi)</strong> örneğimiz, <strong>parametrik</strong> bir nesnenin mükemmel bir örneğidir. Kutuyu tanımlamanız için gereken tek şey <strong>yükseklik, genişlik</strong> ve <strong>uzunluk</strong> parametrelerini belirtmektir. Bunlara bağlı olarak nesne, Parça şeklini otomatik olarak hesaplayacaktır. FreeCAD, <a href="https://wiki.freecadweb.org/Scripted_objects">Python ile bu tür nesneler oluşturmanıza</a> olanak tanır.</p>
+<p><a href="https://wiki.freecadweb.org/Draft_Workbench">Draft (Taslak) modülü</a>, çizgiler ve daireler gibi 2B (2D) parametrik nesne türleri ekler (tümü <code>Part (Parça)</code> nesneleridir) ve ayrıca yalnız <code>Draft (Taslak)</code> nesnelerinde değil, herhangi bir <code>Parça (Part)</code> nesnesinde de çalışan bazı genel işlevler sağlar. Nelerin mevcut olduğunu keşfetmek için şunları yapmanız yeterlidir:</p>
+<pre><code class="fenced-code-block language-python"><span class="token keyword">import</span> Draft
+rec <span class="token operator">=</span> Draft<span class="token punctuation">.</span>makeRectangle<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>
+mvec <span class="token operator">=</span> FreeCAD<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+Draft<span class="token punctuation">.</span>move<span class="token punctuation">(</span>rec<span class="token punctuation">,</span> mvec<span class="token punctuation">)</span>
+Draft<span class="token punctuation">.</span>move<span class="token punctuation">(</span>box<span class="token punctuation">,</span> mvec<span class="token punctuation">)</span></code></pre>
+<h1 class="atx" id="arayuz--arabirim">Arayüz / Arabirim</h1>
+<p>FreeCAD kullanıcı arayüzü, <a href="https://wiki.freecadweb.org/3D_view">3B (3D) görünüm</a> etrafındaki tüm kontrolleri, menüleri, araç çubuklarını ve düğmeleri çizmekten ve kullanmaktan sorumlu güçlü bir grafik arayüz sistemi olan <a href="https://en.wikipedia.org/wiki/Qt_(software)">Qt</a> ile yapılmıştır. Qt, Python'un FreeCAD gibi Qt arabirimlerine erişmesine ve değiştirmesine izin veren <a href="https://wiki.freecadweb.org/PySide">PySide</a> adlı bir modül sağlar. <a href="https://en.wikipedia.org/wiki/Qt_(software)">Qt</a> arayüzü ile oynamayı deneyelim ve basit bir diyalog üretelim:</p>
+<pre><code class="fenced-code-block language-python"><span class="token keyword">from</span> PySide <span class="token keyword">import</span> QtGui
+QtGui<span class="token punctuation">.</span>QMessageBox<span class="token punctuation">.</span>information<span class="token punctuation">(</span><span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token string">"Apollo program"</span><span class="token punctuation">,</span> <span class="token string">"Houston, we have a problem"</span><span class="token punctuation">)</span></code></pre>
+<p><img alt="mesaj_kutusu" src="img/06_mesaj_kutusu.png"></p>
+<p>Görünen iletişim kutusunun araç çubuğunda FreeCAD simgesi olduğuna dikkat edin (Linux sistemde bu simge görünmeyebilir); bu, <strong>Qt</strong>'nin, komutun, FreeCAD uygulamasının içinden verildiğini bildiği anlamına gelir. (<strong>PySide</strong> modülü ile) FreeCAD arayüzünün herhangi bir bölümünü değiştirmek mümkündür.</p>
+<p><strong>Qt</strong>, çok karmaşık şeyler yapmanızı sağlayan çok güçlü bir arayüz sistemidir. Ayrıca, diyalogları grafiksel olarak tasarlayabileceğiniz ve ardından birkaç satır Python kodu ile FreeCAD arayüzüne ekleyebileceğiniz <a href="https://www.qt.io/design">Qt Designer</a> gibi bazı kullanımı kolay araçlara da sahiptir.</p>
+<p><a href="https://wiki.freecadweb.org/PySide">PySide</a> hakkında daha fazla bilgiyi buradan okuyabilirsiniz...</p>
+<h1 class="atx" id="makrolar">Makrolar</h1>
+<p>Artık <strong>Komut dosyası (script)</strong> oluşturmanın temelleri iyi anladığınıza göre, Python betiklerimizi (script) nerede, hangi klasörde tutacağız ve bunları FreeCAD içinde nasıl başlatacağız? konularını irdelemeye sıra geldi. Bunun için <strong>Makrolar</strong> denen kolay bir mekanizma var. <strong>Makro</strong>, bir araç çubuğuna eklenebilen ve fare tıklamasıyla başlatılabilen bir Python komut dosyasıdır (betiğidir). FreeCAD, komut dosyaları yazabileceğiniz veya yapıştırabileceğiniz basit bir metin düzenleyici (<code>Makro → Makrolar... → Oluştur</code>) sağlar. Komut dosyası tamamlandıktan sonra, bunun için araç çubuklarına eklenebilecek bir düğme tanımlamak için <code>Araçlar → Özelleştir... → Makrolar</code>'ı kullanın.</p>
+<p>Artık daha derinlemesine FreeCAD komut dosyası oluşturmaya hazırsınız. O halde <a href="https://wiki.freecadweb.org/Power_users_hub">Uzman kullanıcılar merkezine (Power users hub)</a> gidin!</p>
+<p>Kaynak: <a href="https://wiki.freecadweb.org/Python_scripting_tutorial">Python scripting tutorial</a></p>
+</article>
+</body>
+</html>
