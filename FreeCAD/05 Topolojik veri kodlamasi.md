@@ -1,4 +1,4 @@
-# 06 Topolojik Veri Kodlaması
+# Topolojik Veri Kodlaması
 
 ## Takdim
 
@@ -22,11 +22,11 @@ Bu, `Parça (Part)` modülünün en önemli sınıflarına [Birleşik Modelleme 
 
 Geometrik nesneler, tüm topolojik nesnelerin yapı taşlarıdır:
 
-+ **Geom** Geometrik nesnelerin Temel sınıfı.
++ `Geom` Geometrik nesnelerin Temel sınıfı.
 
-+ **Çizgi** Başlangıç ​​noktası ve bitiş noktası ile tanımlanan 3B düz bir çizgi.
++ `Çizgi` Başlangıç ​​noktası ve bitiş noktası ile tanımlanan 3B düz bir çizgi.
 
-+ **Çember** Çember veya bir merkez noktası ve başlangıç ​​ve bitiş noktası ile tanımlanan daire parçası.
++ `Çember` Çember veya bir merkez noktası ve başlangıç ​​ve bitiş noktası ile tanımlanan daire parçası.
 
 + vb.
 
@@ -34,23 +34,23 @@ Geometrik nesneler, tüm topolojik nesnelerin yapı taşlarıdır:
 
 Aşağıdaki topolojik veri türleri mevcuttur:
 
-+ **Birleşik (Compound)** Herhangi bir tür topolojik nesne grubu.
++ `Birleşik (Compound`) Herhangi bir tür topolojik nesne grubu.
 
-+ **KompozitKatı (Compsolid)** Kompozit bir katı, yüzleri ile birbirine bağlanmış bir dizi katıdır. TEL (WIRE) ve KABUK (SHELL) kavramlarını katılara genişletir.
++ `KompozitKatı (Compsolid)` Kompozit bir katı, yüzleri ile birbirine bağlanmış bir dizi katıdır. TEL (WIRE) ve KABUK (SHELL) kavramlarını katılara genişletir.
 
-+ **Katı (Solid)** Kabukları ile sınırlı alanın bir parçası. Üç boyutlu.
++ `Katı (Solid)` Kabukları ile sınırlı alanın bir parçası. Üç boyutlu.
 
-+ **Kabuk (Shell)** Kenarlarıyla birbirine bağlanan bir dizi yüzey. Bir kabuk açık veya kapalı olabilir.
++ `Kabuk (Shell) `Kenarlarıyla birbirine bağlanan bir dizi yüzey. Bir kabuk açık veya kapalı olabilir.
 
-+ **Yüzey (Face)** 2B'de bir düzlemin parçasıdır; 3B'de bir yüzeyin parçasıdır. Geometrisi konturlarla sınırlandırılmıştır (kırpılmıştır). İki boyutludur.
++ `Yüzey (Face)` 2B'de bir düzlemin parçasıdır; 3B'de bir yüzeyin parçasıdır. Geometrisi konturlarla sınırlandırılmıştır (kırpılmıştır). İki boyutludur.
 
-+ **Kafes / Ağ (Wire)** Köşeleri ile birbirine bağlanan bir dizi kenar. Kenarların bağlantılı olup olmamasına bağlı olarak açık veya kapalı kontur olabilir.
++ `Kafes / Ağ (Wire)` Köşeleri ile birbirine bağlanan bir dizi kenar. Kenarların bağlantılı olup olmamasına bağlı olarak açık veya kapalı kontur olabilir.
 
-+ **Kenar (Edge)** Kısıtlanmış bir eğriye karşılık gelen bir topolojik eleman. Bir kenar genellikle köşelerle sınırlıdır. Tek boyutludur.
++ `Kenar (Edge)` Kısıtlanmış bir eğriye karşılık gelen bir topolojik eleman. Bir kenar genellikle köşelerle sınırlıdır. Tek boyutludur.
 
-+ **Nokta (Vertex)** Bir noktaya karşılık gelen topolojik bir öğe. Boyutsuzdur.
++ `Nokta (Vertex)` Bir noktaya karşılık gelen topolojik bir öğe. Boyutsuzdur.
 
-+ **Şekil (Shape)** Yukarıdakilerin tümünü kapsayan genel bir terim.
++ `Şekil (Shape)` Yukarıdakilerin tümünü kapsayan genel bir terim.
 
 ## Örnek: Basit topoloji oluşturun
 
