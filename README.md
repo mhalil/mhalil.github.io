@@ -5,7 +5,7 @@
 
 ![SolveSpace](/img/Solvespace_logo.png)
 
-[SolveSpace Eğitimleri](SolveSpace/index.html)
+[SolveSpace Eğitimleri](solvespace.html)
 
 ![FreeCAD](/img/FreeCAD_logo.png)
 
