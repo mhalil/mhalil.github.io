@@ -34,13 +34,13 @@ Geometrik nesneler, tüm topolojik nesnelerin yapı taşlarıdır:
 
 Aşağıdaki topolojik veri türleri mevcuttur:
 
-+ `Birleşik (Compound`) Herhangi bir tür topolojik nesne grubu.
++ `Birleşik (Compound)` Herhangi bir tür topolojik nesne grubu.
 
 + `KompozitKatı (Compsolid)` Kompozit bir katı, yüzleri ile birbirine bağlanmış bir dizi katıdır. TEL (WIRE) ve KABUK (SHELL) kavramlarını katılara genişletir.
 
 + `Katı (Solid)` Kabukları ile sınırlı alanın bir parçası. Üç boyutlu.
 
-+ `Kabuk (Shell) `Kenarlarıyla birbirine bağlanan bir dizi yüzey. Bir kabuk açık veya kapalı olabilir.
++ `Kabuk (Shell)` Kenarlarıyla birbirine bağlanan bir dizi yüzey. Bir kabuk açık veya kapalı olabilir.
 
 + `Yüzey (Face)` 2B'de bir düzlemin parçasıdır; 3B'de bir yüzeyin parçasıdır. Geometrisi konturlarla sınırlandırılmıştır (kırpılmıştır). İki boyutludur.
 
@@ -204,7 +204,7 @@ edge.CenterOfMass
 > Vector (5, 0, 0)
 ```
 
-## Şekli Ekrana Koy
+## Şekli Ekrana Yerleştir
 
 Şimdiye kadar bir `kenar nesnesi` oluşturduk, ancak ekranın hiçbir yerinde görünmüyor. Bunun nedeni, FreeCAD 3D sahnesinin yalnızca görüntülemesini söylediğiniz şeyi göstermesidir. Bunu yapmak için şu basit yöntemi kullanıyoruz:
 
@@ -215,5 +215,119 @@ Part.show(edge)
 `show` fonksiyonu, FreeCAD belgemizde bir nesne oluşturur ve ona "**kenar (edge)**" şeklimizi atar. Oluşturduklarınızı ekranda gösterme zamanı geldiğinde bunu kullanın.
 
 ## Bir Tel (Yapısı) Oluşturun
+
+Bir tel (yapısı), çok kenarlı bir çizgidir ve bir kenar listesinden, hatta bir tel listesinden oluşturulabilir:
+
+```python
+edge1 = Part.makeLine((0, 0, 0), (10, 0, 0))
+edge2 = Part.makeLine((10, 0, 0), (10, 10, 0))
+wire1 = Part.Wire([edge1, edge2]) 
+edge3 = Part.makeLine((10, 10, 0), (0, 10, 0))
+edge4 = Part.makeLine((0, 10, 0), (0, 0, 0))
+wire2 = Part.Wire([edge3, edge4])
+wire3 = Part.Wire([wire1, wire2])
+wire3.Edges
+> [<Edge object at 016695F8>, <Edge object at 0197AED8>, <Edge object at 01828B20>, <Edge object at 0190A788>]
+Part.show(wire3)
+```
+
+`Part.show(wire3)` komutu, telimizi oluşturan 4 kenarı gösterecektir. Diğer faydalı bilgiler kolayca alınabilir:
+
+```python
+wire3.Length
+> 40.0
+wire3.CenterOfMass
+> Vector (5, 5, 0)
+wire3.isClosed()
+> True
+wire2.isClosed()
+> False
+```
+
+## Bir Yüzey Oluştur
+
+Yalnızca kapalı tellerden oluşturulan yüzeyler geçerli olacaktır. Bu örnekte, tel3 kapalı bir teldir, ancak tel2 kapalı değil (yukarıya bakın, `isClosed()`: Kapalı mı?,  `True`: Doğru / Evet, `False`: Yanlış / Hayır  anlamındadır):
+
+```python
+face = Part.Face(wire3)
+face.Area
+> 99.99999999999999
+face.CenterOfMass
+> Vector (5, 5, 0)
+face.Length
+> 40.0
+face.isValid()
+> True
+sface = Part.Face(wire2)
+sface.isValid()
+> False
+```
+
+Yalnız Yüzeylerin bir alanı olacaktır, tel ve kenarların alanı olmaz.
+
+## Bir Çember / Daire Oluştur
+
+Şu şekilde bir çember / daire oluşturulabilir:
+
+```python
+circle = Part.makeCircle(10)
+circle.Curve
+> Circle (Radius : 10, Position : (0, 0, 0), Direction : (0, 0, 1))
+```
+
+Çemberi, belirli bir konumda ve belirli bir yönde oluşturmak istiyorsanız:
+
+```python
+ccircle = Part.makeCircle(10, Base.Vector(10, 0, 0), Base.Vector(1, 0, 0))
+ccircle.Curve
+> Circle (Radius : 10, Position : (10, 0, 0), Direction : (1, 0, 0))
+```
+
+Çember (`ccircle`), X orijinden 10 birim uzaklıkta oluşturulacak ve X ekseni boyunca dışa bakacaktır. **Not:** `makeCircle()` konum ve normal parametreler için tanımlama gruplarını değil, yalnızca `Base.Vector()`'u kabul eder. Başlangıç ​​ve bitiş açısı vererek çemberin bir bölümünü de oluşturabilirsiniz:
+
+```python
+from math import pi
+arc1 = Part.makeCircle(10, Base.Vector(0, 0, 0), Base.Vector(0, 0, 1), 0, 180)
+arc2 = Part.makeCircle(10, Base.Vector(0, 0, 0), Base.Vector(0, 0, 1), 180, 360)
+```
+
+Açılar derece cinsinden verilmelidir. Radyan cinsinden veriniz varsa, bunları `derece = radyan * 180/pi` formülünü kullanarak ya da Python'un `math (matematik)` modülünü kullanarak derece cinsine dönüştürün:
+
+```python
+import math
+degrees = math.degrees(radians)
+```
+
+## Noktalar Boyunca Bir Yay Oluşturun
+
+Maalesef `makeArc()` fonksiyonu mevcut değil, ancak üç noktadan bir yay oluşturmak için `Part.Arc()` fonksiyonuna sahibiz. Bu fonksiyon başlangıç ​​noktasını, orta nokta üzerinden geçerek bitiş noktasına birleştiren bir yay nesnesi oluşturur.  `Part.makeLine` yerine`Part.LineSegment` kullanırken olduğu gibi, Yay (Arc) nesnesinin `toShape()` fonksiyonu, bir kenar nesnesi elde etmek için çağrılmalıdır.
+
+```python
+arc = Part.Arc(Base.Vector(0, 0, 0), Base.Vector(0, 5, 0), Base.Vector(5, 5, 0))
+arc
+> <Arc object>
+arc_edge = arc.toShape()
+Part.show(arc_edge)
+```
+
+`Arc()` noktalar için yalnız `Base.Vector()`'u kabul eder, demetler (tuples) için değil. Bir çemberin bir bölümünü kullanarak da bir yay elde edebilirsiniz:
+
+```python
+from math import pi
+circle = Part.Circle(Base.Vector(0, 0, 0), Base.Vector(0, 0, 1), 10)
+arc = Part.Arc(circle,0,pi)
+```
+
+Yaylar, çizgiler gibi geçerli kenarlardır, bu nedenle tellerde de kullanılabilirler.
+
+## Çokgen Oluştur
+
+Bir çokgen, basitçe birden çok düz kenarlı bir teldir. `makePolygon()` fonksiyonu, noktaların bir listesini alır ve bu noktalardan geçen bir tel oluşturur:
+
+```python
+lshape_wire = Part.makePolygon([Base.Vector(0, 5, 0), Base.Vector(0, 0, 0), Base.Vector(5, 0, 0)])
+```
+
+## Bir Bezier Eğrisi Oluşturun
 
 Kaynak: [Topological data scripting](https://wiki.freecadweb.org/Topological_data_scripting)
