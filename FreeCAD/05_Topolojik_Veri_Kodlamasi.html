@@ -1605,13 +1605,228 @@ tube <span class="token operator">=</span> circle<span class="token punctuation"
 disc <span class="token operator">=</span> Part<span class="token punctuation">.</span>Face<span class="token punctuation">(</span>wire<span class="token punctuation">)</span>
 cylinder <span class="token operator">=</span> disc<span class="token punctuation">.</span>extrude<span class="token punctuation">(</span>Base<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
 <h2 class="atx" id="sekilleri-kesfedin">Şekilleri Keşfedin</h2>
-<h3 class="atx" id="kenar-analizi">Kenar analizi</h3>
+<p>Topolojik veri yapısını kolayca keşfedebilirsiniz:</p>
+<pre><code class="fenced-code-block language-python"><span class="token keyword">import</span> Part
+b <span class="token operator">=</span> Part<span class="token punctuation">.</span>makeBox<span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span>
+b<span class="token punctuation">.</span>Wires
+w <span class="token operator">=</span> b<span class="token punctuation">.</span>Wires<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+w
+w<span class="token punctuation">.</span>Wires
+w<span class="token punctuation">.</span>Vertexes
+Part<span class="token punctuation">.</span>show<span class="token punctuation">(</span>w<span class="token punctuation">)</span>
+w<span class="token punctuation">.</span>Edges
+e <span class="token operator">=</span> w<span class="token punctuation">.</span>Edges<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+e<span class="token punctuation">.</span>Vertexes
+v <span class="token operator">=</span> e<span class="token punctuation">.</span>Vertexes<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+v<span class="token punctuation">.</span>Point</code></pre>
+<p>Yukarıdaki satırları Python yorumlayıcısına yazarak, Part nesnelerinin yapısını iyi anlayacaksınız. Burada <code>makeBox()</code> komutumuz katı bir şekil oluşturdu. Bu katı, tüm Parça katıları gibi, yüzeyler içerir. <strong>Yüzeyler</strong> her zaman, yüzeyi çevreleyen kenarların listesi olan <strong>teller</strong> içerir. Her yüzeyin en az bir kapalı teli vardır (yüzeyde bir delik varsa daha fazla olabilir). Telde her bir kenara ayrı ayrı bakabiliriz ve her bir kenarın içinde köşeleri görebiliriz. Düz kenarların açıkçası sadece iki köşesi vardır.</p>
+<h3 class="atx" id="kenar-analizi">Kenar Analizi</h3>
+<p>İsteğe bağlı bir eğri olan bir kenar olması durumunda, büyük olasılıkla bir ayrıklaştırma yapmak istersiniz. FreeCAD'de kenarlar uzunluklarına göre parametrelendirilir. Bu, bir kenarı/eğriyi uzunluğuna göre yürüyebileceğiniz anlamına gelir:</p>
+<pre><code class="fenced-code-block language-python"><span class="token keyword">import</span> Part
+box <span class="token operator">=</span> Part<span class="token punctuation">.</span>makeBox<span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span>
+anEdge <span class="token operator">=</span> box<span class="token punctuation">.</span>Edges<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>anEdge<span class="token punctuation">.</span>Length<span class="token punctuation">)</span></code></pre>
+<p>Artık uzunluğu bir konum olarak kullanarak, kenarın birçok özelliğine erişebilirsiniz. Bunun anlamı, eğer kenar 100 mm uzunluğundaysa, başlangıç ​​konumu 0 ve bitiş konumu 100'dür.</p>
+<pre><code class="fenced-code-block language-python">anEdge<span class="token punctuation">.</span>tangentAt<span class="token punctuation">(</span><span class="token number">0.0</span><span class="token punctuation">)</span>          <span class="token comment"># başlangıçtaki teğet yönü</span>
+anEdge<span class="token punctuation">.</span>valueAt<span class="token punctuation">(</span><span class="token number">0.0</span><span class="token punctuation">)</span>            <span class="token comment"># Başlangıç ​​noktası</span>
+anEdge<span class="token punctuation">.</span>valueAt<span class="token punctuation">(</span><span class="token number">100.0</span><span class="token punctuation">)</span>          <span class="token comment"># Kenarın sonundaki nokta</span>
+anEdge<span class="token punctuation">.</span>derivative1At<span class="token punctuation">(</span><span class="token number">50.0</span><span class="token punctuation">)</span>     <span class="token comment"># ortadaki eğrinin ilk türevi</span>
+anEdge<span class="token punctuation">.</span>derivative2At<span class="token punctuation">(</span><span class="token number">50.0</span><span class="token punctuation">)</span>     <span class="token comment"># ortadaki eğrinin ikinci türevi</span>
+anEdge<span class="token punctuation">.</span>derivative3At<span class="token punctuation">(</span><span class="token number">50.0</span><span class="token punctuation">)</span>     <span class="token comment"># ortadaki eğrinin üçüncü türevi</span>
+anEdge<span class="token punctuation">.</span>centerOfCurvatureAt<span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span> <span class="token comment"># o konum için eğriliğin merkezi</span>
+anEdge<span class="token punctuation">.</span>curvatureAt<span class="token punctuation">(</span><span class="token number">50.0</span><span class="token punctuation">)</span>       <span class="token comment"># eğrilik</span>
+anEdge<span class="token punctuation">.</span>normalAt<span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span>            <span class="token comment"># o konumda normal vektör (tanımlanmışsa)</span></code></pre>
 <h3 class="atx" id="bir-secim-kullanin">Bir Seçim Kullanın</h3>
+<p>Burada, kullanıcının görüntüleyicide yaptığı bir seçimi nasıl kullanabileceğimizi görüyoruz. Öncelikle bir kutu oluşturuyoruz ve bunu görüntüleyicide gösteriyoruz.</p>
+<pre><code class="fenced-code-block language-python"><span class="token keyword">import</span> Part
+Part<span class="token punctuation">.</span>show<span class="token punctuation">(</span>Part<span class="token punctuation">.</span>makeBox<span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+Gui<span class="token punctuation">.</span>SendMsgToActiveView<span class="token punctuation">(</span><span class="token string">"ViewFit"</span><span class="token punctuation">)</span></code></pre>
+<p>Şimdi bazı yüzeyleri veya kenarları seçin. Bu komut dosyasıyla, seçili tüm nesneler ve bunların alt öğeleri üzerinde yineleme yapabilirsiniz:</p>
+<pre><code class="fenced-code-block language-python"><span class="token keyword">for</span> o <span class="token keyword">in</span> Gui<span class="token punctuation">.</span>Selection<span class="token punctuation">.</span>getSelectionEx<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>o<span class="token punctuation">.</span>ObjectName<span class="token punctuation">)</span>
+    <span class="token keyword">for</span> s <span class="token keyword">in</span> o<span class="token punctuation">.</span>SubElementNames<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"name: "</span><span class="token punctuation">,</span> s<span class="token punctuation">)</span>
+        <span class="token keyword">for</span> s <span class="token keyword">in</span> o<span class="token punctuation">.</span>SubObjects<span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"object: "</span><span class="token punctuation">,</span> s<span class="token punctuation">)</span></code></pre>
+<p>Bazı kenarları seçin ve bu komut dosyası uzunluğu hesaplayacaktır:</p>
+<pre><code class="fenced-code-block language-python">length <span class="token operator">=</span> <span class="token number">0.0</span>
+<span class="token keyword">for</span> o <span class="token keyword">in</span> Gui<span class="token punctuation">.</span>Selection<span class="token punctuation">.</span>getSelectionEx<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> s <span class="token keyword">in</span> o<span class="token punctuation">.</span>SubObjects<span class="token punctuation">:</span>
+        length <span class="token operator">+=</span> s<span class="token punctuation">.</span>Length
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Length of the selected edges: "</span><span class="token punctuation">,</span> length<span class="token punctuation">)</span></code></pre>
 <h2 class="atx" id="ornek-occ-sisesi">Örnek: OCC şişesi</h2>
+<p> <a href="https://www.opencascade.com/doc/occt-6.9.0/overview/html/occt__tutorial.html">OpenCasCade Teknoloji web sitesinde</a> bulunan tipik bir örnek, bir şişenin nasıl oluşturulacağıdır. Bu, FreeCAD için de iyi bir alıştırmadır. Aslında, aşağıdaki örneğimizi ve aynı anda OCC sayfasını takip ederseniz, OCC yapılarının FreeCAD'de ne kadar iyi uygulandığını göreceksiniz. Komut dosyası, FreeCAD kurulumuna dahildir (<strong>Mod/Part</strong> klasörünün içinde) ve Python yorumlayıcısından şunu yazarak çağrılabilir:</p>
+<pre><code class="fenced-code-block language-python"><span class="token keyword">import</span> Part
+<span class="token keyword">import</span> MakeBottle
+bottle <span class="token operator">=</span> MakeBottle<span class="token punctuation">.</span>makeBottle<span class="token punctuation">(</span><span class="token punctuation">)</span>
+Part<span class="token punctuation">.</span>show<span class="token punctuation">(</span>bottle<span class="token punctuation">)</span></code></pre>
 <h3 class="atx" id="komut-dosyasi">Komut Dosyası</h3>
+<p>Bu eğitimin amacı için, komut dosyasının kısıtlı bir sürümünü ele alacağız. Bu versiyonda, şişenin içi boşaltılmayacak ve şişenin ağız kısmına diş açılmayacaktır.</p>
+<pre><code class="fenced-code-block language-python"><span class="token keyword">import</span> Part<span class="token punctuation">,</span> math
+<span class="token keyword">from</span> FreeCAD <span class="token keyword">import</span> Base
+
+<span class="token keyword">def</span> <span class="token function">makeBottleTut</span><span class="token punctuation">(</span>myWidth <span class="token operator">=</span> <span class="token number">50.0</span><span class="token punctuation">,</span> myHeight <span class="token operator">=</span> <span class="token number">70.0</span><span class="token punctuation">,</span> myThickness <span class="token operator">=</span> <span class="token number">30.0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    aPnt1<span class="token operator">=</span>Base<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span><span class="token operator">-</span>myWidth <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">.</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+    aPnt2<span class="token operator">=</span>Base<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span><span class="token operator">-</span>myWidth <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">.</span><span class="token punctuation">,</span> <span class="token operator">-</span>myThickness <span class="token operator">/</span> <span class="token number">4</span><span class="token punctuation">.</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+    aPnt3<span class="token operator">=</span>Base<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">-</span>myThickness <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">.</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+    aPnt4<span class="token operator">=</span>Base<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span>myWidth <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">.</span><span class="token punctuation">,</span> <span class="token operator">-</span>myThickness <span class="token operator">/</span> <span class="token number">4</span><span class="token punctuation">.</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+    aPnt5<span class="token operator">=</span>Base<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span>myWidth <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">.</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+
+    aArcOfCircle <span class="token operator">=</span> Part<span class="token punctuation">.</span>Arc<span class="token punctuation">(</span>aPnt2<span class="token punctuation">,</span> aPnt3<span class="token punctuation">,</span> aPnt4<span class="token punctuation">)</span>
+    aSegment1<span class="token operator">=</span>Part<span class="token punctuation">.</span>LineSegment<span class="token punctuation">(</span>aPnt1<span class="token punctuation">,</span> aPnt2<span class="token punctuation">)</span>
+    aSegment2<span class="token operator">=</span>Part<span class="token punctuation">.</span>LineSegment<span class="token punctuation">(</span>aPnt4<span class="token punctuation">,</span> aPnt5<span class="token punctuation">)</span>
+
+    aEdge1<span class="token operator">=</span>aSegment1<span class="token punctuation">.</span>toShape<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    aEdge2<span class="token operator">=</span>aArcOfCircle<span class="token punctuation">.</span>toShape<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    aEdge3<span class="token operator">=</span>aSegment2<span class="token punctuation">.</span>toShape<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    aWire<span class="token operator">=</span>Part<span class="token punctuation">.</span>Wire<span class="token punctuation">(</span><span class="token punctuation">[</span>aEdge1<span class="token punctuation">,</span> aEdge2<span class="token punctuation">,</span> aEdge3<span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+    aTrsf<span class="token operator">=</span>Base<span class="token punctuation">.</span>Matrix<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    aTrsf<span class="token punctuation">.</span>rotateZ<span class="token punctuation">(</span>math<span class="token punctuation">.</span>pi<span class="token punctuation">)</span> <span class="token comment"># rotate around the z-axis</span>
+
+    aMirroredWire<span class="token operator">=</span>aWire<span class="token punctuation">.</span>copy<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    aMirroredWire<span class="token punctuation">.</span>transformShape<span class="token punctuation">(</span>aTrsf<span class="token punctuation">)</span>
+    myWireProfile<span class="token operator">=</span>Part<span class="token punctuation">.</span>Wire<span class="token punctuation">(</span><span class="token punctuation">[</span>aWire<span class="token punctuation">,</span> aMirroredWire<span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+    myFaceProfile<span class="token operator">=</span>Part<span class="token punctuation">.</span>Face<span class="token punctuation">(</span>myWireProfile<span class="token punctuation">)</span>
+    aPrismVec<span class="token operator">=</span>Base<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> myHeight<span class="token punctuation">)</span>
+    myBody<span class="token operator">=</span>myFaceProfile<span class="token punctuation">.</span>extrude<span class="token punctuation">(</span>aPrismVec<span class="token punctuation">)</span>
+
+    myBody<span class="token operator">=</span>myBody<span class="token punctuation">.</span>makeFillet<span class="token punctuation">(</span>myThickness <span class="token operator">/</span> <span class="token number">12.0</span><span class="token punctuation">,</span> myBody<span class="token punctuation">.</span>Edges<span class="token punctuation">)</span>
+
+    neckLocation<span class="token operator">=</span>Base<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> myHeight<span class="token punctuation">)</span>
+    neckNormal<span class="token operator">=</span>Base<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+
+    myNeckRadius <span class="token operator">=</span> myThickness <span class="token operator">/</span> <span class="token number">4</span><span class="token punctuation">.</span>
+    myNeckHeight <span class="token operator">=</span> myHeight <span class="token operator">/</span> <span class="token number">10</span><span class="token punctuation">.</span>
+    myNeck <span class="token operator">=</span> Part<span class="token punctuation">.</span>makeCylinder<span class="token punctuation">(</span>myNeckRadius<span class="token punctuation">,</span> myNeckHeight<span class="token punctuation">,</span> neckLocation<span class="token punctuation">,</span> neckNormal<span class="token punctuation">)</span>
+    myBody <span class="token operator">=</span> myBody<span class="token punctuation">.</span>fuse<span class="token punctuation">(</span>myNeck<span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> myBody
+
+el <span class="token operator">=</span> makeBottleTut<span class="token punctuation">(</span><span class="token punctuation">)</span>
+Part<span class="token punctuation">.</span>show<span class="token punctuation">(</span>el<span class="token punctuation">)</span></code></pre>
 <h3 class="atx" id="detayli-aciklama">Detaylı Açıklama</h3>
+<pre><code class="fenced-code-block language-python"><span class="token keyword">import</span> Part<span class="token punctuation">,</span> math
+<span class="token keyword">from</span> FreeCAD <span class="token keyword">import</span> Base</code></pre>
+<p>Elbette <code>Part</code> modülüne ve ayrıca vektörler ve matrisler gibi temel FreeCAD yapılarını içeren <code>FreeCAD.Base</code> modülüne ihtiyacımız olacak.</p>
+<pre><code class="fenced-code-block language-python"><span class="token keyword">def</span> <span class="token function">makeBottleTut</span><span class="token punctuation">(</span>myWidth <span class="token operator">=</span> <span class="token number">50.0</span><span class="token punctuation">,</span> myHeight <span class="token operator">=</span> <span class="token number">70.0</span><span class="token punctuation">,</span> myThickness <span class="token operator">=</span> <span class="token number">30.0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    aPnt1<span class="token operator">=</span>Base<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span><span class="token operator">-</span>myWidth <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">.</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+    aPnt2<span class="token operator">=</span>Base<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span><span class="token operator">-</span>myWidth <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">.</span><span class="token punctuation">,</span> <span class="token operator">-</span>myThickness <span class="token operator">/</span> <span class="token number">4</span><span class="token punctuation">.</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+    aPnt3<span class="token operator">=</span>Base<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">-</span>myThickness <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">.</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+    aPnt4<span class="token operator">=</span>Base<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span>myWidth <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">.</span><span class="token punctuation">,</span> <span class="token operator">-</span>myThickness <span class="token operator">/</span> <span class="token number">4</span><span class="token punctuation">.</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+    aPnt5<span class="token operator">=</span>Base<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span>myWidth <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">.</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span></code></pre>
+<p>Burada <code>makeBottleTut</code> fonksiyonumuzu tanımlıyoruz. Bu fonksiyon, yukarıda yaptığımız gibi, argümanlar olmadan çağrılabilir, bu durumda genişlik, yükseklik ve kalınlık için varsayılan değerler kullanılacaktır. Ardından, temel profilimizi oluşturmak için kullanılacak birkaç noktayı tanımlarız.</p>
+<pre><code class="fenced-code-block language-python"><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    aArcOfCircle <span class="token operator">=</span> Part<span class="token punctuation">.</span>Arc<span class="token punctuation">(</span>aPnt2<span class="token punctuation">,</span> aPnt3<span class="token punctuation">,</span> aPnt4<span class="token punctuation">)</span>
+    aSegment1<span class="token operator">=</span>Part<span class="token punctuation">.</span>LineSegment<span class="token punctuation">(</span>aPnt1<span class="token punctuation">,</span> aPnt2<span class="token punctuation">)</span>
+    aSegment2<span class="token operator">=</span>Part<span class="token punctuation">.</span>LineSegment<span class="token punctuation">(</span>aPnt4<span class="token punctuation">,</span> aPnt5<span class="token punctuation">)</span></code></pre>
+<p>Burada geometriyi tanımlıyoruz: üç noktadan oluşan <strong>bir yay</strong> ve iki noktadan oluşan <strong>iki doğru parçası</strong>.</p>
+<pre><code class="fenced-code-block language-python"><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    aEdge1<span class="token operator">=</span>aSegment1<span class="token punctuation">.</span>toShape<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    aEdge2<span class="token operator">=</span>aArcOfCircle<span class="token punctuation">.</span>toShape<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    aEdge3<span class="token operator">=</span>aSegment2<span class="token punctuation">.</span>toShape<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    aWire<span class="token operator">=</span>Part<span class="token punctuation">.</span>Wire<span class="token punctuation">(</span><span class="token punctuation">[</span>aEdge1<span class="token punctuation">,</span> aEdge2<span class="token punctuation">,</span> aEdge3<span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
+<p>Geometri ve şekiller arasındaki farkı hatırlıyor musunuz? Burada yapı geometrimizden şekiller oluşturuyoruz. Üç kenar (kenarlar düz veya kavisli olabilir), daha sonra bu üç kenardan yapılmış bir tel.</p>
+<pre><code class="fenced-code-block language-python"><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    aTrsf<span class="token operator">=</span>Base<span class="token punctuation">.</span>Matrix<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    aTrsf<span class="token punctuation">.</span>rotateZ<span class="token punctuation">(</span>math<span class="token punctuation">.</span>pi<span class="token punctuation">)</span> <span class="token comment"># z ekseni etrafında döndür</span>
+
+    aMirroredWire<span class="token operator">=</span>aWire<span class="token punctuation">.</span>copy<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    aMirroredWire<span class="token punctuation">.</span>transformShape<span class="token punctuation">(</span>aTrsf<span class="token punctuation">)</span>
+    myWireProfile<span class="token operator">=</span>Part<span class="token punctuation">.</span>Wire<span class="token punctuation">(</span><span class="token punctuation">[</span>aWire<span class="token punctuation">,</span> aMirroredWire<span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
+<p>Şimdiye kadar sadece yarım profil oluşturduk. Tüm profili aynı şekilde oluşturmak yerine, yaptığımızın aynısını yapabilir ve her iki yarıyı da birbirine yapıştırabiliriz. Önce bir matrix oluşturuyoruz. Bir matris, 3B nesnelerin geçebileceği (taşıma, döndürme ve ölçekleme) tüm temel dönüşümleri tek bir yapıda içerebildiğinden, 3B dünyadaki nesnelere dönüşümleri uygulamanın çok yaygın bir yoludur. Matrisi oluşturduktan sonra onu aynalıyoruz, ardından telimizin bir kopyasını oluşturuyoruz ve ona dönüşüm matrisini uyguluyoruz. Artık iki telimiz var ve teller aslında birer kenar listesi olduğundan, bunlardan üçüncü bir tel yapabiliriz.</p>
+<pre><code class="fenced-code-block language-python"><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    myFaceProfile<span class="token operator">=</span>Part<span class="token punctuation">.</span>Face<span class="token punctuation">(</span>myWireProfile<span class="token punctuation">)</span>
+    aPrismVec<span class="token operator">=</span>Base<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> myHeight<span class="token punctuation">)</span>
+    myBody<span class="token operator">=</span>myFaceProfile<span class="token punctuation">.</span>extrude<span class="token punctuation">(</span>aPrismVec<span class="token punctuation">)</span>
+
+    myBody<span class="token operator">=</span>myBody<span class="token punctuation">.</span>makeFillet<span class="token punctuation">(</span>myThickness <span class="token operator">/</span> <span class="token number">12.0</span><span class="token punctuation">,</span> myBody<span class="token punctuation">.</span>Edges<span class="token punctuation">)</span></code></pre>
+<p>Artık kapalı bir telimiz olduğuna göre yüzey haline getirilebilir. Bir yüzeyimiz olduğunda, onu doğrusal katılayabiliriz / ekstrüde edebiliriz. Bunu yaparken katı bir hale getiriyoruz. Sonra güzel bir tasarımı önemsediğimiz için nesnemize güzel bir küçük radyus uyguluyoruz (yuvarlatıyoruz), değil mi?</p>
+<pre><code class="fenced-code-block language-python"><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    neckLocation<span class="token operator">=</span>Base<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> myHeight<span class="token punctuation">)</span>
+    neckNormal<span class="token operator">=</span>Base<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+
+    myNeckRadius <span class="token operator">=</span> myThickness <span class="token operator">/</span> <span class="token number">4</span><span class="token punctuation">.</span>
+    myNeckHeight <span class="token operator">=</span> myHeight <span class="token operator">/</span> <span class="token number">10</span><span class="token punctuation">.</span>
+    myNeck <span class="token operator">=</span> Part<span class="token punctuation">.</span>makeCylinder<span class="token punctuation">(</span>myNeckRadius<span class="token punctuation">,</span> myNeckHeight<span class="token punctuation">,</span> neckLocation<span class="token punctuation">,</span> neckNormal<span class="token punctuation">)</span></code></pre>
+<p>Bu noktada şişemizin gövdesi yapılmış oluyor ama yine de bir boyun oluşturmamız gerekiyor. Böylece bir silindirle yeni bir katı yapıyoruz.</p>
+<pre><code class="fenced-code-block language-python"><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    myBody <span class="token operator">=</span> myBody<span class="token punctuation">.</span>fuse<span class="token punctuation">(</span>myNeck<span class="token punctuation">)</span></code></pre>
+<p>Birleştirme (fuse) işlemi çok güçlüdür. Bu Komut, yapıştırılması gerekenleri yapıştırmakla ilgilenecek ve çıkarılması gereken parçaları çıkaracaktır.</p>
+<pre><code class="fenced-code-block language-python"><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    <span class="token keyword">return</span> myBody</code></pre>
+<p>Ardından, fonksiyonumuzun sonucu olarak Part katımızı döndürüyoruz.</p>
+<pre><code class="fenced-code-block language-python">el <span class="token operator">=</span> makeBottleTut<span class="token punctuation">(</span><span class="token punctuation">)</span>
+Part<span class="token punctuation">.</span>show<span class="token punctuation">(</span>el<span class="token punctuation">)</span></code></pre>
+<p>Son olarak, parçayı gerçekten oluşturmak için fonksiyonu çağırır, sonra onu görünür hale getiririz.</p>
 <h2 class="atx" id="ornek-delinmis-kutu">Örnek: Delinmiş Kutu</h2>
+<p>İşte delinmiş bir kutu inşa etmenin tam bir örneği.</p>
+<p>Yapı bir seferde bir tarafta yapılır. Küp bittiğinde, içinden bir silindir kesilerek oyuluyor.</p>
+<pre><code class="fenced-code-block language-python"><span class="token keyword">import</span> Part<span class="token punctuation">,</span> math
+<span class="token keyword">from</span> FreeCAD <span class="token keyword">import</span> Base
+
+size <span class="token operator">=</span> <span class="token number">10</span>
+poly <span class="token operator">=</span> Part<span class="token punctuation">.</span>makePolygon<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>size<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>size<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> size<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> size<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+face1 <span class="token operator">=</span> Part<span class="token punctuation">.</span>Face<span class="token punctuation">(</span>poly<span class="token punctuation">)</span>
+face2 <span class="token operator">=</span> Part<span class="token punctuation">.</span>Face<span class="token punctuation">(</span>poly<span class="token punctuation">)</span>
+face3 <span class="token operator">=</span> Part<span class="token punctuation">.</span>Face<span class="token punctuation">(</span>poly<span class="token punctuation">)</span>
+face4 <span class="token operator">=</span> Part<span class="token punctuation">.</span>Face<span class="token punctuation">(</span>poly<span class="token punctuation">)</span>
+face5 <span class="token operator">=</span> Part<span class="token punctuation">.</span>Face<span class="token punctuation">(</span>poly<span class="token punctuation">)</span>
+face6 <span class="token operator">=</span> Part<span class="token punctuation">.</span>Face<span class="token punctuation">(</span>poly<span class="token punctuation">)</span>
+
+myMat <span class="token operator">=</span> Base<span class="token punctuation">.</span>Matrix<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+myMat<span class="token punctuation">.</span>rotateZ<span class="token punctuation">(</span>math<span class="token punctuation">.</span>pi <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span>
+face2<span class="token punctuation">.</span>transformShape<span class="token punctuation">(</span>myMat<span class="token punctuation">)</span>
+face2<span class="token punctuation">.</span>translate<span class="token punctuation">(</span>Base<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span>size<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+myMat<span class="token punctuation">.</span>rotateZ<span class="token punctuation">(</span>math<span class="token punctuation">.</span>pi <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span>
+face3<span class="token punctuation">.</span>transformShape<span class="token punctuation">(</span>myMat<span class="token punctuation">)</span>
+face3<span class="token punctuation">.</span>translate<span class="token punctuation">(</span>Base<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span>size<span class="token punctuation">,</span> size<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+myMat<span class="token punctuation">.</span>rotateZ<span class="token punctuation">(</span>math<span class="token punctuation">.</span>pi <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span>
+face4<span class="token punctuation">.</span>transformShape<span class="token punctuation">(</span>myMat<span class="token punctuation">)</span>
+face4<span class="token punctuation">.</span>translate<span class="token punctuation">(</span>Base<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> size<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+myMat <span class="token operator">=</span> Base<span class="token punctuation">.</span>Matrix<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+myMat<span class="token punctuation">.</span>rotateX<span class="token punctuation">(</span><span class="token operator">-</span>math<span class="token punctuation">.</span>pi <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span>
+face5<span class="token punctuation">.</span>transformShape<span class="token punctuation">(</span>myMat<span class="token punctuation">)</span>
+
+face6<span class="token punctuation">.</span>transformShape<span class="token punctuation">(</span>myMat<span class="token punctuation">)</span>               
+face6<span class="token punctuation">.</span>translate<span class="token punctuation">(</span>Base<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> size<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+myShell <span class="token operator">=</span> Part<span class="token punctuation">.</span>makeShell<span class="token punctuation">(</span><span class="token punctuation">[</span>face1<span class="token punctuation">,</span> face2<span class="token punctuation">,</span> face3<span class="token punctuation">,</span> face4<span class="token punctuation">,</span> face5<span class="token punctuation">,</span> face6<span class="token punctuation">]</span><span class="token punctuation">)</span>   
+mySolid <span class="token operator">=</span> Part<span class="token punctuation">.</span>makeSolid<span class="token punctuation">(</span>myShell<span class="token punctuation">)</span>
+
+myCyl <span class="token operator">=</span> Part<span class="token punctuation">.</span>makeCylinder<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">)</span>
+myCyl<span class="token punctuation">.</span>translate<span class="token punctuation">(</span>Base<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span>size <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">,</span> size <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+cut_part <span class="token operator">=</span> mySolid<span class="token punctuation">.</span>cut<span class="token punctuation">(</span>myCyl<span class="token punctuation">)</span>
+
+Part<span class="token punctuation">.</span>show<span class="token punctuation">(</span>cut_part<span class="token punctuation">)</span>
+</code></pre>
 <h3 class="atx" id="yuklemek-ve-kaydetmek">Yüklemek ve Kaydetmek</h3>
+<p>Çalışmanızı kaydetmenin birkaç yolu vardır. Elbette FreeCAD belgenizi kaydedebilirsiniz, ancak Parça nesnelerini doğrudan BREP, IGS, STEP ve STL gibi yaygın CAD formatlarına da kaydedebilirsiniz.</p>
+<p>Bir şekli bir dosyaya kaydetmek kolaydır. Tüm şekil nesneleri için <code>exportBrep()</code>, <code>exportIges()</code>, <code>exportStep()</code> ve <code>exportStl()</code> yöntemleri mevcuttur. Yani, yöntemleri aşağıdaki şekilde kullanarak çalışmalarınız farklı biçimlerde dışa aktarabilirsiniz :</p>
+<pre><code class="fenced-code-block language-python"><span class="token keyword">import</span> Part
+s <span class="token operator">=</span> Part<span class="token punctuation">.</span>makeBox<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span>
+s<span class="token punctuation">.</span>exportStep<span class="token punctuation">(</span><span class="token string">"test.stp"</span><span class="token punctuation">)</span></code></pre>
+<p>Bu komut, kutu oluşturacak ve kutumuzu bir STEP dosyası olarak kaydedecektir. Bir BREP, IGES veya STEP uzantılı dosyayı yüklemek için :</p>
+<pre><code class="fenced-code-block language-python"><span class="token keyword">import</span> Part
+s <span class="token operator">=</span> Part<span class="token punctuation">.</span>Shape<span class="token punctuation">(</span><span class="token punctuation">)</span>
+s<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token string">"test.stp"</span><span class="token punctuation">)</span></code></pre>
+<p>Bir STEP dosyasını bir IGS dosyasına dönüştürmek için:</p>
+<pre><code class="fenced-code-block language-python"><span class="token keyword">import</span> Part
+ s <span class="token operator">=</span> Part<span class="token punctuation">.</span>Shape<span class="token punctuation">(</span><span class="token punctuation">)</span>
+ s<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token string">"file.stp"</span><span class="token punctuation">)</span>       <span class="token comment"># okunan, içe aktarılan dosya igs, stp, stl, brep</span>
+ s<span class="token punctuation">.</span>exportIges<span class="token punctuation">(</span><span class="token string">"file.igs"</span><span class="token punctuation">)</span> <span class="token comment"># dışa aktarılan, dönüştürülen dosya  igs</span></code></pre>
+
+ <p> | <a href="https://mhalil.github.io/"> Ana Sayfa </a> | <a href="https://mhalil.github.io/freecad.html"> FreeCAD Sayfası </a> | <a href="04_Parca(Part)_Komut_Dosyasi_Olusturmak.html" > &lt; FreeCAD Komut Dosyası Temelleri </a> | <a href="06_Komut_dosyasiyla_yazilmis_nesneler.html"> Komut Dosyasıyla Yazılmış Nesneler > </a> | </p>
+
 <p>Kaynak: <a href="https://wiki.freecadweb.org/Topological_data_scripting">Topological data scripting</a></p>
 </article>
 </body>

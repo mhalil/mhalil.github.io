@@ -675,18 +675,320 @@ cylinder = disc.extrude(Base.Vector(0, 0, 2))
 
 ## Şekilleri Keşfedin
 
-### Kenar analizi
+Topolojik veri yapısını kolayca keşfedebilirsiniz:
+
+```python
+import Part
+b = Part.makeBox(100, 100, 100)
+b.Wires
+w = b.Wires[0]
+w
+w.Wires
+w.Vertexes
+Part.show(w)
+w.Edges
+e = w.Edges[0]
+e.Vertexes
+v = e.Vertexes[0]
+v.Point
+```
+
+Yukarıdaki satırları Python yorumlayıcısına yazarak, Part nesnelerinin yapısını iyi anlayacaksınız. Burada `makeBox()` komutumuz katı bir şekil oluşturdu. Bu katı, tüm Parça katıları gibi, yüzeyler içerir. **Yüzeyler** her zaman, yüzeyi çevreleyen kenarların listesi olan **teller** içerir. Her yüzeyin en az bir kapalı teli vardır (yüzeyde bir delik varsa daha fazla olabilir). Telde her bir kenara ayrı ayrı bakabiliriz ve her bir kenarın içinde köşeleri görebiliriz. Düz kenarların açıkçası sadece iki köşesi vardır.
+
+### Kenar Analizi
+
+İsteğe bağlı bir eğri olan bir kenar olması durumunda, büyük olasılıkla bir ayrıklaştırma yapmak istersiniz. FreeCAD'de kenarlar uzunluklarına göre parametrelendirilir. Bu, bir kenarı/eğriyi uzunluğuna göre yürüyebileceğiniz anlamına gelir:
+
+```python
+import Part
+box = Part.makeBox(100, 100, 100)
+anEdge = box.Edges[0]
+print(anEdge.Length)
+```
+
+Artık uzunluğu bir konum olarak kullanarak, kenarın birçok özelliğine erişebilirsiniz. Bunun anlamı, eğer kenar 100 mm uzunluğundaysa, başlangıç ​​konumu 0 ve bitiş konumu 100'dür.
+
+```python
+anEdge.tangentAt(0.0)          # başlangıçtaki teğet yönü
+anEdge.valueAt(0.0)            # Başlangıç ​​noktası
+anEdge.valueAt(100.0)          # Kenarın sonundaki nokta
+anEdge.derivative1At(50.0)     # ortadaki eğrinin ilk türevi
+anEdge.derivative2At(50.0)     # ortadaki eğrinin ikinci türevi
+anEdge.derivative3At(50.0)     # ortadaki eğrinin üçüncü türevi
+anEdge.centerOfCurvatureAt(50) # o konum için eğriliğin merkezi
+anEdge.curvatureAt(50.0)       # eğrilik
+anEdge.normalAt(50)            # o konumda normal vektör (tanımlanmışsa)
+```
 
 ### Bir Seçim Kullanın
 
+Burada, kullanıcının görüntüleyicide yaptığı bir seçimi nasıl kullanabileceğimizi görüyoruz. Öncelikle bir kutu oluşturuyoruz ve bunu görüntüleyicide gösteriyoruz.
+
+```python
+import Part
+Part.show(Part.makeBox(100, 100, 100))
+Gui.SendMsgToActiveView("ViewFit")
+```
+
+Şimdi bazı yüzeyleri veya kenarları seçin. Bu komut dosyasıyla, seçili tüm nesneler ve bunların alt öğeleri üzerinde yineleme yapabilirsiniz:
+
+```python
+for o in Gui.Selection.getSelectionEx():
+    print(o.ObjectName)
+    for s in o.SubElementNames:
+        print("name: ", s)
+        for s in o.SubObjects:
+            print("object: ", s)
+```
+
+Bazı kenarları seçin ve bu komut dosyası uzunluğu hesaplayacaktır:
+
+```python
+length = 0.0
+for o in Gui.Selection.getSelectionEx():
+    for s in o.SubObjects:
+        length += s.Length
+
+print("Length of the selected edges: ", length)
+```
+
 ## Örnek: OCC şişesi
+
+ [OpenCasCade Teknoloji web sitesinde](https://www.opencascade.com/doc/occt-6.9.0/overview/html/occt__tutorial.html) bulunan tipik bir örnek, bir şişenin nasıl oluşturulacağıdır. Bu, FreeCAD için de iyi bir alıştırmadır. Aslında, aşağıdaki örneğimizi ve aynı anda OCC sayfasını takip ederseniz, OCC yapılarının FreeCAD'de ne kadar iyi uygulandığını göreceksiniz. Komut dosyası, FreeCAD kurulumuna dahildir (**Mod/Part** klasörünün içinde) ve Python yorumlayıcısından şunu yazarak çağrılabilir:
+
+```python
+import Part
+import MakeBottle
+bottle = MakeBottle.makeBottle()
+Part.show(bottle)
+```
 
 ### Komut Dosyası
 
+Bu eğitimin amacı için, komut dosyasının kısıtlı bir sürümünü ele alacağız. Bu versiyonda, şişenin içi boşaltılmayacak ve şişenin ağız kısmına diş açılmayacaktır.
+
+```python
+import Part, math
+from FreeCAD import Base
+
+def makeBottleTut(myWidth = 50.0, myHeight = 70.0, myThickness = 30.0):
+    aPnt1=Base.Vector(-myWidth / 2., 0, 0)
+    aPnt2=Base.Vector(-myWidth / 2., -myThickness / 4., 0)
+    aPnt3=Base.Vector(0, -myThickness / 2., 0)
+    aPnt4=Base.Vector(myWidth / 2., -myThickness / 4., 0)
+    aPnt5=Base.Vector(myWidth / 2., 0, 0)
+
+    aArcOfCircle = Part.Arc(aPnt2, aPnt3, aPnt4)
+    aSegment1=Part.LineSegment(aPnt1, aPnt2)
+    aSegment2=Part.LineSegment(aPnt4, aPnt5)
+
+    aEdge1=aSegment1.toShape()
+    aEdge2=aArcOfCircle.toShape()
+    aEdge3=aSegment2.toShape()
+    aWire=Part.Wire([aEdge1, aEdge2, aEdge3])
+
+    aTrsf=Base.Matrix()
+    aTrsf.rotateZ(math.pi) # rotate around the z-axis
+
+    aMirroredWire=aWire.copy()
+    aMirroredWire.transformShape(aTrsf)
+    myWireProfile=Part.Wire([aWire, aMirroredWire])
+
+    myFaceProfile=Part.Face(myWireProfile)
+    aPrismVec=Base.Vector(0, 0, myHeight)
+    myBody=myFaceProfile.extrude(aPrismVec)
+
+    myBody=myBody.makeFillet(myThickness / 12.0, myBody.Edges)
+
+    neckLocation=Base.Vector(0, 0, myHeight)
+    neckNormal=Base.Vector(0, 0, 1)
+
+    myNeckRadius = myThickness / 4.
+    myNeckHeight = myHeight / 10.
+    myNeck = Part.makeCylinder(myNeckRadius, myNeckHeight, neckLocation, neckNormal)
+    myBody = myBody.fuse(myNeck)
+
+    return myBody
+
+el = makeBottleTut()
+Part.show(el)
+```
+
 ### Detaylı Açıklama
+
+```python
+import Part, math
+from FreeCAD import Base
+```
+
+Elbette `Part` modülüne ve ayrıca vektörler ve matrisler gibi temel FreeCAD yapılarını içeren `FreeCAD.Base` modülüne ihtiyacımız olacak.
+
+```python
+def makeBottleTut(myWidth = 50.0, myHeight = 70.0, myThickness = 30.0):
+    aPnt1=Base.Vector(-myWidth / 2., 0, 0)
+    aPnt2=Base.Vector(-myWidth / 2., -myThickness / 4., 0)
+    aPnt3=Base.Vector(0, -myThickness / 2., 0)
+    aPnt4=Base.Vector(myWidth / 2., -myThickness / 4., 0)
+    aPnt5=Base.Vector(myWidth / 2., 0, 0)
+```
+
+Burada `makeBottleTut` fonksiyonumuzu tanımlıyoruz. Bu fonksiyon, yukarıda yaptığımız gibi, argümanlar olmadan çağrılabilir, bu durumda genişlik, yükseklik ve kalınlık için varsayılan değerler kullanılacaktır. Ardından, temel profilimizi oluşturmak için kullanılacak birkaç noktayı tanımlarız.
+
+```python
+...
+    aArcOfCircle = Part.Arc(aPnt2, aPnt3, aPnt4)
+    aSegment1=Part.LineSegment(aPnt1, aPnt2)
+    aSegment2=Part.LineSegment(aPnt4, aPnt5)
+```
+
+Burada geometriyi tanımlıyoruz: üç noktadan oluşan **bir yay** ve iki noktadan oluşan **iki doğru parçası**.
+
+```python
+...
+    aEdge1=aSegment1.toShape()
+    aEdge2=aArcOfCircle.toShape()
+    aEdge3=aSegment2.toShape()
+    aWire=Part.Wire([aEdge1, aEdge2, aEdge3])
+```
+
+Geometri ve şekiller arasındaki farkı hatırlıyor musunuz? Burada yapı geometrimizden şekiller oluşturuyoruz. Üç kenar (kenarlar düz veya kavisli olabilir), daha sonra bu üç kenardan yapılmış bir tel.
+
+```python
+...
+    aTrsf=Base.Matrix()
+    aTrsf.rotateZ(math.pi) # z ekseni etrafında döndür
+
+    aMirroredWire=aWire.copy()
+    aMirroredWire.transformShape(aTrsf)
+    myWireProfile=Part.Wire([aWire, aMirroredWire])
+```
+
+Şimdiye kadar sadece yarım profil oluşturduk. Tüm profili aynı şekilde oluşturmak yerine, yaptığımızın aynısını yapabilir ve her iki yarıyı da birbirine yapıştırabiliriz. Önce bir matrix oluşturuyoruz. Bir matris, 3B nesnelerin geçebileceği (taşıma, döndürme ve ölçekleme) tüm temel dönüşümleri tek bir yapıda içerebildiğinden, 3B dünyadaki nesnelere dönüşümleri uygulamanın çok yaygın bir yoludur. Matrisi oluşturduktan sonra onu aynalıyoruz, ardından telimizin bir kopyasını oluşturuyoruz ve ona dönüşüm matrisini uyguluyoruz. Artık iki telimiz var ve teller aslında birer kenar listesi olduğundan, bunlardan üçüncü bir tel yapabiliriz.
+
+```python
+...
+    myFaceProfile=Part.Face(myWireProfile)
+    aPrismVec=Base.Vector(0, 0, myHeight)
+    myBody=myFaceProfile.extrude(aPrismVec)
+
+    myBody=myBody.makeFillet(myThickness / 12.0, myBody.Edges)
+```
+
+Artık kapalı bir telimiz olduğuna göre yüzey haline getirilebilir. Bir yüzeyimiz olduğunda, onu doğrusal katılayabiliriz / ekstrüde edebiliriz. Bunu yaparken katı bir hale getiriyoruz. Sonra güzel bir tasarımı önemsediğimiz için nesnemize güzel bir küçük radyus uyguluyoruz (yuvarlatıyoruz), değil mi?
+
+```python
+...
+    neckLocation=Base.Vector(0, 0, myHeight)
+    neckNormal=Base.Vector(0, 0, 1)
+
+    myNeckRadius = myThickness / 4.
+    myNeckHeight = myHeight / 10.
+    myNeck = Part.makeCylinder(myNeckRadius, myNeckHeight, neckLocation, neckNormal)
+```
+
+Bu noktada şişemizin gövdesi yapılmış oluyor ama yine de bir boyun oluşturmamız gerekiyor. Böylece bir silindirle yeni bir katı yapıyoruz.
+
+```python
+...
+    myBody = myBody.fuse(myNeck)
+```
+
+Birleştirme (fuse) işlemi çok güçlüdür. Bu Komut, yapıştırılması gerekenleri yapıştırmakla ilgilenecek ve çıkarılması gereken parçaları çıkaracaktır.
+
+```python
+...
+    return myBody
+```
+
+Ardından, fonksiyonumuzun sonucu olarak Part katımızı döndürüyoruz.
+
+```python
+el = makeBottleTut()
+Part.show(el)
+```
+
+Son olarak, parçayı gerçekten oluşturmak için fonksiyonu çağırır, sonra onu görünür hale getiririz.
 
 ## Örnek: Delinmiş Kutu
 
+İşte delinmiş bir kutu inşa etmenin tam bir örneği.
+
+Yapı bir seferde bir tarafta yapılır. Küp bittiğinde, içinden bir silindir kesilerek oyuluyor.
+
+```python
+import Part, math
+from FreeCAD import Base
+
+size = 10
+poly = Part.makePolygon([(0, 0, 0), (size, 0, 0), (size, 0, size), (0, 0, size), (0, 0, 0)])
+
+face1 = Part.Face(poly)
+face2 = Part.Face(poly)
+face3 = Part.Face(poly)
+face4 = Part.Face(poly)
+face5 = Part.Face(poly)
+face6 = Part.Face(poly)
+
+myMat = Base.Matrix()
+
+myMat.rotateZ(math.pi / 2)
+face2.transformShape(myMat)
+face2.translate(Base.Vector(size, 0, 0))
+
+myMat.rotateZ(math.pi / 2)
+face3.transformShape(myMat)
+face3.translate(Base.Vector(size, size, 0))
+
+myMat.rotateZ(math.pi / 2)
+face4.transformShape(myMat)
+face4.translate(Base.Vector(0, size, 0))
+
+myMat = Base.Matrix()
+
+myMat.rotateX(-math.pi / 2)
+face5.transformShape(myMat)
+
+face6.transformShape(myMat)               
+face6.translate(Base.Vector(0, 0, size))
+
+myShell = Part.makeShell([face1, face2, face3, face4, face5, face6])   
+mySolid = Part.makeSolid(myShell)
+
+myCyl = Part.makeCylinder(2, 20)
+myCyl.translate(Base.Vector(size / 2, size / 2, 0))
+
+cut_part = mySolid.cut(myCyl)
+
+Part.show(cut_part)
+```
+
 ### Yüklemek ve Kaydetmek
+
+Çalışmanızı kaydetmenin birkaç yolu vardır. Elbette FreeCAD belgenizi kaydedebilirsiniz, ancak Parça nesnelerini doğrudan BREP, IGS, STEP ve STL gibi yaygın CAD formatlarına da kaydedebilirsiniz.
+
+Bir şekli bir dosyaya kaydetmek kolaydır. Tüm şekil nesneleri için `exportBrep()`, `exportIges()`, `exportStep()` ve `exportStl()` yöntemleri mevcuttur. Yani, yöntemleri aşağıdaki şekilde kullanarak çalışmalarınız farklı biçimlerde dışa aktarabilirsiniz :
+
+```python
+import Part
+s = Part.makeBox(10, 10, 10)
+s.exportStep("test.stp")
+```
+
+Bu komut, kutu oluşturacak ve kutumuzu bir STEP dosyası olarak kaydedecektir. Bir BREP, IGES veya STEP uzantılı dosyayı yüklemek için :
+
+```python
+import Part
+s = Part.Shape()
+s.read("test.stp")
+```
+
+Bir STEP dosyasını bir IGS dosyasına dönüştürmek için:
+
+```python
+import Part
+ s = Part.Shape()
+ s.read("file.stp")       # okunan, içe aktarılan dosya igs, stp, stl, brep
+ s.exportIges("file.igs") # dışa aktarılan, dönüştürülen dosya  igs
+```
 
 Kaynak: [Topological data scripting](https://wiki.freecadweb.org/Topological_data_scripting)

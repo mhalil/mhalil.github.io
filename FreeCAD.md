@@ -10,14 +10,10 @@ Konu anlatımları esnasında yazdığım kodları / betik dosyalarını ve Free
 
 ## Konu Başlıkları
 
-+ [Python'a Giriş](FreeCAD/02%20Python'a%20Giris.html)
-+ [Python Komut Dosyası Oluşturmak](/FreeCAD/03_Python_Komut_Dosyasi_Olusturmak.html)
-+ [FreeCAD Komut  Dosyası Temelleri](FreeCAD/04_FreeCAD_Komut_ Dosyasi_Temelleri.html)
-+ [Parça (Part) Komut Dosyası Oluşturmak](FreeCAD/05_Parca(Part)_Komut_Dosyasi_Olusturmak.html)
+1 [Python'a Giriş](FreeCAD/01_Python'a_Giris.html)
+2 [Python Komut Dosyası Oluşturmak](/FreeCAD/02_Python_Komut_Dosyasi_Olusturmak.html)
+3 [FreeCAD Komut  Dosyası Temelleri](FreeCAD/03_FreeCAD_Komut_Dosyasi_Temelleri.html)
+4 [Parça (Part) Komut Dosyası Oluşturmak](FreeCAD/04_Parca(Part)_Komut_Dosyasi_Olusturmak.html)
+5 [Topolojik Veri Kodlaması](FreeCAD/05_Topolojik_Veri_Kodlamasi.html)
+6 [Komut Dosyasıyla Yazılmış Nesneler](FreeCAD/06_Komut_dosyasiyla_yazilmis_nesneler.html)
 
-___
-
-#### Referans (Kaynak) Sayfalar;
-
-+ [Python_scripting_tutorial](https://wiki.freecadweb.org/Python_scripting_tutorial)
-+ [Introduction_to_Python](https://wiki.freecadweb.org/Introduction_to_Python)
