@@ -1244,18 +1244,18 @@ pre[class*="language-"] {
 <body>
   <article class="markdown-body"><h1 class="atx" id="topolojik-veri-kodlamasi">Topolojik Veri Kodlaması</h1>
 <h2 class="atx" id="takdim">Takdim</h2>
-<p>Burada, <code>Parça (Part)</code> modülünü doğrudan FreeCAD Python Yorumlayıcısından veya herhangi bir harici komut dosyasından nasıl kontrol edeceğinizi açıklayacağız. Python komut dosyasının FreeCAD'de nasıl çalıştığı hakkında daha fazla bilgiye ihtiyacınız varsa, <a href="https://wiki.freecadweb.org/Power_users_hub">Komut Dosyası</a> bölümüne ve [FreeCAD Komut Dosyası Oluşturma Temelleri ](04_FreeCAD_Komut_ Dosyasi_Temelleri.html)sayfalarına göz attığınızdan emin olun. Python'da yeniyseniz, önce <a href="02_Python'a_Giris.html">Python'a Giriş</a> bölümünü okumak iyi bir fikirdir.</p>
+<p>Burada, <code>Parça (Part)</code> modülünü, doğrudan FreeCAD Python Yorumlayıcısından veya herhangi bir harici komut dosyasından nasıl kontrol edeceğinizi açıklayacağız. Python komut dosyasının FreeCAD'de nasıl çalıştığı hakkında daha fazla bilgiye ihtiyacınız varsa, <a href="https://wiki.freecadweb.org/Power_users_hub">Komut Dosyası</a> bölümüne ve [FreeCAD Komut Dosyası Oluşturma Temelleri ](03_FreeCAD_Komut_ Dosyasi_Temelleri.html)sayfalarına göz attığınızdan emin olun. Python'da yeniyseniz, önce <a href="01_Python'a_Giris.html">Python'a Giriş</a> bölümünü okumak iyi bir fikirdir.</p>
 <h3 class="atx" id="ayrica-bakiniz">Ayrıca bakınız</h3>
 <ul>
-<li><p><a href="05_Parca(Part)_Komut_Dosyasi_Olusturmak.html">Parça (Part) Komut Dosyası Oluşturmak</a></p>
+<li><p><a href="04_Parca(Part)_Komut_Dosyasi_Olusturmak.html">Parça (Part) Komut Dosyası Oluşturmak</a></p>
 </li>
 <li><p><a title="OpenCASCADE" href="https://wiki.freecadweb.org/OpenCASCADE">OpenCASCADE</a></p>
 </li>
 </ul>
 <h2 class="atx" id="sinif-class-diyagrami">Sınıf (Class) diyagramı</h2>
-<p>Bu, <code>Parça (Part)</code> modülünün en önemli sınıflarına <a href="(https://tr.wikipedia.org/wiki/UML)">Birleşik Modelleme Dili (UML)</a> genel bakışıdır:</p>
+<p>Bu, <code>Parça (Part)</code> modülünün en önemli sınıflarına <a href="(https://tr.wikipedia.org/wiki/UML)">Birleşik Modelleme Dili (BMD - UML)</a> genel bakışıdır:</p>
 <p><img alt="" src="https://wiki.freecadweb.org/images/1/13/Part_Classes.jpg"></p>
-<p><strong>Sınıf diyagramı</strong> <a title="UML" href="https://tr.wikipedia.org/wiki/UML">UML</a> 'in en sık kullanılan <a title="Diyagram" href="https://tr.wikipedia.org/wiki/Diyagram">diyagramlardan</a> biri olup <a title="Nesne Yönelimli Analiz ve Tasarım" href="https://tr.wikipedia.org/wiki/Nesne_Y%C3%B6nelimli_Analiz_ve_Tasar%C4%B1m">nesne yönelimli analiz</a>, tasarım ve <a title="Nesne yönelimli programlama" href="https://tr.wikipedia.org/wiki/Nesne_y%C3%B6nelimli_programlama">programlamadaki</a> sınıfları net ve anlaşılabilir şekilde temsil etmeyi amaçlar.</p>
+<p><strong>Sınıf diyagramı</strong> <a title="UML" href="https://tr.wikipedia.org/wiki/UML">BMD - UML</a> 'in en sık kullanılan <a title="Diyagram" href="https://tr.wikipedia.org/wiki/Diyagram">diyagramlardan</a> biri olup <a title="Nesne Yönelimli Analiz ve Tasarım" href="https://tr.wikipedia.org/wiki/Nesne_Y%C3%B6nelimli_Analiz_ve_Tasar%C4%B1m">nesne yönelimli analiz</a>, tasarım ve <a title="Nesne yönelimli programlama" href="https://tr.wikipedia.org/wiki/Nesne_y%C3%B6nelimli_programlama">programlamadaki</a> sınıfları net ve anlaşılabilir şekilde temsil etmeyi amaçlar.</p>
 <h3 class="atx" id="geometri">Geometri</h3>
 <p>Geometrik nesneler, tüm topolojik nesnelerin yapı taşlarıdır:</p>
 <ul>
@@ -1273,7 +1273,7 @@ pre[class*="language-"] {
 <ul>
 <li><p><code>Birleşik (Compound)</code> Herhangi bir tür topolojik nesne grubu.</p>
 </li>
-<li><p><code>KompozitKatı (Compsolid)</code> Kompozit bir katı, yüzleri ile birbirine bağlanmış bir dizi katıdır. TEL (WIRE) ve KABUK (SHELL) kavramlarını katılara genişletir.</p>
+<li><p><code>KompozitKatı (Compsolid)</code> Kompozit bir katı, yüzleri ile birbirine bağlanmış bir dizi katıdır. TEL (WIRE) ve KABUK (SHELL) kavramlarını, katılara genişletir.</p>
 </li>
 <li><p><code>Katı (Solid)</code> Kabukları ile sınırlı alanın bir parçası. Üç boyutlu.</p>
 </li>
@@ -1281,7 +1281,7 @@ pre[class*="language-"] {
 </li>
 <li><p><code>Yüzey (Face)</code> 2B'de bir düzlemin parçasıdır; 3B'de bir yüzeyin parçasıdır. Geometrisi konturlarla sınırlandırılmıştır (kırpılmıştır). İki boyutludur.</p>
 </li>
-<li><p><code>Kafes / Ağ (Wire)</code> Köşeleri ile birbirine bağlanan bir dizi kenar. Kenarların bağlantılı olup olmamasına bağlı olarak açık veya kapalı kontur olabilir.</p>
+<li><p><code>Tel (Wire)</code> Köşeleri ile birbirine bağlanan bir dizi kenar. Kenarların bağlantılı olup olmamasına bağlı olarak açık veya kapalı kontur olabilir.</p>
 </li>
 <li><p><code>Kenar (Edge)</code> Kısıtlanmış bir eğriye karşılık gelen bir topolojik eleman. Bir kenar genellikle köşelerle sınırlıdır. Tek boyutludur.</p>
 </li>
@@ -1290,12 +1290,12 @@ pre[class*="language-"] {
 <li><p><code>Şekil (Shape)</code> Yukarıdakilerin tümünü kapsayan genel bir terim.</p>
 </li>
 </ul>
-<h2 class="atx" id="ornek-basit-topoloji-olustur">Örnek: Basit topoloji oluştur</h2>
+<h2 class="atx" id="ornek-basit-topoloji-olustur">Örnek: Basit Topoloji Oluştur</h2>
 <p><img alt="" src="https://wiki.freecadweb.org/images/7/77/Wire.png"></p>
 <p>Şimdi daha basit geometriden inşa ederek bir topoloji oluşturacağız. Örnek olay olarak resimde görüldüğü gibi dört köşe (noktası), iki yay ve iki çizgiden oluşan bir parça kullanacağız.</p>
 <h3 class="atx" id="geometri-olustur">Geometri Oluştur</h3>
-<p>İlk önce bu tel yapısının farklı geometrik kısımlarını oluşturuyoruz. Daha sonra bağlanması gereken parçaların aynı köşeleri paylaştığından emin olmak.</p>
-<p>Bu yüzden önce noktaları oluşturuyoruz:</p>
+<p>İlk önce bu tel yapısının farklı geometrik kısımlarını oluşturuyoruz. Daha sonra bağlanması gereken parçaların aynı köşeleri paylaştığından emin oluyoruz.</p>
+<p>Bu nedenle öncelikle noktaları oluşturuyoruz:</p>
 <pre><code class="fenced-code-block language-python"><span class="token keyword">import</span> Part
 <span class="token keyword">from</span> FreeCAD <span class="token keyword">import</span> Base
 V1 <span class="token operator">=</span> Base<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
@@ -1304,14 +1304,14 @@ V3 <span class="token operator">=</span> Base<span class="token punctuation">.</
 V4 <span class="token operator">=</span> Base<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span></code></pre>
 <h3 class="atx" id="yay">Yay</h3>
 <p><img alt="" src="https://wiki.freecadweb.org/images/e/ec/Circel.png"></p>
-<p>Her yay için bir yardımcı noktaya ihtiyacımız var:</p>
+<p>Her yay için, yardımcı bir noktaya ihtiyacımız var:</p>
 <pre><code class="fenced-code-block language-python">VC1 <span class="token operator">=</span> Base<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
 C1 <span class="token operator">=</span> Part<span class="token punctuation">.</span>Arc<span class="token punctuation">(</span>V1<span class="token punctuation">,</span> VC1<span class="token punctuation">,</span> V4<span class="token punctuation">)</span>
 VC2 <span class="token operator">=</span> Base<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span><span class="token number">40</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
 C2 <span class="token operator">=</span> Part<span class="token punctuation">.</span>Arc<span class="token punctuation">(</span>V2<span class="token punctuation">,</span> VC2<span class="token punctuation">,</span> V3<span class="token punctuation">)</span></code></pre>
 <h3 class="atx" id="cizgi">Çizgi</h3>
 <p><img alt="" src="https://wiki.freecadweb.org/images/5/5b/Line.png"></p>
-<p>Doğru (Çizgi) parçaları, iki nokta ile oluşturulabilir:</p>
+<p>Çizgi (doğru) parçaları, iki nokta ile oluşturulabilir:</p>
 <pre><code class="fenced-code-block language-python">L1 <span class="token operator">=</span> Part<span class="token punctuation">.</span>LineSegment<span class="token punctuation">(</span>V1<span class="token punctuation">,</span> V2<span class="token punctuation">)</span>
 L2 <span class="token operator">=</span> Part<span class="token punctuation">.</span>LineSegment<span class="token punctuation">(</span>V3<span class="token punctuation">,</span> V4<span class="token punctuation">)</span></code></pre>
 <h3 class="atx" id="hepsini-bir-araya-getir">Hepsini bir araya getir</h3>
@@ -1333,7 +1333,7 @@ Part<span class="token punctuation">.</span>show<span class="token punctuation">
 </li>
 <li><p><code>makeCircle(radius)</code> Belirli bir Yarıçapa sahip bir <strong>Daire</strong> oluşturur.</p>
 </li>
-<li><p><code>makeCone(radius1, radius2, height)</code> Verilen Yarıçap ve Yükseklikte bir <strong>Koni</strong>oluşturur.</p>
+<li><p><code>makeCone(radius1, radius2, height)</code> Verilen Yarıçap ve Yükseklikte bir <strong>Koni</strong> oluşturur.</p>
 </li>
 <li><p><code>makeCylinder(radius, height)</code> Belirli bir Yarıçap ve Yükseklikte bir <strong>Silindir</strong> oluşturur.</p>
 </li>
@@ -1345,28 +1345,28 @@ Part<span class="token punctuation">.</span>show<span class="token punctuation">
 </li>
 <li><p><code>makeSphere(radius)</code> Belirli bir Yarıçapa sahip bir <strong>Küre</strong> oluşturur.</p>
 </li>
-<li><p><code>makeTorus(radius1, radius2)</code> Verilen Yarıçaplarla bir <strong>Simit, Halka</strong> oluşturur.</p>
+<li><p><code>makeTorus(radius1, radius2)</code> Verilen Yarıçaplarla bir <strong>Simit (Halka)</strong> oluşturur.</p>
 </li>
 </ul>
 <p>Part (Parça) modülünün kullanılabilir yöntemlerinin tam listesi için <a href="https://wiki.freecadweb.org/Part_API">Part API</a> sayfasına bakın.</p>
 <h3 class="atx" id="modulleri-ice-aktar">Modülleri İçe Aktar</h3>
-<p>İlk önce <code>Part</code>modülünü içe aktarmalıyız, böylece içeriğini Python'da kullanabiliriz. Ayrıca <code>Base</code>modülünü FreeCAD modülünden içe aktaracağız:</p>
+<p>İlk önce <code>Part</code>modülünü içe aktarmalıyız, böylece içeriğini Python'da kullanabiliriz. Ayrıca <code>Base</code>modülünü <code>FreeCAD</code> modülünden içe aktaracağız:</p>
 <pre><code class="fenced-code-block language-python"><span class="token keyword">import</span> Part
 <span class="token keyword">from</span> FreeCAD <span class="token keyword">import</span> Base</code></pre>
 <h3 class="atx" id="vektor-olustur">Vektör Oluştur</h3>
-<p><a href="https://tr.wikipedia.org/wiki/Vekt%C3%B6r">Vektörler</a>, şekiller oluştururken en önemli bilgi parçalarından biridir. Genellikle üç sayı içerirler (ancak her zaman değil): X, Y ve Z kartezyen koordinatları. Bunun gibi bir vektör oluşturursunuz:</p>
+<p><a href="https://tr.wikipedia.org/wiki/Vekt%C3%B6r">Vektörler</a>, şekiller oluştururken en önemli bilgi parçalarından biridir. Genellikle üç sayı içerirler (ancak her zaman değil): X, Y ve Z kartezyen koordinatları. Bu koordinatları kullanarak aşağıdaki gibi bir vektör oluşturursunuz:</p>
 <pre><code class="fenced-code-block language-python">myVector <span class="token operator">=</span> Base<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span></code></pre>
-<p>Az önce, (yukarıdaki kodları yazarak) X = 3, Y = 2, Z = 0 koordinatlarında bir vektör oluşturduk. <code>Part</code> modülünde vektörler her yerde kullanılır. Parça (Part) şekilleri ayrıca,  <code>Vertex</code> adı verilen ve sadece bir vektör için bir konteyner olan başka bir nokta gösterimi türü kullanır. Bir tepe noktasının vektörüne şu şekilde erişirsiniz:</p>
+<p>Az önce, (yukarıdaki kodları yazarak) X = 3, Y = 2, Z = 0 koordinatlarında bir vektör oluşturduk. <code>Part</code> modülünde vektörler her yerde kullanılır. Parça (Part) şekilleri ayrıca,  <code>Vertex</code> adı verilen ve sadece bir vektör için bir konteyner olan başka bir nokta gösterimi türü kullanır. Bir noktanın vektörüne şu şekilde erişirsiniz:</p>
 <pre><code class="fenced-code-block language-python">myVertex <span class="token operator">=</span> myShape<span class="token punctuation">.</span>Vertexes<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>myVertex<span class="token punctuation">.</span>Point<span class="token punctuation">)</span>
 <span class="token operator">&gt;</span> Vector <span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span></code></pre>
-<h3 class="atx" id="kenar-olustur">Kenar oluştur</h3>
-<p>Kenar, iki köşesi olan bir çizgiden başka bir şey değildir:</p>
+<h3 class="atx" id="kenar-olustur">Kenar Oluştur</h3>
+<p>Kenar, iki köşesi olan bir <u>çizgi</u>den başka bir şey değildir:</p>
 <pre><code class="fenced-code-block language-python">edge <span class="token operator">=</span> Part<span class="token punctuation">.</span>makeLine<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 edge<span class="token punctuation">.</span>Vertexes
 <span class="token operator">&gt;</span> <span class="token punctuation">[</span><span class="token operator">&lt;</span>Vertex <span class="token builtin">object</span> at <span class="token number">01877430</span><span class="token operator">&gt;</span><span class="token punctuation">,</span> <span class="token operator">&lt;</span>Vertex <span class="token builtin">object</span> at <span class="token number">014888E0</span><span class="token operator">&gt;</span><span class="token punctuation">]</span></code></pre>
 <p>Not: İki vektör ile de bir kenar oluşturabilirsiniz:</p>
-<pre><code class="fenced-code-block language-python">ec1 <span class="token operator">=</span> Base<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+<pre><code class="fenced-code-block language-python">vec1 <span class="token operator">=</span> Base<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
 vec2 <span class="token operator">=</span> Base<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
 line <span class="token operator">=</span> Part<span class="token punctuation">.</span>LineSegment<span class="token punctuation">(</span>vec1<span class="token punctuation">,</span> vec2<span class="token punctuation">)</span>
 edge <span class="token operator">=</span> line<span class="token punctuation">.</span>toShape<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
@@ -1376,7 +1376,7 @@ edge <span class="token operator">=</span> line<span class="token punctuation">.
 edge<span class="token punctuation">.</span>CenterOfMass
 <span class="token operator">&gt;</span> Vector <span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span></code></pre>
 <h3 class="atx" id="sekli-ekrana-yerlestir">Şekli Ekrana Yerleştir</h3>
-<p>Şimdiye kadar bir <code>kenar nesnesi</code> oluşturduk, ancak ekranın hiçbir yerinde görünmüyor. Bunun nedeni, FreeCAD 3D sahnesinin yalnızca görüntülemesini söylediğiniz şeyi göstermesidir. Bunu yapmak için şu basit yöntemi kullanıyoruz:</p>
+<p>Şimdiye kadar bir <code>kenar nesnesi</code> oluşturduk, ancak oluşturduğumuz kenar ekranın hiçbir yerinde görünmüyor. Bunun nedeni, FreeCAD 3D sahnesinin, yalnız görüntülemesini söylediğiniz şeyi göstermesidir. Bunu yapmak için şu basit yöntemi kullanıyoruz:</p>
 <pre><code class="fenced-code-block language-python">Part<span class="token punctuation">.</span>show<span class="token punctuation">(</span>edge<span class="token punctuation">)</span></code></pre>
 <p><code>show</code> fonksiyonu, FreeCAD belgemizde bir nesne oluşturur ve ona "<strong>kenar (edge)</strong>" şeklimizi atar. Oluşturduklarınızı ekranda gösterme zamanı geldiğinde bunu kullanın.</p>
 <h3 class="atx" id="bir-tel-yapisi-olustur">Bir Tel (Yapısı) Oluştur</h3>
@@ -1401,7 +1401,7 @@ wire3<span class="token punctuation">.</span>isClosed<span class="token punctuat
 wire2<span class="token punctuation">.</span>isClosed<span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token operator">&gt;</span> <span class="token boolean">False</span></code></pre>
 <h3 class="atx" id="bir-yuzey-olustur">Bir Yüzey Oluştur</h3>
-<p>Yalnızca kapalı tellerden oluşturulan yüzeyler geçerli olacaktır. Bu örnekte, tel3 kapalı bir teldir, ancak tel2 kapalı değil (yukarıya bakın, <code>isClosed()</code>: Kapalı mı?,  <code>True</code>: Doğru / Evet, <code>False</code>: Yanlış / Hayır  anlamındadır):</p>
+<p>Yalnız kapalı tellerden geçerli bir yüzey oluşturulabilir, açık tellerden yüzey oluşturulamaz. Bu örnekte, tel3 (wire3) kapalıdır, ancak tel2 kapalı değil (yukarıya bakın, <code>isClosed()</code>: Kapalı mı?,  <code>True</code>: Doğru / Evet, <code>False</code>: Yanlış / Hayır  anlamındadır):</p>
 <pre><code class="fenced-code-block language-python">face <span class="token operator">=</span> Part<span class="token punctuation">.</span>Face<span class="token punctuation">(</span>wire3<span class="token punctuation">)</span>
 face<span class="token punctuation">.</span>Area
 <span class="token operator">&gt;</span> <span class="token number">99.99999999999999</span>
@@ -1807,8 +1807,7 @@ myCyl<span class="token punctuation">.</span>translate<span class="token punctua
 
 cut_part <span class="token operator">=</span> mySolid<span class="token punctuation">.</span>cut<span class="token punctuation">(</span>myCyl<span class="token punctuation">)</span>
 
-Part<span class="token punctuation">.</span>show<span class="token punctuation">(</span>cut_part<span class="token punctuation">)</span>
-</code></pre>
+Part<span class="token punctuation">.</span>show<span class="token punctuation">(</span>cut_part<span class="token punctuation">)</span></code></pre>
 <h3 class="atx" id="yuklemek-ve-kaydetmek">Yüklemek ve Kaydetmek</h3>
 <p>Çalışmanızı kaydetmenin birkaç yolu vardır. Elbette FreeCAD belgenizi kaydedebilirsiniz, ancak Parça nesnelerini doğrudan BREP, IGS, STEP ve STL gibi yaygın CAD formatlarına da kaydedebilirsiniz.</p>
 <p>Bir şekli bir dosyaya kaydetmek kolaydır. Tüm şekil nesneleri için <code>exportBrep()</code>, <code>exportIges()</code>, <code>exportStep()</code> ve <code>exportStl()</code> yöntemleri mevcuttur. Yani, yöntemleri aşağıdaki şekilde kullanarak çalışmalarınız farklı biçimlerde dışa aktarabilirsiniz :</p>
@@ -1824,8 +1823,7 @@ s<span class="token punctuation">.</span>read<span class="token punctuation">(</
  s <span class="token operator">=</span> Part<span class="token punctuation">.</span>Shape<span class="token punctuation">(</span><span class="token punctuation">)</span>
  s<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token string">"file.stp"</span><span class="token punctuation">)</span>       <span class="token comment"># okunan, içe aktarılan dosya igs, stp, stl, brep</span>
  s<span class="token punctuation">.</span>exportIges<span class="token punctuation">(</span><span class="token string">"file.igs"</span><span class="token punctuation">)</span> <span class="token comment"># dışa aktarılan, dönüştürülen dosya  igs</span></code></pre>
-
- <p> | <a href="https://mhalil.github.io/"> Ana Sayfa </a> | <a href="https://mhalil.github.io/freecad.html"> FreeCAD Sayfası </a> | <a href="04_Parca(Part)_Komut_Dosyasi_Olusturmak.html" > &lt; FreeCAD Komut Dosyası Temelleri </a> | <a href="06_Komut_dosyasiyla_yazilmis_nesneler.html"> Komut Dosyasıyla Yazılmış Nesneler > </a> | </p>
+<p> | <a href="https://mhalil.github.io/"> Ana Sayfa </a> | <a href="https://mhalil.github.io/freecad.html"> FreeCAD Sayfası </a> | <a href="04_Parca(Part)_Komut_Dosyasi_Olusturmak.html"> &lt; FreeCAD Komut Dosyası Temelleri </a> | <a href="06_Komut_dosyasiyla_yazilmis_nesneler.html"> Komut Dosyasıyla Yazılmış Nesneler &gt; </a> | </p>
 
 <p>Kaynak: <a href="https://wiki.freecadweb.org/Topological_data_scripting">Topological data scripting</a></p>
 </article>

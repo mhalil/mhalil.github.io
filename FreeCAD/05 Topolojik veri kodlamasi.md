@@ -2,21 +2,21 @@
 
 ## Takdim
 
-Burada, `Parça (Part)` modülünü doğrudan FreeCAD Python Yorumlayıcısından veya herhangi bir harici komut dosyasından nasıl kontrol edeceğinizi açıklayacağız. Python komut dosyasının FreeCAD'de nasıl çalıştığı hakkında daha fazla bilgiye ihtiyacınız varsa, [Komut Dosyası](https://wiki.freecadweb.org/Power_users_hub) bölümüne ve [FreeCAD Komut Dosyası Oluşturma Temelleri ](04_FreeCAD_Komut_ Dosyasi_Temelleri.html)sayfalarına göz attığınızdan emin olun. Python'da yeniyseniz, önce [Python'a Giriş](02_Python'a_Giris.html) bölümünü okumak iyi bir fikirdir.
+Burada, `Parça (Part)` modülünü, doğrudan FreeCAD Python Yorumlayıcısından veya herhangi bir harici komut dosyasından nasıl kontrol edeceğinizi açıklayacağız. Python komut dosyasının FreeCAD'de nasıl çalıştığı hakkında daha fazla bilgiye ihtiyacınız varsa, [Komut Dosyası](https://wiki.freecadweb.org/Power_users_hub) bölümüne ve [FreeCAD Komut Dosyası Oluşturma Temelleri ](03_FreeCAD_Komut_ Dosyasi_Temelleri.html)sayfalarına göz attığınızdan emin olun. Python'da yeniyseniz, önce [Python'a Giriş](01_Python'a_Giris.html) bölümünü okumak iyi bir fikirdir.
 
 ### Ayrıca bakınız
 
-+ [Parça (Part) Komut Dosyası Oluşturmak](05_Parca(Part)_Komut_Dosyasi_Olusturmak.html)
++ [Parça (Part) Komut Dosyası Oluşturmak](04_Parca(Part)_Komut_Dosyasi_Olusturmak.html)
 
 + [OpenCASCADE](https://wiki.freecadweb.org/OpenCASCADE "OpenCASCADE")
 
 ## Sınıf (Class) diyagramı
 
-Bu, `Parça (Part)` modülünün en önemli sınıflarına [Birleşik Modelleme Dili (UML)]((https://tr.wikipedia.org/wiki/UML)) genel bakışıdır:
+Bu, `Parça (Part)` modülünün en önemli sınıflarına [Birleşik Modelleme Dili (BMD - UML)]((https://tr.wikipedia.org/wiki/UML)) genel bakışıdır:
 
 ![](https://wiki.freecadweb.org/images/1/13/Part_Classes.jpg)
 
-**Sınıf diyagramı** [UML](https://tr.wikipedia.org/wiki/UML "UML") 'in en sık kullanılan [diyagramlardan](https://tr.wikipedia.org/wiki/Diyagram "Diyagram") biri olup [nesne yönelimli analiz](https://tr.wikipedia.org/wiki/Nesne_Y%C3%B6nelimli_Analiz_ve_Tasar%C4%B1m "Nesne Yönelimli Analiz ve Tasarım"), tasarım ve [programlamadaki](https://tr.wikipedia.org/wiki/Nesne_y%C3%B6nelimli_programlama "Nesne yönelimli programlama") sınıfları net ve anlaşılabilir şekilde temsil etmeyi amaçlar.
+**Sınıf diyagramı** [BMD - UML](https://tr.wikipedia.org/wiki/UML "UML") 'in en sık kullanılan [diyagramlardan](https://tr.wikipedia.org/wiki/Diyagram "Diyagram") biri olup [nesne yönelimli analiz](https://tr.wikipedia.org/wiki/Nesne_Y%C3%B6nelimli_Analiz_ve_Tasar%C4%B1m "Nesne Yönelimli Analiz ve Tasarım"), tasarım ve [programlamadaki](https://tr.wikipedia.org/wiki/Nesne_y%C3%B6nelimli_programlama "Nesne yönelimli programlama") sınıfları net ve anlaşılabilir şekilde temsil etmeyi amaçlar.
 
 ### Geometri
 
@@ -36,7 +36,7 @@ Aşağıdaki topolojik veri türleri mevcuttur:
 
 + `Birleşik (Compound)` Herhangi bir tür topolojik nesne grubu.
 
-+ `KompozitKatı (Compsolid)` Kompozit bir katı, yüzleri ile birbirine bağlanmış bir dizi katıdır. TEL (WIRE) ve KABUK (SHELL) kavramlarını katılara genişletir.
++ `KompozitKatı (Compsolid)` Kompozit bir katı, yüzleri ile birbirine bağlanmış bir dizi katıdır. TEL (WIRE) ve KABUK (SHELL) kavramlarını, katılara genişletir.
 
 + `Katı (Solid)` Kabukları ile sınırlı alanın bir parçası. Üç boyutlu.
 
@@ -44,7 +44,7 @@ Aşağıdaki topolojik veri türleri mevcuttur:
 
 + `Yüzey (Face)` 2B'de bir düzlemin parçasıdır; 3B'de bir yüzeyin parçasıdır. Geometrisi konturlarla sınırlandırılmıştır (kırpılmıştır). İki boyutludur.
 
-+ `Kafes / Ağ (Wire)` Köşeleri ile birbirine bağlanan bir dizi kenar. Kenarların bağlantılı olup olmamasına bağlı olarak açık veya kapalı kontur olabilir.
++ `Tel (Wire)` Köşeleri ile birbirine bağlanan bir dizi kenar. Kenarların bağlantılı olup olmamasına bağlı olarak açık veya kapalı kontur olabilir.
 
 + `Kenar (Edge)` Kısıtlanmış bir eğriye karşılık gelen bir topolojik eleman. Bir kenar genellikle köşelerle sınırlıdır. Tek boyutludur.
 
@@ -52,7 +52,7 @@ Aşağıdaki topolojik veri türleri mevcuttur:
 
 + `Şekil (Shape)` Yukarıdakilerin tümünü kapsayan genel bir terim.
 
-## Örnek: Basit topoloji oluştur
+## Örnek: Basit Topoloji Oluştur
 
 ![](https://wiki.freecadweb.org/images/7/77/Wire.png)
 
@@ -60,9 +60,9 @@ Aşağıdaki topolojik veri türleri mevcuttur:
 
 ### Geometri Oluştur
 
-İlk önce bu tel yapısının farklı geometrik kısımlarını oluşturuyoruz. Daha sonra bağlanması gereken parçaların aynı köşeleri paylaştığından emin olmak.
+İlk önce bu tel yapısının farklı geometrik kısımlarını oluşturuyoruz. Daha sonra bağlanması gereken parçaların aynı köşeleri paylaştığından emin oluyoruz.
 
-Bu yüzden önce noktaları oluşturuyoruz:
+Bu nedenle öncelikle noktaları oluşturuyoruz:
 
 ```python
 import Part
@@ -77,7 +77,7 @@ V4 = Base.Vector(0, -10, 0)
 
 ![](https://wiki.freecadweb.org/images/e/ec/Circel.png)
 
-Her yay için bir yardımcı noktaya ihtiyacımız var:
+Her yay için, yardımcı bir noktaya ihtiyacımız var:
 
 ```python
 VC1 = Base.Vector(-10, 0, 0)
@@ -90,7 +90,7 @@ C2 = Part.Arc(V2, VC2, V3)
 
 ![](https://wiki.freecadweb.org/images/5/5b/Line.png)
 
-Doğru (Çizgi) parçaları, iki nokta ile oluşturulabilir:
+Çizgi (doğru) parçaları, iki nokta ile oluşturulabilir:
 
 ```python
 L1 = Part.LineSegment(V1, V2)
@@ -135,7 +135,7 @@ Bazı mevcut `make...()` yöntemleri
 
 + `makeCircle(radius)` Belirli bir Yarıçapa sahip bir **Daire** oluşturur.
 
-+ `makeCone(radius1, radius2, height)` Verilen Yarıçap ve Yükseklikte bir **Koni**oluşturur.
++ `makeCone(radius1, radius2, height)` Verilen Yarıçap ve Yükseklikte bir **Koni** oluşturur.
 
 + `makeCylinder(radius, height)` Belirli bir Yarıçap ve Yükseklikte bir **Silindir** oluşturur.
 
@@ -147,13 +147,13 @@ Bazı mevcut `make...()` yöntemleri
 
 + `makeSphere(radius)` Belirli bir Yarıçapa sahip bir **Küre** oluşturur.
 
-+ `makeTorus(radius1, radius2)` Verilen Yarıçaplarla bir **Simit, Halka** oluşturur.
++ `makeTorus(radius1, radius2)` Verilen Yarıçaplarla bir **Simit (Halka)** oluşturur.
 
 Part (Parça) modülünün kullanılabilir yöntemlerinin tam listesi için [Part API](https://wiki.freecadweb.org/Part_API) sayfasına bakın.
 
 ### Modülleri İçe Aktar
 
-İlk önce `Part`modülünü içe aktarmalıyız, böylece içeriğini Python'da kullanabiliriz. Ayrıca `Base`modülünü FreeCAD modülünden içe aktaracağız:
+İlk önce `Part`modülünü içe aktarmalıyız, böylece içeriğini Python'da kullanabiliriz. Ayrıca `Base`modülünü `FreeCAD` modülünden içe aktaracağız:
 
 ```python
 import Part
@@ -162,13 +162,13 @@ from FreeCAD import Base
 
 ### Vektör Oluştur
 
-[Vektörler](https://tr.wikipedia.org/wiki/Vekt%C3%B6r), şekiller oluştururken en önemli bilgi parçalarından biridir. Genellikle üç sayı içerirler (ancak her zaman değil): X, Y ve Z kartezyen koordinatları. Bunun gibi bir vektör oluşturursunuz:
+[Vektörler](https://tr.wikipedia.org/wiki/Vekt%C3%B6r), şekiller oluştururken en önemli bilgi parçalarından biridir. Genellikle üç sayı içerirler (ancak her zaman değil): X, Y ve Z kartezyen koordinatları. Bu koordinatları kullanarak aşağıdaki gibi bir vektör oluşturursunuz:
 
 ```python
 myVector = Base.Vector(3, 2, 0)
 ```
 
-Az önce, (yukarıdaki kodları yazarak) X = 3, Y = 2, Z = 0 koordinatlarında bir vektör oluşturduk. `Part` modülünde vektörler her yerde kullanılır. Parça (Part) şekilleri ayrıca,  `Vertex` adı verilen ve sadece bir vektör için bir konteyner olan başka bir nokta gösterimi türü kullanır. Bir tepe noktasının vektörüne şu şekilde erişirsiniz:
+Az önce, (yukarıdaki kodları yazarak) X = 3, Y = 2, Z = 0 koordinatlarında bir vektör oluşturduk. `Part` modülünde vektörler her yerde kullanılır. Parça (Part) şekilleri ayrıca,  `Vertex` adı verilen ve sadece bir vektör için bir konteyner olan başka bir nokta gösterimi türü kullanır. Bir noktanın vektörüne şu şekilde erişirsiniz:
 
 ```python
 myVertex = myShape.Vertexes[0]
@@ -176,9 +176,9 @@ print(myVertex.Point)
 > Vector (3, 2, 0)
 ```
 
-### Kenar oluştur
+### Kenar Oluştur
 
-Kenar, iki köşesi olan bir çizgiden başka bir şey değildir:
+Kenar, iki köşesi olan bir <u>çizgi</u>den başka bir şey değildir:
 
 ```python
 edge = Part.makeLine((0, 0, 0), (10, 0, 0))
@@ -189,7 +189,7 @@ edge.Vertexes
 Not: İki vektör ile de bir kenar oluşturabilirsiniz:
 
 ```python
-ec1 = Base.Vector(0, 0, 0)
+vec1 = Base.Vector(0, 0, 0)
 vec2 = Base.Vector(10, 0, 0)
 line = Part.LineSegment(vec1, vec2)
 edge = line.toShape()
@@ -206,7 +206,7 @@ edge.CenterOfMass
 
 ### Şekli Ekrana Yerleştir
 
-Şimdiye kadar bir `kenar nesnesi` oluşturduk, ancak ekranın hiçbir yerinde görünmüyor. Bunun nedeni, FreeCAD 3D sahnesinin yalnızca görüntülemesini söylediğiniz şeyi göstermesidir. Bunu yapmak için şu basit yöntemi kullanıyoruz:
+Şimdiye kadar bir `kenar nesnesi` oluşturduk, ancak oluşturduğumuz kenar ekranın hiçbir yerinde görünmüyor. Bunun nedeni, FreeCAD 3D sahnesinin, yalnız görüntülemesini söylediğiniz şeyi göstermesidir. Bunu yapmak için şu basit yöntemi kullanıyoruz:
 
 ```python
 Part.show(edge)
@@ -246,7 +246,7 @@ wire2.isClosed()
 
 ### Bir Yüzey Oluştur
 
-Yalnızca kapalı tellerden oluşturulan yüzeyler geçerli olacaktır. Bu örnekte, tel3 kapalı bir teldir, ancak tel2 kapalı değil (yukarıya bakın, `isClosed()`: Kapalı mı?,  `True`: Doğru / Evet, `False`: Yanlış / Hayır  anlamındadır):
+Yalnız kapalı tellerden geçerli bir yüzey oluşturulabilir, açık tellerden yüzey oluşturulamaz. Bu örnekte, tel3 (wire3) kapalıdır, ancak tel2 kapalı değil (yukarıya bakın, `isClosed()`: Kapalı mı?,  `True`: Doğru / Evet, `False`: Yanlış / Hayır  anlamındadır):
 
 ```python
 face = Part.Face(wire3)
@@ -990,5 +990,7 @@ import Part
  s.read("file.stp")       # okunan, içe aktarılan dosya igs, stp, stl, brep
  s.exportIges("file.igs") # dışa aktarılan, dönüştürülen dosya  igs
 ```
+
+<p> | <a href="https://mhalil.github.io/"> Ana Sayfa </a> | <a href="https://mhalil.github.io/freecad.html"> FreeCAD Sayfası </a> | <a href="04_Parca(Part)_Komut_Dosyasi_Olusturmak.html" > < FreeCAD Komut Dosyası Temelleri </a> | <a href="06_Komut_dosyasiyla_yazilmis_nesneler.html"> Komut Dosyasıyla Yazılmış Nesneler > </a> | </p>
 
 Kaynak: [Topological data scripting](https://wiki.freecadweb.org/Topological_data_scripting)
