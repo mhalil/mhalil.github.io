@@ -1243,7 +1243,271 @@ pre[class*="language-"] {
 </head>
 <body>
   <article class="markdown-body"><h1 class="atx" id="komut-dosyasiyla-yazilmis-nesneler">Komut Dosyasıyla Yazılmış Nesneler</h1>
-<p>...</p>
+<h2 class="atx" id="takdim">Takdim</h2>
+<p>Açıklamalar, ağlar ve parça nesneleri gibi standart nesne türlerinin yanı sıra, FreeCAD ayrıca <a href="https://wiki.freecadweb.org/App_FeaturePython">Python Özellikleri</a> adı verilen %100 python komut dosyasıyla oluşturulmuş parametrik nesneler oluşturmak için harika bir olanak sunar. Bu nesneler, tam olarak diğer herhangi bir FreeCAD nesnesi gibi davranacak ve dosya kaydetme/yükleme sırasında otomatik olarak kaydedilecek ve geri yüklenecektir.</p>
+<p>Anlaşılması, bilinmesi gereken bir husus var, o da şudur: FreeCAD dosyaları hiçbir zaman gömülü kod taşımaz, bu güvenlik nedenleriyledir. Parametrik nesneler oluşturmak için yazdığınız Python kodu, hiçbir zaman bir dosyanın içine kaydedilmez. Bu, başka bir makinede (bilgisayarda) böyle bir nesne içeren bir dosyayı açarsanız, bu python kodu o makinede (bilgisayarda) mevcut değilse, nesnenin tamamen yeniden oluşturulmayacağı anlamına gelir. Bu tür nesneleri başkalarına dağıtırsanız (gönderirseniz), Python komut dosyanızı da örneğin bir <a href="https://wiki.freecadweb.org/Macros">Makro</a> olarak dağıtmanız, göndermeniz gerekir.</p>
+<p><strong>Not:</strong> Python kodunu bir <code>App::PropertyPythonObject</code> ile <code>json</code>serileştirmeyi kullanarak bir FreeCAD dosyası içinde paketlemek (yerleştirmek) mümkündür, ancak bu kod hiçbir zaman doğrudan çalıştırılamaz ve bu nedenle buradaki amacımız için çok kullanışlı değildir.</p>
+<p><a href="https://wiki.freecadweb.org/App_FeaturePython">Python Özellikleri</a>, tüm FreeCAD özellikleriyle aynı kuralı izler: <code>App</code>ve <code>GUI</code>bölümlerine ayrılırlar. <code>App</code> bölümü, Belge Nesnesi, nesnemizin geometrisini tanımlarken, <code>GUI</code> bölümü, Görünüm Sağlayıcı Nesnesi, nesnenin ekranda nasıl çizileceğini tanımlar. Görünüm Sağlayıcı Nesnesi, diğer FreeCAD özellikleri gibi, yalnızca FreeCAD'i kendi GUI'sinde çalıştırdığınızda kullanılabilir. Nesnenizi oluşturmak için kullanılabilecek birkaç özellik ve yöntem vardır. Özellikler, FreeCAD'in sunduğu önceden tanımlanmış özellik türlerinden herhangi biri olmalıdır ve kullanıcı tarafından düzenlenebilmeleri için özellik görünümü penceresinde görünecektir. Bu şekilde, <code>FeaturePython</code> nesneleri gerçekten ve tamamen parametriktir. <code>Object</code> ve <code>ViewObject</code> için özellikleri ayrı ayrı tanımlayabilirsiniz.</p>
+<p>Basit / Temel Örnek</p>
+<p>Aşağıdaki örnek, diğer birkaç örnekle birlikte  <a href="https://github.com/FreeCAD/FreeCAD/blob/master/src/Mod/TemplatePyMod/FeaturePython.py">src/Mod/TemplatePyMod/FeaturePython.py</a> dosyasında bulunabilir:</p>
+<pre><code class="fenced-code-block language-python"><span class="token string">''</span>Examples <span class="token keyword">for</span> a feature <span class="token keyword">class</span> <span class="token class-name">and</span> its view provider<span class="token punctuation">.</span><span class="token triple-quoted-string string">'''
+
+import FreeCAD, FreeCADGui
+from pivy import coin
+
+class Box:
+    def __init__(self, obj):
+        '''</span>Add some custom properties to our box feature<span class="token triple-quoted-string string">'''
+        obj.addProperty("App::PropertyLength","Length","Box","Length of the box").Length=1.0
+        obj.addProperty("App::PropertyLength","Width","Box","Width of the box").Width=1.0
+        obj.addProperty("App::PropertyLength","Height","Box", "Height of the box").Height=1.0
+        obj.Proxy = self
+
+    def onChanged(self, fp, prop):
+        '''</span>Do something when a <span class="token builtin">property</span> has changed<span class="token triple-quoted-string string">'''
+        FreeCAD.Console.PrintMessage("Change property: " + str(prop) + "\n")
+
+    def execute(self, fp):
+        '''</span>Do something when doing a recomputation<span class="token punctuation">,</span> this method <span class="token keyword">is</span> mandatory<span class="token triple-quoted-string string">'''
+        FreeCAD.Console.PrintMessage("Recompute Python Box feature\n")
+
+class ViewProviderBox:
+    def __init__(self, obj):
+        '''</span>Set this <span class="token builtin">object</span> to the proxy <span class="token builtin">object</span> of the actual view provide<span class="token triple-quoted-string string">r'''
+        obj.addProperty("App::PropertyColor","Color","Box","Color of the box").Color=(1.0,0.0,0.0)
+        obj.Proxy = self
+
+    def attach(self, obj):
+        '''</span>Setup the scene sub<span class="token operator">-</span>graph of the view provider<span class="token punctuation">,</span> this method <span class="token keyword">is</span> mandatory<span class="token triple-quoted-string string">'''
+        self.shaded = coin.SoGroup()
+        self.wireframe = coin.SoGroup()
+        self.scale = coin.SoScale()
+        self.color = coin.SoBaseColor()
+
+        data=coin.SoCube()
+        self.shaded.addChild(self.scale)
+        self.shaded.addChild(self.color)
+        self.shaded.addChild(data)
+        obj.addDisplayMode(self.shaded,"Shaded");
+        style=coin.SoDrawStyle()
+        style.style = coin.SoDrawStyle.LINES
+        self.wireframe.addChild(style)
+        self.wireframe.addChild(self.scale)
+        self.wireframe.addChild(self.color)
+        self.wireframe.addChild(data)
+        obj.addDisplayMode(self.wireframe,"Wireframe");
+        self.onChanged(obj,"Color")
+
+    def updateData(self, fp, prop):
+        '''</span>If a <span class="token builtin">property</span> of the handled feature has changed we have the chance to handle this here<span class="token triple-quoted-string string">'''
+        # fp is the handled feature, prop is the name of the property that has changed
+        l = fp.getPropertyByName("Length")
+        w = fp.getPropertyByName("Width")
+        h = fp.getPropertyByName("Height")
+        self.scale.scaleFactor.setValue(float(l),float(w),float(h))
+        pass
+
+    def getDisplayModes(self,obj):
+        '''</span>Return a <span class="token builtin">list</span> of display modes<span class="token punctuation">.</span><span class="token triple-quoted-string string">'''
+        modes=[]
+        modes.append("Shaded")
+        modes.append("Wireframe")
+        return modes
+
+    def getDefaultDisplayMode(self):
+        '''</span>Return the name of the default display mode<span class="token punctuation">.</span> It must be defined <span class="token keyword">in</span> getDisplayModes<span class="token punctuation">.</span><span class="token triple-quoted-string string">'''
+        return "Shaded"
+
+    def setDisplayMode(self,mode):
+        '''</span>Map the display mode defined <span class="token keyword">in</span> attach <span class="token keyword">with</span> those defined <span class="token keyword">in</span> getDisplayModes<span class="token punctuation">.</span>\
+                Since they have the same names nothing needs to be done<span class="token punctuation">.</span> This method <span class="token keyword">is</span> optional<span class="token triple-quoted-string string">'''
+        return mode
+
+    def onChanged(self, vp, prop):
+        '''</span>Here we can do something when a single <span class="token builtin">property</span> got changed<span class="token triple-quoted-string string">'''
+        FreeCAD.Console.PrintMessage("Change property: " + str(prop) + "\n")
+        if prop == "Color":
+            c = vp.getPropertyByName("Color")
+            self.color.rgb.setValue(c[0],c[1],c[2])
+
+    def getIcon(self):
+        '''</span>Return the icon <span class="token keyword">in</span> XPM <span class="token builtin">format</span> which will appear <span class="token keyword">in</span> the tree view<span class="token punctuation">.</span> This method <span class="token keyword">is</span>\
+                optional <span class="token keyword">and</span> <span class="token keyword">if</span> <span class="token keyword">not</span> defined a default icon <span class="token keyword">is</span> shown<span class="token punctuation">.</span><span class="token triple-quoted-string string">'''
+        return """
+            /* XPM */
+            static const char * ViewProviderBox_xpm[] = {
+            "16 16 6 1",
+            "   c None",
+            ".  c #141010",
+            "+  c #615BD2",
+            "@  c #C39D55",
+            "#  c #000000",
+            "$  c #57C355",
+            "        ........",
+            "   ......++..+..",
+            "   .@@@@.++..++.",
+            "   .@@@@.++..++.",
+            "   .@@  .++++++.",
+            "  ..@@  .++..++.",
+            "###@@@@ .++..++.",
+            "##$.@@$#.++++++.",
+            "#$#$.$$$........",
+            "#$$#######      ",
+            "#$$#$$$$$#      ",
+            "#$$#$$$$$#      ",
+            "#$$#$$$$$#      ",
+            " #$#$$$$$#      ",
+            "  ##$$$$$#      ",
+            "   #######      "};
+            """
+
+    def __getstate__(self):
+        '''</span>When saving the document this <span class="token builtin">object</span> gets stored using Python's json module<span class="token punctuation">.</span>\
+                Since we have some un<span class="token operator">-</span>serializable parts here <span class="token operator">-</span><span class="token operator">-</span> the Coin stuff <span class="token operator">-</span><span class="token operator">-</span> we must define this method\
+                to <span class="token keyword">return</span> a <span class="token builtin">tuple</span> of <span class="token builtin">all</span> serializable objects <span class="token keyword">or</span> <span class="token boolean">None</span><span class="token punctuation">.</span><span class="token triple-quoted-string string">'''
+        return None
+
+    def __setstate__(self,state):
+        '''</span>When restoring the serialized <span class="token builtin">object</span> <span class="token keyword">from</span> document we have the chance to <span class="token builtin">set</span> some internals here<span class="token punctuation">.</span>\
+                Since no data were serialized nothing needs to be done here<span class="token punctuation">.</span><span class="token string">''</span>'
+        <span class="token keyword">return</span> <span class="token boolean">None</span>
+
+<span class="token keyword">def</span> <span class="token function">makeBox</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    FreeCAD<span class="token punctuation">.</span>newDocument<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    a<span class="token operator">=</span>FreeCAD<span class="token punctuation">.</span>ActiveDocument<span class="token punctuation">.</span>addObject<span class="token punctuation">(</span><span class="token string">"App::FeaturePython"</span><span class="token punctuation">,</span><span class="token string">"Box"</span><span class="token punctuation">)</span>
+    Box<span class="token punctuation">(</span>a<span class="token punctuation">)</span>
+    ViewProviderBox<span class="token punctuation">(</span>a<span class="token punctuation">.</span>ViewObject<span class="token punctuation">)</span>
+
+makeBox<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<h2 class="atx" id="dikkat-edilmesi-gerekenler">Dikkat Edilmesi Gerekenler</h2>
+<p>Nesneniz oluşturulur oluşturulmaz yeniden hesaplanması gerekiyorsa, otomatik olarak çağrılmadığı için bunu <code>__init__</code> işlevinde manuel olarak yapmanız gerekir. <code>Box</code>sınıfının <code>onChanged</code> yöntemi,  <code>execute</code> (çalıştır) fonksiyonuyla aynı etkiye sahip olduğu için bu örnek buna gerek duymaz, ancak aşağıdaki örnekler, 3B görünümde herhangi bir şey görüntülenmeden önce yeniden hesaplanma mantığına dayanır. Örneklerde bu, <code>ActiveDocument.recompute()</code> ile manuel olarak yapılır, ancak daha karmaşık senaryolarda, tüm belgenin veya <code>FeaturePython</code> nesnesinin nerede yeniden hesaplanacağına karar vermeniz gerekir.</p>
+<p>Bu örnek, <strong>rapor görünümü penceresi</strong>nde bir dizi istisna yığını izi üretir. Bunun nedeni, <code>__init__</code> içine her özellik eklendiğinde <code>Box</code> sınıfının <code>onChanged</code> yönteminin çağrılmasıdır. İlki eklendiğinde, <strong>Genişlik</strong> ve <strong>Yükseklik</strong> özellikleri henüz mevcut değildir ve bu nedenle bunlara erişme girişimi başarısız olur.</p>
+<p><code>__getstate__</code> ve <code>__setstate__</code> için bir açıklama <a href="https://forum.freecadweb.org/viewtopic.php?f=18&amp;t=44009&amp;start=10#p377892">obj.Proxy.Type is a dict, not a string</a> forum başlığında bulunmaktadır.</p>
+<h2 class="atx" id="mevcut-yontemler--metotlar">Mevcut Yöntemler / Metotlar</h2>
+<p><a title="FeaturePython methods" href="https://wiki.freecadweb.org/FeaturePython_methods">PythonÖzelliği Yöntemleri</a> tüm referans kaynak için sayfaya bakın.</p>
+<h2 class="atx" id="kullanilabilir-ozellikler">Kullanılabilir Özellikler</h2>
+<p>Özellikler, <code>FeaturePython</code> nesnelerinin gerçek yapı taşlarıdır. Bunlar aracılığıyla, kullanıcı etkileşimde bulunabilecek ve nesnenizi değiştirebilecektir. Belgenizde yeni bir <code>FeaturePython</code> nesnesi oluşturduktan sonra (<code>obj=FreeCAD.ActiveDocument.addObject("App::FeaturePython","Box")</code>), aşağıdaki kodu yazarak, kullanılabilir özelliklerin bir listesini elde edebilirsiniz:</p>
+<pre><code class="fenced-code-block language-python">obj<span class="token punctuation">.</span>supportedProperties<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p><a href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties">FeaturePython Özel Özellikler</a> sayfasında daha ayrıntılı olarak açıklanan mevcut özelliklerin bir listesini elde edeceksiniz:</p>
+<ul>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyAcceleration">App::PropertyAcceleration</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyAngle">App::PropertyAngle</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyArea">App::PropertyArea</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyBool">App::PropertyBool</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyBoolList">App::PropertyBoolList</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyColor">App::PropertyColor</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyColorList">App::PropertyColorList</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyDirection">App::PropertyDirection</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyDistance">App::PropertyDistance</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyEnumeration">App::PropertyEnumeration</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyExpressionEngine">App::PropertyExpressionEngine</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyFile">App::PropertyFile</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyFileIncluded">App::PropertyFileIncluded</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyFloat">App::PropertyFloat</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyFloatConstraint">App::PropertyFloatConstraint</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyFloatList">App::PropertyFloatList</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyFont">App::PropertyFont</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyForce">App::PropertyForce</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyFrequency">App::PropertyFrequency</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyInteger">App::PropertyInteger</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyIntegerConstraint">App::PropertyIntegerConstraint</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyIntegerList">App::PropertyIntegerList</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyIntegerSet">App::PropertyIntegerSet</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyLength">App::PropertyLength</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyLink">App::PropertyLink</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyLinkChild">App::PropertyLinkChild</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyLinkGlobal">App::PropertyLinkGlobal</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyLinkHidden">App::PropertyLinkHidden</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyLinkList">App::PropertyLinkList</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyLinkListChild">App::PropertyLinkListChild</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyLinkListGlobal">App::PropertyLinkListGlobal</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyLinkListHidden">App::PropertyLinkListHidden</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyLinkSub">App::PropertyLinkSub</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyLinkSubChild">App::PropertyLinkSubChild</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyLinkSubGlobal">App::PropertyLinkSubGlobal</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyLinkSubHidden">App::PropertyLinkSubHidden</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyLinkSubList">App::PropertyLinkSubList</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyLinkSubListChild">App::PropertyLinkSubListChild</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyLinkSubListGlobal">App::PropertyLinkSubListGlobal</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyLinkSubListHidden">App::PropertyLinkSubListHidden</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyMap">App::PropertyMap</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyMaterial">App::PropertyMaterial</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyMaterialList">App::PropertyMaterialList</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyMatrix">App::PropertyMatrix</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyPath">App::PropertyPath</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyPercent">App::PropertyPercent</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyPersistentObject">App::PropertyPersistentObject</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyPlacement">App::PropertyPlacement</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyPlacementLink">App::PropertyPlacementLink</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyPlacementList">App::PropertyPlacementList</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyPosition">App::PropertyPosition</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyPrecision">App::PropertyPrecision</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyPressure">App::PropertyPressure</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyPythonObject">App::PropertyPythonObject</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyQuantity">App::PropertyQuantity</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyQuantityConstraint">App::PropertyQuantityConstraint</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertySpeed">App::PropertySpeed</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyString">App::PropertyString</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyStringList">App::PropertyStringList</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyUUID">App::PropertyUUID</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyVacuumPermittivity">App::PropertyVacuumPermittivity</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyVector">App::PropertyVector</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyVectorDistance">App::PropertyVectorDistance</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyVectorList">App::PropertyVectorList</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyVolume">App::PropertyVolume</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyXLink">App::PropertyXLink</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyXLinkList">App::PropertyXLinkList</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyXLinkSub">App::PropertyXLinkSub</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyXLinkSubList">App::PropertyXLinkSubList</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#Mesh::PropertyCurvatureList">Mesh::PropertyCurvatureList</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#Mesh::PropertyMeshKernel">Mesh::PropertyMeshKernel</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#Mesh::PropertyNormalList">Mesh::PropertyNormalList</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#Part::PropertyFilletEdges">Part::PropertyFilletEdges</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#Part::PropertyGeometryList">Part::PropertyGeometryList</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#Part::PropertyPartShape">Part::PropertyPartShape</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#Part::PropertyShapeHistory">Part::PropertyShapeHistory</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#Path::PropertyPath">Path::PropertyPath</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#Path::PropertyTool">Path::PropertyTool</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#Path::PropertyTooltable">Path::PropertyTooltable</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#Sketcher::PropertyConstraintList">Sketcher::PropertyConstraintList</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#Spreadsheet::PropertyColumnWidths">Spreadsheet::PropertyColumnWidths</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#Spreadsheet::PropertyRowHeights">Spreadsheet::PropertyRowHeights</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#Spreadsheet::PropertySheet">Spreadsheet::PropertySheet</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#Spreadsheet::PropertySpreadsheetQuantity">Spreadsheet::PropertySpreadsheetQuantity</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#TechDraw::PropertyCenterLineList">TechDraw::PropertyCenterLineList</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#TechDraw::PropertyCosmeticEdgeList">TechDraw::PropertyCosmeticEdgeList</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#TechDraw::PropertyCosmeticVertexList">TechDraw::PropertyCosmeticVertexList</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#TechDraw::PropertyGeomFormatList">TechDraw::PropertyGeomFormatList</a></li>
+</ul>
+<p>Özel nesnelerinize özellikler eklerken şunlara dikkat edin:</p>
+<ul>
+<li><p>Özellikler açıklamalarında <code>&lt;</code> veya <code>&gt;</code> karakterlerini kullanmayın (bu, <strong>.fcstd</strong> dosyasındaki <strong>xml</strong> parçalarını bozar)</p>
+</li>
+<li><p>Özellikler bir <strong>.fcstd</strong> dosyasında alfabetik olarak saklanır. Eğer özelliklerinizde bir şekil varsa, ismi alfabetik olarak "Şekil"den sonra gelen herhangi bir özellik şekilden SONRA yüklenecektir ve bu da garip davranışlara neden olabilir.</p>
+</li>
+</ul>
+<p>Özellik özniteliklerinin tam listesi <a href="https://github.com/FreeCAD/FreeCAD/blob/master/src/App/PropertyStandard.h">PropertyStandard C++ başlık dosyasında</a> görülebilir. Örneğin, kullanıcının yalnız sınırlı bir değer aralığı girmesine izin vermek istiyorsanız (örneğin <code>PropertyIntegerConstraint</code> kullanarak), Python'da yalnız özellik değerini değil, aynı zamanda alt ve üst sınırı ve adım boyutunu da içeren bir tanımlama grubu atayacaksınız, aşağıda olduğu gibi:</p>
+<pre><code class="fenced-code-block language-python">prop <span class="token operator">=</span> <span class="token punctuation">(</span>value<span class="token punctuation">,</span> lower<span class="token punctuation">,</span> upper<span class="token punctuation">,</span> stepsize<span class="token punctuation">)</span></code></pre>
+<h2 class="atx" id="ozellik-turu">Özellik Türü</h2>
+<p>Varsayılan olarak özellikler güncellenebilir. Örneğin bir yöntemin, sonucunu göstermek istemesi durumunda, özellikleri salt okunur yapmak mümkündür. Ayrıca özelliği gizlemek de mümkündür. Özellik türü aşağıdakiler kullanılarak ayarlanabilir:</p>
+<pre><code class="fenced-code-block language-python">obj<span class="token punctuation">.</span>setEditorMode<span class="token punctuation">(</span><span class="token string">"MyPropertyName"</span><span class="token punctuation">,</span> mode<span class="token punctuation">)</span></code></pre>
+<p>mod, şu şekilde ayarlanabilen kısa bir tamsayıdır (int):</p>
+<pre><code class="fenced-code-block language-python"><span class="token number">0</span> <span class="token operator">-</span><span class="token operator">-</span> varsayılan mod<span class="token punctuation">,</span> okuma ve yazma <span class="token punctuation">(</span>default mode<span class="token punctuation">,</span> read <span class="token keyword">and</span> write<span class="token punctuation">)</span>
+<span class="token number">1</span> <span class="token operator">-</span><span class="token operator">-</span> Salt okunur <span class="token punctuation">(</span>read<span class="token operator">-</span>only<span class="token punctuation">)</span>
+<span class="token number">2</span> <span class="token operator">-</span><span class="token operator">-</span> gizli <span class="token punctuation">(</span>hidden<span class="token punctuation">)</span></code></pre>
+<p>EditörModları, FreeCAD dosyasının yeniden yüklenmesine ayarlanmamıştır. Bu, <code>__setstate__</code> fonksiyonu tarafından yapılabilir. <a href="http://forum.freecadweb.org/viewtopic.php?f=18&amp;t=13460&amp;start=10#p108072">http://forum.freecadweb.org/viewtopic.php?f=18&amp;t=13460&amp;start=10#p108072</a> adresine bakın. <code>setEditorMode</code> kullanılarak, özellikler yalnızca <strong>PropertyEditor</strong>'de okunur. Hala python'dan değiştirilebilirler. Bunları gerçekten okumalarını sağlamak için, ayarın doğrudan <code>addProperty</code> fonksiyonunun içine iletilmesi gerekir. Örnek için <a href="http://forum.freecadweb.org/viewtopic.php?f=18&amp;t=13460&amp;start=20#p109709">http://forum.freecadweb.org/viewtopic.php?f=18&amp;t=13460&amp;start=20#p109709</a> adresine bakın.</p>
+<p><code>AddProperty</code> fonksiyonundaki doğrudan ayarı kullanarak, daha fazla olanağınız da olur. Özellikle, bir özelliği çıktı özelliği olarak işaretlemek ilginçtir. Bu şekilde FreeCAD, özelliği değiştirirken dokunulduğunda işaretlemeyecektir (böylece yeniden hesaplamaya gerek yoktur).</p>
+<p>Çıktı özelliği örneği (ayrıca bkz. <a href="https://forum.freecadweb.org/viewtopic.php?t=24928">https://forum.freecadweb.org/viewtopic.php?t=24928</a>):</p>
+<pre><code class="fenced-code-block language-python">obj<span class="token punctuation">.</span>addProperty<span class="token punctuation">(</span><span class="token string">"App::PropertyString"</span><span class="token punctuation">,</span><span class="token string">"MyCustomProperty"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">)</span></code></pre>
+<p><code>addProperty</code> işlevinin son parametresinde ayarlanabilen özellik türleri şunlardır:</p>
+<pre><code class="fenced-code-block">0 -- Prop_None, Özel bir özellik türü yok
+1 -- Prop_ReadOnly, Özellik düzenleyicide salt okunurdur
+2 -- Prop_Transient, Özellik dosyaya kaydedilmeyecek
+4 -- Prop_Hidden, Özellik düzenleyicide görünmeyecek
+8 -- Prop_Output, Değiştirilmiş özellik, üst kapsayıcısına (konteyner) dokunmuyor
+16 -- Prop_NoRecompute, Değiştirilmiş özellik, yeniden hesaplama için kapsayıcısına (konteyner) dokunmuyor</code></pre>
+<p><a href="https://github.com/FreeCAD/FreeCAD/blob/master/src/App/PropertyContainer.h">PropertyContainer için C++ kaynak kodu başlığında</a> tanımlanan bu farklı özellik türlerini bulabilirsiniz.</p>
+<h2 class="atx" id="diger-daha-karmasik-ornek">Diğer Daha Karmaşık Örnek</h2>
 <p> | <a href="https://mhalil.github.io/"> Ana Sayfa </a> | <a href="https://mhalil.github.io/freecad.html"> FreeCAD Sayfası </a> | <a href="05_Topolojik_Veri_Kodlamasi.html"> &lt; Topolojik Veri Kodlaması </a> | <a href="#"> Sonraki Bölüm &gt; </a> | </p>
 
 <p>Kaynak: <a href="https://wiki.freecadweb.org/Scripted_objects">Scripted objects - FreeCAD Documentation</a></p>
