@@ -1,349 +1,153 @@
-<!DOCTYPE html><html><head>
-      <title>02 &#xC7;izim &#xD6;&#x11F;eleri (Objeleri)</title>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      
-      <link rel="stylesheet" href="file:////home/mhalil/.vscode/extensions/shd101wyy.markdown-preview-enhanced-0.6.1/node_modules/@shd101wyy/mume/dependencies/katex/katex.min.css">
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      <style>
-      /**
- * prism.js Github theme based on GitHub's theme.
- * @author Sam Clarke
- */
-code[class*="language-"],
-pre[class*="language-"] {
-  color: #333;
-  background: none;
-  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
-  text-align: left;
-  white-space: pre;
-  word-spacing: normal;
-  word-break: normal;
-  word-wrap: normal;
-  line-height: 1.4;
+<!DOCTYPE HTML>
+<!--
+	Read Only by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>https://mhalil.github.io</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+	</head>
+	<body class="is-preload">
 
-  -moz-tab-size: 8;
-  -o-tab-size: 8;
-  tab-size: 8;
+		<!-- Header -->
+			<section id="header">
+				<header>
+                    <span class="image avatar"><a href="../index.html"><img src="../images/avatar.jpg" alt="" /></a></span>
+					<h1 id="logo"><a href="../index.html">Mustafa Halil</a></h1>
+					<p>mhalil.github.io.</p>
+				</header>
+				<nav id="nav">
+					<ul>
+						<li><a href="../python-pandas.html">Python - Pandas</a></li>
+						<li><a href="../freecad.html">FreeCAD</a></li>
+						<li><a href="../solvespace.html" class="active">SolveSpace</a></li>
+						<li><a href="../blender.html">Blender</a></li>
+                        <li><a href="../librecad.html">LibreCAD</a></li>
+					</ul>
+				</nav>
+				<footer>
+					<ul class="icons">
+						<li><a href="../https://twitter.com/AcikKaynakci" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="../https://github.com/mhalil" class="icon brands fa-github"><span class="label">Github</span></a></li>
+						<li><a href="../mailto:m.halil@yahoo.com" class="icon solid fa-envelope"><span class="label">E-Posta</span></a></li>
+					</ul>
+				</footer>
+			</section>
 
-  -webkit-hyphens: none;
-  -moz-hyphens: none;
-  -ms-hyphens: none;
-  hyphens: none;
-}
+		<!-- Wrapper -->
+			<div id="wrapper">
 
-/* Code blocks */
-pre[class*="language-"] {
-  padding: .8em;
-  overflow: auto;
-  /* border: 1px solid #ddd; */
-  border-radius: 3px;
-  /* background: #fff; */
-  background: #f5f5f5;
-}
+				<!-- Main -->
+					<div id="main">
+                        
+						<!-- SolveSpace -->
+							<section id="solvespace">
+								<div class="container">
+                                    <h2  id="b%C3%B6l%C3%BCm-2-%C3%A7izim-%C3%B6%C4%9Feleri-objeleri">Bölüm 2: Çizim Öğeleri (Objeleri)</h2>
+                                    <p><img src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/007%20Cizim%20Ogeleri.png?raw=true" alt="Çizim Öğeleri"></p>  
+                                                                                                          
+                                </div>
+							</section>
+					</div>
+                
+                <div class="container">
+                    
+                <h3  id="yapı-geometrisi-yardımcı-geometri">Yapı Geometrisi (Yardımcı Geometri)</h3>
 
-/* Inline code */
-:not(pre) > code[class*="language-"] {
-  padding: .1em;
-  border-radius: .3em;
-  white-space: normal;
-  background: #f5f5f5;
-}
+                <p>Normal çalışmada, kullanıcı bir taslakta çizgi ve eğriler çizer. Bu eğriler üretilecek geometriyi tanımlar; sonuçta parmak freze, lazer veya başka bir kesici alet, bu eğriler boyunca kesecektir.</p>
+                <p>Bazı durumlarda son kısımda (geometrinin sonuçlanma kısmında) görünmemesi gereken bir çizgi (yardımcı çizgi) çizmekte fayda var. Örneğin, kullanıcı simetrik bir parça için bir merkez çizgisi çizmek isteyebilir; ancak bu merkez çizgisi yalnızca bir kılavuzdur ve aslında CAM verileriyle dışa aktarılmamalıdır. Bu çizgilere (sadece çizgi olmak zorunda değil) Yapı çizgileri (yardımcı çizgier) denir.</p>
+                <p>Bir öğeyi yalnızca yapı öğesi olarak işaretlemek için <code>Çizim &#x2192; Yapıyı Değiştir</code>&apos;i seçin (Kısayol tuşu <code>G</code>). Bir yapı öğesi, ekranda yeşil renkle çizilmesi ve varsayılan olarak dışa aktarma için geometriye (ekstrüde edilecek, tornalanacak veya süpürülecek bölüme) katkıda bulunmaması dışında diğer herhangi bir obje gibi davranacaktır. Ayrıca &apos;<code>G</code>&apos; klavye kısayolunu kullanarak yeni bir öğe çizerken yapı geometrisini değiştirebilirsiniz.</p>
+                <h3  id="referans-noktas%C4%B1">Referans noktası</h3>
 
-.token.comment,
-.token.blockquote {
-  color: #969896;
-}
+                <p>Bu öeğe, tek bir nokta ile tanımlanır.</p>
+                <p>Referans noktası oluşturulduğunda bir çalışma düzlemi etkinse, o referans noktası her zaman çalışma düzleminde yer alacaktır. Hiçbir çalışma düzlemi aktif değilse, referans noktası 3d olarak serbest olacaktır. (Bu, örneğin bir çizgi parçasının uç noktaları dahil olmak üzere tüm noktalar için aynı davranıştır.)</p>
+                <p>Referans noktaları tipik olarak yapı geometrisi olarak kullanılır. Kullanıcı, çizgi bölümlerinin veya diğer öğelerin boyutlandırılmasını basitleştirmek için referans noktalarını yerleştirebilir.</p>
+                <h3  id="cal%C4%B1sma-d%C3%BCzlemi">Çalışma Düzlemi</h3>
 
-.token.cdata {
-  color: #183691;
-}
+                <p>Bu varlık bir nokta ve bir normal ile belirtilir. Nokta orijinini, normal ise oryantasyonunu (yönülimi) tanımlar.<br>
+                Bir çalışma düzlemi, 2d&apos;de (2 boyutta) bir taslak çizmeyi mümkün kılar. Bir çalışma düzlemi etkinse, çizilen tüm öğeler o çalışma düzleminde bulunmalıdır.</p>
+                <p>Açıkça çalışma düzlemleri oluşturmak neredeyse hiç gerekli değildir. Bunun yerine, Yeni Çalışma Düzlemi grubunda yeni bir taslak (çizim) oluşturun.</p>
+                <h3  id="cizgi-parcas%C4%B1">Cizgi Parcası</h3>
 
-.token.doctype,
-.token.punctuation,
-.token.variable,
-.token.macro.property {
-  color: #333;
-}
+                <p>Bu öğe, iki uç nokta (çizginin başlangıç ve bitiş noktaları) ile belirtilir. Bir çalışma düzlemi etkinse, iki uç nokta her zaman o çalışma düzleminde bulunur.</p>
+                <p>Çizgi Parçası (Bölümü / Segmenti) oluşturmak için <code>Çizim &#x2192; Çizgi Parçası</code>&apos;nı seçin ve ardından çizginin bir uç noktasına sol tıklayın. Ardından fare düğmesini bırakın; diğer uç nokta şimdi sürükleniyor.</p>
+                <p>Yeni oluşturulan çizgi parçasıyla bir bitiş noktası paylaşan başka bir çizgi parçası oluşturmak (çoklu çizgiden oluşan geometri üretmek) için tekrar sol tıklayın. Bu, kapalı çokgenler çizmenin hızlı bir yoludur.</p>
+                <p>Çizgi parçaları çizmeyi durdurmak / sonlandırmak için <code>Escape</code> tuşuna basın veya <code>farenin sağ tuşu</code>na tıklayın. Otomatik bir kısıtlama eklenirse, SolveSpace yeni çizgi parçaları çizmeyi de durduracaktır. (Örneğin, art arda sol tıklayarak ve ardından son kez sol tıklamadan önce imleci başlangıç noktasının üzerine getirerek kapalı bir çokgen çizin. Çoklu çizginin bitiş noktası, başlangıç noktasında uzanacak şekilde sınırlandırılacaktır ve bir kısıtlama eklendiğinden, SolveSpace çizimi durduracaktır.)</p>
+                <h3  id="dikd%C3%B6rtgen">Dikdörtgen</h3>
 
-.token.operator,
-.token.important,
-.token.keyword,
-.token.rule,
-.token.builtin {
-  color: #a71d5d;
-}
+                <p>Bu öğe, kapalı bir eğri oluşturacak şekilde düzenlenmiş iki dikey ve iki yatay çizgi parçasından oluşur. Başlangıçta, dikdörtgen fare ile çapraz olarak zıt iki köşe ile belirtilir. Dikdörtgendeki doğru parçaları (ve noktalar), sıradan doğru parçalarıyla aynı şekilde sınırlandırılabilir.</p>
+                <p>Dört doğru parçası çizerek ve uygun kısıtlamaları ekleyerek aynı şekli elle çizmek te mümkün olacaktır. Dikdörtgen komutu, aynı şeyi çizmenin daha hızlı bir yoludur.</p>
+                <p>Çalışma düzlemi, &quot;<strong>yatay</strong>&quot; ve &quot;<strong>dikey</strong>&quot; ifadelerini tanımladığı için, dikdörtgen çizildiğinde çalışma düzlemi aktif olmalıdır. (Yani dikdörtgen komutu ile geometri çizilirken, mecburen yatay ve dikey sınırlama eklenmelidir, bir çalışma düzlemi aktif değilse yatay ve dikeyin neye göre, hangi yöne göre olduğu bilinemez, bu nedenle bir dikdörtgen çizildiğinde çalışma düzlemi aktif olmalıdır.)</p>
+                <p>Dikdörtgen oluşturmak için <code>Çizim &#x2192; Dikdörtgen</code>&apos;i seçin (Kısayol tuşu <code>R</code>)</p>
+                <h3  id="daire-cember">Daire / Çember</h3>
 
-.token.string,
-.token.url,
-.token.regex,
-.token.attr-value {
-  color: #183691;
-}
+                <p>Bu öğe, merkez noktası, çapı ve normali ile belirtilir.</p>
+                <p>Çember oluşturmak için <code>Çizim &#x2192; Çember</code>&apos;i seçin (Kısayol tuşu <code>C</code>) ve ardından merkeze sol tıklayın. Ardından fare düğmesini bırakın; fare hareket ettirildiğinde çemberin çapı sürüklenir. Çapı yerleştirmek için tekrar sol tıklayın.</p>
+                <p>Bir çalışma düzlemi etkinse, o zaman merkez noktası o çalışma düzleminde olmalıdır ve dairenin normali çalışma düzleminin normaline paraleldir (bu, dairenin, çalışma düzleminin yüzeyinde olduğu anlamına gelir).</p>
+                <p>Hiçbir çalışma düzlemi aktif değilse, o zaman merkez noktası boşlukta serbest vaziyettedir ve dairenin yönünü belirlemek için normal (normali temsil eden oklar) sürüklenebilir (veya sınırlandırılabilir).</p>
+                <h3  id="cember-yay%C4%B1">Çember Yayı</h3>
 
-.token.property,
-.token.number,
-.token.boolean,
-.token.entity,
-.token.atrule,
-.token.constant,
-.token.symbol,
-.token.command,
-.token.code {
-  color: #0086b3;
-}
+                <p>Bu öğe, merkez noktası, iki uç noktası ve normali ile belirtilir.</p>
+                <p>Yayı oluşturmak için <code>Çizim &#x2192; Çember Yayı</code>&apos;nı seçin (Kısayol tuşu A) ve ardından uç noktalarından birine sol tıklayın. Ardından fare düğmesini bırakın; fare hareket ettirildiğine diğer uç nokta sürüklenir. Yay oluşturulurken merkez nokta da, tam bir yarım daire oluşturacak şekilde sürükleniyor.</p>
+                <p>Diğer uç noktayı yerleştirmek için tekrar sol tıklayın ve ardından merkezi istenen konuma sürükleyin. Yay, birinci noktadan ikinci noktaya saat yönünün tersine çizilir.</p>
+                <p>Çember Yayı, bir çalışma düzleminde çizilmelidir; boş alanda çizilemez.</p>
+                <h3  id="noktada-teget-yay-radyus">Noktada Teğet Yay / Radyus</h3>
 
-.token.tag,
-.token.selector,
-.token.prolog {
-  color: #63a35c;
-}
+                <p>Keskin bir köşeyi yuvarlamak için (örneğin, iki çizgi arasında), genellikle köşede her iki çizgiye de teğet olan bir yay (radyus) oluşturmak isteriz.</p>
+                <p>Bu, çizgi ve yayın birleştiği yerde pürüzsüz bir görünüm oluşturacaktır. Bu yayları <code>Çizim &#x2192; Çember Yayı</code>   ve <code>Sınırlandır &#x2192; Paralel / Teğet</code> menü yollarındaki komutları kullanarak elle çizmek te mümkün olabilir, ancak bunları otomatik olarak oluşturmak daha kolaydır.</p>
+                <p>Komut uygulandığında çizgilerin ilk parçaları yapı çizgileri olacak ve yaya bağlanan iki yeni çizgi oluşturulacak. Yayın çapı (oluşan radyus çapı) daha sonra <strong>Mesafe / Çap</strong> veya <strong>Eşit Uzunluk / Yarıçap</strong> kısıtlamaları ile olağan şekilde sınırlandırılabilir.</p>
+                <p>Varsayılan olarak, teğet yayın (radyus) yarıçapı otomatik olarak seçilir. Bunu değiştirmek için, hiçbir şey seçilmeden <code>Çizim &#x2192; Noktada Teğet Yay</code>&apos;ı seçin. Özellik penceresinde yarıçapın belirtilebileceği bir ekran görünecektir. Bu ekranda, komut sonrası, orijinal çizgilerin ve eğrilerin korunup korunmayacağını, korunacaksa yapı çizgileriyle değiştirilip değiştirilmeyeceğini (üzerlerine kısıtlamalar koymak istiyorsanız bu yararlı olabilir) veya silinip silinmeyeceğini belirtmek de mümkündür.</p>
+                <h3  id="k%C3%BCbik-bezier-egri">Kübik Bezier Eğri</h3>
 
-.token.function,
-.token.namespace,
-.token.pseudo-element,
-.token.class,
-.token.class-name,
-.token.pseudo-class,
-.token.id,
-.token.url-reference .token.variable,
-.token.attr-name {
-  color: #795da3;
-}
+                <p>Bu öğe, en az iki eğri-üzerinde nokta ve her bir uçta bir eğri-dışı kontrol noktası ile belirtilir (yani toplamda eğri-dışı iki nokta [eğrinin başlangıç ve bitiş noktaları]). Yalnızca eğri-üzerinde iki nokta varsa, bu bir Bezier kübik bölümdür ve dört nokta tam olarak Bezier kontrol noktalarıdır.</p>
+                <p>Eğri üzerinde daha fazla nokta varsa, bu, birden fazla Bezier kübik segmentten oluşan sürekli (C2) interpolasyonlu (Yani eğri birbirini sürekli şekilde takip eden ve keskin köşe, kırıklı yapı barındırmayan) eğri olduğunu gösterir. Bu kullanışlı bir eğri türüdür, çünkü bölümlerin birleştiği yerlerde bile her yerde pürüzsüz bir görünüme sahiptir.</p>
+                <p>Bezier kübik spline oluşturmak için <code>Çizim &#x2192; Bezier Kübik Eğri</code>&apos;yi seçin. Ardından kübik parçanın bir uç noktasını belirtmek için <code>Farenin sol tuşu</code>na tıklayın. Fare düğmesini bırakıp fareyi hareket ettirdiğinizde; kübik segmentin diğer uç noktası  sürüklenir. Daha fazla eğri noktası eklemek için <code>farenin sol tuşu</code>na tıklayın. Eğriyi bitirmek için <code>Farenin sağ tuşu</code>na tıklayın veya ESC tuşuna basın.</p>
+                <p>&#x130;ki kontrol noktası başlangıçta uç noktalar arasındaki düz bir hat&#x2019;ta yerleştirilir; bu, küpün başlangıçta düz bir çizgi olarak göründüğü anlamına gelir. &#x130;stenilen eğriyi oluşturmak için kontrol noktalarını sürükleyin.</p>
+                <p>Kapalı bir eğri (teknik olarak, bir &quot;periyodik eğri&quot;) oluşturmak için, eğriyi her zamanki gibi oluşturarak başlayın, eğri üzerinde ilave noktalar (yani yeni eğri parçaları) oluşturmak için <code>sol tıklayın</code>. Ardından fareyi eğrideki ilk noktanın üzerine getirin ve <code>sol tıklayın</code>. Eğri, ilk nokta da dahil olmak üzere her yerde C2 sürekliliğinde (yani pürüzsüz, kırıksız) olacak olan periyodik bir eğriye dönüştürülecektir.</p>
+                <h3  id="truetype-yaz%C4%B1-tipinde-metin">TrueType Yazı Tipinde Metin</h3>
 
-.token.entity {
-  cursor: help;
-}
+                <p>Bu öğe, metnin her köşesinde bulunan dört nokta ile tanımlanır. Noktalar arasındaki mesafe metnin yüksekliğini ve genişliğini belirler; aralarındaki çizginin açısı metnin yönünü belirler ve konumları metnin konumunu belirler.</p>
+                <p>Metni oluşturmak için <code>Çizim &#x2192; TrueType Yazı Tipinde Metin</code> menü yolunu seçin (Kısayol tuşu <code>T</code>). Ardından metnin sol üst nokta konumunu belirtmek için  <code>farenin sol butonu</code> ile tıklayın. Fareyi hareket ettirdiğinizde Metnin sağ alt noktasının konumu sürüklenir; bu noktayı yerleştirmek / sabitlemek için tekrar <code>farenin sol butonu</code>na tıklayın.</p>
+                <p>Metnin Yazı tipini değiştirmek için metin öğesini seçin. Özellik Penceresinde, bilgisayarınızda yüklü yazı tiplerinin bir listesi görünür; Kullanmak istediğiniz yazı tipini seçmek için yazı tipi adına <code>sol tıklayın</code>. Görüntülenen metni (metnin içeriğini) değiştirmek için metin öğesini seçin ve Özellik Penceresindeki <code>[change]</code> bağlantısına (text = &#x2018;Abc&#x2019; [change]) tıklayın.</p>
+                <p><img src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/008%20Metni%20degis.png" alt="Yazı Tipini ve Metni Değiştir"></p>
+                <h3  id="resim-g%C3%B6r%C3%BCnt%C3%BC">Resim / Görüntü</h3>
 
-.token.title,
-.token.title .token.punctuation {
-  font-weight: bold;
-  color: #1d3e81;
-}
+                <p>Bu öğe, bir çizime bir bitmap referans görüntüsü yerleştirmek için kullanılabilir. Bu öğe, TrueType Metin öğelerine benzer şekilde, görüntüyü konumlandırmak, sınırlamak ve yönlendirmek için kullanılabilen dört kontrol noktası ile tanımlanır. Görüntü öğeleri, tipik olarak diğer objeleri çizmek veya izlemek için referans olarak kullanılır ve daha sonra kaldırılır. Bu nedenle, Görüntü öğeleri dışa aktarılamaz.</p>
+                <h3  id="ogeleri-b%C3%B6l-ve-k%C4%B1rp">Öğeleri Böl ve Kırp</h3>
 
-.token.list {
-  color: #ed6a43;
-}
+                <p>Bazı durumlarda, üst üste binen/çakışan şekiller oluşturarak ve ardından fazla çizgileri kaldırarak/silerek çizim yapmak istenir. Örneğin, bu durumda bir daire ve bir dikdörtgen çizilir; iki kısa çizgi ve kısa yay daha sonra tek bir kapalı şekil oluşturmak için silinir.</p>
+                <p><img src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/009%20b%C3%B6l%2C%20k%C4%B1rp.png" alt="Öğeleri Böl / Kırp"></p>
+                <p>Çizgi fazlalıklarını kırpmak için, öğeleri kesiştiği yerden bölmek gerekir. SolveSpace çizgileri, daireleri, yayları ve Bezier eğrilerini birbiri ile bölebilir (yani metin, resim ,...vb öğeler bir çizgi, çember,...vb ile bölünemez). Bunu yapmak için, bölünecek iki öğeyi seçin ve ardından <code>Çizim &#x2192; Kesişme Yerinde Eğrileri Böl</code> Menü yolunu seçin (Kısayol tuşu <code>I</code> {büyük harf ile Isparta&#x2019;nın I&#x2019;sı} ve i {küçük har ile &#x130;stanbul&#x2019;un i&#x2019;si}). Bu, her özgün öğeyi siler ve kesişen bir uç noktayı paylaşan iki yeni öğeyle değiştirir. Fazla çizgiler daha sonra her zamanki gibi silinebilir (ya da yapısı değiştirilerek referans olarak kullanılabilir).</p>
+                <p>Orijinal öğeler silindiği için orijinal öğeler üzerindeki tüm sınırlamalar / kısıtlamalar da silinir. Bu, çizimin bölme işleminden sonra artık istendiği gibi (daha önce sınırlandırıldığı şekliyle) sınırlandırılamayacağı anlamına gelir (Yani yeniden sınırlandırılması gerekir). Bir öge, bölünmeden önce yapı öğesi olarak işaretlenirse, bölme işlemi sonucunda silinmez,  dolayısıyla kısıtlamalar devam eder.</p>
 
-.token.inserted {
-  background-color: #eaffea;
-  color: #55a532;
-}
+                <p> <a href="01GenelNavigasyon.html" class="button primary small"> &#8592 Bölüm 1: Genel Navigasyon</a> <a href="03Kisitlamalar.html" class="button primary small">Bölüm 3: Kısıtlamalar &#8594</a> </p>
 
-.token.deleted {
-  background-color: #ffecec;
-  color: #bd2c00;
-}
-
-.token.bold {
-  font-weight: bold;
-}
-
-.token.italic {
-  font-style: italic;
-}
+                      </div>
 
 
-/* JSON */
-.language-json .token.property {
-  color: #183691;
-}
+				<!-- Footer -->
+					<section id="footer">
+						<div class="container">
+							<ul class="copyright">
+								<li>&copy; Her hakkı saklıdır.</li>
+							</ul>
+						</div>
+					</section>
 
-.language-markup .token.tag .token.punctuation {
-  color: #333;
-}
+			</div>
 
-/* CSS */
-code.language-css,
-.language-css .token.function {
-  color: #0086b3;
-}
+		<!-- Scripts -->
+			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../assets/js/jquery.scrollex.min.js"></script>
+			<script src="../assets/js/jquery.scrolly.min.js"></script>
+			<script src="../assets/js/browser.min.js"></script>
+			<script src="../assets/js/breakpoints.min.js"></script>
+			<script src="../assets/js/util.js"></script>
+			<script src="../assets/js/main.js"></script>
 
-/* YAML */
-.language-yaml .token.atrule {
-  color: #63a35c;
-}
-
-code.language-yaml {
-  color: #183691;
-}
-
-/* Ruby */
-.language-ruby .token.function {
-  color: #333;
-}
-
-/* Markdown */
-.language-markdown .token.url {
-  color: #795da3;
-}
-
-/* Makefile */
-.language-makefile .token.symbol {
-  color: #795da3;
-}
-
-.language-makefile .token.variable {
-  color: #183691;
-}
-
-.language-makefile .token.builtin {
-  color: #0086b3;
-}
-
-/* Bash */
-.language-bash .token.keyword {
-  color: #0086b3;
-}
-
-/* highlight */
-pre[data-line] {
-  position: relative;
-  padding: 1em 0 1em 3em;
-}
-pre[data-line] .line-highlight-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: transparent;
-  display: block;
-  width: 100%;
-}
-
-pre[data-line] .line-highlight {
-  position: absolute;
-  left: 0;
-  right: 0;
-  padding: inherit 0;
-  margin-top: 1em;
-  background: hsla(24, 20%, 50%,.08);
-  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
-  pointer-events: none;
-  line-height: inherit;
-  white-space: pre;
-}
-
-pre[data-line] .line-highlight:before, 
-pre[data-line] .line-highlight[data-end]:after {
-  content: attr(data-start);
-  position: absolute;
-  top: .4em;
-  left: .6em;
-  min-width: 1em;
-  padding: 0 .5em;
-  background-color: hsla(24, 20%, 50%,.4);
-  color: hsl(24, 20%, 95%);
-  font: bold 65%/1.5 sans-serif;
-  text-align: center;
-  vertical-align: .3em;
-  border-radius: 999px;
-  text-shadow: none;
-  box-shadow: 0 1px white;
-}
-
-pre[data-line] .line-highlight[data-end]:after {
-  content: attr(data-end);
-  top: auto;
-  bottom: .4em;
-}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
-/* Please visit the URL below for more information: */
-/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
-
-      </style>
-    </head>
-    <body for="html-export">
-      <div class="mume markdown-preview  ">
-      <h1 class="mume-header" id="b%C3%B6l%C3%BCm-2-%C3%A7izim-%C3%B6%C4%9Feleri-objeleri">B&#xF6;l&#xFC;m 2: &#xC7;izim &#xD6;&#x11F;eleri (Objeleri)</h1>
-
-<p><img src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/007%20Cizim%20Ogeleri.png?raw=true" alt="&#xC7;izim &#xD6;&#x11F;eleri"></p>
-<h2 class="mume-header" id="yap%C4%B1-geometrisi-yard%C4%B1mc%C4%B1-geometri">Yap&#x131; Geometrisi (Yard&#x131;mc&#x131; Geometri)</h2>
-
-<p>Normal &#xE7;al&#x131;&#x15F;mada, kullan&#x131;c&#x131; bir taslakta &#xE7;izgi ve e&#x11F;riler &#xE7;izer. Bu e&#x11F;riler &#xFC;retilecek geometriyi tan&#x131;mlar; sonu&#xE7;ta parmak freze, lazer veya ba&#x15F;ka bir kesici alet, bu e&#x11F;riler boyunca kesecektir.</p>
-<p>Baz&#x131; durumlarda son k&#x131;s&#x131;mda (geometrinin sonu&#xE7;lanma k&#x131;sm&#x131;nda) g&#xF6;r&#xFC;nmemesi gereken bir &#xE7;izgi (yard&#x131;mc&#x131; &#xE7;izgi) &#xE7;izmekte fayda var. &#xD6;rne&#x11F;in, kullan&#x131;c&#x131; simetrik bir par&#xE7;a i&#xE7;in bir merkez &#xE7;izgisi &#xE7;izmek isteyebilir; ancak bu merkez &#xE7;izgisi yaln&#x131;zca bir k&#x131;lavuzdur ve asl&#x131;nda CAM verileriyle d&#x131;&#x15F;a aktar&#x131;lmamal&#x131;d&#x131;r. Bu &#xE7;izgilere (sadece &#xE7;izgi olmak zorunda de&#x11F;il) Yap&#x131; &#xE7;izgileri (yard&#x131;mc&#x131; &#xE7;izgier) denir.</p>
-<p>Bir &#xF6;&#x11F;eyi yaln&#x131;zca yap&#x131; &#xF6;&#x11F;esi olarak i&#x15F;aretlemek i&#xE7;in <code>&#xC7;izim &#x2192; Yap&#x131;y&#x131; De&#x11F;i&#x15F;tir</code>&apos;i se&#xE7;in (K&#x131;sayol tu&#x15F;u <code>G</code>). Bir yap&#x131; &#xF6;&#x11F;esi, ekranda ye&#x15F;il renkle &#xE7;izilmesi ve varsay&#x131;lan olarak d&#x131;&#x15F;a aktarma i&#xE7;in geometriye (ekstr&#xFC;de edilecek, tornalanacak veya s&#xFC;p&#xFC;r&#xFC;lecek b&#xF6;l&#xFC;me) katk&#x131;da bulunmamas&#x131; d&#x131;&#x15F;&#x131;nda di&#x11F;er herhangi bir obje gibi davranacakt&#x131;r. Ayr&#x131;ca &apos;<code>G</code>&apos; klavye k&#x131;sayolunu kullanarak yeni bir &#xF6;&#x11F;e &#xE7;izerken yap&#x131; geometrisini de&#x11F;i&#x15F;tirebilirsiniz.</p>
-<h2 class="mume-header" id="referans-noktas%C4%B1">Referans noktas&#x131;</h2>
-
-<p>Bu &#xF6;e&#x11F;e, tek bir nokta ile tan&#x131;mlan&#x131;r.</p>
-<p>Referans noktas&#x131; olu&#x15F;turuldu&#x11F;unda bir &#xE7;al&#x131;&#x15F;ma d&#xFC;zlemi etkinse, o referans noktas&#x131; her zaman &#xE7;al&#x131;&#x15F;ma d&#xFC;zleminde yer alacakt&#x131;r. Hi&#xE7;bir &#xE7;al&#x131;&#x15F;ma d&#xFC;zlemi aktif de&#x11F;ilse, referans noktas&#x131; 3d olarak serbest olacakt&#x131;r. (Bu, &#xF6;rne&#x11F;in bir &#xE7;izgi par&#xE7;as&#x131;n&#x131;n u&#xE7; noktalar&#x131; dahil olmak &#xFC;zere t&#xFC;m noktalar i&#xE7;in ayn&#x131; davran&#x131;&#x15F;t&#x131;r.)</p>
-<p>Referans noktalar&#x131; tipik olarak yap&#x131; geometrisi olarak kullan&#x131;l&#x131;r. Kullan&#x131;c&#x131;, &#xE7;izgi b&#xF6;l&#xFC;mlerinin veya di&#x11F;er &#xF6;&#x11F;elerin boyutland&#x131;r&#x131;lmas&#x131;n&#x131; basitle&#x15F;tirmek i&#xE7;in referans noktalar&#x131;n&#x131; yerle&#x15F;tirebilir.</p>
-<h2 class="mume-header" id="cal%C4%B1sma-d%C3%BCzlemi">Cal&#x131;sma D&#xFC;zlemi</h2>
-
-<p>Bu varl&#x131;k bir nokta ve bir normal ile belirtilir. Nokta orijinini, normal ise oryantasyonunu (y&#xF6;n&#xFC;limi) tan&#x131;mlar.<br>
-Bir &#xE7;al&#x131;&#x15F;ma d&#xFC;zlemi, 2d&apos;de (2 boyutta) bir taslak &#xE7;izmeyi m&#xFC;mk&#xFC;n k&#x131;lar. Bir &#xE7;al&#x131;&#x15F;ma d&#xFC;zlemi etkinse, &#xE7;izilen t&#xFC;m &#xF6;&#x11F;eler o &#xE7;al&#x131;&#x15F;ma d&#xFC;zleminde bulunmal&#x131;d&#x131;r.</p>
-<p>A&#xE7;&#x131;k&#xE7;a &#xE7;al&#x131;&#x15F;ma d&#xFC;zlemleri olu&#x15F;turmak neredeyse hi&#xE7; gerekli de&#x11F;ildir. Bunun yerine, Yeni &#xC7;al&#x131;&#x15F;ma D&#xFC;zlemi grubunda yeni bir taslak (&#xE7;izim) olu&#x15F;turun.</p>
-<h2 class="mume-header" id="cizgi-parcas%C4%B1">Cizgi Parcas&#x131;</h2>
-
-<p>Bu &#xF6;&#x11F;e, iki u&#xE7; nokta (&#xE7;izginin ba&#x15F;lang&#x131;&#xE7; ve biti&#x15F; noktalar&#x131;) ile belirtilir. Bir &#xE7;al&#x131;&#x15F;ma d&#xFC;zlemi etkinse, iki u&#xE7; nokta her zaman o &#xE7;al&#x131;&#x15F;ma d&#xFC;zleminde bulunur.</p>
-<p>&#xC7;izgi Par&#xE7;as&#x131; (B&#xF6;l&#xFC;m&#xFC; / Segmenti) olu&#x15F;turmak i&#xE7;in <code>&#xC7;izim &#x2192; &#xC7;izgi Par&#xE7;as&#x131;</code>&apos;n&#x131; se&#xE7;in ve ard&#x131;ndan &#xE7;izginin bir u&#xE7; noktas&#x131;na sol t&#x131;klay&#x131;n. Ard&#x131;ndan fare d&#xFC;&#x11F;mesini b&#x131;rak&#x131;n; di&#x11F;er u&#xE7; nokta &#x15F;imdi s&#xFC;r&#xFC;kleniyor.</p>
-<p>Yeni olu&#x15F;turulan &#xE7;izgi par&#xE7;as&#x131;yla bir biti&#x15F; noktas&#x131; payla&#x15F;an ba&#x15F;ka bir &#xE7;izgi par&#xE7;as&#x131; olu&#x15F;turmak (&#xE7;oklu &#xE7;izgiden olu&#x15F;an geometri &#xFC;retmek) i&#xE7;in tekrar sol t&#x131;klay&#x131;n. Bu, kapal&#x131; &#xE7;okgenler &#xE7;izmenin h&#x131;zl&#x131; bir yoludur.</p>
-<p>&#xC7;izgi par&#xE7;alar&#x131; &#xE7;izmeyi durdurmak / sonland&#x131;rmak i&#xE7;in <code>Escape</code> tu&#x15F;una bas&#x131;n veya <code>farenin sa&#x11F; tu&#x15F;u</code>na t&#x131;klay&#x131;n. Otomatik bir k&#x131;s&#x131;tlama eklenirse, SolveSpace yeni &#xE7;izgi par&#xE7;alar&#x131; &#xE7;izmeyi de durduracakt&#x131;r. (&#xD6;rne&#x11F;in, art arda sol t&#x131;klayarak ve ard&#x131;ndan son kez sol t&#x131;klamadan &#xF6;nce imleci ba&#x15F;lang&#x131;&#xE7; noktas&#x131;n&#x131;n &#xFC;zerine getirerek kapal&#x131; bir &#xE7;okgen &#xE7;izin. &#xC7;oklu &#xE7;izginin biti&#x15F; noktas&#x131;, ba&#x15F;lang&#x131;&#xE7; noktas&#x131;nda uzanacak &#x15F;ekilde s&#x131;n&#x131;rland&#x131;r&#x131;lacakt&#x131;r ve bir k&#x131;s&#x131;tlama eklendi&#x11F;inden, SolveSpace &#xE7;izimi durduracakt&#x131;r.)</p>
-<h2 class="mume-header" id="dikd%C3%B6rtgen">Dikd&#xF6;rtgen</h2>
-
-<p>Bu &#xF6;&#x11F;e, kapal&#x131; bir e&#x11F;ri olu&#x15F;turacak &#x15F;ekilde d&#xFC;zenlenmi&#x15F; iki dikey ve iki yatay &#xE7;izgi par&#xE7;as&#x131;ndan olu&#x15F;ur. Ba&#x15F;lang&#x131;&#xE7;ta, dikd&#xF6;rtgen fare ile &#xE7;apraz olarak z&#x131;t iki k&#xF6;&#x15F;e ile belirtilir. Dikd&#xF6;rtgendeki do&#x11F;ru par&#xE7;alar&#x131; (ve noktalar), s&#x131;radan do&#x11F;ru par&#xE7;alar&#x131;yla ayn&#x131; &#x15F;ekilde s&#x131;n&#x131;rland&#x131;r&#x131;labilir.</p>
-<p>D&#xF6;rt do&#x11F;ru par&#xE7;as&#x131; &#xE7;izerek ve uygun k&#x131;s&#x131;tlamalar&#x131; ekleyerek ayn&#x131; &#x15F;ekli elle &#xE7;izmek te m&#xFC;mk&#xFC;n olacakt&#x131;r. Dikd&#xF6;rtgen komutu, ayn&#x131; &#x15F;eyi &#xE7;izmenin daha h&#x131;zl&#x131; bir yoludur.</p>
-<p>&#xC7;al&#x131;&#x15F;ma d&#xFC;zlemi, &quot;<strong>yatay</strong>&quot; ve &quot;<strong>dikey</strong>&quot; ifadelerini tan&#x131;mlad&#x131;&#x11F;&#x131; i&#xE7;in, dikd&#xF6;rtgen &#xE7;izildi&#x11F;inde &#xE7;al&#x131;&#x15F;ma d&#xFC;zlemi aktif olmal&#x131;d&#x131;r. (Yani dikd&#xF6;rtgen komutu ile geometri &#xE7;izilirken, mecburen yatay ve dikey s&#x131;n&#x131;rlama eklenmelidir, bir &#xE7;al&#x131;&#x15F;ma d&#xFC;zlemi aktif de&#x11F;ilse yatay ve dikeyin neye g&#xF6;re, hangi y&#xF6;ne g&#xF6;re oldu&#x11F;u bilinemez, bu nedenle bir dikd&#xF6;rtgen &#xE7;izildi&#x11F;inde &#xE7;al&#x131;&#x15F;ma d&#xFC;zlemi aktif olmal&#x131;d&#x131;r.)</p>
-<p>Dikd&#xF6;rtgen olu&#x15F;turmak i&#xE7;in <code>&#xC7;izim &#x2192; Dikd&#xF6;rtgen</code>&apos;i se&#xE7;in (K&#x131;sayol tu&#x15F;u <code>R</code>)</p>
-<h2 class="mume-header" id="daire-cember">Daire / Cember</h2>
-
-<p>Bu &#xF6;&#x11F;e, merkez noktas&#x131;, &#xE7;ap&#x131; ve normali ile belirtilir.</p>
-<p>&#xC7;ember olu&#x15F;turmak i&#xE7;in <code>&#xC7;izim &#x2192; &#xC7;ember</code>&apos;i se&#xE7;in (K&#x131;sayol tu&#x15F;u <code>C</code>) ve ard&#x131;ndan merkeze sol t&#x131;klay&#x131;n. Ard&#x131;ndan fare d&#xFC;&#x11F;mesini b&#x131;rak&#x131;n; fare hareket ettirildi&#x11F;inde &#xE7;emberin &#xE7;ap&#x131; s&#xFC;r&#xFC;klenir. &#xC7;ap&#x131; yerle&#x15F;tirmek i&#xE7;in tekrar sol t&#x131;klay&#x131;n.</p>
-<p>Bir &#xE7;al&#x131;&#x15F;ma d&#xFC;zlemi etkinse, o zaman merkez noktas&#x131; o &#xE7;al&#x131;&#x15F;ma d&#xFC;zleminde olmal&#x131;d&#x131;r ve dairenin normali &#xE7;al&#x131;&#x15F;ma d&#xFC;zleminin normaline paraleldir (bu, dairenin, &#xE7;al&#x131;&#x15F;ma d&#xFC;zleminin y&#xFC;zeyinde oldu&#x11F;u anlam&#x131;na gelir).</p>
-<p>Hi&#xE7;bir &#xE7;al&#x131;&#x15F;ma d&#xFC;zlemi aktif de&#x11F;ilse, o zaman merkez noktas&#x131; bo&#x15F;lukta serbest vaziyettedir ve dairenin y&#xF6;n&#xFC;n&#xFC; belirlemek i&#xE7;in normal (normali temsil eden oklar) s&#xFC;r&#xFC;klenebilir (veya s&#x131;n&#x131;rland&#x131;r&#x131;labilir).</p>
-<h2 class="mume-header" id="cember-yay%C4%B1">Cember Yay&#x131;</h2>
-
-<p>Bu &#xF6;&#x11F;e, merkez noktas&#x131;, iki u&#xE7; noktas&#x131; ve normali ile belirtilir.</p>
-<p>Yay&#x131; olu&#x15F;turmak i&#xE7;in <code>&#xC7;izim &#x2192; &#xC7;ember Yay&#x131;</code>&apos;n&#x131; se&#xE7;in (K&#x131;sayol tu&#x15F;u A) ve ard&#x131;ndan u&#xE7; noktalar&#x131;ndan birine sol t&#x131;klay&#x131;n. Ard&#x131;ndan fare d&#xFC;&#x11F;mesini b&#x131;rak&#x131;n; fare hareket ettirildi&#x11F;ine di&#x11F;er u&#xE7; nokta s&#xFC;r&#xFC;klenir. Yay olu&#x15F;turulurken merkez nokta da, tam bir yar&#x131;m daire olu&#x15F;turacak &#x15F;ekilde s&#xFC;r&#xFC;kleniyor.</p>
-<p>Di&#x11F;er u&#xE7; noktay&#x131; yerle&#x15F;tirmek i&#xE7;in tekrar sol t&#x131;klay&#x131;n ve ard&#x131;ndan merkezi istenen konuma s&#xFC;r&#xFC;kleyin. Yay, birinci noktadan ikinci noktaya saat y&#xF6;n&#xFC;n&#xFC;n tersine &#xE7;izilir.</p>
-<p>&#xC7;ember Yay&#x131;, bir &#xE7;al&#x131;&#x15F;ma d&#xFC;zleminde &#xE7;izilmelidir; bo&#x15F; alanda &#xE7;izilemez.</p>
-<h2 class="mume-header" id="noktada-teget-yay-radyus">Noktada Teget Yay / Radyus</h2>
-
-<p>Keskin bir k&#xF6;&#x15F;eyi yuvarlamak i&#xE7;in (&#xF6;rne&#x11F;in, iki &#xE7;izgi aras&#x131;nda), genellikle k&#xF6;&#x15F;ede her iki &#xE7;izgiye de te&#x11F;et olan bir yay (radyus) olu&#x15F;turmak isteriz.</p>
-<p>Bu, &#xE7;izgi ve yay&#x131;n birle&#x15F;ti&#x11F;i yerde p&#xFC;r&#xFC;zs&#xFC;z bir g&#xF6;r&#xFC;n&#xFC;m olu&#x15F;turacakt&#x131;r. Bu yaylar&#x131; <code>&#xC7;izim &#x2192; &#xC7;ember Yay&#x131;</code>   ve <code>S&#x131;n&#x131;rland&#x131;r &#x2192; Paralel / Te&#x11F;et</code> men&#xFC; yollar&#x131;ndaki komutlar&#x131; kullanarak elle &#xE7;izmek te m&#xFC;mk&#xFC;n olabilir, ancak bunlar&#x131; otomatik olarak olu&#x15F;turmak daha kolayd&#x131;r.</p>
-<p>Komut uyguland&#x131;&#x11F;&#x131;nda &#xE7;izgilerin ilk par&#xE7;alar&#x131; yap&#x131; &#xE7;izgileri olacak ve yaya ba&#x11F;lanan iki yeni &#xE7;izgi olu&#x15F;turulacak. Yay&#x131;n &#xE7;ap&#x131; (olu&#x15F;an radyus &#xE7;ap&#x131;) daha sonra <strong>Mesafe / &#xC7;ap</strong> veya <strong>E&#x15F;it Uzunluk / Yar&#x131;&#xE7;ap</strong> k&#x131;s&#x131;tlamalar&#x131; ile ola&#x11F;an &#x15F;ekilde s&#x131;n&#x131;rland&#x131;r&#x131;labilir.</p>
-<p>Varsay&#x131;lan olarak, te&#x11F;et yay&#x131;n (radyus) yar&#x131;&#xE7;ap&#x131; otomatik olarak se&#xE7;ilir. Bunu de&#x11F;i&#x15F;tirmek i&#xE7;in, hi&#xE7;bir &#x15F;ey se&#xE7;ilmeden <code>&#xC7;izim &#x2192; Noktada Te&#x11F;et Yay</code>&apos;&#x131; se&#xE7;in. &#xD6;zellik penceresinde yar&#x131;&#xE7;ap&#x131;n belirtilebilece&#x11F;i bir ekran g&#xF6;r&#xFC;necektir. Bu ekranda, komut sonras&#x131;, orijinal &#xE7;izgilerin ve e&#x11F;rilerin korunup korunmayaca&#x11F;&#x131;n&#x131;, korunacaksa yap&#x131; &#xE7;izgileriyle de&#x11F;i&#x15F;tirilip de&#x11F;i&#x15F;tirilmeyece&#x11F;ini (&#xFC;zerlerine k&#x131;s&#x131;tlamalar koymak istiyorsan&#x131;z bu yararl&#x131; olabilir) veya silinip silinmeyece&#x11F;ini belirtmek de m&#xFC;mk&#xFC;nd&#xFC;r.</p>
-<h2 class="mume-header" id="k%C3%BCbik-bezier-egri">K&#xFC;bik Bezier Egri</h2>
-
-<p>Bu &#xF6;&#x11F;e, en az iki e&#x11F;ri-&#xFC;zerinde nokta ve her bir u&#xE7;ta bir e&#x11F;ri-d&#x131;&#x15F;&#x131; kontrol noktas&#x131; ile belirtilir (yani toplamda e&#x11F;ri-d&#x131;&#x15F;&#x131; iki nokta [e&#x11F;rinin ba&#x15F;lang&#x131;&#xE7; ve biti&#x15F; noktalar&#x131;]). Yaln&#x131;zca e&#x11F;ri-&#xFC;zerinde iki nokta varsa, bu bir Bezier k&#xFC;bik b&#xF6;l&#xFC;md&#xFC;r ve d&#xF6;rt nokta tam olarak Bezier kontrol noktalar&#x131;d&#x131;r.</p>
-<p>E&#x11F;ri &#xFC;zerinde daha fazla nokta varsa, bu, birden fazla Bezier k&#xFC;bik segmentten olu&#x15F;an s&#xFC;rekli (C2) interpolasyonlu (Yani e&#x11F;ri birbirini s&#xFC;rekli &#x15F;ekilde takip eden ve keskin k&#xF6;&#x15F;e, k&#x131;r&#x131;kl&#x131; yap&#x131; bar&#x131;nd&#x131;rmayan) e&#x11F;ri oldu&#x11F;unu g&#xF6;sterir. Bu kullan&#x131;&#x15F;l&#x131; bir e&#x11F;ri t&#xFC;r&#xFC;d&#xFC;r, &#xE7;&#xFC;nk&#xFC; b&#xF6;l&#xFC;mlerin birle&#x15F;ti&#x11F;i yerlerde bile her yerde p&#xFC;r&#xFC;zs&#xFC;z bir g&#xF6;r&#xFC;n&#xFC;me sahiptir.</p>
-<p>Bezier k&#xFC;bik spline olu&#x15F;turmak i&#xE7;in <code>&#xC7;izim &#x2192; Bezier K&#xFC;bik E&#x11F;ri</code>&apos;yi se&#xE7;in. Ard&#x131;ndan k&#xFC;bik par&#xE7;an&#x131;n bir u&#xE7; noktas&#x131;n&#x131; belirtmek i&#xE7;in <code>Farenin sol tu&#x15F;u</code>na t&#x131;klay&#x131;n. Fare d&#xFC;&#x11F;mesini b&#x131;rak&#x131;p fareyi hareket ettirdi&#x11F;inizde; k&#xFC;bik segmentin di&#x11F;er u&#xE7; noktas&#x131;  s&#xFC;r&#xFC;klenir. Daha fazla e&#x11F;ri noktas&#x131; eklemek i&#xE7;in <code>farenin sol tu&#x15F;u</code>na t&#x131;klay&#x131;n. E&#x11F;riyi bitirmek i&#xE7;in <code>Farenin sa&#x11F; tu&#x15F;u</code>na t&#x131;klay&#x131;n veya ESC tu&#x15F;una bas&#x131;n.</p>
-<p>&#x130;ki kontrol noktas&#x131; ba&#x15F;lang&#x131;&#xE7;ta u&#xE7; noktalar aras&#x131;ndaki d&#xFC;z bir hat&#x2019;ta yerle&#x15F;tirilir; bu, k&#xFC;p&#xFC;n ba&#x15F;lang&#x131;&#xE7;ta d&#xFC;z bir &#xE7;izgi olarak g&#xF6;r&#xFC;nd&#xFC;&#x11F;&#xFC; anlam&#x131;na gelir. &#x130;stenilen e&#x11F;riyi olu&#x15F;turmak i&#xE7;in kontrol noktalar&#x131;n&#x131; s&#xFC;r&#xFC;kleyin.</p>
-<p>Kapal&#x131; bir e&#x11F;ri (teknik olarak, bir &quot;periyodik e&#x11F;ri&quot;) olu&#x15F;turmak i&#xE7;in, e&#x11F;riyi her zamanki gibi olu&#x15F;turarak ba&#x15F;lay&#x131;n, e&#x11F;ri &#xFC;zerinde ilave noktalar (yani yeni e&#x11F;ri par&#xE7;alar&#x131;) olu&#x15F;turmak i&#xE7;in <code>sol t&#x131;klay&#x131;n</code>. Ard&#x131;ndan fareyi e&#x11F;rideki ilk noktan&#x131;n &#xFC;zerine getirin ve <code>sol t&#x131;klay&#x131;n</code>. E&#x11F;ri, ilk nokta da dahil olmak &#xFC;zere her yerde C2 s&#xFC;reklili&#x11F;inde (yani p&#xFC;r&#xFC;zs&#xFC;z, k&#x131;r&#x131;ks&#x131;z) olacak olan periyodik bir e&#x11F;riye d&#xF6;n&#xFC;&#x15F;t&#xFC;r&#xFC;lecektir.</p>
-<h2 class="mume-header" id="truetype-yaz%C4%B1-tipinde-metin">TrueType Yaz&#x131; Tipinde Metin</h2>
-
-<p>Bu &#xF6;&#x11F;e, metnin her k&#xF6;&#x15F;esinde bulunan d&#xF6;rt nokta ile tan&#x131;mlan&#x131;r. Noktalar aras&#x131;ndaki mesafe metnin y&#xFC;ksekli&#x11F;ini ve geni&#x15F;li&#x11F;ini belirler; aralar&#x131;ndaki &#xE7;izginin a&#xE7;&#x131;s&#x131; metnin y&#xF6;n&#xFC;n&#xFC; belirler ve konumlar&#x131; metnin konumunu belirler.</p>
-<p>Metni olu&#x15F;turmak i&#xE7;in <code>&#xC7;izim &#x2192; TrueType Yaz&#x131; Tipinde Metin</code> men&#xFC; yolunu se&#xE7;in (K&#x131;sayol tu&#x15F;u <code>T</code>). Ard&#x131;ndan metnin sol &#xFC;st nokta konumunu belirtmek i&#xE7;in  <code>farenin sol butonu</code> ile t&#x131;klay&#x131;n. Fareyi hareket ettirdi&#x11F;inizde Metnin sa&#x11F; alt noktas&#x131;n&#x131;n konumu s&#xFC;r&#xFC;klenir; bu noktay&#x131; yerle&#x15F;tirmek / sabitlemek i&#xE7;in tekrar <code>farenin sol butonu</code>na t&#x131;klay&#x131;n.</p>
-<p>Metnin Yaz&#x131; tipini de&#x11F;i&#x15F;tirmek i&#xE7;in metin &#xF6;&#x11F;esini se&#xE7;in. &#xD6;zellik Penceresinde, bilgisayar&#x131;n&#x131;zda y&#xFC;kl&#xFC; yaz&#x131; tiplerinin bir listesi g&#xF6;r&#xFC;n&#xFC;r; Kullanmak istedi&#x11F;iniz yaz&#x131; tipini se&#xE7;mek i&#xE7;in yaz&#x131; tipi ad&#x131;na <code>sol t&#x131;klay&#x131;n</code>. G&#xF6;r&#xFC;nt&#xFC;lenen metni (metnin i&#xE7;eri&#x11F;ini) de&#x11F;i&#x15F;tirmek i&#xE7;in metin &#xF6;&#x11F;esini se&#xE7;in ve &#xD6;zellik Penceresindeki <code>[change]</code> ba&#x11F;lant&#x131;s&#x131;na (text = &#x2018;Abc&#x2019; [change]) t&#x131;klay&#x131;n.</p>
-<p><img src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/008%20Metni%20degis.png" alt="Yaz&#x131; Tipini ve Metni De&#x11F;i&#x15F;tir"></p>
-<h2 class="mume-header" id="resim-g%C3%B6r%C3%BCnt%C3%BC">Resim / G&#xF6;r&#xFC;nt&#xFC;</h2>
-
-<p>Bu &#xF6;&#x11F;e, bir &#xE7;izime bir bitmap referans g&#xF6;r&#xFC;nt&#xFC;s&#xFC; yerle&#x15F;tirmek i&#xE7;in kullan&#x131;labilir. Bu &#xF6;&#x11F;e, TrueType Metin &#xF6;&#x11F;elerine benzer &#x15F;ekilde, g&#xF6;r&#xFC;nt&#xFC;y&#xFC; konumland&#x131;rmak, s&#x131;n&#x131;rlamak ve y&#xF6;nlendirmek i&#xE7;in kullan&#x131;labilen d&#xF6;rt kontrol noktas&#x131; ile tan&#x131;mlan&#x131;r. G&#xF6;r&#xFC;nt&#xFC; &#xF6;&#x11F;eleri, tipik olarak di&#x11F;er objeleri &#xE7;izmek veya izlemek i&#xE7;in referans olarak kullan&#x131;l&#x131;r ve daha sonra kald&#x131;r&#x131;l&#x131;r. Bu nedenle, G&#xF6;r&#xFC;nt&#xFC; &#xF6;&#x11F;eleri d&#x131;&#x15F;a aktar&#x131;lamaz.</p>
-<h2 class="mume-header" id="ogeleri-b%C3%B6l-ve-k%C4%B1rp">Ogeleri B&#xF6;l ve K&#x131;rp</h2>
-
-<p>Baz&#x131; durumlarda, &#xFC;st &#xFC;ste binen/&#xE7;ak&#x131;&#x15F;an &#x15F;ekiller olu&#x15F;turarak ve ard&#x131;ndan fazla &#xE7;izgileri kald&#x131;rarak/silerek &#xE7;izim yapmak istenir. &#xD6;rne&#x11F;in, bu durumda bir daire ve bir dikd&#xF6;rtgen &#xE7;izilir; iki k&#x131;sa &#xE7;izgi ve k&#x131;sa yay daha sonra tek bir kapal&#x131; &#x15F;ekil olu&#x15F;turmak i&#xE7;in silinir.</p>
-<p><img src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/009%20b%C3%B6l%2C%20k%C4%B1rp.png" alt="&#xD6;&#x11F;eleri B&#xF6;l / K&#x131;rp"></p>
-<p>&#xC7;izgi fazlal&#x131;klar&#x131;n&#x131; k&#x131;rpmak i&#xE7;in, &#xF6;&#x11F;eleri kesi&#x15F;ti&#x11F;i yerden b&#xF6;lmek gerekir. SolveSpace &#xE7;izgileri, daireleri, yaylar&#x131; ve Bezier e&#x11F;rilerini birbiri ile b&#xF6;lebilir (yani metin, resim ,...vb &#xF6;&#x11F;eler bir &#xE7;izgi, &#xE7;ember,...vb ile b&#xF6;l&#xFC;nemez). Bunu yapmak i&#xE7;in, b&#xF6;l&#xFC;necek iki &#xF6;&#x11F;eyi se&#xE7;in ve ard&#x131;ndan <code>&#xC7;izim &#x2192; Kesi&#x15F;me Yerinde E&#x11F;rileri B&#xF6;l</code> Men&#xFC; yolunu se&#xE7;in (K&#x131;sayol tu&#x15F;u <code>I</code> {b&#xFC;y&#xFC;k harf ile Isparta&#x2019;n&#x131;n I&#x2019;s&#x131;} ve i {k&#xFC;&#xE7;&#xFC;k har ile &#x130;stanbul&#x2019;un i&#x2019;si}). Bu, her &#xF6;zg&#xFC;n &#xF6;&#x11F;eyi siler ve kesi&#x15F;en bir u&#xE7; noktay&#x131; payla&#x15F;an iki yeni &#xF6;&#x11F;eyle de&#x11F;i&#x15F;tirir. Fazla &#xE7;izgiler daha sonra her zamanki gibi silinebilir (ya da yap&#x131;s&#x131; de&#x11F;i&#x15F;tirilerek referans olarak kullan&#x131;labilir).</p>
-<p>Orijinal &#xF6;&#x11F;eler silindi&#x11F;i i&#xE7;in orijinal &#xF6;&#x11F;eler &#xFC;zerindeki t&#xFC;m s&#x131;n&#x131;rlamalar / k&#x131;s&#x131;tlamalar da silinir. Bu, &#xE7;izimin b&#xF6;lme i&#x15F;leminden sonra art&#x131;k istendi&#x11F;i gibi (daha &#xF6;nce s&#x131;n&#x131;rland&#x131;r&#x131;ld&#x131;&#x11F;&#x131; &#x15F;ekliyle) s&#x131;n&#x131;rland&#x131;r&#x131;lamayaca&#x11F;&#x131; anlam&#x131;na gelir (Yani yeniden s&#x131;n&#x131;rland&#x131;r&#x131;lmas&#x131; gerekir). Bir &#xF6;ge, b&#xF6;l&#xFC;nmeden &#xF6;nce yap&#x131; &#xF6;&#x11F;esi olarak i&#x15F;aretlenirse, b&#xF6;lme i&#x15F;lemi sonucunda silinmez,  dolay&#x131;s&#x131;yla k&#x131;s&#x131;tlamalar devam eder.</p>
-
-<p> | <a href="https://mhalil.github.io/">Ana sayfa</a> | <a href="../solvespace.html"> SolveSpace Sayfası </a> | <a href="01GenelNavigasyon.html"> &lt; Bölüm 1: Genel Navigasyon</a> | <a href="03Kisitlamalar.html">Bölüm 3: Kısıtlamalar ></a> |</p>
-
-      </div>
-      
-      
-    
-    
-    
-    
-    
-    
-    
-    
-  
-    </body></html>
+	</body>
+</html>
