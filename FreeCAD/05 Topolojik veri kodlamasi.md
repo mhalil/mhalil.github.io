@@ -608,7 +608,7 @@ myMat.scale(2, 1, 1)
 myShape=myShape.transformGeometry(myMat)
 ```
 
-## ## Boole (Mantık) İşlemleri
+## Boole (Mantık) İşlemleri
 
 ### Çıkarma
 

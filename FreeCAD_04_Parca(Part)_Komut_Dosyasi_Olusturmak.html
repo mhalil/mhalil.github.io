@@ -1,0 +1,239 @@
+<!DOCTYPE HTML>
+<!--
+	Read Only by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>https://mhalil.github.io</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+    </head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<section id="header">
+				<header>
+                    <span class="image avatar"><a href="index.html"><img src="images/avatar.jpg" alt="" /></a></span>
+					<h1 id="logo"><a href="index.html">Mustafa Halil</a></h1>
+					<p>mhalil.github.io.</p>
+				</header>
+				<nav id="nav">
+					<ul>
+						<li><a href="Python-Pandas.html">Python - Pandas</a></li>
+						<li><a href="Freecad.html" class="active">FreeCAD</a></li>
+						<li><a href="SolveSpace.html">SolveSpace</a></li>
+						<li><a href="Blender.html">Blender</a></li>
+                        <li><a href="Librecad.html">LibreCAD</a></li>
+					</ul>
+				</nav>
+				<footer>
+					<ul class="icons">
+						<li><a href="https://twitter.com/AcikKaynakci" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="https://github.com/mhalil" class="icon brands fa-github"><span class="label">Github</span></a></li>
+						<li><a href="mailto:m.halil@yahoo.com" class="icon solid fa-envelope"><span class="label">E-Posta</span></a></li>
+					</ul>
+				</footer>
+			</section>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+                        
+						<!-- SolveSpace -->
+							<section id="solvespace">
+								<div class="container">
+                                    <h2  id="b%C3%B6l%C3%BCm-2-%C3%A7izim-%C3%B6%C4%9Feleri-objeleri">Parça (Part) Komut Dosyası Oluşturmak</h2>
+                                </div>
+							</section>
+					</div>
+                
+                <div class="container">
+                    
+<h2 class="atx" id="takdim">Takdim</h2>
+<p><code>Part (Parça)</code> modülünde kullanılan ana veri yapısı, <a href="https://wiki.freecadweb.org/OpenCASCADE">OpenCASCADE</a>'den <a href="http://en.wikipedia.org/wiki/Boundary_representation">BRep</a> veri türüdür. <code>Part</code> modülünün hemen hemen tüm içeriği ve nesne türleri, Python komut dosyasında mevcuttur. Bu, <strong>Çizgiler</strong>, <strong>Daireler</strong> ve <strong>Yaylar</strong> gibi geometrik temel şekilleri ve <strong>Noktalar, Kenarlar, Kafes/Ağ Yapıları, Yüzeyler, Katılar ve Bileşikler</strong> gibi tüm <strong>TopoShapes</strong> aralığını içerir. Bu nesnelerin her biri için çeşitli oluşturma yöntemleri mevcuttur ve bazıları için, özellikle <strong>TopoShapes</strong> için, <strong>boole birleşim/fark/kesişim</strong> gibi gelişmiş işlemler de mevcuttur. Daha fazla bilgi için [FreeCAD Komut Dosyası Oluşturma Temelleri](04_FreeCAD_Komut_ Dosyasi_Temelleri.html) sayfasında açıklandığı gibi <code>Part (Parça)</code> modülünün içeriğini keşfedin.</p>
+<p>Oluşturulabilecek en temel nesne, basit bir <em>Data</em> <code>Placement</code> özelliğini, rengini ve görünümünü tanımlayan temel özelliklere sahip bir <a href="https://wiki.freecadweb.org/Part_Feature">Parça Özelliğidir (Part Feature)</a>.</p>
+<p>2B geometrik nesnelerde kullanılan diğer bir basit nesne, <a href="https://wiki.freecadweb.org/Sketcher_SketchObject">Sketcher SketchObject</a> ve çoğu <a href="https://wiki.freecadweb.org/Draft_Workbench">Draft öğelerinin</a> temeli olan <a href="https://wiki.freecadweb.org/Part_Part2DObject">Part Part2DObject</a>'dir.</p>
+<h3 class="atx" id="ayrica-bakiniz">Ayrıca bakınız</h3>
+<ul>
+<li><a href="https://wiki.freecadweb.org/Topological_data_scripting">Topolojik veri kodlaması</a></li>
+<li><a href="https://wiki.freecadweb.org/OpenCASCADE">OpenCASCADE</a></li>
+</ul>
+<h2 class="atx" id="test-komut-dosyasi">Test komut dosyası</h2>
+<p>Bir komut dosyasıyla <a href="https://wiki.freecadweb.org/Part_Primitives">Parça Temel Şekillerinin</a> oluşturulmasını test edin. <em>0.19 sürümünde tanıtıldı</em></p>
+<pre><code class="fenced-code-block language-python"><span class="token keyword">import</span> parttests<span class="token punctuation">.</span>part_test_objects <span class="token keyword">as</span> pto
+pto<span class="token punctuation">.</span>create_test_file<span class="token punctuation">(</span><span class="token string">"example_file"</span><span class="token punctuation">)</span></code></pre>
+<p>Bu betik (script), programın kurulum dizininde bulunur ve temel şekillerin nasıl oluşturulduğunu görmek için incelenebilir.</p>
+<pre><code class="fenced-code-block">$INSTALL_DIR/Mod/Part/parttests/part_test_objects.py</code></pre>
+<h2 class="atx" id="ornekler">Örnekler</h2>
+<h3 class="atx" id="cizgi">Çizgi</h3>
+<p>Bir çizgi öğesi oluşturmak için <a href="https://wiki.freecadweb.org/Python_console">Python konsolu</a>na geçin ve şunu girin:</p>
+<pre><code class="fenced-code-block language-python"><span class="token keyword">import</span> FreeCAD <span class="token keyword">as</span> App
+<span class="token keyword">import</span> Part
+
+doc <span class="token operator">=</span> App<span class="token punctuation">.</span>newDocument<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+line <span class="token operator">=</span> Part<span class="token punctuation">.</span>LineSegment<span class="token punctuation">(</span><span class="token punctuation">)</span>
+line<span class="token punctuation">.</span>StartPoint <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">)</span>
+line<span class="token punctuation">.</span>EndPoint <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">)</span>
+obj <span class="token operator">=</span> doc<span class="token punctuation">.</span>addObject<span class="token punctuation">(</span><span class="token string">"Part::Feature"</span><span class="token punctuation">,</span> <span class="token string">"Line"</span><span class="token punctuation">)</span>
+obj<span class="token punctuation">.</span>Shape<span class="token operator">=</span> line<span class="token punctuation">.</span>toShape<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+doc<span class="token punctuation">.</span>recompute<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>Yukarıdaki Python örneğini adım adım inceleyelim:</p>
+<pre><code class="fenced-code-block language-python"><span class="token keyword">import</span> FreeCAD <span class="token keyword">as</span> App
+<span class="token keyword">import</span> Part
+doc <span class="token operator">=</span> App<span class="token punctuation">.</span>newDocument<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>Bu, FreeCAD ve <code>Part (Parça)</code> modüllerini yükler ve yeni bir belge oluşturur.</p>
+<pre><code class="fenced-code-block language-python">line <span class="token operator">=</span> Part<span class="token punctuation">.</span>LineSegment<span class="token punctuation">(</span><span class="token punctuation">)</span>
+line<span class="token punctuation">.</span>StartPoint <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">)</span>
+line<span class="token punctuation">.</span>EndPoint <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">)</span></code></pre>
+<p>Çizgi (<code>line</code>) aslında bir çizgi parçasıdır, dolayısıyla başlangıç ve bitiş noktası vardır.</p>
+<pre><code class="fenced-code-block language-python">obj <span class="token operator">=</span> doc<span class="token punctuation">.</span>addObject<span class="token punctuation">(</span><span class="token string">"Part::Feature"</span><span class="token punctuation">,</span> <span class="token string">"Line"</span><span class="token punctuation">)</span>
+obj<span class="token punctuation">.</span>Shape<span class="token operator">=</span> line<span class="token punctuation">.</span>toShape<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>Bu, belgeye bir <code>Parça (Part) </code>nesne türü ekler ve çizgi parçasının şekil temsilini, eklenen nesnenin <code>Shape</code> özelliğine atar. Burada bir <code>TopoShape </code>oluşturmak için bir geometrik temel şekil (<code>Part.LineSegment</code>) kullandığımızı anlamak önemlidir (<code>toShape</code> yöntemiyle). Belgeye yalnız şekil eklenebilir. FreeCAD'de geometrik temel şekilleri "<strong>bina yapıları</strong>" olarak kullanılır.</p>
+<pre><code class="indented-code-block">doc.recompute()</code></pre>
+<p>Bu komut belgeyi günceller. Bu aynı zamanda yeni Part nesnesinin görsel temsilini de hazırlar.</p>
+<p>Bir  çizgi parçasının başlangıç ​​ve bitiş noktası doğrudan yapıcıda belirtilerek de oluşturulabileceğini unutmayın, örneğin <code>Part.LineSegment(nokta1, nokta2)</code> veya burada yaptığımız gibi varsayılan bir çizgi oluşturup özelliklerini daha sonra ayarlayabiliriz.</p>
+<p>Bir Çizgi, ayrıca şu kod bloğunu yazarak (fonksiyon oluşturarak) ta oluşturuşabilir: </p>
+<pre><code class="fenced-code-block language-python"><span class="token keyword">import</span> FreeCAD <span class="token keyword">as</span> App
+<span class="token keyword">import</span> Part
+
+<span class="token keyword">def</span> <span class="token function">my_create_line</span><span class="token punctuation">(</span>pt1<span class="token punctuation">,</span> pt2<span class="token punctuation">,</span> obj_name<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    obj <span class="token operator">=</span> App<span class="token punctuation">.</span>ActiveDocument<span class="token punctuation">.</span>addObject<span class="token punctuation">(</span><span class="token string">"Part::Line"</span><span class="token punctuation">,</span> obj_name<span class="token punctuation">)</span>
+    obj<span class="token punctuation">.</span>X1 <span class="token operator">=</span> pt1<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+    obj<span class="token punctuation">.</span>Y1 <span class="token operator">=</span> pt1<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+    obj<span class="token punctuation">.</span>Z1 <span class="token operator">=</span> pt1<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span>
+
+    obj<span class="token punctuation">.</span>X2 <span class="token operator">=</span> pt2<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+    obj<span class="token punctuation">.</span>Y2 <span class="token operator">=</span> pt2<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+    obj<span class="token punctuation">.</span>Z2 <span class="token operator">=</span> pt2<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span>
+
+    App<span class="token punctuation">.</span>ActiveDocument<span class="token punctuation">.</span>recompute<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> obj
+
+line <span class="token operator">=</span> my_create_line<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"LineName"</span><span class="token punctuation">)</span></code></pre>
+<h1 class="atx" id="cember--daire">Çember / Daire</h1>
+<p>Bir çember / daire benzer şekilde oluşturulabilir:</p>
+<pre><code class="fenced-code-block language-python"><span class="token keyword">import</span> FreeCAD <span class="token keyword">as</span> App
+<span class="token keyword">import</span> Part
+
+doc <span class="token operator">=</span> App<span class="token punctuation">.</span>activeDocument<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+circle <span class="token operator">=</span> Part<span class="token punctuation">.</span>Circle<span class="token punctuation">(</span><span class="token punctuation">)</span> 
+circle<span class="token punctuation">.</span>Radius <span class="token operator">=</span> <span class="token number">10.0</span>  
+obj <span class="token operator">=</span> doc<span class="token punctuation">.</span>addObject<span class="token punctuation">(</span><span class="token string">"Part::Feature"</span><span class="token punctuation">,</span> <span class="token string">"Circle"</span><span class="token punctuation">)</span>
+obj<span class="token punctuation">.</span>Shape <span class="token operator">=</span> circle<span class="token punctuation">.</span>toShape<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+doc<span class="token punctuation">.</span>recompute<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>Veya şu kod bloğunu yazarak (fonksiyon oluşturarak) ta çember oluşturabilisiniz:</p>
+<pre><code class="fenced-code-block language-python"><span class="token keyword">import</span> FreeCAD <span class="token keyword">as</span> App
+<span class="token keyword">import</span> Part
+
+<span class="token keyword">def</span> <span class="token function">my_create_circle</span><span class="token punctuation">(</span>rad<span class="token punctuation">,</span> obj_name<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    obj <span class="token operator">=</span> App<span class="token punctuation">.</span>ActiveDocument<span class="token punctuation">.</span>addObject<span class="token punctuation">(</span><span class="token string">"Part::Circle"</span><span class="token punctuation">,</span> obj_name<span class="token punctuation">)</span>
+    obj<span class="token punctuation">.</span>Radius <span class="token operator">=</span> rad
+
+    App<span class="token punctuation">.</span>ActiveDocument<span class="token punctuation">.</span>recompute<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> obj
+
+circle <span class="token operator">=</span> my_create_circle<span class="token punctuation">(</span><span class="token number">5.0</span><span class="token punctuation">,</span> <span class="token string">"CircleName"</span><span class="token punctuation">)</span></code></pre>
+<p>Alternatif olarak, merkezini, eksenini ve yarıçapını tanımlayarak bir daire oluşturabiliriz:</p>
+<pre><code class="fenced-code-block language-python"><span class="token keyword">import</span> FreeCAD <span class="token keyword">as</span> App
+<span class="token keyword">import</span> Part
+
+doc <span class="token operator">=</span> App<span class="token punctuation">.</span>activeDocument<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+center <span class="token operator">=</span> App<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
+axis <span class="token operator">=</span> App<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+radius <span class="token operator">=</span> <span class="token number">10</span>
+circle <span class="token operator">=</span> Part<span class="token punctuation">.</span>Circle<span class="token punctuation">(</span>center<span class="token punctuation">,</span> axis<span class="token punctuation">,</span> radius<span class="token punctuation">)</span>
+obj <span class="token operator">=</span> doc<span class="token punctuation">.</span>addObject<span class="token punctuation">(</span><span class="token string">"Part::Feature"</span><span class="token punctuation">,</span> <span class="token string">"Circle"</span><span class="token punctuation">)</span>
+obj<span class="token punctuation">.</span>Shape <span class="token operator">=</span> circle<span class="token punctuation">.</span>toShape<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+doc<span class="token punctuation">.</span>recompute<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>Veya çember çevresi üzerinde üç nokta tanımlayarak (3 noktaya teğet çember):</p>
+<pre><code class="fenced-code-block language-python"><span class="token keyword">import</span> FreeCAD <span class="token keyword">as</span> App
+<span class="token keyword">import</span> Part
+
+doc <span class="token operator">=</span> App<span class="token punctuation">.</span>activeDocument<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+p1 <span class="token operator">=</span> App<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+p2 <span class="token operator">=</span> App<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+p3 <span class="token operator">=</span> App<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span>
+circle <span class="token operator">=</span> Part<span class="token punctuation">.</span>Circle<span class="token punctuation">(</span>p1<span class="token punctuation">,</span> p2<span class="token punctuation">,</span> p3<span class="token punctuation">)</span>
+obj <span class="token operator">=</span> doc<span class="token punctuation">.</span>addObject<span class="token punctuation">(</span><span class="token string">"Part::Feature"</span><span class="token punctuation">,</span> <span class="token string">"Circle"</span><span class="token punctuation">)</span>
+obj<span class="token punctuation">.</span>Shape <span class="token operator">=</span> circle<span class="token punctuation">.</span>toShape<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+doc<span class="token punctuation">.</span>recompute<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>Tekrar  not edin, bir şekil oluşturmak için daireyi (geometrik temel şekilleri) kullandık. Elbette daha sonra aşağıdakileri yaparak yapı geometrimize hala erişebiliriz:</p>
+<pre><code class="fenced-code-block language-python">shape <span class="token operator">=</span> obj<span class="token punctuation">.</span>Shape
+edge <span class="token operator">=</span> shape<span class="token punctuation">.</span>Edges<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+curve <span class="token operator">=</span> edge<span class="token punctuation">.</span>Curve</code></pre>
+<p>Burada  nesnemizin (<code>obj</code>)  Şeklini (<code>Shape</code>) ve ardından Kenarlar (<code>edges</code>) listesini alıyoruz. Bu durumda şekli tek bir daireden oluşturduğumuz için sadece bir kenar olacaktır.  Bu yüzden Kenarlar listesinde yalnızca ilk öğeyi alıyoruz ve ardından eğrisini (<code>curve</code>) alıyoruz. Her kenarın, dayandığı geometrik temel nesne olan bir  Eğrisi vardır.</p>
+<h1 class="atx" id="yay">Yay</h1>
+<p>Bir yay şu şekilde oluşturulabilir:</p>
+<pre><code class="fenced-code-block language-python"><span class="token keyword">import</span> FreeCAD <span class="token keyword">as</span> App
+<span class="token keyword">import</span> Part
+
+doc <span class="token operator">=</span> App<span class="token punctuation">.</span>activeDocument<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+p1 <span class="token operator">=</span> App<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+p2 <span class="token operator">=</span> App<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+p3 <span class="token operator">=</span> App<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+arc <span class="token operator">=</span> Part<span class="token punctuation">.</span>Arc<span class="token punctuation">(</span>p1<span class="token punctuation">,</span> p2<span class="token punctuation">,</span> p3<span class="token punctuation">)</span>
+obj <span class="token operator">=</span> doc<span class="token punctuation">.</span>addObject<span class="token punctuation">(</span><span class="token string">"Part::Feature"</span><span class="token punctuation">,</span> <span class="token string">"Arc"</span><span class="token punctuation">)</span>
+obj<span class="token punctuation">.</span>Shape <span class="token operator">=</span> arc<span class="token punctuation">.</span>toShape<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+doc<span class="token punctuation">.</span>recompute<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>Bu kod,  yarım daire çizer. Merkez (0, 0, 0) konumundadır. Yarıçap 10'dur. P1, +X eksenindeki başlangıç ​​noktasıdır. P2, +Y ekseninde orta nokta ve P3, -X ekseninde bitiş noktasıdır.</p>
+<p>Ayrıca bir çemberden bir yay da oluşturabiliriz:</p>
+<pre><code class="fenced-code-block language-python"><span class="token keyword">import</span> FreeCAD <span class="token keyword">as</span> App
+<span class="token keyword">import</span> Part
+
+doc <span class="token operator">=</span> App<span class="token punctuation">.</span>activeDocument<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+p1 <span class="token operator">=</span> App<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+p2 <span class="token operator">=</span> App<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+p3 <span class="token operator">=</span> App<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+circle <span class="token operator">=</span> Part<span class="token punctuation">.</span>Circle<span class="token punctuation">(</span>p1<span class="token punctuation">,</span> p2<span class="token punctuation">,</span> p3<span class="token punctuation">)</span>
+arc <span class="token operator">=</span> Part<span class="token punctuation">.</span>ArcOfCircle<span class="token punctuation">(</span>circle<span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.7854</span><span class="token punctuation">)</span>
+obj <span class="token operator">=</span> doc<span class="token punctuation">.</span>addObject<span class="token punctuation">(</span><span class="token string">"Part::Feature"</span><span class="token punctuation">,</span> <span class="token string">"Arc"</span><span class="token punctuation">)</span>
+obj<span class="token punctuation">.</span>Shape <span class="token operator">=</span> arc<span class="token punctuation">.</span>toShape<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+doc<span class="token punctuation">.</span>recompute<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>Bu kodun çalışabilmesi için bir daireye ve radyan cinsinden bir başlangıç ​​açısına ve bitiş açısına ihtiyacı var.</p>
+
+<p>Kaynak: <a href="https://wiki.freecadweb.org/Part_scripting">Part scripting</a></p>
+
+                <p> <a href="FreeCAD_03_FreeCAD_Komut_Dosyasi_Temelleri.html" class="button primary small"> &#8592 Önceki Bölüm </a> <a href="FreeCAD_05_Topolojik_Veri_Kodlamasi.html" class="button primary small">Sonraki Bölüm &#8594</a> </p>
+
+                      </div>
+
+
+				<!-- Footer -->
+					<section id="footer">
+						<div class="container">
+							<ul class="copyright">
+								<li>&copy; Her hakkı saklıdır.</li>
+							</ul>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

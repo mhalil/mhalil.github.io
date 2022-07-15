@@ -1,0 +1,221 @@
+<!DOCTYPE HTML>
+<!--
+	Read Only by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>https://mhalil.github.io</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<section id="header">
+				<header>
+                    <span class="image avatar"><a href="index.html"><img src="images/avatar.jpg" alt="" /></a></span>
+					<h1 id="logo"><a href="index.html">Mustafa Halil</a></h1>
+					<p>mhalil.github.io.</p>
+				</header>
+				<nav id="nav">
+					<ul>
+						<li><a href="Python-Pandas.html">Python - Pandas</a></li>
+						<li><a href="Freecad.html" class="active">FreeCAD</a></li>
+						<li><a href="SolveSpace.html">SolveSpace</a></li>
+						<li><a href="Blender.html">Blender</a></li>
+                        <li><a href="Librecad.html">LibreCAD</a></li>
+					</ul>
+				</nav>
+				<footer>
+					<ul class="icons">
+						<li><a href="https://twitter.com/AcikKaynakci" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="https://github.com/mhalil" class="icon brands fa-github"><span class="label">Github</span></a></li>
+						<li><a href="mailto:m.halil@yahoo.com" class="icon solid fa-envelope"><span class="label">E-Posta</span></a></li>
+					</ul>
+				</footer>
+			</section>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+                        
+						<!-- SolveSpace -->
+							<section id="solvespace">
+								<div class="container">
+                                    <h2>Python Komut Dosyası Oluşturma (Scripting) Eğitimi</h2>
+                                </div>
+							</section>
+					</div>
+                
+                <div class="container">
+                    
+<p><a href="http://en.wikipedia.org/wiki/Python_%28programming_language%29">Python</a> kullanımı ve öğrenilmesi çok kolay bir programlama dilidir. Açık kaynak kodlu, çok platformlu ve basit kabuk komut dosyalarının programlanmasından, çok karmaşık programlara kadar pek çok şey için tek başına kullanılabilir. Ancak en yaygın kullanım yönteminden biri, diğer uygulamalara gömülerek kullanılmasıdır. FreeCAD içinde tam olarak böyle kullanılır. Python konsolundan veya özel komut dosyalarınızdan FreeCAD'e kılavuzluk yapabilir ve grafik kullanıcı arabirimi aracı olmayan çok karmaşık eylemler gerçekleştirmesini sağlayabilirsiniz.
+Örneğin, bir python betiğinden (script) şunları yapabilirsiniz:</p>
+<ul>
+<li>Yeni nesneler oluşturabilirsiniz,</li>
+<li>Mevcut nesneleri değiştirebilirsiniz,</li>
+<li>Nesnelerin 3B görünümünü değiştirebilirsiniz,</li>
+<li>FreeCAD arayüzünü değiştirebilirsiniz.</li>
+</ul>
+<p>FreeCAD'de Python'u kullanmanın birkaç farklı yolu vardır:</p>
+<ul>
+<li><strong>Komut satırı</strong> tarzı bir arayüzde komutlar verebileceğiniz <strong>FreeCAD'in Python Yorumlayıcısından</strong>.</li>
+<li>Eksik bir aracı FreeCAD arayüzüne hızlı bir şekilde eklemenin uygun bir yolu olan <strong>makrolardan</strong>.</li>
+<li>Oldukça karmaşık çözümler oluşturmak için kullanılabilen <strong>harici komut dosyalarından</strong>, hatta tüm <strong>Çalışma Tezgahlarından</strong> (WorkBench'lerden).</li>
+</ul>
+<p>Bu eğitimde, başlamanıza yardımcı olacak birkaç temel örnek üzerinde çalışacağız, ancak orijinal Wiki sayfasında <a href="https://wiki.freecadweb.org/Power_users_hub">Python komut dosyası oluşturma</a> hakkında çok daha fazla belge / bilgi bulunmaktadır. Python'da tamamen yeniyseniz ve Python'un nasıl çalıştığını anlamak istiyorsanız, temel <a href="/02_Python'a_Giris.html">Python'a Giriş</a> eğitimimiz de var.</p>
+<p>Python komut dosyası oluşturmaya devam etmeden önce <code>Düzenle → Seçenekler → Genel → Çıktı penceresi</code>ne gidin ve aşağıda açıklaması bulunan iki seçeneği işaretleyin / aktifleştirin :</p>
+<ul>
+<li><strong>Dahili Python çıktısını rapor görünümüne yönlendirin. (Redirect internal Python output to report view.)</strong></li>
+<li><strong>Dahili Python hatalarını rapor görünümüne yönlendirin. (Redirect internal Python errors to report view.)</strong></li>
+</ul>
+<p>Ardından <code>Görünüm → Paneller</code>'e gidin ve şunları kontrol edin:</p>
+<ul>
+<li><strong>Rapor görünümü (Report view)</strong></li>
+</ul>
+<h1 class="atx" id="python-kodu-yazma">Python kodu yazma</h1>
+<p>FreeCAD'de Python kodu yazmanın iki yolu vardır. <strong>Python konsolunda</strong> (menüden <code>Görünüm → Paneller → Python konsolu</code>'nu seçin) veya <strong>Makro düzenleyicide</strong> (menüden <code>Makro → Makrolar...</code>'ı seçin). Konsolda Python komutlarını birer birer yazar, <code>Enter</code>'a basarak çalıştırırsınız (yürütürsünüz), makrolar ise yalnızca makro çalıştırıldığında yürütülen birkaç satırdan oluşan daha karmaşık kodlar içerebilir.</p>
+<p><img alt="Python konsolu" src="images/FreeCAD/01_freecad_python_konsol.png"></p>
+<p><em>FreeCAD Python konsolu</em></p>
+<p>Her iki yöntemi de kullanabilirsiniz. Her satırı kopyalayıp Python konsoluna yapıştırır ve ardından <code>Enter</code> tuşuna basabilir veya kodun tamamını yeni bir <strong>Makro penceresine</strong> kopyalayıp yapıştırabilirsiniz.</p>
+<h1 class="atx" id="freecadand39i-kesfetmek">FreeCAD'i Keşfetmek</h1>
+<p>Yeni boş bir belge oluşturarak kod yazmaya başlayalım:</p>
+<pre><code class="fenced-code-block language-python">doc <span class="token operator">=</span> FreeCAD<span class="token punctuation">.</span>newDocument<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>FreeCAD Python konsoluna <code>FreeCAD.</code> yazdığınız anda FreeCAD bunu fark edecektir. Satırın (kodun) geri kalanını hızlı bir şekilde otomatik tamamlamanıza izin veren bir pencere açılır. Daha da iyisi, otomatik tamamlama listesindeki her girişin ne yaptığını açıklayan bir ipucu vardır. Bu, mevcut işlevselliği keşfetmeyi kolaylaştırır. <code>newDocument</code>'ı seçmeden önce diğer seçeneklere bir göz atın.</p>
+<p><img alt="kod_tamamlama" src="images/FreeCAD/02_freecad.newdocument.png"></p>
+<p><em>FreeCAD Python konsolunun otomatik tamamlama mekanizması</em></p>
+<p>Şimdi (bu kodu yazdıktan sonra) yeni belgemiz FreeCAD tarafından oluşturulacak. Bu, araç çubuğundaki <code>Std New (Yeni)</code> düğmesine basmaya benzer. Aslında FreeCAD'deki çoğu düğme, bir veya daha fazla Python kodu satırını çalıştırmaktan başka bir şey yapmaz. Daha da iyisi, python konsolunda betik (script) dosyası komutlarını göstermek için <code>Düzenle → Seçenekler → Genel → Makro</code> bölümünden <code>Betik komutlarını python konsolunda göster</code> seçeneği ile ayarlayabilirsiniz. Bu, düğmelere bastığınızda çalıştırılan tüm Python kodunu, konsolda yazdıracaktır. Bu yöntem, Python'da eylemlerin nasıl üretileceğini öğrenmek için çok kullanışlıdır.</p>
+<p>Şimdi belgemize geri dönelim ve onunla neler yapabileceğimize bakalım:</p>
+<p>doc.
+Mevcut seçenekleri keşfedin. Genellikle <strong>büyük harfle başlayan</strong> isimler niteliklerdir, bir değer içerirler, <strong>küçük harfle başlayan</strong> isimler ise fonksiyondur (yöntem olarak da adlandırılır), "bir şey yaparlar". <strong>Alt çizgi ile başlayan</strong> isimler genellikle modülün dahili çalışması için vardır ve bunları önemsememelisiniz. Belgemize yeni bir nesne eklemek için yöntemlerden birini kullanalım:</p>
+<pre><code class="fenced-code-block language-python">box <span class="token operator">=</span> doc<span class="token punctuation">.</span>addObject<span class="token punctuation">(</span><span class="token string">"Part::Box"</span><span class="token punctuation">,</span> <span class="token string">"myBox"</span><span class="token punctuation">)</span></code></pre>
+<p>Kod yazılıp <code>Enter</code> tuşuna basılmasına rağmen hiçbir şey olmadığını göreceksiniz.  Bunun sebebini açıklamak gerekirse; FreeCAD birbirine bağlı yüzlerce karmaşık nesneyle çalışabilir, bir yerde küçük bir değişiklik yapmak büyük bir etki oluşturabilir; bu da, uzun zaman alabilecek tüm belgeyi yeniden hesaplamanız anlamına gelir. Bu nedenle neredeyse hiçbir komut sahneyi otomatik olarak güncellemez. Güncellemeyi el ile (komut yazarak) yapmak gerekir:</p>
+<pre><code class="fenced-code-block language-python">doc<span class="token punctuation">.</span>recompute<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>Şimdi (güncelleme komutunu çalıştırınca), sahneye eklediğimiz kutu görünür hale geldi. FreeCAD'de sahneye nesne ekleyen düğmelerin çoğu aslında iki şey yapar: nesneyi ekler ve yeniden hesaplar. Yukarıda bahsedildiği gibi <strong>Betik komutlarını python konsolunda göster (Show script commands in python console)</strong> seçeneğini açtıysanız, GUI düğmesiyle (araç çubuğunda bulunan düğmesini kullanara) sahneye bir küre eklemeyi deneyin; Python kodunun iki satırının birbiri ardına çalıştırıldığını göreceksiniz.</p>
+<p><img alt="ekle_guncelle" src="images/FreeCAD/03_ekle_guncelle.png">
+<em>Nesne eklendi ve yeniden hesaplandı (Güncellendi)</em></p>
+<p>Şimdi kutumuzun içeriğini inceleyelim:</p>
+<pre><code class="fenced-code-block language-python">box<span class="token punctuation">.</span></code></pre>
+<p>Hemen aşağıdakiler gibi birkaç ilginç şey göreceksiniz:</p>
+<pre><code class="fenced-code-block language-python">box<span class="token punctuation">.</span>Height</code></pre>
+<p>Bu, kutumuzun mevcut yüksekliğini yazdıracaktır. Şimdi bunu değiştirmeye çalışalım:</p>
+<pre><code class="fenced-code-block language-python">box<span class="token punctuation">.</span>Height <span class="token operator">=</span> <span class="token number">5</span></code></pre>
+<p>Kutunuzu fare ile seçerseniz, <code>Özellik Düzenleyici</code>de, <code>Veri (Data)</code> sekmesinde <code>Yükseklik (Height)</code> özelliğimizin göründüğünü göreceksiniz (ayrıca <code>Görünüm (View)</code> sekmesindeki özelliklerle alakalı, daha sonra bilgi verilecektir). Orada görünen bir FreeCAD nesnesinin tüm özelliklerine, <em>Veri (Data)</em> <code>Height</code> özelliğinde yaptığımız gibi, adlarıyla Python ile de doğrudan erişilebilir. Kutunun diğer boyutlarını değiştirmeyi deneyin.</p>
+<p><img alt="veri_ozellikleri" src="images/FreeCAD/04_veri_ozellikleri.png"></p>
+<h1 class="atx" id="vektorler-ve-yerlesimler">Vektörler ve yerleşimler</h1>
+<p><a href="https://tr.wikipedia.org/wiki/Vekt%C3%B6r">Vektör</a>, herhangi bir 3B (3D) uygulamada çok temel bir kavramdır. Bir vektör, 3B uzayında bir noktayı veya konumu tanımlayan 3 sayıdan (x, y ve z) oluşan bir listedir. Vektörlerle toplamalar, çıkarmalar, projeksiyonlar ve <a href="https://tr.wikipedia.org/wiki/Vekt%C3%B6r_uzay%C4%B1">çok daha fazlası</a> birçok şey yapılabilir. FreeCAD'de vektörler şu şekilde çalışır:</p>
+<pre><code class="fenced-code-block language-python">myvec <span class="token operator">=</span> FreeCAD<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+myvec<span class="token punctuation">.</span>x
+myvec<span class="token punctuation">.</span>y
+othervec <span class="token operator">=</span> FreeCAD<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+sumvec <span class="token operator">=</span> myvec<span class="token punctuation">.</span>add<span class="token punctuation">(</span>othervec<span class="token punctuation">)</span></code></pre>
+<p>FreeCAD nesnelerinin diğer bir ortak özelliği de <a href="https://wiki.freecadweb.org/Placement">yerleşimleridir (placement)</a>. Her nesnenin, bir <em>Data</em> <code>Base</code> <em>(Konum - position)</em> ve <em>Data</em> <code>Rotation</code> <em>(Oryantasyon, dönüş açısı)</em> bilgilerini içeren bir <em>Data</em> <code>Placement</code> <em>(Veri Yerleşim)</em> özelliği vardır.</p>
+<p><img alt="data_base" src="images/FreeCAD/05_data_base.png"></p>
+<p><code>Placement</code> (<em>Yerleşim</em>) özelliğini kullanarak nesnemizi hareket ettirmek kolaydır:</p>
+<pre><code class="fenced-code-block language-python">box<span class="token punctuation">.</span>Placement    <span class="token comment"># Kutunun Konum ve Oryantasyon bilgilerini verir</span>
+box<span class="token punctuation">.</span>Placement<span class="token punctuation">.</span>Base    <span class="token comment"># Kutunun Vektörel Konum Bilgisini verir</span>
+box<span class="token punctuation">.</span>Placement<span class="token punctuation">.</span>Base <span class="token operator">=</span> sumvec    <span class="token comment"># Kutunun Vektörel Konum Bilgisini, sumvec vektörü ile değiştirir</span>
+otherpla <span class="token operator">=</span> FreeCAD<span class="token punctuation">.</span>Placement<span class="token punctuation">(</span><span class="token punctuation">)</span>    <span class="token comment"># FreeCAD orijin bilgisini “otherpla”a ata</span>
+box<span class="token punctuation">.</span>Placement <span class="token operator">=</span> otherpla    <span class="token comment"># Kutunun konum/açı bilgilerini, FreeCAD orijin bilgileri ile eşle/ata</span></code></pre>
+<p>Şimdi daha ileri gitmeden önce birkaç önemli kavramı anlamalıyız.</p>
+<h1 class="atx" id="uygulama-ve-grafiksel-kullanici-arayuzu-app-and-gui">Uygulama ve Grafiksel Kullanıcı Arayüzü (App and Gui)</h1>
+<p>FreeCAD, bir komut satırı uygulaması olarak kullanıcı arayüzü olmadan da kullanılabilecek şekilde tasarlanmıştır. Bu nedenle FreeCAD'deki hemen hemen her nesne iki bölümden oluşur: Nesnenin "<strong>geometri</strong>" bileşeni ifade eden <code>Object</code> (<em>Nesne</em>),  ve "<strong>görsel</strong>" bileşeni ifede eden <code>ViewObject</code> (<em>NesneGörünümü</em>). FreeCAD'i, komut satırı modunda çalıştığınızda, geometri kısmı mevcuttur, ancak görsel kısım devre dışı bırakılır.</p>
+<p>Konsepti açıklamak için <strong>küp (box)</strong> nesnemize bakalım. Küpün boyutları, konumu ,... vb. geometrik özellikleri <em>Nesne'de</em> (<code>Object</code>) saklanır. Rengi, çizgi kalınlığı ,... vb. görsel özellikleri ise <strong>NesneGörünümü</strong>’nde (<code>ViewObject</code>)'de saklanır. Bu, Özellik düzenleyicisindeki <code>Veri (Data)</code> ve <code>Görünüm (View)</code> sekmelerine karşılık gelir. Bir unsurun görünüm nesnesine şu şekilde erişilir:</p>
+<pre><code class="fenced-code-block language-python">vo <span class="token operator">=</span> box<span class="token punctuation">.</span>ViewObject</code></pre>
+<p>Artık Görünüm sekmesindeki özellikleri de değiştirebilirsiniz:</p>
+<pre><code class="fenced-code-block language-python">vo<span class="token punctuation">.</span>Transparency <span class="token operator">=</span> <span class="token number">80</span>
+vo<span class="token punctuation">.</span>hide<span class="token punctuation">(</span><span class="token punctuation">)</span>
+vo<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>FreeCAD'i başlattığınızda, Python konsolu zaten iki temel modül yükler: <strong>FreeCAD</strong> ve <strong>FreeCADGui</strong> (<code>App</code> ve <code>Gui</code> kısayolları ile de erişilebilir). Bu modüller belgeler ve nesnelerle çalışmak için her türlü genel işlevi içerir. Konseptimizi göstermek için, hem <strong>FreeCAD</strong> hem de <strong>FreeCADGui</strong>'nin şu anda açık olan belge bir <code>ActiveDocument</code> özniteliği içerdiğine bakın. Ancak <code>FreeCAD.ActiveDocument</code> ve <code>FreeCADGui.ActiveDocument</code> aynı nesne değildir. Bunlar bir FreeCAD belgesinin iki bileşenidir ve farklı nitelikler ve yöntemler içerirler. Örneğin, <code>FreeCADGui.ActiveDocument</code>, şu anda açık olan 3B görünüm olan <code>ActiveView</code>'i içerir.</p>
+<h1 class="atx" id="moduller">Modüller</h1>
+<p>FreeCAD'in gerçek gücü, ilgili çalışma tezgahlarıyla birlikte sadık modüllerinde yatmaktadır. FreeCAD temel uygulaması aşağı yukarı boş bir kaptır/kutudur. Modülleri olmadan yeni, boş belgeler oluşturmaktan biraz daha fazlasını yapabilir. Her modül, arayüze yalnızca yeni çalışma tezgahları eklemekle kalmaz, aynı zamanda yeni Python komutları ve yeni nesne türleri de ekler. Sonuç olarak, birkaç farklı ve hatta tamamen uyumsuz nesne türleri aynı belgede bir arada bulunabilir. Bu eğitimde inceleyeceğimiz FreeCAD'deki en önemli modüller şunlardır: <a href="https://wiki.freecadweb.org/Part_Module">Part</a>, <a href="https://wiki.freecadweb.org/Mesh_Workbench">Mesh</a>, <a href="https://wiki.freecadweb.org/Sketcher_Workbench">Sketcher</a> ve <a href="https://wiki.freecadweb.org/Draft_Workbench">Draft</a>.</p>
+<p> <a href="https://wiki.freecadweb.org/Sketcher_Workbench">Sketcher</a> ve <a href="https://wiki.freecadweb.org/Draft_Workbench">Draft</a> geometrilerini oluşturmak ve işlemek için <a href="https://wiki.freecadweb.org/Part_Module">Part</a> modülünü kullanır. <a href="https://wiki.freecadweb.org/Mesh_Workbench">Mesh</a> tamamen bağımsızdır ve kendi nesnelerini yönetir. Aşağıda bununla ilgili daha fazla bilgi var.</p>
+<p>Geçerli belge için mevcut tüm temel nesne türlerini aşağıdaki gibi kontrol edebilirsiniz:</p>
+<pre><code class="fenced-code-block language-python">doc<span class="token punctuation">.</span>supportedTypes<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>Farklı FreeCAD modülleri, Python konsoluna otomatik olarak yüklenmez. Bu, FreeCAD’in açılışta çok yavaş bir başlangıç ​​yapmaktan kaçınması içindir. Modüller yalnızca ihtiyacınız olduğunda yüklenir. Örneğin, <code>Part (Parça)</code> modülünün içinde ne olduğunu keşfetmek için aşağıdaki kodu yazabilirsiniz:</p>
+<pre><code class="fenced-code-block">import Part
+Part.</code></pre>
+<p>Ancak aşağıda Parça modülü hakkında daha fazla konuşacağız.</p>
+<h1 class="atx" id="mesh-kafes--ag-modulu">Mesh (Kafes / Ağ) Modulü</h1>
+<p><a href="https://en.wikipedia.org/wiki/Polygon_mesh">Mesh’ler (Kafes yapıları)</a>, örneğin <strong>Sketchup, Blender</strong> ve <strong>3D Studio Max</strong> tarafından kullanılan çok basit bir 3B nesne türüdür. 3 öğeden oluşurlar: <strong>noktalar</strong> (köşeler de denir), <strong>çizgiler</strong> (kenarlar da denir) ve <strong>yüzler</strong>. FreeCAD dahil birçok uygulamada, yüzlerin yalnız 3 köşesi olabilir. Elbette, birkaç eş düzlemli üçgenden oluşan daha büyük bir yüzeye sahip olmanızı hiçbir şey engelleyemez.</p>
+<p>Kafesler (Mesh) basittir, ancak basit oldukları için tek bir belgede milyonlarcasına kolayca sahip olabilirsiniz. Bununla birlikte, FreeCAD'de daha az kullanımları vardır ve diğer uygulamalardan kafes (mesh) biçimlerinde (<code>.stl, .obj</code>) nesneleri içe aktarabilirsiniz. <code>Mesh</code> modülü, FreeCAD'in ömrünün ilk ayında ana test modülü olarak da yoğun bir şekilde kullanıldı.</p>
+<p>Mesh nesneleri ve FreeCAD nesneleri farklı şeylerdir. FreeCAD nesnesini, Mesh nesnesi için bir kap olarak görebilirsiniz (aşağıda göreceğimiz gibi, Part (Parça) nesneleri için de bu geçerlidir). Bu yüzden FreeCAD'e bir mesh nesnesi eklemek için önce bir FreeCAD nesnesi ve bir Mesh nesnesi oluşturmalı, ardından Mesh nesnesini FreeCAD nesnesine eklemeliyiz:</p>
+<pre><code class="fenced-code-block language-python"><span class="token keyword">import</span> Mesh
+mymesh <span class="token operator">=</span> Mesh<span class="token punctuation">.</span>createSphere<span class="token punctuation">(</span><span class="token punctuation">)</span>
+mymesh<span class="token punctuation">.</span>Facets
+mymesh<span class="token punctuation">.</span>Points
+
+meshobj <span class="token operator">=</span> doc<span class="token punctuation">.</span>addObject<span class="token punctuation">(</span><span class="token string">"Mesh::Feature"</span><span class="token punctuation">,</span> <span class="token string">"MyMesh"</span><span class="token punctuation">)</span>
+meshobj<span class="token punctuation">.</span>Mesh <span class="token operator">=</span> mymesh
+doc<span class="token punctuation">.</span>recompute<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>Bu, bir küre oluşturmak için <code>createSphere()</code> yöntemini kullanan standart bir örnektir, ancak köşelerini ve yüzlerini tanımlayarak sıfırdan özel kafesler (mesh) de oluşturabilirsiniz.</p>
+<p><a href="https://wiki.freecadweb.org/Mesh_Scripting">Mesh komut dosyası (script) oluşturma hakkında daha fazla bilgi edinmek için tıklayın... </a></p>
+<h1 class="atx" id="part-parca-modulu">Part (Parça) Modülü</h1>
+<p><code>Part (Parça)</code> modülü, FreeCAD içerisindeki en güçlü modüldür. <strong>BRep</strong> nesneleri oluşturmanıza ve değiştirmenize olanak tanır. <strong>BREP, "Sınır Temsili"</strong> anlamına gelir. Bir <strong>BREP</strong> nesnesi, bir iç hacmi çevreleyen ve tanımlayan yüzeyler tarafından tanımlanır. Meshlerin (Ağların/Kafes yapılarının) aksine, BREP nesneleri düzlemsel yüzlerden çok karmaşık <strong>NURBS</strong> yüzeylerine kadar çok çeşitli bileşenlere sahip olabilir.</p>
+<p><code>Part (Parça)</code> modülü, nesneler üzerinde mantıksal (boole), yani ekleme, çıkarma, kesişim alma gibi işlemler gerçekleştirme, kenarları yuvarlama, radyus oluşturma (filleting), farklı geometriye sahip düzlemleri bir birine bağlayarak çatılama (loft), ...vb. çok çeşitli karmaşık işlemlerin gerçekleştirilmesine izin veren güçlü <a href="https://en.wikipedia.org/wiki/Open_CASCADE_Technology">OpenCasCade</a> kitaplığına dayanmaktadır.</p>
+<p><code>Part (Parça)</code> modülü, <code>Mesh (Kafes/Ağ)</code> modülüyle aynı şekilde çalışır: Bir FreeCAD nesnesi ve bir Part (Parça) nesnesi oluşturursunuz, ardından Part (Parça) nesnesini FreeCAD nesnesine eklersiniz:</p>
+<pre><code class="fenced-code-block language-python"><span class="token keyword">import</span> Part
+myshape <span class="token operator">=</span> Part<span class="token punctuation">.</span>makeSphere<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span>
+myshape<span class="token punctuation">.</span>Volume
+myshape<span class="token punctuation">.</span>Area
+
+shapeobj <span class="token operator">=</span> doc<span class="token punctuation">.</span>addObject<span class="token punctuation">(</span><span class="token string">"Part::Feature"</span><span class="token punctuation">,</span> <span class="token string">"MyShape"</span><span class="token punctuation">)</span>
+shapeobj<span class="token punctuation">.</span>Shape <span class="token operator">=</span> myshape
+doc<span class="token punctuation">.</span>recompute<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p><code>Part</code> modülü (<code>Mesh</code> modülü gibi) ayrıca otomatik olarak bir FreeCAD nesnesi oluşturan ve ona bir şekil ekleyen bir kısayola sahiptir, böylece son üç satırı şu şekilde kısaltabilirsiniz:</p>
+<pre><code class="fenced-code-block language-python">Part<span class="token punctuation">.</span>show<span class="token punctuation">(</span>myshape<span class="token punctuation">)</span></code></pre>
+<p><strong>myshape</strong>'in içeriğini keşfederek, Yüzeyler, Kenarlar, Noktalar, Katılar ve Kabuklar gibi birçok ilginç alt bileşeni ve kesme/çıkarma (cut), kesişim (common) veya  birleştirme (fuse) gibi çok çeşitli geometri işlemlerini fark edeceksiniz. Topolojik veri komut dosyası oluşturma (scripting) sayfası tüm bunları ayrıntılı olarak açıklar.</p>
+<h1 class="atx" id="draft-taslak-modulu">Draft (Taslak) Modülü</h1>
+<p>FreeCAD, aynı zamanda <code>Parça (Part)</code> nesneleri oluşturan <code>Sketcher</code> ve <code>Draft</code> gibi daha birçok modüle sahiptir. Bu modüller, oluşturulan nesnelere ek parametreler ekler, hatta içlerindeki Parça geometrisini işlemek için tamamen yeni bir yol uygular. Yukarıdaki anlatımlar esnasında oluşturduğumuz <strong>kutu (box nesnesi)</strong> örneğimiz, <strong>parametrik</strong> bir nesnenin mükemmel bir örneğidir. Kutuyu tanımlamanız için gereken tek şey <strong>yükseklik, genişlik</strong> ve <strong>uzunluk</strong> parametrelerini belirtmektir. Bunlara bağlı olarak nesne, Parça şeklini otomatik olarak hesaplayacaktır. FreeCAD, <a href="https://wiki.freecadweb.org/Scripted_objects">Python ile bu tür nesneler oluşturmanıza</a> olanak tanır.</p>
+<p><a href="https://wiki.freecadweb.org/Draft_Workbench">Draft (Taslak) modülü</a>, çizgiler ve daireler gibi 2B (2D) parametrik nesne türleri ekler (tümü <code>Part (Parça)</code> nesneleridir) ve ayrıca yalnız <code>Draft (Taslak)</code> nesnelerinde değil, herhangi bir <code>Parça (Part)</code> nesnesinde de çalışan bazı genel işlevler sağlar. Nelerin mevcut olduğunu keşfetmek için şunları yapmanız yeterlidir:</p>
+<pre><code class="fenced-code-block language-python"><span class="token keyword">import</span> Draft
+rec <span class="token operator">=</span> Draft<span class="token punctuation">.</span>makeRectangle<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>
+mvec <span class="token operator">=</span> FreeCAD<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+Draft<span class="token punctuation">.</span>move<span class="token punctuation">(</span>rec<span class="token punctuation">,</span> mvec<span class="token punctuation">)</span>
+Draft<span class="token punctuation">.</span>move<span class="token punctuation">(</span>box<span class="token punctuation">,</span> mvec<span class="token punctuation">)</span></code></pre>
+<h1 class="atx" id="arayuz--arabirim">Arayüz / Arabirim</h1>
+<p>FreeCAD kullanıcı arayüzü, <a href="https://wiki.freecadweb.org/3D_view">3B (3D) görünüm</a> etrafındaki tüm kontrolleri, menüleri, araç çubuklarını ve düğmeleri çizmekten ve kullanmaktan sorumlu güçlü bir grafik arayüz sistemi olan <a href="https://en.wikipedia.org/wiki/Qt_(software)">Qt</a> ile yapılmıştır. Qt, Python'un FreeCAD gibi Qt arabirimlerine erişmesine ve değiştirmesine izin veren <a href="https://wiki.freecadweb.org/PySide">PySide</a> adlı bir modül sağlar. <a href="https://en.wikipedia.org/wiki/Qt_(software)">Qt</a> arayüzü ile oynamayı deneyelim ve basit bir diyalog üretelim:</p>
+<pre><code class="fenced-code-block language-python"><span class="token keyword">from</span> PySide <span class="token keyword">import</span> QtGui
+QtGui<span class="token punctuation">.</span>QMessageBox<span class="token punctuation">.</span>information<span class="token punctuation">(</span><span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token string">"Apollo program"</span><span class="token punctuation">,</span> <span class="token string">"Houston, we have a problem"</span><span class="token punctuation">)</span></code></pre>
+<p><img alt="mesaj_kutusu" src="images/FreeCAD/06_mesaj_kutusu.png"></p>
+<p>Görünen iletişim kutusunun araç çubuğunda FreeCAD simgesi olduğuna dikkat edin (Linux sistemde bu simge görünmeyebilir); bu, <strong>Qt</strong>'nin, komutun, FreeCAD uygulamasının içinden verildiğini bildiği anlamına gelir. (<strong>PySide</strong> modülü ile) FreeCAD arayüzünün herhangi bir bölümünü değiştirmek mümkündür.</p>
+<p><strong>Qt</strong>, çok karmaşık şeyler yapmanızı sağlayan çok güçlü bir arayüz sistemidir. Ayrıca, diyalogları grafiksel olarak tasarlayabileceğiniz ve ardından birkaç satır Python kodu ile FreeCAD arayüzüne ekleyebileceğiniz <a href="https://www.qt.io/design">Qt Designer</a> gibi bazı kullanımı kolay araçlara da sahiptir.</p>
+<p><a href="https://wiki.freecadweb.org/PySide">PySide</a> hakkında daha fazla bilgiyi buradan okuyabilirsiniz...</p>
+<h1 class="atx" id="makrolar">Makrolar</h1>
+<p>Artık <strong>Komut dosyası (script)</strong> oluşturmanın temelleri iyi anladığınıza göre, Python betiklerimizi (script) nerede, hangi klasörde tutacağız ve bunları FreeCAD içinde nasıl başlatacağız? konularını irdelemeye sıra geldi. Bunun için <strong>Makrolar</strong> denen kolay bir mekanizma var. <strong>Makro</strong>, bir araç çubuğuna eklenebilen ve fare tıklamasıyla başlatılabilen bir Python komut dosyasıdır (betiğidir). FreeCAD, komut dosyaları yazabileceğiniz veya yapıştırabileceğiniz basit bir metin düzenleyici (<code>Makro → Makrolar... → Oluştur</code>) sağlar. Komut dosyası tamamlandıktan sonra, bunun için araç çubuklarına eklenebilecek bir düğme tanımlamak için <code>Araçlar → Özelleştir... → Makrolar</code>'ı kullanın.</p>
+<p>Artık daha derinlemesine FreeCAD komut dosyası oluşturmaya hazırsınız. O halde <a href="https://wiki.freecadweb.org/Power_users_hub">Uzman kullanıcılar merkezine (Power users hub)</a> gidin!</p>
+
+<p>Kaynak: <a href="https://wiki.freecadweb.org/Python_scripting_tutorial">Python scripting tutorial</a></p>
+
+                <p> <a href="FreeCAD_01_Python'a_Giris.html" class="button primary small"> &#8592 Önceki Bölüm </a> <a href="FreeCAD_03_FreeCAD_Komut_Dosyasi_Temelleri.html" class="button primary small">Sonraki Bölüm &#8594</a> </p>
+
+                      </div>
+
+
+				<!-- Footer -->
+					<section id="footer">
+						<div class="container">
+							<ul class="copyright">
+								<li>&copy; Her hakkı saklıdır.</li>
+							</ul>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

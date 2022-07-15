@@ -1,0 +1,1034 @@
+<!DOCTYPE HTML>
+<!--
+	Read Only by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>https://mhalil.github.io</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<section id="header">
+				<header>
+                    <span class="image avatar"><a href="index.html"><img src="images/avatar.jpg" alt="" /></a></span>
+					<h1 id="logo"><a href="index.html">Mustafa Halil</a></h1>
+					<p>mhalil.github.io.</p>
+				</header>
+				<nav id="nav">
+					<ul>
+						<li><a href="Python-Pandas.html">Python - Pandas</a></li>
+						<li><a href="Freecad.html" class="active">FreeCAD</a></li>
+						<li><a href="SolveSpace.html">SolveSpace</a></li>
+						<li><a href="Blender.html">Blender</a></li>
+                        <li><a href="Librecad.html">LibreCAD</a></li>
+					</ul>
+				</nav>
+				<footer>
+					<ul class="icons">
+						<li><a href="https://twitter.com/AcikKaynakci" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="https://github.com/mhalil" class="icon brands fa-github"><span class="label">Github</span></a></li>
+						<li><a href="mailto:m.halil@yahoo.com" class="icon solid fa-envelope"><span class="label">E-Posta</span></a></li>
+					</ul>
+				</footer>
+			</section>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+                        
+						<!-- SolveSpace -->
+							<section id="solvespace">
+								<div class="container">
+                                    <h2  id="b%C3%B6l%C3%BCm-2-%C3%A7izim-%C3%B6%C4%9Feleri-objeleri">Komut Dosyasıyla Yazılmış Nesneler</h2>
+                                </div>
+							</section>
+					</div>
+                
+                <div class="container">
+                    
+<h2 class="atx" id="takdim">Takdim</h2>
+<p>Açıklamalar, ağlar ve parça nesneleri gibi standart nesne türlerinin yanı sıra, FreeCAD ayrıca <a href="https://wiki.freecadweb.org/App_FeaturePython">Python Özellikleri</a> adı verilen %100 python komut dosyasıyla oluşturulmuş parametrik nesneler oluşturmak için harika bir olanak sunar. Bu nesneler, tam olarak diğer herhangi bir FreeCAD nesnesi gibi davranacak ve dosya kaydetme/yükleme sırasında otomatik olarak kaydedilecek ve geri yüklenecektir.</p>
+<p>Anlaşılması, bilinmesi gereken bir husus var, o da şudur: FreeCAD dosyaları hiçbir zaman gömülü kod taşımaz, bu güvenlik nedenleriyledir. Parametrik nesneler oluşturmak için yazdığınız Python kodu, hiçbir zaman bir dosyanın içine kaydedilmez. Bu, başka bir makinede (bilgisayarda) böyle bir nesne içeren bir dosyayı açarsanız, bu python kodu o makinede (bilgisayarda) mevcut değilse, nesnenin tamamen yeniden oluşturulmayacağı anlamına gelir. Bu tür nesneleri başkalarına dağıtırsanız (gönderirseniz), Python komut dosyanızı da örneğin bir <a href="https://wiki.freecadweb.org/Macros">Makro</a> olarak dağıtmanız, göndermeniz gerekir.</p>
+<p><strong>Not:</strong> Python kodunu bir <code>App::PropertyPythonObject</code> ile <code>json</code>serileştirmeyi kullanarak bir FreeCAD dosyası içinde paketlemek (yerleştirmek) mümkündür, ancak bu kod hiçbir zaman doğrudan çalıştırılamaz ve bu nedenle buradaki amacımız için çok kullanışlı değildir.</p>
+<p><a href="https://wiki.freecadweb.org/App_FeaturePython">Python Özellikleri</a>, tüm FreeCAD özellikleriyle aynı kuralı izler: <code>App</code>ve <code>GUI</code>bölümlerine ayrılırlar. <code>App</code> bölümü, Belge Nesnesi, nesnemizin geometrisini tanımlarken, <code>GUI</code> bölümü, Görünüm Sağlayıcı Nesnesi, nesnenin ekranda nasıl çizileceğini tanımlar. Görünüm Sağlayıcı Nesnesi, diğer FreeCAD özellikleri gibi, yalnızca FreeCAD'i kendi GUI'sinde çalıştırdığınızda kullanılabilir. Nesnenizi oluşturmak için kullanılabilecek birkaç özellik ve yöntem vardır. Özellikler, FreeCAD'in sunduğu önceden tanımlanmış özellik türlerinden herhangi biri olmalıdır ve kullanıcı tarafından düzenlenebilmeleri için özellik görünümü penceresinde görünecektir. Bu şekilde, <code>FeaturePython</code> nesneleri gerçekten ve tamamen parametriktir. <code>Object</code> ve <code>ViewObject</code> için özellikleri ayrı ayrı tanımlayabilirsiniz.</p>
+<p>Basit / Temel Örnek</p>
+<p>Aşağıdaki örnek, diğer birkaç örnekle birlikte  <a href="https://github.com/FreeCAD/FreeCAD/blob/master/src/Mod/TemplatePyMod/FeaturePython.py">src/Mod/TemplatePyMod/FeaturePython.py</a> dosyasında bulunabilir:</p>
+<pre><code class="fenced-code-block language-python"><span class="token string">''</span>Examples <span class="token keyword">for</span> a feature <span class="token keyword">class</span> <span class="token class-name">and</span> its view provider<span class="token punctuation">.</span><span class="token triple-quoted-string string">'''
+
+import FreeCAD, FreeCADGui
+from pivy import coin
+
+class Box:
+    def __init__(self, obj):
+        '''</span>Add some custom properties to our box feature<span class="token triple-quoted-string string">'''
+        obj.addProperty("App::PropertyLength","Length","Box","Length of the box").Length=1.0
+        obj.addProperty("App::PropertyLength","Width","Box","Width of the box").Width=1.0
+        obj.addProperty("App::PropertyLength","Height","Box", "Height of the box").Height=1.0
+        obj.Proxy = self
+
+    def onChanged(self, fp, prop):
+        '''</span>Do something when a <span class="token builtin">property</span> has changed<span class="token triple-quoted-string string">'''
+        FreeCAD.Console.PrintMessage("Change property: " + str(prop) + "\n")
+
+    def execute(self, fp):
+        '''</span>Do something when doing a recomputation<span class="token punctuation">,</span> this method <span class="token keyword">is</span> mandatory<span class="token triple-quoted-string string">'''
+        FreeCAD.Console.PrintMessage("Recompute Python Box feature\n")
+
+class ViewProviderBox:
+    def __init__(self, obj):
+        '''</span>Set this <span class="token builtin">object</span> to the proxy <span class="token builtin">object</span> of the actual view provide<span class="token triple-quoted-string string">r'''
+        obj.addProperty("App::PropertyColor","Color","Box","Color of the box").Color=(1.0,0.0,0.0)
+        obj.Proxy = self
+
+    def attach(self, obj):
+        '''</span>Setup the scene sub<span class="token operator">-</span>graph of the view provider<span class="token punctuation">,</span> this method <span class="token keyword">is</span> mandatory<span class="token triple-quoted-string string">'''
+        self.shaded = coin.SoGroup()
+        self.wireframe = coin.SoGroup()
+        self.scale = coin.SoScale()
+        self.color = coin.SoBaseColor()
+
+        data=coin.SoCube()
+        self.shaded.addChild(self.scale)
+        self.shaded.addChild(self.color)
+        self.shaded.addChild(data)
+        obj.addDisplayMode(self.shaded,"Shaded");
+        style=coin.SoDrawStyle()
+        style.style = coin.SoDrawStyle.LINES
+        self.wireframe.addChild(style)
+        self.wireframe.addChild(self.scale)
+        self.wireframe.addChild(self.color)
+        self.wireframe.addChild(data)
+        obj.addDisplayMode(self.wireframe,"Wireframe");
+        self.onChanged(obj,"Color")
+
+    def updateData(self, fp, prop):
+        '''</span>If a <span class="token builtin">property</span> of the handled feature has changed we have the chance to handle this here<span class="token triple-quoted-string string">'''
+        # fp is the handled feature, prop is the name of the property that has changed
+        l = fp.getPropertyByName("Length")
+        w = fp.getPropertyByName("Width")
+        h = fp.getPropertyByName("Height")
+        self.scale.scaleFactor.setValue(float(l),float(w),float(h))
+        pass
+
+    def getDisplayModes(self,obj):
+        '''</span>Return a <span class="token builtin">list</span> of display modes<span class="token punctuation">.</span><span class="token triple-quoted-string string">'''
+        modes=[]
+        modes.append("Shaded")
+        modes.append("Wireframe")
+        return modes
+
+    def getDefaultDisplayMode(self):
+        '''</span>Return the name of the default display mode<span class="token punctuation">.</span> It must be defined <span class="token keyword">in</span> getDisplayModes<span class="token punctuation">.</span><span class="token triple-quoted-string string">'''
+        return "Shaded"
+
+    def setDisplayMode(self,mode):
+        '''</span>Map the display mode defined <span class="token keyword">in</span> attach <span class="token keyword">with</span> those defined <span class="token keyword">in</span> getDisplayModes<span class="token punctuation">.</span>\
+                Since they have the same names nothing needs to be done<span class="token punctuation">.</span> This method <span class="token keyword">is</span> optional<span class="token triple-quoted-string string">'''
+        return mode
+
+    def onChanged(self, vp, prop):
+        '''</span>Here we can do something when a single <span class="token builtin">property</span> got changed<span class="token triple-quoted-string string">'''
+        FreeCAD.Console.PrintMessage("Change property: " + str(prop) + "\n")
+        if prop == "Color":
+            c = vp.getPropertyByName("Color")
+            self.color.rgb.setValue(c[0],c[1],c[2])
+
+    def getIcon(self):
+        '''</span>Return the icon <span class="token keyword">in</span> XPM <span class="token builtin">format</span> which will appear <span class="token keyword">in</span> the tree view<span class="token punctuation">.</span> This method <span class="token keyword">is</span>\
+                optional <span class="token keyword">and</span> <span class="token keyword">if</span> <span class="token keyword">not</span> defined a default icon <span class="token keyword">is</span> shown<span class="token punctuation">.</span><span class="token triple-quoted-string string">'''
+        return """
+            /* XPM */
+            static const char * ViewProviderBox_xpm[] = {
+            "16 16 6 1",
+            "   c None",
+            ".  c #141010",
+            "+  c #615BD2",
+            "@  c #C39D55",
+            "#  c #000000",
+            "$  c #57C355",
+            "        ........",
+            "   ......++..+..",
+            "   .@@@@.++..++.",
+            "   .@@@@.++..++.",
+            "   .@@  .++++++.",
+            "  ..@@  .++..++.",
+            "###@@@@ .++..++.",
+            "##$.@@$#.++++++.",
+            "#$#$.$$$........",
+            "#$$#######      ",
+            "#$$#$$$$$#      ",
+            "#$$#$$$$$#      ",
+            "#$$#$$$$$#      ",
+            " #$#$$$$$#      ",
+            "  ##$$$$$#      ",
+            "   #######      "};
+            """
+
+    def __getstate__(self):
+        '''</span>When saving the document this <span class="token builtin">object</span> gets stored using Python's json module<span class="token punctuation">.</span>\
+                Since we have some un<span class="token operator">-</span>serializable parts here <span class="token operator">-</span><span class="token operator">-</span> the Coin stuff <span class="token operator">-</span><span class="token operator">-</span> we must define this method\
+                to <span class="token keyword">return</span> a <span class="token builtin">tuple</span> of <span class="token builtin">all</span> serializable objects <span class="token keyword">or</span> <span class="token boolean">None</span><span class="token punctuation">.</span><span class="token triple-quoted-string string">'''
+        return None
+
+    def __setstate__(self,state):
+        '''</span>When restoring the serialized <span class="token builtin">object</span> <span class="token keyword">from</span> document we have the chance to <span class="token builtin">set</span> some internals here<span class="token punctuation">.</span>\
+                Since no data were serialized nothing needs to be done here<span class="token punctuation">.</span><span class="token string">''</span>'
+        <span class="token keyword">return</span> <span class="token boolean">None</span>
+
+<span class="token keyword">def</span> <span class="token function">makeBox</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    FreeCAD<span class="token punctuation">.</span>newDocument<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    a<span class="token operator">=</span>FreeCAD<span class="token punctuation">.</span>ActiveDocument<span class="token punctuation">.</span>addObject<span class="token punctuation">(</span><span class="token string">"App::FeaturePython"</span><span class="token punctuation">,</span><span class="token string">"Box"</span><span class="token punctuation">)</span>
+    Box<span class="token punctuation">(</span>a<span class="token punctuation">)</span>
+    ViewProviderBox<span class="token punctuation">(</span>a<span class="token punctuation">.</span>ViewObject<span class="token punctuation">)</span>
+
+makeBox<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<h2 class="atx" id="dikkat-edilmesi-gerekenler">Dikkat Edilmesi Gerekenler</h2>
+<p>Nesneniz oluşturulur oluşturulmaz yeniden hesaplanması gerekiyorsa, otomatik olarak çağrılmadığı için bunu <code>__init__</code> işlevinde manuel olarak yapmanız gerekir. <code>Box</code>sınıfının <code>onChanged</code> yöntemi,  <code>execute</code> (çalıştır) fonksiyonuyla aynı etkiye sahip olduğu için bu örnek buna gerek duymaz, ancak aşağıdaki örnekler, 3B görünümde herhangi bir şey görüntülenmeden önce yeniden hesaplanma mantığına dayanır. Örneklerde bu, <code>ActiveDocument.recompute()</code> ile manuel olarak yapılır, ancak daha karmaşık senaryolarda, tüm belgenin veya <code>FeaturePython</code> nesnesinin nerede yeniden hesaplanacağına karar vermeniz gerekir.</p>
+<p>Bu örnek, <strong>rapor görünümü penceresi</strong>nde bir dizi istisna yığını izi üretir. Bunun nedeni, <code>__init__</code> içine her özellik eklendiğinde <code>Box</code> sınıfının <code>onChanged</code> yönteminin çağrılmasıdır. İlki eklendiğinde, <strong>Genişlik</strong> ve <strong>Yükseklik</strong> özellikleri henüz mevcut değildir ve bu nedenle bunlara erişme girişimi başarısız olur.</p>
+<p><code>__getstate__</code> ve <code>__setstate__</code> için bir açıklama <a href="https://forum.freecadweb.org/viewtopic.php?f=18&amp;t=44009&amp;start=10#p377892">obj.Proxy.Type is a dict, not a string</a> forum başlığında bulunmaktadır.</p>
+<h2 class="atx" id="mevcut-yontemler--metotlar">Mevcut Yöntemler / Metotlar</h2>
+<p><a title="FeaturePython methods" href="https://wiki.freecadweb.org/FeaturePython_methods">PythonÖzelliği Yöntemleri</a> tüm referans kaynak için sayfaya bakın.</p>
+<h2 class="atx" id="kullanilabilir-ozellikler">Kullanılabilir Özellikler</h2>
+<p>Özellikler, <code>FeaturePython</code> nesnelerinin gerçek yapı taşlarıdır. Bunlar aracılığıyla, kullanıcı etkileşimde bulunabilecek ve nesnenizi değiştirebilecektir. Belgenizde yeni bir <code>FeaturePython</code> nesnesi oluşturduktan sonra (<code>obj=FreeCAD.ActiveDocument.addObject("App::FeaturePython","Box")</code>), aşağıdaki kodu yazarak, kullanılabilir özelliklerin bir listesini elde edebilirsiniz:</p>
+<pre><code class="fenced-code-block language-python">obj<span class="token punctuation">.</span>supportedProperties<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p><a href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties">FeaturePython Özel Özellikler</a> sayfasında daha ayrıntılı olarak açıklanan mevcut özelliklerin bir listesini elde edeceksiniz:</p>
+<ul>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyAcceleration">App::PropertyAcceleration</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyAngle">App::PropertyAngle</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyArea">App::PropertyArea</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyBool">App::PropertyBool</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyBoolList">App::PropertyBoolList</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyColor">App::PropertyColor</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyColorList">App::PropertyColorList</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyDirection">App::PropertyDirection</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyDistance">App::PropertyDistance</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyEnumeration">App::PropertyEnumeration</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyExpressionEngine">App::PropertyExpressionEngine</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyFile">App::PropertyFile</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyFileIncluded">App::PropertyFileIncluded</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyFloat">App::PropertyFloat</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyFloatConstraint">App::PropertyFloatConstraint</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyFloatList">App::PropertyFloatList</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyFont">App::PropertyFont</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyForce">App::PropertyForce</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyFrequency">App::PropertyFrequency</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyInteger">App::PropertyInteger</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyIntegerConstraint">App::PropertyIntegerConstraint</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyIntegerList">App::PropertyIntegerList</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyIntegerSet">App::PropertyIntegerSet</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyLength">App::PropertyLength</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyLink">App::PropertyLink</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyLinkChild">App::PropertyLinkChild</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyLinkGlobal">App::PropertyLinkGlobal</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyLinkHidden">App::PropertyLinkHidden</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyLinkList">App::PropertyLinkList</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyLinkListChild">App::PropertyLinkListChild</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyLinkListGlobal">App::PropertyLinkListGlobal</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyLinkListHidden">App::PropertyLinkListHidden</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyLinkSub">App::PropertyLinkSub</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyLinkSubChild">App::PropertyLinkSubChild</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyLinkSubGlobal">App::PropertyLinkSubGlobal</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyLinkSubHidden">App::PropertyLinkSubHidden</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyLinkSubList">App::PropertyLinkSubList</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyLinkSubListChild">App::PropertyLinkSubListChild</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyLinkSubListGlobal">App::PropertyLinkSubListGlobal</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyLinkSubListHidden">App::PropertyLinkSubListHidden</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyMap">App::PropertyMap</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyMaterial">App::PropertyMaterial</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyMaterialList">App::PropertyMaterialList</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyMatrix">App::PropertyMatrix</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyPath">App::PropertyPath</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyPercent">App::PropertyPercent</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyPersistentObject">App::PropertyPersistentObject</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyPlacement">App::PropertyPlacement</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyPlacementLink">App::PropertyPlacementLink</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyPlacementList">App::PropertyPlacementList</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyPosition">App::PropertyPosition</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyPrecision">App::PropertyPrecision</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyPressure">App::PropertyPressure</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyPythonObject">App::PropertyPythonObject</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyQuantity">App::PropertyQuantity</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyQuantityConstraint">App::PropertyQuantityConstraint</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertySpeed">App::PropertySpeed</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyString">App::PropertyString</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyStringList">App::PropertyStringList</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyUUID">App::PropertyUUID</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyVacuumPermittivity">App::PropertyVacuumPermittivity</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyVector">App::PropertyVector</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyVectorDistance">App::PropertyVectorDistance</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyVectorList">App::PropertyVectorList</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyVolume">App::PropertyVolume</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyXLink">App::PropertyXLink</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyXLinkList">App::PropertyXLinkList</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyXLinkSub">App::PropertyXLinkSub</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#App::PropertyXLinkSubList">App::PropertyXLinkSubList</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#Mesh::PropertyCurvatureList">Mesh::PropertyCurvatureList</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#Mesh::PropertyMeshKernel">Mesh::PropertyMeshKernel</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#Mesh::PropertyNormalList">Mesh::PropertyNormalList</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#Part::PropertyFilletEdges">Part::PropertyFilletEdges</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#Part::PropertyGeometryList">Part::PropertyGeometryList</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#Part::PropertyPartShape">Part::PropertyPartShape</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#Part::PropertyShapeHistory">Part::PropertyShapeHistory</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#Path::PropertyPath">Path::PropertyPath</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#Path::PropertyTool">Path::PropertyTool</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#Path::PropertyTooltable">Path::PropertyTooltable</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#Sketcher::PropertyConstraintList">Sketcher::PropertyConstraintList</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#Spreadsheet::PropertyColumnWidths">Spreadsheet::PropertyColumnWidths</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#Spreadsheet::PropertyRowHeights">Spreadsheet::PropertyRowHeights</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#Spreadsheet::PropertySheet">Spreadsheet::PropertySheet</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#Spreadsheet::PropertySpreadsheetQuantity">Spreadsheet::PropertySpreadsheetQuantity</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#TechDraw::PropertyCenterLineList">TechDraw::PropertyCenterLineList</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#TechDraw::PropertyCosmeticEdgeList">TechDraw::PropertyCosmeticEdgeList</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#TechDraw::PropertyCosmeticVertexList">TechDraw::PropertyCosmeticVertexList</a></li>
+<li><a title="FeaturePython Custom Properties" href="https://wiki.freecadweb.org/FeaturePython_Custom_Properties#TechDraw::PropertyGeomFormatList">TechDraw::PropertyGeomFormatList</a></li>
+</ul>
+<p>Özel nesnelerinize özellikler eklerken şunlara dikkat edin:</p>
+<ul>
+<li><p>Özellikler açıklamalarında <code>&lt;</code> veya <code>&gt;</code> karakterlerini kullanmayın (bu, <strong>.fcstd</strong> dosyasındaki <strong>xml</strong> parçalarını bozar)</p>
+</li>
+<li><p>Özellikler bir <strong>.fcstd</strong> dosyasında alfabetik olarak saklanır. Eğer özelliklerinizde bir şekil varsa, ismi alfabetik olarak "Şekil"den sonra gelen herhangi bir özellik şekilden SONRA yüklenecektir ve bu da garip davranışlara neden olabilir.</p>
+</li>
+</ul>
+<p>Özellik özniteliklerinin tam listesi <a href="https://github.com/FreeCAD/FreeCAD/blob/master/src/App/PropertyStandard.h">PropertyStandard C++ başlık dosyasında</a> görülebilir. Örneğin, kullanıcının yalnız sınırlı bir değer aralığı girmesine izin vermek istiyorsanız (örneğin <code>PropertyIntegerConstraint</code> kullanarak), Python'da yalnız özellik değerini değil, aynı zamanda alt ve üst sınırı ve adım boyutunu da içeren bir tanımlama grubu atayacaksınız, aşağıda olduğu gibi:</p>
+<pre><code class="fenced-code-block language-python">prop <span class="token operator">=</span> <span class="token punctuation">(</span>value<span class="token punctuation">,</span> lower<span class="token punctuation">,</span> upper<span class="token punctuation">,</span> stepsize<span class="token punctuation">)</span></code></pre>
+<h2 class="atx" id="ozellik-turu">Özellik Türü</h2>
+<p>Varsayılan olarak özellikler güncellenebilir. Örneğin bir yöntemin, sonucunu göstermek istemesi durumunda, özellikleri salt okunur yapmak mümkündür. Ayrıca özelliği gizlemek de mümkündür. Özellik türü aşağıdakiler kullanılarak ayarlanabilir:</p>
+<pre><code class="fenced-code-block language-python">obj<span class="token punctuation">.</span>setEditorMode<span class="token punctuation">(</span><span class="token string">"MyPropertyName"</span><span class="token punctuation">,</span> mode<span class="token punctuation">)</span></code></pre>
+<p>mod, şu şekilde ayarlanabilen kısa bir tamsayıdır (int):</p>
+<pre><code class="fenced-code-block language-python"><span class="token number">0</span> <span class="token operator">-</span><span class="token operator">-</span> varsayılan mod<span class="token punctuation">,</span> okuma ve yazma <span class="token punctuation">(</span>default mode<span class="token punctuation">,</span> read <span class="token keyword">and</span> write<span class="token punctuation">)</span>
+<span class="token number">1</span> <span class="token operator">-</span><span class="token operator">-</span> Salt okunur <span class="token punctuation">(</span>read<span class="token operator">-</span>only<span class="token punctuation">)</span>
+<span class="token number">2</span> <span class="token operator">-</span><span class="token operator">-</span> gizli <span class="token punctuation">(</span>hidden<span class="token punctuation">)</span></code></pre>
+<p>EditörModları, FreeCAD dosyasının yeniden yüklenmesine ayarlanmamıştır. Bu, <code>__setstate__</code> fonksiyonu tarafından yapılabilir. <a href="http://forum.freecadweb.org/viewtopic.php?f=18&amp;t=13460&amp;start=10#p108072">http://forum.freecadweb.org/viewtopic.php?f=18&amp;t=13460&amp;start=10#p108072</a> adresine bakın. <code>setEditorMode</code> kullanılarak, özellikler yalnızca <strong>PropertyEditor</strong>'de okunur. Hala python'dan değiştirilebilirler. Bunları gerçekten okumalarını sağlamak için, ayarın doğrudan <code>addProperty</code> fonksiyonunun içine iletilmesi gerekir. Örnek için <a href="http://forum.freecadweb.org/viewtopic.php?f=18&amp;t=13460&amp;start=20#p109709">http://forum.freecadweb.org/viewtopic.php?f=18&amp;t=13460&amp;start=20#p109709</a> adresine bakın.</p>
+<p><code>AddProperty</code> fonksiyonundaki doğrudan ayarı kullanarak, daha fazla olanağınız da olur. Özellikle, bir özelliği çıktı özelliği olarak işaretlemek ilginçtir. Bu şekilde FreeCAD, özelliği değiştirirken dokunulduğunda işaretlemeyecektir (böylece yeniden hesaplamaya gerek yoktur).</p>
+<p>Çıktı özelliği örneği (ayrıca bkz. <a href="https://forum.freecadweb.org/viewtopic.php?t=24928">https://forum.freecadweb.org/viewtopic.php?t=24928</a>):</p>
+<pre><code class="fenced-code-block language-python">obj<span class="token punctuation">.</span>addProperty<span class="token punctuation">(</span><span class="token string">"App::PropertyString"</span><span class="token punctuation">,</span><span class="token string">"MyCustomProperty"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">)</span></code></pre>
+<p><code>addProperty</code> işlevinin son parametresinde ayarlanabilen özellik türleri şunlardır:</p>
+<pre><code class="fenced-code-block">0 -- Prop_None, Özel bir özellik türü yok
+1 -- Prop_ReadOnly, Özellik düzenleyicide salt okunurdur
+2 -- Prop_Transient, Özellik dosyaya kaydedilmeyecek
+4 -- Prop_Hidden, Özellik düzenleyicide görünmeyecek
+8 -- Prop_Output, Değiştirilmiş özellik, üst kapsayıcısına (konteyner) dokunmuyor
+16 -- Prop_NoRecompute, Değiştirilmiş özellik, yeniden hesaplama için kapsayıcısına (konteyner) dokunmuyor</code></pre>
+<p><a href="https://github.com/FreeCAD/FreeCAD/blob/master/src/App/PropertyContainer.h">PropertyContainer için C++ kaynak kodu başlığında</a> tanımlanan bu farklı özellik türlerini bulabilirsiniz.</p>
+<h2 class="atx" id="diger-daha-karmasik-ornek">Diğer Daha Karmaşık Örnek</h2>
+<p>Bu örnek, bir oktahedron (sekizyüzlü / sekiz yüzeyli katı bir şekil) oluşturmak için <a href="https://wiki.freecadweb.org/Part_Module">Part</a> modülünü kullanır, ardından <code>pivy</code> ile onun coin gösterimini oluşturur.</p>
+<p>Kodun birinci bölümü, Document nesnesinin kendisidir:</p>
+<pre><code class="fenced-code-block language-python"><span class="token keyword">import</span> FreeCAD<span class="token punctuation">,</span> FreeCADGui<span class="token punctuation">,</span> Part
+<span class="token keyword">import</span> pivy
+<span class="token keyword">from</span> pivy <span class="token keyword">import</span> coin
+
+<span class="token keyword">class</span> <span class="token class-name">Octahedron</span><span class="token punctuation">:</span>
+  <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> obj<span class="token punctuation">)</span><span class="token punctuation">:</span>
+     <span class="token string">"Add some custom properties to our box feature"</span>
+     obj<span class="token punctuation">.</span>addProperty<span class="token punctuation">(</span><span class="token string">"App::PropertyLength"</span><span class="token punctuation">,</span><span class="token string">"Length"</span><span class="token punctuation">,</span><span class="token string">"Octahedron"</span><span class="token punctuation">,</span><span class="token string">"Length of the octahedron"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>Length<span class="token operator">=</span><span class="token number">1.0</span>
+     obj<span class="token punctuation">.</span>addProperty<span class="token punctuation">(</span><span class="token string">"App::PropertyLength"</span><span class="token punctuation">,</span><span class="token string">"Width"</span><span class="token punctuation">,</span><span class="token string">"Octahedron"</span><span class="token punctuation">,</span><span class="token string">"Width of the octahedron"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>Width<span class="token operator">=</span><span class="token number">1.0</span>
+     obj<span class="token punctuation">.</span>addProperty<span class="token punctuation">(</span><span class="token string">"App::PropertyLength"</span><span class="token punctuation">,</span><span class="token string">"Height"</span><span class="token punctuation">,</span><span class="token string">"Octahedron"</span><span class="token punctuation">,</span> <span class="token string">"Height of the octahedron"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>Height<span class="token operator">=</span><span class="token number">1.0</span>
+     obj<span class="token punctuation">.</span>addProperty<span class="token punctuation">(</span><span class="token string">"Part::PropertyPartShape"</span><span class="token punctuation">,</span><span class="token string">"Shape"</span><span class="token punctuation">,</span><span class="token string">"Octahedron"</span><span class="token punctuation">,</span> <span class="token string">"Shape of the octahedron"</span><span class="token punctuation">)</span>
+     obj<span class="token punctuation">.</span>Proxy <span class="token operator">=</span> self
+
+  <span class="token keyword">def</span> <span class="token function">execute</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> fp<span class="token punctuation">)</span><span class="token punctuation">:</span>
+     <span class="token comment"># Define six vetices for the shape</span>
+     v1 <span class="token operator">=</span> FreeCAD<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span>
+     v2 <span class="token operator">=</span> FreeCAD<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span>fp<span class="token punctuation">.</span>Length<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span>
+     v3 <span class="token operator">=</span> FreeCAD<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span>fp<span class="token punctuation">.</span>Width<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span>
+     v4 <span class="token operator">=</span> FreeCAD<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span>fp<span class="token punctuation">.</span>Length<span class="token punctuation">,</span>fp<span class="token punctuation">.</span>Width<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span>
+     v5 <span class="token operator">=</span> FreeCAD<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span>fp<span class="token punctuation">.</span>Length<span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">,</span>fp<span class="token punctuation">.</span>Width<span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">,</span>fp<span class="token punctuation">.</span>Height<span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">)</span>
+     v6 <span class="token operator">=</span> FreeCAD<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span>fp<span class="token punctuation">.</span>Length<span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">,</span>fp<span class="token punctuation">.</span>Width<span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token operator">-</span>fp<span class="token punctuation">.</span>Height<span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">)</span>
+
+     <span class="token comment"># Make the wires/faces</span>
+     f1 <span class="token operator">=</span> self<span class="token punctuation">.</span>make_face<span class="token punctuation">(</span>v1<span class="token punctuation">,</span>v2<span class="token punctuation">,</span>v5<span class="token punctuation">)</span>
+     f2 <span class="token operator">=</span> self<span class="token punctuation">.</span>make_face<span class="token punctuation">(</span>v2<span class="token punctuation">,</span>v4<span class="token punctuation">,</span>v5<span class="token punctuation">)</span>
+     f3 <span class="token operator">=</span> self<span class="token punctuation">.</span>make_face<span class="token punctuation">(</span>v4<span class="token punctuation">,</span>v3<span class="token punctuation">,</span>v5<span class="token punctuation">)</span>
+     f4 <span class="token operator">=</span> self<span class="token punctuation">.</span>make_face<span class="token punctuation">(</span>v3<span class="token punctuation">,</span>v1<span class="token punctuation">,</span>v5<span class="token punctuation">)</span>
+     f5 <span class="token operator">=</span> self<span class="token punctuation">.</span>make_face<span class="token punctuation">(</span>v2<span class="token punctuation">,</span>v1<span class="token punctuation">,</span>v6<span class="token punctuation">)</span>
+     f6 <span class="token operator">=</span> self<span class="token punctuation">.</span>make_face<span class="token punctuation">(</span>v4<span class="token punctuation">,</span>v2<span class="token punctuation">,</span>v6<span class="token punctuation">)</span>
+     f7 <span class="token operator">=</span> self<span class="token punctuation">.</span>make_face<span class="token punctuation">(</span>v3<span class="token punctuation">,</span>v4<span class="token punctuation">,</span>v6<span class="token punctuation">)</span>
+     f8 <span class="token operator">=</span> self<span class="token punctuation">.</span>make_face<span class="token punctuation">(</span>v1<span class="token punctuation">,</span>v3<span class="token punctuation">,</span>v6<span class="token punctuation">)</span>
+     shell<span class="token operator">=</span>Part<span class="token punctuation">.</span>makeShell<span class="token punctuation">(</span><span class="token punctuation">[</span>f1<span class="token punctuation">,</span>f2<span class="token punctuation">,</span>f3<span class="token punctuation">,</span>f4<span class="token punctuation">,</span>f5<span class="token punctuation">,</span>f6<span class="token punctuation">,</span>f7<span class="token punctuation">,</span>f8<span class="token punctuation">]</span><span class="token punctuation">)</span>
+     solid<span class="token operator">=</span>Part<span class="token punctuation">.</span>makeSolid<span class="token punctuation">(</span>shell<span class="token punctuation">)</span>
+     fp<span class="token punctuation">.</span>Shape <span class="token operator">=</span> solid
+
+  <span class="token comment"># helper mehod to create the faces</span>
+  <span class="token keyword">def</span> <span class="token function">make_face</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span>v1<span class="token punctuation">,</span>v2<span class="token punctuation">,</span>v3<span class="token punctuation">)</span><span class="token punctuation">:</span>
+     wire <span class="token operator">=</span> Part<span class="token punctuation">.</span>makePolygon<span class="token punctuation">(</span><span class="token punctuation">[</span>v1<span class="token punctuation">,</span>v2<span class="token punctuation">,</span>v3<span class="token punctuation">,</span>v1<span class="token punctuation">]</span><span class="token punctuation">)</span>
+     face <span class="token operator">=</span> Part<span class="token punctuation">.</span>Face<span class="token punctuation">(</span>wire<span class="token punctuation">)</span>
+     <span class="token keyword">return</span> face</code></pre>
+<p>Ardından, nesneyi 3B sahnesinde göstermekten sorumlu olan görünüm sağlayıcı nesnesine sahip kodları yazıyoruz:</p>
+<pre><code class="fenced-code-block language-python"><span class="token keyword">class</span> <span class="token class-name">ViewProviderOctahedron</span><span class="token punctuation">:</span>
+  <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> obj<span class="token punctuation">)</span><span class="token punctuation">:</span>
+     <span class="token string">"Set this object to the proxy object of the actual view provider"</span>
+     obj<span class="token punctuation">.</span>addProperty<span class="token punctuation">(</span><span class="token string">"App::PropertyColor"</span><span class="token punctuation">,</span><span class="token string">"Color"</span><span class="token punctuation">,</span><span class="token string">"Octahedron"</span><span class="token punctuation">,</span><span class="token string">"Color of the octahedron"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>Color<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">1.0</span><span class="token punctuation">,</span><span class="token number">0.0</span><span class="token punctuation">,</span><span class="token number">0.0</span><span class="token punctuation">)</span>
+     obj<span class="token punctuation">.</span>Proxy <span class="token operator">=</span> self
+
+  <span class="token keyword">def</span> <span class="token function">attach</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> obj<span class="token punctuation">)</span><span class="token punctuation">:</span>
+     <span class="token string">"Setup the scene sub-graph of the view provider, this method is mandatory"</span>
+     self<span class="token punctuation">.</span>shaded <span class="token operator">=</span> coin<span class="token punctuation">.</span>SoGroup<span class="token punctuation">(</span><span class="token punctuation">)</span>
+     self<span class="token punctuation">.</span>wireframe <span class="token operator">=</span> coin<span class="token punctuation">.</span>SoGroup<span class="token punctuation">(</span><span class="token punctuation">)</span>
+     self<span class="token punctuation">.</span>scale <span class="token operator">=</span> coin<span class="token punctuation">.</span>SoScale<span class="token punctuation">(</span><span class="token punctuation">)</span>
+     self<span class="token punctuation">.</span>color <span class="token operator">=</span> coin<span class="token punctuation">.</span>SoBaseColor<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+     self<span class="token punctuation">.</span>data<span class="token operator">=</span>coin<span class="token punctuation">.</span>SoCoordinate3<span class="token punctuation">(</span><span class="token punctuation">)</span>
+     self<span class="token punctuation">.</span>face<span class="token operator">=</span>coin<span class="token punctuation">.</span>SoIndexedLineSet<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+     self<span class="token punctuation">.</span>shaded<span class="token punctuation">.</span>addChild<span class="token punctuation">(</span>self<span class="token punctuation">.</span>scale<span class="token punctuation">)</span>
+     self<span class="token punctuation">.</span>shaded<span class="token punctuation">.</span>addChild<span class="token punctuation">(</span>self<span class="token punctuation">.</span>color<span class="token punctuation">)</span>
+     self<span class="token punctuation">.</span>shaded<span class="token punctuation">.</span>addChild<span class="token punctuation">(</span>self<span class="token punctuation">.</span>data<span class="token punctuation">)</span>
+     self<span class="token punctuation">.</span>shaded<span class="token punctuation">.</span>addChild<span class="token punctuation">(</span>self<span class="token punctuation">.</span>face<span class="token punctuation">)</span>
+     obj<span class="token punctuation">.</span>addDisplayMode<span class="token punctuation">(</span>self<span class="token punctuation">.</span>shaded<span class="token punctuation">,</span><span class="token string">"Shaded"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     style<span class="token operator">=</span>coin<span class="token punctuation">.</span>SoDrawStyle<span class="token punctuation">(</span><span class="token punctuation">)</span>
+     style<span class="token punctuation">.</span>style <span class="token operator">=</span> coin<span class="token punctuation">.</span>SoDrawStyle<span class="token punctuation">.</span>LINES
+     self<span class="token punctuation">.</span>wireframe<span class="token punctuation">.</span>addChild<span class="token punctuation">(</span>style<span class="token punctuation">)</span>
+     self<span class="token punctuation">.</span>wireframe<span class="token punctuation">.</span>addChild<span class="token punctuation">(</span>self<span class="token punctuation">.</span>scale<span class="token punctuation">)</span>
+     self<span class="token punctuation">.</span>wireframe<span class="token punctuation">.</span>addChild<span class="token punctuation">(</span>self<span class="token punctuation">.</span>color<span class="token punctuation">)</span>
+     self<span class="token punctuation">.</span>wireframe<span class="token punctuation">.</span>addChild<span class="token punctuation">(</span>self<span class="token punctuation">.</span>data<span class="token punctuation">)</span>
+     self<span class="token punctuation">.</span>wireframe<span class="token punctuation">.</span>addChild<span class="token punctuation">(</span>self<span class="token punctuation">.</span>face<span class="token punctuation">)</span>
+     obj<span class="token punctuation">.</span>addDisplayMode<span class="token punctuation">(</span>self<span class="token punctuation">.</span>wireframe<span class="token punctuation">,</span><span class="token string">"Wireframe"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     self<span class="token punctuation">.</span>onChanged<span class="token punctuation">(</span>obj<span class="token punctuation">,</span><span class="token string">"Color"</span><span class="token punctuation">)</span>
+
+  <span class="token keyword">def</span> <span class="token function">updateData</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> fp<span class="token punctuation">,</span> prop<span class="token punctuation">)</span><span class="token punctuation">:</span>
+     <span class="token string">"If a property of the handled feature has changed we have the chance to handle this here"</span>
+     <span class="token comment"># fp is the handled feature, prop is the name of the property that has changed</span>
+     <span class="token keyword">if</span> prop <span class="token operator">==</span> <span class="token string">"Shape"</span><span class="token punctuation">:</span>
+        s <span class="token operator">=</span> fp<span class="token punctuation">.</span>getPropertyByName<span class="token punctuation">(</span><span class="token string">"Shape"</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>data<span class="token punctuation">.</span>point<span class="token punctuation">.</span>setNum<span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span>
+        cnt<span class="token operator">=</span><span class="token number">0</span>
+        <span class="token keyword">for</span> i <span class="token keyword">in</span> s<span class="token punctuation">.</span>Vertexes<span class="token punctuation">:</span>
+           self<span class="token punctuation">.</span>data<span class="token punctuation">.</span>point<span class="token punctuation">.</span>set1Value<span class="token punctuation">(</span>cnt<span class="token punctuation">,</span>i<span class="token punctuation">.</span>X<span class="token punctuation">,</span>i<span class="token punctuation">.</span>Y<span class="token punctuation">,</span>i<span class="token punctuation">.</span>Z<span class="token punctuation">)</span>
+           cnt<span class="token operator">=</span>cnt<span class="token operator">+</span><span class="token number">1</span>
+
+        self<span class="token punctuation">.</span>face<span class="token punctuation">.</span>coordIndex<span class="token punctuation">.</span>set1Value<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>face<span class="token punctuation">.</span>coordIndex<span class="token punctuation">.</span>set1Value<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>face<span class="token punctuation">.</span>coordIndex<span class="token punctuation">.</span>set1Value<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>face<span class="token punctuation">.</span>coordIndex<span class="token punctuation">.</span>set1Value<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+
+        self<span class="token punctuation">.</span>face<span class="token punctuation">.</span>coordIndex<span class="token punctuation">.</span>set1Value<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>face<span class="token punctuation">.</span>coordIndex<span class="token punctuation">.</span>set1Value<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>face<span class="token punctuation">.</span>coordIndex<span class="token punctuation">.</span>set1Value<span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>face<span class="token punctuation">.</span>coordIndex<span class="token punctuation">.</span>set1Value<span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">,</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+
+        self<span class="token punctuation">.</span>face<span class="token punctuation">.</span>coordIndex<span class="token punctuation">.</span>set1Value<span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>face<span class="token punctuation">.</span>coordIndex<span class="token punctuation">.</span>set1Value<span class="token punctuation">(</span><span class="token number">9</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>face<span class="token punctuation">.</span>coordIndex<span class="token punctuation">.</span>set1Value<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>face<span class="token punctuation">.</span>coordIndex<span class="token punctuation">.</span>set1Value<span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">,</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+
+        self<span class="token punctuation">.</span>face<span class="token punctuation">.</span>coordIndex<span class="token punctuation">.</span>set1Value<span class="token punctuation">(</span><span class="token number">12</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>face<span class="token punctuation">.</span>coordIndex<span class="token punctuation">.</span>set1Value<span class="token punctuation">(</span><span class="token number">13</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>face<span class="token punctuation">.</span>coordIndex<span class="token punctuation">.</span>set1Value<span class="token punctuation">(</span><span class="token number">14</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>face<span class="token punctuation">.</span>coordIndex<span class="token punctuation">.</span>set1Value<span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">,</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+
+        self<span class="token punctuation">.</span>face<span class="token punctuation">.</span>coordIndex<span class="token punctuation">.</span>set1Value<span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>face<span class="token punctuation">.</span>coordIndex<span class="token punctuation">.</span>set1Value<span class="token punctuation">(</span><span class="token number">17</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>face<span class="token punctuation">.</span>coordIndex<span class="token punctuation">.</span>set1Value<span class="token punctuation">(</span><span class="token number">18</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>face<span class="token punctuation">.</span>coordIndex<span class="token punctuation">.</span>set1Value<span class="token punctuation">(</span><span class="token number">19</span><span class="token punctuation">,</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+
+        self<span class="token punctuation">.</span>face<span class="token punctuation">.</span>coordIndex<span class="token punctuation">.</span>set1Value<span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>face<span class="token punctuation">.</span>coordIndex<span class="token punctuation">.</span>set1Value<span class="token punctuation">(</span><span class="token number">21</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>face<span class="token punctuation">.</span>coordIndex<span class="token punctuation">.</span>set1Value<span class="token punctuation">(</span><span class="token number">22</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>face<span class="token punctuation">.</span>coordIndex<span class="token punctuation">.</span>set1Value<span class="token punctuation">(</span><span class="token number">23</span><span class="token punctuation">,</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+
+        self<span class="token punctuation">.</span>face<span class="token punctuation">.</span>coordIndex<span class="token punctuation">.</span>set1Value<span class="token punctuation">(</span><span class="token number">24</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>face<span class="token punctuation">.</span>coordIndex<span class="token punctuation">.</span>set1Value<span class="token punctuation">(</span><span class="token number">25</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>face<span class="token punctuation">.</span>coordIndex<span class="token punctuation">.</span>set1Value<span class="token punctuation">(</span><span class="token number">26</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>face<span class="token punctuation">.</span>coordIndex<span class="token punctuation">.</span>set1Value<span class="token punctuation">(</span><span class="token number">27</span><span class="token punctuation">,</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+
+        self<span class="token punctuation">.</span>face<span class="token punctuation">.</span>coordIndex<span class="token punctuation">.</span>set1Value<span class="token punctuation">(</span><span class="token number">28</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>face<span class="token punctuation">.</span>coordIndex<span class="token punctuation">.</span>set1Value<span class="token punctuation">(</span><span class="token number">29</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>face<span class="token punctuation">.</span>coordIndex<span class="token punctuation">.</span>set1Value<span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>face<span class="token punctuation">.</span>coordIndex<span class="token punctuation">.</span>set1Value<span class="token punctuation">(</span><span class="token number">31</span><span class="token punctuation">,</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+
+  <span class="token keyword">def</span> <span class="token function">getDisplayModes</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span>obj<span class="token punctuation">)</span><span class="token punctuation">:</span>
+     <span class="token string">"Return a list of display modes."</span>
+     modes<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span>
+     modes<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token string">"Shaded"</span><span class="token punctuation">)</span>
+     modes<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token string">"Wireframe"</span><span class="token punctuation">)</span>
+     <span class="token keyword">return</span> modes
+
+  <span class="token keyword">def</span> <span class="token function">getDefaultDisplayMode</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+     <span class="token string">"Return the name of the default display mode. It must be defined in getDisplayModes."</span>
+     <span class="token keyword">return</span> <span class="token string">"Shaded"</span>
+
+  <span class="token keyword">def</span> <span class="token function">setDisplayMode</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span>mode<span class="token punctuation">)</span><span class="token punctuation">:</span>
+     <span class="token keyword">return</span> mode
+
+  <span class="token keyword">def</span> <span class="token function">onChanged</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> vp<span class="token punctuation">,</span> prop<span class="token punctuation">)</span><span class="token punctuation">:</span>
+     <span class="token string">"Here we can do something when a single property got changed"</span>
+     FreeCAD<span class="token punctuation">.</span>Console<span class="token punctuation">.</span>PrintMessage<span class="token punctuation">(</span><span class="token string">"Change property: "</span> <span class="token operator">+</span> <span class="token builtin">str</span><span class="token punctuation">(</span>prop<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"\n"</span><span class="token punctuation">)</span>
+     <span class="token keyword">if</span> prop <span class="token operator">==</span> <span class="token string">"Color"</span><span class="token punctuation">:</span>
+        c <span class="token operator">=</span> vp<span class="token punctuation">.</span>getPropertyByName<span class="token punctuation">(</span><span class="token string">"Color"</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>color<span class="token punctuation">.</span>rgb<span class="token punctuation">.</span>setValue<span class="token punctuation">(</span>c<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>c<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span>c<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+  <span class="token keyword">def</span> <span class="token function">getIcon</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+     <span class="token keyword">return</span> <span class="token triple-quoted-string string">"""
+        /* XPM */
+        static const char * ViewProviderBox_xpm[] = {
+        "16 16 6 1",
+        "    c None",
+        ".   c #141010",
+        "+   c #615BD2",
+        "@   c #C39D55",
+        "#   c #000000",
+        "$   c #57C355",
+        "        ........",
+        "   ......++..+..",
+        "   .@@@@.++..++.",
+        "   .@@@@.++..++.",
+        "   .@@  .++++++.",
+        "  ..@@  .++..++.",
+        "###@@@@ .++..++.",
+        "##$.@@$#.++++++.",
+        "#$#$.$$$........",
+        "#$$#######      ",
+        "#$$#$$$$$#      ",
+        "#$$#$$$$$#      ",
+        "#$$#$$$$$#      ",
+        " #$#$$$$$#      ",
+        "  ##$$$$$#      ",
+        "   #######      "};
+        """</span>
+
+  <span class="token keyword">def</span> <span class="token function">__getstate__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+     <span class="token keyword">return</span> <span class="token boolean">None</span>
+
+  <span class="token keyword">def</span> <span class="token function">__setstate__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span>state<span class="token punctuation">)</span><span class="token punctuation">:</span>
+     <span class="token keyword">return</span> <span class="token boolean">None</span></code></pre>
+<p>Son olarak, nesnemiz ve onun <code>viewobject</code>'i tanımlandıktan sonra, onları çağırmamız (komutu çalıştırmamız) yeterlidir (Octahedron sınıfı ve viewprovider sınıf kodu doğrudan FreeCAD python konsolunda kopyalanabilir):</p>
+<pre><code class="fenced-code-block language-python">FreeCAD<span class="token punctuation">.</span>newDocument<span class="token punctuation">(</span><span class="token punctuation">)</span>
+a<span class="token operator">=</span>FreeCAD<span class="token punctuation">.</span>ActiveDocument<span class="token punctuation">.</span>addObject<span class="token punctuation">(</span><span class="token string">"App::FeaturePython"</span><span class="token punctuation">,</span><span class="token string">"Octahedron"</span><span class="token punctuation">)</span>
+Octahedron<span class="token punctuation">(</span>a<span class="token punctuation">)</span>
+ViewProviderOctahedron<span class="token punctuation">(</span>a<span class="token punctuation">.</span>ViewObject<span class="token punctuation">)</span></code></pre>
+<h2 class="atx" id="nesneleri-secilebilir-yapma">Nesneleri Seçilebilir Yapma</h2>
+<p>Eğer nesnenizi veya en azından bir kısmını görünüm alanında tıklayarak seçilebilir yapmak istiyorsanız, onun coin geometrisini bir <code>SoFCSelection</code> düğümüne (node) dahil etmeniz gerekir. Nesnenizin widget'lar, açıklamalar vb. ile karmaşık bir temsili varsa, bunun yalnızca bir bölümünü <code>SoFCSelection</code>'a dahil etmek isteyebilirsiniz. <code>SoFCSelection</code> olan her şey, seçimi/ön seçimi algılamak için FreeCAD tarafından sürekli olarak taranır, bu nedenle gereksiz tarama ile aşırı yüklemeden kaçınmak mantıklıdır.</p>
+<p>Sahne grafiğinin seçilebilir olan kısımları <code>SoFCSelection</code> düğümlerinin içinde olduğunda, seçim yolunu işlemek için iki yöntem sağlamanız gerekir. Seçim yolu, yoldaki her bir öğenin veya bir dizi sahne grafiği nesnesinin adlarını veren bir dize (string) biçimini alabilir. Sağladığınız iki yöntem, bir dize yolundan bir dizi sahne grafiği nesnesine dönüştüren <code>getDetailPath</code> ve sahne grafiğinde tıklanan bir öğeyi alan ve dize adını döndüren <code>getElementPicked</code>'dir (dize yolunu değil, not edin).</p>
+<p>Molekülün öğelerini seçilebilir hale getirmek için uyarlanmış yukarıdaki molekül örneği:</p>
+<pre><code class="fenced-code-block language-python"><span class="token keyword">class</span> <span class="token class-name">Molecule</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> obj<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">''' Add two point properties '''</span>
+        obj<span class="token punctuation">.</span>addProperty<span class="token punctuation">(</span><span class="token string">"App::PropertyVector"</span><span class="token punctuation">,</span><span class="token string">"p1"</span><span class="token punctuation">,</span><span class="token string">"Line"</span><span class="token punctuation">,</span><span class="token string">"Start point"</span><span class="token punctuation">)</span>
+        obj<span class="token punctuation">.</span>addProperty<span class="token punctuation">(</span><span class="token string">"App::PropertyVector"</span><span class="token punctuation">,</span><span class="token string">"p2"</span><span class="token punctuation">,</span><span class="token string">"Line"</span><span class="token punctuation">,</span><span class="token string">"End point"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>p2<span class="token operator">=</span>FreeCAD<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span>
+
+        obj<span class="token punctuation">.</span>Proxy <span class="token operator">=</span> self
+
+    <span class="token keyword">def</span> <span class="token function">onChanged</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> fp<span class="token punctuation">,</span> prop<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> prop <span class="token operator">==</span> <span class="token string">"p1"</span> <span class="token keyword">or</span> prop <span class="token operator">==</span> <span class="token string">"p2"</span><span class="token punctuation">:</span>
+            <span class="token triple-quoted-string string">''' Print the name of the property that has changed '''</span>
+            fp<span class="token punctuation">.</span>Shape <span class="token operator">=</span> Part<span class="token punctuation">.</span>makeLine<span class="token punctuation">(</span>fp<span class="token punctuation">.</span>p1<span class="token punctuation">,</span>fp<span class="token punctuation">.</span>p2<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">execute</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> fp<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">''' Print a short message when doing a recomputation, this method is mandatory '''</span>
+        fp<span class="token punctuation">.</span>Shape <span class="token operator">=</span> Part<span class="token punctuation">.</span>makeLine<span class="token punctuation">(</span>fp<span class="token punctuation">.</span>p1<span class="token punctuation">,</span>fp<span class="token punctuation">.</span>p2<span class="token punctuation">)</span>
+
+<span class="token keyword">class</span> <span class="token class-name">ViewProviderMolecule</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> obj<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">''' Set this object to the proxy object of the actual view provider '''</span>
+        obj<span class="token punctuation">.</span>Proxy <span class="token operator">=</span> self
+        self<span class="token punctuation">.</span>ViewObject <span class="token operator">=</span> obj
+        sep1<span class="token operator">=</span>coin<span class="token punctuation">.</span>SoSeparator<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        sel1 <span class="token operator">=</span> coin<span class="token punctuation">.</span>SoType<span class="token punctuation">.</span>fromName<span class="token punctuation">(</span><span class="token string">'SoFCSelection'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>createInstance<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment"># sel1.policy.setValue(coin.SoSelection.SHIFT)</span>
+        sel1<span class="token punctuation">.</span>ref<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        sep1<span class="token punctuation">.</span>addChild<span class="token punctuation">(</span>sel1<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>trl1<span class="token operator">=</span>coin<span class="token punctuation">.</span>SoTranslation<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        sel1<span class="token punctuation">.</span>addChild<span class="token punctuation">(</span>self<span class="token punctuation">.</span>trl1<span class="token punctuation">)</span>
+        sel1<span class="token punctuation">.</span>addChild<span class="token punctuation">(</span>coin<span class="token punctuation">.</span>SoSphere<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        sep2<span class="token operator">=</span>coin<span class="token punctuation">.</span>SoSeparator<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        sel2 <span class="token operator">=</span> coin<span class="token punctuation">.</span>SoType<span class="token punctuation">.</span>fromName<span class="token punctuation">(</span><span class="token string">'SoFCSelection'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>createInstance<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        sel2<span class="token punctuation">.</span>ref<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        sep2<span class="token punctuation">.</span>addChild<span class="token punctuation">(</span>sel2<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>trl2<span class="token operator">=</span>coin<span class="token punctuation">.</span>SoTranslation<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        sel2<span class="token punctuation">.</span>addChild<span class="token punctuation">(</span>self<span class="token punctuation">.</span>trl2<span class="token punctuation">)</span>
+        sel2<span class="token punctuation">.</span>addChild<span class="token punctuation">(</span>coin<span class="token punctuation">.</span>SoSphere<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        obj<span class="token punctuation">.</span>RootNode<span class="token punctuation">.</span>addChild<span class="token punctuation">(</span>sep1<span class="token punctuation">)</span>
+        obj<span class="token punctuation">.</span>RootNode<span class="token punctuation">.</span>addChild<span class="token punctuation">(</span>sep2<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>updateData<span class="token punctuation">(</span>obj<span class="token punctuation">.</span>Object<span class="token punctuation">,</span> <span class="token string">'p2'</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>sel1 <span class="token operator">=</span> sel1
+        self<span class="token punctuation">.</span>sel2 <span class="token operator">=</span> sel2
+
+    <span class="token keyword">def</span> <span class="token function">getDetailPath</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> subname<span class="token punctuation">,</span> path<span class="token punctuation">,</span> append<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        vobj <span class="token operator">=</span> self<span class="token punctuation">.</span>ViewObject
+        <span class="token keyword">if</span> append<span class="token punctuation">:</span>
+            path<span class="token punctuation">.</span>append<span class="token punctuation">(</span>vobj<span class="token punctuation">.</span>RootNode<span class="token punctuation">)</span>
+            path<span class="token punctuation">.</span>append<span class="token punctuation">(</span>vobj<span class="token punctuation">.</span>SwitchNode<span class="token punctuation">)</span>
+
+            mode <span class="token operator">=</span> vobj<span class="token punctuation">.</span>SwitchNode<span class="token punctuation">.</span>whichChild<span class="token punctuation">.</span>getValue<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token keyword">if</span> mode <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">:</span>
+                mode <span class="token operator">=</span> vobj<span class="token punctuation">.</span>SwitchNode<span class="token punctuation">.</span>getChild<span class="token punctuation">(</span>mode<span class="token punctuation">)</span>
+                path<span class="token punctuation">.</span>append<span class="token punctuation">(</span>mode<span class="token punctuation">)</span>
+                sub <span class="token operator">=</span> Part<span class="token punctuation">.</span>splitSubname<span class="token punctuation">(</span>subname<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
+                <span class="token keyword">if</span> sub <span class="token operator">==</span> <span class="token string">'Atom1'</span><span class="token punctuation">:</span>
+                    path<span class="token punctuation">.</span>append<span class="token punctuation">(</span>self<span class="token punctuation">.</span>sel1<span class="token punctuation">)</span>
+                <span class="token keyword">elif</span> sub <span class="token operator">==</span> <span class="token string">'Atom2'</span><span class="token punctuation">:</span>
+                    path<span class="token punctuation">.</span>append<span class="token punctuation">(</span>self<span class="token punctuation">.</span>sel2<span class="token punctuation">)</span>
+                <span class="token keyword">else</span><span class="token punctuation">:</span>
+                    path<span class="token punctuation">.</span>append<span class="token punctuation">(</span>mode<span class="token punctuation">.</span>getChild<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token boolean">True</span>
+
+    <span class="token keyword">def</span> <span class="token function">getElementPicked</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> pp<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        path <span class="token operator">=</span> pp<span class="token punctuation">.</span>getPath<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> path<span class="token punctuation">.</span>findNode<span class="token punctuation">(</span>self<span class="token punctuation">.</span>sel1<span class="token punctuation">)</span> <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token string">'Atom1'</span>
+        <span class="token keyword">if</span> path<span class="token punctuation">.</span>findNode<span class="token punctuation">(</span>self<span class="token punctuation">.</span>sel2<span class="token punctuation">)</span> <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token string">'Atom2'</span>
+        <span class="token keyword">raise</span> NotImplementedError
+
+    <span class="token keyword">def</span> <span class="token function">updateData</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> fp<span class="token punctuation">,</span> prop<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token string">"If a property of the handled feature has changed we have the chance to handle this here"</span>
+        <span class="token comment"># fp is the handled feature, prop is the name of the property that has changed</span>
+        <span class="token keyword">if</span> prop <span class="token operator">==</span> <span class="token string">"p1"</span><span class="token punctuation">:</span>
+            p <span class="token operator">=</span> fp<span class="token punctuation">.</span>getPropertyByName<span class="token punctuation">(</span><span class="token string">"p1"</span><span class="token punctuation">)</span>
+            self<span class="token punctuation">.</span>trl1<span class="token punctuation">.</span>translation<span class="token operator">=</span><span class="token punctuation">(</span>p<span class="token punctuation">.</span>x<span class="token punctuation">,</span>p<span class="token punctuation">.</span>y<span class="token punctuation">,</span>p<span class="token punctuation">.</span>z<span class="token punctuation">)</span>
+        <span class="token keyword">elif</span> prop <span class="token operator">==</span> <span class="token string">"p2"</span><span class="token punctuation">:</span>
+            p <span class="token operator">=</span> fp<span class="token punctuation">.</span>getPropertyByName<span class="token punctuation">(</span><span class="token string">"p2"</span><span class="token punctuation">)</span>
+            self<span class="token punctuation">.</span>trl2<span class="token punctuation">.</span>translation<span class="token operator">=</span><span class="token punctuation">(</span>p<span class="token punctuation">.</span>x<span class="token punctuation">,</span>p<span class="token punctuation">.</span>y<span class="token punctuation">,</span>p<span class="token punctuation">.</span>z<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">__getstate__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token boolean">None</span>
+
+    <span class="token keyword">def</span> <span class="token function">__setstate__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span>state<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token boolean">None</span>
+
+<span class="token keyword">def</span> <span class="token function">makeMolecule</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    FreeCAD<span class="token punctuation">.</span>newDocument<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    a<span class="token operator">=</span>FreeCAD<span class="token punctuation">.</span>ActiveDocument<span class="token punctuation">.</span>addObject<span class="token punctuation">(</span><span class="token string">"Part::FeaturePython"</span><span class="token punctuation">,</span><span class="token string">"Molecule"</span><span class="token punctuation">)</span>
+    Molecule<span class="token punctuation">(</span>a<span class="token punctuation">)</span>
+    ViewProviderMolecule<span class="token punctuation">(</span>a<span class="token punctuation">.</span>ViewObject<span class="token punctuation">)</span>
+    FreeCAD<span class="token punctuation">.</span>ActiveDocument<span class="token punctuation">.</span>recompute<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<h2 class="atx" id="basit-sekillerle-calismak">Basit Şekillerle Çalışmak</h2>
+<p>Parametrik nesneniz basitçe bir şekil veriyorsa, bir görünüm sağlayıcı nesnesi kullanmanıza gerek yoktur. Şekil, FreeCAD'in standart şekil gösterimi kullanılarak görüntülenecektir:</p>
+<pre><code class="fenced-code-block language-python"><span class="token keyword">import</span> FreeCAD <span class="token keyword">as</span> App
+<span class="token keyword">import</span> FreeCADGui
+<span class="token keyword">import</span> FreeCAD
+<span class="token keyword">import</span> Part
+<span class="token keyword">class</span> <span class="token class-name">Line</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> obj<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">'''"App two point properties" '''</span>
+        obj<span class="token punctuation">.</span>addProperty<span class="token punctuation">(</span><span class="token string">"App::PropertyVector"</span><span class="token punctuation">,</span><span class="token string">"p1"</span><span class="token punctuation">,</span><span class="token string">"Line"</span><span class="token punctuation">,</span><span class="token string">"Start point"</span><span class="token punctuation">)</span>
+        obj<span class="token punctuation">.</span>addProperty<span class="token punctuation">(</span><span class="token string">"App::PropertyVector"</span><span class="token punctuation">,</span><span class="token string">"p2"</span><span class="token punctuation">,</span><span class="token string">"Line"</span><span class="token punctuation">,</span><span class="token string">"End point"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>p2<span class="token operator">=</span>FreeCAD<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span>
+        obj<span class="token punctuation">.</span>Proxy <span class="token operator">=</span> self
+
+    <span class="token keyword">def</span> <span class="token function">execute</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> fp<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">'''"Print a short message when doing a recomputation, this method is mandatory" '''</span>
+        fp<span class="token punctuation">.</span>Shape <span class="token operator">=</span> Part<span class="token punctuation">.</span>makeLine<span class="token punctuation">(</span>fp<span class="token punctuation">.</span>p1<span class="token punctuation">,</span>fp<span class="token punctuation">.</span>p2<span class="token punctuation">)</span>
+
+a<span class="token operator">=</span>FreeCAD<span class="token punctuation">.</span>ActiveDocument<span class="token punctuation">.</span>addObject<span class="token punctuation">(</span><span class="token string">"Part::FeaturePython"</span><span class="token punctuation">,</span><span class="token string">"Line"</span><span class="token punctuation">)</span>
+Line<span class="token punctuation">(</span>a<span class="token punctuation">)</span>
+a<span class="token punctuation">.</span>ViewObject<span class="token punctuation">.</span>Proxy<span class="token operator">=</span><span class="token number">0</span> <span class="token comment"># just set it to something different from None (this assignment is needed to run an internal notification)</span>
+FreeCAD<span class="token punctuation">.</span>ActiveDocument<span class="token punctuation">.</span>recompute<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p><strong>ViewProviderLine</strong> kullanımı ile aynı kod</p>
+<pre><code class="fenced-code-block language-python"><span class="token keyword">import</span> FreeCAD <span class="token keyword">as</span> App
+<span class="token keyword">import</span> FreeCADGui
+<span class="token keyword">import</span> FreeCAD
+<span class="token keyword">import</span> Part
+
+<span class="token keyword">class</span> <span class="token class-name">Line</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> obj<span class="token punctuation">)</span><span class="token punctuation">:</span>
+         <span class="token triple-quoted-string string">'''"App two point properties" '''</span>
+         obj<span class="token punctuation">.</span>addProperty<span class="token punctuation">(</span><span class="token string">"App::PropertyVector"</span><span class="token punctuation">,</span><span class="token string">"p1"</span><span class="token punctuation">,</span><span class="token string">"Line"</span><span class="token punctuation">,</span><span class="token string">"Start point"</span><span class="token punctuation">)</span>
+         obj<span class="token punctuation">.</span>addProperty<span class="token punctuation">(</span><span class="token string">"App::PropertyVector"</span><span class="token punctuation">,</span><span class="token string">"p2"</span><span class="token punctuation">,</span><span class="token string">"Line"</span><span class="token punctuation">,</span><span class="token string">"End point"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>p2<span class="token operator">=</span>FreeCAD<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span>
+         obj<span class="token punctuation">.</span>Proxy <span class="token operator">=</span> self
+
+    <span class="token keyword">def</span> <span class="token function">execute</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> fp<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">'''"Print a short message when doing a recomputation, this method is mandatory" '''</span>
+        fp<span class="token punctuation">.</span>Shape <span class="token operator">=</span> Part<span class="token punctuation">.</span>makeLine<span class="token punctuation">(</span>fp<span class="token punctuation">.</span>p1<span class="token punctuation">,</span>fp<span class="token punctuation">.</span>p2<span class="token punctuation">)</span>
+
+<span class="token keyword">class</span> <span class="token class-name">ViewProviderLine</span><span class="token punctuation">:</span>
+   <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> obj<span class="token punctuation">)</span><span class="token punctuation">:</span>
+      <span class="token triple-quoted-string string">''' Set this object to the proxy object of the actual view provider '''</span>
+      obj<span class="token punctuation">.</span>Proxy <span class="token operator">=</span> self
+
+   <span class="token keyword">def</span> <span class="token function">getDefaultDisplayMode</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+      <span class="token triple-quoted-string string">''' Return the name of the default display mode. It must be defined in getDisplayModes. '''</span>
+      <span class="token keyword">return</span> <span class="token string">"Flat Lines"</span>
+
+a<span class="token operator">=</span>FreeCAD<span class="token punctuation">.</span>ActiveDocument<span class="token punctuation">.</span>addObject<span class="token punctuation">(</span><span class="token string">"Part::FeaturePython"</span><span class="token punctuation">,</span><span class="token string">"Line"</span><span class="token punctuation">)</span>
+Line<span class="token punctuation">(</span>a<span class="token punctuation">)</span>
+ViewProviderLine<span class="token punctuation">(</span>a<span class="token punctuation">.</span>ViewObject<span class="token punctuation">)</span>
+App<span class="token punctuation">.</span>ActiveDocument<span class="token punctuation">.</span>recompute<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<h2 class="atx" id="sahne-yapisi">Sahne Yapısı</h2>
+<p>Yukarıdaki örneklerin sahne grafiklerini biraz farklı şekillerde oluşturduğunu fark etmiş olabilirsiniz. Bazıları <code>obj.addDisplayMode(node, "modename")</code> kullanırken diğerleri <code>obj.SwitchNode.getChild(x).addChild(y)</code> kullanır.</p>
+<p>Bir FreeCAD belgesindeki her özellik aşağıdaki sahne grafiği yapısını temel alır:</p>
+<pre><code class="fenced-code-block">RootNode
+ \- SwitchNode
+     \- Shaded
+      - Wireframe
+      - etc</code></pre>
+<p><code>SwitchNode</code>, FreeCAD'de hangi görüntüleme modunun seçildiğine bağlı olarak, alt öğelerinden yalnızca birini görüntüler.</p>
+<p><code>addDisplayMode</code> kullanan örnekler, sahne grafiklerini yalnızca coin3d sahne grafiği öğelerinden oluşturuyor. Kapakların altında, <code>addDisplayMode</code>, <code>SwitchNode</code>'a yeni bir alt öğe ekler; o düğümün adı, geçtiği görüntüleme moduyla eşleşir.</p>
+<p><code>SwitchNode.getChild(x).addChild</code> kullanan örnekler ayrıca, <code>fp.Shape = Part.makeLine(fp.p1,fp.p2)</code> gibi Part (Parça) tezgahındaki işlevleri kullanarak geometrilerinin bir bölümünü oluşturur. Bu, <code>SwitchNode</code> altında farklı görüntüleme modu sahne grafiklerini oluşturur; Daha sonra sahne grafiğine coin3d öğeleri eklemeye geldiğimizde, bunları <code>SwitchNode</code>'un yeni bir alt öğesini oluşturmak yerine <code>addChild</code> kullanarak mevcut görüntüleme modu sahne grafiklerine eklememiz gerekir.</p>
+<p>Sahne grafiğine geometri eklemek için <code>addDisplayMode()</code> kullanılırken, her görüntüleme modunun <code>addDisplayMode()</code> öğesine geçirilen kendi düğümü olmalıdır; bunun için aynı düğümü tekrar kullanmayın. Bunu yapmak, seçim mekanizmasını karıştıracaktır. Her görüntüleme modunun düğümünün altına aynı geometri düğümleri eklenmişse sorun değil, yalnızca her görüntüleme modunun kökünün farklı olması gerekir.</p>
+<p>Part (Parça) tezgahından nesneler kullanmak yerine yalnızca Coin3D sahne grafiği nesneleriyle çizilmek üzere uyarlanmış yukarıdaki molekül örneği:</p>
+<pre><code class="fenced-code-block language-python"><span class="token keyword">import</span> Part
+<span class="token keyword">from</span> pivy <span class="token keyword">import</span> coin
+
+<span class="token keyword">class</span> <span class="token class-name">Molecule</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> obj<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">''' Add two point properties '''</span>
+        obj<span class="token punctuation">.</span>addProperty<span class="token punctuation">(</span><span class="token string">"App::PropertyVector"</span><span class="token punctuation">,</span><span class="token string">"p1"</span><span class="token punctuation">,</span><span class="token string">"Line"</span><span class="token punctuation">,</span><span class="token string">"Start point"</span><span class="token punctuation">)</span>
+        obj<span class="token punctuation">.</span>addProperty<span class="token punctuation">(</span><span class="token string">"App::PropertyVector"</span><span class="token punctuation">,</span><span class="token string">"p2"</span><span class="token punctuation">,</span><span class="token string">"Line"</span><span class="token punctuation">,</span><span class="token string">"End point"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>p2<span class="token operator">=</span>FreeCAD<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span>
+
+        obj<span class="token punctuation">.</span>Proxy <span class="token operator">=</span> self
+
+    <span class="token keyword">def</span> <span class="token function">onChanged</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> fp<span class="token punctuation">,</span> prop<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">pass</span>
+
+    <span class="token keyword">def</span> <span class="token function">execute</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> fp<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">''' Print a short message when doing a recomputation, this method is mandatory '''</span>
+        <span class="token keyword">pass</span>
+
+<span class="token keyword">class</span> <span class="token class-name">ViewProviderMolecule</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> obj<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">''' Set this object to the proxy object of the actual view provider '''</span>
+        self<span class="token punctuation">.</span>constructed <span class="token operator">=</span> <span class="token boolean">False</span>
+        obj<span class="token punctuation">.</span>Proxy <span class="token operator">=</span> self
+        self<span class="token punctuation">.</span>ViewObject <span class="token operator">=</span> obj
+
+    <span class="token keyword">def</span> <span class="token function">attach</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> obj<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        material <span class="token operator">=</span> coin<span class="token punctuation">.</span>SoMaterial<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        material<span class="token punctuation">.</span>diffuseColor <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">)</span>
+        material<span class="token punctuation">.</span>emissiveColor <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">)</span>
+        drawStyle <span class="token operator">=</span> coin<span class="token punctuation">.</span>SoDrawStyle<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        drawStyle<span class="token punctuation">.</span>pointSize<span class="token punctuation">.</span>setValue<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span>
+        drawStyle<span class="token punctuation">.</span>style <span class="token operator">=</span> coin<span class="token punctuation">.</span>SoDrawStyle<span class="token punctuation">.</span>LINES
+        wireframe <span class="token operator">=</span> coin<span class="token punctuation">.</span>SoGroup<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        shaded <span class="token operator">=</span> coin<span class="token punctuation">.</span>SoGroup<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>wireframe <span class="token operator">=</span> wireframe
+        self<span class="token punctuation">.</span>shaded <span class="token operator">=</span> shaded
+
+        self<span class="token punctuation">.</span>coords <span class="token operator">=</span> coin<span class="token punctuation">.</span>SoCoordinate3<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>coords<span class="token punctuation">.</span>point<span class="token punctuation">.</span>setValues<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>FreeCAD<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> FreeCAD<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        wireframe <span class="token operator">+=</span> self<span class="token punctuation">.</span>coords
+        wireframe <span class="token operator">+=</span> drawStyle
+        wireframe <span class="token operator">+=</span> material
+        shaded <span class="token operator">+=</span> self<span class="token punctuation">.</span>coords
+        shaded <span class="token operator">+=</span> drawStyle
+        shaded <span class="token operator">+=</span> material
+
+        g <span class="token operator">=</span> coin<span class="token punctuation">.</span>SoGroup<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        sel1 <span class="token operator">=</span> coin<span class="token punctuation">.</span>SoType<span class="token punctuation">.</span>fromName<span class="token punctuation">(</span><span class="token string">'SoFCSelection'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>createInstance<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        sel1<span class="token punctuation">.</span>style <span class="token operator">=</span> <span class="token string">'EMISSIVE_DIFFUSE'</span>
+        p1 <span class="token operator">=</span> coin<span class="token punctuation">.</span>SoType<span class="token punctuation">.</span>fromName<span class="token punctuation">(</span><span class="token string">'SoIndexedPointSet'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>createInstance<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        p1<span class="token punctuation">.</span>coordIndex<span class="token punctuation">.</span>set1Value<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+        sel1 <span class="token operator">+=</span> p1
+        g <span class="token operator">+=</span> sel1
+        wireframe <span class="token operator">+=</span> g
+        shaded <span class="token operator">+=</span> g
+
+        g <span class="token operator">=</span> coin<span class="token punctuation">.</span>SoGroup<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        sel2 <span class="token operator">=</span> coin<span class="token punctuation">.</span>SoType<span class="token punctuation">.</span>fromName<span class="token punctuation">(</span><span class="token string">'SoFCSelection'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>createInstance<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        sel2<span class="token punctuation">.</span>style <span class="token operator">=</span> <span class="token string">'EMISSIVE_DIFFUSE'</span>
+        p2 <span class="token operator">=</span> coin<span class="token punctuation">.</span>SoType<span class="token punctuation">.</span>fromName<span class="token punctuation">(</span><span class="token string">'SoIndexedPointSet'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>createInstance<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        p2<span class="token punctuation">.</span>coordIndex<span class="token punctuation">.</span>set1Value<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+        sel2 <span class="token operator">+=</span> p2
+        g <span class="token operator">+=</span> sel2
+        wireframe <span class="token operator">+=</span> g
+        shaded <span class="token operator">+=</span> g
+
+        g <span class="token operator">=</span> coin<span class="token punctuation">.</span>SoGroup<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        sel3 <span class="token operator">=</span> coin<span class="token punctuation">.</span>SoType<span class="token punctuation">.</span>fromName<span class="token punctuation">(</span><span class="token string">'SoFCSelection'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>createInstance<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        sel3<span class="token punctuation">.</span>style <span class="token operator">=</span> <span class="token string">'EMISSIVE_DIFFUSE'</span>
+        p3 <span class="token operator">=</span> coin<span class="token punctuation">.</span>SoType<span class="token punctuation">.</span>fromName<span class="token punctuation">(</span><span class="token string">'SoIndexedLineSet'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>createInstance<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        p3<span class="token punctuation">.</span>coordIndex<span class="token punctuation">.</span>setValues<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        sel3 <span class="token operator">+=</span> p3
+        g <span class="token operator">+=</span> sel3
+        wireframe <span class="token operator">+=</span> g
+        shaded <span class="token operator">+=</span> g
+
+        obj<span class="token punctuation">.</span>addDisplayMode<span class="token punctuation">(</span>wireframe<span class="token punctuation">,</span> <span class="token string">'Wireframe'</span><span class="token punctuation">)</span>
+        obj<span class="token punctuation">.</span>addDisplayMode<span class="token punctuation">(</span>shaded<span class="token punctuation">,</span> <span class="token string">'Shaded'</span><span class="token punctuation">)</span>
+
+        self<span class="token punctuation">.</span>sel1 <span class="token operator">=</span> sel1
+        self<span class="token punctuation">.</span>sel2 <span class="token operator">=</span> sel2
+        self<span class="token punctuation">.</span>sel3 <span class="token operator">=</span> sel3
+        self<span class="token punctuation">.</span>constructed <span class="token operator">=</span> <span class="token boolean">True</span>
+        self<span class="token punctuation">.</span>updateData<span class="token punctuation">(</span>obj<span class="token punctuation">.</span>Object<span class="token punctuation">,</span> <span class="token string">'p2'</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">getDetailPath</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> subname<span class="token punctuation">,</span> path<span class="token punctuation">,</span> append<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        vobj <span class="token operator">=</span> self<span class="token punctuation">.</span>ViewObject
+        <span class="token keyword">if</span> append<span class="token punctuation">:</span>
+            path<span class="token punctuation">.</span>append<span class="token punctuation">(</span>vobj<span class="token punctuation">.</span>RootNode<span class="token punctuation">)</span>
+            path<span class="token punctuation">.</span>append<span class="token punctuation">(</span>vobj<span class="token punctuation">.</span>SwitchNode<span class="token punctuation">)</span>
+
+            mode <span class="token operator">=</span> vobj<span class="token punctuation">.</span>SwitchNode<span class="token punctuation">.</span>whichChild<span class="token punctuation">.</span>getValue<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            FreeCAD<span class="token punctuation">.</span>Console<span class="token punctuation">.</span>PrintWarning<span class="token punctuation">(</span><span class="token string">"getDetailPath: mode {} is active\n"</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>mode<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token keyword">if</span> mode <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">:</span>
+                mode <span class="token operator">=</span> vobj<span class="token punctuation">.</span>SwitchNode<span class="token punctuation">.</span>getChild<span class="token punctuation">(</span>mode<span class="token punctuation">)</span>
+                path<span class="token punctuation">.</span>append<span class="token punctuation">(</span>mode<span class="token punctuation">)</span>
+                sub <span class="token operator">=</span> Part<span class="token punctuation">.</span>splitSubname<span class="token punctuation">(</span>subname<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
+                <span class="token keyword">print</span><span class="token punctuation">(</span>sub<span class="token punctuation">)</span>
+                <span class="token keyword">if</span> sub <span class="token operator">==</span> <span class="token string">'Atom1'</span><span class="token punctuation">:</span>
+                    path<span class="token punctuation">.</span>append<span class="token punctuation">(</span>self<span class="token punctuation">.</span>sel1<span class="token punctuation">)</span>
+                <span class="token keyword">elif</span> sub <span class="token operator">==</span> <span class="token string">'Atom2'</span><span class="token punctuation">:</span>
+                    path<span class="token punctuation">.</span>append<span class="token punctuation">(</span>self<span class="token punctuation">.</span>sel2<span class="token punctuation">)</span>
+                <span class="token keyword">elif</span> sub <span class="token operator">==</span> <span class="token string">'Line'</span><span class="token punctuation">:</span>
+                    path<span class="token punctuation">.</span>append<span class="token punctuation">(</span>self<span class="token punctuation">.</span>sel3<span class="token punctuation">)</span>
+                <span class="token keyword">else</span><span class="token punctuation">:</span>
+                    path<span class="token punctuation">.</span>append<span class="token punctuation">(</span>mode<span class="token punctuation">.</span>getChild<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token boolean">True</span>
+
+    <span class="token keyword">def</span> <span class="token function">getElementPicked</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> pp<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        path <span class="token operator">=</span> pp<span class="token punctuation">.</span>getPath<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> path<span class="token punctuation">.</span>findNode<span class="token punctuation">(</span>self<span class="token punctuation">.</span>sel1<span class="token punctuation">)</span> <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token string">'Atom1'</span>
+        <span class="token keyword">if</span> path<span class="token punctuation">.</span>findNode<span class="token punctuation">(</span>self<span class="token punctuation">.</span>sel2<span class="token punctuation">)</span> <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token string">'Atom2'</span>
+        <span class="token keyword">if</span> path<span class="token punctuation">.</span>findNode<span class="token punctuation">(</span>self<span class="token punctuation">.</span>sel3<span class="token punctuation">)</span> <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token string">'Line'</span>
+        <span class="token keyword">raise</span> NotImplementedError
+
+    <span class="token keyword">def</span> <span class="token function">updateData</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> fp<span class="token punctuation">,</span> prop<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token string">"If a property of the handled feature has changed we have the chance to handle this here"</span>
+        <span class="token comment"># fp is the handled feature, prop is the name of the property that has changed</span>
+        <span class="token keyword">if</span> <span class="token keyword">not</span> self<span class="token punctuation">.</span>constructed<span class="token punctuation">:</span>
+            <span class="token keyword">return</span>
+        <span class="token keyword">if</span> prop <span class="token operator">==</span> <span class="token string">"p1"</span><span class="token punctuation">:</span>
+            p <span class="token operator">=</span> fp<span class="token punctuation">.</span>getPropertyByName<span class="token punctuation">(</span><span class="token string">"p1"</span><span class="token punctuation">)</span>
+            self<span class="token punctuation">.</span>coords<span class="token punctuation">.</span>point<span class="token punctuation">.</span>set1Value<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> p<span class="token punctuation">)</span>
+        <span class="token keyword">elif</span> prop <span class="token operator">==</span> <span class="token string">"p2"</span><span class="token punctuation">:</span>
+            p <span class="token operator">=</span> fp<span class="token punctuation">.</span>getPropertyByName<span class="token punctuation">(</span><span class="token string">"p2"</span><span class="token punctuation">)</span>
+            self<span class="token punctuation">.</span>coords<span class="token punctuation">.</span>point<span class="token punctuation">.</span>set1Value<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> p<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">getDisplayModes</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> obj<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token string">'Wireframe'</span><span class="token punctuation">,</span> <span class="token string">'Shaded'</span><span class="token punctuation">]</span>
+
+    <span class="token keyword">def</span> <span class="token function">getDefaultDisplayMode</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string">'Shaded'</span>
+
+    <span class="token keyword">def</span> <span class="token function">setDisplayMode</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> mode<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> mode
+
+    <span class="token keyword">def</span> <span class="token function">__getstate__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token boolean">None</span>
+
+    <span class="token keyword">def</span> <span class="token function">__setstate__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span>state<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token boolean">None</span>
+
+<span class="token keyword">def</span> <span class="token function">makeMolecule</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    FreeCAD<span class="token punctuation">.</span>newDocument<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    a<span class="token operator">=</span>FreeCAD<span class="token punctuation">.</span>ActiveDocument<span class="token punctuation">.</span>addObject<span class="token punctuation">(</span><span class="token string">"App::FeaturePython"</span><span class="token punctuation">,</span><span class="token string">"Molecule"</span><span class="token punctuation">)</span>
+    Molecule<span class="token punctuation">(</span>a<span class="token punctuation">)</span>
+    b<span class="token operator">=</span>ViewProviderMolecule<span class="token punctuation">(</span>a<span class="token punctuation">.</span>ViewObject<span class="token punctuation">)</span>
+    a<span class="token punctuation">.</span>touch<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    FreeCAD<span class="token punctuation">.</span>ActiveDocument<span class="token punctuation">.</span>recompute<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> a<span class="token punctuation">,</span>b
+
+a<span class="token punctuation">,</span>b <span class="token operator">=</span> makeMolecule<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<h2 class="atx" id="parcatasarimi-part-design-komut-dosyasiyla-yazilmis-nesneler">ParçaTasarımı (Part Design) Komut Dosyasıyla Yazılmış Nesneler</h2>
+<p>Parça Tasarımında kodlanmış nesneler oluştururken, süreç yukarıda tartışılan komut dosyası oluşturulmuş nesnelere benzer, ancak birkaç ek husus vardır. Biri 3B görünümde gördüğümüz şekil için, diğeri ise polar desen özellikleri gibi desen araçları tarafından kullanılan şekil için olmak üzere 2 şekil özelliğini ele almalıyız. Nesne şekillerinin ayrıca, halihazırda Gövdede bulunan herhangi bir mevcut malzemeyle kaynaştırılması (veya Çıkarma özellikleri durumunda ondan kesilmesi) gerekir. Nesnelerimizin yerleştirilmesini ve bağlanmasını biraz farklı hesaba katmalıyız.</p>
+<p>Parça Tasarımı komut dosyasıyla yazılmış katı nesne özellikleri, <code>Part::FeaturePython</code> yerine <code>PartDesign::FeaturePython</code>, <code>PartDesign::FeatureAdditivePython</code> veya <code>PartDesign::FeatureSubtractivePython</code>'a dayanmalıdır. Çoğaltma özelliklerinde yalnız Toplama ve Çıkarma varyantları kullanılabilir ve <code>Part::FeaturePython</code>'a dayalıysa, kullanıcı nesneyi bir Parça Tasarım Gövdesine bıraktığında, Gövde tarafından yerel bir Parça Tasarım nesnesi olarak ele alınmak yerine bir <code>BaseFeature</code> olur. <strong>Not</strong>: bunların hepsinin katı olması beklenir, bu nedenle katı olmayan bir özellik yapıyorsanız bunun <code>Part::FeaturePython</code>'a dayanması gerekir, yoksa ağaçtaki bir sonraki özellik katı olarak birleşmeye çalışır ve başarısız olur .</p>
+<p>Burada, Parça Çalışma Tezgahındaki (Part Workbench'teki) <strong>Boru (Tube)</strong> temel şekline (primitifine) benzer bir Boru temel şekil oluşturmanın basit bir örneği verilmiştir, ancak bu bir Parça Tasarımı (Part Design) katı özellik nesnesi olacaktır. Bunun için 2 ayrı dosya oluşturacağız: <code>pdtube.FCMacro</code> ve <code>pdtube.py</code>. <code>.FCMacro</code> dosyası, nesneyi oluşturmak için kullanıcı tarafından çalıştırılacaktır. <code>.py</code> dosyası, <code>.FCMacro</code> tarafından içe aktarılan sınıf tanımlarını tutacaktır. Bunu bu şekilde yapmanın nedeni, FreeCAD'i yeniden başlattıktan ve Borularımızdan birini içeren bir belgeyi açtıktan sonra nesnenin parametrik yapısını korumaktır.</p>
+<p>İlk olarak, sınıf tanım dosyasını oluşturuyoruz:</p>
+<pre><code class="fenced-code-block language-python"><span class="token comment"># -*- coding: utf-8 -*-</span>
+<span class="token comment">#classes should go in pdtube.py</span>
+<span class="token keyword">import</span> FreeCAD<span class="token punctuation">,</span> FreeCADGui<span class="token punctuation">,</span> Part
+<span class="token keyword">class</span> <span class="token class-name">PDTube</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span>obj<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        obj<span class="token punctuation">.</span>addProperty<span class="token punctuation">(</span><span class="token string">"App::PropertyLength"</span><span class="token punctuation">,</span><span class="token string">"Radius1"</span><span class="token punctuation">,</span><span class="token string">"Tube"</span><span class="token punctuation">,</span><span class="token string">"Radius1"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>Radius1 <span class="token operator">=</span> <span class="token number">5</span>
+        obj<span class="token punctuation">.</span>addProperty<span class="token punctuation">(</span><span class="token string">"App::PropertyLength"</span><span class="token punctuation">,</span><span class="token string">"Radius2"</span><span class="token punctuation">,</span><span class="token string">"Tube"</span><span class="token punctuation">,</span><span class="token string">"Radius2"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>Radius2 <span class="token operator">=</span> <span class="token number">10</span>
+        obj<span class="token punctuation">.</span>addProperty<span class="token punctuation">(</span><span class="token string">"App::PropertyLength"</span><span class="token punctuation">,</span><span class="token string">"Height"</span><span class="token punctuation">,</span><span class="token string">"Tube"</span><span class="token punctuation">,</span><span class="token string">"Height of tube"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>Height <span class="token operator">=</span> <span class="token number">10</span>
+        self<span class="token punctuation">.</span>makeAttachable<span class="token punctuation">(</span>obj<span class="token punctuation">)</span>
+        obj<span class="token punctuation">.</span>Proxy <span class="token operator">=</span> self
+
+    <span class="token keyword">def</span> <span class="token function">makeAttachable</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> obj<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+        <span class="token keyword">if</span> <span class="token builtin">int</span><span class="token punctuation">(</span>FreeCAD<span class="token punctuation">.</span>Version<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">&gt;=</span> <span class="token number">19</span><span class="token punctuation">:</span>
+            obj<span class="token punctuation">.</span>addExtension<span class="token punctuation">(</span><span class="token string">'Part::AttachExtensionPython'</span><span class="token punctuation">)</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            obj<span class="token punctuation">.</span>addExtension<span class="token punctuation">(</span><span class="token string">'Part::AttachExtensionPython'</span><span class="token punctuation">,</span> obj<span class="token punctuation">)</span>
+
+        obj<span class="token punctuation">.</span>setEditorMode<span class="token punctuation">(</span><span class="token string">'Placement'</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token comment">#non-readonly non-hidden</span>
+
+    <span class="token keyword">def</span> <span class="token function">execute</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span>fp<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        outer_cylinder <span class="token operator">=</span> Part<span class="token punctuation">.</span>makeCylinder<span class="token punctuation">(</span>fp<span class="token punctuation">.</span>Radius2<span class="token punctuation">,</span> fp<span class="token punctuation">.</span>Height<span class="token punctuation">)</span>
+        inner_cylinder <span class="token operator">=</span> Part<span class="token punctuation">.</span>makeCylinder<span class="token punctuation">(</span>fp<span class="token punctuation">.</span>Radius1<span class="token punctuation">,</span> fp<span class="token punctuation">.</span>Height<span class="token punctuation">)</span>
+        <span class="token keyword">if</span> fp<span class="token punctuation">.</span>Radius1 <span class="token operator">==</span> fp<span class="token punctuation">.</span>Radius2<span class="token punctuation">:</span> <span class="token comment">#just make cylinder</span>
+            tube_shape <span class="token operator">=</span> outer_cylinder
+        <span class="token keyword">elif</span> fp<span class="token punctuation">.</span>Radius1 <span class="token operator">&lt;</span> fp<span class="token punctuation">.</span>Radius2<span class="token punctuation">:</span>
+            tube_shape <span class="token operator">=</span> outer_cylinder<span class="token punctuation">.</span>cut<span class="token punctuation">(</span>inner_cylinder<span class="token punctuation">)</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span> <span class="token comment">#invert rather than error out</span>
+            tube_shape <span class="token operator">=</span> inner_cylinder<span class="token punctuation">.</span>cut<span class="token punctuation">(</span>outer_cylinder<span class="token punctuation">)</span>
+
+        <span class="token keyword">if</span> <span class="token keyword">not</span> <span class="token builtin">hasattr</span><span class="token punctuation">(</span>fp<span class="token punctuation">,</span> <span class="token string">"positionBySupport"</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            self<span class="token punctuation">.</span>makeAttachable<span class="token punctuation">(</span>fp<span class="token punctuation">)</span>
+        fp<span class="token punctuation">.</span>positionBySupport<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        tube_shape<span class="token punctuation">.</span>Placement <span class="token operator">=</span> fp<span class="token punctuation">.</span>Placement
+
+        <span class="token comment">#BaseFeature (shape property of type Part::PropertyPartShape) is provided for us</span>
+        <span class="token comment">#with the PartDesign::FeaturePython and related classes, but it might be empty</span>
+        <span class="token comment">#if our object is the first object in the tree.  it's a good idea to check</span>
+        <span class="token comment">#for its existence in case we want to make type Part::FeaturePython, which won't have it</span>
+
+        <span class="token keyword">if</span> <span class="token builtin">hasattr</span><span class="token punctuation">(</span>fp<span class="token punctuation">,</span> <span class="token string">"BaseFeature"</span><span class="token punctuation">)</span> <span class="token keyword">and</span> fp<span class="token punctuation">.</span>BaseFeature <span class="token operator">!=</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> <span class="token string">"Subtractive"</span> <span class="token keyword">in</span> fp<span class="token punctuation">.</span>TypeId<span class="token punctuation">:</span>
+                full_shape <span class="token operator">=</span> fp<span class="token punctuation">.</span>BaseFeature<span class="token punctuation">.</span>Shape<span class="token punctuation">.</span>cut<span class="token punctuation">(</span>tube_shape<span class="token punctuation">)</span>
+            <span class="token keyword">else</span><span class="token punctuation">:</span>
+                full_shape <span class="token operator">=</span> fp<span class="token punctuation">.</span>BaseFeature<span class="token punctuation">.</span>Shape<span class="token punctuation">.</span>fuse<span class="token punctuation">(</span>tube_shape<span class="token punctuation">)</span>
+            full_shape<span class="token punctuation">.</span>transformShape<span class="token punctuation">(</span>fp<span class="token punctuation">.</span>Placement<span class="token punctuation">.</span>inverse<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>toMatrix<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token boolean">True</span><span class="token punctuation">)</span> <span class="token comment">#borrowed from gears workbench</span>
+            fp<span class="token punctuation">.</span>Shape <span class="token operator">=</span> full_shape
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            fp<span class="token punctuation">.</span>Shape <span class="token operator">=</span> tube_shape
+        <span class="token keyword">if</span> <span class="token builtin">hasattr</span><span class="token punctuation">(</span>fp<span class="token punctuation">,</span><span class="token string">"AddSubShape"</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token comment">#PartDesign::FeatureAdditivePython and</span>
+                                      <span class="token comment">#PartDesign::FeatureSubtractivePython have this</span>
+                                      <span class="token comment">#property but PartDesign::FeaturePython does not</span>
+                                      <span class="token comment">#It is the shape used for copying in pattern features</span>
+                                      <span class="token comment">#for example in making a polar pattern</span>
+            tube_shape<span class="token punctuation">.</span>transformShape<span class="token punctuation">(</span>fp<span class="token punctuation">.</span>Placement<span class="token punctuation">.</span>inverse<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>toMatrix<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token boolean">True</span><span class="token punctuation">)</span>
+            fp<span class="token punctuation">.</span>AddSubShape <span class="token operator">=</span> tube_shape
+
+<span class="token keyword">class</span> <span class="token class-name">PDTubeVP</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> obj<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">'''Set this object to the proxy object of the actual view provider'''</span>
+        obj<span class="token punctuation">.</span>Proxy <span class="token operator">=</span> self
+
+    <span class="token keyword">def</span> <span class="token function">attach</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span>vobj<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>vobj <span class="token operator">=</span> vobj
+
+    <span class="token keyword">def</span> <span class="token function">updateData</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> fp<span class="token punctuation">,</span> prop<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">'''If a property of the handled feature has changed we have the chance to handle this here'''</span>
+        <span class="token keyword">pass</span>
+
+    <span class="token keyword">def</span> <span class="token function">getDisplayModes</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span>obj<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">'''Return a list of display modes.'''</span>
+        modes<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span>
+        modes<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token string">"Flat Lines"</span><span class="token punctuation">)</span>
+        modes<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token string">"Shaded"</span><span class="token punctuation">)</span>
+        modes<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token string">"Wireframe"</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> modes
+
+    <span class="token keyword">def</span> <span class="token function">getDefaultDisplayMode</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">'''Return the name of the default display mode. It must be defined in getDisplayModes.'''</span>
+        <span class="token keyword">return</span> <span class="token string">"Flat Lines"</span>
+
+    <span class="token keyword">def</span> <span class="token function">setDisplayMode</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span>mode<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">'''Map the display mode defined in attach with those defined in getDisplayModes.\
+                Since they have the same names nothing needs to be done. This method is optional'''</span>
+        <span class="token keyword">return</span> mode
+
+    <span class="token keyword">def</span> <span class="token function">onChanged</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> vp<span class="token punctuation">,</span> prop<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">'''Here we can do something when a single property got changed'''</span>
+        <span class="token comment">#FreeCAD.Console.PrintMessage("Change property: " + str(prop) + "\n")</span>
+        <span class="token keyword">pass</span>
+
+    <span class="token keyword">def</span> <span class="token function">getIcon</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">'''Return the icon in XPM format which will appear in the tree view. This method is\
+                optional and if not defined a default icon is shown.'''</span>
+        <span class="token keyword">return</span> <span class="token triple-quoted-string string">"""
+            /* XPM */
+            static const char * ViewProviderBox_xpm[] = {
+            "16 16 6 1",
+            "   c None",
+            ".  c #141010",
+            "+  c #615BD2",
+            "@  c #C39D55",
+            "#  c #000000",
+            "$  c #57C355",
+            "        ........",
+            "   ......++..+..",
+            "   .@@@@.++..++.",
+            "   .@@@@.++..++.",
+            "   .@@  .++++++.",
+            "  ..@@  .++..++.",
+            "###@@@@ .++..++.",
+            "##$.@@$#.++++++.",
+            "#$#$.$$$........",
+            "#$$#######      ",
+            "#$$#$$$$$#      ",
+            "#$$#$$$$$#      ",
+            "#$$#$$$$$#      ",
+            " #$#$$$$$#      ",
+            "  ##$$$$$#      ",
+            "   #######      "};
+            """</span>
+
+    <span class="token keyword">def</span> <span class="token function">__getstate__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">'''When saving the document this object gets stored using Python's json module.\
+                Since we have some un-serializable parts here -- the Coin stuff -- we must define this method\
+                to return a tuple of all serializable objects or None.'''</span>
+        <span class="token keyword">return</span> <span class="token boolean">None</span>
+
+    <span class="token keyword">def</span> <span class="token function">__setstate__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span>state<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">'''When restoring the serialized object from document we have the chance to set some internals here.\
+                Since no data were serialized nothing needs to be done here.'''</span>
+        <span class="token keyword">return</span> <span class="token boolean">None</span></code></pre>
+<p>Ve şimdi nesneyi oluşturmak için makro dosyası içeriğini yazıyoruz:</p>
+<pre><code class="fenced-code-block language-python"><span class="token comment"># -*- coding: utf-8 -*-</span>
+
+<span class="token comment">#pdtube.FCMacro</span>
+<span class="token keyword">import</span> pdtube
+<span class="token comment">#above line needed if the class definitions above are place in another file: PDTube.py</span>
+<span class="token comment">#this is needed if the tube object is to remain parametric after restarting FreeCAD and loading</span>
+<span class="token comment">#a document containing the object</span>
+
+body <span class="token operator">=</span> FreeCADGui<span class="token punctuation">.</span>ActiveDocument<span class="token punctuation">.</span>ActiveView<span class="token punctuation">.</span>getActiveObject<span class="token punctuation">(</span><span class="token string">"pdbody"</span><span class="token punctuation">)</span>
+<span class="token keyword">if</span> <span class="token keyword">not</span> body<span class="token punctuation">:</span>
+    FreeCAD<span class="token punctuation">.</span>Console<span class="token punctuation">.</span>PrintError<span class="token punctuation">(</span><span class="token string">"No active body.\n"</span><span class="token punctuation">)</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    <span class="token keyword">from</span> PySide <span class="token keyword">import</span> QtGui
+    window <span class="token operator">=</span> FreeCADGui<span class="token punctuation">.</span>getMainWindow<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    items <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"Additive"</span><span class="token punctuation">,</span><span class="token string">"Subtractive"</span><span class="token punctuation">,</span><span class="token string">"Neither additive nor subtractive"</span><span class="token punctuation">]</span>
+    item<span class="token punctuation">,</span>ok <span class="token operator">=</span>QtGui<span class="token punctuation">.</span>QInputDialog<span class="token punctuation">.</span>getItem<span class="token punctuation">(</span>window<span class="token punctuation">,</span><span class="token string">"Select tube type"</span><span class="token punctuation">,</span><span class="token string">"Select whether you want additive, subtractive, or neither:"</span><span class="token punctuation">,</span>items<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token boolean">False</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> ok<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> item <span class="token operator">==</span> items<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+            className <span class="token operator">=</span> <span class="token string">"PartDesign::FeatureAdditivePython"</span>
+        <span class="token keyword">elif</span> item <span class="token operator">==</span> items<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+            className <span class="token operator">=</span> <span class="token string">"PartDesign::FeatureSubtractivePython"</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            className <span class="token operator">=</span> <span class="token string">"PartDesign::FeaturePython"</span> <span class="token comment">#not usable in pattern features, such as polar pattern</span>
+
+        tube <span class="token operator">=</span> FreeCAD<span class="token punctuation">.</span>ActiveDocument<span class="token punctuation">.</span>addObject<span class="token punctuation">(</span>className<span class="token punctuation">,</span><span class="token string">"Tube"</span><span class="token punctuation">)</span>
+        pdtube<span class="token punctuation">.</span>PDTube<span class="token punctuation">(</span>tube<span class="token punctuation">)</span>
+        pdtube<span class="token punctuation">.</span>PDTubeVP<span class="token punctuation">(</span>tube<span class="token punctuation">.</span>ViewObject<span class="token punctuation">)</span>
+        body<span class="token punctuation">.</span>addObject<span class="token punctuation">(</span>tube<span class="token punctuation">)</span> <span class="token comment">#optionally we can also use body.insertObject() for placing at particular place in tree</span></code></pre>
+<h2 class="atx" id="daha-fazla-bilgi-icin">Daha Fazla Bilgi için</h2>
+<p>Ek Sayfalar:</p>
+<ul>
+<li><a title="Scripted objects saving attributes" href="https://wiki.freecadweb.org/Scripted_objects_saving_attributes">Öznitelikleri kaydeden komut dosyası nesneleri</a></li>
+<li><a title="Scripted objects migration" href="https://wiki.freecadweb.org/Scripted_objects_migration">Komut dosyasıyla oluşturulmuş nesneleri taşıma/yükseltme</a></li>
+<li><a title="Scripted objects with attachment" href="https://wiki.freecadweb.org/Scripted_objects_with_attachment">Ekli komut dosyası nesneleri</a></li>
+<li><a title="Viewprovider" href="https://wiki.freecadweb.org/Viewprovider">Görünüm sağlayıcılar</a></li>
+</ul>
+<p>Komut dosyasıyla yazılmış nesneler hakkında ilginç forum konuları:</p>
+<ul>
+<li><a href="http://forum.freecadweb.org/viewtopic.php?f=22&amp;t=13740">Yükleme esnasında kaybolan Python nesnesi özellikleri</a></li>
+<li><a href="http://forum.freecadweb.org/viewtopic.php?t=12139">Yeni FeaturePython gridir</a></li>
+<li><a href="https://forum.freecadweb.org/viewtopic.php?f=18&amp;t=44009"><code>__getstate__</code> ve <code>__setstate__</code> ile ilgili açıklama, resmi belgeler</a>, <a href="https://docs.python.org/3/library/pickle.html#object.__getstate__">official documentation</a></li>
+<li><a href="https://forum.freecadweb.org/viewtopic.php?f=18&amp;t=13460&amp;start=20#p109709">Eigenmode frekansı her zaman 0?</a></li>
+<li><a href="https://forum.freecadweb.org/viewtopic.php?f=22&amp;t=21330">python özelliğinin setEdit'e düzgün bir şekilde nasıl uygulanır?</a></li>
+</ul>
+<p>Burada sunulan örneklere ek olarak, daha fazla örnek için FreeCAD kaynak kodu <a href="https://github.com/FreeCAD/FreeCAD/blob/master/src/Mod/TemplatePyMod/FeaturePython.py">src/Mod/TemplatePyMod/FeaturePython.py</a>'ye bakın.</p>
+
+<p>Kaynak: <a href="https://wiki.freecadweb.org/Scripted_objects">Scripted objects - FreeCAD Documentation</a></p>
+
+                <p> <a href="FreeCAD_05_Topolojik_Veri_Kodlamasi.html" class="button primary small"> &#8592 Önceki Bölüm </a> </p>
+
+                      </div>
+
+
+				<!-- Footer -->
+					<section id="footer">
+						<div class="container">
+							<ul class="copyright">
+								<li>&copy; Her hakkı saklıdır.</li>
+							</ul>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
