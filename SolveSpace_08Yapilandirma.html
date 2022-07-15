@@ -90,19 +90,19 @@
                     <h2  id="izgara-yakalama-mesafesiaral%C4%B1%C4%9F%C4%B1">Izgara Yakalama Mesafesi/Aralığı</h2>
 
                     <p>Bu, ızgara yakalama mesafesinin ( <strong>Snap Grid Spacing</strong> ) inç veya milimetre cinsinden derecesini belirtir. Varsayılan olarak ızgara görüntülenmez; <code>Görünüm &#x2192; Yakalama Izgarasını Göster</code> seçilerek gösterilebilir. Noktalar hiçbir zaman ızgaraya otomatik olarak tutturulmaz. Bir noktayı, ızgaraya tutturmak için o noktayı seçin ve ardından <code>Düzen &#x2192; Seçimi Izgaraya Tuttur</code>&apos;u seçin (Kısayol tuşu: <code>. [nokta]</code>). Yorumlar da (<code>Kısıtla&#x2192; Yorum</code>) (Kısayol tuşu: <code>; [noktalı virgül]</code>) ızgaraya aynı şekilde tutturulabilir.</p>
-                    <h2  id="d%C4%B1%C5%9Fa-aktar%C4%B1m-ol%C3%A7ek-katsay%C4%B1s%C4%B1">Dışa Aktarım Olçek Katsayısı</h2>
+                    <h2  id="d%C4%B1%C5%9Fa-aktar%C4%B1m-ol%C3%A7ek-katsay%C4%B1s%C4%B1">Dışa Aktarım Ölçek Katsayısı</h2>
 
                     <p>Dahili olarak, SolveSpace uzunlukları milimetre cinsinden temsil eder. Geometriyi dışa aktarmadan önce, bu uzunluklar, dışa aktarma ölçek katsayısına ( <strong>Export Scale Factor</strong> ) bölünür. Bu ölçek katsayısı, dışa aktarılan dosyanın birimlerini belirler.</p>
                     <p>Ölçek katsayısı 1&apos;e eşit olarak ayarlanırsa, dışa aktarılan dosyalar milimetre birimindedir. Ölçek katsayısı 25.4 olarak ayarlanırsa, 1 inç = 25,4 mm olduğundan dolayı, dışa aktarılan dosyalar inç biriminde olacaktır.</p>
                     <p>SolveSpace Sağ-El koordinat sisteminde çalışır. Ölçek faktörü negatifse, dışa aktarılan dosya Sol-El bir koordinat sisteminde görünür (böylece sağ yönlü bir vida dişi sol yönlü olur ve metin yansıtılmış/aynalanmış olarak görünür).</p>
                     <p><img class="image fit" src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/56%20DisaAktarim-OlcekKatsayisi.png" alt="Dışa Aktarım Ölçek Katsayısı (Faktörü)"></p>
-                    <h2  id="kesici-yar%C4%B1%C3%A7ap%C4%B1-oteleme-miktar%C4%B1">Kesici Yarıçapı Oteleme Miktarı</h2>
+                    <h2  id="kesici-yar%C4%B1%C3%A7ap%C4%B1-oteleme-miktar%C4%B1">Kesici Yarıçapı Öteleme Miktarı</h2>
 
                     <p>Bir 2b (2d) görünümü veya kesiti dışa aktarırken, bu seçenek kesici yarıçap telafi miktarı (tolerans) ( <strong>Cutter Radius Offset</strong> ) uygulamak için kullanılabilir. Dışa aktarılan geometrideki tüm eğriler, belirtilen yarıçapla ötelenir/kaydırılır. Bu, bazı durumlarda özel CAM yazılımı olmadan çalışmayı mümkün kılabilir.</p>
                     <p>Kesici yarıçapı, mevcut moda göre inç veya milimetre olarak belirtilir. Kesici yarıçap telafisini devre dışı bırakmak için bu öteleme / kaydırma değerini (ofseti) sıfıra ayarlayın.</p>
                     <p>Kesici yarıçap telafi değeri, yalnız kırıklı doğrusal parçalarda uygulanabilir. Bu, &quot;<code>export curves as piecewise linear</code> (<em>eğrileri, parçalı doğrular olarak dışa aktar</em>)&quot; &quot;<strong>hayır</strong>&quot; olarak ayarlansa bile, çıktı dosyasında eğrilerin (daireler, Beziers, vb.) çizgi parçaları olarak yaklaşılacağı anlamına gelir.</p>
                     <p><img class="image fit" src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/57%20Kesici%20Y.Cap%20Otele.png" alt="Kesici Yarıçapı Öteleme Miktarı"></p>
-                    <h2  id="2b-2d-u%C3%A7genleri-g%C3%B6lgeli-olarak-d%C4%B1%C5%9Fa-aktar">2b (2d) Uçgenleri Gölgeli olarak Dışa Aktar</h2>
+                    <h2  id="2b-2d-u%C3%A7genleri-g%C3%B6lgeli-olarak-d%C4%B1%C5%9Fa-aktar">2b (2d) Üçgenleri Gölgeli olarak Dışa Aktar</h2>
 
                     <p>Parçanın görünümü dışa aktarılırken, kullanıcı yalnızca parçanın kenarlarını dışa aktarabilir (tel kafes veya gizli çizgileri kaldırılmış çizim üretmek için) veya kullanıcı parçanın yüzlerinin rengini ve aydınlatmasını göstermek için düz gölgeli yüzeyleri dışa aktarabilir.</p>
                     <p>Tüm dışa aktarma dosya biçimleri, gölgeli üçgenleri desteklemez; Gölgeli görünüm desteğini şu anda SVG, EPS ve PDF dosya biçimleri destekliyor, ancak DXF ve HPGL desteklemiyor.</p>
@@ -116,11 +116,11 @@
 
                     <p>Bu ayar ( <code>Export Canvas Size</code> ), dışa aktarılan herhangi bir 2b (2d) geometrisi için tuval boyutunu (çizim alanı, sınırı, çerçeveyi) belirtir. Örneğin, bir PDF dosyasındaki tuval boyutu kağıt boyutudur ve bir PostScript dosyasındaki tuval boyutu EPS sınır kutusudur (BoundingBox). Bu seçenek, iki yoldan biriyle belirtilebilir: ya sabit bir boyut olarak ya da dışa aktarılan geometrinin etrafındaki bir dizi kenar boşluğu olarak.</p>
                     <p><img class="image fit" src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/60%20Tuval%20Boyutu.png" alt="Tuval Boyutu Ayarı"></p>
-                    <h2  id="d%C4%B1%C5%9Fa-aktar%C4%B1lan-beyaz-cizgileri-d%C3%BCzelt">Dışa Aktarılan Beyaz Cizgileri Düzelt</h2>
+                    <h2  id="d%C4%B1%C5%9Fa-aktar%C4%B1lan-beyaz-cizgileri-d%C3%BCzelt">Dışa Aktarılan Beyaz Çizgileri Düzelt</h2>
 
                     <p>Varsayılan olarak, SolveSpace siyah bir arka plan üzerine beyaz çizgiler çizer. Ancak çoğu dışa aktarma dosyası biçimi, beyaz renkli bir arka plan varsayar; Bu, dışa aktarılan beyaz çizgilerin okunaksız olacağı anlamına gelir. Varsayılan olarak, SolveSpace, bu tür bir dosya biçimini dışa aktarırken, herhangi bir beyaz (yaklaşık %75 griden daha açık) renkleri siyah olarak yeniden oluşturacaktır. Bu seçenek (<code>Fix White Exported Lines</code>) ile bu davranış devre dışı bırakılabilir.</p>
                     <p><img class="image fit" src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/61%20BeyazCizgileri%20Duzelt.png" alt="Dışa Aktarılan Beyaz Çizgileri Düzelt"></p>
-                    <h2  id="u%C3%A7genlerin-arka-y%C3%BCzeylerini-k%C4%B1rm%C4%B1z%C4%B1yla-g%C3%B6ster">Uçgenlerin Arka Yüzeylerini Kırmızıyla Göster</h2>
+                    <h2  id="u%C3%A7genlerin-arka-y%C3%BCzeylerini-k%C4%B1rm%C4%B1z%C4%B1yla-g%C3%B6ster">Üçgenlerin Arka Yüzeylerini Kırmızıyla Göster</h2>
 
                     <p>SolveSpace her zaman katı kabuklarla çalışır. Bu, normal çalışmada, yalnızca bir yüzeyin dışının görünür olması gerektiği anlamına gelir.</p>
                     <p>Kendi kendisi ile kesişen bir kabuk çizilirse, iç yüzeyler açığa çıkabilir. Grafik kartının üçgenleri nasıl oluşturduğuna bağlı olarak, bir iç yüzeyden birkaç tane başıboş piksel &quot;görünebilir&quot;. Bu ayar (<code>Draw Triangle Back Faces in Red</code>), bu yüzeylerin gözardı ediplip edilmeyeceği veya kırmızıyla vurgulanıp vurgulanmayacağını belirler.</p>
