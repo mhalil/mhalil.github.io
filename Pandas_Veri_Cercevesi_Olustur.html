@@ -55,10 +55,10 @@
                 
                 <div class="container">
 
-<h2 class="atx" id="import-fonksiyonu">import Fonksiyonu</h2>
+<h3 class="atx" id="import-fonksiyonu">import Fonksiyonu</h3>
 <p>Öncelikle <strong>Pandas</strong> Kütüphanesini çalışmamıza dahil edip (içe aktarıp), kodlama esnasında hızlı olması adına bu kütüphaneye <strong>pd</strong> adını atayalım;</p>
 <pre><code class="fenced-code-block">import pandas as pd</code></pre>
-<h2 class="atx" id="dataframe-fonksiyonu">DataFrame() Fonksiyonu</h2>
+<h3 class="atx" id="dataframe-fonksiyonu">DataFrame() Fonksiyonu</h3>
 <p>Veri Çerçevesi (Data Frame) Oluşturmak ya da Dönüştürmek için <strong>DataFrame()</strong> fonksiyonunu kullanıyoruz. Veri Çerçevesine dönüştürmek istediğimiz veriyi, parantez içine, parametre olarak yazmalıyız.</p>
 <p><strong><em>pd.DataFrame(dosya, iterable veri ya da sözlük yapısı)</em></strong></p>
 <p>örneğin bir <strong>sözlük (dict)</strong> yapısı oluşturup bu yapıyı <strong>Veri Çerçevesi</strong>ne (<strong>Data Frame</strong>'e) dönüştürelim;</p>
@@ -145,9 +145,9 @@ veri = pd.DataFrame(sozluk)</code></pre>
 </div>
 
 <p>Gördüğünüz gibi verimiz, <strong>DataFrame()</strong> fonksiyonu ile, SQL ya da Excel tablosuna benzer şekilde satır ve sütunlardan oluşan yapıya dönüştürüldü. Artık bu yapıyı yönetmek ve analiz etmek oldukça kolaylaşmış oldu.</p>
-<h1 class="atx" id="harici-dosyalardan-veri-cercevesi-olustur">Harici Dosyalardan Veri Çerçevesi Oluştur</h1>
-<h2 class="atx" id="csv-dosyasini-ice-aktarmak">CSV Dosyasını İçe Aktarmak</h2>
-<h2 class="atx" id="read_csv-fonksiyonu">read_csv() Fonksiyonu</h2>
+<h2 class="atx" id="harici-dosyalardan-veri-cercevesi-olustur">Harici Dosyalardan Veri Çerçevesi Oluştur</h2>
+<h3 class="atx" id="csv-dosyasini-ice-aktarmak">CSV Dosyasını İçe Aktarmak</h3>
+<h3 class="atx" id="read_csv-fonksiyonu">read_csv() Fonksiyonu</h3>
 <p>csv uzantılı dosyaların içeriğini çalışmalarımıza eklemek/dahil etmek istersek kullanabileceğimiz fonksiyon, <strong>read_csv()</strong> fonksiyonudur.</p>
 <p>örneğin <strong>nba.csv</strong> isimli dosyasınının içeriğini çalışmamıza aktaralıp, veri çerçevesine dönüştürelim;</p>
 <pre><code class="fenced-code-block">import pandas as pd
@@ -308,7 +308,7 @@ print(nba_csv)</code></pre>
 <p>458 rows × 9 columns</p>
 </div>
 
-<h2 class="atx" id="index_col-parametresi">index_col Parametresi</h2>
+<h3 class="atx" id="index_col-parametresi">index_col Parametresi</h3>
 <p>Harici kaynaktan veri alarak oluşturulan veri çerçevesinin indeks değerini, istediğimiz sütuna eşitleyebiliriz. Bunu yapmak için <strong>index_col</strong> parametresini kullanmalıyız. Örneğin NBA oyuncularının verileri barındıran CSV uzantılı dosyanın <strong>Name</strong> Sütununu, veri çerçevemizin <strong>indeks sütunu</strong> haline getirip veri çerçevemize göz atalım.</p>
 <pre><code class="fenced-code-block">nba_csv = pd.read_csv("Veri_Setleri/nba.csv", index_col="Name")
 print(nba_csv.head())</code></pre>
@@ -400,7 +400,7 @@ print(nba_csv.head())</code></pre>
 </div>
 
 <p>Gördüğünüz gibi artık <strong>indeks bilgileri</strong>, <strong>Oyuncu isimleri</strong>ne dönüşmüş oldu.</p>
-<h2 class="atx" id="read_table-fonksiyonu">read_table() fonksiyonu</h2>
+<h3 class="atx" id="read_table-fonksiyonu">read_table() fonksiyonu</h3>
 <p><strong>read_table()</strong> fonksiyonu ile <strong>csv</strong> uzantılı dosyalar içe aktarıldığında, dosyanın her satırı, tablonun bir sütununa yazılır. Yani tabloda 2 sütun oluşturulur birinde index bilgisi, ikinci sütunda ise <strong>csv</strong> dosyasının satırlarındaki bilgiler bulunur.</p>
 <pre><code class="fenced-code-block">nba = pd.read_table("Veri_Setleri/nba.csv")
 print(nba)</code></pre>
@@ -463,7 +463,7 @@ print(nba)</code></pre>
 <p>458 rows × 1 columns</p>
 </div>
 
-<h2 class="atx" id="delimiter-parametresi">delimiter parametresi</h2>
+<h3 class="atx" id="delimiter-parametresi">delimiter parametresi</h3>
 <p>CSV dosyaları <strong>read_table()</strong> fonksiyonu ile içe aktarılırken <strong>delimiter = ","</strong> parametresi eklenirse, dosya içeriği, <strong>read_csv</strong> fonksiyonu ile aynı çıktıyı verir. Satırlardaki veriler, <strong>","</strong> virgül kısımlarından ayrılarak, ayrı sütunlara yazılır.</p>
 <pre><code class="fenced-code-block">nba = pd.read_table("Veri_Setleri/nba.csv", delimiter=",")
 print(nba)</code></pre>
@@ -622,8 +622,8 @@ print(nba)</code></pre>
 <p>458 rows × 9 columns</p>
 </div>
 
-<h2 class="atx" id="excel-dosyasini-ice-aktarmak">Excel dosyasını içe aktarmak</h2>
-<h2 class="atx" id="read_excel-fonksiyonu">read_excel() fonksiyonu</h2>
+<h3 class="atx" id="excel-dosyasini-ice-aktarmak">Excel dosyasını içe aktarmak</h3>
+<h3 class="atx" id="read_excel-fonksiyonu">read_excel() fonksiyonu</h3>
 <p><strong>Excel</strong> ve <strong>Calc (Libre Ofis)</strong> programlarıyla oluşturulmuş tabloları çalışmamıza dahil etmek için <strong>read_excel()</strong> fonksiyonunu kullanmalıyız.</p>
 <p><u>Bu fonksiyon;</u></p>
 <ul>
@@ -753,8 +753,8 @@ print(dogumlar.head())</code></pre>
 </div>
 
 <p><strong>Excel</strong> ve <strong>Calc</strong> tabloları ile çalışma konusunu detaylı olarak inceledik. İlgili bağlantıya <a href="Excel_Dosyasi_ile_Calis.ipynb">buradan</a> erişebilirsiniz.</p>
-<h2 class="atx" id="json-dosyasini-ice-aktarmak">JSON dosyasını içe aktarmak</h2>
-<h2 class="atx" id="read_json-fonksiyonu">read_json() Fonksiyonu</h2>
+<h3 class="atx" id="json-dosyasini-ice-aktarmak">JSON dosyasını içe aktarmak</h3>
+<h3 class="atx" id="read_json-fonksiyonu">read_json() Fonksiyonu</h3>
 <p><strong>read_json()</strong> fonksiyonu ile <strong>json</strong> uzantılı dosyaları çalışmalarınıza dahil edebilirsiniz.</p>
 <pre><code class="fenced-code-block">veri_json = pd.read_json("Veri_Setleri/json_verisi.json")
 print(veri_json)</code></pre>
@@ -952,8 +952,8 @@ print(df)</code></pre>
 <p>161 rows × 7 columns</p>
 </div>
 
-<h2 class="atx" id="url-ya-da-html-dosyasi-ice-aktarmak">URL ya da HTML dosyası içe aktarmak</h2>
-<h2 class="atx" id="read_html-fonksiyonu">read_html() Fonksiyonu</h2>
+<h3 class="atx" id="url-ya-da-html-dosyasi-ice-aktarmak">URL ya da HTML dosyası içe aktarmak</h3>
+<h3 class="atx" id="read_html-fonksiyonu">read_html() Fonksiyonu</h3>
 <p><strong>read_html()</strong> fonksiyonu ile web sitelerinde ya da htm/html uzantılı dosyalardaki tabloları, çalışmalarınıza dahil edebilirsiniz. Öncelikle veri almak istediğimiz sayfanın içerisinde kaç adet tablo olduğunu bulalım.</p>
 <pre><code class="fenced-code-block">url_tablo = pd.read_html("https://tr.wikipedia.org/wiki/Van")
 print(f"Sayfada bulunan toplam tablo sayısı: {len(url)}")</code></pre>
@@ -1357,8 +1357,8 @@ print(nba2)</code></pre>
 </div>
 
 <p>Pandas kütüphanesi sayesinde, <strong>Team</strong> Sütunundaki birleştirilmiş hücrelerde bulunan veriler, hücrelere ayrı ayrı kopyalanarak düzgün, bir veri çevçevesi oluşturmamızı sağlamış oldu.</p>
-<h2 class="atx" id="panodan-ice-aktarmak">Panodan İçe Aktarmak</h2>
-<h2 class="atx" id="read_clipboard-fonksiyonu">read_clipboard() Fonksiyonu</h2>
+<h3 class="atx" id="panodan-ice-aktarmak">Panodan İçe Aktarmak</h3>
+<h3 class="atx" id="read_clipboard-fonksiyonu">read_clipboard() Fonksiyonu</h3>
 <p><strong>read_clipboard()</strong> fonksiyonu ile panoya kopyaladığımız veriyi (örneğin bir Excel tablosu ya da websitesindeki tabloyu) Veri Çerçevesine dönüştürebiliriz.</p>
 <pre><code class="fenced-code-block">pano = pd.read_clipboard()
 print(pano)</code></pre>
