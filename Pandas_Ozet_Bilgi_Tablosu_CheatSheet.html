@@ -1,0 +1,265 @@
+<!DOCTYPE HTML>
+<!--
+	Read Only by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Pandas Özet Bilgi Tablosu (CheatSheet) - mhalil.github.io</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<section id="header">
+				<header>
+                    <span class="image avatar"><a href="index.html"><img src="images/avatar.jpg" alt="" /></a></span>
+					<h1 id="logo"><a href="index.html">Mustafa Halil</a></h1>
+					<p>mhalil.github.io</p>
+				</header>
+				<nav id="nav">
+					<ul>
+						<li><a href="Python-Pandas.html" class="active">Python - Pandas</a></li>
+						<li><a href="Freecad.html">FreeCAD</a></li>
+						<li><a href="SolveSpace.html">SolveSpace</a></li>
+						<li><a href="Blender.html">Blender</a></li>
+                        <li><a href="Librecad.html">LibreCAD</a></li>
+					</ul>
+				</nav>
+				<footer>
+					<ul class="icons">
+						<li><a href="https://twitter.com/AcikKaynakci" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="https://github.com/mhalil" class="icon brands fa-github"><span class="label">Github</span></a></li>
+						<li><a href="mailto:m.halil@yahoo.com" class="icon solid fa-envelope"><span class="label">E-Posta</span></a></li>
+					</ul>
+				</footer>
+			</section>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+                        
+						<!-- SolveSpace -->
+							<section id="solvespace">
+								<div class="container">
+                                    <h2  id="bolum-basligi">Pandas Özet Bilgi Tablosu (CheatSheet)</h2>
+                                    <p> Pandas Veri Çerçevesi (Data Frame) komutlarını (fonksiyon, metot, parametre) bir yerde toplayarak ihtiyaç halinde, farklı konulara ait komutlara daha hızlı ulaşabileceğimiz bir <b>Başvuru Kılavuzu / Özet Bilgi Tablosu (CheatSheet)</b> oluşturmaya çalışıyorum. Başvuru kılavuzunu / Özet Bilgi Tablosunu (CheatSheet) oluşturuken, komutları, <b>Pandas Veri Çerçevesi (Data Frame) Konu Başlıkları</b>na göre kategorize etmeyi planlıyorum.</p>
+                                    <p>Sayfaya Yeni Konu başlıkları eklendikçe, Özet Bilgi Tablosunu da güncellemeye gayret edeceğim. <br>
+                                    Şuana kadar oluşturduğum <b>Başvuru Kılavuzu / Özet Bilgi Tablosu (CheatSheet)</b> aşağıda istifadenize sunulmuştur. <br>
+                                    Başvuru Kılavuzu / Özet Bilgi Tablosunun (CheatSheet) <b>PDF uzantılı</b> halini aşağıdaki bağlantıdan indirebilirsiniz.</p>
+                                    <p>
+                                        <li><a href="Pandas_Veri_Cercevesi_Ozet_Bilgileri_(CheatSheet).pdf"><strong>PDF Dosyası:</strong> Pandas Özet Bilgi Tablosu (CheatSheet)</a></li>
+                                    </p>
+                                                                                     
+                                </div>
+							</section>
+					</div>
+                
+                <div class="container">
+                    
+                    <table cellspacing="0" border="0">
+                        <colgroup width="518"></colgroup>
+                        <colgroup width="513"></colgroup>
+                        <tr>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" colspan=2 height="65" align="left" valign=middle bgcolor="#DCEDC8"><b><font face="Fira Sans" size=3>.:: AÇIKLAMA ::.</font></b></td>
+                            </tr>
+                        <tr>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" height="67" align="left" valign=middle><font face="Source Code Pro" size=3>import pandas as pd</font></td>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" align="left" valign=middle><font face="Roboto" size=3>pd : pandas kütüphanesi için atanmış kısaltmayı temsil eder.</font></td>
+                        </tr>
+                        <tr>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" height="87" align="left" valign=middle><font face="Source Code Pro" size=3>df = pd.DataFrame(Veri_Yapısı)<br>df = pd.read_excel(“excel.xlsx”)</font></td>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" align="left" valign=middle><font face="Roboto" size=3>df : Oluşturulan Veri Çerçevesine (Data Frame’e) atanan kısaltmayı temsil eder. Bu kısaltmalar aşağıda kullanılmıştır.</font></td>
+                        </tr>
+                        <tr>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" colspan=2 height="65" align="left" valign=middle bgcolor="#DCEDC8"><b><font face="Fira Sans" size=3>.:: VERİ ÇERÇEVESİ OLUŞTUR ::.</font></b></td>
+                            </tr>
+                        <tr>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" height="65" align="left" valign=middle bgcolor="#FFF9C4"><b><font face="Fira Sans" size=3>Fonksiyon / Metot / Parametre</font></b></td>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" align="left" valign=middle bgcolor="#FFF9C4"><b><font face="Fira Sans" size=3>Açıklama</font></b></td>
+                        </tr>
+                        <tr>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" height="85" align="left" valign=middle><font face="Source Code Pro" size=3>pd.DataFrame(dosya, nesne ya da sözlük)</font></td>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" align="left" valign=middle><font face="Roboto" size=3>Bir Dosyadan, İterable Nesneden ya da Sözlük yapısından Veri Çerçevesi (Data Frame) Oluştur.</font></td>
+                        </tr>
+                        <tr>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" height="67" align="left" valign=middle><font face="Source Code Pro" size=3>pd.read_csv(“dosya_adı.csv”)</font></td>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" align="left" valign=middle><font face="Roboto" size=3>CSV dosyasını içe aktararak Veri Çerçevesi Oluştur.</font></td>
+                        </tr>
+                        <tr>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" height="104" align="left" valign=middle><font face="Source Code Pro" size=3>pd.read_excel(“dosya_adı.uzantı”)</font></td>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" align="left" valign=middle><font face="Roboto" size=3>Excel, Calc dosyalarını içe aktararak Veri Çerçevesi Oluştur.<br>Bu fonksiyon xls, xlsx, xlsm, xlsb, odf, ods ve odt uzantılı dosyaları destekler.</font></td>
+                        </tr>
+                        <tr>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" height="67" align="left" valign=middle><font face="Source Code Pro" size=3>pd.read_sql(query,connection_object)</font></td>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" align="left" valign=middle><font face="Roboto" size=3>Bir SQL veritabanını içe aktararak Veri Çerçevesi Oluştur.</font></td>
+                        </tr>
+                        <tr>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" height="85" align="left" valign=middle><font face="Source Code Pro" size=3>pd.read_html(url)</font></td>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" align="left" valign=middle><font face="Roboto" size=3>Bir URL (websitesi) ya da yerel html dosyasından tablo içe aktararak Veri Çerçevesi Oluştur.</font></td>
+                        </tr>
+                        <tr>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" height="67" align="left" valign=middle><font face="Source Code Pro" size=3>pd.read_json(dosya_adı.json)</font></td>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" align="left" valign=middle><font face="Roboto" size=3>JSON biçimindeki dosyayı içe aktararak Veri Çerçevesi Oluştur.</font></td>
+                        </tr>
+                        <tr>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" height="67" align="left" valign=middle><font face="Source Code Pro" size=3>pd.read_table(dosya_adı.csv)</font></td>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" rowspan=2 align="left" valign=middle><font face="Roboto" size=3>CSV dosyasını tablo olarak içe aktararak Veri Çerçevesi Oluştur. delimiter parametresi ile, tablo verilerini sütunlara bölebiliriz. Aksi halde her satırdaki veri bir sütuna yazılır.</font></td>
+                        </tr>
+                        <tr>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" height="67" align="left" valign=middle><font face="Source Code Pro" size=3>pd.read_table(“dosya_adı.csv”, delimiter=”,”)</font></td>
+                            </tr>
+                        <tr>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" height="85" align="left" valign=middle><font face="Source Code Pro" size=3>pd.read_clipboard()</font></td>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" align="left" valign=middle><font face="Roboto" size=3>CTRL + C ile Panoya kopyaladığımız veriyi (örneğin bir Excel tablosu ya da websitesindeki tabloyu) Veri Çerçevesine dönüştürür.</font></td>
+                        </tr>
+                        <tr>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" colspan=2 height="65" align="left" valign=middle bgcolor="#DCEDC8"><b><font face="Fira Sans" size=3>.:: VERİ ÇERÇEVESİNİ KEŞFET ::.</font></b></td>
+                            </tr>
+                        <tr>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" height="65" align="left" valign=middle bgcolor="#FFF9C4"><b><font face="Fira Sans" size=3>Fonksiyon / Metot / Parametre</font></b></td>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" align="left" valign=middle bgcolor="#FFF9C4"><b><font face="Fira Sans" size=3>Açıklama</font></b></td>
+                        </tr>
+                        <tr>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" height="104" align="left" valign=middle><font face="Source Code Pro" size=3>df.head() / df.head(n)</font></td>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" align="left" valign=middle><font face="Roboto" size=3>Veri Çerçevesinin ilk n satırını görüntüler. Parantez içerisine sayı yazmazsak ilk 5 satırı görüntüler. Böylece Veri Çerçevesi hakkında ön bilgi edinmemizi sağlar.</font></td>
+                        </tr>
+                        <tr>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" height="85" align="left" valign=middle><font face="Source Code Pro" size=3>df.tail() / df.tail(n)</font></td>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" align="left" valign=middle><font face="Roboto" size=3>Veri Çerçevesinin son n satırını görüntüler. Parantez içerisine sayı yazmazsak ilk 5 satırı görüntüler.</font></td>
+                        </tr>
+                        <tr>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" height="67" align="left" valign=middle><font face="Source Code Pro" size=3>df.columns</font></td>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" align="left" valign=middle><font face="Roboto" size=3>Veri Çerçevelerinin başlık satırını çıktı olarak verir / görüntüler.</font></td>
+                        </tr>
+                        <tr>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" height="67" align="left" valign=middle><font face="Source Code Pro" size=3>len(df)</font></td>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" align="left" valign=middle><font face="Roboto" size=3>Veri Çerçevesinin kaç satırdan oluştuğu bilgisini döndürür.</font></td>
+                        </tr>
+                        <tr>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" height="104" align="left" valign=middle><font face="Source Code Pro" size=3>df.info()</font></td>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" align="left" valign=middle><font face="Roboto" size=3>Veri Çerçevesinin satır ve sütun sayısı, başlık tipleri (sayı, metin, ...vb) ve doluluk oranı (boş olmayan hücre sayısı) hakkında bilgi görüntüler.</font></td>
+                        </tr>
+                        <tr>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" height="67" align="left" valign=middle><font face="Source Code Pro" size=3>df.dtypes</font></td>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" align="left" valign=middle><font face="Roboto" size=3>Veri çerçevesinin başlık tiplerini görüntüler.</font></td>
+                        </tr>
+                        <tr>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" height="104" align="left" valign=middle><font face="Source Code Pro" size=3>df.describe()</font></td>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" align="left" valign=middle><font face="Roboto" size=3>Sayısal veri barındıran sütunlar hakkında detaylı matematiksel bilgiler verir. (Kaç adet veri olduğu, ortalamaları, en küçük ve en büyük sayı,...vb)</font></td>
+                        </tr>
+                        <tr>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" height="67" align="left" valign=middle><font face="Source Code Pro" size=3>df.shape</font></td>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" align="left" valign=middle><font face="Roboto" size=3>Veri Çerçevesinin satır ve sütun bilgisini döndürür/görüntüler.</font></td>
+                        </tr>
+                        <tr>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" height="67" align="left" valign=middle><font face="Source Code Pro" size=3>df.index</font></td>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" align="left" valign=middle><font face="Roboto" size=3>Veri Çerçevesinin indeks isimlerini döndürür/görüntüler.</font></td>
+                        </tr>
+                        <tr>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" height="85" align="left" valign=middle><font face="Source Code Pro" size=3>df.isnull().any()</font></td>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" align="left" valign=middle><font face="Roboto" size=3>Veri Çerçevesinin herhangi bir boş değer içerip içermediğini görüntüler.</font></td>
+                        </tr>
+                        <tr>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" colspan=2 height="65" align="left" valign=middle bgcolor="#DCEDC8"><b><font face="Fira Sans" size=3>.:: VERİ ÇERÇEVESİNİ DÜZENLE ::.</font></b></td>
+                            </tr>
+                        <tr>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" height="65" align="left" valign=middle bgcolor="#FFF9C4"><b><font face="Fira Sans" size=3>Fonksiyon / Metot / Parametre</font></b></td>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" align="left" valign=middle bgcolor="#FFF9C4"><b><font face="Fira Sans" size=3>Açıklama</font></b></td>
+                        </tr>
+                        <tr>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" height="123" align="left" valign=middle><font face="Source Code Pro" size=3>df = pd.read_excel(“dosya_adı.xls” ,index_col=0)</font></td>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" align="left" valign=middle><font face="Roboto" size=3>Veri Çerçevesi (Data Frame) oluştururken, sütunlardan birini, indeks değeri olarak ayarlamak/atamak için index_col parametresi kullanılır. Parametreye, değer olarak, indis olarak atanacak Sütunun indis değeri yazılır.</font></td>
+                        </tr>
+                        <tr>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" height="104" align="left" valign=middle><font face="Source Code Pro" size=3>df.set_index(“Sütun_adı”)</font></td>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" align="left" valign=middle><font face="Roboto" size=3>Veri Çerçevesi oluşturduktan sonra, istediğimiz zaman indeks değerlerini değiştiremek / atamak için set_index() parametresi kullanılır.</font></td>
+                        </tr>
+                        <tr>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" height="87" align="left" valign=middle><font face="Source Code Pro" size=3>df = pd.read_excel(“dosya_adı.xls”, usecols = [“Sütun1”, “Sütun5”, Sütun9”]</font></td>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" rowspan=2 align="left" valign=middle><font face="Roboto" size=3>Veri Çerçevesi (DataFrame) oluştururken, sadece istediğimiz sütunları kullanmak istediğimizde usecols parametresini kullanmalıyız. Değer olarak sütun adı ya da sütun indisi yazılabilir.</font></td>
+                        </tr>
+                        <tr>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" height="67" align="left" valign=middle><font face="Source Code Pro" size=3>df = pd.read_excel(“dosya_adı.xls”, usecols = [2,3,8]</font></td>
+                            </tr>
+                        <tr>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" height="104" align="left" valign=middle><font face="Source Code Pro" size=3>df = pd.read_excel(“dosya_adı.xls”, skiprows = [0,5,6]</font></td>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" align="left" valign=middle><font face="Roboto" size=3>Veri Çerçevesi (DataFrame) oluştururken, atlamak / göz ardı etmek Veri Çerçevesine dahil etmemek için, skiprows parametresi kullanmalıyız.</font></td>
+                        </tr>
+                        <tr>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" height="142" align="left" valign=middle><font face="Source Code Pro" size=3>df[&quot;Yeni_Sütun_Adı&quot;] = Atanacak_Değerler<br><br>Örnek:<br>df[“Toplam”] = df[“Sütun1”] + df[“Sütun2”]</font></td>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" align="left" valign=middle><font face="Roboto" size=3>Veri Çerçevesi (DataFrame) Yeni Sütun eklemek ve bu sütuna Değer Atamak için bu yapıyı kullanabiliriz. Atanacak_Değerler, Liste yapısında olabileceği gibi, Diğer sütunların kopyası, matematik, mantık ya da karşılaştırma operatörleri ile belirlenmiş halleri de olabilir.</font></td>
+                        </tr>
+                        <tr>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" height="161" align="left" valign=middle><font face="Source Code Pro" size=3>df.drop(&quot;Satır ya da Sütun Adı&quot;, axis=0/1, inplace=True/False)</font></td>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" align="left" valign=middle><font face="Roboto" size=3>Veri Çerçevesinden (Data Frame’den)  Satır ya da Sütun Silmek istediğimizde drop() metodunu kullanabiliriz.<br>axis = 0 (Sıfır) Satırları,   axis = 1 (Bir) Sütunları temsil eder.<br>inplace parametresi, gerçekleştirilen silme işleminin kalıcı ya da geçici olmasını ayarladığımız kısımdır. inplace = True yazılırsa, yapılan işlem kalıcı hale gelecektir.</font></td>
+                        </tr>
+                        <tr>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" colspan=2 height="65" align="center" valign=middle bgcolor="#DCEDC8"><b><font face="Fira Sans" size=3>.:: STRİNG METOTLARI ::.</font></b></td>
+                            </tr>
+                        <tr>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" height="67" align="left" valign=middle><font face="Source Code Pro" size=3>df[“Sütun1”].str.upper()</font></td>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" align="left" valign=middle><font face="Roboto" size=3>Sütun1’deki Metinsel ifadelerin tümünü büyük harf çevirir.</font></td>
+                        </tr>
+                        <tr>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" height="67" align="left" valign=middle><font face="Source Code Pro" size=3>df[“Sütun1”].str.lower()</font></td>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" align="left" valign=middle><font face="Roboto" size=3>Sütun1’deki Metinsel ifadelerin tümünü küçük harf çevirir.</font></td>
+                        </tr>
+                        <tr>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" height="85" align="left" valign=middle><font face="Source Code Pro" size=3>df[“Sütun1”].str.capitalize()</font></td>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" align="left" valign=middle><font face="Roboto" size=3>Sütun1’deki Metinsel ifadelerin sadece baş harflerini büyük harf çevirir.</font></td>
+                        </tr>
+                        <tr>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" colspan=2 height="65" align="left" valign=middle bgcolor="#DCEDC8"><b><font face="Fira Sans" size=3>.:: VERİYİ DIŞA AKTAR / FARKLI BİÇİMDE KAYDET ::.</font></b></td>
+                            </tr>
+                        <tr>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" height="65" align="left" valign=middle bgcolor="#FFF9C4"><b><font face="Fira Sans" size=3>Fonksiyon / Metot / Parametre</font></b></td>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" align="left" valign=middle bgcolor="#FFF9C4"><b><font face="Fira Sans" size=3>Açıklama</font></b></td>
+                        </tr>
+                        <tr>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" height="67" align="left" valign=middle><font face="Source Code Pro" size=3>df.to_csv(“dosya_adı.csv”)</font></td>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" align="left" valign=middle><font face="Roboto" size=3>Veri Çerçevesini CSV dosyası olarak Dışa Aktar/Kaydet.</font></td>
+                        </tr>
+                        <tr>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" height="85" align="left" valign=middle><font face="Source Code Pro" size=3>df.to_excel(“dosya_adı.uzantı”)</font></td>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" align="left" valign=middle><font face="Fira Sans" size=3>Veri Çerçevesini Excel / Calc olarak Dışa Aktar/Kaydet.<br>xls, xlsx, xlsm, xlsb, odf, ods ve odt uzantılı dosyalar desteklenir.</font></td>
+                        </tr>
+                        <tr>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" height="67" align="left" valign=middle><font face="Source Code Pro" size=3>df.to_sql(tablo_adı,baglantı_nesnesi)</font></td>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" align="left" valign=middle><font face="Roboto" size=3>Veri Çerçevesini SQL Veri Tabanı olarak Dışa Aktar/Kaydet.</font></td>
+                        </tr>
+                        <tr>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" height="67" align="left" valign=middle><font face="Source Code Pro" size=3>df.to_json(“dosya_adı.json”)</font></td>
+                            <td style="border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; border-left: 1px solid #2e7d32; border-right: 1px solid #2e7d32" align="left" valign=middle><font face="Roboto" size=3>Veri Çerçevesini JSON dosyası olarak Dışa Aktar/Kaydet.</font></td>
+                        </tr>
+                    </table>
+                </div>
+
+
+				<!-- Footer -->
+					<section id="footer">
+						<div class="container">
+							<ul class="copyright">
+								<li>&copy; Her hakkı saklıdır.</li>
+							</ul>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
