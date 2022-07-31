@@ -55,19 +55,23 @@
                 
                 <div class="container">
 
-<h3 class="atx" id="import-fonksiyonu">import Fonksiyonu</h3>
-<p>Öncelikle <strong>Pandas</strong> Kütüphanesini çalışmamıza dahil edip (içe aktarıp), kodlama esnasında hızlı olması adına bu kütüphaneye <strong>pd</strong> adını atayalım;</p>
-<pre><code class="fenced-code-block">import pandas as pd</code></pre>
-<h3 class="atx" id="dataframe-fonksiyonu">DataFrame() Fonksiyonu</h3>
-<p>Veri Çerçevesi (Data Frame) Oluşturmak ya da Dönüştürmek için <strong>DataFrame()</strong> fonksiyonunu kullanıyoruz. Veri Çerçevesine dönüştürmek istediğimiz veriyi, parantez içine, parametre olarak yazmalıyız.</p>
-<p><strong><em>pd.DataFrame(dosya, iterable veri ya da sözlük yapısı)</em></strong></p>
-<p>örneğin bir <strong>sözlük (dict)</strong> yapısı oluşturup bu yapıyı <strong>Veri Çerçevesi</strong>ne (<strong>Data Frame</strong>'e) dönüştürelim;</p>
-<pre><code class="fenced-code-block">sozluk = {"isim" : ["Mustafa", "Halil", "Burak", "Emre", "Ersin", "Sertaç", "Furkan","Murat","Ahmet","Abdülkadir"],
-                    "yaş" : [25, 38, 41, 23, 37, 52, 30, 23, 40, 38],
-                   "iş-meslek" : ["mühendis", "programcı", "akademisyen", "yönetici","amir","mühendis", "yönetici","müdür","veteriner","yönetici"]}
-veri = pd.DataFrame(sozluk)</code></pre>
-<p>Oluşturduğumuz Veri Çerçevesinin içeriğini görelim;</p>
-<pre><code class="fenced-code-block">print(veri)</code></pre>
+                <h3 class="atx" id="import-fonksiyonu">import Fonksiyonu</h3>
+                <p>Öncelikle <strong>Pandas</strong> Kütüphanesini çalışmamıza dahil edip (içe aktarıp), kodlama esnasında hızlı olması adına bu kütüphaneye <strong>pd</strong> adını atayalım;</p>
+                <pre><code class="fenced-code-block">import pandas as pd</code></pre>
+                <h3 class="atx" id="dataframe-fonksiyonu">DataFrame() Fonksiyonu</h3>
+                <p>Veri Çerçevesi (Data Frame) Oluşturmak ya da Dönüştürmek için <strong>DataFrame()</strong> fonksiyonunu kullanıyoruz. Veri Çerçevesine dönüştürmek istediğimiz veriyi, parantez içine, parametre olarak yazmalıyız. </p>
+                    <pre><code>pd.DataFrame(veri)</code></pre>
+                    <p>Yukarıdaki kullanımda <b>veri</b> parametresi (iterable veri ya da sözlük yapısı) aşağıdakilerden herhangi biri olabilir.
+                <li>Dictionary’lerden, serilerden veya listelerden oluşan bir dictionary</li>
+                <li>2 boyutlu numpy dizisi</li>
+                <li>Başka bir DataFrame</li></p>
+                <p>örneğin bir <strong>sözlük (dict)</strong> yapısı oluşturup bu yapıyı <strong>Veri Çerçevesi</strong>ne (<strong>Data Frame</strong>'e) dönüştürelim;</p>
+                <pre><code class="fenced-code-block">sozluk = {"isim" : ["Mustafa", "Halil", "Burak", "Emre", "Ersin", "Sertaç", "Furkan","Murat","Ahmet","Abdülkadir"],
+                                    "yaş" : [25, 38, 41, 23, 37, 52, 30, 23, 40, 38],
+                                   "iş-meslek" : ["mühendis", "programcı", "akademisyen", "yönetici","amir","mühendis", "yönetici","müdür","veteriner","yönetici"]}
+                veri = pd.DataFrame(sozluk)</code></pre>
+                <p>Oluşturduğumuz Veri Çerçevesinin içeriğini görelim;</p>
+                <pre><code class="fenced-code-block">print(veri)</code></pre>
 <div>
 
 <table class="dataframe" border="1">
