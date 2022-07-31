@@ -47,8 +47,8 @@
 						<!-- SolveSpace -->
 							<section id="solvespace">
 								<div class="container">
-                                    <h2  id="bolum-basligi">Pandas Melt Fonksiyonuyla Verilerinizin Özetini Çıkarın</h2>
-                                    <p>Bu bölümde, Pandas'ın <code>melt</code> işlevini nasıl kullanacağınızı öğreneceksiniz. <code>pd.melt() işlevi, bir Pandas yapısını geniş formattan uzun formata yeniden şekillendirmek için kullanılır.</code> Bunun anlamı, bir veya daha fazla sütunun tanımlayıcı olarak kullanılması ve diğer tüm sütunların değer olarak kullanılmasıdır. Kısacası bu, Veri Çerçevenizi  (DataFrame'inizi) <code>Özet Tablo (Pivot Table) kullanmadan, Özetlemeden biçimlendirmenize</code> izin verir.</p>                                                                                                          
+                                    <h2  id="bolum-basligi">Pandas Melt Fonksiyonuyla Verilerinizi Çözün</h2>
+                                    <p>Bu bölümde, Pandas'ın <code>melt()</code> fonksiyonunun nasıl kullanacağını öğreneceğiz. <code>pd.melt() fonksiyonu, bir Pandas yapısını geniş formattan uzun formata yeniden şekillendirmek için kullanılır.</code> Bunun anlamı, bir veya daha fazla sütunun <b>tanımlayıcı</b> olarak kullanılması ve diğer tüm sütunların değer olarak kullanılmasıdır. Kısacası bu fonksiyon, Veri Çerçevenizi <code>Özet Tablo (pivot_table() fonksiyonu) kullanmadan, biçimlendirmenizi</code> sağlar.</p>                                                                                                          
                                 </div>
 							</section>
 					</div>
@@ -58,14 +58,15 @@
 
 <p><b>Bu bölümün sonunda şunları öğrenmiş olacaksınız:</b></p>
 <ul>
-<li>Verilerinizi özetlemek veya melt fonsiyonu ile işlemek ne anlama gelir?</li>
-<li>Pandas'ın <strong>melt</strong> fonksiyonu nasıl anlaşılır ve kullanılır?</li>
-<li>Tek veya birden çok değişkeni <strong>melt</strong> işlevine tabi tutumak için Pandas <strong>melt</strong> işlevi nasıl kullanılır?</li>
+<li>Verilerinizi çözmek/şekillendirmek veya melt() fonsiyonu ile işlemek ne anlama gelir?</li>
+<li>Pandas'ın <strong>melt()</strong> fonksiyonu nasıl anlaşılır ve kullanılır?</li>
+<li>Tek veya birden çok değişkeni çözmek/şekillendirmek için Pandas <strong>melt()</strong> işlevi nasıl kullanılır?</li>
 </ul>
-<h2 class="atx" id="verileri-ozetlemek-icin-neden-pandas-melt-kullanmalisiniz">Verileri Özetlemek için Neden Pandas Melt Kullanmalısınız?</h2>
-<p>Bu fonksiyon, size internetten bulduğunuz veya bir meslektaşınız tarafından verilmiş rapor gibi geniş biçimli veri sunulduğunda yararlıdır. Bu verilerin anlaşılması kolaydır, ancak başka bir analiz biçimine yeniden çevirmek/şekil vermek daha zordur. Örneğin, verilerinizin <a href="https://mhalil.github.io/Pandas_OzetTablo_PivotTable.html">bir pivot tablosu oluşturmak</a> istiyorsanız, o zaman <strong>melt</strong> fonksiyonu uygulanmış verilere sahip olmak çok yardımcı olabilir.</p>
+                    <p><img src=images/python/melt.png> </p>
+<h2 class="atx" id="verileri-ozetlemek-icin-neden-pandas-melt-kullanmalisiniz">Verileri Yeniden Şekillendirmek için Neden Pandas'ın melt() Fonksiyonunu Kullanmalısınız?</h2>
+<p>Bu fonksiyon, internetten bulduğunuz veya size bir meslektaşınız tarafından geniş biçimli veri sunulduğunda, bu verileri işlemek konusunda yararlı olacaktır. Bu verilerin anlaşılması kolaydır, ancak başka bir analiz biçimine çevirmek/yeniden şekilendirmek daha zordur. Örneğin, verileriniz ile <a href="https://mhalil.github.io/Pandas_OzetTablo_PivotTable.html">bir pivot tablosu oluşturmak</a> istiyorsanız, o zaman <strong>melt()</strong> fonksiyonu uygulanmış verilere sahip olmak, size çok yardımcı olacaktır.</p>
 <h2 class="atx" id="ornek-veri-cercevesi-dataframe-yuklemek">Örnek Veri Çerçevesi (DataFrame) Yüklemek</h2>
-<p>Geniş formatta örnek bir veri çerçevesi yükleyerek başlayalım:</p>
+<p>Geniş formatta yani sütun sayısı fazla olan örnek bir veri çerçevesi yükleyerek başlayalım:</p>
 <pre><code class="fenced-code-block language-python"><span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd
 
 df <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span>
@@ -73,8 +74,8 @@ df <span class="token operator">=</span> pd<span class="token punctuation">.</sp
     <span class="token string">'Yaş'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">44</span><span class="token punctuation">,</span> <span class="token number">42</span><span class="token punctuation">,</span> <span class="token number">35</span><span class="token punctuation">,</span> <span class="token number">40</span><span class="token punctuation">,</span> <span class="token number">52</span><span class="token punctuation">,</span> <span class="token number">47</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
     <span class="token string">'Eğitim Durumu'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'Doktora'</span><span class="token punctuation">,</span> <span class="token string">'Lisans'</span><span class="token punctuation">,</span> <span class="token string">'MBA'</span><span class="token punctuation">,</span> <span class="token string">'Yüksek Lisans'</span><span class="token punctuation">,</span> <span class="token string">'MBA'</span><span class="token punctuation">,</span> <span class="token string">'Lisans'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
     <span class="token string">'Kazanç'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">100000</span><span class="token punctuation">,</span><span class="token number">120000</span><span class="token punctuation">,</span> <span class="token number">85000</span><span class="token punctuation">,</span> <span class="token number">75000</span><span class="token punctuation">,</span> <span class="token number">95000</span><span class="token punctuation">,</span> <span class="token number">80000</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
-<p>Bu, veri setimizi geniş formatta oluşturur. Çıktı şunları gösterir:</p>
-<pre><code class="fenced-code-block language-python">df</code></pre>
+<p>Gördüğünüz gibi geniş formatta bir veri setimiz oluştu. Veri setimize göz atalım:</p>
+<pre><code class="fenced-code-block language-python">print(df)</code></pre>
 <div>
 
 <table class="dataframe" border="1">
@@ -134,8 +135,8 @@ df <span class="token operator">=</span> pd<span class="token punctuation">.</sp
 </table>
 </div>
 
-<h2 class="atx" id="pandas-melt-sozdizimi-nedir">Pandas Melt Sözdizimi nedir?</h2>
-<p>Melt fonksiyonunun/işlevinin genel biçimi şöyle görünür:</p>
+<h2 class="atx" id="pandas-melt-sozdizimi-nedir">Pandas Melt Fonksiyonunun Sözdizimi nedir?</h2>
+<p><strong> melt()</strong> fonksiyonunun/işlevinin genel sözdizimi biçimi şöyle görünür:</p>
 <pre><code class="fenced-code-block language-python">pandas<span class="token punctuation">.</span>melt<span class="token punctuation">(</span>
    dataframe<span class="token punctuation">,</span> 
    id_vars<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> 
@@ -144,34 +145,34 @@ df <span class="token operator">=</span> pd<span class="token punctuation">.</sp
    value_name<span class="token operator">=</span><span class="token string">'value'</span><span class="token punctuation">,</span> 
    col_level<span class="token operator">=</span><span class="token boolean">None</span>
 <span class="token punctuation">)</span></code></pre>
-<p>Bu kodlara biraz daha ayrıntılı olarak bakalım:</p>
+<p>Bu parametrelere biraz daha ayrıntılı bakalım:</p>
 <ul>
-<li><code>dataframe</code>= <strong>melt</strong> fonksiyonu uygulamak istediğimiz veri çerçevesi</li>
-<li><code>id_vars</code>= tanımlayıcı değişkenler olarak kullandığımız <strong>sütun(lar)</strong></li>
-<li><code>value_vars</code>= özetini çıkarmak istediğimiz sütunlar. Bu parametre belirtilmezse/yazılmazsa, <code>id_vars</code>'a atanmayan her bir sütun kullanılır.</li>
-<li><code>var_name</code>= değişken sütunu için kullanılan ad.</li>
-<li><code>value_name</code>= değer sütunu için kullanılan ad. <strong>Değerler (Values)</strong> varsayılan olacaktır.</li>
-<li><code>col_level</code>= eğer sütunlar çoklu dizin ise, <code>melt</code> fonksiyonu için kullanılacak Sütunü belirtmek için kullanılır.</li>
+<li><code>dataframe</code>= <strong>melt()</strong> fonksiyonu uygulamak istediğimiz veri çerçevesi (adı)</li>
+<li><code>id_vars</code>= Tanımlayıcı (yani Tekrar etmesini istediğimiz) değişken olarak kullanmak istediğimiz <strong>sütun(lar)</strong></li>
+<li><code>value_vars</code>= Çözmek/Şekillendirmek (Filtre uygulamak gibi düşünülebilir) istediğimiz sütunlar. Bu parametre yazılmazsa, <code>id_vars</code>'a atanmayan her bir sütun kullanılır.</li>
+<li><code>var_name</code>= Değişken sütununa verilecek ad.</li>
+<li><code>value_name</code>= Değer sütununa verilecek ad. Bu parametreyi kullanmazsanız, <strong>Values</strong> kelimesi varsayılan sütun isim olacaktır.</li>
+<li><code>col_level</code>= Eğer sütunlar çoklu dizin ise, <code>melt()</code> fonksiyonu için kullanılacak Sütunü belirtmek için bu parametrekullanılır.</li>
 </ul>
-<h2 class="atx" id="pandas-melt-fonksiyonunu-kullanarak-verilerimizin-ozetini-nasil-cikarabiliriz">Pandas Melt Fonksiyonunu Kullanarak Verilerimizin Özetini Nasıl Çıkarabiliriz?</h2>
-<p>Veri kümesini özetlemek için Pandas <code>melt</code> işlevini nasıl kullanabileceğimize bir göz atalım.</p>
-<p>Daha önce öğrendiklerimiz gibi, <code>melt</code> fonksiyonunu kullanmak için yeni bir veri çerçevesi atamamız gerekiyor:</p>
+                    
+<h2 class="atx" id="pandas-melt-fonksiyonunu-kullanarak-verilerimizin-ozetini-nasil-cikarabiliriz">Pandas Melt Fonksiyonunu Kullanarak Verilerimizin Nasıl Tekrar Şekillendirebiliriz?</h2>
+<p>Veri kümesini çözmek/yeniden şekillendirmek için Pandas <code>melt()</code> fonksiyonunu nasıl kullanabileceğimize bir göz atalım. <br>Daha önce öğrendiklerimiz gibi, <code>melt()</code> fonksiyonunu kullanmak için bir veri çerçevesi atamamız gerekiyor:</p>
 <pre><code class="fenced-code-block language-python">melted <span class="token operator">=</span> pd<span class="token punctuation">.</span>melt<span class="token punctuation">(</span>
    df<span class="token punctuation">,</span> 
    id_vars <span class="token operator">=</span> <span class="token string">'Ad'</span><span class="token punctuation">,</span> 
    var_name <span class="token operator">=</span> <span class="token string">'Özellik'</span><span class="token punctuation">,</span> 
    value_name <span class="token operator">=</span> <span class="token string">'Değer'</span><span class="token punctuation">)</span>
 
-melted<span class="token punctuation">.</span>head<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+print(melted)</code></pre>
 <div>
 
-<table class="dataframe" border="1">
+<table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th></th>
       <th>Ad</th>
-      <th>Özellik</th>
-      <th>Değer</th>
+      <th>variable</th>
+      <th>value</th>
     </tr>
   </thead>
   <tbody>
@@ -205,12 +206,90 @@ melted<span class="token punctuation">.</span>head<span class="token punctuation
       <td>Yaş</td>
       <td>52</td>
     </tr>
+    <tr>
+      <th>5</th>
+      <td>Seydi</td>
+      <td>Yaş</td>
+      <td>47</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Burak</td>
+      <td>Eğitim Durumu</td>
+      <td>Doktora</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Halil</td>
+      <td>Eğitim Durumu</td>
+      <td>Lisans</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Emre</td>
+      <td>Eğitim Durumu</td>
+      <td>MBA</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Ersin</td>
+      <td>Eğitim Durumu</td>
+      <td>Yüksek Lisans</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Sertaç</td>
+      <td>Eğitim Durumu</td>
+      <td>MBA</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Seydi</td>
+      <td>Eğitim Durumu</td>
+      <td>Lisans</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Burak</td>
+      <td>Kazanç</td>
+      <td>100000</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Halil</td>
+      <td>Kazanç</td>
+      <td>120000</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Emre</td>
+      <td>Kazanç</td>
+      <td>85000</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Ersin</td>
+      <td>Kazanç</td>
+      <td>75000</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>Sertaç</td>
+      <td>Kazanç</td>
+      <td>95000</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>Seydi</td>
+      <td>Kazanç</td>
+      <td>80000</td>
+    </tr>
   </tbody>
 </table>
 </div>
 
-<p>Kodlara <code>value_vars</code> parametresini dahil etmediğimize dikkat edin. Tüm verilerimizin özetini çıkarmak istediğimiz için Pandas tüm sütunları atayabildi.</p>
-<p>Bu, aşağıdaki kodu yazmakla aynıdır. Bunların her ikisi de aşağıdaki çıktıyı döndürür:</p>
+<p>Kodlara <code>value_vars</code> parametresini, kod bloğuna dahil etmediğimize dikkat edin. Tüm verilerimizi çözmek/yeniden şekillendirmek istediğimiz için bu parametreyi kullanmadık.</p>
+<p>Bu, aşağıdaki kodu yazmakla aynıdır. Bunların her ikisi de aynı (yukarıdaki) çıktıyı verir/döndürür:</p>
 <pre><code class="fenced-code-block language-python">melted <span class="token operator">=</span> pd<span class="token punctuation">.</span>melt<span class="token punctuation">(</span>
    df<span class="token punctuation">,</span> 
    id_vars <span class="token operator">=</span> <span class="token string">'Ad'</span><span class="token punctuation">,</span> 
@@ -219,58 +298,15 @@ melted<span class="token punctuation">.</span>head<span class="token punctuation
    value_name <span class="token operator">=</span> <span class="token string">'Değer'</span>
 <span class="token punctuation">)</span>
 
-melted<span class="token punctuation">.</span>head<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+print(melted)</code></pre>
 <div>
-
-<table class="dataframe" border="1">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Ad</th>
-      <th>Özellik</th>
-      <th>Değer</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Burak</td>
-      <td>Yaş</td>
-      <td>44</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Halil</td>
-      <td>Yaş</td>
-      <td>42</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Emre</td>
-      <td>Yaş</td>
-      <td>35</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Ersin</td>
-      <td>Yaş</td>
-      <td>40</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Sertaç</td>
-      <td>Yaş</td>
-      <td>52</td>
-    </tr>
-  </tbody>
-</table>
 </div>
 
 <h2 class="atx" id="sonuc">SONUÇ</h2>
-<p>Python'da sadece birkaç adım kullanarak, çapraz tablo stilini, geniş bir veri kümesini daha fazla analiz için çok daha kullanışlı hale gelen bir veri kümesine dönüştürmek için Pandas'ı ve <code>melt</code> fonksiyonunu / işlevini kullanarak verilerin özetini çıkarabildik.</p>
+                    <p>Bu bölümde, Pandas kütüphanesinin <code>melt()</code> fonksiyonu aracılığı ile sadece birkaç satır kod yazarak, geniş bir veri kümesini, <code>pivot_table()</code> ve benzeri yapılarla kolayca işleyip daha fazla analiz yapabilmemizi sağlayacak, çok daha kullanışlı bir veri kümesine dönüştürmenin ne kadar kolay olduğunu öğrendik.</p> 
 <h3 class="atx" id="kaynak">Kaynak</h3>
-<p>Bu dokümanın hazırlanmasında yararlandığım web adresini aşağıda paylaşıyorum.</p>
-<p><a href="https://datagy.io/using-the-pandas-melt-function-in-python-to-unpivot-data/">https://datagy.io/using-the-pandas-melt-function-in-python-to-unpivot-data/</a> </p>
+<p>Bu dokümanın hazırlanmasında yararlandığım web adresini aşağıda paylaşıyorum.<br>
+    <a href="https://datagy.io/using-the-pandas-melt-function-in-python-to-unpivot-data/">https://datagy.io/using-the-pandas-melt-function-in-python-to-unpivot-data/</a> </p>
 
 
                 <p> <a href="Pandas_OzetTablo_PivotTable.html" class="button primary small"> &#8592 Önceki Bölüm </a> </p>
