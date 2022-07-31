@@ -60,7 +60,93 @@
 <p>Veri Çerçevesindeki istenilen satır ve sütunu seçmek/görüntülemek için <strong>iloc[]</strong> metodu kullanılır. <strong>iloc[]</strong> kelimesini unutmamak için <strong>İndex Location</strong> yani, <strong>Konumun İndeks Değeri</strong> gibi düşünebilir, hafızanızda kodlayabilirsiniz.
 Esas olarak <strong>iloc[]</strong> metodu, hem satır hem de sütun numarası alarak çalışır.</p>
                     <pre><code>Veri_Cercevesi_Adı.iloc[Satir_Numarası, Sütun_Numarası]</code></pre>
+                    
+                    <p>Öncelikle <strong>Pandas</strong> Kütüphanesini içe aktarıp, kodlama esnasında hızlı olması adına bu kütüphaneye <strong>pd</strong> adını atayalım;</p>
+<pre><code class="fenced-code-block language-python"><span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd</code></pre>
+<p>Bu eğitim esnasında, fonksiyon ve metotlardan bahseder, örnek verirken kullanmak üzere, basit bit Veri Çerçevesi (Data Frame) oluşturalım ve oluşturduğumuz Veri Çerçevesinin içeriğini görelim;</p>
+<pre><code class="fenced-code-block language-python">sozluk <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"isim"</span> <span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"Mustafa"</span><span class="token punctuation">,</span> <span class="token string">"Halil"</span><span class="token punctuation">,</span> <span class="token string">"Burak"</span><span class="token punctuation">,</span> <span class="token string">"Emre"</span><span class="token punctuation">,</span> <span class="token string">"Ersin"</span><span class="token punctuation">,</span> <span class="token string">"Sertaç"</span><span class="token punctuation">,</span> <span class="token string">"Furkan"</span><span class="token punctuation">,</span><span class="token string">"Murat"</span><span class="token punctuation">,</span><span class="token string">"Ahmet"</span><span class="token punctuation">,</span><span class="token string">"Abdülkadir"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                    <span class="token string">"yaş"</span> <span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">25</span><span class="token punctuation">,</span> <span class="token number">38</span><span class="token punctuation">,</span> <span class="token number">41</span><span class="token punctuation">,</span> <span class="token number">23</span><span class="token punctuation">,</span> <span class="token number">37</span><span class="token punctuation">,</span> <span class="token number">52</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">,</span> <span class="token number">23</span><span class="token punctuation">,</span> <span class="token number">40</span><span class="token punctuation">,</span> <span class="token number">38</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                   <span class="token string">"iş-meslek"</span> <span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"mühendis"</span><span class="token punctuation">,</span> <span class="token string">"programcı"</span><span class="token punctuation">,</span> <span class="token string">"akademisyen"</span><span class="token punctuation">,</span> <span class="token string">"yönetici"</span><span class="token punctuation">,</span><span class="token string">"amir"</span><span class="token punctuation">,</span><span class="token string">"mühendis"</span><span class="token punctuation">,</span> <span class="token string">"yönetici"</span><span class="token punctuation">,</span><span class="token string">"müdür"</span><span class="token punctuation">,</span><span class="token string">"veteriner"</span><span class="token punctuation">,</span><span class="token string">"yönetici"</span><span class="token punctuation">]</span><span class="token punctuation">}</span>
+veri <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span>sozluk<span class="token punctuation">)</span>
+print(veri)</code></pre>
+<div>
+
+<table class="dataframe" border="1">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>isim</th>
+      <th>yaş</th>
+      <th>iş-meslek</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Mustafa</td>
+      <td>25</td>
+      <td>mühendis</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Halil</td>
+      <td>38</td>
+      <td>programcı</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Burak</td>
+      <td>41</td>
+      <td>akademisyen</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Emre</td>
+      <td>23</td>
+      <td>yönetici</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Ersin</td>
+      <td>37</td>
+      <td>amir</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Sertaç</td>
+      <td>52</td>
+      <td>mühendis</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Furkan</td>
+      <td>30</td>
+      <td>yönetici</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Murat</td>
+      <td>23</td>
+      <td>müdür</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Ahmet</td>
+      <td>40</td>
+      <td>veteriner</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Abdülkadir</td>
+      <td>38</td>
+      <td>yönetici</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<p>Verimizi <b>.iloc</b> ile seçelim. </p>
 <pre><code class="fenced-code-block language-python">print(veri.iloc[8,2])</code></pre>
+<p><b>Çıktı:</b></p>
 <pre><code class="indented-code-block">'veteriner'</code></pre>
 <p> Sadece bir sayı değeri aldığında, ilgili indeks sayısına ait <strong>satır</strong> bilgisini verir.</p>
 <pre><code class="fenced-code-block language-python">print(veri.iloc[5])</code></pre>
@@ -69,7 +155,7 @@ yaş                52
 iş-meslek    mühendis
 Name: 5, dtype: object</code></pre>
 <h3 class="atx" id="loc-metodu">loc[] Metodu</h3>
-<p><strong>iloc[]</strong> metoduna benzer bir metottur ancak <strong>loc[]</strong> metodunda, satır ve sütun seçmek/görüntülemek istediğimiz zaman, saır ve sütunların isimlerini yazmalıyız. Elimizde aşağıdaki gibi bir veri çerçevesi olduğunu varsayalım.</p>
+<p><strong>iloc[]</strong> metoduna benzer bir metottur ancak <strong>loc[]</strong> metodunda, satır ve sütun seçmek/görüntülemek istediğimiz zaman, <strong>satır ve sütunların isimlerini</strong> yazmalıyız. Elimizde aşağıdaki gibi bir veri çerçevesi olduğunu varsayalım.</p>
 <pre><code class="fenced-code-block language-python">imdb <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_excel<span class="token punctuation">(</span><span class="token string">"Veri_Setleri/imdb.xlsx"</span><span class="token punctuation">,</span> index_col<span class="token operator">=</span><span class="token string">"Film_Adı"</span><span class="token punctuation">)</span>
 print(imdb)</code></pre>
 <div>
