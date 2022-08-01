@@ -1790,7 +1790,7 @@ print(veri)</code></pre>
 
 <p>Gördüğünüz gibi veri çerçevemizde artık Oyuncuların Yaş bilgilerini barındıran <strong>Age</strong> isimli sütun bulunmuyor, tamemiyle silindi.</p>
 <p>Birden fazla satır ya da sütun silmek istediğimiz zaman ....</p>
-<h3 class="atx" id="string-metotlari">STRING Metotları</h3>
+<h3 class="atx" id="string-metotlari">String Metotları</h3>
 <p>Python ile kodlama yaparken, metinsel ifadelerle uğraştığımızda kullandığımız <strong>string metotlarını</strong> hatırlarsınız. Örneğin, Metinlerin tümünü büyük harfe ya da küçük harfe çevirmek. Bu tür string metotları Pandas ile kulanmak ve veri çerçevesine uygulamak mümkün. Bunun için <strong>str</strong> ifadesini kullanabiliriz.
 Önce Bir Veri Çerçevesi oluşturalım ve gözatalım.</p>
 <pre><code class="fenced-code-block language-python">sozluk <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"isim"</span> <span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"Mustafa"</span><span class="token punctuation">,</span> <span class="token string">"Halil"</span><span class="token punctuation">,</span> <span class="token string">"Burak"</span><span class="token punctuation">,</span> <span class="token string">"Emre"</span><span class="token punctuation">,</span> <span class="token string">"Ersin"</span><span class="token punctuation">,</span> <span class="token string">"Sertaç"</span><span class="token punctuation">,</span> <span class="token string">"Furkan"</span><span class="token punctuation">,</span><span class="token string">"Murat"</span><span class="token punctuation">,</span><span class="token string">"Ahmet"</span><span class="token punctuation">,</span><span class="token string">"Abdülkadir"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
@@ -2123,9 +2123,1040 @@ print(veri)</code></pre>
   </tbody>
 </table>
 </div>
+<h2 class="atx" id="concat-fonksiyonu">concat() Fonksiyonu</h2>
+<p><strong>concat</strong> kelimesi Concatenate kelimesinin kısaltamasıdır. <strong>Concatenate</strong> kelimesininTürkçe karşılığı <strong>Birleştir</strong>'dir.</p>
+<p>Birleştirme örneklerini öğrenemek için öncelikle 2 sözlük yapısı oluşturup, bunları veri çerçevesine dönüştürelim.</p>
+<pre><code class="fenced-code-block language-python">veri1 <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'A'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'A1'</span><span class="token punctuation">,</span><span class="token string">'A2'</span><span class="token punctuation">,</span><span class="token string">'A3'</span><span class="token punctuation">,</span><span class="token string">'A4'</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token string">'B'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'B1'</span><span class="token punctuation">,</span><span class="token string">'B2'</span><span class="token punctuation">,</span><span class="token string">'B3'</span><span class="token punctuation">,</span><span class="token string">'B4'</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token string">'C'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'C1'</span><span class="token punctuation">,</span><span class="token string">'C2'</span><span class="token punctuation">,</span><span class="token string">'C3'</span><span class="token punctuation">,</span><span class="token string">'C4'</span><span class="token punctuation">]</span><span class="token punctuation">}</span>
+veri2 <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'A'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'A5'</span><span class="token punctuation">,</span><span class="token string">'A6'</span><span class="token punctuation">,</span><span class="token string">'A7'</span><span class="token punctuation">,</span><span class="token string">'A8'</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token string">'B'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'B5'</span><span class="token punctuation">,</span><span class="token string">'B6'</span><span class="token punctuation">,</span><span class="token string">'B7'</span><span class="token punctuation">,</span><span class="token string">'B8'</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token string">'C'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'C5'</span><span class="token punctuation">,</span><span class="token string">'C6'</span><span class="token punctuation">,</span><span class="token string">'C7'</span><span class="token punctuation">,</span><span class="token string">'C8'</span><span class="token punctuation">]</span><span class="token punctuation">}</span>
+df1 <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span>veri1<span class="token punctuation">,</span> index <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+df2 <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span>veri2<span class="token punctuation">,</span> index <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">,</span><span class="token number">7</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+print(df1)</code></pre>
+<div>
 
-<p> Sayfaya eklenecek bazı konular; <br>
-    JOIN, CONCAT, MERGE, Pivot Table ...</p>
+<table class="dataframe" border="1">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>A1</td>
+      <td>B1</td>
+      <td>C1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>A2</td>
+      <td>B2</td>
+      <td>C2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>A3</td>
+      <td>B3</td>
+      <td>C3</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>A4</td>
+      <td>B4</td>
+      <td>C4</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<pre><code class="fenced-code-block language-python">print(df2)</code></pre>
+<div>
+
+<table class="dataframe" border="1">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>5</th>
+      <td>A5</td>
+      <td>B5</td>
+      <td>C5</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>A6</td>
+      <td>B6</td>
+      <td>C6</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>A7</td>
+      <td>B7</td>
+      <td>C7</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>A8</td>
+      <td>B8</td>
+      <td>C8</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>oluşturduğumuz/dönüştürdüğümüz veri çerçevelerini, <strong>concat</strong> fonksiyonu ile birleştirelim. Bunun için <strong>concat</strong> fonksiyonuna en az iki adet veri çevçevesi eklemek gerekir. Malumunuz, Pandas Veri Çerçevelerinde birden fazla satır, sütun,...vb ekleneceği zaman, bu değerler köşeli parantez içerisinde yani <strong>liste</strong> olarak yazılmalı.</p>
+<pre><code class="fenced-code-block language-python">print(pd<span class="token punctuation">.</span>concat<span class="token punctuation">(</span><span class="token punctuation">[</span>df1<span class="token punctuation">,</span> df2<span class="token punctuation">])</span><span class="token punctuation">)</span></code></pre>
+<div>
+
+<table class="dataframe" border="1">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>A1</td>
+      <td>B1</td>
+      <td>C1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>A2</td>
+      <td>B2</td>
+      <td>C2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>A3</td>
+      <td>B3</td>
+      <td>C3</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>A4</td>
+      <td>B4</td>
+      <td>C4</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>A5</td>
+      <td>B5</td>
+      <td>C5</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>A6</td>
+      <td>B6</td>
+      <td>C6</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>A7</td>
+      <td>B7</td>
+      <td>C7</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>A8</td>
+      <td>B8</td>
+      <td>C8</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Gördüğünüz gibi, iki veri çerçevesi altalta birleştirildi. </p>
+<p>Hatırlarsanız <strong>drop</strong> metodunu anlatırken <strong>axis</strong> parametresinden bahsetmiştik. <strong>axis</strong> parametresi, <strong>0 ve 1</strong> değerlerini alır, <strong>0 satırları, 1 ise sütunları</strong> temsil eder demiştik. Aynı parametreyi birleştirme işleminde de kullanabiliriz. eğer <strong>axis</strong> parametresi kullanılmaz ise, varsayılan değer <strong>axis = 0</strong> olduğu için yani satırları baz alarak birleştirme yapılır.</p>
+<p>Şimdi <strong>axis=1</strong> parametresini ekelyerek veri çerçevelerini yanyana birleştirmeyi deneyelim.</p>
+<pre><code class="fenced-code-block language-python">print(pd<span class="token punctuation">.</span>concat<span class="token punctuation">(</span><span class="token punctuation">[</span>df1<span class="token punctuation">,</span> df2<span class="token punctuation">]</span><span class="token punctuation">,</span> axis <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">))</span></code></pre>
+<div>
+
+<table class="dataframe" border="1">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>A1</td>
+      <td>B1</td>
+      <td>C1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>A2</td>
+      <td>B2</td>
+      <td>C2</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>A3</td>
+      <td>B3</td>
+      <td>C3</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>A4</td>
+      <td>B4</td>
+      <td>C4</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>A5</td>
+      <td>B5</td>
+      <td>C5</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>A6</td>
+      <td>B6</td>
+      <td>C6</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>A7</td>
+      <td>B7</td>
+      <td>C7</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>A8</td>
+      <td>B8</td>
+      <td>C8</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Bu durumda, 2 veri çerçevesi yanyana birleştirildi ancak veri çerçevelerinde aynı indeks değerleri bulunmadığı için ilgili indeks değerinin krşılığında <strong>NaN (Not A Number)</strong> değeri atandı. Eğer aşağıdaki gibi bir veri çerçevemiz olsaydı ve bu veri çerçevesini df1 ile yanyana birleştirseydik nasıl bir sonuç elde ederdik dersiniz.</p>
+<pre><code class="fenced-code-block language-python">veri3 <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'A'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'A5'</span><span class="token punctuation">,</span><span class="token string">'A6'</span><span class="token punctuation">,</span><span class="token string">'A7'</span><span class="token punctuation">,</span><span class="token string">'A8'</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token string">'B'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'B5'</span><span class="token punctuation">,</span><span class="token string">'B6'</span><span class="token punctuation">,</span><span class="token string">'B7'</span><span class="token punctuation">,</span><span class="token string">'B8'</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token string">'C'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'C5'</span><span class="token punctuation">,</span><span class="token string">'C6'</span><span class="token punctuation">,</span><span class="token string">'C7'</span><span class="token punctuation">,</span><span class="token string">'C8'</span><span class="token punctuation">]</span><span class="token punctuation">}</span>
+df3 <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span>veri3<span class="token punctuation">,</span> index <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+print(df3)</code></pre>
+<div>
+
+<table class="dataframe" border="1">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>A5</td>
+      <td>B5</td>
+      <td>C5</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>A6</td>
+      <td>B6</td>
+      <td>C6</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>A7</td>
+      <td>B7</td>
+      <td>C7</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>A8</td>
+      <td>B8</td>
+      <td>C8</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<pre><code class="fenced-code-block language-python">print(pd<span class="token punctuation">.</span>concat<span class="token punctuation">(</span><span class="token punctuation">[</span>df1<span class="token punctuation">,</span> df3<span class="token punctuation">]</span><span class="token punctuation">,</span> axis <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">))</span></code></pre>
+<div>
+
+<table class="dataframe" border="1">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>A1</td>
+      <td>B1</td>
+      <td>C1</td>
+      <td>A5</td>
+      <td>B5</td>
+      <td>C5</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>A2</td>
+      <td>B2</td>
+      <td>C2</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>A3</td>
+      <td>B3</td>
+      <td>C3</td>
+      <td>A7</td>
+      <td>B7</td>
+      <td>C7</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>A4</td>
+      <td>B4</td>
+      <td>C4</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>A6</td>
+      <td>B6</td>
+      <td>C6</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>A8</td>
+      <td>B8</td>
+      <td>C8</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>df1 ve df3'te ortak indeks değerleri olduğu için 1. ve 3. satırlar tamamen gerçerli veri ile doldu.</p>
+<p><strong>concat</strong> fonksiyonu sadece 2 veri çerçevesini birleştirmiyor. 2'den fazla veri çerçevesini de birleştiriyor. Oluşturduğumuz df1, df2 ve df3 veri çerçevelerini altalta ve yanyana birleştirip sonuçları inceleyelim.</p>
+<pre><code class="fenced-code-block language-python">print(pd<span class="token punctuation">.</span>concat<span class="token punctuation">(</span><span class="token punctuation">[</span>df1<span class="token punctuation">,</span> df2<span class="token punctuation">,</span> df3<span class="token punctuation">]</span><span class="token punctuation">))</span></code></pre>
+<div>
+
+<table class="dataframe" border="1">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>A1</td>
+      <td>B1</td>
+      <td>C1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>A2</td>
+      <td>B2</td>
+      <td>C2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>A3</td>
+      <td>B3</td>
+      <td>C3</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>A4</td>
+      <td>B4</td>
+      <td>C4</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>A5</td>
+      <td>B5</td>
+      <td>C5</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>A6</td>
+      <td>B6</td>
+      <td>C6</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>A7</td>
+      <td>B7</td>
+      <td>C7</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>A8</td>
+      <td>B8</td>
+      <td>C8</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>A5</td>
+      <td>B5</td>
+      <td>C5</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>A6</td>
+      <td>B6</td>
+      <td>C6</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>A7</td>
+      <td>B7</td>
+      <td>C7</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>A8</td>
+      <td>B8</td>
+      <td>C8</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<pre><code class="fenced-code-block language-python">print(pd<span class="token punctuation">.</span>concat<span class="token punctuation">(</span><span class="token punctuation">[</span>df1<span class="token punctuation">,</span> df2<span class="token punctuation">,</span> df3<span class="token punctuation">]</span><span class="token punctuation">,</span> axis <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">))</span></code></pre>
+<div>
+
+<table class="dataframe" border="1">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>A1</td>
+      <td>B1</td>
+      <td>C1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>A5</td>
+      <td>B5</td>
+      <td>C5</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>A2</td>
+      <td>B2</td>
+      <td>C2</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>A3</td>
+      <td>B3</td>
+      <td>C3</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>A7</td>
+      <td>B7</td>
+      <td>C7</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>A4</td>
+      <td>B4</td>
+      <td>C4</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>A5</td>
+      <td>B5</td>
+      <td>C5</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>A6</td>
+      <td>B6</td>
+      <td>C6</td>
+      <td>A6</td>
+      <td>B6</td>
+      <td>C6</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>A7</td>
+      <td>B7</td>
+      <td>C7</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>A8</td>
+      <td>B8</td>
+      <td>C8</td>
+      <td>A8</td>
+      <td>B8</td>
+      <td>C8</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2 class="atx" id="join-metodu">join() Metodu</h2>
+<p><strong>join()</strong> metodu, Veri çerçevelerini bir birine katmak için kullanılır. Matematikteki <strong>Küme</strong> konusunu hatırlayın.
+<strong>join()</strong> metodu, parametresiz kullanıldığında <strong>ortak küme</strong> gibi davranarak veri çerçevelerini bir birine dahil eder/katar.</p>
+<pre><code class="fenced-code-block language-python">veri4 <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'Ad'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"mustafa"</span><span class="token punctuation">,</span> <span class="token string">"halil"</span><span class="token punctuation">,</span> <span class="token string">"emre"</span><span class="token punctuation">,</span> <span class="token string">"burak"</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token string">'yas'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">38</span><span class="token punctuation">,</span><span class="token number">42</span><span class="token punctuation">,</span><span class="token number">35</span><span class="token punctuation">,</span><span class="token number">44</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token string">'meslek'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"yönetici"</span><span class="token punctuation">,</span> <span class="token string">"mak.müh."</span><span class="token punctuation">,</span> <span class="token string">"yönetici"</span><span class="token punctuation">,</span> <span class="token string">"akademisyen"</span><span class="token punctuation">]</span><span class="token punctuation">}</span>
+df4 <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span>veri4<span class="token punctuation">)</span>
+print(df4)</code></pre>
+<div>
+
+<table class="dataframe" border="1">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Ad</th>
+      <th>yas</th>
+      <th>meslek</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>mustafa</td>
+      <td>38</td>
+      <td>yönetici</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>halil</td>
+      <td>42</td>
+      <td>mak.müh.</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>emre</td>
+      <td>35</td>
+      <td>yönetici</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>burak</td>
+      <td>44</td>
+      <td>akademisyen</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<pre><code class="fenced-code-block language-python">print(df1<span class="token punctuation">.</span>join<span class="token punctuation">(</span>df4<span class="token punctuation">))</span></code></pre>
+<div>
+
+<table class="dataframe" border="1">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>Ad</th>
+      <th>yas</th>
+      <th>meslek</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>A1</td>
+      <td>B1</td>
+      <td>C1</td>
+      <td>halil</td>
+      <td>42.0</td>
+      <td>mak.müh.</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>A2</td>
+      <td>B2</td>
+      <td>C2</td>
+      <td>emre</td>
+      <td>35.0</td>
+      <td>yönetici</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>A3</td>
+      <td>B3</td>
+      <td>C3</td>
+      <td>burak</td>
+      <td>44.0</td>
+      <td>akademisyen</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>A4</td>
+      <td>B4</td>
+      <td>C4</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Sonuca bakarsanız, <strong>df1</strong> veri çerçevesinin temel alındı ve <strong>df4</strong>'teki indeks değerlerine bakılarak, <strong>df1</strong>'in indeks değeri olan sütunlarının veri çerçevesine dahil edildiğini, katıldığını görebilirsiniz. Yani ilk veri çerçevesine ilave olarak, iki veri çerçevesinin ortak indeksleri eklenmiş diyebiliriz. İşlemin tersini yaparsak, yani df4'ü temel alarak <strong>join</strong> metodunu uygularsak ne olur? </p>
+<pre><code class="fenced-code-block language-python">print(df4<span class="token punctuation">.</span>join<span class="token punctuation">(</span>df1<span class="token punctuation">))</span></code></pre>
+<div>
+
+<table class="dataframe" border="1">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Ad</th>
+      <th>yas</th>
+      <th>meslek</th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>mustafa</td>
+      <td>38</td>
+      <td>yönetici</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>halil</td>
+      <td>42</td>
+      <td>mak.müh.</td>
+      <td>A1</td>
+      <td>B1</td>
+      <td>C1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>emre</td>
+      <td>35</td>
+      <td>yönetici</td>
+      <td>A2</td>
+      <td>B2</td>
+      <td>C2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>burak</td>
+      <td>44</td>
+      <td>akademisyen</td>
+      <td>A3</td>
+      <td>B3</td>
+      <td>C3</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Bu kez de, tahmin ettiğimiz gibi, <strong>df4</strong> veri çerçevesi temel alındı, ve <strong>df1</strong>'in ortak indeks değerleri dahil edildi, <strong>df4</strong>'ün indeks değeri <strong>df1</strong> de olmadığı durumda, ilgili satıra <strong>NaN</strong> değeri atandı.</p>
+<h3 class="atx" id="how-parametresi">how parametresi</h3>
+<p><strong>join</strong> metodunun <strong>how</strong> parametresi ile, veri çerçevelerinin, sağdaki ya da soldaki veri çerçevesine göre katılma/dahil edilme seçeneğini ayarlayabilir, veri çerçevelerinin birleşimini ya da kesişimini de alabiliriz. Sırayla inceleyelim. </p>
+<p><strong>how</strong> parametresi, <strong>left, right, inner</strong> ve <strong>outer</strong> değerlerini alır. Varsayılan değer <strong>left</strong>'tir. ( <strong>left join</strong> )</p>
+<p>Aşağıdaki örneği inceleyerek konuyu daha iyi anlayabilirsiniz.</p>
+<pre><code class="fenced-code-block language-python">print(df1<span class="token punctuation">.</span>join<span class="token punctuation">(</span>df4<span class="token punctuation">))</span></code></pre>
+<div>
+
+<table class="dataframe" border="1">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>Ad</th>
+      <th>yas</th>
+      <th>meslek</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>A1</td>
+      <td>B1</td>
+      <td>C1</td>
+      <td>halil</td>
+      <td>42.0</td>
+      <td>mak.müh.</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>A2</td>
+      <td>B2</td>
+      <td>C2</td>
+      <td>emre</td>
+      <td>35.0</td>
+      <td>yönetici</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>A3</td>
+      <td>B3</td>
+      <td>C3</td>
+      <td>burak</td>
+      <td>44.0</td>
+      <td>akademisyen</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>A4</td>
+      <td>B4</td>
+      <td>C4</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h3 class="atx" id="right-join">right join</h3>
+<p>Aynı kodu, <strong>how="right"</strong> parametresi ekleyerek te çalıştırıp sonucu görelim.</p>
+<pre><code class="fenced-code-block language-python">print(df1<span class="token punctuation">.</span>join<span class="token punctuation">(</span>df4<span class="token punctuation">,</span> how<span class="token operator">=</span><span class="token string">"right"</span><span class="token punctuation">))</span></code></pre>
+<div>
+
+<table class="dataframe" border="1">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>Ad</th>
+      <th>yas</th>
+      <th>meslek</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>mustafa</td>
+      <td>38</td>
+      <td>yönetici</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>A1</td>
+      <td>B1</td>
+      <td>C1</td>
+      <td>halil</td>
+      <td>42</td>
+      <td>mak.müh.</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>A2</td>
+      <td>B2</td>
+      <td>C2</td>
+      <td>emre</td>
+      <td>35</td>
+      <td>yönetici</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>A3</td>
+      <td>B3</td>
+      <td>C3</td>
+      <td>burak</td>
+      <td>44</td>
+      <td>akademisyen</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p><strong>how</strong> parametresi eklenmeyen İlk kodda, indeksler 1'den yani <strong>df1</strong> temel alınarak birleştirme işlemi gerçekleştirilirken, <strong>how="right"</strong> parametresi eklenen ikinci kodda <strong>df2</strong> yani sağdaki veri çerçevesi temel alınarak (indeks değerli 0'dan başlayarak) birleştirme işlemi gerçekleşti.</p>
+<h3 class="atx" id="outer-join">outer join</h3>
+<p>Matematikteki <strong>Birleşik Küme</strong> mantığı ile aynıdır. Her iki veri çerçevesini, tüm içeriği ile alıp birbirine katar.</p>
+<pre><code class="fenced-code-block language-python">print(df1<span class="token punctuation">.</span>join<span class="token punctuation">(</span>df4<span class="token punctuation">,</span> how<span class="token operator">=</span><span class="token string">"outer"</span><span class="token punctuation">))</span></code></pre>
+<div>
+
+<table class="dataframe" border="1">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>Ad</th>
+      <th>yas</th>
+      <th>meslek</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>mustafa</td>
+      <td>38.0</td>
+      <td>yönetici</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>A1</td>
+      <td>B1</td>
+      <td>C1</td>
+      <td>halil</td>
+      <td>42.0</td>
+      <td>mak.müh.</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>A2</td>
+      <td>B2</td>
+      <td>C2</td>
+      <td>emre</td>
+      <td>35.0</td>
+      <td>yönetici</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>A3</td>
+      <td>B3</td>
+      <td>C3</td>
+      <td>burak</td>
+      <td>44.0</td>
+      <td>akademisyen</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>A4</td>
+      <td>B4</td>
+      <td>C4</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Görüldüğü üzre, önce <strong>df1</strong> veri çerçevesi alındı, daha sonra <strong>df4</strong> veri çerçevesinin içeriği alınarak yanına dahil edildi. Her iki ver içerçevesinde indeks değerleri içermeyen satırlan <strong>NaN</strong> olarak belirlendi.</p>
+<h3 class="atx" id="inner-join">inner join</h3>
+<p>Kesişim kümesi demektir. İki veri çerçevesinde ortak indeks değerlerine sahip satırlar alınır, yanyana birleştirilir.</p>
+<p><strong>df1</strong> 1'den 4'e kadar olan indeks değerlerine sahipken, <strong>df4</strong> 0'dan 3'e kadar indeks değerlerine sahip veri çerçeveleridir. Şimdi bu iki veri çerçevesini <strong>how=inner</strong> parametresi ile birbirine dahil etmek istersen ne olur?</p>
+<pre><code class="fenced-code-block language-python">print(df1<span class="token punctuation">.</span>join<span class="token punctuation">(</span>df4<span class="token punctuation">,</span> how<span class="token operator">=</span><span class="token string">"inner"</span><span class="token punctuation">))</span></code></pre>
+<div>
+
+<table class="dataframe" border="1">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>Ad</th>
+      <th>yas</th>
+      <th>meslek</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>A1</td>
+      <td>B1</td>
+      <td>C1</td>
+      <td>halil</td>
+      <td>42</td>
+      <td>mak.müh.</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>A2</td>
+      <td>B2</td>
+      <td>C2</td>
+      <td>emre</td>
+      <td>35</td>
+      <td>yönetici</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>A3</td>
+      <td>B3</td>
+      <td>C3</td>
+      <td>burak</td>
+      <td>44</td>
+      <td>akademisyen</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>İkisinde de ortak olan 1,2 ve 3 nolu indeks değerlerindeki veriler birleştirildi yani her iki veri çerçevesinin <strong>kesişimi</strong> alındı.</p>
+<pre><code class="fenced-code-block language-python">print(df4<span class="token punctuation">.</span>join<span class="token punctuation">(</span>df1<span class="token punctuation">,</span> sort<span class="token operator">=</span> <span class="token boolean">True</span><span class="token punctuation">))</span></code></pre>
+<div>
+
+<table class="dataframe" border="1">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Ad</th>
+      <th>yas</th>
+      <th>meslek</th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>mustafa</td>
+      <td>38</td>
+      <td>yönetici</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>halil</td>
+      <td>42</td>
+      <td>mak.müh.</td>
+      <td>A1</td>
+      <td>B1</td>
+      <td>C1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>emre</td>
+      <td>35</td>
+      <td>yönetici</td>
+      <td>A2</td>
+      <td>B2</td>
+      <td>C2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>burak</td>
+      <td>44</td>
+      <td>akademisyen</td>
+      <td>A3</td>
+      <td>B3</td>
+      <td>C3</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<h2 class="atx" id="merge-fonksiyonu">merge() Fonksiyonu</h2>
+
+<p> Konu hakkında bilgi yakında eklenecek </p>
 
 
                 <p> <a href="Pandas_Eksik_Kayip_Veri_Yontemleri.html" class="button primary small"> &#8592 Önceki Bölüm </a> <a href="Pandas_Siralama_Yontemleri.html" class="button primary small">Sonraki Bölüm &#8594</a> </p>
