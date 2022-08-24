@@ -57,14 +57,14 @@
                     <h2  id="i%CC%87zlenecek-nokta">İzlenecek Nokta</h2>
 
                     <p>SolveSpace, bir nokta hareket ederken, noktanın arkasında bir &quot;iz&quot; çizebilir. Bu, mekanizma tasarlanırken kullanışlı bir yöntemdir. Aşağıda gösterilen çizim üç çubuklu bir bağlantıdır:<br>
-                    <img class="image fit" src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/40%20%C4%B0zlenecek%20Nokta.png" alt="İzlenecek Nokta"></p>
+                    <img class="image fit" src="images/solvespace/40%20%C4%B0zlenecek%20Nokta.png" alt="İzlenecek Nokta"></p>
                     <p>Şekildeki bağlantılı kollara sahip sistem çalışırken, orta bağlantının merkez noktası, turkuaz renkli eğri boyunca hareket eder. Bu görüntü, bağlantılı kollar çizildikten sonra bu orta nokta izlenmek üzere ayarlanıp ardından bağlantı, fare ile tüm hareket aralığı boyunca sürüklenerek üretildi.</p>
                     <p>İzlemeye başlamak için bir nokta seçin ve <code>Analiz &#x2192; İzlenecek Nokta</code>'yı seçin. Nokta hareket ettiğinde, arkasında turkuaz renkli izi çizilecektir.</p>
                     <p>İzlemeyi durdurmak için <code>Analiz &#x2192; İzlemeyi Durdur...</code>&apos;u seçin. İzlemeyi bir CSV (virgülle ayrılmış değer) dosyası olarak kaydetme seçeneği ile bir iletişim kutusu görünecektir. İzleme verilerini kaydetmek için iletişim kutusuna bir dosya adı yazın. İz versini kaydetmemek için <code>İptal</code>&apos;i seçin veya <code>Esc</code> tuşuna basın.</p>
                     <p>İzleme verisi, her satırda bir noktaya ait anlık konum bilgisi olacak şekilde  metin dosyası olarak kaydedilir. Her nokta, virgülle ayrılmış olarak x, y, z biçiminde görünür. Excel gibi elektronik tablolar da dahil olmak üzere birçok program bu formatı okuyabilir. Koordinat birimleri, dışa aktarma ölçek faktörü tarafından belirlenir. (Dışa aktarma ölçek faktörü 1 ise, bunlar milimetredir ve 25.4 ise o zaman inçtir.)</p>
                     <p>Mekanizma, fare ile sürüklenerek çalıştırılırsa, farenin hareketi düzensiz olacağı için, izdeki (iz verisindeki) noktalar eşit olmayan aralıklı olacaktır. x'e karşı <strong>t</strong> grafiği (yukarıdaki turkuaz renkli iz gibi) etkilenmez, ancak <strong>x</strong> veya <strong>y</strong>&apos;ye karşı <strong>t</strong> grafiği işe yaramaz, çünkü eğri boyunca &quot;<strong>hız</strong>&quot; sabit değildir.</p>
                     <p>Bu sorunu önlemek için, fare ile sürüklemek yerine bir boyutu adımlayarak noktayı hareket ettirin. Adım ölçüsünü seçin; bu herhangi bir mesafe veya açı olabilir. <code>Analiz &#x2192; Adım Ölçüsünü Ayarla...</code>&apos;yı seçin. Bu ölçü için yeni bitiş değerini (finish) ve adım sayısını (step) belirtin; ardından &quot;<code>step dimension now</code> (ölçüyü şimdi adımla)&quot;ya tıklayın.</p>
-                    <p><img class="image fit" src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/41%20Adim%20Olcusu.png" alt="Adım Ölçüsü"></p>
+                    <p><img class="image fit" src="images/solvespace/41%20Adim%20Olcusu.png" alt="Adım Ölçüsü"></p>
                     <p>Seçilen ölçü birden fazla adımda değiştirilecek ve her bir ara değerde çözülecektir. Örneğin, şimdi (başlangıçta) 10 dereceye ayarlanmış bir ölçü düşünün. Kullanıcı bu boyutu 10 adımda 30 dereceye çıkarır (Bitiş Ölçüsü). Bu, SolveSpace&apos;in 30 dereceye ulaşana kadar 12 derecede, sonra 14 derecede, sonra 16&apos;da vb. çözeceği anlamına gelir. ( Yani 30&#xB0; - 10&#xB0; = 20&#xB0;,  10 adımda hesaplanacak ise her adımda 20&#xB0; / 10 adım = 2&#xB0; artırım yapılacaktır. [ Formül = (bitiş ölçüsü - başlangıç ölçüsü) / adım sayısı] )</p>
                     <p>İzlenen noktanın konumu, her ara değerde kaydedilecektir. İz verisi dışa aktarıldığında, boyutlandırılmış bağlantı, sabit açısal hızla döndüğü için o, noktanın konumunu temsil eder.</p>
                     <p>Adım ölçüsü ayarlama özelliği, yakınsamayı da iyileştirebilir. Bazı zor durumlarda, bir ölçü değiştirildiğinde çözücü bir çözüm bulamaz. Belirtilen kısıtlamaların birden fazla çözümü varsa, çözücü istenmeyen bir çözüm de bulabilir. Bu durumda, boyutu tek adımda değiştirmek yerine yeni adım değeri atamayı denemek faydalı olabilir.</p>
@@ -72,7 +72,7 @@
 
                     <p>Bu özellik, çizilen parçanın hacmini bildirir. Aktif birimlere bağlı olarak hacim inç küp veya mililitre ve milimetre küp olarak verilir.</p>
                     <p>Parça düzgün eğriler (örneğin çemberler/daireler) içeriyorsa bu eğriler, ağ/kafes geometrisinin tam bir temsili değildir. Bu, ölçülen hacmin yalnızca bir tahmin olduğu anlamına gelir; Ekranda oldukça düzgün görünen bir ağ/kafes için yüzde bir (%1) civarında bir hata olabileceğini bekleyin (bilin). Bu hatayı azaltmak için daha ince bir nüans/akor toleransı seçin.</p>
-                    <p><img class="image fit" src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/42%20Nuans-akor%20toleransi.png" alt="Nüans/Akor (Chord) Toleransı"></p>
+                    <p><img class="image fit" src="images/solvespace/42%20Nuans-akor%20toleransi.png" alt="Nüans/Akor (Chord) Toleransı"></p>
                     <h2  id="alan%C4%B1-hesapla">Alanı Hesapla</h2>
 
                     <p>Bu özellik, geçerli çizimin alanını bildirir. Çizimde kullanılan aktif birimlere bağlı olarak, alan inç kare veya milimetre kare olarak verilir.</p>
@@ -81,7 +81,7 @@
 
                     <p>Bu özellik, çizimdeki hangi noktaların tamamen kısıtlanmadığını gösterir (yani, kullanıcı onları fareyle sürüklediğinde hangi noktaların hareket edeceğini). Serbest noktalar, üzerlerinde büyük turkuaz renkli bir kare ile gösterilir. Sıfır serbestlik dereceli (tamamen kısıtlanmış) bir çizimde hiçbir şey gösterilmez. Bir serbestlik derecesine sahip bir çizimde, bir veya daha fazla nokta işaretlenecektir; birden fazla noktanın işaretlenmesi mümkündür, çünkü bu bir serbestlik derecesi, birden çok nokta üzerinden sürüklenebilir olabilir.</p>
                     <p>Büyük turkuaz renkli kareleri silmek için <code>Düzenle &#x2192; Tümünü Yeniden Oluştur</code>&apos;u seçerek veya <code>bir noktayı sürükleyerek</code> ya da <code>ESC</code> tuşuna basarak çizimi yeniden çözün.</p>
-                    <p><img class="image fit" src="https://raw.githubusercontent.com/mhalil/Solvespace_basvuru_kilavuzu/main/grafikler/43%20Kisitlanmamis%20noktalar.png" alt="Kısıtlanmamış Noktalar"></p>
+                    <p><img class="image fit" src="images/solvespace/43%20Kisitlanmamis%20noktalar.png" alt="Kısıtlanmamış Noktalar"></p>
 
                 <p> <a href="SolveSpace_05CizgiBicimleri.html" class="button primary small"> &#8592 Önceki Bölüm </a> <a href="SolveSpace_07DisaAktar.html" class="button primary small">Sonraki Bölüm &#8594</a> </p>
 
