@@ -1789,7 +1789,527 @@ print(veri)</code></pre>
 </div>
 
 <p>Gördüğünüz gibi veri çerçevemizde artık Oyuncuların Yaş bilgilerini barındıran <strong>Age</strong> isimli sütun bulunmuyor, tamemiyle silindi.</p>
-<p>Birden fazla satır ya da sütun silmek istediğimiz zaman ....</p>
+
+<p>Birden fazla satır ya da sütun silmek istediğimiz zaman silinmesini istediğimiz satır ya da sütun isimlerinin (ya da indeks değerlerini) liste olarak yani köşeli parantez içerisinde belirtmemiz gerekir.</p>
+<pre><code class="fenced-code-block language-python">veri<span class="token punctuation">.</span>drop<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">"College"</span><span class="token punctuation">,</span> <span class="token string">"Number"</span><span class="token punctuation">]</span><span class="token punctuation">,</span> axis <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> inplace<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+veri</code></pre>
+<div>
+
+<table class="dataframe" border="1">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Team</th>
+      <th>Position</th>
+      <th>Height</th>
+      <th>Weight</th>
+      <th>Salary</th>
+      <th>Aylık Kazanç</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Avery Bradley</td>
+      <td>Boston Celtics</td>
+      <td>PG</td>
+      <td>6-2</td>
+      <td>180.0</td>
+      <td>7730337.0</td>
+      <td>644194.750000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Jae Crowder</td>
+      <td>Boston Celtics</td>
+      <td>SF</td>
+      <td>6-6</td>
+      <td>235.0</td>
+      <td>6796117.0</td>
+      <td>566343.083333</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>John Holland</td>
+      <td>Boston Celtics</td>
+      <td>SG</td>
+      <td>6-5</td>
+      <td>205.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>R.J. Hunter</td>
+      <td>Boston Celtics</td>
+      <td>SG</td>
+      <td>6-5</td>
+      <td>185.0</td>
+      <td>1148640.0</td>
+      <td>95720.000000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Jonas Jerebko</td>
+      <td>Boston Celtics</td>
+      <td>PF</td>
+      <td>6-10</td>
+      <td>231.0</td>
+      <td>5000000.0</td>
+      <td>416666.666667</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>453</th>
+      <td>Shelvin Mack</td>
+      <td>Utah Jazz</td>
+      <td>PG</td>
+      <td>6-3</td>
+      <td>203.0</td>
+      <td>2433333.0</td>
+      <td>202777.750000</td>
+    </tr>
+    <tr>
+      <th>454</th>
+      <td>Raul Neto</td>
+      <td>Utah Jazz</td>
+      <td>PG</td>
+      <td>6-1</td>
+      <td>179.0</td>
+      <td>900000.0</td>
+      <td>75000.000000</td>
+    </tr>
+    <tr>
+      <th>455</th>
+      <td>Tibor Pleiss</td>
+      <td>Utah Jazz</td>
+      <td>C</td>
+      <td>7-3</td>
+      <td>256.0</td>
+      <td>2900000.0</td>
+      <td>241666.666667</td>
+    </tr>
+    <tr>
+      <th>456</th>
+      <td>Jeff Withey</td>
+      <td>Utah Jazz</td>
+      <td>C</td>
+      <td>7-0</td>
+      <td>231.0</td>
+      <td>947276.0</td>
+      <td>78939.666667</td>
+    </tr>
+    <tr>
+      <th>457</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>458 rows × 7 columns</p>
+</div>
+
+<h2 class="atx" id="drop_duplicates-metodu">drop_duplicates Metodu</h2>
+<p>Veri çerçevemizde çift kayıt varsa, yani tüm veriler aynı olan birden fazla satır verisi varsa, bunlardan biri kalacak şekilde diğerlerinin silmek için <strong>drop_duplicates</strong> metodunu / fonksiyonunu kullanabiliriz.
+Örnek kodları inceleyelim.</p>
+<pre><code class="fenced-code-block language-python"><span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd
+sozluk <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"isim"</span> <span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"Mustafa"</span><span class="token punctuation">,</span> <span class="token string">"Halil"</span><span class="token punctuation">,</span> <span class="token string">"Burak"</span><span class="token punctuation">,</span> <span class="token string">"Emre"</span><span class="token punctuation">,</span> <span class="token string">"Ersin"</span><span class="token punctuation">,</span> <span class="token string">"Sertaç"</span><span class="token punctuation">,</span> <span class="token string">"Furkan"</span><span class="token punctuation">,</span><span class="token string">"Murat"</span><span class="token punctuation">,</span><span class="token string">"Ahmet"</span><span class="token punctuation">,</span><span class="token string">"Abdülkadir"</span><span class="token punctuation">,</span> <span class="token string">"Halil"</span><span class="token punctuation">,</span> <span class="token string">"Ersin"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                    <span class="token string">"yaş"</span> <span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">25</span><span class="token punctuation">,</span> <span class="token number">42</span><span class="token punctuation">,</span> <span class="token number">43</span><span class="token punctuation">,</span> <span class="token number">23</span><span class="token punctuation">,</span> <span class="token number">37</span><span class="token punctuation">,</span> <span class="token number">52</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">,</span> <span class="token number">38</span><span class="token punctuation">,</span> <span class="token number">40</span><span class="token punctuation">,</span> <span class="token number">38</span><span class="token punctuation">,</span> <span class="token number">42</span><span class="token punctuation">,</span> <span class="token number">37</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                   <span class="token string">"iş-meslek"</span> <span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"mühendis"</span><span class="token punctuation">,</span> <span class="token string">"programcı"</span><span class="token punctuation">,</span> <span class="token string">"akademisyen"</span><span class="token punctuation">,</span> <span class="token string">"yönetici"</span><span class="token punctuation">,</span><span class="token string">"amir"</span><span class="token punctuation">,</span><span class="token string">"mühendis"</span><span class="token punctuation">,</span> <span class="token string">"yönetici"</span><span class="token punctuation">,</span><span class="token string">"müdür"</span><span class="token punctuation">,</span><span class="token string">"veteriner"</span><span class="token punctuation">,</span><span class="token string">"yönetici"</span><span class="token punctuation">,</span> <span class="token string">"programcı"</span><span class="token punctuation">,</span> <span class="token string">"amir"</span><span class="token punctuation">]</span><span class="token punctuation">}</span>
+veri <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span>sozluk<span class="token punctuation">)</span>
+veri</code></pre>
+<div>
+
+<table class="dataframe" border="1">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>isim</th>
+      <th>yaş</th>
+      <th>iş-meslek</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Mustafa</td>
+      <td>25</td>
+      <td>mühendis</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Halil</td>
+      <td>42</td>
+      <td>programcı</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Burak</td>
+      <td>43</td>
+      <td>akademisyen</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Emre</td>
+      <td>23</td>
+      <td>yönetici</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Ersin</td>
+      <td>37</td>
+      <td>amir</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Sertaç</td>
+      <td>52</td>
+      <td>mühendis</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Furkan</td>
+      <td>30</td>
+      <td>yönetici</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Murat</td>
+      <td>38</td>
+      <td>müdür</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Ahmet</td>
+      <td>40</td>
+      <td>veteriner</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Abdülkadir</td>
+      <td>38</td>
+      <td>yönetici</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Halil</td>
+      <td>42</td>
+      <td>programcı</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Ersin</td>
+      <td>37</td>
+      <td>amir</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Veri çerçevemizi incelediğimizde 2. ve 10. satırlardaki ile 4. ve 11. satırlardaki verilerin aynı olduğunu görüyoruz. Bu fazla verilerden kurtulalım.</p>
+<pre><code class="fenced-code-block language-python">veri<span class="token punctuation">.</span>drop_duplicates<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<div>
+
+<table class="dataframe" border="1">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>isim</th>
+      <th>yaş</th>
+      <th>iş-meslek</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Mustafa</td>
+      <td>25</td>
+      <td>mühendis</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Halil</td>
+      <td>42</td>
+      <td>programcı</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Burak</td>
+      <td>43</td>
+      <td>akademisyen</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Emre</td>
+      <td>23</td>
+      <td>yönetici</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Ersin</td>
+      <td>37</td>
+      <td>amir</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Sertaç</td>
+      <td>52</td>
+      <td>mühendis</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Furkan</td>
+      <td>30</td>
+      <td>yönetici</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Murat</td>
+      <td>38</td>
+      <td>müdür</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Ahmet</td>
+      <td>40</td>
+      <td>veteriner</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Abdülkadir</td>
+      <td>38</td>
+      <td>yönetici</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Veri çerçevesinde, tüm satır verisi aynı olmasa da, sadece belirtilen sütunda aynı değere sahip verilerden birinin kalıp diğerlerinin silinmesini istersek kullanmamız gereken parametre, <strong>subset</strong>'tir.</p>
+<p><strong>subset</strong> parametresine sütun ismi ya da isimleri yazarken liste veri tipinde girşi yapmak gerekir, yani sütun isimlerini köşeli parantez içerisinde yazmalıyız.</p>
+<pre><code class="fenced-code-block language-python"><span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd
+sozluk <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"isim"</span> <span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"Mustafa"</span><span class="token punctuation">,</span> <span class="token string">"Halil"</span><span class="token punctuation">,</span> <span class="token string">"Burak"</span><span class="token punctuation">,</span> <span class="token string">"Emre"</span><span class="token punctuation">,</span> <span class="token string">"Ersin"</span><span class="token punctuation">,</span> <span class="token string">"Sertaç"</span><span class="token punctuation">,</span> <span class="token string">"Furkan"</span><span class="token punctuation">,</span><span class="token string">"Murat"</span><span class="token punctuation">,</span><span class="token string">"Ahmet"</span><span class="token punctuation">,</span><span class="token string">"Abdülkadir"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                    <span class="token string">"yaş"</span> <span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">25</span><span class="token punctuation">,</span> <span class="token number">42</span><span class="token punctuation">,</span> <span class="token number">43</span><span class="token punctuation">,</span> <span class="token number">23</span><span class="token punctuation">,</span> <span class="token number">37</span><span class="token punctuation">,</span> <span class="token number">52</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">,</span> <span class="token number">25</span><span class="token punctuation">,</span> <span class="token number">40</span><span class="token punctuation">,</span> <span class="token number">38</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                   <span class="token string">"iş-meslek"</span> <span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"mühendis"</span><span class="token punctuation">,</span> <span class="token string">"programcı"</span><span class="token punctuation">,</span> <span class="token string">"akademisyen"</span><span class="token punctuation">,</span> <span class="token string">"yönetici"</span><span class="token punctuation">,</span><span class="token string">"amir"</span><span class="token punctuation">,</span><span class="token string">"mühendis"</span><span class="token punctuation">,</span> <span class="token string">"yönetici"</span><span class="token punctuation">,</span><span class="token string">"müdür"</span><span class="token punctuation">,</span><span class="token string">"veteriner"</span><span class="token punctuation">,</span><span class="token string">"yönetici"</span><span class="token punctuation">]</span><span class="token punctuation">}</span>
+veri <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span>sozluk<span class="token punctuation">)</span>
+veri</code></pre>
+<div>
+
+<table class="dataframe" border="1">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>isim</th>
+      <th>yaş</th>
+      <th>iş-meslek</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Mustafa</td>
+      <td>25</td>
+      <td>mühendis</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Halil</td>
+      <td>42</td>
+      <td>programcı</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Burak</td>
+      <td>43</td>
+      <td>akademisyen</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Emre</td>
+      <td>23</td>
+      <td>yönetici</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Ersin</td>
+      <td>37</td>
+      <td>amir</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Sertaç</td>
+      <td>52</td>
+      <td>mühendis</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Furkan</td>
+      <td>30</td>
+      <td>yönetici</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Murat</td>
+      <td>25</td>
+      <td>müdür</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Ahmet</td>
+      <td>40</td>
+      <td>veteriner</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Abdülkadir</td>
+      <td>38</td>
+      <td>yönetici</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Görüldüğü üzre, veri çerçevemizde birebir aynı satır verileri bulunmuyor ancak aynı meslek grubuna sahip kayıtlar mecvut. Diyelim ki her meslek grubundan bir kişi kalacak, diğer veriler silinecek şekilde bir işlem yapmak istiyoruz. Bu durumda aşağıdaki kdu alıştırmamız gerekir.</p>
+<pre><code class="fenced-code-block language-python">veri<span class="token punctuation">.</span>drop_duplicates<span class="token punctuation">(</span>subset<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">"iş-meslek"</span><span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
+<div>
+
+<table class="dataframe" border="1">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>isim</th>
+      <th>yaş</th>
+      <th>iş-meslek</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Mustafa</td>
+      <td>25</td>
+      <td>mühendis</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Halil</td>
+      <td>42</td>
+      <td>programcı</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Burak</td>
+      <td>43</td>
+      <td>akademisyen</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Emre</td>
+      <td>23</td>
+      <td>yönetici</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Ersin</td>
+      <td>37</td>
+      <td>amir</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Murat</td>
+      <td>25</td>
+      <td>müdür</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Ahmet</td>
+      <td>40</td>
+      <td>veteriner</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>İndeks verilerine bakarsanız, 5. , 6. ve 9. satırlardaki verilerin silindiğini göreceksiniz. Bunun sebebi, 5. satırda <strong>iş-meslek</strong> sütununda yazan ifadenin, daha üst satırlarda var olması sebebiyle silinmesidir.</p>
+<p>Çift olan verilerden İlki mi? sonuncu mu kalacak, hangisinin silineceğine pandas nasıl karar verecek derseniz, onun için de <strong>keep</strong> parametresini kullanmamız gerekecek.</p>
+<p><strong>keep</strong> parametresine <strong>last</strong> değeri atanırsa, bu kez çift verilerden sonuncusu kalacak ve ilk veriler silinecektir.</p>
+<p>Örnek kodu inceleyelim.</p>
+<pre><code class="fenced-code-block language-python">veri<span class="token punctuation">.</span>drop_duplicates<span class="token punctuation">(</span>subset<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">"iş-meslek"</span><span class="token punctuation">]</span><span class="token punctuation">,</span> keep<span class="token operator">=</span><span class="token string">"last"</span><span class="token punctuation">)</span></code></pre>
+<div>
+
+<table class="dataframe" border="1">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>isim</th>
+      <th>yaş</th>
+      <th>iş-meslek</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>Halil</td>
+      <td>42</td>
+      <td>programcı</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Burak</td>
+      <td>43</td>
+      <td>akademisyen</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Ersin</td>
+      <td>37</td>
+      <td>amir</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Sertaç</td>
+      <td>52</td>
+      <td>mühendis</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Murat</td>
+      <td>25</td>
+      <td>müdür</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Ahmet</td>
+      <td>40</td>
+      <td>veteriner</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Abdülkadir</td>
+      <td>38</td>
+      <td>yönetici</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Görüldüğü gibi, bu kez "iş-meslek" sütununda ilk veriler olan 0. , 3. ve 6. satırlar silindi.</p>
+                    
+                    
+                    
 <h3 class="atx" id="string-metotlari">String Metotları</h3>
 <p>Python ile kodlama yaparken, metinsel ifadelerle uğraştığımızda kullandığımız <strong>string metotlarını</strong> hatırlarsınız. Örneğin, Metinlerin tümünü büyük harfe ya da küçük harfe çevirmek. Bu tür string metotları Pandas ile kulanmak ve veri çerçevesine uygulamak mümkün. Bunun için <strong>str</strong> ifadesini kullanabiliriz.
 Önce Bir Veri Çerçevesi oluşturalım ve gözatalım.</p>
