@@ -2100,6 +2100,8 @@ veri</code></pre>
 </div>
 
 <p>Veri çerçevesinde, tüm satır verisi aynı olmasa da, sadece belirtilen sütunda aynı değere sahip verilerden birinin kalıp diğerlerinin silinmesini istersek kullanmamız gereken parametre, <strong>subset</strong>'tir.</p>
+
+<h4 class="atx" id="subset-parametresi">subset Parametresi</h4>                    
 <p><strong>subset</strong> parametresine sütun ismi ya da isimleri yazarken liste veri tipinde girşi yapmak gerekir, yani sütun isimlerini köşeli parantez içerisinde yazmalıyız.</p>
 <pre><code class="fenced-code-block language-python"><span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd
 sozluk <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"isim"</span> <span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"Mustafa"</span><span class="token punctuation">,</span> <span class="token string">"Halil"</span><span class="token punctuation">,</span> <span class="token string">"Burak"</span><span class="token punctuation">,</span> <span class="token string">"Emre"</span><span class="token punctuation">,</span> <span class="token string">"Ersin"</span><span class="token punctuation">,</span> <span class="token string">"Sertaç"</span><span class="token punctuation">,</span> <span class="token string">"Furkan"</span><span class="token punctuation">,</span><span class="token string">"Murat"</span><span class="token punctuation">,</span><span class="token string">"Ahmet"</span><span class="token punctuation">,</span><span class="token string">"Abdülkadir"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
@@ -2245,6 +2247,8 @@ veri</code></pre>
 
 <p>İndeks verilerine bakarsanız, 5. , 6. ve 9. satırlardaki verilerin silindiğini göreceksiniz. Bunun sebebi, 5. satırda <strong>iş-meslek</strong> sütununda yazan ifadenin, daha üst satırlarda var olması sebebiyle silinmesidir.</p>
 <p>Çift olan verilerden İlki mi? sonuncu mu kalacak, hangisinin silineceğine pandas nasıl karar verecek derseniz, onun için de <strong>keep</strong> parametresini kullanmamız gerekecek.</p>
+                    
+<h4 class="atx" id="keep-parametresi">keep Parametresi</h4>                                        
 <p><strong>keep</strong> parametresine <strong>last</strong> değeri atanırsa, bu kez çift verilerden sonuncusu kalacak ve ilk veriler silinecektir.</p>
 <p>Örnek kodu inceleyelim.</p>
 <pre><code class="fenced-code-block language-python">veri<span class="token punctuation">.</span>drop_duplicates<span class="token punctuation">(</span>subset<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">"iş-meslek"</span><span class="token punctuation">]</span><span class="token punctuation">,</span> keep<span class="token operator">=</span><span class="token string">"last"</span><span class="token punctuation">)</span></code></pre>
