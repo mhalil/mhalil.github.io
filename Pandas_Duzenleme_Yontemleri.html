@@ -158,7 +158,7 @@ print(dogumlar.head())</code></pre>
 </div>
 
 <p>İşlem başarılı. <strong>Yıl</strong> Sütunu, indeks olarak ayarlandı.</p>
-<h3 class="atx" id="set_index-metodu">set_index() metodu</h3>
+<h3 class="atx" id="set_index-fonksiyonu">set_index() Fonksiyonu</h3>
 <p>Veri Çerçevelerinin oluştururken, indeks değerlerini <strong>index_col</strong> parametresi ile ayarlayabildiğimiz gibi İstersek Veri Çerçevesini oluşturduktan sonra da, <strong>set_index()</strong> metodu ile de indeks değerlerini değiştirebilir / atayabiliriz.
 <strong>dogumlar</strong> isimli veri çerçevemizi yeniden oluşturup indeks başlığı <strong>set_index()</strong> metodu ile değiştirelim.</p>
 <pre><code class="fenced-code-block language-python">dogumlar <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_excel<span class="token punctuation">(</span><span class="token string">"Veri_Setleri/AyaGöreDoğumlar.xlsx"</span><span class="token punctuation">)</span>
@@ -1620,7 +1620,7 @@ print(veri)</code></pre>
 <h3 class="atx" id="satir-ya-da-sutun-sil">Satır ya da Sütun Sil</h3>
 <p>Veri çerçevesine ekleme yapılabildiği gibi, silme / çıkarma işlemi de yapılabiliyor.
 Bunun için <strong>drop()</strong> metodu kullanılıyor.</p>
-<h3 class="atx" id="drop-metodu">drop() Metodu</h3>
+<h3 class="atx" id="drop-fonksiyonu">drop() Fonksiyonu</h3>
 <p>Bu metodun kullanım/yazım şekli aşağıdaki gibidir.</p>
 <pre><code>Veri_Çerçevesi_Adı.drop("Satır ya da Sütun Adı", axis = 0 ya da 1, inplace = True ya da False)</code></pre>
 <ul>
@@ -1924,7 +1924,7 @@ veri</code></pre>
 <p>458 rows × 7 columns</p>
 </div>
 
-<h2 class="atx" id="drop_duplicates-metodu">drop_duplicates Metodu</h2>
+<h2 class="atx" id="drop_duplicates-fonksiyonu">drop_duplicates Fonksiyonu</h2>
 <p>Veri çerçevemizde çift kayıt varsa, yani tüm veriler aynı olan birden fazla satır verisi varsa, bunlardan biri kalacak şekilde diğerlerinin silmek için <strong>drop_duplicates</strong> metodunu / fonksiyonunu kullanabiliriz.
 Örnek kodları inceleyelim.</p>
 <pre><code class="fenced-code-block language-python"><span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd
@@ -2804,7 +2804,7 @@ print(df1)</code></pre>
 
 <p>Gördüğünüz gibi, iki veri çerçevesi altalta birleştirildi. </p>
 <p>Hatırlarsanız <strong>drop</strong> metodunu anlatırken <strong>axis</strong> parametresinden bahsetmiştik. <strong>axis</strong> parametresi, <strong>0 ve 1</strong> değerlerini alır, <strong>0 satırları, 1 ise sütunları</strong> temsil eder demiştik. Aynı parametreyi birleştirme işleminde de kullanabiliriz. eğer <strong>axis</strong> parametresi kullanılmaz ise, varsayılan değer <strong>axis = 0</strong> olduğu için yani satırları baz alarak birleştirme yapılır.</p>
-<p>Şimdi <strong>axis=1</strong> parametresini ekelyerek veri çerçevelerini yanyana birleştirmeyi deneyelim.</p>
+<p>Şimdi <strong>axis=1</strong> parametresini ekleyerek veri çerçevelerini yanyana birleştirmeyi deneyelim.</p>
 <pre><code class="fenced-code-block language-python">print(pd<span class="token punctuation">.</span>concat<span class="token punctuation">(</span><span class="token punctuation">[</span>df1<span class="token punctuation">,</span> df2<span class="token punctuation">]</span><span class="token punctuation">,</span> axis <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">))</span></code></pre>
 <div>
 
@@ -3225,7 +3225,7 @@ print(df3)</code></pre>
 </table>
 </div>
 
-<h2 class="atx" id="join-metodu">join() Metodu</h2>
+<h2 class="atx" id="join-fonksiyonu">join() Fonksiyonu</h2>
 <p><strong>join()</strong> metodu, Veri çerçevelerini bir birine katmak için kullanılır. Matematikteki <strong>Küme</strong> konusunu hatırlayın.
 <strong>join()</strong> metodu, parametresiz kullanıldığında <strong>ortak küme</strong> gibi davranarak veri çerçevelerini bir birine dahil eder/katar.</p>
 <pre><code class="fenced-code-block language-python">veri4 <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'Ad'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"mustafa"</span><span class="token punctuation">,</span> <span class="token string">"halil"</span><span class="token punctuation">,</span> <span class="token string">"emre"</span><span class="token punctuation">,</span> <span class="token string">"burak"</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token string">'yas'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">38</span><span class="token punctuation">,</span><span class="token number">42</span><span class="token punctuation">,</span><span class="token number">35</span><span class="token punctuation">,</span><span class="token number">44</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token string">'meslek'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"yönetici"</span><span class="token punctuation">,</span> <span class="token string">"mak.müh."</span><span class="token punctuation">,</span> <span class="token string">"yönetici"</span><span class="token punctuation">,</span> <span class="token string">"akademisyen"</span><span class="token punctuation">]</span><span class="token punctuation">}</span>

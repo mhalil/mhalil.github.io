@@ -51,28 +51,33 @@
 										<h2>Python - Pandas Kütüphanesi Eğitim Notları</h2>
 									</header>
 									   <h3>PANDAS NEDİR?</h3>
-                                        <p><b>Python'a Giriş</b> konusu ile alakalı bilgileri, <a href="Freecad.html">FreeCAD Eğitim Notları</a> bölümünde <a href="FreeCAD_01_Python'a_Giris.html">1. Python'a Giriş</a> başlığı altında paylaşmıştık. Python'da yeniyseniz ya da Python hakkında hiç bir şey bilmiyorsanız, öncelikle ilgili bölüme göz atmanızı öneririm.<br>
-                                        Önceki bölüme ilave olarak burada, Python'ın en güçlü ve işlevsel kütüphanelerinden biri olan <b>Pandas</b>'a ait notları paylaşmaya devam ediyorum.</p>
-                                        <p>Pandas Kütüphanesinin ne olduğu ve bu kütüphane ile (<strong>Özellikle Veri Çerçevesi (Data Frame) konusunda</strong>) neler yapılabildiğine dair öğrendiklerimi paylaştığım repo.</p>
-                                        <p>Pandas, veri işleme ve veri analizi için Python Python programlama dilinde yazılmış olan bir Python kütüphanesidir. 
-                                        Bu kütüphane, <strong>Seriler (Series)</strong> ve <strong>Veri Çerçevesi (DataFrame)</strong> isimli iki veri yapısının üzerine kurulmuştur. serileri tek boyutlu diziler, veri çerçevelerini ise iki boyutlu matrisler (SQL ya da Excel tabloları) gibi düşünebiliriz.</p>
-                                        <p><b>Pandas kütüphanesinin özellikleri</b></p>
+                                        <p><b>Python'a Giriş</b> konusu ile alakalı bilgileri, <a href="Freecad.html">FreeCAD Eğitim Notları</a> bölümünde <a href="FreeCAD_01_Python'a_Giris.html">1. Python'a Giriş</a> başlığı altında paylaşmıştık. Python'da yeniyseniz ya da Python hakkında hiç bir şey bilmiyorsanız, öncelikle bu bölüme göz atmanızı öneririm.<br> <br>
+                                        
+                                            Önceki bölüme ilave olarak burada, Python'ın en güçlü ve işlevsel kütüphanelerinden biri olan <b>Pandas</b> notlarını paylaşmaya devam ediyorum.
+                                            <br>
+                                            Pandas Kütüphanesinin ne olduğu ve bu kütüphane ile (<strong>Özellikle Veri Çerçevesi (Data Frame) konusunda</strong>) neler yapılabildiğine dair öğrendiklerimi bu bölümde paylaşıyorum.
+                                            <br>
+                                            <strong>Pandas</strong>, veri işleme ve veri analizi için yazılmış olan Python kütüphanesidir. </p>
+                                    
+                                        <p>Bu kütüphane, <strong>Seriler (Series)</strong> ve <strong>Veri Çerçevesi (DataFrame)</strong> isimli iki veri yapısının üzerine kurulmuştur. Serileri tek boyutlu diziler, Veri Çerçevelerini ise iki boyutlu matrisler (SQL ya da Excel tabloları) gibi düşünebiliriz.</p>
+                                    
+                                    <p><b>Pandas kütüphanesinin özellikleri</b></p>
                                         <ul>
                                         <li>İndeksli DataFrame (veri çerçevesi) objeleri ile veri işlemesi yapabilmek.</li>
                                         <li>Hafızadaki veya farklı türlerde bulunan veriyi okuyabilmek ve yazabilmek için araçlar sağlamak.</li>
                                         <li>Veri sıralama ve bütünleşik kayıp veri senaryolarına karşı esnek imkanlar sunmak</li>
                                         <li>Veri setlerinin tekrar boyutlandırılması veya döndürülmesi.</li>
                                         <li>Etiket bazlı dilimleme, özel indeksleme ve büyük veri setlerini ayrıştırmak</li>
-                                        <li>Veri çerçevesine sütun ekleme veya var olan sütunu çıkarma.</li>
-                                        <li>Veri gruplama özelliği ile ayırma-uygulama-birleştirme uygulamaları yapılabilmek.</li>
-                                        <li>Veri setlerini birleştirilmek ve birbirine eklenmek.</li>
+                                        <li>Veri çerçevesine sütun ekleme veya var olan sütunu çıkarma/silme.</li>
+                                        <li>Veri gruplama özelliği ile ayırma-birleştirme uygulamaları yapılabilmek.</li>
+                                        <li>Veri setlerini birleştirilmek ve birbirine eklemek.</li>
                                         <li>Çok boyutlu veriden, daha az boyutlu veri elde edilebilmek.</li>
                                         <li>Veri filtrelemek.</li>
                                         </ul>
                                         <p>Kütüphane performans konusunda son derece iyidir. Bu yüzden kütüphanenin önemli parçaları CPython ve C üzerinde yazılmışlardır.</p>
                                         
                                     <p><b>NOT:</b> <br>
-                                        Eğitimlerde kullandığım Veri Setlerini <a href="https://github.com/mhalil/Pandas_Notlari/tree/main/Veri_Setleri">GitHub adresimden</a> indirebilirsiniz.</p>
+                                        Eğitimlerde kullandığım Veri Setlerine <a href="https://github.com/mhalil/Pandas_Notlari/tree/main/Veri_Setleri">GitHub adresimden</a> erişebilirsiniz.</p>
                                     
                                         <h3 class="atx" id="pandas-veri-cercevesi-data-frame-konu-basliklari">Pandas Veri Çerçevesi (Data Frame) Konu Başlıkları</h3>
                                         <ol>
@@ -84,11 +89,11 @@
                                                 <ul>
                                                     <li><a href="Pandas_Veri_Cercevesi_Olustur.html#index_col-parametresi">index_col Parametresi </a></li>
                                                 </ul>
-                                                <li><a href="Pandas_Veri_Cercevesi_Olustur.html#read_table-fonksiyonu">read_table() fonksiyonu </a></li>
+                                                <li><a href="Pandas_Veri_Cercevesi_Olustur.html#read_table-fonksiyonu">read_table() Fonksiyonu </a></li>
                                                 <ul>
-                                                    <li><a href="Pandas_Veri_Cercevesi_Olustur.html#delimiter-parametresi">delimiter parametresi </a></li>
+                                                    <li><a href="Pandas_Veri_Cercevesi_Olustur.html#delimiter-parametresi">delimiter Parametresi </a></li>
                                                 </ul>
-                                                <li><a href="Pandas_Veri_Cercevesi_Olustur.html#read_excel-fonksiyonu">read_excel() fonksiyonu </a></li>
+                                                <li><a href="Pandas_Veri_Cercevesi_Olustur.html#read_excel-fonksiyonu">read_excel() Fonksiyonu </a></li>
                                                 <li><a href="Pandas_Veri_Cercevesi_Olustur.html#read_json-fonksiyonu">read_json() Fonksiyonu </a></li>
                                                 <li><a href="Pandas_Veri_Cercevesi_Olustur.html#read_html-fonksiyonu">read_html() Fonksiyonu </a></li>
                                                 <li><a href="Pandas_Veri_Cercevesi_Olustur.html#read_clipboard-fonksiyonu">read_clipboard() Fonksiyonu </a></li>
@@ -96,7 +101,7 @@
                                             
                                         <li><a href="Pandas_Excel_Dosyasi_ile_Calis.html">Excel Dosyaları ile Çalışmak</a></li>
                                              <ul>
-                                                <li><a href="Pandas_Excel_Dosyasi_ile_Calis.html">read_excel() fonksiyonu </a></li>
+                                                <li><a href="Pandas_Excel_Dosyasi_ile_Calis.html">read_excel() Fonksiyonu </a></li>
                                                  <ul>
                                                     <li><a href="Pandas_Excel_Dosyasi_ile_Calis.html#header-ve-names-parametreleri">header ve names Parametreleri </a></li>
                                                     <li><a href="Pandas_Excel_Dosyasi_ile_Calis.html#sheet_name-parametresi">sheet_name Parametresi </a></li>
@@ -113,7 +118,7 @@
                                                 <li><a href="Pandas_Veriyi_Kesfet_incele.html#info-fonksiyonu">info() Fonksiyonu</a></li>
                                                 <li><a href="Pandas_Veriyi_Kesfet_incele.html#dtypes-fonksiyonu">dtypes Fonksiyonu</a></li>
                                                 <li><a href="Pandas_Veriyi_Kesfet_incele.html#describe-fonksiyonu">describe() Fonksiyonu</a></li>
-                                                <li><a href="Pandas_Veriyi_Kesfet_incele.html#shape-metodu">shape Metodu</a></li>
+                                                <li><a href="Pandas_Veriyi_Kesfet_incele.html#shape-fonksiyonu">shape Fonksiyonu</a></li>
                                             </ul>
                                             
                                         <li><a href="Pandas_Secim_Yontemleri.html">Veri Seçim Yöntemleri</a></li>
@@ -126,13 +131,13 @@
                                         <li><a href="Pandas_Eksik_Kayip_Veri_Yontemleri.html">Eksik - Kayıp Veri Yöntemleri</a></li>
                                              <ul>
                                                 <li><a href="Pandas_Eksik_Kayip_Veri_Yontemleri.html#isnull-fonksiyonu">isnull() Fonksiyonu </a></li>
-                                                <li><a href="Pandas_Eksik_Kayip_Veri_Yontemleri.html#dropna-metodu">dropna() Metodu </a></li>
+                                                <li><a href="Pandas_Eksik_Kayip_Veri_Yontemleri.html#dropna-fonksiyonu">dropna() Fonksiyonu </a></li>
                                                  <ul>   
                                                     <li><a href="Pandas_Eksik_Kayip_Veri_Yontemleri.html#axis-parametresi">axis Parametresi </a></li>
                                                     <li><a href="Pandas_Eksik_Kayip_Veri_Yontemleri.html#inplace-parametresi">inplace Parametresi </a></li>
                                                     <li><a href="Pandas_Eksik_Kayip_Veri_Yontemleri.html#thresh-parametresi">thresh Parametresi </a></li>
                                                 </ul>
-                                                <li><a href="Pandas_Eksik_Kayip_Veri_Yontemleri.html#fillna-metodu">fillna() Metodu </a></li>
+                                                <li><a href="Pandas_Eksik_Kayip_Veri_Yontemleri.html#fillna-fonksiyonu">fillna() Fonksiyonu </a></li>
                                                  <ul>   
                                                     <li><a href="Pandas_Eksik_Kayip_Veri_Yontemleri.html#value-parametresi">value Parametresi </a></li>
                                                 </ul>
@@ -140,9 +145,15 @@
                                             
                                         <li><a href="Pandas_Duzenleme_Yontemleri.html">Veri Düzenleme Yöntemleri</a></li>
                                              <ul>
-                                                <li><a href="Pandas_Duzenleme_Yontemleri.html#index_col-parametresi">index_col Parametresi </a></li>
-                                                <li><a href="Pandas_Duzenleme_Yontemleri.html#set_index-metodu">set_index() metodu </a></li>
-                                                <li><a href="Pandas_Duzenleme_Yontemleri.html#usecols-parametresi">usecols Parametresi </a></li>
+                                                <li><a href="Pandas_Duzenleme_Yontemleri.html#indeks-degerlerini-ayarlamak">İndeks Değerlerini Ayarlamak </a></li>
+                                                    <ul>
+                                                    <li><a href="Pandas_Duzenleme_Yontemleri.html#index_col-parametresi">index_col Parametresi </a></li>
+                                                    </ul>
+                                                <li><a href="Pandas_Duzenleme_Yontemleri.html#set_index-fonksiyonu">set_index() Fonksiyonu </a></li>
+                                                <li><a href="Pandas_Duzenleme_Yontemleri.html#sutunlari-atla">Sütunları Atla </a></li> 
+                                                    <ul>
+                                                    <li><a href="Pandas_Duzenleme_Yontemleri.html#usecols-parametresi">usecols Parametresi </a></li>
+                                                    </ul>
                                                 <li><a href="Pandas_Duzenleme_Yontemleri.html#satirlari-atla">Satırları Atla </a></li>
                                                  <ul>
                                                     <li><a href="Pandas_Duzenleme_Yontemleri.html#skiprows-parametresi">skiprows Parametresi </a></li>
@@ -150,13 +161,13 @@
                                                 <li><a href="Pandas_Duzenleme_Yontemleri.html#sutun-ekle">Sütun Ekle </a></li>
                                                 <li><a href="Pandas_Duzenleme_Yontemleri.html#satir-ya-da-sutun-sil">Satır ya da Sütun Sil </a></li>
                                                  <ul>
-                                                    <li><a href="Pandas_Duzenleme_Yontemleri.html#drop-metodu">drop() Metodu </a></li>
+                                                    <li><a href="Pandas_Duzenleme_Yontemleri.html#drop-fonksiyonu">drop() Fonksiyonu </a></li>
                                                     <ul>
                                                         <li><a href="Pandas_Duzenleme_Yontemleri.html#axis-parametresi">axis Parametresi </a></li>
                                                         <li><a href="Pandas_Duzenleme_Yontemleri.html#inplace-parametresi">inplace Parametresi </a></li>
                                                
                                                     </ul>
-                                                    <li><a href="Pandas_Duzenleme_Yontemleri.html#drop_duplicates-metodu">drop_duplicates() Metodu </a></li>
+                                                    <li><a href="Pandas_Duzenleme_Yontemleri.html#drop_duplicates-fonksiyonu">drop_duplicates() Fonksiyonu </a></li>
                                                      <ul>
                                                      <li><a href="Pandas_Duzenleme_Yontemleri.html#subset-parametresi">subset Parametresi </a></li>
                                                         <li><a href="Pandas_Duzenleme_Yontemleri.html#keep-parametresi">keep Parametresi </a></li>
@@ -170,7 +181,7 @@
                                                     
                                                 <li><a href="Pandas_Duzenleme_Yontemleri.html#string-metotlari">String Metotları </a></li>
                                                 <li><a href="Pandas_Duzenleme_Yontemleri.html#concat-fonksiyonu">concat() Fonksiyonu </a></li>
-                                                <li><a href="Pandas_Duzenleme_Yontemleri.html#join-metodu">join() Metodu </a></li>
+                                                <li><a href="Pandas_Duzenleme_Yontemleri.html#join-fonksiyonu">join() Fonksiyonu </a></li>
                                                  <ul>
                                                     <li><a href="Pandas_Duzenleme_Yontemleri.html#how-parametresi">how parametresi </a></li>
                                                     <li><a href="Pandas_Duzenleme_Yontemleri.html#right-join">right join </a></li>
@@ -183,18 +194,21 @@
                                         <li><a href="Pandas_Siralama_Yontemleri.html">Veri Sıralama Yöntemleri</a></li>
                                              <ul>
                                                 <li><a href="Pandas_Siralama_Yontemleri.html#sort_values-fonksiyonu">sort_values() Fonksiyonu </a></li>
+                                                 <ul>
+                                                 <li><a href="Pandas_Siralama_Yontemleri.html#ascending-parametresi">ascending Parametresi </a></li>
+                                                 </ul>
                                             </ul>
                                             
                                         <li><a href="Pandas_Filtreleme_Yontemleri.html">Veri Filtreleme Yöntemleri</a></li>
                                              <ul>
                                                 <li><a href="Pandas_Filtreleme_Yontemleri.html#karsilastirma-operatoru-kullanimi">Karşılaştırma Operatorü Kullanımı </a></li>
-                                                <li><a href="Pandas_Filtreleme_Yontemleri.html#between-metodu">between() Metodu </a></li>
+                                                <li><a href="Pandas_Filtreleme_Yontemleri.html#between-fonksiyonu">between() Fonksiyonu </a></li>
                                                 <li><a href="Pandas_Filtreleme_Yontemleri.html#mantiksal-operator-kullanimi">Mantıksal Operatör Kullanımı </a></li>
                                             </ul>
                                             
                                         <li><a href="Pandas_Gruplama_Yontemleri.html">Gruplama Yöntemleri</a></li>
                                              <ul>
-                                                <li><a href="Pandas_Gruplama_Yontemleri.html#groupby-metodu">groupby() Metodu </a></li>
+                                                <li><a href="Pandas_Gruplama_Yontemleri.html#groupby-fonksiyonu">groupby() Fonksiyonu </a></li>
                                             </ul>
                                             
                                         <li><a href="Pandas_OzetTablo_PivotTable.html"><strong>pivot_table()</strong>(Özet Tablo) Fonksiyonunun Kullanımı</a></li>
@@ -206,8 +220,8 @@
                                 
                                 <div class="container">
                                 <h3> Pandas Veri Çerçevesi Özet Bilgileri (CheatSheet) </h3>
-                                    <p> Pandas Veri Çerçevesi (Data Frame) komutlarını (fonksiyon, metot, parametre) bir yerde toplayarak ihtiyaç halinde, farklı konulara ait komutlara daha hızlı ulaşabileceğimiz bir <b>Başvuru Kılavuzu / Özet Bilgi Tablosu (CheatSheet)</b> oluşturmaya çalışıyorum. Başvuru kılavuzunu / Özet Bilgi Tablosunu (CheatSheet) oluşturuken, komutları, <b>Pandas Veri Çerçevesi (Data Frame) Konu Başlıkları</b>na göre kategorize etmeyi planlıyorum.</p>
-                                    <p>Sayfaya Yeni Konu başlıkları eklendikçe, Özet Bilgi Tablosunu da güncellemeye gayret edeceğim. <br>
+                                    <p> Pandas Veri Çerçevesi (Data Frame) komutlarını (fonksiyon, metot, parametre) bir yerde toplayarak ihtiyaç halinde, farklı konulara ait komutlara daha hızlı ulaşabileceğimiz bir <b>Başvuru Kılavuzu / Özet Bilgi Tablosu (CheatSheet)</b> oluşturmaya çalışıyorum. Başvuru kılavuzunu / Özet Bilgi Tablosunu (CheatSheet) oluştururken, komutları, <b>Pandas Veri Çerçevesi (Data Frame) Konu Başlıkları</b>na göre kategorize etmeyi planlıyorum.</p>
+                                    <p>Sayfaya Yeni Konu başlıkları ekledikçe, Özet Bilgi Tablosunu da güncellemeye gayret edeceğim. <br>
                                     Şuana kadar oluşturduğum <b>Başvuru Kılavuzu / Özet Bilgi Tablosu (CheatSheet)</b>na ağaşıdaki bağlantıdan erişebilirsiniz.</p>
                                     <p><li>
                                         <a href="Pandas_Ozet_Bilgi_Tablosu_CheatSheet.html">Pandas Özet Bilgi Tablosu (CheatSheet) Sayfası</a>
