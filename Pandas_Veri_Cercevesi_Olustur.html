@@ -56,20 +56,21 @@
                 <div class="container">
 
                 <h3 class="atx" id="import-fonksiyonu">import Fonksiyonu</h3>
-                <p>Öncelikle <strong>Pandas</strong> Kütüphanesini çalışmamıza dahil edip (içe aktarıp), kodlama esnasında hızlı olması adına bu kütüphaneye <strong>pd</strong> adını atayalım;</p>
+                <p>Öncelikle <strong>Pandas</strong> Kütüphanesini projemize dahil edip (içe aktarıp), kodlama esnasında hızlı olması adına bu kütüphaneye <strong>pd</strong> adını atayalım;</p>
                 <pre><code class="fenced-code-block">import pandas as pd</code></pre>
                 <h3 class="atx" id="dataframe-fonksiyonu">DataFrame() Fonksiyonu</h3>
-                <p>Veri Çerçevesi (Data Frame) Oluşturmak ya da Dönüştürmek için <strong>DataFrame()</strong> fonksiyonunu kullanıyoruz. Veri Çerçevesine dönüştürmek istediğimiz veriyi, parantez içine, parametre olarak yazmalıyız. </p>
+                <p>Veri Çerçevesi (Data Frame) Oluşturmak ya da Dönüştürmek için <strong>DataFrame()</strong> fonksiyonunu kullanıyoruz. "Veri Çerçevesi"ne dönüştürmek istediğimiz veriyi, parantez içine, parametre olarak yazmalıyız. </p>
                     <pre><code>pd.DataFrame(veri)</code></pre>
                     <p>Yukarıdaki kullanımda <b>veri</b> parametresi (iterable veri ya da sözlük yapısı) aşağıdakilerden herhangi biri olabilir.
-                <li>Dictionary’lerden, serilerden veya listelerden oluşan bir dictionary</li>
+                <li>Sözlüklerden (Dictionary’lerden), serilerden veya listelerden oluşan bir sözlük (dictionary)</li>
                 <li>2 boyutlu numpy dizisi</li>
                 <li>Başka bir DataFrame</li></p>
                 <p>örneğin bir <strong>sözlük (dict)</strong> yapısı oluşturup bu yapıyı <strong>Veri Çerçevesi</strong>ne (<strong>Data Frame</strong>'e) dönüştürelim;</p>
-                <pre><code class="fenced-code-block">sozluk = {"isim" : ["Mustafa", "Halil", "Burak", "Emre", "Ersin", "Sertaç", "Furkan","Murat","Ahmet","Abdülkadir"],
-                                    "yaş" : [25, 38, 41, 23, 37, 52, 30, 23, 40, 38],
-                                   "iş-meslek" : ["mühendis", "programcı", "akademisyen", "yönetici","amir","mühendis", "yönetici","müdür","veteriner","yönetici"]}
-                veri = pd.DataFrame(sozluk)</code></pre>
+                
+<pre><code class="fenced-code-block">sozluk = {"isim" : ["Mustafa", "Halil", "Burak", "Emre", "Ersin", "Sertaç", "Furkan","Murat","Ahmet","Abdülkadir"],
+                    "yaş" : [25, 38, 41, 23, 37, 52, 30, 23, 40, 38],
+                    "iş-meslek" : ["mühendis", "programcı", "akademisyen", "yönetici","amir","mühendis", "yönetici","müdür","veteriner","yönetici"]}
+veri = pd.DataFrame(sozluk)</code></pre>
                 <p>Oluşturduğumuz Veri Çerçevesinin içeriğini görelim;</p>
                 <pre><code class="fenced-code-block">print(veri)</code></pre>
 <div>
@@ -149,11 +150,12 @@
 </div>
 
 <p>Gördüğünüz gibi verimiz, <strong>DataFrame()</strong> fonksiyonu ile, SQL ya da Excel tablosuna benzer şekilde satır ve sütunlardan oluşan yapıya dönüştürüldü. Artık bu yapıyı yönetmek ve analiz etmek oldukça kolaylaşmış oldu.</p>
+                    
 <h2 class="atx" id="harici-dosyalardan-veri-cercevesi-olustur">Harici Dosyalardan Veri Çerçevesi Oluştur</h2>
 <h3 class="atx" id="csv-dosyasini-ice-aktarmak">CSV Dosyasını İçe Aktarmak</h3>
 <h3 class="atx" id="read_csv-fonksiyonu">read_csv() Fonksiyonu</h3>
-<p>csv uzantılı dosyaların içeriğini çalışmalarımıza eklemek/dahil etmek istersek kullanabileceğimiz fonksiyon, <strong>read_csv()</strong> fonksiyonudur.</p>
-<p>örneğin <strong>nba.csv</strong> isimli dosyasınının içeriğini çalışmamıza aktaralıp, veri çerçevesine dönüştürelim;</p>
+<p><b>csv</b> uzantılı dosyaların içeriğini çalışmalarımıza/projelerimize eklemek/dahil etmek istersek kullanabileceğimiz fonksiyon, <strong>read_csv()</strong>'dir.</p>
+<p>örneğin <strong>nba.csv</strong> isimli dosyasınının içeriğini çalışmamıza aktarıp, veri çerçevesine dönüştürelim;</p>
 <pre><code class="fenced-code-block">import pandas as pd
 nba_csv = pd.read_csv("Veri_Setleri/nba.csv")
 print(nba_csv)</code></pre>
@@ -404,7 +406,7 @@ print(nba_csv.head())</code></pre>
 </div>
 
 <p>Gördüğünüz gibi artık <strong>indeks bilgileri</strong>, <strong>Oyuncu isimleri</strong>ne dönüşmüş oldu.</p>
-<h3 class="atx" id="read_table-fonksiyonu">read_table() fonksiyonu</h3>
+<h3 class="atx" id="read_table-fonksiyonu">read_table() Fonksiyonu</h3>
 <p><strong>read_table()</strong> fonksiyonu ile <strong>csv</strong> uzantılı dosyalar içe aktarıldığında, dosyanın her satırı, tablonun bir sütununa yazılır. Yani tabloda 2 sütun oluşturulur birinde index bilgisi, ikinci sütunda ise <strong>csv</strong> dosyasının satırlarındaki bilgiler bulunur.</p>
 <pre><code class="fenced-code-block">nba = pd.read_table("Veri_Setleri/nba.csv")
 print(nba)</code></pre>
@@ -467,7 +469,7 @@ print(nba)</code></pre>
 <p>458 rows × 1 columns</p>
 </div>
 
-<h3 class="atx" id="delimiter-parametresi">delimiter parametresi</h3>
+<h3 class="atx" id="delimiter-parametresi">delimiter Parametresi</h3>
 <p>CSV dosyaları <strong>read_table()</strong> fonksiyonu ile içe aktarılırken <strong>delimiter = ","</strong> parametresi eklenirse, dosya içeriği, <strong>read_csv</strong> fonksiyonu ile aynı çıktıyı verir. Satırlardaki veriler, <strong>","</strong> virgül kısımlarından ayrılarak, ayrı sütunlara yazılır.</p>
 <pre><code class="fenced-code-block">nba = pd.read_table("Veri_Setleri/nba.csv", delimiter=",")
 print(nba)</code></pre>
@@ -627,21 +629,19 @@ print(nba)</code></pre>
 </div>
 
 <h3 class="atx" id="excel-dosyasini-ice-aktarmak">Excel dosyasını içe aktarmak</h3>
-<h3 class="atx" id="read_excel-fonksiyonu">read_excel() fonksiyonu</h3>
-<p><strong>Excel</strong> ve <strong>Calc (Libre Ofis)</strong> programlarıyla oluşturulmuş tabloları çalışmamıza dahil etmek için <strong>read_excel()</strong> fonksiyonunu kullanmalıyız.</p>
-<p><u>Bu fonksiyon;</u></p>
+<h3 class="atx" id="read_excel-fonksiyonu">read_excel() Fonksiyonu</h3>
+<p><strong>MS Excel</strong> ve <strong>Libre Ofis Calc</strong> programlarıyla oluşturulmuş tabloları, çalışmamıza/projemize dahil etmek için <strong>read_excel()</strong> fonksiyonunu kullanmalıyız.</p>
+<u>Bu fonksiyon;</u>
 <ul>
-<li><p><strong>xls, xlsx, xlsm, xlsb, odf, ods</strong> ve odt <strong>uzantılı</strong> dosyaları destekler</p>
-</li>
-<li><p>Yerel bir dosya sisteminde veya bir URL'den depolanan excel, calc dosyalarını yükleyebilir.</p>
-</li>
-<li><p>Bir tek çalışma sayfasından veya bir sayfa listesinden içerik okumayı da destekler.</p>
-</li>
-<li><p>İki sayfa okunurken, <strong>DataFrame</strong>'i bir Sözluk yapısına (Dict) dönüşür.</p>
+<li><strong>xls, xlsx, xlsm, xlsb, odf, ods</strong> ve odt <strong>uzantılı</strong> dosyaları destekler. </li>
+<li>Yerel bir dosya sisteminde veya bir URL'den depolanan excel, calc dosyalarını yükleyebilir. </li>
+<li>Bir tek çalışma sayfasından veya bir sayfa listesinden içerik okumayı da destekler. </li>
+<li>İki sayfa okunurken, <strong>DataFrame</strong> Sözlük (Dict) yapısına dönüşür.
 </li>
 </ul>
+                
 <pre><code class="fenced-code-block">pd.read_excel(dosya_adi)</code></pre>
-<p>Bu fonksiyon kullanıldığında, varsayılan olarak, excel dosyasının ilk çalışma sayfası yüklenir ve ilk satır, bir Veri Çerçevesi (DataFrame) başlığı (sütun adı) olarak ayarlanır.</p>
+<p>Bu fonksiyon kullanıldığında, varsayılan olarak, excel dosyasının <b>ilk çalışma sayfası</b> yüklenir ve bu sayfanın <b>ilk satır</b>, bir Veri Çerçevesi <b>başlığı (sütun adı)</b> olarak ayarlanır.</p>
 <pre><code class="fenced-code-block">dogumlar = pd.read_excel("Veri_Setleri/AyaGöreDoğumlar.xlsx")
 print(dogumlar.head())</code></pre>
 <div>
@@ -756,7 +756,7 @@ print(dogumlar.head())</code></pre>
 </table>
 </div>
 
-<p><strong>Excel</strong> ve <strong>Calc</strong> tabloları ile çalışma konusunu detaylı olarak inceledik. İlgili bağlantıya <a href="Excel_Dosyasi_ile_Calis.ipynb">buradan</a> erişebilirsiniz.</p>
+<p><strong>MS Excel</strong> ve <strong>Libre Ofis Calc</strong> tabloları ile çalışma konusunu, ayrı sayfada detaylı olarak açıkladık. İlgili bağlantıya <a href="Excel_Dosyasi_ile_Calis.ipynb">buradan</a> erişebilirsiniz.</p>
 <h3 class="atx" id="json-dosyasini-ice-aktarmak">JSON dosyasını içe aktarmak</h3>
 <h3 class="atx" id="read_json-fonksiyonu">read_json() Fonksiyonu</h3>
 <p><strong>read_json()</strong> fonksiyonu ile <strong>json</strong> uzantılı dosyaları çalışmalarınıza dahil edebilirsiniz.</p>
@@ -960,11 +960,11 @@ print(df)</code></pre>
 <h3 class="atx" id="read_html-fonksiyonu">read_html() Fonksiyonu</h3>
 <p><strong>read_html()</strong> fonksiyonu ile web sitelerinde ya da htm/html uzantılı dosyalardaki tabloları, çalışmalarınıza dahil edebilirsiniz. Öncelikle veri almak istediğimiz sayfanın içerisinde kaç adet tablo olduğunu bulalım.</p>
 <pre><code class="fenced-code-block">url_tablo = pd.read_html("https://tr.wikipedia.org/wiki/Van")
-print(f"Sayfada bulunan toplam tablo sayısı: {len(url)}")</code></pre>
-<pre><code class="indented-code-block">Sayfada bulunan toplam tablo sayısı: 1</code></pre>
-<p>Hangi tabloyu kullanmak (içe aktarmak) istiyorsak öncelikle o tabloyu, tam olarak belirtmemiz/tanımlamamız gerekiyor. Bunu da <strong>read_html()</strong> fonksiyonunun <strong>match (eşle)</strong> parametresi ile yapmamız gerekir. Benim kullanmak istediğim tablonun içerisinde <strong>Van il nüfus bilgileri</strong> ibaresi bulunduğu için ben bu "kelime grubunu" <strong>match</strong> parametresine dahil ediyorum.</p>
+print(f"Sayfada bulunan toplam tablo sayısı: {len(url_tablo)}")</code></pre>
+<pre><code class="indented-code-block">Sayfada bulunan toplam tablo sayısı: 11</code></pre>
+<p>Hangi tabloyu kullanmak (içe aktarmak) istiyorsak öncelikle o tabloyu, tam olarak belirtmemiz/tanımlamamız gerekiyor. Bunu da <strong>read_html()</strong> fonksiyonunun <strong>match (eşle)</strong> parametresi ile yapmamız gerekir. Benim kullanmak istediğim tablonun içerisinde <strong>Van il nüfus bilgileri</strong> ibaresi bulunduğu için ben bu "<u>kelime grubunu</u>" <strong>match</strong> parametresine dahil ediyorum.</p>
 <pre><code class="fenced-code-block">url_tablo = pd.read_html("https://tr.wikipedia.org/wiki/Van", match="Van il nüfus bilgileri")
-len(url)</code></pre>
+len(url_tablo)</code></pre>
 <pre><code class="indented-code-block">1</code></pre>
 <p>Bu demek oluyor ki, sayfa içeriğinde, <strong>Van il nüfus bilgileri</strong> ibaresi bulunan <u>1 adet eşleşmiş tablo</u> var, artık <strong>url</strong> değişkeni sayfadaki tek tabloyu temsil ediyor ve bu tabloya erişmek için ilk indis olan <strong>0 sıfır</strong>'ı kullanmamız gerekir.</p>
 <pre><code class="fenced-code-block">print(url_tablo[0])</code></pre>
@@ -1166,8 +1166,17 @@ len(url)</code></pre>
 </table>
 </div>
 
-<p>Pandas kütüphanesi, tabloda okumayı kolaylaştırır ve ayrıca birden çok satıra yayılan (birleştirilmiş hücrelerdeki verileri) sütunu işleyerek, her hücreye aynı değeri kopyalar. Orjinal tablomuz aşağıdaki gibidir.</p>
-<p><img alt="nba" src="Veri_Setleri/nba.png"></p>
+<p><b>len(url_tablo)</b> çıktısı <b>1</b>'den büyük, yani sayfada aranan kelime ile eşleşen 1'den fazla tablo olsaydı, o durumda <b>url_tablo[0]</b> kodundaki indis değerini değiştirerek istediğimiz tabloya erişebilecektik. Örneğin; <b>url_tablo[3]</b><br>
+
+    Aşağıdaki kodu çalıştırırsanız, ilgili sayfada <b>ilçe</b> ibaresi geçen 5 adet tablo bulunduğunu göreceksiniz.</p>
+<pre><code class="fenced-code-block">url_tablo = pd.read_html("https://tr.wikipedia.org/wiki/Ankara", match="İlçe")
+len(url_tablo)
+</code></pre>
+<p>Bu tablolardan 3. tabloya ulaşmak için <b>print(url_tablo[2])</b> komutunu çalıştırmanız gerekecektir (indis değeri 0'dan başladığı için 3 yerine 2 yazmalıyız).<br><br>
+    
+    Pandas kütüphanesi, tablo okumayı kolaylaştırır ve birden çok satıra yayılan (birleştirilmiş hücrelerdeki) verileri, (ilgili sütunu işleyerek) her hücreye kopyalar. Orjinal tablomuz aşağıdaki gibidir.<br>
+<img alt="nba" src="images/python/nba.png"></p>
+                    
 <pre><code class="fenced-code-block">nba2 = pd.read_excel("Veri_Setleri/nba.xlsx")
 print(nba2)</code></pre>
 <div>
