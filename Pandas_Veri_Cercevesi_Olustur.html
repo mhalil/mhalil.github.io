@@ -755,7 +755,201 @@ print(dogumlar.head())</code></pre>
   </tbody>
 </table>
 </div>
+<p>Pandas kütüphanesi, tablo okumayı kolaylaştırır ve birden çok satıra yayılan (birleştirilmiş hücrelerdeki) verileri, (ilgili sütunu işleyerek) her hücreye kopyalar. Orjinal tablomuz aşağıdaki gibidir.<br>
+<img alt="nba" src="images/python/nba.png"></p>
+                    
+<pre><code class="fenced-code-block">nba2 = pd.read_excel("Veri_Setleri/nba.xlsx")
+print(nba2)</code></pre>
+<div>
 
+<table class="dataframe" border="1">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Team</th>
+      <th>Number</th>
+      <th>Position</th>
+      <th>Age</th>
+      <th>Height</th>
+      <th>Weight</th>
+      <th>College</th>
+      <th>Salary</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Avery Bradley</td>
+      <td>Boston Celtics</td>
+      <td>0.0</td>
+      <td>PG</td>
+      <td>25.0</td>
+      <td>6-2</td>
+      <td>180.0</td>
+      <td>Texas</td>
+      <td>7730337.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Jae Crowder</td>
+      <td>Boston Celtics</td>
+      <td>99.0</td>
+      <td>SF</td>
+      <td>25.0</td>
+      <td>6-6</td>
+      <td>235.0</td>
+      <td>Marquette</td>
+      <td>6796117.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>John Holland</td>
+      <td>Boston Celtics</td>
+      <td>30.0</td>
+      <td>SG</td>
+      <td>27.0</td>
+      <td>6-5</td>
+      <td>205.0</td>
+      <td>Boston University</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>R.J. Hunter</td>
+      <td>Boston Celtics</td>
+      <td>28.0</td>
+      <td>SG</td>
+      <td>22.0</td>
+      <td>6-5</td>
+      <td>185.0</td>
+      <td>Georgia State</td>
+      <td>1148640.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Thomas Robinson</td>
+      <td>Brooklyn Nets</td>
+      <td>41.0</td>
+      <td>PF</td>
+      <td>25.0</td>
+      <td>6-10</td>
+      <td>237.0</td>
+      <td>Kansas</td>
+      <td>981348.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Henry Sims</td>
+      <td>Brooklyn Nets</td>
+      <td>14.0</td>
+      <td>C</td>
+      <td>26.0</td>
+      <td>6-10</td>
+      <td>248.0</td>
+      <td>Georgetown</td>
+      <td>947276.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Donald Sloan</td>
+      <td>Brooklyn Nets</td>
+      <td>15.0</td>
+      <td>PG</td>
+      <td>28.0</td>
+      <td>6-3</td>
+      <td>205.0</td>
+      <td>Texas A&amp;M</td>
+      <td>947276.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Thaddeus Young</td>
+      <td>Brooklyn Nets</td>
+      <td>30.0</td>
+      <td>PF</td>
+      <td>27.0</td>
+      <td>6-8</td>
+      <td>221.0</td>
+      <td>Georgia Tech</td>
+      <td>11235955.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Arron Afflalo</td>
+      <td>New York Knicks</td>
+      <td>4.0</td>
+      <td>SG</td>
+      <td>30.0</td>
+      <td>6-5</td>
+      <td>210.0</td>
+      <td>UCLA</td>
+      <td>8000000.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Lou Amundson</td>
+      <td>New York Knicks</td>
+      <td>17.0</td>
+      <td>PF</td>
+      <td>33.0</td>
+      <td>6-9</td>
+      <td>220.0</td>
+      <td>UNLV</td>
+      <td>1635476.0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Thanasis Antetokounmpo</td>
+      <td>New York Knicks</td>
+      <td>43.0</td>
+      <td>SF</td>
+      <td>23.0</td>
+      <td>6-7</td>
+      <td>205.0</td>
+      <td>NaN</td>
+      <td>30888.0</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Carmelo Anthony</td>
+      <td>New York Knicks</td>
+      <td>7.0</td>
+      <td>SF</td>
+      <td>32.0</td>
+      <td>6-8</td>
+      <td>240.0</td>
+      <td>Syracuse</td>
+      <td>22875000.0</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Jose Calderon</td>
+      <td>New York Knicks</td>
+      <td>3.0</td>
+      <td>PG</td>
+      <td>34.0</td>
+      <td>6-3</td>
+      <td>200.0</td>
+      <td>NaN</td>
+      <td>7402812.0</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Cleanthony Early</td>
+      <td>New York Knicks</td>
+      <td>11.0</td>
+      <td>SF</td>
+      <td>25.0</td>
+      <td>6-8</td>
+      <td>210.0</td>
+      <td>Wichita State</td>
+      <td>845059.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<p>Pandas kütüphanesi sayesinde, <strong>Team</strong> Sütunundaki birleştirilmiş hücrelerde bulunan veriler, hücrelere ayrı ayrı kopyalanarak düzgün, bir veri çevçevesi oluşturmamızı sağlamış oldu.</p>
 <p><strong>MS Excel</strong> ve <strong>Libre Ofis Calc</strong> tabloları ile çalışma konusunu, ayrı sayfada detaylı olarak açıkladık. İlgili bağlantıya <a href="Excel_Dosyasi_ile_Calis.ipynb">buradan</a> erişebilirsiniz.</p>
 <h3 class="atx" id="json-dosyasini-ice-aktarmak">JSON dosyasını içe aktarmak</h3>
 <h3 class="atx" id="read_json-fonksiyonu">read_json() Fonksiyonu</h3>
@@ -1172,204 +1366,9 @@ len(url_tablo)</code></pre>
 <pre><code class="fenced-code-block">url_tablo = pd.read_html("https://tr.wikipedia.org/wiki/Ankara", match="İlçe")
 len(url_tablo)
 </code></pre>
-<p>Bu tablolardan 3. tabloya ulaşmak için <b>print(url_tablo[2])</b> komutunu çalıştırmanız gerekecektir (indis değeri 0'dan başladığı için 3 yerine 2 yazmalıyız).<br><br>
+<p>Bu tablolardan 3. tabloya ulaşmak için <b>print(url_tablo[2])</b> komutunu çalıştırmanız gerekecektir (indis değeri 0'dan başladığı için 3 yerine 2 yazmalıyız).</p>
     
-    Pandas kütüphanesi, tablo okumayı kolaylaştırır ve birden çok satıra yayılan (birleştirilmiş hücrelerdeki) verileri, (ilgili sütunu işleyerek) her hücreye kopyalar. Orjinal tablomuz aşağıdaki gibidir.<br>
-<img alt="nba" src="images/python/nba.png"></p>
-                    
-<pre><code class="fenced-code-block">nba2 = pd.read_excel("Veri_Setleri/nba.xlsx")
-print(nba2)</code></pre>
-<div>
-
-<table class="dataframe" border="1">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Name</th>
-      <th>Team</th>
-      <th>Number</th>
-      <th>Position</th>
-      <th>Age</th>
-      <th>Height</th>
-      <th>Weight</th>
-      <th>College</th>
-      <th>Salary</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Avery Bradley</td>
-      <td>Boston Celtics</td>
-      <td>0.0</td>
-      <td>PG</td>
-      <td>25.0</td>
-      <td>6-2</td>
-      <td>180.0</td>
-      <td>Texas</td>
-      <td>7730337.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Jae Crowder</td>
-      <td>Boston Celtics</td>
-      <td>99.0</td>
-      <td>SF</td>
-      <td>25.0</td>
-      <td>6-6</td>
-      <td>235.0</td>
-      <td>Marquette</td>
-      <td>6796117.0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>John Holland</td>
-      <td>Boston Celtics</td>
-      <td>30.0</td>
-      <td>SG</td>
-      <td>27.0</td>
-      <td>6-5</td>
-      <td>205.0</td>
-      <td>Boston University</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>R.J. Hunter</td>
-      <td>Boston Celtics</td>
-      <td>28.0</td>
-      <td>SG</td>
-      <td>22.0</td>
-      <td>6-5</td>
-      <td>185.0</td>
-      <td>Georgia State</td>
-      <td>1148640.0</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Thomas Robinson</td>
-      <td>Brooklyn Nets</td>
-      <td>41.0</td>
-      <td>PF</td>
-      <td>25.0</td>
-      <td>6-10</td>
-      <td>237.0</td>
-      <td>Kansas</td>
-      <td>981348.0</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>Henry Sims</td>
-      <td>Brooklyn Nets</td>
-      <td>14.0</td>
-      <td>C</td>
-      <td>26.0</td>
-      <td>6-10</td>
-      <td>248.0</td>
-      <td>Georgetown</td>
-      <td>947276.0</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>Donald Sloan</td>
-      <td>Brooklyn Nets</td>
-      <td>15.0</td>
-      <td>PG</td>
-      <td>28.0</td>
-      <td>6-3</td>
-      <td>205.0</td>
-      <td>Texas A&amp;M</td>
-      <td>947276.0</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>Thaddeus Young</td>
-      <td>Brooklyn Nets</td>
-      <td>30.0</td>
-      <td>PF</td>
-      <td>27.0</td>
-      <td>6-8</td>
-      <td>221.0</td>
-      <td>Georgia Tech</td>
-      <td>11235955.0</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>Arron Afflalo</td>
-      <td>New York Knicks</td>
-      <td>4.0</td>
-      <td>SG</td>
-      <td>30.0</td>
-      <td>6-5</td>
-      <td>210.0</td>
-      <td>UCLA</td>
-      <td>8000000.0</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>Lou Amundson</td>
-      <td>New York Knicks</td>
-      <td>17.0</td>
-      <td>PF</td>
-      <td>33.0</td>
-      <td>6-9</td>
-      <td>220.0</td>
-      <td>UNLV</td>
-      <td>1635476.0</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>Thanasis Antetokounmpo</td>
-      <td>New York Knicks</td>
-      <td>43.0</td>
-      <td>SF</td>
-      <td>23.0</td>
-      <td>6-7</td>
-      <td>205.0</td>
-      <td>NaN</td>
-      <td>30888.0</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>Carmelo Anthony</td>
-      <td>New York Knicks</td>
-      <td>7.0</td>
-      <td>SF</td>
-      <td>32.0</td>
-      <td>6-8</td>
-      <td>240.0</td>
-      <td>Syracuse</td>
-      <td>22875000.0</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>Jose Calderon</td>
-      <td>New York Knicks</td>
-      <td>3.0</td>
-      <td>PG</td>
-      <td>34.0</td>
-      <td>6-3</td>
-      <td>200.0</td>
-      <td>NaN</td>
-      <td>7402812.0</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>Cleanthony Early</td>
-      <td>New York Knicks</td>
-      <td>11.0</td>
-      <td>SF</td>
-      <td>25.0</td>
-      <td>6-8</td>
-      <td>210.0</td>
-      <td>Wichita State</td>
-      <td>845059.0</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-<p>Pandas kütüphanesi sayesinde, <strong>Team</strong> Sütunundaki birleştirilmiş hücrelerde bulunan veriler, hücrelere ayrı ayrı kopyalanarak düzgün, bir veri çevçevesi oluşturmamızı sağlamış oldu.</p>
+    
 <h3 class="atx" id="panodan-ice-aktarmak">Panodan İçe Aktarmak</h3>
 <h3 class="atx" id="read_clipboard-fonksiyonu">read_clipboard() Fonksiyonu</h3>
 <p><strong>read_clipboard()</strong> fonksiyonu ile panoya kopyaladığımız veriyi (örneğin bir Excel tablosu ya da websitesindeki tabloyu) Veri Çerçevesine dönüştürebiliriz.</p>
