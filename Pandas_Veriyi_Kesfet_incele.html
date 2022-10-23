@@ -439,6 +439,339 @@ dtype: object</code></pre>
 <pre><code class="fenced-code-block language-python">print(veri.shape)</code></pre>
 <pre><code class="indented-code-block">(10, 3)</code></pre>
 
+<h3 class="atx" id="index-fonksiyonu">index Fonksiyonu</h3>
+<p><strong>index</strong> fonksiyonu, Veri Çerçevesinin indeks bilgisini döndürür.</p>
+<pre><code class="fenced-code-block language-python">veri<span class="token punctuation">.</span>index</code></pre>
+<pre><code class="indented-code-block">RangeIndex(start=0, stop=10, step=1)</code></pre>
+Veri çerçevesi oluşturulurken indeks değerlerinin otomatik olarak belirlenmesi halinde, yukarıdaki şekilde çıktı alırız. Çıktıyı incelersek;
+<ul>
+<li><strong>start=0</strong> : İlk indeks değerinin 0 olduğu,</li>
+<li><strong>stop=10</strong> : son indeks değerinin 10 olduğu,</li>
+<li><strong>step=1</strong> : indeks değerlerinin 1'er 1'er arttığını belirtmektedir.</li>
+</ul>
+<p>Peki indeks değeri sayılardan oluşmazsa, yani indeks bilgisi tarafımızca belirtilen Metinsel verilerden oluşursa <strong>index</strong> fonksiyonu nasıl çıktı verir?.</p>
+<pre><code class="fenced-code-block language-python">imdb <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_excel<span class="token punctuation">(</span><span class="token string">"Veri_Setleri/imdb.xlsx"</span><span class="token punctuation">,</span> index_col<span class="token operator">=</span><span class="token string">"Film_Adı"</span><span class="token punctuation">)</span>
+imdb<span class="token punctuation">.</span>head<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<table class="dataframe" border="1">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Yıl</th>
+      <th>Puan</th>
+      <th>Oylayan_Kişi</th>
+    </tr>
+    <tr>
+      <th>Film_Adı</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>The Shawshank Redemption</th>
+      <td>1994</td>
+      <td>9,2</td>
+      <td>1071904</td>
+    </tr>
+    <tr>
+      <th>The Godfather</th>
+      <td>1972</td>
+      <td>9,2</td>
+      <td>751381</td>
+    </tr>
+    <tr>
+      <th>The Godfather: Part II</th>
+      <td>1974</td>
+      <td>9</td>
+      <td>488889</td>
+    </tr>
+    <tr>
+      <th>Pulp Fiction</th>
+      <td>1994</td>
+      <td>8,9</td>
+      <td>830504</td>
+    </tr>
+    <tr>
+      <th>The Dark Knight</th>
+      <td>2008</td>
+      <td>8,9</td>
+      <td>1045186</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<pre><code class="fenced-code-block language-python">imdb<span class="token punctuation">.</span>index</code></pre>
+<pre><code class="indented-code-block">Index(['The Shawshank Redemption ', 'The Godfather ',
+       'The Godfather: Part II ', 'Pulp Fiction', 'The Dark Knight ',
+       '12 Angry Men ', 'Schindler's List ',
+       'The Lord of the Rings: The Return of the King ', 'Fight Club ',
+       'Star Wars: Episode V - The Empire Strikes Back ',
+       ...
+       'The Artist ', 'Nausicaä of the Valley of the Wind ',
+       'Beauty and the Beast ', 'Three Colors: Red ', 'Bringing Up Baby ',
+       'Mystic River ', 'In the Heat of the Night ', 'Arsenic and Old Lace ',
+       'Before Sunrise ', 'Papillon '],
+      dtype='object', name='Film_Adı', length=247)</code></pre>
+<p>Gördüğünüz gibi, <strong>indeks</strong> bilgisi Metinsel veriler olduğunda, <strong>index</strong> fonksiyonunun çıktısı yukarıda şekilde alınıyor. Çıktıyı incelersek;</p>
+<ul>
+<li><strong>Index(['The Shawshank Redemption ', 'The Godfather ', 'The Godfather: Part II ', ...]</strong> : İndeks bilgileri liste halinde verilir,</li>
+<li><strong>type='object'</strong> : İndeks bilgilerinin "Object" yani "Metinsel (String)" veri olduğu,</li>
+<li><strong>name='Film_Adı'</strong> : İndexks başlığının "Film_Adı" olduğu,</li>
+<li><strong>length=247</strong> : toplam 247 adet indeks verisi (satır) olduğu ifade etmektedir.</li>
+</ul>
+<h3 class="atx" id="isnull-fonksiyonu">isnull() Fonksiyonu</h3>
+<p>Veri çerçevesinde boş, kayıp veri olup olmadığını <strong>isnull()</strong> fonksiyonu ile tespit edebiliriz. Bu fonksiyonu çalıştırdığımızda veri çerçevesinin satır ve sütun başlıkları ekrana yazdırılır ancak veri yerine <strong>True</strong> ya da <strong>False</strong> bilgisi görüntülenir.</p>
+<pre><code class="fenced-code-block language-python">veri<span class="token punctuation">.</span>isnull<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<table class="dataframe" border="1">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>isim</th>
+      <th>yaş</th>
+      <th>iş-meslek</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<p><strong>isnull()</strong> fonksiyonuna <strong>any()</strong> Fonksiyonunu da eklersek, veri çerçevesi tümüyle görüntülenmez sadece veri çerçevesi başlıkları ve bu başlıklarda (sütunlarda) eksik/kayıp veri bulunup bulunmadığı bilgisi görüntülenir.</p>
+<pre><code class="fenced-code-block language-python">veri<span class="token punctuation">.</span>isnull<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token builtin">any</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<pre><code class="indented-code-block">isim         False
+yaş          False
+iş-meslek    False
+dtype: bool</code></pre>
+<p>Görüyoruz ki, veri çerçevemizde hiç eksik/kayıp veri bulunmamaktadır. Yukarıdaki sözlük yapısında bazı verileri boş bırakarak yeni bir veri çerçevesi oluşturalım ve  <strong>isnull()</strong>  fonksiyonunu çalıştırıp sonuçları inceleyelim.</p>
+<pre><code class="fenced-code-block language-python">sozluk_2 <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"isim"</span> <span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"Mustafa"</span><span class="token punctuation">,</span> pd<span class="token punctuation">.</span>NaT<span class="token punctuation">,</span> <span class="token string">"Burak"</span><span class="token punctuation">,</span> <span class="token string">"Emre"</span><span class="token punctuation">,</span> <span class="token string">"Ersin"</span><span class="token punctuation">,</span> <span class="token string">"Sertaç"</span><span class="token punctuation">,</span> <span class="token string">"Furkan"</span><span class="token punctuation">,</span><span class="token string">"Murat"</span><span class="token punctuation">,</span><span class="token string">"Ahmet"</span><span class="token punctuation">,</span><span class="token string">"Abdülkadir"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                    <span class="token string">"yaş"</span> <span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">25</span><span class="token punctuation">,</span> <span class="token number">38</span><span class="token punctuation">,</span> <span class="token number">41</span><span class="token punctuation">,</span> pd<span class="token punctuation">.</span>NaT<span class="token punctuation">,</span> <span class="token number">37</span><span class="token punctuation">,</span> <span class="token number">52</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">,</span> <span class="token number">23</span><span class="token punctuation">,</span> <span class="token number">40</span><span class="token punctuation">,</span>  pd<span class="token punctuation">.</span>NaT<span class="token punctuation">]</span><span class="token punctuation">,</span>
+                   <span class="token string">"iş-meslek"</span> <span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"mühendis"</span><span class="token punctuation">,</span> <span class="token string">"programcı"</span><span class="token punctuation">,</span> <span class="token string">"akademisyen"</span><span class="token punctuation">,</span> <span class="token string">"yönetici"</span><span class="token punctuation">,</span><span class="token string">"amir"</span><span class="token punctuation">,</span><span class="token string">"mühendis"</span><span class="token punctuation">,</span> <span class="token string">"yönetici"</span><span class="token punctuation">,</span><span class="token string">"müdür"</span><span class="token punctuation">,</span><span class="token string">"veteriner"</span><span class="token punctuation">,</span><span class="token string">"yönetici"</span><span class="token punctuation">]</span><span class="token punctuation">}</span>
+veri_2 <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span>sozluk_2<span class="token punctuation">)</span>
+veri_2</code></pre>
+<table class="dataframe" border="1">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>isim</th>
+      <th>yaş</th>
+      <th>iş-meslek</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Mustafa</td>
+      <td>25</td>
+      <td>mühendis</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>NaT</td>
+      <td>38</td>
+      <td>programcı</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Burak</td>
+      <td>41</td>
+      <td>akademisyen</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Emre</td>
+      <td>NaT</td>
+      <td>yönetici</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Ersin</td>
+      <td>37</td>
+      <td>amir</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Sertaç</td>
+      <td>52</td>
+      <td>mühendis</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Furkan</td>
+      <td>30</td>
+      <td>yönetici</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Murat</td>
+      <td>23</td>
+      <td>müdür</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Ahmet</td>
+      <td>40</td>
+      <td>veteriner</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Abdülkadir</td>
+      <td>NaT</td>
+      <td>yönetici</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<p><strong>1</strong> nolu İndeksteki <strong>isim</strong>, <strong>3</strong> nolu ve <strong>9</strong> nolu İndekslerdeki <strong>yaş</strong> bilgilerin boş olduğunu görüyoruz.  </p>
+<pre><code class="fenced-code-block language-python">veri_2<span class="token punctuation">.</span>isnull<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<table class="dataframe" border="1">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>isim</th>
+      <th>yaş</th>
+      <th>iş-meslek</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<p><strong>1</strong> nolu İndeksteki <strong>isim</strong>, <strong>3</strong> nolu ve <strong>9</strong> nolu İndekslerdeki <strong>yaş</strong> bilgileri <strong>eksik</strong> olduğu için bu değerler <strong>True</strong>, diğer hücrelerde ise eksik veri olmadığı için <strong>False</strong> değeri ile gösterilmektedir. <br>
+    Sütun bazlı eksik/kayıp veri olup olmadığını incelersek;</p>
+<pre><code class="fenced-code-block language-python">veri_2<span class="token punctuation">.</span>isnull<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token builtin">any</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<pre><code class="indented-code-block">isim          True
+yaş           True
+iş-meslek    False
+dtype: bool</code></pre>
+Çıktıdan anlıyoruz ki;
+<ul>
+<li><strong>isim</strong> ve <strong>yaş</strong> sütunlarında Eksik veri bulunuyor</li>
+<li><strong>iş-meslek</strong> sütununda hiç eksik veri bulunmuyor.</li>
+</ul>
                 <p> <a href="Pandas_Excel_Dosyasi_ile_Calis.html" class="button primary small"> &#8592 Önceki Bölüm </a> <a href="Pandas_Secim_Yontemleri.html" class="button primary small">Sonraki Bölüm &#8594</a> </p>
 
                       </div>
