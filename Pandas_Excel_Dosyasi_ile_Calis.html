@@ -48,7 +48,7 @@
 							<section id="solvespace">
 								<div class="container">
                                     <h2  id="excel-ile-calis">Excel Dosyalarını Oku ve Düzenle Yöntemleri</h2>
-<p>Bu bölümde <strong>Excel</strong> ve <strong>Calc</strong> programları ile oluşturulan hesap tablolarının Veri Çerçevelerine (Data Frame'e) dönüştürülerek çalışmalarımıza dahil edilmesi konusunu detayı olarak inceleyeceğiz.</p>                                                                                                          
+<p>Bu bölümde <strong>MS Excel</strong> ve <strong>Libre Ofis Calc</strong> programları ile oluşturulan hesap tablolarının Veri Çerçevelerine (Data Frame'e) dönüştürülerek çalışmalarımıza dahil edilmesi konusunu detayı olarak inceleyeceğiz.</p>                                                                                                          
                                 </div>
 							</section>
 					</div>
@@ -56,17 +56,18 @@
                 <div class="container">
                     
 <h3 class="atx" id="read_excel-fonksiyonu">read_excel() fonksiyonu</h3>
-<p><strong>Excel</strong> ve <strong>Calc</strong> dosyalarının içeriğini çalışmamıza dahil etmek için <strong>read_excel()</strong> fonksiyonunu kullanmalıyız.</p>
-<p><u>Bu fonksiyon;</u></p>
+<p><strong>MS Excel</strong> ve <strong>Libre Ofis Calc</strong> dosyalarının içeriğini çalışmamıza dahil etmek için <strong>read_excel()</strong> fonksiyonunu kullanmalıyız.</p>
+<u>Bu fonksiyon;</u>
 <ul>
-    <li><p><strong>xls, xlsx, xlsm, xlsb, odf, ods</strong> ve odt <strong>uzantılı</strong> dosyaları destekler.</p></li>
-    <li><p>Yerel bir dosya sisteminde veya bir URL'den depolanan excel dosyalarını yükleyebilir.</p></li>
-    <li><p>URL için <strong>http, ftp, s3</strong> ve <strong>dosya</strong>yı destekler.</p></li>
-    <li><p>Ayrıca tek bir çalışma sayfasından veya bir sayfa listesinden okumayı da destekler.</p></li>
-    <li><p>İki sayfayı okunurken, <strong>DataFrame</strong>'i bir Sözluk yapısı (Dict) döndürür.</p></li>
+    <li><strong>xls, xlsx, xlsm, xlsb, odf, ods</strong> ve <strong>odt</strong> uzantılı dosyaları destekler.</li>
+    <li>Yerel bir dosya sisteminde veya bir URL'de depolanan excel dosyalarını yükleyebilir.</li>
+    <li>URL için <strong>http, ftp, s3</strong> ve <strong>dosya</strong>yı destekler.</li>
+    <li>Ayrıca tek bir çalışma sayfasından veya bir sayfa listesinden okumayı da destekler.</li>
+    <li>İki sayfa okunurken, <strong>DataFrame</strong> bir Sözlük (Dict) yapısı döndürür.</li>
 </ul>
-<p><strong>pd.read_excel(dosya_adi)</strong></p>
-<p>Bu fonksiyon kullanıldığında, varsayılan olarak, excel dosyasının <strong>ilk çalışma sayfası</strong> yüklenir ve <strong>ilk satır bir Veri Çerçevesi (DataFrame) başlığı (sütun adı)</strong> olarak ayarlanır.</p>
+<pre><code class="fenced-code-block language-python">pd.read_excel(dosya_adi)</code></pre>
+                    
+<p>Bu fonksiyon kullanıldığında, varsayılan olarak, excel dosyasının <strong>ilk çalışma sayfası</strong> yüklenir ve <strong>ilk satır</strong> Veri Çerçevesi (DataFrame) <strong>başlığı (sütun adı)</strong> olarak ayarlanır.</p>
 <h3 class="atx" id="header-ve-names-parametreleri">header ve names Parametreleri</h3>
 <p><strong>read_excel ()</strong> fonksiyonu, Excel'deki ilk satırı varsayılan olarak bir başlık kabul eder ve bunu Veri Çerçevesi (DataFrame) sütun adları olarak kullanır. Excel dosyasındaki ilk satırın başlık değil, bir veri olduğu düşünüldüğünde, yani sadece verilerden oluşan excel dosyası ile çalıştığımızda, <strong>header=None</strong> parametresi kullanılmalıdır. Bu durumda Başlık (sütun adlarını) belirtmek için <strong>names</strong> parametresi kullanılır.</p>
 <p>İlk olarak <strong>OSD</strong> uzantılı bir dosyayı (ODS, LibreOfis Calc Programının uzantısıdır , siz bu dosya yerine MS Excel'in kayıt formatı olan XLS ya da XLSX uzantılı dosya da kullanabilirsiniz.) çalışmamıza dahil edip içeriğine bakalım.</p>
@@ -169,6 +170,10 @@ print(basliksiz.head())</code></pre>
 </table>
 </div>
 
+
+<h3 class="atx" id="sheet_name-parametresi">sheet_name Parametresi</h3>
+<p>Excel dosyamızın içinde birden fazla çalışma sayfası (sekme) bulunması halinde, istediğimiz çalışma sayfasına erişebilmek için, <strong>sheet_name</strong> parametresini kullanmalıyız.</p>
+                    
 <p>Aylara göre doğum sayılarını barındıran dosyamızı çalışmamıza dahil edip ilk 5 veriye göz atalım.</p>
 <pre><code class="fenced-code-block language-python">dogumlar <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_excel<span class="token punctuation">(</span><span class="token string">"Veri_Setleri/AyaGöreDoğumlar.xlsx"</span><span class="token punctuation">)</span>
 print(dogumlar.head())</code></pre>
@@ -284,8 +289,7 @@ print(dogumlar.head())</code></pre>
 </table>
 </div>
 
-<h3 class="atx" id="sheet_name-parametresi">sheet_name Parametresi</h3>
-<p>Excel dosyamızın içinde birden fazla çalışma sayfası (sekme) bulunması halinde, istediğimiz çalışma sayfasına erişebilmek için, <strong>sheet_name</strong> parametresini kullanmalıyız.</p>
+<p>Kodumuza <strong>sheet_name = "ortalama" </strong> ibaresi ekleyerek, aynı dosyadaki "<b>ortalama</b>" isimli sekmede bulunan verileri inceleyelim.</p>                    
 <pre><code class="fenced-code-block language-python">dogumlar <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_excel<span class="token punctuation">(</span><span class="token string">"Veri_Setleri/AyaGöreDoğumlar.xlsx"</span><span class="token punctuation">,</span> sheet_name <span class="token operator">=</span> <span class="token string">"ortalama"</span><span class="token punctuation">)</span>
 print(dogumlar.head())</code></pre>
 <div>
@@ -406,7 +410,7 @@ print(dogumlar)</code></pre>
  19   100478   96018   93428   87540   83646  
  20   100407   97334   93290   92189   87327  }</code></pre>
 <h3 class="atx" id="decimal-parametresi">decimal Parametresi</h3>
-<p>Harici kaynaktan içe aktararak oluşturduğumuz veri çerçevelerini incelediğimizde, sayısal olduğunu düşündüğümüz bazı değerlerin, metinsel (string) olduğunu farkederiz. Bunun sebebi, farklı ülkelerin farklı bölgesel ayarlar kullanmalarından kaynaklanır. Örneğin Ülkemiz ve Avrupa ülkelerinde sayıların ondalık kısımlarını temsil etmek için <strong>virgül (,)</strong>, binlik basamakları ayırmak için <strong>nokta (.)</strong> karakteri kullanılırken bazı Ülkelerde bunu tersi kullanılmaktadır.
+<p>Harici kaynaktan içe aktararak oluşturduğumuz veri çerçevelerini incelediğimizde, sayısal olduğunu düşündüğümüz bazı değerlerin, metinsel (string) olduğunu farkederiz. Bunun sebebi, farklı ülkelerin farklı bölgesel ayarlar kullanmalarından kaynaklanır. Örneğin Ülkemiz ve Avrupa ülkelerinde sayıların ondalık kısımlarını temsil etmek için <strong>virgül (,)</strong>, binlik basamakları ayırmak için <strong>nokta (.)</strong> karakteri kullanılırken bazı Ülkelerde bunun tersi kullanılmaktadır.
 Elimde, interneten indirmiş olduğum IMDB (Internet Movie Data Base) verilerinden oluşan bir excel dosyası bulunmaktadır. Bu dosyayı veri çerçevesine dönüştürüp içeriğini inceleyelim.</p>
 <pre><code class="fenced-code-block language-python">imdb <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_excel<span class="token punctuation">(</span><span class="token string">"Veri_Setleri/imdb.xlsx"</span><span class="token punctuation">)</span>
 print(imdb)</code></pre>
@@ -728,7 +732,7 @@ Yıl               int64
 Puan            float64
 Oylayan_Kişi      int64
 dtype: object</code></pre>
-<p>çıktı incelendiğinde görüyoruz ki, <strong>Puan</strong> isimli sütun <strong>float (ondalıklı sayı)</strong> veri tipine dönüşmüş oldu. Yukarıda yaptığımız işlemi (<strong>Puan</strong> sütununun 2 katını alıp yeni bir sütun olarak veri çerçevesine eklemeyi) tekrar deneyelim.</p>
+<p>Çıktı incelendiğinde görüyoruz ki, <strong>Puan</strong> isimli sütun <strong>float (ondalıklı sayı)</strong> veri tipine dönüşmüş oldu. Yukarıda yaptığımız işlemi (<strong>Puan</strong> sütununun 2 katını alıp yeni bir sütun olarak veri çerçevesine eklemeyi) tekrar deneyelim.</p>
 <pre><code class="fenced-code-block language-python">imdb_2<span class="token punctuation">[</span><span class="token string">"Puan_2"</span><span class="token punctuation">]</span> <span class="token operator">=</span> imdb_2<span class="token punctuation">[</span><span class="token string">"Puan"</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">2</span>
 print(imdb_2)</code></pre>
 <div>
