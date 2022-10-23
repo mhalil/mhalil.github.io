@@ -57,7 +57,7 @@
                     
 <p>Öncelikle <strong>Pandas</strong> Kütüphanesini içe aktarıp, kodlama esnasında hızlı olması adına bu kütüphaneye <strong>pd</strong> adını atayalım;</p>
 <pre><code class="fenced-code-block language-python"><span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd</code></pre>
-<p>Bu eğitim esnasında, fonksiyon ve metotlardan bahseder, örnek verirken kullanmak üzere, basit bit Veri Çerçevesi (Data Frame) oluşturalım ve oluşturduğumuz Veri Çerçevesinin içeriğini görelim;</p>
+<p>Bu eğitimde, fonksiyon ve metotlar konusunu anlatırken kullanmak üzere, basit bir Veri Çerçevesi (Data Frame) oluşturalım ve oluşturduğumuz Veri Çerçevesinin içeriğini görelim;</p>
 <pre><code class="fenced-code-block language-python">sozluk <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"isim"</span> <span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"Mustafa"</span><span class="token punctuation">,</span> <span class="token string">"Halil"</span><span class="token punctuation">,</span> <span class="token string">"Burak"</span><span class="token punctuation">,</span> <span class="token string">"Emre"</span><span class="token punctuation">,</span> <span class="token string">"Ersin"</span><span class="token punctuation">,</span> <span class="token string">"Sertaç"</span><span class="token punctuation">,</span> <span class="token string">"Furkan"</span><span class="token punctuation">,</span><span class="token string">"Murat"</span><span class="token punctuation">,</span><span class="token string">"Ahmet"</span><span class="token punctuation">,</span><span class="token string">"Abdülkadir"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
                     <span class="token string">"yaş"</span> <span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">25</span><span class="token punctuation">,</span> <span class="token number">38</span><span class="token punctuation">,</span> <span class="token number">41</span><span class="token punctuation">,</span> <span class="token number">23</span><span class="token punctuation">,</span> <span class="token number">37</span><span class="token punctuation">,</span> <span class="token number">52</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">,</span> <span class="token number">23</span><span class="token punctuation">,</span> <span class="token number">40</span><span class="token punctuation">,</span> <span class="token number">38</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
                    <span class="token string">"iş-meslek"</span> <span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"mühendis"</span><span class="token punctuation">,</span> <span class="token string">"programcı"</span><span class="token punctuation">,</span> <span class="token string">"akademisyen"</span><span class="token punctuation">,</span> <span class="token string">"yönetici"</span><span class="token punctuation">,</span><span class="token string">"amir"</span><span class="token punctuation">,</span><span class="token string">"mühendis"</span><span class="token punctuation">,</span> <span class="token string">"yönetici"</span><span class="token punctuation">,</span><span class="token string">"müdür"</span><span class="token punctuation">,</span><span class="token string">"veteriner"</span><span class="token punctuation">,</span><span class="token string">"yönetici"</span><span class="token punctuation">]</span><span class="token punctuation">}</span>
@@ -189,7 +189,7 @@ print(veri)</code></pre>
 </table>
 </div>
 
-<p><strong>head()</strong> fonksiyonunda parantez içine parametre olarak bir değer yazmazsak, veri çerçevesinin <strong>ilk 5 değeri</strong> görüntülenir. Değer belirtirsek belirttiğimiz değer kadar veri görüntülenir.</p>
+<p><strong>head()</strong> fonksiyonunda parantez içine parametre olarak bir değer yazmazsak, veri çerçevesinin <strong>ilk 5 (satır) değeri</strong> görüntülenir. Değer belirtirsek belirttiğimiz değer kadar satır verisi görüntülenir.</p>
 <pre><code class="fenced-code-block language-python">print(veri.head(3))</code></pre>
 <div>
 
@@ -225,7 +225,7 @@ print(veri)</code></pre>
 </table>
 </div>
 
-<p>İndex değerinin 2'de bitmesi sizi şaşırtmasın, pekçok programlama dilindi olduğu gibi Python programlama dilinde de, sayma sayıları sıfırdan başlar. Zaten tabloyu incelerseniz, tabloda 3 kullanıcıya ait veri olduğunu görürsünüz.</p>
+<p>İndex değerinin 2'de bitmesi sizi şaşırtmasın, pekçok programlama dilindi olduğu gibi Python programlama dilinde de, sayma sayıları sıfırdan başlar. Zaten tabloyu incelerseniz, tabloda 3 kullanıcıya ait (3 satır) veri olduğunu görürsünüz.</p>
 <h3 class="atx" id="tail-fonksiyonu">tail() Fonksiyonu</h3>
 <p><strong>head()</strong> fonksiyonuna oldukça benzer bir fonksiyondur. Oluşturduğumuz ya da çalışmamıza dahil ettiğimiz Veri Çerçevelerinin <strong>son satırlarını</strong> görüp içerik hakkında bilgi edinmek istersek <strong>tail()</strong> fonksiyonunu kullanabiliriz. <strong>Tail</strong> kelimesi Türkçede, <strong>kuyruk, son kısım</strong> anlamına gelmektedir.</p>
 <pre><code class="fenced-code-block language-python">print(veri.tail())</code></pre>
@@ -275,7 +275,7 @@ print(veri)</code></pre>
 </table>
 </div>
 
-<p><strong>tail()</strong> fonksiyonunu içine parametre olarak bir değer yazmazsak, veri çerçevesinin <strong>son 5 değerini</strong> görüntüler. Değer belirtirsek belirttiğimiz değer kadar veri görüntüler.</p>
+<p><strong>tail()</strong> fonksiyonunu içine parametre olarak bir değer yazmazsak, veri çerçevesinin <strong>son 5 (satır) değerini</strong> görüntüler. Değer belirtirsek belirttiğimiz değer kadar satır verisi görüntüler.</p>
 <pre><code class="fenced-code-block language-python">print(veri.tail(7))</code></pre>
 <div>
 
@@ -336,7 +336,7 @@ print(veri)</code></pre>
 </div>
 
 <h3 class="atx" id="columns-fonksiyonu">columns Fonksiyonu</h3>
-<p><strong>columns</strong> fonksiyonu, oluşturulan ya da içe aktarılan Veri Çerçevelerinin başlık satırını çıktı olarak verir / görüntüler. <strong>columns</strong> fonksiyonunu kullanırken sonunda <u>parantez işaretleri kullanmadığımıza</u> dikkat edin.</p>
+<p><strong>columns</strong> fonksiyonu, oluşturulan ya da içe aktarılan Veri Çerçevelerinin başlık satırını çıktı olarak verir. <strong>columns</strong> fonksiyonunu kullanırken sonunda <u>parantez işaretleri kullanmadığımıza</u> dikkat edin.</p>
 <p>Sütun isimlerini değiştirmek ya da veri çerçevesine filtreleme işlemi uygulamak istediğimiz zaman, bu fonksiyon çok işimize yarar.</p>
 <pre><code class="fenced-code-block language-python">print(veri.columns)</code></pre>
 <pre><code class="indented-code-block">Index(['isim', 'yaş', 'iş-meslek'], dtype='object')</code></pre>
@@ -346,7 +346,7 @@ print(veri)</code></pre>
 <pre><code class="indented-code-block">10</code></pre>
 <p>Çıktıdan anladığımız kadarıyla, <strong>veri</strong> isimli veri çerçevesi, 10 satırlık bir yapıdan oluşuyor.</p>
 <h3 class="atx" id="info-fonksiyonu">info() Fonksiyonu</h3>
-<p><strong>info()</strong> fonksiyonu, Veri Çerçevesinin satır ve sütun sayısı, başlık tipleri (sayı, metin, ...vb) ve doluluk oranı (boş olmayan hücre sayısı) hakkında bilgi görüntüler.</p>
+<p><strong>info()</strong> fonksiyonu, Veri Çerçevesinin satır ve sütun sayısı, başlık tipleri (sayı[int, float], metin[object, string], ...vb) ve doluluk oranı (boş olmayan hücre sayısı[non-null]) hakkında bilgi görüntüler.</p>
 <pre><code class="fenced-code-block language-python">print(veri.info())</code></pre>
 <pre><code class="indented-code-block">&lt;class 'pandas.core.frame.DataFrame'&gt;
 RangeIndex: 10 entries, 0 to 9
@@ -435,7 +435,7 @@ dtype: object</code></pre>
 <strong>%75 :</strong> yaş isimli sütundaki verilerin medyanın üst çeyreğini (dörttebirliğini),<br>
 <strong>max :</strong> yaş isimli sütudaki verilerin en büyük değerini, tanımlar</p>
 <h3 class="atx" id="shape-fonksiyonu">shape Fonksiyonu</h3>
-<p>Veri Çerçevesinin yapısını yani satır ve sütun bilgisini öğrenmek için shape metodunu kullanabiliriz.</p>
+<p>Veri Çerçevesinin yapısını yani satır ve sütun bilgisini öğrenmek için shape fonksiyonunu kullanabiliriz.</p>
 <pre><code class="fenced-code-block language-python">print(veri.shape)</code></pre>
 <pre><code class="indented-code-block">(10, 3)</code></pre>
 
