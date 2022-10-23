@@ -55,346 +55,393 @@
                 
                 <div class="container">
                     
-<h2 class="atx" id="satir-ve-sutun-secimi">Satır ve Sütun Seçimi</h2>
-<h3 class="atx" id="iloc-metodu">iloc[] Metodu</h3>
-<p>Veri Çerçevesindeki istenilen satır ve sütunu seçmek/görüntülemek için <strong>iloc[]</strong> metodu kullanılır. <strong>iloc[]</strong> kelimesini unutmamak için <strong>İndex Location</strong> yani, <strong>Konumun İndeks Değeri</strong> gibi düşünebilir, hafızanızda kodlayabilirsiniz.
-Esas olarak <strong>iloc[]</strong> metodu, hem satır hem de sütun numarası alarak çalışır.</p>
+                    <h2 class="atx" id="satir-ve-sutun-secimi">Satır ve Sütun Seçimi</h2>
+                    <h3 class="atx" id="iloc-metodu">iloc[] Metodu</h3>
+                    <p>Veri Çerçevesindeki istenilen satır ve sütunu seçmek/görüntülemek için <strong>iloc[]</strong> metodu kullanılır. <strong>iloc[]</strong> kelimesini unutmamak için <strong>İndex Location</strong> yani, <strong>Konumun İndeks Değeri</strong> gibi düşünebilir, hafızanızda kodlayabilirsiniz. Bir başka ifadeyle, <code>iloc[]</code> için, Tamsayı değerine dayalı konum indeksleme metodu diyebiliriz. Esas olarak <strong>iloc[]</strong> metodu, hem satır hem de sütun numarası alarak çalışır. </p>
                     <pre><code>Veri_Cercevesi_Adı.iloc[Satir_Numarası, Sütun_Numarası]</code></pre>
                     
-                    <p>Öncelikle <strong>Pandas</strong> Kütüphanesini içe aktarıp, kodlama esnasında hızlı olması adına bu kütüphaneye <strong>pd</strong> adını atayalım;</p>
-<pre><code class="fenced-code-block language-python"><span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd</code></pre>
-<p>Bu eğitim esnasında, fonksiyon ve metotlardan bahseder, örnek verirken kullanmak üzere, basit bit Veri Çerçevesi (Data Frame) oluşturalım ve oluşturduğumuz Veri Çerçevesinin içeriğini görelim;</p>
-<pre><code class="fenced-code-block language-python">sozluk <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"isim"</span> <span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"Mustafa"</span><span class="token punctuation">,</span> <span class="token string">"Halil"</span><span class="token punctuation">,</span> <span class="token string">"Burak"</span><span class="token punctuation">,</span> <span class="token string">"Emre"</span><span class="token punctuation">,</span> <span class="token string">"Ersin"</span><span class="token punctuation">,</span> <span class="token string">"Sertaç"</span><span class="token punctuation">,</span> <span class="token string">"Furkan"</span><span class="token punctuation">,</span><span class="token string">"Murat"</span><span class="token punctuation">,</span><span class="token string">"Ahmet"</span><span class="token punctuation">,</span><span class="token string">"Abdülkadir"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                    
+                    <p><code>iloc[]</code> metodunun alabileceği parametreler şunlardır: <br>
+                        <ul>
+                            <li>Bir satır ve sütun dizini, ör. <code>(0,1)</code> </li>
+                            <li>Bir tamsayı, ör. <code>5</code></li>
+                            <li>Bir tamsayı listesi veya dizisi, ör. <code>[4, 3, 0]</code></li>
+                            <li>Tamsayılı bir dilim nesnesi, ör. <code>1:7</code></li>
+                            <li>Bir mantık (boole) dizisi.</li>
+                        </ul>
+                        Öncelikle <strong>Pandas</strong> Kütüphanesini içe aktarıp, kodlama esnasında hızlı olması adına bu kütüphaneye <strong>pd</strong> adını atayalım;</p>
+                    <pre><code class="fenced-code-block language-python"><span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd</code></pre>
+                    <p>Bu eğitimde, fonksiyon ve metotlar konusunu anlatırken kullanmak üzere, basit bir Veri Çerçevesi (Data Frame) oluşturalım ve oluşturduğumuz Veri Çerçevesinin içeriğini görelim;</p>
+                    <pre><code class="fenced-code-block language-python">sozluk <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"isim"</span> <span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"Mustafa"</span><span class="token punctuation">,</span> <span class="token string">"Halil"</span><span class="token punctuation">,</span> <span class="token string">"Burak"</span><span class="token punctuation">,</span> <span class="token string">"Emre"</span><span class="token punctuation">,</span> <span class="token string">"Ersin"</span><span class="token punctuation">,</span> <span class="token string">"Sertaç"</span><span class="token punctuation">,</span> <span class="token string">"Furkan"</span><span class="token punctuation">,</span><span class="token string">"Murat"</span><span class="token punctuation">,</span><span class="token string">"Ahmet"</span><span class="token punctuation">,</span><span class="token string">"Abdülkadir"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
                     <span class="token string">"yaş"</span> <span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">25</span><span class="token punctuation">,</span> <span class="token number">38</span><span class="token punctuation">,</span> <span class="token number">41</span><span class="token punctuation">,</span> <span class="token number">23</span><span class="token punctuation">,</span> <span class="token number">37</span><span class="token punctuation">,</span> <span class="token number">52</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">,</span> <span class="token number">23</span><span class="token punctuation">,</span> <span class="token number">40</span><span class="token punctuation">,</span> <span class="token number">38</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
                    <span class="token string">"iş-meslek"</span> <span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"mühendis"</span><span class="token punctuation">,</span> <span class="token string">"programcı"</span><span class="token punctuation">,</span> <span class="token string">"akademisyen"</span><span class="token punctuation">,</span> <span class="token string">"yönetici"</span><span class="token punctuation">,</span><span class="token string">"amir"</span><span class="token punctuation">,</span><span class="token string">"mühendis"</span><span class="token punctuation">,</span> <span class="token string">"yönetici"</span><span class="token punctuation">,</span><span class="token string">"müdür"</span><span class="token punctuation">,</span><span class="token string">"veteriner"</span><span class="token punctuation">,</span><span class="token string">"yönetici"</span><span class="token punctuation">]</span><span class="token punctuation">}</span>
-veri <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span>sozluk<span class="token punctuation">)</span>
-print(veri)</code></pre>
-<div>
-
-<table class="dataframe" border="1">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>isim</th>
-      <th>yaş</th>
-      <th>iş-meslek</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Mustafa</td>
-      <td>25</td>
-      <td>mühendis</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Halil</td>
-      <td>38</td>
-      <td>programcı</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Burak</td>
-      <td>41</td>
-      <td>akademisyen</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Emre</td>
-      <td>23</td>
-      <td>yönetici</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Ersin</td>
-      <td>37</td>
-      <td>amir</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>Sertaç</td>
-      <td>52</td>
-      <td>mühendis</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>Furkan</td>
-      <td>30</td>
-      <td>yönetici</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>Murat</td>
-      <td>23</td>
-      <td>müdür</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>Ahmet</td>
-      <td>40</td>
-      <td>veteriner</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>Abdülkadir</td>
-      <td>38</td>
-      <td>yönetici</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-<p>Verimizi <b>.iloc</b> ile seçelim. </p>
-<pre><code class="fenced-code-block language-python">print(veri.iloc[8,2])</code></pre>
-<p><b>Çıktı:</b></p>
-<pre><code class="indented-code-block">'veteriner'</code></pre>
-<p> Sadece bir sayı değeri aldığında, ilgili indeks sayısına ait <strong>satır</strong> bilgisini verir.</p>
-<pre><code class="fenced-code-block language-python">print(veri.iloc[5])</code></pre>
-<pre><code class="indented-code-block">isim           Sertaç
+                    veri <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span>sozluk<span class="token punctuation">)</span>
+                    print(veri)</code></pre>
+                    <div>
+                        <table class="dataframe" border="1">
+                          <thead>
+                            <tr style="text-align: right;">
+                              <th></th>
+                              <th>isim</th>
+                              <th>yaş</th>
+                              <th>iş-meslek</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <th>0</th>
+                              <td>Mustafa</td>
+                              <td>25</td>
+                              <td>mühendis</td>
+                            </tr>
+                            <tr>
+                              <th>1</th>
+                              <td>Halil</td>
+                              <td>38</td>
+                              <td>programcı</td>
+                            </tr>
+                            <tr>
+                              <th>2</th>
+                              <td>Burak</td>
+                              <td>41</td>
+                              <td>akademisyen</td>
+                            </tr>
+                            <tr>
+                              <th>3</th>
+                              <td>Emre</td>
+                              <td>23</td>
+                              <td>yönetici</td>
+                            </tr>
+                            <tr>
+                              <th>4</th>
+                              <td>Ersin</td>
+                              <td>37</td>
+                              <td>amir</td>
+                            </tr>
+                            <tr>
+                              <th>5</th>
+                              <td>Sertaç</td>
+                              <td>52</td>
+                              <td>mühendis</td>
+                            </tr>
+                            <tr>
+                              <th>6</th>
+                              <td>Furkan</td>
+                              <td>30</td>
+                              <td>yönetici</td>
+                            </tr>
+                            <tr>
+                              <th>7</th>
+                              <td>Murat</td>
+                              <td>23</td>
+                              <td>müdür</td>
+                            </tr>
+                            <tr>
+                              <th>8</th>
+                              <td>Ahmet</td>
+                              <td>40</td>
+                              <td>veteriner</td>
+                            </tr>
+                            <tr>
+                              <th>9</th>
+                              <td>Abdülkadir</td>
+                              <td>38</td>
+                              <td>yönetici</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                    </div>
+                    
+                    <p>Verimizi <b>.iloc[]</b> metodu ile seçelim. </p>
+                    <pre><code class="fenced-code-block language-python">print(veri.iloc[8,2])</code></pre>
+                    <pre><code class="indented-code-block">'veteriner'</code></pre>
+                
+                <p><code>iloc[]</code> metodu, parametre olarak tam sayı alabileceği gibi, sayı listesi de alabilir. Bildiğiniz gibi Python'da liste veri tipleri köşeli parantez <code>[]</code> ile ifade ediliyor. O nedenle <code>iloc[]</code> metoduna parametre olarak liste veri tipi girileceği zaman içiçe köşeli parantezler (hem satıra hemde sütuna ait listeler yazılacağı için) konuyu yeni öğrenenlerde kafa karışıklığına sebep olabilir. Anlatmak istediğimi aşağıdaki koda bakarak rahatlıkla anlayabilirsiniz.</p>
+                <pre><code class="fenced-code-block language-python">iloc[[satır_listesi], [sütun_listesi]]</code></pre>
+                <p>Yukarıda oluşturduğumuz veri çerçevemizi kullanarak, listelerden müteşekkil bir dilimleme yapalım. </p>
+                <pre><code class="fenced-code-block language-python">veri.iloc[[1,3,5],[0,2]]</code></pre>
+                
+                <table border="1" class="dataframe">
+                  <thead>
+                    <tr style="text-align: right;">
+                      <th></th>
+                      <th>isim</th>
+                      <th>iş-meslek</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th>1</th>
+                      <td>Halil</td>
+                      <td>programcı</td>
+                    </tr>
+                    <tr>
+                      <th>3</th>
+                      <td>Emre</td>
+                      <td>yönetici</td>
+                    </tr>
+                    <tr>
+                      <th>5</th>
+                      <td>Sertaç</td>
+                      <td>mühendis</td>
+                    </tr>
+                  </tbody>
+                </table>
+                
+                <h3 class="atx" id="sadece-satirlari-indeksleme">Sadece satırları indekslemek</h3>
+                    <h4>Bir Tamsayı ile Satır Seçimi</h4>
+                    <p> <strong>iloc[]</strong> metoduna parametre olarak sadece <b>bir tamsayı değeri</b> girildiğinde, girilen sayıya (indeks bilgisine) ait <strong>satır</strong> verisi döndürülür. Hemen aşağıdaki örneğe bakalım.</p>
+                    <pre><code class="fenced-code-block language-python">print(veri.iloc[5])</code></pre>
+                    <pre><code class="indented-code-block">isim           Sertaç
 yaş                52
 iş-meslek    mühendis
 Name: 5, dtype: object</code></pre>
-<h3 class="atx" id="loc-metodu">loc[] Metodu</h3>
-<p><strong>iloc[]</strong> metoduna benzer bir metottur ancak <strong>loc[]</strong> metodunda, satır ve sütun seçmek/görüntülemek istediğimiz zaman, <strong>satır ve sütunların isimlerini</strong> yazmalıyız. Elimizde aşağıdaki gibi bir veri çerçevesi olduğunu varsayalım.</p>
-<pre><code class="fenced-code-block language-python">imdb <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_excel<span class="token punctuation">(</span><span class="token string">"Veri_Setleri/imdb.xlsx"</span><span class="token punctuation">,</span> index_col<span class="token operator">=</span><span class="token string">"Film_Adı"</span><span class="token punctuation">)</span>
+
+                <h4>Bir Sayı Listesi ile Satır Seçimi</h4>
+                
+                
+                
+                    <h3 class="atx" id="loc-metodu">loc[] Metodu</h3>
+                    <p><strong>iloc[]</strong> metoduna benzer bir metottur ancak <strong>loc[]</strong> metodunda, satır ve sütun seçmek/görüntülemek istediğimiz zaman, <strong>satır ve sütunların isimlerini</strong> yazmalıyız. Elimizde aşağıdaki gibi bir veri çerçevesi olduğunu varsayalım.</p>
+                    <pre><code class="fenced-code-block language-python">imdb <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_excel<span class="token punctuation">(</span><span class="token string">"Veri_Setleri/imdb.xlsx"</span><span class="token punctuation">,</span> index_col<span class="token operator">=</span><span class="token string">"Film_Adı"</span><span class="token punctuation">)</span>
 print(imdb)</code></pre>
-<div>
+                    <div>
+                        <table class="dataframe" border="1">
+                          <thead>
+                            <tr style="text-align: right;">
+                              <th></th>
+                              <th>Yıl</th>
+                              <th>Puan</th>
+                              <th>Oylayan_Kişi</th>
+                            </tr>
+                            <tr>
+                              <th>Film_Adı</th>
+                              <th></th>
+                              <th></th>
+                              <th></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <th>The Shawshank Redemption</th>
+                              <td>1994</td>
+                              <td>9,2</td>
+                              <td>1071904</td>
+                            </tr>
+                            <tr>
+                              <th>The Godfather</th>
+                              <td>1972</td>
+                              <td>9,2</td>
+                              <td>751381</td>
+                            </tr>
+                            <tr>
+                              <th>The Godfather: Part II</th>
+                              <td>1974</td>
+                              <td>9</td>
+                              <td>488889</td>
+                            </tr>
+                            <tr>
+                              <th>Pulp Fiction</th>
+                              <td>1994</td>
+                              <td>8,9</td>
+                              <td>830504</td>
+                            </tr>
+                            <tr>
+                              <th>The Dark Knight</th>
+                              <td>2008</td>
+                              <td>8,9</td>
+                              <td>1045186</td>
+                            </tr>
+                            <tr>
+                              <th>...</th>
+                              <td>...</td>
+                              <td>...</td>
+                              <td>...</td>
+                            </tr>
+                            <tr>
+                              <th>Mystic River</th>
+                              <td>2003</td>
+                              <td>7,9</td>
+                              <td>256159</td>
+                            </tr>
+                            <tr>
+                              <th>In the Heat of the Night</th>
+                              <td>1967</td>
+                              <td>7,9</td>
+                              <td>37081</td>
+                            </tr>
+                            <tr>
+                              <th>Arsenic and Old Lace</th>
+                              <td>1944</td>
+                              <td>7,9</td>
+                              <td>45893</td>
+                            </tr>
+                            <tr>
+                              <th>Before Sunrise</th>
+                              <td>1995</td>
+                              <td>7,9</td>
+                              <td>100974</td>
+                            </tr>
+                            <tr>
+                              <th>Papillon</th>
+                              <td>1973</td>
+                              <td>7,9</td>
+                              <td>62517</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <p>247 rows × 3 columns</p>
+                    </div>
 
-<table class="dataframe" border="1">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Yıl</th>
-      <th>Puan</th>
-      <th>Oylayan_Kişi</th>
-    </tr>
-    <tr>
-      <th>Film_Adı</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>The Shawshank Redemption</th>
-      <td>1994</td>
-      <td>9,2</td>
-      <td>1071904</td>
-    </tr>
-    <tr>
-      <th>The Godfather</th>
-      <td>1972</td>
-      <td>9,2</td>
-      <td>751381</td>
-    </tr>
-    <tr>
-      <th>The Godfather: Part II</th>
-      <td>1974</td>
-      <td>9</td>
-      <td>488889</td>
-    </tr>
-    <tr>
-      <th>Pulp Fiction</th>
-      <td>1994</td>
-      <td>8,9</td>
-      <td>830504</td>
-    </tr>
-    <tr>
-      <th>The Dark Knight</th>
-      <td>2008</td>
-      <td>8,9</td>
-      <td>1045186</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>Mystic River</th>
-      <td>2003</td>
-      <td>7,9</td>
-      <td>256159</td>
-    </tr>
-    <tr>
-      <th>In the Heat of the Night</th>
-      <td>1967</td>
-      <td>7,9</td>
-      <td>37081</td>
-    </tr>
-    <tr>
-      <th>Arsenic and Old Lace</th>
-      <td>1944</td>
-      <td>7,9</td>
-      <td>45893</td>
-    </tr>
-    <tr>
-      <th>Before Sunrise</th>
-      <td>1995</td>
-      <td>7,9</td>
-      <td>100974</td>
-    </tr>
-    <tr>
-      <th>Papillon</th>
-      <td>1973</td>
-      <td>7,9</td>
-      <td>62517</td>
-    </tr>
-  </tbody>
-</table>
-<p>247 rows × 3 columns</p>
-</div>
+                    <p><strong>Pulp Fiction</strong> Filminin <strong>Puan</strong>ını öğrenmek istediğimizi düşünelim. Bu durumda aşağıdaki kodları yazmamız doğru sonucu verecektir.</p>
+                    <pre><code class="fenced-code-block language-python">print(imdb.loc["Pulp Fiction", "Puan"])</code></pre>
+                    <pre><code class="indented-code-block">'8,9'</code></pre>
+                    <p><strong>Star Wars</strong> isimli satır verisine ulaşmak için <strong>loc[]</strong> metoduna <strong>Star Wars</strong> metinsel (string) ibaresini eklemeliyiz.</p>
+                    <pre><code class="fenced-code-block language-python">print(imdb.loc["Star Wars"])</code></pre>
+                    <pre><code class="indented-code-block">Yıl               1977
+                    Puan               8,7
+                    Oylayan_Kişi    585132
+                    Name: Star Wars, dtype: object</code></pre>
+                    
+                    <h3 class="atx" id="sutun-secimi">Sütun Seçimi</h3>
+                    <p>Sadece bir Sütunu seçmek/görüntülemek için veri çerçevesinin adı ile birlikte seçmek/görüntülemek istediğimiz sütunun ismini yazmak yeterlidir. Bu da iki şekilde gerçekleştirilebilir.</p>
+                    <pre><code>1. VeriCervecesiAdı.SütunAdı
+                    2. VeriCervecesiAdı["SütunAdı"] </code></pre>
+                    <p>Sütun isminde boşluk ya da nokta karakterleri bulunması halinde, ilk (noktalı) seçeneği kullanamayız, o durumda 2. seçeneği (köşeli parantezli) kullanmak gerekir.
+                    Bunları da örneklerle görelim.</p>
+                    <pre><code class="fenced-code-block language-python">print(imdb.Puan)</code></pre>
+                    <pre><code class="indented-code-block">Film_Adı
+                    The Shawshank Redemption     9,2
+                    The Godfather                9,2
+                    The Godfather: Part II         9
+                    Pulp Fiction                 8,9
+                    The Dark Knight              8,9
+                                                ... 
+                    Mystic River                 7,9
+                    In the Heat of the Night     7,9
+                    Arsenic and Old Lace         7,9
+                    Before Sunrise               7,9
+                    Papillon                     7,9
+                    Name: Puan, Length: 247, dtype: object</code></pre>
+                    <pre><code class="fenced-code-block language-python">print(imdb["Puan"])</code></pre>
+                    <pre><code class="indented-code-block">Film_Adı
+                    The Shawshank Redemption     9,2
+                    The Godfather                9,2
+                    The Godfather: Part II         9
+                    Pulp Fiction                 8,9
+                    The Dark Knight              8,9
+                                                ... 
+                    Mystic River                 7,9
+                    In the Heat of the Night     7,9
+                    Arsenic and Old Lace         7,9
+                    Before Sunrise               7,9
+                    Papillon                     7,9
+                    Name: Puan, Length: 247, dtype: object</code></pre>
+                    <p>Birden fazla sütun seçmek istediğimiz durumda, sütun isimlerini liste olarak (bildiğiniz gibi liste veri tipleri köşeli parantez ile temsil edilir) belirtmek/yazmak gerekir.</p>
+                    <pre><code class="fenced-code-block language-python">print(imdb[["Yıl", "Puan"]])</code></pre>
 
-<p><strong>Pulp Fiction</strong> Filminin <strong>Puan</strong>ını öğrenmek istediğimizi düşünelim. Bu durumda aşağıdaki kodları yazmamız doğru sonucu verecektir.</p>
-<pre><code class="fenced-code-block language-python">print(imdb.loc["Pulp Fiction", "Puan"])</code></pre>
-<pre><code class="indented-code-block">'8,9'</code></pre>
-<p><strong>Star Wars</strong> isimli satır verisine ulaşmak için <strong>loc[]</strong> metoduna <strong>Star Wars</strong> metinsel (string) ibaresini eklemeliyiz.</p>
-<pre><code class="fenced-code-block language-python">print(imdb.loc["Star Wars"])</code></pre>
-<pre><code class="indented-code-block">Yıl               1977
-Puan               8,7
-Oylayan_Kişi    585132
-Name: Star Wars, dtype: object</code></pre>
-<h3 class="atx" id="sutun-secimi">Sütun Seçimi</h3>
-<p>Sadece bir Sütunu seçmek/görüntülemek için veri çerçevesinin adı ile birlikte seçmek/görüntülemek istediğimiz sütunun ismini yazmak yeterlidir. Bu da iki şekilde gerçekleştirilebilir.</p>
-<pre><code>1. VeriCervecesiAdı.SütunAdı
-2. VeriCervecesiAdı["SütunAdı"] </code></pre>
-<p>Sütun isminde boşluk ya da nokta karakterleri bulunması halinde, ilk (noktalı) seçeneği kullanamayız, o durumda 2. seçeneği (köşeli parantezli) kullanmak gerekir.
-Bunları da örneklerle görelim.</p>
-<pre><code class="fenced-code-block language-python">print(imdb.Puan)</code></pre>
-<pre><code class="indented-code-block">Film_Adı
-The Shawshank Redemption     9,2
-The Godfather                9,2
-The Godfather: Part II         9
-Pulp Fiction                 8,9
-The Dark Knight              8,9
-                            ... 
-Mystic River                 7,9
-In the Heat of the Night     7,9
-Arsenic and Old Lace         7,9
-Before Sunrise               7,9
-Papillon                     7,9
-Name: Puan, Length: 247, dtype: object</code></pre>
-<pre><code class="fenced-code-block language-python">print(imdb["Puan"])</code></pre>
-<pre><code class="indented-code-block">Film_Adı
-The Shawshank Redemption     9,2
-The Godfather                9,2
-The Godfather: Part II         9
-Pulp Fiction                 8,9
-The Dark Knight              8,9
-                            ... 
-Mystic River                 7,9
-In the Heat of the Night     7,9
-Arsenic and Old Lace         7,9
-Before Sunrise               7,9
-Papillon                     7,9
-Name: Puan, Length: 247, dtype: object</code></pre>
-<p>Birden fazla sütun seçmek istediğimiz durumda, sütun isimlerini liste olarak (bildiğiniz gibi liste veri tipleri köşeli parantez ile temsil edilir) belirtmek/yazmak gerekir.</p>
-<pre><code class="fenced-code-block language-python">print(imdb[["Yıl", "Puan"]])</code></pre>
+                    <div>
 
-<div>
+                    <table class="dataframe" border="1">
+                      <thead>
+                        <tr style="text-align: right;">
+                          <th></th>
+                          <th>Yıl</th>
+                          <th>Puan</th>
+                        </tr>
+                        <tr>
+                          <th>Film_Adı</th>
+                          <th></th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th>The Shawshank Redemption</th>
+                          <td>1994</td>
+                          <td>9,2</td>
+                        </tr>
+                        <tr>
+                          <th>The Godfather</th>
+                          <td>1972</td>
+                          <td>9,2</td>
+                        </tr>
+                        <tr>
+                          <th>The Godfather: Part II</th>
+                          <td>1974</td>
+                          <td>9</td>
+                        </tr>
+                        <tr>
+                          <th>Pulp Fiction</th>
+                          <td>1994</td>
+                          <td>8,9</td>
+                        </tr>
+                        <tr>
+                          <th>The Dark Knight</th>
+                          <td>2008</td>
+                          <td>8,9</td>
+                        </tr>
+                        <tr>
+                          <th>...</th>
+                          <td>...</td>
+                          <td>...</td>
+                        </tr>
+                        <tr>
+                          <th>Mystic River</th>
+                          <td>2003</td>
+                          <td>7,9</td>
+                        </tr>
+                        <tr>
+                          <th>In the Heat of the Night</th>
+                          <td>1967</td>
+                          <td>7,9</td>
+                        </tr>
+                        <tr>
+                          <th>Arsenic and Old Lace</th>
+                          <td>1944</td>
+                          <td>7,9</td>
+                        </tr>
+                        <tr>
+                          <th>Before Sunrise</th>
+                          <td>1995</td>
+                          <td>7,9</td>
+                        </tr>
+                        <tr>
+                          <th>Papillon</th>
+                          <td>1973</td>
+                          <td>7,9</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <p>247 rows × 2 columns</p>
+                    </div>
 
-<table class="dataframe" border="1">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Yıl</th>
-      <th>Puan</th>
-    </tr>
-    <tr>
-      <th>Film_Adı</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>The Shawshank Redemption</th>
-      <td>1994</td>
-      <td>9,2</td>
-    </tr>
-    <tr>
-      <th>The Godfather</th>
-      <td>1972</td>
-      <td>9,2</td>
-    </tr>
-    <tr>
-      <th>The Godfather: Part II</th>
-      <td>1974</td>
-      <td>9</td>
-    </tr>
-    <tr>
-      <th>Pulp Fiction</th>
-      <td>1994</td>
-      <td>8,9</td>
-    </tr>
-    <tr>
-      <th>The Dark Knight</th>
-      <td>2008</td>
-      <td>8,9</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>Mystic River</th>
-      <td>2003</td>
-      <td>7,9</td>
-    </tr>
-    <tr>
-      <th>In the Heat of the Night</th>
-      <td>1967</td>
-      <td>7,9</td>
-    </tr>
-    <tr>
-      <th>Arsenic and Old Lace</th>
-      <td>1944</td>
-      <td>7,9</td>
-    </tr>
-    <tr>
-      <th>Before Sunrise</th>
-      <td>1995</td>
-      <td>7,9</td>
-    </tr>
-    <tr>
-      <th>Papillon</th>
-      <td>1973</td>
-      <td>7,9</td>
-    </tr>
-  </tbody>
-</table>
-<p>247 rows × 2 columns</p>
-</div>
+                    <p> dilimleme konusu (satırlarda / sütunlarda) eklenecek</p>
 
-<p> dilimleme konusu (satırlarda / sütunlarda) eklenecek</p>
-
-                <p> <a href="Pandas_Veriyi_Kesfet_incele.html" class="button primary small"> &#8592 Önceki Bölüm </a> <a href="Pandas_Eksik_Kayip_Veri_Yontemleri.html" class="button primary small">Sonraki Bölüm &#8594</a> </p>
+                            <p> <a href="Pandas_Veriyi_Kesfet_incele.html" class="button primary small"> &#8592 Önceki Bölüm </a> <a href="Pandas_Eksik_Kayip_Veri_Yontemleri.html" class="button primary small">Sonraki Bölüm &#8594</a> </p>
 
                       </div>
 
 
-				<!-- Footer -->
-					<section id="footer">
-						<div class="container">
-							<ul class="copyright">
-								<li>&copy; Her hakkı saklıdır.</li>
-							</ul>
-						</div>
-					</section>
+                <!-- Footer -->
+                    <section id="footer">
+                        <div class="container">
+                            <ul class="copyright">
+                                <li>&copy; Her hakkı saklıdır.</li>
+                            </ul>
+                        </div>
+                    </section>
 
-			</div>
+            </div>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+    <!-- Scripts -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/jquery.scrollex.min.js"></script>
+        <script src="assets/js/jquery.scrolly.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
 
 	</body>
 </html>
