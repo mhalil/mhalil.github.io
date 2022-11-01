@@ -1622,7 +1622,7 @@ print(veri)</code></pre>
 Bunun için <strong>drop()</strong> metodu kullanılıyor.</p>
 <h3 class="atx" id="drop-fonksiyonu">drop() Fonksiyonu</h3>
 <p>Bu metodun kullanım/yazım şekli aşağıdaki gibidir.</p>
-<pre><code>Veri_Çerçevesi_Adı.drop("Satır ya da Sütun Adı", axis = 0 ya da 1, inplace = True ya da False)</code></pre>
+<pre><code>Veri_Çerçevesi_Adı.drop("Satır ya da Sütun Adı", axis = 0 ya da 1, inplace = True/False)</code></pre>
 <ul>
 <li><strong>Satır ya da Sütun Adı</strong>, adından belli olduğu üzere, silinecek sütunun adıdır. Birden fazla sütun silinmek istenirse, isimler liste şeklinde yani köşeli parantez içinde yazılmalıdır.</li>
 </ul>
@@ -3228,9 +3228,12 @@ print(df3)</code></pre>
 </div>
 
 <h2 class="atx" id="join-fonksiyonu">join() Fonksiyonu</h2>
-<p><strong>join()</strong> metodu, Veri çerçevelerini bir birine katmak için kullanılır. Matematikteki <strong>Küme</strong> konusunu hatırlayın.
-<strong>join()</strong> metodu, parametresiz kullanıldığında <strong>ortak küme</strong> gibi davranarak veri çerçevelerini bir birine dahil eder/katar.</p>
-<pre><code class="fenced-code-block language-python">veri4 <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'Ad'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"mustafa"</span><span class="token punctuation">,</span> <span class="token string">"halil"</span><span class="token punctuation">,</span> <span class="token string">"emre"</span><span class="token punctuation">,</span> <span class="token string">"burak"</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token string">'yas'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">38</span><span class="token punctuation">,</span><span class="token number">42</span><span class="token punctuation">,</span><span class="token number">35</span><span class="token punctuation">,</span><span class="token number">44</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token string">'meslek'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"yönetici"</span><span class="token punctuation">,</span> <span class="token string">"mak.müh."</span><span class="token punctuation">,</span> <span class="token string">"yönetici"</span><span class="token punctuation">,</span> <span class="token string">"akademisyen"</span><span class="token punctuation">]</span><span class="token punctuation">}</span>
+<p><code>join()</code> metodu, Veri çerçevelerini birleştirmek için kullanılan fonksiyonlardan biridir. <code>join()</code> fonksiyonunun parametreleri kullanılarak, matematik dersinteki <strong>Kümeler</strong> konusu mantığında birleştirme işlemleri yapılabilir.<br>
+<strong>join()</strong> metodu, parametresiz kullanıldığında varsayılan olarak <strong>left join</strong> (<code>how = "left"</code>) değerini alır. Sol tarafta yazılan veri çerçevesindeki tüm değerler alınır, bu çerçevedeki indeks değerleri sağ tarafta yazılan veri çerçevesinde varsa, bu değerlere birleştirilir. Soldaki indeks değeri sağdaki veri çerçeveside yoksa o halde ilgili satır ve sütunlara eksik veri mahiyetinde <b>NaN</b> (Not a Number) değeri atanır.</p>
+
+                    <pre><code class="fenced-code-block language-python">veri4 <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'Ad'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"mustafa"</span><span class="token punctuation">,</span> <span class="token string">"halil"</span><span class="token punctuation">,</span> <span class="token string">"emre"</span><span class="token punctuation">,</span> <span class="token string">"burak"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token string">'yas'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">38</span><span class="token punctuation">,</span><span class="token number">42</span><span class="token punctuation">,</span><span class="token number">35</span><span class="token punctuation">,</span><span class="token number">44</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token string">'meslek'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"yönetici"</span><span class="token punctuation">,</span> <span class="token string">"mak.müh."</span><span class="token punctuation">,</span> <span class="token string">"yönetici"</span><span class="token punctuation">,</span> <span class="token string">"akademisyen"</span><span class="token punctuation">]</span><span class="token punctuation">}</span>
 df4 <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span>veri4<span class="token punctuation">)</span>
 print(df4)</code></pre>
 <div>
@@ -3387,11 +3390,28 @@ print(df4)</code></pre>
 </div>
 
 <p>Bu kez de, tahmin ettiğimiz gibi, <strong>df4</strong> veri çerçevesi temel alındı, ve <strong>df1</strong>'in ortak indeks değerleri dahil edildi, <strong>df4</strong>'ün indeks değeri <strong>df1</strong> de olmadığı durumda, ilgili satıra <strong>NaN</strong> değeri atandı.</p>
+        
 <h3 class="atx" id="how-parametresi">how parametresi</h3>
-<p><strong>join</strong> metodunun <strong>how</strong> parametresi ile, veri çerçevelerinin, sağdaki ya da soldaki veri çerçevesine göre katılma/dahil edilme seçeneğini ayarlayabilir, veri çerçevelerinin birleşimini ya da kesişimini de alabiliriz. Sırayla inceleyelim. </p>
-<p><strong>how</strong> parametresi, <strong>left, right, inner</strong> ve <strong>outer</strong> değerlerini alır. Varsayılan değer <strong>left</strong>'tir. ( <strong>left join</strong> )</p>
-<p>Aşağıdaki örneği inceleyerek konuyu daha iyi anlayabilirsiniz.</p>
+<p><strong>join</strong> metodunun <strong>how</strong> parametresi ile, veri çerçevelerinin, sağdaki ya da soldaki veri çerçevesine göre katılma/dahil edilme seçeneğini ayarlayabilir, veri çerçevelerinin birleşimini ya da kesişimini de alabiliriz. <strong>how</strong> parametresi, <strong>left, right, inner</strong> ve <strong>outer</strong> değerlerini alır. Varsayılan değer <strong>left</strong>'tir. (<strong>left join</strong>)</p>
+<p>Aşağıdaki örneği inceleyerek konuyu daha iyi anlayabilirsiniz.
+<h4 class="atx" id="how-parametresi_secenekleri">how parametresinin seçenekleri</h4>       
+<p><code>join()</code> Fonksiyonunun <code>how</code> parametresinin alabileceği seçenekler; <br>
+<ul>
+    <li><code>left (varsayılan)</code></li> 
+    <li><code>right</code></li>
+    <li><code>outer</code></li> 
+    <li><code>inner</code></li> 
+    </ul>
+    Şimdi bu seçenekleri sıra ile inceleyelim.</p>   
+<img src=images/python/join_merge.png>
+                    
+<h3 class="atx" id="left-join">left join</h3>
+<p><code>join()</code> metodunun, <code>how</code> parametresi almadan kullanıldığında varsayılan olarak <strong>left join</strong> (<code>how = "left"</code>) değerini aldığından bahsetmiştik. Bu durumda <b>Sol tarafta yazılan veri çerçevesindeki tüm değerler alınır, bu çerçevedeki indeks değerleri sağ tarafta yazılan veri çerçevesinde varsa, bu değerlere birleştirilir</b>. Soldaki indeks değeri sağdaki veri çerçeveside yoksa o halde ilgili satır ve sütunlara eksik veri mahiyetinde <b>NaN</b> (Not a Number) değeri atanır.<br>
+                    <code>how = "left"</code> kodunu eklesek te eklemesekte aynı sonucu elde ederiz. Ağaşıdaki kodları ayrı ayrı çalıştırıp, göreabilirsiniz.
+                    </p>                
+
 <pre><code class="fenced-code-block language-python">print(df1<span class="token punctuation">.</span>join<span class="token punctuation">(</span>df4<span class="token punctuation">))</span></code></pre>
+<pre><code class="fenced-code-block language-python">print(df1<span class="token punctuation">.</span>join<span class="token punctuation">(</span>df4<span class="token punctuation">,</span> how<span class="token operator">=</span><span class="token string">"left"</span><span class="token punctuation">))</span></code></pre>                    
 <div>
 
 <table class="dataframe" border="1">
@@ -3507,7 +3527,8 @@ print(df4)</code></pre>
 
 <p><strong>how</strong> parametresi eklenmeyen İlk kodda, indeksler 1'den yani <strong>df1</strong> temel alınarak birleştirme işlemi gerçekleştirilirken, <strong>how="right"</strong> parametresi eklenen ikinci kodda <strong>df2</strong> yani sağdaki veri çerçevesi temel alınarak (indeks değerli 0'dan başlayarak) birleştirme işlemi gerçekleşti.</p>
 <h3 class="atx" id="outer-join">outer join</h3>
-<p>Matematikteki <strong>Birleşik Küme</strong> mantığı ile aynıdır. Her iki veri çerçevesini, tüm içeriği ile alıp birbirine katar.</p>
+<p><code>outer</code>seçeneği kullanıldığında, <b>Birleşik küme</b> mantığı ile birleştirme işlemi gerçekleşir. Her iki veri çerçevesi tüm içeriği ile alınıp, yanyana birleştirilir.</p>
+
 <pre><code class="fenced-code-block language-python">print(df1<span class="token punctuation">.</span>join<span class="token punctuation">(</span>df4<span class="token punctuation">,</span> how<span class="token operator">=</span><span class="token string">"outer"</span><span class="token punctuation">))</span></code></pre>
 <div>
 
@@ -3575,7 +3596,7 @@ print(df4)</code></pre>
 
 <p>Görüldüğü üzre, önce <strong>df1</strong> veri çerçevesi alındı, daha sonra <strong>df4</strong> veri çerçevesinin içeriği alınarak yanına dahil edildi. Her iki ver içerçevesinde indeks değerleri içermeyen satırlan <strong>NaN</strong> olarak belirlendi.</p>
 <h3 class="atx" id="inner-join">inner join</h3>
-<p>Kesişim kümesi demektir. İki veri çerçevesinde ortak indeks değerlerine sahip satırlar alınır, yanyana birleştirilir.</p>
+<p><code>inner</code>seçeneği kullanıldığında, <b>Kesişim kümesi</b> mantığı ile birleştirme işlemi gerçekleşir. İki veri çerçevesinde ortak indeks değerlerine sahip satırlar alınır, yanyana birleştirilir.</p>
 <p><strong>df1</strong> 1'den 4'e kadar olan indeks değerlerine sahipken, <strong>df4</strong> 0'dan 3'e kadar indeks değerlerine sahip veri çerçeveleridir. Şimdi bu iki veri çerçevesini <strong>how=inner</strong> parametresi ile birbirine dahil etmek istersen ne olur?</p>
 <pre><code class="fenced-code-block language-python">print(df1<span class="token punctuation">.</span>join<span class="token punctuation">(</span>df4<span class="token punctuation">,</span> how<span class="token operator">=</span><span class="token string">"inner"</span><span class="token punctuation">))</span></code></pre>
 <div>
@@ -3682,9 +3703,785 @@ print(df4)</code></pre>
 </div>
 <h2 class="atx" id="merge-fonksiyonu">merge() Fonksiyonu</h2>
 
-<p> Konu hakkında bilgi yakında eklenecek </p>
+                    <p> <code>merge()</code> fonksiyonu <code>join()</code> fonksiyonuna benzer ancak bazı farklı özellikleri vardır. Veri Çerçevesi (DataFrame) veya adlandırılmış Seri nesnelerini (Series) veritabanı stili birleştirme yöntemi ile (SQL’de bulunan inner join, outer join … ‘e benzer) birleştirmek için <code>merge()</code> fonksiyonunu kullanılabilir.<br>
+                    Adlandırılmış Seri nesnesi (Series), adlandırılmış tek bir sütuna sahip Veri çerçevesi (DataFrame) olarak ele alınır.<br>
+                    <code>merge()</code> fonksiyonunun bir çok parametresi vardır. Biz burada temel bir kaç parametreye değineceğiz.
+                    </p>
+<pre><code class="fenced-code-block language-python">DataFrame.merge(right, how='inner', on=None, left_on=None, right_on=None, 
+            left_index=False, right_index=False, sort=False, 
+            suffixes=('_x', '_y'), copy=True, indicator=False, validate=None)</code></pre>
 
 
+<h3 class="atx" id="on-parametresi">on Parametresi</h3>
+                    
+                    <p><code>on</code> parametresi, Veri Çerçevelerinin hangi sütun baz alınarak birleştirileceğini belirteceğimiz parametredir. Öğrenci isimleri ile Vize ve Final sonuçlarının bulunduğu iki veri çerçevesi oluşturup, parametrelerin kullanımını görelim. </p>
+<pre><code class="indented-code-block">import pandas as pd
+vize = pd.DataFrame({"Ogrenci": ["ali", "busra", "ceyhun", "eda", "gamze", "kamil"], 
+                     "Sinav Sonucu": [41, 58, 73, 81, 95, 85]})
+
+final = pd.DataFrame({"Ogrenci": ["ali", "busra", "derya", "fatih", "halil"], 
+                      "Sinav Sonucu": [60, 68, 74, 90, 95]})
+vize</code></pre>
+      
+      <table class="dataframe" border="1">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Ogrenci</th>
+      <th>Sinav Sonucu</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>ali</td>
+      <td>41</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>busra</td>
+      <td>58</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>ceyhun</td>
+      <td>73</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>eda</td>
+      <td>81</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>gamze</td>
+      <td>95</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>kamil</td>
+      <td>85</td>
+    </tr>
+  </tbody>
+</table>
+
+      <pre><code class="indented-code-block">final</code></pre>
+      <table class="dataframe" border="1">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Ogrenci</th>
+      <th>Sinav Sonucu</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>ali</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>busra</td>
+      <td>68</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>derya</td>
+      <td>74</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>fatih</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>halil</td>
+      <td>95</td>
+    </tr>
+  </tbody>
+</table>
+<p>Yukarıdaki iki veri çerçevesini, <strong>Ogrenci</strong> isimli sütunu temel alarak birleştirlim. <code>how</code> parametresine takılmayın, aşağıda detaylıca anlatılıyor.</p>
+<pre><code class="indented-code-block">tumu = pd.merge(vize, final, on = "Ogrenci", how = "outer")
+tumu</code></pre>
+      
+      <table class="dataframe" border="1">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Ogrenci</th>
+      <th>Sinav Sonucu_x</th>
+      <th>Sinav Sonucu_y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>ali</td>
+      <td>41.0</td>
+      <td>60.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>busra</td>
+      <td>58.0</td>
+      <td>68.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>ceyhun</td>
+      <td>73.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>eda</td>
+      <td>81.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>gamze</td>
+      <td>95.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>kamil</td>
+      <td>85.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>derya</td>
+      <td>NaN</td>
+      <td>74.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>fatih</td>
+      <td>NaN</td>
+      <td>90.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>halil</td>
+      <td>NaN</td>
+      <td>95.0</td>
+    </tr>
+  </tbody>
+</table>
+
+      
+<p>Birleştirme işlemi sonucunda, İki veri çerçevesindeki tüm veriler, yeni veri çerçevesinde birleştirildi. Hem Vize hemde Final veri çerçevelerinde isimleri bulunan öğrencilerin sınav sonuçları yeni veri çerçevesinde eklenmişken, vize ya da final sonucu olmayan öğrenciler için, ilgili sütun değerleri <strong>NaN</strong> (Not a Number) olarak ayarlandı.</p>
+<h3 class="atx" id="how-parametresi-merge">how Parametresi</h3>
+<p><code>how</code> parametresi, veri çerçevelerini birleştirirken matematikteki Kümeler konusuna benzer seçenekler sunar. <code>merge()</code> fonksiyonunda <code>how</code> parametresi kullanılmadığı taktirde varsayılan olarak <code>inner</code> seçeneği belirtilmiş olur ve  birleştirilecek veri çerçevelerinin sadece ortak değerleri alınarak (ortak küme gibi davranarak) birleştirme işlemi gerçekleştirilir.</p>
+<p>Birleştirme işlemi sonucunda Sütun başlıklarının sonuna varsayılan <strong>_x</strong> ve <strong>_y</strong> sonekleri eklenir.</p>
+<p><code>how</code> Parametresi için kullanılabilecek seçenekler:</p>
+<ul>
+<li><code>inner (varsayılan)</code></li>
+<li><code>outer</code></li>
+<li><code>left</code></li>
+<li><code>right</code></li>
+<li><code>cross</code></li>
+</ul>
+<h3 class="atx" id="inner-secenegi">inner Seçeneği</h3>
+<p><code>inner</code> seçeneği, sadece iki veri çerçevesinde de bulunan <strong>ortak değerleri</strong> birleştirir. Tek veri çerçevesinde olan değerler silinir. <code>how = "inner"</code> ibaresini yazsak ta yazmasak ta aynı sonucu elde ederiz. Aşağıdaki İki kod, aynı sonucu verir, deneyip görelim.</p>
+<pre><code class="indented-code-block">pd.merge(vize, final, on = "Ogrenci", how = "inner")</code></pre>
+      
+<table class="dataframe" border="1">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Ogrenci</th>
+      <th>Sinav Sonucu_x</th>
+      <th>Sinav Sonucu_y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>ali</td>
+      <td>41</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>busra</td>
+      <td>58</td>
+      <td>68</td>
+    </tr>
+  </tbody>
+</table>
+      
+<pre><code class="indented-code-block">pd.merge(vize, final, on = "Ogrenci")</code></pre>  
+      
+      <table class="dataframe" border="1">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Ogrenci</th>
+      <th>Sinav Sonucu_x</th>
+      <th>Sinav Sonucu_y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>ali</td>
+      <td>41</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>busra</td>
+      <td>58</td>
+      <td>68</td>
+    </tr>
+  </tbody>
+</table>
+      
+<h3 class="atx" id="outer-secenegi">outer Seçeneği</h3>
+<p><code>outer</code> seçeneği kullanıldığında, iki veri çerçevesinde bulunan <strong>tüm değerler</strong> birleştirilir. Sol tarafta yazılan veri çerçevesindeki değerler temel alınır. İki veri çerçevesinde bulunan ortak  değerler korunur, aksi halde eksik değerler için <strong>NaN</strong> değeri atanır.</p>
+<pre><code class="indented-code-block">pd.merge(vize, final, on = "Ogrenci", how = "outer")</code></pre>
+      <table class="dataframe" border="1">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Ogrenci</th>
+      <th>Sinav Sonucu_x</th>
+      <th>Sinav Sonucu_y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>ali</td>
+      <td>41.0</td>
+      <td>60.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>busra</td>
+      <td>58.0</td>
+      <td>68.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>ceyhun</td>
+      <td>73.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>eda</td>
+      <td>81.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>gamze</td>
+      <td>95.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>kamil</td>
+      <td>85.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>derya</td>
+      <td>NaN</td>
+      <td>74.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>fatih</td>
+      <td>NaN</td>
+      <td>90.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>halil</td>
+      <td>NaN</td>
+      <td>95.0</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 class="atx" id="left-secenegi">left Seçeneği</h3>
+<p><code>left</code> seçeneği ile yapılan birleştirme işleminde, <strong>sol tarafta yazılan veri çerçevesinin tüm değerlerini alır ve sağ tarafta yazılan veri çerçevesindeki ortak değerleri</strong> tabloya ekler. Solda yazılan veri çerçevesindeki değerlerin, sağda yazılan veri çerçevesinde karşılığı yoksa, ilgili sütuna <strong>NaN</strong> değeri atanır. Sağ tarafta yazılan veri çerçevesinin, sol tarafta yazılan veri çerçevesinde karşılığı yoksa, bu değerler yok sayılır, birleştirme işlemine dahil edilmez.</p>
+<pre><code class="indented-code-block">pd.merge(vize, final, on = "Ogrenci", how = "left")</code></pre>
+      
+      <table class="dataframe" border="1">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Ogrenci</th>
+      <th>Sinav Sonucu_x</th>
+      <th>Sinav Sonucu_y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>ali</td>
+      <td>41</td>
+      <td>60.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>busra</td>
+      <td>58</td>
+      <td>68.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>ceyhun</td>
+      <td>73</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>eda</td>
+      <td>81</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>gamze</td>
+      <td>95</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>kamil</td>
+      <td>85</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+      
+<h3 class="atx" id="right-secenegi">right Seçeneği</h3>
+<p><code>right</code> seçeneği ile yapılan birleştirme işleminde, <strong>sağ tarafta yazılan veri çerçevesinin tüm değerlerini alır ve sol tarafta yazılan veri çerçevesindeki ortak değerleri</strong> tabloya ekler. Sağda yazılan veri çerçevesindeki değerlerin, solda yazılan veri çerçevesinde karşılığı yoksa, ilgili sütuna <strong>NaN</strong> değeri atanır. Sol tarafta yazılan veri çerçevesinin, sağ tarafta yazılan veri çerçevesinde karşılığı yoksa, bu değerler yok sayılır, birleştirme işlemine dahil edilmez.</p>
+<pre><code class="indented-code-block">pd.merge(vize, final, on = "Ogrenci", how = "right")</code></pre>
+      
+      <table class="dataframe" border="1">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Ogrenci</th>
+      <th>Sinav Sonucu_x</th>
+      <th>Sinav Sonucu_y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>ali</td>
+      <td>41.0</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>busra</td>
+      <td>58.0</td>
+      <td>68</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>derya</td>
+      <td>NaN</td>
+      <td>74</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>fatih</td>
+      <td>NaN</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>halil</td>
+      <td>NaN</td>
+      <td>95</td>
+    </tr>
+  </tbody>
+</table>
+      
+<h3 class="atx" id="cross-secenegi">cross Seçeneği</h3>
+<p><code>cross</code> seçeneği sonucunda, kartezyen çarpımı yöntemi ile  birleştirme yapılır.</p>
+<pre><code class="indented-code-block">veri1 = pd.DataFrame({'HARF': ['A', 'B', "C"]})
+veri2 = pd.DataFrame({'SAYI': [10,20,30]})
+veri1</code></pre>
+
+      <table class="dataframe" border="1">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>HARF</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>A</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>B</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>C</td>
+    </tr>
+  </tbody>
+</table>
+      
+<pre><code class="indented-code-block">veri2</code></pre>
+
+<table class="dataframe" border="1">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>SAYI</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>30</td>
+    </tr>
+  </tbody>
+</table>      
+      
+<pre><code class="indented-code-block">pd.merge(veri1, veri2, how="cross")</code></pre>
+
+<table class="dataframe" border="1">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>HARF</th>
+      <th>SAYI</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>A</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>A</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>A</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>B</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>B</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>B</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>C</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>C</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>C</td>
+      <td>30</td>
+    </tr>
+  </tbody>
+</table>
+      
+<h3 class="atx" id="left_on-parametresi">left_on Parametresi</h3>
+<p>Bu parametre opsiyonel yani İsteğe bağlıdır, kullanmak zorunda değilsiniz. Soldaki Veri Çerçevesi üzerinde birleştirmenin hangi düzeyde yapılacağını belirtmek için kullanılır. Sütun başlıklarının sonuna varsayılan <strong>_x</strong> ve <strong>_y</strong> sonekleri eklenir.</p>
+<p><code>left_on</code> parametresi, etiket veya liste ya da dizi benzeri veri alır.</p>
+<h3 class="atx" id="right_on-parametresi">right_on Parametresi</h3>
+<p>Bu parametre opsiyonel yani İsteğe bağlıdır, kullanmak zorunda değilsiniz. Sağdaki Veri Çerçevesi üzerinde birleştirmenin hangi düzeyde yapılacağını belirtmek için kullanılır. Sütun başlıklarının sonuna varsayılan <strong>_x</strong> ve <strong>_y</strong> sonekleri eklenir.</p>
+<p><code>right_on</code> parametresi, etiket veya liste ya da dizi benzeri veri alır.</p>
+<pre><code class="indented-code-block">arastirma1 = pd.DataFrame({'Manav_1': ['elma', 'nar', 'portakal', 'elma'],
+                    'fiyat': [1, 2, 3, 4]})
+
+arastirma2 = pd.DataFrame({'Manav_2': ['elma', 'nar', 'portakal', 'elma'],
+                    'fiyat': [5, 6, 7, 8]})
+arastirma1
+</code></pre>
+
+      <table class="dataframe" border="1">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Manav_1</th>
+      <th>fiyat</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>elma</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>nar</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>portakal</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>elma</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+
+<pre><code class="indented-code-block">arastirma2</code></pre>
+
+<table class="dataframe" border="1">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Manav_2</th>
+      <th>fiyat</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>elma</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>nar</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>portakal</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>elma</td>
+      <td>8</td>
+    </tr>
+  </tbody>
+</table>
+      
+<pre><code class="indented-code-block">arastirma1.merge(arastirma2, left_on='Manav_1', right_on='Manav_2')</code></pre>
+
+<table class="dataframe" border="1">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Manav_1</th>
+      <th>fiyat_x</th>
+      <th>Manav_2</th>
+      <th>fiyat_y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>elma</td>
+      <td>1</td>
+      <td>elma</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>elma</td>
+      <td>1</td>
+      <td>elma</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>elma</td>
+      <td>4</td>
+      <td>elma</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>elma</td>
+      <td>4</td>
+      <td>elma</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>nar</td>
+      <td>2</td>
+      <td>nar</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>portakal</td>
+      <td>3</td>
+      <td>portakal</td>
+      <td>7</td>
+    </tr>
+  </tbody>
+</table> 
+      
+<pre><code class="indented-code-block">arastirma2.merge(arastirma1, right_on='Manav_1', left_on='Manav_2')</code></pre>      
+
+<table class="dataframe" border="1">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Manav_2</th>
+      <th>fiyat_x</th>
+      <th>Manav_1</th>
+      <th>fiyat_y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>elma</td>
+      <td>5</td>
+      <td>elma</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>elma</td>
+      <td>5</td>
+      <td>elma</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>elma</td>
+      <td>8</td>
+      <td>elma</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>elma</td>
+      <td>8</td>
+      <td>elma</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>nar</td>
+      <td>6</td>
+      <td>nar</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>portakal</td>
+      <td>7</td>
+      <td>portakal</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+      
+<h3 class="atx" id="suffixes-parametresi">suffixes Parametresi</h3>
+<p><code>merge()</code> fonksiyonu ile birleştirme işlemi sonucunda, sütun başlıklarının sonuna <strong>_x</strong> ve <strong>_y</strong> soneklerinin dahil edildiğini söyledik. Bu değer vaysayılan değerdir. Bu değeri değiştirmek ve sütun başlıklarının sonuna, istediğimiz değeri eklemek istersek bu işlemi <code>suffixes</code> parametresi ile yapabiliriz.</p>
+<pre><code class="indented-code-block">arastirma1.merge(arastirma2, left_on='Manav_1', right_on='Manav_2',
+            suffixes=("_bir", "_iki"))</code></pre>
+
+<table class="dataframe" border="1">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Manav_1</th>
+      <th>fiyat_bir</th>
+      <th>Manav_2</th>
+      <th>fiyat_iki</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>elma</td>
+      <td>1</td>
+      <td>elma</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>elma</td>
+      <td>1</td>
+      <td>elma</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>elma</td>
+      <td>4</td>
+      <td>elma</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>elma</td>
+      <td>4</td>
+      <td>elma</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>nar</td>
+      <td>2</td>
+      <td>nar</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>portakal</td>
+      <td>3</td>
+      <td>portakal</td>
+      <td>7</td>
+    </tr>
+  </tbody>
+</table>
+                    
                 <p> <a href="Pandas_Eksik_Kayip_Veri_Yontemleri.html" class="button primary small"> &#8592 Önceki Bölüm </a> <a href="Pandas_Siralama_Yontemleri.html" class="button primary small">Sonraki Bölüm &#8594</a> </p>
 
                       </div>
