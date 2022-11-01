@@ -3597,7 +3597,7 @@ print(df4)</code></pre>
 <p>Görüldüğü üzre, önce <strong>df1</strong> veri çerçevesi alındı, daha sonra <strong>df4</strong> veri çerçevesinin içeriği alınarak yanına dahil edildi. Her iki ver içerçevesinde indeks değerleri içermeyen satırlan <strong>NaN</strong> olarak belirlendi.</p>
 <h3 class="atx" id="inner-join">inner join</h3>
 <p><code>inner</code>seçeneği kullanıldığında, <b>Kesişim kümesi</b> mantığı ile birleştirme işlemi gerçekleşir. İki veri çerçevesinde ortak indeks değerlerine sahip satırlar alınır, yanyana birleştirilir.</p>
-<p><strong>df1</strong> 1'den 4'e kadar olan indeks değerlerine sahipken, <strong>df4</strong> 0'dan 3'e kadar indeks değerlerine sahip veri çerçeveleridir. Şimdi bu iki veri çerçevesini <strong>how=inner</strong> parametresi ile birbirine dahil etmek istersen ne olur?</p>
+<p><strong>df1</strong> 1'den 4'e kadar olan indeks değerlerine sahipken, <strong>df4</strong> 0'dan 3'e kadar indeks değerlerine sahip veri çerçeveleridir. Şimdi bu iki veri çerçevesini <code>how="inner"</code> parametresi ile birbirine dahil etmek istersen ne olur?</p>
 <pre><code class="fenced-code-block language-python">print(df1<span class="token punctuation">.</span>join<span class="token punctuation">(</span>df4<span class="token punctuation">,</span> how<span class="token operator">=</span><span class="token string">"inner"</span><span class="token punctuation">))</span></code></pre>
 <div>
 
