@@ -52,9 +52,62 @@
 									</header>
 									                                      
                                     <h3 id="freecad-icin-python-ile-komut-dosyasi-olusturma-scripting-egitimi">FreeCAD Curves Workbench (Eğriler Çalışma Tezgahı) Eğitimi</h3>
-                                    <p> 
-                                    Curves Workbench konu detayları buraya eklenecek...
+                                    <p>
+                                        Bu bölümde anlatılacak konular, <a href="https://wiki.freecadweb.org/Curves_Workbench", target="_blank">wiki.freecadweb.org/Curves_Workbench</a> adresindeki dokümanlar esas alınarak oluşturulacaktır ancak sadece bununla sınırlı kalmayacak. Gerek <a href="https://forum.freecadweb.org/viewtopic.php?f=3&t=22675&sid=cc97e4c6bf97fa86e453c14ddac9d333", target="_blank">FreeCAD Forum sayfasından</a> gerekse de Youtube'dan öğrendiklerimi sizlere anlatmaya çalışacağım. <br>
+                                        
+                                    <strong>Curves Workbench (Eğriler Çalışma Tezgahı)</strong>, NURBS eğrileri ve yüzeyleri için bir araç koleksiyonuna dayalı, python tabanlı, harici bir çalışma tezgahıdır. Bu çalışma tezgahı FreeCAD Master ve OCC 7.4 ile geliştirilmiştir.<br>
+
+                                        <b>Not:</b> Bazı araçlar önceki sürümlerle çalışmayabilir. <br>    
                                     </p>
+                                    
+                                    <h4 id="araclar">KOMUTLAR</h4>
+                                    <p>
+                                        <img src="https://wiki.freecadweb.org/images/b/b9/Curves_Line.svg"> <b><span style="color:#4acaa8">Curves Line:</span> </b><br>
+                                        Seçili <u>iki nokta arasında</u> parametrik bir çizgi oluşturur.
+                                    </p>
+                                    
+                                    <p>
+                                        <img src="https://wiki.freecadweb.org/images/5/5f/Curves_EditableSpline.svg"> <b><span style="color:#4acaa8">Curves EditableSpline:</span> </b> <br>
+                                        <u>Serbest çizimli</u> bir B-Spline eğrisi oluşturur.
+                                    </p>
+      
+                                        <b><span style="color:#4acaa8">Kullanım:</span></b>
+
+                                        Komutu çağırmak için aşağıdakilerden birini yapın:<br>
+
+                                            <ul>
+                                            <li>Curves araç çubuğunda bulunan ilgili düğmeye basın.</li>
+                                            <li>Curves menüsündeki Freehand BSpline seçeneğini kullanın.</li> 
+                                        </ul>
+
+                                    <b><span style="color:#4acaa8">Seçenekler:</span></b> <br>
+
+                                        Komut sırasında özel bir düzenleme modu aktiftir ve klavye tuşları ve fare tıklamaları ile kontrol edilebilen birkaç eylem ve davranış vardır. <br>
+                                        <ul>
+                                            <li>Bir noktayı veya kılavuz çizgiyi hareket ettirmek için (kılavuz çizgiler noktalar arasındaki düz çizgilerdir) nokta ya da çizginin üzerinde farenin sol düğmesini basılı tutun ve fareyi hareket ettirin. </li>
+
+                                            <li><code>A</code> tuşu, tüm noktaları ve kılavuz çizgileri seçer veya seçimini kaldırır. PopOS! işletim sisteminde , FreeCAD 0.20 ve 0.21 sürümlerinde A tuşu bu işlemi gerçekleştirmedi. Bunun için <code>ALT</code> + <code>A</code> tuş kombinasyonunu kullanmam gerekti. </li>
+
+                                            <li><code>I</code> (Isparta’nın I’sı) ya da <code>i</code> tuşu, seçilen kılavuz çizgiye bir nokta ekler. Yeni nokta seçili hale gelir. Malumunuz, İngilizce dilinde büyük <code>İ</code> ve küçük <code>ı</code> harfleri yoktur. Bu nedenle klavyenin <code>CapsLock</code> tuşu aktif ise bu komutu çalıştırmak istediğinizde <code>I</code> tuşuna, <code>CapsLock</code> tuşu aktif değil ise <code>i</code> tuşuna basmalısınız. </li>
+
+                                            <li><code>T</code> tuşu, seçilen noktaların veya kılavuz çizgilerin oluşturduğu BSpline eğrisini, görünüm yönüne bağlı olarak, kılavuz çizgiye teğet hale getirir (bir nevi, eğriyi, kılavuz çizginin arkasına saklar) veya teğet halini iptal eder. Sahneye olan bakış açısı değiştirilerek komut çalıştırılırsa Bspline eğrisi her seferinde farklı hal alacaktır.</li>
+
+                                            <li><code>P</code> tuşu, seçili nesneleri bakış açıına göre doğrusal olarak hizalar.  Seçili nesnelerden kasıt, noktalar ya da kılavuz çizgilerdir. Noktalar ya da kılavuz çizgiler seçilir ve P tuşuna basılırsa, tüm seçili nesneler, sanki düz bir ipin üzerine dizilmiş gibi doğrusal olarak hizalanır.  </li>
+
+                                            <li><code>S</code> tuşu, bir noktayı başka bir B-spline eğrisine ait noktaya tutturmak/birleştirmek için kullanılabilir. Düzenlenmekte olan B-spline eğrisinin bir noktası seçiliyken CTRL tuşuna basılı tutun ve hedef noktasını seçime ekleyin, ardından S tuşuna basın. İşlem sonucunda seçili noktalar birbirine kenetlenir. Hedef nokta, farklı bir eğrinin  uç noktası olabileceği gibi, BSPline eğrisinin kendisi de olabilir. İşlem, düzenleme modunda olan Bspline eğrisi ile düzenleme modu dışında olan  BSpline eğrisi arasında gerçekleşir.   Bu komut çalıştırıldığında gerçekleşen işlem iki sonuç doğurur. </li> 
+                                            <ol>
+                                                <li>Düzenleme modunda olan Bspline eğrisinin bir noktası ile düzenleme modu dışında olan Bspline eğrisinin uç noktası seçilmişse  tutturulan / birleştirilen nokta hareket ettirilemez. Bunun sebebi, Bspline eğrilerinden birinin düzenleme modu dışında olmasıdır. </li>
+
+                                                <li>Düzenleme modunda olan Bspline eğrisinin bir noktası ile düzenleme modu dışında olan Bspline eğrisi (uş noktaları hariç) seçilmişse  tutturulan / birleştirilen nokta, sadece eğri güzergahında (üzerinde) hareket edebilir.</li>
+
+                                                Tutturulan/Birleştirilen Noktaları ayırmak için, birleşen nokta çiftini seçin ve tekrar S tuşuna basın. Düzenlenmekte olan B-spline'a ait nokta seçili kalır ve artık hareket ettirilebilir. 
+                                            </ol>
+                                            <li><code>L</code> tuşu, doğrusal enterpolasyonu ayarlar veya geri alır. BSpline eğrisini, görünüm yönünden bağımsız olarak, seçili kılavuz çizgi doğrultusunda ayarlar ya da geri alır. Eğri, Kılavuz çizgi ile tüm yönlerden (Ön, yan ve üst görünümde) üst üste çakışır. </li>
+
+                                            <li><code>X</code>, <code>Y</code> veya <code>Z</code> tuşları, Blender programında olduğu gibi, sürüklenen nesnenin (nokta ya da kılavuz çizginin) hareketini kısıtlamak için kullanılabilir. Nesneyi sürüklerken kısıtlamak   istediğiniz eksen tuşuna basın. Kısıtlamayı devre dışı bırakmak için aynı tuşa tekrar basın. </li>
+
+                                            <li><code>Q</code> tuşu komutu sonlandırır ve düzenleme modundan çıkar. </li>
+                                            </ul>
                                 </div>
 							</section>
 					</div>
