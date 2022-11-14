@@ -65,16 +65,14 @@
     <img src="https://wiki.freecadweb.org/images/b/b9/Curves_Line.svg"> <a href="#parametric_line"> Parametric Line</a> <br>
     <img src="https://wiki.freecadweb.org/images/5/5f/Curves_EditableSpline.svg"> <a href="#freehand_bspline"> Freehand BSpline </a><br>  
     <img src="https://wiki.freecadweb.org/images/5/5c/Curves_ExtendCurve.svg"> <a href="#curve_extend"> Curve Extend </a><br>  
-    <img src=""> <a href="#"> Komut_Adı2 </a><br>  
-    <img src=""> <a href="#"> Komut_Adı3 </a><br>  
-    <img src=""> <a href="#"> Komut_Adı4 </a><br>  
-    <img src=""> <a href="#"> Komut_Adı5 </a><br>  
-    <img src=""> <a href="#"> Komut_Adı6 </a><br>  
-    <img src=""> <a href="#"> Komut_Adı7 </a><br>  
-    <img src=""> <a href="#"> Komut_Adı8 </a><br>  
-    <img src=""> <a href="#"> Komut_Adı9 </a><br>  
-    <img src=""> <a href="#"> Komut_Adı10 </a><br>  
-    <img src=""> <a href="#"> Komut_Adı11 </a><br>  
+    <img src="https://wiki.freecadweb.org/images/2/2d/Curves_JoinCurve.svg"> <a href="#joincurve"> JoinCurve </a><br>  
+    <img src="https://wiki.freecadweb.org/images/b/b7/Curves_SplitCurve.svg"> <a href="#split_curve">Split curve </a><br>  
+    <img src="https://wiki.freecadweb.org/images/c/c5/Curves_Discretize.svg"> <a href="#discretize"> Discretize </a><br>  
+    <img src="https://raw.githubusercontent.com/tomate44/CurvesWB/9f7064e9d0b6cb569b83228e67b91ea26d42570c/freecad/Curves/resources/icons/approximate.svg"> <a href="#approximate">Approximate </a><br>  
+    <img src="https://wiki.freecadweb.org/images/b/b2/Curves_Interpolate.svg"> <a href="#interpolate"> Interpolate </a><br>  
+    <img src="https://raw.githubusercontent.com/tomate44/CurvesWB/9f7064e9d0b6cb569b83228e67b91ea26d42570c/freecad/Curves/resources/icons/blend.svg"> <a href="#blend_curve">Blend curve </a><br>  
+    <img src="https://raw.githubusercontent.com/tomate44/CurvesWB/9f7064e9d0b6cb569b83228e67b91ea26d42570c/freecad/Curves/resources/icons/comb.svg"> <a href="#comb_plot">Comb plot </a><br>  
+    <img src="https://raw.githubusercontent.com/tomate44/CurvesWB/9f7064e9d0b6cb569b83228e67b91ea26d42570c/freecad/Curves/resources/icons/curveOnSurface.svg"> <a href="#curveonsurface">CurveOnSurface </a><br>   
 </p>
 
         <p>
@@ -148,7 +146,7 @@
                                            
         <p>
         <img src="https://wiki.freecadweb.org/images/5/5c/Curves_ExtendCurve.svg"> <b><span id="curve_extend", style="color:#4acaa8">Curve Extend:</span> </b><br>
-        Seçili Eğriyi (Kenarı) uzatır. <br>
+        <u>Seçili Eğriyi (Kenarı) uzatır</u>. <br>
         </p>
 
         <b><span style="color:#4acaa8">Kullanım:</span></b> Komutu çalıştırmak için aşağıdakilerden birini yapın:
@@ -171,7 +169,90 @@
                                     
                                     
             <p>
-        <img src="https://wiki.freecadweb.org/images/b/b9/Curves_Line.svg"> <b><span id="###", style="color:#4acaa8">Komut Adi2:</span> </b><br>
+        <img src="https://wiki.freecadweb.org/images/2/2d/Curves_JoinCurve.svg"> <b><span id="joincurve", style="color:#4acaa8">JoinCurve:</span> </b><br>
+        <u>Seçilen kenarları Bezier Eğri (BSpline) olarak birleştirir.</u> <br>
+        </p>
+
+        <b><span style="color:#4acaa8">Kullanım:</span></b> 
+            <ul>
+                <li>3B görünümde bir veya birkaç kenar seçin. (birkaç seçim için <code>CTRL</code> tuşunu kullanın)</li>
+                <li>Kenarlar art arda eklenmelidir. Eskizden (Sketch'ten) , herhangi bir şeklin kenarları seçilebilir.</li>
+            Komutu çalıştırmak için aşağıdakilerden birini yapın:
+                <li>Curves araç çubuğunda bulunan ilgili düğmeye basın.</li>
+                <li><strong>Curves</strong> menüsündeki <strong>JoinCurve</strong> seçeneğini kullanın.</li> 
+                <li>İşlem sonunda tüm seçili kenarlar birleştirilerek tek bir Bezier eğri (BSpline) olur.</li>
+        </ul>
+                                    
+        <p>
+                                    <img src="https://wiki.freecad.org/images/3/3b/JoinCurve_pic1.jpg" class="image fit">
+        </p>
+                                    
+                                            <p>
+        <img src="https://wiki.freecadweb.org/images/b/b7/Curves_SplitCurve.svg"> <b><span id="split_curve", style="color:#4acaa8">Split curve:</span> </b><br>
+        <u>Seçili eğriyi (kenarı) böler</u>. <br>
+        </p>
+
+        <b><span style="color:#4acaa8">Kullanım:</span></b> Komutu çalıştırmak için aşağıdakilerden birini yapın:
+            <ul>
+            <li>Curves araç çubuğunda bulunan ilgili düğmeye basın.</li>
+            <li><strong>Curves</strong> menüsündeki <strong>Split curve</strong> seçeneğini kullanın.</li> 
+        </ul>
+        <p>
+            Seçili Eğri, istenilen kısımlardan parçalar ayrılabilir. İstenilen kısımlar, komut çalıştırıldıktan sonra <b>Özellikler bölümünden</b> ayarlanır. Varsayılan değer 50% yani eğrinin tam ortasından bölünmesidir. Bölme/Parçalama kısımlarını ayarlamak için aşağıdaki adımları uygulamalısnız;
+             
+        </p>
+<ul>
+<li><b>Unsur ağacından</b> SplitCurve unsuru seçilir</li>
+<li>Özellikler Panelindeki <strong>Split</strong> başlığı altında bulunan <strong>Values</strong> İletişim kutusu açılarak her satıra istenilen değerler yazılır.</li>
+</ul>
+<p>
+Resim eklenecek...                                    
+</p>
+                                    
+                                            <p>
+        <img src="https://wiki.freecadweb.org/images/c/c5/Curves_Discretize.svg"> <b><span id="discretize", style="color:#4acaa8">Discretize:</span> </b><br>
+        Komut Acıklaması. <br>
+        </p>
+
+        <b><span style="color:#4acaa8">Kullanım:</span></b> Komutu çalıştırmak için aşağıdakilerden birini yapın:
+            <ul>
+            <li>Curves araç çubuğunda bulunan ilgili düğmeye basın.</li>
+            <li><strong>Curves</strong> menüsündeki <strong>Discretize</strong> seçeneğini kullanın.</li> 
+        </ul>
+        <p>
+           ilave anlatım                         
+        </p>
+                                    
+                                            <p>
+        <img src="https://raw.githubusercontent.com/tomate44/CurvesWB/9f7064e9d0b6cb569b83228e67b91ea26d42570c/freecad/Curves/resources/icons/approximate.svg"> <b><span id="approximate", style="color:#4acaa8">Approximate:</span> </b><br>
+        Komut Acıklaması. <br>
+        </p>
+
+        <b><span style="color:#4acaa8">Kullanım:</span></b> Komutu çalıştırmak için aşağıdakilerden birini yapın:
+            <ul>
+            <li>Curves araç çubuğunda bulunan ilgili düğmeye basın.</li>
+            <li><strong>Curves</strong> menüsündeki <strong>Approximate</strong> seçeneğini kullanın.</li> 
+        </ul>
+        <p>
+           ilave anlatım                         
+        </p>
+                                    
+                                            <p>
+        <img src="https://wiki.freecadweb.org/images/b/b2/Curves_Interpolate.svg"> <b><span id="interpolate", style="color:#4acaa8">Interpolate:</span> </b><br>
+        Komut Acıklaması. <br>
+        </p>
+
+        <b><span style="color:#4acaa8">Kullanım:</span></b> Komutu çalıştırmak için aşağıdakilerden birini yapın:
+            <ul>
+            <li>Curves araç çubuğunda bulunan ilgili düğmeye basın.</li>
+            <li><strong>Curves</strong> menüsündeki <strong>Interpolate</strong> seçeneğini kullanın.</li> 
+        </ul>
+        <p>
+           ilave anlatım                         
+        </p>
+                                    
+                                            <p>
+        <img src="https://raw.githubusercontent.com/tomate44/CurvesWB/9f7064e9d0b6cb569b83228e67b91ea26d42570c/freecad/Curves/resources/icons/blend.svg"> <b><span id="blend_curve", style="color:#4acaa8">Blend curve:</span> </b><br>
         Komut Acıklaması. <br>
         </p>
 
@@ -185,126 +266,28 @@
         </p>
                                     
                                             <p>
-        <img src="https://wiki.freecadweb.org/images/b/b9/Curves_Line.svg"> <b><span id="###", style="color:#4acaa8">Komut Adi3:</span> </b><br>
+        <img src="https://raw.githubusercontent.com/tomate44/CurvesWB/9f7064e9d0b6cb569b83228e67b91ea26d42570c/freecad/Curves/resources/icons/comb.svg"> <b><span id="comb_plot", style="color:#4acaa8">Comb plot:</span> </b><br>
         Komut Acıklaması. <br>
         </p>
 
         <b><span style="color:#4acaa8">Kullanım:</span></b> Komutu çalıştırmak için aşağıdakilerden birini yapın:
             <ul>
             <li>Curves araç çubuğunda bulunan ilgili düğmeye basın.</li>
-            <li><strong>Curves</strong> menüsündeki <strong>Komut_adı</strong> seçeneğini kullanın.</li> 
+            <li><strong>Curves</strong> menüsündeki <strong>Comb plot</strong> seçeneğini kullanın.</li> 
         </ul>
         <p>
            ilave anlatım                         
         </p>
                                     
                                             <p>
-        <img src="https://wiki.freecadweb.org/images/b/b9/Curves_Line.svg"> <b><span id="###", style="color:#4acaa8">Komut Adi4:</span> </b><br>
+        <img src="https://raw.githubusercontent.com/tomate44/CurvesWB/9f7064e9d0b6cb569b83228e67b91ea26d42570c/freecad/Curves/resources/icons/curveOnSurface.svg"> <b><span id="curveonsurface", style="color:#4acaa8">CurveOnSurface:</span> </b><br>
         Komut Acıklaması. <br>
         </p>
 
         <b><span style="color:#4acaa8">Kullanım:</span></b> Komutu çalıştırmak için aşağıdakilerden birini yapın:
             <ul>
             <li>Curves araç çubuğunda bulunan ilgili düğmeye basın.</li>
-            <li><strong>Curves</strong> menüsündeki <strong>Komut_adı</strong> seçeneğini kullanın.</li> 
-        </ul>
-        <p>
-           ilave anlatım                         
-        </p>
-                                    
-                                            <p>
-        <img src="https://wiki.freecadweb.org/images/b/b9/Curves_Line.svg"> <b><span id="###", style="color:#4acaa8">Komut Adi5:</span> </b><br>
-        Komut Acıklaması. <br>
-        </p>
-
-        <b><span style="color:#4acaa8">Kullanım:</span></b> Komutu çalıştırmak için aşağıdakilerden birini yapın:
-            <ul>
-            <li>Curves araç çubuğunda bulunan ilgili düğmeye basın.</li>
-            <li><strong>Curves</strong> menüsündeki <strong>Komut_adı</strong> seçeneğini kullanın.</li> 
-        </ul>
-        <p>
-           ilave anlatım                         
-        </p>
-                                    
-                                            <p>
-        <img src="https://wiki.freecadweb.org/images/b/b9/Curves_Line.svg"> <b><span id="###", style="color:#4acaa8">Komut Adi6:</span> </b><br>
-        Komut Acıklaması. <br>
-        </p>
-
-        <b><span style="color:#4acaa8">Kullanım:</span></b> Komutu çalıştırmak için aşağıdakilerden birini yapın:
-            <ul>
-            <li>Curves araç çubuğunda bulunan ilgili düğmeye basın.</li>
-            <li><strong>Curves</strong> menüsündeki <strong>Komut_adı</strong> seçeneğini kullanın.</li> 
-        </ul>
-        <p>
-           ilave anlatım                         
-        </p>
-                                    
-                                            <p>
-        <img src="https://wiki.freecadweb.org/images/b/b9/Curves_Line.svg"> <b><span id="###", style="color:#4acaa8">Komut Adi7:</span> </b><br>
-        Komut Acıklaması. <br>
-        </p>
-
-        <b><span style="color:#4acaa8">Kullanım:</span></b> Komutu çalıştırmak için aşağıdakilerden birini yapın:
-            <ul>
-            <li>Curves araç çubuğunda bulunan ilgili düğmeye basın.</li>
-            <li><strong>Curves</strong> menüsündeki <strong>Komut_adı</strong> seçeneğini kullanın.</li> 
-        </ul>
-        <p>
-           ilave anlatım                         
-        </p>
-                                    
-                                            <p>
-        <img src="https://wiki.freecadweb.org/images/b/b9/Curves_Line.svg"> <b><span id="###", style="color:#4acaa8">Komut Adi8:</span> </b><br>
-        Komut Acıklaması. <br>
-        </p>
-
-        <b><span style="color:#4acaa8">Kullanım:</span></b> Komutu çalıştırmak için aşağıdakilerden birini yapın:
-            <ul>
-            <li>Curves araç çubuğunda bulunan ilgili düğmeye basın.</li>
-            <li><strong>Curves</strong> menüsündeki <strong>Komut_adı</strong> seçeneğini kullanın.</li> 
-        </ul>
-        <p>
-           ilave anlatım                         
-        </p>
-                                    
-                                            <p>
-        <img src="https://wiki.freecadweb.org/images/b/b9/Curves_Line.svg"> <b><span id="###", style="color:#4acaa8">Komut Adi9:</span> </b><br>
-        Komut Acıklaması. <br>
-        </p>
-
-        <b><span style="color:#4acaa8">Kullanım:</span></b> Komutu çalıştırmak için aşağıdakilerden birini yapın:
-            <ul>
-            <li>Curves araç çubuğunda bulunan ilgili düğmeye basın.</li>
-            <li><strong>Curves</strong> menüsündeki <strong>Komut_adı</strong> seçeneğini kullanın.</li> 
-        </ul>
-        <p>
-           ilave anlatım                         
-        </p>
-                                    
-                                            <p>
-        <img src="https://wiki.freecadweb.org/images/b/b9/Curves_Line.svg"> <b><span id="###", style="color:#4acaa8">Komut Adi10:</span> </b><br>
-        Komut Acıklaması. <br>
-        </p>
-
-        <b><span style="color:#4acaa8">Kullanım:</span></b> Komutu çalıştırmak için aşağıdakilerden birini yapın:
-            <ul>
-            <li>Curves araç çubuğunda bulunan ilgili düğmeye basın.</li>
-            <li><strong>Curves</strong> menüsündeki <strong>Komut_adı</strong> seçeneğini kullanın.</li> 
-        </ul>
-        <p>
-           ilave anlatım                         
-        </p>
-                                    
-                                            <p>
-        <img src="https://wiki.freecadweb.org/images/b/b9/Curves_Line.svg"> <b><span id="###", style="color:#4acaa8">Komut Adi11:</span> </b><br>
-        Komut Acıklaması. <br>
-        </p>
-
-        <b><span style="color:#4acaa8">Kullanım:</span></b> Komutu çalıştırmak için aşağıdakilerden birini yapın:
-            <ul>
-            <li>Curves araç çubuğunda bulunan ilgili düğmeye basın.</li>
-            <li><strong>Curves</strong> menüsündeki <strong>Komut_adı</strong> seçeneğini kullanın.</li> 
+            <li><strong>Curves</strong> menüsündeki <strong>CurveOnSurface</strong> seçeneğini kullanın.</li> 
         </ul>
         <p>
            ilave anlatım                         
