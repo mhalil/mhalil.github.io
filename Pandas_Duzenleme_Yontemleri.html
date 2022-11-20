@@ -2647,6 +2647,101 @@ print(veri)</code></pre>
   </tbody>
 </table>
 </div>
+                    <h2 class="atx" id="apply-fonksiyonu">apply() Fonksiyonu</h2>
+<p>Python programlama dilini öğrenirken karşılaştığımız <strong>fonksiyonlar</strong> konusunu hatırlarsınız Kullanıcı tarafından yazılan ya da standart python fonksiyonlarını, veri çerçevemize uygulamak istersek, <code>apply()</code> fonksiyonu kullanmamız gerekir.</p>
+<p>Yukarıdaki <strong>iş-meslek</strong> sütunundaki metinlerin büyük harfe dönüştürülmesi örneğini, bir de <code>apply()</code> fonksiyonu ile uygulayalım.</p>
+<pre><code class="fenced-code-block language-python"><span class="token keyword">def</span> <span class="token function">buyuk_harf</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> x<span class="token punctuation">.</span>upper<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+print(veri<span class="token punctuation">[</span><span class="token string">"IŞ-MESLEK"</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token builtin">apply</span><span class="token punctuation">(</span>buyuk_harf)<span class="token punctuation">)</span></code></pre>
+<pre><code class="indented-code-block">0       MÜHENDIS
+1      PROGRAMCI
+2    AKADEMISYEN
+3       YÖNETICI
+4           AMIR
+5       MÜHENDIS
+6       YÖNETICI
+7          MÜDÜR
+8      VETERINER
+9       YÖNETICI
+Name: IŞ-MESLEK, dtype: object</code></pre>
+<p>İşlemin kalıcı olmsı için yine atama operatörünü kullanmalıyız.</p>
+<pre><code class="fenced-code-block language-python">veri<span class="token punctuation">[</span><span class="token string">"IŞ-MESLEK"</span><span class="token punctuation">]</span> <span class="token operator">=</span> veri<span class="token punctuation">[</span><span class="token string">"IŞ-MESLEK"</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token builtin">apply</span><span class="token punctuation">(</span>buyuk_harf<span class="token punctuation">)</span>
+print(veri)</code></pre>
+<table class="dataframe" border="1">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ISIM</th>
+      <th>YAŞ</th>
+      <th>IŞ-MESLEK</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Mustafa</td>
+      <td>25</td>
+      <td>MÜHENDIS</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Halil</td>
+      <td>38</td>
+      <td>PROGRAMCI</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Burak</td>
+      <td>41</td>
+      <td>AKADEMISYEN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Emre</td>
+      <td>23</td>
+      <td>YÖNETICI</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Ersin</td>
+      <td>37</td>
+      <td>AMIR</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Sertaç</td>
+      <td>52</td>
+      <td>MÜHENDIS</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Furkan</td>
+      <td>30</td>
+      <td>YÖNETICI</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Murat</td>
+      <td>23</td>
+      <td>MÜDÜR</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Ahmet</td>
+      <td>40</td>
+      <td>VETERINER</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Abdülkadir</td>
+      <td>38</td>
+      <td>YÖNETICI</td>
+    </tr>
+  </tbody>
+</table>
+
+                    
 <h2 class="atx" id="veri-cercevelerini-birlestir">Veri Çerçevelerini Birleştir</h2>
 <p> Pandas Kütüphanesinde Veri çerçevelerini birleştirmek için kullanılabilecek birden fazla Fonksiyon/Metot vardır. Aşağıda bu Fonksiyonların kullanımı anlatılmıştır.</p>
 
