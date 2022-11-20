@@ -772,6 +772,20 @@ dtype: bool</code></pre>
 <li><strong>isim</strong> ve <strong>yaş</strong> sütunlarında Eksik veri bulunuyor</li>
 <li><strong>iş-meslek</strong> sütununda hiç eksik veri bulunmuyor.</li>
 </ul>
+                    
+<h2 class="atx" id="value_counts-fonksiyonu">value_counts() Fonksiyonu</h2>
+<p>Veri çerçevemizde bir sütunda aynı verinin kaç kez tekrar ettiğini (kaç adet bulunduğunu) öğrenmek için <code>value_counts()</code> fonksiyonunu kullanbiliriz.</p>
+<p>Örneğin, <strong>veri_2</strong> isimli veri çerçevemizde <strong>iş-meslek</strong> sütununda hangi veri kaç kez tekrar ediliyor, yani veri çerçevemizde kaç adet Mühendis, Programcı, Yönetici,...vb var.</p>
+<pre><code class="fenced-code-block language-python">veri_2<span class="token punctuation">[</span><span class="token string">"iş-meslek"</span><span class="token punctuation">]</span><span class="token punctuation">.</span>value_counts<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<pre><code class="indented-code-block">yönetici       3
+mühendis       2
+programcı      1
+akademisyen    1
+amir           1
+müdür          1
+veteriner      1
+Name: iş-meslek, dtype: int64</code></pre>
+                    
                 <p> <a href="Pandas_Excel_Dosyasi_ile_Calis.html" class="button primary small"> &#8592 Önceki Bölüm </a> <a href="Pandas_Secim_Yontemleri.html" class="button primary small">Sonraki Bölüm &#8594</a> </p>
 
                       </div>
