@@ -225,7 +225,7 @@
                                     
                                             <p>
         <img src="https://raw.githubusercontent.com/tomate44/CurvesWB/9f7064e9d0b6cb569b83228e67b91ea26d42570c/freecad/Curves/resources/icons/approximate.svg"> <b><span id="approximate", style="color:#4acaa8">Approximate:</span> </b><br>
-        Seçili düzlemsel (2D) nesnenin tüm noktalarını, 3D nesnenin seçili noktalarını ya da Discretize ile ayrıklaştırılmış noktaları birleştirerek eğri oluşturur. <code>Closed</code> özelliği <code>true</code> olarak ayarlanırsa, uçların birleştirildiği kapalı bir eğri oluşturur.
+        Seçili düzlemsel (2D) nesnenin tüm noktalarını ya da <strong>Discretize</strong> ile ayrıklaştırılmış noktaları birleştirerek eğri oluşturur. <code>Closed</code> özelliği <code>true</code> olarak ayarlanırsa, uçların birleştirildiği kapalı bir eğri oluşturur.
         </p>
 
         <b><span style="color:#4acaa8">Kullanım:</span></b> Komutu çalıştırmak için aşağıdakilerden birini yapın:
@@ -241,17 +241,19 @@
                                     
                                             <p>
         <img src="https://wiki.freecadweb.org/images/b/b2/Curves_Interpolate.svg"> <b><span id="interpolate", style="color:#4acaa8">Interpolate:</span> </b><br>
-        Komut Acıklaması. <br>
+        Seçili Noktaları, Enterpolasyon yöntemi ile hesaplayarak birleştiren eğri oluşturur. Enterpolasyon, en basit tanımı ile "var olan sayısal değerleri kullanarak, boş noktalardaki değerlerin tahmin edilmesi" olarak açıklanmaktadır.<br>
         </p>
 
         <b><span style="color:#4acaa8">Kullanım:</span></b> Komutu çalıştırmak için aşağıdakilerden birini yapın:
             <ul>
+                <li><code>CTRL</code> tuşu yardımı ile eğriyi oluşturmak istediğiniz noktaları <b>sıralı olarak</b>  seçin. Noktalar, <u>seçim sırasına göre</u> birleştirilecektir.</li>
                 <li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
                 <li><strong>Curves</strong> menüsündeki <strong>Interpolate</strong> seçeneğini kullanın.</li> 
             </ul>
-        <p>
-           ilave anlatım                         
-        </p>
+                                    <img src="images/freecad/curves_wb/Interpolate_1.png" class="image fit"><br>
+                                    <img src="images/freecad/curves_wb/Interpolate_2.png" class="image fit"><br>
+                                    <img src="images/freecad/curves_wb/Interpolate_3.png" class="image fit"><br>
+                                    <img src="images/freecad/curves_wb/Interpolate_4.png" class="image fit">
                                     
                                             <p>
         <img src="https://raw.githubusercontent.com/tomate44/CurvesWB/9f7064e9d0b6cb569b83228e67b91ea26d42570c/freecad/Curves/resources/icons/blend.svg"> <b><span id="blend_curve", style="color:#4acaa8">Blend curve:</span> </b><br>
