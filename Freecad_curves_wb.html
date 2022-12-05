@@ -274,18 +274,38 @@
                                     
                                             <p>
         <img src="https://raw.githubusercontent.com/tomate44/CurvesWB/9f7064e9d0b6cb569b83228e67b91ea26d42570c/freecad/Curves/resources/icons/blend.svg"> <b><span id="blend_curve", style="color:#4acaa8">Blend curve:</span> </b><br>
-        Komut Acıklaması. <br>
+        İki kenar arasında eğri geçişi.  <br>
         </p>
 
         <b><span style="color:#4acaa8">Kullanım:</span></b> Komutu çalıştırmak için aşağıdakilerden birini yapın:
             <ul>
             <li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
-            <li><strong>Curves</strong> menüsündeki <strong>Komut_adı</strong> seçeneğini kullanın.</li> 
+            <li><strong>Curves</strong> menüsündeki <strong>Blend curve</strong> seçeneğini kullanın.</li> 
         </ul>
         <p>
-           ilave anlatım                         
+           İki adet çizgi parçası <code>CTRL</code> tuşuna basılarak seçilirer, ardından <strong>Blend curve</strong> komutu çalıştırılırsa, seçili çizgiler (kenarlar) arasında bir eğri oluşur ve bu eğri iki çizgiye de bağlı olur. Örneğin <b>Eskiz Çalışma Tezgahında (Sketch Workbench)</b> iki adet çizgi parçası çizerek komutu uygulayalım ve komutun detaylı kullanımını öğrenmeye çalışalım.
         </p>
-                                    
+                                    <img src="images/freecad/curves_wb/Blend_curve_01.png" class="image fit"><br>
+                                    <img src="images/freecad/curves_wb/Blend_curve_02.png" class="image fit"><br>
+                                    <img src="images/freecad/curves_wb/Blend_curve_03.png" class="image fit"><br>
+                                    <p>
+       <code>Blend curve</code> komutunun çalıştırılması sonrasında iki çizgi (kenar) arasında oluşan eğrinin uçları, çizgilerin (kenarların) (yaklaşık olarak) orta noktalarında konumlanıyor. Oluşan <b>Blend_Curve</b> eğrisi Unsur ağacından seçtiğinizde aşağıdaki özellikleri görebilir ve seçeneklerini değiştirebilirsiniz. <b>Blend curve</b> komutu ile oluşan eğri, iki adet kenara (çizgiye) bağlı olduğu için, eğri parametrelerini değiştirmek amacıyla bu iki kenara (Edge1 ve Edge2) ayarlar kısmında belirtilmiştir.
+                                    </p>
+            <b>Özellikler:</b><br>
+            Özellikler paneli <b>Veri</b> Sekmesinde, aşağıdaki özellikler değiştirilebilir;<br>
+            Açıklama kısmı okunduktan sonra aşağıdaki resimler de incelenirse, yazılanların daha rahat anlayacağını düşünüyorum.
+            <ul>
+                <li><b>Continuity (Süreklilik)</b>:  Eğrinin süreklilik şeklini belirler. <code>C0</code>, <code>G1</code>, <code>G2</code>, <code>G3</code> ve <code>G4</code> seçenekleri vardır. Her iki kenarın (çizginin) <b>Continuity (Süreklilik)</b> ayarını <code>C0</code> olarak değiştirdiğimizde, eğriler, Doğrusal yapıya dönüşecektir.</li>                       
+                <li><b>Parameter1 / Parameter2(Parametre1 / Parametre2)</b>: Bu ayarlar, oluşan eğrinin uç noktalarının,  1. ve 2.Kenarların hangi konumunda bulunması gerektiğini belirleyen kısımdır. Eğrinin uçlarından biri kenar çizginin üst kısmında konumlansın istersen, ilgili kenar çizgisinin uzunluğuna dair bilgiyi bu kısa yazmalıyız. <strong>Sketch WB</strong> ile çizgileri oluştururken her iki çizgiye de 34mm uzunluk değeri atamıştık. O nedenle <b>Parameter1</b> kısmına 34 değerini yazabiliriz. 34'ten daha büyük bir değer yazarsak bile <code>ENTER</code> tuşuna bastığımızda değer alabileceği en büyük değer olan 34'e ayarlanır. Eğrinin Kenar1 ve Kenar2 (Edge1 ve Edge2) ile birleştiği başlangıç ve bitiş yönlerinin ters olduğuna dikkat edin. Biri için başlangıç yani sıfır (0) konumu aşağıda iken diğerinde yukarıdadır. Eğri iki kenarı birleştirdiği için bir ucun bitişi, diğer ucun başlangıcı olduğu düşünülerek bu mantıktan dolayı yönlerin ters olduğu izah edilebilir.</li>
+                <li><b>Reverse (Ters / Ters Çevir)</b>: Bu seçenek ile, <b>Parameter1 / Parameter2</b> kısmında bahsettiğim Kenar1 ve Kenar2'nin (Edge1 ve Edge2) başlangıç ve bitiş yönlerinin ters çevrilmesi gerçekleştirilebilir. Örneğin Kenar2'nin (Edge2) Başlangıç ve Bitiş yönünü ters çevirelim ancak Parametre2 (Parameter2) değerini değiştirmeyelim ve sonucu birlikte inceleyelim. Bu ayar sonrasında olması gereken şey, Eğrinin sağ kısımdaki ucunun (2.kenar ile bağlantılı olduğu ucu), 2.Kenarın (Edge2) alt kısmından 5mm yukarıya yerleşmesidir.</li>
+                <li><b>xxxxx</b>: .</li>
+                </ul>    
+                
+                                    <img src="images/freecad/curves_wb/Blend_curve_04.png" class="image fit"><br>
+                                    <img src="images/freecad/curves_wb/Blend_curve_05.png" class="image fit"><br>
+                                    <img src="images/freecad/curves_wb/Blend_curve_06.png" class="image fit"><br>
+
+      
                                             <p>
         <img src="https://raw.githubusercontent.com/tomate44/CurvesWB/9f7064e9d0b6cb569b83228e67b91ea26d42570c/freecad/Curves/resources/icons/comb.svg"> <b><span id="comb_plot", style="color:#4acaa8">Comb plot:</span> </b><br>
         Komut Acıklaması. <br>
