@@ -1924,7 +1924,7 @@ veri</code></pre>
 <p>458 rows × 7 columns</p>
 </div>
 
-<h2 class="atx" id="drop_duplicates-fonksiyonu">drop_duplicates Fonksiyonu</h2>
+<h2 class="atx" id="drop_duplicates-fonksiyonu">drop_duplicates() Fonksiyonu</h2>
 <p>Veri çerçevemizde çift kayıt varsa, yani tüm veriler aynı olan birden fazla satır verisi varsa, bunlardan biri kalacak şekilde diğerlerinin silmek için <strong>drop_duplicates</strong> metodunu / fonksiyonunu kullanabiliriz.
 Örnek kodları inceleyelim.</p>
 <pre><code class="fenced-code-block language-python"><span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd
@@ -2647,6 +2647,71 @@ print(veri)</code></pre>
   </tbody>
 </table>
 </div>
+                    
+                    <h2 class="atx" id="transpose-fonksiyonu">transpose() Fonksiyonu</h2>
+<p>Satırların sütuna, sütunların satıra çevrilme işlemini <code>transpose()</code>  fonksiyonu yardımıyla gerçekleştirebiliriz. Bu fonksiyon, Excel, LibreOfis,...vb uygulamalarda, "İşlemi tersine çevir" komutu ile aynı sonucu verir. Yukarıda oluşturduğumuz veri çerçevemizin transpozunu aşağıdaki şekilde alabiliriz.</p>
+<pre><code class="fenced-code-block language-python">veri<span class="token punctuation">.</span>transpose<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+
+<table class="dataframe" border="1">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+    </tr>
+  </thead>
+  <tbody class="dataframe" border="1">
+    <tr>
+      <th>isim</th>
+      <td>Mustafa</td>
+      <td>Halil</td>
+      <td>Burak</td>
+      <td>Emre</td>
+      <td>Ersin</td>
+      <td>Sertaç</td>
+      <td>Furkan</td>
+      <td>Murat</td>
+      <td>Ahmet</td>
+      <td>Abdülkadir</td>
+    </tr>
+    <tr>
+      <th>yaş</th>
+      <td>25</td>
+      <td>38</td>
+      <td>41</td>
+      <td>23</td>
+      <td>37</td>
+      <td>52</td>
+      <td>30</td>
+      <td>23</td>
+      <td>40</td>
+      <td>38</td>
+    </tr>
+    <tr>
+      <th>iş-meslek</th>
+      <td>mühendis</td>
+      <td>programcı</td>
+      <td>akademisyen</td>
+      <td>yönetici</td>
+      <td>amir</td>
+      <td>mühendis</td>
+      <td>yönetici</td>
+      <td>müdür</td>
+      <td>veteriner</td>
+      <td>yönetici</td>
+    </tr>
+  </tbody>
+</table>
+
+                    
                     <h2 class="atx" id="apply-fonksiyonu">apply() Fonksiyonu</h2>
 <p>Python programlama dilini öğrenirken karşılaştığımız <strong>fonksiyonlar</strong> konusunu hatırlarsınız Kullanıcı tarafından yazılan ya da standart python fonksiyonlarını, veri çerçevemize uygulamak istersek, <code>apply()</code> fonksiyonu kullanmamız gerekir.</p>
 <p>Yukarıdaki <strong>iş-meslek</strong> sütunundaki metinlerin büyük harfe dönüştürülmesi örneğini, bir de <code>apply()</code> fonksiyonu ile uygulayalım.</p>
