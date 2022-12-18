@@ -1303,6 +1303,463 @@ print(veri.fillna(value=ortalama))</code></pre>
   </tbody>
 </table>
 </div>
+                    
+              <h4 class="atx" id="method-parametresi">method Parametresi</h3>
+<p>Veri çerçevesinde değer girilmemiş hücreleri (boşlukları) doldurmak, başka bir ifadeyle, değer atamak için <code>method</code> parametresi kullanılabilir.</p>
+<p><code>method</code> parametresinin alabileceği değerler;</p>
+<ul>
+<li>backfill</li>
+<li>bfill</li>
+<li>pad</li>
+<li>ffill</li>
+<li>None
+Varsayılan (öntanımlı) değer None'dır.</li>
+</ul>
+<p>Öncelikle Veri çerçevesi oluşturup inceleyelim;</p>
+<pre><code class="fenced-code-block language-python">sozluk <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"isim"</span> <span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"Mustafa"</span><span class="token punctuation">,</span> <span class="token string">"Halil"</span><span class="token punctuation">,</span> <span class="token string">"Burak"</span><span class="token punctuation">,</span> <span class="token string">"Emre"</span><span class="token punctuation">,</span> <span class="token string">"Ersin"</span><span class="token punctuation">,</span> <span class="token string">"Sertaç"</span><span class="token punctuation">,</span> <span class="token string">"Furkan"</span><span class="token punctuation">,</span><span class="token string">"Murat"</span><span class="token punctuation">,</span><span class="token string">"Ahmet"</span><span class="token punctuation">,</span><span class="token string">"Abdülkadir"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                    <span class="token string">"yaş"</span> <span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">25</span><span class="token punctuation">,</span> <span class="token number">38</span><span class="token punctuation">,</span> <span class="token number">41</span><span class="token punctuation">,</span> <span class="token number">23</span><span class="token punctuation">,</span> <span class="token number">37</span><span class="token punctuation">,</span> <span class="token number">52</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">,</span> <span class="token number">23</span><span class="token punctuation">,</span> <span class="token number">40</span><span class="token punctuation">,</span> <span class="token number">38</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                   <span class="token string">"iş-meslek"</span> <span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"mühendis"</span><span class="token punctuation">,</span> <span class="token string">"programcı"</span><span class="token punctuation">,</span> <span class="token string">"akademisyen"</span><span class="token punctuation">,</span> <span class="token string">"yönetici"</span><span class="token punctuation">,</span><span class="token string">"amir"</span><span class="token punctuation">,</span><span class="token string">"mühendis"</span><span class="token punctuation">,</span> <span class="token string">"yönetici"</span><span class="token punctuation">,</span><span class="token string">"müdür"</span><span class="token punctuation">,</span><span class="token string">"veteriner"</span><span class="token punctuation">,</span><span class="token string">"yönetici"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                     <span class="token string">"kategori"</span> <span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"Kategori_1"</span><span class="token punctuation">,</span> <span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token string">"Kategori_3"</span><span class="token punctuation">,</span> <span class="token string">"Kategori_4"</span><span class="token punctuation">,</span> <span class="token string">"Kategori_5"</span><span class="token punctuation">,</span> <span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token string">"Kategori_8"</span><span class="token punctuation">,</span> <span class="token string">"Kategori_9"</span><span class="token punctuation">,</span> <span class="token boolean">None</span><span class="token punctuation">]</span><span class="token punctuation">}</span>
+veri <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span>sozluk<span class="token punctuation">)</span>
+veri</code></pre>
+<table class="dataframe" border="1">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>isim</th>
+      <th>yaş</th>
+      <th>iş-meslek</th>
+      <th>kategori</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Mustafa</td>
+      <td>25</td>
+      <td>mühendis</td>
+      <td>Kategori_1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Halil</td>
+      <td>38</td>
+      <td>programcı</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Burak</td>
+      <td>41</td>
+      <td>akademisyen</td>
+      <td>Kategori_3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Emre</td>
+      <td>23</td>
+      <td>yönetici</td>
+      <td>Kategori_4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Ersin</td>
+      <td>37</td>
+      <td>amir</td>
+      <td>Kategori_5</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Sertaç</td>
+      <td>52</td>
+      <td>mühendis</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Furkan</td>
+      <td>30</td>
+      <td>yönetici</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Murat</td>
+      <td>23</td>
+      <td>müdür</td>
+      <td>Kategori_8</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Ahmet</td>
+      <td>40</td>
+      <td>veteriner</td>
+      <td>Kategori_9</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Abdülkadir</td>
+      <td>38</td>
+      <td>yönetici</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<p>Veri çerçevesini incelediğimzde, Halil, Sertaç, Furkan ve Ahmet'in <strong>kategori</strong> bilgilerinin, geçerli değere sahip olmadığını görüyoruz. Bu değerleri <code>method</code> parametresinin seçeneklerini kullanarak doldurmaya çalışalım.</p>
+<p>Öncelikle <strong>backfill</strong> ve <strong>bfill</strong> seçeneklerini inceleyelim.</p>
+<pre><code class="fenced-code-block language-python">veri <span class="token operator">=</span> veri<span class="token punctuation">.</span>fillna<span class="token punctuation">(</span>method<span class="token operator">=</span><span class="token string">"backfill"</span><span class="token punctuation">)</span>
+veri</code></pre>
+<table class="dataframe" border="1">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>isim</th>
+      <th>yaş</th>
+      <th>iş-meslek</th>
+      <th>kategori</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Mustafa</td>
+      <td>25</td>
+      <td>mühendis</td>
+      <td>Kategori_1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Halil</td>
+      <td>38</td>
+      <td>programcı</td>
+      <td>Kategori_3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Burak</td>
+      <td>41</td>
+      <td>akademisyen</td>
+      <td>Kategori_3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Emre</td>
+      <td>23</td>
+      <td>yönetici</td>
+      <td>Kategori_4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Ersin</td>
+      <td>37</td>
+      <td>amir</td>
+      <td>Kategori_5</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Sertaç</td>
+      <td>52</td>
+      <td>mühendis</td>
+      <td>Kategori_8</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Furkan</td>
+      <td>30</td>
+      <td>yönetici</td>
+      <td>Kategori_8</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Murat</td>
+      <td>23</td>
+      <td>müdür</td>
+      <td>Kategori_8</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Ahmet</td>
+      <td>40</td>
+      <td>veteriner</td>
+      <td>Kategori_9</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Abdülkadir</td>
+      <td>38</td>
+      <td>yönetici</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<pre><code class="fenced-code-block language-python">veri <span class="token operator">=</span> veri<span class="token punctuation">.</span>fillna<span class="token punctuation">(</span>method<span class="token operator">=</span><span class="token string">"bfill"</span><span class="token punctuation">)</span>
+veri</code></pre>
+<table class="dataframe" border="1">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>isim</th>
+      <th>yaş</th>
+      <th>iş-meslek</th>
+      <th>kategori</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Mustafa</td>
+      <td>25</td>
+      <td>mühendis</td>
+      <td>Kategori_1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Halil</td>
+      <td>38</td>
+      <td>programcı</td>
+      <td>Kategori_3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Burak</td>
+      <td>41</td>
+      <td>akademisyen</td>
+      <td>Kategori_3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Emre</td>
+      <td>23</td>
+      <td>yönetici</td>
+      <td>Kategori_4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Ersin</td>
+      <td>37</td>
+      <td>amir</td>
+      <td>Kategori_5</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Sertaç</td>
+      <td>52</td>
+      <td>mühendis</td>
+      <td>Kategori_8</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Furkan</td>
+      <td>30</td>
+      <td>yönetici</td>
+      <td>Kategori_8</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Murat</td>
+      <td>23</td>
+      <td>müdür</td>
+      <td>Kategori_8</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Ahmet</td>
+      <td>40</td>
+      <td>veteriner</td>
+      <td>Kategori_9</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Abdülkadir</td>
+      <td>38</td>
+      <td>yönetici</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<p>Görüldüğü üzere, <strong>backfill</strong> ve <strong>bfill</strong> seçenekleri sayesinde boş (geçersiz değere sahip) hücreler, <b>kendinden sonraki</b> son geçerli (altında bulunan) hücrenin değeri ile dolduruldu.</p>
+<p>Şimdi sıra <strong>pad</strong> ve <strong>ffill</strong> seçeneklerinde;</p>
+<pre><code class="fenced-code-block language-python">veri <span class="token operator">=</span> veri<span class="token punctuation">.</span>fillna<span class="token punctuation">(</span>method<span class="token operator">=</span><span class="token string">"pad"</span><span class="token punctuation">)</span>
+veri</code></pre>
+<table class="dataframe" border="1">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>isim</th>
+      <th>yaş</th>
+      <th>iş-meslek</th>
+      <th>kategori</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Mustafa</td>
+      <td>25</td>
+      <td>mühendis</td>
+      <td>Kategori_1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Halil</td>
+      <td>38</td>
+      <td>programcı</td>
+      <td>Kategori_1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Burak</td>
+      <td>41</td>
+      <td>akademisyen</td>
+      <td>Kategori_3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Emre</td>
+      <td>23</td>
+      <td>yönetici</td>
+      <td>Kategori_4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Ersin</td>
+      <td>37</td>
+      <td>amir</td>
+      <td>Kategori_5</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Sertaç</td>
+      <td>52</td>
+      <td>mühendis</td>
+      <td>Kategori_5</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Furkan</td>
+      <td>30</td>
+      <td>yönetici</td>
+      <td>Kategori_5</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Murat</td>
+      <td>23</td>
+      <td>müdür</td>
+      <td>Kategori_8</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Ahmet</td>
+      <td>40</td>
+      <td>veteriner</td>
+      <td>Kategori_9</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Abdülkadir</td>
+      <td>38</td>
+      <td>yönetici</td>
+      <td>Kategori_9</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<pre><code class="fenced-code-block language-python">veri <span class="token operator">=</span> veri<span class="token punctuation">.</span>fillna<span class="token punctuation">(</span>method<span class="token operator">=</span><span class="token string">"ffill"</span><span class="token punctuation">)</span>
+veri</code></pre>
+<table class="dataframe" border="1">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>isim</th>
+      <th>yaş</th>
+      <th>iş-meslek</th>
+      <th>kategori</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Mustafa</td>
+      <td>25</td>
+      <td>mühendis</td>
+      <td>Kategori_1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Halil</td>
+      <td>38</td>
+      <td>programcı</td>
+      <td>Kategori_1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Burak</td>
+      <td>41</td>
+      <td>akademisyen</td>
+      <td>Kategori_3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Emre</td>
+      <td>23</td>
+      <td>yönetici</td>
+      <td>Kategori_4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Ersin</td>
+      <td>37</td>
+      <td>amir</td>
+      <td>Kategori_5</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Sertaç</td>
+      <td>52</td>
+      <td>mühendis</td>
+      <td>Kategori_5</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Furkan</td>
+      <td>30</td>
+      <td>yönetici</td>
+      <td>Kategori_5</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Murat</td>
+      <td>23</td>
+      <td>müdür</td>
+      <td>Kategori_8</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Ahmet</td>
+      <td>40</td>
+      <td>veteriner</td>
+      <td>Kategori_9</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Abdülkadir</td>
+      <td>38</td>
+      <td>yönetici</td>
+      <td>Kategori_9</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<p><strong>backfill</strong> ve <strong>bfill</strong> seçeneklerinin tersine <strong>pad</strong> ve <strong>ffill</strong> seçenekleri ile sayesinde ise boş (geçersiz değere sahip) hücreler, <b>kendinden önceki</b> son geçerli (üstünde bulunan) hücrenin değeri ile dolduruldu.</p>      
 
 
                 <p> <a href="Pandas_Secim_Yontemleri.html" class="button primary small"> &#8592 Önceki Bölüm </a> <a href="Pandas_Duzenleme_Yontemleri.html" class="button primary small">Sonraki Bölüm &#8594</a> </p>
