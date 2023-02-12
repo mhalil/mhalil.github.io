@@ -72,7 +72,7 @@
     <img src="https://raw.githubusercontent.com/tomate44/CurvesWB/9aac6c2365311724487f79df3343dab90ddcb819/freecad/Curves/resources/icons/pipeshell.svg"> <a href="#pipeshell"> Pipeshell </a> <br>
     <img src="https://raw.githubusercontent.com/tomate44/CurvesWB/9aac6c2365311724487f79df3343dab90ddcb819/freecad/Curves/resources/icons/gordon.svg"> <a href="#gordonsurface"> Gordon surface </a> <br>
     <img src="https://raw.githubusercontent.com/tomate44/CurvesWB/9aac6c2365311724487f79df3343dab90ddcb819/freecad/Curves/resources/icons/segment_surface.svg"> <a href="#segmentsurface"> Segment surface </a> <br>
-    <img src="https://raw.githubusercontent.com/tomate44/CurvesWB/9aac6c2365311724487f79df3343dab90ddcb819/freecad/Curves/resources/icons/spring.svg"> <a href="#compressionspring"> Compression spring </a> <br>
+    <img src="https://raw.githubusercontent.com/tomate44/CurvesWB/9aac6c2365311724487f79df3343dab90ddcb819/freecad/Curves/resources/icons/spring.svg"> <a href="#compressionspring"> Compression Spring </a> <br>
     <img src="https://raw.githubusercontent.com/tomate44/CurvesWB/9aac6c2365311724487f79df3343dab90ddcb819/freecad/Curves/resources/icons/reflectLines.svg"> <a href="#reflectlines"> Reflect Lines </a> <br>
     <img src="https://raw.githubusercontent.com/tomate44/CurvesWB/9aac6c2365311724487f79df3343dab90ddcb819/freecad/Curves/resources/icons/multiLoft.svg"> <a href="#multiloft"> MultiLoft </a> <br>
     <img src="https://raw.githubusercontent.com/tomate44/CurvesWB/9aac6c2365311724487f79df3343dab90ddcb819/freecad/Curves/resources/icons/blendSurf.svg"> <a href="#blendsurface"> BlendSurface </a> <br>
@@ -129,17 +129,43 @@
         
 <p>
     <img src="https://raw.githubusercontent.com/tomate44/CurvesWB/9aac6c2365311724487f79df3343dab90ddcb819/freecad/Curves/resources/icons/trimFace.svg"> <b><span id="trimface", style="color:#4acaa8">Trim face:</span> </b><br>
-        KISA_ACIKLAMA<br>
+        <strong>Trim face</strong> komutu, kesişme eğrisi oluşturmadan yüzleri kırpmanıza olanak tanır. Bu, yüzeyleri eğrilerle kırpan veya ayıran komuttur.<br>
     </p>
         <b><span style="color:#4acaa8">Kullanım:</span></b> Komutu çalıştırmak için aşağıdakilerden birini yapın:
             <ul>
-                <li>Öncelikle bir eğri (veya kenar çizgisi) ve yüzey seçin. (Birlikte seçim için <code>CTRL</code> tuşunu kullanın)</li>
+                <li>Öncelikle bir eğri(ler)i / kenar(lar)ı ve ardından yüzey(ler)i seçin. (Birlikte seçim için <code>CTRL</code> tuşunu kullanın)</li>
                 <li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
-                <li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>KOMUT</strong> seçeneğini kullanın.</li> 
+                <li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>Trim face</strong> seçeneğini kullanın.</li> 
             </ul>
     <p>
-        AÇIKLAMA_VE_RESİM <br>
-        <img src="images/freecad/curves_wb/RESIM_RESIM.png" class="image fit"><br>        
+        Aşağıdaki şekilde göreceğiniz gibi elimizde eğrisel bir yüzey ve bir elips var. <br>
+        <img src="images/freecad/curves_wb/TrimFace_01.png" class="image fit"><br>   
+        Evvela <b>Üst görünüşe</b> geçerek önce eğriyi ardından yüzeyi seçiyoruz. Yüzeyi seçerken <b>eğrinin dış ya da iç kısmında</b> kalan bir yerin seçilmesinin önemli olduğu bilinmelidir. Aşağıdaki örnekte, Eğri seçildikten sonra, eğrinin <b>dış kısmında kalan</b> bir yere tıklanarak seçimin yapıldı ve ardından <b>Trim face</b> komutu çalıştırılmıştır.
+        <img src="images/freecad/curves_wb/TrimFace_02.png" class="image fit"><br>
+        İşlem sonucu karşımızda. Yüzey seçimi yaparken, Eğrinin dışında kalan bir yere tıkladığımız için <b>bu bölümün kalmasını istiyorum, geri kalan kısmı sil, at</b> demiş oluyoruz.
+        <img src="images/freecad/curves_wb/TrimFace_03.png" class="image fit"><br> 
+        Modelin İzometrik görünümü bu şekildedir.
+        <img src="images/freecad/curves_wb/TrimFace_04.png" class="image fit"><br> 
+        Önce eğriyi ardından <b>eğrinin iç kısmında</b> kalan bir yeri seçerek yüzey seçimi yaptıktan sonra <b>Üst görünüşe</b> geçerek  <b>Trim face</b> komutu çalıştırıp sonucu görelim.
+        <img src="images/freecad/curves_wb/TrimFace_05.png" class="image fit"><br>  
+        İşlem sonucu elde ettiğimiz model bu şekilde:
+        <img src="images/freecad/curves_wb/TrimFace_06.png" class="image fit"><br>
+        Oluşan yüzeye <strong>Parça Çalışma Tezhagı (Part WB)</strong> içerisindeki <strong>3D Offset..</strong> komutu ile et kalınlığı verip kenarlarını da <strong>Fillet</strong> komutu ile yuvarlatırsak ne elde etmiş oluruz acaba? :)
+        <img src="images/freecad/curves_wb/TrimFace_06.2.png" class="image fit"><br>
+        Dikkat ettiyseniz, yukarıdaki anlatımlarda <strong>Trim face</strong> komutunu çalıştırmadan önce, sürekli <b>Üst görünüşe geçilmesi</b> istendi.
+        Bunun sebebi, <strong>Trim face</strong> komutunun, sahneye bakış açısı doğrultusunda çıkarma/silme işlemi yapmasındır. Aşağıdaki örnekte, sahneye izometrik bakış açısı ile bakıldığı esnada önce eğri ardından <b>eğrinin iç kısmındaki yüzey</b> seçilerek "Trim face" komutunu uygulanmaktadır.
+        <img src="images/freecad/curves_wb/TrimFace_07.png" class="image fit"><br> 
+        Sonuç, beklediğimiz gibi.
+        <img src="images/freecad/curves_wb/TrimFace_08.png" class="image fit"><br> 
+        Sonuca daha yakından bakacak olursak;
+        <img src="images/freecad/curves_wb/TrimFace_09.png" class="image fit"><br>
+        Bu kez de sahneye farklı bir bakış açısı ile bakarak, eğrinin dışında kalan yüzey kısmını seçerek <b>Trim face</b> komutunu çalıştıralım.
+        <img src="images/freecad/curves_wb/TrimFace_10.png" class="image fit"><br>  
+        Yüzeyin, seçilen (eğrinin dışında kalan) kısmı kaldı, seçilmeyen (eğrinin iç kısmı) silinip atıldı.
+        <img src="images/freecad/curves_wb/TrimFace_11.png" class="image fit"><br> 
+        Modelin izometrik görünümü:
+        <img src="images/freecad/curves_wb/TrimFace_12.png" class="image fit"><br>        
+     
             
     </p>
         
@@ -175,7 +201,7 @@
             <ul>
                 <li>Öncelikle bir eğri (veya kenar çizgisi) ve yüzey seçin. (Birlikte seçim için <code>CTRL</code> tuşunu kullanın)</li>
                 <li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
-                <li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>KOMUT</strong> seçeneğini kullanın.</li> 
+                <li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>Sketch on Surface</strong> seçeneğini kullanın.</li> 
             </ul>
     <p>
         AÇIKLAMA_VE_RESİM <br>
@@ -238,7 +264,7 @@
             <ul>
                 <li>Öncelikle bir eğri (veya kenar çizgisi) ve yüzey seçin. (Birlikte seçim için <code>CTRL</code> tuşunu kullanın)</li>
                 <li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
-                <li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>KOMUT</strong> seçeneğini kullanın.</li> 
+                <li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>Profile support plane</strong> seçeneğini kullanın.</li> 
             </ul>
     <p>
         AÇIKLAMA_VE_RESİM <br>
@@ -254,7 +280,7 @@
             <ul>
                 <li>Öncelikle bir eğri (veya kenar çizgisi) ve yüzey seçin. (Birlikte seçim için <code>CTRL</code> tuşunu kullanın)</li>
                 <li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
-                <li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>KOMUT</strong> seçeneğini kullanın.</li> 
+                <li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>Pipeshell profile</strong> seçeneğini kullanın.</li> 
             </ul>
     <p>
         AÇIKLAMA_VE_RESİM <br>
@@ -270,7 +296,7 @@
             <ul>
                 <li>Öncelikle bir eğri (veya kenar çizgisi) ve yüzey seçin. (Birlikte seçim için <code>CTRL</code> tuşunu kullanın)</li>
                 <li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
-                <li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>KOMUT</strong> seçeneğini kullanın.</li> 
+                <li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>Pipeshell</strong> seçeneğini kullanın.</li> 
             </ul>
     <p>
         AÇIKLAMA_VE_RESİM <br>
@@ -286,7 +312,7 @@
             <ul>
                 <li>Öncelikle bir eğri (veya kenar çizgisi) ve yüzey seçin. (Birlikte seçim için <code>CTRL</code> tuşunu kullanın)</li>
                 <li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
-                <li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>KOMUT</strong> seçeneğini kullanın.</li> 
+                <li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>Gordon surface</strong> seçeneğini kullanın.</li> 
             </ul>
     <p>
         AÇIKLAMA_VE_RESİM <br>
@@ -302,7 +328,7 @@
             <ul>
                 <li>Öncelikle bir eğri (veya kenar çizgisi) ve yüzey seçin. (Birlikte seçim için <code>CTRL</code> tuşunu kullanın)</li>
                 <li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
-                <li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>KOMUT</strong> seçeneğini kullanın.</li> 
+                <li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>Segment surface</strong> seçeneğini kullanın.</li> 
             </ul>
     <p>
         AÇIKLAMA_VE_RESİM <br>
@@ -311,14 +337,14 @@
     </p>
         
  <p>
-    <img src="https://raw.githubusercontent.com/tomate44/CurvesWB/9aac6c2365311724487f79df3343dab90ddcb819/freecad/Curves/resources/icons/spring.svg"> <b><span id="compressionspring", style="color:#4acaa8">Compression spring:</span> </b><br>
+    <img src="https://raw.githubusercontent.com/tomate44/CurvesWB/9aac6c2365311724487f79df3343dab90ddcb819/freecad/Curves/resources/icons/spring.svg"> <b><span id="compressionspring", style="color:#4acaa8">Compression Spring:</span> </b><br>
         KISA_ACIKLAMA<br>
     </p>
         <b><span style="color:#4acaa8">Kullanım:</span></b> Komutu çalıştırmak için aşağıdakilerden birini yapın:
             <ul>
                 <li>Öncelikle bir eğri (veya kenar çizgisi) ve yüzey seçin. (Birlikte seçim için <code>CTRL</code> tuşunu kullanın)</li>
                 <li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
-                <li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>KOMUT</strong> seçeneğini kullanın.</li> 
+                <li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>Compression Spring</strong> seçeneğini kullanın.</li> 
             </ul>
     <p>
         AÇIKLAMA_VE_RESİM <br>
@@ -334,7 +360,7 @@
             <ul>
                 <li>Öncelikle bir eğri (veya kenar çizgisi) ve yüzey seçin. (Birlikte seçim için <code>CTRL</code> tuşunu kullanın)</li>
                 <li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
-                <li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>KOMUT</strong> seçeneğini kullanın.</li> 
+                <li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>Reflect Lines</strong> seçeneğini kullanın.</li> 
             </ul>
     <p>
         AÇIKLAMA_VE_RESİM <br>
@@ -350,7 +376,7 @@
             <ul>
                 <li>Öncelikle bir eğri (veya kenar çizgisi) ve yüzey seçin. (Birlikte seçim için <code>CTRL</code> tuşunu kullanın)</li>
                 <li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
-                <li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>KOMUT</strong> seçeneğini kullanın.</li> 
+                <li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>MultiLoft</strong> seçeneğini kullanın.</li> 
             </ul>
     <p>
         AÇIKLAMA_VE_RESİM <br>
@@ -366,7 +392,7 @@
             <ul>
                 <li>Öncelikle bir eğri (veya kenar çizgisi) ve yüzey seçin. (Birlikte seçim için <code>CTRL</code> tuşunu kullanın)</li>
                 <li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
-                <li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>KOMUT</strong> seçeneğini kullanın.</li> 
+                <li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>BlendSurface</strong> seçeneğini kullanın.</li> 
             </ul>
     <p>
         AÇIKLAMA_VE_RESİM <br>
@@ -382,7 +408,7 @@
             <ul>
                 <li>Öncelikle bir eğri (veya kenar çizgisi) ve yüzey seçin. (Birlikte seçim için <code>CTRL</code> tuşunu kullanın)</li>
                 <li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
-                <li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>KOMUT</strong> seçeneğini kullanın.</li> 
+                <li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>BlendSolid</strong> seçeneğini kullanın.</li> 
             </ul>
     <p>
         AÇIKLAMA_VE_RESİM <br>
@@ -399,7 +425,7 @@
             <ul>
                 <li>Öncelikle bir eğri (veya kenar çizgisi) ve yüzey seçin. (Birlikte seçim için <code>CTRL</code> tuşunu kullanın)</li>
                 <li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
-                <li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>KOMUT</strong> seçeneğini kullanın.</li> 
+                <li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>Flatten face</strong> seçeneğini kullanın.</li> 
             </ul>
     <p>
         AÇIKLAMA_VE_RESİM <br>
@@ -415,7 +441,7 @@
             <ul>
                 <li>Öncelikle bir eğri (veya kenar çizgisi) ve yüzey seçin. (Birlikte seçim için <code>CTRL</code> tuşunu kullanın)</li>
                 <li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
-                <li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>KOMUT</strong> seçeneğini kullanın.</li> 
+                <li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>Rotation Sweep</strong> seçeneğini kullanın.</li> 
             </ul>
     <p>
         AÇIKLAMA_VE_RESİM <br>
