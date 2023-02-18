@@ -233,17 +233,73 @@
         
  <p>
     <img src="https://raw.githubusercontent.com/tomate44/CurvesWB/9aac6c2365311724487f79df3343dab90ddcb819/freecad/Curves/resources/icons/sketch_surf.svg"> <b><span id="sketchonsurface", style="color:#4acaa8">Sketch on Surface:</span> </b><br>
-        KISA_ACIKLAMA<br>
+        Bu komut sayesinde seçili yüzeyin, dikdörtgen şekilde sanal UV'si aılır ve bu düzlem yüzeye 2 boyutlu Eskiz (sketch) çizimi yapmamız sağlanır. Komut sonlandırıldığında, çizilen 2 boyutlu eskiz, yüzey üzerine uygulanır. <br>
     </p>
         <b><span style="color:#4acaa8">Kullanım:</span></b> Komutu çalıştırmak için aşağıdakilerden birini yapın:
             <ul>
-                <li>Öncelikle bir eğri (veya kenar çizgisi) ve yüzey seçin. (Birlikte seçim için <code>CTRL</code> tuşunu kullanın)</li>
+                <li>Öncelikle bir yüzey seçin.</li>
                 <li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
                 <li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>Sketch on Surface</strong> seçeneğini kullanın.</li> 
             </ul>
     <p>
-        AÇIKLAMA_VE_RESİM <br>
-        <img src="images/freecad/curves_wb/RESIM_RESIM.png" class="image fit"><br>        
+        Yüzüğe benzer İçi boş bir silindir modelin dış yüzeyine eskiz (şekiller) çizip, bu eskizi, silindir yüzeyinden çıkarmaya çalışalım. <br>
+        <strong>Parça Çalışma Tezgahı (Part WB)</strong> komutlarından olan <strong>Tüp/Boru (Tube)</strong> komutunu çalıştırıp parametrelerimizi belirleyelim.
+        <img src="images/freecad/curves_wb/SketchOnSurface_01.png" class="image fit"><br> 
+        Modelin dış yüzeyini seçip <strong>Surface</strong> menüsündeki <strong>Sketch on surface</strong> komutunu çalıştıralım.
+        <img src="images/freecad/curves_wb/SketchOnSurface_02.png" class="image fit"><br>
+        Komut sonrasında, Unsur ağacında <strong>Sketch on Surface</strong> ve <strong>Mapped_Sketch</strong> unsurlarının oluştuğunu göreceksiniz.
+        <img src="images/freecad/curves_wb/SketchOnSurface_03.png" class="image fit"><br>   
+        <strong>Mapped_Sketch</strong> unsuruna çif tıklayarak düzenleme moduna girdiğimizde referans çizgilerden oluşan bir dikdörtgen göreceksiniz. Bu dikdörtgen şekil, seçili yüzeyin kumaş gibi açılıp karşınıza sunulduğu UV yapısını temsil eder. Anlaşılması açısından, <b>U:</b> eskizin X eksenini, <b>V:</b> eskizin Y ekseninin tanımlar diyebiliriz.
+        <img src="images/freecad/curves_wb/SketchOnSurface_04.png" class="image fit"><br> 
+        referans çizgilerden oluşan bir dikdörtgenin içine istediğiniz şekli çizebilirsiniz. Aşağıdaki şekli çizip çoğaltarak sonucu görmek istiyorum.
+        <img src="images/freecad/curves_wb/SketchOnSurface_05.png" class="image fit"><br> 
+        Çizimin doğrusal 10 kopyasını çıkarıyorum / çoğaltıyorum ve Sol paneldeki <b>Close</b> butonu ile eskizden çıkıyorum.
+        <img src="images/freecad/curves_wb/SketchOnSurface_06.png" class="image fit"><br> 
+        Eskizi rahat çizebilmek adına Boru (Tube) modelini gizlemiştim. Şimdi onu tekrar <strong>Boşluk (Space)</strong> tuşu yardımıyla görünür hale getirelim.
+        <img src="images/freecad/curves_wb/SketchOnSurface_07.png" class="image fit"><br>
+        Sonuç, beklediğimiz gibi. Çizdiğimiz eskiz, Boru (Tube) modelinin seçili yüzeyine ilişkilendirildi.
+        <img src="images/freecad/curves_wb/SketchOnSurface_08.png" class="image fit"><br> 
+        Şimdi sıra, <strong>Sketch on Surface</strong> komutunun <b>Ayarlarını (Settings)</b> incelemeye geldi.
+        <img src="images/freecad/curves_wb/SketchOnSurface_09.png" class="image fit"><br> 
+        <strong>Fill Faces (Yüzeyleri Doldur)</strong> seçeneği, çizilen eskizin kapalı çokgenlerini yüzeye dönüştürür.
+        <img src="images/freecad/curves_wb/SketchOnSurface_10.png" class="image fit"><br>        
+        <strong>Thickness (Kalınlık)</strong> seçeneği, çizilen eskize, extrude komutuna benzer şekilde kalınlık kazandırır. <strong>Fill Faces (Yüzeyleri Doldur)</strong> seçeneği <b>true</b> ya da <b>false</b> olabilir. Her iki seçenekte de komut çalışır.
+        <img src="images/freecad/curves_wb/SketchOnSurface_11.png" class="image fit"><br>        
+        <strong>Offset (Ötele)</strong> seçeneği, Çizilen eskizin, seçilen yüzeyden ne kadar ötelenerek eşleştirileceğini belirttiğimiz ayar bölümüdür.
+        <img src="images/freecad/curves_wb/SketchOnSurface_12.png" class="image fit"><br>        
+        Ayarlar bölümündeki değerler her zaman pozitif olmak zorunda değildir. Örneğin <strong>Thickness</strong> değerini Negatif yapalım ve sonucu görelim.
+        <img src="images/freecad/curves_wb/SketchOnSurface_13.png" class="image fit"><br> 
+        Görüldüğü üzere <strong>Thickness</strong> değeri negatif olduğunda, eskiz, ters doğrultuda kalınlık kazandı. Son olarak ta, <b>Tube</b> nesnemizden, kalınlık verdiğimiz eskiz nesnemizi çıkaralım. Önce Tube sonra Sketch on surface nesnemizi seçelim.
+        <img src="images/freecad/curves_wb/SketchOnSurface_14.png" class="image fit"><br> 
+        <strong>Parça Çalışma Tezgahı (Part WB)</strong> komutlarından olan <strong>Kes (Cut)</strong> komutu ile 2. seçili nesneyi, ilk seçili nesneden çıkaralım.
+        <img src="images/freecad/curves_wb/SketchOnSurface_15.png" class="image fit"><br> 
+        Sonuç ortada:
+        <img src="images/freecad/curves_wb/SketchOnSurface_16.png" class="image fit"><br> 
+        Yüzey'e şekil yerine Yazı ekleyip boşluk oluşturmaya çalışalım ve <strong>Sketch on Surface</strong> komutunun <strong>Rötuş/Düzeltme (Touchup)</strong> ayarlarını inceleyelim.  Yukarıda anlatılanlara benzer şekilde <strong>Mapped_Sketch</strong> unsuruna çif tıklayarak düzenleme moduna girdiğimizde referans çizgilerden oluşan bir dikdörtgen içerisine yazımıza ekliyoruz.
+        <img src="images/freecad/curves_wb/SketchOnSurface_17.png" class="image fit"><br>  
+        Bezier eğrinin, eğrilik tarakları ve kontrol noktaları kapatıldığında yazımız daha net görünüyor.
+        <img src="images/freecad/curves_wb/SketchOnSurface_18.png" class="image fit"><br> 
+        Düzenleme işlemini tamamlayıp eskizden çıktığımızda, yazımız yüzeye uygulanmış olur.
+        <img src="images/freecad/curves_wb/SketchOnSurface_19.png" class="image fit"><br> 
+        Gizlemiş olduğumuz <strong>Boru/Tüp (Tube)</strong> nesnemizi görüntüleyelim.
+        <img src="images/freecad/curves_wb/SketchOnSurface_20.png" class="image fit"><br> 
+        <strong>Rötuş/Düzeltme (Touchup)</strong> ayarlarını inceleyelim. <br>
+        <strong>Reverse U:</strong> Yüzeye çizilen eskizi, U yönünde (bu örnekte Y ekseni yönünde) ters çevirir. <br>
+        <img src="images/freecad/curves_wb/SketchOnSurface_21.png" class="image fit"><br>    
+        <strong>Reverse V:</strong> Yüzeye çizilen eskizi, V yönünde (bu örnekte Z ekseni yönünde) ters çevirir. <br>
+        <img src="images/freecad/curves_wb/SketchOnSurface_22.png" class="image fit"><br> 
+        <strong>Swap UV:</strong> U ve V eksenlerinin yerlerini değiştirir, UV yapısını 90 derece çevirir / değiştirir gibi düşünebilirsiniz. Örnekte modellediğimiz <strong>Boru/Tüp (Tube)</strong> nesnemiz kısa olduğu için UV'nin 90 derece çevrilmesi oluşan yapı net olarak anlaşılamıyor. Kendi modellerinizde bu ayarı değiştirerek sonucu görebilirsiniz.
+        <img src="images/freecad/curves_wb/SketchOnSurface_23.png" class="image fit"><br>
+        Yukarıdaki örnekte olduğu gibi, yüzeye eşleştirdiğimiz yazımıza kalınlık verip boru nesnemizden çıkaralım.
+        <img src="images/freecad/curves_wb/SketchOnSurface_24.png" class="image fit"><br>        
+        <img src="images/freecad/curves_wb/SketchOnSurface_25.png" class="image fit"><br> 
+        <strong>Boru/Tüp (Tube)</strong> nesnemizin yarısı keselim.
+        <img src="images/freecad/curves_wb/SketchOnSurface_26.png" class="image fit"><br>        
+        Oluşan nesnenin keskin köşelerini yuvarlatalım.
+        <img src="images/freecad/curves_wb/SketchOnSurface_27.png" class="image fit"><br> 
+        Sonuç;
+        <img src="images/freecad/curves_wb/SketchOnSurface_28.png" class="image fit"><br>        
+        <img src="images/freecad/curves_wb/SketchOnSurface_29.png" class="image fit"><br>        
             
     </p>
         
