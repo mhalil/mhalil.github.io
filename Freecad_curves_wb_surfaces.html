@@ -404,17 +404,55 @@
      
  <p>
     <img src="https://raw.githubusercontent.com/tomate44/CurvesWB/9aac6c2365311724487f79df3343dab90ddcb819/freecad/Curves/resources/icons/profileSupport.svg"> <b><span id="profilesupportplane", style="color:#4acaa8">Profile support plane:</span> </b><br>
-        KISA_ACIKLAMA<br>
+        <strong>Profile support plane</strong> komutu, seçili (kenar çizgisi ya da eğriye ait) iki noktadan geçen ve sahneye bakış açısına dik <b>bir Düzlem</b> oluşturur.<br>
     </p>
         <b><span style="color:#4acaa8">Kullanım:</span></b> Komutu çalıştırmak için aşağıdakilerden birini yapın:
             <ul>
-                <li>Öncelikle bir eğri (veya kenar çizgisi) ve yüzey seçin. (Birlikte seçim için <code>CTRL</code> tuşunu kullanın)</li>
+                <li>Öncelikle bir eğri veya kenar çizgisi üzerinde birer seçim yapın. (Birlikte seçim için <code>CTRL</code> tuşunu kullanın)</li>
                 <li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
                 <li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>Profile support plane</strong> seçeneğini kullanın.</li> 
             </ul>
     <p>
-        AÇIKLAMA_VE_RESİM <br>
-        <img src="images/freecad/curves_wb/RESIM_RESIM.png" class="image fit"><br>        
+        Bir Eskiz (Sketch) içerisine bir çizgi ve bir bezier eğri çizerek komutun kullanımını inceleyelim. <br>
+        <img src="images/freecad/curves_wb/Profile_Support_Plane_01.png" class="image fit"><br> 
+        Çizgiden ve bezier eğriden birer yer seçip <strong>Profile support plane</strong> komutunu çalıştıralım.
+        <img src="images/freecad/curves_wb/Profile_Support_Plane_02.png" class="image fit"><br>
+        Görüldüğü üzere, seçilen yerlerden (noktalardan) geçen ve (sahneye) bakış açımıza dik bir düzlem oluştu.
+        <img src="images/freecad/curves_wb/Profile_Support_Plane_03.png" class="image fit"><br> 
+        Unsur ağacından, ilgili Profili seçip <strong>Veri (Data)</strong> sekmesindeki özelliklere bakarsak, düzlemin oluşmasında <strong>Edge1, Edge2, Parameter1</strong> ve <strong>Parameter2</strong> değerlerinin etkin olduğunu görürüz.
+        <img src="images/freecad/curves_wb/Profile_Support_Plane_04.png" class="image fit"><br>  
+        Oluşan Düzleme izometrik görünümden bakacak olursak aşağıdaki sonucu elde ederiz. <br>
+        <strong>Edge1 ve Edge2</strong> değerleri, Düzlemin oluşması esnasında kullanılan Kenar ve Eğrileri temsil eder.
+        <img src="images/freecad/curves_wb/Profile_Support_Plane_05.png" class="image fit"><br> 
+        <strong>Parameter1</strong> değerini değiştirip <b>10,00</b> olarak ayarlarsak ne olur, görelim.
+        <img src="images/freecad/curves_wb/Profile_Support_Plane_06.png" class="image fit"><br> 
+        Oluşan Düzlemenim yeni halini izometrik görünümden bakarak tekrar inceleyelim. <br>
+        <img src="images/freecad/curves_wb/Profile_Support_Plane_07.png" class="image fit"><br>
+        <strong>Parameter2</strong> değerini değiştirip <b>1,00</b> olarak ayarlarsak ne olur, bir de onu görelim.        
+        <img src="images/freecad/curves_wb/Profile_Support_Plane_08.png" class="image fit"><br>
+        Bir de <strong>Parameter1</strong> değerini <b>1000,00</b> olarak ayarlamaya çalışalım.
+        <img src="images/freecad/curves_wb/Profile_Support_Plane_09.png" class="image fit"><br> 
+        Sonuç aşağıdaki gibi, <strong>Parameter1</strong> değerini <b>1000,00</b> olarak ayarlamaya çalışmamıza rağmen <strong>ENTER</strong> tuşuna basar bazmaz, değer 50,00 olarak değiştirildi.
+        <img src="images/freecad/curves_wb/Profile_Support_Plane_10.png" class="image fit"><br>
+        Bunun sebebini öğrenmek için Eskiz (Sketch) içerisine girip çizginin uzunluğuna bakarsak, sol taraftaki çizginin toplam uzunluğunun 50,00 birim olarak belirtilmiş olduğunu görürüz. Yani <strong>Parameter1</strong>'in alabileceği en büyük değer 50,00'dir. 
+        <img src="images/freecad/curves_wb/Profile_Support_Plane_11.png" class="image fit"><br> 
+        <strong>Parameter2</strong>'nin alabileceği değer aralığı değerini inceleyecek olursak, müsaade edilen değerlerin 0,00 ile 1,00 arasında olduğunu görürüz. <br>
+        Yani Eğriler yüzdelik olarak ifade ediliyor. Örneğin <strong>Parameter2</strong> değerinin <b>0 (sıfır)</b> olarak belirtilmesi, oluşan düzlemin, eğrinin uç kısmından (sıfır noktasından) geçmesi demek oluyor.
+        <img src="images/freecad/curves_wb/Profile_Support_Plane_12.png" class="image fit"><br> 
+        Kenar ve eğrinin uç noktalarından geçen düzlemin İzometrik görünümü.
+        <img src="images/freecad/curves_wb/Profile_Support_Plane_13.png" class="image fit"><br> 
+        Kenar ve eğrinin dört noktasından geçen düzlemler.
+        <img src="images/freecad/curves_wb/Profile_Support_Plane_14.png" class="image fit"><br> 
+        Dört Düzlemim izometrik görünümü;
+        <img src="images/freecad/curves_wb/Profile_Support_Plane_15.png" class="image fit"><br>  
+        <strong>Profile support plane</strong> komutu ile yapılabilecek güzel bir uygulama örneği;<br>
+        Düzlemler oluştur, düzlemler üzerine eskizler çiz.
+        <img src="images/freecad/curves_wb/Profile_Support_Plane_16.png" class="image fit"><br> 
+        <a href="Freecad_curves_wb_curves.html#approximate">Approximate</a> komutu ile yüzey oluştur.
+        <img src="images/freecad/curves_wb/Profile_Support_Plane_17.png" class="image fit"><br> 
+        <strong>Parça Çalışma Tezhagı (Part WB)</strong> içerisindeki <strong>3D Offset..</strong> komutu ile et kalınlığı ver, <strong>Aynala (Mirror)</strong> komutu ile simetriğini oluştur ve iki simetrik gövdeyi <strong>Birleştir (Union)</strong> komutu ile tek gövde haline getir.
+        <img src="images/freecad/curves_wb/Profile_Support_Plane_18.png" class="image fit"><br>        
+        
             
     </p>
         
