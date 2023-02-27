@@ -504,17 +504,39 @@
         
  <p>
     <img src="https://raw.githubusercontent.com/tomate44/CurvesWB/9aac6c2365311724487f79df3343dab90ddcb819/freecad/Curves/resources/icons/pipeshell.svg"> <b><span id="pipeshell", style="color:#4acaa8">Pipeshell:</span> </b><br>
-        Komut kabaca, Sweep ve Loft komutlarının bir benzeridir diyebiliriz. <br>
+        <strong>Pipeshell</strong> komutu, <strong> Parça Çalışma Tezgahı (Part WB)</strong> ve <strong> Parça Tasarımı Çalışma Tezgahı (Part Desing WB)</strong> komutlarından olan <strong>Süpür/Borula (Sweep/AddivitePipe)</strong> ve <strong>Çatıla (Loft)</strong> komutlarına benzer şekilde bir yol boyunca <b> seçili kesit alanını süpürerek yüzey oluşturur</b>. Komut kabaca, Sweep ve Loft komutlarının birer benzeridir diyebiliriz. <br>
     </p>
         <b><span style="color:#4acaa8">Kullanım:</span></b> Komutu çalıştırmak için aşağıdakilerden birini yapın:
             <ul>
-                <li>Öncelikle bir eğri (veya kenar çizgisi) ve yüzey seçin. (Birlikte seçim için <code>CTRL</code> tuşunu kullanın)</li>
+                <li>Öncelikle <b>3D Ekranı içerisinden (sahneden)</b> süpürülecek yol (eğri, yay, çizgi, ...vb) seçin. (Birlikte seçim için <code>CTRL</code> tuşunu kullanın)</li>
+                <li>Ardından <b>Unsur ağacından</b>, (sahne içerisinden seçmemelisiniz) <strong>Pipeshell profile</strong> komutu ile oluşturulmuş kesitleri seçin. (Birlikte seçim için <code>CTRL</code> tuşunu kullanın)</li>
                 <li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
                 <li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>Pipeshell</strong> seçeneğini kullanın.</li> 
             </ul>
     <p>
-        AÇIKLAMA_VE_RESİM <br>
-        <img src="images/freecad/curves_wb/RESIM_RESIM.png" class="image fit"><br>        
+        <b>3D Ekranı içerisinden</b> yolu (eğri, yay, çizgi, ...vb) seçin. Daha sonra <b>Unsur ağacından</b>, (sahne içerisinden değil) <strong>Pipeshell profile</strong> komutu ile oluşturulmuş kesitleri (profilleri) seçin ve <strong>Pipeshell</strong> komutunu çalıştnrın.
+        <img src="images/freecad/curves_wb/Pipeshell_01.png" class="image fit"><br>
+        <strong>Pipeshell</strong> komutu çalıştırılınca aşağıdaki şekil oluştu. Yani seçili Yol boyunca, Kesitler (Profiller) arasına yeni kesitler ebatları nispetinde eklendi.. 
+        <img src="images/freecad/curves_wb/Pipeshell_02.png" class="image fit"><br>
+        Unsur ağacından <strong>Pipeshell</strong> nesnesi seçilip <strong> Output (Çıktı/Ürün/Sonuç)</strong>  seçeneği <strong>Surface (Yüzey)</strong> olarak ayarlanırsa, aşağıdaki şekli elde ederiz.
+        <img src="images/freecad/curves_wb/Pipeshell_03.png" class="image fit"><br>
+        Yüzeye dönüştürülen çizimin arka kısmında bir bozukluk olduğunu görüyoruz.
+        <img src="images/freecad/curves_wb/Pipeshell_04.png" class="image fit"><br> 
+        Görüntüyü çevirip modeli incelediğimizde, Son Kesitin (profilin) başlangıç noktasının, diğer profillerden farklı yönde olduğunu tespit ediyoruz. Yüzey oluşturulurken, profillerin noktaları referans alındığı için, modelin son kısımda bir bozulma yaşanmış. Gelin bu bozukluğu düzeltelim.
+        <img src="images/freecad/curves_wb/Pipeshell_05.png" class="image fit"><br>      
+        Bozulmanın yaşandığı kesit (profil), <b>Sketch004</b> eskizi referans alınarak oluşturulduğu için, bu eskizde yapacağımız düzenleme, Profili de etkileyecek, düzeltecektir. <br>
+        Unsur ağacından <b>Sketch004</b> eskizini seçip, <strong>Attachment</strong> ayarlarından <b>Açı</b> değerini inceliyoruz.
+        <img src="images/freecad/curves_wb/Pipeshell_06.png" class="image fit"><br>  
+        <b>Sketch004</b> eskizinin, <strong>Attachment</strong> ayarrındaki <b>Açı</b> değerini <b>180</b> olarak değiştirerek, eskizi kendi merkezindeki Z ekseninde 180 derece döndürüyoruz. Gördüğünüz gibi, modeldeki bozuklam düzeliyor ve istediğimiz ve beklediğimiz sonucu elde ediyoruz. Bazen, bozulmanın olduğu eskizi düzenleme modunda açıp değiştirerek te benzer sonuç elde edebiliyoruz. Dairesel kesitli eskizlerde yukarıda uyguladığımız yöntemin (ayarlarda değişiklik yapmak) daha uygun olduğu kanaatindeyim.
+        <img src="images/freecad/curves_wb/Pipeshell_07.png" class="image fit"><br>        
+        <a href="#pipeshellprofile" ><strong>Pipeshell profile</strong></a> komutu anlatılırken çizdiğimiz farklı kesitlere ait örnek çalışmaların <strong>Pipeshell</strong> komutu ile yüzeye dönüştürülmüş hallerini aşağıda görüp inceleyebilirsiniz.
+        <img src="images/freecad/curves_wb/Pipeshell_08.png" class="image fit"><br>        
+        <img src="images/freecad/curves_wb/Pipeshell_09.png" class="image fit"><br>        
+        <img src="images/freecad/curves_wb/Pipeshell_10.png" class="image fit"><br>        
+        <img src="images/freecad/curves_wb/Pipeshell_11.png" class="image fit"><br>        
+        <img src="images/freecad/curves_wb/Pipeshell_12.png" class="image fit"><br>        
+        <img src="images/freecad/curves_wb/Pipeshell_13.png" class="image fit"><br>        
+        <img src="images/freecad/curves_wb/Pipeshell_14.png" class="image fit"><br>        
             
     </p>
         
