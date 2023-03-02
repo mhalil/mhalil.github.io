@@ -64,7 +64,8 @@
 <h4 id="araclar">KOMUTLAR</h4>
 <p>
     <img src="https://wiki.freecadweb.org/images/b/b9/Curves_Line.svg"> <a href="#parametric_line"> Parametric Line</a> <br>
-    <img src="https://wiki.freecadweb.org/images/5/5f/Curves_EditableSpline.svg"> <a href="#freehand_bspline"> Freehand BSpline </a><br>  
+    <img src="https://wiki.freecadweb.org/images/5/5f/Curves_EditableSpline.svg"> <a href="#freehand_bspline"> Freehand BSpline </a><br>
+    <img src="https://raw.githubusercontent.com/tomate44/CurvesWB/79048a49514cb525304227ddc7b3c7a684b75d73/freecad/Curves/resources/icons/mixed_curve.svg"> <a href="#mixed_curve"> Mixed curve</a><br>
     <img src="https://wiki.freecadweb.org/images/5/5c/Curves_ExtendCurve.svg"> <a href="#curve_extend"> Curve Extend </a><br>  
     <img src="https://wiki.freecadweb.org/images/2/2d/Curves_JoinCurve.svg"> <a href="#joincurve"> JoinCurve </a><br>  
     <img src="https://wiki.freecadweb.org/images/b/b7/Curves_SplitCurve.svg"> <a href="#split_curve">Split curve </a><br>  
@@ -144,7 +145,46 @@
                 </ul>                    
                                     <p><img src="images/freecad/curves_wb/Freehand_BSpline_3.png" class="image fit"></p>
                                     <p><img src="images/freecad/curves_wb/Freehand_BSpline_4.png" class="image fit"></p>
-                   
+        
+                                    <p>
+                                        
+        <img src="https://raw.githubusercontent.com/tomate44/CurvesWB/79048a49514cb525304227ddc7b3c7a684b75d73/freecad/Curves/resources/icons/mixed_curve.svg"> <b><span id="mixed_curve", style="color:#4acaa8">Mixed curve:</span> </b><br>
+        <u>Eğrilerin formlarını Karıştırmak, Kombine etmek</u> amacıyla kullanılan komuttur. <br>
+        </p>
+
+        <b><span style="color:#4acaa8">Kullanım:</span></b> Komutu çalıştırmak için aşağıdakilerden birini yapın:
+            <ul>
+                <li>Öncelikle karıştırmak/kombine etmek istediğiniz eğrileri seçin. (birden fazla seçim için <code>CTRL</code> tuşunu kullanın)</li>
+            <li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
+            <li><strong>Curves</strong> menüsündeki <strong>Mixed curve</strong> seçeneğini kullanın.</li> 
+        </ul>
+                                    Konuyu daha iyi anlayabilmek adına aşağıdaki örneğe göz atalım.<br>
+                                    Üst görünüşte bir eskiz açıp aşağıdaki şekli, bezier eğri ile çizelim.
+                                    <p><img src="images/freecad/curves_wb/Mixed_Curve_01.png" class="image fit"></p>
+                                    Yan görünüşte de yeeni bir eskiz oluşturup aşağıdaki şekli bezier eğri ile çizelim. Her iki eğrinin de uç noktaları aynı konumda olsun.
+                                    <p><img src="images/freecad/curves_wb/Mixed_Curve_02.png" class="image fit"></p>
+                                    Sahneye İzometrik bakış açısı ile bakarsak iki eğriyi bu şekilde görüyor olmalıyız.
+                                    <p><img src="images/freecad/curves_wb/Mixed_Curve_03.png" class="image fit"></p>
+                                    Bezier eğrileri <code>CTRL</code> tuşu yardımıyla seçip, <strong>Mixed curve</strong> komutunu çalıştıralım.
+                                    <p><img src="images/freecad/curves_wb/Mixed_Curve_04.png" class="image fit"></p>
+                                    Komut sonrasında seçili eğriler gizlenir ve bu eğrilerin kesişimi/karışımı ile yeni bir eğri elde edilir. Sonuç aşağıdaki gibi olmalı.
+                                    <p><img src="images/freecad/curves_wb/Mixed_Curve_05.png" class="image fit"></p>
+                                    <b>Karıştırılmış / Kombine edilmiş</b> yeni eğriye üst görünüşten bakarsak, üst görünüşte çizdiğimiz ("Ust_Top" isimli eskizdeki) eğriyi ile bir bir örtüştüğünü göreceksiniz.
+                                    <p><img src="images/freecad/curves_wb/Mixed_Curve_06.png" class="image fit"></p>
+                                    <b>Karıştırılmış / Kombine edilmiş</b> yeni eğriye yan görünüşten bakarsak, yan görünüşte çizdiğimiz ("Yan_Right" isimli eskizdeki) eğriyi ile de bir bir örtüştüğünü göreceksiniz.
+                                    <p><img src="images/freecad/curves_wb/Mixed_Curve_07.png" class="image fit"></p>
+                                    Şimdi, <strong>Mixed curve</strong> komutuna ait <strong>Fill Face (Yüzeyi Doldur)</strong> özelliklerini inceleyelim.
+                                    <p><img src="images/freecad/curves_wb/Mixed_Curve_08.png" class="image fit"></p>
+                                    Unsur ağacından <strong>Mixed curve</strong>nesnesi seçili iken <strong>Fill Face1</strong> özelliğini <strong>True (Doğru)</strong> olarak değiştirirsek, 1. Eğriye ait Yüzey doldurulur.
+                                    <p><img src="images/freecad/curves_wb/Mixed_Curve_09.png" class="image fit"></p>
+                                    İşlem sonrası Sahneye Sağ Yan görünüşten baktığımızda elde ettiğimiz görüntü;
+                                    <p><img src="images/freecad/curves_wb/Mixed_Curve_10.png" class="image fit"></p>
+                                    Bu da <strong>Fill Face2</strong> özelliğini <strong>True (Doğru)</strong> olarak değiştirdiğimizde elde ettiğimiz sonuç;
+                                    <p><img src="images/freecad/curves_wb/Mixed_Curve_11.png" class="image fit"></p>
+                                    <strong>Fill Face1</strong> ve <strong>Fill Face2</strong> özelliğini <strong>True (Doğru)</strong> olarak değiştirdiğimizde elde ettiğimiz sonuç ise bu;
+                                    <p><img src="images/freecad/curves_wb/Mixed_Curve_12.png" class="image fit"></p>
+                                    Sol - Ön arası İzometrik görünüş;
+                                    <p><img src="images/freecad/curves_wb/Mixed_Curve_13.png" class="image fit"></p>
                                            
         <p>
         <img src="https://wiki.freecadweb.org/images/5/5c/Curves_ExtendCurve.svg"> <b><span id="curve_extend", style="color:#4acaa8">Curve Extend:</span> </b><br>
@@ -177,7 +217,7 @@
 
         <b><span style="color:#4acaa8">Kullanım:</span></b> 
             <ul>
-                <li>3B görünümde bir veya birkaç kenar seçin. (birkaç seçim için <code>CTRL</code> tuşunu kullanın)</li>
+                <li>3B görünümde bir veya birkaç kenar seçin. (birden fazla seçim için <code>CTRL</code> tuşunu kullanın)</li>
                 <li>Kenarlar art arda eklenmelidir. Eskizden (Sketch'ten) , herhangi bir şeklin kenarları seçilebilir.</li>
             Komutu çalıştırmak için aşağıdakilerden birini yapın:
                 <li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
