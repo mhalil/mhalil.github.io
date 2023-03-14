@@ -542,19 +542,65 @@
         
  <p>
     <img src="https://raw.githubusercontent.com/tomate44/CurvesWB/9aac6c2365311724487f79df3343dab90ddcb819/freecad/Curves/resources/icons/gordon.svg"> <b><span id="gordonsurface", style="color:#4acaa8">Gordon surface:</span> </b><br>
-        KISA_ACIKLAMA<br>
+       <strong>Gordon surface</strong> komutu, bir dizi eğriyi bir yüzey olarak birleştirmek için kullanılır. Bu komut, birçok farklı endüstride, özellikle tasarım veya üretim sürecinde üç boyutlu yüzeylerin oluşturulması gerektiğinde (tasarımın daha akıcı ve doğal bir şekilde görünmesini sağlar), özellikle de CNC işleme, kalıp yapımı ve üretim süreçlerinde sıkça kullanılır.<br>
+        Bu komut, yüzey için bir destekleyici çizgi veya eğri ağı gerektirir. Yüzey, bu çizgilerin arasında üzeri "örtülü" yapı şeklinde oluşacaktır.
+     
     </p>
+        <img src="images/freecad/curves_wb/GordonSurface_01.png" class="image fit">
+                                    
         <b><span style="color:#4acaa8">Kullanım:</span></b> Komutu çalıştırmak için aşağıdakilerden birini yapın:
             <ul>
-                <li>Öncelikle bir eğri (veya kenar çizgisi) ve yüzey seçin. (Birlikte seçim için <code>CTRL</code> tuşunu kullanın)</li>
+                <li>İlk olarak, birkaç eğri oluşturun. Bunlar, bir yüzey oluşturmak için birleştirilecek eğriler olacaktır. Eğrileri, FreeCAD'deki çeşitli araçlarla (farklı çalışma tezgahlarındaki komutlarla) veya bir CAD programından alınan dosyalarla oluşturabilirsiniz.</li>
+                <li>Yukarıdaki resimdeki mavi çizgiler (veya raylar), yüzey boyunca farklı noktalarda yüzeyin şeklini temsil eder. Bunlar yüzey boyunca enine kesitler olarak veya, yüzeyin "örtüleceği" destekler gibi düşünülebilir.</li>
+                <li>Sarı çizgiler, mavi çizgilerle tanımlanan enine kesitler ("kaburgalar") arasındaki yüzeyin kapsamını ve şeklini temsil eder.</li>
+                <li>Şimdi yüzeyi tanımlayacak olan tüm çizgileri (Yukarıdaki örnekte mavi ve sarı eğrileri) seçin.</li>
+                <li>Seçim sırası, dikiş veya çadırlama/örtüleme sırasını tanımlar.</li>
+                <li>Yüzeyi tanımlayan tüm çizgileri seçmek için çoklu seçimi kullanın. (<code>Ctrl</code> tuşunu basılı tutarken sol tıklayın.)</li>
+                <li>Sırayla önce kaburgaları seçin. (Yukarıdaki örnekte, soldan sağa veya sağdan sola mavi eğrileri seçin.)</li>
+                <li>Ctrl tuşunu basılı tutmaya devam edin ve kapsam çizgilerini ("kaburgalar") seçin. (Yukarıdaki örnekte sarı eğrileri.)</li>
                 <li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
-                <li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>Gordon surface</strong> seçeneğini kullanın.</li> 
+                <li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Gordon surface</strong> menüsündeki <strong>Gordon surface</strong> seçeneğini kullanın.</li> 
             </ul>
     <p>
-        AÇIKLAMA_VE_RESİM <br>
-        <img src="images/freecad/curves_wb/RESIM_RESIM.png" class="image fit"><br>        
-            
+        <b><span style="color:#4acaa8">Özellikler</span></b><br>
+        <strong>Gordon Surface</strong> komutunun <strong>Veri (Data)</strong> sekmesindeki özelliklerini inceleyelim.<br>
+        <strong>Placement (Yerleşim)</strong> : Ortaya çıkan Gordon yüzeyinin yerleşimini ayarlamak için kullanılabilir. Detay için <a href="https://wiki-freecad-org.translate.goog/Placement?_x_tr_sl=auto&_x_tr_tl=tr&_x_tr_hl=tr", target="_blank">buraya bakınız.</a><br>
+        <b>Not:</b> Yerleştirme özellikleri, yüzeyi oluşturmak için kullanılan eğrilerin/çizgilerin yerleşimini ayarlamaz, yalnızca yüzeyi ayarlar.<br>
+        <strong>Label (Etiket)</strong> : Yüzey için kullanıcı tarafından belirlenen etiket (ad). (Varsayılan: Gordon)<br>
+        <strong>Output (Üretim/Çıktı)</strong> : Yüzeyin Üretim/Çıktı tipini tanımlar. (Varsayılan değer: Yüzey, Seçenekler: Yüzey, Tel Kafes)<br>
+        <strong>Gordon>Max Ctrl Pts</strong> : En fazla kontrol noktası miktarı (Varsayılan değer: 80)<br>
+        <strong>Gordon>Sources (Kaynaklar)</strong> : Gordon yüzeyini oluşturmak için kullanılan, kullanıcı tarafından seçilen çizgiler/eğriler.<br>
+        <strong>Gordon>Tol3D</strong> : 3D tolerans (Varsayılan değer: 0.01)<br>
+        <strong>Wireframe>Samples U</strong> : U yönündeki örnekleme sayısı. (Varsayılan değer: 16) <br>
+        Bu değer, Üretim/Çıktı özelliği <b>Tel Kafes</b> olarak ayarlandığında, <b>ağın yoğunluğunu</b> belirlemek için kullanılır.
+        <strong>Wireframe>Samples V</strong> : V yönündeki örnekleme sayısı. (Varsayılan değer: 16) <br>
+        Bu değer, Çıktı özelliği Tel Kafes olarak ayarlandığında ağın yoğunluğunu belirlemek için kullanılır.<br>
+        Aşağıda, Tel kafes (Wireframe) modunda ve <code>U</code> ve <code>V</code> değerleri <b>16</b> olan (U=16, V=16) Gordon Yüzeyi gösterilmektedir.
+        <img src="images/freecad/curves_wb/GordonSurface_02.png" class="image fit">
+        <img src="images/freecad/curves_wb/GordonSurface_03.png" class="image fit">
+        <img src="images/freecad/curves_wb/GordonSurface_04.png" class="image fit">
+        <img src="images/freecad/curves_wb/GordonSurface_05.png" class="image fit">
+        <img src="images/freecad/curves_wb/GordonSurface_06.png" class="image fit">                    
     </p>
+       <b><span style="color:#4acaa8">Notlar:</span></b><br>       
+        <ul>
+            <li>Her grubun eğrileri (kaburgalar ve raylar) diğer grubun tüm eğrilerine temas etmelidir.<br>
+            Başka bir deyişle, burada gösterildiği gibi bir ızgara veya ağ deseni oluşturmalıdırlar:</li>
+            <img src="images/freecad/curves_wb/GordonSurface_07.png" class="image fit">
+
+            <li>Genel olarak, ortaya çıkan Gordon yüzeyinin <b>yüzey normali</b>, eğrilerin yönü ile belirlenecektir <br>
+            Eğriler +Y'den -Y'ye yönüne doğru çizilirse elde edilen yüzey normali +Z yönünde olurken, eğriler -Y'den +Y'ye doğru çizildiğinde, yüzeyin normal yönelimli -Z yönünde olur.
+            </li>
+            <li>Gordon Surface komutu ile oluşturulan 2 boyutlu yüzey, <strong>Parça Çalışma Tezgahı'nın (Part WB)</strong> <a href="https://wiki-freecad-org.translate.goog/Part_Extrude?_x_tr_sl=auto&_x_tr_tl=tr&_x_tr_hl=tr">Katıla (Extrude)</a> komutu ile 3 boyutlu katı model haline getirilebilir.</li>
+            <li>Oluşan 2 boyutlu yüzey, <strong>ParçaTasarımı Çalışma Tezgahı (PartDesign WB)</strong> ile de 3 boyutlu katı model haline getirilebilir <br> 
+            Bunun için yüzeyi bir gövde içine sürükleyerek <strong>Base Feature (Temel Unsur)</strong> oluşturulur, daha sonra <strong>Katıla (Pad)</strong> komutu kullanılır.</li>
+       </ul>
+
+            <img src="images/freecad/curves_wb/GordonSurface_08.png" class="image fit">
+            <img src="images/freecad/curves_wb/GordonSurface_09.png" class="image fit">
+            <img src="images/freecad/curves_wb/GordonSurface_10.png" class="image fit">
+            <img src="images/freecad/curves_wb/GordonSurface_11.png" class="image fit">
+                                    
         
  <p>
     <img src="https://raw.githubusercontent.com/tomate44/CurvesWB/9aac6c2365311724487f79df3343dab90ddcb819/freecad/Curves/resources/icons/segment_surface.svg"> <b><span id="segmentsurface", style="color:#4acaa8">Segment surface:</span> </b><br>
