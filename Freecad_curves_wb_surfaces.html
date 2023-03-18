@@ -685,17 +685,47 @@
         
  <p>
     <img src="https://raw.githubusercontent.com/tomate44/CurvesWB/9aac6c2365311724487f79df3343dab90ddcb819/freecad/Curves/resources/icons/spring.svg"> <b><span id="compressionspring", style="color:#4acaa8">Compression Spring:</span> </b><br>
-        KISA_ACIKLAMA<br>
+        <strong>Compression Spring (Baskı Yayı)</strong> komutu, adından anlaşıldığı üzere, baskı yayı / sıkıştırma yayı oluşturmak için kullanılan komuttur. <br>
     </p>
         <b><span style="color:#4acaa8">Kullanım:</span></b> Komutu çalıştırmak için aşağıdaki adımları sırası ile uygulayın:
             <ul>
-                <li>Öncelikle bir eğri (veya kenar çizgisi) ve yüzey seçin. (Birlikte seçim için <code>CTRL</code> tuşunu kullanın)</li>
                 <li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
-                <li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>Compression Spring</strong> seçeneğini kullanın.</li> 
+                <li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>Compression Spring</strong> seçeneğini kullanın. Bu sayede sahneye bir baskı yayı (eğrisi) eklenir.</li> 
             </ul>
     <p>
-        AÇIKLAMA_VE_RESİM <br>
-        <img src="images/freecad/curves_wb/RESIM_RESIM.png" class="image fit"><br>        
+        <b>Curves</b> araç çubuğunda bulunan ilgili düğmeye, ya da <strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>Compression Spring (Baskı Yayı)</strong> butonuna basarak komutu çalıştıralım. Sahnenin boş olduğunu, Unsur ağacında hiç bir öğe olmadığına dikkat edin. <br>
+        <img src="images/freecad/curves_wb/Compression_Spring_01.png" class="image fit"><br> 
+        Komut çalıştırılınca sahneye bir Baskı Yayı (eğrisi) ekleniyor. Unsur ağacından <strong>CompSpring</strong> öğesi seçildiğinde, Baskı yayına ait parametreler aşağıdaki gibi görüntüleniyor. Baskı Yayının <strong>Diameter (Çap)</strong> değeri <b>4 mm</b> olarak belirlenmiş. Bu değeri değiştirerek sonucu inceleyelim.
+        <img src="images/freecad/curves_wb/Compression_Spring_02.png" class="image fit"><br>    
+        Baskı Yayının <strong>Diameter (Çap)</strong> değerini <b>10 mm</b> olarak değiştirdiğimizde, Baskı yayı otomatik olarak güncelleniyor.
+        <img src="images/freecad/curves_wb/Compression_Spring_03.png" class="image fit"><br>
+        Baskı Yayını oluşturan bir diğer parametre olan <strong>Length (Boy/Uzunluk/Mesafe)</strong> değerini değiştirerek soncu görelim. <br>
+        <b>10 mm</b> olan <strong>Length (Boy/Uzunluk/Mesafe)</strong> değerini <b>5 mm</b> olarak değiştirdiğimizde görüyoruz ki, baskı yayı daha kısa mesafeye sahip olarak oluşturuldu, yani baskı yayı sıkışmış bir şekil aldı diyebiliriz. Bu parametre değiştirilerek gerçekci animasyon oluşturulabilir.
+        <img src="images/freecad/curves_wb/Compression_Spring_04.png" class="image fit"><br>   
+        <strong>Turns (Çevrim/Dönüş)</strong> değeri, Baskı Yayı oluşturulurken eğrinin kaç tur döndürülerek yay oluşturulması gerektiğini belirttiğimiz parametredir. Vidalarda <b>Hatve / Adım</b> değeri ile aynı değerdir.<br>
+        <b>5</b> olan <strong>Turns</strong> değerini <b>2</b> olarak değiştirdiğimizde elde ettiğimiz yayın görüntüsü aşağıdadır. Bu ayar ile Eğri, başlangıç noktasından itibaren 2 tur çevrilerek yay elde edildi.
+        <img src="images/freecad/curves_wb/Compression_Spring_05.png" class="image fit"><br> 
+        <strong>Wire Output</strong>, Baskı Yayının görünümünün ayarlandığı parametredir. <strong>Wire Output (Tel Ürün/Sonuç)</strong> parametresinin alabileceği değerler <strong>true (doğru)</strong> ve <strong>false (yanlış)</strong> ile sınırlıdır. Parametre değerini <strong>false (yanlış)</strong> olarak belirlediğimizde, <b>Baskı Yayı Tel olarak görünmesin</b> demiş oluyoruz ve baskı yayı dairesel kesitli bir yaya dönüşmüş oluyor.
+        <img src="images/freecad/curves_wb/Compression_Spring_06.png" class="image fit"><br>
+        <strong>Wire Output</strong> parametresi <strong>false (yanlış)</strong> olarak değiştirildiğinde elde ettiğimiz dairesel kesite ait çap değerini, <strong>Wire Diameter (Tel Çapı)</strong> parametresi ile belirleyebiliyoruz. <br>
+        <b>0,5 mm</b> olan <strong>Wire Diameter (Tel Çapı)</strong> parametre değerini <b>1,25 mm</b> olarak değiştirdiğimizde, Baskı Yayının görünümü de eş zamanlı olarak güncelleniyor.
+        <img src="images/freecad/curves_wb/Compression_Spring_07.png" class="image fit"><br> 
+        <strong>Flatness (Düzlük / Düzgünlük)</strong> parametresi, Baskı Yayının uç noktalarının düzlemsel olarak ayarlanmasını sağlayan parametredir.<br>
+        <strong>Flatness (Düzlük / Düzgünlük)</strong> parametre değeri <b>0 (sıfır)</b> iken oluşan Yaya ait Ön Görünüm, aşağıdaki gibidir.
+        <img src="images/freecad/curves_wb/Compression_Spring_08.png" class="image fit"><br>   
+        <strong>Flatness (Düzlük / Düzgünlük)</strong> parametre değerini artırarak Yayın düzlemsel bir yüzeye tam olarak oturması / temas yüzey alanının artırılması sağlamak sağlanabilir. <br>
+        <strong>Flatness</strong> değerini <b>4</b> olarak değiştirerek elde ettiğimiz Yaya bakalım
+        <img src="images/freecad/curves_wb/Compression_Spring_09.png" class="image fit"><br>    
+        Baskı Yayının  <strong>Diameter (Çap)</strong> parametresini incelemek için sahneye yarıçapı <b>5 mm</b> olan bir silindir nesnesi ekliyorum.
+        <img src="images/freecad/curves_wb/Compression_Spring_10.png" class="image fit"><br> 
+        <strong>ComSpring </strong> nesnesinin <strong>Wire Output</strong> parametresini <strong>false (yanlış)</strong> olarak ayarlıyorum. Sonuç aşağıda.
+        <img src="images/freecad/curves_wb/Compression_Spring_11.png" class="image fit"><br>        
+        Sahneye <b>Ön Görünüm</b>'den baktığımda Baskı Yayının <strong>Diameter (Çap)</strong> değerinin Silindire kıyasla nasıl göründüğünü daha net olarak görebiliyorum.
+        <img src="images/freecad/curves_wb/Compression_Spring_12.png" class="image fit"><br> 
+        Silindir yarıçapını <b>8 mm</b> (Çapı 16mm), Baskı Yayının Çap değerini de <b>16 mm</b> olarak ayarladığımda sonuç yine değişmiyor. Yani Baskı Yayının Çap değeri olarak kastedilen değer, Yayın <b>Dıştan Dışa</b> olan çap mesafesidir. Yani <strong>Wire Diameter (Tel Çapı)</strong> parametre değeri, Baskı Yayının konulacağı deliğe/yuvaya ait çap değerini temsil ediyor. 
+        <img src="images/freecad/curves_wb/Compression_Spring_13.png" class="image fit"><br>
+        <strong>Wire Diameter (Tel Çapı)</strong> parametre değerini artırmamıza rağmen, oluşan Baskı Yayının et kalınlığının içe doğru büyüdüğü, yayın dış çapın değişmediği, iç çap değerinin azaldığı, aşağıdaki görüntüden net bir şekilde görülmüş oluyor.
+        <img src="images/freecad/curves_wb/Compression_Spring_14.png" class="image fit"><br>        
             
     </p>
         
