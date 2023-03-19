@@ -731,17 +731,85 @@
         
  <p>
     <img src="https://raw.githubusercontent.com/tomate44/CurvesWB/9aac6c2365311724487f79df3343dab90ddcb819/freecad/Curves/resources/icons/reflectLines.svg"> <b><span id="reflectlines", style="color:#4acaa8">Reflect Lines:</span> </b><br>
-        KISA_ACIKLAMA<br>
+        <strong>Reflect Lines (Akis Çizgileri/Eğrileri)</strong>, sahneye olan bakış açısı temel alınarak, seçili nesne(ler)in ya da yüzeylerin dış kontur çizgisini (silüetini) eğriler vasıtası elde etmeye yarayan komuttur. <strong>Reflect Line</strong> komutu ile oluşturulan/elde edilen eğriler, <strong>Draft Workbench'te (Taslak Çalışma Tezgahında)</strong> bulunan komutlarla birlikte kullanılabilir. Tarif anlaşılmamış olabilir, komutu uygulayarak anlayalım. <br>
     </p>
         <b><span style="color:#4acaa8">Kullanım:</span></b> Komutu çalıştırmak için aşağıdaki adımları sırası ile uygulayın:
             <ul>
-                <li>Öncelikle bir eğri (veya kenar çizgisi) ve yüzey seçin. (Birlikte seçim için <code>CTRL</code> tuşunu kullanın)</li>
+                <li>Öncelikle nesne(ler) veya yüzey(ler) seçin. (Birlikte seçim için <code>CTRL</code> tuşunu kullanın)</li>
                 <li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
                 <li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>Reflect Lines</strong> seçeneğini kullanın.</li> 
             </ul>
     <p>
-        AÇIKLAMA_VE_RESİM <br>
-        <img src="images/freecad/curves_wb/RESIM_RESIM.png" class="image fit"><br>        
+        <strong>Reflect Lines</strong> komutu uygulayarak eğri elde etmek istediğimiz nesne aşağıda görülmektedir. <br>
+        <img src="images/freecad/curves_wb/Reflect_Lines_01.png" class="image fit"><br>        
+        Unsur ağacından, ilgili nesneyi seçerek <strong>Reflect Lines</strong> komutunu çalıştırıyoruz. Bu algoritma, şeklin <strong>ViewDir</strong> yönündeki izdüşümünü hesaplar.
+        <img src="images/freecad/curves_wb/Reflect_Lines_02.png" class="image fit"><br> 
+        Oluşan Akis/Yansıtma Eğrileri görmek için, Unsur ağacından, ilgili nesneyi (Thickness) seçerek gizliyoruz. <br>
+        <b>Özellikler</b> panelindeki <strong>Source</strong> parametresi, hangi nesne(ler) ya da yüzey(ler) seçilerek Akis Eğrisi oluşturulduğunu belirtir.
+        <img src="images/freecad/curves_wb/Reflect_Lines_03.png" class="image fit"><br>
+        <strong>Cleaning Options (Temizlik Seçemekleri)</strong> başlıklı Özellik bölümünde bulunan <strong>Remove Duplicates (Yinelenenleri Kaldır)</strong> parametresi, <strong>true (doğru)</strong> olarak ayarlanırsa, belirtilen <strong>Cleaning Tolerance (Temizleme Toleransı)</strong> değeri ile belirlenen miktardan yakın olan noktalar arasındaki çizgielri/eğrileri siler/temizler.
+        <img src="images/freecad/curves_wb/Reflect_Lines_04.png" class="image fit"><br> 
+        <strong>Edge Type (Kenar Biçimi)</strong> başlıklı Özellik bölümünde bulunan   <strong>Out Line</strong> parametresi, nesnenin siluet çizgilerinin ana hatlarıyla <b>eğrileri</b> ile çizilmeyeceğini belirttiğimiz kısımdır. Bu parametre <strong>false (yanlış/hayır)</strong> olarak ayarlanırsa, oluşan Akis Çizgilerinin/Eğrilerinin, <b>eğrisel parçaları</b> gizlenir. 
+        <img src="images/freecad/curves_wb/Reflect_Lines_05.png" class="image fit"><br> 
+        Yukarıdaki çizimde bu parametrenin sonuçları tam olarak belli olmadı. Bunun için sahneye Eğrisel hatlara sahip yeni bir nesne ekleyerek parametreyi inceleyelim.<br>
+        Sahneye bir <b>Halka</b> nesnesi ekleyelim, nesneyi seçelim ve <strong>Reflect Lines</strong> komutunu çalıştıralım.
+        <img src="images/freecad/curves_wb/Reflect_Lines_06.png" class="image fit"><br> 
+        <strong>Out Line</strong> parametresi <strong>true (doğru/evet)</strong> iken elde edilen sonuç;
+        <img src="images/freecad/curves_wb/Reflect_Lines_07.png" class="image fit"><br> 
+        <strong>Out Line</strong> parametresi <strong>false (yanlış/hayır)</strong> iken elde edilen sonuç aşağıdadır. Görüldüğü üzere Nesnenin dış hattına (silüetine) ait eğri gizlendi.        
+        <img src="images/freecad/curves_wb/Reflect_Lines_08.png" class="image fit"><br> 
+        <strong>Rg1Line</strong> parametresi, iki yüzey arasındaki <strong>G1-sürekliliğindeki</strong> pürüzsüz kenarı görüntülemek ya da gizlemek için kullanılır.
+        <img src="images/freecad/curves_wb/Reflect_Lines_09.png" class="image fit"><br> 
+        <strong>RgNLine</strong> parametresi, bir yüzeye iliştirilmiş <strong>CN-sürekliliğindeki</strong> kenarı görüntülemek ya da gizlemek için kullanılır.
+        <img src="images/freecad/curves_wb/Reflect_Lines_10.png" class="image fit"><br>  
+        <strong>Sharp</strong> parametresi, keskin kenar (<strong>C0-sürekliliği)</strong> görüntülemek ya da gizlemek için kullanılır.        
+        <img src="images/freecad/curves_wb/Reflect_Lines_11.png" class="image fit"><br> 
+        <strong>Edge Type (Kenar Biçimi)</strong> başlığında bulunan parametrelerinin tamamı <strong>true (doğru/evet)</strong> olarak ayarlanmışken, sahneye <b>Ön Görünüm (Front)</b> bakış açısı ile baktığımızda aşağıdaki görüntüyü görürüz.
+        <img src="images/freecad/curves_wb/Reflect_Lines_12.png" class="image fit"><br> 
+        sahneye <b>Sağ Yan Görünüm (Right)</b> bakış açısı ile baktığımızda aşağıdaki görüntüyü görürüz.
+        <img src="images/freecad/curves_wb/Reflect_Lines_13.png" class="image fit"><br> 
+        Sahneye <b>Sol-Ön-Üst (Left-Front-Top)</b> bakış açısı kesişimi olan köşeden baktığımızda aşağıdaki görüntüyü görürüz. <br>
+        Dikkat ettiyseniz şu ana kadar <strong>Reflect Lines</strong> başlıklı özellik kısmında <strong>On Shape</strong> parametresi sürekli <strong>true (doğru/evet)</strong> olarak ayarlanmıştı. Bu sayede <strong>Reflect Lines</strong> komutu sonrası elde edilen Akis Çizgileri/Eğrileri 3 boyutlu (3B) olarak elde edilmiş oldu. Tam olarak aynı şey olmasa da, komut sonrası Nesne, Wireframe (Tel Kafes) görünümünde görüntülenmiş gibi bir sonuç elde edilir.
+        <img src="images/freecad/curves_wb/Reflect_Lines_14.png" class="image fit"><br> 
+        <strong>On Shape</strong> parametresi <strong>false (yanlış/hayır)</strong> olarak ayarlandığında Akis eğrileri, <b>XY düzleminde</b> oluşturulur. Yani sonuç 2 Boyutlu (2B) bir yapıya sahiptir. XY Düzlemine dik açıdan (düzlemin Normal doğrultusundan) yani <b>Üst Görünümden</b> bakıldığında gerçek sonuç görüntülenir. Bu komut, <strong>TechDraw</strong>'a geçmeden (OnShape özelliği devre dışı bırakıldığında) bir nesnenin 2B görünümünü elde etmek için kullanılabilir. 
+        <img src="images/freecad/curves_wb/Reflect_Lines_15.png" class="image fit"><br>
+        Sahneye Üst Görünümden (Top) baktığımızda, doğru görüntüyü elde etmiş oluyoruz. <br>
+        <strong>On Shape</strong> parametresi <strong>false (yanlış/hayır)</strong> olarak ayarlandığında (ReflectLines XY düzleminde olduğunda), <strong>ViewPos</strong> ve <strong>UpDir</strong> özellikleri kullanılabilir. Bu durumda, Akis Çizgilerinin Konumunun ve Yöneliminin ayarlanmasına izin verilir.
+        <img src="images/freecad/curves_wb/Reflect_Lines_16.png" class="image fit"><br> 
+        <strong>On Shape</strong> parametresi <strong>false (yanlış/hayır)</strong> olarak ayarlandığında, sahneye <b>Sağ Yan Görünümden (Right)</b> bakıldığında görülen şekil aşağıdaki gibidir. Akis Eğrilerinin 2 boyutlu (2B) olduğu net olarak görünüyor.
+        <img src="images/freecad/curves_wb/Reflect_Lines_17.png" class="image fit"><br>        
+        Sahneye Ön Görünümden (Front) bakıldığında görülen şekil aşağıdaki gibidir. Akis/Yansıma Eğrilerinin 2 boyutlu (2B) olduğu net olarak görünüyor.
+        <img src="images/freecad/curves_wb/Reflect_Lines_18.png" class="image fit"><br> 
+        Sahnede <b> X, Y, Z eksen çizgilerini</b> göstererek <strong>Thickness</strong> nesnesinin, orijin (0,0,0) noktasına göre nasıl bir konumda olduğuna bakalım. Görüyoruz ki <strong>Thickness</strong> nesnesi temelde, orijin noktasına altıgen şekil çizilip bir yol boyunca süpürülerek (Sweep komutu ile) elde edilmiş. Yani <strong>Thickness</strong> adındaki altıgen boru/kanalın bir ucu tam olarak orijin (0,0,0) noktasında bulunuyor.
+        <img src="images/freecad/curves_wb/Reflect_Lines_19.png" class="image fit"><br> 
+        <strong>On Shape</strong> parametresi <strong>false (yanlış/hayır)</strong> olarak ayarlanıp sahneye <b>Üst Görünümden (Top)</b> bakıldığında <strong>View Pos</strong> parametre değerleri [42,80 31,79 17,80] olarak görünmektedir. Bu değerler <strong>Thickness</strong> nesnesi XY düzlemine 2B olarak dönüştürüldüğünde orijinin bulunduğu koordinatları göstermektedir. 
+        <img src="images/freecad/curves_wb/Reflect_Lines_20.png" class="image fit"><br> 
+        <strong>View Pos</strong> değerlerini değişirilerek nesnenin konumunu (orijin noktasını hareket ettirerek) farklı noktaya taşıyabiliriz. Örneğin Nesnenin orijin noktasını (0,0,0) noktasına taşıyalım.
+        <img src="images/freecad/curves_wb/Reflect_Lines_21.png" class="image fit"><br> 
+        <strong>View Dir (Kamera/Bakış Açısı Yönü/Doğrultusu)</strong> parametre değerleri,  <strong>Reflect Lines (Akış Eğrileri)</strong> oluşturulurken sahneye hangi bakış açısından (kamera yönünden) ve mesafesinden bakıldığına dair koordinat değerlerinin belirlendiği ve ayarlandığı kısımdır.
+        <img src="images/freecad/curves_wb/Reflect_Lines_22.png" class="image fit"><br> 
+        3 boyutlu <strong>Thickness</strong> nesnesi <strong>Reflect Lines</strong> komutu ile  Akış/Yansıtma Eğrilerine dönüştürülmeden önce kamera görünümü (bakış açısı) aşağıdaki resimde görüldüğü gibi <b>Sol-Ön-Üst (Left-Front-Top)</b>  kesişim noktalarında idi (Gezinme Küpüne bakabilirsiniz). Bu açı, kabaca (1, -1, 1) değerlerine karşılık gelir. Nesneye olan yaklığa bağlı olarak bu değer aynı oranda artar ya da azalır. İncelediğimizde kamera konumunun (0,58 -0,58 0,58) koordinatlarında iken Akış/Yansıtma Eğrileri oluşturulduğunu görüyoruz.
+        <img src="images/freecad/curves_wb/Reflect_Lines_23.png" class="image fit"><br> 
+        <b>Üst Görünümde (Top)</b> iken <strong>Thickness</strong> nesnesinin ve Akış/Yansıtma Eğrisinin görüntüsü aşağıdaki gibidir. Yani kamera konumunun (0,58 -0,58 0,58) koordinatlarında iken Akış/Yansıtma Eğrileri oluşturuldu ve XY Düzlemine ektarıldı.
+        <img src="images/freecad/curves_wb/Reflect_Lines_24.png" class="image fit"><br> 
+        Sahneye aşağıdaki şekilde yani örnek kamera koordinatı (1,00 1,00 1,00) ya da katları ile bakmış olsaydık ve <strong>Reflect Lines</strong> komutunu çalıştırarak Akış/Yansıtma Eğrisi oluştursaydık nasıl bir sonuç elde ederdik artık biliyorsunuz.
+        <img src="images/freecad/curves_wb/Reflect_Lines_25.png" class="image fit"><br> 
+        Madem kamera konumuna (bakış açısına) ait X, Y ve Z koordinatları pozitif yönlü, o zaman biz de <strong>View Dir</strong> parametre değerlerini pozitif olarak değiştirelim.
+        <img src="images/freecad/curves_wb/Reflect_Lines_26.png" class="image fit"><br>  
+        <strong>Up Dir (Yukarı Yön Doğrultusu)</strong> parametre değerleri ise, Akış/Yansıtma Eğrisi oluştururken hangi koordinatların Yukarı Yönü gösterdiğini belirlediğimiz  değerlerdir. X ve Y koordinatlarını sıfırlar ve sadace Z koordinatını pozitif bir değer belirleyerek istediğimizi elde edebiliriz. <br>
+        Aşağıdaki resimde görüldüğü üzere, bir defa oluşturulan Akış/Yansıtma Eğrisine ait parametrele değerleri değiştirilerek Temel nesnenin farklı doğrultu ve mesafelerindeki görüntüleri yeniden oluşturulabiliyor/güncellenebiliyor.
+        <img src="images/freecad/curves_wb/Reflect_Lines_27.png" class="image fit"><br>        
+         <strong>Visible (Görünürlük))</strong> parametresi, Akış/Yansıtma Eğrisi oluşturulurken NSeçili Nesnenin Kamera tarafından Görünen ya da Görünmeyen çizgilerin temel alınacağını belirlediğimiz ayar kısmıdır. <br>
+        Unsur ağacından <strong>ReflectLines</strong> nesnesi seçilir ve <strong>Visible (Görünürlük))</strong> parametresi <strong>false (yanlış/hayır)</strong> olarak değiştirilirse aşağıdaki resimde göründüğü gibi bir önceki haline kıyasla görünür çizgiler kaybolur, görünmeyen çizgiler görünür hale gelir.
+        <img src="images/freecad/curves_wb/Reflect_Lines_28.png" class="image fit"><br> 
+        Aynı nesnenin bir adet Akis çizgisi oluşturalım ve <strong>Visible (Görünürlük))</strong> parametresi <strong>true (doğru/evet)</strong> olarak ayarlayalım. Rengini turkuaz olarak belirleyelim.
+        <img src="images/freecad/curves_wb/Reflect_Lines_29.png" class="image fit"><br>        
+        Aynı nesnenin bir adet daha Akis çizgisini oluşturalım ve <strong>Visible (Görünürlük))</strong> parametresi <strong>false (yanlış/hayır)</strong> olarak ayarlayalım. Rengini de pembe olarak belirleyelim.
+        <img src="images/freecad/curves_wb/Reflect_Lines_30.png" class="image fit"><br> 
+        Her iki Akis Çizgisinin <strong>On Shape</strong> parametresi <strong>true (doğru/evet)</strong> olarak ayarlandıüğı için eğriler 3 boyutlu oluşmuş olacaktır.
+        <img src="images/freecad/curves_wb/Reflect_Lines_31.png" class="image fit"><br> 
+        Sahneye farklı açılardan bakarsak ta eksik/kayıp bir çizgi kalmamış olduğunu görürüz.
+        <img src="images/freecad/curves_wb/Reflect_Lines_32.png" class="image fit"><br>        
             
     </p>
         
