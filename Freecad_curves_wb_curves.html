@@ -218,45 +218,95 @@
                                            
         <p>
         <img src="https://wiki.freecadweb.org/images/5/5c/Curves_ExtendCurve.svg"> <b><span id="curve_extend", style="color:#4acaa8">Curve Extend:</span> </b><br>
-        <u>Seçili Eğriyi (Kenarı) uzatır</u>. <br>
+        <strong>Curve Extend</strong> komutu, <u>Seçili Eğriyi (Kenarı) uzatır</u>. <br>
         </p>
 
         <b><span style="color:#4acaa8">Kullanım:</span></b> Komutu çalıştırmak için aşağıdaki işlemleri sırasıyla uygulayın:
             <ul>
-            <li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
-            <li><strong>Curves</strong> menüsündeki <strong>Curve Extend</strong> seçeneğini kullanın.</li> 
-        </ul>
+                <li>Öncelikle bir eğri seçin</li>
+                <li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
+                <li><strong>Curves</strong> menüsündeki <strong>Curve Extend</strong> seçeneğini kullanın.</li> 
+            </ul>
         <p>
-    Bir BSpline eğrisi seçilip <strong>Curve Extend</strong> komut çalıştırıldığında, eğrinin iki ucu da, eğriye uç noktalarından teğet olacak şekilde uzatılır. Varsayılan uzatma mesafesi 10mm’dir. Bu değerleri <strong>Unsur Ağacı</strong>nda ilgili <strong>ExtendedCurve</strong> unsurunu seçtiğinizde beliren Özellikler penceresindeki <strong>Beginning</strong> ve <strong>End</strong> başlıkları altındaki <strong>Length Start</strong> ve  <strong>Length End</strong> kısımlarından değiştirebilirsiniz. Aşağıdaki örnekte göreceğiniz üzere eğrinin başlangıç ucunu 2 mm,  bitiş ucunu ise 4 mm uzayacak şekilde ayarladım.</p>
+    Bir BSpline eğrisi seçilip <strong>Curve Extend</strong> komut çalıştırıldığında, eğrinin iki ucu da, eğriye uç noktalarından teğet olacak şekilde uzatılır. Varsayılan uzatma mesafesi 10mm’dir. </p>
                               
                                     <p><img src="images/freecad/curves_wb/Curve_Extend_1.png" class="image fit"></p>
+                                    Bu değerleri <strong>Unsur Ağacı</strong>nda ilgili <strong>ExtendedCurve</strong> unsurunu seçtiğinizde beliren Özellikler penceresindeki <strong>Beginning</strong> ve <strong>End</strong> başlıkları altındaki <strong>Length Start</strong> ve  <strong>Length End</strong> kısımlarından değiştirebilirsiniz. 
                                     <p><img src="images/freecad/curves_wb/Curve_Extend_2.png" class="image fit"></p>
+                                    Aşağıdaki örnekte göreceğiniz üzere eğrinin başlangıç ucunu 2 mm,  bitiş ucunu ise 4 mm uzayacak şekilde ayarladım.
                                     <p><img src="images/freecad/curves_wb/Curve_Extend_3.png" class="image fit"></p>
             
-<p>	Özellikler bölümünde bulunan ve eğrinin uzatılan kısmı için bize sunulan bir diğer seçenek ise, uzama türü/biçimidir. <strong>Type Start</strong> ve <strong>Type End</strong> açılır menüleri 2 adet  seçenek bulunur. Biri <strong>Straight</strong> diğeri ise <strong>G2 Curve</strong>’dür.  Straight seçeneği sayesinde eğrinin ucu, eğriye teğet olacak şekilde uzatılırken, <strong>G2 Curve</strong> seçeneği sayesinde ise eğri , eğriselliğini devam ettirerek uzar.                         
-</p>
-
+                                    <p>	Özellikler bölümünde bulunan ve eğrinin uzatılan kısmı için bize sunulan bir diğer seçenek ise, uzama türü/biçimidir. <strong>Type Start</strong> ve <strong>Type End</strong> açılır menüleri 2 adet  seçenek bulunur. Biri <strong>Straight</strong> diğeri ise <strong>G2 Curve</strong>’dür.  <br>
+                                        <strong>Straight</strong> seçeneği sayesinde eğrinin ucu, eğriye teğet olacak şekilde uzatılırken, </p>
                                     <p><img src="images/freecad/curves_wb/Curve_Extend_4.png" class="image fit"></p>
+                                    
+                                    <strong>G2 Curve</strong> seçeneği sayesinde ise eğri , eğriselliğini/sürekliliğini devam ettirerek uzar.                         
                                     <p><img src="images/freecad/curves_wb/Curve_Extend_5.png" class="image fit"></p>
                                     
                                     
             <p>
         <img src="https://wiki.freecadweb.org/images/2/2d/Curves_JoinCurve.svg"> <b><span id="joincurve", style="color:#4acaa8">JoinCurve:</span> </b><br>
-        <u>Seçilen kenarları Bezier Eğri (BSpline) olarak birleştirir.</u> <br>
+        <strong>JoinCurve</strong> komutu <u>seçilen kenarları birleştirerek tek bir Bezier Eğri (BSpline) haline getirir.</u> <br>
         </p>
 
         <b><span style="color:#4acaa8">Kullanım:</span></b> 
+            Komutu çalıştırmak için aşağıdaki işlemleri sırasıyla uygulayın:
             <ul>
                 <li>3B görünümde bir veya birkaç kenar seçin. (birden fazla seçim için <code>CTRL</code> tuşunu kullanın)</li>
                 <li>Kenarlar art arda eklenmelidir. Eskizden (Sketch'ten) , herhangi bir şeklin kenarları seçilebilir.</li>
-            Komutu çalıştırmak için aşağıdaki işlemleri sırasıyla uygulayın:
                 <li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
                 <li><strong>Curves</strong> menüsündeki <strong>JoinCurve</strong> seçeneğini kullanın.</li> 
                 <li>İşlem sonunda tüm seçili kenarlar birleştirilerek tek bir Bezier eğri (BSpline) olur.</li>
         </ul>
                                     
         <p>
-                                    <img src="https://wiki.freecad.org/images/3/3b/JoinCurve_pic1.jpg" class="image fit">
+            <strong>JoinCurve</strong> komutunu ve özelliklerini bir uygulama yaparak öğrenmeye çalışalım.<br>
+            Aşağıdaki resimde görüldüğü üzere elimizde bir adet altıgen eskiz ve bir adet dikdörtgenler prizması var.
+            <img src="images/freecad/curves_wb/JoinCurve_01.png" class="image fit">
+            Sahnede bulunan dikdörtgenler prizmasının 5 kenarını seçelim.
+            <img src="images/freecad/curves_wb/JoinCurve_02.png" class="image fit">
+            Seçimi, sıralı olarak gerçekleştirelim yani birbirini takip eden kenarları ardarda seçelim ve <strong>JoinCurve</strong> komutunu çalıştıralım.
+            <img src="images/freecad/curves_wb/JoinCurve_03.png" class="image fit">
+            Unsur ağacına bakarsak, sahneye <strong>JoinCurve</strong> adında yeni bir nesne eklendiğini görürüz. Yeni nesneyi net olarak görmek için dikdörtgenler prizmasını gizliyorum. <br>
+            3B sahnesinde JoinCurve nesnesinin herhangi bir noktası seçildiğinde bütün eğri seçili hale gelir. Aşağıdaki resimde seçili kısımlar yeşil renk ile gösteriliyor.
+            <img src="images/freecad/curves_wb/JoinCurve_04.png" class="image fit">
+            <strong>Corner Break (Köşe Kır)</strong> parametresi <strong>true (doğru/evet)</strong> olarak değiştirildiğinde,  <strong>JoinCurve</strong> nesnesinin her bir çizgi parçası ayrı ayrı seçilebilir hale geliyor. Aşağıdaki resimde seçili kısımlar yeşil renk ile gösteriliyor.
+            <img src="images/freecad/curves_wb/JoinCurve_05.png" class="image fit">
+            <strong>Force Closed (Kapatmaya Zorla)</strong> parametresi <strong>true (doğru/evet)</strong> olarak ayarlanırsa, <strong>JoinCurve</strong> eğrisinin, uç noktaları birleştirilir ve kapalı eğri oluşturması sağlanır.  <br>
+            <strong>Corner Break</strong> parametresini <strong>false (yanlış/hayır)</strong> olarak ayarlı iken <strong>Force Closed (Kapatmaya Zorla)</strong> parametresi <strong>true (doğru/evet)</strong> olarak ayarlandığında elde edilen sonuç aşağıdadır.
+            <img src="images/freecad/curves_wb/JoinCurve_06.png" class="image fit">
+            <strong>Corner Break</strong> parametresini <strong>true (doğru/evet)</strong> olarak ayarlı iken <strong>Force Closed (Kapatmaya Zorla)</strong> parametresi <strong>true (doğru/evet)</strong> olarak ayarlandığında ise elde edilen sonuç aşağıdadır. <strong>Corner Break</strong> parametresi aktif olduğu için her bir çizgi bağımsız gibi hareket ederek başlangıç ve uç nokta birleşmiş oluyor ve bu kez son çizgi parçası, önceki çizgiden ayrılıyor.
+            <img src="images/freecad/curves_wb/JoinCurve_07.png" class="image fit">
+            <strong>Shape Approximation</strong> Özelliği Aktifleştirildiğinde, <strong>JoinCurve</strong> nesnesi , değiştirilen parametre değerlerine bağlı olarak farklı şekiller almaya başlıyor. Örneği aşağıdaki resme bakarsanız, sadece <strong>Active</strong> parametresi <strong>true (doğru/evet)</strong> olarak değiştirildiğinde, eğriye ait keskin köşelerde bir yumuşama/yuvarlanma olmaya başlandı.
+            <img src="images/freecad/curves_wb/JoinCurve_08.png" class="image fit">
+            <strong>Approx Tolerance</strong> parametre değeri artırıldığında yumuşama/radyus değeri de artıyor.
+            <img src="images/freecad/curves_wb/JoinCurve_09.png" class="image fit">
+            <strong>Approx Tolerance</strong> parametre değeri daha fazla artırıldığında, eğrinin uç noktalarında da radyus etkisi görülmeye başlanıyor.
+            <img src="images/freecad/curves_wb/JoinCurve_10.png" class="image fit">
+            <strong>Continuity (Süreklilik)</strong> parametresi, açılır listeden çıkan seçeneklerden birinin seçilerek ayarlandığı özelliklerden biridir. Bu değerler, eğrinin oluşturulması aşamasında kullanılan algoritmik değerlerdir desek yanlış olmaz sanırım. Değeri <b>C3</b>'ten <b>C0</b>'a değiştirildiğinde elde edilen eğri profili aşağıdaki şekilde değişiyor.
+            <img src="images/freecad/curves_wb/JoinCurve_11.png" class="image fit">
+            <strong>Continuity (Süreklilik)</strong> parametresi <b>CN</b> olarak ayarladığımızda ise eğri yine farklı bir hal alıyor.
+            <img src="images/freecad/curves_wb/JoinCurve_12.png" class="image fit">
+
+            <strong>Samples (Örnekleme)</strong> parametresi, tabiri caizse eğrinin kaç adet çizgi parçasının uç uca eklenmesi ile elde edileceğini belirlediğimiz kısımdır. Değer büyüdükçe, seçili kenarlara daha yakın profilde eğri oluşuyor. Değeri düşürerek eğrinin alacağı şekli inceleyelim.
+            <img src="images/freecad/curves_wb/JoinCurve_13.png" class="image fit">
+            Altıgen Eskiz ve JoinCurve nesnelerini kullanarak <strong>Part Workbench (Parça Çalışma Tezgahı)</strong> komutlarından <strong>Sweep... (Süpür...)</strong>'i çalıştıralım.
+            <img src="images/freecad/curves_wb/JoinCurve_14.png" class="image fit">
+            Curves araç çubuğunda bulunan ilgili düğmeye basarak ya da <strong>Part (Parça)</strong> menüsündeki <strong>Sweep... (Süpür...)</strong> komutunu çalıştır.
+            <img src="images/freecad/curves_wb/JoinCurve_15.png" class="image fit">
+            Profil olarak <b>Sketch_Altıgen</b>'i, süpürülecek yol (<b>Yolu Süper</b>) olarak <strong>JoinCurve</strong> eğrisini seçip onaylayalım.
+            <img src="images/freecad/curves_wb/JoinCurve_16.png" class="image fit">
+            Oluşan 3 boyutlu <b>Altıgen Boru/Kanal</b> nesnesi aşağıda görülmektedir.
+            <img src="images/freecad/curves_wb/JoinCurve_17.png" class="image fit">
+            Unsur ağacından <strong>JoinCurve</strong> nesnesini seçip <strong>Corner Break (Köşe Kır)</strong> parametresini <strong>true (doğru/evet)</strong> olarak değiştirirsek elde edeceğimiz nesne aşağıdaki hale gelir.
+            <img src="images/freecad/curves_wb/JoinCurve_18.png" class="image fit">
+            <strong>Continuity (Süreklilik)</strong> parametresi <b>C0</b> olarak değiştirildiğinde 3 boyutlu şeklin aldığı hal aşağıdaki gibidir.
+            <img src="images/freecad/curves_wb/JoinCurve_19.png" class="image fit">
+            <strong>Continuity (Süreklilik)</strong> parametresi <b>C0</b> iken <strong>Reverse (Ters Çevir)</strong> parametresi <strong>true</strong> olarak değiştirildiğinde 3 boyutlu şeklin aldığı hal aşağıdaki gibidir.
+            <img src="images/freecad/curves_wb/JoinCurve_20.png" class="image fit">
+            <strong>Continuity (Süreklilik)</strong> parametrelerini değiştirildiğinde 3 boyutlu şeklin aldığı hali kendiniz inceleyerek görebilirsiniz. <br>
+            <strong>Samples (Örnekleme)</strong> değerini düşürerek aşağıdaki şekli elde edebilirsiniz.
+            <img src="images/freecad/curves_wb/JoinCurve_21.png" class="image fit">
         </p>
                                     
         <p>
