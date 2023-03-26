@@ -425,18 +425,20 @@
                                     
                                             <p>
         <img src="https://raw.githubusercontent.com/tomate44/CurvesWB/9f7064e9d0b6cb569b83228e67b91ea26d42570c/freecad/Curves/resources/icons/approximate.svg"> <b><span id="approximate", style="color:#4acaa8">Approximate:</span> </b><br>
-        Seçili düzlemsel (2D) nesnenin tüm noktalarını ya da <strong>Discretize</strong> ile ayrıklaştırılmış noktaları birleştirerek eğri oluşturur. <code>Closed</code> özelliği <code>true</code> olarak ayarlanırsa, uçların birleştirildiği kapalı bir eğri oluşturur.<br>
+        <strong>Approximate</strong> komutu, seçili düzlemsel (2D) nesnenin tüm noktalarını ya da <strong>Discretize</strong> komutu ile ayrıklaştırılmış noktaları birleştirerek eğri oluşturur. <code>Closed</code> özelliği <code>true</code> olarak ayarlanırsa, uçların birleştirildiği kapalı bir eğri oluşturur.<br>
         Bu komutun bir başka kullanım amacı da, <strong>Sweep2Rails</strong> komutu ile oluşturulmuş nokta bulutu, profil/ray eğrileri ya da tel kafes  yapısını, eğrisel yüzeye dönüştürmektir. Örnek uygulama için <a href="Freecad_curves_wb_surfaces.html#sweep2rails"><strong>Sweep2Rails</strong></a> komutunu inceleyebilirsiniz.
         </p>
 
         <b><span style="color:#4acaa8">Kullanım:</span></b> Komutu çalıştırmak için aşağıdaki işlemleri sırasıyla uygulayın:
             <ul>
-                <li>Öncelikle 2D nesneyi, 3D nesnenin belirli noktalarını <code>CTRL</code> tuşu ile ya da <strong>Discretize</strong> işlemi ile elde edilmiş noktaları seçin.</li>
+                <li>Öncelikle 2D nesneyi, 3D nesnenin belirli noktalarını ya da <strong>Discretize</strong> işlemi ile elde edilmiş noktaları <code>CTRL</code> tuşu ile  seçin.</li>
                 <li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
                 <li><strong>Curves</strong> menüsündeki <strong>Approximate</strong> seçeneğini kullanın.</li> 
             </ul>
-                                    <img src="images/freecad/curves_wb/Approximate_1.png" class="image fit"><br>
-                                    <img src="images/freecad/curves_wb/Approximate_2.png" class="image fit"><br>
+                                    <img src="images/freecad/curves_wb/Approximate_1.png" class="image fit">
+                                    Unsur ağacından <strong>Approximate_Curve</strong> nesnesi seçilip özellikler paneli incelendiğinde, <strong>Closed (Kapalı)</strong> özelliğinin <strong>false (yanlış/hayır)</strong> olarak ayarlandığı bu nedenle oluşan eğrinin uclarının birleştirilmediği / açık bırakıldığı görülür. <br><strong>Contiunity</strong> parametresi <b>G2</b> olarak seçilmiş olduğu için buna uygun bir algoritma ile eğri oluşturuldu.
+                                    <img src="images/freecad/curves_wb/Approximate_2.png" class="image fit">
+                                    <strong>Closed (Kapalı)</strong> özelliğinin <strong>true (doğru/evet)</strong> olarak ayarlandığında ise oluşan eğrinin ucları birleştirildi, eğri kapalı yapıya dönüştü. 
                                     <img src="images/freecad/curves_wb/Approximate_3.png" class="image fit">
                                     
                                     
