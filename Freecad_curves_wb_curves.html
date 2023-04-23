@@ -455,29 +455,37 @@
             </ul>
                                     <img src="images/freecad/curves_wb/Interpolate_1.png" class="image fit"><br>
                                     <img src="images/freecad/curves_wb/Interpolate_2.png" class="image fit"><br>
+                                    Nokta seçim sırasını değiştirelim;
                                     <img src="images/freecad/curves_wb/Interpolate_3.png" class="image fit"><br>
-                                    <img src="images/freecad/curves_wb/Interpolate_4.png" class="image fit"><br>
+                                    Seçim sırasına bağlı olarak oluşan eğri;
                                     <img src="images/freecad/curves_wb/Interpolate_4.png" class="image fit"><br>
 
             <b>Özellikler:</b><br>
             Özellikler paneli <b>Veri</b> Sekmesinde, aşağıdaki özellikler değiştirilebilir;<br>
             <ul>
                 <li><b>Periodic (Periyodik)</b>:  Bu seçenek, <b>true</b> ve <b>false</b> değerlerini alabilir. Eğer <b>true</b> değeri ayarlanırsa, oluşturulan eğrinin uçları birleştirilerek kapalı bir eğri elde edilir.</li>                       
-                <li><b>Polygonal</b>: Seçili noktalar, poligon yani doğru parçaları ile birleştirilerek Enterpolasyonlu Eğri (Interpolation Curve) yapısı oluşturulur.</li>
+                <li><b>Polygonal (Çokgen / Çok köşeli)</b>: Seçili noktalar, poligon yani doğru parçaları ile birleştirilerek Enterpolasyonlu Eğri (Interpolation Curve) yapısı oluşturulur.</li>
                 <li><b>Tolerance</b>: <b>Polygonal</b> seçeneği <b>true</b> ise <b>Tolerans</b> miktarını değiştirilerek farklı eğri yapıları elde edilebilir.</li>
                 <li><b>Parametrization Factor (Parametrelendirme Faktörü)</b>: Eğrinin oluşturulması için  belirlenen (kod içinde kullanılan) parametre faktörüdür (katsayısıdır). Sayı değeri arttıkça, eğrinin oluşturulması için gerekli formül değişiyor ve eğri daha farklı hal alıyor. Nokta ve Kenarlar hareket ettirildiğinde eğri çok daha büyük eğrisellik yarıçapına sahip oluyor.</li>
                 </ul>
+                                    İlk seçim sırasına göre, <b>Periodic</b> (Periyodik) seçeneği, <b>true</b> olarak ayarlandığında elde edilen sonuç;
                                     <img src="images/freecad/curves_wb/Interpolate_5.png" class="image fit"><br>
+                                    <b>Polygonal</b> (Çokgen / Çok köşeli) seçeneği, <b>true</b> olarak ayarlandığında elde edilen sonuç;
                                     <img src="images/freecad/curves_wb/Interpolate_6.png" class="image fit"><br>
+                                    <b>Tolerans</b> değerini sıfırladığımızda elde ettiğimiz sonuç;
                                     <img src="images/freecad/curves_wb/Interpolate_7.png" class="image fit"><br>
+                                    <b>Tolerans</b> değerini <b>2</b> olarak ayarladığımızda elde ettiğimiz sonuç;
                                     <img src="images/freecad/curves_wb/Interpolate_8.png" class="image fit"><br>
+                                    <b>Periodic</b> (Periyodik) ve <b>Polygonal</b> (Çokgen / Çok köşeli) seçeneklerini, <b>true</b> olarak ayarlarsak ve <b>Tolerans</b> değerini <b>1</b> olarak belirlersek elde edeceğimiz sonuç;
                                     <img src="images/freecad/curves_wb/Interpolate_9.png" class="image fit"><br>
+                                    <b>Parametrization Factor</b> (Parametrelendirme Faktörü) değerini manuel olarak girerek eğriyi oluşturalım. Değerleri eşit aralıkla belirtelim.
                                     <img src="images/freecad/curves_wb/Interpolate_10.png" class="image fit"><br>
+                                    <b>Parametrization Factor</b> (Parametrelendirme Faktörü) değerini rastgele değerler belirterek eğriyi oluşturalım.
                                     <img src="images/freecad/curves_wb/Interpolate_11.png" class="image fit"><br>
                                     
                                             <p>
         <img src="https://raw.githubusercontent.com/tomate44/CurvesWB/9f7064e9d0b6cb569b83228e67b91ea26d42570c/freecad/Curves/resources/icons/blend.svg"> <b><span id="blend_curve", style="color:#4acaa8">Blend curve:</span> </b><br>
-        İki kenar arasında eğri geçişi.  <br>
+        Bu komut, iki kenar çizgisini bir eğri ile birbirine bağlar. Eğrinin alacağı şekil, belirlenen parametrelere göre farklılık gösterir.  <br>
         </p>
 
         <b><span style="color:#4acaa8">Kullanım:</span></b> Komutu çalıştırmak için aşağıdaki işlemleri sırasıyla uygulayın:
@@ -489,7 +497,9 @@
            İki adet çizgi parçası <code>CTRL</code> tuşuna basılarak seçilirer, ardından <strong>Blend curve</strong> komutu çalıştırılırsa, seçili çizgiler (kenarlar) arasında bir eğri oluşur ve bu eğri iki çizgiye de bağlı olur. Örneğin <b>Eskiz Çalışma Tezgahında (Sketch Workbench)</b> iki adet çizgi parçası çizerek komutu uygulayalım ve komutun detaylı kullanımını öğrenmeye çalışalım.
         </p>
                                     <img src="images/freecad/curves_wb/Blend_curve_01.png" class="image fit"><br>
+                                    Eskizdeki (Sketch) çizgileri seçip <code>Blend curve</code> komutunu çalıştıralım.
                                     <img src="images/freecad/curves_wb/Blend_curve_02.png" class="image fit"><br>
+                                    Komut çalıştırıldıktan sonra elde ettiğimiz sonuç;
                                     <img src="images/freecad/curves_wb/Blend_curve_03.png" class="image fit"><br>
                                     <p>
        <code>Blend curve</code> komutunun çalıştırılması sonrasında iki çizgi (kenar) arasında oluşan eğrinin uçları, çizgilerin (kenarların) (yaklaşık olarak) orta noktalarında konumlanıyor. Oluşan <b>Blend_Curve</b> eğrisi Unsur ağacından seçtiğinizde aşağıdaki özellikleri görebilir ve seçeneklerini değiştirebilirsiniz. <b>Blend curve</b> komutu ile oluşan eğri, iki adet kenara (çizgiye) bağlı olduğu için, eğri parametrelerini değiştirmek amacıyla bu iki kenara (Edge1 ve Edge2) ayarlar kısmında belirtilmiştir.
@@ -498,11 +508,11 @@
             Özellikler paneli <b>Veri</b> Sekmesinde, aşağıdaki özellikler değiştirilebilir;<br>
             Açıklama kısmı okunduktan sonra aşağıdaki resimler de incelenirse, yazılanların daha rahat anlayacağını düşünüyorum.
             <ul>
-                <li><b>Continuity (Süreklilik)</b>:  Eğrinin süreklilik şeklini belirler. <code>C0</code>, <code>G1</code>, <code>G2</code>, <code>G3</code> ve <code>G4</code> seçenekleri vardır. Her iki kenarın (çizginin) <b>Continuity (Süreklilik)</b> ayarını <code>C0</code> olarak değiştirdiğimizde, eğriler, Doğrusal yapıya dönüşecektir.</li>  
+                <li><b>Continuity (Süreklilik)</b>:  Eğrinin süreklilik şeklini belirler. <code>C0</code>, <code>G1</code>, <code>G2</code>, <code>G3</code> ve <code>G4</code> seçenekleri vardır. Her iki kenarın (çizginin) <b>Continuity (Süreklilik)</b> ayarını <code>C0</code> olarak değiştirdiğimizde, eğriler, <b>Doğrusal</b> yapıya dönüşecektir.</li>  
                 
                                     <img src="images/freecad/curves_wb/Blend_curve_04.png" class="image fit"><br>
                 
-                <li><b>Parameter (Parametre)</b>: Bu ayar, oluşan eğrinin uç noktalarının,  1. ve 2.Kenarların hangi konumunda bulunması gerektiğini belirleyen kısımdır. Eğrinin uçlarından biri kenar çizginin üst kısmında konumlansın istersen, ilgili kenar çizgisinin uzunluğuna dair bilgiyi bu kısa yazmalıyız. <strong>Sketch WB</strong> ile çizgileri oluştururken her iki çizgiye de 34mm uzunluk değeri atamıştık. O nedenle <b>Parameter1</b> kısmına 34 değerini yazabiliriz. 34'ten daha büyük bir değer yazarsak bile <code>ENTER</code> tuşuna bastığımızda değer alabileceği en büyük değer olan 34'e ayarlanır. Eğrinin Kenar1 ve Kenar2 (Edge1 ve Edge2) ile birleştiği başlangıç ve bitiş yönlerinin ters olduğuna dikkat edin. Biri için başlangıç yani sıfır (0) konumu aşağıda iken diğerinde yukarıdadır. Eğri iki kenarı birleştirdiği için bir ucun bitişi, diğer ucun başlangıcı olduğu düşünülerek bu mantıktan dolayı yönlerin ters olduğu izah edilebilir.</li>
+                <li><b>Parameter (Parametre)</b>: Bu ayar, oluşan eğrinin uç noktalarının,  1. ve 2.Kenarların hangi konumunda bulunması gerektiğini belirleyen kısımdır. Eğrinin uçlarından biri kenar çizginin üst kısmında konumlansın istersen, ilgili kenar çizgisinin uzunluğuna dair bilgiyi bu kısma yazmalıyız. <strong>Sketch WB</strong> ile çizgileri oluştururken her iki çizgiye de 34mm uzunluk değeri atamıştık. O nedenle <b>Parameter1</b> kısmına en fazla 34 değerini yazabiliriz. 34'ten daha büyük bir değer yazarsak bile <code>ENTER</code> tuşuna bastığımızda değer alabileceği en büyük değer olan 34'e ayarlanır. Eğrinin Kenar1 ve Kenar2 (Edge1 ve Edge2) ile birleştiği başlangıç ve bitiş yönlerinin ters olduğuna dikkat edin. Biri için başlangıç yani sıfır (0) konumu aşağıda iken diğerinde yukarıdadır. Eğri iki kenarı birleştirdiği için bir ucun bitişi, diğer ucun başlangıcı olduğu düşünülerek bu mantıktan dolayı yönlerin ters olduğu izah edilebilir.</li>
                                     <img src="images/freecad/curves_wb/Blend_curve_05.png" class="image fit"><br>
 
                 
@@ -515,15 +525,27 @@
                                     <img src="images/freecad/curves_wb/Blend_curve_07.png" class="image fit"><br>
                 <p><strong>Scale</strong> (Ölçek) Değeri küçüldükçe, eğrinin kenara olan uzaklığı azalacak, negatif olması halinde eğri ters tarafa doğru yönelecektir. Eğer her iki kenarın da Scale değeri 0 (sıfır) olarak ayarlanırsa, eğri, doğrusal çizgi halini alacaktır.</p>
                                     <img src="images/freecad/curves_wb/Blend_curve_08.png" class="image fit"><br>
+                <b>Scale1</b> değeri <b>0</b><br> 
+                <b>Scale2</b> değeri <b>1,50</b>;
                                     <img src="images/freecad/curves_wb/Blend_curve_09.png" class="image fit"><br>
+                <b>Scale1</b> değeri <b>-1,50</b> (değer negatif olduğu için eğri ters yönde oluşturulur)<br>
+                <b>Scale2</b> değeri <b>1,50</b>;
                                     <img src="images/freecad/curves_wb/Blend_curve_10.png" class="image fit"><br>
+                <b>Scale1</b> değeri <b>0,00</b><br>
+                <b>Scale2</b> değeri <b>0,00</b> <br>
+                Her iki scale değeri de SIFIR olduğunda Eğri, Doğrusal Çizgiye dönüşür;
                                     <img src="images/freecad/curves_wb/Blend_curve_11.png" class="image fit"><br>
                 
-                <li><b>Edge1 / Edge2 (Kanar1 / Kenar2)</b>: <strong>Blend Curve Tool</strong> ile Eğri oluşturuken yararlandığımız kenarları (edge1 ve edge2), bir Eskiz (Sketch) içerisinde oluşturmuştuk. Eğer aynı eskiz'e (sketch'e) yeni bir kenar çizgisi daha ekler ve oluşturduğumuz Blend Curve Tool ile oluşturduğumuz eğrinin kenarlarından birini değiştirmek istersen <code>Edge1</code> ve <code>Edge2</code> ayarlarını kullanmamız gerekir. Önce Eskizimize (sketch) yeni bir kenar çizgisi ekleyelim.</li>
+                <li><b>Edge1 / Edge2 (Kenar1 / Kenar2)</b>: <strong>Blend Curve Tool</strong> ile Eğri oluşturuken yararlandığımız kenarları (edge1 ve edge2), bir Eskiz (Sketch) içerisinde oluşturmuştuk. Eğer aynı eskiz'e (sketch'e) yeni bir kenar çizgisi daha ekler ve oluşturduğumuz Blend Curve Tool ile oluşturduğumuz eğrinin kenarlarından birini değiştirmek istersen <code>Edge1</code> ve <code>Edge2</code> ayarlarını kullanmamız gerekir. Önce Eskizimize (sketch) yeni bir kenar çizgisi ekleyelim.</li>
                                     <img src="images/freecad/curves_wb/Blend_curve_12.png" class="image fit"><br>
+                Edge2 (Kenar2)'yi değiştirelim.
                                     <img src="images/freecad/curves_wb/Blend_curve_13.png" class="image fit"><br>
+                Öncelikle Edge2 (Kenar2)'yi silelim.
                                     <img src="images/freecad/curves_wb/Blend_curve_14.png" class="image fit"><br>
+                Sahne içerisinden Edge3 (Kenar3)'ü seçiyoruz.
                                     <img src="images/freecad/curves_wb/Blend_curve_15.png" class="image fit"><br>
+                <code>CTRL</code> + <code>R</code> ile çalışmayı yenilemeyi unutmayalım. Araç çubuğundaki Yenile butonunu da kullanabilirsiniz. <br>
+                Gördüğünz gibi, artık eskiz (sketch) içerisindeki Edge1 ve Edge3 arasında bağlantılı bir eğri oluşturuldu. Eğri güncellendi.
                                     <img src="images/freecad/curves_wb/Blend_curve_16.png" class="image fit"><br>
            
                 </ul> 
