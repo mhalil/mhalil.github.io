@@ -552,8 +552,8 @@
       
                                             <p>
         <img src="https://raw.githubusercontent.com/tomate44/CurvesWB/9f7064e9d0b6cb569b83228e67b91ea26d42570c/freecad/Curves/resources/icons/comb.svg"> <b><span id="comb_plot", style="color:#4acaa8">Comb plot:</span> </b><br>
-               Comb Plot (ParametricComb), bir eğrinin düzenliliğini veya yumuşaklığını ve iki eğri arasındaki sürekliliği görselleştirmeye yardımcı olabilir. <b>Not:</b> Bir tarak yalnızca görselleştirme içindir. <br>
-               Bu komut ile, 3B eğriler için bir 3B tarak oluşturulur. Sample(örnek) ve Scale (ölçek) ayarları değiştirilebilir. Bu araç, Curves (Eğriler) adı verilen harici çalışma tezgahının bir parçasıdır.
+               Comb Plot (ParametricComb), bir eğrinin düzenliliğini veya yumuşaklığını ve iki eğri arasındaki sürekliliği görselleştirmeye yardımcı olur. Bu komut ile, 3B eğriler için bir 3B tarak oluşturulur. Sample(örnek) ve Scale (ölçek) ayarları değiştirilebilir. Bu araç, Curves (Eğriler) adı verilen harici çalışma tezgahının bir parçasıdır.<br>
+                <b>Not:</b> Bu tarak yalnız görselleştirme içindir. 
         </p>
 
         <b><span style="color:#4acaa8">Kullanım:</span></b> Komutu çalıştırmak için aşağıdaki işlemleri sırasıyla uygulayın:
@@ -567,11 +567,15 @@
             <b>NOT:</b><br>                        
             Bu araç görsel bir yardım işlevi görür. <br>
             <img src="images/freecad/curves_wb/CombPlot_1.png" class="image fit"><br>
+            Komut sonrası oluşan tarak yapısı;
             <img src="images/freecad/curves_wb/CombPlot_2.png" class="image fit"><br>
+            <strong>Samples</strong> (Örnekleme) değerini 25 olarak değiştiriyoruz;
             <img src="images/freecad/curves_wb/CombPlot_3.png" class="image fit"><br>
+            <strong>Scale</strong> (Ölçek) değerini 250 olarak düşürüyoruz;
             <img src="images/freecad/curves_wb/CombPlot_4.png" class="image fit"><br>
-            <strong>Blend Surface</strong> komutu ile oluşturulan eğrisel yüzeyin parametreleri değiştirildiğinde oluşam yüzey ile, kenar çizgilerinin bağlantı sürekliliği <strong>Comb plot</strong> tarağı ile gayet net görünüyor. Bu tarak, iki yüzeyin birleşiminde keskin ya da yumuşak geçiş olduğunu görüntüler. Oluşan Model, render görüntüsü ya da <strong> Zebra Tool </strong>  ile incelendiğinde, birleşim kenarları boyunca ışık yansımasının değişimi net bir şekilde görülebilir.
+            <strong>Blend Surface</strong> komutu ile oluşturulan eğrisel yüzeyin parametreleri değiştirildiğinde oluşan yüzey ile, kenar çizgilerinin bağlantı sürekliliği <strong>Comb plot</strong> tarağı ile gayet net incelenebilir. Bu tarak, iki yüzeyin birleşiminde keskin ya da yumuşak geçiş olduğunu görüntüler. Oluşan Model, render görüntüsü ya da <strong> Zebra Tool </strong>  ile incelendiğinde, birleşim kenarları boyunca ışık yansımasının değişimi net bir şekilde görülebilir.
             <img src="images/freecad/curves_wb/CombPlot_5.png" class="image fit"><br>
+            <strong>Blend Surface</strong> komutu parametreleri değiştirildiğinde (artırıldığında) <strong>Comb Plot</strong> tarağının nasıl değiştiğini aşağıdaki resimde görüyoruz;
             <img src="images/freecad/curves_wb/CombPlot_6.png" class="image fit"><br>
         </p>
                                     
@@ -590,18 +594,25 @@
            Seçili yüzey kendi normali doğrultusunda, seçili eğri ya da kenar çizgisi ile kesişecek şekilde hareket ettirildiğinde, eğri veya kenar, yüzey üzerinde nereye değerse izdüşümü o eğri olur. <br>
             Seçili eğrinin (veya kenar çizgisinin), seçili yüzey üzerine izdüşümünün nasıl aktarıldığını, aşağıdaki resimlerden daha net anlayacaksınız.
             <br>
+            Öncelikle bir eğri ve bir yüzey seçip <strong>CurveOnSurface</strong> komutunu çalıştıralım.
             <img src="images/freecad/curves_wb/CurveOnSurface_00.png" class="image fit"><br>
+            Sahnede turuncu renkli görünen kesik çizgi, seçili eğrinin, seçili yüzey üzerine izdüşümüdür. Bu izdüşüm, Unsur ağacında <b>CurveOnSurface</b> ismi ile görünmektedir.
             <img src="images/freecad/curves_wb/CurveOnSurface_01.png" class="image fit"><br>
+            3D modelimizin üst kısmına ait bir kenarı ve alt yüzeyi seçerek komutu çalıştırdığımızda elde ettiğimiz izdüşüm eğrisi aşağıda görünmektedir;
             <img src="images/freecad/curves_wb/CurveOnSurface_02.png" class="image fit"><br>
             Gördüğünüz üzere, seçili kenar çizgisinin (hiponetüs) uzunluğu fazla olmasına rağmen, <strong>CurveOnSurface</strong> komutu sayesinde oluşan yeni eğrinin mesafesi 13,96mm olmaktadır. Bunun sebebi, seçilen kenar çizgisinin seçili yüzey normali doğrultusunda izdüşüm mesafesinin 13,96mm olmasıdır.
             <img src="images/freecad/curves_wb/CurveOnSurface_03.png" class="image fit"><br>
+            Modelimizin alt yüzeyindeki (yay ve doğru parçasından oluşan) alanı, üst kısımdaki eğrinin çevre uzunluğundan küçük olmasına rağmen, birlikte seçilip komut çalıştırıldığında, izdüşüm oluştuğu görülmektedir. Bu komuttaki temel mantık, seçili alanın, seçili kenar ya da eğriden büyük olması değildir. Yüzey seçmekteki amaç, seçili eğrinin, hangi yüzey normali doğrultusunda izdüşümünün oluşturulacağını belirtmektir.
             <img src="images/freecad/curves_wb/CurveOnSurface_04.png" class="image fit"><br>
-            Bir eğrinin izdüşümünün bir yüzey üzerine aktarılması sonucu yeni bir eğri oluşturmak için, eğri ve yüzeyin <u>aynı nesnede olma zorunluluğu <b>yoktur</b></u>. 2 farklı nesne kullanılarak ta, izdüşüm işlemi gerçekleştirilebilir. Aşağıdaki resimleri inceleyin lütfen.
+            Bir eğrinin izdüşümünün bir yüzey üzerine aktarılması sonucu yeni bir eğri oluşturmak için, eğri ve yüzeyin <u>aynı nesnede olma zorunluluğu <b>yoktur</b></u>. 2 farklı nesne kullanılarak ta, izdüşüm işlemi gerçekleştirilebilir. Aşağıdaki resimleri inceleyin lütfen. <br>
             <img src="images/freecad/curves_wb/CurveOnSurface_05.png" class="image fit"><br>
+            Yukarıdaki nesnenin alt kısmında bulunan eğri (yay parçası) ile Düzlem nesnesinin yüzeyi seçilirse, izdüşüm nasıl olur, bakalım;
             <img src="images/freecad/curves_wb/CurveOnSurface_06.png" class="image fit"><br>
+            Sol ve Sağ kenarları da seçip, düzlem yüzeye izdüşümünü alalım;
             <img src="images/freecad/curves_wb/CurveOnSurface_07.png" class="image fit"><br>
+            Tüm seçili çizgilerin/eğrilerin düzlem yüzey üzerindeki izdüşümü alındığında sonuç aşağıdaki gibi olmalı;
             <img src="images/freecad/curves_wb/CurveOnSurface_08.png" class="image fit"><br>
-            <strong>CurveOnSurface</strong> komutu sayesinde oluşan yeni eğrilerin , Yüzey normali doğrultusunda (extrude komutu ile) katılanması sonucunda, 3B nesnemizdeki seçili eğriler ile çakıştığı (eşit olduğu) görülmektedir.
+            <strong>CurveOnSurface</strong> komutu sayesinde oluşan yeni eğrilerin, Yüzey normali doğrultusunda (extrude komutu ile) katılanması sonucunda, 3B nesnemizdeki seçili eğriler ile çakıştığı (eşit olduğu) görülmektedir.
             <img src="images/freecad/curves_wb/CurveOnSurface_09.png" class="image fit"><br>
             
         </p>
