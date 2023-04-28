@@ -824,44 +824,85 @@
                 <li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>MultiLoft</strong> seçeneğini kullanın.</li> 
             </ul>
     <p>
-        AÇIKLAMA_VE_RESİM <br>
-        <img src="images/freecad/curves_wb/MultiLoft_01.png" class="image fit"><br>        
-        <img src="images/freecad/curves_wb/MultiLoft_02.png" class="image fit"><br>        
-        <img src="images/freecad/curves_wb/MultiLoft_03.png" class="image fit"><br>        
-        <img src="images/freecad/curves_wb/MultiLoft_04.png" class="image fit"><br>        
-        <img src="images/freecad/curves_wb/MultiLoft_05.png" class="image fit"><br>        
-        <img src="images/freecad/curves_wb/MultiLoft_06.png" class="image fit"><br>        
-        <img src="images/freecad/curves_wb/MultiLoft_07.png" class="image fit"><br>        
+        Bir eskiz (sketch) içerisinde 3 adet kapalı çokgen çiziyoruz. <br>
+        <img src="images/freecad/curves_wb/MultiLoft_01.png" class="image fit"><br> 
+        Çizdiğimiz 2 boyutlu (2B) eskizi, <strong>Part</strong> Çalışma Tezgahındaki <strong>Extrude</strong> komutu ile <b>0,01 mm</b> değerinde katılayarak 3 boyutlu (3B) nesne haline getiriyoruz. 
+        <img src="images/freecad/curves_wb/MultiLoft_02.png" class="image fit"><br> 
+        <strong>MultiLoft</strong> komutunu kullanabilmek için yüzey alanına ihtiyaç vardır. Bu yüzeyi, <b>Extrude</b> komutu ile elde edebileceğimiz gibi, <strong>Surface</strong> ya da <strong>Draft</strong> Çalışma Tezgahları komutlarıyla da elde edebiliriz. Aşağıda, eskiz kenarlarını seçerek oluşturulmuş yüzeyler gösterilmektedir.
+        <img src="images/freecad/curves_wb/MultiLoft_03.png" class="image fit"><br>  
+        <strong>Extrude</strong> komutu ile katıladığımız nesneyi seçerek, <strong>Draft</strong> Çalışma Tezgahı komutlarından olan <strong>Clone (Klon)</strong> komutu ile 3 kez klonluyoruz (kopyasını çıkarıyoruz).
+        <img src="images/freecad/curves_wb/MultiLoft_04.png" class="image fit"><br> 
+        Klonladığımız her kopyayı Z ekseninde bir miktar yukarı taşıyoruz.
+        <img src="images/freecad/curves_wb/MultiLoft_05.png" class="image fit"><br>  
+        Orijinal nesne ile birlikte tüm kopyaları seçerek <strong>MultiLoft</strong> komutunu çalıştırıyoruz.
+        <img src="images/freecad/curves_wb/MultiLoft_06.png" class="image fit"><br>  
+        Nesne ve kopyaları (klonları) paralel olduğu için, <strong>MultiLoft</strong> komut sonucu, <b>Extrude</b> komutuna benzer bir sonuç elde ediyoruz.
+        <img src="images/freecad/curves_wb/MultiLoft_07.png" class="image fit"><br>  
+        <strong>MultiLoft</strong> komut sonrası gizlenmiş olan <b>Extrude</b> nesnelerini görüntülediğimizde, değişiklik öncesi tüm klonların birbirine paralel ve aynı doğrultuda olduğunu görebiliyoruz.
         <img src="images/freecad/curves_wb/MultiLoft_08.png" class="image fit"><br>        
-        <img src="images/freecad/curves_wb/MultiLoft_09.png" class="image fit"><br>        
-        <img src="images/freecad/curves_wb/MultiLoft_10.png" class="image fit"><br>        
-        <img src="images/freecad/curves_wb/MultiLoft_11.png" class="image fit"><br>        
-        <img src="images/freecad/curves_wb/MultiLoft_12.png" class="image fit"><br>        
-        <img src="images/freecad/curves_wb/MultiLoft_13.png" class="image fit"><br>        
-        <img src="images/freecad/curves_wb/MultiLoft_14.png" class="image fit"><br>        
-        <img src="images/freecad/curves_wb/MultiLoft_15.png" class="image fit"><br>        
-        <img src="images/freecad/curves_wb/MultiLoft_16.png" class="image fit"><br>        
-        <img src="images/freecad/curves_wb/MultiLoft_17.png" class="image fit"><br>        
-        <img src="images/freecad/curves_wb/MultiLoft_18.png" class="image fit"><br>        
-        <img src="images/freecad/curves_wb/MultiLoft_19.png" class="image fit"><br>        
-        <img src="images/freecad/curves_wb/MultiLoft_20.png" class="image fit"><br>        
+        Şimdi klonları sıra il seçip, <b>Z</b> ekseninde <b>10</b>'ar derece çevirelim. Klonlar arası mesafeyi daha önce <b>20 mm</b> olarak belirlediğimiz, özellikler panelinde görünüyor..
+        <img src="images/freecad/curves_wb/MultiLoft_09.png" class="image fit"><br>  
+        Nesnemizim 4 adet klonunu oluşturduğumuz için, son klonu, <b>Z</b> ekseninde <b>40 derece</b> çevirmiş olduk. Gördüğünüz gibi klonların açı veya konum bilgilerini değiştirdiğimizde, MultiLoft komutu sonucu elde edilen 3D nesnemiz de anlık olarak güncellenip değişiyor.
+        <img src="images/freecad/curves_wb/MultiLoft_10.png" class="image fit"><br> 
+        Orijinal Eskizin içerisine girip eskizi düzenlediğimizde (ekleme / silme) ne olacağını inceleyelim.
+        <img src="images/freecad/curves_wb/MultiLoft_11.png" class="image fit"><br> 
+        Gördüğünüz gibi, eskizi onaylayıp çıktığımız an, yapılan değişiklik diğer klonlara da yansıyor ve MultiLoft komutu yapılan değişikliklere uygun sonuç veriyor.
+        <img src="images/freecad/curves_wb/MultiLoft_12.png" class="image fit"><br> 
+        Eskizde yeni bir değişiklik yapalım ve sonucu görelim.
+        <img src="images/freecad/curves_wb/MultiLoft_13.png" class="image fit"><br>   
+        Sonuçta eskize eklenen yeni nesne döndürülmüş olarak katılanırken, kama kanalı (slot) şeklinin içerisine çizilen geometri dolayısı ile yapıda bir boşluk oluşturuldu.
+        <img src="images/freecad/curves_wb/MultiLoft_14.png" class="image fit"><br>  
+        Bir başka örnek daha yapalım. Bir eskizde  2 kapalı alan oluşturalım ve bu eskizi 3 defa kopyalayalım. 
+        <img src="images/freecad/curves_wb/MultiLoft_15.png" class="image fit"><br>   
+        Her bir eskizde, şekillerin ebatlarını ve konumlarını (X, Y, Z koordinatı) ve X ekseni etrafındaki açılarını değiştirelim. Ortadaki eskizin Y ekseni ile açısı 45 derece (x ekseni etrafında 45 derece çevrildi), koordinatları: (0, 30, -10)  
+        <img src="images/freecad/curves_wb/MultiLoft_16.png" class="image fit"><br>  
+        Alt kısımdaki eskizin Y ekseni ile açısı 0 (sıfır) derece (Y ekseni üzerinde ya da paralel), koordinatları: (0, 340, -50)
+        <img src="images/freecad/curves_wb/MultiLoft_17.png" class="image fit"><br>  
+        2 boyutlu eskizleri sırası ile yüzeye kavuşturuyoruz. Aşağıdaki örnekte <strong>Part</strong> Çalışma Tezgahındaki <strong>Extrude</strong> komutunu kullanarak nesneleri 3 boyutlu (3B) haline getirdim. 
+        <img src="images/freecad/curves_wb/MultiLoft_18.png" class="image fit"><br> 
+        <b>Extrude</b> kalınlığı olarak <b>0,01mm</b> değeri belirledim. Sonuçta elde etmek istediğim şey, bir yüzeye sahip olmak. 2 boyutlu bir yüzey elde etmek isterseniz <strong>Draft</strong> Çalışma Tezgahı komutlarından biri olan <strong>Upgrade</strong> komutunu da kullanabilirsiniz.
+        <img src="images/freecad/curves_wb/MultiLoft_19.png" class="image fit"><br>
+        3 eskizi de yüzeye kavuşturduktan sonra sıra, nesneleri seçip <b>MultiLoft</b> komutunu çalıştırmaya geldi.
+        <img src="images/freecad/curves_wb/MultiLoft_20.png" class="image fit"><br>  
+        Veeee sonuç karşınızda.
         <img src="images/freecad/curves_wb/MultiLoft_21.png" class="image fit"><br>              
             
     </p>
         
  <p>
     <img src="https://raw.githubusercontent.com/tomate44/CurvesWB/9aac6c2365311724487f79df3343dab90ddcb819/freecad/Curves/resources/icons/blendSurf.svg"> <b><span id="blendsurface", style="color:#4acaa8">BlendSurface:</span> </b><br>
-        KISA_ACIKLAMA<br>
+        <strong>BlendSurface</strong> komutu, iki yüzeyi, seçili kenarları arasında yeni yüzey oluşturarak bağlar. Komutu çalıştırmadan önce öncelikle birinci yüzeye ait kenarı ve ardından yüzeyi, sonrasında ikinci yüzeyin kenarı ve yüzeyin kendisinin seçilmesi gerekir.<br>
     </p>
         <b><span style="color:#4acaa8">Kullanım:</span></b> Komutu çalıştırmak için aşağıdaki adımları sırası ile uygulayın:
             <ul>
-                <li>Öncelikle bir eğri (veya kenar çizgisi) ve yüzey seçin. (Birlikte seçim için <code>CTRL</code> tuşunu kullanın)</li>
+                <li>Öncelikle birinci yüzeye ait bir kenarı ve ardından yüzeyin kendisini seçin. (Birlikte seçim için <code>CTRL</code> tuşunu kullanın)</li>
+                <li>İkinci olarak ikinci yüzeyin önce bir kenarını sonra yüzeyin kendisini seçin. (Tüm seçim işlemlerinde <code>CTRL</code> tuşuna basılı tutun)</li>
                 <li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
                 <li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>BlendSurface</strong> seçeneğini kullanın.</li> 
             </ul>
     <p>
         AÇIKLAMA_VE_RESİM <br>
-        <img src="images/freecad/curves_wb/RESIM_RESIM.png" class="image fit"><br>        
+        <img src="images/freecad/curves_wb/BlendSurface_01.png" class="image fit"><br>        
+        <img src="images/freecad/curves_wb/BlendSurface_02.png" class="image fit"><br>        
+        <img src="images/freecad/curves_wb/BlendSurface_03.png" class="image fit"><br>        
+        <img src="images/freecad/curves_wb/BlendSurface_04.png" class="image fit"><br>        
+        <img src="images/freecad/curves_wb/BlendSurface_05.png" class="image fit"><br>        
+        <img src="images/freecad/curves_wb/BlendSurface_06.png" class="image fit"><br>        
+        <img src="images/freecad/curves_wb/BlendSurface_07.png" class="image fit"><br>        
+        <img src="images/freecad/curves_wb/BlendSurface_08.png" class="image fit"><br>        
+        <img src="images/freecad/curves_wb/BlendSurface_09.png" class="image fit"><br>        
+        <img src="images/freecad/curves_wb/BlendSurface_10.png" class="image fit"><br>        
+        <img src="images/freecad/curves_wb/BlendSurface_11.png" class="image fit"><br>        
+        <img src="images/freecad/curves_wb/BlendSurface_12.png" class="image fit"><br>        
+        <img src="images/freecad/curves_wb/BlendSurface_13.png" class="image fit"><br>        
+        <img src="images/freecad/curves_wb/BlendSurface_14.png" class="image fit"><br>        
+        <img src="images/freecad/curves_wb/BlendSurface_15.png" class="image fit"><br>        
+        <img src="images/freecad/curves_wb/BlendSurface_16.png" class="image fit"><br>        
+        <img src="images/freecad/curves_wb/BlendSurface_17.png" class="image fit"><br>        
+        <img src="images/freecad/curves_wb/BlendSurface_18.png" class="image fit"><br>        
+        <img src="images/freecad/curves_wb/BlendSurface_19.png" class="image fit"><br>        
+        <img src="images/freecad/curves_wb/BlendSurface_20.png" class="image fit"><br>        
+        <img src="images/freecad/curves_wb/BlendSurface_21.png" class="image fit"><br>        
             
     </p>
         
