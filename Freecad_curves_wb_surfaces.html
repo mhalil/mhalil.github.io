@@ -881,38 +881,78 @@
                 <li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>BlendSurface</strong> seçeneğini kullanın.</li> 
             </ul>
     <p>
-        AÇIKLAMA_VE_RESİM <br>
-        <img src="images/freecad/curves_wb/BlendSurface_01.png" class="image fit"><br>        
-        <img src="images/freecad/curves_wb/BlendSurface_02.png" class="image fit"><br>        
-        <img src="images/freecad/curves_wb/BlendSurface_03.png" class="image fit"><br>        
-        <img src="images/freecad/curves_wb/BlendSurface_04.png" class="image fit"><br>        
-        <img src="images/freecad/curves_wb/BlendSurface_05.png" class="image fit"><br>        
-        <img src="images/freecad/curves_wb/BlendSurface_06.png" class="image fit"><br>        
+        <strong>BlendSurface</strong> komutunun kullanımına yönelik örnekler yapalım. <br>
+        Aşağıda, kenar çizgileri birbirine 45 derece açılı duran 3 adet kare şekil (yüzey) var. Şekillerin tamamı aynı düzlemde ve birbirine paralel konumda.
+        <img src="images/freecad/curves_wb/BlendSurface_01.png" class="image fit"><br>  
+        Sol kısımdaki şeklin yüzeyini ve kenarını <code>CTRL</code> tuşuna basılı tutarak seçiyoruz, ardından ortadaki şeklin yüzeyi ve kenar çizgisini <code>CTRL</code> tuşu yardımıyla seçiyoruz. Seçim işlemi tamamlandıktan sonra araç çubuğunda bulunan <code>BlendSurface</code> düğmesine basıyoruz. İşlem sonucunda seçili kenarlar arasında yeni bie düzlem yüzey oluşturuldu. Yüzeyin kenarları eğriler vasıtası ile elde edildi.
+        <img src="images/freecad/curves_wb/BlendSurface_02.png" class="image fit"><br> 
+        Yeni oluşan <strong>Blend_Surface</strong> yüzeyini, Unsur ağacından seçerek özelliklerini incelediğimizde, yüzeyi oluşturan eğrilerin süreklilik değerlerinin ne olduğunu görüyoruz. Bu değerleri isteğimiz doğrultusunda değiştirebiliyoruz.
+        <img src="images/freecad/curves_wb/BlendSurface_03.png" class="image fit"><br> 
+        Birinci (Continuity1) ve ikinci (Continuity2) eğrinin değerlerini <b>2</b>'den <b>5</b>'e yükseltip sonucu inceliyoruz.
+        <img src="images/freecad/curves_wb/BlendSurface_04.png" class="image fit"><br>  
+        Sahnenin ortasındaki ve sağ alt kısmındaki şekillerin de ilgili yüzey ve kenar çizgilerini seçerek <strong>BlendSurface</strong> komutu çalıştıralım. İşlem sonucu yeni bir yüzey (mavi renkli) oluştuğunu aşağıdaki resimde görüyoruz.
+        <img src="images/freecad/curves_wb/BlendSurface_05.png" class="image fit"><br>  
+        Unsur ağacından <strong>Blend_Surface001</strong> isimli yeni yüzeyi seçerek eğrilerin süreklilik (Continuity1 / Continuity2) değerlerini değiştirerek oluşan yüzey şeklini inceliyoruz.
+        <img src="images/freecad/curves_wb/BlendSurface_06.png" class="image fit"><br>  
+        <strong>BlendSurface</strong> komutu, sadece paralel yüzeyde çalışmaz. Aşağıdaki örnekte, birbirine 90 derece açı ile konumlanmış yüzeyleri görmektesiniz. <strong>BlendSurface</strong> komutunu, bu yüzeyler arasında eğrisel bir yüzey oluşturmak için kullanalım.
         <img src="images/freecad/curves_wb/BlendSurface_07.png" class="image fit"><br>        
-        <img src="images/freecad/curves_wb/BlendSurface_08.png" class="image fit"><br>        
-        <img src="images/freecad/curves_wb/BlendSurface_09.png" class="image fit"><br>        
-        <img src="images/freecad/curves_wb/BlendSurface_10.png" class="image fit"><br>        
-        <img src="images/freecad/curves_wb/BlendSurface_11.png" class="image fit"><br>        
-        <img src="images/freecad/curves_wb/BlendSurface_12.png" class="image fit"><br>        
-        <img src="images/freecad/curves_wb/BlendSurface_13.png" class="image fit"><br>        
-        <img src="images/freecad/curves_wb/BlendSurface_14.png" class="image fit"><br>        
+        Kenar ve Yüzeyleri seçerek <strong>BlendSurface</strong> komutu çalıştırıyoruz.
+        <img src="images/freecad/curves_wb/BlendSurface_08.png" class="image fit"><br>
+        İşlem sonrası oluşan eğrisel yüzeyi aşağıda görmektesiniz.
+        <img src="images/freecad/curves_wb/BlendSurface_09.png" class="image fit"><br>  
+        <strong>Blend_Surface002</strong> yüzeyinin süreklilik değerleri; <br>
+        Continuity1:<b>2</b>  <br>
+        Continuity2: <b>2</b>
+        <img src="images/freecad/curves_wb/BlendSurface_10.png" class="image fit"><br>  
+        <strong>Blend_Surface002</strong> yüzeyinin süreklilik değerlerini değiştiriyor ve elde edilen yüzeyi inceliyoruz; <br>
+        Continuity1:<b>9</b>  <br>
+        Continuity2: <b>2</b>
+        <img src="images/freecad/curves_wb/BlendSurface_11.png" class="image fit"><br>  
+        Sahnenin sol kısmında duran ve <b>YZ</b> düzlemine paralel konumdaki şekli seçerek, <b>Z</b> ekseninde aşağı doğru taşıyoruz. 
+        <img src="images/freecad/curves_wb/BlendSurface_12.png" class="image fit"><br>  
+        <code>OK</code> (Tamam) butonuna basıp şeklin yeni konumu onaylandığında, <strong>BlendSurface</strong> komutu ile oluşturulan yüzey (<strong>Blend_Surface002</strong> ), otomatik olarak güncelleniyor.
+        <img src="images/freecad/curves_wb/BlendSurface_13.png" class="image fit"><br> 
+        <strong>Blend_Surface002</strong> yüzeyinin süreklilik değerleri incelendiğinde biraz önce belirlediğimiz değerlerin geçerli olduğu görülüyor.; <br>
+        Continuity1:<b>9</b>  <br>
+        Continuity2: <b>2</b>
+        <img src="images/freecad/curves_wb/BlendSurface_14.png" class="image fit"><br> 
+        <strong>BlendSurface</strong> komutunu kullanabileceğimiz güzel bir örnekle konuyu kapatalım.<br>
+        <strong>Part</strong> Çalışma Tezgahında Parametrik Silindir oluşturalım. Silindirin Yarıçap değerini <b>2,00 mm</b>, Yükseklik değerini <b>5,00 mm</b> olarak belirleyelim.
         <img src="images/freecad/curves_wb/BlendSurface_15.png" class="image fit"><br>        
-        <img src="images/freecad/curves_wb/BlendSurface_16.png" class="image fit"><br>        
-        <img src="images/freecad/curves_wb/BlendSurface_17.png" class="image fit"><br>        
-        <img src="images/freecad/curves_wb/BlendSurface_18.png" class="image fit"><br>        
-        <img src="images/freecad/curves_wb/BlendSurface_19.png" class="image fit"><br>        
-        <img src="images/freecad/curves_wb/BlendSurface_20.png" class="image fit"><br>        
-        <img src="images/freecad/curves_wb/BlendSurface_21.png" class="image fit"><br>        
+        Silindirin <b>2</b> adet kopyasını çıkararak, aşağıdaki resimde göründüğü gibi, silindirleri birbiri ile 120'şer derece açı ile konumlandıralım.
+        <img src="images/freecad/curves_wb/BlendSurface_16.png" class="image fit"><br> 
+        Silindirlerden birinin çemberini seçerek <strong>Discretize</strong> komutunu çalıştıralım. <strong>Discretize</strong> komutu hakkında daha fazla bilgi için <a href="Freecad_curves_wb_curves.html#discretize" >BURAYI</a> ziyaret edebilirsiniz.
+        <img src="images/freecad/curves_wb/BlendSurface_17.png" class="image fit"><br> 
+        Komut çalıştrıldıktan sonra seçili eğri üzerinde Varsayılan olarak Number (Sayı) algoritması ile <b>100</b> adet nokta oluşturulur. 
+        <img src="images/freecad/curves_wb/BlendSurface_18.png" class="image fit"><br>   
+        Number (Sayı) parametresi <b>4</b> olarak değiştirildiğinde, oluşan nokta sayısı ve noktalar arası mesafe, güncellendi. 
+        <img src="images/freecad/curves_wb/BlendSurface_19.png" class="image fit"><br>
+        Aynı işlemleri diğer Silindirlere de uygulayarak, her bir silindirin bir yüzeyindeki çember üzerine, eşit aralıklı <b>4</b>'er adet nokta ekliyoruz.
+        <img src="images/freecad/curves_wb/BlendSurface_20.png" class="image fit"><br>  
+        Silindir yüzeyini seçerek <b>Surface</b> menüsündeki <b>Segment surface</b> komutunu çalıştırıyoruz. <b>Segment surface</b> komutu hakkında daha fazla bilgi almak isterseniz <a href="Freecad_curves_wb_surfaces.html#segmentsurface">BURAYI</a> ziyaret edebilirsiniz.
+        <img src="images/freecad/curves_wb/BlendSurface_21.png" class="image fit"><br> 
+        Komut çalıştırıldıktan sonra silindir nesnesini gizliyoruz ve oluşan Segment Yüzeyi (Segment_Surface) görüyoruz. <br>
+        <b>Option (Seçenek)</b> özelliği, <b>Custom (Özel)</b> olarak değiştiriyoruz. <br>
         <img src="images/freecad/curves_wb/BlendSurface_22.png" class="image fit"><br>        
-        <img src="images/freecad/curves_wb/BlendSurface_23.png" class="image fit"><br>        
-        <img src="images/freecad/curves_wb/BlendSurface_24.png" class="image fit"><br>        
-        <img src="images/freecad/curves_wb/BlendSurface_25.png" class="image fit"><br>        
-        <img src="images/freecad/curves_wb/BlendSurface_26.png" class="image fit"><br>        
-        <img src="images/freecad/curves_wb/BlendSurface_27.png" class="image fit"><br>        
-        <img src="images/freecad/curves_wb/BlendSurface_28.png" class="image fit"><br>        
+        <strong>Knots UProvider</strong> seçeneğini kullanarak oluşturduğumuz <b>4</b> noktayı değer olarak atayalım. <strong>Knots UProvider</strong> seçeneğinin yanındaki <code>...</code> butonuna basınca karşımıza çıkan <b>Bağlantı (Link)</b> penceresinden, <b>4</b> noktaya ait öğeyi (<b>Discretize_Edge</b>) seçip ardından <code>OK</code> (Tamam) butonuna basıyoruz. 
+        <img src="images/freecad/curves_wb/BlendSurface_23.png" class="image fit"><br>  
+        İşlem sonrası seçili yüzey, belirlenen öğedeki (<b>Discretize_Edge</b>) nokta sayısı ve konumundan itibaren dikey parçalara ayrılıyor. 
+        <img src="images/freecad/curves_wb/BlendSurface_24.png" class="image fit"><br>
+        Aynı işlemleri diğer silindirler için de yapıyoruz. Böylece, <strong>BlendSurface</strong> komutu ile birleştirilecek yüzey ve kenarları elde etmiş olduk.
+        <img src="images/freecad/curves_wb/BlendSurface_25.png" class="image fit"><br>
+        Aşağıda gösterildiği şekilde <strong>Segment_Surface</strong> ve <strong>Segment_Surface_002</strong> nesnelerinin kenar ve yüzeyleri seçerek <strong>BlendSurface</strong> komutunu çalıştırıyoruz.
+        <img src="images/freecad/curves_wb/BlendSurface_26.png" class="image fit"><br> 
+        Seçilen kenar ve yüzeylerin konum ve açılarına bağlı olarak yeni bir eğrisel yüzey (mavi renkli yüzey) oluşuyor. 
+        <img src="images/freecad/curves_wb/BlendSurface_27.png" class="image fit"><br>  
+        <strong>Segment_Surface</strong> ve <strong>Segment_Surface_001</strong> nesnelerine de aynı işlemi uyguluyoruz.
+        <img src="images/freecad/curves_wb/BlendSurface_28.png" class="image fit"><br>  
+        <strong>Segment_Surface_001</strong> ve <strong>Segment_Surface_002</strong> nesnelerine de aynı işlemi uyguluyor ve sonucu inceliyoruz. Oluşan yeni yüzeylerin arasında bir boşluk (yırtık) olduğunu görüyoruz. 
         <img src="images/freecad/curves_wb/BlendSurface_29.png" class="image fit"><br>        
-        <img src="images/freecad/curves_wb/BlendSurface_30.png" class="image fit"><br>        
-        <img src="images/freecad/curves_wb/BlendSurface_31.png" class="image fit"><br>        
+        Eğrisel Üçgen yapısına sahip boşluğu kapatmak/doldurmak için <strong>Surface</strong> Çalışma tezgahı komutlarından <strong>Boundaries</strong> komutunu kullanıyoruz.
+        <img src="images/freecad/curves_wb/BlendSurface_30.png" class="image fit"><br> 
+        Komut doğru bir şekilde çalıştırılıp tamamlandıktan sonra, yırtık / boşluk kısmı kapanmış oluyor.
+        <img src="images/freecad/curves_wb/BlendSurface_31.png" class="image fit"><br> 
+        Sonuçu beğeninize sunuyorum.
         <img src="images/freecad/curves_wb/BlendSurface_32.png" class="image fit"><br>        
             
     </p>
