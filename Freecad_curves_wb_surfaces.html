@@ -136,7 +136,7 @@
     </p>
         <b><span style="color:#4acaa8">Kullanım:</span></b> Komutu çalıştırmak için aşağıdaki adımları sırası ile uygulayın:
             <ul>
-                <li>Öncelikle bir eğri(ler)i / kenar(lar)ı ve ardından yüzey(ler)i seçin. (Birlikte seçim için <code>CTRL</code> tuşunu kullanın)</li>
+                <li>Öncelikle eğri(ler)i / kenar(lar)ı ve ardından yüzey(ler)i seçin. (Birlikte seçim için <code>CTRL</code> tuşunu kullanın)</li>
                 <li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
                 <li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>Trim face</strong> seçeneğini kullanın.</li> 
             </ul>
@@ -155,8 +155,8 @@
         <img src="images/freecad/curves_wb/TrimFace_06.png" class="image fit"><br>
         Oluşan yüzeye <strong>Parça Çalışma Tezhagı (Part WB)</strong> içerisindeki <strong>3D Offset..</strong> komutu ile et kalınlığı verip kenarlarını da <strong>Fillet</strong> komutu ile yuvarlatırsak ne elde etmiş oluruz acaba? :)
         <img src="images/freecad/curves_wb/TrimFace_06.2.png" class="image fit"><br>
-        Dikkat ettiyseniz, yukarıdaki anlatımlarda <strong>Trim face</strong> komutunu çalıştırmadan önce, sürekli <b>Üst görünüşe geçilmesi</b> istendi.
-        Bunun sebebi, <strong>Trim face</strong> komutunun, sahneye bakış açısı doğrultusunda çıkarma/silme işlemi yapmasındır. Aşağıdaki örnekte, sahneye izometrik bakış açısı ile bakıldığı esnada önce eğri ardından <b>eğrinin iç kısmındaki yüzey</b> seçilerek "Trim face" komutunu uygulanmaktadır.
+        Dikkat ettiyseniz, yukarıdaki anlatımlarda <strong>Trim face</strong> komutunu çalıştırmadan önce, sürekli <b>Üst görünüşe geçilmesi</b> ifade edildi.
+        Bunun sebebi, <strong>Trim face</strong> komutunun, sahneye bakış açısı doğrultusunda çıkarma/silme işlemi yapmasıdır. Aşağıdaki örnekte, sahneye izometrik bakış açısı ile bakıldığı esnada önce eğri ardından <b>eğrinin iç kısmındaki yüzey</b> seçilerek "Trim face" komutunu uygulanmaktadır.
         <img src="images/freecad/curves_wb/TrimFace_07.png" class="image fit"><br> 
         Sonuç, beklediğimiz gibi.
         <img src="images/freecad/curves_wb/TrimFace_08.png" class="image fit"><br> 
@@ -168,13 +168,13 @@
         <img src="images/freecad/curves_wb/TrimFace_11.png" class="image fit"><br> 
         Modelin izometrik görünümü:
         <img src="images/freecad/curves_wb/TrimFace_12.png" class="image fit"><br>  
-        "Trim face" komutunu kullanmak için çember, elips, dikdörtgen,..vb kapalı eğri kullanmak zorunda değiliz. Aşağıdaki resme bakın.
+        <code>Trim face</code> komutunu kullanmak için çember, elips, dikdörtgen,..vb kapalı eğri kullanmak zorunda değiliz. Aşağıdaki resme bakın.
         <img src="images/freecad/curves_wb/TrimFace_13.png" class="image fit"><br>        
         Üst görünüşten bakarak önce eğri parçalarını ardından yüzeyi seçiyorum.
         <img src="images/freecad/curves_wb/TrimFace_14.png" class="image fit"><br>  
         Yüzey seçimi yaparken, eğrinin alt kısmına tıklıyorum.
         <img src="images/freecad/curves_wb/TrimFace_15.png" class="image fit"><br>
-        "Trim face" komutu çalıştırıldığında, seçili yüzey tarafı (eğrinin alt kısmı) kalıyor, eğrinin  üst kısmı kesilip atılıyor.
+        <strong>Trim face</strong> komutu çalıştırıldığında, seçili yüzey tarafı (eğrinin alt kısmı) kalıyor, eğrinin  üst kısmı kesilip atılıyor.
         <img src="images/freecad/curves_wb/TrimFace_16.png" class="image fit"><br> 
         İşlem sonrası izometrik görünüş;
         <img src="images/freecad/curves_wb/TrimFace_17.png" class="image fit"><br>        
@@ -182,13 +182,13 @@
         <img src="images/freecad/curves_wb/TrimFace_18.png" class="image fit"><br>  
         Beklediğimiz gibi, eğrinin alt kısmındaki yüzey parçası siliniyor.
         <img src="images/freecad/curves_wb/TrimFace_19.png" class="image fit"><br> 
-        izometrik görünüş;
+        İzometrik görünüş;
         <img src="images/freecad/curves_wb/TrimFace_20.png" class="image fit"><br>        
         Eğer bir kaç yüzey parçasının uc uca eklenmesi ile elde edilmiş yüzey yapısı varsa, bu komut nasıl çalışır, bu konuyu inceleyelim.
         <img src="images/freecad/curves_wb/TrimFace_21.png" class="image fit"><br>    
         Eğri parçalarının ardından, en sağdaki yüzeyin üst kısmını seçiyorum. Yüzey rengine bakarak hangi yüzeylerin seçili olduğunu anlayabilirsiniz.
         <img src="images/freecad/curves_wb/TrimFace_22.png" class="image fit"><br>  
-        gördüğünüz gibi "Trim face" komutu, sadece seçili yüzeyi etkiledi. Seçilmeyen yüzeylerin tamamı silindi.
+        Gördüğünüz gibi "Trim face" komutu, sadece seçili yüzeyi etkiledi. Seçilmeyen yüzeylerin tamamı silindi.
         <img src="images/freecad/curves_wb/TrimFace_23.png" class="image fit"><br> 
         İzometrik görünüş;
         <img src="images/freecad/curves_wb/TrimFace_24.png" class="image fit"><br>        
