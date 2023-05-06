@@ -236,7 +236,7 @@
         
  <p>
     <img src="https://raw.githubusercontent.com/tomate44/CurvesWB/9aac6c2365311724487f79df3343dab90ddcb819/freecad/Curves/resources/icons/sketch_surf.svg"> <b><span id="sketchonsurface", style="color:#4acaa8">Sketch on Surface:</span> </b><br>
-        Bu komut sayesinde seçili yüzeyin, dikdörtgen şekilde sanal UV'si aılır ve bu düzlem yüzeye 2 boyutlu Eskiz (sketch) çizimi yapmamız sağlanır. Komut sonlandırıldığında, çizilen 2 boyutlu eskiz, yüzey üzerine uygulanır. <br>
+        Bu komut sayesinde seçili yüzeyin, sanal UV'si açılır ve bu düzlem yüzeye 2 boyutlu Eskiz (sketch) çizimi yapmamıza imkan verilir. Komut sonlandırıldığında, çizilen 2 boyutlu eskiz, yüzey üzerine uygulanır. <br>
     </p>
         <b><span style="color:#4acaa8">Kullanım:</span></b> Komutu çalıştırmak için aşağıdaki adımları sırası ile uygulayın:
             <ul>
@@ -254,17 +254,17 @@
         <img src="images/freecad/curves_wb/SketchOnSurface_03.png" class="image fit"><br>   
         <strong>Mapped_Sketch</strong> unsuruna çif tıklayarak düzenleme moduna girdiğimizde referans çizgilerden oluşan bir dikdörtgen göreceksiniz. Bu dikdörtgen şekil, seçili yüzeyin kumaş gibi açılıp karşınıza sunulduğu UV yapısını temsil eder. Anlaşılması açısından, <b>U:</b> eskizin X eksenini, <b>V:</b> eskizin Y ekseninin tanımlar diyebiliriz.
         <img src="images/freecad/curves_wb/SketchOnSurface_04.png" class="image fit"><br> 
-        referans çizgilerden oluşan bir dikdörtgenin içine istediğiniz şekli çizebilirsiniz. Aşağıdaki şekli çizip çoğaltarak sonucu görmek istiyorum.
+        Referans çizgilerden oluşan bir dikdörtgenin içine istediğiniz şekli çizebilirsiniz. Aşağıdaki şekli çizip çoğaltarak sonucu görmek istiyorum.
         <img src="images/freecad/curves_wb/SketchOnSurface_05.png" class="image fit"><br> 
         Çizimin doğrusal 10 kopyasını çıkarıyorum / çoğaltıyorum ve Sol paneldeki <b>Close</b> butonu ile eskizden çıkıyorum.
         <img src="images/freecad/curves_wb/SketchOnSurface_06.png" class="image fit"><br> 
-        Eskizi rahat çizebilmek adına Boru (Tube) modelini gizlemiştim. Şimdi onu tekrar <strong>Boşluk (Space)</strong> tuşu yardımıyla görünür hale getirelim.
+        Eskizi rahat çizebilmek adına Boru (Tube) modelini gizlemiştim. Şimdi unsur ağacından Tube nesnesini seçip tekrar <strong>Boşluk (Space)</strong> tuşu yardımıyla görünür hale getirelim.
         <img src="images/freecad/curves_wb/SketchOnSurface_07.png" class="image fit"><br>
         Sonuç, beklediğimiz gibi. Çizdiğimiz eskiz, Boru (Tube) modelinin seçili yüzeyine ilişkilendirildi.
         <img src="images/freecad/curves_wb/SketchOnSurface_08.png" class="image fit"><br> 
         Şimdi sıra, <strong>Sketch on Surface</strong> komutunun <b>Ayarlarını (Settings)</b> incelemeye geldi.
         <img src="images/freecad/curves_wb/SketchOnSurface_09.png" class="image fit"><br> 
-        <strong>Fill Faces (Yüzeyleri Doldur)</strong> seçeneği, çizilen eskizin kapalı çokgenlerini yüzeye dönüştürür.
+        <strong>Fill Faces (Yüzeyleri Doldur)</strong> seçeneği, çizilen eskizin kapalı çokgenlerinin iç kısmını doldurarak, yüzeye dönüştürür.
         <img src="images/freecad/curves_wb/SketchOnSurface_10.png" class="image fit"><br>        
         <strong>Thickness (Kalınlık)</strong> seçeneği, çizilen eskize, extrude komutuna benzer şekilde kalınlık kazandırır. <strong>Fill Faces (Yüzeyleri Doldur)</strong> seçeneği <b>true</b> ya da <b>false</b> olabilir. Her iki seçenekte de komut çalışır.
         <img src="images/freecad/curves_wb/SketchOnSurface_11.png" class="image fit"><br>        
@@ -272,7 +272,7 @@
         <img src="images/freecad/curves_wb/SketchOnSurface_12.png" class="image fit"><br>        
         Ayarlar bölümündeki değerler her zaman pozitif olmak zorunda değildir. Örneğin <strong>Thickness</strong> değerini Negatif yapalım ve sonucu görelim.
         <img src="images/freecad/curves_wb/SketchOnSurface_13.png" class="image fit"><br> 
-        Görüldüğü üzere <strong>Thickness</strong> değeri negatif olduğunda, eskiz, ters doğrultuda kalınlık kazandı. Son olarak ta, <b>Tube</b> nesnemizden, kalınlık verdiğimiz eskiz nesnemizi çıkaralım. Önce Tube sonra Sketch on surface nesnemizi seçelim.
+        Görüldüğü üzere <strong>Thickness</strong> değeri negatif olduğunda, eskiz, ters doğrultuda kalınlık kazandı. Son olarak ta, <b>Tube</b> nesnemizden, kalınlık verdiğimiz eskiz nesnemizi çıkaralım. Önce <b>Tube</b> sonra <b>Sketch on surface</b> nesnemizi seçelim.
         <img src="images/freecad/curves_wb/SketchOnSurface_14.png" class="image fit"><br> 
         <strong>Parça Çalışma Tezgahı (Part WB)</strong> komutlarından olan <strong>Kes (Cut)</strong> komutu ile 2. seçili nesneyi, ilk seçili nesneden çıkaralım.
         <img src="images/freecad/curves_wb/SketchOnSurface_15.png" class="image fit"><br> 
@@ -287,9 +287,9 @@
         Gizlemiş olduğumuz <strong>Boru/Tüp (Tube)</strong> nesnemizi görüntüleyelim.
         <img src="images/freecad/curves_wb/SketchOnSurface_20.png" class="image fit"><br> 
         <strong>Rötuş/Düzeltme (Touchup)</strong> ayarlarını inceleyelim. <br>
-        <strong>Reverse U:</strong> Yüzeye çizilen eskizi, U yönünde (bu örnekte Y ekseni yönünde) ters çevirir. <br>
+        <strong>Reverse U:</strong> Yüzeye çizilen eskizi, U yönünde (bu örnekte X ekseni doğrultusunda yani YZ düzleminde) ters çevirir. <br>
         <img src="images/freecad/curves_wb/SketchOnSurface_21.png" class="image fit"><br>    
-        <strong>Reverse V:</strong> Yüzeye çizilen eskizi, V yönünde (bu örnekte Z ekseni yönünde) ters çevirir. <br>
+        <strong>Reverse V:</strong> Yüzeye çizilen eskizi, V yönünde (bu örnekte Z ekseni doğrultusunda yani XY düzleminde) ters çevirir. <br>
         <img src="images/freecad/curves_wb/SketchOnSurface_22.png" class="image fit"><br> 
         <strong>Swap UV:</strong> U ve V eksenlerinin yerlerini değiştirir, UV yapısını 90 derece çevirir / değiştirir gibi düşünebilirsiniz. Örnekte modellediğimiz <strong>Boru/Tüp (Tube)</strong> nesnemiz kısa olduğu için UV'nin 90 derece çevrilmesi oluşan yapı net olarak anlaşılamıyor. Kendi modellerinizde bu ayarı değiştirerek sonucu görebilirsiniz.
         <img src="images/freecad/curves_wb/SketchOnSurface_23.png" class="image fit"><br>
@@ -298,9 +298,9 @@
         <img src="images/freecad/curves_wb/SketchOnSurface_25.png" class="image fit"><br> 
         <strong>Boru/Tüp (Tube)</strong> nesnemizin yarısı keselim.
         <img src="images/freecad/curves_wb/SketchOnSurface_26.png" class="image fit"><br>        
-        Oluşan nesnenin keskin köşelerini yuvarlatalım.
+        Nesnenin keskin köşeleri hoş görünmüyor, keskin köşelere radyus kazandıralım (yuvarlatalım).
         <img src="images/freecad/curves_wb/SketchOnSurface_27.png" class="image fit"><br> 
-        Sonuç;
+        Bu şekilde daha hoş görünüyor;
         <img src="images/freecad/curves_wb/SketchOnSurface_28.png" class="image fit"><br>        
         <img src="images/freecad/curves_wb/SketchOnSurface_29.png" class="image fit"><br>       
         <strong>Sketch on Surface</strong> komutu ile Eğrisel yüzeylerin UV açılımı yapıldığında, bazen ölçüler beklendiğinden farklı olur. Aşağıdaki örneklerle konuyu inceleyelim.
@@ -319,11 +319,12 @@
         <img src="images/freecad/curves_wb/SketchOnSurface_36.png" class="image fit"><br> 
         Eskizi kapalı yüzey olarak ayarlıyor ve kalınlık kazandırarak sonuçları görüyoruz.
         <img src="images/freecad/curves_wb/SketchOnSurface_37.png" class="image fit"><br>
-        <b>Offset</b> nesnesi ile <strong>Sketch on Surface</strong> nesnelerini bir birinden çıkarıyoruz.
+        <strong>Sketch on Surface</strong> nesnesine kalınlık kazandırıp <b>Offset</b> nesnesini gizlersek elde edeceğimiz sonuca ait görüntüleri aşağıda görebiliriz;
         <img src="images/freecad/curves_wb/SketchOnSurface_38.png" class="image fit"><br>  
-        Sonucu, farklı bir bakış açısından inceliyoruz.
+         <b>Offset</b> nesnesi ile <strong>Sketch on Surface</strong> nesnelerini bir birinden çıkarıyoruz.
+        
         <img src="images/freecad/curves_wb/SketchOnSurface_39.png" class="image fit"><br> 
-        <strong>Sketch on Surface</strong> nesnesine kalınlık kazandırıp <b>Offset</b> nesnesini gizlersek elde edeceğimiz sonuca ait görüntüler;
+        Sonucu, farklı bir bakış açısından inceliyoruz.
         <img src="images/freecad/curves_wb/SketchOnSurface_40.png" class="image fit"><br>  
         <strong>Sketch on Surface</strong> komutunun ayarlarından biri olan <strong>Extra Objects</strong>'i inceleyelim.
         <img src="images/freecad/curves_wb/SketchOnSurface_41.png" class="image fit"><br> 
@@ -335,19 +336,19 @@
         <img src="images/freecad/curves_wb/SketchOnSurface_44.png" class="image fit"><br>  
         Çizim, şu an aşağıdaki gibi görünüyor. Unsur ağacından <strong>Sketch on Surface</strong> seçilir ve ayarlar kısmından <strong>Extra Objects</strong> kısmındaki butona basılırsa;
         <img src="images/freecad/curves_wb/SketchOnSurface_45.png" class="image fit"><br>  
-        Açılan <strong>Bağlantı (Link)</strong> penceresi karşımıza gelir. Bu bölümde Metni (ShapeString) seçelim.
+        Açılan <strong>Bağlantı (Link)</strong> penceresi karşımıza gelir. Bu bölümde Metni (<b>ShapeString</b>) seçelim.
         <img src="images/freecad/curves_wb/SketchOnSurface_46.png" class="image fit"><br>   
-        <strong>Bağlantı (Link)</strong> penceresindeki <b>OK</b> butonuna bastığımızda, seçmiş olduğumuz metnin, Sketch on Surface yüzeyine uygulandığını göreceksiniz.
+        <strong>Bağlantı (Link)</strong> penceresindeki <b>OK</b> butonuna bastığımızda, seçmiş olduğumuz metnin, <b>Sketch on Surface</b> yüzeyine uygulandığını göreceksiniz.
         <img src="images/freecad/curves_wb/SketchOnSurface_47.png" class="image fit"><br> 
         Orjinal Metni (ShapeString) gizleyelim.
         <img src="images/freecad/curves_wb/SketchOnSurface_48.png" class="image fit"><br>
         <strong>Sketch on Surface</strong>'e kalınlık kazandıralım.
         <img src="images/freecad/curves_wb/SketchOnSurface_49.png" class="image fit"><br> 
-        Unsur ağacından Orjinal Metni (ShapeString) seçip ayarlar kısmından <b>Metni (string)</b> ya da <b>metin boyutunu (Size)</b> değiştirirsek yazının güncellendiğini görürüz.
+        Unsur ağacından Orjinal Metni (<b>ShapeString</b>) seçip ayarlar kısmından <b>Metnin içeriğini (string)</b> ya da <b>metin boyutunu (Size)</b> değiştirirsek yazının güncellendiğini görürüz.
         <img src="images/freecad/curves_wb/SketchOnSurface_50.png" class="image fit"><br> 
         Eskiz içerisinde Metnimizin konumunu değiştirelim.
         <img src="images/freecad/curves_wb/SketchOnSurface_51.png" class="image fit"><br> 
-        Sonucun nasıl olduğunu görüyorsunuz. Çalışmaya istersek pozitif yönde kalınlık verir dışa uzatırız.
+        Sonucun nasıl olduğunu görüyorsunuz. İstersek çalışmaya pozitif yönde kalınlık verir dışa doğru katılarız.
         <img src="images/freecad/curves_wb/SketchOnSurface_52.png" class="image fit"><br> 
         İstersek negatif yönde tarafa kalınlık verip, gövdeden çıkarırız.
         <img src="images/freecad/curves_wb/SketchOnSurface_53.png" class="image fit"><br>
