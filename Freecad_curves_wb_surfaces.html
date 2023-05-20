@@ -432,7 +432,7 @@
         <img src="images/freecad/curves_wb/Profile_Support_Plane_05.png" class="image fit"><br> 
         <strong>Parameter1</strong> değerini değiştirip <b>10,00</b> olarak ayarlarsak ne olur, görelim.
         <img src="images/freecad/curves_wb/Profile_Support_Plane_06.png" class="image fit"><br> 
-        Oluşan Düzlemenim yeni halini izometrik görünümden bakarak tekrar inceleyelim. <br>
+        Oluşan düzlemenim yeni halini, izometrik görünümden bakarak tekrar inceleyelim. <br>
         <img src="images/freecad/curves_wb/Profile_Support_Plane_07.png" class="image fit"><br>
         <strong>Parameter2</strong> değerini değiştirip <b>1,00</b> olarak ayarlarsak ne olur, bir de onu görelim.        
         <img src="images/freecad/curves_wb/Profile_Support_Plane_08.png" class="image fit"><br>
@@ -442,7 +442,7 @@
         <img src="images/freecad/curves_wb/Profile_Support_Plane_10.png" class="image fit"><br>
         Bunun sebebini öğrenmek için Eskiz (Sketch) içerisine girip çizginin uzunluğuna bakarsak, sol taraftaki çizginin toplam uzunluğunun 50,00 birim olarak belirtilmiş olduğunu görürüz. Yani <strong>Parameter1</strong>'in alabileceği en büyük değer 50,00'dir. 
         <img src="images/freecad/curves_wb/Profile_Support_Plane_11.png" class="image fit"><br> 
-        <strong>Parameter2</strong>'nin alabileceği değer aralığı değerini inceleyecek olursak, müsaade edilen değerlerin 0,00 ile 1,00 arasında olduğunu görürüz. <br>
+        <strong>Parameter2</strong>'nin alabileceği değer aralığını inceleyecek olursak, müsaade edilen değerlerin 0,00 ile 1,00 arasında olduğunu görürüz. <br>
         Yani Eğriler yüzdelik olarak ifade ediliyor. Örneğin <strong>Parameter2</strong> değerinin <b>0 (sıfır)</b> olarak belirtilmesi, oluşan düzlemin, eğrinin uç kısmından (sıfır noktasından) geçmesi demek oluyor.
         <img src="images/freecad/curves_wb/Profile_Support_Plane_12.png" class="image fit"><br> 
         Kenar ve eğrinin uç noktalarından geçen düzlemin İzometrik görünümü.
@@ -1053,7 +1053,7 @@
         
  <p>
     <img src="https://raw.githubusercontent.com/tomate44/CurvesWB/9aac6c2365311724487f79df3343dab90ddcb819/freecad/Curves/resources/icons/flatten.svg"> <b><span id="flattenface", style="color:#4acaa8">Flatten face:</span> </b><br>
-        KISA_ACIKLAMA<br>
+        <strong>Flatten face</strong> komutu, silindirik ve konik yüzlerden, bir düzlem yüzey oluşturur. Kısaca, seçili silindirik veya konik yüzeyin UV'sini açar. <br>
     </p>
         <b><span style="color:#4acaa8">Kullanım:</span></b> Komutu çalıştırmak için aşağıdaki adımları sırası ile uygulayın:
             <ul>
@@ -1062,7 +1062,16 @@
                 <li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>Flatten face</strong> seçeneğini kullanın.</li> 
             </ul>
     <p>
-        AÇIKLAMA_VE_RESİM <br>
+        Araç yalnızca gerçek bir matematiksel koni veya silindir tarafından desteklenen yüzlerde çalışır. <br>
+        bu konunun önceki sayfasında tartışılan durum budur, yüzey açıkça silindirik veya konik bir yüz olarak tanımlanmamıştır/algılanmamıştır ve bu nedenle yassılaştırma aracı üzerinde çalışmaz, en azından şu anda çalışmaz. bu tür durumları desteklemek için genişletilecek. ancak yüzün gerçekten geliştirilebilir olduğu bu gibi durumlarda mesh yöntemi işe yaramalı ve oldukça iyi sonuçlar vermelidir. (https://forum.freecad.org/viewtopic.php?style=10&t=22675&start=1260) <br>
+        Yüzü düzleştir
+        Konik ve silindirik yüzlerden düz gelişmiş bir yüz oluşturur
+        Kullanım:
+        3B Görünümde konik veya silindirik bir yüz seçmelisiniz.
+
+        InPlace özelliği, açılmış yüzü kaynak yüze (InPlace = True) veya XY düzlemine (InPlace = False) teğet koyar. <br>
+        
+        UV açıldıktan sonra, yüzey oluştur / kalınlık kazandır, TechDraw'a ekle.
         <img src="images/freecad/curves_wb/RESIM_RESIM.png" class="image fit"><br>        
             
     </p>
