@@ -565,7 +565,7 @@
                 <li>Sırayla önce kaburgaları seçin. (Yukarıdaki örnekte, soldan sağa veya sağdan sola mavi eğrileri seçin.)</li>
                 <li>Ctrl tuşunu basılı tutmaya devam edin ve kapsam çizgilerini ("rayları") seçin. (Yukarıdaki örnekte sarı eğrileri.)</li>
                 <li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
-                <li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Gordon surface</strong> menüsündeki <strong>Gordon surface</strong> seçeneğini kullanın.</li> 
+                <li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surfaces</strong> menüsündeki <strong>Gordon surface</strong> seçeneğini kullanın.</li> 
             </ul>
     <p>
         <b><span style="color:#4acaa8">Özellikler</span></b><br>
@@ -583,9 +583,19 @@
         Bu değer, Çıktı özelliği Tel Kafes olarak ayarlandığında ağın yoğunluğunu belirlemek için kullanılır.<br>
         Aşağıda, Tel kafes (Wireframe) modunda ve <code>U</code> ve <code>V</code> değerleri <b>16</b> olan (U=16, V=16) Gordon Yüzeyi gösterilmektedir.
         <img src="images/freecad/curves_wb/GordonSurface_02.png" class="image fit">
+        <b>Wireframe</b><br>
+        Samples U: 16 <br>
+        Samples V: 16
         <img src="images/freecad/curves_wb/GordonSurface_03.png" class="image fit">
+        <b>Wireframe</b> <br>
+        Samples U: 32 <br>
+        Samples V: 16
         <img src="images/freecad/curves_wb/GordonSurface_04.png" class="image fit">
+        <b>Wireframe</b> <br>
+        Samples U: 32 <br>
+        Samples V: 32
         <img src="images/freecad/curves_wb/GordonSurface_05.png" class="image fit">
+        <b>Surface</b>
         <img src="images/freecad/curves_wb/GordonSurface_06.png" class="image fit">                    
     </p>
        <b><span style="color:#4acaa8">Notlar:</span></b><br>       
@@ -597,7 +607,7 @@
             <li>Genel olarak, ortaya çıkan Gordon yüzeyinin <b>yüzey normali</b>, eğrilerin yönü ile belirlenecektir <br>
             Eğriler +Y'den -Y'ye yönüne doğru çizilirse elde edilen yüzey normali +Z yönünde olurken, eğriler -Y'den +Y'ye doğru çizildiğinde, yüzeyin normal yönelimli -Z yönünde olur.
             </li>
-            <li>Gordon Surface komutu ile oluşturulan 2 boyutlu yüzey, <strong>Parça Çalışma Tezgahı'nın (Part WB)</strong> <a href="https://wiki-freecad-org.translate.goog/Part_Extrude?_x_tr_sl=auto&_x_tr_tl=tr&_x_tr_hl=tr">Katıla (Extrude)</a> komutu ile 3 boyutlu katı model haline getirilebilir.</li>
+            <li>Gordon Surface komutu ile oluşturulan 2 boyutlu yüzey, <strong>Parça Çalışma Tezgahı'nın (Part WB)</strong> <a href="https://wiki-freecad-org.translate.goog/Part_Extrude?_x_tr_sl=auto&_x_tr_tl=tr&_x_tr_hl=tr">Katıla (Extrude)</a> ya da <a href="https://wiki-freecad-org.translate.goog/Part_Offset?_x_tr_sl=auto&_x_tr_tl=tr&_x_tr_hl=tr" ><strong>3D Offset</strong></a> komutları ile 3 boyutlu katı model haline getirilebilir.</li>
             <li>Oluşan 2 boyutlu yüzey, <strong>ParçaTasarımı Çalışma Tezgahı (PartDesign WB)</strong> ile de 3 boyutlu katı model haline getirilebilir <br> 
             Bunun için yüzeyi bir gövde içine sürükleyerek <strong>Base Feature (Temel Unsur)</strong> oluşturulur, daha sonra <strong>Katıla (Pad)</strong> komutu kullanılır.</li>
        </ul>
