@@ -80,14 +80,14 @@
 </ul>
 <h1 class="atx" id="python-kodu-yazma">Python kodu yazma</h1>
 <p>FreeCAD'de Python kodu yazmanın iki yolu vardır. <strong>Python konsolunda</strong> (menüden <code>Görünüm → Paneller → Python konsolu</code>'nu seçin) veya <strong>Makro düzenleyicide</strong> (menüden <code>Makro → Makrolar...</code>'ı seçin). Konsolda Python komutlarını birer birer yazar, <code>Enter</code>'a basarak çalıştırırsınız (yürütürsünüz), makrolar ise yalnızca makro çalıştırıldığında yürütülen birkaç satırdan oluşan daha karmaşık kodlar içerebilir.</p>
-<p><img alt="Python konsolu" src="images/FreeCAD/01_freecad_python_konsol.png"></p>
+<p><img alt="Python konsolu" src="images/freecad/01_freecad_python_konsol.png"></p>
 <p><em>FreeCAD Python konsolu</em></p>
 <p>Her iki yöntemi de kullanabilirsiniz. Her satırı kopyalayıp Python konsoluna yapıştırır ve ardından <code>Enter</code> tuşuna basabilir veya kodun tamamını yeni bir <strong>Makro penceresine</strong> kopyalayıp yapıştırabilirsiniz.</p>
 <h1 class="atx" id="freecadand39i-kesfetmek">FreeCAD'i Keşfetmek</h1>
 <p>Yeni boş bir belge oluşturarak kod yazmaya başlayalım:</p>
 <pre><code class="fenced-code-block language-python">doc <span class="token operator">=</span> FreeCAD<span class="token punctuation">.</span>newDocument<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
 <p>FreeCAD Python konsoluna <code>FreeCAD.</code> yazdığınız anda FreeCAD bunu fark edecektir. Satırın (kodun) geri kalanını hızlı bir şekilde otomatik tamamlamanıza izin veren bir pencere açılır. Daha da iyisi, otomatik tamamlama listesindeki her girişin ne yaptığını açıklayan bir ipucu vardır. Bu, mevcut işlevselliği keşfetmeyi kolaylaştırır. <code>newDocument</code>'ı seçmeden önce diğer seçeneklere bir göz atın.</p>
-<p><img alt="kod_tamamlama" src="images/FreeCAD/02_freecad.newdocument.png"></p>
+<p><img alt="kod_tamamlama" src="images/freecad/02_freecad.newdocument.png"></p>
 <p><em>FreeCAD Python konsolunun otomatik tamamlama mekanizması</em></p>
 <p>Şimdi (bu kodu yazdıktan sonra) yeni belgemiz FreeCAD tarafından oluşturulacak. Bu, araç çubuğundaki <code>Std New (Yeni)</code> düğmesine basmaya benzer. Aslında FreeCAD'deki çoğu düğme, bir veya daha fazla Python kodu satırını çalıştırmaktan başka bir şey yapmaz. Daha da iyisi, python konsolunda betik (script) dosyası komutlarını göstermek için <code>Düzenle → Seçenekler → Genel → Makro</code> bölümünden <code>Betik komutlarını python konsolunda göster</code> seçeneği ile ayarlayabilirsiniz. Bu, düğmelere bastığınızda çalıştırılan tüm Python kodunu, konsolda yazdıracaktır. Bu yöntem, Python'da eylemlerin nasıl üretileceğini öğrenmek için çok kullanışlıdır.</p>
 <p>Şimdi belgemize geri dönelim ve onunla neler yapabileceğimize bakalım:</p>
@@ -97,7 +97,7 @@ Mevcut seçenekleri keşfedin. Genellikle <strong>büyük harfle başlayan</stro
 <p>Kod yazılıp <code>Enter</code> tuşuna basılmasına rağmen hiçbir şey olmadığını göreceksiniz.  Bunun sebebini açıklamak gerekirse; FreeCAD birbirine bağlı yüzlerce karmaşık nesneyle çalışabilir, bir yerde küçük bir değişiklik yapmak büyük bir etki oluşturabilir; bu da, uzun zaman alabilecek tüm belgeyi yeniden hesaplamanız anlamına gelir. Bu nedenle neredeyse hiçbir komut sahneyi otomatik olarak güncellemez. Güncellemeyi el ile (komut yazarak) yapmak gerekir:</p>
 <pre><code class="fenced-code-block language-python">doc<span class="token punctuation">.</span>recompute<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
 <p>Şimdi (güncelleme komutunu çalıştırınca), sahneye eklediğimiz kutu görünür hale geldi. FreeCAD'de sahneye nesne ekleyen düğmelerin çoğu aslında iki şey yapar: nesneyi ekler ve yeniden hesaplar. Yukarıda bahsedildiği gibi <strong>Betik komutlarını python konsolunda göster (Show script commands in python console)</strong> seçeneğini açtıysanız, GUI düğmesiyle (araç çubuğunda bulunan düğmesini kullanara) sahneye bir küre eklemeyi deneyin; Python kodunun iki satırının birbiri ardına çalıştırıldığını göreceksiniz.</p>
-<p><img alt="ekle_guncelle" src="images/FreeCAD/03_ekle_guncelle.png">
+<p><img alt="ekle_guncelle" src="images/freecad/03_ekle_guncelle.png">
 <em>Nesne eklendi ve yeniden hesaplandı (Güncellendi)</em></p>
 <p>Şimdi kutumuzun içeriğini inceleyelim:</p>
 <pre><code class="fenced-code-block language-python">box<span class="token punctuation">.</span></code></pre>
@@ -106,7 +106,7 @@ Mevcut seçenekleri keşfedin. Genellikle <strong>büyük harfle başlayan</stro
 <p>Bu, kutumuzun mevcut yüksekliğini yazdıracaktır. Şimdi bunu değiştirmeye çalışalım:</p>
 <pre><code class="fenced-code-block language-python">box<span class="token punctuation">.</span>Height <span class="token operator">=</span> <span class="token number">5</span></code></pre>
 <p>Kutunuzu fare ile seçerseniz, <code>Özellik Düzenleyici</code>de, <code>Veri (Data)</code> sekmesinde <code>Yükseklik (Height)</code> özelliğimizin göründüğünü göreceksiniz (ayrıca <code>Görünüm (View)</code> sekmesindeki özelliklerle alakalı, daha sonra bilgi verilecektir). Orada görünen bir FreeCAD nesnesinin tüm özelliklerine, <em>Veri (Data)</em> <code>Height</code> özelliğinde yaptığımız gibi, adlarıyla Python ile de doğrudan erişilebilir. Kutunun diğer boyutlarını değiştirmeyi deneyin.</p>
-<p><img alt="veri_ozellikleri" src="images/FreeCAD/04_veri_ozellikleri.png"></p>
+<p><img alt="veri_ozellikleri" src="images/freecad/04_veri_ozellikleri.png"></p>
 <h1 class="atx" id="vektorler-ve-yerlesimler">Vektörler ve yerleşimler</h1>
 <p><a href="https://tr.wikipedia.org/wiki/Vekt%C3%B6r">Vektör</a>, herhangi bir 3B (3D) uygulamada çok temel bir kavramdır. Bir vektör, 3B uzayında bir noktayı veya konumu tanımlayan 3 sayıdan (x, y ve z) oluşan bir listedir. Vektörlerle toplamalar, çıkarmalar, projeksiyonlar ve <a href="https://tr.wikipedia.org/wiki/Vekt%C3%B6r_uzay%C4%B1">çok daha fazlası</a> birçok şey yapılabilir. FreeCAD'de vektörler şu şekilde çalışır:</p>
 <pre><code class="fenced-code-block language-python">myvec <span class="token operator">=</span> FreeCAD<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
@@ -115,7 +115,7 @@ myvec<span class="token punctuation">.</span>y
 othervec <span class="token operator">=</span> FreeCAD<span class="token punctuation">.</span>Vector<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
 sumvec <span class="token operator">=</span> myvec<span class="token punctuation">.</span>add<span class="token punctuation">(</span>othervec<span class="token punctuation">)</span></code></pre>
 <p>FreeCAD nesnelerinin diğer bir ortak özelliği de <a href="https://wiki.freecadweb.org/Placement">yerleşimleridir (placement)</a>. Her nesnenin, bir <em>Data</em> <code>Base</code> <em>(Konum - position)</em> ve <em>Data</em> <code>Rotation</code> <em>(Oryantasyon, dönüş açısı)</em> bilgilerini içeren bir <em>Data</em> <code>Placement</code> <em>(Veri Yerleşim)</em> özelliği vardır.</p>
-<p><img alt="data_base" src="images/FreeCAD/05_data_base.png"></p>
+<p><img alt="data_base" src="images/freecad/05_data_base.png"></p>
 <p><code>Placement</code> (<em>Yerleşim</em>) özelliğini kullanarak nesnemizi hareket ettirmek kolaydır:</p>
 <pre><code class="fenced-code-block language-python">box<span class="token punctuation">.</span>Placement    <span class="token comment"># Kutunun Konum ve Oryantasyon bilgilerini verir</span>
 box<span class="token punctuation">.</span>Placement<span class="token punctuation">.</span>Base    <span class="token comment"># Kutunun Vektörel Konum Bilgisini verir</span>
@@ -182,7 +182,7 @@ Draft<span class="token punctuation">.</span>move<span class="token punctuation"
 <p>FreeCAD kullanıcı arayüzü, <a href="https://wiki.freecadweb.org/3D_view">3B (3D) görünüm</a> etrafındaki tüm kontrolleri, menüleri, araç çubuklarını ve düğmeleri çizmekten ve kullanmaktan sorumlu güçlü bir grafik arayüz sistemi olan <a href="https://en.wikipedia.org/wiki/Qt_(software)">Qt</a> ile yapılmıştır. Qt, Python'un FreeCAD gibi Qt arabirimlerine erişmesine ve değiştirmesine izin veren <a href="https://wiki.freecadweb.org/PySide">PySide</a> adlı bir modül sağlar. <a href="https://en.wikipedia.org/wiki/Qt_(software)">Qt</a> arayüzü ile oynamayı deneyelim ve basit bir diyalog üretelim:</p>
 <pre><code class="fenced-code-block language-python"><span class="token keyword">from</span> PySide <span class="token keyword">import</span> QtGui
 QtGui<span class="token punctuation">.</span>QMessageBox<span class="token punctuation">.</span>information<span class="token punctuation">(</span><span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token string">"Apollo program"</span><span class="token punctuation">,</span> <span class="token string">"Houston, we have a problem"</span><span class="token punctuation">)</span></code></pre>
-<p><img alt="mesaj_kutusu" src="images/FreeCAD/06_mesaj_kutusu.png"></p>
+<p><img alt="mesaj_kutusu" src="images/freecad/06_mesaj_kutusu.png"></p>
 <p>Görünen iletişim kutusunun araç çubuğunda FreeCAD simgesi olduğuna dikkat edin (Linux sistemde bu simge görünmeyebilir); bu, <strong>Qt</strong>'nin, komutun, FreeCAD uygulamasının içinden verildiğini bildiği anlamına gelir. (<strong>PySide</strong> modülü ile) FreeCAD arayüzünün herhangi bir bölümünü değiştirmek mümkündür.</p>
 <p><strong>Qt</strong>, çok karmaşık şeyler yapmanızı sağlayan çok güçlü bir arayüz sistemidir. Ayrıca, diyalogları grafiksel olarak tasarlayabileceğiniz ve ardından birkaç satır Python kodu ile FreeCAD arayüzüne ekleyebileceğiniz <a href="https://www.qt.io/design">Qt Designer</a> gibi bazı kullanımı kolay araçlara da sahiptir.</p>
 <p><a href="https://wiki.freecadweb.org/PySide">PySide</a> hakkında daha fazla bilgiyi buradan okuyabilirsiniz...</p>
