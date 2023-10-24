@@ -1,129 +1,234 @@
-<!DOCTYPE HTML>
-<!--
-	Read Only by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>mhalil.github.io - Kişisel Blog</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-	</head>
-	<body class="is-preload">
 
-		<!-- Header -->
-			<section id="header">
-				<header>
-                    <span class="image avatar"><a href="index.html"><img src="images/avatar.jpg" alt="" /></a></span>
-					<h1 id="logo"><a href="index.html">Mustafa Halil</a></h1>
-					<p>mhalil.github.io</p>
-				</header>
-				<nav id="nav">
-					<ul>
-						<li><a href="Python-Pandas.html">Python - Pandas</a></li>
-						<li><a href="Freecad.html">FreeCAD</a></li>
-						<li><a href="SolveSpace.html">SolveSpace</a></li>
-						<li><a href="Blender.html">Blender</a></li>
-                        <li><a href="Librecad.html">LibreCAD</a></li>
-					</ul>
-				</nav>
-				<footer>
-					<ul class="icons">
-						<li><a href="https://twitter.com/AcikKaynakci" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-						<li><a href="https://github.com/mhalil" class="icon brands fa-github"><span class="label">Github</span></a></li>
-						<li><a href="mailto:m.halil@yahoo.com" class="icon solid fa-envelope"><span class="label">E-Posta</span></a></li>
-					</ul>
-				</footer>
-			</section>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
 
-				<!-- Main -->
-					<div id="main">
-                        
-                        <!-- Python -->
-                        <section id="indeks">
-                        <div class="container">
-									<header class="major">
-										<h2 id="mhalil.github.io">mhalil.github.io</h2>
-                                    </header>
-                                    <p> <b>Python, FreeCAD, SolveSpace, Blender ve LibreCAD hakkında öğrendiklerimi paylaştığım kişisel sayfam. </b></p>
-				        </div>
-                        </section>
+    <link rel="stylesheet" type="text/css" href="/theme/stylesheet/style.min.css">
 
-						<!-- Python -->
-							<section id="python">
-								<div class="container">
-                                    <h2>Pandas Kütüphanesi Eğitim Notları</h2>
-                                    <p><span class="image left"><img src="images/pandas_logo.png" alt="" /></span><b>Python'a Giriş</b> konusuna ait notları, <a href="https://mhalil.github.io/FreeCAD_01_Python'a_Giris.html">FreeCAD için Python ile Komut Dosyası Oluşturma (Scripting) Eğitimi</a>nde paylaşmıştık.<br>
-                                    İlave olarak Python'ın en güçlü ve işlevsel kütüphanelerinden biri olan <b>Pandas</b>'a ait notları paylaşmaya devam ediyorum.
-                                    </p>
-                                    <a href="Python-Pandas.html" class="button primary small">Sayfaya Git</a>
-								</div>
-							</section>
+    <link id="dark-theme-style" rel="stylesheet" type="text/css"
+          media="(prefers-color-scheme: dark)"
+    href="/theme/stylesheet/dark-theme.min.css">
 
-                        
-						<!-- FreeCAD -->
-							<section id="freecad">
-								<div class="container">
-									<h3>FreeCAD Eğitim Notları</h3>
-									<p><span class="image right"><img src="images/freecad_logo.png" alt="" /></span>FreeCAD içerisinde Komut Dosyası Oluşturma (Scripting) Konusunu öğrenmeye çalışıyor ve Türkçe içerikli Kaynak oluşturmayı hedefliyorum. Bu bölümde İlk etapta <strong>Python</strong> programlama dili hakkında kısa bir bilgi verecek ardından betik (komut dosyası) yazma konusundan devam edeceğim. <br>
-                                    Ayrıca, FreeCAD içerisindeki bazı <strong>Çalışma Tezgahlarının (Workbench)</strong> ne işe yaradığına ve komutların nasıl kullanıldığına dair  bilgileri sizinle paylaşmaya çalışacağım. İlk inceleyeceğimiz Çalışma Tezgahı, <strong>Curves Workbench</strong> (Eğriler Çalışma Tezgahı) olacak
-                                    <a href="Freecad.html" class="button primary small">Sayfaya Git</a>
-								</div>
-							</section>
+    <link id="pygments-dark-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: dark)"
+          href="/theme/pygments/monokai.min.css">
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
+          href="/theme/pygments/monokai.min.css">
 
-						<!-- SolveSpace -->
-							<section id="solvespace">
-								<div class="container">
-									<h3>Solvespace Başvuru Kılavuzu</h3>
-									<p><span class="image left"><img src="images/solvespace_logo.png" alt="" /></span><a href="https://solvespace.com" target="_blank">Solvespace</a> programının <a href="https://solvespace.com/ref.pl" target="_blank">Başvuru Kılavuzunu</a> tercüme ederek, SolveSpace hakkında Türkçe içerikli bir Eğitim sayfası oluşturdum. <br>
-                                    Toplam 9 Ana başlıktan oluşan Kılavuz İçeriğine, ilgili sayfadan ulaşabilirsiniz. Umarım içeriği beğenirsiniz.</p>
-									<a href="SolveSpace.html" class="button primary small">Sayfaya Git</a>
-								</div>
-							</section>
 
-						<!-- Blender -->
-							<section id="blender">
-								<div class="container">
-									<h3>Blender Eğitim Notları</h3>
-									<p><span class="image right"><img src="images/blender_logo.png" alt="" /></span>Blender Modelleme ve Animasyon (aslında pek çok harika özelliği olan ve farklı alanlarda kullanılan) programı ile alakalı Türkçe içerik paylaştığım bölüm.</p>
-									<a href="Blender.html" class="button primary small">Sayfaya Git</a>
-								</div>
-							</section>
 
-                        <!-- LibreCAD -->
-							<section id="librecad">
-								<div class="container">
-									<h3>LibreCAD Notları</h3>
-									<p><span class="image left"><img src="images/librecad.png" alt="" /></span>LibreCAD programını kullanırken size hız kazandıracak kısayol tuşlarının Türkçe açıklamaları ve LibreCAD ile yapmış olduğum çizimleri paylaştığım bölüm.</p>
-									<a href="Librecad.html" class="button primary small">Sayfaya Git</a>
-								</div>
-							</section>
-					</div>
+  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/solid.css">
 
-				<!-- Footer -->
-					<section id="footer">
-						<div class="container">
-							<ul class="copyright">
-								<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-							</ul>
-						</div>
-					</section>
 
-			</div>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+  <!-- Chrome, Firefox OS and Opera -->
+  <meta name="theme-color" content="#0091d9">
+  <!-- Windows Phone -->
+  <meta name="msapplication-navbutton-color" content="#0091d9">
+  <!-- iOS Safari -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <!-- Microsoft EDGE -->
+  <meta name="msapplication-TileColor" content="#0091d9">
 
-	</body>
+  <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="m.halil blogu Atom">
+
+
+
+
+
+
+
+
+ 
+
+    <meta name="author" content="Halil" />
+    <meta name="description" content="" />
+  <meta property="og:site_name" content="m.halil blogu"/>
+  <meta property="og:type" content="blog"/>
+  <meta property="og:title" content="m.halil blogu"/>
+  <meta property="og:description" content=""/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content=""/>
+  <meta property="og:image" content="theme/img/avatar.png">
+
+  <title>m.halil blogu</title>
+
+
+</head>
+<body >
+
+<aside>
+  <div>
+    <a href="/">
+      <img src="theme/img/avatar.png" alt="Kişisel Bloğum" title="Kişisel Bloğum">
+    </a>
+
+    <h1>
+      <a href="/">Kişisel Bloğum</a>
+    </h1>
+
+    <p>3D Dünyası ve Programlama</p>
+
+
+    <nav>
+      <ul class="list">
+
+
+            <li>
+              <a target="_self"
+                 href="/pages/blender.html#blender">
+                Blender
+              </a>
+            </li>
+            <li>
+              <a target="_self"
+                 href="/pages/FreeCAD.html#FreeCAD">
+                FreeCAD
+              </a>
+            </li>
+            <li>
+              <a target="_self"
+                 href="/pages/librecad.html#librecad">
+                LibreCAD
+              </a>
+            </li>
+            <li>
+              <a target="_self"
+                 href="/pages/pandas.html#pandas">
+                Pandas
+              </a>
+            </li>
+            <li>
+              <a target="_self"
+                 href="/pages/Solvespace.html#Solvespace">
+                Solvespace
+              </a>
+            </li>
+
+          <li>
+            <a target="_self" href="https://github.com/mhalil" >mhalil.github</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-AcikKaynakci"
+           href="https://twitter.com/AcikKaynakci"
+           target="_blank">
+          <i class="fa-brands fa-AcikKaynakci"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-ArtStation"
+           href="https://www.artstation.com/mustafahalil"
+           target="_blank">
+          <i class="fa-brands fa-ArtStation"></i>
+        </a>
+      </li>
+      <li>
+        <a class="sc-GrabCAD"
+           href="https://grabcad.com/mustafa.halil-1"
+           target="_blank">
+          <i class="fa-brands fa-GrabCAD"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+<nav>
+  <a href="/">Home</a>
+
+  <a href="/archives.html">Arşiv</a>
+  <a href="/categories.html">Kategoriler</a>
+  <a href="/tags.html">Etiketler</a>
+
+  <a href="/feeds/all.atom.xml">Atom</a>
+
+</nav>
+
+
+
+<article>
+  <header>
+    <h2><a href="/Solvespace.html#Solvespace">Bölüm 1: Genel Navigasyon</a></h2>
+    <p>
+      Posted on Prş 02 Ocak 2020 in <a href="/category/solvespace.html">Solvespace</a>
+
+          &#8226; Tagged with
+              <a href="/tag/solvespace.html">Solvespace</a>,              <a href="/tag/3d.html">3D</a>,              <a href="/tag/cad.html">CAD</a>,              <a href="/tag/kilavuz.html">Kılavuz</a>
+    </p>
+  </header>
+  <div>
+      <div><p>Bölüm 1: Genel Navigasyon</p></div>
+        <br>
+        <a class="btn"
+           href="/Solvespace.html#Solvespace">
+          Continue reading
+        </a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="/LibreCAD.html#LibreCAD">LibreCAD Kısayol Tuşları</a></h2>
+    <p>
+      Posted on Çrş 01 Ocak 2020 in <a href="/category/librecad.html">LibreCAD</a>
+
+          &#8226; Tagged with
+              <a href="/tag/librecad.html">librecad</a>
+    </p>
+  </header>
+  <div>
+      <div><p>LibreCAD Kısayol Tuşları Tablosu</p></div>
+        <br>
+        <a class="btn"
+           href="/LibreCAD.html#LibreCAD">
+          Continue reading
+        </a>
+  </div>
+</article>
+
+
+
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+  <span class="footer-separator">|</span>
+  Switch to the <a href="javascript:void(0)" onclick="theme.switch(`dark`)">dark</a> | <a href="javascript:void(0)" onclick="theme.switch(`light`)">light</a> | <a href="javascript:void(0)" onclick="theme.switch(`browser`)">browser</a> theme
+  <script id="dark-theme-script"
+          src="/theme/dark-theme/dark-theme.min.js"
+          data-enable-auto-detect-theme="True"
+          data-default-theme="light"
+          type="text/javascript">
+  </script>
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " m.halil blogu ",
+  "url" : "",
+  "image": "theme/img/avatar.png",
+  "description": ""
+}
+</script>
+</body>
 </html>
