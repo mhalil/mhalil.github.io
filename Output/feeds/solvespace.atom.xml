@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>m.halil blogu - Solvespace</title><link href="/" rel="alternate"></link><link href="/feeds/solvespace.atom.xml" rel="self"></link><id>/</id><updated>2020-01-02T11:00:00+03:00</updated><subtitle>3D Dünyası ve Programlama</subtitle><entry><title>Bölüm 1: Genel Navigasyon</title><link href="/Solvespace.html" rel="alternate"></link><published>2020-01-02T11:00:00+03:00</published><updated>2020-01-02T11:00:00+03:00</updated><author><name>Mustafa Halil</name></author><id>tag:None,2020-01-02:/Solvespace.html</id><summary type="html">&lt;p&gt;Bölüm 1: Genel Navigasyon&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Bölüm 1: Genel Navigasyon&lt;/h2&gt;
+&lt;p&gt;Bu, SolveSpace için bir başvuru 
+kılavuzudur. Programa giriş niteliğinde (Çizim ve Modelleme öğretme 
+amaçlı) değildir; Bunun için &lt;a href="https://solvespace.com/tutorial.pl"&gt;öğreticilere&lt;/a&gt; bakın.&lt;/p&gt;
+&lt;h3&gt;Genel Navigasyon/Gezinim&lt;/h3&gt;
+&lt;p&gt;Kullanıcı arayüzü iki pencereden oluşur: 
+çoğunlukla grafik içeren büyük bir pencere (Grafik Penceresi) ve 
+çoğunlukla metin içeren daha küçük bir pencere (özellikler penceresi). 
+Grafik penceresi geometriyi çizmek ve 3 boyutlu modeli görüntülemek için
+ kullanılır. özellikler penceresi model hakkında bilgi sağlar ve ayrıca 
+ayarları ve sayısal parametreleri değiştirmek için kullanılabilir.&lt;/p&gt;
+&lt;h3&gt;Grafik Penceresi ve Model Görünümü&lt;/h3&gt;
+&lt;p&gt;Görünümü kaydırmak için fareyi &lt;code&gt;sağ tuşuna (butonuna)&lt;/code&gt; basarak sürükleyin.&lt;br&gt;
+Görünümü döndürmek (çevirmek) için fareyi &lt;code&gt;orta tuşuna (tekerleğine)&lt;/code&gt; basarak sürükleyin. Bu, parçayı ters çevirir, böylece daha önce 
+gizlenmiş olan (sahneye bakıldığında arkada kalan) yüzeyler görünür hale
+ gelir.&lt;/p&gt;
+&lt;p&gt;Görünümü monitör düzlemi içinde döndürmek için &lt;code&gt;Ctrl+Farenin orta tuşu&lt;/code&gt; basılıyken sürükleyin.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Shift+Farenin orta tuşuna&lt;/code&gt; basıp sürükleyerek kaydırmak veya &lt;code&gt;Shift+Farenin sağ tuşuna&lt;/code&gt; basıp sürükleyerek döndürmek de mümkündür. Eğer altı serbestlik 
+dereceli bir 3Dconnexion kontrolör bağlıysa (örneğin, bir 
+SpaceNavigator) bu, modelin görünümünü dönüştürmek için de 
+kullanılabilir.&lt;/p&gt;
+&lt;p&gt;Görünümü Yakınlaştırmak veya Uzaklaştırmak için &lt;code&gt;Farenin tekerleğini&lt;/code&gt; çevirin. Görünüm menüsünü veya ilgili klavye kısayollarını ( &lt;strong&gt;&lt;code&gt;+&lt;/code&gt;&lt;/strong&gt; ve &lt;strong&gt;&lt;code&gt;-&lt;/code&gt;&lt;/strong&gt; ) kullanarak da yakınlaştırma yapmak mümkündür. Düzlemler de dahil 
+olmak üzere bazı özellikler her zaman ekranda aynı boyutta çizilir ve bu
+ nedenle yakınlaştırmadan etkilenmez.&lt;/p&gt;
+&lt;p&gt;Komutların çoğu üç farklı şekilde 
+kullanılabilir: menüden, klavye kısayolundan veya araç çubuğundan. Araç 
+çubuğu, grafik penceresinin sol üst kısmında görüntülenir. Bir simgenin 
+ne anlama geldiğini öğrenmek için fareyi üzerine getirin (Komutun ve 
+kısayol tuşu bilgileri görüntülenecektir). Araç çubuğunu göstermek veya 
+gizlemek için &lt;strong&gt;Görünüm → Araç çubuğunu Göster'i (View → Show Toolbar)&lt;/strong&gt; seçin.&lt;/p&gt;
+&lt;p&gt;Parçanın tümünü ekrana sığdıracak şekilde görüntüyü yakınlaştırmak için &lt;code&gt;Görünüm → Sığdıracak şekilde Yakınlaş'ı (View → Zoom To Fit.)&lt;/code&gt; seçin (Kısayol tuşu &lt;strong&gt;&lt;code&gt;F&lt;/code&gt;&lt;/strong&gt; ‘dir). Bu komut, parçanın tam olarak ekrana sığması için yakınlaştırma 
+seviyesini ayarlar ve ardından parçayı ekrana ortalamak için taşır. 
+Taşıma işleminden parçanın dönüşü etkilenmez (Bakış açısı 
+değiştirilmez).&lt;/p&gt;
+&lt;p&gt;Bir çalışma düzlemi etkinse, görünümü çalışma düzlemine hizalamak için &lt;strong&gt;Görünüm → Görünümü çalışma Düzlemine Hizala'yı (View → Align View to Workplane)&lt;/strong&gt; seçin (veya &lt;strong&gt;&lt;code&gt;W&lt;/code&gt;&lt;/strong&gt; tuşuna basın). Bunu yaptıktan sonra ekranın düzlemi çalışma düzlemi 
+ile çakışıyor ve çalışma düzleminin merkezi ekranın ortasında oluyor. 
+Yakınlaştırma düzeyi bu komuttan etkilenmez.&lt;/p&gt;
+&lt;p&gt;Ortogonal (dikey) bir görünümde, koordinat 
+(x, y veya z) eksenlerinden biri yatay, diğeri ise dikeydir. Görünümü en
+ yakın Ortogonal (dikey) görünüme yönlendirmek için &lt;strong&gt;Görünüm → En Yakın Orto Görünüm (View → Nearest Ortho View)&lt;/strong&gt; menü yolunu seçin (Kısayol tuşu &lt;strong&gt;&lt;code&gt;F2&lt;/code&gt;&lt;/strong&gt; ‘dir). İzometrik görünümde, üç koordinat ekseninin tümü aynı 
+uzunlukta yansıtılır ve koordinat eksenlerinden biri dikeydir. Görünümü 
+en yakın izometrik görünüme yönlendirmek için Görünüm → En Yakın 
+İzometrik Görünümü (View → Nearest Iso View) menü yolunu seçin (Kısayol
+ tuşu &lt;strong&gt;&lt;code&gt;F3&lt;/code&gt;&lt;/strong&gt; ‘tür).&lt;/p&gt;
+&lt;p&gt;Belirli bir noktanın, ekranın tam merkezinde olacak şekilde görüntü kaydırılmak istenirse, o noktayı seçin ve ardından &lt;code&gt;Görünüm → Noktayı Merkezde Görüntüle&lt;/code&gt; menü yolunu seçin (Kısayol tuşu &lt;strong&gt;&lt;code&gt;F4&lt;/code&gt;&lt;/strong&gt; ‘tür).&lt;br&gt;
+X, Y ve Z koordinat eksenleri her zaman grafik 
+penceresinin sol alt kısmında kırmızı, yeşil ve mavi olarak 
+görüntülenir. Bu eksenler canlıdır: Yani diğer normallerle aynı şekilde 
+fare ile vurgulanabilir ve seçilebilirler. (Bu, koordinat eksenlerinin 
+ekranda her zaman kolayca erişilebilir olduğu anlamına gelir; örneğin X 
+eksenine paralel bir çizgiyi sınırlandırırken bundan faydalanabiliriz.)&lt;/p&gt;
+&lt;h3&gt;Ölçü (Boyut) Girişi ve Birimler&lt;/h3&gt;
+&lt;p&gt;ölçüler (Boyutlar), milimetre veya inç olarak
+ görüntülenebilir. Milimetre ölçülerin ondalık kısmı (noktadan sonrası) 
+her zaman iki basamakla (45.23) ve inç ölçüleri her zaman üç basamakla 
+(1.781) görüntülenir.&lt;/p&gt;
+&lt;p&gt;Mevcut görüntüleme (ölçü) birimlerini değiştirmek için &lt;code&gt;Görünüm → ölçü Birimleri → İnç / Milimetre cinsinden (Choose View → Dimensions Units → Inches/Millimeters)&lt;/code&gt; menü yolunu kullanın. Bu, çizili olan modeli değiştirmez; Kullanıcı 
+görüntülenen ölçü birimini inç’ten milimetreye değiştirirse, örneğin 1.0
+ olarak girilen ölçü, 25.40 olarak görüntüleniyor.&lt;/p&gt;
+&lt;p&gt;Tüm ölçüler, geçerli görüntüleme birimlerine 
+göre yazılır, belirtilir. Bir ölçü girilmesinin beklendiği çoğu yerde, 
+tek bir sayı yerine aritmetiksel ifadeler ( örneğin; 4*20 + 7) girmek te
+ mümkündür.&lt;/p&gt;
+&lt;h3&gt;Özellik Penceresi (Tarayıcısı)&lt;/h3&gt;
+&lt;p&gt;özellik penceresi, bağımsız bir palet penceresi olarak görünür. Bu pencere, &lt;code&gt;Sekme (TAB)&lt;/code&gt; tuşuna basılarak veya &lt;code&gt;Görünüm → özellik Tarayıcısını Göster (View → Show Property Window)&lt;/code&gt; seçilerek gösterilebilir veya gizlenebilir. özellikler penceresi bir web tarayıcısı gibi çalışır.&lt;br&gt;
+Altı çizili metinler birer bağlantıdır. Bir bağlantıyı etkinleştirmek için &lt;code&gt;fare ile (Sol tuş)&lt;/code&gt; tıklayın. Bağlantılar, özellik penceresindeki diğer sayfalara gitmek için kullanılabilir. örneğin, "&lt;code&gt;home&lt;/code&gt;" ekranı, çizimdeki grupların bir listesidir:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="özellik Penceresi (Tarayıcısı)" src="https://mhalil.github.io/images/solvespace/002%20%C3%96zellik_Penceresi.png"&gt;&lt;/p&gt;
+&lt;p&gt;Bir grubun sayfasına gitmek için o grubun 
+adını tıklayın (ör. "g002-düzlemde çizim"). Bağlantılar ayrıca çizimdeki
+ eylemleri tetikleyebilir. örneğin, yukarıdaki ekran görüntüsünde tüm 
+gruplar gösterilmektedir. Bir grubu gizlemek için "&lt;code&gt;shown (gösterilen)&lt;/code&gt;" sütunundaki kutuyu tıklayın.&lt;br&gt;
+özellik penceresi bazen kolaylık sağlamak için, 
+komutla alakalı muhtemel sayfaya otomatik olarak gider. örneğin, yeni 
+bir grup oluşturulduğunda, özellik penceresi o yeni grubun sayfasını 
+görüntüler. Sol üst köşedeki "&lt;code&gt;Home (ana sayfa)&lt;/code&gt;" bağlantısını tıklayarak (veya &lt;code&gt;ESC&lt;/code&gt; tuşuna basarak) ve oradan bağlantıları takip ederek farklı bir sayfaya gitmek her zaman mümkündür.&lt;br&gt;
+çizim objeleri seçildiğinde (örneğin, kullanıcı 
+fare ile bir öğe üzerine tıkladığında), bu öge ile ilgili bilgiler 
+özellik penceresinde görüntülenir. Tek bir öğe seçilirse, o öğe hakkında
+ bilgi görüntülenir. örneğin, bir çemberin/dairenin merkezi 
+(koordinatları) ve yarıçapı, özellik penceresinde görüntülenir.&lt;/p&gt;
+&lt;p&gt;Birden çok öğe seçilirse, özellik penceresi bazen hepsiyle ilgili bilgileri görüntüleyebilir. Bu durum şunları içerir:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;İki nokta: noktalar arasındaki mesafe&lt;/li&gt;
+&lt;li&gt;Bir nokta ve bir düzlem yüzeyi: noktadan düzleme olan mesafe&lt;/li&gt;
+&lt;li&gt;İki nokta ve bir vektör: vektör boyunca yansıtılan noktalar arasındaki mesafe&lt;/li&gt;
+&lt;li&gt;İki düzlem yüzeyi: düzlem yüzleri arasındaki açı&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Öğeleri Goster / Gizle&lt;/h3&gt;
+&lt;p&gt;çizim daha karmaşık hale geldikçe, gereksiz 
+bilgileri gizlemek faydalı olabilir. SolveSpace bunu yapmak için birkaç 
+farklı yol sunar.&lt;br&gt;
+özellik penceresinin üst kısmında bir dizi simge
+ görünür. Bu simgeler, çizimdeki farklı öğeleri gizlemeyi ve göstermeyi 
+mümkün kılar:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="özellik Penceresi Araç çubuğu Simgeleri" src="https://mhalil.github.io/images/solvespace//003%20Goster_Gizle.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1- Pasif Grupların çalışma Düzlemleri (Workplanes from inactive groups)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;"&lt;code&gt;Yeni çalışma Düzleminde çizim Yap&lt;/code&gt;"
+ menü seçeneği ile bir çalışma grubu oluşturulduğunda, ilişkili bir 
+çalışma düzlemi otomatik olarak oluşturulur. Bu düzlemleri görüntülemek /
+ gizlemek için bu seçenek kullanılabilir. Normal şartlarda Oluşturulan 
+çalışma düzlemleri, ya o grup görünür olduğunda (yani öğe gösterilirken)
+ ya da yalnızca o grup hem görünür hem de aktif olduğunda görünür.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2- Normaller (Normals)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Varsayılan olarak normaller, normal yönünde 
+(düzleme dik) mavi-gri oklar olarak çizilir/gösterilir. Bu normaller, 
+(örneğin onları kısıtlamak için) fare ile seçilebilir. Bu simge onları 
+gizlemek için kullanılabilir.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;3- Noktalar (Points)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Varsayılan olarak noktalar yeşil kare olarak 
+çizilir/gösterilir. Bu noktalar, fareyle seçilebilir (örneğin onları 
+sınırlamak için). Bu simge noktaları gizlemek / göstermek için 
+kullanılabilir. Noktalar gizlenmişse, fare üzerlerine geldiğinde 
+görünmeye devam edecekler ve yine de seçilebilirler. (versiyon 3’te bu 
+mümkün değildir.)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;4- Yapı öğeleri (Construction Entities)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;çizim esnasında oluşturulan Yapı öğelerinin (Yardımcı çizgilerin) görüntülenmesi veya gizlenmesini&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;5- Kısıtlamalar (sınırlamalar) ve ölçüler (boyutlar) (Constraints and dimensions)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Bir kısıtlama oluşturulduğunda (örneğin ölçü,
+ diklik, teğet, açı,...vb), bu kısıtlamanın grafiksel bir temsili, 
+ekranda mor renk ile görüntülenir. Bir gruptaki kısıtlama, yalnız o grup
+ etkin olduğunda görünür. Grup etkin iken bu kısıtlamaları gizlenmek 
+istenirse u simgeyi kullanılır.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;6- Yüzeylerin Fare ile Seçilebilirliği (Faces selectable with the mouse)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;3d modeldeki bazı yüzeyler seçilebilir. 
+örneğin, kullanıcı parçanın bir düzlem yüzünü seçebilir ve bir noktayı o
+ düzleme uzayacak şekilde sınırlayabilir. Yüzeyler görüntüleniyorsa, 
+fare üzerlerine geldiğinde yüzeyler farklı renkle vurgulanmış olarak 
+görünecektir. Kullanıcı, diğer herhangi bir öğede (nokta, çigi,...vb) 
+olduğu gibi, yüzeyi fare tıklaması ile seçer.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;7- Katı modelin gölgeli görünümü (Shaded view of solid model)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;3D parça, derinlik hissi / izlenimi vermek 
+için ışık efektleriyle birlikte opak bir katı olarak görüntülenir. Bu 
+simge, o görünümü gizlemek için kullanılabilir.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;8- Katı modelin kenarları (kenar çizgileri) (Edges of solid model)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Katı modelin iki farklı yüzeyinin buluştuğu 
+her yerde çizgiler çizilir. Kenarlar (kenar çizgileri) gösteriliyor 
+ancak gölgeleme gizliyse, bir tel kafes görüntüsü ortaya çıkıyor. 
+Kenarlar gösterildiğinde ağların (mesh) görüntülenmesi belirgin şekilde 
+daha yavaş olabilir. NURBS yüzeylerinin gösterimi, kenarlar 
+gösterildiğinde fark edilir şekilde daha yavaş olmayacaktır. Kenarların 
+rengi çizgi stillerinde ayarlanabilir.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;9- Katı Modelin Ana Hatları (Outline of solid model)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Katı Modelin Ana Hattını (Dış Konturunu) ayrı bir çizgi tipi, rengi ve kalınlık ile görüntülemek için bu buton kullanılabilir.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;10- Katı modelin üçgen örgüsü (Triangle mesh of solid model)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;3 boyutlu parça modeli birçok üçgenden 
+oluşuyor; örneğin, dikdörtgen bir yüzey, iki üçgenle temsil edilir. 
+Modeldeki üçgenleri göstermek için bu simgeyi kullanın. Bu, dışa 
+aktarmadan önce örgünün / ağın (mesh) ne kadar ince veya kaba olduğunu 
+görmenin iyi bir yoludur.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;11- Noktalı çizgiler (Stipple occluded (hidden) lines)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Parça (bakış açımıza göre) belirli bir 
+açıdayken, parçadaki bazı çizgiler katı parçanın içine gömüldükleri (ya 
+da parçanın arkasında kaldığı) için görünmez olacaktır. Bu çizgileri 
+göstermek için (Parça şeffafmış gibi) bu simgeyi kullanın. Bu, parçanın 
+hacmi içinde kalan bir taslak çizerken kullanışlıdır.&lt;/p&gt;
+&lt;p&gt;Yukarıdaki seçeneklere ilave olarak, tüm 
+grupları gizlemek ve göstermek mümkündür. Bir grup gizliyse, o gruptaki 
+tüm öğeler (çizgi parçaları, çemberler, yaylar, noktalar vb.) gizlenir. 
+Katı model (3 boyutlu parça) bundan etkilenmez; yani gizli bir grup, bir
+ silindir oluşturmak üzere ekstrüde edilmiş bir daire içeriyorsa, 
+(çember, nokta,... vb öğeler gizlenmesine rağmen ) silindir görünür 
+durumda kalacaktır.&lt;/p&gt;
+&lt;p&gt;Bir grubu gizlemek için, &lt;code&gt;ESC&lt;/code&gt; tuşuna basarak veya özellik Penceresinin sol üstündeki bağlantıyı (&lt;code&gt;home&lt;/code&gt;)
+ seçerek Ana Ekrana gidin. çiziminizin içeriğine bağlı olarak (uzun ya 
+da kısa) bir grup listesi görüntülenir. Bir grup görünür durumdaysa, "&lt;code&gt;shown (gösterilen)&lt;/code&gt;"
+ sütunundaki onay kutusu işaretlenir. Böylece onay kutusunu artık 
+işaretlenmemiş hale gelirve grup gizlenir. Grupların görünür / gizle 
+durumu parça dosyasına kaydedilir. Bir parça bir montaj dosyasına 
+bağlanırsa, parça dosyasında görünen objeler montaj dosyasında da 
+görünür olacak ve gizlenmiş olan objeler de gizlenecektir.&lt;/p&gt;</content><category term="Solvespace"></category><category term="Solvespace"></category><category term="3D"></category><category term="CAD"></category><category term="Kılavuz"></category></entry></feed>
