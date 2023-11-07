@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="FreeCAD - Curves WB - Surface - 10 - Segment surface" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/freecad-curves-wb-surface-10-segment-surface.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">FreeCAD - Curves WB - Surface - 10 - Segment surface</h1>
+	<span class="post-date">Cts 05 Kasım 2022</span>
+	<h1><img alt="segment_surface" src="https://raw.githubusercontent.com/tomate44/CurvesWB/9aac6c2365311724487f79df3343dab90ddcb819/freecad/Curves/resources/icons/segment_surface.svg"> Segment surface</h1>
+<p><strong>Segment surface</strong> komutu, seçili yüzeyi yatay, düşey ya da her iki yönde parçalara bölmek/ayırmak için kullanılır.  </p>
+<p><strong>Kullanım:</strong> Komutu çalıştırmak için aşağıdaki adımları sırası ile uygulayın:</p>
+<ul>
+<li>Öncelikle bir yüzey seçin.</li>
+<li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
+<li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>Segment surface</strong> seçeneğini kullanın.</li>
+</ul>
+<p>Parçaya parçalamak/bölmek istediğimiz yüzey, aşağıdaki resimde görülmektedir.<br>
+<img alt="Segment_Surface_01" src="../../images/freecad/curves_wb/surfaces_menu/Segment_Surface_01.png"><br>
+Öncelikle bölünmek istenilen Yüzey seçilmeli ardından <strong>Segment surface</strong> komutu çalıştırılmalı.
+<img alt="Segment_Surface_02" src="../../images/freecad/curves_wb/surfaces_menu/Segment_Surface_02.png"><br>
+Komut çalıştırıldıktan sonra elde edilen sonuç aşağıda görülmektedir.
+<img alt="Segment_Surface_03" src="../../images/freecad/curves_wb/surfaces_menu/Segment_Surface_03.png"><br>
+Unsur ağacından <strong>Segment_Surface</strong> öğesini seçip, komuta ait ayarları inceleyelim.<br>
+<strong>Option (Seçenek)</strong> özelliği, <strong>Auto (Otomatik)</strong> iken <strong>Option Auto</strong> ayarı altındaki <strong>Direction (Yön / Yönelim)</strong> seçeneği <strong>U</strong> olarak seçildiğinde, seçili yüzey <strong>U</strong> yönünde otomatik olarak bölümlendi/parçalara ayrıldı.
+<img alt="Segment_Surface_04" src="../../images/freecad/curves_wb/surfaces_menu/Segment_Surface_04.png"><br>
+<strong>Option Auto</strong> ayarı altındaki <strong>Direction (Yön / Yönelim)</strong> seçeneğini <strong>V</strong> olarak değiştirdiğimizde, seçili yüzey <strong>V</strong> yönünde otomatik olarak bölümlendi/parçalara ayrıldı.
+<img alt="Segment_Surface_05" src="../../images/freecad/curves_wb/surfaces_menu/Segment_Surface_05.png"><br>
+<strong>Direction (Yön / Yönelim)</strong> seçeneğini <strong>Both (Her ikisi)</strong> olarak değiştirirsek, tahmin edeceğiniz üzere, seçili yüzey hem <strong>U</strong> hemde <strong>V</strong> yönünde (ızgara şeklinde) otomatik olarak bölümlenir/parçalara ayrılır.
+<img alt="Segment_Surface_06" src="../../images/freecad/curves_wb/surfaces_menu/Segment_Surface_06.png"><br>
+<strong>Option (Seçenek)</strong> özelliği, <strong>Custom (Özel)</strong> olarak değiştirildiğinde, <strong>Option Custom (Özel'in Seçenekleri)</strong> isimli yeni özellikler paneli karşımıza çıkıyor.
+<img alt="Segment_Surface_07" src="../../images/freecad/curves_wb/surfaces_menu/Segment_Surface_07.png"><br>
+İlk olarak <strong>Knots U</strong> özelliğini inceleyelim.<br>
+<strong>Knots U</strong> seçeneği, <strong>U</strong> yönünde noktalar belirtmemizi ve yüzeyi bu noktalara göre parçalara ayırmamızı sağlar.<br>
+Unsur ağacından <strong>Segment_Surface</strong> öğesini seçiliyken özellikler panelinden <strong>Knots U</strong> seçeneğinin yanındaki butona tıklayın.
+<img alt="Segment_Surface_08" src="../../images/freecad/curves_wb/surfaces_menu/Segment_Surface_08.png"><br>
+Karşımıza çıkan <strong>List (Liste)</strong> diyalog kutusuna, her satıra bir değer yazmak kaydı ile 0 (sıfır) ile 1 (bir) arasında değerler yazın.<br>
+Burada bahsedilen 0 (sıfır) ve 1 (bir) değeri yüzeyi, bölmek için belirtilecek yüzdelik değerlerdir. (örneğin 0.5 değeri %50 yani tam ortadan böl anlamına gelmektedir.)<br>
+Örnek olarak <strong>0.1</strong> ve <strong>0.5</strong> değerlerini yazalım.<br>
+<strong>NOT:</strong> Ondalık değerleri yazarken, virgül kullanılmamalıdır. Ondalık ayırıcı olarak (Python programlama dilinde olduğu gibi) <strong>Nokta</strong> karakteri kullanılmalıdır. (Python'da virgül karakteri, parametreleri ayırmak için kullanılır.)
+<img alt="Segment_Surface_09" src="../../images/freecad/curves_wb/surfaces_menu/Segment_Surface_09.png"><br>
+Görüldüğü üzere, seçil yüzey <strong>U</strong> yönünde %10 ve %50 mertebesinden kesilerek 3 yüzeye bölündü.
+<img alt="Segment_Surface_10" src="../../images/freecad/curves_wb/surfaces_menu/Segment_Surface_10.png"><br>
+Yüzeyi <strong>V</strong> yönünde de %25 ve %65 oranından keselim.
+<img alt="Segment_Surface_11" src="../../images/freecad/curves_wb/surfaces_menu/Segment_Surface_11.png"><br>
+Sonuç aşağıda görülüyor. <strong>Knots U</strong> ve <strong>Knots V</strong> değerleri değiştirildiğinde yüzey otomatik olarak yeni değerlere göre bölümlenecektir.
+<img alt="Segment_Surface_12" src="../../images/freecad/curves_wb/surfaces_menu/Segment_Surface_12.png"><br>
+Üst görünüşten bakarak kesim oranları daha net görüntülenebilir.
+<img alt="Segment_Surface_13" src="../../images/freecad/curves_wb/surfaces_menu/Segment_Surface_13.png"><br>
+<strong>Segment_Surface</strong> öğesinin <strong>Option Custom (Özel'in Seçenekleri)</strong> özelliğinin <strong>Knots U</strong> ve <strong>Knots V</strong> seçeneklerinin farklı bir kullanımını daha görelim.<br>
+Bunun için sahneye öncelikle bir silindir ekliyoruz ve yarıçapını 1.00 mm olarak belirtiyoruz.
+<img alt="Segment_Surface_14" src="../../images/freecad/curves_wb/surfaces_menu/Segment_Surface_14.png"><br>
+Silindir yüzeyini seçerek <strong>Surface</strong> menüsündeki <strong>Segment surface</strong> komutunu çalıştırıyoruz.
+<img alt="Segment_Surface_15" src="../../images/freecad/curves_wb/surfaces_menu/Segment_Surface_15.png"><br>
+Silindir nesnesini gizliyoruz ve oluşan Segment Yüzeyini görüyoruz.
+<img alt="Segment_Surface_16" src="../../images/freecad/curves_wb/surfaces_menu/Segment_Surface_16.png"><br>
+<strong>Option (Seçenek)</strong> özelliği, <strong>Custom (Özel)</strong> olarak değiştiriyoruz.
+<img alt="Segment_Surface_17" src="../../images/freecad/curves_wb/surfaces_menu/Segment_Surface_17.png"><br>
+<strong>Knots U</strong> değerini 3.14 olarak belirtiyoruz. Bu işlem sonrası yüzey <strong>U</strong> yönünde tam ortadan ikiye bölünüyor.<br>
+Bunun sebebini açıklamak gerekirse;<br>
+Yüzeyi oluşturan Çemberin yarıçapı 1.00mm olduğu için çemberin çevre uzunluğu (2<em>pi</em>r formülü ile hesaplandığında) 6.28mm olmaktadır. 
+Doğal olarak 3.14 değeri uzunluğun yarısına tekabül ettiği için yüzey yam ortadan ikiye bölünüyor.
+<img alt="Segment_Surface_18" src="../../images/freecad/curves_wb/surfaces_menu/Segment_Surface_18.png"><br>
+<strong>Knots U</strong> değerini aşağıdaki resimde gösterildiği şekilde revize ettiğimizde ise yüzey (neredeyse) 4 eşit parçaya bölünmüş oluyor.
+<img alt="Segment_Surface_19" src="../../images/freecad/curves_wb/surfaces_menu/Segment_Surface_19.png"><br>
+Sonuca dair görüntü;
+<img alt="Segment_Surface_20" src="../../images/freecad/curves_wb/surfaces_menu/Segment_Surface_20.png"><br>
+<strong>Segment_Surface</strong> öğesinin <strong>Option Custom (Özel'in Seçenekleri)</strong> özelliğinin bir diğer seçeneği olan <strong>Knots UProvider</strong> ve <strong>Knots VProvider</strong> 'ı inceleyelim.<br>
+Bunun için öncelikle, oluşturduğumuz Silindir nesnesine ait bir çemberi seçelim ve ardından <strong>Curve</strong> menüsünden <strong>Discretize</strong> komutunu çalıştıralım.
+<img alt="Segment_Surface_21" src="../../images/freecad/curves_wb/surfaces_menu/Segment_Surface_21.png"><br>
+Komut sonrasında, seçili çember boyunca eşit aralıklı 100 adet nokta oluşturuldu.
+<img alt="Segment_Surface_22" src="../../images/freecad/curves_wb/surfaces_menu/Segment_Surface_22.png"><br>
+Silindiri ve Segment Yüzeyini gizleyerek, <strong>Discretize</strong> komutunu ile oluşturulan noktaları inceleyelim.
+<img alt="Segment_Surface_23" src="../../images/freecad/curves_wb/surfaces_menu/Segment_Surface_23.png"><br>
+Segment Yüzeyi görüntüleyelim ve <strong>Discretize</strong> komutunu ile oluşturulan noktaların sayısını <strong>6</strong> olarak değiştirelim. Böylece, çember çevre uzunluğu boyunca eşit aralıklı <strong>6</strong> adet nokta elde etmiş olduk.
+<img alt="Segment_Surface_24" src="../../images/freecad/curves_wb/surfaces_menu/Segment_Surface_24.png"><br>
+<strong>Segment_Surface</strong> öğesinin <strong>Option Custom (Özel'in Seçenekleri)</strong> özelliğinin <strong>Knots UProvider</strong> seçeneğini kullanarak oluşturduğumuz 6 noktayı değer olarak atayalım.
+<img alt="Segment_Surface_25" src="../../images/freecad/curves_wb/surfaces_menu/Segment_Surface_25.png"><br>
+Butona basınca karşımıza çıkan <strong>Bağlantı (Link)</strong> penceresinden, <strong>6</strong> noktaya ait öğeyi (Discretize_Edge) seçip ardından OK (Tamam) butonuna basıyoruz.
+<img alt="Segment_Surface_26" src="../../images/freecad/curves_wb/surfaces_menu/Segment_Surface_26.png"><br>
+İşlem sonrası seçili yüzey, belirlenen öğedeki (Discretize_Edge) nokta sayısı ve konumundan parçalara ayrılıyor.
+<img alt="Segment_Surface_27" src="../../images/freecad/curves_wb/surfaces_menu/Segment_Surface_27.png"><br>
+Unsur ağacından <strong>Discretized_Edge</strong> öğesi seçilerek <strong>Number (Sayı)</strong> değeri <strong>10</strong> olarak değiştirildiğinde/güncellendiğinde, Segment Yüzeyi <strong>U</strong> yönünde <strong>10</strong> eşit parçaya bölünüyor.
+<img alt="Segment_Surface_28" src="../../images/freecad/curves_wb/surfaces_menu/Segment_Surface_28.png">  </p>
+<p><a href="freecad-curves-wb-surface-00-menu-komutlari.html">&lt;&lt;&lt; Surfaces Menü Komutlarına Ait Sayfaya Dön</a></p>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/freecad.html">FreeCAD</a></li>
+					<li><a href="/tag/curves.html">Curves</a></li>
+					<li><a href="/tag/workbench.html">Workbench</a></li>
+					<li><a href="/tag/calismatezgahi.html">ÇalışmaTezgahı</a></li>
+					<li><a href="/tag/surface.html">Surface</a></li>
+					<li><a href="/tag/segment.html">Segment</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Pandas 11 - melt() Fonksiyonunun Kullanımı" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/pandas-11-melt-fonksiyonunun-kullanimi.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Pandas 11 - melt() Fonksiyonunun Kullanımı</h1>
+	<span class="post-date">Cum 25 Şubat 2022</span>
+	<h1>Pandas Melt Fonksiyonuyla Verilerinizi Yeniden Şekillendirin</h1>
+<p>Bu bölümde, Pandas'ın <code>melt()</code> fonksiyonunun nasıl kullanacağını öğreneceğiz. <code>pd.melt() fonksiyonu, bir Pandas yapısını geniş formattan uzun formata yeniden şekillendirmek için kullanılır.</code> Bunun anlamı, bir veya daha fazla sütunun <strong>tanımlayıcı</strong> olarak kullanılması ve diğer tüm sütunların değer olarak kullanılmasıdır. Kısacası bu fonksiyon, Veri Çerçevenizi <code>Özet Tablo (pivot_table() fonksiyonu) kullanmadan, biçimlendirmenizi</code> sağlar.</p>
+<p><strong>Bu bölümün sonunda şunları öğrenmiş olacaksınız:</strong></p>
+<ul>
+<li>Verilerinizi çözmek/şekillendirmek veya melt() fonsiyonu ile işlemek ne anlama gelir?</li>
+<li>Pandas'ın <strong>melt()</strong> fonksiyonu nasıl anlaşılır ve kullanılır?</li>
+<li>Tek veya birden çok değişkeni çözmek/şekillendirmek için Pandas <strong>melt()</strong> işlevi nasıl kullanılır?</li>
+</ul>
+<p><img alt="melt" src="../../images/python/pandas/melt.png"></p>
+<h2>Verileri Yeniden Şekillendirmek için Neden Pandas'ın melt() Fonksiyonunu Kullanmalısınız?</h2>
+<p>Bu fonksiyon, internetten bulduğunuz veya size bir meslektaşınız tarafından geniş biçimli veri sunulduğunda, bu verileri işlemek konusunda yararlı olacaktır. Bu verilerin anlaşılması kolaydır, ancak başka bir analiz biçimine çevirmek/yeniden şekilendirmek daha zordur. 
+Örneğin, verileriniz ile <a href="https://mhalil.github.io/Pandas_OzetTablo_PivotTable.html">bir pivot tablosu oluşturmak</a> istiyorsanız, o zaman <strong>melt()</strong> fonksiyonu uygulanmış verilere sahip olmak, size çok yardımcı olacaktır.</p>
+<h2>Örnek Veri Çerçevesi (DataFrame) Yüklemek</h2>
+<p>Geniş formatta yani sütun sayısı fazla olan örnek bir veri çerçevesi yükleyerek başlayalım:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span><span class="s1">&#39;Ad&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Burak&#39;</span><span class="p">,</span> <span class="s1">&#39;Halil&#39;</span><span class="p">,</span> <span class="s1">&#39;Emre&#39;</span><span class="p">,</span> <span class="s1">&#39;Ersin&#39;</span><span class="p">,</span> <span class="s1">&#39;Sertaç&#39;</span><span class="p">,</span> <span class="s1">&#39;Seydi&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Yaş&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">44</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">52</span><span class="p">,</span> <span class="mi">47</span><span class="p">],</span>
+    <span class="s1">&#39;Eğitim Durumu&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Doktora&#39;</span><span class="p">,</span> <span class="s1">&#39;Lisans&#39;</span><span class="p">,</span> <span class="s1">&#39;MBA&#39;</span><span class="p">,</span> <span class="s1">&#39;Yüksek Lisans&#39;</span><span class="p">,</span> <span class="s1">&#39;MBA&#39;</span><span class="p">,</span> <span class="s1">&#39;Lisans&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Kazanç&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">100000</span><span class="p">,</span><span class="mi">120000</span><span class="p">,</span> <span class="mi">85000</span><span class="p">,</span> <span class="mi">75000</span><span class="p">,</span> <span class="mi">95000</span><span class="p">,</span> <span class="mi">80000</span><span class="p">]})</span>
+</code></pre></div>
+
+<p>Gördüğünüz gibi geniş formatta bir veri setimiz oluştu. Veri setimize göz atalım:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Ad</th>
+<th>Yaş</th>
+<th>Eğitim Durumu</th>
+<th>Kazanç</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Burak</td>
+<td>44</td>
+<td>Doktora</td>
+<td>100000</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Halil</td>
+<td>42</td>
+<td>Lisans</td>
+<td>120000</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Emre</td>
+<td>35</td>
+<td>MBA</td>
+<td>85000</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Ersin</td>
+<td>40</td>
+<td>Yüksek Lisans</td>
+<td>75000</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Sertaç</td>
+<td>52</td>
+<td>MBA</td>
+<td>95000</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Seydi</td>
+<td>47</td>
+<td>Lisans</td>
+<td>80000</td>
+</tr>
+</tbody>
+</table>
+<h2>Pandas Melt Fonksiyonunun Sözdizimi nedir?</h2>
+<p><strong>melt()</strong> fonksiyonunun/işlevinin genel sözdizimi biçimi şöyle görünür:</p>
+<div class="highlight"><pre><span></span><code><span class="n">pandas</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span>
+   <span class="n">dataframe</span><span class="p">,</span> 
+   <span class="n">id_vars</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
+   <span class="n">value_vars</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
+   <span class="n">var_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
+   <span class="n">value_name</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> 
+   <span class="n">col_level</span><span class="o">=</span><span class="kc">None</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>Bu parametrelere biraz daha ayrıntılı bakalım:</p>
+<ul>
+<li><code>dataframe</code>= <strong>melt()</strong> fonksiyonu uygulamak istediğimiz veri çerçevesi (adı)</li>
+<li><code>id_vars</code>= Tanımlayıcı (yani Tekrar etmesini istediğimiz) değişken olarak kullanmak istediğimiz <strong>sütun(lar)</strong></li>
+<li><code>value_vars</code>= Çözmek/Şekillendirmek (Filtre uygulamak gibi düşünülebilir) istediğimiz sütunlar. Bu parametre yazılmazsa, <code>id_vars</code>'a atanmayan her bir sütun kullanılır.</li>
+<li><code>var_name</code>= Değişken sütununa verilecek ad.</li>
+<li><code>value_name</code>= Değer sütununa verilecek ad. Bu parametreyi kullanmazsanız, <strong>Values</strong> kelimesi varsayılan sütun isim olacaktır.</li>
+<li><code>col_level</code>= Eğer sütunlar çoklu dizin ise, <code>melt()</code> fonksiyonu için kullanılacak Sütunü belirtmek için bu parametrekullanılır.</li>
+</ul>
+<h2>Pandas Melt Fonksiyonunu Kullanarak Verilerimizin Nasıl Tekrar Şekillendirebiliriz?</h2>
+<p>Veri kümesini çözmek/yeniden şekillendirmek için Pandas <code>melt()</code> fonksiyonunu nasıl kullanabileceğimize bir göz atalım.<br>
+Daha önce öğrendiklerimiz gibi, <code>melt()</code> fonksiyonunu kullanmak için bir veri çerçevesi atamamız gerekiyor:</p>
+<div class="highlight"><pre><span></span><code><span class="n">melted</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span>
+   <span class="n">df</span><span class="p">,</span> 
+   <span class="n">id_vars</span> <span class="o">=</span> <span class="s1">&#39;Ad&#39;</span><span class="p">,</span> 
+   <span class="n">var_name</span> <span class="o">=</span> <span class="s1">&#39;Özellik&#39;</span><span class="p">,</span> 
+   <span class="n">value_name</span> <span class="o">=</span> <span class="s1">&#39;Değer&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">melted</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Ad</th>
+<th>variable</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Burak</td>
+<td>Yaş</td>
+<td>44</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Halil</td>
+<td>Yaş</td>
+<td>42</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Emre</td>
+<td>Yaş</td>
+<td>35</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Ersin</td>
+<td>Yaş</td>
+<td>40</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Sertaç</td>
+<td>Yaş</td>
+<td>52</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Seydi</td>
+<td>Yaş</td>
+<td>47</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Burak</td>
+<td>Eğitim Durumu</td>
+<td>Doktora</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Halil</td>
+<td>Eğitim Durumu</td>
+<td>Lisans</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Emre</td>
+<td>Eğitim Durumu</td>
+<td>MBA</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Ersin</td>
+<td>Eğitim Durumu</td>
+<td>Yüksek Lisans</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Sertaç</td>
+<td>Eğitim Durumu</td>
+<td>MBA</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Seydi</td>
+<td>Eğitim Durumu</td>
+<td>Lisans</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Burak</td>
+<td>Kazanç</td>
+<td>100000</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Halil</td>
+<td>Kazanç</td>
+<td>120000</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Emre</td>
+<td>Kazanç</td>
+<td>85000</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Ersin</td>
+<td>Kazanç</td>
+<td>75000</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Sertaç</td>
+<td>Kazanç</td>
+<td>95000</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Seydi</td>
+<td>Kazanç</td>
+<td>80000</td>
+</tr>
+</tbody>
+</table>
+<p>Kodlara <code>value_vars</code> parametresini, kod bloğuna dahil etmediğimize dikkat edin. Tüm verilerimizi çözmek/yeniden şekillendirmek istediğimiz için bu parametreyi kullanmadık.</p>
+<p>Bu, aşağıdaki kodu yazmakla aynıdır. Bunların her ikisi de aynı (yukarıdaki) çıktıyı verir/döndürür:</p>
+<div class="highlight"><pre><span></span><code><span class="n">melted</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span>
+   <span class="n">df</span><span class="p">,</span> 
+   <span class="n">id_vars</span> <span class="o">=</span> <span class="s1">&#39;Ad&#39;</span><span class="p">,</span> 
+   <span class="n">value_vars</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Yaş&#39;</span><span class="p">,</span> <span class="s1">&#39;Eğitim Durumu&#39;</span><span class="p">,</span> <span class="s1">&#39;Kazanç&#39;</span><span class="p">],</span> 
+   <span class="n">var_name</span> <span class="o">=</span> <span class="s1">&#39;Özellik&#39;</span><span class="p">,</span> 
+   <span class="n">value_name</span> <span class="o">=</span> <span class="s1">&#39;Değer&#39;</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">melted</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>SONUÇ</h2>
+<p>Bu bölümde, Pandas kütüphanesinin <code>melt()</code> fonksiyonu aracılığı ile sadece birkaç satır kod yazarak, geniş bir veri kümesini, <code>pivot_table()</code> ve benzeri yapılarla kolayca işleyip daha fazla analiz yapabilmemizi sağlayacak, çok daha kullanışlı bir veri kümesine dönüştürmenin ne kadar kolay olduğunu öğrendik.</p>
+<h3>Kaynak</h3>
+<p>Bu dokümanı <a href="https://datagy.io/using-the-pandas-melt-function-in-python-to-unpivot-data/">datagy.io</a> sayfasındaki bilgilerden yararlanarak hazırladım.</p>
+<p><a href="pandas-10-pivot_table-fonksiyonunun-kullanimi.html">← Önceki Bölüm</a> | <a href="pandas-12-operator-kullanimi.html">Sonraki Bölüm →</a></p>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/pandas.html">Pandas</a></li>
+					<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+					<li><a href="/tag/modul.html">Modül</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>

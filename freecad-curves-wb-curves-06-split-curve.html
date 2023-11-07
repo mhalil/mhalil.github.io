@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="FreeCAD - Curves WB - Curves - 06 - Split curve" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/freecad-curves-wb-curves-06-split-curve.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">FreeCAD - Curves WB - Curves - 06 - Split curve</h1>
+	<span class="post-date">Çrş 19 Ekim 2022</span>
+	<h1><img alt="Curves_SplitCurve" src="https://wiki.freecadweb.org/images/b/b7/Curves_SplitCurve.svg"> Split curve:</h1>
+<p><strong>Split curve</strong> komutu, <u>Seçili eğri(ler)i / kenar(lar)ı parçalara ayırır.</u>  </p>
+<p><strong>Kullanım:</strong> Komutu çalıştırmak için aşağıdaki işlemleri sırasıyla uygulayın:</p>
+<ul>
+<li>Öncelikle, parçalara ayırmak istediğiniz kenarı/eğriyi ya da kenarları/eğrileri seçin.</li>
+<li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
+<li><strong>Curves</strong> menüsündeki <strong>Split curve</strong> seçeneğini kullanın.</li>
+</ul>
+<p><img alt="Split_curve_01" src="../../images/freecad/curves_wb/curves_menu/Split_curve_01.png"><br>
+Seçili Eğri, istenilen kısımlardan 
+parçalar ayrılabilir. Kısımlar, komut çalıştırıldıktan sonra <strong>Özellikler</strong> bölümündeki <strong>Veri</strong> sekmesinden ayarlanır. Varsayılan değer <strong>50%</strong> yani eğrinin tam ortasından bölünmesidir. 
+<img alt="Split_curve_02" src="../../images/freecad/curves_wb/curves_menu/Split_curve_02.png"><br>
+<strong>Split curve</strong> komutu ile bölünen eğriye, unsur ağacında çift tıklayarak düzenleme moduna girilebilir (düzenleme modunda unsur sarı renkli olarak gösterilir) ve bölüm/ayrım noktası, fare yardımıyla eğri üzerinde hareket ettirerek konumu değiştirilebilir.<br>
+<img alt="Split_curve_03" src="../../images/freecad/curves_wb/curves_menu/Split_curve_03.png"><br>
+<img alt="Split_curve_04" src="../../images/freecad/curves_wb/curves_menu/Split_curve_04.png"><br>
+Bölme/Parçalama kısımlarını 
+ayarlamak için başka bir yöntem de, aşağıdaki adımları uygulamaktır;</p>
+<ul>
+<li><strong>Unsur ağacı</strong>ndan SplitCurve unsuru seçilir</li>
+<li>Özellikler Panelindeki <strong>Split (Böl)</strong> başlığı altında bulunan <strong>Values (Değerler)</strong> İletişim kutusu açılarak her satıra istenilen değerler yazılır.</li>
+</ul>
+<p><img alt="Split_curve_05" src="../../images/freecad/curves_wb/curves_menu/Split_curve_05.png"><br>
+Eğrileri, sayısal değer belirterek 
+parçalara ayırmanın dışında, diğer eğrilerle/kenarlarla kesiştiği 
+noktalardan parçalara ayırmak ta mümkün. Şimdi, 4 eğriyi seçerek, 
+kesişme noktalarından bölmeye/ayırmaya çalışalım.
+ <img alt="Split_curve_06" src="../../images/freecad/curves_wb/curves_menu/Split_curve_06.png"><br>
+Parçalara ayırmak istediğimiz 4 eğriyi seçtik ve <strong>Split curve</strong> komutunu çalıştırdık.
+ <img alt="Split_curve_07" src="../../images/freecad/curves_wb/curves_menu/Split_curve_07.png"><br>
+Split curve komutu uygulanan eğrilerden biri seçilir ve <strong>Özellikler</strong> panelindeki <strong>Split</strong> başlığı altındaki <strong>Values (Değerler)</strong> kısmınaki sayısal veriyi silelim (köşeli parantezi silmeyin.) <strong>Cutting Objects (Kesim Nesneleri)</strong> seçeneğinin sağındaki <strong>üç nokta</strong> <code>...</code> butonuna basalım.
+ <img alt="Split_curve_08" src="../../images/freecad/curves_wb/curves_menu/Split_curve_08.png"><br>
+Açılan <strong>Link</strong> 
+başlıklı diyalog kutusu, Unsur ağacındaki nesneleri görüntüleyecektir. 
+Seçili eğriyi, hangi eğrileri kullanarak bölmek istiyorsak, o eğrileri 
+seçmeliyiz.
+ <img alt="Split_curve_09" src="../../images/freecad/curves_wb/curves_menu/Split_curve_09.png"><br>
+Görüldüğü üzere, eğrimiz, seçili eğrilerle kesişim noktalarından bölündü.
+ <img alt="Split_curve_10" src="../../images/freecad/curves_wb/curves_menu/Split_curve_10.png"><br>
+Birden fazla eğriyi aynı anda 
+seçerek, diğer eğrilerle kesişim noktalarından bölmek te mümkün.
+ <img alt="Split_curve_11" src="../../images/freecad/curves_wb/curves_menu/Split_curve_11.png"><br>
+<img alt="Split_curve_12" src="../../images/freecad/curves_wb/curves_menu/Split_curve_12.png"><br>
+Bölünmüş eğriler seçerek bir yüzey oluşturmaya çalışalım.
+ <img alt="Split_curve_13" src="../../images/freecad/curves_wb/curves_menu/Split_curve_13.png"><br>
+Oluşan yeni yüzeyi, ana yüzeyden çıkaralım.
+ <img alt="Split_curve_14" src="../../images/freecad/curves_wb/curves_menu/Split_curve_14.png"><br>
+Sonuç:
+ <img alt="Split_curve_15" src="../../images/freecad/curves_wb/curves_menu/Split_curve_15.png">  </p>
+<p><a href="freecad-curves-wb-curves-00-curves-menu-komutlari.html">&lt;&lt;&lt; Curves Menü Komutlarına Ait Sayfaya Dön</a></p>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/freecad.html">FreeCAD</a></li>
+					<li><a href="/tag/curves.html">Curves</a></li>
+					<li><a href="/tag/workbench.html">Workbench</a></li>
+					<li><a href="/tag/calismatezgahi.html">ÇalışmaTezgahı</a></li>
+					<li><a href="/tag/split.html">Split</a></li>
+					<li><a href="/tag/curve.html">curve</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>

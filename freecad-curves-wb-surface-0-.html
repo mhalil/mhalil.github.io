@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="FreeCAD - Curves WB - Surface - 0 -" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/freecad-curves-wb-surface-0-.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">FreeCAD - Curves WB - Surface - 0 -</h1>
+	<span class="post-date">Cts 05 Kasım 2022</span>
+	<p><img alt="zebra" src="https://raw.githubusercontent.com/tomate44/CurvesWB/9aac6c2365311724487f79df3343dab90ddcb819/freecad/Curves/resources/icons/zebra.svg"> <strong>ZebraTool:</strong><br>
+<strong>ZebraTool</strong> komutu, yüzeylerin birleşim yerlerindeki sürekliliği ve yüzeyler arası geçiş yumuşaklığını incelememize yardımcı olmak için, yüzey üzerinde değişen siyah ve beyaz 
+şeritlerden müteşekkil <strong>Zebra dokusu</strong> görüntüler.<br>
+Zebra çizgileri, standart bir ekranda görülmesi zor olabilecek bir yüzeydeki küçük değişiklikleri görmenizi sağlar. <strong>ZebraTool</strong> komutu, uzun ışık şeritlerinin çok parlak bir yüzey üzerindeki yansımasını simüle eder. ZebraTool sayesinde bir yüzeydeki bozuklukları veya kusurları kolayca görebiliriz.<br>
+<strong>ZebraTool</strong>, modellerimizin kalitesini, hızlı ve ayrıntılı bir şekilde görmek için kullanılabilecek güçlü bir araçtır. Yüksek kaliteli, iyi görünen bir yüzeye sahip olmak istiyorsak, ZebraTool aracını kullanmak faydalı olacaktır.</p>
+<p><strong>Kullanım:</strong> Komutu çalıştırmak için aşağıdaki adımları sırası ile uygulayın:</p>
+<ul>
+<li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
+<li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>ZebraTool</strong> seçeneğini kullanın.</li>
+<li>ZebraTool parametrelerini ihtiyacınıza göre değiştirin.</li>
+</ul>
+<p><strong>Parametreler:</strong><br>
+<strong>Black Stripes Width:</strong> Siyah şerit genişliğini değiştirir.<br>
+<strong>Scale:</strong> Zebra çizgilerini ölçeklendirir.<br>
+<strong>Rotation:</strong> Zebra çizgilerini döndürür.  </p>
+<p><strong>ZebraTool</strong> komutunu incelemek için <strong>Sketcher (Eskizci)</strong> çalışma tezgahındaki <strong>Bezier eğrisi</strong> komutu yardımıyla, bir biri ile bağlantılı 3 adet eğri oluşturuyorum.
+<img alt="ZebraTool_01" src="../../images/freecad/curves_wb/surfaces_menu/ZebraTool_01.png"><br>
+Oluşturduğum eğrileri, <strong>Part (Parça)</strong> çalışma tezgahındaki <strong>Extrude (Katıla)</strong> komutu ile, katılıyorum/ekstrude ediyorum.
+<img alt="ZebraTool_02" src="../../images/freecad/curves_wb/surfaces_menu/ZebraTool_02.png"><br>
+Komutu çalıştırmak için Curves araç çubuğunda bulunan ZebraTool düğmesine basabilir, ya da Surface menüsündeki <strong>ZebraTool</strong> seçeneğini kullanabilirsiniz.<br>
+<strong>Not:</strong><br>
+<em>ZebraTool komutundan çıkmak için </em><em><code>Quit (Çık)</code></em><em> düğmesine tıklayın.</em><br>
+<img alt="ZebraTool_03" src="../../images/freecad/curves_wb/surfaces_menu/ZebraTool_03.png"><br>
+Yüzeylerin birleşim noktalarındaki kusurları, sürekliliği veya yüzeyler arası geçiş yumuşaklığını inceleyebilmek için <strong>Scale</strong> ve <strong>Rotation</strong> Parametrelerini değiştirerek, zebra çizgilerinin <strong>Ölçeğini</strong> ve <strong>Yönünü</strong> değiştiriyorum.
+<img alt="ZebraTool_04" src="../../images/freecad/curves_wb/surfaces_menu/ZebraTool_04.png"><br>
+Modeli iki yönden de inceliyorum ve birleşim noktalarının sorunlu olduğunu görüyorum.
+<img alt="ZebraTool_05" src="../../images/freecad/curves_wb/surfaces_menu/ZebraTool_05.png"><br>
+Yüzeylerin birbirini teğete yakın şekilde takip etmesi için, oluşturduğum eskizi (sketch'i) düzenliyorum.
+<img alt="ZebraTool_06" src="../../images/freecad/curves_wb/surfaces_menu/ZebraTool_06.png"><br>
+Bezier eğrilerin uç (birleşim) noktalarındaki eğriselliğin neredeyse eşit olduğunu görebiliyoruz.
+<img alt="ZebraTool_07" src="../../images/freecad/curves_wb/surfaces_menu/ZebraTool_07.png"><br>
+Yüzeylerin birbirini teğete yakın şekilde takip etmesi amacıyla düzenlediğim eskizin (sketch'in) son hali aşağıdadır.
+<img alt="ZebraTool_08" src="../../images/freecad/curves_wb/surfaces_menu/ZebraTool_08.png"><br>
+Yüzeylerin birleşim noktalarındaki sürekliliği ve yüzeyler arası geçiş yumuşaklığını inceleyebilmek için <strong>ZebraTool</strong> komutunu tekrar çalıştırıyor, <strong>Scale</strong> ve <strong>Rotation</strong> parametrelerini, bakış açıma uygun olacak şekilde değiştiriyorum.
+ !ZebraTool_09<a href="../../images/freecad/curves_wb/surfaces_menu/ZebraTool_09.png"></a><br>
+Modeli daha yakından inceleyelim.
+<img alt="ZebraTool_10" src="../../images/freecad/curves_wb/surfaces_menu/ZebraTool_10.png"><br>
+Bir de modelin diğer tarafına bakalım.
+<img alt="ZebraTool_11" src="../../images/freecad/curves_wb/surfaces_menu/ZebraTool_11.png"><br>
+Yakından incelediğimizde, yüzey sürekliliği gayet güzel ve temiz görünüyor.
+<img alt="ZebraTool_12" src="../../images/freecad/curves_wb/surfaces_menu/ZebraTool_12.png">  </p>
+<p><img alt="trimFace" src="https://raw.githubusercontent.com/tomate44/CurvesWB/9aac6c2365311724487f79df3343dab90ddcb819/freecad/Curves/resources/icons/trimFace.svg"> <strong>Trim face:</strong><br>
+<strong>Trim face</strong> komutu, kesişme eğrisi oluşturmadan yüzleri kırpmanıza olanak tanır. Bu, yüzeyleri eğrilerle kırpan veya ayıran komuttur.  </p>
+<p><strong>Kullanım:</strong> Komutu çalıştırmak için aşağıdaki adımları sırası ile uygulayın:</p>
+<ul>
+<li>Öncelikle eğri(ler)i / kenar(lar)ı ve ardından yüzey(ler)i seçin. (Birlikte seçim için <code>CTRL</code> tuşunu kullanın)</li>
+<li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
+<li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>Trim face</strong> seçeneğini kullanın.</li>
+</ul>
+<p>Aşağıdaki şekilde göreceğiniz gibi elimizde eğrisel bir yüzey ve bir elips var.<br>
+<img alt="TrimFace_01" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_01.png"><br>
+Evvela <strong>Üst görünüşe</strong> geçerek önce eğriyi ardından yüzeyi seçiyoruz. Yüzeyi seçerken <strong>eğrinin dış ya da iç kısmında</strong> kalan bir yerin seçilmesinin önemli olduğu bilinmelidir. Aşağıdaki örnekte, Eğri seçildikten sonra, eğrinin <strong>dış kısmında kalan</strong> bir yere tıklanarak seçimin yapıldı ve ardından <strong>Trim face</strong> komutu çalıştırılmıştır.
+<img alt="TrimFace_02" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_02.png"><br>
+İşlem sonucu karşımızda. Yüzey seçimi yaparken, Eğrinin dışında kalan bir yere tıkladığımız için <strong>bu bölümün kalmasını istiyorum, geri kalan kısmı sil, at</strong> demiş oluyoruz.
+<img alt="TrimFace_03" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_03.png"><br>
+Modelin İzometrik görünümü bu şekildedir.
+<img alt="TrimFace_04" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_04.png"><br>
+Önce eğriyi ardından <strong>eğrinin iç kısmında</strong> kalan bir yeri seçerek yüzey seçimi yaptıktan sonra <strong>Üst görünüşe</strong> geçerek <strong>Trim face</strong> komutu çalıştırıp sonucu görelim.
+<img alt="TrimFace_05" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_05.png"><br>
+İşlem sonucu elde ettiğimiz model bu şekilde:
+<img alt="TrimFace_06" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_06.png"><br>
+Oluşan yüzeye <strong>Parça Çalışma Tezhagı (Part WB)</strong> içerisindeki <strong>3D Offset..</strong> komutu ile et kalınlığı verip kenarlarını da <strong>Fillet</strong> komutu ile yuvarlatırsak ne elde etmiş oluruz acaba? :)
+<img alt="TrimFace_06.2" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_06.2.png"><br>
+Dikkat ettiyseniz, yukarıdaki anlatımlarda <strong>Trim face</strong> komutunu çalıştırmadan önce, sürekli <strong>Üst görünüşe geçilmesi</strong> ifade edildi. Bunun sebebi, <strong>Trim face</strong> komutunun, sahneye bakış açısı doğrultusunda çıkarma/silme işlemi yapmasıdır. Aşağıdaki örnekte, sahneye izometrik bakış açısı ile bakıldığı esnada önce eğri ardından <strong>eğrinin iç kısmındaki yüzey</strong> seçilerek "Trim face" komutunu uygulanmaktadır.
+<img alt="TrimFace_07" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_07.png"><br>
+Sonuç, beklediğimiz gibi.
+<img alt="TrimFace_08" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_08.png"><br>
+Sonuca daha yakından bakacak olursak;
+<img alt="TrimFace_09" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_09.png"><br>
+Bu kez de sahneye farklı bir bakış açısı ile bakarak, eğrinin dışında kalan yüzey kısmını seçerek <strong>Trim face</strong> komutunu çalıştıralım.
+<img alt="TrimFace_10" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_10.png"><br>
+Yüzeyin, seçilen (eğrinin dışında kalan) kısmı kaldı, seçilmeyen (eğrinin iç kısmı) silinip atıldı.
+<img alt="TrimFace_11" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_11.png"><br>
+Modelin izometrik görünümü:
+<img alt="TrimFace_12" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_12.png"><br>
+<code>Trim face</code> komutunu kullanmak için çember, elips, dikdörtgen,..vb kapalı eğri kullanmak zorunda değiliz. Aşağıdaki resme bakın.
+<img alt="TrimFace_13" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_13.png"><br>
+Üst görünüşten bakarak önce eğri parçalarını ardından yüzeyi seçiyorum.
+<img alt="TrimFace_14" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_14.png"><br>
+Yüzey seçimi yaparken, eğrinin alt kısmına tıklıyorum.
+<img alt="TrimFace_15" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_15.png"><br>
+<strong>Trim face</strong> komutu çalıştırıldığında, seçili yüzey tarafı (eğrinin alt kısmı) kalıyor, eğrinin üst kısmı kesilip atılıyor.
+<img alt="TrimFace_16" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_16.png"><br>
+İşlem sonrası izometrik görünüş;
+<img alt="TrimFace_17" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_17.png"><br>
+Bu kez, üst görünüşten bakarak önce eğri parçalarını ardından eğrinin üst kısmındaki yüzeyi seçerek komutu çalıştırıyorum.
+<img alt="TrimFace_18" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_18.png"><br>
+Beklediğimiz gibi, eğrinin alt kısmındaki yüzey parçası siliniyor.
+<img alt="TrimFace_19" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_19.png"><br>
+İzometrik görünüş;
+<img alt="TrimFace_20" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_20.png"><br>
+Eğer bir kaç yüzey parçasının uc uca eklenmesi ile elde edilmiş yüzey yapısı varsa, bu komut nasıl çalışır, bu konuyu inceleyelim.
+<img alt="TrimFace_21" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_21.png"><br>
+Eğri parçalarının ardından, en sağdaki yüzeyin üst kısmını seçiyorum. Yüzey rengine bakarak hangi yüzeylerin seçili olduğunu anlayabilirsiniz.
+<img alt="TrimFace_22" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_22.png"><br>
+Gördüğünüz gibi "Trim face" komutu, sadece seçili yüzeyi etkiledi. Seçilmeyen yüzeylerin tamamı silindi.
+<img alt="TrimFace_23" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_23.png"><br>
+İzometrik görünüş;
+<img alt="TrimFace_24" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_24.png"><br>
+Yüzey seçimi yaparken Sağ taraftan başlayarak bağlantılı üç yüzeyi <strong>Ctrl</strong> tuşu yardımıyla seçiyorum.
+<img alt="TrimFace_25" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_25.png"><br>
+Görülüyor ki, sadece seçili 3 yüzey üzerinde kesme işlemi uygulanmış.
+<img alt="TrimFace_26" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_26.png"><br>
+Seçilmeyen tüm yüzeyler silinmiş.
+<img alt="TrimFace_27" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_27.png"><br>
+Şimdi tüm yüzeyleri seçerek komutu çalıştıralım.
+<img alt="TrimFace_28" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_28.png"><br>
+Sonuç beklediğimiz gibi, tüm yüzeyler üzerinde kesim işlemi gerçekleşmiş.
+<img alt="TrimFace_29" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_29.png"><br>
+İzometrik görünüş (Sol - Üst)
+<img alt="TrimFace_30" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_30.png"><br>
+İzometrik görünüş (Sağ - Üst)
+<img alt="TrimFace_31" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_31.png">  </p>
+<p><img alt="isocurve" src="https://raw.githubusercontent.com/tomate44/CurvesWB/9aac6c2365311724487f79df3343dab90ddcb819/freecad/Curves/resources/icons/isocurve.svg"> <strong>IsoCurve:</strong><br>
+<strong>IsoCurve</strong> komutu, seçilen bir yüzeye UV yönelimli bir kafes yapısı uygular. Yani seçili yüzeyin, Yatay ve Düşey doğrultularında, yüzeyi kaplayacak şekilde, belirlenen sayıda eğriden oluşan wireframe denilen kafes yapısına oluşturur. Oluşan eğriler yüzeye
+ temas eder.  </p>
+<p><strong>Kullanım:</strong> Komutu çalıştırmak için aşağıdaki adımları sırası ile uygulayın:</p>
+<ul>
+<li>Öncelikle bir veya birkaç yüzey seçin. (Birlikte seçim için <code>CTRL</code> tuşunu kullanın)</li>
+<li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
+<li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>IsoCurve</strong> seçeneğini kullanın.</li>
+</ul>
+<p>Daha önce Modellemiş olduğum Burgu Vazo çalışmasını açıyorum. Herhangi bir yüzey seçili olmadığı için, <strong>IsoCurve</strong> butonu pasif vaziyette.<br>
+<img alt="IsoCurve_1" src="../../images/freecad/curves_wb/surfaces_menu/IsoCurve_1.png"><br>
+Bir yüzey seçtim ve butonu aktif hale geldi.
+<img alt="IsoCurve_2" src="../../images/freecad/curves_wb/surfaces_menu/IsoCurve_2.png"><br>
+Aktifleşen <strong>IsoCurve</strong> butonuna tıklıyorum ve seçili yüzey üzerinde 5 yatay ve 5 düşey eğriden müteşekkil bir kafes yapısı oluşuyor.
+<img alt="IsoCurve_3" src="../../images/freecad/curves_wb/surfaces_menu/IsoCurve_3.png"><br>
+Unsur ağacından <strong>IsoCurve</strong> nesnesi seçiliyken, <strong>Özellikler</strong> panelinde <strong>Iso Curve</strong> başlığı altında <strong>Number U</strong> ve <strong>Number V</strong> değerleri değiştirilerek, kafes yapısını oluşturan eğri sayısı artırılıp azaltılabilir.
+<img alt="IsoCurve_4" src="../../images/freecad/curves_wb/surfaces_menu/IsoCurve_4.png"><br>
+Burgu Vazo nesnemizi gizleyip <strong>IsoCurve</strong> komutu ile oluşturduğumuz kafes yapısını incelersek, aşağıdaki şekil ile karşılaşırız.
+<img alt="IsoCurve_5" src="../../images/freecad/curves_wb/surfaces_menu/IsoCurve_5.png">  </p>
+<p><img alt="sketch_surf" src="https://raw.githubusercontent.com/tomate44/CurvesWB/9aac6c2365311724487f79df3343dab90ddcb819/freecad/Curves/resources/icons/sketch_surf.svg"> <strong>Sketch on Surface:</strong><br>
+Bu komut sayesinde seçili yüzeyin, sanal UV'si açılır ve bu düzlem yüzeye 2 boyutlu Eskiz (sketch) çizimi yapmamıza imkan verilir. 
+Komut sonlandırıldığında, çizilen 2 boyutlu eskiz, yüzey üzerine uygulanır.  </p>
+<p><strong>Kullanım:</strong> Komutu çalıştırmak için aşağıdaki adımları sırası ile uygulayın:</p>
+<ul>
+<li>Öncelikle bir yüzey seçin.</li>
+<li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
+<li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>Sketch on Surface</strong> seçeneğini kullanın.</li>
+</ul>
+<p>Yüzüğe benzer İçi boş bir silindir modelin dış yüzeyine eskiz (şekiller) çizip, bu eskizi, silindir yüzeyinden çıkarmaya çalışalım.<br>
+<strong>Parça Çalışma Tezgahı (Part WB)</strong> komutlarından olan <strong>Tüp/Boru (Tube)</strong> komutunu çalıştırıp parametrelerimizi belirleyelim.
+<img alt="SketchOnSurface_01" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_01.png"><br>
+Modelin dış yüzeyini seçip <strong>Surface</strong> menüsündeki <strong>Sketch on surface</strong> komutunu çalıştıralım.
+<img alt="SketchOnSurface_02" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_02.png"><br>
+Komut sonrasında, Unsur ağacında <strong>Sketch on Surface</strong> ve <strong>Mapped_Sketch</strong> unsurlarının oluştuğunu göreceksiniz.
+<img alt="SketchOnSurface_03" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_03.png"><br>
+<strong>Mapped_Sketch</strong> unsuruna çif tıklayarak düzenleme moduna girdiğimizde referans çizgilerden oluşan bir dikdörtgen göreceksiniz. Bu dikdörtgen şekil, seçili yüzeyin kumaş gibi açılıp karşınıza sunulduğu UV yapısını temsil eder. Anlaşılması açısından, <strong>U:</strong> eskizin X eksenini, <strong>V:</strong> eskizin Y ekseninin tanımlar diyebiliriz.
+<img alt="SketchOnSurface_04" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_04.png"><br>
+Referans çizgilerden oluşan bir dikdörtgenin içine istediğiniz şekli çizebilirsiniz. Aşağıdaki şekli çizip çoğaltarak sonucu görmek istiyorum.
+<img alt="SketchOnSurface_05" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_05.png"><br>
+Çizimin doğrusal 10 kopyasını çıkarıyorum / çoğaltıyorum ve Sol paneldeki <strong>Close</strong> butonu ile eskizden çıkıyorum.
+<img alt="SketchOnSurface_06" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_06.png"><br>
+Eskizi rahat çizebilmek adına Boru (Tube) modelini gizlemiştim. Şimdi unsur ağacından Tube nesnesini seçip tekrar <strong>Boşluk (Space)</strong> tuşu yardımıyla görünür hale getirelim.
+<img alt="SketchOnSurface_07" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_07.png"><br>
+Sonuç, beklediğimiz gibi. Çizdiğimiz eskiz, Boru (Tube) modelinin seçili yüzeyine ilişkilendirildi.
+<img alt="SketchOnSurface_08" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_08.png"><br>
+Şimdi sıra, <strong>Sketch on Surface</strong> komutunun <strong>Ayarlarını (Settings)</strong> incelemeye geldi.
+<img alt="SketchOnSurface_09" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_09.png"><br>
+<strong>Fill Faces (Yüzeyleri Doldur)</strong> seçeneği, çizilen eskizin kapalı çokgenlerinin iç kısmını doldurarak, yüzeye dönüştürür.
+<img alt="SketchOnSurface_10" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_10.png"><br>
+<strong>Thickness (Kalınlık)</strong> seçeneği, çizilen eskize, extrude komutuna benzer şekilde kalınlık kazandırır. <strong>Fill Faces (Yüzeyleri Doldur)</strong> seçeneği <strong>true</strong> ya da <strong>false</strong> olabilir. Her iki seçenekte de komut çalışır.
+<img alt="SketchOnSurface_11" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_11.png"><br>
+<strong>Offset (Ötele)</strong> seçeneği, Çizilen eskizin, seçilen yüzeyden ne kadar ötelenerek eşleştirileceğini belirttiğimiz ayar bölümüdür.
+<img alt="SketchOnSurface_12" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_12.png"><br>
+Ayarlar bölümündeki değerler her zaman pozitif olmak zorunda değildir. Örneğin <strong>Thickness</strong> değerini Negatif yapalım ve sonucu görelim.
+<img alt="SketchOnSurface_13" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_13.png"><br>
+Görüldüğü üzere <strong>Thickness</strong> değeri negatif olduğunda, eskiz, ters doğrultuda kalınlık kazandı. Son olarak ta, <strong>Tube</strong> nesnemizden, kalınlık verdiğimiz eskiz nesnemizi çıkaralım. Önce <strong>Tube</strong> sonra <strong>Sketch on surface</strong> nesnemizi seçelim.
+<img alt="SketchOnSurface_14" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_14.png"><br>
+<strong>Parça Çalışma Tezgahı (Part WB)</strong> komutlarından olan <strong>Kes (Cut)</strong> komutu ile 2. seçili nesneyi, ilk seçili nesneden çıkaralım.
+<img alt="SketchOnSurface_15" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_15.png"><br>
+Sonuç ortada:
+<img alt="SketchOnSurface_16" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_16.png"><br>
+Yüzey'e şekil yerine Yazı ekleyip boşluk oluşturmaya çalışalım ve <strong>Sketch on Surface</strong> komutunun <strong>Rötuş/Düzeltme (Touchup)</strong> ayarlarını inceleyelim. Yukarıda anlatılanlara benzer şekilde <strong>Mapped_Sketch</strong> unsuruna çif tıklayarak düzenleme moduna girdiğimizde referans çizgilerden oluşan bir dikdörtgen içerisine yazımıza ekliyoruz.
+<img alt="SketchOnSurface_17" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_17.png"><br>
+Bezier eğrinin, eğrilik tarakları ve kontrol noktaları kapatıldığında yazımız daha net görünüyor.
+<img alt="SketchOnSurface_18" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_18.png"><br>
+Düzenleme işlemini tamamlayıp eskizden çıktığımızda, yazımız yüzeye uygulanmış olur.
+<img alt="SketchOnSurface_19" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_19.png"><br>
+Gizlemiş olduğumuz <strong>Boru/Tüp (Tube)</strong> nesnemizi görüntüleyelim.
+<img alt="SketchOnSurface_20" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_20.png"><br>
+<strong>Rötuş/Düzeltme (Touchup)</strong> ayarlarını inceleyelim.<br>
+<strong>Reverse U:</strong> Yüzeye çizilen eskizi, U yönünde (bu örnekte X ekseni doğrultusunda yani YZ düzleminde) ters çevirir.<br>
+<img alt="SketchOnSurface_21" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_21.png"><br>
+<strong>Reverse V:</strong> Yüzeye çizilen eskizi, V yönünde (bu örnekte Z ekseni doğrultusunda yani XY düzleminde) ters çevirir.<br>
+<img alt="SketchOnSurface_22" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_22.png"><br>
+<strong>Swap UV:</strong> U ve V eksenlerinin yerlerini değiştirir, UV yapısını 90 derece çevirir / değiştirir gibi düşünebilirsiniz. Örnekte modellediğimiz <strong>Boru/Tüp (Tube)</strong> nesnemiz kısa olduğu için UV'nin 90 derece çevrilmesi oluşan yapı net olarak anlaşılamıyor. Kendi modellerinizde bu ayarı değiştirerek sonucu görebilirsiniz.
+<img alt="SketchOnSurface_23" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_23.png"><br>
+Yukarıdaki örnekte olduğu gibi, yüzeye eşleştirdiğimiz yazımıza kalınlık verip boru nesnemizden çıkaralım.
+<img alt="SketchOnSurface_24" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_24.png"><br>
+<img alt="SketchOnSurface_25" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_25.png"><br>
+<strong>Boru/Tüp (Tube)</strong> nesnemizin yarısı keselim.
+<img alt="SketchOnSurface_26" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_26.png"><br>
+Nesnenin keskin köşeleri hoş görünmüyor, keskin köşelere radyus kazandıralım (yuvarlatalım).
+<img alt="SketchOnSurface_27" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_27.png"><br>
+Bu şekilde daha hoş görünüyor;
+<img alt="SketchOnSurface_28" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_28.png"><br>
+<img alt="SketchOnSurface_29" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_29.png"><br>
+<strong>Sketch on Surface</strong> komutu ile Eğrisel yüzeylerin UV açılımı yapıldığında, bazen ölçüler beklendiğinden farklı olur. 
+Aşağıdaki örneklerle konuyu inceleyelim.
+<img alt="SketchOnSurface_30" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_30.png"><br>
+Yüzeyi seçip <strong>Sketch on Surface</strong> komutunu çalıştıralım.
+<img alt="SketchOnSurface_31" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_31.png"><br>
+<strong>Mapped_Sketch</strong> unsuruna çift tıklayarak düzenleme moduna girelim.
+<img alt="SketchOnSurface_32" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_32.png"><br>
+Gördüğünüz gibi, <strong>U yönü:</strong> 1mm, <strong>V yönü:</strong> 50mm belirlenerek <strong>UV</strong> oluşturulmuş.
+<img alt="SketchOnSurface_33" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_33.png"><br>
+1mm olan ölçüyü 75mm olarak değiştiriyoruz.
+<img alt="SketchOnSurface_34" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_34.png"><br>
+Referans çizgiler içerisinde kalacak şekilde bir eskiz çiziyor ve <strong>Close</strong> butonuna basarak eskizi kapatıyoruz.
+<img alt="SketchOnSurface_35" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_35.png"><br>
+Eskiz, yüzeye eşleştirildi.
+<img alt="SketchOnSurface_36" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_36.png"><br>
+Eskizi kapalı yüzey olarak ayarlıyor ve kalınlık kazandırarak sonuçları görüyoruz.
+<img alt="SketchOnSurface_37" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_37.png"><br>
+<strong>Sketch on Surface</strong> nesnesine kalınlık kazandırıp <strong>Offset</strong> nesnesini gizlersek elde edeceğimiz sonuca ait görüntüleri aşağıda görebiliriz;
+<img alt="SketchOnSurface_38" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_38.png"><br>
+<strong>Offset</strong> nesnesi ile <strong>Sketch on Surface</strong> nesnelerini bir birinden çıkarıyoruz.</p>
+<p><img alt="SketchOnSurface_39" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_39.png"><br>
+Sonucu, farklı bir bakış açısından inceliyoruz.
+<img alt="SketchOnSurface_40" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_40.png"><br>
+<strong>Sketch on Surface</strong> komutunun ayarlarından biri olan <strong>Extra Objects</strong>'i inceleyelim.
+<img alt="SketchOnSurface_41" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_41.png"><br>
+<strong>Taslak Çalışma Tezgahı (Draft WB)</strong> komutlarından biri olan <strong>Metinden şekil (Shape from text)</strong> ile bir metin oluşturduk. Aşağıdaki görüntüye bakarsanız, Metin ile <strong>Sketch on Surface</strong> düzleminin faklı yönlere baktığı ve Z ekseninde farklı seviyelerde olduğunu göreceksiniz.
+<img alt="SketchOnSurface_42" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_42.png"><br>
+Yazıyı X ekseninde 90 derece çevrirerek iki doğrultuyu da eşitledik ancak Z ekseninde hala farklı seviyedeler.
+<img alt="SketchOnSurface_43" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_43.png"><br>
+Metnin (ShapeString) açı ve konum ayarlarını değiştirerek, metni, Mapped_Sketch'in ortasına taşıdık.
+<img alt="SketchOnSurface_44" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_44.png"><br>
+Çizim, şu an aşağıdaki gibi görünüyor. Unsur ağacından <strong>Sketch on Surface</strong> seçilir ve ayarlar kısmından <strong>Extra Objects</strong> kısmındaki butona basılırsa;
+<img alt="SketchOnSurface_45" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_45.png"><br>
+Açılan <strong>Bağlantı (Link)</strong> penceresi karşımıza gelir. Bu bölümde Metni (<strong>ShapeString</strong>) seçelim.
+<img alt="SketchOnSurface_46" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_46.png"><br>
+<strong>Bağlantı (Link)</strong> penceresindeki <strong>OK</strong> butonuna bastığımızda, seçmiş olduğumuz metnin, <strong>Sketch on Surface</strong> yüzeyine uygulandığını göreceksiniz.
+<img alt="SketchOnSurface_47" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_47.png"><br>
+Orjinal Metni (ShapeString) gizleyelim.
+<img alt="SketchOnSurface_48" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_48.png"><br>
+<strong>Sketch on Surface</strong>'e kalınlık kazandıralım.
+<img alt="SketchOnSurface_49" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_49.png"><br>
+Unsur ağacından Orjinal Metni (<strong>ShapeString</strong>) seçip ayarlar kısmından <strong>Metnin içeriğini (string)</strong> ya da <strong>metin boyutunu (Size)</strong> değiştirirsek yazının güncellendiğini görürüz.
+<img alt="SketchOnSurface_50" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_50.png"><br>
+Eskiz içerisinde Metnimizin konumunu değiştirelim.
+<img alt="SketchOnSurface_51" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_51.png"><br>
+Sonucun nasıl olduğunu görüyorsunuz. İstersek çalışmaya pozitif yönde kalınlık verir dışa doğru katılarız.
+<img alt="SketchOnSurface_52" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_52.png"><br>
+İstersek negatif yönde tarafa kalınlık verip, gövdeden çıkarırız.
+<img alt="SketchOnSurface_53" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_53.png"><br>
+Farklı bir bakış açısından sonucu incelersek;
+<img alt="SketchOnSurface_54" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_54.png"><br>
+Metni <strong>Kes (Cut)</strong> komutu ile Gövdeden çıkarmış olsak bile bu aşamada orjinal metni değiştirdiğimizde, sonuç otomatik olarak güncellenir.
+<img alt="SketchOnSurface_55" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_55.png">  </p>
+<p><img alt="sw2r" src="https://raw.githubusercontent.com/tomate44/CurvesWB/9aac6c2365311724487f79df3343dab90ddcb819/freecad/Curves/resources/icons/sw2r.svg"> <strong>Sweep2Rails:</strong><br>
+<strong>Sweep2Rails</strong> komutu, düzlemsel bir yüzeyden, bir dizi eğri (ray) aracılığıyla eğrisel şekilli <strong>nokta bulutu, profil/ray eğrileri</strong> ya da <strong>tel kafes yapısı</strong> oluşturmamızı sağlar. Konunun anlaşılması için aşağıdaki metinleri okuyup resimleri inceleyin lütfen.  </p>
+<p><strong>Kullanım:</strong> Komutu çalıştırmak için aşağıdaki adımları sırası ile uygulayın:</p>
+<ul>
+<li>Öncelikle bir düzlem yüzey ve bir dizi (en az 2) eğri seçin. (Birlikte seçim için <code>CTRL</code> tuşunu kullanın)</li>
+<li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
+<li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>Sweep2Rails</strong> seçeneğini kullanın.</li>
+</ul>
+<p>Konunun anlaşılması amacıyla, Kürek ucuna benzer bir parça modelleyeceğiz. Öncelikle aşağıdaki resimde gördüğünüz eğrileri çizdim.<br>
+<img alt="Sweep2Rails_01" src="../../images/freecad/curves_wb/surfaces_menu/Sweep2Rails_01.png"><br>
+Doğrusal bir yüzey oluşturmak için 2 eğriyi seçerek, Parça Çalışma Tezgahındaki (Part WB'teki) <strong>Düzenli Yüzey Oluştur (Create ruled surface)</strong> komutunu çalıştırdım.
+<img alt="Sweep2Rails_02" src="../../images/freecad/curves_wb/surfaces_menu/Sweep2Rails_02.png"><br>
+Düzlem yüzey ile 2 adet ray eğrisini seçerek Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da <strong>Surface</strong> menüsündeki <strong>Sweep2Rails</strong> seçeneğini kullanın.
+<img alt="Sweep2Rails_03" src="../../images/freecad/curves_wb/surfaces_menu/Sweep2Rails_03.png"><br>
+İşlem sonucunda düzlem yüzey kaybolacak ve varsayılan olarak bir <strong>noktalar / nokta bulutu (points)</strong> oluşacaktır.
+<img alt="Sweep2Rails_04" src="../../images/freecad/curves_wb/surfaces_menu/Sweep2Rails_04.png"><br>
+Unsur ağacından <strong>Sweep_2_rails</strong> nesnesi seçilir, <strong>Veri</strong> Sekmesinden <strong>Profile Samples</strong> ve <strong>Rail Samples</strong> değerleri değiştirilerek, oluşan <strong>nokta bulutu (points), profil(profile) / ray(rail) eğrileri</strong> ya da <strong>tel kafes yapısı (wireframe)</strong> ile oynanabilir.
+<img alt="Sweep2Rails_05" src="../../images/freecad/curves_wb/surfaces_menu/Sweep2Rails_05.png"><br>
+Değerleri değiştirip yapıdaki değişimi görelim;<br>
+<strong>Profile Samples</strong>:40<br>
+<strong>Rail Samples</strong>: 20 
+<img alt="Sweep2Rails_06" src="../../images/freecad/curves_wb/surfaces_menu/Sweep2Rails_06.png"><br>
+Unsur ağacından <strong>Sweep_2_rails</strong> nesnesi seçerek <strong>Görünüm</strong> Sekmesindeki <strong>Görünüm Biçimi (Display Mode)</strong> seçeneklerini değiştirerek, <strong>nokta bulutu, profil/ray eğrileri</strong> ya da <strong>tel kafes yapısı</strong> arasında geçiş yapılabilir.<br>
+<strong>Profiller (Profiles):</strong> 
+<img alt="Sweep2Rails_07" src="../../images/freecad/curves_wb/surfaces_menu/Sweep2Rails_07.png"><br>
+<strong>Raylar (Rails):</strong> 
+<img alt="Sweep2Rails_08" src="../../images/freecad/curves_wb/surfaces_menu/Sweep2Rails_08.png"><br>
+<strong>Tel Kafes Yapısı (Wireframe):</strong> 
+<img alt="Sweep2Rails_09" src="../../images/freecad/curves_wb/surfaces_menu/Sweep2Rails_09.png"><br>
+Oluşan nokta bulutu, profil/ray eğrileri ya da tel kafes yapısı, <a href="https://mhalil.github.io/Freecad_curves_wb_curves.html#approximate"><strong>Approximate</strong></a> komutu yardımı ile eğrisel yüzeye dönüştürülebilir.
+<img alt="Sweep2Rails_10" src="../../images/freecad/curves_wb/surfaces_menu/Sweep2Rails_10.png"><br>
+Yeni oluşan eğrisel yüzeye, Parça Çalışma Tezgahındaki (Part WB'teki) <strong>3D Offset...</strong> komutu ile et kalınlığı verirsek, aşağıdaki sonucu elde ederiz.
+<img alt="Sweep2Rails_11" src="../../images/freecad/curves_wb/surfaces_menu/Sweep2Rails_11.png"><br>
+<strong>Sweep2Rails</strong> komutu ile, yukarıda oluşturmuş olduğumuz düzlem yüzeyi kullanarak, iki adet eğri yerine bir dizi (örneğin 3 adet) ve farklı yönlerde eğri (ray) kullanarak nokta bulutu ve sonrasında yüzey oluşturalım. Böylece bu komutun gücünü daha net 
+görelim.<br>
+Ray (Rail) olarak kullanacağımız 3 adet eğri aşağıda gösterilmektedir.
+<img alt="Sweep2Rails_12" src="../../images/freecad/curves_wb/surfaces_menu/Sweep2Rails_12.png"><br>
+3 eğriyi ve bir yüzeyi <code>Ctrl</code> tuşu yardımıyla seçiyoruz.
+<img alt="Sweep2Rails_13" src="../../images/freecad/curves_wb/surfaces_menu/Sweep2Rails_13.png"><br>
+<strong>Sweep2Rails</strong> komutunu çalıştırıyoruz.
+<img alt="Sweep2Rails_14" src="../../images/freecad/curves_wb/surfaces_menu/Sweep2Rails_14.png"><br>
+Oluşan noktaları (points), <a href="https://mhalil.github.io/Freecad_curves_wb_curves.html#approximate"><strong>Approximate</strong></a> komutu yardımı ile eğrisel yüzeye dönüştürüyoruz.
+<img alt="Sweep2Rails_15" src="../../images/freecad/curves_wb/surfaces_menu/Sweep2Rails_15.png"><br>
+Sonuç sizce de şık olmadı mı?</p>
+<p><img alt="profileSupport" src="https://raw.githubusercontent.com/tomate44/CurvesWB/9aac6c2365311724487f79df3343dab90ddcb819/freecad/Curves/resources/icons/profileSupport.svg"> <strong>Profile support plane:</strong><br>
+<strong>Profile support plane</strong> komutu, seçili (kenar çizgisi ya da eğriye ait) iki noktadan geçen ve sahneye bakış açısına dik <strong>bir Düzlem</strong> oluşturur.  </p>
+<p><strong>Kullanım:</strong> Komutu çalıştırmak için aşağıdaki adımları sırası ile uygulayın:</p>
+<ul>
+<li>Öncelikle bir eğri veya kenar çizgisi üzerinde birer seçim yapın. (Birlikte seçim için <code>CTRL</code> tuşunu kullanın)</li>
+<li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
+<li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>Profile support plane</strong> seçeneğini kullanın.</li>
+</ul>
+<p>Bir Eskiz (Sketch) içerisine bir çizgi ve bir bezier eğri çizerek komutun kullanımını inceleyelim.<br>
+<img alt="Profile_Support_Plane_01" src="../../images/freecad/curves_wb/surfaces_menu/Profile_Support_Plane_01.png"><br>
+Çizgiden ve bezier eğriden birer yer seçip <strong>Profile support plane</strong> komutunu çalıştıralım.
+<img alt="Profile_Support_Plane_02" src="../../images/freecad/curves_wb/surfaces_menu/Profile_Support_Plane_02.png"><br>
+Görüldüğü üzere, seçilen yerlerden (noktalardan) geçen ve (sahneye) bakış açımıza dik bir düzlem oluştu.
+<img alt="Profile_Support_Plane_03" src="../../images/freecad/curves_wb/surfaces_menu/Profile_Support_Plane_03.png"><br>
+Unsur ağacından, ilgili Profili seçip <strong>Veri (Data)</strong> sekmesindeki özelliklere bakarsak, düzlemin oluşmasında <strong>Edge1, Edge2, Parameter1</strong> ve <strong>Parameter2</strong> değerlerinin etkin olduğunu görürüz.
+<img alt="Profile_Support_Plane_04" src="../../images/freecad/curves_wb/surfaces_menu/Profile_Support_Plane_04.png"><br>
+Oluşan Düzleme izometrik görünümden bakacak olursak aşağıdaki sonucu elde ederiz.<br>
+<strong>Edge1 ve Edge2</strong> değerleri, Düzlemin oluşması esnasında kullanılan Kenar ve Eğrileri temsil eder.
+<img alt="Profile_Support_Plane_05" src="../../images/freecad/curves_wb/surfaces_menu/Profile_Support_Plane_05.png"><br>
+<strong>Parameter1</strong> değerini değiştirip <strong>10,00</strong> olarak ayarlarsak ne olur, görelim.
+<img alt="Profile_Support_Plane_06" src="../../images/freecad/curves_wb/surfaces_menu/Profile_Support_Plane_06.png"><br>
+Oluşan düzlemenim yeni halini, izometrik görünümden bakarak tekrar inceleyelim.<br>
+<img alt="Profile_Support_Plane_07" src="../../images/freecad/curves_wb/surfaces_menu/Profile_Support_Plane_07.png"><br>
+<strong>Parameter2</strong> değerini değiştirip <strong>1,00</strong> olarak ayarlarsak ne olur, bir de onu görelim. 
+<img alt="Profile_Support_Plane_08" src="../../images/freecad/curves_wb/surfaces_menu/Profile_Support_Plane_08.png"><br>
+Bir de <strong>Parameter1</strong> değerini <strong>1000,00</strong> olarak ayarlamaya çalışalım.
+<img alt="Profile_Support_Plane_09" src="../../images/freecad/curves_wb/surfaces_menu/Profile_Support_Plane_09.png"><br>
+Sonuç aşağıdaki gibi, <strong>Parameter1</strong> değerini <strong>1000,00</strong> olarak ayarlamaya çalışmamıza rağmen <strong>ENTER</strong> tuşuna basar bazmaz, değer 50,00 olarak değiştirildi.
+<img alt="Profile_Support_Plane_10" src="../../images/freecad/curves_wb/surfaces_menu/Profile_Support_Plane_10.png"><br>
+Bunun sebebini öğrenmek için Eskiz (Sketch) içerisine girip çizginin uzunluğuna bakarsak, sol taraftaki çizginin toplam uzunluğunun 50,00 birim olarak belirtilmiş olduğunu görürüz. Yani <strong>Parameter1</strong>'in alabileceği en büyük değer 50,00'dir. </p>
+<p><img alt="Profile_Support_Plane_11" src="../../images/freecad/curves_wb/surfaces_menu/Profile_Support_Plane_11.png"><br>
+<strong>Parameter2</strong>'nin alabileceği değer aralığını inceleyecek olursak, müsaade edilen değerlerin 0,00 ile 1,00 arasında olduğunu görürüz.<br>
+Yani Eğriler yüzdelik olarak ifade ediliyor. Örneğin <strong>Parameter2</strong> değerinin <strong>0 (sıfır)</strong> olarak belirtilmesi, oluşan düzlemin, eğrinin uç kısmından (sıfır noktasından) geçmesi demek oluyor.
+<img alt="Profile_Support_Plane_12" src="../../images/freecad/curves_wb/surfaces_menu/Profile_Support_Plane_12.png"><br>
+Kenar ve eğrinin uç noktalarından geçen düzlemin İzometrik görünümü.
+<img alt="Profile_Support_Plane_13" src="../../images/freecad/curves_wb/surfaces_menu/Profile_Support_Plane_13.png"><br>
+Kenar ve eğrinin dört noktasından geçen düzlemler.
+<img alt="Profile_Support_Plane_14" src="../../images/freecad/curves_wb/surfaces_menu/Profile_Support_Plane_14.png"><br>
+Dört Düzlemim izometrik görünümü;
+<img alt="Profile_Support_Plane_15" src="../../images/freecad/curves_wb/surfaces_menu/Profile_Support_Plane_15.png"><br>
+<strong>Profile support plane</strong> komutu ile yapılabilecek güzel bir uygulama örneği;<br>
+Düzlemler oluştur, düzlemler üzerine eskizler çiz.
+<img alt="Profile_Support_Plane_16" src="../../images/freecad/curves_wb/surfaces_menu/Profile_Support_Plane_16.png"><br>
+<a href="https://mhalil.github.io/Freecad_curves_wb_curves.html#approximate">Approximate</a> komutu ile yüzey oluştur.
+<img alt="Profile_Support_Plane_17" src="../../images/freecad/curves_wb/surfaces_menu/Profile_Support_Plane_17.png"><br>
+<strong>Parça Çalışma Tezhagı (Part WB)</strong> içerisindeki <strong>3D Offset..</strong> komutu ile et kalınlığı ver, <strong>Aynala (Mirror)</strong> komutu ile simetriğini oluştur ve iki simetrik gövdeyi <strong>Birleştir (Union)</strong> komutu ile tek gövde haline getir.
+<img alt="Profile_Support_Plane_18" src="../../images/freecad/curves_wb/surfaces_menu/Profile_Support_Plane_18.png"><br>
+Düzlem oluşumunda kullanılan eğrilerin ve dolayısıyla düzlemin değişimini inceleyelim.
+<img alt="Profile_Support_Plane_19" src="../../images/freecad/curves_wb/surfaces_menu/Profile_Support_Plane_19.png"><br>
+Aynı eskizde(sketch) bulunan iki nesneyi (çizgi ve eğri) seçerek bir düzlem oluşturalım. Ardından, Düzlem oluşumundaki eğriyi değiştirmek için Özellikler bölümündeki ilgili butona tıklayalım.
+<img alt="Profile_Support_Plane_20" src="../../images/freecad/curves_wb/surfaces_menu/Profile_Support_Plane_20.png"><br>
+Açılan <strong>Bağlantı (Link)</strong> penceresinden, öncelikle seçili olan eğriyi silmek için <strong>Temizle (Clear)</strong> butonuna basın.
+<img alt="Profile_Support_Plane_2Profile_Support_Plane_2" src="../../images/freecad/curves_wb/surfaces_menu/Profile_Support_Plane_21.png"><br>
+Düzlem oluşumu için gerekli ikinci bir nesne seçilmesi için bu ekranın aşağıdaki gibi boş olmasını sağlıyoruz.
+<img alt="Profile_Support_Plane_22" src="../../images/freecad/curves_wb/surfaces_menu/Profile_Support_Plane_22.png"><br>
+Sahneden, yeni bir nesne (çizgi, eğri, çember, yay, ...vb) seçelim.
+<img alt="Profile_Support_Plane_23" src="../../images/freecad/curves_wb/surfaces_menu/Profile_Support_Plane_23.png"><br>
+<strong>OK</strong> butonuna bastığımızda, düzlem, ilk seçilen kenar çizgisi ile son seçilen yay parçası ayarında oluşacaktır.
+<img alt="Profile_Support_Plane_24" src="../../images/freecad/curves_wb/surfaces_menu/Profile_Support_Plane_24.png"><br>
+Düzlemin güncel halinin izometrik görünümü aşağıdadır.
+<img alt="Profile_Support_Plane_25" src="../../images/freecad/curves_wb/surfaces_menu/Profile_Support_Plane_25.png">  </p>
+<p><img alt="Pipeshell" src="https://raw.githubusercontent.com/tomate44/CurvesWB/9aac6c2365311724487f79df3343dab90ddcb819/freecad/Curves/resources/icons/profile.svg"> <strong>Pipeshell profile:</strong><br>
+<strong>Pipeshell profile</strong> komutu, <strong>Parça Çalışma Tezgahı (Part WB)</strong> ve <strong>Parça Tasarımı Çalışma Tezgahı (Part Desing WB)</strong> komutlarından olan <strong>Süpür/Borula (Sweep/AddivitePipe)</strong> komutlarında kullanılan <strong>süpürülecek olan kesit alan (boru kesiti)</strong> oluşturmaya yarayan komuttur. Anlatım biraz kafa karıştırıcı olabilir. Aşağıdaki açıklamaları ve sonraki komut olan <strong>Pipeshell</strong> komutunu okurken konuyu daha net anlayacağınızı düşünüyorum.</p>
+<p><strong>Kullanım:</strong> Komutu çalıştırmak için aşağıdaki adımları sırası ile uygulayın:</p>
+<ul>
+<li>Öncelikle 3D ekranı içinden ya da Unsur agacından bir nesne (eğri, çizgisi, çember, ...vb) seçin.</li>
+<li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
+<li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>Pipeshell profile</strong> seçeneğini kullanın.</li>
+</ul>
+<p>3D ekranı içinden (sahneden) ya da Unsur agacından bir nesne (eğri, çizgisi, çember, ...vb) seçin.<br>
+<img alt="Pipeshell_profile_01" src="../../images/freecad/curves_wb/surfaces_menu/Pipeshell_profile_01.png"><br>
+Curves araç çubuğunda bulunan butona basarak ya da <strong>Surface</strong> menüsünden seçerek <strong>Pipeshell profile</strong> komutunu çalıştırın.
+<img alt="Pipeshell_profile_02" src="../../images/freecad/curves_wb/surfaces_menu/Pipeshell_profile_02.png"><br>
+Seçili olan nesne gizlenecek ve ona bağlı yeni bir nesne oluşturulacaktır. Oluşan yeni nesneyi Unsur agacında <strong>Profile</strong> ismi ile görebilirsiniz. Bu nesnenin rengi varsayılan olarak mavi olarak ayarlanır.
+<img alt="Pipeshell_profile_03" src="../../images/freecad/curves_wb/surfaces_menu/Pipeshell_profile_03.png"><br>
+Süpürülecek tüm nesneleri sıra ile seçerek <strong>Pipeshell profile</strong> komutunu çalıştırın.
+<img alt="Pipeshell_profile_04" src="../../images/freecad/curves_wb/surfaces_menu/Pipeshell_profile_04.png"><br>
+Kesit olması istenilen (süpürülecek) nesne sadece daire, çember ya da elips olmak zorunda değil. Kapalı çokgenler de kesit olarak seçilebilir.
+<img alt="Pipeshell_profile_05" src="../../images/freecad/curves_wb/surfaces_menu/Pipeshell_profile_05.png"><br>
+<img alt="Pipeshell_profile_06" src="../../images/freecad/curves_wb/surfaces_menu/Pipeshell_profile_06.png"><br>
+Hatta Kesit, kapalı nesne olmak zorunda da değil.
+<img alt="Pipeshell_profile_07" src="../../images/freecad/curves_wb/surfaces_menu/Pipeshell_profile_07.png"><br>
+<img alt="Pipeshell_profile_08" src="../../images/freecad/curves_wb/surfaces_menu/Pipeshell_profile_08.png"><br>
+Araba kaportası oluşturacak şekiller de, kesit olarak kullanılabilir.
+<img alt="Pipeshell_profile_09" src="../../images/freecad/curves_wb/surfaces_menu/Pipeshell_profile_09.png"><br>
+<img alt="Pipeshell_profile_10" src="../../images/freecad/curves_wb/surfaces_menu/Pipeshell_profile_10.png"><br>
+<img alt="Pipeshell_profile_11" src="../../images/freecad/curves_wb/surfaces_menu/Pipeshell_profile_11.png">  </p>
+<p><img alt="pipeshell" src="https://raw.githubusercontent.com/tomate44/CurvesWB/9aac6c2365311724487f79df3343dab90ddcb819/freecad/Curves/resources/icons/pipeshell.svg"> <strong>Pipeshell:</strong><br>
+<strong>Pipeshell</strong> komutu, <strong>Parça Çalışma Tezgahı (Part WB)</strong> ve <strong>Parça Tasarımı Çalışma Tezgahı (Part Desing WB)</strong> komutlarından olan <strong>Süpür/Borula (Sweep/AddivitePipe)</strong> ve <strong>Çatıla (Loft)</strong> komutlarına benzer şekilde bir yol boyunca <strong>seçili kesit alanını süpürerek yüzey oluşturur</strong>. Komut kabaca, Sweep ve Loft komutlarının birer benzeridir diyebiliriz.  </p>
+<p><strong>Kullanım:</strong> Komutu çalıştırmak için aşağıdaki adımları sırası ile uygulayın:</p>
+<ul>
+<li>Öncelikle <strong>3D Ekranı içerisinden (sahneden)</strong> süpürülecek yol (eğri, yay, çizgi, ...vb) seçin. (Birlikte seçim için <code>CTRL</code> tuşunu kullanın)</li>
+<li>Ardından <strong>Unsur ağacından</strong>, (sahne içerisinden seçmemelisiniz) <strong>Pipeshell profile</strong> komutu ile oluşturulmuş kesitleri seçin. (Birlikte seçim için <code>CTRL</code> tuşunu kullanın)</li>
+<li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
+<li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>Pipeshell</strong> seçeneğini kullanın.</li>
+</ul>
+<p><strong>3D Ekranı içerisinden</strong> yolu (eğri, yay, çizgi, ...vb) seçin. Daha sonra <strong>Unsur ağacından</strong>, (sahne içerisinden değil) <strong>Pipeshell profile</strong> komutu ile oluşturulmuş kesitleri (profilleri) seçin ve <strong>Pipeshell</strong> komutunu çalıştırın.
+<img alt="Pipeshell_01" src="../../images/freecad/curves_wb/surfaces_menu/Pipeshell_01.png"><br>
+<strong>Pipeshell</strong> komutu çalıştırılınca aşağıdaki şekil oluştu. Yani seçili Yol boyunca, Kesitler (Profiller) arasına yeni kesitler ebatları nispetinde eklendi. 
+<img alt="Pipeshell_02" src="../../images/freecad/curves_wb/surfaces_menu/Pipeshell_02.png"><br>
+Unsur ağacından <strong>Pipeshell</strong> nesnesi seçilip <strong>Output (Çıktı/Ürün/Sonuç)</strong> seçeneği <strong>Surface (Yüzey)</strong> olarak ayarlanırsa, aşağıdaki şekli elde ederiz.
+<img alt="Pipeshell_03" src="../../images/freecad/curves_wb/surfaces_menu/Pipeshell_03.png"><br>
+Yüzeye dönüştürülen çizimin arka kısmında bir bozukluk olduğunu görüyoruz.
+<img alt="Pipeshell_04" src="../../images/freecad/curves_wb/surfaces_menu/Pipeshell_04.png"><br>
+Görüntüyü çevirip modeli incelediğimizde, Son Kesitin (profilin) başlangıç noktasının, diğer profillerden farklı yönde olduğunu tespit ediyoruz. Yüzey oluşturulurken, profillerin noktaları referans alındığı için, modelin son kısımda bir bozulma yaşanmış. Gelin bu bozukluğu düzeltelim.
+<img alt="Pipeshell_05" src="../../images/freecad/curves_wb/surfaces_menu/Pipeshell_05.png"><br>
+Bozulmanın yaşandığı kesit (profil), <strong>Sketch004</strong> eskizi referans alınarak oluşturulduğu için, bu eskizde yapacağımız düzenleme, Profili de etkileyecek, düzeltecektir.<br>
+Unsur ağacından <strong>Sketch004</strong> eskizini seçip, <strong>Attachment</strong> ayarlarından <strong>Açı</strong> değerini inceliyoruz.
+<img alt="Pipeshell_06" src="../../images/freecad/curves_wb/surfaces_menu/Pipeshell_06.png"><br>
+<strong>Sketch004</strong> eskizinin, <strong>Attachment</strong> ayarındaki <strong>Açı</strong> değerini <strong>180</strong> olarak değiştirerek, eskizi kendi merkezindeki Z ekseninde 180 derece döndürüyoruz. Gördüğünüz gibi, modeldeki bozulma düzeliyor ve istediğimiz / beklediğimiz sonucu elde ediyoruz. Bazen, bozulmanın olduğu eskizi düzenleme modunda açıp değiştirerek te benzer sonuç elde edebiliyoruz. Dairesel kesitli eskizlerde yukarıda uyguladığımız yöntemin (ayarlarda değişiklik yapmak) daha uygun olduğu kanaatindeyim.
+<img alt="Pipeshell_07" src="../../images/freecad/curves_wb/surfaces_menu/Pipeshell_07.png"><br>
+<a href="https://mhalil.github.io/Freecad_curves_wb_surfaces.html#pipeshellprofile"><strong>Pipeshell profile</strong></a> komutu anlatılırken çizdiğimiz farklı kesitlere ait örnek çalışmaların <strong>Pipeshell</strong> komutu ile yüzeye dönüştürülmüş hallerini aşağıda görüp inceleyebilirsiniz.
+<img alt="Pipeshell_08" src="../../images/freecad/curves_wb/surfaces_menu/Pipeshell_08.png"><br>
+<img alt="Pipeshell_09" src="../../images/freecad/curves_wb/surfaces_menu/Pipeshell_09.png"><br>
+<img alt="Pipeshell_10" src="../../images/freecad/curves_wb/surfaces_menu/Pipeshell_10.png"><br>
+<img alt="Pipeshell_11" src="../../images/freecad/curves_wb/surfaces_menu/Pipeshell_11.png"><br>
+<img alt="Pipeshell_12" src="../../images/freecad/curves_wb/surfaces_menu/Pipeshell_12.png"><br>
+<img alt="Pipeshell_13" src="../../images/freecad/curves_wb/surfaces_menu/Pipeshell_13.png"><br>
+<img alt="Pipeshell_14" src="../../images/freecad/curves_wb/surfaces_menu/Pipeshell_14.png">  </p>
+<p><img alt="gordon" src="https://raw.githubusercontent.com/tomate44/CurvesWB/9aac6c2365311724487f79df3343dab90ddcb819/freecad/Curves/resources/icons/gordon.svg"> <strong>Gordon surface:</strong><br>
+<strong>Gordon surface</strong> komutu, bir dizi eğriyi bir yüzey olarak birleştirmek için kullanılır. Bu komut, birçok farklı endüstride, özellikle tasarım veya üretim sürecinde üç boyutlu 
+yüzeylerin oluşturulması gerektiğinde (tasarımın daha akıcı ve doğal bir şekilde görünmesini sağlar), özellikle de CNC işleme, kalıp yapımı ve üretim süreçlerinde sıkça kullanılır.<br>
+Bu komut, yüzey için bir destekleyici çizgi veya eğri ağı gerektirir. Yüzey, bu çizgilerin arasında üzeri "örtülü" yapı şeklinde oluşacaktır.</p>
+<p><img alt="GordonSurface_01" src="../../images/freecad/curves_wb/surfaces_menu/GordonSurface_01.png"> 
+<strong>Kullanım:</strong> Komutu çalıştırmak için aşağıdaki adımları sırası ile uygulayın:</p>
+<ul>
+<li>İlk olarak, birkaç eğri oluşturun. Bunlar, bir yüzey oluşturmak için birleştirilecek eğriler olacaktır. Eğrileri, FreeCAD'deki çeşitli araçlarla (farklı çalışma tezgahlarındaki komutlarla) veya bir CAD programından alınan dosyalarla 
+  oluşturabilirsiniz.</li>
+<li>Yukarıdaki resimdeki mavi çizgiler (kaburgalar), yüzey boyunca farklı noktalarda yüzeyin şeklini temsil eder. Bunlar yüzey boyunca enine kesitler olarak veya, yüzeyin "örtüleceği/çadırlanacağı" destekler olarak düşünülebilir.</li>
+<li>Sarı çizgiler, mavi çizgilerle tanımlanan enine kesitler ("kaburgalar") arasındaki yüzeyin kapsamını ve şeklini (rayları) temsil eder.</li>
+<li>Şimdi yüzeyi tanımlayacak olan tüm çizgileri (Yukarıdaki örnekte mavi ve sarı eğrileri) seçin.</li>
+<li>Seçim sırası, dikiş veya çadırlama/örtüleme sırasını tanımlar.</li>
+<li>Yüzeyi tanımlayan tüm çizgileri seçmek için çoklu seçimi kullanın. (<code>Ctrl</code> tuşunu basılı tutarken sol tıklayın.)</li>
+<li>Sırayla önce kaburgaları seçin. (Yukarıdaki örnekte, soldan sağa veya sağdan sola mavi eğrileri seçin.)</li>
+<li>Ctrl tuşunu basılı tutmaya devam edin ve kapsam çizgilerini ("rayları") seçin. (Yukarıdaki örnekte sarı eğrileri.)</li>
+<li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
+<li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surfaces</strong> menüsündeki <strong>Gordon surface</strong> seçeneğini kullanın.</li>
+</ul>
+<p><strong>Özellikler</strong><br>
+<strong>Gordon Surface</strong> komutunun <strong>Veri (Data)</strong> sekmesindeki özelliklerini inceleyelim.<br>
+<strong>Placement (Yerleşim)</strong> : Ortaya çıkan Gordon yüzeyinin yerleşimini ayarlamak için kullanılabilir. Detay için <a href="https://wiki-freecad-org.translate.goog/Placement?_x_tr_sl=auto&amp;_x_tr_tl=tr&amp;_x_tr_hl=tr">buraya bakınız.</a><br>
+<strong>Not:</strong> Yerleştirme özellikleri, yüzeyi oluşturmak için kullanılan eğrilerin/çizgilerin yerleşimini ayarlamaz, yalnızca yüzeyi ayarlar.<br>
+<strong>Label (Etiket)</strong> : Yüzey için kullanıcı tarafından belirlenen etiket (ad). (Varsayılan: Gordon)<br>
+<strong>Output (Üretim/Çıktı)</strong> : Yüzeyin Üretim/Çıktı tipini tanımlar. (Varsayılan değer: Yüzey, Seçenekler: Yüzey, Tel Kafes)<br>
+<strong>Gordon&gt;Max Ctrl Pts</strong> : En fazla kontrol noktası miktarı (Varsayılan değer: 80)<br>
+<strong>Gordon&gt;Sources (Kaynaklar)</strong> : Gordon yüzeyini oluşturmak için kullanılan, kullanıcı tarafından seçilen çizgiler/eğriler.<br>
+<strong>Gordon&gt;Tol3D</strong> : 3D tolerans (Varsayılan değer: 0.01)<br>
+<strong>Wireframe&gt;Samples U</strong> : U yönündeki örnekleme sayısı. (Varsayılan değer: 16)<br>
+Bu değer, Üretim/Çıktı özelliği <strong>Tel Kafes</strong> olarak ayarlandığında, <strong>ağın yoğunluğunu</strong> belirlemek için kullanılır.
+ <strong>Wireframe&gt;Samples V</strong> : V yönündeki örnekleme sayısı. (Varsayılan değer: 16)<br>
+Bu değer, Çıktı özelliği Tel Kafes olarak ayarlandığında ağın yoğunluğunu belirlemek için kullanılır.<br>
+Aşağıda, Tel kafes (Wireframe) modunda ve <code>U</code> ve <code>V</code> değerleri <strong>16</strong> olan (U=16, V=16) Gordon Yüzeyi gösterilmektedir.
+<img alt="GordonSurface_02" src="../../images/freecad/curves_wb/surfaces_menu/GordonSurface_02.png"> <strong>Wireframe</strong><br>
+Samples U: 16<br>
+Samples V: 16
+<img alt="GordonSurface_03" src="../../images/freecad/curves_wb/surfaces_menu/GordonSurface_03.png"> <strong>Wireframe</strong><br>
+Samples U: 32<br>
+Samples V: 16
+<img alt="GordonSurface_04" src="../../images/freecad/curves_wb/surfaces_menu/GordonSurface_04.png"> <strong>Wireframe</strong><br>
+Samples U: 32<br>
+Samples V: 32
+<img alt="GordonSurface_05" src="../../images/freecad/curves_wb/surfaces_menu/GordonSurface_05.png"> <strong>Surface</strong> 
+<img alt="GordonSurface_06" src="../../images/freecad/curves_wb/surfaces_menu/GordonSurface_06.png"></p>
+<p><strong>Notlar:</strong>  </p>
+<ul>
+<li>
+<p>Her grubun eğrileri (kaburgalar ve raylar) diğer grubun tüm eğrilerine temas etmelidir.<br>
+  Başka bir deyişle, burada gösterildiği gibi bir ızgara veya ağ deseni oluşturmalıdırlar:
+ <img alt="GordonSurface_07" src="../../images/freecad/curves_wb/surfaces_menu/GordonSurface_07.png">- Genel olarak, ortaya çıkan Gordon yüzeyinin <strong>yüzey normali</strong>, eğrilerin yönü ile belirlenecektir<br>
+  Eğriler +Y'den -Y'ye yönüne doğru çizilirse elde edilen yüzey normali +Z yönünde olurken, eğriler -Y'den +Y'ye doğru çizildiğinde, yüzeyin normal yönelimli -Z yönünde olur.</p>
+</li>
+<li>
+<p>Gordon Surface komutu ile oluşturulan 2 boyutlu yüzey, <strong>Parça Çalışma Tezgahı'nın (Part WB)</strong> <a href="https://wiki-freecad-org.translate.goog/Part_Extrude?_x_tr_sl=auto&amp;_x_tr_tl=tr&amp;_x_tr_hl=tr">Katıla (Extrude)</a> ya da <a href="https://wiki-freecad-org.translate.goog/Part_Offset?_x_tr_sl=auto&amp;_x_tr_tl=tr&amp;_x_tr_hl=tr"><strong>3D Offset</strong></a> komutları ile 3 boyutlu katı model haline getirilebilir.</p>
+</li>
+<li>
+<p>Oluşan 2 boyutlu yüzey, <strong>ParçaTasarımı Çalışma Tezgahı (PartDesign WB)</strong> ile de 3 boyutlu katı model haline getirilebilir<br>
+  Bunun için yüzeyi bir gövde içine sürükleyerek <strong>Base Feature (Temel Unsur)</strong> oluşturulur, daha sonra <strong>Katıla (Pad)</strong> komutu kullanılır.</p>
+</li>
+</ul>
+<p><img alt="GordonSurface_08" src="../../images/freecad/curves_wb/surfaces_menu/GordonSurface_08.png"> 
+<img alt="GordonSurface_09" src="../../images/freecad/curves_wb/surfaces_menu/GordonSurface_09.png"> 
+<img alt="GordonSurface_10" src="../../images/freecad/curves_wb/surfaces_menu/GordonSurface_10.png"> 
+<img alt="GordonSurface_11" src="../../images/freecad/curves_wb/surfaces_menu/GordonSurface_11.png"></p>
+<p><img alt="segment_surface" src="https://raw.githubusercontent.com/tomate44/CurvesWB/9aac6c2365311724487f79df3343dab90ddcb819/freecad/Curves/resources/icons/segment_surface.svg"> <strong>Segment surface:</strong><br>
+<strong>Segment surface</strong> komutu, seçili yüzeyi yatay, düşey ya da her iki yönde parçalara bölmek/ayırmak için kullanılır.  </p>
+<p><strong>Kullanım:</strong> Komutu çalıştırmak için aşağıdaki adımları sırası ile uygulayın:</p>
+<ul>
+<li>Öncelikle bir yüzey seçin.</li>
+<li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
+<li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>Segment surface</strong> seçeneğini kullanın.</li>
+</ul>
+<p>Parçaya parçalamak/bölmek istediğimiz yüzey, aşağıdaki resimde görülmektedir.<br>
+<img alt="Segment_Surface_01" src="../../images/freecad/curves_wb/surfaces_menu/Segment_Surface_01.png"><br>
+Öncelikle bölünmek istenilen Yüzey seçilmeli ardından <strong>Segment surface</strong> komutu çalıştırılmalı.
+<img alt="Segment_Surface_02" src="../../images/freecad/curves_wb/surfaces_menu/Segment_Surface_02.png"><br>
+Komut çalıştırıldıktan sonra elde edilen sonuç aşağıda görülmektedir.
+<img alt="Segment_Surface_03" src="../../images/freecad/curves_wb/surfaces_menu/Segment_Surface_03.png"><br>
+Unsur ağacından <strong>Segment_Surface</strong> öğesini seçip, komuta ait ayarları inceleyelim.<br>
+<strong>Option (Seçenek)</strong> özelliği, <strong>Auto (Otomatik)</strong> iken <strong>Option Auto</strong> ayarı altındaki <strong>Direction (Yön / Yönelim)</strong> seçeneği <strong>U</strong> olarak seçildiğinde, seçili yüzey <strong>U</strong> yönünde otomatik olarak bölümlendi/parçalara ayrıldı.
+<img alt="Segment_Surface_04" src="../../images/freecad/curves_wb/surfaces_menu/Segment_Surface_04.png"><br>
+<strong>Option Auto</strong> ayarı altındaki <strong>Direction (Yön / Yönelim)</strong> seçeneğini <strong>V</strong> olarak değiştirdiğimizde, seçili yüzey <strong>V</strong> yönünde otomatik olarak bölümlendi/parçalara ayrıldı.
+<img alt="Segment_Surface_05" src="../../images/freecad/curves_wb/surfaces_menu/Segment_Surface_05.png"><br>
+<strong>Direction (Yön / Yönelim)</strong> seçeneğini <strong>Both (Her ikisi)</strong> olarak değiştirirsek, tahmin edeceğiniz üzere, seçili yüzey hem <strong>U</strong> hemde <strong>V</strong> yönünde (ızgara şeklinde) otomatik olarak bölümlenir/parçalara ayrılır.
+<img alt="Segment_Surface_06" src="../../images/freecad/curves_wb/surfaces_menu/Segment_Surface_06.png"><br>
+<strong>Option (Seçenek)</strong> özelliği, <strong>Custom (Özel)</strong> olarak değiştirildiğinde, <strong>Option Custom (Özel'in Seçenekleri)</strong> isimli yeni özellikler paneli karşımıza çıkıyor.
+<img alt="Segment_Surface_07" src="../../images/freecad/curves_wb/surfaces_menu/Segment_Surface_07.png"><br>
+İlk olarak <strong>Knots U</strong> özelliğini inceleyelim.<br>
+<strong>Knots U</strong> seçeneği, <strong>U</strong> yönünde noktalar belirtmemizi ve yüzeyi bu noktalara göre parçalara ayırmamızı sağlar.<br>
+Unsur ağacından <strong>Segment_Surface</strong> öğesini seçiliyken özellikler panelinden <strong>Knots U</strong> seçeneğinin yanındaki butona tıklayın.
+<img alt="Segment_Surface_08" src="../../images/freecad/curves_wb/surfaces_menu/Segment_Surface_08.png"><br>
+Karşımıza çıkan <strong>List (Liste)</strong> diyalog kutusuna, her satıra bir değer yazmak kaydı ile 0 (sıfır) ile 1 (bir) arasında değerler yazın.<br>
+Burada bahsedilen 0 (sıfır) ve 1 (bir) değeri yüzeyi, bölmek için belirtilecek yüzdelik değerlerdir. (örneğin 0.5 değeri %50 yani tam ortadan böl anlamına gelmektedir.)<br>
+Örnek olarak <strong>0.1</strong> ve <strong>0.5</strong> değerlerini yazalım.<br>
+<strong>NOT:</strong> Ondalık değerleri yazarken, virgül kullanılmamalıdır. Ondalık ayırıcı olarak (Python programlama dilinde olduğu gibi) <strong>Nokta</strong> karakteri kullanılmalıdır. (Python'da virgül karakteri, parametreleri ayırmak için kullanılır.)
+<img alt="Segment_Surface_09" src="../../images/freecad/curves_wb/surfaces_menu/Segment_Surface_09.png"><br>
+Görüldüğü üzere, seçil yüzey <strong>U</strong> yönünde %10 ve %50 mertebesinden kesilerek 3 yüzeye bölündü.
+<img alt="Segment_Surface_10" src="../../images/freecad/curves_wb/surfaces_menu/Segment_Surface_10.png"><br>
+Yüzeyi <strong>V</strong> yönünde de %25 ve %65 oranından keselim.
+<img alt="Segment_Surface_11" src="../../images/freecad/curves_wb/surfaces_menu/Segment_Surface_11.png"><br>
+Sonuç aşağıda görülüyor. <strong>Knots U</strong> ve <strong>Knots V</strong> değerleri değiştirildiğinde yüzey otomatik olarak yeni değerlere göre bölümlenecektir.
+<img alt="Segment_Surface_12" src="../../images/freecad/curves_wb/surfaces_menu/Segment_Surface_12.png"><br>
+Üst görünüşten bakarak kesim oranları daha net görüntülenebilir.
+<img alt="Segment_Surface_13" src="../../images/freecad/curves_wb/surfaces_menu/Segment_Surface_13.png"><br>
+<strong>Segment_Surface</strong> öğesinin <strong>Option Custom (Özel'in Seçenekleri)</strong> özelliğinin <strong>Knots U</strong> ve <strong>Knots V</strong> seçeneklerinin farklı bir kullanımını daha görelim.<br>
+Bunun için sahneye öncelikle bir silindir ekliyoruz ve yarıçapını 1.00 mm olarak belirtiyoruz.
+<img alt="Segment_Surface_14" src="../../images/freecad/curves_wb/surfaces_menu/Segment_Surface_14.png"><br>
+Silindir yüzeyini seçerek <strong>Surface</strong> menüsündeki <strong>Segment surface</strong> komutunu çalıştırıyoruz.
+<img alt="Segment_Surface_15" src="../../images/freecad/curves_wb/surfaces_menu/Segment_Surface_15.png"><br>
+Silindir nesnesini gizliyoruz ve oluşan Segment Yüzeyini görüyoruz.
+<img alt="Segment_Surface_16" src="../../images/freecad/curves_wb/surfaces_menu/Segment_Surface_16.png"><br>
+<strong>Option (Seçenek)</strong> özelliği, <strong>Custom (Özel)</strong> olarak değiştiriyoruz.
+<img alt="Segment_Surface_17" src="../../images/freecad/curves_wb/surfaces_menu/Segment_Surface_17.png"><br>
+<strong>Knots U</strong> değerini 3.14 olarak belirtiyoruz. Bu işlem sonrası yüzey <strong>U</strong> yönünde tam ortadan ikiye bölünüyor.<br>
+Bunun sebebini açıklamak gerekirse;<br>
+Yüzeyi oluşturan Çemberin yarıçapı 1.00mm olduğu için çemberin çevre uzunluğu (2<em>pi</em>r formülü ile hesaplandığında) 6.28mm olmaktadır. 
+Doğal olarak 3.14 değeri uzunluğun yarısına tekabül ettiği için yüzey yam ortadan ikiye bölünüyor.
+<img alt="Segment_Surface_18" src="../../images/freecad/curves_wb/surfaces_menu/Segment_Surface_18.png"><br>
+<strong>Knots U</strong> değerini aşağıdaki resimde gösterildiği şekilde revize ettiğimizde ise yüzey (neredeyse) 4 eşit parçaya bölünmüş oluyor.
+<img alt="Segment_Surface_19" src="../../images/freecad/curves_wb/surfaces_menu/Segment_Surface_19.png"><br>
+Sonuca dair görüntü;
+<img alt="Segment_Surface_20" src="../../images/freecad/curves_wb/surfaces_menu/Segment_Surface_20.png"><br>
+<strong>Segment_Surface</strong> öğesinin <strong>Option Custom (Özel'in Seçenekleri)</strong> özelliğinin bir diğer seçeneği olan <strong>Knots UProvider</strong> ve <strong>Knots VProvider</strong> 'ı inceleyelim.<br>
+Bunun için öncelikle, oluşturduğumuz Silindir nesnesine ait bir çemberi seçelim ve ardından <strong>Curve</strong> menüsünden <strong>Discretize</strong> komutunu çalıştıralım.
+<img alt="Segment_Surface_21" src="../../images/freecad/curves_wb/surfaces_menu/Segment_Surface_21.png"><br>
+Komut sonrasında, seçili çember boyunca eşit aralıklı 100 adet nokta oluşturuldu.
+<img alt="Segment_Surface_22" src="../../images/freecad/curves_wb/surfaces_menu/Segment_Surface_22.png"><br>
+Silindiri ve Segment Yüzeyini gizleyerek, <strong>Discretize</strong> komutunu ile oluşturulan noktaları inceleyelim.
+<img alt="Segment_Surface_23" src="../../images/freecad/curves_wb/surfaces_menu/Segment_Surface_23.png"><br>
+Segment Yüzeyi görüntüleyelim ve <strong>Discretize</strong> komutunu ile oluşturulan noktaların sayısını <strong>6</strong> olarak değiştirelim. Böylece, çember çevre uzunluğu boyunca eşit aralıklı <strong>6</strong> adet nokta elde etmiş olduk.
+<img alt="Segment_Surface_24" src="../../images/freecad/curves_wb/surfaces_menu/Segment_Surface_24.png"><br>
+<strong>Segment_Surface</strong> öğesinin <strong>Option Custom (Özel'in Seçenekleri)</strong> özelliğinin <strong>Knots UProvider</strong> seçeneğini kullanarak oluşturduğumuz 6 noktayı değer olarak atayalım.
+<img alt="Segment_Surface_25" src="../../images/freecad/curves_wb/surfaces_menu/Segment_Surface_25.png"><br>
+Butona basınca karşımıza çıkan <strong>Bağlantı (Link)</strong> penceresinden, <strong>6</strong> noktaya ait öğeyi (Discretize_Edge) seçip ardından OK (Tamam) butonuna basıyoruz.
+<img alt="Segment_Surface_26" src="../../images/freecad/curves_wb/surfaces_menu/Segment_Surface_26.png"><br>
+İşlem sonrası seçili yüzey, belirlenen öğedeki (Discretize_Edge) nokta sayısı ve konumundan parçalara ayrılıyor.
+<img alt="Segment_Surface_27" src="../../images/freecad/curves_wb/surfaces_menu/Segment_Surface_27.png"><br>
+Unsur ağacından <strong>Discretized_Edge</strong> öğesi seçilerek <strong>Number (Sayı)</strong> değeri <strong>10</strong> olarak değiştirildiğinde/güncellendiğinde, Segment Yüzeyi <strong>U</strong> yönünde <strong>10</strong> eşit parçaya bölünüyor.
+<img alt="Segment_Surface_28" src="../../images/freecad/curves_wb/surfaces_menu/Segment_Surface_28.png">  </p>
+<p><img alt="spring" src="https://raw.githubusercontent.com/tomate44/CurvesWB/9aac6c2365311724487f79df3343dab90ddcb819/freecad/Curves/resources/icons/spring.svg"> <strong>Compression Spring:</strong><br>
+<strong>Compression Spring (Baskı Yayı)</strong> komutu, adından anlaşıldığı üzere, baskı yayı / sıkıştırma yayı oluşturmak için kullanılan komuttur.  </p>
+<p><strong>Kullanım:</strong> Komutu çalıştırmak için aşağıdaki adımları sırası ile uygulayın:</p>
+<ul>
+<li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
+<li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>Compression Spring</strong> seçeneğini kullanın. Bu sayede sahneye bir baskı yayı (eğrisi) eklenir.</li>
+</ul>
+<p><strong>Curves</strong> araç çubuğunda bulunan ilgili düğmeye, ya da <strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>Compression Spring (Baskı Yayı)</strong> butonuna basarak komutu çalıştıralım. Sahnenin boş olduğunu, Unsur ağacında hiç bir öğe olmadığına dikkat edin.  </p>
+<p><img alt="Compression_Spring_01" src="../../images/freecad/curves_wb/surfaces_menu/Compression_Spring_01.png"><br>
+Komut çalıştırılınca sahneye bir Baskı Yayı (eğrisi) ekleniyor. Unsur ağacından <strong>CompSpring</strong> öğesi seçildiğinde, Baskı yayına ait parametreler aşağıdaki gibi görüntüleniyor. Baskı Yayının <strong>Diameter (Çap)</strong> değeri <strong>4 mm</strong> olarak belirlenmiş. Bu değeri değiştirerek sonucu inceleyelim.
+<img alt="Compression_Spring_02" src="../../images/freecad/curves_wb/surfaces_menu/Compression_Spring_02.png"><br>
+Baskı Yayının <strong>Diameter (Çap)</strong> değerini <strong>10 mm</strong> olarak değiştirdiğimizde, Baskı yayı otomatik olarak güncelleniyor.
+<img alt="Compression_Spring_03" src="../../images/freecad/curves_wb/surfaces_menu/Compression_Spring_03.png"><br>
+Baskı Yayını oluşturan bir diğer parametre olan <strong>Length (Boy/Uzunluk/Mesafe)</strong> değerini değiştirerek soncu görelim.<br>
+<strong>10 mm</strong> olan <strong>Length (Boy/Uzunluk/Mesafe)</strong> değerini <strong>5 mm</strong> olarak değiştirdiğimizde görüyoruz ki, baskı yayı daha kısa mesafeye sahip olarak oluşturuldu, yani baskı yayı sıkışmış bir şekil aldı diyebiliriz. Bu parametre değiştirilerek gerçekci animasyon 
+oluşturulabilir.
+<img alt="Compression_Spring_04" src="../../images/freecad/curves_wb/surfaces_menu/Compression_Spring_04.png"><br>
+<strong>Turns (Çevrim/Dönüş)</strong> değeri, Baskı Yayı oluşturulurken eğrinin kaç tur döndürülerek yay oluşturulması gerektiğini belirttiğimiz parametredir. Vidalarda <strong>Hatve / Adım</strong> değeri ile aynı değerdir.<br>
+<strong>5</strong> olan <strong>Turns</strong> değerini <strong>2</strong> olarak değiştirdiğimizde elde ettiğimiz yayın görüntüsü aşağıdadır. Bu ayar ile Eğri, başlangıç noktasından itibaren 2 tur çevrilerek yay elde edildi.
+<img alt="Compression_Spring_05" src="../../images/freecad/curves_wb/surfaces_menu/Compression_Spring_05.png"><br>
+<strong>Wire Output</strong>, Baskı Yayının görünümünün ayarlandığı parametredir. <strong>Wire Output (Tel Ürün/Sonuç)</strong> parametresinin alabileceği değerler <strong>true (doğru)</strong> ve <strong>false (yanlış)</strong> ile sınırlıdır. Parametre değerini <strong>false (yanlış)</strong> olarak belirlediğimizde, <strong>Baskı Yayı Tel olarak görünmesin</strong> demiş oluyoruz ve baskı yayı dairesel kesitli bir yaya dönüşmüş oluyor.
+<img alt="Compression_Spring_06" src="../../images/freecad/curves_wb/surfaces_menu/Compression_Spring_06.png"><br>
+<strong>Wire Output</strong> parametresi <strong>false (yanlış)</strong> olarak değiştirildiğinde elde ettiğimiz dairesel kesite ait çap değerini, <strong>Wire Diameter (Tel Çapı)</strong> parametresi ile belirleyebiliyoruz.<br>
+<strong>0,5 mm</strong> olan <strong>Wire Diameter (Tel Çapı)</strong> parametre değerini <strong>1,25 mm</strong> olarak değiştirdiğimizde, Baskı Yayının görünümü de eş zamanlı olarak güncelleniyor.
+<img alt="Compression_Spring_07" src="../../images/freecad/curves_wb/surfaces_menu/Compression_Spring_07.png"><br>
+<strong>Flatness (Düzlük / Düzgünlük)</strong> parametresi, Baskı Yayının uç noktalarının düzlemsel olarak ayarlanmasını sağlayan parametredir.<br>
+<strong>Flatness (Düzlük / Düzgünlük)</strong> parametre değeri <strong>0 (sıfır)</strong> iken oluşan Yaya ait Ön Görünüm, aşağıdaki gibidir.
+<img alt="Compression_Spring_08" src="../../images/freecad/curves_wb/surfaces_menu/Compression_Spring_08.png"><br>
+<strong>Flatness (Düzlük / Düzgünlük)</strong> parametre değerini artırarak Yayın düzlemsel bir yüzeye tam olarak oturması / temas yüzey alanının artırılması sağlamak sağlanabilir.<br>
+<strong>Flatness</strong> değerini <strong>4</strong> olarak değiştirerek elde ettiğimiz Yaya bakalım
+<img alt="Compression_Spring_09" src="../../images/freecad/curves_wb/surfaces_menu/Compression_Spring_09.png"><br>
+Baskı Yayının <strong>Diameter (Çap)</strong> parametresini incelemek için sahneye yarıçapı <strong>5 mm</strong> olan bir silindir nesnesi ekliyorum.
+<img alt="Compression_Spring_10" src="../../images/freecad/curves_wb/surfaces_menu/Compression_Spring_10.png"><br>
+<strong>ComSpring</strong> nesnesinin <strong>Wire Output</strong> parametresini <strong>false (yanlış)</strong> olarak ayarlıyorum. Sonuç aşağıda.
+<img alt="Compression_Spring_11" src="../../images/freecad/curves_wb/surfaces_menu/Compression_Spring_11.png"><br>
+Sahneye <strong>Ön Görünüm</strong>'den baktığımda Baskı Yayının <strong>Diameter (Çap)</strong> değerinin Silindire kıyasla nasıl göründüğünü daha net olarak görebiliyorum.
+<img alt="Compression_Spring_12" src="../../images/freecad/curves_wb/surfaces_menu/Compression_Spring_12.png"><br>
+Silindir yarıçapını <strong>8 mm</strong> (Çapı 16mm), Baskı Yayının Çap değerini de <strong>16 mm</strong> olarak ayarladığımda sonuç yine değişmiyor. Yani Baskı Yayının Çap değeri olarak kastedilen değer, Yayın <strong>Dıştan Dışa</strong> olan çap mesafesidir. Yani <strong>Wire Diameter (Tel Çapı)</strong> parametre değeri, Baskı Yayının konulacağı deliğe/yuvaya ait çap değerini temsil ediyor. 
+<img alt="Compression_Spring_13" src="../../images/freecad/curves_wb/surfaces_menu/Compression_Spring_13.png"><br>
+<strong>Wire Diameter (Tel Çapı)</strong> parametre değerini artırmamıza rağmen, oluşan Baskı Yayının et kalınlığının içe doğru büyüdüğü, yayın dış çapın değişmediği, iç çap değerinin azaldığı, aşağıdaki görüntüden net bir şekilde görülmüş oluyor.
+<img alt="Compression_Spring_14" src="../../images/freecad/curves_wb/surfaces_menu/Compression_Spring_14.png">  </p>
+<p><img alt="reflectLines" src="https://raw.githubusercontent.com/tomate44/CurvesWB/9aac6c2365311724487f79df3343dab90ddcb819/freecad/Curves/resources/icons/reflectLines.svg"> <strong>Reflect Lines:</strong><br>
+<strong>Reflect Lines (Akis Çizgileri/Eğrileri)</strong>, sahneye olan bakış açısı temel alınarak, seçili nesne(ler)in ya da yüzeylerin dış kontur çizgisini (silüetini) eğriler vasıtası elde etmeye
+ yarayan komuttur. <strong>Reflect Line</strong> komutu ile oluşturulan/elde edilen eğriler, <strong>Draft Workbench'te (Taslak Çalışma Tezgahında)</strong> bulunan komutlarla birlikte kullanılabilir. Tarif anlaşılmamış olabilir, komutu uygulayarak anlayalım.  </p>
+<p><strong>Kullanım:</strong> Komutu çalıştırmak için aşağıdaki adımları sırası ile uygulayın:</p>
+<ul>
+<li>Öncelikle nesne(ler) veya yüzey(ler) seçin. (Birlikte seçim için <code>CTRL</code> tuşunu kullanın)</li>
+<li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
+<li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>Reflect Lines</strong> seçeneğini kullanın.</li>
+</ul>
+<p><strong>Reflect Lines</strong> komutu uygulayarak eğri elde etmek istediğimiz nesne aşağıda görülmektedir.<br>
+<img alt="Reflect_Lines_01" src="../../images/freecad/curves_wb/surfaces_menu/Reflect_Lines_01.png"><br>
+Unsur ağacından, ilgili nesneyi seçerek <strong>Reflect Lines</strong> komutunu çalıştırıyoruz. Bu algoritma, şeklin <strong>ViewDir</strong> yönündeki izdüşümünü hesaplar.
+<img alt="Reflect_Lines_02" src="../../images/freecad/curves_wb/surfaces_menu/Reflect_Lines_02.png"><br>
+Oluşan Akis/Yansıtma Eğrileri görmek için, Unsur ağacından, ilgili nesneyi (Thickness) seçerek gizliyoruz.<br>
+<strong>Özellikler</strong> panelindeki <strong>Source</strong> parametresi, hangi nesne(ler) ya da yüzey(ler) seçilerek Akis Eğrisi oluşturulduğunu belirtir.
+<img alt="Reflect_Lines_03" src="../../images/freecad/curves_wb/surfaces_menu/Reflect_Lines_03.png"><br>
+<strong>Cleaning Options (Temizlik Seçemekleri)</strong> başlıklı Özellik bölümünde bulunan <strong>Remove Duplicates (Yinelenenleri Kaldır)</strong> parametresi, <strong>true (doğru)</strong> olarak ayarlanırsa, belirtilen <strong>Cleaning Tolerance (Temizleme Toleransı)</strong> değeri ile belirlenen miktardan yakın olan noktalar arasındaki çizgielri/eğrileri siler/temizler.
+<img alt="Reflect_Lines_04" src="../../images/freecad/curves_wb/surfaces_menu/Reflect_Lines_04.png"><br>
+<strong>Edge Type (Kenar Biçimi)</strong> başlıklı Özellik bölümünde bulunan <strong>Out Line</strong> parametresi, nesnenin siluet çizgilerinin ana hatlarıyla <strong>eğrileri</strong> ile çizilmeyeceğini belirttiğimiz kısımdır. Bu parametre <strong>false (yanlış/hayır)</strong> olarak ayarlanırsa, oluşan Akis Çizgilerinin/Eğrilerinin, <strong>eğrisel parçaları</strong> gizlenir. 
+<img alt="Reflect_Lines_05" src="../../images/freecad/curves_wb/surfaces_menu/Reflect_Lines_05.png"><br>
+Yukarıdaki çizimde bu parametrenin sonuçları tam olarak belli olmadı. Bunun için sahneye Eğrisel hatlara sahip yeni bir nesne ekleyerek parametreyi inceleyelim.<br>
+Sahneye bir <strong>Halka</strong> nesnesi ekleyelim, nesneyi seçelim ve <strong>Reflect Lines</strong> komutunu çalıştıralım.
+<img alt="Reflect_Lines_06" src="../../images/freecad/curves_wb/surfaces_menu/Reflect_Lines_06.png"><br>
+<strong>Out Line</strong> parametresi <strong>true (doğru/evet)</strong> iken elde edilen sonuç;
+<img alt="Reflect_Lines_07" src="../../images/freecad/curves_wb/surfaces_menu/Reflect_Lines_07.png"><br>
+<strong>Out Line</strong> parametresi <strong>false (yanlış/hayır)</strong> iken elde edilen sonuç aşağıdadır. Görüldüğü üzere Nesnenin dış hattına (silüetine) ait eğri gizlendi. 
+<img alt="Reflect_Lines_08" src="../../images/freecad/curves_wb/surfaces_menu/Reflect_Lines_08.png"><br>
+<strong>Rg1Line</strong> parametresi, iki yüzey arasındaki <strong>G1-sürekliliğindeki</strong> pürüzsüz kenarı görüntülemek ya da gizlemek için kullanılır.
+<img alt="Reflect_Lines_09" src="../../images/freecad/curves_wb/surfaces_menu/Reflect_Lines_09.png"><br>
+<strong>RgNLine</strong> parametresi, bir yüzeye iliştirilmiş <strong>CN-sürekliliğindeki</strong> kenarı görüntülemek ya da gizlemek için kullanılır.
+<img alt="Reflect_Lines_10" src="../../images/freecad/curves_wb/surfaces_menu/Reflect_Lines_10.png"><br>
+<strong>Sharp</strong> parametresi, keskin kenar (<strong>C0-sürekliliği)</strong> görüntülemek ya da gizlemek için kullanılır. 
+<img alt="Reflect_Lines_11" src="../../images/freecad/curves_wb/surfaces_menu/Reflect_Lines_11.png"><br>
+<strong>Edge Type (Kenar Biçimi)</strong> başlığında bulunan parametrelerinin tamamı <strong>true (doğru/evet)</strong> olarak ayarlanmışken, sahneye <strong>Ön Görünüm (Front)</strong> bakış açısı ile baktığımızda aşağıdaki görüntüyü görürüz.
+<img alt="Reflect_Lines_12" src="../../images/freecad/curves_wb/surfaces_menu/Reflect_Lines_12.png"><br>
+sahneye <strong>Sağ Yan Görünüm (Right)</strong> bakış açısı ile baktığımızda aşağıdaki görüntüyü görürüz.
+<img alt="Reflect_Lines_13" src="../../images/freecad/curves_wb/surfaces_menu/Reflect_Lines_13.png"><br>
+Sahneye <strong>Sol-Ön-Üst (Left-Front-Top)</strong> bakış açısı kesişimi olan köşeden baktığımızda aşağıdaki görüntüyü görürüz.<br>
+Dikkat ettiyseniz şu ana kadar <strong>Reflect Lines</strong> başlıklı özellik kısmında <strong>On Shape</strong> parametresi sürekli <strong>true (doğru/evet)</strong> olarak ayarlanmıştı. Bu sayede <strong>Reflect Lines</strong> komutu sonrası elde edilen Akis Çizgileri/Eğrileri 3 boyutlu (3B) olarak elde edilmiş oldu. Tam olarak aynı şey olmasa da, komut sonrası Nesne, Wireframe (Tel Kafes) görünümünde görüntülenmiş gibi bir sonuç elde edilir.
+<img alt="Reflect_Lines_14" src="../../images/freecad/curves_wb/surfaces_menu/Reflect_Lines_14.png"><br>
+<strong>On Shape</strong> parametresi <strong>false (yanlış/hayır)</strong> olarak ayarlandığında Akis eğrileri, <strong>XY düzleminde</strong> oluşturulur. Yani sonuç 2 Boyutlu (2B) bir yapıya sahiptir. XY Düzlemine dik açıdan (düzlemin Normal doğrultusundan) yani <strong>Üst Görünümden</strong> bakıldığında gerçek sonuç görüntülenir. Bu komut, <strong>TechDraw</strong>'a geçmeden (OnShape özelliği devre dışı bırakıldığında) bir nesnenin 2B görünümünü elde etmek için kullanılabilir. 
+<img alt="Reflect_Lines_15" src="../../images/freecad/curves_wb/surfaces_menu/Reflect_Lines_15.png"><br>
+Sahneye Üst Görünümden (Top) baktığımızda, doğru görüntüyü elde etmiş oluyoruz.<br>
+<strong>On Shape</strong> parametresi <strong>false (yanlış/hayır)</strong> olarak ayarlandığında (ReflectLines XY düzleminde olduğunda), <strong>ViewPos</strong> ve <strong>UpDir</strong> özellikleri kullanılabilir. Bu durumda, Akis Çizgilerinin Konumunun ve Yöneliminin ayarlanmasına izin verilir.
+<img alt="Reflect_Lines_16" src="../../images/freecad/curves_wb/surfaces_menu/Reflect_Lines_16.png"><br>
+<strong>On Shape</strong> parametresi <strong>false (yanlış/hayır)</strong> olarak ayarlandığında, sahneye <strong>Sağ Yan Görünümden (Right)</strong> bakıldığında görülen şekil aşağıdaki gibidir. Akis Eğrilerinin 2 boyutlu (2B) olduğu net olarak görünüyor.
+<img alt="Reflect_Lines_17" src="../../images/freecad/curves_wb/surfaces_menu/Reflect_Lines_17.png"><br>
+Sahneye Ön Görünümden (Front) bakıldığında görülen şekil aşağıdaki gibidir. Akis/Yansıma Eğrilerinin 2 boyutlu (2B) olduğu net olarak görünüyor.
+<img alt="Reflect_Lines_18" src="../../images/freecad/curves_wb/surfaces_menu/Reflect_Lines_18.png"><br>
+Sahnede <strong>X, Y, Z eksen çizgilerini</strong> göstererek <strong>Thickness</strong> nesnesinin, orijin (0,0,0) noktasına göre nasıl bir konumda olduğuna bakalım. Görüyoruz ki <strong>Thickness</strong> nesnesi temelde, orijin noktasına altıgen şekil çizilip bir yol boyunca süpürülerek (Sweep komutu ile) elde edilmiş. Yani <strong>Thickness</strong> adındaki altıgen boru/kanalın bir ucu tam olarak orijin (0,0,0) noktasında bulunuyor.
+<img alt="Reflect_Lines_19" src="../../images/freecad/curves_wb/surfaces_menu/Reflect_Lines_19.png"><br>
+<strong>On Shape</strong> parametresi <strong>false (yanlış/hayır)</strong> olarak ayarlanıp sahneye <strong>Üst Görünümden (Top)</strong> bakıldığında <strong>View Pos</strong> parametre değerleri [42,80 31,79 17,80] olarak görünmektedir. Bu değerler <strong>Thickness</strong> nesnesi XY düzlemine 2B olarak dönüştürüldüğünde orijinin bulunduğu koordinatları göstermektedir. 
+<img alt="Reflect_Lines_20" src="../../images/freecad/curves_wb/surfaces_menu/Reflect_Lines_20.png"><br>
+<strong>View Pos</strong> değerlerini değişirilerek nesnenin konumunu (orijin noktasını hareket ettirerek) farklı noktaya taşıyabiliriz. Örneğin Nesnenin orijin noktasını (0,0,0) noktasına 
+taşıyalım.
+<img alt="Reflect_Lines_21" src="../../images/freecad/curves_wb/surfaces_menu/Reflect_Lines_21.png"><br>
+<strong>View Dir (Kamera/Bakış Açısı Yönü/Doğrultusu)</strong> parametre değerleri, <strong>Reflect Lines (Akış Eğrileri)</strong> oluşturulurken sahneye hangi bakış açısından (kamera yönünden) ve 
+mesafesinden bakıldığına dair koordinat değerlerinin belirlendiği ve ayarlandığı kısımdır.
+<img alt="Reflect_Lines_22" src="../../images/freecad/curves_wb/surfaces_menu/Reflect_Lines_22.png"><br>
+3 boyutlu <strong>Thickness</strong> nesnesi <strong>Reflect Lines</strong> komutu ile Akış/Yansıtma Eğrilerine dönüştürülmeden önce kamera görünümü (bakış açısı) aşağıdaki resimde görüldüğü gibi <strong>Sol-Ön-Üst (Left-Front-Top)</strong> kesişim noktalarında idi (Gezinme Küpüne bakabilirsiniz). Bu açı, kabaca (1, -1, 1) değerlerine karşılık gelir. Nesneye olan yaklığa bağlı olarak bu değer aynı oranda artar ya da azalır. İncelediğimizde kamera 
+konumunun (0,58 -0,58 0,58) koordinatlarında iken Akış/Yansıtma Eğrileri
+ oluşturulduğunu görüyoruz.
+<img alt="Reflect_Lines_23" src="../../images/freecad/curves_wb/surfaces_menu/Reflect_Lines_23.png"><br>
+<strong>Üst Görünümde (Top)</strong> iken <strong>Thickness</strong> nesnesinin ve Akış/Yansıtma Eğrisinin görüntüsü aşağıdaki gibidir. Yani kamera konumunun (0,58 -0,58 0,58) koordinatlarında iken Akış/Yansıtma Eğrileri oluşturuldu ve XY Düzlemine ektarıldı.
+<img alt="Reflect_Lines_24" src="../../images/freecad/curves_wb/surfaces_menu/Reflect_Lines_24.png"><br>
+Sahneye aşağıdaki şekilde yani örnek kamera koordinatı (1,00 1,00 1,00) ya da katları ile bakmış olsaydık ve <strong>Reflect Lines</strong> komutunu çalıştırarak Akış/Yansıtma Eğrisi oluştursaydık nasıl bir sonuç elde ederdik artık biliyorsunuz.
+<img alt="Reflect_Lines_25" src="../../images/freecad/curves_wb/surfaces_menu/Reflect_Lines_25.png"><br>
+Madem kamera konumuna (bakış açısına) ait X, Y ve Z koordinatları pozitif yönlü, o zaman biz de <strong>View Dir</strong> parametre değerlerini pozitif olarak değiştirelim.
+<img alt="Reflect_Lines_26" src="../../images/freecad/curves_wb/surfaces_menu/Reflect_Lines_26.png"><br>
+<strong>Up Dir (Yukarı Yön Doğrultusu)</strong> parametre değerleri ise, Akış/Yansıtma Eğrisi oluştururken hangi koordinatların Yukarı Yönü gösterdiğini belirlediğimiz değerlerdir. X ve Y koordinatlarını sıfırlar ve sadace Z koordinatını pozitif bir değer belirleyerek istediğimizi elde edebiliriz.<br>
+Aşağıdaki resimde görüldüğü üzere, bir defa oluşturulan Akış/Yansıtma Eğrisine ait parametrele değerleri değiştirilerek Temel nesnenin farklı doğrultu ve mesafelerindeki görüntüleri yeniden oluşturulabiliyor/güncellenebiliyor.
+<img alt="Reflect_Lines_27" src="../../images/freecad/curves_wb/surfaces_menu/Reflect_Lines_27.png"><br>
+<strong>Visible (Görünürlük))</strong> parametresi, Akış/Yansıtma Eğrisi oluşturulurken NSeçili Nesnenin Kamera tarafından Görünen ya da Görünmeyen çizgilerin temel alınacağını belirlediğimiz ayar kısmıdır.<br>
+Unsur ağacından <strong>ReflectLines</strong> nesnesi seçilir ve <strong>Visible (Görünürlük))</strong> parametresi <strong>false (yanlış/hayır)</strong> olarak değiştirilirse aşağıdaki resimde göründüğü gibi bir önceki 
+haline kıyasla görünür çizgiler kaybolur, görünmeyen çizgiler görünür hale gelir.
+<img alt="Reflect_Lines_28" src="../../images/freecad/curves_wb/surfaces_menu/Reflect_Lines_28.png"><br>
+Aynı nesnenin bir adet Akis çizgisi oluşturalım ve <strong>Visible (Görünürlük))</strong> parametresi <strong>true (doğru/evet)</strong> olarak ayarlayalım. Rengini turkuaz olarak belirleyelim.
+<img alt="Reflect_Lines_29" src="../../images/freecad/curves_wb/surfaces_menu/Reflect_Lines_29.png"><br>
+Aynı nesnenin bir adet daha Akis çizgisini oluşturalım ve <strong>Visible (Görünürlük))</strong> parametresi <strong>false (yanlış/hayır)</strong> olarak ayarlayalım. Rengini de pembe olarak belirleyelim.
+<img alt="Reflect_Lines_30" src="../../images/freecad/curves_wb/surfaces_menu/Reflect_Lines_30.png"><br>
+Her iki Akis Çizgisinin <strong>On Shape</strong> parametresi <strong>true (doğru/evet)</strong> olarak ayarlandıüğı için eğriler 3 boyutlu oluşmuş olacaktır.
+<img alt="Reflect_Lines_31" src="../../images/freecad/curves_wb/surfaces_menu/Reflect_Lines_31.png"><br>
+Sahneye farklı açılardan bakarsak ta eksik/kayıp bir çizgi kalmamış olduğunu görürüz.
+<img alt="Reflect_Lines_32" src="../../images/freecad/curves_wb/surfaces_menu/Reflect_Lines_32.png">  </p>
+<p><img alt="multiLoft" src="https://raw.githubusercontent.com/tomate44/CurvesWB/9aac6c2365311724487f79df3343dab90ddcb819/freecad/Curves/resources/icons/multiLoft.svg"> <strong>MultiLoft:</strong><br>
+Adı üstünde, ÇokluÇatılama. Birden fazla <strong>yüzeyi</strong>, loft komutu mantığı ile birbirine bağlayarak 3D nesne elde etmemizi sağlayan komut. Biliyorsunuz, <strong>PartDesing</strong> çalışma tezgahında bir eskiz içerisinde birden fazla kapalı alan varsa, bu eskiz <strong>Extrude</strong> ya da <strong>Loft</strong> komutu ile 3 boyutlu hale getirilemiyor. <code>MultiLoft</code> komutu, bize bu noktada kolaylık sağlıyor. Aşağıdaki örnek uygulamaları incelediğinizde ne demek istediğimi anlayacaksınız.  </p>
+<p><strong>Kullanım:</strong> Komutu çalıştırmak için aşağıdaki adımları sırası ile uygulayın:</p>
+<ul>
+<li>Öncelikle çatılamak istediğiniz yüzeyleri seçin. (Birlikte seçim için <code>CTRL</code> tuşunu kullanın)</li>
+<li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
+<li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>MultiLoft</strong> seçeneğini kullanın.</li>
+</ul>
+<p>Bir eskiz (sketch) içerisinde 3 adet kapalı çokgen çiziyoruz.<br>
+<img alt="MultiLoft_01" src="../../images/freecad/curves_wb/surfaces_menu/MultiLoft_01.png"><br>
+Çizdiğimiz 2 boyutlu (2B) eskizi, <strong>Part</strong> Çalışma Tezgahındaki <strong>Extrude</strong> komutu ile <strong>0,01 mm</strong> değerinde katılayarak 3 boyutlu (3B) nesne haline getiriyoruz. 
+<img alt="MultiLoft_02" src="../../images/freecad/curves_wb/surfaces_menu/MultiLoft_02.png"><br>
+<strong>MultiLoft</strong> komutunu kullanabilmek için yüzey alanına ihtiyaç vardır. Bu yüzeyi, <strong>Extrude</strong> komutu ile elde edebileceğimiz gibi, <strong>Surface</strong> ya da <strong>Draft</strong> Çalışma Tezgahları komutlarıyla da elde edebiliriz. Aşağıda, eskiz kenarlarını seçerek oluşturulmuş yüzeyler gösterilmektedir.
+<img alt="MultiLoft_03" src="../../images/freecad/curves_wb/surfaces_menu/MultiLoft_03.png"><br>
+<strong>Extrude</strong> komutu ile katıladığımız nesneyi seçerek, <strong>Draft</strong> Çalışma Tezgahı komutlarından olan <strong>Clone (Klon)</strong> komutu ile 3 kez klonluyoruz (kopyasını çıkarıyoruz).
+<img alt="MultiLoft_04" src="../../images/freecad/curves_wb/surfaces_menu/MultiLoft_04.png"><br>
+Klonladığımız her kopyayı Z ekseninde bir miktar yukarı taşıyoruz.
+<img alt="MultiLoft_05" src="../../images/freecad/curves_wb/surfaces_menu/MultiLoft_05.png"><br>
+Orijinal nesne ile birlikte tüm kopyaları seçerek <strong>MultiLoft</strong> komutunu çalıştırıyoruz.
+<img alt="MultiLoft_06" src="../../images/freecad/curves_wb/surfaces_menu/MultiLoft_06.png"><br>
+Nesne ve kopyaları (klonları) paralel olduğu için, <strong>MultiLoft</strong> komut sonucu, <strong>Extrude</strong> komutuna benzer bir sonuç elde ediyoruz.
+<img alt="MultiLoft_07" src="../../images/freecad/curves_wb/surfaces_menu/MultiLoft_07.png"><br>
+<strong>MultiLoft</strong> komut sonrası gizlenmiş olan <strong>Extrude</strong> nesnelerini görüntülediğimizde, değişiklik öncesi tüm klonların birbirine paralel ve aynı doğrultuda olduğunu görebiliyoruz.
+<img alt="MultiLoft_08" src="../../images/freecad/curves_wb/surfaces_menu/MultiLoft_08.png"><br>
+Şimdi klonları sıra il seçip, <strong>Z</strong> ekseninde <strong>10</strong>'ar derece çevirelim. Klonlar arası mesafeyi daha önce <strong>20 mm</strong> olarak belirlediğimiz, özellikler panelinde görünüyor..
+<img alt="MultiLoft_09" src="../../images/freecad/curves_wb/surfaces_menu/MultiLoft_09.png"><br>
+Nesnemizim 4 adet klonunu oluşturduğumuz için, son klonu, <strong>Z</strong> ekseninde <strong>40 derece</strong> çevirmiş olduk. Gördüğünüz gibi klonların açı veya konum bilgilerini değiştirdiğimizde, MultiLoft komutu sonucu elde edilen 3D nesnemiz de anlık olarak güncellenip değişiyor.
+<img alt="MultiLoft_10" src="../../images/freecad/curves_wb/surfaces_menu/MultiLoft_10.png"><br>
+Orijinal Eskizin içerisine girip eskizi düzenlediğimizde (ekleme / silme) ne olacağını inceleyelim.
+<img alt="MultiLoft_11" src="../../images/freecad/curves_wb/surfaces_menu/MultiLoft_11.png"><br>
+Gördüğünüz gibi, eskizi onaylayıp çıktığımız an, yapılan değişiklik diğer klonlara da yansıyor ve MultiLoft komutu yapılan değişikliklere uygun sonuç veriyor.
+<img alt="MultiLoft_12" src="../../images/freecad/curves_wb/surfaces_menu/MultiLoft_12.png"><br>
+Eskizde yeni bir değişiklik yapalım ve sonucu görelim.
+<img alt="MultiLoft_13" src="../../images/freecad/curves_wb/surfaces_menu/MultiLoft_13.png"><br>
+Sonuçta eskize eklenen yeni nesne döndürülmüş olarak katılanırken, kama kanalı (slot) şeklinin içerisine çizilen geometri dolayısı ile yapıda bir boşluk oluşturuldu.
+<img alt="MultiLoft_14" src="../../images/freecad/curves_wb/surfaces_menu/MultiLoft_14.png"><br>
+Bir başka örnek daha yapalım. Bir eskizde 2 kapalı alan oluşturalım ve bu eskizi 3 defa kopyalayalım. 
+<img alt="MultiLoft_15" src="../../images/freecad/curves_wb/surfaces_menu/MultiLoft_15.png"><br>
+Her bir eskizde, şekillerin ebatlarını ve konumlarını (X, Y, Z koordinatı) ve X ekseni etrafındaki açılarını değiştirelim. Ortadaki eskizin Y ekseni ile açısı 45 derece (x ekseni etrafında 45 derece çevrildi), koordinatları: (0, 30, -10) 
+<img alt="MultiLoft_16" src="../../images/freecad/curves_wb/surfaces_menu/MultiLoft_16.png"><br>
+Alt kısımdaki eskizin Y ekseni ile açısı 0 (sıfır) derece (Y ekseni üzerinde ya da paralel), koordinatları: (0, 340, -50)
+<img alt="MultiLoft_17" src="../../images/freecad/curves_wb/surfaces_menu/MultiLoft_17.png"><br>
+2 boyutlu eskizleri sırası ile yüzeye kavuşturuyoruz. Aşağıdaki örnekte <strong>Part</strong> Çalışma Tezgahındaki <strong>Extrude</strong> komutunu kullanarak nesneleri 3 boyutlu (3B) haline getirdim. 
+<img alt="MultiLoft_18" src="../../images/freecad/curves_wb/surfaces_menu/MultiLoft_18.png"><br>
+<strong>Extrude</strong> kalınlığı olarak <strong>0,01mm</strong> değeri belirledim. Sonuçta elde etmek istediğim şey, bir yüzeye sahip olmak. 2 boyutlu bir yüzey elde etmek isterseniz <strong>Draft</strong> Çalışma Tezgahı komutlarından biri olan <strong>Upgrade</strong> komutunu da kullanabilirsiniz.
+<img alt="MultiLoft_19" src="../../images/freecad/curves_wb/surfaces_menu/MultiLoft_19.png"><br>
+3 eskizi de yüzeye kavuşturduktan sonra sıra, nesneleri seçip <strong>MultiLoft</strong> komutunu çalıştırmaya geldi.
+<img alt="MultiLoft_20" src="../../images/freecad/curves_wb/surfaces_menu/MultiLoft_20.png"><br>
+Veeee sonuç karşınızda.
+<img alt="MultiLoft_21" src="../../images/freecad/curves_wb/surfaces_menu/MultiLoft_21.png">  </p>
+<p><img alt="blendSurf" src="https://raw.githubusercontent.com/tomate44/CurvesWB/9aac6c2365311724487f79df3343dab90ddcb819/freecad/Curves/resources/icons/blendSurf.svg"> <strong>BlendSurface:</strong><br>
+<strong>BlendSurface</strong> komutu, iki yüzeyi, seçili kenarları arasında yeni yüzey oluşturarak bağlar. Komutu çalıştırmadan önce birinci yüzeye ait bir kenarın ve yüzeyin kendisinin, sonrasında ikinci yüzeyin bir kenarının ve yüzeyin kendisinin seçilmesi gerekir.  </p>
+<p><strong>Kullanım:</strong> Komutu çalıştırmak için aşağıdaki adımları sırası ile uygulayın:</p>
+<ul>
+<li>Öncelikle, birinci yüzeye ait bir kenarı ve yüzeyin kendisini seçin. (Önce yüzey sonra kenar da seçilebilir. Birlikte seçim için <code>CTRL</code> tuşunu kullanın)</li>
+<li>İkinci olarak, ikinci yüzeyin bir kenarını sonra yüzeyin kendisini seçin. (Önce yüzey sonra kenar da seçilebilir. Tüm seçim işlemlerinde <code>CTRL</code> tuşuna basılı tutun)</li>
+<li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
+<li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>BlendSurface</strong> seçeneğini kullanın.</li>
+</ul>
+<p><strong>BlendSurface</strong> komutunun kullanımına yönelik örnekler yapalım.<br>
+Aşağıda, kenar çizgileri birbirine 45 derece açılı duran 3 adet kare şekil (yüzey) var. Şekillerin tamamı aynı düzlemde ve birbirine paralel konumda.
+<img alt="BlendSurface_01" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_01.png"><br>
+Sol kısımdaki şeklin yüzeyini ve kenarını <code>CTRL</code> tuşuna basılı tutarak seçiyoruz, ardından ortadaki şeklin yüzeyi ve kenar çizgisini <code>CTRL</code> tuşu yardımıyla seçiyoruz. Seçim işlemi tamamlandıktan sonra araç çubuğunda bulunan <code>BlendSurface</code> düğmesine basıyoruz. İşlem sonucunda seçili kenarlar arasında yeni bir düzlem yüzey oluşturuldu. Yüzeyin kenarları eğriler vasıtası ile elde edildi.
+<img alt="BlendSurface_02" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_02.png"><br>
+Yeni oluşan <strong>Blend_Surface</strong> yüzeyini, Unsur ağacından seçerek özelliklerini incelediğimizde, yüzeyi oluşturan eğrilerin süreklilik değerlerinin ne olduğunu görüyoruz. Bu değerleri isteğimiz doğrultusunda değiştirebiliyoruz.
+<img alt="BlendSurface_03" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_03.png"><br>
+Birinci (Continuity1) ve ikinci (Continuity2) eğrinin değerlerini <strong>2</strong>'den <strong>5</strong>'e yükseltip sonucu inceliyoruz.
+<img alt="BlendSurface_04" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_04.png"><br>
+Sahnenin ortasındaki ve sağ alt kısmındaki şekillerin de ilgili yüzey ve kenar çizgilerini seçerek <strong>BlendSurface</strong> komutu çalıştıralım. İşlem sonucu yeni bir yüzey (mavi renkli) oluştuğunu aşağıdaki resimde görüyoruz.
+<img alt="BlendSurface_05" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_05.png"><br>
+Unsur ağacından <strong>Blend_Surface001</strong> isimli yeni yüzeyi seçerek eğrilerin süreklilik (Continuity1 / Continuity2) değerlerini değiştirerek oluşan yüzey şeklini inceliyoruz.
+<img alt="BlendSurface_06" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_06.png"><br>
+<strong>BlendSurface</strong> komutu, sadece paralel yüzeyde çalışmaz. Aşağıdaki örnekte, birbirine 90 derece açı ile konumlanmış yüzeyleri görmektesiniz. <strong>BlendSurface</strong> komutunu, bu yüzeyler arasında eğrisel bir yüzey oluşturmak için kullanalım.
+<img alt="BlendSurface_07" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_07.png"><br>
+Kenar ve Yüzeyleri seçerek <strong>BlendSurface</strong> komutu çalıştırıyoruz.
+<img alt="BlendSurface_08" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_08.png"><br>
+İşlem sonrası oluşan eğrisel yüzeyi aşağıda görmektesiniz.
+<img alt="BlendSurface_09" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_09.png"><br>
+<strong>Blend_Surface002</strong> yüzeyinin süreklilik değerleri;<br>
+Continuity1:<strong>2</strong><br>
+Continuity2: <strong>2</strong> 
+<img alt="BlendSurface_10" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_10.png"><br>
+<strong>Blend_Surface002</strong> yüzeyinin süreklilik değerlerini değiştiriyor ve elde edilen yüzeyi inceliyoruz;<br>
+Continuity1:<strong>9</strong><br>
+Continuity2: <strong>2</strong> 
+<img alt="BlendSurface_11" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_11.png"><br>
+Sahnenin sol kısmında duran ve <strong>YZ</strong> düzlemine paralel konumdaki şekli seçerek, <strong>Z</strong> ekseninde aşağı doğru taşıyoruz. 
+<img alt="BlendSurface_12" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_12.png"><br>
+<code>OK</code> (Tamam) butonuna basıp şeklin yeni konumu onaylandığında, <strong>BlendSurface</strong> komutu ile oluşturulan yüzey (<strong>Blend_Surface002</strong> ), otomatik olarak güncelleniyor.
+<img alt="BlendSurface_13" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_13.png"><br>
+<strong>Blend_Surface002</strong> yüzeyinin süreklilik değerleri incelendiğinde biraz önce belirlediğimiz değerlerin geçerli olduğu görülüyor.;<br>
+Continuity1:<strong>9</strong><br>
+Continuity2: <strong>2</strong> 
+<img alt="BlendSurface_14" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_14.png"><br>
+<strong>BlendSurface</strong> komutunu kullanabileceğimiz güzel bir örnekle konuyu kapatalım.<br>
+<strong>Part</strong> Çalışma Tezgahında Parametrik Silindir oluşturalım. Silindirin Yarıçap değerini <strong>2,00 mm</strong>, Yükseklik değerini <strong>5,00 mm</strong> olarak belirleyelim.
+<img alt="BlendSurface_15" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_15.png"><br>
+Silindirin <strong>2</strong> adet kopyasını çıkararak, aşağıdaki resimde göründüğü gibi, silindirleri birbiri ile 120'şer derece açı ile konumlandıralım.
+<img alt="BlendSurface_16" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_16.png"><br>
+Silindirlerden birinin çemberini seçerek <strong>Discretize</strong> komutunu çalıştıralım. <strong>Discretize</strong> komutu hakkında daha fazla bilgi için <a href="https://mhalil.github.io/Freecad_curves_wb_curves.html#discretize">BURAYI</a> ziyaret edebilirsiniz.
+<img alt="BlendSurface_17" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_17.png"><br>
+Komut çalıştrıldıktan sonra seçili eğri üzerinde Varsayılan olarak Number (Sayı) algoritması ile <strong>100</strong> adet nokta oluşturulur. 
+<img alt="BlendSurface_18" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_18.png"><br>
+Number (Sayı) parametresi <strong>4</strong> olarak değiştirildiğinde, oluşan nokta sayısı ve noktalar arası mesafe, güncellendi. 
+<img alt="BlendSurface_19" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_19.png"><br>
+Aynı işlemleri diğer Silindirlere de uygulayarak, her bir silindirin bir yüzeyindeki çember üzerine, eşit aralıklı <strong>4</strong>'er adet nokta ekliyoruz.
+<img alt="BlendSurface_20" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_20.png"><br>
+Silindir yüzeyini seçerek <strong>Surface</strong> menüsündeki <strong>Segment surface</strong> komutunu çalıştırıyoruz. <strong>Segment surface</strong> komutu hakkında daha fazla bilgi almak isterseniz <a href="https://mhalil.github.io/Freecad_curves_wb_surfaces.html#segmentsurface">BURAYI</a> ziyaret edebilirsiniz.
+<img alt="BlendSurface_21" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_21.png"><br>
+Komut çalıştırıldıktan sonra silindir nesnesini gizliyoruz ve oluşan Segment Yüzeyi (Segment_Surface) görüyoruz.<br>
+<strong>Option (Seçenek)</strong> özelliği, <strong>Custom (Özel)</strong> olarak değiştiriyoruz.<br>
+<img alt="BlendSurface_22" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_22.png"><br>
+<strong>Knots UProvider</strong> seçeneğini kullanarak oluşturduğumuz <strong>4</strong> noktayı değer olarak atayalım. <strong>Knots UProvider</strong> seçeneğinin yanındaki <code>...</code> butonuna basınca karşımıza çıkan <strong>Bağlantı (Link)</strong> penceresinden, <strong>4</strong> noktaya ait öğeyi (<strong>Discretize_Edge</strong>) seçip ardından <code>OK</code> (Tamam) butonuna basıyoruz. 
+<img alt="BlendSurface_23" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_23.png"><br>
+İşlem sonrası seçili yüzey, belirlenen öğedeki (<strong>Discretize_Edge</strong>) nokta sayısı ve konumundan itibaren dikey parçalara ayrılıyor. 
+<img alt="BlendSurface_24" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_24.png"><br>
+Aynı işlemleri diğer silindirler için de yapıyoruz. Böylece, <strong>BlendSurface</strong> komutu ile birleştirilecek yüzey ve kenarları elde etmiş olduk.
+<img alt="BlendSurface_25" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_25.png"><br>
+Aşağıda gösterildiği şekilde <strong>Segment_Surface</strong> ve <strong>Segment_Surface_002</strong> nesnelerinin kenar ve yüzeyleri seçerek <strong>BlendSurface</strong> komutunu çalıştırıyoruz.
+<img alt="BlendSurface_26" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_26.png"><br>
+Seçilen kenar ve yüzeylerin konum ve açılarına bağlı olarak yeni bir eğrisel yüzey (mavi renkli yüzey) oluşuyor. 
+<img alt="BlendSurface_27" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_27.png"><br>
+<strong>Segment_Surface</strong> ve <strong>Segment_Surface_001</strong> nesnelerine de aynı işlemi uyguluyoruz.
+<img alt="BlendSurface_28" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_28.png"><br>
+<strong>Segment_Surface_001</strong> ve <strong>Segment_Surface_002</strong> nesnelerine de aynı işlemi uyguluyor ve sonucu inceliyoruz. Oluşan yeni yüzeylerin arasında bir boşluk (yırtık) olduğunu görüyoruz. 
+<img alt="BlendSurface_29" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_29.png"><br>
+Eğrisel Üçgen yapısına sahip boşluğu kapatmak/doldurmak için <strong>Surface</strong> Çalışma tezgahı komutlarından <strong>Boundaries</strong> komutunu kullanıyoruz.
+<img alt="BlendSurface_30" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_30.png"><br>
+Komut doğru bir şekilde çalıştırılıp tamamlandıktan sonra, yırtık / boşluk kısmı kapanmış oluyor.
+<img alt="BlendSurface_31" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_31.png"><br>
+Sonuçu beğeninize sunuyorum.
+<img alt="BlendSurface_32" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_32.png">  </p>
+<p><img alt="blendSolid" src="https://raw.githubusercontent.com/tomate44/CurvesWB/9aac6c2365311724487f79df3343dab90ddcb819/freecad/Curves/resources/icons/blendSolid.svg"> <strong>BlendSolid:</strong><br>
+<strong>BlendSolid</strong> komutu, seçili iki yüzeyi, bu yüzeylere ait seçili 2'şer kenarı referans alarak birleştirir. Komut, <strong>Extrude</strong>, <strong>Loft</strong> ve <strong>Sweep</strong> komutlarına benzetilebilir.  </p>
+<p><strong>Kullanım:</strong> Komutu çalıştırmak için aşağıdaki adımları sırası ile uygulayın:</p>
+<ul>
+<li>Öncelikle bir eğri (veya kenar çizgisi) ve yüzey seçin. (Birlikte seçim için <code>CTRL</code> tuşunu kullanın)</li>
+<li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
+<li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>BlendSolid</strong> seçeneğini kullanın.</li>
+</ul>
+<p>Sahnede aynı ölçülere sahip iki adet küp nesnesi var. Bu küpler, <strong>Part Çalışma Tezgahı</strong> ile oluşturuldu.<br>
+<img alt="BlendSolid_01" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_01.png"><br>
+İlk olarak birinci küpün bir yüzeyini ve seçili yüzeye ait iki kenar çizgisini seçiyoruz.
+<img alt="BlendSolid_02" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_02.png"><br>
+Ardından ikinci küpün bir yüzeyini ve seçili yüzeye ait iki kenarı seçiyoruz.
+<img alt="BlendSolid_03" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_03.png"><br>
+Curves araç çubuğunda bulunan <strong>BlendSolid</strong> düğmesi ile ya da <strong>Surface</strong> menüsündeki <strong>BlendSolid</strong> seçeneği ile komutu çalıştırıyoruz.
+<img alt="BlendSolid_04" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_04.png"><br>
+İşlem sonrası, seçili iki yüzey, seçili kenarlar referans alınarak birleştirildi. Unsur ağacında <strong>Blend_Solid</strong> nesnesi oluştu. Seçili kenarlar birbirine paralel ve aynı düzlemde olduğu için sonuç <strong>Extrude</strong> komutuna benzer bir çıktı verdi.
+<img alt="BlendSolid_05" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_05.png"><br>
+Küplerden birinin açısını ve konumunu değiştirip sonucu inceleyelim.<br>
+Sahnenin solunda bulunan küpü, <strong>X</strong> eksenin etrafında çevirip <strong>Z</strong> ekseninde yukarı yönde taşıyalım.
+<img alt="BlendSolid_06" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_06.png"><br>
+<strong>BlendSolid</strong> komutu sonucu elde ettiğimiz <strong>Blend_Solid</strong> unsuru, nesnelerin açısının ve konumunun değişmesi sonucunda yeniden hesaplanarak güncellendi.
+<img alt="BlendSolid_07" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_07.png"><br>
+<strong>Continuity1</strong> ve <strong>Continuity2</strong> süreklilik değerleri varsayılan olarak <strong>2</strong> atanmış. Bu değeri <strong>0</strong> (sıfır) olarak değiştirirsek, <strong>Blend_Solid</strong> unsuru, eğrisel formunu kaybedip, doğrusal bir hal alır.
+<img alt="BlendSolid_08" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_08.png"><br>
+<strong>Continuity1</strong> ve <strong>Continuity2</strong> süreklilik değerleri değiştirilerek farklı sonuçlar elde edilebilir.
+<img alt="BlendSolid_09" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_09.png"><br>
+Küpü biraz da <strong>Y</strong> ekseninde çevirelim.
+<img alt="BlendSolid_10" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_10.png"><br>
+Sonuç gayet başarılı. Yapılan değişiklik neticesinde, burkulmuş bir cisim elde etmiş olduk.
+<img alt="BlendSolid_11" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_11.png"><br>
+Küpün ebatlarını (ölçülerini) değiştirelim.
+<img alt="BlendSolid_12" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_12.png"><br>
+Sahneye sağ yan görünüşten bakıp sonucu inceleyelim.
+<img alt="BlendSolid_13" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_13.png"><br>
+Küpün açısını ve konumunu ilk değerine geri getirip, ölçüsü değişmiş halde bırakalım.
+<img alt="BlendSolid_14" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_14.png"><br>
+<strong>BlendSolid</strong> komutunu, bir de <strong>Part Design</strong> Çalışma Tezgahı ile oluşturduğumuz prizmatik nesnelere üzerinde kullanmaya çalışalım.<br>
+Kare ve Dikdörtgen şekiller çizip <strong>Pad</strong> komutu ile kalınlık verdiğimiz küplerin yüzey ve kenarlarını seçip <strong>BlendSolid</strong> komutunu çalıştıralım.
+<img alt="BlendSolid_15" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_15.png"><br>
+Unsur ağacında <strong>Blend_Solid</strong> unsuru oluştu ancak, sonuç istediğimiz gibi olmadı. <strong>BlendSolid</strong> komutunun çalışması için ilave işlem uygulamamız gerekiyor.
+<img alt="BlendSolid_16" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_16.png"><br>
+<strong>Part Design</strong> Çalışma Tezgahında oluşturduğumuz Gövde (Body) nesnelerini, <strong>Part</strong> Çalışma Tezgahı komutu yardımıyla <strong>Bileşik (Compound)</strong> hale getiriyoruz. 
+<img alt="BlendSolid_17" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_17.png"><br>
+<strong>Bileşik (Compound)</strong> komutu düğmesi, araç çubuğunda da mevcut.
+<img alt="BlendSolid_18" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_18.png"><br>
+Gövde nesnelerini Bileşiğe dönüştürüldükten sonra, yüzey ve kenarları seçerek <strong>BlendSolid</strong> komutunu tekrar çalıştıralım.
+<img alt="BlendSolid_19" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_19.png"><br>
+Sonuç başarılı. Yüzeylere ait seçili kenarlar, aşağıdaki resimde yeşil renkli olarak görünüyor.
+<img alt="BlendSolid_20" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_20.png"><br>
+Dikdörtgenler prizmasının açısını değiştirelim.
+<img alt="BlendSolid_21" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_21.png"><br>
+Burkulmuş doğrusal nesne elde ettik.
+<img alt="BlendSolid_22" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_22.png"><br>
+Dikdörtgenler prizmasının konumunu da değiştirip <strong>Z</strong> ekseninde yukarı taşıyalım.
+<img alt="BlendSolid_23" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_23.png"><br>
+Bu kez, burkulmuş eğrisel nesne elde etmiş olduk.
+<img alt="BlendSolid_24" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_24.png"><br>
+Bir de, dikdörtgen dışındaki şekilleri inceleyelim. Sahneye Dikdörtgenler prizması ile bir Silindir ekleyelim.
+<img alt="BlendSolid_25" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_25.png"><br>
+Yüzeyleri ve kenarları seçip, <strong>BlendSolid</strong> komutunu çalıştıralım.
+<img alt="BlendSolid_26" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_26.png"><br>
+Görüldüğü üzere, Unsur ağacında <strong>Blend_Solid</strong> nesnesi oluştu ancak sonuç beklediğimiz gibi olmadı. Unsur ağacında <strong>Blend_Solid</strong> nesnesinde Ünlem işareti olduğuna dikkat edin.
+<img alt="BlendSolid_27" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_27.png"><br>
+Komutun doğru sonuç vermemesinin, istediğimiz sonucu elde edemememizin sebebi, Silindirin seçili yüzeyine ait sadece bir kenar çizgisi olmasıdır.
+<img alt="BlendSolid_28" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_28.png"><br>
+Silindirin kesit alanını, bir çember yerine birden fazla (örneğin 4) yay parçası ile oluşturalım.
+<img alt="BlendSolid_29" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_29.png"><br>
+Silindir nesnesini <strong>Bileşik (Compound)</strong> hale getirelim.
+<img alt="BlendSolid_30" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_30.png"><br>
+Birer Yüzey ve 2'şer kenar çizgisi seçerek <strong>BlendSolid</strong> komutunu çalıştıralım.
+<img alt="BlendSolid_31" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_31.png"><br>
+Komut bu kez başarılı sonuç verdi. Seçili kenarlara bağlı olarak Eğrisel bir yapı elde edildi.
+<img alt="BlendSolid_32" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_32.png"><br>
+<strong>Blend_Solid</strong> nesnesinin <strong>Continuity1</strong> ve <strong>Continuity2</strong> süreklilik değerleri <strong>0</strong> (sıfır) olarak değiştirildiğinde, <strong>Loft</strong> komutuna benzer doğrusal yapı elde edildi.<br>
+<strong>Fuse</strong> parametresi, <strong>false</strong> olarak ayarlandığı için oluşan <strong>Blend_Solid</strong> nesnesi ayrı bir nesne olarak unsur ağacında görüntüleniyor.
+<img alt="BlendSolid_33" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_33.png"><br>
+Silindirin konumunu ve açısını değiştirip, <strong>Continuity1</strong> ve <strong>Continuity2</strong> süreklilik değerlerini artırdığımızda aşağıdaki sonucu elde ediyoruz.
+<img alt="BlendSolid_34" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_34.png"><br>
+<strong>Fuse</strong> parametresini, <strong>true</strong> olarak ayarladığımızda <strong>Blend_Solid</strong> nesnesi, bağlantılı olduğu nesnelerle (Dikdörtgenler prizması ve Silindir) birleştirilip tek bir nesne olarak unsur ağacında görüntülenir.
+<img alt="BlendSolid_35" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_35.png">  </p>
+<p><img alt="flatten" src="https://raw.githubusercontent.com/tomate44/CurvesWB/9aac6c2365311724487f79df3343dab90ddcb819/freecad/Curves/resources/icons/flatten.svg"> <strong>Flatten face:</strong><br>
+<strong>Flatten face</strong> komutu, silindirik ve konik yüzlerden, bir düzlem yüzey oluşturur. Kısaca, seçili silindirik veya konik yüzeyin UV'sini açar.  </p>
+<p><strong>Kullanım:</strong> Komutu çalıştırmak için aşağıdaki adımları sırası ile uygulayın:</p>
+<ul>
+<li>Öncelikle bir eğri (veya kenar çizgisi) ve yüzey seçin. (Birlikte seçim için <code>CTRL</code> tuşunu kullanın)</li>
+<li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
+<li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>Flatten face</strong> seçeneğini kullanın.</li>
+</ul>
+<p>Araç yalnızca gerçek bir matematiksel koni veya silindir tarafından desteklenen yüzlerde çalışır.<br>
+Bu konunun önceki sayfasında tartışılan durum budur, yüzey açıkça silindirik veya konik bir yüz olarak tanımlanmamıştır/algılanmamıştır ve bu nedenle yassılaştırma aracı 
+üzerinde çalışmaz, en azından şu anda çalışmaz. bu tür durumları desteklemek için genişletilecek. ancak yüzün gerçekten geliştirilebilir olduğu bu gibi durumlarda mesh yöntemi işe yaramalı ve oldukça iyi sonuçlar vermelidir. </p>
+<p>(https://forum.freecad.org/viewtopic.php?style=10&amp;t=22675&amp;start=1260)</p>
+<p>Yüzü düzleştir Konik ve silindirik yüzlerden düz gelişmiş bir yüz oluşturur
+ <strong>Kullanım</strong>:
+ 3B Görünümde konik veya silindirik bir yüz seçmelisiniz.
+ InPlace özelliği, açılmış yüzü kaynak yüze (InPlace = True) veya XY düzlemine (InPlace = False) teğet koyar.<br>
+UV açıldıktan sonra, yüzey oluştur / kalınlık kazandır, TechDraw'a ekle.</p>
+<p>AÇIKLAMA_VE_RESİM  ...</p>
+<p><img alt="sweep_around" src="https://raw.githubusercontent.com/tomate44/CurvesWB/9aac6c2365311724487f79df3343dab90ddcb819/freecad/Curves/resources/icons/sweep_around.svg"> <strong>Rotation Sweep:</strong><br>
+KISA_ACIKLAMA  </p>
+<p><strong>Kullanım:</strong> Komutu çalıştırmak için aşağıdaki adımları sırası ile uygulayın:</p>
+<ul>
+<li>Öncelikle bir eğri (veya kenar çizgisi) ve yüzey seçin. (Birlikte seçim için <code>CTRL</code> tuşunu kullanın)</li>
+<li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
+<li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>Rotation Sweep</strong> seçeneğini kullanın.</li>
+</ul>
+<p>AÇIKLAMA_VE_RESİM  ...</p>
+<p><a href="freecad-curves-wb-surface-00-menu-komutlari.html">&lt;&lt;&lt; Surfaces Menü Komutlarına Ait Sayfaya Dön</a></p>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/freecad.html">FreeCAD</a></li>
+					<li><a href="/tag/curves.html">Curves</a></li>
+					<li><a href="/tag/workbench.html">Workbench</a></li>
+					<li><a href="/tag/calismatezgahi.html">ÇalışmaTezgahı</a></li>
+					<li><a href="/tag/surface.html">Surface</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>

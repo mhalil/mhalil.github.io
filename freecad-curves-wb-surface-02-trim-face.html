@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="FreeCAD - Curves WB - Surface - 02 - Trim face" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/freecad-curves-wb-surface-02-trim-face.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">FreeCAD - Curves WB - Surface - 02 - Trim face</h1>
+	<span class="post-date">Cts 05 Kasım 2022</span>
+	<h1><img alt="trimFace" src="https://raw.githubusercontent.com/tomate44/CurvesWB/9aac6c2365311724487f79df3343dab90ddcb819/freecad/Curves/resources/icons/trimFace.svg"> <strong>Trim face:</strong></h1>
+<p><strong>Trim face</strong> komutu, kesişme eğrisi oluşturmadan yüzleri kırpmanıza olanak tanır. Bu, yüzeyleri eğrilerle kırpan veya ayıran komuttur.  </p>
+<p><strong>Kullanım:</strong> Komutu çalıştırmak için aşağıdaki adımları sırası ile uygulayın:</p>
+<ul>
+<li>Öncelikle eğri(ler)i / kenar(lar)ı ve ardından yüzey(ler)i seçin. (Birlikte seçim için <code>CTRL</code> tuşunu kullanın)</li>
+<li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
+<li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>Trim face</strong> seçeneğini kullanın.</li>
+</ul>
+<p>Aşağıdaki şekilde göreceğiniz gibi elimizde eğrisel bir yüzey ve bir elips var.<br>
+<img alt="TrimFace_01" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_01.png"><br>
+Evvela <strong>Üst görünüşe</strong> geçerek önce eğriyi ardından yüzeyi seçiyoruz. Yüzeyi seçerken <strong>eğrinin dış ya da iç kısmında</strong> kalan bir yerin seçilmesinin önemli olduğu bilinmelidir. Aşağıdaki örnekte, Eğri seçildikten sonra, eğrinin <strong>dış kısmında kalan</strong> bir yere tıklanarak seçimin yapıldı ve ardından <strong>Trim face</strong> komutu çalıştırılmıştır.
+<img alt="TrimFace_02" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_02.png"><br>
+İşlem sonucu karşımızda. Yüzey seçimi yaparken, Eğrinin dışında kalan bir yere tıkladığımız için <strong>bu bölümün kalmasını istiyorum, geri kalan kısmı sil, at</strong> demiş oluyoruz.
+<img alt="TrimFace_03" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_03.png"><br>
+Modelin İzometrik görünümü bu şekildedir.
+<img alt="TrimFace_04" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_04.png"><br>
+Önce eğriyi ardından <strong>eğrinin iç kısmında</strong> kalan bir yeri seçerek yüzey seçimi yaptıktan sonra <strong>Üst görünüşe</strong> geçerek <strong>Trim face</strong> komutu çalıştırıp sonucu görelim.
+<img alt="TrimFace_05" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_05.png"><br>
+İşlem sonucu elde ettiğimiz model bu şekilde:
+<img alt="TrimFace_06" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_06.png"><br>
+Oluşan yüzeye <strong>Parça Çalışma Tezhagı (Part WB)</strong> içerisindeki <strong>3D Offset..</strong> komutu ile et kalınlığı verip kenarlarını da <strong>Fillet</strong> komutu ile yuvarlatırsak ne elde etmiş oluruz acaba? :)
+<img alt="TrimFace_06.2" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_06.2.png"><br>
+Dikkat ettiyseniz, yukarıdaki anlatımlarda <strong>Trim face</strong> komutunu çalıştırmadan önce, sürekli <strong>Üst görünüşe geçilmesi</strong> ifade edildi. Bunun sebebi, <strong>Trim face</strong> komutunun, sahneye bakış açısı doğrultusunda çıkarma/silme işlemi yapmasıdır. Aşağıdaki örnekte, sahneye izometrik bakış açısı ile bakıldığı esnada önce eğri ardından <strong>eğrinin iç kısmındaki yüzey</strong> seçilerek "Trim face" komutunu uygulanmaktadır.
+<img alt="TrimFace_07" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_07.png"><br>
+Sonuç, beklediğimiz gibi.
+<img alt="TrimFace_08" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_08.png"><br>
+Sonuca daha yakından bakacak olursak;
+<img alt="TrimFace_09" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_09.png"><br>
+Bu kez de sahneye farklı bir bakış açısı ile bakarak, eğrinin dışında kalan yüzey kısmını seçerek <strong>Trim face</strong> komutunu çalıştıralım.
+<img alt="TrimFace_10" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_10.png"><br>
+Yüzeyin, seçilen (eğrinin dışında kalan) kısmı kaldı, seçilmeyen (eğrinin iç kısmı) silinip atıldı.
+<img alt="TrimFace_11" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_11.png"><br>
+Modelin izometrik görünümü:
+<img alt="TrimFace_12" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_12.png"><br>
+<code>Trim face</code> komutunu kullanmak için çember, elips, dikdörtgen,..vb kapalı eğri kullanmak zorunda değiliz. Aşağıdaki resme bakın.
+<img alt="TrimFace_13" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_13.png"><br>
+Üst görünüşten bakarak önce eğri parçalarını ardından yüzeyi seçiyorum.
+<img alt="TrimFace_14" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_14.png"><br>
+Yüzey seçimi yaparken, eğrinin alt kısmına tıklıyorum.
+<img alt="TrimFace_15" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_15.png"><br>
+<strong>Trim face</strong> komutu çalıştırıldığında, seçili yüzey tarafı (eğrinin alt kısmı) kalıyor, eğrinin üst kısmı kesilip atılıyor.
+<img alt="TrimFace_16" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_16.png"><br>
+İşlem sonrası izometrik görünüş;
+<img alt="TrimFace_17" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_17.png"><br>
+Bu kez, üst görünüşten bakarak önce eğri parçalarını ardından eğrinin üst kısmındaki yüzeyi seçerek komutu çalıştırıyorum.
+<img alt="TrimFace_18" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_18.png"><br>
+Beklediğimiz gibi, eğrinin alt kısmındaki yüzey parçası siliniyor.
+<img alt="TrimFace_19" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_19.png"><br>
+İzometrik görünüş;
+<img alt="TrimFace_20" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_20.png"><br>
+Eğer bir kaç yüzey parçasının uc uca eklenmesi ile elde edilmiş yüzey yapısı varsa, bu komut nasıl çalışır, bu konuyu inceleyelim.
+<img alt="TrimFace_21" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_21.png"><br>
+Eğri parçalarının ardından, en sağdaki yüzeyin üst kısmını seçiyorum. Yüzey rengine bakarak hangi yüzeylerin seçili olduğunu anlayabilirsiniz.
+<img alt="TrimFace_22" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_22.png"><br>
+Gördüğünüz gibi "Trim face" komutu, sadece seçili yüzeyi etkiledi. Seçilmeyen yüzeylerin tamamı silindi.
+<img alt="TrimFace_23" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_23.png"><br>
+İzometrik görünüş;
+<img alt="TrimFace_24" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_24.png"><br>
+Yüzey seçimi yaparken Sağ taraftan başlayarak bağlantılı üç yüzeyi <strong>Ctrl</strong> tuşu yardımıyla seçiyorum.
+<img alt="TrimFace_25" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_25.png"><br>
+Görülüyor ki, sadece seçili 3 yüzey üzerinde kesme işlemi uygulanmış.
+<img alt="TrimFace_26" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_26.png"><br>
+Seçilmeyen tüm yüzeyler silinmiş.
+<img alt="TrimFace_27" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_27.png"><br>
+Şimdi tüm yüzeyleri seçerek komutu çalıştıralım.
+<img alt="TrimFace_28" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_28.png"><br>
+Sonuç beklediğimiz gibi, tüm yüzeyler üzerinde kesim işlemi gerçekleşmiş.
+<img alt="TrimFace_29" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_29.png"><br>
+İzometrik görünüş (Sol - Üst)
+<img alt="TrimFace_30" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_30.png"><br>
+İzometrik görünüş (Sağ - Üst)
+<img alt="TrimFace_31" src="../../images/freecad/curves_wb/surfaces_menu/TrimFace_31.png">  </p>
+<p><a href="freecad-curves-wb-surface-00-menu-komutlari.html">&lt;&lt;&lt; Surfaces Menü Komutlarına Ait Sayfaya Dön</a></p>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/freecad.html">FreeCAD</a></li>
+					<li><a href="/tag/curves.html">Curves</a></li>
+					<li><a href="/tag/workbench.html">Workbench</a></li>
+					<li><a href="/tag/calismatezgahi.html">ÇalışmaTezgahı</a></li>
+					<li><a href="/tag/surface.html">Surface</a></li>
+					<li><a href="/tag/trim.html">Trim</a></li>
+					<li><a href="/tag/face.html">face</a></li>
+					<li><a href="/tag/trim-face.html">Trim face</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>

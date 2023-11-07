@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="FreeCAD - Curves WB - Surface - 06 - Profile support plane" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/freecad-curves-wb-surface-06-profile-support-plane.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">FreeCAD - Curves WB - Surface - 06 - Profile support plane</h1>
+	<span class="post-date">Cts 05 Kasım 2022</span>
+	<h1><img alt="profileSupport" src="https://raw.githubusercontent.com/tomate44/CurvesWB/9aac6c2365311724487f79df3343dab90ddcb819/freecad/Curves/resources/icons/profileSupport.svg"> Profile support plane</h1>
+<p><strong>Profile support plane</strong> komutu, seçili (kenar çizgisi ya da eğriye ait) iki noktadan geçen ve sahneye bakış açısına dik <strong>bir Düzlem</strong> oluşturur.  </p>
+<p><strong>Kullanım:</strong> Komutu çalıştırmak için aşağıdaki adımları sırası ile uygulayın:</p>
+<ul>
+<li>Öncelikle bir eğri veya kenar çizgisi üzerinde birer seçim yapın. (Birlikte seçim için <code>CTRL</code> tuşunu kullanın)</li>
+<li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
+<li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>Profile support plane</strong> seçeneğini kullanın.</li>
+</ul>
+<p>Bir Eskiz (Sketch) içerisine bir çizgi ve bir bezier eğri çizerek komutun kullanımını inceleyelim.<br>
+<img alt="Profile_Support_Plane_01" src="../../images/freecad/curves_wb/surfaces_menu/Profile_Support_Plane_01.png"><br>
+Çizgiden ve bezier eğriden birer yer seçip <strong>Profile support plane</strong> komutunu çalıştıralım.
+<img alt="Profile_Support_Plane_02" src="../../images/freecad/curves_wb/surfaces_menu/Profile_Support_Plane_02.png"><br>
+Görüldüğü üzere, seçilen yerlerden (noktalardan) geçen ve (sahneye) bakış açımıza dik bir düzlem oluştu.
+<img alt="Profile_Support_Plane_03" src="../../images/freecad/curves_wb/surfaces_menu/Profile_Support_Plane_03.png"><br>
+Unsur ağacından, ilgili Profili seçip <strong>Veri (Data)</strong> sekmesindeki özelliklere bakarsak, düzlemin oluşmasında <strong>Edge1, Edge2, Parameter1</strong> ve <strong>Parameter2</strong> değerlerinin etkin olduğunu görürüz.
+<img alt="Profile_Support_Plane_04" src="../../images/freecad/curves_wb/surfaces_menu/Profile_Support_Plane_04.png"><br>
+Oluşan Düzleme izometrik görünümden bakacak olursak aşağıdaki sonucu elde ederiz.<br>
+<strong>Edge1 ve Edge2</strong> değerleri, Düzlemin oluşması esnasında kullanılan Kenar ve Eğrileri temsil eder.
+<img alt="Profile_Support_Plane_05" src="../../images/freecad/curves_wb/surfaces_menu/Profile_Support_Plane_05.png"><br>
+<strong>Parameter1</strong> değerini değiştirip <strong>10,00</strong> olarak ayarlarsak ne olur, görelim.
+<img alt="Profile_Support_Plane_06" src="../../images/freecad/curves_wb/surfaces_menu/Profile_Support_Plane_06.png"><br>
+Oluşan düzlemenim yeni halini, izometrik görünümden bakarak tekrar inceleyelim.<br>
+<img alt="Profile_Support_Plane_07" src="../../images/freecad/curves_wb/surfaces_menu/Profile_Support_Plane_07.png"><br>
+<strong>Parameter2</strong> değerini değiştirip <strong>1,00</strong> olarak ayarlarsak ne olur, bir de onu görelim. 
+<img alt="Profile_Support_Plane_08" src="../../images/freecad/curves_wb/surfaces_menu/Profile_Support_Plane_08.png"><br>
+Bir de <strong>Parameter1</strong> değerini <strong>1000,00</strong> olarak ayarlamaya çalışalım.
+<img alt="Profile_Support_Plane_09" src="../../images/freecad/curves_wb/surfaces_menu/Profile_Support_Plane_09.png"><br>
+Sonuç aşağıdaki gibi, <strong>Parameter1</strong> değerini <strong>1000,00</strong> olarak ayarlamaya çalışmamıza rağmen <strong>ENTER</strong> tuşuna basar bazmaz, değer 50,00 olarak değiştirildi.
+<img alt="Profile_Support_Plane_10" src="../../images/freecad/curves_wb/surfaces_menu/Profile_Support_Plane_10.png"><br>
+Bunun sebebini öğrenmek için Eskiz (Sketch) içerisine girip çizginin uzunluğuna bakarsak, sol taraftaki çizginin toplam uzunluğunun 50,00 birim olarak belirtilmiş olduğunu görürüz. Yani <strong>Parameter1</strong>'in alabileceği en büyük değer 50,00'dir. </p>
+<p><img alt="Profile_Support_Plane_11" src="../../images/freecad/curves_wb/surfaces_menu/Profile_Support_Plane_11.png"><br>
+<strong>Parameter2</strong>'nin alabileceği değer aralığını inceleyecek olursak, müsaade edilen değerlerin 0,00 ile 1,00 arasında olduğunu görürüz.<br>
+Yani Eğriler yüzdelik olarak ifade ediliyor. Örneğin <strong>Parameter2</strong> değerinin <strong>0 (sıfır)</strong> olarak belirtilmesi, oluşan düzlemin, eğrinin uç kısmından (sıfır noktasından) geçmesi demek oluyor.
+<img alt="Profile_Support_Plane_12" src="../../images/freecad/curves_wb/surfaces_menu/Profile_Support_Plane_12.png"><br>
+Kenar ve eğrinin uç noktalarından geçen düzlemin İzometrik görünümü.
+<img alt="Profile_Support_Plane_13" src="../../images/freecad/curves_wb/surfaces_menu/Profile_Support_Plane_13.png"><br>
+Kenar ve eğrinin dört noktasından geçen düzlemler.
+<img alt="Profile_Support_Plane_14" src="../../images/freecad/curves_wb/surfaces_menu/Profile_Support_Plane_14.png"><br>
+Dört Düzlemim izometrik görünümü;
+<img alt="Profile_Support_Plane_15" src="../../images/freecad/curves_wb/surfaces_menu/Profile_Support_Plane_15.png"><br>
+<strong>Profile support plane</strong> komutu ile yapılabilecek güzel bir uygulama örneği;<br>
+Düzlemler oluştur, düzlemler üzerine eskizler çiz.
+<img alt="Profile_Support_Plane_16" src="../../images/freecad/curves_wb/surfaces_menu/Profile_Support_Plane_16.png"><br>
+<a href="https://mhalil.github.io/Freecad_curves_wb_curves.html#approximate">Approximate</a> komutu ile yüzey oluştur.
+<img alt="Profile_Support_Plane_17" src="../../images/freecad/curves_wb/surfaces_menu/Profile_Support_Plane_17.png"><br>
+<strong>Parça Çalışma Tezhagı (Part WB)</strong> içerisindeki <strong>3D Offset..</strong> komutu ile et kalınlığı ver, <strong>Aynala (Mirror)</strong> komutu ile simetriğini oluştur ve iki simetrik gövdeyi <strong>Birleştir (Union)</strong> komutu ile tek gövde haline getir.
+<img alt="Profile_Support_Plane_18" src="../../images/freecad/curves_wb/surfaces_menu/Profile_Support_Plane_18.png"><br>
+Düzlem oluşumunda kullanılan eğrilerin ve dolayısıyla düzlemin değişimini inceleyelim.
+<img alt="Profile_Support_Plane_19" src="../../images/freecad/curves_wb/surfaces_menu/Profile_Support_Plane_19.png"><br>
+Aynı eskizde(sketch) bulunan iki nesneyi (çizgi ve eğri) seçerek bir düzlem oluşturalım. Ardından, Düzlem oluşumundaki eğriyi değiştirmek için Özellikler bölümündeki ilgili butona tıklayalım.
+<img alt="Profile_Support_Plane_20" src="../../images/freecad/curves_wb/surfaces_menu/Profile_Support_Plane_20.png"><br>
+Açılan <strong>Bağlantı (Link)</strong> penceresinden, öncelikle seçili olan eğriyi silmek için <strong>Temizle (Clear)</strong> butonuna basın.
+<img alt="Profile_Support_Plane_2Profile_Support_Plane_2" src="../../images/freecad/curves_wb/surfaces_menu/Profile_Support_Plane_21.png"><br>
+Düzlem oluşumu için gerekli ikinci bir nesne seçilmesi için bu ekranın aşağıdaki gibi boş olmasını sağlıyoruz.
+<img alt="Profile_Support_Plane_22" src="../../images/freecad/curves_wb/surfaces_menu/Profile_Support_Plane_22.png"><br>
+Sahneden, yeni bir nesne (çizgi, eğri, çember, yay, ...vb) seçelim.
+<img alt="Profile_Support_Plane_23" src="../../images/freecad/curves_wb/surfaces_menu/Profile_Support_Plane_23.png"><br>
+<strong>OK</strong> butonuna bastığımızda, düzlem, ilk seçilen kenar çizgisi ile son seçilen yay parçası ayarında oluşacaktır.
+<img alt="Profile_Support_Plane_24" src="../../images/freecad/curves_wb/surfaces_menu/Profile_Support_Plane_24.png"><br>
+Düzlemin güncel halinin izometrik görünümü aşağıdadır.
+<img alt="Profile_Support_Plane_25" src="../../images/freecad/curves_wb/surfaces_menu/Profile_Support_Plane_25.png">  </p>
+<p><a href="freecad-curves-wb-surface-00-menu-komutlari.html">&lt;&lt;&lt; Surfaces Menü Komutlarına Ait Sayfaya Dön</a></p>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/freecad.html">FreeCAD</a></li>
+					<li><a href="/tag/curves.html">Curves</a></li>
+					<li><a href="/tag/workbench.html">Workbench</a></li>
+					<li><a href="/tag/calismatezgahi.html">ÇalışmaTezgahı</a></li>
+					<li><a href="/tag/surface.html">Surface</a></li>
+					<li><a href="/tag/profile.html">Profile</a></li>
+					<li><a href="/tag/support.html">support</a></li>
+					<li><a href="/tag/plane.html">plane</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="FreeCAD - Scripting 05 - Topolojik Veri Kodlaması" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/freecad-scripting-05-topolojik-veri-kodlamasi.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">FreeCAD - Scripting 05 - Topolojik Veri Kodlaması</h1>
+	<span class="post-date">Pzt 04 Nisan 2022</span>
+	<h1>Topolojik Veri Kodlaması</h1>
+<h2>Takdim</h2>
+<p>Burada, <code>Parça (Part)</code> modülünü, doğrudan FreeCAD Python Yorumlayıcısından veya herhangi bir harici komut dosyasından nasıl kontrol edeceğinizi açıklayacağız. Python komut dosyasının FreeCAD'de nasıl çalıştığı hakkında daha fazla bilgiye ihtiyacınız varsa, <a href="https://wiki.freecadweb.org/Power_users_hub">Komut Dosyası</a> bölümüne ve <a href="freecad-03-komut-dosyasi-olusturmanin-temelleri.html">FreeCAD Komut Dosyası Oluşturma Temelleri 
+</a>sayfalarına göz attığınızdan emin olun. Python'da yeniyseniz, önce <a href="freecad-01-pythona-giris.html">Python'a Giriş</a> bölümünü okumak iyi bir fikirdir.</p>
+<h3>Ayrıca bakınız</h3>
+<ul>
+<li>
+<p><a href="freecad-04-parca-part-komut-dosyasi-olusturmak.html">Parça (Part) Komut Dosyası Oluşturmak</a></p>
+</li>
+<li>
+<p><a href="https://wiki.freecadweb.org/OpenCASCADE" title="OpenCASCADE">OpenCASCADE</a></p>
+</li>
+</ul>
+<h2>Sınıf (Class) diyagramı</h2>
+<p>Bu, <code>Parça (Part)</code> modülünün en önemli sınıflarına <a href="https://en.wikipedia.org/wiki/Unified_Modeling_Language">Birleşik Modelleme Dili (BMD - UML)</a> genel bakışıdır:</p>
+<p><img alt="Part_Classes" src="https://wiki.freecadweb.org/images/1/13/Part_Classes.jpg"></p>
+<p><strong>Sınıf diyagramı</strong> <a href="https://tr.wikipedia.org/wiki/UML" title="UML">BMD - UML</a> 'in en sık kullanılan <a href="https://tr.wikipedia.org/wiki/Diyagram" title="Diyagram">diyagramlardan</a> biri olup <a href="https://tr.wikipedia.org/wiki/Nesne_Y%C3%B6nelimli_Analiz_ve_Tasar%C4%B1m" title="Nesne Yönelimli Analiz ve Tasarım">nesne yönelimli analiz</a>, tasarım ve <a href="https://tr.wikipedia.org/wiki/Nesne_y%C3%B6nelimli_programlama" title="Nesne yönelimli programlama">programlamadaki</a> sınıfları net ve anlaşılabilir şekilde temsil etmeyi amaçlar.</p>
+<h3>Geometri</h3>
+<p>Geometrik nesneler, tüm topolojik nesnelerin yapı taşlarıdır:</p>
+<ul>
+<li>
+<p><code>Geom</code> Geometrik nesnelerin Temel sınıfı.</p>
+</li>
+<li>
+<p><code>Çizgi</code> Başlangıç ​​noktası ve bitiş noktası ile tanımlanan 3B düz bir çizgi.</p>
+</li>
+<li>
+<p><code>Çember</code> Çember veya bir merkez noktası ve başlangıç ​​ve bitiş noktası ile tanımlanan daire parçası.</p>
+</li>
+<li>
+<p>vb.</p>
+</li>
+</ul>
+<h3>Topoloji</h3>
+<p>Aşağıdaki topolojik veri türleri mevcuttur:</p>
+<ul>
+<li>
+<p><code>Birleşik (Compound)</code> Herhangi bir tür topolojik nesne grubu.</p>
+</li>
+<li>
+<p><code>KompozitKatı (Compsolid)</code> Kompozit bir katı, yüzleri 
+  ile birbirine bağlanmış bir dizi katıdır. TEL (WIRE) ve KABUK (SHELL) 
+  kavramlarını, katılara genişletir.</p>
+</li>
+<li>
+<p><code>Katı (Solid)</code> Kabukları ile sınırlı alanın bir parçası. Üç boyutlu.</p>
+</li>
+<li>
+<p><code>Kabuk (Shell)</code> Kenarlarıyla birbirine bağlanan bir dizi yüzey. Bir kabuk açık veya kapalı olabilir.</p>
+</li>
+<li>
+<p><code>Yüzey (Face)</code> 2B'de bir düzlemin parçasıdır; 3B'de 
+  bir yüzeyin parçasıdır. Geometrisi konturlarla sınırlandırılmıştır 
+  (kırpılmıştır). İki boyutludur.</p>
+</li>
+<li>
+<p><code>Tel (Wire)</code> Köşeleri ile birbirine bağlanan bir dizi 
+  kenar. Kenarların bağlantılı olup olmamasına bağlı olarak açık veya 
+  kapalı kontur olabilir.</p>
+</li>
+<li>
+<p><code>Kenar (Edge)</code> Kısıtlanmış bir eğriye karşılık gelen bir topolojik eleman. Bir kenar genellikle köşelerle sınırlıdır. Tek boyutludur.</p>
+</li>
+<li>
+<p><code>Nokta (Vertex)</code> Bir noktaya karşılık gelen topolojik bir öğe. Boyutsuzdur.</p>
+</li>
+<li>
+<p><code>Şekil (Shape)</code> Yukarıdakilerin tümünü kapsayan genel bir terim.</p>
+</li>
+</ul>
+<h2>Örnek: Basit Topoloji Oluştur</h2>
+<p><img alt="Wire" src="https://wiki.freecadweb.org/images/7/77/Wire.png"></p>
+<p>Şimdi daha basit geometriden inşa ederek bir topoloji oluşturacağız. 
+Örnek olay olarak resimde görüldüğü gibi dört köşe (noktası), iki yay ve iki çizgiden oluşan bir parça kullanacağız.</p>
+<h3>Geometri Oluştur</h3>
+<p>İlk önce bu tel yapısının farklı geometrik kısımlarını oluşturuyoruz. Daha sonra bağlanması gereken parçaların aynı köşeleri paylaştığından emin oluyoruz.</p>
+<p>Bu nedenle öncelikle noktaları oluşturuyoruz:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">Part</span>
+<span class="kn">from</span> <span class="nn">FreeCAD</span> <span class="kn">import</span> <span class="n">Base</span>
+<span class="n">V1</span> <span class="o">=</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">V2</span> <span class="o">=</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">V3</span> <span class="o">=</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">V4</span> <span class="o">=</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>Yay</h3>
+<p><img alt="Circel" src="https://wiki.freecadweb.org/images/e/ec/Circel.png"></p>
+<p>Her yay için, yardımcı bir noktaya ihtiyacımız var:</p>
+<div class="highlight"><pre><span></span><code><span class="n">VC1</span> <span class="o">=</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">C1</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">Arc</span><span class="p">(</span><span class="n">V1</span><span class="p">,</span> <span class="n">VC1</span><span class="p">,</span> <span class="n">V4</span><span class="p">)</span>
+<span class="n">VC2</span> <span class="o">=</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">C2</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">Arc</span><span class="p">(</span><span class="n">V2</span><span class="p">,</span> <span class="n">VC2</span><span class="p">,</span> <span class="n">V3</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>Çizgi</h3>
+<p><img alt="Line" src="https://wiki.freecadweb.org/images/5/5b/Line.png"></p>
+<p>Çizgi (doğru) parçaları, iki nokta ile oluşturulabilir:</p>
+<div class="highlight"><pre><span></span><code><span class="n">L1</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">LineSegment</span><span class="p">(</span><span class="n">V1</span><span class="p">,</span> <span class="n">V2</span><span class="p">)</span>
+<span class="n">L2</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">LineSegment</span><span class="p">(</span><span class="n">V3</span><span class="p">,</span> <span class="n">V4</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>Hepsini bir araya getir</h3>
+<p>Son adım, geometrik temel öğeleri bir araya getirmek ve topolojik bir şekil oluşturmaktır:</p>
+<div class="highlight"><pre><span></span><code><span class="n">S1</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">Shape</span><span class="p">([</span><span class="n">C1</span><span class="p">,</span> <span class="n">L1</span><span class="p">,</span> <span class="n">C2</span><span class="p">,</span> <span class="n">L2</span><span class="p">])</span>
+</code></pre></div>
+
+<h3>Prizma Oluştur</h3>
+<p>Şimdi oluşturduğunuz tel yapısını, doğrusal olarak bir yönde uzatarak katılayın ve gerçek bir 3B şekil oluşturun:</p>
+<div class="highlight"><pre><span></span><code><span class="n">W</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">Wire</span><span class="p">(</span><span class="n">S1</span><span class="o">.</span><span class="n">Edges</span><span class="p">)</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">W</span><span class="o">.</span><span class="n">extrude</span><span class="p">(</span><span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+</code></pre></div>
+
+<h3>Hepsini Göster</h3>
+<div class="highlight"><pre><span></span><code><span class="n">Part</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">P</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>Temel Şekiller Oluştur</h2>
+<p><code>Part (Parça)</code>modülündeki <code>make...()</code> yöntemleriyle temel topolojik nesneleri kolayca oluşturabilirsiniz:</p>
+<div class="highlight"><pre><span></span><code><span class="n">b</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">makeBox</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">Part</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Bazı mevcut <code>make...()</code> yöntemleri</p>
+<ul>
+<li>
+<p><code>makeBox(l, w, h, [p, d])</code> (<strong>l, w, h</strong>) Boyutlarında <strong>p</strong> Noktasında bulunan ve <strong>d</strong> Yönünü gösteren bir <strong>Kutu</strong> oluşturur.</p>
+</li>
+<li>
+<p><code>makeCircle(radius)</code> Belirli bir Yarıçapa sahip bir <strong>Daire</strong> oluşturur.</p>
+</li>
+<li>
+<p><code>makeCone(radius1, radius2, height)</code> Verilen Yarıçap ve Yükseklikte bir <strong>Koni</strong> oluşturur.</p>
+</li>
+<li>
+<p><code>makeCylinder(radius, height)</code> Belirli bir Yarıçap ve Yükseklikte bir <strong>Silindir</strong> oluşturur.</p>
+</li>
+<li>
+<p><code>makeLine((x1, y1, z1), (x2, y2, z2))</code> İki Nokta ile bir <strong>Çizgi</strong> oluşturur.</p>
+</li>
+<li>
+<p><code>makePlane(length, width)</code> Uzunluğu ve Genişliği belirtilen bir <strong>Düzlem</strong> oluşturur.</p>
+</li>
+<li>
+<p><code>makePolygon(list)</code> Nokta Listesinden bir <strong>Çokgen</strong> oluşturur.</p>
+</li>
+<li>
+<p><code>makeSphere(radius)</code> Belirli bir Yarıçapa sahip bir <strong>Küre</strong> oluşturur.</p>
+</li>
+<li>
+<p><code>makeTorus(radius1, radius2)</code> Verilen Yarıçaplarla bir <strong>Simit (Halka)</strong> oluşturur.</p>
+</li>
+</ul>
+<p>Part (Parça) modülünün kullanılabilir yöntemlerinin tam listesi için <a href="https://wiki.freecadweb.org/Part_API">Part API</a> sayfasına bakın.</p>
+<h3>Modülleri İçe Aktar</h3>
+<p>İlk önce <code>Part</code>modülünü içe aktarmalıyız, böylece içeriğini Python'da kullanabiliriz. Ayrıca <code>Base</code>modülünü <code>FreeCAD</code> modülünden içe aktaracağız:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">Part</span>
+<span class="kn">from</span> <span class="nn">FreeCAD</span> <span class="kn">import</span> <span class="n">Base</span>
+</code></pre></div>
+
+<h3>Vektör Oluştur</h3>
+<p><a href="https://tr.wikipedia.org/wiki/Vekt%C3%B6r">Vektörler</a>, 
+şekiller oluştururken en önemli bilgi parçalarından biridir. Genellikle üç sayı içerirler (ancak her zaman değil): X, Y ve Z kartezyen koordinatları. Bu koordinatları kullanarak aşağıdaki gibi bir vektör oluşturursunuz:</p>
+<div class="highlight"><pre><span></span><code><span class="n">myVector</span> <span class="o">=</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Az önce, (yukarıdaki kodları yazarak) X = 3, Y = 2, Z = 0 koordinatlarında bir vektör oluşturduk. <code>Part</code> modülünde vektörler her yerde kullanılır. Parça (Part) şekilleri ayrıca, <code>Vertex</code> adı verilen ve sadece bir vektör için bir konteyner olan başka bir nokta gösterimi türü kullanır. Bir noktanın vektörüne şu şekilde erişirsiniz:</p>
+<div class="highlight"><pre><span></span><code><span class="n">myVertex</span> <span class="o">=</span> <span class="n">myShape</span><span class="o">.</span><span class="n">Vertexes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">myVertex</span><span class="o">.</span><span class="n">Point</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">Vector</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>Kenar Oluştur</h3>
+<p>Kenar, iki köşesi olan bir <u>çizgi</u>den başka bir şey değildir:</p>
+<div class="highlight"><pre><span></span><code><span class="n">edge</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">makeLine</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">edge</span><span class="o">.</span><span class="n">Vertexes</span>
+<span class="o">&gt;</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">Vertex</span> <span class="nb">object</span> <span class="n">at</span> <span class="mi">01877430</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">Vertex</span> <span class="nb">object</span> <span class="n">at</span> <span class="mf">014888E0</span><span class="o">&gt;</span><span class="p">]</span>
+</code></pre></div>
+
+<p>Not: İki vektör ile de bir kenar oluşturabilirsiniz:</p>
+<div class="highlight"><pre><span></span><code><span class="n">vec1</span> <span class="o">=</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">vec2</span> <span class="o">=</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">line</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">LineSegment</span><span class="p">(</span><span class="n">vec1</span><span class="p">,</span> <span class="n">vec2</span><span class="p">)</span>
+<span class="n">edge</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">toShape</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Bir kenarın uzunluğunu ve merkezini şöyle bulabilirsiniz:</p>
+<div class="highlight"><pre><span></span><code><span class="n">edge</span><span class="o">.</span><span class="n">Length</span>
+<span class="o">&gt;</span> <span class="mf">10.0</span>
+<span class="n">edge</span><span class="o">.</span><span class="n">CenterOfMass</span>
+<span class="o">&gt;</span> <span class="n">Vector</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>Şekli Ekrana Yerleştir</h3>
+<p>Şimdiye kadar bir <code>kenar nesnesi</code> oluşturduk, ancak oluşturduğumuz kenar ekranın hiçbir yerinde görünmüyor. Bunun nedeni, FreeCAD 3D sahnesinin, yalnız görüntülemesini söylediğiniz şeyi göstermesidir. Bunu yapmak için şu basit yöntemi kullanıyoruz:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Part</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span>
+</code></pre></div>
+
+<p><code>show</code> fonksiyonu, FreeCAD belgemizde bir nesne oluşturur ve ona "<strong>kenar (edge)</strong>" şeklimizi atar. Oluşturduklarınızı ekranda gösterme zamanı geldiğinde bunu kullanın.</p>
+<h3>Bir Tel (Yapısı) Oluştur</h3>
+<p>Bir tel (yapısı), çok kenarlı bir çizgidir ve bir kenar listesinden, hatta bir tel listesinden oluşturulabilir:</p>
+<div class="highlight"><pre><span></span><code><span class="n">edge1</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">makeLine</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">edge2</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">makeLine</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">wire1</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">Wire</span><span class="p">([</span><span class="n">edge1</span><span class="p">,</span> <span class="n">edge2</span><span class="p">])</span> 
+<span class="n">edge3</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">makeLine</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">edge4</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">makeLine</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">wire2</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">Wire</span><span class="p">([</span><span class="n">edge3</span><span class="p">,</span> <span class="n">edge4</span><span class="p">])</span>
+<span class="n">wire3</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">Wire</span><span class="p">([</span><span class="n">wire1</span><span class="p">,</span> <span class="n">wire2</span><span class="p">])</span>
+<span class="n">wire3</span><span class="o">.</span><span class="n">Edges</span>
+<span class="o">&gt;</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">Edge</span> <span class="nb">object</span> <span class="n">at</span> <span class="mi">016695</span><span class="n">F8</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">Edge</span> <span class="nb">object</span> <span class="n">at</span> <span class="mi">0197</span><span class="n">AED8</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">Edge</span> <span class="nb">object</span> <span class="n">at</span> <span class="mi">01828</span><span class="n">B20</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">Edge</span> <span class="nb">object</span> <span class="n">at</span> <span class="mi">0190</span><span class="n">A788</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="n">Part</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">wire3</span><span class="p">)</span>
+</code></pre></div>
+
+<p><code>Part.show(wire3)</code> komutu, telimizi oluşturan 4 kenarı gösterecektir. Diğer faydalı bilgiler kolayca alınabilir:</p>
+<div class="highlight"><pre><span></span><code><span class="n">wire3</span><span class="o">.</span><span class="n">Length</span>
+<span class="o">&gt;</span> <span class="mf">40.0</span>
+<span class="n">wire3</span><span class="o">.</span><span class="n">CenterOfMass</span>
+<span class="o">&gt;</span> <span class="n">Vector</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">wire3</span><span class="o">.</span><span class="n">isClosed</span><span class="p">()</span>
+<span class="o">&gt;</span> <span class="kc">True</span>
+<span class="n">wire2</span><span class="o">.</span><span class="n">isClosed</span><span class="p">()</span>
+<span class="o">&gt;</span> <span class="kc">False</span>
+</code></pre></div>
+
+<h3>Bir Yüzey Oluştur</h3>
+<p>Yalnız kapalı tellerden geçerli bir yüzey oluşturulabilir, açık tellerden yüzey oluşturulamaz. Bu örnekte, tel3 (wire3) kapalıdır, ancak tel2 kapalı değil (yukarıya bakın, <code>isClosed()</code>: Kapalı mı?, <code>True</code>: Doğru / Evet, <code>False</code>: Yanlış / Hayır anlamındadır):</p>
+<div class="highlight"><pre><span></span><code><span class="n">face</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">Face</span><span class="p">(</span><span class="n">wire3</span><span class="p">)</span>
+<span class="n">face</span><span class="o">.</span><span class="n">Area</span>
+<span class="o">&gt;</span> <span class="mf">99.99999999999999</span>
+<span class="n">face</span><span class="o">.</span><span class="n">CenterOfMass</span>
+<span class="o">&gt;</span> <span class="n">Vector</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">face</span><span class="o">.</span><span class="n">Length</span>
+<span class="o">&gt;</span> <span class="mf">40.0</span>
+<span class="n">face</span><span class="o">.</span><span class="n">isValid</span><span class="p">()</span>
+<span class="o">&gt;</span> <span class="kc">True</span>
+<span class="n">sface</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">Face</span><span class="p">(</span><span class="n">wire2</span><span class="p">)</span>
+<span class="n">sface</span><span class="o">.</span><span class="n">isValid</span><span class="p">()</span>
+<span class="o">&gt;</span> <span class="kc">False</span>
+</code></pre></div>
+
+<p>Yalnız Yüzeylerin bir alanı olacaktır, tel ve kenarların alanı olmaz.</p>
+<h3>Bir Çember / Daire Oluştur</h3>
+<p>Şu şekilde bir çember / daire oluşturulabilir:</p>
+<div class="highlight"><pre><span></span><code><span class="n">circle</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">makeCircle</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">circle</span><span class="o">.</span><span class="n">Curve</span>
+<span class="o">&gt;</span> <span class="n">Circle</span> <span class="p">(</span><span class="n">Radius</span> <span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="n">Position</span> <span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Direction</span> <span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Çemberi, belirli bir konumda ve belirli bir yönde oluşturmak istiyorsanız:</p>
+<div class="highlight"><pre><span></span><code><span class="n">ccircle</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">makeCircle</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">ccircle</span><span class="o">.</span><span class="n">Curve</span>
+<span class="o">&gt;</span> <span class="n">Circle</span> <span class="p">(</span><span class="n">Radius</span> <span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="n">Position</span> <span class="p">:</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Direction</span> <span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Çember (<code>ccircle</code>), X orijinden 10 birim uzaklıkta oluşturulacak ve X ekseni boyunca dışa bakacaktır. <strong>Not:</strong> <code>makeCircle()</code> konum ve normal parametreler için tanımlama gruplarını değil, yalnızca <code>Base.Vector()</code>'u kabul eder. Başlangıç ​​ve bitiş açısı vererek çemberin bir bölümünü de oluşturabilirsiniz:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">pi</span>
+<span class="n">arc1</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">makeCircle</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">180</span><span class="p">)</span>
+<span class="n">arc2</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">makeCircle</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">360</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Açılar derece cinsinden verilmelidir. Radyan cinsinden veriniz varsa, bunları <code>derece = radyan * 180/pi</code> formülünü kullanarak ya da Python'un <code>math (matematik)</code> modülünü kullanarak derece cinsine dönüştürün:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">math</span>
+<span class="n">degrees</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">radians</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>Noktalar Boyunca Bir Yay Oluştur</h3>
+<p>Maalesef <code>makeArc()</code> fonksiyonu mevcut değil, ancak üç noktadan bir yay oluşturmak için <code>Part.Arc()</code> fonksiyonuna sahibiz. Bu fonksiyon başlangıç ​​noktasını, orta nokta 
+üzerinden geçerek bitiş noktasına birleştiren bir yay nesnesi oluşturur.
+ <code>Part.makeLine</code> yerine<code>Part.LineSegment</code> kullanırken olduğu gibi, Yay (Arc) nesnesinin <code>toShape()</code> fonksiyonu, bir kenar nesnesi elde etmek için çağrılmalıdır.</p>
+<div class="highlight"><pre><span></span><code><span class="n">arc</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">Arc</span><span class="p">(</span><span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">arc</span>
+<span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">Arc</span> <span class="nb">object</span><span class="o">&gt;</span>
+<span class="n">arc_edge</span> <span class="o">=</span> <span class="n">arc</span><span class="o">.</span><span class="n">toShape</span><span class="p">()</span>
+<span class="n">Part</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">arc_edge</span><span class="p">)</span>
+</code></pre></div>
+
+<p><code>Arc()</code> noktalar için yalnız <code>Base.Vector()</code>'u kabul eder, demetler (tuples) için değil. Bir çemberin bir bölümünü kullanarak da bir yay elde edebilirsiniz:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">pi</span>
+<span class="n">circle</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">Circle</span><span class="p">(</span><span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">arc</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">Arc</span><span class="p">(</span><span class="n">circle</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">pi</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Yaylar, çizgiler gibi geçerli kenarlardır, bu nedenle tellerde de kullanılabilirler.</p>
+<h3>Çokgen Oluştur</h3>
+<p>Bir çokgen, basitçe birden çok düz kenarlı bir teldir. <code>makePolygon()</code> fonksiyonu, noktaların bir listesini alır ve bu noktalardan geçen bir tel oluşturur:</p>
+<div class="highlight"><pre><span></span><code><span class="n">lshape_wire</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">makePolygon</span><span class="p">([</span><span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)])</span>
+</code></pre></div>
+
+<h3>Bir Bezier Eğrisi Oluştur</h3>
+<p>Bezier eğrileri, bir dizi <strong>kutup (nokta)</strong> ve isteğe bağlı <strong>ağırlık</strong> kullanarak düzgün eğrileri modellemek için kullanılır. Aşağıdaki fonksiyon, bir dizi <code>FreeCAD.Vector()</code> noktasından bir <code>Part.BezierCurve()</code> oluşturur. Not: Tek bir kutup veya ağırlığı "<strong>edinirken</strong>" ve "<strong>ayarlarken (set)</strong>", endeksler 0'dan değil, <strong>1'den başlar</strong>.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">makeBCurveEdge</span><span class="p">(</span><span class="n">Points</span><span class="p">):</span>
+   <span class="n">geomCurve</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">BezierCurve</span><span class="p">()</span>
+   <span class="n">geomCurve</span><span class="o">.</span><span class="n">setPoles</span><span class="p">(</span><span class="n">Points</span><span class="p">)</span>
+   <span class="n">edge</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">Edge</span><span class="p">(</span><span class="n">geomCurve</span><span class="p">)</span>
+   <span class="k">return</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>Bir Düzlem Oluştur</h3>
+<p>Düzlem, düz dikdörtgen bir yüzeydir. Bir düzlem oluşturmak için kullanılan yöntem şudur;</p>
+<div class="highlight"><pre><span></span><code><span class="n">makePlane</span><span class="p">(</span><span class="n">uzunluk</span><span class="p">,</span> <span class="n">genişlik</span><span class="p">,</span> <span class="p">[</span><span class="n">başlangıç_noktası</span><span class="p">,</span> <span class="n">normalin_yönü</span><span class="p">])</span> 
+</code></pre></div>
+
+<p>Varsayılan değerler aşağıdadır;</p>
+<p><code>başlangıç_noktası = Vector(0, 0, 0)</code></p>
+<p>`normalin_yönü = Vector(0, 0, 1)``</p>
+<p>Bu parametrelerde;<code>normalin-yönü = Vector(0, 0, 1)</code> kullanılması, pozitif Z ekseni yönüne bakan düzlemi oluştururken, <code>normalin_yönü = Vector(1, 0, 0)</code> pozitif X ekseni yönüne bakan düzlemi oluşturur:</p>
+<div class="highlight"><pre><span></span><code><span class="n">plane</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">makePlane</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plane</span>
+<span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">Face</span> <span class="nb">object</span> <span class="n">at</span> <span class="mi">028</span><span class="n">AF990</span><span class="o">&gt;</span>
+<span class="n">plane</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">makePlane</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">plane</span><span class="o">.</span><span class="n">BoundBox</span>
+<span class="o">&gt;</span> <span class="n">BoundBox</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+
+<p><code>BoundBox</code>, (3, 0, 0) ile başlayan ve (5, 0, 2) ile biten bir köşegen ile düzlemi çevreleyen bir küboiddir (kübik yapıdır. 
+BoundBox'ı, oluşturulan cismin içine sığabileceği en küçük koli hacmi gibi düşünebilirsiniz.). Burada, şeklimiz tamamen düz olduğundan, Y ekseni boyunca <code>BoundBox</code> kalınlığı sıfırdır.</p>
+<p><strong>Not</strong>: <code>makePlane()</code>, <code>başlangıç_noktası</code> ve <code>normalin_yönü</code> için değer olarak yalnız <code>Base.Vector()</code>'ü kabul edilir, demetler (tuples) kabul edilmez.</p>
+<h3>Bir Elips Oluştur</h3>
+<p>Bir elips oluşturmanın birkaç yolu vardır:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Part</span><span class="o">.</span><span class="n">Ellipse</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Bu kod, Merkezi (0, 0, 0) olan büyük yarıçapı 2 ve küçük (ikinci) yarıçapı 1 olan bir elips oluşturur.</p>
+<div class="highlight"><pre><span></span><code><span class="n">Part</span><span class="o">.</span><span class="n">Ellipse</span><span class="p">(</span><span class="n">Ellipse</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Bu kod ise, belirtilen elipsin bir kopyasını oluşturur.</p>
+<div class="highlight"><pre><span></span><code><span class="n">Part</span><span class="o">.</span><span class="n">Ellipse</span><span class="p">(</span><span class="n">S1</span><span class="p">,</span> <span class="n">S2</span><span class="p">,</span> <span class="n">Center</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Merkez noktasında ortalanmış bir elips oluşturur; burada elipsin düzlemi Merkez, S1 ve S2 tarafından tanımlanır, ana ekseni Merkez ve S1 tarafından tanımlanır, ana yarıçapı Merkez ile S1 arasındaki mesafedir ve küçük yarıçapı S2 ve ana eksen arasındaki mesafedir.</p>
+<div class="highlight"><pre><span></span><code><span class="n">Part</span><span class="o">.</span><span class="n">Ellipse</span><span class="p">(</span><span class="n">Center</span><span class="p">,</span> <span class="n">MajorRadius</span><span class="p">,</span> <span class="n">MinorRadius</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Merkez ve normal (0, 0, 1) tarafından tanımlanan düzlemde yer alan büyük ve küçük yarıçaplı bir elips oluşturur.</p>
+<div class="highlight"><pre><span></span><code><span class="n">eli</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">Ellipse</span><span class="p">(</span><span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">Part</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">eli</span><span class="o">.</span><span class="n">toShape</span><span class="p">())</span>
+</code></pre></div>
+
+<p>Yukarıdaki kodda S1, S2 ve Merkezi (Center) geçtik. <code>Yay (Arc)</code>'a benzer şekilde, Ellipse bir kenar değil bir <code>elips</code> nesnesi oluşturur, bu nedenle görüntüleme için <code>toShape()</code> kullanarak onu bir kenara dönüştürmemiz gerekir.</p>
+<p><strong>Not</strong>: <code>Ellipse()</code>, noktalar için yalnız <code>Base.Vector()</code>'u kabul eder, demetleri kabul etmez.</p>
+<div class="highlight"><pre><span></span><code><span class="n">eli</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">Ellipse</span><span class="p">(</span><span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">Part</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">eli</span><span class="o">.</span><span class="n">toShape</span><span class="p">())</span>
+</code></pre></div>
+
+<p>Yukarıdaki Ellipse yapıcısı için center, MajorRadius ve MinorRadius'u geçtik.</p>
+<h3>Halka (Simit) Oluştur</h3>
+<p>Halka (Simit) oluşturmak için kullanılacak komut şu şekildedir:</p>
+<div class="highlight"><pre><span></span><code><span class="n">makeTorus</span><span class="p">(</span><span class="n">yarıçap1</span><span class="p">,</span> <span class="n">yarıçap2</span><span class="p">,</span> <span class="p">[</span><span class="n">nokta</span><span class="p">,</span> <span class="n">yön</span><span class="p">,</span> <span class="n">açı1</span><span class="p">,</span> <span class="n">açı2</span><span class="p">,</span> <span class="n">açı</span><span class="p">])</span>
+</code></pre></div>
+
+<p>Varsayılan değerler aşağıdadır;</p>
+<p><code>nokta= Vektör(0, 0, 0)</code></p>
+<p><code>yön = Vektör(0, 0, 1)</code></p>
+<p><code>açı1 = 0</code></p>
+<p><code>açı2 = 360</code></p>
+<p><code>açı = 360</code></p>
+<p>Halkayı, büyük bir daire boyunca süpürülen küçük bir daire olarak düşünün. <code>yarıçap1</code> büyük dairenin yarıçapıdır, <code>yarıçap2</code> küçük dairenin yarıçapıdır, <code>nokta</code> halkanın merkezidir ve <code>yön</code> normal'in yöndür. <code>açı1</code> ve <code>açı2</code>, küçük daire için derece cinsinden açılardır; son <code>açı</code> parametresi halkanın oluşturulacak bölümüdür:</p>
+<div class="highlight"><pre><span></span><code><span class="n">torus</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">makeTorus</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Yukarıdaki kod, çapı 20 (yarıçap 10) ve kalınlığı 4 (küçük daire yarıçapı 2) olan bir halka oluşturacaktır.</p>
+<div class="highlight"><pre><span></span><code><span class="n">tor</span><span class="o">=</span><span class="n">Part</span><span class="o">.</span><span class="n">makeTorus</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">180</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Yukarıdaki kod, halkanın bir dilimini oluşturacaktır.</p>
+<div class="highlight"><pre><span></span><code><span class="n">tor</span><span class="o">=</span><span class="n">Part</span><span class="o">.</span><span class="n">makeTorus</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">360</span><span class="p">,</span> <span class="mi">180</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Yukarıdaki kod bir yarı-halka oluşturacaktır; Bunu yapmak için sadece son parametre değiştirilir, yani kalan açılar varsayılan değerlerdir. 
+Açıyı 180 vermek, halka 0'dan 180'e, yani yarım halka oluşturacaktır.</p>
+<h3>Bir Kutu veya Küboid oluştur</h3>
+<p>Bir kutu ya da Küboid oluşturmak için kullanılacak komut şu şekildedir:</p>
+<div class="highlight"><pre><span></span><code><span class="n">makeBox</span><span class="p">(</span><span class="n">uzunluk</span><span class="p">,</span> <span class="n">genişlik</span><span class="p">,</span> <span class="n">yükseklik</span><span class="p">,</span> <span class="p">[</span><span class="n">nokta</span><span class="p">,</span> <span class="n">yön</span><span class="p">])</span>
+</code></pre></div>
+
+<p>Varsayılan değerler aşağıdadır;</p>
+<p><code>nokta = Vector(0, 0, 0)</code></p>
+<p><code>yön = Vector(0, 0, 1)</code></p>
+<div class="highlight"><pre><span></span><code><span class="n">box</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">makeBox</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">box</span><span class="o">.</span><span class="n">Vertexes</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="mi">8</span>
+</code></pre></div>
+
+<h3>Bir Küre Oluştur</h3>
+<p>Bir Küre oluşturmak için kullanılacak komut şu şekildedir:</p>
+<div class="highlight"><pre><span></span><code><span class="n">makeSphere</span><span class="p">(</span><span class="n">yarıçap</span><span class="p">,</span> <span class="p">[</span><span class="n">nokta</span><span class="p">,</span> <span class="n">yön</span><span class="p">,</span> <span class="n">açı1</span><span class="p">,</span> <span class="n">açı2</span><span class="p">,</span> <span class="n">açı3</span><span class="p">])</span> 
+</code></pre></div>
+
+<p>Varsayılan değerler aşağıdadır;</p>
+<p>`nokta = Vektör(0, 0, 0)``</p>
+<p>`yön = Vektör(0, 0, 1)``</p>
+<p>`açı1 = -90``</p>
+<p><code>açı2 = 90</code></p>
+<p><code>açı3 = 360</code></p>
+<p>Buradaki <code>açı1</code> ve <code>açı2</code>, kürenin dikey en küçük (minimum) ve en büyük (maksimum) değerleridir, <code>açı3</code> ise Kürenin çapıdır.</p>
+<div class="highlight"><pre><span></span><code><span class="n">sphere</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">makeSphere</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">hemisphere</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">makeSphere</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">180</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>Bir Silindir oluştur</h3>
+<p>Bir Silindir oluşturmak için kullanılacak komut şu şekildedir:</p>
+<div class="highlight"><pre><span></span><code><span class="n">makeCylinder</span><span class="p">(</span><span class="n">yarıçap</span><span class="p">,</span> <span class="n">yükseklik</span><span class="p">,</span> <span class="p">[</span><span class="n">nokta</span><span class="p">,</span> <span class="n">yön</span><span class="p">,</span> <span class="n">açı</span><span class="p">])</span> 
+</code></pre></div>
+
+<p>Varsayılan değerler aşağıdadır;</p>
+<p>`nokta= Vector(0, 0, 0)``</p>
+<p><code>yön = Vector(0, 0, 1)</code></p>
+<p><code>açı = 360</code></p>
+<div class="highlight"><pre><span></span><code><span class="n">cylinder</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">makeCylinder</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">partCylinder</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">makeCylinder</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">180</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>Bir Koni Oluştur</h3>
+<p>Bir Koni oluşturmak için kullanılacak komut şu şekildedir</p>
+<div class="highlight"><pre><span></span><code><span class="n">makeCone</span><span class="p">(</span><span class="n">yarıçap1</span><span class="p">,</span> <span class="n">yarıçap2</span><span class="p">,</span> <span class="n">yükseklik</span><span class="p">,</span> <span class="p">[</span><span class="n">nokta</span><span class="p">,</span> <span class="n">yön</span><span class="p">,</span> <span class="n">açı</span><span class="p">])</span>
+</code></pre></div>
+
+<p>Varsayılan değerler aşağıdadır;</p>
+<p><code>nokta= Vector(0, 0, 0)</code></p>
+<p><code>yön = Vector(0, 0, 1)</code></p>
+<p><code>açı = 360</code></p>
+<div class="highlight"><pre><span></span><code><span class="n">cone</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">makeCone</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">semicone</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">makeCone</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">180</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>Şekilleri Değiştir</h2>
+<p>Şekilleri değiştirmenin birkaç yolu vardır. Bazıları şekilleri taşıma veya döndürme gibi basit dönüştürme işlemleridir, diğerleri ise bir şekli diğeri ile birleştirme ve çıkarma gibi daha karmaşık işlemlerdir.</p>
+<h2>Dönüştürme İşlemleri</h2>
+<h3>Bir Şekli Dönüştür (Taşı)</h3>
+<p>Dönüştürme, bir şekli bir yerden başka bir yere taşıma eylemidir. 
+Herhangi bir şekil (kenar, yüzey, küp, vs...) aynı şekilde dönüştürülebilir / taşınabilir:</p>
+<div class="highlight"><pre><span></span><code><span class="n">myShape</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">makeBox</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">myShape</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Bu kod, "<strong>myShape</strong>" şeklimizi, 2 birim X yönünde hareket ettirecektir.</p>
+<h3>Bir Şekli Döndür</h3>
+<p>Bir şekli döndürmek için dönüş merkezini, ekseni ve dönüş açısını belirtmeniz gerekir:</p>
+<div class="highlight"><pre><span></span><code><span class="n">myShape</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span><span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">180</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Yukarıdaki kod, şekli Z Ekseni etrafında 180 derece döndürecektir.</p>
+<h3>Matris Dönüşümleri</h3>
+<p>Bir matris, 3B dünyasındaki dönüşümleri depolamak için çok uygun bir yoldur. Tek bir matriste, bir nesneye uygulanacak taşıma (öteleme), döndürme ve ölçekleme değerlerini ayarlayabilirsiniz. Örneğin:</p>
+<div class="highlight"><pre><span></span><code><span class="n">myMat</span> <span class="o">=</span> <span class="n">Base</span><span class="o">.</span><span class="n">Matrix</span><span class="p">()</span>
+<span class="n">myMat</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">myMat</span><span class="o">.</span><span class="n">rotateZ</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>Not</strong>: FreeCAD matrisleri, radyan cinsinden çalışır. 
+Ayrıca, bir vektör alan hemen hemen tüm matris işlemleri de üç sayı alabilir, bu nedenle bu iki satır aynı şeyi yapar:</p>
+<div class="highlight"><pre><span></span><code><span class="n">myMat</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">myMat</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Matrisimiz ayarlandıktan sonra onu şeklimize uygulayabiliriz. FreeCAD bunu yapmak için iki yöntem sunar: <code>transformShape()</code> ve <code>transformGeometry()</code>.
+ Aradaki fark, ilkinde hiçbir deformasyon olmayacağından emin olmanızdır
+ (aşağıdaki Şekli Ölçekleme bölümüne bakın). Dönüşümümüzü şu şekilde 
+uygulayabiliriz:</p>
+<div class="highlight"><pre><span></span><code><span class="n">myShape</span><span class="o">.</span><span class="n">transformShape</span><span class="p">(</span><span class="n">myMat</span><span class="p">)</span>
+</code></pre></div>
+
+<p>ya da</p>
+<div class="highlight"><pre><span></span><code><span class="n">myShape</span><span class="o">.</span><span class="n">transformGeometry</span><span class="p">(</span><span class="n">myMat</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>Şekli Ölçeklendir</h3>
+<p>Bir şekli ölçeklemek daha tehlikeli bir işlemdir, çünkü öteleme veya döndürmeden farklı olarak, eşit olmayan bir şekilde ölçekleme (X, Y ve Z için farklı değerlerle) şeklin yapısını değiştirebilir. Örneğin, yatay olarak dikeyden daha yüksek bir değere sahip bir daireyi ölçeklemek, onu matematiksel olarak çok farklı davranan bir elipse dönüştürecektir. 
+Ölçekleme için <code>transformShape()</code>'i kullanamayız, <code>transformGeometry()</code> kullanmalıyız:</p>
+<div class="highlight"><pre><span></span><code><span class="n">myMat</span> <span class="o">=</span> <span class="n">Base</span><span class="o">.</span><span class="n">Matrix</span><span class="p">()</span>
+<span class="n">myMat</span><span class="o">.</span><span class="n">scale</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">myShape</span><span class="o">=</span><span class="n">myShape</span><span class="o">.</span><span class="n">transformGeometry</span><span class="p">(</span><span class="n">myMat</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>Boole (Mantık) İşlemleri</h2>
+<h3>Çıkarma</h3>
+<p>FreeCAD'de bir şekli diğerinden çıkarma işlemine "<strong>Cut</strong>" ismi verilir ve işlem şu şekilde gerçekleşir:</p>
+<div class="highlight"><pre><span></span><code><span class="n">cylinder</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">makeCylinder</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">sphere</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">makeSphere</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">diff</span> <span class="o">=</span> <span class="n">cylinder</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">sphere</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>Kesişim</h3>
+<p>Aynı şekilde, iki şekil arasındaki kesişim alma işlemine "<strong>Common</strong>" olarak adlandırılır ve işlem şu şekilde gerçekleşir:</p>
+<div class="highlight"><pre><span></span><code><span class="n">cylinder1</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">makeCylinder</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">cylinder2</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">makeCylinder</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">),</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">common</span> <span class="o">=</span> <span class="n">cylinder1</span><span class="o">.</span><span class="n">common</span><span class="p">(</span><span class="n">cylinder2</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>Birleşim</h3>
+<p>Birleşim işlemi "<strong>Fuse</strong>"olarak adlandırılır ve işlem şu şekilde gerçekleşir:</p>
+<div class="highlight"><pre><span></span><code><span class="n">cylinder1</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">makeCylinder</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">cylinder2</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">makeCylinder</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">),</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">fuse</span> <span class="o">=</span> <span class="n">cylinder1</span><span class="o">.</span><span class="n">fuse</span><span class="p">(</span><span class="n">cylinder2</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>Kesit</h3>
+<p>"<strong>Kesit</strong>", katı bir şekil ile bir düzlem şekli 
+arasındaki kesişme noktasıdır. Bu işlem sonucunda, Kenarlardan oluşan 
+bir bileşik eğri olan bir kesişme eğrisi oluşur.</p>
+<div class="highlight"><pre><span></span><code><span class="n">cylinder1</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">makeCylinder</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">cylinder2</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">makeCylinder</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">),</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">section</span> <span class="o">=</span> <span class="n">cylinder1</span><span class="o">.</span><span class="n">section</span><span class="p">(</span><span class="n">cylinder2</span><span class="p">)</span>
+<span class="n">section</span><span class="o">.</span><span class="n">Wires</span>
+<span class="o">&gt;</span> <span class="p">[]</span>
+<span class="n">section</span><span class="o">.</span><span class="n">Edges</span>
+<span class="o">&gt;</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">Edge</span> <span class="nb">object</span> <span class="n">at</span> <span class="mi">0</span><span class="n">D87CFE8</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">Edge</span> <span class="nb">object</span> <span class="n">at</span> <span class="mi">019564</span><span class="n">F8</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">Edge</span> <span class="nb">object</span> <span class="n">at</span> <span class="mi">0</span><span class="n">D998458</span><span class="o">&gt;</span><span class="p">,</span> 
+ <span class="o">&lt;</span><span class="n">Edge</span>  <span class="nb">object</span> <span class="n">at</span> <span class="mi">0</span><span class="n">D86DE18</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">Edge</span> <span class="nb">object</span> <span class="n">at</span> <span class="mi">0</span><span class="n">D9B8E80</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">Edge</span> <span class="nb">object</span> <span class="n">at</span> <span class="mi">012</span><span class="n">A3640</span><span class="o">&gt;</span><span class="p">,</span> 
+ <span class="o">&lt;</span><span class="n">Edge</span> <span class="nb">object</span> <span class="n">at</span> <span class="mi">0</span><span class="n">D8F4BB0</span><span class="o">&gt;</span><span class="p">]</span>
+</code></pre></div>
+
+<h3>Katılamak (Ekstrüzyon)</h3>
+<p>Katılama (Ekstrüzyon), düzlemsel (2 boyutlu) bir şekli, belirli bir yönde "iterek / çekerek" katı bir gövdeyle sonuçlanan eylemdir. "<strong>Dışarı iterek</strong>" bir <strong>tüp (boru)</strong> haline gelen bir <strong>daire </strong>düşünün:</p>
+<div class="highlight"><pre><span></span><code><span class="n">circle</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">makeCircle</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">tube</span> <span class="o">=</span> <span class="n">circle</span><span class="o">.</span><span class="n">extrude</span><span class="p">(</span><span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Dairenizin içi boşsa, içi boş bir tüp/boru elde edeceksiniz. Daireniz aslında içi dolgulu bir diskse, sağlam bir silindir elde edeceksiniz:</p>
+<div class="highlight"><pre><span></span><code><span class="n">wire</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">Wire</span><span class="p">(</span><span class="n">circle</span><span class="p">)</span>
+<span class="n">disc</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">Face</span><span class="p">(</span><span class="n">wire</span><span class="p">)</span>
+<span class="n">cylinder</span> <span class="o">=</span> <span class="n">disc</span><span class="o">.</span><span class="n">extrude</span><span class="p">(</span><span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+</code></pre></div>
+
+<h2>Şekilleri Keşfedin</h2>
+<p>Topolojik veri yapısını kolayca keşfedebilirsiniz:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">Part</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">makeBox</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">b</span><span class="o">.</span><span class="n">Wires</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">Wires</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">w</span>
+<span class="n">w</span><span class="o">.</span><span class="n">Wires</span>
+<span class="n">w</span><span class="o">.</span><span class="n">Vertexes</span>
+<span class="n">Part</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+<span class="n">w</span><span class="o">.</span><span class="n">Edges</span>
+<span class="n">e</span> <span class="o">=</span> <span class="n">w</span><span class="o">.</span><span class="n">Edges</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">e</span><span class="o">.</span><span class="n">Vertexes</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="n">Vertexes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">v</span><span class="o">.</span><span class="n">Point</span>
+</code></pre></div>
+
+<p>Yukarıdaki satırları Python yorumlayıcısına yazarak, Part nesnelerinin yapısını iyi anlayacaksınız. Burada <code>makeBox()</code> komutumuz katı bir şekil oluşturdu. Bu katı, tüm Parça katıları gibi, yüzeyler içerir. <strong>Yüzeyler</strong> her zaman, yüzeyi çevreleyen kenarların listesi olan <strong>teller</strong> içerir. Her yüzeyin en az bir kapalı teli vardır (yüzeyde bir delik 
+varsa daha fazla olabilir). Telde her bir kenara ayrı ayrı bakabiliriz ve her bir kenarın içinde köşeleri görebiliriz. Düz kenarların açıkçası sadece iki köşesi vardır.</p>
+<h3>Kenar Analizi</h3>
+<p>İsteğe bağlı bir eğri olan bir kenar olması durumunda, büyük olasılıkla bir ayrıklaştırma yapmak istersiniz. FreeCAD'de kenarlar uzunluklarına göre parametrelendirilir. Bu, bir kenarı/eğriyi uzunluğuna göre yürüyebileceğiniz anlamına gelir:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">Part</span>
+<span class="n">box</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">makeBox</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">anEdge</span> <span class="o">=</span> <span class="n">box</span><span class="o">.</span><span class="n">Edges</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">anEdge</span><span class="o">.</span><span class="n">Length</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Artık uzunluğu bir konum olarak kullanarak, kenarın birçok özelliğine erişebilirsiniz. Bunun anlamı, eğer kenar 100 mm uzunluğundaysa, başlangıç ​​konumu 0 ve bitiş konumu 100'dür.</p>
+<div class="highlight"><pre><span></span><code><span class="n">anEdge</span><span class="o">.</span><span class="n">tangentAt</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>          <span class="c1"># başlangıçtaki teğet yönü</span>
+<span class="n">anEdge</span><span class="o">.</span><span class="n">valueAt</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>            <span class="c1"># Başlangıç ​​noktası</span>
+<span class="n">anEdge</span><span class="o">.</span><span class="n">valueAt</span><span class="p">(</span><span class="mf">100.0</span><span class="p">)</span>          <span class="c1"># Kenarın sonundaki nokta</span>
+<span class="n">anEdge</span><span class="o">.</span><span class="n">derivative1At</span><span class="p">(</span><span class="mf">50.0</span><span class="p">)</span>     <span class="c1"># ortadaki eğrinin ilk türevi</span>
+<span class="n">anEdge</span><span class="o">.</span><span class="n">derivative2At</span><span class="p">(</span><span class="mf">50.0</span><span class="p">)</span>     <span class="c1"># ortadaki eğrinin ikinci türevi</span>
+<span class="n">anEdge</span><span class="o">.</span><span class="n">derivative3At</span><span class="p">(</span><span class="mf">50.0</span><span class="p">)</span>     <span class="c1"># ortadaki eğrinin üçüncü türevi</span>
+<span class="n">anEdge</span><span class="o">.</span><span class="n">centerOfCurvatureAt</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="c1"># o konum için eğriliğin merkezi</span>
+<span class="n">anEdge</span><span class="o">.</span><span class="n">curvatureAt</span><span class="p">(</span><span class="mf">50.0</span><span class="p">)</span>       <span class="c1"># eğrilik</span>
+<span class="n">anEdge</span><span class="o">.</span><span class="n">normalAt</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>            <span class="c1"># o konumda normal vektör (tanımlanmışsa)</span>
+</code></pre></div>
+
+<h3>Bir Seçim Kullanın</h3>
+<p>Burada, kullanıcının görüntüleyicide yaptığı bir seçimi nasıl kullanabileceğimizi görüyoruz. Öncelikle bir kutu oluşturuyoruz ve bunu görüntüleyicide gösteriyoruz.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">Part</span>
+<span class="n">Part</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">Part</span><span class="o">.</span><span class="n">makeBox</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+<span class="n">Gui</span><span class="o">.</span><span class="n">SendMsgToActiveView</span><span class="p">(</span><span class="s2">&quot;ViewFit&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Şimdi bazı yüzeyleri veya kenarları seçin. Bu komut dosyasıyla, seçili tüm nesneler ve bunların alt öğeleri üzerinde yineleme yapabilirsiniz:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">Gui</span><span class="o">.</span><span class="n">Selection</span><span class="o">.</span><span class="n">getSelectionEx</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">o</span><span class="o">.</span><span class="n">ObjectName</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">o</span><span class="o">.</span><span class="n">SubElementNames</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;name: &quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">o</span><span class="o">.</span><span class="n">SubObjects</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;object: &quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Bazı kenarları seçin ve bu komut dosyası uzunluğu hesaplayacaktır:</p>
+<div class="highlight"><pre><span></span><code><span class="n">length</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">Gui</span><span class="o">.</span><span class="n">Selection</span><span class="o">.</span><span class="n">getSelectionEx</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">o</span><span class="o">.</span><span class="n">SubObjects</span><span class="p">:</span>
+        <span class="n">length</span> <span class="o">+=</span> <span class="n">s</span><span class="o">.</span><span class="n">Length</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Length of the selected edges: &quot;</span><span class="p">,</span> <span class="n">length</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>Örnek: OCC şişesi</h2>
+<p><a href="https://www.opencascade.com/doc/occt-6.9.0/overview/html/occt__tutorial.html">OpenCasCade Teknoloji web sitesinde</a> bulunan tipik bir örnek, bir şişenin nasıl oluşturulacağıdır. Bu, FreeCAD için de iyi bir alıştırmadır. Aslında, aşağıdaki örneğimizi ve aynı anda OCC sayfasını takip ederseniz, OCC yapılarının FreeCAD'de ne kadar iyi uygulandığını göreceksiniz. Komut dosyası, FreeCAD kurulumuna dahildir (<strong>Mod/Part</strong> klasörünün içinde) ve Python yorumlayıcısından şunu yazarak çağrılabilir:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">Part</span>
+<span class="kn">import</span> <span class="nn">MakeBottle</span>
+<span class="n">bottle</span> <span class="o">=</span> <span class="n">MakeBottle</span><span class="o">.</span><span class="n">makeBottle</span><span class="p">()</span>
+<span class="n">Part</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">bottle</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>Komut Dosyası</h3>
+<p>Bu eğitimin amacı için, komut dosyasının kısıtlı bir sürümünü ele alacağız. Bu versiyonda, şişenin içi boşaltılmayacak ve şişenin ağız kısmına diş açılmayacaktır.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">Part</span><span class="o">,</span> <span class="nn">math</span>
+<span class="kn">from</span> <span class="nn">FreeCAD</span> <span class="kn">import</span> <span class="n">Base</span>
+
+<span class="k">def</span> <span class="nf">makeBottleTut</span><span class="p">(</span><span class="n">myWidth</span> <span class="o">=</span> <span class="mf">50.0</span><span class="p">,</span> <span class="n">myHeight</span> <span class="o">=</span> <span class="mf">70.0</span><span class="p">,</span> <span class="n">myThickness</span> <span class="o">=</span> <span class="mf">30.0</span><span class="p">):</span>
+    <span class="n">aPnt1</span><span class="o">=</span><span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="o">-</span><span class="n">myWidth</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">aPnt2</span><span class="o">=</span><span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="o">-</span><span class="n">myWidth</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">,</span> <span class="o">-</span><span class="n">myThickness</span> <span class="o">/</span> <span class="mf">4.</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">aPnt3</span><span class="o">=</span><span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="n">myThickness</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">aPnt4</span><span class="o">=</span><span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="n">myWidth</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">,</span> <span class="o">-</span><span class="n">myThickness</span> <span class="o">/</span> <span class="mf">4.</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">aPnt5</span><span class="o">=</span><span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="n">myWidth</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+    <span class="n">aArcOfCircle</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">Arc</span><span class="p">(</span><span class="n">aPnt2</span><span class="p">,</span> <span class="n">aPnt3</span><span class="p">,</span> <span class="n">aPnt4</span><span class="p">)</span>
+    <span class="n">aSegment1</span><span class="o">=</span><span class="n">Part</span><span class="o">.</span><span class="n">LineSegment</span><span class="p">(</span><span class="n">aPnt1</span><span class="p">,</span> <span class="n">aPnt2</span><span class="p">)</span>
+    <span class="n">aSegment2</span><span class="o">=</span><span class="n">Part</span><span class="o">.</span><span class="n">LineSegment</span><span class="p">(</span><span class="n">aPnt4</span><span class="p">,</span> <span class="n">aPnt5</span><span class="p">)</span>
+
+    <span class="n">aEdge1</span><span class="o">=</span><span class="n">aSegment1</span><span class="o">.</span><span class="n">toShape</span><span class="p">()</span>
+    <span class="n">aEdge2</span><span class="o">=</span><span class="n">aArcOfCircle</span><span class="o">.</span><span class="n">toShape</span><span class="p">()</span>
+    <span class="n">aEdge3</span><span class="o">=</span><span class="n">aSegment2</span><span class="o">.</span><span class="n">toShape</span><span class="p">()</span>
+    <span class="n">aWire</span><span class="o">=</span><span class="n">Part</span><span class="o">.</span><span class="n">Wire</span><span class="p">([</span><span class="n">aEdge1</span><span class="p">,</span> <span class="n">aEdge2</span><span class="p">,</span> <span class="n">aEdge3</span><span class="p">])</span>
+
+    <span class="n">aTrsf</span><span class="o">=</span><span class="n">Base</span><span class="o">.</span><span class="n">Matrix</span><span class="p">()</span>
+    <span class="n">aTrsf</span><span class="o">.</span><span class="n">rotateZ</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="c1"># rotate around the z-axis</span>
+
+    <span class="n">aMirroredWire</span><span class="o">=</span><span class="n">aWire</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">aMirroredWire</span><span class="o">.</span><span class="n">transformShape</span><span class="p">(</span><span class="n">aTrsf</span><span class="p">)</span>
+    <span class="n">myWireProfile</span><span class="o">=</span><span class="n">Part</span><span class="o">.</span><span class="n">Wire</span><span class="p">([</span><span class="n">aWire</span><span class="p">,</span> <span class="n">aMirroredWire</span><span class="p">])</span>
+
+    <span class="n">myFaceProfile</span><span class="o">=</span><span class="n">Part</span><span class="o">.</span><span class="n">Face</span><span class="p">(</span><span class="n">myWireProfile</span><span class="p">)</span>
+    <span class="n">aPrismVec</span><span class="o">=</span><span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">myHeight</span><span class="p">)</span>
+    <span class="n">myBody</span><span class="o">=</span><span class="n">myFaceProfile</span><span class="o">.</span><span class="n">extrude</span><span class="p">(</span><span class="n">aPrismVec</span><span class="p">)</span>
+
+    <span class="n">myBody</span><span class="o">=</span><span class="n">myBody</span><span class="o">.</span><span class="n">makeFillet</span><span class="p">(</span><span class="n">myThickness</span> <span class="o">/</span> <span class="mf">12.0</span><span class="p">,</span> <span class="n">myBody</span><span class="o">.</span><span class="n">Edges</span><span class="p">)</span>
+
+    <span class="n">neckLocation</span><span class="o">=</span><span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">myHeight</span><span class="p">)</span>
+    <span class="n">neckNormal</span><span class="o">=</span><span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">myNeckRadius</span> <span class="o">=</span> <span class="n">myThickness</span> <span class="o">/</span> <span class="mf">4.</span>
+    <span class="n">myNeckHeight</span> <span class="o">=</span> <span class="n">myHeight</span> <span class="o">/</span> <span class="mf">10.</span>
+    <span class="n">myNeck</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">makeCylinder</span><span class="p">(</span><span class="n">myNeckRadius</span><span class="p">,</span> <span class="n">myNeckHeight</span><span class="p">,</span> <span class="n">neckLocation</span><span class="p">,</span> <span class="n">neckNormal</span><span class="p">)</span>
+    <span class="n">myBody</span> <span class="o">=</span> <span class="n">myBody</span><span class="o">.</span><span class="n">fuse</span><span class="p">(</span><span class="n">myNeck</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">myBody</span>
+
+<span class="n">el</span> <span class="o">=</span> <span class="n">makeBottleTut</span><span class="p">()</span>
+<span class="n">Part</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">el</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>Detaylı Açıklama</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">Part</span><span class="o">,</span> <span class="nn">math</span>
+<span class="kn">from</span> <span class="nn">FreeCAD</span> <span class="kn">import</span> <span class="n">Base</span>
+</code></pre></div>
+
+<p>Elbette <code>Part</code> modülüne ve ayrıca vektörler ve matrisler gibi temel FreeCAD yapılarını içeren <code>FreeCAD.Base</code> modülüne ihtiyacımız olacak.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">makeBottleTut</span><span class="p">(</span><span class="n">myWidth</span> <span class="o">=</span> <span class="mf">50.0</span><span class="p">,</span> <span class="n">myHeight</span> <span class="o">=</span> <span class="mf">70.0</span><span class="p">,</span> <span class="n">myThickness</span> <span class="o">=</span> <span class="mf">30.0</span><span class="p">):</span>
+    <span class="n">aPnt1</span><span class="o">=</span><span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="o">-</span><span class="n">myWidth</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">aPnt2</span><span class="o">=</span><span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="o">-</span><span class="n">myWidth</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">,</span> <span class="o">-</span><span class="n">myThickness</span> <span class="o">/</span> <span class="mf">4.</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">aPnt3</span><span class="o">=</span><span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="n">myThickness</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">aPnt4</span><span class="o">=</span><span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="n">myWidth</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">,</span> <span class="o">-</span><span class="n">myThickness</span> <span class="o">/</span> <span class="mf">4.</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">aPnt5</span><span class="o">=</span><span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="n">myWidth</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Burada <code>makeBottleTut</code> fonksiyonumuzu tanımlıyoruz. Bu fonksiyon, yukarıda yaptığımız gibi, argümanlar olmadan çağrılabilir, bu durumda genişlik, yükseklik ve kalınlık için varsayılan değerler kullanılacaktır. Ardından, temel profilimizi oluşturmak için kullanılacak birkaç noktayı tanımlarız.</p>
+<div class="highlight"><pre><span></span><code><span class="o">...</span>
+    <span class="n">aArcOfCircle</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">Arc</span><span class="p">(</span><span class="n">aPnt2</span><span class="p">,</span> <span class="n">aPnt3</span><span class="p">,</span> <span class="n">aPnt4</span><span class="p">)</span>
+    <span class="n">aSegment1</span><span class="o">=</span><span class="n">Part</span><span class="o">.</span><span class="n">LineSegment</span><span class="p">(</span><span class="n">aPnt1</span><span class="p">,</span> <span class="n">aPnt2</span><span class="p">)</span>
+    <span class="n">aSegment2</span><span class="o">=</span><span class="n">Part</span><span class="o">.</span><span class="n">LineSegment</span><span class="p">(</span><span class="n">aPnt4</span><span class="p">,</span> <span class="n">aPnt5</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Burada geometriyi tanımlıyoruz: üç noktadan oluşan <strong>bir yay</strong> ve iki noktadan oluşan <strong>iki doğru parçası</strong>.</p>
+<div class="highlight"><pre><span></span><code><span class="o">...</span>
+    <span class="n">aEdge1</span><span class="o">=</span><span class="n">aSegment1</span><span class="o">.</span><span class="n">toShape</span><span class="p">()</span>
+    <span class="n">aEdge2</span><span class="o">=</span><span class="n">aArcOfCircle</span><span class="o">.</span><span class="n">toShape</span><span class="p">()</span>
+    <span class="n">aEdge3</span><span class="o">=</span><span class="n">aSegment2</span><span class="o">.</span><span class="n">toShape</span><span class="p">()</span>
+    <span class="n">aWire</span><span class="o">=</span><span class="n">Part</span><span class="o">.</span><span class="n">Wire</span><span class="p">([</span><span class="n">aEdge1</span><span class="p">,</span> <span class="n">aEdge2</span><span class="p">,</span> <span class="n">aEdge3</span><span class="p">])</span>
+</code></pre></div>
+
+<p>Geometri ve şekiller arasındaki farkı hatırlıyor musunuz? Burada yapı geometrimizden şekiller oluşturuyoruz. Üç kenar (kenarlar düz veya kavisli olabilir), daha sonra bu üç kenardan yapılmış bir tel.</p>
+<div class="highlight"><pre><span></span><code><span class="o">...</span>
+    <span class="n">aTrsf</span><span class="o">=</span><span class="n">Base</span><span class="o">.</span><span class="n">Matrix</span><span class="p">()</span>
+    <span class="n">aTrsf</span><span class="o">.</span><span class="n">rotateZ</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="c1"># z ekseni etrafında döndür</span>
+
+    <span class="n">aMirroredWire</span><span class="o">=</span><span class="n">aWire</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">aMirroredWire</span><span class="o">.</span><span class="n">transformShape</span><span class="p">(</span><span class="n">aTrsf</span><span class="p">)</span>
+    <span class="n">myWireProfile</span><span class="o">=</span><span class="n">Part</span><span class="o">.</span><span class="n">Wire</span><span class="p">([</span><span class="n">aWire</span><span class="p">,</span> <span class="n">aMirroredWire</span><span class="p">])</span>
+</code></pre></div>
+
+<p>Şimdiye kadar sadece yarım profil oluşturduk. Tüm profili aynı şekilde oluşturmak yerine, yaptığımızın aynısını yapabilir ve her iki yarıyı da birbirine yapıştırabiliriz. Önce bir matrix oluşturuyoruz. Bir matris, 3B nesnelerin geçebileceği (taşıma, döndürme ve ölçekleme) tüm temel dönüşümleri tek bir yapıda içerebildiğinden, 3B dünyadaki 
+nesnelere dönüşümleri uygulamanın çok yaygın bir yoludur. Matrisi oluşturduktan sonra onu aynalıyoruz, ardından telimizin bir kopyasını oluşturuyoruz ve ona dönüşüm matrisini uyguluyoruz. Artık iki telimiz var ve teller aslında birer kenar listesi olduğundan, bunlardan üçüncü bir tel yapabiliriz.</p>
+<div class="highlight"><pre><span></span><code><span class="o">...</span>
+    <span class="n">myFaceProfile</span><span class="o">=</span><span class="n">Part</span><span class="o">.</span><span class="n">Face</span><span class="p">(</span><span class="n">myWireProfile</span><span class="p">)</span>
+    <span class="n">aPrismVec</span><span class="o">=</span><span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">myHeight</span><span class="p">)</span>
+    <span class="n">myBody</span><span class="o">=</span><span class="n">myFaceProfile</span><span class="o">.</span><span class="n">extrude</span><span class="p">(</span><span class="n">aPrismVec</span><span class="p">)</span>
+
+    <span class="n">myBody</span><span class="o">=</span><span class="n">myBody</span><span class="o">.</span><span class="n">makeFillet</span><span class="p">(</span><span class="n">myThickness</span> <span class="o">/</span> <span class="mf">12.0</span><span class="p">,</span> <span class="n">myBody</span><span class="o">.</span><span class="n">Edges</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Artık kapalı bir telimiz olduğuna göre yüzey haline getirilebilir. 
+Bir yüzeyimiz olduğunda, onu doğrusal katılayabiliriz / ekstrüde edebiliriz. Bunu yaparken katı bir hale getiriyoruz. Sonra güzel bir tasarımı önemsediğimiz için nesnemize güzel bir küçük radyus uyguluyoruz (yuvarlatıyoruz), değil mi?</p>
+<div class="highlight"><pre><span></span><code><span class="o">...</span>
+    <span class="n">neckLocation</span><span class="o">=</span><span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">myHeight</span><span class="p">)</span>
+    <span class="n">neckNormal</span><span class="o">=</span><span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">myNeckRadius</span> <span class="o">=</span> <span class="n">myThickness</span> <span class="o">/</span> <span class="mf">4.</span>
+    <span class="n">myNeckHeight</span> <span class="o">=</span> <span class="n">myHeight</span> <span class="o">/</span> <span class="mf">10.</span>
+    <span class="n">myNeck</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">makeCylinder</span><span class="p">(</span><span class="n">myNeckRadius</span><span class="p">,</span> <span class="n">myNeckHeight</span><span class="p">,</span> <span class="n">neckLocation</span><span class="p">,</span> <span class="n">neckNormal</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Bu noktada şişemizin gövdesi yapılmış oluyor ama yine de bir boyun oluşturmamız gerekiyor. Böylece bir silindirle yeni bir katı yapıyoruz.</p>
+<div class="highlight"><pre><span></span><code><span class="o">...</span>
+    <span class="n">myBody</span> <span class="o">=</span> <span class="n">myBody</span><span class="o">.</span><span class="n">fuse</span><span class="p">(</span><span class="n">myNeck</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Birleştirme (fuse) işlemi çok güçlüdür. Bu Komut, yapıştırılması gerekenleri yapıştırmakla ilgilenecek ve çıkarılması gereken parçaları çıkaracaktır.</p>
+<div class="highlight"><pre><span></span><code><span class="o">...</span>
+    <span class="k">return</span> <span class="n">myBody</span>
+</code></pre></div>
+
+<p>Ardından, fonksiyonumuzun sonucu olarak Part katımızı döndürüyoruz.</p>
+<div class="highlight"><pre><span></span><code><span class="n">el</span> <span class="o">=</span> <span class="n">makeBottleTut</span><span class="p">()</span>
+<span class="n">Part</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">el</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Son olarak, parçayı gerçekten oluşturmak için fonksiyonu çağırır, sonra onu görünür hale getiririz.</p>
+<h2>Örnek: Delinmiş Kutu</h2>
+<p>İşte delinmiş bir kutu inşa etmenin tam bir örneği.</p>
+<p>Yapı bir seferde bir tarafta yapılır. Küp bittiğinde, içinden bir silindir kesilerek oyuluyor.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">Part</span><span class="o">,</span> <span class="nn">math</span>
+<span class="kn">from</span> <span class="nn">FreeCAD</span> <span class="kn">import</span> <span class="n">Base</span>
+
+<span class="n">size</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">poly</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">makePolygon</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">size</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">size</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)])</span>
+
+<span class="n">face1</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">Face</span><span class="p">(</span><span class="n">poly</span><span class="p">)</span>
+<span class="n">face2</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">Face</span><span class="p">(</span><span class="n">poly</span><span class="p">)</span>
+<span class="n">face3</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">Face</span><span class="p">(</span><span class="n">poly</span><span class="p">)</span>
+<span class="n">face4</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">Face</span><span class="p">(</span><span class="n">poly</span><span class="p">)</span>
+<span class="n">face5</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">Face</span><span class="p">(</span><span class="n">poly</span><span class="p">)</span>
+<span class="n">face6</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">Face</span><span class="p">(</span><span class="n">poly</span><span class="p">)</span>
+
+<span class="n">myMat</span> <span class="o">=</span> <span class="n">Base</span><span class="o">.</span><span class="n">Matrix</span><span class="p">()</span>
+
+<span class="n">myMat</span><span class="o">.</span><span class="n">rotateZ</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">face2</span><span class="o">.</span><span class="n">transformShape</span><span class="p">(</span><span class="n">myMat</span><span class="p">)</span>
+<span class="n">face2</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+
+<span class="n">myMat</span><span class="o">.</span><span class="n">rotateZ</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">face3</span><span class="o">.</span><span class="n">transformShape</span><span class="p">(</span><span class="n">myMat</span><span class="p">)</span>
+<span class="n">face3</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+
+<span class="n">myMat</span><span class="o">.</span><span class="n">rotateZ</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">face4</span><span class="o">.</span><span class="n">transformShape</span><span class="p">(</span><span class="n">myMat</span><span class="p">)</span>
+<span class="n">face4</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+
+<span class="n">myMat</span> <span class="o">=</span> <span class="n">Base</span><span class="o">.</span><span class="n">Matrix</span><span class="p">()</span>
+
+<span class="n">myMat</span><span class="o">.</span><span class="n">rotateX</span><span class="p">(</span><span class="o">-</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">face5</span><span class="o">.</span><span class="n">transformShape</span><span class="p">(</span><span class="n">myMat</span><span class="p">)</span>
+
+<span class="n">face6</span><span class="o">.</span><span class="n">transformShape</span><span class="p">(</span><span class="n">myMat</span><span class="p">)</span>               
+<span class="n">face6</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">size</span><span class="p">))</span>
+
+<span class="n">myShell</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">makeShell</span><span class="p">([</span><span class="n">face1</span><span class="p">,</span> <span class="n">face2</span><span class="p">,</span> <span class="n">face3</span><span class="p">,</span> <span class="n">face4</span><span class="p">,</span> <span class="n">face5</span><span class="p">,</span> <span class="n">face6</span><span class="p">])</span>   
+<span class="n">mySolid</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">makeSolid</span><span class="p">(</span><span class="n">myShell</span><span class="p">)</span>
+
+<span class="n">myCyl</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">makeCylinder</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">myCyl</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="n">size</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">size</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+
+<span class="n">cut_part</span> <span class="o">=</span> <span class="n">mySolid</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">myCyl</span><span class="p">)</span>
+
+<span class="n">Part</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">cut_part</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>Yüklemek ve Kaydetmek</h3>
+<p>Çalışmanızı kaydetmenin birkaç yolu vardır. Elbette FreeCAD belgenizi kaydedebilirsiniz, ancak Parça nesnelerini doğrudan BREP, IGS, STEP ve STL gibi yaygın CAD formatlarına da kaydedebilirsiniz.</p>
+<p>Bir şekli bir dosyaya kaydetmek kolaydır. Tüm şekil nesneleri için <code>exportBrep()</code>, <code>exportIges()</code>, <code>exportStep()</code> ve <code>exportStl()</code> yöntemleri mevcuttur. Yani, yöntemleri aşağıdaki şekilde kullanarak çalışmalarınız farklı biçimlerde dışa aktarabilirsiniz :</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">Part</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">makeBox</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">s</span><span class="o">.</span><span class="n">exportStep</span><span class="p">(</span><span class="s2">&quot;test.stp&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Bu komut, kutu oluşturacak ve kutumuzu bir STEP dosyası olarak kaydedecektir. Bir BREP, IGES veya STEP uzantılı dosyayı yüklemek için :</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">Part</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">Shape</span><span class="p">()</span>
+<span class="n">s</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;test.stp&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Bir STEP dosyasını bir IGS dosyasına dönüştürmek için:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">Part</span>
+ <span class="n">s</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">Shape</span><span class="p">()</span>
+ <span class="n">s</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;file.stp&quot;</span><span class="p">)</span>       <span class="c1"># okunan, içe aktarılan dosya igs, stp, stl, brep</span>
+ <span class="n">s</span><span class="o">.</span><span class="n">exportIges</span><span class="p">(</span><span class="s2">&quot;file.igs&quot;</span><span class="p">)</span> <span class="c1"># dışa aktarılan, dönüştürülen dosya  igs</span>
+</code></pre></div>
+
+<p>Kaynak: <a href="https://wiki.freecadweb.org/Topological_data_scripting">Topological data scripting</a></p>
+<p><a href="freecad-scripting-04-parca-part-komut-dosyasi-olusturmak.html">← Önceki Bölüm</a> | <a href="freecad-scripting-06-komut-dosyasiyla-yazilmis-nesneler.html">Sonraki Bölüm →</a></p>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/freecad.html">FreeCAD</a></li>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/scripting.html">Scripting</a></li>
+					<li><a href="/tag/komut.html">Komut</a></li>
+					<li><a href="/tag/topoloji.html">Topoloji</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>

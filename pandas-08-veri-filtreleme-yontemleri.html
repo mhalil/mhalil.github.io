@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Pandas 08 - Veri Filtreleme Yöntemleri" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/pandas-08-veri-filtreleme-yontemleri.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Pandas 08 - Veri Filtreleme Yöntemleri</h1>
+	<span class="post-date">Paz 13 Şubat 2022</span>
+	<h1>Filtreleme Yöntemleri</h1>
+<p>Pandas kütüphanesi ile en sık yapılan işlemlerden biri de Filtreleme işlemidir. Binlerce, onbinlerce hatta milyonlarca kayıt arasından istediğimize ulaşmak için filreleme komutlarını kullanacağız. Bu bölümdeki anlatılanları da dikkatle okuyup öğrenmenizi tavsiye ederim.</p>
+<h3>Karşılaştırma Operatorü Kullanımı</h3>
+<p>Sütun içerisindeki verilere göre filtreleme uygulamak istersek,  <code>VeriCervecesiAdı["SütunAdı"] == "Filtre_Kriteri"</code> yöntemi kullanılabilir.</p>
+<p>Pythonda kullanıdığımız <strong>Karşılaştırma operatörlerini (&lt; , &gt; , &lt;=, &gt;=, ==, !=, )</strong> ve <strong>Mantıksal Operatörleri ( (and, ve) &amp; ve (or, Ya da) |</strong> Pandas içerisinde de kullanabiliriz.
+Öncelikle veri çerçevemize göz atalım.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">imdb</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/imdb.xlsx&quot;</span><span class="p">,</span> <span class="n">decimal</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">imdb</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Film_Adı</th>
+<th>Yıl</th>
+<th>Puan</th>
+<th>Oylayan_Kişi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>The Shawshank Redemption</td>
+<td>1994</td>
+<td>9.2</td>
+<td>1071904</td>
+</tr>
+<tr>
+<td>1</td>
+<td>The Godfather</td>
+<td>1972</td>
+<td>9.2</td>
+<td>751381</td>
+</tr>
+<tr>
+<td>2</td>
+<td>The Godfather: Part II</td>
+<td>1974</td>
+<td>9.0</td>
+<td>488889</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Pulp Fiction</td>
+<td>1994</td>
+<td>8.9</td>
+<td>830504</td>
+</tr>
+<tr>
+<td>4</td>
+<td>The Dark Knight</td>
+<td>2008</td>
+<td>8.9</td>
+<td>1045186</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>242</td>
+<td>Mystic River</td>
+<td>2003</td>
+<td>7.9</td>
+<td>256159</td>
+</tr>
+<tr>
+<td>243</td>
+<td>In the Heat of the Night</td>
+<td>1967</td>
+<td>7.9</td>
+<td>37081</td>
+</tr>
+<tr>
+<td>244</td>
+<td>Arsenic and Old Lace</td>
+<td>1944</td>
+<td>7.9</td>
+<td>45893</td>
+</tr>
+<tr>
+<td>245</td>
+<td>Before Sunrise</td>
+<td>1995</td>
+<td>7.9</td>
+<td>100974</td>
+</tr>
+<tr>
+<td>246</td>
+<td>Papillon</td>
+<td>1973</td>
+<td>7.9</td>
+<td>62517</td>
+</tr>
+</tbody>
+</table>
+<p>247 rows × 4 columns</p>
+<p>Örneğin 2010 yılına ait filmleri görmek istersen <strong>Karşılaştırma operatörünü</strong> kullanarak aşağıdaki filtreleme yöntemini kullanabiliriz.</p>
+<div class="highlight"><pre><span></span><code><span class="n">imdb</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/imdb.xlsx&quot;</span><span class="p">,</span> <span class="n">decimal</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">imdb</span><span class="p">[</span><span class="n">imdb</span><span class="p">[</span><span class="s2">&quot;Yıl&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2010</span><span class="p">])</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Film_Adı</th>
+<th>Yıl</th>
+<th>Puan</th>
+<th>Oylayan_Kişi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>14</td>
+<td>Inception</td>
+<td>2010</td>
+<td>8.7</td>
+<td>844938</td>
+</tr>
+<tr>
+<td>63</td>
+<td>Toy Story 3</td>
+<td>2010</td>
+<td>8.4</td>
+<td>320991</td>
+</tr>
+<tr>
+<td>166</td>
+<td>How to Train Your Dragon</td>
+<td>2010</td>
+<td>8.1</td>
+<td>249971</td>
+</tr>
+<tr>
+<td>177</td>
+<td>The King's Speech</td>
+<td>2010</td>
+<td>8.1</td>
+<td>288159</td>
+</tr>
+<tr>
+<td>194</td>
+<td>Black Swan</td>
+<td>2010</td>
+<td>8.0</td>
+<td>373745</td>
+</tr>
+<tr>
+<td>231</td>
+<td>Shutter Island</td>
+<td>2010</td>
+<td>8.0</td>
+<td>436151</td>
+</tr>
+<tr>
+<td>233</td>
+<td>Incendies</td>
+<td>2010</td>
+<td>8.0</td>
+<td>36751</td>
+</tr>
+</tbody>
+</table>
+<p>Yukarıdaki yazım tarzı kafanızı karıştırdıysa, aşağıdaki (parçalara ayrılmış) yazım tarzı daha anlaşılır gelebilir.
+Önce filtreyi tanımlıyor, sonra veri çerçevesine dahil ediyoruz.</p>
+<div class="highlight"><pre><span></span><code><span class="n">filtre_2010</span> <span class="o">=</span> <span class="n">imdb</span><span class="p">[</span><span class="s2">&quot;Yıl&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2010</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">imdb</span><span class="p">[</span><span class="n">filtre_2010</span><span class="p">])</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Film_Adı</th>
+<th>Yıl</th>
+<th>Puan</th>
+<th>Oylayan_Kişi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>14</td>
+<td>Inception</td>
+<td>2010</td>
+<td>8.7</td>
+<td>844938</td>
+</tr>
+<tr>
+<td>63</td>
+<td>Toy Story 3</td>
+<td>2010</td>
+<td>8.4</td>
+<td>320991</td>
+</tr>
+<tr>
+<td>166</td>
+<td>How to Train Your Dragon</td>
+<td>2010</td>
+<td>8.1</td>
+<td>249971</td>
+</tr>
+<tr>
+<td>177</td>
+<td>The King's Speech</td>
+<td>2010</td>
+<td>8.1</td>
+<td>288159</td>
+</tr>
+<tr>
+<td>194</td>
+<td>Black Swan</td>
+<td>2010</td>
+<td>8.0</td>
+<td>373745</td>
+</tr>
+<tr>
+<td>231</td>
+<td>Shutter Island</td>
+<td>2010</td>
+<td>8.0</td>
+<td>436151</td>
+</tr>
+<tr>
+<td>233</td>
+<td>Incendies</td>
+<td>2010</td>
+<td>8.0</td>
+<td>36751</td>
+</tr>
+</tbody>
+</table>
+<p>8,8 ve üzeri Puana sahip filmleri listelemek istersek;</p>
+<div class="highlight"><pre><span></span><code><span class="n">filtre_88</span> <span class="o">=</span> <span class="n">imdb</span><span class="p">[</span><span class="s2">&quot;Puan&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mf">8.8</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">imdb</span><span class="p">[</span><span class="n">filtre_88</span><span class="p">])</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Film_Adı</th>
+<th>Yıl</th>
+<th>Puan</th>
+<th>Oylayan_Kişi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>The Shawshank Redemption</td>
+<td>1994</td>
+<td>9.2</td>
+<td>1071904</td>
+</tr>
+<tr>
+<td>1</td>
+<td>The Godfather</td>
+<td>1972</td>
+<td>9.2</td>
+<td>751381</td>
+</tr>
+<tr>
+<td>2</td>
+<td>The Godfather: Part II</td>
+<td>1974</td>
+<td>9.0</td>
+<td>488889</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Pulp Fiction</td>
+<td>1994</td>
+<td>8.9</td>
+<td>830504</td>
+</tr>
+<tr>
+<td>4</td>
+<td>The Dark Knight</td>
+<td>2008</td>
+<td>8.9</td>
+<td>1045186</td>
+</tr>
+<tr>
+<td>5</td>
+<td>12 Angry Men</td>
+<td>1957</td>
+<td>8.9</td>
+<td>264112</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Schindler's List</td>
+<td>1993</td>
+<td>8.9</td>
+<td>545703</td>
+</tr>
+<tr>
+<td>7</td>
+<td>The Lord of the Rings: The Return of the King</td>
+<td>2003</td>
+<td>8.8</td>
+<td>758388</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Fight Club</td>
+<td>1999</td>
+<td>8.8</td>
+<td>814389</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Star Wars: Episode V - The Empire Strikes Back</td>
+<td>1980</td>
+<td>8.8</td>
+<td>519895</td>
+</tr>
+<tr>
+<td>10</td>
+<td>The Lord of the Rings: The Fellowship of the R...</td>
+<td>2001</td>
+<td>8.8</td>
+<td>784999</td>
+</tr>
+</tbody>
+</table>
+<p>Karşılaştırma operatorlerini, Filtreleme işlemini dışında kıyaslama amacıyla da kullanabiliriz. Aşağıdaki kullanımı inceleyelim.</p>
+<div class="highlight"><pre><span></span><code><span class="n">Mantiksal_imdb</span> <span class="o">=</span> <span class="n">imdb</span><span class="p">[</span><span class="s2">&quot;Puan&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">8</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Mantiksal_imdb</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mi">0</span>       <span class="kc">True</span>
+<span class="mi">1</span>       <span class="kc">True</span>
+<span class="mi">2</span>       <span class="kc">True</span>
+<span class="mi">3</span>       <span class="kc">True</span>
+<span class="mi">4</span>       <span class="kc">True</span>
+       <span class="o">...</span>  
+<span class="mi">242</span>    <span class="kc">False</span>
+<span class="mi">243</span>    <span class="kc">False</span>
+<span class="mi">244</span>    <span class="kc">False</span>
+<span class="mi">245</span>    <span class="kc">False</span>
+<span class="mi">246</span>    <span class="kc">False</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">Puan</span><span class="p">,</span> <span class="n">Length</span><span class="p">:</span> <span class="mi">247</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="nb">bool</span>
+</code></pre></div>
+
+<p>Bu durumda, <strong>Puan</strong> sütunundaki değerler, verilen kritere göre (8'den büyük olup olmadığı) sorgulanıyor ve her değer için <strong>True</strong> (Doğru) yani değer 8'den büyük ya da <strong>False</strong> (yanlış) yani değer 8'e eşit ya da küçük sonucu vdöndürüyor.</p>
+<h3>between() Fonksiyonu</h3>
+<p>Bir sayısal aralık belirterek filtreleme yapmak istersek <strong>between()</strong> metodunu kullanabiliriz.
+Örneği <strong>1960</strong> ile <strong>1980</strong> yılları arasındaki filmleri filtrelemeye çalışalım.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">imdb</span><span class="p">[</span><span class="s2">&quot;Yıl&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">between</span><span class="p">(</span><span class="mi">1960</span><span class="p">,</span><span class="mi">1980</span><span class="p">))</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mi">0</span>      <span class="kc">False</span>
+<span class="mi">1</span>       <span class="kc">True</span>
+<span class="mi">2</span>       <span class="kc">True</span>
+<span class="mi">3</span>      <span class="kc">False</span>
+<span class="mi">4</span>      <span class="kc">False</span>
+       <span class="o">...</span>  
+<span class="mi">242</span>    <span class="kc">False</span>
+<span class="mi">243</span>     <span class="kc">True</span>
+<span class="mi">244</span>    <span class="kc">False</span>
+<span class="mi">245</span>    <span class="kc">False</span>
+<span class="mi">246</span>     <span class="kc">True</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">Yıl</span><span class="p">,</span> <span class="n">Length</span><span class="p">:</span> <span class="mi">247</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="nb">bool</span>
+</code></pre></div>
+
+<h3>Mantıksal Operatör Kullanımı</h3>
+<p>Birden fazla kriter içeren filtreleme işlemi uygulamak istersek, aşağıdaki kodlar ile istediğimiz elde edebiliriz.
+İki kriteri bir arada kullanmak istediğimizde <strong>VE (and)</strong> simgesi olan <strong>&amp;</strong>, İki kriterden birini ayrı ayrı seçmek için <strong>YA DA (or)</strong> simgesi olan <strong>|</strong> kullanılır. <strong>and</strong> ve <strong>or</strong> kelimelerini kullanırsanız hata alırsınız.</p>
+<div class="highlight"><pre><span></span><code><span class="n">yıl_2000den_buyuk</span> <span class="o">=</span> <span class="n">imdb</span><span class="p">[</span><span class="s2">&quot;Yıl&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">2000</span>
+<span class="n">Oylayan_Kişi_500000</span> <span class="o">=</span> <span class="n">imdb</span><span class="p">[</span><span class="s2">&quot;Oylayan_Kişi&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">500000</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">imdb</span><span class="p">[</span><span class="n">yıl_2000den_buyuk</span> <span class="o">&amp;</span> <span class="n">Oylayan_Kişi_500000</span><span class="p">])</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Film_Adı</th>
+<th>Yıl</th>
+<th>Puan</th>
+<th>Oylayan_Kişi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4</td>
+<td>The Dark Knight</td>
+<td>2008</td>
+<td>8.9</td>
+<td>1045186</td>
+</tr>
+<tr>
+<td>7</td>
+<td>The Lord of the Rings: The Return of the King</td>
+<td>2003</td>
+<td>8.8</td>
+<td>758388</td>
+</tr>
+<tr>
+<td>10</td>
+<td>The Lord of the Rings: The Fellowship of the R...</td>
+<td>2001</td>
+<td>8.8</td>
+<td>784999</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Inception</td>
+<td>2010</td>
+<td>8.7</td>
+<td>844938</td>
+</tr>
+<tr>
+<td>18</td>
+<td>The Lord of the Rings: The Two Towers</td>
+<td>2002</td>
+<td>8.7</td>
+<td>680983</td>
+</tr>
+<tr>
+<td>49</td>
+<td>The Departed</td>
+<td>2006</td>
+<td>8.4</td>
+<td>540726</td>
+</tr>
+<tr>
+<td>56</td>
+<td>The Dark Knight Rises</td>
+<td>2012</td>
+<td>8.4</td>
+<td>672751</td>
+</tr>
+<tr>
+<td>105</td>
+<td>Batman Begins</td>
+<td>2005</td>
+<td>8.3</td>
+<td>604923</td>
+</tr>
+<tr>
+<td>107</td>
+<td>Inglourious Basterds</td>
+<td>2009</td>
+<td>8.2</td>
+<td>505702</td>
+</tr>
+<tr>
+<td>162</td>
+<td>V for Vendetta</td>
+<td>2005</td>
+<td>8.1</td>
+<td>507750</td>
+</tr>
+<tr>
+<td>165</td>
+<td>The Avengers</td>
+<td>2012</td>
+<td>8.1</td>
+<td>568037</td>
+</tr>
+<tr>
+<td>216</td>
+<td>Pirates of the Caribbean: The Curse of the Bla...</td>
+<td>2003</td>
+<td>8.0</td>
+<td>519625</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="n">yıl_2000den_buyuk</span> <span class="o">=</span> <span class="n">imdb</span><span class="p">[</span><span class="s2">&quot;Yıl&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">2000</span>
+<span class="n">Oylayan_Kişi_500000</span> <span class="o">=</span> <span class="n">imdb</span><span class="p">[</span><span class="s2">&quot;Oylayan_Kişi&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">500000</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">imdb</span><span class="p">[</span><span class="n">yıl_2000den_buyuk</span> <span class="o">|</span> <span class="n">Oylayan_Kişi_500000</span><span class="p">])</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Film_Adı</th>
+<th>Yıl</th>
+<th>Puan</th>
+<th>Oylayan_Kişi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>The Shawshank Redemption</td>
+<td>1994</td>
+<td>9.2</td>
+<td>1071904</td>
+</tr>
+<tr>
+<td>1</td>
+<td>The Godfather</td>
+<td>1972</td>
+<td>9.2</td>
+<td>751381</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Pulp Fiction</td>
+<td>1994</td>
+<td>8.9</td>
+<td>830504</td>
+</tr>
+<tr>
+<td>4</td>
+<td>The Dark Knight</td>
+<td>2008</td>
+<td>8.9</td>
+<td>1045186</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Schindler's List</td>
+<td>1993</td>
+<td>8.9</td>
+<td>545703</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>231</td>
+<td>Shutter Island</td>
+<td>2010</td>
+<td>8.0</td>
+<td>436151</td>
+</tr>
+<tr>
+<td>233</td>
+<td>Incendies</td>
+<td>2010</td>
+<td>8.0</td>
+<td>36751</td>
+</tr>
+<tr>
+<td>236</td>
+<td>3 Idiots</td>
+<td>2009</td>
+<td>8.0</td>
+<td>83178</td>
+</tr>
+<tr>
+<td>237</td>
+<td>The Artist</td>
+<td>2011</td>
+<td>8.0</td>
+<td>132672</td>
+</tr>
+<tr>
+<td>242</td>
+<td>Mystic River</td>
+<td>2003</td>
+<td>7.9</td>
+<td>256159</td>
+</tr>
+</tbody>
+</table>
+<p>81 rows × 4 columns</p>
+<p>Filtreleme esnasında <strong>String</strong> Metotlarını kullanmak için <strong>str</strong> kelimesinden yararlanıyoruz. Diyelim ki içerisinde <strong>star wars</strong> kelime grubu bulunan tüm filmleri filtrelemek istiyoruz. Python küçük harf ve büyük harfe duyarlı olduğu için, <strong>star wars</strong> yazıp aradığımız zaman <strong>Star Wars</strong>, <strong>STAR WARS</strong> ,...vb hiçbir film, filtreye takılmayacak ve yanlış sonuç almış olacağız. Bu durumun önüne geçmek için, öncelikle tüm film isimlerini küçük harfe ya da büyük harfe çevirerek arama/filtreleme yapmamız gerekecektir.
+Aşama aşama gidelim.
+Tüm film isimlerini küçük harfe çevirelim. Film isimleri indeks olarak ayarlandığı için film isimleri sütununu temsilen, <strong>index</strong> kelimesini kullanmalıyız.</p>
+<div class="highlight"><pre><span></span><code><span class="n">imdb</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/imdb.xlsx&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s2">&quot;Film_Adı&quot;</span><span class="p">)</span>
+<span class="n">kucuk_harf</span> <span class="o">=</span> <span class="n">imdb</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">kucuk_harf</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="nx">Index</span><span class="p">([</span><span class="err">&#39;</span><span class="nx">the</span><span class="w"> </span><span class="nx">shawshank</span><span class="w"> </span><span class="nx">redemption</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;</span><span class="nx">the</span><span class="w"> </span><span class="nx">godfather</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span>
+<span class="w">       </span><span class="err">&#39;</span><span class="nx">the</span><span class="w"> </span><span class="nx">godfather</span><span class="p">:</span><span class="w"> </span><span class="nx">part</span><span class="w"> </span><span class="nx">ii</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;</span><span class="nx">pulp</span><span class="w"> </span><span class="nx">fiction</span><span class="err">&#39;</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;</span><span class="nx">the</span><span class="w"> </span><span class="nx">dark</span><span class="w"> </span><span class="nx">knight</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span>
+<span class="w">       </span><span class="err">&#39;</span><span class="mi">12</span><span class="w"> </span><span class="nx">angry</span><span class="w"> </span><span class="nx">men</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;</span><span class="nx">schindler</span><span class="err">&#39;</span><span class="nx">s</span><span class="w"> </span><span class="nx">list</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span>
+<span class="w">       </span><span class="err">&#39;</span><span class="nx">the</span><span class="w"> </span><span class="nx">lord</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">rings</span><span class="p">:</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">king</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;</span><span class="nx">fight</span><span class="w"> </span><span class="nx">club</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span>
+<span class="w">       </span><span class="err">&#39;</span><span class="nx">star</span><span class="w"> </span><span class="nx">wars</span><span class="p">:</span><span class="w"> </span><span class="nx">episode</span><span class="w"> </span><span class="nx">v</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">empire</span><span class="w"> </span><span class="nx">strikes</span><span class="w"> </span><span class="nx">back</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span>
+<span class="w">       </span><span class="o">...</span>
+<span class="w">       </span><span class="err">&#39;</span><span class="nx">the</span><span class="w"> </span><span class="nx">artist</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;</span><span class="nx">nausicaä</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">valley</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">wind</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span>
+<span class="w">       </span><span class="err">&#39;</span><span class="nx">beauty</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">beast</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;</span><span class="nx">three</span><span class="w"> </span><span class="nx">colors</span><span class="p">:</span><span class="w"> </span><span class="nx">red</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;</span><span class="nx">bringing</span><span class="w"> </span><span class="nx">up</span><span class="w"> </span><span class="nx">baby</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span>
+<span class="w">       </span><span class="err">&#39;</span><span class="nx">mystic</span><span class="w"> </span><span class="nx">river</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;</span><span class="k">in</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">heat</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">night</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;</span><span class="nx">arsenic</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="nx">old</span><span class="w"> </span><span class="nx">lace</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span>
+<span class="w">       </span><span class="err">&#39;</span><span class="nx">before</span><span class="w"> </span><span class="nx">sunrise</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;</span><span class="nx">papillon</span><span class="w"> </span><span class="err">&#39;</span><span class="p">],</span>
+<span class="w">      </span><span class="nx">dtype</span><span class="p">=</span><span class="err">&#39;</span><span class="nx">object</span><span class="err">&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="p">=</span><span class="err">&#39;</span><span class="nx">Film_Adı</span><span class="err">&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">length</span><span class="p">=</span><span class="mi">247</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Gördüğünüz gibi film isimleri tamamen küçük harfe dönüşmüş oldu. <strong>String</strong> metotlarından biri olan <strong>contains</strong> ile metin içerisinde <strong>içeren</strong> kelime ya da kelimeleri aratabiliyoruz. Şimdi Sıra geldi filtreleme işlemine.</p>
+<div class="highlight"><pre><span></span><code><span class="n">star_wars_icerir</span> <span class="o">=</span> <span class="n">kucuk_harf</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;star wars&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">imdb</span><span class="p">[</span><span class="n">star_wars_icerir</span><span class="p">])</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Film_Adı</th>
+<th>Yıl</th>
+<th>Puan</th>
+<th>Oylayan_Kişi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Star Wars: Episode V - The Empire Strikes Back</td>
+<td>1980</td>
+<td>8,8</td>
+<td>519895</td>
+</tr>
+<tr>
+<td>Star Wars</td>
+<td>1977</td>
+<td>8,7</td>
+<td>585132</td>
+</tr>
+<tr>
+<td>Star Wars: Episode VI - Return of the Jedi</td>
+<td>1983</td>
+<td>8,3</td>
+<td>410111</td>
+</tr>
+</tbody>
+</table>
+<p>Biraz karışık gelse de tüm kodları irleştirip aynı sonucu elde edebiliriz.</p>
+<div class="highlight"><pre><span></span><code><span class="n">star_wars_filtrele</span> <span class="o">=</span> <span class="n">imdb</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;star wars&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">imdb</span><span class="p">[</span><span class="n">star_wars_filtrele</span><span class="p">])</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Film_Adı</th>
+<th>Yıl</th>
+<th>Puan</th>
+<th>Oylayan_Kişi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Star Wars: Episode V - The Empire Strikes Back</td>
+<td>1980</td>
+<td>8,8</td>
+<td>519895</td>
+</tr>
+<tr>
+<td>Star Wars</td>
+<td>1977</td>
+<td>8,7</td>
+<td>585132</td>
+</tr>
+<tr>
+<td>Star Wars: Episode VI - Return of the Jedi</td>
+<td>1983</td>
+<td>8,3</td>
+<td>410111</td>
+</tr>
+</tbody>
+</table>
+<p><a href="pandas-07-veri-siralama-yontemleri.html">← Önceki Bölüm</a> | <a href="pandas-09-veri-gruplama-yontemleri.html">Sonraki Bölüm →</a></p>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/pandas.html">Pandas</a></li>
+					<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+					<li><a href="/tag/modul.html">Modül</a></li>
+					<li><a href="/tag/filtre.html">Filtre</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>

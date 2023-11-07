@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Solvespace Bölüm 3: Kısıtlamalar" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/solvespace-bolum-3-kisitlamalar.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Solvespace Bölüm 3: Kısıtlamalar</h1>
+	<span class="post-date">Sal 04 Ocak 2022</span>
+	<h2>Bölüm 3: Kısıtlamalar</h2>
+<p><img alt="kisitla" src="images/solvespace/10%20Kisitla.png"></p>
+<h2>Genel</h2>
+<p>Bir kısıtlama oluşturmak için önce 
+sınırlandırılacak geometriyi seçin. Örneğin, iki nokta arasındaki 
+mesafeyi sınırlandırırken, önce bu iki noktayı seçin. Ardından 
+Sınırlandır menüsünden uygun kısıtlamayı seçin.<br>
+Neyin seçildiğine bağlı olarak, aynı menü seçeneği 
+farklı kısıtlamalar oluşturabilir. Örneğin, Mesafe / Çap menü seçeneği, 
+bir daire seçilirse bir çap kısıtlaması oluşturur, ancak bir çizgi 
+parçası seçilirse bir uzunluk kısıtlaması oluşturur. Seçilen öğeler, 
+uygulanmak istenen kısıtlamaya karşılık gelmiyorsa (yanlış ya da hatalı 
+seçim ya da kısıtlama seçeneği seçilmişse), SolveSpace bir hata mesajı 
+görüntüler ve mesajda mevcut kısıtlamaların (neleri kapsadığına dair) 
+bir listesi sunar.<br>
+Çoğu kısıtlama, hem 3B hem de öngörülen biçimde 
+mevcuttur. Bir çalışma düzlemi etkinse, kısıtlama, geometrinin o çalışma
+ düzlemine izdüşümüne uygulanır. Hiçbir çalışma düzlemi aktif değilse, 
+bu durumda kısıtlama, boş alandaki (çizim uzayındaki) gerçek geometriye 
+uygulanır.<br>
+Örneğin, aşağıda gösterilen çizgiyi göz önünde bulundurun:</p>
+<p><img alt="Sınırlandır / Kısıtla" src="images/solvespace/10%20Sinirla.png"></p>
+<p>Çizginin uzunluğu iki farklı şekilde 
+sınırlandırılmıştır. 50mm'lik üst sınırlama, çizginin gerçek uzunluğunu
+ belirtir. 40mm'lik alt kısıtlama, çizginin XY düzlemine olan 
+izdüşümünün uzunluğunu belirtir. (XY düzlemi sarı renkle 
+vurgulanmıştır.) Noktalı mor çizgiler, çizgi parçasının öngörülen uç 
+noktalarının konumlarını (izdüşüm doğrularını) belirtmek için çizilir.<br>
+Normal çalışmada, kullanıcı bir çalışma düzlemini etkinleştirir (veya örneğin bir "<code>Yeni Çalışma Düzleminde Çizim Yap</code>"
+ grubu oluşturularak bir çalışma düzlemi otomatik olarak 
+etkinleştirilir). Kullanıcı daha sonra bir öğe, örneğin bir çizgi çizer.
+ Bir çalışma düzlemi aktif olduğundan, çizgi o çalışma düzleminde 
+oluşturulur. Kullanıcı daha sonra örneğin uzunluğunu belirterek bu 
+çizgiyi sınırlandırır. Çalışma düzlemi hâlâ aktif olduğundan, kısıtlama 
+aslında çizgi parçasının çalışma düzlemine izdüşümü için geçerlidir.<br>
+Bu durumda, öngörülen mesafe 3B mesafeye eşdeğerdir.
+ Çizgi parçası çalışma düzleminde bulunuyorsa, o çizgi parçasının 
+çalışma düzlemine izdüşümü sadece o çizgi parçası olur. (Yani çalışma 
+düzlemi içerisinde yapılan çizim öğeleri, aslında çalışılan düzlemin 
+izdüşümüdür.) Bu, bir çalışma düzleminde çizim yaparken bunların çoğunun
+ göz ardı edilebileceği anlamına gelir.<br>
+Yine de, öngörülen kısıtlamaları daha karmaşık 
+şekillerde kullanmak mümkündür. Örneğin, kullanıcı çalışma düzlemi A'da 
+bir çizgi parçası oluşturabilir ve projeksiyonunu çalışma düzlemi B'ye 
+sınırlayabilir.<br>
+Kısıtlamalar eskiz üzerinde mor renkle 
+oluşturulmuştur. Bir kısıtlamanın kendisiyle ilişkili bir etiketi varsa 
+(örneğin mesafe veya açı), bu etiket fare ile sürüklenerek yeniden 
+konumlandırılabilir. Boyutu değiştirmek için, etikete çift tıklayın; 
+ekranda yeni değerin girilebileceği bir metin kutusu belirecektir. 
+Değişikliği uygulamak için <code>Enter</code>'a, iptal etmek için <code>ESC</code>'ye basın.</p>
+<h2>Otomatik Kısıtlamalar</h2>
+<p>Yapılandırma ekranında "<strong>enable automatic line constraints</strong> (otomatik çizgi kısıtlamalarını etkinleştir)" etiketli bir seçenek 
+vardır. Bu seçenek işaretliyse ve çizilen çizgi neredeyse yataysa, 
+çizginin ortasında yatay ve dikey bir kısıtlama (H harfi) belirecek ve 
+çizginin ikinci noktasının yerine tıklandığında kısıtlama 
+uygulanacaktır. Benzer şekilde, neredeyse dikey bir çizgi çizildiğinde, 
+otomatik olarak bir "V" kısıtlaması görünecektir. Doğru, yatay veya 
+dikeye yeterince yakın değilse, herhangi bir kısıtlama eklenmez. Çizim 
+yaparken <code>CTRL</code> tuşunu basılı tutmak da bu özelliği devre dışı bırakacaktır.</p>
+<p><img alt="Otomatik Çizgi Kısıtlaması" src="images/solvespace/11%20Otomatik%20sinirla.png"></p>
+<p>Otomatik kısıtlama fazlaysa veya çizimin aşırı 
+sınırlandırılmasına neden olacaksa, çizgi yerleştirme sırasında 
+kısıtlama harfi gösterilse bile oluşturulmaz. Benzer şekilde, çizimi 
+aşırı sınırlayacak bir mesafe veya çap kısıtlaması eklenirse, bu 
+kısıtlama bir referans (REF) olarak oluşturulacaktır. (Örneğin 
+dikdörtgenin kısa kenarlarından biri ölçülendirilip kısıtlandıktan 
+sonra, diğer kısa kenar da ölçülendirilmek istenildiğinde, bu ölçü REF 
+etiketi ile gösterilecektir. Bu ölçü değiştirilemez, değiştirilmesine 
+imkan verilmiyor anlamı çıkar.)<br>
+Yapılandırma ekranındaki diğer bir seçenek de "<strong>edit newly added dimensions</strong> (yeni eklenen boyutları düzenle)" seçeneğidir. Bu seçenek 
+etkinleştirildiğinde, yeni bir Mesafe, Uzunluk Oranı veya Uzunluk Farkı 
+kısıtlaması eklendiğinde, belirli bir değerin girilebilmesi için giriş 
+kutusu otomatik olarak görünür. Seçenek kapalıyken, kullanıcının 
+kısıtlamayı oluşturması ve ardından değeri düzenlemek için üzerine çift 
+tıklaması gerekir ki, bu neredeyse her zaman yapmak istediğimiz şeydir.</p>
+<p><img alt="Yeni Eklenen Boyutları Düzenle" src="images/solvespace/12%20Eklenen%20boyutu%20duzenle.png"></p>
+<h2>Çözümlenememe (Çözüm Başarısızlığı)</h2>
+<p>Bazı durumlarda, çözücü başarısız olur. Bunun 
+nedeni genellikle belirtilen kısıtlamaların tutarsız veya gereksiz 
+olmasıdır. Örneğin, iç açıları 30, 50 ve 90 derece olan bir üçgen 
+tutarsızdır - açıların toplamı 180 değildir, bu nedenle üçgen asla 
+birleştirilemez. Bu bir hatadır.<br>
+İç açıları 30, 50 ve 100 derece ile sınırlandırılmış
+ bir üçgen de bir hatadır. Bu tutarsız değildir, çünkü açıların toplamı 
+180 derecedir; ama gereksiz, çünkü bu açılardan sadece ikisinin 
+belirtilmesi gerekiyor.<br>
+Çizim tutarsız veya (kısıtlamalar) fazlaysa, grafik 
+penceresinin arka planı (normal siyah renk yerine) kırmızıya boyanır ve 
+özellik penceresinde bir hata görüntülenir:</p>
+<p><img alt="Çözücü Hatası" src="images/solvespace/13%20Cozucu%20Hatasi.png"></p>
+<p>SolveSpace kolaylık sağlamak adına, çizimi tekrar
+ tutarlı hale getirmek için kaldırılabilecek bir kısıtlama listesi 
+hesaplar. Bunların hangi kısıtlamalar olduğunu görmek için fareyi 
+özellik penceresindeki bağlantıların üzerine getirin; kısıtlama, grafik 
+penceresinde vurgulanmış olarak görünecektir. Bu listedeki bir veya daha
+ fazla kısıtlamayı silerek kullanıcı, çizimi tekrar tutarlı hale 
+getirebilir.<br>
+Çözücü yakınsayamadığında farklı türde bir hata 
+oluşur. Bu, çözücüde bir kusur olabilir veya imkansız geometri 
+belirtildiği için oluşabilir (örneğin, kenar uzunlukları 3, 4 ve 10 olan
+ bir üçgen; 3 + 4 = 7 &lt; 10). Bu durumda, benzer bir hata mesajı 
+görüntülenir, ancak bir şeyleri düzeltmek için kaldırılacak bir 
+kısıtlama listesi yoktur. Sorun, kısıtlamaları kaldırarak veya 
+düzenleyerek veya <code>Düzen → Geri Al</code>'ı seçerek çözülebilir.</p>
+<h2>Referans Ölçüler</h2>
+<p>( Menü Yolu: <code>Sınırlandır → Ölçüyü Referans Yap / Yapma</code> - Kısayol tuşu: <code>E</code> )<br>
+Varsayılan olarak, ölçülendirme geometriyi 
+yönlendirir. Bir çizgi parçası 20,00mm uzunluğa sahip olacak şekilde 
+sınırlandırılmışsa, bu uzunluk doğru olana kadar çizgi parçası 
+değiştirilir.<br>
+Referans ölçülendirme bunun tersidir: Geometri 
+ölçülendirmeyi yönlendirir. Bir çizgi parçasının uzunluğu üzerinde bir 
+referans boyutu varsa, bu uzunluğu serbestçe değiştirmek yine de 
+mümkündür ve boyut, bu uzunluk ne olursa olsun görüntülenir. Referans 
+ölçümlendirme geometriyi kısıtlamaz.<br>
+Bir ölçülendirmeyi referans ölçümlendirmeye dönüştürmek için, <code>Sınırlandır → Ölçüyü Referans Yap / Yapma</code>'yı seçin. Görüntülenen uzunluk veya açıya eklenen "<strong>REF</strong>"
+ ibaresi ile bir referans boyuta dönüşür. Bir referans ölçüye çift 
+tıklamak hiçbir şey yapmaz (ölçüyü değiştirmek için metin kutusu 
+görüntülenmez); ölçü kullanıcı tarafından değil geometri tarafından 
+belirlenir, bu nedenle referans ölçü için yeni bir değer girmek anlamlı 
+değildir.</p>
+<h2>Özel Kısıtlamalar</h2>
+<p>Belirli bir kısıtlama hakkında bilgi / yardım almak için, öncelikle herhangi bir öğe seçmeden (hiç bir şey seçili olmadan) <code>Sınırlandır</code> menüsünden ilgili seçeneği seçin. Seçmiş olduğunuz sınırlandırma 
+seçeneğine ait tüm olasılıkları listeleyen bir hata mesajı 
+görüntülenecektir.<br>
+Genel olarak, öğelerin seçilme sırası önemli 
+değildir. Örneğin, kullanıcı nokta-çizgi arasındaki mesafeyi 
+kısıtlıyorsa, noktayı ve ardından çizgiyi veya çizgiyi ve ardından 
+noktayı seçebilir ve sonuç aynı olur. Bazı istisnalar mevcuttur ve 
+aşağıda belirtilmiştir.</p>
+<h2>Mesafe / Çap</h2>
+<p>( Menü Yolu: <code>Sınırlandır → Mesafe / Çap</code> - Kısayol tuşu: <code>D</code> )<br>
+Bu kısıtlama, bir yayın veya dairenin çapını ya da 
+bir doğru parçasının uzunluğunu veyahut bir nokta ile başka bir öğe 
+arasındaki mesafeyi belirler.<br>
+Bir nokta ile bir düzlem veya bir nokta ile bir 
+düzlem yüzeyi ya da bir çalışma düzleminde bir nokta ile bir çizgi 
+arasındaki mesafe kısıtlanırken, mesafe işaretlenir. Mesafe, noktanın 
+düzlemin üstünde veya altında olmasına bağlı olarak pozitif veya negatif
+ olabilir. Mesafe çizimde her zaman pozitif olarak gösterilir; diğer 
+tarafa çevirmek için negatif bir değer girin.</p>
+<h2>Açı</h2>
+<p>( Menü Yolu: <code>Sınırlandır → Açı</code> - Kısayol tuşu: <code>N</code> )<br>
+Bu kısıtlama, iki vektör arasındaki açıyı belirler. 
+Vektör, yönü olan herhangi bir şeydir; SolveSpace'de çizgi parçaları ve 
+normaller vektörlerdir. (Yani kısıtlama, iki doğru parçasına ya da bir 
+doğru parçasına ve bir normale veyahut iki normale uygulanabilir.) Açı 
+kısıtlaması hem projeksiyonlu (İzdüşümlü) hem de 3B uzayında mevcuttur.<br>
+Açı daima 0 ile 180 derece arasında olmalıdır. Daha 
+büyük veya daha küçük açılar girilebilir, ancak bunlar 180 derecelik 
+modüle alınacaktır. Ölçülendirmede açı işareti (°) gösterilmez.<br>
+İki doğru kesiştiğinde dört açı oluşur. Bu açılar 
+iki eşit çift oluşturur. Örneğin, resimdeki çizgiler 30 derece ve 150 
+derecede kesişiyor. Bu iki açı (30 ve 150) bütünler açılar olarak 
+bilinir ve her zaman 180 derecedir.</p>
+<p><img alt="Bütünler Açı" src="images/solvespace/14%20Aci%20-%20referans%20aci.png"></p>
+<p>(Çizimde açı kısıtlamalarından üçünün referans 
+ölçü olduğuna dikkat edin. Açılardan herhangi biri verildiğinde, diğer 
+üçünü hesaplayabiliriz; bu nedenle, bu açılardan birden fazlasını 
+belirten bir çizim aşırı kısıtlanmış olur ve çözülemez.)<br>
+Yeni bir açı kısıtlaması oluşturulduğunda, 
+SolveSpace hangi tamamlayıcı açının sınırlandırılacağını keyfi olarak 
+seçer. Hangi açının seçildiğini belirtmek için çizim üzerinde bir yay 
+çizilir. Kısıtlama etiketi (ölçü yazısı) sürüklendikçe yay, etiketi 
+(ölçüyü) takip edecektir.<br>
+Yanlış tamamlayıcı açı sınırlandırılmışsa (yani açı 
+etiketi, diğer bütünler açı ile görüntülenmek istenirse), kısıtlamayı 
+(ölçü etiketini) seçip ardından <code>Sınırlandır → Diğer Tümler Açı</code>'yı seçin. Bir bütünler açıda 30 derecelik bir kısıtlama, diğerinde 150 derecelik bir kısıtlamaya tam olarak eşdeğerdir.</p>
+<h2>Yatay / Dikey</h2>
+<p>( Menü Yolu: <code>Sınırlandır → Yatay</code> - Kısayol tuşu: <code>`H )  
+( Menü Yolu:</code>Sınırlandır → Dikey<code>- Kısayol tuşu:</code>V` )<br>
+Bu kısıtlama, bir çizgi parçasını yatay veya dikey 
+olmaya zorlar. Bu kısıtlama iki noktaya da uygulanabilir, bu durumda bu 
+noktaları birleştiren (sanal) doğru parçasına uygulanır, yani noktalar 
+yatay da ya da dikeyde aynı hizaya göre sınırlandırılmış olur.<br>
+Bu ısıtlama için, bir çalışma düzlemi etkin 
+olmalıdır, çünkü "yatay" veya "dikey" (ibarelerinin anlamı), çalışma 
+düzlemi tarafından tanımlanır.<br>
+Mümkün olduğunda yatay ve dikey kısıtlamaları 
+kullanmak iyidir. Bu kısıtlamaların çözülmesi çok basittir ve yakınsama 
+sorunlarına yol açmaz. Mümkün olduğunda, çalışma düzlemlerini, çizgiler 
+bu çalışma düzlemleri içinde yatay ve dikey olacak şekilde tanımlayın.</p>
+<h2>Noktada / Eğride / Düzlemde</h2>
+<p>( Menü Yolu: <code>Sınırlandır → Noktada / Eğride / Düzlemde</code> - Kısayol tuşu: <code>O</code> )<br>
+Bu kısıtlama, iki noktanın çakışmasını veya bir 
+noktanın bir eğri üzerinde ya da bir noktanın bir düzlem üzerinde 
+bulunmasını/yerleşmesini sağlar.<br>
+Nokta-çakışma kısıtlaması, hem 3B hem de 2B (2 
+boyutlu, bir düzlem üzerinde) çizimde mevcuttur. 3B nokta-çakışma 
+kısıtlaması, üç serbestlik derecesini kısıtlar; 2B yalnızca iki tanesini
+ kısıtlar. Bir çalışma düzleminde iki nokta çizilir ve ardından 3B'de 
+çakışık olarak sınırlandırılırsa, bir hata ortaya çıkar - bunlar zaten 
+bir boyutta (düzlemin normal boyutu) çakışıktır, bu nedenle üçüncü 
+kısıtlama denklemi gereksizdir. (2B'de çizim yapıldığında zaten düzlem 
+koordinatı, bir noktayı kısıtlamış oluyor.)<br>
+Bir noktanın bir daire (veya bir dairenin yayı) 
+üzerine yerleştirilerek kısıtlandığında, gerçek kısıtlama noktayı bu 
+daire boyunca silindirik yüzey üzerinde durmaya zorlar. Nokta ve daire 
+zaten aynı düzlemdeyse (örneğin, her ikisi de aynı çalışma düzleminde 
+çizilmişse), nokta eğri üzerinde durur, aksi halde olmaz.</p>
+<h2>Eşit Uzunluk / Yarıçap / Açı</h2>
+<p>( Menü Yolu: <code>Sınırlandır → Eşit Uzunluk / Yarıçap / Açı</code> - Kısayol tuşu: <code>Q</code> )<br>
+Bu kısıtlama, iki uzunluğu, açıyı veya yarıçapı eşit olmaya zorlar.<br>
+Eşit açı kısıtlaması, girdi olarak dört vektör 
+gerektirir: iki eşit açı, her bir girdi çifti arasındaki açıdır. 
+Örneğin, A, B, C ve D doğru parçalarını seçin. Kısıtlama, A ve B 
+doğruları arasındaki açıyı, C ve D doğruları arasındaki açıya eşit 
+olmaya zorlar. Yanlış tamamlayıcı açı seçilirse, açı kısıtlaması için 
+olduğu gibi, <code>Sınırlandır → Diğer Bütünler Açı</code>'yı seçin.<br>
+Bir çizgi öğesi ve dairenin bir yayı seçilirse, 
+çizginin uzunluğu yayın uzunluğuna (yarıçapına değil) eşit olmaya 
+zorlanır.</p>
+<h2>Uzunluk Oranı</h2>
+<p>( Menü Yolu: <code>Sınırlandır → Uzunluk Oranı</code> - Kısayol tuşu: <code>Z</code> )<br>
+Bu kısıtlama, iki doğru parçasının uzunlukları 
+arasındaki oranı belirler. Örneğin, A çizgisi ve B çizgisi 2:1 uzunluk 
+oranına sahipse, A 50 mm uzunluğunda ve B 25 mm uzunluğundaysa kısıtlama
+ karşılanır.<br>
+Çizgilerin seçilme sırası önemlidir; A çizgisi B 
+çizgisinden önce seçilirse, oran A'nın uzunluğu: B'nin uzunluğudur.</p>
+<h2>Uzunluk Farkı</h2>
+<p>( Menü Yolu: <code>Sınırlandır → Uzunluk Farkı</code> - Kısayol tuşu: <code>J</code> )<br>
+Bu kısıtlama, iki doğru parçasının uzunlukları 
+arasındaki farkı belirler. Örneğin, A çizgisi ve B çizgisi 5 mm uzunluk 
+farkına sahipse, A 50 mm uzunluğunda ve B 55 mm uzunluğunda veya 45 mm 
+uzunluğundaysa kısıtlama karşılanır.<br>
+Daha kısa olan öğenin kısıtlamasını düzenlerken, 
+negatif bir fark girilebileceğini/yazılabileceğini unutmayın. Aynı 
+zamanda değer, her zaman pozitif bir sayı (mutlak fark) olarak 
+görüntülenir ve pozitif sayıların girilmesi/yazılması "yönü" 
+değiştirmez.</p>
+<h2>Orta Noktada</h2>
+<p>( Menü Yolu: <code>Sınırlandır → Orta Noktada</code> - Kısayol tuşu: <code>M</code> )<br>
+Bu kısıtlama, bir noktayı bir çizginin orta noktasında sabitlemeye/yerleştirmeye zorlar.<br>
+Orta nokta kısıtlaması ayrıca bir çizginin orta 
+noktasını bir düzleme sabitlemeye/yerleştirmeye zorlayabilir; bu, bir 
+nokta oluşturmaya, o noktayı çizginin orta noktasında sınırlamaya ve 
+ardından bu orta noktayı düzlemde sabitlemeye şekilde sınırlamaya 
+eşdeğerdir.</p>
+<h2>Simetrik</h2>
+<p>( Menü Yolu: <code>Sınırlandır → Simetrik</code> - Kısayol tuşu: <code>Y</code> )<br>
+Bu kısıtlama, iki noktayı bir düzlem etrafında 
+simetrik olmaya zorlar. Kavramsal olarak bu, simetri düzlemine bir ayna 
+yerleştirirsek ve A noktasının yansımasına bakarsak, o zaman B 
+noktasının üzerinde duruyormuş gibi görüneceği anlamına gelir.<br>
+Simetri düzlemi, bir çalışma düzlemi seçilerek 
+açıkça belirtilebilir. Veya simetri düzlemi, bir çalışma düzleminde bir 
+çizgi olarak belirtilebilir; simetri düzlemi bu çizgiden geçer ve 
+çalışma düzlemine diktir. Veya simetri düzlemi atlanabilir; bu durumda, 
+aktif çalışma düzleminin dikey eksenine veya yatay eksenine paralel 
+olduğu sonucuna varılır. Noktaların başlangıçta çizildiği konfigürasyona
+ hangisinin daha yakın olduğuna bağlı olarak yatay veya dikey eksen 
+seçilir.</p>
+<h2>Dik</h2>
+<p>( Menü Yolu: <code>Sınırlandır → Dik</code> - Kısayol tuşu: <code>[</code> )<br>
+Bu kısıtlama, 90 (doksan) derecelik bir açı 
+kısıtlamasına tam olarak eşdeğerdir. (Bu kısıtlama ile seçili çizgiler 
+bir birine 90° olacak şekilde sınırlandırılır.)</p>
+<h2>Paralel / Teğet</h2>
+<p>( Menü Yolu: <code>Sınırlandır → Paralel / Teğet</code> - Kısayol tuşu: <code>L</code> )<br>
+Bu kısıtlama, iki vektörü paralel olmaya zorlar.<br>
+2B'de (yani, bir çalışma düzlemi aktifken), sıfır 
+derecelik açı kısıtlaması paralel kısıtlamaya eşdeğerdir. 3B'de öyle 
+değil.<br>
+Bir A birim vektörü ve bir teta açısı verildiğinde, 
+genel olarak A ile bir teta açısı yapan sonsuz sayıda birim vektör 
+vardır. (Örneğin, bize vektör (1, 0, 0) verilmişse, o zaman (0, 1) , 0),
+ (0, 0, 1) ve diğer birçok birim vektörün tümü A ile doksan derecelik 
+bir açı yapar.) Ancak bu, teta = 0 için doğru değildir; bu durumda, 
+sadece iki tane vardır, A ve -A.<br>
+Bu, normal bir 3B açı kısıtlamasının yalnızca bir 
+serbestlik derecesini kısıtlarken, bir 3B paralel kısıtlamanın iki 
+serbestlik derecesini kısıtladığı anlamına gelir.<br>
+Bu kısıtlama aynı zamanda bir doğruyu bir eğriye 
+teğet olmaya zorlayabilir veya iki eğriyi (örneğin bir daire ve bir 
+kübik eğri) birbirine teğet olmaya zorlayabilir. Bunu yapmak için, iki 
+eğrinin bir uç noktasını paylaşması gerekir; bu genellikle bir 
+nokta-çakışma kısıtlaması ile elde edilir. Kısıtlama onları bu noktada 
+da teğet olmaya zorlayacaktır.</p>
+<h2>Aynı Yön</h2>
+<p>( Menü Yolu: <code>Sınırlandır → Aynı Yön</code> - Kısayol tuşu: <code>X</code> )<br>
+Bu kısıtlama, iki normali (normal doğrultuyu) aynı yönelime sahip olmaya zorlar.<br>
+Normalin bir yönü vardır; bu yönde bir ok olarak 
+çizilir. O okun yönü iki açıyla belirtilebilir. Normal, bu iki açıyı ve 
+bu okla ilgili bükülmeye karşılık gelen bir ek açıyı belirtir.<br>
+(Teknik olarak normal, bir koordinat sisteminden 
+diğerine dönüş matrisini temsil eder. Dahili olarak bir birim 
+kuaterniyon (dörtlü grup) olarak temsil edilir.)<br>
+Örneğin, aşağıdaki resim, normalleri paralel olacak 
+şekilde sınırlandırılmış iki çalışma düzlemini göstermektedir:</p>
+<p><img alt="Normal Yönleri" src="images/solvespace/15%20Normaller.png"></p>
+<p>Normaller paralel olduğundan, düzlemler 
+paraleldir. Ancak bir düzlem diğerine göre eğilmiştir/açılıdır, bu 
+nedenle düzlemler aynı değildir. Soldaki çizgi en soldaki düzlemde yatay
+ olacak şekilde sınırlandırılır ve sağdaki çizgi en sağdaki ile yatay 
+olacak şekilde kısıtlanır. Çalışma düzlemlerinin normalleri paralel 
+olmasına rağmen bu çizgiler paralel değildir.<br>
+"<strong>Aynı Yön</strong>" kısıtlamasını "<strong>Paralel</strong>" kısıtlamasıyla değiştirirsek, iki çalışma düzlemi aynı olur ve iki yatay çizgi paralel hale gelir.<br>
+Bu sınırlama, bir montaj işlemi oluştururken yararlı
+ bir kısıtlamadır; tek bir "aynı yön" kısıtlaması, bağlantılı bir 
+parçanın dönme serbestlik derecelerinin üçünü de sabitleyecektir.</p>
+<h2>Sürüklendiği Yerde Montajı Kilitle</h2>
+<p>( Menü Yolu: <code>Sınırlandır → Sürüklendiği Yerde Montajı Kilitle</code> - Kısayol tuşu: <code>]</code> )<br>
+Çözücünün, konumunu değiştirmeyeceği şekilde bir 
+noktayı sınırlayın. Bu, noktanın, üzerinde olduğu (bağlı, sahibi olan) 
+öğeyi veya noktanın kendisini sürükleyerek doğrudan konumun 
+değiştirilmesini engellemez. Çözücüye, noktayı tamamen sınırlandırılmış 
+olarak düşünmesi talimatını verir. Bu, kenarları eşit ve bir noktası 
+kilitli olan bir eşkenar üçgen çizerek kolayca gösterilebilir. Bu 
+kilitli noktanın karşısındaki tarafı sürüklemek konumunu değiştirmez, 
+bunun yerine üçgeni yeniden boyutlandırır.</p>
+<h2>Yorum</h2>
+<p>(Menü Yolu: <code>Sınırlandır → Yorum</code> - Kısayol tuşu: <code>;</code> [noktalı virgül] )<br>
+Yorum, çizimde görünen tek satırlık bir metindir. Bir yorum oluşturmak için, <code>Sınırlandır → Yorum</code>'u seçin ve ardından yeni yorumun orta noktasının konumunu belirtmek için <code>farenin sol tuşu</code>na tıklayın. Yorumu taşımak için fare ile sürükleyin. Metni değiştirmek için çift tıklayın.<br>
+Yorumun, geometri üzerinde hiçbir etkisi yoktur; 
+sadece insanlar tarafından okunabilen bir nottur. Varsayılan olarak 
+yorum, kısıtlamalarla aynı renkte gösterilir; ancak çizgi genişliğini ve
+ rengini, metin yüksekliğini, metin kaynağını (sol, sağ, üst, alt, orta)
+ ve metin açısını belirlediğimiz özel bir çizgi biçimi oluşturulup bu 
+yeni biçimi yorum/açıklama biçimi olarak atayabiliriz.<br>
+Bir çalışma düzleminde bir yorum oluşturulursa, 
+metin o çalışma düzleminin yüzeyi içinde çizilecektir/konumlanacaktır. 
+Aksi takdirde (örneğin; <code>Yeni Grup → 3d'de Çizim Yap</code> menü 
+yolu seçildikten sonra çizim uzayına bir yorum eklenirse), metin her 
+zaman ekran düzleminde öne bakacak şekilde çizilir, (yani görüntüyü / 
+modeli döndürsek/çevirsek bile yorum metni düz, ve okunaklı görünür).<br>
+Varsayılan olarak yorumlar, grupları etkin/aktif 
+olmadığında, diğer tüm kısıtlamalarda olduğu gibi gizlenir. Bir yorum 
+özel bir biçime atanmışsa, bu yorum, biçim (ve grup ve genel olarak 
+kısıtlamalar) gösterildiği sürece, grubu etkin olmadığında bile 
+gösterilecektir.</p>
+<p><img alt="Yeni Yorum Biçimi" src="images/solvespace/16%20Yeni%20Yorum%20Bicimi.png"></p>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/solvespace.html">Solvespace</a></li>
+					<li><a href="/tag/3d.html">3D</a></li>
+					<li><a href="/tag/3b.html">3B</a></li>
+					<li><a href="/tag/cad.html">CAD</a></li>
+					<li><a href="/tag/kilavuz.html">Kılavuz</a></li>
+					<li><a href="/tag/otomatik.html">Otomatik</a></li>
+					<li><a href="/tag/ozel.html">Özel</a></li>
+					<li><a href="/tag/kisitla.html">Kısıtla</a></li>
+					<li><a href="/tag/sinirla.html">Sınırla</a></li>
+					<li><a href="/tag/genel.html">Genel</a></li>
+					<li><a href="/tag/cozumlenememe.html">Çözümlenememe</a></li>
+					<li><a href="/tag/cozum.html">Çözüm</a></li>
+					<li><a href="/tag/basarisizlik.html">Başarısızlık</a></li>
+					<li><a href="/tag/referans.html">Referans</a></li>
+					<li><a href="/tag/olcu.html">Ölçü</a></li>
+					<li><a href="/tag/mesafe.html">Mesafe</a></li>
+					<li><a href="/tag/cap.html">Çap</a></li>
+					<li><a href="/tag/aci.html">Açı</a></li>
+					<li><a href="/tag/yatay.html">Yatay</a></li>
+					<li><a href="/tag/dikey.html">Dikey</a></li>
+					<li><a href="/tag/nokta.html">Nokta</a></li>
+					<li><a href="/tag/egri.html">Eğri</a></li>
+					<li><a href="/tag/duzlem.html">Düzlem</a></li>
+					<li><a href="/tag/uzunluk.html">Uzunluk</a></li>
+					<li><a href="/tag/yaricap.html">Yarıçap</a></li>
+					<li><a href="/tag/oran.html">Oran</a></li>
+					<li><a href="/tag/fark.html">Fark</a></li>
+					<li><a href="/tag/orta-nokta.html">Orta Nokta</a></li>
+					<li><a href="/tag/simetri.html">Simetri</a></li>
+					<li><a href="/tag/dik.html">Dik</a></li>
+					<li><a href="/tag/paralel.html">Paralel</a></li>
+					<li><a href="/tag/teget.html">Teğet</a></li>
+					<li><a href="/tag/ayni-yon.html">Aynı yön</a></li>
+					<li><a href="/tag/surukleme.html">Sürükleme</a></li>
+					<li><a href="/tag/montaj.html">Montaj</a></li>
+					<li><a href="/tag/kilit.html">Kilit</a></li>
+					<li><a href="/tag/yorum.html">Yorum</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>

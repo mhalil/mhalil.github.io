@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Solvespace Bölüm 7: Dışa Aktarım" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/solvespace-bolum-7-disa-aktarim.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Solvespace Bölüm 7: Dışa Aktarım</h1>
+	<span class="post-date">Cts 08 Ocak 2022</span>
+	<h2>Bölüm 7: Dışa Aktarım</h2>
+<h2>Resim olarak dışa aktar...</h2>
+<p>Bu seçenek, ekranda görüntülenenlerin bitmap 
+(vektörel olmayan resim) görüntüsünü dışa aktarır. Bu işlem, ekran 
+görüntüsü almaya eşdeğerdir. Bu seçenek, insan tarafından okunabilir 
+çıktı üretmek için kullanışlıdır.</p>
+<p><code>Dosya → Resim olarak dışa aktar...</code>'ı seçin. Görüntü, çoğu grafik yazılımının açabileceği bir <strong>PNG</strong> uzantılı dosya olarak dışa aktarılır.</p>
+<h2>Kesiti 2d olarak dışarı aktar...</h2>
+<p>Bu seçenek, katı modeli belirli bir düzlem 
+boyunca kesecektir. (Ekrana bakıldığında görünen 2 boyutlu çizimin arka 
+planında kalan kısım görünmeyecekir, görünmeyen kısım ile görünen kısmı 
+ayıran hayali düzlemden bahsediliyor.) Bu düzlemde bulunan (Ekrana 
+bakıldığında görünen 2 boyutlu çizimin) katı modeldeki tüm çizgiler ve 
+eğriler dışa aktarılacaktır. Katı modelden bu düzlemde yer almayan 
+çizgiler ve eğriler yok sayılır. Bu seçenek genel olarak, örneğin bir 
+lazer veya su jeti kesicisi için bir 3B modelden 2B CAM verileri 
+oluşturulurken uygundur.<br>
+Bir bölümü dışa aktarmadan önce, parçanın hangi 
+düzleminin dışa aktarılacağını belirtmek gerekir. Bu şu şekilde 
+belirtilebilir:</p>
+<p><strong>Bir yüzey;</strong><br>
+Bu düzlem yüzüyle aynı düzlemde olan tüm yüzeyler 
+dosyada görünecektir. Yüzlerin seçilebilmesi için önce gösterilmesi ve 
+seçilebilir olması gerekir; Bunun için Özellik Penceresinin üst 
+satırındaki ilgili bağlantıya tıklayın.</p>
+<p><strong>Bir nokta ve iki çizgi veya vektör;</strong><br>
+Dışa aktarma düzlemi noktadan geçer ve iki doğruya 
+veya vektöre paraleldir. İki çizgi veya vektör dikse, dışa aktarılan 
+dosyada x ve y ekseni haline gelirler. Geçerli görünümde hangisi daha 
+yataysa, x ekseni ve diğeri y ekseni olur.<br>
+Bu, görünümü doksan derece döndürerek (bu yüzeyin 
+düzleminde) dışa aktarılan dosyayı doksan derece döndürmenin mümkün 
+olduğu anlamına gelir. Benzer şekilde, ön tarafa arkadan bakacak şekilde
+ parçayı döndürerek, çalışma dışa aktarıldığında, oluşan görüntü 
+aynalanmış vaziyette oluşturulur.</p>
+<p><strong>Aktif çalışma düzlemi;</strong><br>
+Bir çalışma düzlemi etkinse ve dışa aktarma komutu 
+seçildiğinde hiçbir şey seçilmemişse, SolveSpace etkin çalışma düzlemi 
+ile aynı düzlemde olan tüm yüzeyleri dışa aktaracaktır. Çalışma 
+düzleminin yatay ve dikey eksenleri, dışa aktarılan dosyada x ve y 
+ekseni haline gelir.</p>
+<p><img alt="Seçili Yüzeyi 2d olarak dışa aktar" src="images/solvespace/44%20Egriler%20Parcali.png"></p>
+<p><img alt="Seçili Yüzeyin PDF Uzantılı Dışa Aktarılmış Hali" src="images/solvespace/45%20Kesiti%202d%20olarak%20aktar.png"></p>
+<p>Dışa aktarılan dosyanın birimleri, yapılandırma ekranında belirtilebilecek dışa aktarma ölçek faktörü tarafından belirlenir.<br>
+Çizim eğriler içeriyorsa, dışa aktarılan dosya bu 
+eğrileri tam olarak temsil edebilir (SVG tam daireleri destekler), 
+yaklaşık olarak ancak düzgün bir eğriyle (PDF yalnızca bir daireyi tam 
+olarak temsil edemeyen kübik eğrileri destekler) veya parçalı doğrusal 
+segmentler olarak temsil edebilir (HPGL dosyasındaki bir daire). 
+Eğrileri parçalı doğrusal olarak çıktı almaya zorlamak için yapılandırma
+ ekranında '<code>curves as piecewise linear</code> (<em>eğrileri parçalı doğrusal olarak</em>)'
+ seçeneğini aktifleştirin. Çıktı dosyasındaki renkler, görüntüleyiciniz 
+tarafından kullanılan renk alanına bağlı olarak ekranda görüntülenen 
+modelin renklerine tam olarak uymayabilir.</p>
+<p><img alt="Eğrileri parçalı doğrusal olarak" src="images/solvespace/46%20Yuzey%20Kesiti.png"></p>
+<h2>Görüntüyü 2d olarak dışa aktar...</h2>
+<p>Bu seçenek, modeli görüntülediğinizde ekrana 
+yansıtıldığı gibi, 3B modeli bir düzleme yansıtacaktır. Projeksiyon 
+düzleminde yer alan çizgiler ve eğriler herhangi bir değişiklik 
+yapılmadan dışa aktarılır; projeksiyon düzleminde yer almayan çizgiler 
+ve eğriler, projeksiyon nedeniyle kısaltılmış görünecektir.</p>
+<p>Bu seçenek genellikle vektör formatında, insan 
+tarafından okunabilir bir çizim oluştururken uygundur. Yalnızca katı 
+modeldeki çizgileri değil, tüm çizgileri dışa aktardığı için de 
+yararlıdır; bu nedenle, kullanıcı çizgilerden ve eğrilerden bir eskiz 
+çizerse, ancak bunu katı bir model oluşturmak için ekstrüde etmek 
+istemezse, bu seçeneği kullanarak yalın çizimlerini 2d biçiminde dışa 
+aktarabilir.</p>
+<p>Projeksiyon düzlemi, ekrandaki model 
+döndürülerek, fare ile merkeze sürüklenerek seçilir. Dışa aktarılan 
+dosyanın orijini (merkezi), ekrandaki görünümün merkezine karşılık gelir
+ ve bu nedenle kaydırma ile (fare ile sağa sürüklenerek) hareket 
+ettirilebilir. Projeksiyon düzlemini tam olarak belirtmek için, görünümü
+ bir çalışma düzlemine yönlendirin veya <code>Görünüm → En Yakın Dik / İzometrik Görünüm</code> (kısayol tuşları <code>F2</code> ve <code>F3</code>) ve <code>Görünüm → Noktayı Merkezde Görüntüle</code> (kısayol tuşları <code>F4</code>) komutlarını kullanın.</p>
+<p>Varsayılan olarak, görünümün çıktısında gizli 
+çizgiler kaldırılmış olacak ve kavisli bir yüzeyin öne bakan yerinden 
+arkaya baktığı her yere ek çizgiler çizilecektir. Bu genellikle istenen 
+sonuçtur. Parçanın tel kafes görünümünü oluşturmak için dışa aktarmadan 
+önce "<strong>hidden-lns</strong> (<em>gizli çizgiler</em>)" öğesini gösterin.</p>
+<p>EPS, SVG, PDF gibi bazı dosya biçimleri, gölgeli 
+yüzeyleri destekler. Kullanıcı böyle bir dosya formatında dışa aktarım 
+yapıyorsa ve yapılandırma ekranında "<code>export shaded 2d triangles</code> (<em>gölgeli 2d üçgenleri dışa aktar</em>)"
+ seçeneği işaretlemişse, görünüm, modelin düz gölgeli yüzeylerini 
+içerecektir. Aydınlatma, modelin ekrandaki görünümüyle aynı şekilde 
+hesaplanır. Bu nedenle, konfigürasyon ekranındaki ışık yönleri (<code>light direcition</code>) ve yoğunlukları (<code>intensity</code>) değiştirilerek, yüzeylerin gölge yönleri değiştirilebilir.</p>
+<p><img alt="Gölgeli 2d üçgenleri dışa aktar" src="images/solvespace/47%20Golgeli%202d%20ugcgenler.png"></p>
+<p><img alt="Işık yönleri ve yoğunlukları" src="images/solvespace/48%20Isik%20yonleri.png"></p>
+<p>Dışa aktarılan dosyanın birimleri, yapılandırma 
+ekranında belirtilebilecek dışa aktarma ölçek faktörü tarafından 
+belirlenir. Çizimde bir katı model varsa ve yüzeyler gizlenip gizli 
+çizgiler gösterilerek dışa aktarım yapılırsa, dosya yalnızca çizgi 
+parçalarını içerecektir; tüm eğriler, belirtilen nüans/akor toleransıyla
+ çizgilere ayrılır. Çizimde doğrusal uzatarak ya da tam/kısmi döndürerek
+ katılanmış katı model mevcut değilse ve gizli çizgiler görünür 
+durumdaysa, eğriler mümkün olduğunca tam biçimde dışa aktarılacaktır.</p>
+<p>Normaller, veri noktaları ve resim öğeleri, vektör biçimleri için dışa aktarılmaz.</p>
+<h2>3d TelKafes olarak dışa aktar...</h2>
+<p>Bu seçenek, <code>Dosya → Görüntüyü 2d olarak Dışa Aktar...</code> ile hemen hemen aynı şekilde davranır; ancak çizgileri ve eğrileri 
+belirtilen 2d düzleme yansıtmak yerine çizgileri ve eğrileri 3d olarak 
+dışa aktarır.</p>
+<p>3d TelKafes, herhangi bir yüzey veya katı 
+içermez. Bu aktarım seçeneği, genellikle katı parçaların görüntülenmesi 
+veya üretilmesi için uygun değildir. Bunun için bir Üçgensel Mesh (ağ) 
+veya bir NURBS yüzey (STEP) dosyası kullanın.</p>
+<h2>Üçgensel Mesh olarak dışa aktar (STL, OBJ)</h2>
+<p>Bu seçenek, tüm parçayı temsil eden bir 3B 
+üçgensel ağ (mesh) oluşturacaktır. Çoğu 3d yazıcının yazılımı da dahil 
+olmak üzere, çoğu 3D CAM yazılımı bir STL dosyasını kabul eder.</p>
+<p>Aktif gruptaki ağ (kafes yapısı) dışa 
+aktarılacaktır; bu, ekranda görüntülenen aynı ağdır (kafes yapısıdır). 
+STL dosyası için koordinat sistemi, parçanın çizildiği koordinat 
+sistemiyle aynıdır. Farklı bir koordinat sistemi kullanmak için (örn. 
+parçayı döndürmek veya çevirmek için), parça istenen konumda olacak 
+şekilde bir montaj oluşturun ve ardından montajın bir STL dosyasını dışa
+ aktarın.</p>
+<p>STL dosyasının ölçü birimleri, yapılandırma ekranında belirtilebilecek olan dışa aktarma ölçek faktörü/katsayısı (<code>export scale factor</code>) tarafından belirlenir.</p>
+<p><img alt="Dışa aktarma ölçek faktörü (katsayısı)" src="images/solvespace/49%20Olcek%20Faktoru.png"></p>
+<h2>Yüzeyleri dışa aktar (STEP)</h2>
+<p>Model, NURBS yüzeyleri olarak temsil ediliyorsa 
+(sadece bir üçgensel ağ olarak değil), kullanıcı bu tam yüzeyleri bir 
+STEP dosyası olarak dışa aktarabilir. Bu tür dışa aktarım işlemi mümkün 
+olduğunda, işlem herhangi bir hata oluşturmadığından dolayı genellikle 
+en iyi seçimdir. Birçok CAM, hızlı prototipleme ve diğer CAD araçları 
+bir STEP dosyasını kabul edecektir.</p>
+<p>Hangi ölçek faktörü/katsayısı uygulanırsa uygulansın, STEP dosyası her zaman milimetre birimlerini gösterecektir.</p>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/solvespace.html">Solvespace</a></li>
+					<li><a href="/tag/3d.html">3D</a></li>
+					<li><a href="/tag/3b.html">3B</a></li>
+					<li><a href="/tag/cad.html">CAD</a></li>
+					<li><a href="/tag/kilavuz.html">Kılavuz</a></li>
+					<li><a href="/tag/disa-aktar.html">Dışa Aktar</a></li>
+					<li><a href="/tag/export.html">Export</a></li>
+					<li><a href="/tag/resim.html">Resim</a></li>
+					<li><a href="/tag/kesit.html">Kesit</a></li>
+					<li><a href="/tag/2d.html">2D</a></li>
+					<li><a href="/tag/2b.html">2B</a></li>
+					<li><a href="/tag/goruntu.html">Görüntü</a></li>
+					<li><a href="/tag/telkafes.html">TelKafes</a></li>
+					<li><a href="/tag/ucgen.html">Üçgen</a></li>
+					<li><a href="/tag/yuzey.html">Yüzey</a></li>
+					<li><a href="/tag/mesh.html">Mesh</a></li>
+					<li><a href="/tag/stl.html">STL</a></li>
+					<li><a href="/tag/obj.html">OBJ</a></li>
+					<li><a href="/tag/step.html">STEP</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>

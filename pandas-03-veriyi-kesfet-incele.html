@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Pandas 03 -  Veriyi Keşfet - İncele" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/pandas-03-veriyi-kesfet-incele.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Pandas 03 -  Veriyi Keşfet - İncele</h1>
+	<span class="post-date">Cts 15 Ocak 2022</span>
+	<h2>Veriyi Keşfet / İncele</h2>
+<p>Bu bölümde <strong>Veri Çerçevesi</strong> (<strong>Data Frame</strong>) içeriğini görüntülemeye dair komutları öğreneceğiz.</p>
+<p>Öncelikle <strong>Pandas</strong> Kütüphanesini içe aktarıp, kodlama esnasında hızlı olması adına bu kütüphaneye <strong>pd</strong> adını atayalım;</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</code></pre></div>
+
+<p>Bu eğitimde, fonksiyon ve metotlar konusunu anlatırken kullanmak üzere, basit bir Veri Çerçevesi (Data Frame) oluşturalım ve oluşturduğumuz Veri Çerçevesinin içeriğini görelim;</p>
+<div class="highlight"><pre><span></span><code><span class="n">sozluk</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;isim&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Mustafa&quot;</span><span class="p">,</span> <span class="s2">&quot;Halil&quot;</span><span class="p">,</span> <span class="s2">&quot;Burak&quot;</span><span class="p">,</span> <span class="s2">&quot;Emre&quot;</span><span class="p">,</span> <span class="s2">&quot;Ersin&quot;</span><span class="p">,</span> <span class="s2">&quot;Sertaç&quot;</span><span class="p">,</span> <span class="s2">&quot;Furkan&quot;</span><span class="p">,</span><span class="s2">&quot;Murat&quot;</span><span class="p">,</span><span class="s2">&quot;Ahmet&quot;</span><span class="p">,</span><span class="s2">&quot;Abdülkadir&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;yaş&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">41</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">52</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">38</span><span class="p">],</span>
+                   <span class="s2">&quot;iş-meslek&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;mühendis&quot;</span><span class="p">,</span> <span class="s2">&quot;programcı&quot;</span><span class="p">,</span> <span class="s2">&quot;akademisyen&quot;</span><span class="p">,</span> <span class="s2">&quot;yönetici&quot;</span><span class="p">,</span><span class="s2">&quot;amir&quot;</span><span class="p">,</span><span class="s2">&quot;mühendis&quot;</span><span class="p">,</span> <span class="s2">&quot;yönetici&quot;</span><span class="p">,</span><span class="s2">&quot;müdür&quot;</span><span class="p">,</span><span class="s2">&quot;veteriner&quot;</span><span class="p">,</span><span class="s2">&quot;yönetici&quot;</span><span class="p">]}</span>
+<span class="n">veri</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">sozluk</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>isim</th>
+<th>yaş</th>
+<th>iş-meslek</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Mustafa</td>
+<td>25</td>
+<td>mühendis</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Halil</td>
+<td>38</td>
+<td>programcı</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Burak</td>
+<td>41</td>
+<td>akademisyen</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Emre</td>
+<td>23</td>
+<td>yönetici</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Ersin</td>
+<td>37</td>
+<td>amir</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Sertaç</td>
+<td>52</td>
+<td>mühendis</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Furkan</td>
+<td>30</td>
+<td>yönetici</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Murat</td>
+<td>23</td>
+<td>müdür</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Ahmet</td>
+<td>40</td>
+<td>veteriner</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Abdülkadir</td>
+<td>38</td>
+<td>yönetici</td>
+</tr>
+</tbody>
+</table>
+<h3>TEMEL FONKSİYONLAR</h3>
+<h3>head() Fonksiyonu</h3>
+<p>Oluşturduğumuz ya da çalışmamıza dahil ettiğimiz (içe aktardığımız) Veri Çerçevelerinin ilk satırlarını görüp, içerik hakkında bilgi edinmek istersek <strong>head()</strong> fonksiyonunu kullanabiliriz. <strong>Head</strong> kelimesi Türkçede <strong>Baş, Kafa</strong> anlamına gelmektedir.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>isim</th>
+<th>yaş</th>
+<th>iş-meslek</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Mustafa</td>
+<td>25</td>
+<td>mühendis</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Halil</td>
+<td>38</td>
+<td>programcı</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Burak</td>
+<td>41</td>
+<td>akademisyen</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Emre</td>
+<td>23</td>
+<td>yönetici</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Ersin</td>
+<td>37</td>
+<td>amir</td>
+</tr>
+</tbody>
+</table>
+<p><strong>head()</strong> fonksiyonunda parantez içine parametre olarak bir değer yazmazsak, veri çerçevesinin <strong>ilk 5 (satır) değeri</strong> görüntülenir. Değer belirtirsek belirttiğimiz değer kadar satır verisi görüntülenir.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>isim</th>
+<th>yaş</th>
+<th>iş-meslek</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Mustafa</td>
+<td>25</td>
+<td>mühendis</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Halil</td>
+<td>38</td>
+<td>programcı</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Burak</td>
+<td>41</td>
+<td>akademisyen</td>
+</tr>
+</tbody>
+</table>
+<p>İndex değerinin 2'de bitmesi sizi şaşırtmasın, pekçok programlama dilindi olduğu gibi Python programlama dilinde de, sayma sayıları sıfırdan başlar. Zaten tabloyu incelerseniz, tabloda 3 kullanıcıya ait (3 satır) veri olduğunu görürsünüz.</p>
+<h3>tail() Fonksiyonu</h3>
+<p><strong>head()</strong> fonksiyonuna oldukça benzer bir fonksiyondur. Oluşturduğumuz ya da çalışmamıza dahil ettiğimiz Veri Çerçevelerinin <strong>son satırlarını</strong> görüp içerik hakkında bilgi edinmek istersek <strong>tail()</strong> fonksiyonunu kullanabiliriz. <strong>Tail</strong> kelimesi Türkçede, <strong>kuyruk, son kısım</strong> anlamına gelmektedir.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="o">.</span><span class="n">tail</span><span class="p">())</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>isim</th>
+<th>yaş</th>
+<th>iş-meslek</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5</td>
+<td>Sertaç</td>
+<td>52</td>
+<td>mühendis</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Furkan</td>
+<td>30</td>
+<td>yönetici</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Murat</td>
+<td>23</td>
+<td>müdür</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Ahmet</td>
+<td>40</td>
+<td>veteriner</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Abdülkadir</td>
+<td>38</td>
+<td>yönetici</td>
+</tr>
+</tbody>
+</table>
+<p><strong>tail()</strong> fonksiyonunu içine parametre olarak bir değer yazmazsak, veri çerçevesinin <strong>son 5 (satır) değerini</strong> görüntüler. Değer belirtirsek belirttiğimiz değer kadar satır verisi görüntüler.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">7</span><span class="p">))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>isim</th>
+<th>yaş</th>
+<th>iş-meslek</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3</td>
+<td>Emre</td>
+<td>23</td>
+<td>yönetici</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Ersin</td>
+<td>37</td>
+<td>amir</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Sertaç</td>
+<td>52</td>
+<td>mühendis</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Furkan</td>
+<td>30</td>
+<td>yönetici</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Murat</td>
+<td>23</td>
+<td>müdür</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Ahmet</td>
+<td>40</td>
+<td>veteriner</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Abdülkadir</td>
+<td>38</td>
+<td>yönetici</td>
+</tr>
+</tbody>
+</table>
+<h3>columns Fonksiyonu</h3>
+<p><strong>columns</strong> fonksiyonu, oluşturulan ya da içe aktarılan Veri Çerçevelerinin başlık satırını çıktı olarak verir. <strong>columns</strong> fonksiyonunu kullanırken sonunda <u>parantez işaretleri kullanmadığımıza</u> dikkat edin.</p>
+<p>Sütun isimlerini değiştirmek ya da veri çerçevesine filtreleme işlemi uygulamak istediğimiz zaman, bu fonksiyon çok işimize yarar.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="nx">Index</span><span class="p">([</span><span class="err">&#39;</span><span class="nx">isim</span><span class="err">&#39;</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;</span><span class="nx">yaş</span><span class="err">&#39;</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;</span><span class="nx">iş</span><span class="o">-</span><span class="nx">meslek</span><span class="err">&#39;</span><span class="p">],</span><span class="w"> </span><span class="nx">dtype</span><span class="p">=</span><span class="err">&#39;</span><span class="nx">object</span><span class="err">&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>len() Fonksiyonu</h3>
+<p><strong>len()</strong> foknsiyonu, Veri Çerçevesinin kaç satırdan oluştuğunu bildirir.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">veri</span><span class="p">))</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mf">10</span>
+</code></pre></div>
+
+<p>Çıktıdan anladığımız kadarıyla, <strong>veri</strong> isimli veri çerçevesi, 10 satırlık bir yapıdan oluşuyor.</p>
+<h3>info() Fonksiyonu</h3>
+<p><strong>info()</strong> fonksiyonu, Veri Çerçevesinin satır ve sütun sayısı, başlık tipleri (sayı[int, float], metin[object, string], ...vb) ve doluluk oranı (boş olmayan hücre sayısı[non-null]) hakkında bilgi görüntüler.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="o">.</span><span class="n">info</span><span class="p">())</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="kd">class</span><span class="w"> </span><span class="err">&#39;</span><span class="nx">pandas</span><span class="p">.</span><span class="nx">core</span><span class="p">.</span><span class="nx">frame</span><span class="p">.</span><span class="nx">DataFrame</span><span class="err">&#39;</span><span class="p">&gt;</span>
+<span class="nx">RangeIndex</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="nx">entries</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="mi">9</span>
+<span class="nx">Data</span><span class="w"> </span><span class="nx">columns</span><span class="w"> </span><span class="p">(</span><span class="nx">total</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="nx">columns</span><span class="p">):</span>
+<span class="w"> </span><span class="err">#</span><span class="w">   </span><span class="nx">Column</span><span class="w">     </span><span class="nx">Non</span><span class="o">-</span><span class="nx">Null</span><span class="w"> </span><span class="nx">Count</span><span class="w">  </span><span class="nx">Dtype</span><span class="w"> </span>
+<span class="o">---</span><span class="w">  </span><span class="o">------</span><span class="w">     </span><span class="o">--------------</span><span class="w">  </span><span class="o">-----</span><span class="w"> </span>
+<span class="w"> </span><span class="mi">0</span><span class="w">   </span><span class="nx">isim</span><span class="w">       </span><span class="mi">10</span><span class="w"> </span><span class="nx">non</span><span class="o">-</span><span class="nx">null</span><span class="w">     </span><span class="nx">object</span>
+<span class="w"> </span><span class="mi">1</span><span class="w">   </span><span class="nx">yaş</span><span class="w">        </span><span class="mi">10</span><span class="w"> </span><span class="nx">non</span><span class="o">-</span><span class="nx">null</span><span class="w">     </span><span class="nx">int64</span><span class="w"> </span>
+<span class="w"> </span><span class="mi">2</span><span class="w">   </span><span class="nx">iş</span><span class="o">-</span><span class="nx">meslek</span><span class="w">  </span><span class="mi">10</span><span class="w"> </span><span class="nx">non</span><span class="o">-</span><span class="nx">null</span><span class="w">     </span><span class="nx">object</span>
+<span class="nx">dtypes</span><span class="p">:</span><span class="w"> </span><span class="nx">int64</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="nx">object</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="nx">memory</span><span class="w"> </span><span class="nx">usage</span><span class="p">:</span><span class="w"> </span><span class="m m-Double">368.0</span><span class="o">+</span><span class="w"> </span><span class="nx">bytes</span>
+</code></pre></div>
+
+<p><u>Çıktıyı incelersek;</u><br>
+<strong>class 'pandas.core.frame.DataFrame</strong> : <strong>veri</strong>'nin Pandas sınıfına ait bir DataFrame yapısı olduğunu,<br>
+<strong>RangeIndex: 10 entries, 0 to 9</strong> : Veri Çerçevesinin 0 ile 9 arasında, toplam 10 satırlık yapı olduğunu,<br>
+<strong>Data columns (total 3 columns)</strong> : Veri Çerçevesinin 3 sütundan oluştuğunu,<br>
+<strong>Column</strong> : Sütun isimlerini,<br>
+<strong>Non-Null Count</strong> : Boş olmayan veri sayısını,<br>
+<strong>Dtype</strong> : Veri biçimini tanımlar.<br>
+<strong>int34</strong> ya da int64 <strong>ibaresi</strong>, <strong>tamsayı (integer)</strong> olduğunu, <strong>object</strong> ibaresi, verinin <strong>metin (string)</strong> ifadesi olduğunu,<br>
+<strong>dtypes: int64(1), object(2)</strong> : Veri Çerçevesinin 1 adet tamsayı (<strong>int64(1)</strong>), 2 adet metinsel (string / <strong>object(2)</strong>) başlık/sütun içerdiğini temsil eder.</p>
+<h3>dtypes Fonksiyonu</h3>
+<p><strong>dtypes</strong> fonksiyonu, veri çerçevesinin başlık tiplerini görüntüler. <strong>dtypes</strong> fonksiyonunu kullanırken sonunda <u>parantez işaretleri kullanmadığımıza</u> dikkat edin.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="o">.</span><span class="n">dtypes</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="nx">isim</span><span class="w">         </span><span class="nx">object</span>
+<span class="nx">yaş</span><span class="w">           </span><span class="nx">int64</span>
+<span class="nx">iş</span><span class="o">-</span><span class="nx">meslek</span><span class="w">    </span><span class="nx">object</span>
+<span class="nx">dtype</span><span class="p">:</span><span class="w"> </span><span class="nx">object</span>
+</code></pre></div>
+
+<h3>describe() Fonksiyonu</h3>
+<p><strong>describe()</strong> fonksiyonu, sayısal veri barındıran sütunlar hakkında detaylı matematiksel bilgiler verir.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>yaş</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>count</td>
+<td>10.000000</td>
+</tr>
+<tr>
+<td>mean</td>
+<td>34.700000</td>
+</tr>
+<tr>
+<td>std</td>
+<td>9.333929</td>
+</tr>
+<tr>
+<td>min</td>
+<td>23.000000</td>
+</tr>
+<tr>
+<td>25%</td>
+<td>26.250000</td>
+</tr>
+<tr>
+<td>50%</td>
+<td>37.500000</td>
+</tr>
+<tr>
+<td>75%</td>
+<td>39.500000</td>
+</tr>
+<tr>
+<td>max</td>
+<td>52.000000</td>
+</tr>
+</tbody>
+</table>
+<p><u>Çıktıyı incelersek;</u><br>
+<strong>count :</strong> yaş isimli sütunda kaç adet veri olduğunu,<br>
+<strong>mean :</strong> yaş isimli sütudaki verilerin ortalamasını,<br>
+<strong>std :</strong> yaş isimli sütudaki verilerin standart sapmasını,<br>
+<strong>min:</strong> yaş isimli sütudaki verilerin en küçük değerini<br>
+<strong>%25 :</strong> yaş isimli sütundaki verilerin medyanın alt çeyreğini (dörttebirliğini),<br>
+<strong>%50 :</strong> yaş isimli sütundaki verilerin Ortanca medyanını,<br>
+<strong>%75 :</strong> yaş isimli sütundaki verilerin medyanın üst çeyreğini (dörttebirliğini),<br>
+<strong>max :</strong> yaş isimli sütudaki verilerin en büyük değerini, tanımlar</p>
+<h3>shape Fonksiyonu</h3>
+<p>Veri Çerçevesinin yapısını yani satır ve sütun bilgisini öğrenmek için shape fonksiyonunu kullanabiliriz.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>(10, 3)
+</code></pre></div>
+
+<h3>index Fonksiyonu</h3>
+<p><strong>index</strong> fonksiyonu, Veri Çerçevesinin indeks bilgisini döndürür.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>RangeIndex(start=0, stop=10, step=1)
+</code></pre></div>
+
+<p>Veri çerçevesi oluşturulurken indeks değerlerinin otomatik olarak belirlenmesi halinde, yukarıdaki şekilde çıktı alırız. Çıktıyı incelersek;</p>
+<ul>
+<li><strong>start=0</strong> : İlk indeks değerinin 0 olduğu,</li>
+<li><strong>stop=10</strong> : son indeks değerinin 10 olduğu,</li>
+<li><strong>step=1</strong> : indeks değerlerinin 1'er 1'er arttığını belirtmektedir.</li>
+</ul>
+<p>Peki indeks değeri sayılardan oluşmazsa, yani indeks bilgisi tarafımızca belirtilen Metinsel verilerden oluşursa <strong>index</strong> fonksiyonu nasıl çıktı verir?.</p>
+<div class="highlight"><pre><span></span><code><span class="n">imdb</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/imdb.xlsx&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s2">&quot;Film_Adı&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">imdb</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Yıl</th>
+<th>Puan</th>
+<th>Oylayan_Kişi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Film_Adı</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+</tr>
+<tr>
+<td>The Shawshank Redemption</td>
+<td>1994</td>
+<td>9,2</td>
+<td>1071904</td>
+</tr>
+<tr>
+<td>The Godfather</td>
+<td>1972</td>
+<td>9,2</td>
+<td>751381</td>
+</tr>
+<tr>
+<td>The Godfather: Part II</td>
+<td>1974</td>
+<td>9</td>
+<td>488889</td>
+</tr>
+<tr>
+<td>Pulp Fiction</td>
+<td>1994</td>
+<td>8,9</td>
+<td>830504</td>
+</tr>
+<tr>
+<td>The Dark Knight</td>
+<td>2008</td>
+<td>8,9</td>
+<td>1045186</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">imdb</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="nx">Index</span><span class="p">([</span><span class="err">&#39;</span><span class="nx">The</span><span class="w"> </span><span class="nx">Shawshank</span><span class="w"> </span><span class="nx">Redemption</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;</span><span class="nx">The</span><span class="w"> </span><span class="nx">Godfather</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span>
+<span class="w">       </span><span class="err">&#39;</span><span class="nx">The</span><span class="w"> </span><span class="nx">Godfather</span><span class="p">:</span><span class="w"> </span><span class="nx">Part</span><span class="w"> </span><span class="nx">II</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;</span><span class="nx">Pulp</span><span class="w"> </span><span class="nx">Fiction</span><span class="err">&#39;</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;</span><span class="nx">The</span><span class="w"> </span><span class="nx">Dark</span><span class="w"> </span><span class="nx">Knight</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span>
+<span class="w">       </span><span class="err">&#39;</span><span class="mi">12</span><span class="w"> </span><span class="nx">Angry</span><span class="w"> </span><span class="nx">Men</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;</span><span class="nx">Schindler</span><span class="err">&#39;</span><span class="nx">s</span><span class="w"> </span><span class="nx">List</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span>
+<span class="w">       </span><span class="err">&#39;</span><span class="nx">The</span><span class="w"> </span><span class="nx">Lord</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">Rings</span><span class="p">:</span><span class="w"> </span><span class="nx">The</span><span class="w"> </span><span class="nx">Return</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">King</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;</span><span class="nx">Fight</span><span class="w"> </span><span class="nx">Club</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span>
+<span class="w">       </span><span class="err">&#39;</span><span class="nx">Star</span><span class="w"> </span><span class="nx">Wars</span><span class="p">:</span><span class="w"> </span><span class="nx">Episode</span><span class="w"> </span><span class="nx">V</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">The</span><span class="w"> </span><span class="nx">Empire</span><span class="w"> </span><span class="nx">Strikes</span><span class="w"> </span><span class="nx">Back</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span>
+<span class="w">       </span><span class="o">...</span>
+<span class="w">       </span><span class="err">&#39;</span><span class="nx">The</span><span class="w"> </span><span class="nx">Artist</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;</span><span class="nx">Nausicaä</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">Valley</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">Wind</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span>
+<span class="w">       </span><span class="err">&#39;</span><span class="nx">Beauty</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">Beast</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;</span><span class="nx">Three</span><span class="w"> </span><span class="nx">Colors</span><span class="p">:</span><span class="w"> </span><span class="nx">Red</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;</span><span class="nx">Bringing</span><span class="w"> </span><span class="nx">Up</span><span class="w"> </span><span class="nx">Baby</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span>
+<span class="w">       </span><span class="err">&#39;</span><span class="nx">Mystic</span><span class="w"> </span><span class="nx">River</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;</span><span class="nx">In</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">Heat</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">Night</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;</span><span class="nx">Arsenic</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="nx">Old</span><span class="w"> </span><span class="nx">Lace</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span>
+<span class="w">       </span><span class="err">&#39;</span><span class="nx">Before</span><span class="w"> </span><span class="nx">Sunrise</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;</span><span class="nx">Papillon</span><span class="w"> </span><span class="err">&#39;</span><span class="p">],</span>
+<span class="w">      </span><span class="nx">dtype</span><span class="p">=</span><span class="err">&#39;</span><span class="nx">object</span><span class="err">&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="p">=</span><span class="err">&#39;</span><span class="nx">Film_Adı</span><span class="err">&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">length</span><span class="p">=</span><span class="mi">247</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Gördüğünüz gibi, <strong>indeks</strong> bilgisi Metinsel veriler olduğunda, <strong>index</strong> fonksiyonunun çıktısı yukarıda şekilde alınıyor. Çıktıyı incelersek;</p>
+<ul>
+<li><strong>Index(['The Shawshank Redemption ', 'The Godfather ', 'The Godfather: Part II ', ...]</strong> : İndeks bilgileri liste halinde verilir,</li>
+<li><strong>type='object'</strong> : İndeks bilgilerinin "Object" yani "Metinsel (String)" veri olduğu,</li>
+<li><strong>name='Film_Adı'</strong> : İndexks başlığının "Film_Adı" olduğu,</li>
+<li><strong>length=247</strong> : toplam 247 adet indeks verisi (satır) olduğu ifade etmektedir.</li>
+</ul>
+<h3>isnull() Fonksiyonu</h3>
+<p>Veri çerçevesinde boş, kayıp veri olup olmadığını <strong>isnull()</strong> fonksiyonu ile tespit edebiliriz. Bu fonksiyonu çalıştırdığımızda veri çerçevesinin satır ve sütun başlıkları ekrana yazdırılır ancak veri yerine <strong>True</strong> ya da <strong>False</strong> bilgisi görüntülenir.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="o">.</span><span class="n">isnull</span><span class="p">())</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>isim</th>
+<th>yaş</th>
+<th>iş-meslek</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<td>1</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<td>2</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<td>3</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<td>4</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<td>5</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<td>6</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<td>7</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<td>8</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<td>9</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+</tbody>
+</table>
+<p><strong>isnull()</strong> fonksiyonuna <strong>any()</strong> Fonksiyonunu da eklersek, veri çerçevesi tümüyle görüntülenmez sadece veri çerçevesi başlıkları ve bu başlıklarda (sütunlarda) eksik/kayıp veri bulunup bulunmadığı bilgisi görüntülenir.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">())</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="nx">isim</span><span class="w">         </span><span class="nx">False</span>
+<span class="nx">yaş</span><span class="w">          </span><span class="nx">False</span>
+<span class="nx">iş</span><span class="o">-</span><span class="nx">meslek</span><span class="w">    </span><span class="nx">False</span>
+<span class="nx">dtype</span><span class="p">:</span><span class="w"> </span><span class="kt">bool</span>
+</code></pre></div>
+
+<p>Görüyoruz ki, veri çerçevemizde hiç eksik/kayıp veri bulunmamaktadır.
+ Yukarıdaki sözlük yapısında bazı verileri boş bırakarak yeni bir veri çerçevesi oluşturalım ve <strong>isnull()</strong> fonksiyonunu çalıştırıp sonuçları inceleyelim.</p>
+<div class="highlight"><pre><span></span><code><span class="n">sozluk_2</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;isim&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Mustafa&quot;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">NaT</span><span class="p">,</span> <span class="s2">&quot;Burak&quot;</span><span class="p">,</span> <span class="s2">&quot;Emre&quot;</span><span class="p">,</span> <span class="s2">&quot;Ersin&quot;</span><span class="p">,</span> <span class="s2">&quot;Sertaç&quot;</span><span class="p">,</span> <span class="s2">&quot;Furkan&quot;</span><span class="p">,</span><span class="s2">&quot;Murat&quot;</span><span class="p">,</span><span class="s2">&quot;Ahmet&quot;</span><span class="p">,</span><span class="s2">&quot;Abdülkadir&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;yaş&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">41</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">NaT</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">52</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span>  <span class="n">pd</span><span class="o">.</span><span class="n">NaT</span><span class="p">],</span>
+                   <span class="s2">&quot;iş-meslek&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;mühendis&quot;</span><span class="p">,</span> <span class="s2">&quot;programcı&quot;</span><span class="p">,</span> <span class="s2">&quot;akademisyen&quot;</span><span class="p">,</span> <span class="s2">&quot;yönetici&quot;</span><span class="p">,</span><span class="s2">&quot;amir&quot;</span><span class="p">,</span><span class="s2">&quot;mühendis&quot;</span><span class="p">,</span> <span class="s2">&quot;yönetici&quot;</span><span class="p">,</span><span class="s2">&quot;müdür&quot;</span><span class="p">,</span><span class="s2">&quot;veteriner&quot;</span><span class="p">,</span><span class="s2">&quot;yönetici&quot;</span><span class="p">]}</span>
+<span class="n">veri_2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">sozluk_2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">veri_2</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>isim</th>
+<th>yaş</th>
+<th>iş-meslek</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Mustafa</td>
+<td>25</td>
+<td>mühendis</td>
+</tr>
+<tr>
+<td>1</td>
+<td>NaT</td>
+<td>38</td>
+<td>programcı</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Burak</td>
+<td>41</td>
+<td>akademisyen</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Emre</td>
+<td>NaT</td>
+<td>yönetici</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Ersin</td>
+<td>37</td>
+<td>amir</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Sertaç</td>
+<td>52</td>
+<td>mühendis</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Furkan</td>
+<td>30</td>
+<td>yönetici</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Murat</td>
+<td>23</td>
+<td>müdür</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Ahmet</td>
+<td>40</td>
+<td>veteriner</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Abdülkadir</td>
+<td>NaT</td>
+<td>yönetici</td>
+</tr>
+</tbody>
+</table>
+<p><strong>1</strong> nolu İndeksteki <strong>isim</strong>, <strong>3</strong> nolu ve <strong>9</strong> nolu İndekslerdeki <strong>yaş</strong> bilgilerin boş olduğunu görüyoruz.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri_2</span><span class="o">.</span><span class="n">isnull</span><span class="p">())</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>isim</th>
+<th>yaş</th>
+<th>iş-meslek</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<td>1</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<td>2</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<td>3</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+</tr>
+<tr>
+<td>4</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<td>5</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<td>6</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<td>7</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<td>8</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<td>9</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+</tr>
+</tbody>
+</table>
+<p><strong>1</strong> nolu İndeksteki <strong>isim</strong>, <strong>3</strong> nolu ve <strong>9</strong> nolu İndekslerdeki <strong>yaş</strong> bilgileri <strong>eksik</strong> olduğu için bu değerler <strong>True</strong>, diğer hücrelerde ise eksik veri olmadığı için <strong>False</strong> değeri ile gösterilmektedir.<br>
+Sütun bazlı eksik/kayıp veri olup olmadığını incelersek;</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri_2</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">())</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="nx">isim</span><span class="w">          </span><span class="nx">True</span>
+<span class="nx">yaş</span><span class="w">           </span><span class="nx">True</span>
+<span class="nx">iş</span><span class="o">-</span><span class="nx">meslek</span><span class="w">    </span><span class="nx">False</span>
+<span class="nx">dtype</span><span class="p">:</span><span class="w"> </span><span class="kt">bool</span>
+</code></pre></div>
+
+<p>Çıktıdan anlıyoruz ki;</p>
+<ul>
+<li><strong>isim</strong> ve <strong>yaş</strong> sütunlarında Eksik veri bulunuyor</li>
+<li><strong>iş-meslek</strong> sütununda hiç eksik veri bulunmuyor.</li>
+</ul>
+<h2>value_counts() Fonksiyonu</h2>
+<p>Veri çerçevemizde bir sütunda aynı verinin kaç kez tekrar ettiğini (kaç adet bulunduğunu) öğrenmek için <code>value_counts()</code> fonksiyonunu kullanbiliriz.</p>
+<p>Örneğin, <strong>veri_2</strong> isimli veri çerçevemizde <strong>iş-meslek</strong> sütununda hangi veri kaç kez tekrar ediliyor, yani veri çerçevemizde kaç adet Mühendis, Programcı, Yönetici,...vb var.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri_2</span><span class="p">[</span><span class="s2">&quot;iş-meslek&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="nx">yönetici</span><span class="w">       </span><span class="mi">3</span>
+<span class="nx">mühendis</span><span class="w">       </span><span class="mi">2</span>
+<span class="nx">programcı</span><span class="w">      </span><span class="mi">1</span>
+<span class="nx">akademisyen</span><span class="w">    </span><span class="mi">1</span>
+<span class="nx">amir</span><span class="w">           </span><span class="mi">1</span>
+<span class="nx">müdür</span><span class="w">          </span><span class="mi">1</span>
+<span class="nx">veteriner</span><span class="w">      </span><span class="mi">1</span>
+<span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="nx">iş</span><span class="o">-</span><span class="nx">meslek</span><span class="p">,</span><span class="w"> </span><span class="nx">dtype</span><span class="p">:</span><span class="w"> </span><span class="nx">int64</span>
+</code></pre></div>
+
+<p><a href="pandas-02-excel-dosyalari-ile-calismak.html">← Önceki Bölüm</a> | <a href="pandas-04-secim-yontemleri.html">Sonraki Bölüm →</a></p>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/pandas.html">Pandas</a></li>
+					<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+					<li><a href="/tag/modul.html">Modül</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>

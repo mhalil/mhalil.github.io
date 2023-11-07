@@ -1,0 +1,4628 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Pandas 06 - Veri Düzenleme Yöntemleri" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/pandas-06-veri-duzenleme-yontemleri.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Pandas 06 - Veri Düzenleme Yöntemleri</h1>
+	<span class="post-date">Prş 03 Şubat 2022</span>
+	<h1>Düzenleme Yöntemleri</h1>
+<p>Bu bölümde, Oluşturulan Veri Çerçevelerinin düzenlemesine dair pek çok komut, fonksiyon ve parametre öğreneceğiz. Pandas kullanırken en fazla ihtiyaç duyacağımız Yöntemlerin bir kısmını bu bölümde ele alacak, anlatacağız.</p>
+<h3>İndeks Değerlerini Ayarlamak</h3>
+<h3>index_col Parametresi</h3>
+<p>Veri Çerçevesi (Data Frame) oluştururken sütunlardan birini, indeks değeri olarak ayarlamak/atamak istersek, <strong>index_col</strong> parametresini kullanabiliriz.
+Öncelikle elimizdeki excel dosyamızı veri çerçevesine dönüştürüp içeriğine göz atalım.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">dogumlar</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/AyaGöreDoğumlar.xlsx&quot;</span><span class="p">,</span> <span class="n">sheet_name</span> <span class="o">=</span> <span class="s2">&quot;ortalama&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dogumlar</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Yıl</th>
+<th>Toplam</th>
+<th>Ortalama</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>2001</td>
+<td>1323341</td>
+<td>110278.416667</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2002</td>
+<td>1229555</td>
+<td>102462.916667</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2003</td>
+<td>1198927</td>
+<td>99910.583333</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2004</td>
+<td>1222484</td>
+<td>101873.666667</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2005</td>
+<td>1244041</td>
+<td>103670.083333</td>
+</tr>
+</tbody>
+</table>
+<p>Oluşan veri çerçevesindeki <strong>Yıl</strong> sütununu indeks olarak ayarlayalım.</p>
+<div class="highlight"><pre><span></span><code><span class="n">dogumlar</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/AyaGöreDoğumlar.xlsx&quot;</span><span class="p">,</span> <span class="n">sheet_name</span> <span class="o">=</span> <span class="s2">&quot;ortalama&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dogumlar</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Yıl</th>
+<th>Toplam</th>
+<th>Ortalama</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2001</td>
+<td>1323341</td>
+<td>110278.416667</td>
+</tr>
+<tr>
+<td>2002</td>
+<td>1229555</td>
+<td>102462.916667</td>
+</tr>
+<tr>
+<td>2003</td>
+<td>1198927</td>
+<td>99910.583333</td>
+</tr>
+<tr>
+<td>2004</td>
+<td>1222484</td>
+<td>101873.666667</td>
+</tr>
+<tr>
+<td>2005</td>
+<td>1244041</td>
+<td>103670.083333</td>
+</tr>
+</tbody>
+</table>
+<p>İşlem başarılı. <strong>Yıl</strong> Sütunu, indeks olarak ayarlandı.</p>
+<h3>set_index() Fonksiyonu</h3>
+<p>Veri Çerçevelerinin oluştururken, indeks değerlerini <strong>index_col</strong> parametresi ile ayarlayabildiğimiz gibi İstersek Veri Çerçevesini oluşturduktan sonra da, <strong>set_index()</strong> metodu ile de indeks değerlerini değiştirebilir / atayabiliriz. <strong>dogumlar</strong> isimli veri çerçevemizi yeniden oluşturup indeks başlığı <strong>set_index()</strong> metodu ile değiştirelim.</p>
+<div class="highlight"><pre><span></span><code><span class="n">dogumlar</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/AyaGöreDoğumlar.xlsx&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dogumlar</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Yıl</th>
+<th>Toplam</th>
+<th>Ocak</th>
+<th>Şubat</th>
+<th>Mart</th>
+<th>Nisan</th>
+<th>Mayıs</th>
+<th>Haziran</th>
+<th>Temmuz</th>
+<th>Ağustos</th>
+<th>Eylül</th>
+<th>Ekim</th>
+<th>Kasım</th>
+<th>Aralık</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>2001</td>
+<td>1323341</td>
+<td>170397</td>
+<td>103476</td>
+<td>107912</td>
+<td>102585</td>
+<td>110391</td>
+<td>111722</td>
+<td>119752</td>
+<td>120963</td>
+<td>109590</td>
+<td>103662</td>
+<td>92554</td>
+<td>70337</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2002</td>
+<td>1229555</td>
+<td>155065</td>
+<td>103446</td>
+<td>102175</td>
+<td>95976</td>
+<td>99501</td>
+<td>102627</td>
+<td>109747</td>
+<td>108061</td>
+<td>99701</td>
+<td>96216</td>
+<td>89285</td>
+<td>67755</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2003</td>
+<td>1198927</td>
+<td>138670</td>
+<td>89548</td>
+<td>101046</td>
+<td>92574</td>
+<td>99531</td>
+<td>104644</td>
+<td>109225</td>
+<td>109159</td>
+<td>98766</td>
+<td>94838</td>
+<td>89542</td>
+<td>71384</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2004</td>
+<td>1222484</td>
+<td>141538</td>
+<td>94596</td>
+<td>100696</td>
+<td>100801</td>
+<td>102214</td>
+<td>105728</td>
+<td>111102</td>
+<td>110425</td>
+<td>98492</td>
+<td>94840</td>
+<td>90833</td>
+<td>71219</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2005</td>
+<td>1244041</td>
+<td>142311</td>
+<td>94234</td>
+<td>100529</td>
+<td>97441</td>
+<td>106833</td>
+<td>108536</td>
+<td>111066</td>
+<td>111430</td>
+<td>103273</td>
+<td>103310</td>
+<td>92364</td>
+<td>72714</td>
+</tr>
+<tr>
+<td>5</td>
+<td>2006</td>
+<td>1255432</td>
+<td>128708</td>
+<td>94760</td>
+<td>104126</td>
+<td>97624</td>
+<td>103903</td>
+<td>112016</td>
+<td>115097</td>
+<td>117298</td>
+<td>107158</td>
+<td>105773</td>
+<td>93167</td>
+<td>75802</td>
+</tr>
+<tr>
+<td>6</td>
+<td>2007</td>
+<td>1289992</td>
+<td>131276</td>
+<td>93927</td>
+<td>102807</td>
+<td>100159</td>
+<td>108119</td>
+<td>110359</td>
+<td>122324</td>
+<td>118169</td>
+<td>111055</td>
+<td>109888</td>
+<td>99639</td>
+<td>82270</td>
+</tr>
+<tr>
+<td>7</td>
+<td>2008</td>
+<td>1295511</td>
+<td>130424</td>
+<td>98099</td>
+<td>102962</td>
+<td>102877</td>
+<td>107003</td>
+<td>110089</td>
+<td>119977</td>
+<td>120048</td>
+<td>114470</td>
+<td>107978</td>
+<td>97389</td>
+<td>84195</td>
+</tr>
+<tr>
+<td>8</td>
+<td>2009</td>
+<td>1266751</td>
+<td>122407</td>
+<td>92414</td>
+<td>99419</td>
+<td>103432</td>
+<td>103783</td>
+<td>107847</td>
+<td>117160</td>
+<td>116229</td>
+<td>115824</td>
+<td>105407</td>
+<td>96155</td>
+<td>86674</td>
+</tr>
+<tr>
+<td>9</td>
+<td>2010</td>
+<td>1261169</td>
+<td>119444</td>
+<td>95023</td>
+<td>103583</td>
+<td>99477</td>
+<td>103676</td>
+<td>109441</td>
+<td>113639</td>
+<td>113082</td>
+<td>110324</td>
+<td>104427</td>
+<td>101610</td>
+<td>87443</td>
+</tr>
+<tr>
+<td>10</td>
+<td>2011</td>
+<td>1252812</td>
+<td>118547</td>
+<td>92484</td>
+<td>100992</td>
+<td>95348</td>
+<td>94131</td>
+<td>104086</td>
+<td>114390</td>
+<td>121152</td>
+<td>112959</td>
+<td>105048</td>
+<td>102970</td>
+<td>90705</td>
+</tr>
+<tr>
+<td>11</td>
+<td>2012</td>
+<td>1294605</td>
+<td>119556</td>
+<td>99966</td>
+<td>105499</td>
+<td>98880</td>
+<td>105807</td>
+<td>110056</td>
+<td>118649</td>
+<td>123634</td>
+<td>110338</td>
+<td>108327</td>
+<td>102413</td>
+<td>91480</td>
+</tr>
+<tr>
+<td>12</td>
+<td>2013</td>
+<td>1297505</td>
+<td>118373</td>
+<td>94803</td>
+<td>102471</td>
+<td>96865</td>
+<td>106757</td>
+<td>109672</td>
+<td>123758</td>
+<td>121625</td>
+<td>112913</td>
+<td>110716</td>
+<td>104182</td>
+<td>95370</td>
+</tr>
+<tr>
+<td>13</td>
+<td>2014</td>
+<td>1351088</td>
+<td>121694</td>
+<td>96802</td>
+<td>105603</td>
+<td>105652</td>
+<td>112448</td>
+<td>115978</td>
+<td>129616</td>
+<td>126296</td>
+<td>119030</td>
+<td>111754</td>
+<td>105566</td>
+<td>100649</td>
+</tr>
+<tr>
+<td>14</td>
+<td>2015</td>
+<td>1336908</td>
+<td>120373</td>
+<td>99169</td>
+<td>105792</td>
+<td>103110</td>
+<td>105254</td>
+<td>115681</td>
+<td>130945</td>
+<td>123296</td>
+<td>116428</td>
+<td>112839</td>
+<td>106319</td>
+<td>97702</td>
+</tr>
+<tr>
+<td>15</td>
+<td>2016</td>
+<td>1316204</td>
+<td>114274</td>
+<td>100640</td>
+<td>105166</td>
+<td>101947</td>
+<td>104080</td>
+<td>117994</td>
+<td>120126</td>
+<td>124833</td>
+<td>114366</td>
+<td>107951</td>
+<td>104959</td>
+<td>99868</td>
+</tr>
+<tr>
+<td>16</td>
+<td>2017</td>
+<td>1299419</td>
+<td>114968</td>
+<td>95567</td>
+<td>101700</td>
+<td>96132</td>
+<td>106274</td>
+<td>115827</td>
+<td>122894</td>
+<td>122386</td>
+<td>110811</td>
+<td>108538</td>
+<td>104386</td>
+<td>99936</td>
+</tr>
+<tr>
+<td>17</td>
+<td>2018</td>
+<td>1255258</td>
+<td>107530</td>
+<td>90002</td>
+<td>101283</td>
+<td>94776</td>
+<td>104719</td>
+<td>110383</td>
+<td>117967</td>
+<td>116715</td>
+<td>107105</td>
+<td>107818</td>
+<td>100436</td>
+<td>96524</td>
+</tr>
+<tr>
+<td>18</td>
+<td>2019</td>
+<td>1188524</td>
+<td>104044</td>
+<td>85510</td>
+<td>96631</td>
+<td>93013</td>
+<td>105166</td>
+<td>97965</td>
+<td>112628</td>
+<td>109182</td>
+<td>99981</td>
+<td>98320</td>
+<td>92936</td>
+<td>93148</td>
+</tr>
+<tr>
+<td>19</td>
+<td>2020</td>
+<td>1115821</td>
+<td>94888</td>
+<td>83433</td>
+<td>89503</td>
+<td>88526</td>
+<td>93159</td>
+<td>99232</td>
+<td>105970</td>
+<td>100478</td>
+<td>96018</td>
+<td>93428</td>
+<td>87540</td>
+<td>83646</td>
+</tr>
+<tr>
+<td>20</td>
+<td>2021</td>
+<td>1079842</td>
+<td>80733</td>
+<td>77535</td>
+<td>86214</td>
+<td>82789</td>
+<td>88506</td>
+<td>94266</td>
+<td>99252</td>
+<td>100407</td>
+<td>97334</td>
+<td>93290</td>
+<td>92189</td>
+<td>87327</td>
+</tr>
+</tbody>
+</table>
+<p>Veri çerçevesini yeniden (AyaGöreDoğumlar.xlsx isimli excel doyasından içe aktararak) oluşturduğumuz ve <strong>index_col</strong> parametresi kullanmadığımız için, İndeks değerleri Pandas tarafından otomatik olarak oluşturuldu. Bu kez de <strong>Toplam</strong> isimli sütun değerlerini <strong>set_index</strong> metoduyla, indeks değerleri olarak atayalım.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">dogumlar</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;Toplam&quot;</span><span class="p">))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Yıl</th>
+<th>Ocak</th>
+<th>Şubat</th>
+<th>Mart</th>
+<th>Nisan</th>
+<th>Mayıs</th>
+<th>Haziran</th>
+<th>Temmuz</th>
+<th>Ağustos</th>
+<th>Eylül</th>
+<th>Ekim</th>
+<th>Kasım</th>
+<th>Aralık</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Toplam</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+</tr>
+<tr>
+<td>1323341</td>
+<td>2001</td>
+<td>170397</td>
+<td>103476</td>
+<td>107912</td>
+<td>102585</td>
+<td>110391</td>
+<td>111722</td>
+<td>119752</td>
+<td>120963</td>
+<td>109590</td>
+<td>103662</td>
+<td>92554</td>
+<td>70337</td>
+</tr>
+<tr>
+<td>1229555</td>
+<td>2002</td>
+<td>155065</td>
+<td>103446</td>
+<td>102175</td>
+<td>95976</td>
+<td>99501</td>
+<td>102627</td>
+<td>109747</td>
+<td>108061</td>
+<td>99701</td>
+<td>96216</td>
+<td>89285</td>
+<td>67755</td>
+</tr>
+<tr>
+<td>1198927</td>
+<td>2003</td>
+<td>138670</td>
+<td>89548</td>
+<td>101046</td>
+<td>92574</td>
+<td>99531</td>
+<td>104644</td>
+<td>109225</td>
+<td>109159</td>
+<td>98766</td>
+<td>94838</td>
+<td>89542</td>
+<td>71384</td>
+</tr>
+<tr>
+<td>1222484</td>
+<td>2004</td>
+<td>141538</td>
+<td>94596</td>
+<td>100696</td>
+<td>100801</td>
+<td>102214</td>
+<td>105728</td>
+<td>111102</td>
+<td>110425</td>
+<td>98492</td>
+<td>94840</td>
+<td>90833</td>
+<td>71219</td>
+</tr>
+<tr>
+<td>1244041</td>
+<td>2005</td>
+<td>142311</td>
+<td>94234</td>
+<td>100529</td>
+<td>97441</td>
+<td>106833</td>
+<td>108536</td>
+<td>111066</td>
+<td>111430</td>
+<td>103273</td>
+<td>103310</td>
+<td>92364</td>
+<td>72714</td>
+</tr>
+<tr>
+<td>1255432</td>
+<td>2006</td>
+<td>128708</td>
+<td>94760</td>
+<td>104126</td>
+<td>97624</td>
+<td>103903</td>
+<td>112016</td>
+<td>115097</td>
+<td>117298</td>
+<td>107158</td>
+<td>105773</td>
+<td>93167</td>
+<td>75802</td>
+</tr>
+<tr>
+<td>1289992</td>
+<td>2007</td>
+<td>131276</td>
+<td>93927</td>
+<td>102807</td>
+<td>100159</td>
+<td>108119</td>
+<td>110359</td>
+<td>122324</td>
+<td>118169</td>
+<td>111055</td>
+<td>109888</td>
+<td>99639</td>
+<td>82270</td>
+</tr>
+<tr>
+<td>1295511</td>
+<td>2008</td>
+<td>130424</td>
+<td>98099</td>
+<td>102962</td>
+<td>102877</td>
+<td>107003</td>
+<td>110089</td>
+<td>119977</td>
+<td>120048</td>
+<td>114470</td>
+<td>107978</td>
+<td>97389</td>
+<td>84195</td>
+</tr>
+<tr>
+<td>1266751</td>
+<td>2009</td>
+<td>122407</td>
+<td>92414</td>
+<td>99419</td>
+<td>103432</td>
+<td>103783</td>
+<td>107847</td>
+<td>117160</td>
+<td>116229</td>
+<td>115824</td>
+<td>105407</td>
+<td>96155</td>
+<td>86674</td>
+</tr>
+<tr>
+<td>1261169</td>
+<td>2010</td>
+<td>119444</td>
+<td>95023</td>
+<td>103583</td>
+<td>99477</td>
+<td>103676</td>
+<td>109441</td>
+<td>113639</td>
+<td>113082</td>
+<td>110324</td>
+<td>104427</td>
+<td>101610</td>
+<td>87443</td>
+</tr>
+<tr>
+<td>1252812</td>
+<td>2011</td>
+<td>118547</td>
+<td>92484</td>
+<td>100992</td>
+<td>95348</td>
+<td>94131</td>
+<td>104086</td>
+<td>114390</td>
+<td>121152</td>
+<td>112959</td>
+<td>105048</td>
+<td>102970</td>
+<td>90705</td>
+</tr>
+<tr>
+<td>1294605</td>
+<td>2012</td>
+<td>119556</td>
+<td>99966</td>
+<td>105499</td>
+<td>98880</td>
+<td>105807</td>
+<td>110056</td>
+<td>118649</td>
+<td>123634</td>
+<td>110338</td>
+<td>108327</td>
+<td>102413</td>
+<td>91480</td>
+</tr>
+<tr>
+<td>1297505</td>
+<td>2013</td>
+<td>118373</td>
+<td>94803</td>
+<td>102471</td>
+<td>96865</td>
+<td>106757</td>
+<td>109672</td>
+<td>123758</td>
+<td>121625</td>
+<td>112913</td>
+<td>110716</td>
+<td>104182</td>
+<td>95370</td>
+</tr>
+<tr>
+<td>1351088</td>
+<td>2014</td>
+<td>121694</td>
+<td>96802</td>
+<td>105603</td>
+<td>105652</td>
+<td>112448</td>
+<td>115978</td>
+<td>129616</td>
+<td>126296</td>
+<td>119030</td>
+<td>111754</td>
+<td>105566</td>
+<td>100649</td>
+</tr>
+<tr>
+<td>1336908</td>
+<td>2015</td>
+<td>120373</td>
+<td>99169</td>
+<td>105792</td>
+<td>103110</td>
+<td>105254</td>
+<td>115681</td>
+<td>130945</td>
+<td>123296</td>
+<td>116428</td>
+<td>112839</td>
+<td>106319</td>
+<td>97702</td>
+</tr>
+<tr>
+<td>1316204</td>
+<td>2016</td>
+<td>114274</td>
+<td>100640</td>
+<td>105166</td>
+<td>101947</td>
+<td>104080</td>
+<td>117994</td>
+<td>120126</td>
+<td>124833</td>
+<td>114366</td>
+<td>107951</td>
+<td>104959</td>
+<td>99868</td>
+</tr>
+<tr>
+<td>1299419</td>
+<td>2017</td>
+<td>114968</td>
+<td>95567</td>
+<td>101700</td>
+<td>96132</td>
+<td>106274</td>
+<td>115827</td>
+<td>122894</td>
+<td>122386</td>
+<td>110811</td>
+<td>108538</td>
+<td>104386</td>
+<td>99936</td>
+</tr>
+<tr>
+<td>1255258</td>
+<td>2018</td>
+<td>107530</td>
+<td>90002</td>
+<td>101283</td>
+<td>94776</td>
+<td>104719</td>
+<td>110383</td>
+<td>117967</td>
+<td>116715</td>
+<td>107105</td>
+<td>107818</td>
+<td>100436</td>
+<td>96524</td>
+</tr>
+<tr>
+<td>1188524</td>
+<td>2019</td>
+<td>104044</td>
+<td>85510</td>
+<td>96631</td>
+<td>93013</td>
+<td>105166</td>
+<td>97965</td>
+<td>112628</td>
+<td>109182</td>
+<td>99981</td>
+<td>98320</td>
+<td>92936</td>
+<td>93148</td>
+</tr>
+<tr>
+<td>1115821</td>
+<td>2020</td>
+<td>94888</td>
+<td>83433</td>
+<td>89503</td>
+<td>88526</td>
+<td>93159</td>
+<td>99232</td>
+<td>105970</td>
+<td>100478</td>
+<td>96018</td>
+<td>93428</td>
+<td>87540</td>
+<td>83646</td>
+</tr>
+<tr>
+<td>1079842</td>
+<td>2021</td>
+<td>80733</td>
+<td>77535</td>
+<td>86214</td>
+<td>82789</td>
+<td>88506</td>
+<td>94266</td>
+<td>99252</td>
+<td>100407</td>
+<td>97334</td>
+<td>93290</td>
+<td>92189</td>
+<td>87327</td>
+</tr>
+</tbody>
+</table>
+<h3>Sütunları Atla</h3>
+<h3>usecols Parametresi</h3>
+<p>Bir Excel çalışma sayfasını ya da farklı kaynaktan alınan veriyi, Pandas ile Veri Çerçevesine (DataFrame'e) dönüştürürken, bazı sütunları atlamamız / göz ardı etmemiz gerekebilir, bunu <strong>usecols</strong> parametresi kullanarak yapabiliriz. Bu parametre, tamsayı (int), metin (str), list-like veya callable (varsayılan None) değerlerini alır. Sütun
+ adlarının veya konumlarının listesini belirtmek için, bir dize (string) listesi veya bir tamsayı (int) listesi kullanmalıyız.</p>
+<p>Aylara Göre Doğum Sayıları tablosunu yukarıda görmüştük. Bu tabloda 14 sütun bulunmaktadır. Sadece istediğimiz aylara ait sütun bilgilerini görüntülemek istersek <strong>usecols</strong> parametresine ya <strong>ay isimlerini</strong> ya da <strong>ayın sütun indis değerini</strong> yazmamız gerekir. Her iki kullanımı da görelim.</p>
+<div class="highlight"><pre><span></span><code><span class="n">dogumlar</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/AyaGöreDoğumlar.xlsx&quot;</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Yıl&quot;</span><span class="p">,</span> <span class="s2">&quot;Ocak&quot;</span><span class="p">,</span> <span class="s2">&quot;Haziran&quot;</span><span class="p">,</span> <span class="s2">&quot;Ağustos&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dogumlar</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Yıl</th>
+<th>Ocak</th>
+<th>Haziran</th>
+<th>Ağustos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>2001</td>
+<td>170397</td>
+<td>111722</td>
+<td>120963</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2002</td>
+<td>155065</td>
+<td>102627</td>
+<td>108061</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2003</td>
+<td>138670</td>
+<td>104644</td>
+<td>109159</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2004</td>
+<td>141538</td>
+<td>105728</td>
+<td>110425</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2005</td>
+<td>142311</td>
+<td>108536</td>
+<td>111430</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="n">dogumlar</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/AyaGöreDoğumlar.xlsx&quot;</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dogumlar</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Yıl</th>
+<th>Ocak</th>
+<th>Haziran</th>
+<th>Ağustos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>2001</td>
+<td>170397</td>
+<td>111722</td>
+<td>120963</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2002</td>
+<td>155065</td>
+<td>102627</td>
+<td>108061</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2003</td>
+<td>138670</td>
+<td>104644</td>
+<td>109159</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2004</td>
+<td>141538</td>
+<td>105728</td>
+<td>110425</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2005</td>
+<td>142311</td>
+<td>108536</td>
+<td>111430</td>
+</tr>
+</tbody>
+</table>
+<p><strong>usecols</strong> parametresine, <u>sütun isimlerini yazarken</u>, sütun isimleri metinsel (string) ifade olduğu için <strong>çift tırnak işareti "</strong> kullandığımıza, <u>indis değeri yazarken</u> , indis değerleri tamsayı (int) olduğu için, tırnak işareti kullanmadığımıza dikkat edin.</p>
+<p>Ayrıca, <strong>usecols</strong> parametresini, sütun aralığı belirterek te kullanabiliriz. Veri çerçevemizin sütunlarını, Excel programının sütun isimleri gibi (A, B, C,... şeklinde) düşünerek aralık belirtebiliriz. Aşağıdaki örnek, ne demek istediğimi daha net 
+anlatacaktır.</p>
+<div class="highlight"><pre><span></span><code><span class="n">dogumlar</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/AyaGöreDoğumlar.xlsx&quot;</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="s2">&quot;C:G&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dogumlar</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Ocak</th>
+<th>Şubat</th>
+<th>Mart</th>
+<th>Nisan</th>
+<th>Mayıs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>170397</td>
+<td>103476</td>
+<td>107912</td>
+<td>102585</td>
+<td>110391</td>
+</tr>
+<tr>
+<td>1</td>
+<td>155065</td>
+<td>103446</td>
+<td>102175</td>
+<td>95976</td>
+<td>99501</td>
+</tr>
+<tr>
+<td>2</td>
+<td>138670</td>
+<td>89548</td>
+<td>101046</td>
+<td>92574</td>
+<td>99531</td>
+</tr>
+<tr>
+<td>3</td>
+<td>141538</td>
+<td>94596</td>
+<td>100696</td>
+<td>100801</td>
+<td>102214</td>
+</tr>
+<tr>
+<td>4</td>
+<td>142311</td>
+<td>94234</td>
+<td>100529</td>
+<td>97441</td>
+<td>106833</td>
+</tr>
+</tbody>
+</table>
+<p>Oluşturduğumuz Veri Çerçevemizdeki <strong>Yıl</strong> Sütunu <strong>A</strong>'ya, <strong>Toplam</strong> sütunu <strong>B</strong>'ye, <strong>Ocak</strong> Sütunu da <strong>C</strong>'ye denk geldiği için, çıktımız <strong>Ocak</strong> Ayından başlayıp <strong>G</strong> sütununa denk gelen <strong>Mayıs</strong> ayına kadar olan aralığı alarak çıktı olarak bize sundu.</p>
+<h3>Satırları Atla</h3>
+<h3>skiprows Parametresi</h3>
+<p>Bir Excel çalışma sayfasını ya da farklı kaynaktan alınan veriyi, Pandas ile Veri Çerçevesine (DataFrame'e) dönüştürürken, bazı satırları atlamamız / göz ardı etmemiz gerekebilir, bunu <strong>skiprows</strong> parametresi kullanarak yapabiliriz. Bu, parametre olarak, list-like, tamsayı (int) veya callable (isteğe bağlı) değerlerini alır. Bu parametre ile ilk birkaç satırı, seçilen satırı ve belirttiğimiz satır aralığını atlayabiliriz.</p>
+<div class="highlight"><pre><span></span><code><span class="n">basliksiz</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/SatırAtla.xlsx&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">basliksiz</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Unnamed: 0</th>
+<th>Unnamed: 1</th>
+<th>Unnamed: 2</th>
+<th>Unnamed: 3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>mhg</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>1</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>654</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>2</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Film_Adı</td>
+<td>Yıl</td>
+<td>Puan</td>
+<td>Oylayan_Kişi</td>
+</tr>
+<tr>
+<td>4</td>
+<td>The Shawshank Redemption</td>
+<td>1994</td>
+<td>9,2</td>
+<td>1071904</td>
+</tr>
+<tr>
+<td>5</td>
+<td>The Godfather</td>
+<td>1972</td>
+<td>9,2</td>
+<td>751381</td>
+</tr>
+<tr>
+<td>6</td>
+<td>The Godfather: Part II</td>
+<td>1974</td>
+<td>9</td>
+<td>488889</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Pulp Fiction</td>
+<td>1994</td>
+<td>8,9</td>
+<td>830504</td>
+</tr>
+<tr>
+<td>8</td>
+<td>The Dark Knight</td>
+<td>2008</td>
+<td>8,9</td>
+<td>1045186</td>
+</tr>
+<tr>
+<td>9</td>
+<td>12 Angry Men</td>
+<td>1957</td>
+<td>8,9</td>
+<td>264112</td>
+</tr>
+</tbody>
+</table>
+<p>Atlamak / gözardı etmek istediğimiz satırları tek tek te belirtebiliriz.</p>
+<div class="highlight"><pre><span></span><code><span class="n">basliksiz</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/SatırAtla.xlsx&quot;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">12</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">basliksiz</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Film_Adı</th>
+<th>Yıl</th>
+<th>Puan</th>
+<th>Oylayan_Kişi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>The Godfather</td>
+<td>1972</td>
+<td>9,2</td>
+<td>751381</td>
+</tr>
+<tr>
+<td>1</td>
+<td>The Godfather: Part II</td>
+<td>1974</td>
+<td>9</td>
+<td>488889</td>
+</tr>
+<tr>
+<td>2</td>
+<td>The Dark Knight</td>
+<td>2008</td>
+<td>8,9</td>
+<td>1045186</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Schindler's List</td>
+<td>1993</td>
+<td>8,9</td>
+<td>545703</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Fight Club</td>
+<td>1999</td>
+<td>8,8</td>
+<td>814389</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Star Wars: Episode V - The Empire Strikes Back</td>
+<td>1980</td>
+<td>8,8</td>
+<td>519895</td>
+</tr>
+<tr>
+<td>6</td>
+<td>The Lord of the Rings: The Fellowship of the R...</td>
+<td>2001</td>
+<td>8,8</td>
+<td>784999</td>
+</tr>
+<tr>
+<td>7</td>
+<td>One Flew Over the Cuckoo's Nest</td>
+<td>1975</td>
+<td>8,7</td>
+<td>447005</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Goodfellas</td>
+<td>1990</td>
+<td>8,7</td>
+<td>465445</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Seven Samurai</td>
+<td>1954</td>
+<td>8,7</td>
+<td>161969</td>
+</tr>
+</tbody>
+</table>
+<h3>Sütun Ekle</h3>
+<p>Veri çerçevesine yeni bir sütun ekleyip bu sütuna değer atamak mümkündür. Bunu şu yöntemle yapabiliriz.</p>
+<p><code>Veri_Çerçevesi_Adı["Yeni_Sütun_Adı"] = Atanacak_Değerler</code></p>
+<p>Örneğin NBA oyuncularının çeşitli bilgilerinin bulunduğu veri çerçevesinden, yıllık kazanç miktarlarını (<strong>Salary</strong>) 12'ye bölerek aylık kazançlarını hesaplayarak, <strong>Aylık Kazanç</strong> isimli yeni sütuna yazmaya çalışalım.
+Önce Veri çerçevemizin orijinal haline göz atalım.</p>
+<div class="highlight"><pre><span></span><code><span class="n">veri</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/nba.csv&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Team</th>
+<th>Number</th>
+<th>Position</th>
+<th>Age</th>
+<th>Height</th>
+<th>Weight</th>
+<th>College</th>
+<th>Salary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Avery Bradley</td>
+<td>Boston Celtics</td>
+<td>0.0</td>
+<td>PG</td>
+<td>25.0</td>
+<td>6-2</td>
+<td>180.0</td>
+<td>Texas</td>
+<td>7730337.0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Jae Crowder</td>
+<td>Boston Celtics</td>
+<td>99.0</td>
+<td>SF</td>
+<td>25.0</td>
+<td>6-6</td>
+<td>235.0</td>
+<td>Marquette</td>
+<td>6796117.0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>John Holland</td>
+<td>Boston Celtics</td>
+<td>30.0</td>
+<td>SG</td>
+<td>27.0</td>
+<td>6-5</td>
+<td>205.0</td>
+<td>Boston University</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>3</td>
+<td>R.J. Hunter</td>
+<td>Boston Celtics</td>
+<td>28.0</td>
+<td>SG</td>
+<td>22.0</td>
+<td>6-5</td>
+<td>185.0</td>
+<td>Georgia State</td>
+<td>1148640.0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Jonas Jerebko</td>
+<td>Boston Celtics</td>
+<td>8.0</td>
+<td>PF</td>
+<td>29.0</td>
+<td>6-10</td>
+<td>231.0</td>
+<td>NaN</td>
+<td>5000000.0</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>453</td>
+<td>Shelvin Mack</td>
+<td>Utah Jazz</td>
+<td>8.0</td>
+<td>PG</td>
+<td>26.0</td>
+<td>6-3</td>
+<td>203.0</td>
+<td>Butler</td>
+<td>2433333.0</td>
+</tr>
+<tr>
+<td>454</td>
+<td>Raul Neto</td>
+<td>Utah Jazz</td>
+<td>25.0</td>
+<td>PG</td>
+<td>24.0</td>
+<td>6-1</td>
+<td>179.0</td>
+<td>NaN</td>
+<td>900000.0</td>
+</tr>
+<tr>
+<td>455</td>
+<td>Tibor Pleiss</td>
+<td>Utah Jazz</td>
+<td>21.0</td>
+<td>C</td>
+<td>26.0</td>
+<td>7-3</td>
+<td>256.0</td>
+<td>NaN</td>
+<td>2900000.0</td>
+</tr>
+<tr>
+<td>456</td>
+<td>Jeff Withey</td>
+<td>Utah Jazz</td>
+<td>24.0</td>
+<td>C</td>
+<td>26.0</td>
+<td>7-0</td>
+<td>231.0</td>
+<td>Kansas</td>
+<td>947276.0</td>
+</tr>
+<tr>
+<td>457</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+<p>458 rows × 9 columns</p>
+<p>Şimdi istediğimizi yapmaya (yıllık kazanç miktarlarını (<strong>Salary</strong>) 12'ye bölerek aylık kazançları, <strong>Aylık Kazanç</strong> isimli yeni sütuna yazmaya) sıra geldi.</p>
+<div class="highlight"><pre><span></span><code><span class="n">veri</span><span class="p">[</span><span class="s2">&quot;Aylık Kazanç&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">veri</span><span class="p">[</span><span class="s2">&quot;Salary&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">12</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Team</th>
+<th>Number</th>
+<th>Position</th>
+<th>Age</th>
+<th>Height</th>
+<th>Weight</th>
+<th>College</th>
+<th>Salary</th>
+<th>Aylık Kazanç</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Avery Bradley</td>
+<td>Boston Celtics</td>
+<td>0.0</td>
+<td>PG</td>
+<td>25.0</td>
+<td>6-2</td>
+<td>180.0</td>
+<td>Texas</td>
+<td>7730337.0</td>
+<td>644194.750000</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Jae Crowder</td>
+<td>Boston Celtics</td>
+<td>99.0</td>
+<td>SF</td>
+<td>25.0</td>
+<td>6-6</td>
+<td>235.0</td>
+<td>Marquette</td>
+<td>6796117.0</td>
+<td>566343.083333</td>
+</tr>
+<tr>
+<td>2</td>
+<td>John Holland</td>
+<td>Boston Celtics</td>
+<td>30.0</td>
+<td>SG</td>
+<td>27.0</td>
+<td>6-5</td>
+<td>205.0</td>
+<td>Boston University</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>3</td>
+<td>R.J. Hunter</td>
+<td>Boston Celtics</td>
+<td>28.0</td>
+<td>SG</td>
+<td>22.0</td>
+<td>6-5</td>
+<td>185.0</td>
+<td>Georgia State</td>
+<td>1148640.0</td>
+<td>95720.000000</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Jonas Jerebko</td>
+<td>Boston Celtics</td>
+<td>8.0</td>
+<td>PF</td>
+<td>29.0</td>
+<td>6-10</td>
+<td>231.0</td>
+<td>NaN</td>
+<td>5000000.0</td>
+<td>416666.666667</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>453</td>
+<td>Shelvin Mack</td>
+<td>Utah Jazz</td>
+<td>8.0</td>
+<td>PG</td>
+<td>26.0</td>
+<td>6-3</td>
+<td>203.0</td>
+<td>Butler</td>
+<td>2433333.0</td>
+<td>202777.750000</td>
+</tr>
+<tr>
+<td>454</td>
+<td>Raul Neto</td>
+<td>Utah Jazz</td>
+<td>25.0</td>
+<td>PG</td>
+<td>24.0</td>
+<td>6-1</td>
+<td>179.0</td>
+<td>NaN</td>
+<td>900000.0</td>
+<td>75000.000000</td>
+</tr>
+<tr>
+<td>455</td>
+<td>Tibor Pleiss</td>
+<td>Utah Jazz</td>
+<td>21.0</td>
+<td>C</td>
+<td>26.0</td>
+<td>7-3</td>
+<td>256.0</td>
+<td>NaN</td>
+<td>2900000.0</td>
+<td>241666.666667</td>
+</tr>
+<tr>
+<td>456</td>
+<td>Jeff Withey</td>
+<td>Utah Jazz</td>
+<td>24.0</td>
+<td>C</td>
+<td>26.0</td>
+<td>7-0</td>
+<td>231.0</td>
+<td>Kansas</td>
+<td>947276.0</td>
+<td>78939.666667</td>
+</tr>
+<tr>
+<td>457</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+<p>458 rows × 10 columns</p>
+<h3>Satır ya da Sütun Sil</h3>
+<p>Veri çerçevesine ekleme yapılabildiği gibi, silme / çıkarma işlemi de yapılabiliyor.
+Bunun için <strong>drop()</strong> metodu kullanılıyor.</p>
+<h3>drop() Fonksiyonu</h3>
+<p>Bu metodun kullanım/yazım şekli aşağıdaki gibidir.</p>
+<div class="highlight"><pre><span></span><code><span class="n">Veri_Çerçevesi_Adı</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;Satır ya da Sütun Adı&quot;</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">ya</span> <span class="n">da</span> <span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="o">/</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+
+<ul>
+<li><strong>Satır ya da Sütun Adı</strong>, adından belli olduğu üzere, silinecek sütunun adıdır. Birden fazla sütun silinmek istenirse, isimler liste şeklinde yani köşeli parantez içinde yazılmalıdır.</li>
+</ul>
+<h4>axis Parametresi</h4>
+<p>Sıfır <strong>(0)</strong> Satırları, Bir <strong>(1)</strong> Sütunları temsil eder. Varsayılan (default) değeri 0'dır. Aynı isme ait satır ve sütun bilgisi olması durumunda, bu parametre satırın mı, sütunun mu silinmesi gerektiği konusunda bize yardımcı olur.</p>
+<h4>inplace Parametresi</h4>
+<p>Gerçekleştirilen silme işleminin veri çerçevesinde kalıcı ya da geçici olmasını ayarladığımız kısımdır. <strong>inplace = True</strong> yazılırsa, yapılan işlem kalıcı hale gelecektir.</p>
+<p>NBA oyuncularının bilgilerinin bulunduğu veri çerçevesinden, <strong>Yaş (Age)</strong> bilgisini silmeye çalışalım.</p>
+<div class="highlight"><pre><span></span><code><span class="n">veri</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;Age&quot;</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Team</th>
+<th>Number</th>
+<th>Position</th>
+<th>Height</th>
+<th>Weight</th>
+<th>College</th>
+<th>Salary</th>
+<th>Aylık Kazanç</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Avery Bradley</td>
+<td>Boston Celtics</td>
+<td>0.0</td>
+<td>PG</td>
+<td>6-2</td>
+<td>180.0</td>
+<td>Texas</td>
+<td>7730337.0</td>
+<td>644194.750000</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Jae Crowder</td>
+<td>Boston Celtics</td>
+<td>99.0</td>
+<td>SF</td>
+<td>6-6</td>
+<td>235.0</td>
+<td>Marquette</td>
+<td>6796117.0</td>
+<td>566343.083333</td>
+</tr>
+<tr>
+<td>2</td>
+<td>John Holland</td>
+<td>Boston Celtics</td>
+<td>30.0</td>
+<td>SG</td>
+<td>6-5</td>
+<td>205.0</td>
+<td>Boston University</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>3</td>
+<td>R.J. Hunter</td>
+<td>Boston Celtics</td>
+<td>28.0</td>
+<td>SG</td>
+<td>6-5</td>
+<td>185.0</td>
+<td>Georgia State</td>
+<td>1148640.0</td>
+<td>95720.000000</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Jonas Jerebko</td>
+<td>Boston Celtics</td>
+<td>8.0</td>
+<td>PF</td>
+<td>6-10</td>
+<td>231.0</td>
+<td>NaN</td>
+<td>5000000.0</td>
+<td>416666.666667</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>453</td>
+<td>Shelvin Mack</td>
+<td>Utah Jazz</td>
+<td>8.0</td>
+<td>PG</td>
+<td>6-3</td>
+<td>203.0</td>
+<td>Butler</td>
+<td>2433333.0</td>
+<td>202777.750000</td>
+</tr>
+<tr>
+<td>454</td>
+<td>Raul Neto</td>
+<td>Utah Jazz</td>
+<td>25.0</td>
+<td>PG</td>
+<td>6-1</td>
+<td>179.0</td>
+<td>NaN</td>
+<td>900000.0</td>
+<td>75000.000000</td>
+</tr>
+<tr>
+<td>455</td>
+<td>Tibor Pleiss</td>
+<td>Utah Jazz</td>
+<td>21.0</td>
+<td>C</td>
+<td>7-3</td>
+<td>256.0</td>
+<td>NaN</td>
+<td>2900000.0</td>
+<td>241666.666667</td>
+</tr>
+<tr>
+<td>456</td>
+<td>Jeff Withey</td>
+<td>Utah Jazz</td>
+<td>24.0</td>
+<td>C</td>
+<td>7-0</td>
+<td>231.0</td>
+<td>Kansas</td>
+<td>947276.0</td>
+<td>78939.666667</td>
+</tr>
+<tr>
+<td>457</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+<p>458 rows × 9 columns</p>
+<p>Gördüğünüz gibi veri çerçevemizde artık Oyuncuların Yaş bilgilerini barındıran <strong>Age</strong> isimli sütun bulunmuyor, tamemiyle silindi.</p>
+<p>Birden fazla satır ya da sütun silmek istediğimiz zaman silinmesini istediğimiz satır ya da sütun isimlerinin (ya da indeks değerlerini) liste olarak yani köşeli parantez içerisinde belirtmemiz gerekir.</p>
+<div class="highlight"><pre><span></span><code><span class="n">veri</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&quot;College&quot;</span><span class="p">,</span> <span class="s2">&quot;Number&quot;</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Team</th>
+<th>Position</th>
+<th>Height</th>
+<th>Weight</th>
+<th>Salary</th>
+<th>Aylık Kazanç</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Avery Bradley</td>
+<td>Boston Celtics</td>
+<td>PG</td>
+<td>6-2</td>
+<td>180.0</td>
+<td>7730337.0</td>
+<td>644194.750000</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Jae Crowder</td>
+<td>Boston Celtics</td>
+<td>SF</td>
+<td>6-6</td>
+<td>235.0</td>
+<td>6796117.0</td>
+<td>566343.083333</td>
+</tr>
+<tr>
+<td>2</td>
+<td>John Holland</td>
+<td>Boston Celtics</td>
+<td>SG</td>
+<td>6-5</td>
+<td>205.0</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>3</td>
+<td>R.J. Hunter</td>
+<td>Boston Celtics</td>
+<td>SG</td>
+<td>6-5</td>
+<td>185.0</td>
+<td>1148640.0</td>
+<td>95720.000000</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Jonas Jerebko</td>
+<td>Boston Celtics</td>
+<td>PF</td>
+<td>6-10</td>
+<td>231.0</td>
+<td>5000000.0</td>
+<td>416666.666667</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>453</td>
+<td>Shelvin Mack</td>
+<td>Utah Jazz</td>
+<td>PG</td>
+<td>6-3</td>
+<td>203.0</td>
+<td>2433333.0</td>
+<td>202777.750000</td>
+</tr>
+<tr>
+<td>454</td>
+<td>Raul Neto</td>
+<td>Utah Jazz</td>
+<td>PG</td>
+<td>6-1</td>
+<td>179.0</td>
+<td>900000.0</td>
+<td>75000.000000</td>
+</tr>
+<tr>
+<td>455</td>
+<td>Tibor Pleiss</td>
+<td>Utah Jazz</td>
+<td>C</td>
+<td>7-3</td>
+<td>256.0</td>
+<td>2900000.0</td>
+<td>241666.666667</td>
+</tr>
+<tr>
+<td>456</td>
+<td>Jeff Withey</td>
+<td>Utah Jazz</td>
+<td>C</td>
+<td>7-0</td>
+<td>231.0</td>
+<td>947276.0</td>
+<td>78939.666667</td>
+</tr>
+<tr>
+<td>457</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+<p>458 rows × 7 columns</p>
+<h2>drop_duplicates() Fonksiyonu</h2>
+<p>Veri çerçevemizde çift kayıt varsa, yani tüm veriler aynı olan birden fazla satır verisi varsa, bunlardan biri kalacak şekilde diğerlerinin silmek için <strong>drop_duplicates</strong> metodunu / fonksiyonunu kullanabiliriz.</p>
+<p>Örnek kodları inceleyelim.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">sozluk</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;isim&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Mustafa&quot;</span><span class="p">,</span> <span class="s2">&quot;Halil&quot;</span><span class="p">,</span> <span class="s2">&quot;Burak&quot;</span><span class="p">,</span> <span class="s2">&quot;Emre&quot;</span><span class="p">,</span> <span class="s2">&quot;Ersin&quot;</span><span class="p">,</span> <span class="s2">&quot;Sertaç&quot;</span><span class="p">,</span> <span class="s2">&quot;Furkan&quot;</span><span class="p">,</span><span class="s2">&quot;Murat&quot;</span><span class="p">,</span><span class="s2">&quot;Ahmet&quot;</span><span class="p">,</span><span class="s2">&quot;Abdülkadir&quot;</span><span class="p">,</span> <span class="s2">&quot;Halil&quot;</span><span class="p">,</span> <span class="s2">&quot;Ersin&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;yaş&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">52</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">37</span><span class="p">],</span>
+                   <span class="s2">&quot;iş-meslek&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;mühendis&quot;</span><span class="p">,</span> <span class="s2">&quot;programcı&quot;</span><span class="p">,</span> <span class="s2">&quot;akademisyen&quot;</span><span class="p">,</span> <span class="s2">&quot;yönetici&quot;</span><span class="p">,</span><span class="s2">&quot;amir&quot;</span><span class="p">,</span><span class="s2">&quot;mühendis&quot;</span><span class="p">,</span> <span class="s2">&quot;yönetici&quot;</span><span class="p">,</span><span class="s2">&quot;müdür&quot;</span><span class="p">,</span><span class="s2">&quot;veteriner&quot;</span><span class="p">,</span><span class="s2">&quot;yönetici&quot;</span><span class="p">,</span> <span class="s2">&quot;programcı&quot;</span><span class="p">,</span> <span class="s2">&quot;amir&quot;</span><span class="p">]}</span>
+<span class="n">veri</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">sozluk</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>isim</th>
+<th>yaş</th>
+<th>iş-meslek</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Mustafa</td>
+<td>25</td>
+<td>mühendis</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Halil</td>
+<td>42</td>
+<td>programcı</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Burak</td>
+<td>43</td>
+<td>akademisyen</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Emre</td>
+<td>23</td>
+<td>yönetici</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Ersin</td>
+<td>37</td>
+<td>amir</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Sertaç</td>
+<td>52</td>
+<td>mühendis</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Furkan</td>
+<td>30</td>
+<td>yönetici</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Murat</td>
+<td>38</td>
+<td>müdür</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Ahmet</td>
+<td>40</td>
+<td>veteriner</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Abdülkadir</td>
+<td>38</td>
+<td>yönetici</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Halil</td>
+<td>42</td>
+<td>programcı</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Ersin</td>
+<td>37</td>
+<td>amir</td>
+</tr>
+</tbody>
+</table>
+<p>Veri çerçevemizi incelediğimizde 2. ve 10. satırlardaki ile 4. ve 11. satırlardaki verilerin aynı olduğunu görüyoruz. Bu fazla verilerden kurtulalım.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">())</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>isim</th>
+<th>yaş</th>
+<th>iş-meslek</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Mustafa</td>
+<td>25</td>
+<td>mühendis</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Halil</td>
+<td>42</td>
+<td>programcı</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Burak</td>
+<td>43</td>
+<td>akademisyen</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Emre</td>
+<td>23</td>
+<td>yönetici</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Ersin</td>
+<td>37</td>
+<td>amir</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Sertaç</td>
+<td>52</td>
+<td>mühendis</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Furkan</td>
+<td>30</td>
+<td>yönetici</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Murat</td>
+<td>38</td>
+<td>müdür</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Ahmet</td>
+<td>40</td>
+<td>veteriner</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Abdülkadir</td>
+<td>38</td>
+<td>yönetici</td>
+</tr>
+</tbody>
+</table>
+<p>Veri çerçevesinde, tüm satır verisi aynı olmasa da, sadece belirtilen sütunda aynı değere sahip verilerden birinin kalıp diğerlerinin silinmesini istersek kullanmamız gereken parametre, <strong>subset</strong>'tir.</p>
+<h4>subset Parametresi</h4>
+<p><strong>subset</strong> parametresine sütun ismi ya da isimleri yazarken liste veri tipinde girşi yapmak gerekir, yani sütun isimlerini köşeli parantez içerisinde yazmalıyız.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">sozluk</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;isim&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Mustafa&quot;</span><span class="p">,</span> <span class="s2">&quot;Halil&quot;</span><span class="p">,</span> <span class="s2">&quot;Burak&quot;</span><span class="p">,</span> <span class="s2">&quot;Emre&quot;</span><span class="p">,</span> <span class="s2">&quot;Ersin&quot;</span><span class="p">,</span> <span class="s2">&quot;Sertaç&quot;</span><span class="p">,</span> <span class="s2">&quot;Furkan&quot;</span><span class="p">,</span><span class="s2">&quot;Murat&quot;</span><span class="p">,</span><span class="s2">&quot;Ahmet&quot;</span><span class="p">,</span><span class="s2">&quot;Abdülkadir&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;yaş&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">52</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">38</span><span class="p">],</span>
+                   <span class="s2">&quot;iş-meslek&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;mühendis&quot;</span><span class="p">,</span> <span class="s2">&quot;programcı&quot;</span><span class="p">,</span> <span class="s2">&quot;akademisyen&quot;</span><span class="p">,</span> <span class="s2">&quot;yönetici&quot;</span><span class="p">,</span><span class="s2">&quot;amir&quot;</span><span class="p">,</span><span class="s2">&quot;mühendis&quot;</span><span class="p">,</span> <span class="s2">&quot;yönetici&quot;</span><span class="p">,</span><span class="s2">&quot;müdür&quot;</span><span class="p">,</span><span class="s2">&quot;veteriner&quot;</span><span class="p">,</span><span class="s2">&quot;yönetici&quot;</span><span class="p">]}</span>
+<span class="n">veri</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">sozluk</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>isim</th>
+<th>yaş</th>
+<th>iş-meslek</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Mustafa</td>
+<td>25</td>
+<td>mühendis</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Halil</td>
+<td>42</td>
+<td>programcı</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Burak</td>
+<td>43</td>
+<td>akademisyen</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Emre</td>
+<td>23</td>
+<td>yönetici</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Ersin</td>
+<td>37</td>
+<td>amir</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Sertaç</td>
+<td>52</td>
+<td>mühendis</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Furkan</td>
+<td>30</td>
+<td>yönetici</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Murat</td>
+<td>25</td>
+<td>müdür</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Ahmet</td>
+<td>40</td>
+<td>veteriner</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Abdülkadir</td>
+<td>38</td>
+<td>yönetici</td>
+</tr>
+</tbody>
+</table>
+<p>Görüldüğü üzre, veri çerçevemizde birebir aynı satır verileri bulunmuyor ancak aynı meslek grubuna sahip kayıtlar mecvut. Diyelim ki her meslek grubundan bir kişi kalacak, diğer veriler silinecek şekilde bir işlem yapmak istiyoruz. Bu durumda aşağıdaki kdu alıştırmamız gerekir.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;iş-meslek&quot;</span><span class="p">]))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>isim</th>
+<th>yaş</th>
+<th>iş-meslek</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Mustafa</td>
+<td>25</td>
+<td>mühendis</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Halil</td>
+<td>42</td>
+<td>programcı</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Burak</td>
+<td>43</td>
+<td>akademisyen</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Emre</td>
+<td>23</td>
+<td>yönetici</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Ersin</td>
+<td>37</td>
+<td>amir</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Murat</td>
+<td>25</td>
+<td>müdür</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Ahmet</td>
+<td>40</td>
+<td>veteriner</td>
+</tr>
+</tbody>
+</table>
+<p>İndeks verilerine bakarsanız, 5. , 6. ve 9. satırlardaki verilerin silindiğini göreceksiniz. Bunun sebebi, 5. satırda <strong>iş-meslek</strong> sütununda yazan ifadenin, daha üst satırlarda var olması sebebiyle silinmesidir.</p>
+<p>Çift olan verilerden İlki mi? sonuncu mu kalacak, hangisinin silineceğine pandas nasıl karar verecek derseniz, onun için de <strong>keep</strong> parametresini kullanmamız gerekecek.</p>
+<h4>keep Parametresi</h4>
+<p><strong>keep</strong> parametresine <strong>last</strong> değeri atanırsa, bu kez çift verilerden sonuncusu kalacak ve ilk veriler silinecektir.</p>
+<p>Örnek kodu inceleyelim.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;iş-meslek&quot;</span><span class="p">],</span> <span class="n">keep</span><span class="o">=</span><span class="s2">&quot;last&quot;</span><span class="p">))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>isim</th>
+<th>yaş</th>
+<th>iş-meslek</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Halil</td>
+<td>42</td>
+<td>programcı</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Burak</td>
+<td>43</td>
+<td>akademisyen</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Ersin</td>
+<td>37</td>
+<td>amir</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Sertaç</td>
+<td>52</td>
+<td>mühendis</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Murat</td>
+<td>25</td>
+<td>müdür</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Ahmet</td>
+<td>40</td>
+<td>veteriner</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Abdülkadir</td>
+<td>38</td>
+<td>yönetici</td>
+</tr>
+</tbody>
+</table>
+<p>Görüldüğü gibi, bu kez "iş-meslek" sütununda ilk veriler olan 0. , 3. ve 6. satırlar silindi.</p>
+<h3>String Metotları</h3>
+<p>Python ile kodlama yaparken, metinsel ifadelerle uğraştığımızda kullandığımız <strong>string metotlarını</strong> hatırlarsınız. Örneğin, Metinlerin tümünü büyük harfe ya da küçük harfe
+ çevirmek. Bu tür string metotları Pandas ile kulanmak ve veri çerçevesine uygulamak mümkün. Bunun için <strong>str</strong> ifadesini kullanabiliriz. </p>
+<p>Önce Bir Veri Çerçevesi oluşturalım ve gözatalım.</p>
+<div class="highlight"><pre><span></span><code><span class="n">sozluk</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;isim&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Mustafa&quot;</span><span class="p">,</span> <span class="s2">&quot;Halil&quot;</span><span class="p">,</span> <span class="s2">&quot;Burak&quot;</span><span class="p">,</span> <span class="s2">&quot;Emre&quot;</span><span class="p">,</span> <span class="s2">&quot;Ersin&quot;</span><span class="p">,</span> <span class="s2">&quot;Sertaç&quot;</span><span class="p">,</span> <span class="s2">&quot;Furkan&quot;</span><span class="p">,</span><span class="s2">&quot;Murat&quot;</span><span class="p">,</span><span class="s2">&quot;Ahmet&quot;</span><span class="p">,</span><span class="s2">&quot;Abdülkadir&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;yaş&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">41</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">52</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">38</span><span class="p">],</span>
+                   <span class="s2">&quot;iş-meslek&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;mühendis&quot;</span><span class="p">,</span> <span class="s2">&quot;programcı&quot;</span><span class="p">,</span> <span class="s2">&quot;akademisyen&quot;</span><span class="p">,</span> <span class="s2">&quot;yönetici&quot;</span><span class="p">,</span><span class="s2">&quot;amir&quot;</span><span class="p">,</span><span class="s2">&quot;mühendis&quot;</span><span class="p">,</span> <span class="s2">&quot;yönetici&quot;</span><span class="p">,</span><span class="s2">&quot;müdür&quot;</span><span class="p">,</span><span class="s2">&quot;veteriner&quot;</span><span class="p">,</span><span class="s2">&quot;yönetici&quot;</span><span class="p">]}</span>
+<span class="n">veri</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">sozluk</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>isim</th>
+<th>yaş</th>
+<th>iş-meslek</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Mustafa</td>
+<td>25</td>
+<td>mühendis</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Halil</td>
+<td>38</td>
+<td>programcı</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Burak</td>
+<td>41</td>
+<td>akademisyen</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Emre</td>
+<td>23</td>
+<td>yönetici</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Ersin</td>
+<td>37</td>
+<td>amir</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Sertaç</td>
+<td>52</td>
+<td>mühendis</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Furkan</td>
+<td>30</td>
+<td>yönetici</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Murat</td>
+<td>23</td>
+<td>müdür</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Ahmet</td>
+<td>40</td>
+<td>veteriner</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Abdülkadir</td>
+<td>38</td>
+<td>yönetici</td>
+</tr>
+</tbody>
+</table>
+<p>Veri Çerçevemizin <strong>iş-meslek</strong> sütunundaki tüm metinleri büyük harfe çevirip ekrana yazdıralım.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="p">[</span><span class="s2">&quot;iş-meslek&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mi">0</span>       <span class="n">MÜHENDIS</span>
+<span class="mi">1</span>      <span class="n">PROGRAMCI</span>
+<span class="mi">2</span>    <span class="n">AKADEMISYEN</span>
+<span class="mi">3</span>       <span class="n">YÖNETICI</span>
+<span class="mi">4</span>           <span class="n">AMIR</span>
+<span class="mi">5</span>       <span class="n">MÜHENDIS</span>
+<span class="mi">6</span>       <span class="n">YÖNETICI</span>
+<span class="mi">7</span>          <span class="n">MÜDÜR</span>
+<span class="mi">8</span>      <span class="n">VETERINER</span>
+<span class="mi">9</span>       <span class="n">YÖNETICI</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">iş</span><span class="o">-</span><span class="n">meslek</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
+</code></pre></div>
+
+<p>Uyguladığımız metot sonrası, veri çerçevemizi tekrar çağırdığımızda, <strong>iş-meslek</strong> sütunundaki metinlerin değişmediğini, eski halinde kaldığını göreceğiz.
+ Bunu sebebi, yaptığımız değişikliği bir değişken olarak alıp, <strong>iş-meslek</strong> sütununa atamamaktır. İfade etmeye çalıştığım şeyin, aşağıdaki satırda daha net anlaşılacağını düşünüyorum. Atama işlem sonrası Veri çerçevemizi çağırıp değişikiğin uygulandığını görüyoruz.</p>
+<div class="highlight"><pre><span></span><code><span class="n">veri</span><span class="p">[</span><span class="s2">&quot;iş-meslek&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">veri</span><span class="p">[</span><span class="s2">&quot;iş-meslek&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>isim</th>
+<th>yaş</th>
+<th>iş-meslek</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Mustafa</td>
+<td>25</td>
+<td>MÜHENDIS</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Halil</td>
+<td>38</td>
+<td>PROGRAMCI</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Burak</td>
+<td>41</td>
+<td>AKADEMISYEN</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Emre</td>
+<td>23</td>
+<td>YÖNETICI</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Ersin</td>
+<td>37</td>
+<td>AMIR</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Sertaç</td>
+<td>52</td>
+<td>MÜHENDIS</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Furkan</td>
+<td>30</td>
+<td>YÖNETICI</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Murat</td>
+<td>23</td>
+<td>MÜDÜR</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Ahmet</td>
+<td>40</td>
+<td>VETERINER</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Abdülkadir</td>
+<td>38</td>
+<td>YÖNETICI</td>
+</tr>
+</tbody>
+</table>
+<p>Şimdi de <strong>iş-meslek</strong> Sütunundaki verilerin sadece baş harflerini büyük yapalım.</p>
+<div class="highlight"><pre><span></span><code><span class="n">veri</span><span class="p">[</span><span class="s2">&quot;iş-meslek&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">veri</span><span class="p">[</span><span class="s2">&quot;iş-meslek&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>isim</th>
+<th>yaş</th>
+<th>iş-meslek</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Mustafa</td>
+<td>25</td>
+<td>Mühendis</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Halil</td>
+<td>38</td>
+<td>Programci</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Burak</td>
+<td>41</td>
+<td>Akademisyen</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Emre</td>
+<td>23</td>
+<td>Yönetici</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Ersin</td>
+<td>37</td>
+<td>Amir</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Sertaç</td>
+<td>52</td>
+<td>Mühendis</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Furkan</td>
+<td>30</td>
+<td>Yönetici</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Murat</td>
+<td>23</td>
+<td>Müdür</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Ahmet</td>
+<td>40</td>
+<td>Veteriner</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Abdülkadir</td>
+<td>38</td>
+<td>Yönetici</td>
+</tr>
+</tbody>
+</table>
+<p>Son olarak ta, veri çerçevemizim sütun başlıklarını büyük karfe çevirelim.</p>
+<div class="highlight"><pre><span></span><code><span class="n">veri</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">veri</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>ISIM</th>
+<th>YAŞ</th>
+<th>IŞ-MESLEK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Mustafa</td>
+<td>25</td>
+<td>Mühendis</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Halil</td>
+<td>38</td>
+<td>Programci</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Burak</td>
+<td>41</td>
+<td>Akademisyen</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Emre</td>
+<td>23</td>
+<td>Yönetici</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Ersin</td>
+<td>37</td>
+<td>Amir</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Sertaç</td>
+<td>52</td>
+<td>Mühendis</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Furkan</td>
+<td>30</td>
+<td>Yönetici</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Murat</td>
+<td>23</td>
+<td>Müdür</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Ahmet</td>
+<td>40</td>
+<td>Veteriner</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Abdülkadir</td>
+<td>38</td>
+<td>Yönetici</td>
+</tr>
+</tbody>
+</table>
+<h2>transpose() Fonksiyonu</h2>
+<p>Satırların sütuna, sütunların satıra çevrilme işlemini <code>transpose()</code> fonksiyonu yardımıyla gerçekleştirebiliriz. Bu fonksiyon, Excel, LibreOfis,...vb uygulamalarda, "İşlemi tersine çevir" komutu ile aynı sonucu verir. Yukarıda oluşturduğumuz veri çerçevemizin transpozunu aşağıdaki şekilde alabiliriz.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="o">.</span><span class="n">transpose</span><span class="p">())</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>isim</td>
+<td>Mustafa</td>
+<td>Halil</td>
+<td>Burak</td>
+<td>Emre</td>
+<td>Ersin</td>
+<td>Sertaç</td>
+<td>Furkan</td>
+<td>Murat</td>
+<td>Ahmet</td>
+<td>Abdülkadir</td>
+</tr>
+<tr>
+<td>yaş</td>
+<td>25</td>
+<td>38</td>
+<td>41</td>
+<td>23</td>
+<td>37</td>
+<td>52</td>
+<td>30</td>
+<td>23</td>
+<td>40</td>
+<td>38</td>
+</tr>
+<tr>
+<td>iş-meslek</td>
+<td>mühendis</td>
+<td>programcı</td>
+<td>akademisyen</td>
+<td>yönetici</td>
+<td>amir</td>
+<td>mühendis</td>
+<td>yönetici</td>
+<td>müdür</td>
+<td>veteriner</td>
+<td>yönetici</td>
+</tr>
+</tbody>
+</table>
+<h2>apply() Fonksiyonu</h2>
+<p>Python programlama dilini öğrenirken karşılaştığımız <strong>fonksiyonlar</strong> konusunu hatırlarsınız Kullanıcı tarafından yazılan ya da standart python fonksiyonlarını, veri çerçevemize uygulamak istersek, <code>apply()</code> fonksiyonu kullanmamız gerekir.</p>
+<p>Yukarıdaki <strong>iş-meslek</strong> sütunundaki metinlerin büyük harfe dönüştürülmesi örneğini, bir de <code>apply()</code> fonksiyonu ile uygulayalım.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">buyuk_harf</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="p">[</span><span class="s2">&quot;IŞ-MESLEK&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">buyuk_harf</span><span class="p">))</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mi">0</span>       <span class="n">MÜHENDIS</span>
+<span class="mi">1</span>      <span class="n">PROGRAMCI</span>
+<span class="mi">2</span>    <span class="n">AKADEMISYEN</span>
+<span class="mi">3</span>       <span class="n">YÖNETICI</span>
+<span class="mi">4</span>           <span class="n">AMIR</span>
+<span class="mi">5</span>       <span class="n">MÜHENDIS</span>
+<span class="mi">6</span>       <span class="n">YÖNETICI</span>
+<span class="mi">7</span>          <span class="n">MÜDÜR</span>
+<span class="mi">8</span>      <span class="n">VETERINER</span>
+<span class="mi">9</span>       <span class="n">YÖNETICI</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">IŞ</span><span class="o">-</span><span class="n">MESLEK</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
+</code></pre></div>
+
+<p>İşlemin kalıcı olmsı için yine atama operatörünü kullanmalıyız.</p>
+<div class="highlight"><pre><span></span><code><span class="n">veri</span><span class="p">[</span><span class="s2">&quot;IŞ-MESLEK&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">veri</span><span class="p">[</span><span class="s2">&quot;IŞ-MESLEK&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">buyuk_harf</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>ISIM</th>
+<th>YAŞ</th>
+<th>IŞ-MESLEK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Mustafa</td>
+<td>25</td>
+<td>MÜHENDIS</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Halil</td>
+<td>38</td>
+<td>PROGRAMCI</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Burak</td>
+<td>41</td>
+<td>AKADEMISYEN</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Emre</td>
+<td>23</td>
+<td>YÖNETICI</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Ersin</td>
+<td>37</td>
+<td>AMIR</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Sertaç</td>
+<td>52</td>
+<td>MÜHENDIS</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Furkan</td>
+<td>30</td>
+<td>YÖNETICI</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Murat</td>
+<td>23</td>
+<td>MÜDÜR</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Ahmet</td>
+<td>40</td>
+<td>VETERINER</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Abdülkadir</td>
+<td>38</td>
+<td>YÖNETICI</td>
+</tr>
+</tbody>
+</table>
+<h2>Veri Çerçevelerini Birleştir</h2>
+<p>Pandas Kütüphanesinde Veri çerçevelerini birleştirmek için kullanılabilecek birden fazla Fonksiyon/Metot vardır. Aşağıda bu Fonksiyonların kullanımı anlatılmıştır.</p>
+<h2>concat() Fonksiyonu</h2>
+<p><strong>Concat</strong> kelimesi Concatenate kelimesinin kısaltamasıdır. <strong>Concatenate</strong> kelimesinin Türkçe karşılığı <strong>Birleştir</strong>'dir.<br>
+<code>concat()</code> fonksiyonu ile veri çerçeveleri alt alta ya da yan yana birleştirilebilir. Varsayılan değer satır bazlı yani alt alta birleştirmedir.</p>
+<p>Birleştirme örneklerini öğrenemek için öncelikle 2 sözlük yapısı oluşturup, bunları veri çerçevesine dönüştürelim.</p>
+<div class="highlight"><pre><span></span><code><span class="n">veri1</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;A1&#39;</span><span class="p">,</span><span class="s1">&#39;A2&#39;</span><span class="p">,</span><span class="s1">&#39;A3&#39;</span><span class="p">,</span><span class="s1">&#39;A4&#39;</span><span class="p">],</span><span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;B1&#39;</span><span class="p">,</span><span class="s1">&#39;B2&#39;</span><span class="p">,</span><span class="s1">&#39;B3&#39;</span><span class="p">,</span><span class="s1">&#39;B4&#39;</span><span class="p">],</span><span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;C1&#39;</span><span class="p">,</span><span class="s1">&#39;C2&#39;</span><span class="p">,</span><span class="s1">&#39;C3&#39;</span><span class="p">,</span><span class="s1">&#39;C4&#39;</span><span class="p">]}</span>
+<span class="n">veri2</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;A5&#39;</span><span class="p">,</span><span class="s1">&#39;A6&#39;</span><span class="p">,</span><span class="s1">&#39;A7&#39;</span><span class="p">,</span><span class="s1">&#39;A8&#39;</span><span class="p">],</span><span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;B5&#39;</span><span class="p">,</span><span class="s1">&#39;B6&#39;</span><span class="p">,</span><span class="s1">&#39;B7&#39;</span><span class="p">,</span><span class="s1">&#39;B8&#39;</span><span class="p">],</span><span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;C5&#39;</span><span class="p">,</span><span class="s1">&#39;C6&#39;</span><span class="p">,</span><span class="s1">&#39;C7&#39;</span><span class="p">,</span><span class="s1">&#39;C8&#39;</span><span class="p">]}</span>
+<span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">veri1</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">veri2</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df1</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>A1</td>
+<td>B1</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>A2</td>
+<td>B2</td>
+<td>C2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>A3</td>
+<td>B3</td>
+<td>C3</td>
+</tr>
+<tr>
+<td>4</td>
+<td>A4</td>
+<td>B4</td>
+<td>C4</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df2</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5</td>
+<td>A5</td>
+<td>B5</td>
+<td>C5</td>
+</tr>
+<tr>
+<td>6</td>
+<td>A6</td>
+<td>B6</td>
+<td>C6</td>
+</tr>
+<tr>
+<td>7</td>
+<td>A7</td>
+<td>B7</td>
+<td>C7</td>
+</tr>
+<tr>
+<td>8</td>
+<td>A8</td>
+<td>B8</td>
+<td>C8</td>
+</tr>
+</tbody>
+</table>
+<p>Oluşturduğumuz veri çerçevelerini, <code>concat()</code> fonksiyonu ile birleştirelim. <code>concat()</code> fonksiyonuna en az iki adet veri çevçevesi eklemek gerekir. Malumunuz, Pandas'ta genellikle birden fazla parametre, seçenek ekleneceği zaman, bu değerler köşeli parantez içerisinde yani <strong>liste</strong> veri tipi olarak yazılır.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">]))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>A1</td>
+<td>B1</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>A2</td>
+<td>B2</td>
+<td>C2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>A3</td>
+<td>B3</td>
+<td>C3</td>
+</tr>
+<tr>
+<td>4</td>
+<td>A4</td>
+<td>B4</td>
+<td>C4</td>
+</tr>
+<tr>
+<td>5</td>
+<td>A5</td>
+<td>B5</td>
+<td>C5</td>
+</tr>
+<tr>
+<td>6</td>
+<td>A6</td>
+<td>B6</td>
+<td>C6</td>
+</tr>
+<tr>
+<td>7</td>
+<td>A7</td>
+<td>B7</td>
+<td>C7</td>
+</tr>
+<tr>
+<td>8</td>
+<td>A8</td>
+<td>B8</td>
+<td>C8</td>
+</tr>
+</tbody>
+</table>
+<p>Gördüğünüz gibi, iki veri çerçevesi altalta birleştirildi.</p>
+<h3>axis parametresi</h3>
+<p>Hatırlarsanız <strong>drop</strong> metodunu anlatırken <strong>axis</strong> parametresinden bahsetmiştik. <strong>axis</strong> parametresi, <strong>0 ve 1</strong> değerlerini alır, <strong>0 satırları, 1 ise sütunları</strong> temsil eder demiştik. Aynı parametreyi birleştirme işleminde de kullanabiliriz. eğer <strong>axis</strong> parametresi kullanılmaz ise, varsayılan değer <strong>axis = 0</strong> olduğu için yani satırları baz alarak birleştirme yapılır.</p>
+<p>Şimdi <strong>axis=1</strong> parametresini ekleyerek veri çerçevelerini yanyana birleştirmeyi deneyelim.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>A1</td>
+<td>B1</td>
+<td>C1</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>2</td>
+<td>A2</td>
+<td>B2</td>
+<td>C2</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>3</td>
+<td>A3</td>
+<td>B3</td>
+<td>C3</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>4</td>
+<td>A4</td>
+<td>B4</td>
+<td>C4</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>5</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>A5</td>
+<td>B5</td>
+<td>C5</td>
+</tr>
+<tr>
+<td>6</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>A6</td>
+<td>B6</td>
+<td>C6</td>
+</tr>
+<tr>
+<td>7</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>A7</td>
+<td>B7</td>
+<td>C7</td>
+</tr>
+<tr>
+<td>8</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>A8</td>
+<td>B8</td>
+<td>C8</td>
+</tr>
+</tbody>
+</table>
+<p>Bu durumda, 2 veri çerçevesi yanyana birleştirildi ancak veri çerçevelerinde aynı indeks değerleri bulunmadığı için ilgili indeks değerinin krşılığında <strong>NaN (Not A Number)</strong> değeri atandı.</p>
+<p>Eğer aşağıdaki gibi bir veri çerçevemiz olsaydı ve bu veri çerçevesini df1 ile yanyana birleştirseydik nasıl bir sonuç elde ederdik dersiniz.</p>
+<div class="highlight"><pre><span></span><code><span class="n">veri3</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;A5&#39;</span><span class="p">,</span><span class="s1">&#39;A6&#39;</span><span class="p">,</span><span class="s1">&#39;A7&#39;</span><span class="p">,</span><span class="s1">&#39;A8&#39;</span><span class="p">],</span><span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;B5&#39;</span><span class="p">,</span><span class="s1">&#39;B6&#39;</span><span class="p">,</span><span class="s1">&#39;B7&#39;</span><span class="p">,</span><span class="s1">&#39;B8&#39;</span><span class="p">],</span><span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;C5&#39;</span><span class="p">,</span><span class="s1">&#39;C6&#39;</span><span class="p">,</span><span class="s1">&#39;C7&#39;</span><span class="p">,</span><span class="s1">&#39;C8&#39;</span><span class="p">]}</span>
+<span class="n">df3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">veri3</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">8</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df3</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>A5</td>
+<td>B5</td>
+<td>C5</td>
+</tr>
+<tr>
+<td>6</td>
+<td>A6</td>
+<td>B6</td>
+<td>C6</td>
+</tr>
+<tr>
+<td>3</td>
+<td>A7</td>
+<td>B7</td>
+<td>C7</td>
+</tr>
+<tr>
+<td>8</td>
+<td>A8</td>
+<td>B8</td>
+<td>C8</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span> <span class="n">df3</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>A1</td>
+<td>B1</td>
+<td>C1</td>
+<td>A5</td>
+<td>B5</td>
+<td>C5</td>
+</tr>
+<tr>
+<td>2</td>
+<td>A2</td>
+<td>B2</td>
+<td>C2</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>3</td>
+<td>A3</td>
+<td>B3</td>
+<td>C3</td>
+<td>A7</td>
+<td>B7</td>
+<td>C7</td>
+</tr>
+<tr>
+<td>4</td>
+<td>A4</td>
+<td>B4</td>
+<td>C4</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>6</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>A6</td>
+<td>B6</td>
+<td>C6</td>
+</tr>
+<tr>
+<td>8</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>A8</td>
+<td>B8</td>
+<td>C8</td>
+</tr>
+</tbody>
+</table>
+<p>df1 ve df3'te ortak indeks değerleri olduğu için 1. ve 3. satırlar tamamen geçerli veri ile doldu.</p>
+<p><strong>concat</strong> fonksiyonu sadece 2 veri çerçevesini birleştirmiyor. 2'den fazla veri çerçevesini de birleştiriyor. Oluşturduğumuz df1, df2 ve df3 veri çerçevelerini altalta ve yanyana birleştirip sonuçları inceleyelim.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">,</span> <span class="n">df3</span><span class="p">]))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>A1</td>
+<td>B1</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>A2</td>
+<td>B2</td>
+<td>C2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>A3</td>
+<td>B3</td>
+<td>C3</td>
+</tr>
+<tr>
+<td>4</td>
+<td>A4</td>
+<td>B4</td>
+<td>C4</td>
+</tr>
+<tr>
+<td>5</td>
+<td>A5</td>
+<td>B5</td>
+<td>C5</td>
+</tr>
+<tr>
+<td>6</td>
+<td>A6</td>
+<td>B6</td>
+<td>C6</td>
+</tr>
+<tr>
+<td>7</td>
+<td>A7</td>
+<td>B7</td>
+<td>C7</td>
+</tr>
+<tr>
+<td>8</td>
+<td>A8</td>
+<td>B8</td>
+<td>C8</td>
+</tr>
+<tr>
+<td>1</td>
+<td>A5</td>
+<td>B5</td>
+<td>C5</td>
+</tr>
+<tr>
+<td>6</td>
+<td>A6</td>
+<td>B6</td>
+<td>C6</td>
+</tr>
+<tr>
+<td>3</td>
+<td>A7</td>
+<td>B7</td>
+<td>C7</td>
+</tr>
+<tr>
+<td>8</td>
+<td>A8</td>
+<td>B8</td>
+<td>C8</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">,</span> <span class="n">df3</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>A1</td>
+<td>B1</td>
+<td>C1</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>A5</td>
+<td>B5</td>
+<td>C5</td>
+</tr>
+<tr>
+<td>2</td>
+<td>A2</td>
+<td>B2</td>
+<td>C2</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>3</td>
+<td>A3</td>
+<td>B3</td>
+<td>C3</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>A7</td>
+<td>B7</td>
+<td>C7</td>
+</tr>
+<tr>
+<td>4</td>
+<td>A4</td>
+<td>B4</td>
+<td>C4</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>5</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>A5</td>
+<td>B5</td>
+<td>C5</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>6</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>A6</td>
+<td>B6</td>
+<td>C6</td>
+<td>A6</td>
+<td>B6</td>
+<td>C6</td>
+</tr>
+<tr>
+<td>7</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>A7</td>
+<td>B7</td>
+<td>C7</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>8</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>A8</td>
+<td>B8</td>
+<td>C8</td>
+<td>A8</td>
+<td>B8</td>
+<td>C8</td>
+</tr>
+</tbody>
+</table>
+<h2>join() Fonksiyonu</h2>
+<p><code>join()</code> metodu, Veri çerçevelerini birleştirmek için kullanılan fonksiyonlardan biridir. <code>join()</code> fonksiyonunun parametreleri kullanılarak, matematik dersinteki <strong>Kümeler</strong> konusu mantığında birleştirme işlemleri yapılabilir.<br>
+<strong>join()</strong> metodu, parametresiz kullanıldığında varsayılan olarak <strong>left join</strong> (<code>how = "left"</code>)
+ değerini alır. Sol tarafta yazılan veri çerçevesindeki tüm değerler alınır, bu çerçevedeki indeks değerleri sağ tarafta yazılan veri çerçevesinde varsa, bu değerlere birleştirilir. Soldaki indeks değeri sağdaki veri çerçeveside yoksa o halde ilgili satır ve sütunlara eksik veri mahiyetinde <strong>NaN</strong> (Not a Number) değeri atanır.</p>
+<div class="highlight"><pre><span></span><code><span class="n">veri4</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Ad&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;mustafa&quot;</span><span class="p">,</span> <span class="s2">&quot;halil&quot;</span><span class="p">,</span> <span class="s2">&quot;emre&quot;</span><span class="p">,</span> <span class="s2">&quot;burak&quot;</span><span class="p">],</span>
+        <span class="s1">&#39;yas&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">38</span><span class="p">,</span><span class="mi">42</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">44</span><span class="p">],</span>
+        <span class="s1">&#39;meslek&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;yönetici&quot;</span><span class="p">,</span> <span class="s2">&quot;mak.müh.&quot;</span><span class="p">,</span> <span class="s2">&quot;yönetici&quot;</span><span class="p">,</span> <span class="s2">&quot;akademisyen&quot;</span><span class="p">]}</span>
+<span class="n">df4</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">veri4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df4</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Ad</th>
+<th>yas</th>
+<th>meslek</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>mustafa</td>
+<td>38</td>
+<td>yönetici</td>
+</tr>
+<tr>
+<td>1</td>
+<td>halil</td>
+<td>42</td>
+<td>mak.müh.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>emre</td>
+<td>35</td>
+<td>yönetici</td>
+</tr>
+<tr>
+<td>3</td>
+<td>burak</td>
+<td>44</td>
+<td>akademisyen</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df1</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df4</span><span class="p">))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>Ad</th>
+<th>yas</th>
+<th>meslek</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>A1</td>
+<td>B1</td>
+<td>C1</td>
+<td>halil</td>
+<td>42.0</td>
+<td>mak.müh.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>A2</td>
+<td>B2</td>
+<td>C2</td>
+<td>emre</td>
+<td>35.0</td>
+<td>yönetici</td>
+</tr>
+<tr>
+<td>3</td>
+<td>A3</td>
+<td>B3</td>
+<td>C3</td>
+<td>burak</td>
+<td>44.0</td>
+<td>akademisyen</td>
+</tr>
+<tr>
+<td>4</td>
+<td>A4</td>
+<td>B4</td>
+<td>C4</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+<p>Sonuca bakarsanız, <strong>df1</strong> veri çerçevesinin temel alındı ve <strong>df4</strong>'teki indeks değerlerine bakılarak, <strong>df1</strong>'in indeks değeri olan sütunlarının veri çerçevesine dahil edildiğini, 
+katıldığını görebilirsiniz. Yani ilk veri çerçevesine ilave olarak, iki veri çerçevesinin ortak indeksleri eklenmiş diyebiliriz. İşlemin tersini yaparsak, yani df4'ü temel alarak <strong>join</strong> metodunu uygularsak ne olur?</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df4</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df1</span><span class="p">))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Ad</th>
+<th>yas</th>
+<th>meslek</th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>mustafa</td>
+<td>38</td>
+<td>yönetici</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>1</td>
+<td>halil</td>
+<td>42</td>
+<td>mak.müh.</td>
+<td>A1</td>
+<td>B1</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>emre</td>
+<td>35</td>
+<td>yönetici</td>
+<td>A2</td>
+<td>B2</td>
+<td>C2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>burak</td>
+<td>44</td>
+<td>akademisyen</td>
+<td>A3</td>
+<td>B3</td>
+<td>C3</td>
+</tr>
+</tbody>
+</table>
+<p>Bu kez de, tahmin ettiğimiz gibi, <strong>df4</strong> veri çerçevesi temel alındı, ve <strong>df1</strong>'in ortak indeks değerleri dahil edildi, <strong>df4</strong>'ün indeks değeri <strong>df1</strong> de olmadığı durumda, ilgili satıra <strong>NaN</strong> değeri atandı.</p>
+<h3>how parametresi</h3>
+<p><strong>join</strong> metodunun <strong>how</strong> parametresi ile, veri çerçevelerinin, sağdaki ya da soldaki veri çerçevesine göre katılma/dahil edilme seçeneğini ayarlayabilir, veri çerçevelerinin 
+birleşimini ya da kesişimini de alabiliriz. <strong>how</strong> parametresi, <strong>left, right, inner</strong> ve <strong>outer</strong> değerlerini alır. Varsayılan değer <strong>left</strong>'tir. (<strong>left join</strong>)</p>
+<p>Aşağıdaki örneği inceleyerek konuyu daha iyi anlayabilirsiniz.</p>
+<h4>how parametresinin seçenekleri</h4>
+<p><code>join()</code> Fonksiyonunun <code>how</code> parametresinin alabileceği seçenekler;  </p>
+<ul>
+<li><code>left</code> (varsayılan)</li>
+<li><code>right</code></li>
+<li><code>outer</code></li>
+<li><code>inner</code></li>
+</ul>
+<p>Şimdi bu seçenekleri sıra ile inceleyelim.</p>
+<p><img alt="join_merge" src="https://mhalil.github.io/images/python/join_merge.png"></p>
+<h3>left join</h3>
+<p><code>join()</code> metodunun, <code>how</code> parametresi almadan kullanıldığında varsayılan olarak <strong>left join</strong> (<code>how = "left"</code>) değerini aldığından bahsetmiştik. Bu durumda <strong>Sol tarafta yazılan veri çerçevesindeki tüm değerler alınır, bu çerçevedeki indeks değerleri sağ tarafta yazılan veri çerçevesinde varsa, bu değerlere birleştirilir</strong>. Soldaki indeks değeri sağdaki veri çerçeveside yoksa o halde ilgili satır ve sütunlara eksik veri mahiyetinde <strong>NaN</strong> (Not a Number) değeri atanır.<br>
+<code>how = "left"</code> kodunu eklesek te eklemesekte aynı sonucu elde ederiz. Ağaşıdaki kodları ayrı ayrı çalıştırıp, göreabilirsiniz.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df1</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df4</span><span class="p">))</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df1</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df4</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>Ad</th>
+<th>yas</th>
+<th>meslek</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>A1</td>
+<td>B1</td>
+<td>C1</td>
+<td>halil</td>
+<td>42.0</td>
+<td>mak.müh.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>A2</td>
+<td>B2</td>
+<td>C2</td>
+<td>emre</td>
+<td>35.0</td>
+<td>yönetici</td>
+</tr>
+<tr>
+<td>3</td>
+<td>A3</td>
+<td>B3</td>
+<td>C3</td>
+<td>burak</td>
+<td>44.0</td>
+<td>akademisyen</td>
+</tr>
+<tr>
+<td>4</td>
+<td>A4</td>
+<td>B4</td>
+<td>C4</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+<h3>right join</h3>
+<p>Aynı kodu, <strong>how="right"</strong> parametresi ekleyerek te çalıştırıp sonucu görelim.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df1</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df4</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>Ad</th>
+<th>yas</th>
+<th>meslek</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>mustafa</td>
+<td>38</td>
+<td>yönetici</td>
+</tr>
+<tr>
+<td>1</td>
+<td>A1</td>
+<td>B1</td>
+<td>C1</td>
+<td>halil</td>
+<td>42</td>
+<td>mak.müh.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>A2</td>
+<td>B2</td>
+<td>C2</td>
+<td>emre</td>
+<td>35</td>
+<td>yönetici</td>
+</tr>
+<tr>
+<td>3</td>
+<td>A3</td>
+<td>B3</td>
+<td>C3</td>
+<td>burak</td>
+<td>44</td>
+<td>akademisyen</td>
+</tr>
+</tbody>
+</table>
+<p><strong>how</strong> parametresi eklenmeyen İlk kodda, indeksler 1'den yani <strong>df1</strong> temel alınarak birleştirme işlemi gerçekleştirilirken, <strong>how="right"</strong> parametresi eklenen ikinci kodda <strong>df2</strong> yani sağdaki veri çerçevesi temel alınarak (indeks değerli 0'dan başlayarak) birleştirme işlemi gerçekleşti.</p>
+<h3>outer join</h3>
+<p><code>outer</code>seçeneği kullanıldığında, <strong>Birleşik küme</strong> mantığı ile birleştirme işlemi gerçekleşir. Her iki veri çerçevesi tüm içeriği ile alınıp, yanyana birleştirilir.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df1</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df4</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;outer&quot;</span><span class="p">))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>Ad</th>
+<th>yas</th>
+<th>meslek</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>mustafa</td>
+<td>38.0</td>
+<td>yönetici</td>
+</tr>
+<tr>
+<td>1</td>
+<td>A1</td>
+<td>B1</td>
+<td>C1</td>
+<td>halil</td>
+<td>42.0</td>
+<td>mak.müh.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>A2</td>
+<td>B2</td>
+<td>C2</td>
+<td>emre</td>
+<td>35.0</td>
+<td>yönetici</td>
+</tr>
+<tr>
+<td>3</td>
+<td>A3</td>
+<td>B3</td>
+<td>C3</td>
+<td>burak</td>
+<td>44.0</td>
+<td>akademisyen</td>
+</tr>
+<tr>
+<td>4</td>
+<td>A4</td>
+<td>B4</td>
+<td>C4</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+<p>Görüldüğü üzre, önce <strong>df1</strong> veri çerçevesi alındı, daha sonra <strong>df4</strong> veri çerçevesinin içeriği alınarak yanına dahil edildi. Her iki ver içerçevesinde indeks değerleri içermeyen satırlan <strong>NaN</strong> olarak belirlendi.</p>
+<h3>inner join</h3>
+<p><code>inner</code>seçeneği kullanıldığında, <strong>Kesişim kümesi</strong> mantığı ile birleştirme işlemi gerçekleşir. İki veri çerçevesinde ortak indeks değerlerine sahip satırlar alınır, yanyana birleştirilir.</p>
+<p><strong>df1</strong> 1'den 4'e kadar olan indeks değerlerine sahipken, <strong>df4</strong> 0'dan 3'e kadar indeks değerlerine sahip veri çerçeveleridir. Şimdi bu iki veri çerçevesini <code>how="inner"</code> parametresi ile birbirine dahil etmek istersen ne olur?</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df1</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df4</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;inner&quot;</span><span class="p">))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>Ad</th>
+<th>yas</th>
+<th>meslek</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>A1</td>
+<td>B1</td>
+<td>C1</td>
+<td>halil</td>
+<td>42</td>
+<td>mak.müh.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>A2</td>
+<td>B2</td>
+<td>C2</td>
+<td>emre</td>
+<td>35</td>
+<td>yönetici</td>
+</tr>
+<tr>
+<td>3</td>
+<td>A3</td>
+<td>B3</td>
+<td>C3</td>
+<td>burak</td>
+<td>44</td>
+<td>akademisyen</td>
+</tr>
+</tbody>
+</table>
+<p>İkisinde de ortak olan 1,2 ve 3 nolu indeks değerlerindeki veriler birleştirildi yani her iki veri çerçevesinin <strong>kesişimi</strong> alındı.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df4</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span> <span class="kc">True</span><span class="p">))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Ad</th>
+<th>yas</th>
+<th>meslek</th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>mustafa</td>
+<td>38</td>
+<td>yönetici</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>1</td>
+<td>halil</td>
+<td>42</td>
+<td>mak.müh.</td>
+<td>A1</td>
+<td>B1</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>emre</td>
+<td>35</td>
+<td>yönetici</td>
+<td>A2</td>
+<td>B2</td>
+<td>C2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>burak</td>
+<td>44</td>
+<td>akademisyen</td>
+<td>A3</td>
+<td>B3</td>
+<td>C3</td>
+</tr>
+</tbody>
+</table>
+<h2>merge() Fonksiyonu</h2>
+<p><code>merge()</code> fonksiyonu <code>join()</code> fonksiyonuna benzer ancak bazı farklı özellikleri vardır. Veri Çerçevesi (DataFrame) veya adlandırılmış Seri nesnelerini (Series) veritabanı stili birleştirme yöntemi ile (SQL’de bulunan inner join, outer join … ‘e benzer) birleştirmek için <code>merge()</code> fonksiyonunu kullanılabilir.<br>
+Adlandırılmış Seri nesnesi (Series), adlandırılmış tek bir sütuna sahip Veri çerçevesi (DataFrame) olarak ele alınır.<br>
+<code>merge()</code> fonksiyonunun bir çok parametresi vardır. Biz burada temel bir kaç parametreye değineceğiz.</p>
+<div class="highlight"><pre><span></span><code><span class="n">DataFrame</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
+            <span class="n">left_index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">right_index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> 
+            <span class="n">suffixes</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;_x&#39;</span><span class="p">,</span> <span class="s1">&#39;_y&#39;</span><span class="p">),</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">indicator</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">validate</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>on Parametresi</h3>
+<p><code>on</code> parametresi, Veri Çerçevelerinin hangi sütun baz alınarak birleştirileceğini belirteceğimiz parametredir. Öğrenci isimleri ile Vize ve Final sonuçlarının bulunduğu iki veri çerçevesi oluşturup, parametrelerin kullanımını görelim.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">vize</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;Ogrenci&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;ali&quot;</span><span class="p">,</span> <span class="s2">&quot;busra&quot;</span><span class="p">,</span> <span class="s2">&quot;ceyhun&quot;</span><span class="p">,</span> <span class="s2">&quot;eda&quot;</span><span class="p">,</span> <span class="s2">&quot;gamze&quot;</span><span class="p">,</span> <span class="s2">&quot;kamil&quot;</span><span class="p">],</span> 
+                     <span class="s2">&quot;Sinav Sonucu&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">41</span><span class="p">,</span> <span class="mi">58</span><span class="p">,</span> <span class="mi">73</span><span class="p">,</span> <span class="mi">81</span><span class="p">,</span> <span class="mi">95</span><span class="p">,</span> <span class="mi">85</span><span class="p">]})</span>
+
+<span class="n">final</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;Ogrenci&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;ali&quot;</span><span class="p">,</span> <span class="s2">&quot;busra&quot;</span><span class="p">,</span> <span class="s2">&quot;derya&quot;</span><span class="p">,</span> <span class="s2">&quot;fatih&quot;</span><span class="p">,</span> <span class="s2">&quot;halil&quot;</span><span class="p">],</span> 
+                      <span class="s2">&quot;Sinav Sonucu&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">60</span><span class="p">,</span> <span class="mi">68</span><span class="p">,</span> <span class="mi">74</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">95</span><span class="p">]})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">vize</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Ogrenci</th>
+<th>Sinav Sonucu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>ali</td>
+<td>41</td>
+</tr>
+<tr>
+<td>1</td>
+<td>busra</td>
+<td>58</td>
+</tr>
+<tr>
+<td>2</td>
+<td>ceyhun</td>
+<td>73</td>
+</tr>
+<tr>
+<td>3</td>
+<td>eda</td>
+<td>81</td>
+</tr>
+<tr>
+<td>4</td>
+<td>gamze</td>
+<td>95</td>
+</tr>
+<tr>
+<td>5</td>
+<td>kamil</td>
+<td>85</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">final</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Ogrenci</th>
+<th>Sinav Sonucu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>ali</td>
+<td>60</td>
+</tr>
+<tr>
+<td>1</td>
+<td>busra</td>
+<td>68</td>
+</tr>
+<tr>
+<td>2</td>
+<td>derya</td>
+<td>74</td>
+</tr>
+<tr>
+<td>3</td>
+<td>fatih</td>
+<td>90</td>
+</tr>
+<tr>
+<td>4</td>
+<td>halil</td>
+<td>95</td>
+</tr>
+</tbody>
+</table>
+<p>Yukarıdaki iki veri çerçevesini, <strong>Ogrenci</strong> isimli sütunu temel alarak birleştirlim. <code>how</code> parametresine takılmayın, aşağıda detaylıca anlatılıyor.</p>
+<div class="highlight"><pre><span></span><code><span class="n">tumu</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">vize</span><span class="p">,</span> <span class="n">final</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s2">&quot;Ogrenci&quot;</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s2">&quot;outer&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tumuprint</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Ogrenci</th>
+<th>Sinav Sonucu_x</th>
+<th>Sinav Sonucu_y</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>ali</td>
+<td>41.0</td>
+<td>60.0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>busra</td>
+<td>58.0</td>
+<td>68.0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>ceyhun</td>
+<td>73.0</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>3</td>
+<td>eda</td>
+<td>81.0</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>4</td>
+<td>gamze</td>
+<td>95.0</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>5</td>
+<td>kamil</td>
+<td>85.0</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>6</td>
+<td>derya</td>
+<td>NaN</td>
+<td>74.0</td>
+</tr>
+<tr>
+<td>7</td>
+<td>fatih</td>
+<td>NaN</td>
+<td>90.0</td>
+</tr>
+<tr>
+<td>8</td>
+<td>halil</td>
+<td>NaN</td>
+<td>95.0</td>
+</tr>
+</tbody>
+</table>
+<p>Birleştirme işlemi sonucunda, İki veri çerçevesindeki tüm veriler, yeni veri çerçevesinde birleştirildi. Hem Vize hemde Final veri çerçevelerinde isimleri bulunan öğrencilerin sınav sonuçları yeni veri çerçevesinde eklenmişken, vize ya da final sonucu olmayan öğrenciler için, ilgili sütun değerleri <strong>NaN</strong> (Not a Number) olarak ayarlandı.</p>
+<h3>how Parametresi</h3>
+<p><code>how</code> parametresi, veri çerçevelerini birleştirirken matematikteki Kümeler konusuna benzer seçenekler sunar. <code>merge()</code> fonksiyonunda <code>how</code> parametresi kullanılmadığı taktirde varsayılan olarak <code>inner</code> seçeneği belirtilmiş olur ve birleştirilecek veri çerçevelerinin sadece ortak değerleri alınarak (ortak küme gibi davranarak) birleştirme
+ işlemi gerçekleştirilir.</p>
+<p>Birleştirme işlemi sonucunda Sütun başlıklarının sonuna varsayılan <strong>_x</strong> ve <strong>_y</strong> sonekleri eklenir.</p>
+<p><code>how</code> Parametresi için kullanılabilecek seçenekler:</p>
+<ul>
+<li><code>inner</code> (varsayılan)</li>
+<li><code>outer</code></li>
+<li><code>left</code></li>
+<li><code>right</code></li>
+<li><code>cross</code></li>
+</ul>
+<h3>inner Seçeneği</h3>
+<p><code>inner</code> seçeneği, sadece iki veri çerçevesinde de bulunan <strong>ortak değerleri</strong> birleştirir. Tek veri çerçevesinde olan değerler silinir. <code>how = "inner"</code> ibaresini yazsak ta yazmasak ta aynı sonucu elde ederiz. Aşağıdaki İki kod, aynı sonucu verir, deneyip görelim.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">vize</span><span class="p">,</span> <span class="n">final</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s2">&quot;Ogrenci&quot;</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s2">&quot;inner&quot;</span><span class="p">))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Ogrenci</th>
+<th>Sinav Sonucu_x</th>
+<th>Sinav Sonucu_y</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>ali</td>
+<td>41</td>
+<td>60</td>
+</tr>
+<tr>
+<td>1</td>
+<td>busra</td>
+<td>58</td>
+<td>68</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">vize</span><span class="p">,</span> <span class="n">final</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s2">&quot;Ogrenci&quot;</span><span class="p">))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Ogrenci</th>
+<th>Sinav Sonucu_x</th>
+<th>Sinav Sonucu_y</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>ali</td>
+<td>41</td>
+<td>60</td>
+</tr>
+<tr>
+<td>1</td>
+<td>busra</td>
+<td>58</td>
+<td>68</td>
+</tr>
+</tbody>
+</table>
+<h3>outer Seçeneği</h3>
+<p><code>outer</code> seçeneği kullanıldığında, iki veri çerçevesinde bulunan <strong>tüm değerler</strong> birleştirilir. Sol tarafta yazılan veri çerçevesindeki değerler temel alınır. İki veri çerçevesinde bulunan ortak değerler korunur, aksi halde eksik değerler için <strong>NaN</strong> değeri atanır.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">vize</span><span class="p">,</span> <span class="n">final</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s2">&quot;Ogrenci&quot;</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s2">&quot;outer&quot;</span><span class="p">))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Ogrenci</th>
+<th>Sinav Sonucu_x</th>
+<th>Sinav Sonucu_y</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>ali</td>
+<td>41.0</td>
+<td>60.0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>busra</td>
+<td>58.0</td>
+<td>68.0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>ceyhun</td>
+<td>73.0</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>3</td>
+<td>eda</td>
+<td>81.0</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>4</td>
+<td>gamze</td>
+<td>95.0</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>5</td>
+<td>kamil</td>
+<td>85.0</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>6</td>
+<td>derya</td>
+<td>NaN</td>
+<td>74.0</td>
+</tr>
+<tr>
+<td>7</td>
+<td>fatih</td>
+<td>NaN</td>
+<td>90.0</td>
+</tr>
+<tr>
+<td>8</td>
+<td>halil</td>
+<td>NaN</td>
+<td>95.0</td>
+</tr>
+</tbody>
+</table>
+<h3>left Seçeneği</h3>
+<p><code>left</code> seçeneği ile yapılan birleştirme işleminde, <strong>sol tarafta yazılan veri çerçevesinin tüm değerlerini alır ve sağ tarafta yazılan veri çerçevesindeki ortak değerleri</strong> tabloya ekler. Solda yazılan veri çerçevesindeki değerlerin, sağda yazılan veri çerçevesinde karşılığı yoksa, ilgili sütuna <strong>NaN</strong> değeri atanır. Sağ tarafta yazılan veri çerçevesinin, sol tarafta yazılan veri çerçevesinde karşılığı yoksa, bu değerler yok sayılır, 
+birleştirme işlemine dahil edilmez.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">vize</span><span class="p">,</span> <span class="n">final</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s2">&quot;Ogrenci&quot;</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s2">&quot;left&quot;</span><span class="p">))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Ogrenci</th>
+<th>Sinav Sonucu_x</th>
+<th>Sinav Sonucu_y</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>ali</td>
+<td>41</td>
+<td>60.0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>busra</td>
+<td>58</td>
+<td>68.0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>ceyhun</td>
+<td>73</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>3</td>
+<td>eda</td>
+<td>81</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>4</td>
+<td>gamze</td>
+<td>95</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>5</td>
+<td>kamil</td>
+<td>85</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+<h3>right Seçeneği</h3>
+<p><code>right</code> seçeneği ile yapılan birleştirme işleminde, <strong>sağ tarafta yazılan veri çerçevesinin tüm değerlerini alır ve sol tarafta yazılan veri çerçevesindeki ortak değerleri</strong> tabloya ekler. Sağda yazılan veri çerçevesindeki değerlerin, solda yazılan veri çerçevesinde karşılığı yoksa, ilgili sütuna <strong>NaN</strong> değeri atanır. Sol tarafta yazılan veri çerçevesinin, sağ tarafta yazılan veri çerçevesinde karşılığı yoksa, bu değerler yok sayılır, 
+birleştirme işlemine dahil edilmez.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">vize</span><span class="p">,</span> <span class="n">final</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s2">&quot;Ogrenci&quot;</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s2">&quot;right&quot;</span><span class="p">))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Ogrenci</th>
+<th>Sinav Sonucu_x</th>
+<th>Sinav Sonucu_y</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>ali</td>
+<td>41.0</td>
+<td>60</td>
+</tr>
+<tr>
+<td>1</td>
+<td>busra</td>
+<td>58.0</td>
+<td>68</td>
+</tr>
+<tr>
+<td>2</td>
+<td>derya</td>
+<td>NaN</td>
+<td>74</td>
+</tr>
+<tr>
+<td>3</td>
+<td>fatih</td>
+<td>NaN</td>
+<td>90</td>
+</tr>
+<tr>
+<td>4</td>
+<td>halil</td>
+<td>NaN</td>
+<td>95</td>
+</tr>
+</tbody>
+</table>
+<h3>cross Seçeneği</h3>
+<p><code>cross</code> seçeneği sonucunda, kartezyen çarpımı yöntemi ile birleştirme yapılır.</p>
+<div class="highlight"><pre><span></span><code><span class="n">veri1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;HARF&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">]})</span>
+<span class="n">veri2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;SAYI&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">30</span><span class="p">]})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">veri1</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>HARF</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>A</td>
+</tr>
+<tr>
+<td>1</td>
+<td>B</td>
+</tr>
+<tr>
+<td>2</td>
+<td>C</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri2</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>SAYI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>10</td>
+</tr>
+<tr>
+<td>1</td>
+<td>20</td>
+</tr>
+<tr>
+<td>2</td>
+<td>30</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">veri1</span><span class="p">,</span> <span class="n">veri2</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;cross&quot;</span><span class="p">))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>HARF</th>
+<th>SAYI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>A</td>
+<td>10</td>
+</tr>
+<tr>
+<td>1</td>
+<td>A</td>
+<td>20</td>
+</tr>
+<tr>
+<td>2</td>
+<td>A</td>
+<td>30</td>
+</tr>
+<tr>
+<td>3</td>
+<td>B</td>
+<td>10</td>
+</tr>
+<tr>
+<td>4</td>
+<td>B</td>
+<td>20</td>
+</tr>
+<tr>
+<td>5</td>
+<td>B</td>
+<td>30</td>
+</tr>
+<tr>
+<td>6</td>
+<td>C</td>
+<td>10</td>
+</tr>
+<tr>
+<td>7</td>
+<td>C</td>
+<td>20</td>
+</tr>
+<tr>
+<td>8</td>
+<td>C</td>
+<td>30</td>
+</tr>
+</tbody>
+</table>
+<h3>left_on Parametresi</h3>
+<p>Bu parametre opsiyonel yani İsteğe bağlıdır, kullanmak zorunda değilsiniz. Soldaki Veri Çerçevesi üzerinde birleştirmenin hangi düzeyde yapılacağını belirtmek için kullanılır. Sütun başlıklarının sonuna varsayılan <strong>_x</strong> ve <strong>_y</strong> sonekleri eklenir.</p>
+<p><code>left_on</code> parametresi, etiket veya liste ya da dizi benzeri veri alır.</p>
+<h3>right_on Parametresi</h3>
+<p>Bu parametre opsiyonel yani İsteğe bağlıdır, kullanmak zorunda değilsiniz. Sağdaki Veri Çerçevesi üzerinde birleştirmenin hangi düzeyde yapılacağını belirtmek için kullanılır. Sütun başlıklarının sonuna varsayılan <strong>_x</strong> ve <strong>_y</strong> sonekleri eklenir.</p>
+<p><code>right_on</code> parametresi, etiket veya liste ya da dizi benzeri veri alır.</p>
+<div class="highlight"><pre><span></span><code><span class="n">arastirma1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Manav_1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;elma&#39;</span><span class="p">,</span> <span class="s1">&#39;nar&#39;</span><span class="p">,</span> <span class="s1">&#39;portakal&#39;</span><span class="p">,</span> <span class="s1">&#39;elma&#39;</span><span class="p">],</span>
+                    <span class="s1">&#39;fiyat&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]})</span>
+
+<span class="n">arastirma2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Manav_2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;elma&#39;</span><span class="p">,</span> <span class="s1">&#39;nar&#39;</span><span class="p">,</span> <span class="s1">&#39;portakal&#39;</span><span class="p">,</span> <span class="s1">&#39;elma&#39;</span><span class="p">],</span>
+                    <span class="s1">&#39;fiyat&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arastirma1</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Manav_1</th>
+<th>fiyat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>elma</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>nar</td>
+<td>2</td>
+</tr>
+<tr>
+<td>2</td>
+<td>portakal</td>
+<td>3</td>
+</tr>
+<tr>
+<td>3</td>
+<td>elma</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">arastirma2</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Manav_2</th>
+<th>fiyat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>elma</td>
+<td>5</td>
+</tr>
+<tr>
+<td>1</td>
+<td>nar</td>
+<td>6</td>
+</tr>
+<tr>
+<td>2</td>
+<td>portakal</td>
+<td>7</td>
+</tr>
+<tr>
+<td>3</td>
+<td>elma</td>
+<td>8</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">arastirma1</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">arastirma2</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s1">&#39;Manav_1&#39;</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s1">&#39;Manav_2&#39;</span><span class="p">))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Manav_1</th>
+<th>fiyat_x</th>
+<th>Manav_2</th>
+<th>fiyat_y</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>elma</td>
+<td>1</td>
+<td>elma</td>
+<td>5</td>
+</tr>
+<tr>
+<td>1</td>
+<td>elma</td>
+<td>1</td>
+<td>elma</td>
+<td>8</td>
+</tr>
+<tr>
+<td>2</td>
+<td>elma</td>
+<td>4</td>
+<td>elma</td>
+<td>5</td>
+</tr>
+<tr>
+<td>3</td>
+<td>elma</td>
+<td>4</td>
+<td>elma</td>
+<td>8</td>
+</tr>
+<tr>
+<td>4</td>
+<td>nar</td>
+<td>2</td>
+<td>nar</td>
+<td>6</td>
+</tr>
+<tr>
+<td>5</td>
+<td>portakal</td>
+<td>3</td>
+<td>portakal</td>
+<td>7</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">arastirma2</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">arastirma1</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s1">&#39;Manav_1&#39;</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s1">&#39;Manav_2&#39;</span><span class="p">))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Manav_2</th>
+<th>fiyat_x</th>
+<th>Manav_1</th>
+<th>fiyat_y</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>elma</td>
+<td>5</td>
+<td>elma</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>elma</td>
+<td>5</td>
+<td>elma</td>
+<td>4</td>
+</tr>
+<tr>
+<td>2</td>
+<td>elma</td>
+<td>8</td>
+<td>elma</td>
+<td>1</td>
+</tr>
+<tr>
+<td>3</td>
+<td>elma</td>
+<td>8</td>
+<td>elma</td>
+<td>4</td>
+</tr>
+<tr>
+<td>4</td>
+<td>nar</td>
+<td>6</td>
+<td>nar</td>
+<td>2</td>
+</tr>
+<tr>
+<td>5</td>
+<td>portakal</td>
+<td>7</td>
+<td>portakal</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<h3>suffixes Parametresi</h3>
+<p><code>merge()</code> fonksiyonu ile birleştirme işlemi sonucunda, sütun başlıklarının sonuna <strong>_x</strong> ve <strong>_y</strong> soneklerinin dahil edildiğini söyledik. Bu değer vaysayılan değerdir. 
+Bu değeri değiştirmek ve sütun başlıklarının sonuna, istediğimiz değeri eklemek istersek bu işlemi <code>suffixes</code> parametresi ile yapabiliriz.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">arastirma1</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">arastirma2</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s1">&#39;Manav_1&#39;</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s1">&#39;Manav_2&#39;</span><span class="p">,</span>
+            <span class="n">suffixes</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;_bir&quot;</span><span class="p">,</span> <span class="s2">&quot;_iki&quot;</span><span class="p">)))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Manav_1</th>
+<th>fiyat_bir</th>
+<th>Manav_2</th>
+<th>fiyat_iki</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>elma</td>
+<td>1</td>
+<td>elma</td>
+<td>5</td>
+</tr>
+<tr>
+<td>1</td>
+<td>elma</td>
+<td>1</td>
+<td>elma</td>
+<td>8</td>
+</tr>
+<tr>
+<td>2</td>
+<td>elma</td>
+<td>4</td>
+<td>elma</td>
+<td>5</td>
+</tr>
+<tr>
+<td>3</td>
+<td>elma</td>
+<td>4</td>
+<td>elma</td>
+<td>8</td>
+</tr>
+<tr>
+<td>4</td>
+<td>nar</td>
+<td>2</td>
+<td>nar</td>
+<td>6</td>
+</tr>
+<tr>
+<td>5</td>
+<td>portakal</td>
+<td>3</td>
+<td>portakal</td>
+<td>7</td>
+</tr>
+</tbody>
+</table>
+<p><a href="pandas-05-eksik-kayip-veri-yontemleri.html">← Önceki Bölüm</a> | <a href="pandas-07-veri-siralama-yontemleri.html">Sonraki Bölüm →</a></p>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/pandas.html">Pandas</a></li>
+					<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+					<li><a href="/tag/modul.html">Modül</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>

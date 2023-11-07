@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="FreeCAD - Scripting 01 - Python'a Giriş" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/freecad-scripting-01-pythona-giris.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">FreeCAD - Scripting 01 - Python'a Giriş</h1>
+	<span class="post-date">Cum 01 Nisan 2022</span>
+	<h1>Python'a Giriş</h1>
+<p>Bu bölümün amacı, Python programlama dili hakkında kısaca bilgi vermek ve ardından FreeCAD programı içerisinde Python kodu yazmayı ve/veya yazdığımız kodları çalıştırmayı öğrenmektir.</p>
+<p>Bu, Python'a yeni başlayanlar için kısa bir eğitimdir. Python, açık kaynaklı, çok platformlu bir programlama dilidir. Onu diğer programlama dillerinden farklı ve yeni kullanıcılar için çok erişilebilir kılan çeşitli özelliklere sahiptir:</p>
+<ul>
+<li>
+<p>Python, İnsanlar tarafından okunabilecek şekilde tasarlanmıştır, bu da öğrenmeyi ve anlamasını nispeten kolaylaştırır.</p>
+</li>
+<li>
+<p>Python, yorumlanır bir dildir, bu, programların çalıştırılmadan önce derlenmesine gerek olmadığı anlamına gelir. Python kodu, dilerseniz satır satır dahi olsa anında çalıştırılabilir.</p>
+</li>
+<li>
+<p>Python, bir betik (script) dili olarak diğer programlara gömülebilir. FreeCAD, gömülü bir Python yorumlayıcısına sahiptir. FreeCAD'de parçaları işlemek için Python kodu yazabilirsiniz. Bu, kendi araçlarınızı oluşturabileceğiniz anlamına gelir.</p>
+</li>
+<li>
+<p>Genişletilebilir, yeni modülleri kurulumunuza kolayca bağlayabilir ve işlevselliğini artırabilirsiniz. Örneğin, Python'un görüntüleri okumasına ve yazmasına, Twitter ile iletişim kurmasına, işletim sisteminiz tarafından gerçekleştirilecek görevleri zamanlamasına ,... vb. izin veren modüller vardır.</p>
+</li>
+</ul>
+<p>Aşağıda python konusunda temel bilgiler verilmiştir ve bu doküman 
+eksiksiz bir eğitim değildir. Ancak FreeCAD ve mekanizmaları hakkında 
+daha fazla araştırma yapmak için iyi bir başlangıç noktası sağlayacağını
+ umuyorum. Aşağıdaki kod parçacıklarını bir <code>Python yorumlayıcısı</code>na girmenizi şiddetle tavsiye ederiz.</p>
+<h2>Yorumlayıcı (İnterpreter)</h2>
+<p>Genellikle bilgisayar programları yazarken, bir metin düzenleyici veya özel programlama ortamınızı (temelde bazı ek araçlar içeren bir metin düzenleyicidir) açarsınız, programınızı yazarsınız, ardından derler ve çalıştırırsınız. Genellikle başlangıç seviyesinde bir veya daha fazla hata yapılır, bu nedenle programınız çalışmaz. Kodların doğru çalışmamasına dair neyin yanlış gittiğini bildiren bir hata mesajı 
+alabilirsiniz. Ardından metin düzenleyicinize geri dönün, hataları düzeltin, tekrar çalıştırın, programınız istendiği gibi çalışana kadar tekrarlayın.</p>
+<p>Python'da tüm süreç <code>Python yorumlayıcısı</code> içinde şeffaf bir şekilde yapılabilir. Yorumlayıcı, basitçe Python kodunu yazabileceğiniz komut istemine sahip bir Python penceresidir. Python'u bilgisayarınıza yüklediyseniz (Windows veya Mac kullanıyorsanız Python web sitesinden indirin, GNU/Linux kullanıyorsanız paket havuzunuzdan yükleyin), başlat menünüzde bir Python yorumlayıcısı olacaktır. Ancak, daha önce de belirtildiği gibi, <strong>FreeCAD ayrıca yerleşik bir Python yorumlayıcısına sahiptir</strong>.</p>
+<p><img alt="Python_konsolu" src="images/freecad/01_freecad_python_konsol.png"></p>
+<p>FreeCAD içerisinde Python konsolunu Göremiyorsanız, <strong>Görünüm → Paneller → Python konsolu</strong>'na tıklayın. Python konsolu yeniden boyutlandırılabilir ve ayrıca yerinden ayrılabilir / taşınıp hareket ettirilebilir.</p>
+<p><strong>Yorumlayıcı</strong>, öncelikle bilgisayarınızda kurulu olan <strong>Python sürüm bilgisini</strong>, ardından komut istemi olan bir <code>&gt;&gt;&gt;</code> sembolünü gösterir. Yorumlayıcı içerisinde kod yazmak basittir: her satır bir talimattır. Enter tuşuna bastığınızda, kod satırınız yürütülür/çalıştırılır. Örneğin, şunu yazmayı deneyin:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;merhaba&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p><code>print()</code>, ekrana bir şey yazdıran bir Python komutudur. <code>Enter</code>'a bastığınızda işlem gerçekleştirilir ve <code>merhaba</code> mesajı yazdırılır. Bir hata yaparsanız, örneğin şunu yazalım:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">merhaba</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Python bunun hatalı bir kod olduğunu size hemen söyleyecektir. Bu durumda Python <code>merhaba</code> ifadesinin ne olduğunu bilmiyor. <code>" "</code> (çift tırnak) karakterleri, içeriğin bir metin parçası, programlama jargonunda <strong>dize (string)</strong> olduğunu belirtir. Bunlar olmadan <code>print()</code> komutu <code>merhaba</code>'yı tanımıyor. Python konsolunda iken klavyeden <code>yukarı ok</code> tuşuna basarak son kod satırına geri dönebilir ve kodu düzeltebilirsiniz.</p>
+<p>Python yorumlayıcısı ayrıca yerleşik bir yardım sistemine sahiptir. Diyelim ki <code>print(merhaba)</code> komutu sonucunda neyin yanlış gittiğini anlamadık ve komut hakkında özel bilgi istiyoruz:</p>
+<div class="highlight"><pre><span></span><code><span class="n">help</span><span class="p">(</span><span class="s2">&quot;print&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Bu komutu yazıp çalıştırdığınızda <code>print()</code> komutunun yapabileceği her şeyin uzun ve eksiksiz bir açıklamasını alacaksınız (açıklamalar konsol ekranında görüntülenecektir).
+Artık Python yorumlayıcısını anladığınıza göre, daha ciddi şeylerle devam edebiliriz.</p>
+<h2>Değişkenler</h2>
+<p>Programlamada sıklıkla bir isim altında bir değer saklamanız gerekir. İşte burada değişkenler devreye girer. Örneğin şunu yazın:</p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;merhaba&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Muhtemelen burada ne olduğunu anlamışsınızdır, <code>merhaba</code> dizesini (string) <code>a</code> adı altında kaydettik, <code>a</code> değişkenine atadık. Artık <code>a</code> bilindiğine göre, onu herhangi bir yerde kullanabiliriz, örneğin <code>print()</code> komutunda. Değişken olarak istediğimiz herhangi bir ismi kullanabiliriz, sadece boşluk karakteri veya noktalama işaretleri 
+kullanmamak (değişken adı rakam ile başlayamaz) ve Python anahtar kelimeleri kullanmamak gibi bazı basit kurallara uymamız gerekiyor. 
+Örneğin şunu yazabiliriz:</p>
+<div class="highlight"><pre><span></span><code><span class="n">merhaba</span> <span class="o">=</span> <span class="s2">&quot;şahsi selamlama mesajım&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">merhaba</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Artık <code>merhaba</code> kelimesi tanımsız değil, bir değişken olarak tanımlanmış durumda. Değişkenler herhangi bir zamanda değiştirilebilir, bu yüzden <strong>değişkenler</strong> olarak adlandırılırlar, içerikleri değişebilir. Örneğin:</p>
+<div class="highlight"><pre><span></span><code><span class="n">degiskenim</span> <span class="o">=</span> <span class="s2">&quot;merhaba&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">degiskenim</span><span class="p">)</span>
+<span class="n">degiskenim</span> <span class="o">=</span> <span class="s2">&quot;hoşçakal&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">degiskenim</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Görüldüğü üzere <code>degiskenim</code> isimli değişkenin değerini değiştirdik.</p>
+<div class="highlight"><pre><span></span><code><span class="n">degisken1</span> <span class="o">=</span> <span class="s2">&quot;merhaba&quot;</span>
+<span class="n">degisken2</span> <span class="o">=</span> <span class="n">degisken1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">degisken2</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Değişkenlerinize anlamlı isimler vermenizi tavsiye edilir. Uzun süreli kodlama çalışmalarında, bir süre sonra değişkeninizin neyi temsil ettiğini hatırlamayabilirsiniz. Ancak, örneğin "<strong>hoşgeldiniz mesajım</strong>" adını verdiyseniz, amacını kolayca hatırlayacaksınız.</p>
+<p>Python'da isimlendirme çok önemlidir; <code>Degiskenim</code> ile <code>degiskenim</code> ifadeleri aynı şey değil. Değişkeni tanımlarken isim olarak <code>Degiskenim</code> belirlemişseniz <code>print(degiskenim)</code> komutunu çalıştırdığınızda, değişkenin tanımlanmadığına dair hata alacaksınız. Python’da Büyük-küçük harf duyarlılığı vardır.</p>
+<h2>Sayılar</h2>
+<p>Tabii ki Python programları sadece metin dizeleriyle değil, her türlü  veriyle uğraşabilir. Önemli olan, Python, ne tür verilerle uğraştığını bilmelidir. <code>Print(merhaba)</code> örneğimizde <code>print()</code> komutunun <strong>"merhaba"</strong> dizemizi tanıdığını gördük. <code>" "</code> karakterlerini kullanarak, aşağıdakilerin bir metin dizesi olduğunu belirttik.</p>
+<p><code>type()</code> komutu ile bir değişkenin veri türünü/tipini her zaman kontrol edebiliriz:</p>
+<div class="highlight"><pre><span></span><code><span class="n">deger</span> <span class="o">=</span> <span class="s2">&quot;merhaba&quot;</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">deger</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Bu komut, <code>deger</code> değişkeninin türünün <strong>string</strong> olduğunu, <code>string</code> ifadesinin kısa biçimi olan <code>'str'</code> ile gösterecektir. 
+Ayrıca tamsayı ve ondalıklı sayılar gibi başka temel veri türleri de vardır:</p>
+<div class="highlight"><pre><span></span><code><span class="n">ilkSayi</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">ikinciSayi</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ilkSayi</span> <span class="o">+</span> <span class="n">ikinciSayi</span><span class="p">)</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">ilkSayi</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Python, <code>10</code> ve <code>20</code>'nin tamsayılar olduğunu bilir, bu nedenle bu değerleri <code>'int'</code> (integer yani tam sayı) olarak saklar ve Python, tamsayılarla yapabileceği her şeyi bu değişkenlerle yapabilir. Aşağıdaki kodu çalıştırıp sonucu görün:</p>
+<div class="highlight"><pre><span></span><code><span class="n">ilkSayi</span> <span class="o">=</span> <span class="s2">&quot;10&quot;</span>
+<span class="n">ikinciSayi</span> <span class="o">=</span> <span class="s2">&quot;20&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ilkSayi</span> <span class="o">+</span> <span class="n">ikinciSayi</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Burada Python'u, iki değişkenimizin <strong>sayı değil metin parçaları</strong> olduğunu düşünmeye zorladık (değerleri "" karakteri içesisine yazdığımız için sayı değil dize türünde veri oluşturduk). Python iki parça metni birbirine ekleyebilir, ancak bu durumda elbette herhangi bir aritmetik işlem gerçekleştirmeyecektir, metinler yan yana yazılacaktır.</p>
+<div class="highlight"><pre><span></span><code><span class="n">deger1</span> <span class="o">=</span> <span class="mi">13</span>
+<span class="n">deger2</span> <span class="o">=</span> <span class="mf">15.65</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;deger1&#39;in türü  &quot;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">deger1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;deger2&#39;nin türü &quot;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">deger2</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Tam sayılar ve Ondalıklı sayılar sorunsuz bir şekilde toplanabilir:</p>
+<div class="highlight"><pre><span></span><code><span class="n">toplam</span> <span class="o">=</span> <span class="n">deger1</span> <span class="o">+</span> <span class="n">deger2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">toplam</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">toplam</span><span class="p">))</span>
+</code></pre></div>
+
+<p><strong>deger2</strong> Ondalıklı sayı olduğu için, Python otomatik olarak sonucun bir Ondalıklı sayı olması gerektiğine karar verir. Ancak Python'un hangi türü kullanacağını bilmediği durumlar da vardır. Örneğin:</p>
+<div class="highlight"><pre><span></span><code><span class="n">degerA</span> <span class="o">=</span> <span class="s2">&quot;merhaba 123&quot;</span>
+<span class="n">degerB</span> <span class="o">=</span> <span class="mi">456</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">degerA</span> <span class="o">+</span> <span class="n">degerB</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Bu kod çalıştırıldığı zaman bir hata ile karşılaşılır, <code>degerA</code> bir <strong>dizedir (string)</strong> ve <code>degerB</code> bir <strong>tamsayıdır</strong> ve Python ne yapacağını bilmez. Ancak, Python'u türler arasında dönüşüm yapmaya zorlayabiliriz:</p>
+<div class="highlight"><pre><span></span><code><span class="n">degerB</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">degerB</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Ayrıca bir değişkeni tamsayıya dönüştürmek için <code>int()</code> ve ondalıklı sayıya dönüştürmek için ise <code>float()</code> kullanabilir ve istersek <code>float</code> kullanabiliriz:</p>
+<div class="highlight"><pre><span></span><code><span class="n">degerA</span> <span class="o">=</span> <span class="s2">&quot;123&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">degerA</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">degerA</span><span class="p">))</span>
+</code></pre></div>
+
+<p><code>print()</code> komutunu birkaç şekilde kullandığımızı fark etmiş olmalısınız. Değişkenleri, toplamları, virgülle ayrılmış birkaç şeyi ve hatta başka bir Python komutunun sonucunu yazdırdık. Belki bu iki komutu da görmüşsünüzdür:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">type</span><span class="p">(</span><span class="n">degerA</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">degerA</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Terminal / konsol içerisinde yazdığınızda, bu iki komut aynı sonucu verecektir. Bunun nedeni, yorumlayıcıda her şeyin otomatik olarak yazdırılmasıdır. Yorumlayıcının dışında çalışan daha karmaşık programlar yazdığımızda, bunlar otomatik olarak yazdırılmayacaktır, bu nedenle <code>print()</code> komutunu kullanmamız gerekecek. Bunu akılda tutarak, burada <code>print()</code> komutu kullanmayı bırakalım. Bundan sonraki anlatımlarda, kodları terminalde yazdığınızı düşünerek şu şekilde yazacağız:</p>
+<div class="highlight"><pre><span></span><code><span class="n">deger</span> <span class="o">=</span> <span class="s2">&quot;merhaba arkadaşlar&quot;</span>
+<span class="n">deger</span>
+</code></pre></div>
+
+<h2>Listeler</h2>
+<p>Bir başka kullanışlı veri türü de bir <strong>listedir</strong>. Liste, diğer verilerin bir koleksiyonudur. Bir liste tanımlamak için <code>[ ]</code> kullanırız:</p>
+<div class="highlight"><pre><span></span><code><span class="n">listem</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">listem</span><span class="p">)</span>
+<span class="n">diger_listem</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Mustafa&quot;</span><span class="p">,</span> <span class="s2">&quot;Halil&quot;</span><span class="p">,</span> <span class="s2">&quot;Ersin&quot;</span><span class="p">]</span>
+<span class="n">karma_listem</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;merhaba&quot;</span><span class="p">,</span> <span class="mi">345</span><span class="p">,</span> <span class="mf">34.567</span><span class="p">]</span>
+</code></pre></div>
+
+<p>Gördüğünüz gibi bir liste, her türlü veriyi (string, integer,...vb) içerebilir. Bir liste ile birçok şey yapılabilir. Örneğin, listedeki öğelerin miktarını hesaplayabiliriz:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">len</span><span class="p">(</span><span class="n">diger_listem</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Veya liste içerisindeki bir öğeyi alın:</p>
+<div class="highlight"><pre><span></span><code><span class="n">ismim</span> <span class="o">=</span> <span class="n">diger_listem</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">arkadasimin_ismi</span> <span class="o">=</span> <span class="n">diger_listem</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+</code></pre></div>
+
+<p><code>len()</code> komutu bir listedeki toplam öğe sayısını döndürürken (değer olarak bize verirken), listedeki ilk öğe her zaman 0 (sıfır) konumundadır, bu nedenle <strong>diger_listem</strong> listemizde "<strong>Ersin</strong>" 2. konumda olacaktır. Listeler içerisindeki öğeleri sıralamak, silmek ve listeye ekleme yapmak ta mümkündür.</p>
+<p>Bir metin dizesi (string ifade), Python'daki bir karakter listesine çok benzerdir. Aşağıdaki kodları çalıştırmayı deneyin:</p>
+<div class="highlight"><pre><span></span><code><span class="n">deger</span> <span class="o">=</span> <span class="s2">&quot;merhaba&quot;</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">deger</span><span class="p">)</span>
+<span class="n">deger</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+</code></pre></div>
+
+<p><code>deger = "merhaba"</code> ifadesi, <code>deger = ["m","e","r","h","a", "b", "a"]</code> ile benzer şekilde kullanılabilir.
+Genellikle listelerle yapabileceklerinizi <strong>string</strong>lerle de yapabilirsiniz. Aslında hem <code>listeler (list)</code> hem de <code>dizeler (string)</code> sıralı yapıdır.</p>
+<p><code>Dizeler, tamsayılar, ondalıklı sayılar</code> ve <code>listeler</code> dışında, <code>sözlükler</code> gibi yerleşik veri türleri vardır ve hatta <code>sınıf</code>larla kendi veri türlerinizi oluşturabilirsiniz.</p>
+<h2>Girinti (Indentation)</h2>
+<p>Liste kullanımının önemli, liste içerisinde gezinip öğlere sırayla erişmek ve her bir öğe ile bir şeyler yapma yeteneğidir. Örneğin şuna bakın:</p>
+<div class="highlight"><pre><span></span><code><span class="n">tum_daltonlar</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Joe&quot;</span><span class="p">,</span> <span class="s2">&quot;William&quot;</span><span class="p">,</span> <span class="s2">&quot;Jack&quot;</span><span class="p">,</span> <span class="s2">&quot;Averell&quot;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">dalton</span> <span class="ow">in</span> <span class="n">tum_daltonlar</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">dalton</span> <span class="o">+</span> <span class="s2">&quot; Dalton&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p><code>for in</code> komutuyla listemizi döngüye soktuk (programlama jargonu) ve her bir öğeyle bir şeyler yaptık. Özel sözdizimine dikkat edin: <code>for</code> komutu <code>:</code> ile sonlanır, bu işaret (iki nokta üstüste), alt satırda bir kod bloğu olacağını belirtir. Yorumlayıcıda, <code>:</code> ile biten komut satırına girdikten hemen sonra komut istemi <code>...</code> olarak değişecektir.</p>
+<p>Python, <code>for</code> döngüsü içinde, sonraki satırlardan kaçının  çalıştırılması gerektiğini nasıl bilecek? Bunun için Python girintiye güvenir. Sonraki satırlar bir boşluk veya birkaç boşluk veya bir sekme (TAB) veya birkaç sekme ile başlamalıdır. Girinti aynı kaldığı sürece satırlar <code>for in</code> bloğunun bir parçası olarak kabul edilecektir. Kod bloğunun bir satırına 2, sonraki satırına 4 boşluk bırakarak kod yazmaya başlarsanız, bir hata mesajı alırsınız, kodlarınız çalışmaz. Blokta yazacağınız kodlar bittiğinde, girintisiz başka bir satır yazmanız veya <code>for in</code> bloğundan geri dönmek için <code>Enter</code> tuşuna basmanız yeterlidir.</p>
+<p>Girinti ayrıca programın/kodların okunabilirliğine de yardımcı olur. Büyük bir program yazarken büyük girintiler kullanırsanız (örneğin boşluklar yerine sekmeler (Tab) kullanırsanız), neyin neyin içinde çalıştırıldığını net bir şekilde görebilirsiniz. Diğer komutların da girintili kod blokları kullandığını göreceğiz.</p>
+<p><code>for in</code> komutu, birden fazla kez yapılması gereken birçok şey için kullanılabilir. Örneğin, <code>range()</code> komutuyla birleştirilebilir:</p>
+<div class="highlight"><pre><span></span><code><span class="n">seri</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
+<span class="n">toplam</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;toplam&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">sayi</span> <span class="ow">in</span> <span class="n">seri</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">sayi</span><span class="p">)</span>
+    <span class="n">toplam</span> <span class="o">=</span> <span class="n">toplam</span> <span class="o">+</span> <span class="n">sayi</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;----&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">toplam</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Eğer yorumlayıcıda <code>help(range)</code> yazarsanız şunu göreceksiniz:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">range</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+    <span class="nb">range</span><span class="p">(</span><span class="n">stop</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">integers</span>
+    <span class="nb">range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">[,</span> <span class="n">step</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">integers</span>
+</code></pre></div>
+
+<p>Burada köşeli parantezler isteğe bağlı bir parametreyi belirtir. Ancak hepsinin tamsayı olması bekleniyor. Aşağıda adım (artış miktarı) parametresini <code>int()</code> kullanarak bir tamsayı olmaya zorlayacağız:</p>
+<div class="highlight"><pre><span></span><code><span class="n">sayi</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">180</span> <span class="o">*</span> <span class="n">sayi</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">sayi</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">/</span> <span class="n">sayi</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Bir başka <code>range()</code> örneği:</p>
+<div class="highlight"><pre><span></span><code><span class="n">tum_daltonlar</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Joe&quot;</span><span class="p">,</span> <span class="s2">&quot;William&quot;</span><span class="p">,</span> <span class="s2">&quot;Jack&quot;</span><span class="p">,</span> <span class="s2">&quot;Averell&quot;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">tum_daltonlar</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="s2">&quot; is Dalton number &quot;</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+</code></pre></div>
+
+<p><code>range()</code> komutu, 0 (sıfır) ile başlaması (başlangıç ​​numarasını belirtmezseniz) ve son numarasının belirttiğiniz bitiş sayısından bir eksik olması gibi garip bir özelliğe sahiptir. Yani Bitiş değeri işleme dahil edilmez. Bu, elbette diğer Python komutlarıyla iyi 
+çalışır. Örneğin:</p>
+<div class="highlight"><pre><span></span><code><span class="n">tum_daltonlar</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Joe&quot;</span><span class="p">,</span> <span class="s2">&quot;William&quot;</span><span class="p">,</span> <span class="s2">&quot;Jack&quot;</span><span class="p">,</span> <span class="s2">&quot;Averell&quot;</span><span class="p">]</span>
+<span class="n">toplam</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tum_daltonlar</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">toplam</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">tum_daltonlar</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
+</code></pre></div>
+
+<p>Girintili blokların bir başka ilginç kullanımı ise <code>if</code> komutudur. Bu komut, yalnızca belirli bir koşul karşılandığında bir kod bloğu çalıştırılır, örneğin:</p>
+<div class="highlight"><pre><span></span><code><span class="n">tum_daltonlar</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Joe&quot;</span><span class="p">,</span> <span class="s2">&quot;William&quot;</span><span class="p">,</span> <span class="s2">&quot;Jack&quot;</span><span class="p">,</span> <span class="s2">&quot;Averell&quot;</span><span class="p">]</span>
+<span class="k">if</span> <span class="s2">&quot;Joe&quot;</span> <span class="ow">in</span> <span class="n">tum_daltonlar</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Joe Dalton&#39;u liste içinde bulduk!!!&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Elbette bu kod, "<strong>Joe Dalton'u liste içinde bulduk!!!</strong>" cümlesini yazdıracaktır, ancak ikinci satırı şununla değiştirmeyi deneyin:</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="s2">&quot;Lucky&quot;</span> <span class="ow">in</span> <span class="n">tum_daltonlar</span><span class="p">:</span>
+</code></pre></div>
+
+<p>O zaman hiçbir şey yazdırılmaz çünkü <strong>Lucky</strong> ifadesi <strong>tum_daltonlar</strong> listesi içerisinde bulunmuyor. Başka bir ifade de belirtebiliriz:</p>
+<div class="highlight"><pre><span></span><code><span class="n">tum_daltonlar</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Joe&quot;</span><span class="p">,</span> <span class="s2">&quot;William&quot;</span><span class="p">,</span> <span class="s2">&quot;Jack&quot;</span><span class="p">,</span> <span class="s2">&quot;Averell&quot;</span><span class="p">]</span>
+<span class="k">if</span> <span class="s2">&quot;Lucky&quot;</span> <span class="ow">in</span> <span class="n">tum_daltonlar</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bu Dalton&#39;u liste içinde bulduk!!!&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bu isimde bir Dalton liste içinde yok&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>Fonksiyonlar</h2>
+<p>Çok az <a href="https://docs.python.org/3/reference/lexical_analysis.html#identifiers">standart Python komutu</a> vardır ve bunların birçoğunu zaten biliyoruz. Ancak Python'da kendi komutlarınızı oluşturabilirsiniz. Aslında, Python kurulumunuza 
+ekleyebileceğiniz ek modüllerin çoğu tam da bunu yapar, kullanabileceğiniz komutlar eklerler. Python'da özel komuta, <strong>fonksiyon</strong> denir ve şu şekilde tanımlanır:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">printmkare</span><span class="p">(</span><span class="n">deger</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">deger</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; metrekare&quot;</span><span class="p">)</span>
+
+<span class="n">printmkare</span><span class="p">(</span><span class="mi">45</span><span class="p">)</span>
+</code></pre></div>
+
+<p><code>def()</code> komutu yeni bir fonksiyon tanımlar (<strong>def</strong> ifadesi, <strong>definition</strong> = tanım, belirtme kelimesinin kısaltmasıdır), ona bir isim verirsiniz, bu ismi siz belirlersiniz ve parantez içinde fonksiyonun kullanacağı argümanları tanımlarsınız. Bağımsız değişkenler, fonksiyona iletilecek verilerdir. Örneğin, <code>len()</code> komutuna bakın. Sadece <code>len()</code> yazarsanız, Python size bir argümana ihtiyacı olduğunu söyleyecektir ki bu çok açık: Bir şeyin uzunluğunu bilmek, öğrenemek istiyorsanız, o şeyi <code>len()</code> komutu içerisine yazmalısınız. <code>len(listem)</code> yazdığınızda, <code>listem</code>, ibaresi <code>len()</code> fonksiyonuna ilettiğiniz argüman olur. <code>len()</code> fonksiyonu, bu argümanla ne yapacağını bilecek şekilde tanımlanır. Aynı şeyi <code>printmkare</code> fonksiyonumuzla da yaptık.</p>
+<p><code>deger</code> adı, herhangi bir şey olabilir ve yalnızca fonksiyon içinde kullanılacaktır. Bu sadece argümana verdiğiniz bir isimdir, böylece onunla bir şeyler yapabilirsiniz. Argümanları tanımlayarak, fonksiyona kaç tane agrüman bekleyeceğini de söylersiniz. 
+Örneğin, bunu yaparsanız:</p>
+<div class="highlight"><pre><span></span><code><span class="n">printmkare</span><span class="p">(</span><span class="mi">45</span><span class="p">,</span> <span class="mi">34</span><span class="p">)</span>
+</code></pre></div>
+
+<p>bu kodu yazdığınızda bir hata oluşacaktır. Çünkü Fonksiyonumuz sadece bir argüman alacak şekilde programlandı, ancak iki adet argüman (45 ve aldı. Başka bir örnek deneyelim:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">topla</span><span class="p">(</span><span class="n">deger1</span><span class="p">,</span> <span class="n">deger2</span><span class="p">):</span>
+    <span class="n">toplam</span> <span class="o">=</span> <span class="n">deger1</span> <span class="o">+</span> <span class="n">deger2</span>
+    <span class="k">return</span> <span class="n">toplam</span>
+
+<span class="n">toplamDeger</span> <span class="o">=</span> <span class="n">topla</span><span class="p">(</span><span class="mi">45</span><span class="p">,</span> <span class="mi">34</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Burada iki argüman alan, argümanları toplayan ve bu değeri <strong>döndüren</strong> (yani değeri, istenildiğinde kullanılabilecek şekilde hafızada tutan) bir fonksiyon yazdık. Bir şeyi <strong>döndürmek</strong> çok yararlıdır (bunun için <code>return</code> ifadesini kullanıyoruz). yukarıdaki kod ile yazılan iki sayı değerinin toplamını <code>toplamDeger</code> değişkenine atadık, bu değeri program içerisinde istediğimiz zaman kullanabileceğiz.</p>
+<h2>Modüller</h2>
+<p>Artık Python'un nasıl çalıştığı hakkında iyi bir fikriniz olduğuna göre, bir şeyi daha bilmeniz gerekecek: Dosyalar ve modüllerle nasıl çalışılır.</p>
+<p>Şimdiye kadar Python komutlarını, yorumlayıcıda satır satır yazdık. Bu yöntem, daha fazla kod barındıran, kapsamlı programlar için uygun değildir. Normalde Python programlarının kodu, <code>.py</code> uzantılı dosyalarda saklanır. Yalnız düz metin dosyaları olan bu kodları, herhangi bir metin düzenleyici (Linux'ta gedit, emacs, vi ve hatta Windows'ta Not Defteri ile) yazmak/oluşturmak ve düzenlemek mümkündür.</p>
+<p>Bir Python programını çalıştırmanın birkaç yolu vardır. Windows'ta dosyanıza sağ tıklayın, Python ile açın ve çalıştırın. Ancak bunu <code>FreeCAD Python Yorumlayıcısı</code>nın
+ kendisinden de çalıştırabilirsiniz. Bunun için yorumlayıcı, programınızın (kodlarınızın) nerede olduğunu bilmelidir. FreeCAD'de en kolay yol, programınızı FreeCAD'in Python yorumlayıcısının varsayılan olarak bildiği bir klasöre, örneğin <strong>FreeCAD'in kullanıcı Mod</strong> klasörüne yerleştirmektir. Bu klasör, işletim sistemlerine göre genellikle şu konumdadır:</p>
+<ul>
+<li>Linux'ta genellikle, <code>/home/&lt;username&gt;/.FreeCAD/Mod/</code>.</li>
+<li>Windows'ta genellikle, <code>%APPDATA%\FreeCAD\Mod\</code>, yani <code>C:\Users\&lt;username&gt;\Appdata\Roaming\FreeCAD\Mod\</code>.</li>
+<li>Mac OSX'te genellikle, <code>/Users/&lt;username&gt;/Library/Preferences/FreeCAD/Mod/</code>.</li>
+</ul>
+<p>Buraya <strong>scripts</strong> adında bir alt klasör ekleyelim ve ardından şöyle bir kod yazalım ve dosyayı buraya kaydedelim:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">topla</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;test.py dosyası başarılı bir şekilde yüklendi &quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Dosyayı <strong>scripts</strong> (komut dosyaları) klasörüne <code>test.py</code> ismiyle kaydedin ve yorumlayıcı penceresinde şunu yazın:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">test</span>
+</code></pre></div>
+
+<p><code>.py</code> uzantısı olmadan yazıldığına dikkat edin. Bu, dosyanın içeriğini sanki yorumlayıcıda yazmışız gibi satır satır çalıştırılacaktır. Toplama (sum) fonksiyonu oluşturulacak ve yorumlayıcı içerisine mesaj yazdırılacaktır. Bu yazdığımız gibi <code>fonksiyon</code> içeren dosyalara <code>modül</code> denir.</p>
+<p>Yorumlayıcıya bir <code>topla()</code> fonksiyonu yazdığımızda, onu şu şekilde çalıştırırız:</p>
+<div class="highlight"><pre><span></span><code><span class="n">topla</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">45</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Ancak <code>topla()</code> işlevi içeren bir modülü içe aktardığımızda sözdizimi biraz farklıdır:</p>
+<div class="highlight"><pre><span></span><code><span class="n">test</span><span class="o">.</span><span class="n">topla</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">45</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Yani modül bir <code>container</code> olarak içe aktarılır ve tüm fonksiyonları o <code>konteyner</code>ın
+ içindedir. Bu çok kullanışlıdır, çünkü birçok modülü içe aktarabilir ve her şeyi iyi organize edebiliriz. Temel olarak, aralarında bir nokta olan <code>bir_şey.başka_bir_şey</code> gördüğünüzde, bu, <code>başka_bir_şey</code>'in <code>bir_şey</code>'in içinde olduğu anlamına gelir.</p>
+<p>Ayrıca <code>topla()</code> fonksiyonumuzu doğrudan ana yorumlayıcı alanına da aktarabiliriz:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">test</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">topla</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">54</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Hemen hemen tüm modüller bunu yapar; Yorumlayıcıda veya kendi Python 
+modüllerinizde kullanabileceğiniz fonksiyonları, yeni veri türlerini ve 
+sınıfları tanımlar, çünkü modülünüzdeki diğer modülleri içe aktarmanızı 
+hiçbir şey engelleyemez!</p>
+<p>Mevcut bilgisayarınızda, hangi modüllere sahip olduğunuzu (hangilerinin yüklü olduğunu), hangi fonksiyonların hangi modülün içinde olduğunu ve bunların nasıl kullanılacağını (yani ne tür argümanlara ihtiyaç duyduklarını) nasıl bilebiliriz? Python'un bir <code>help()</code> fonksiyonu olduğunu görmüştük.</p>
+<div class="highlight"><pre><span></span><code><span class="n">help</span><span class="p">(</span><span class="s2">&quot;modules&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Yukarıdaki kodu konsolda yazdığımızda, bilgisayarımızda yüklü olan mevcut tüm modüller listelenecektir. Bunlardan herhangi birini içe aktarabilir ve modül içeriklerine <code>dir()</code> komutuyla göz atabiliriz:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">math</span>
+<span class="nb">dir</span><span class="p">(</span><span class="n">math</span><span class="p">)</span>
+</code></pre></div>
+
+<p><code>math</code> (Matematik) modülünde bulunan tüm işlevlerin yanı sıra <code>__doc__, __file__, __name__</code> adlı garip şeyleri göreceğiz. İyi oluşturulmuş bir modüldeki her fonksiyonun, nasıl kullanılacağını açıklayan bir <code>__doc__</code> vardır. Örneğin <code>math</code> (matematik) modülünün içinde bir <code>sin()</code> fonksiyonu olduğunu görüyoruz. Nasıl kullanılacağını bilmek ister misiniz?</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Ekrandaki yazıda belirgin olmayabilir, ancak <code>doc</code> ifadesinin her iki tarafında <code>iki adet alt çizgi (__)</code> karakteri vardır.</p>
+<p><strong>Ve son bir ipucu</strong>: Yeni veya mevcut kod üzerinde çalışırken, FreeCAD'in makro dosyası uzantısı olan <code>.FCMacro</code>'yu kullanmamak, bunun yerine standart <code>.py</code> (python) uzantısını kullanmak daha iyidir. Bunun nedeni Python'un <code>.FCMacro</code> uzantısını tanımamasıdır. Kodlarınızı (modüllerinizi, fonksiyonlarınızı) kaydederken <code>.py</code> uzantılı dosya kullanırsanız, kodunuz daha önce gördüğümüz gibi <code>import</code> yöntemi ile kolayca FreeCAD içerisine dahil edilebilir ve ayrıca <code>importlib.reload()</code> ile yeniden yüklenebilir:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">importlib</span>
+<span class="n">importlib</span><span class="o">.</span><span class="n">reload</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Ancak bir alternatif var:</p>
+<div class="highlight"><pre><span></span><code><span class="n">exec</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;C:/PathToMyMacro/myMacro.FCMacro&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</code></pre></div>
+
+<h2>FreeCAD ile başlamak</h2>
+<p>Umarım artık Python'un nasıl çalıştığı hakkında iyi bir fikriniz vardır ve FreeCAD'in neler sunabileceğini keşfetmeye başlayabilirsiniz. FreeCAD'in Python işlevlerinin tümü farklı modüllerde iyi organize edilmiştir. FreeCAD'i başlattığınızda bazıları zaten yüklenir (içe 
+aktarılır). Bunların neler olduğunu görmek için FreeCAD Python konsolunda şunu yazabilirsiniz:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">dir</span><span class="p">()</span>
+</code></pre></div>
+
+<h2>Not</h2>
+<ul>
+<li>FreeCAD, orijinal olarak Python 2 ile çalışmak üzere tasarlanmıştı. Python 2, 2020'de ömrünün sonuna ulaştığı için, FreeCAD'in gelecekteki gelişimi yalnızca Python 3 ile yapılacak ve geriye dönük uyumluluk desteklenmeyecektir.</li>
+<li>Python hakkında çok daha fazla bilgiyi <a href="https://docs.python.org/3/tutorial/index.html">Resmi Python eğitiminde</a> , <a href="https://docs.python.org/3/reference/">Resmi Python referansında</a> ve en kapsamlı Türkçe kaynak olan <a href="https://python-istihza.yazbel.com/">İstihza Python 3 Belgelerinde</a> bulabilirsiniz.</li>
+</ul>
+<p>Kaynak: <a href="https://wiki.freecadweb.org/Introduction_to_Python">Discovering Python</a></p>
+<p><a href="freecad-scripting-02-python-komut-dosyasi-olusturmak.html">Sonraki Bölüm →</a></p>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/freecad.html">FreeCAD</a></li>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/giris.html">Giriş</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="FreeCAD - Curves WB - Surface - 11 - Compression Spring" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/freecad-curves-wb-surface-11-compression-spring.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">FreeCAD - Curves WB - Surface - 11 - Compression Spring</h1>
+	<span class="post-date">Cts 05 Kasım 2022</span>
+	<h1><img alt="spring" src="https://raw.githubusercontent.com/tomate44/CurvesWB/9aac6c2365311724487f79df3343dab90ddcb819/freecad/Curves/resources/icons/spring.svg"> Compression Spring</h1>
+<p><strong>Compression Spring (Baskı Yayı)</strong> komutu, adından anlaşıldığı üzere, baskı yayı / sıkıştırma yayı oluşturmak için kullanılan komuttur.  </p>
+<p><strong>Kullanım:</strong> Komutu çalıştırmak için aşağıdaki adımları sırası ile uygulayın:</p>
+<ul>
+<li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
+<li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>Compression Spring</strong> seçeneğini kullanın. Bu sayede sahneye bir baskı yayı (eğrisi) eklenir.</li>
+</ul>
+<p><strong>Curves</strong> araç çubuğunda bulunan ilgili düğmeye, ya da <strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>Compression Spring (Baskı Yayı)</strong> butonuna basarak komutu çalıştıralım. Sahnenin boş olduğunu, Unsur ağacında hiç bir öğe olmadığına dikkat edin.  </p>
+<p><img alt="Compression_Spring_01" src="../../images/freecad/curves_wb/surfaces_menu/Compression_Spring_01.png"><br>
+Komut çalıştırılınca sahneye bir Baskı Yayı (eğrisi) ekleniyor. Unsur ağacından <strong>CompSpring</strong> öğesi seçildiğinde, Baskı yayına ait parametreler aşağıdaki gibi görüntüleniyor. Baskı Yayının <strong>Diameter (Çap)</strong> değeri <strong>4 mm</strong> olarak belirlenmiş. Bu değeri değiştirerek sonucu inceleyelim.
+<img alt="Compression_Spring_02" src="../../images/freecad/curves_wb/surfaces_menu/Compression_Spring_02.png"><br>
+Baskı Yayının <strong>Diameter (Çap)</strong> değerini <strong>10 mm</strong> olarak değiştirdiğimizde, Baskı yayı otomatik olarak güncelleniyor.
+<img alt="Compression_Spring_03" src="../../images/freecad/curves_wb/surfaces_menu/Compression_Spring_03.png"><br>
+Baskı Yayını oluşturan bir diğer parametre olan <strong>Length (Boy/Uzunluk/Mesafe)</strong> değerini değiştirerek soncu görelim.<br>
+<strong>10 mm</strong> olan <strong>Length (Boy/Uzunluk/Mesafe)</strong> değerini <strong>5 mm</strong> olarak değiştirdiğimizde görüyoruz ki, baskı yayı daha kısa mesafeye sahip olarak oluşturuldu, yani baskı yayı sıkışmış bir şekil aldı diyebiliriz. Bu parametre değiştirilerek gerçekci animasyon 
+oluşturulabilir.
+<img alt="Compression_Spring_04" src="../../images/freecad/curves_wb/surfaces_menu/Compression_Spring_04.png"><br>
+<strong>Turns (Çevrim/Dönüş)</strong> değeri, Baskı Yayı oluşturulurken eğrinin kaç tur döndürülerek yay oluşturulması gerektiğini belirttiğimiz parametredir. Vidalarda <strong>Hatve / Adım</strong> değeri ile aynı değerdir.<br>
+<strong>5</strong> olan <strong>Turns</strong> değerini <strong>2</strong> olarak değiştirdiğimizde elde ettiğimiz yayın görüntüsü aşağıdadır. Bu ayar ile Eğri, başlangıç noktasından itibaren 2 tur çevrilerek yay elde edildi.
+<img alt="Compression_Spring_05" src="../../images/freecad/curves_wb/surfaces_menu/Compression_Spring_05.png"><br>
+<strong>Wire Output</strong>, Baskı Yayının görünümünün ayarlandığı parametredir. <strong>Wire Output (Tel Ürün/Sonuç)</strong> parametresinin alabileceği değerler <strong>true (doğru)</strong> ve <strong>false (yanlış)</strong> ile sınırlıdır. Parametre değerini <strong>false (yanlış)</strong> olarak belirlediğimizde, <strong>Baskı Yayı Tel olarak görünmesin</strong> demiş oluyoruz ve baskı yayı dairesel kesitli bir yaya dönüşmüş oluyor.
+<img alt="Compression_Spring_06" src="../../images/freecad/curves_wb/surfaces_menu/Compression_Spring_06.png"><br>
+<strong>Wire Output</strong> parametresi <strong>false (yanlış)</strong> olarak değiştirildiğinde elde ettiğimiz dairesel kesite ait çap değerini, <strong>Wire Diameter (Tel Çapı)</strong> parametresi ile belirleyebiliyoruz.<br>
+<strong>0,5 mm</strong> olan <strong>Wire Diameter (Tel Çapı)</strong> parametre değerini <strong>1,25 mm</strong> olarak değiştirdiğimizde, Baskı Yayının görünümü de eş zamanlı olarak güncelleniyor.
+<img alt="Compression_Spring_07" src="../../images/freecad/curves_wb/surfaces_menu/Compression_Spring_07.png"><br>
+<strong>Flatness (Düzlük / Düzgünlük)</strong> parametresi, Baskı Yayının uç noktalarının düzlemsel olarak ayarlanmasını sağlayan parametredir.<br>
+<strong>Flatness (Düzlük / Düzgünlük)</strong> parametre değeri <strong>0 (sıfır)</strong> iken oluşan Yaya ait Ön Görünüm, aşağıdaki gibidir.
+<img alt="Compression_Spring_08" src="../../images/freecad/curves_wb/surfaces_menu/Compression_Spring_08.png"><br>
+<strong>Flatness (Düzlük / Düzgünlük)</strong> parametre değerini artırarak Yayın düzlemsel bir yüzeye tam olarak oturması / temas yüzey alanının artırılması sağlamak sağlanabilir.<br>
+<strong>Flatness</strong> değerini <strong>4</strong> olarak değiştirerek elde ettiğimiz Yaya bakalım
+<img alt="Compression_Spring_09" src="../../images/freecad/curves_wb/surfaces_menu/Compression_Spring_09.png"><br>
+Baskı Yayının <strong>Diameter (Çap)</strong> parametresini incelemek için sahneye yarıçapı <strong>5 mm</strong> olan bir silindir nesnesi ekliyorum.
+<img alt="Compression_Spring_10" src="../../images/freecad/curves_wb/surfaces_menu/Compression_Spring_10.png"><br>
+<strong>ComSpring</strong> nesnesinin <strong>Wire Output</strong> parametresini <strong>false (yanlış)</strong> olarak ayarlıyorum. Sonuç aşağıda.
+<img alt="Compression_Spring_11" src="../../images/freecad/curves_wb/surfaces_menu/Compression_Spring_11.png"><br>
+Sahneye <strong>Ön Görünüm</strong>'den baktığımda Baskı Yayının <strong>Diameter (Çap)</strong> değerinin Silindire kıyasla nasıl göründüğünü daha net olarak görebiliyorum.
+<img alt="Compression_Spring_12" src="../../images/freecad/curves_wb/surfaces_menu/Compression_Spring_12.png"><br>
+Silindir yarıçapını <strong>8 mm</strong> (Çapı 16mm), Baskı Yayının Çap değerini de <strong>16 mm</strong> olarak ayarladığımda sonuç yine değişmiyor. Yani Baskı Yayının Çap değeri olarak kastedilen değer, Yayın <strong>Dıştan Dışa</strong> olan çap mesafesidir. Yani <strong>Wire Diameter (Tel Çapı)</strong> parametre değeri, Baskı Yayının konulacağı deliğe/yuvaya ait çap değerini temsil ediyor. 
+<img alt="Compression_Spring_13" src="../../images/freecad/curves_wb/surfaces_menu/Compression_Spring_13.png"><br>
+<strong>Wire Diameter (Tel Çapı)</strong> parametre değerini artırmamıza rağmen, oluşan Baskı Yayının et kalınlığının içe doğru büyüdüğü, yayın dış çapın değişmediği, iç çap değerinin azaldığı, aşağıdaki görüntüden net bir şekilde görülmüş oluyor.
+<img alt="Compression_Spring_14" src="../../images/freecad/curves_wb/surfaces_menu/Compression_Spring_14.png">  </p>
+<p><a href="freecad-curves-wb-surface-00-menu-komutlari.html">&lt;&lt;&lt; Surfaces Menü Komutlarına Ait Sayfaya Dön</a></p>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/freecad.html">FreeCAD</a></li>
+					<li><a href="/tag/curves.html">Curves</a></li>
+					<li><a href="/tag/workbench.html">Workbench</a></li>
+					<li><a href="/tag/calismatezgahi.html">ÇalışmaTezgahı</a></li>
+					<li><a href="/tag/surface.html">Surface</a></li>
+					<li><a href="/tag/compression.html">Compression</a></li>
+					<li><a href="/tag/spring.html">Spring</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>

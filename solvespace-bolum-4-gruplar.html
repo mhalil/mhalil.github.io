@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Solvespace Bölüm 4: Gruplar" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/solvespace-bolum-4-gruplar.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Solvespace Bölüm 4: Gruplar</h1>
+	<span class="post-date">Çrş 05 Ocak 2022</span>
+	<h2>Bölüm 4: Gruplar</h2>
+<p>Grupların listesini görüntülemek için Özellik penceresinin ana sayfasına gidin. Buna, Özellik penceresinin <code>sol üst köşesindeki bağlantı</code>dan veya <code>ESC</code> tuşuna basarak erişilebilir. Bir grubun sayfasını görüntülemek için listede adını tıklayın.<br>
+Tüm grupların bir adı vardır. Grup 
+oluşturulduğunda varsayılan bir ad atanır (ör. "g008-extrude"). 
+Kullanıcı bu ismi değiştirebilir; bunu yapmak için Özellik penceresinde 
+grubun sayfasına gidin ve [<code>rename</code> (yeniden adlandır)] öğesini seçin.</p>
+<p><img alt="Grubu yeniden adlandır" src="images/solvespace/17%20Grubu%20yeniden%20adlandir.png"></p>
+<p>Bir katı oluşturan (örn. Ekstrüzyon ile veya döndürerek) gruplar, Özellik penceresindeki sayfada görüntülenen bir "<code>solid model as</code> (<em>katı model olarak</em>)" seçeneğine sahiptir. Grup, modele malzeme ekleyerek <code>birleşim</code> veya malzemeyi çıkararak <code>fark</code> olarak birleştirilebilir. Üçüncü bir seçenek, yalnızca her iki katının içine giren malzemeyi koruyan <code>kesişim</code>dir. Yani burada bulunan seçenekler ile iki katı maddenin <code>birleşimi</code>, <code>kesişimi</code> ya da <code>farkı</code> alınabilir.</p>
+<p><code>Birleşim</code>, <code>fark</code> ve <code>kesişim</code> işlemleri ya üçgen ağlar olarak ya da tam NURBS yüzeyleri olarak 
+gerçekleştirilebilir. Üçgen ağların hesaplanması hızlı ve sağlamdır, 
+ancak parçalı doğrusal segmentler olarak yaklaşılması için herhangi bir 
+düzgün eğri gerektirirler. NURBS yüzey işlemleri o kadar sağlam değildir
+ ve bazı geometri türleri için başarısız olacaktır; ancak bunlar tam 
+olarak düzgün eğrileri temsil eder, bu da örneğin birçok parçalı 
+doğrusal kenar yerine dairesel bir yayın tam bir daire olarak göründüğü 
+bir DXF'yi dışa aktarmayı mümkün kılar.</p>
+<p><img alt="Katı Model Olarak (Birleştir, Çıkar ya da Kesişimi al)" src="images/solvespace/18%20Kat%C4%B1%20model.png"></p>
+<p>Bu grupların da ürettikleri yüzeylerin 
+(örneğin fark / çıkarma işlemi) rengini belirleyen bir rengi vardır. 
+Rengi değiştirmek için, Özellik penceresinde grubun sayfasındaki renk 
+örneklerinden birine tıklayın. (Şekil 18'e bakın, <code>solid model as</code> kısmındaki <code>color</code> seçeneği)<br>
+Grubun özellik penceresindeki sayfası, ayrıca 
+tüm isteklerin ve tüm kısıtlamaların bir listesini içerir. Bir 
+kısıtlamayı veya isteği tanımlamak için fareyi, (örneğin bir kısıtlama) 
+adının üzerine getirin; (farenin üzerine geldiği kısıtlama) grafik 
+penceresinde vurgulanmış olarak görünecektir. Seçmek için özellik 
+penceresindeki bağlantıya tıklayın. Bu, grafik penceresinde gerçek 
+nesnenin üzerine gelip tıklamaya eşdeğerdir.</p>
+<h2>3B'de Çizim Yap</h2>
+<p>Bu, kullanıcının çizgiler, daireler, yaylar ve diğer eğriler çizebileceği yeni bir boş grup oluşturur.<br>
+Nihai amaç, genellikle kapalı bölümler (üçgen 
+veya dairesel kesikli bir kare veya daha karmaşık bir şekle sahip bir 
+kare gibi) çizmektir. Bu bölümler, sonraki gruplar için bir girdidir. 
+Örneğin, bir ekstrüzyon grubu, düz bir bölüm (kapalı bir dair, eğri ya 
+da çokgen çizimi) alır ve bunu bir katı oluşturmak için kullanır.</p>
+<p>Gruptaki tüm öğeler kapalı döngüler halinde 
+birleştirilebiliyorsa, bu durumda döngülerin kapsadığı alan çok koyu 
+mavi renkte gölgelenir. Bu, sonraki bir grup tarafından süpürülecek veya
+ ekstrüde edilecek veya döndürülerek katılanacak alandır.</p>
+<h2>Yeni Calışma Düzleminde Cizim Yap</h2>
+<p>Bu, yeni bir "<code>3B'de Çizim Yap</code>"a benzer yeni bir boş grup oluşturur. Aradaki fark, "<code>Yeni Çalışma Düzleminde Çizim Yap</code>"ın
+ aynı zamanda bir çalışma düzlemi oluşturmasıdır. Çalışma düzlemi, çizim
+ oluşturulduğunda seçilen objelere göre oluşturulur. Bunlar şunlar 
+olabilir:</p>
+<p><strong>Bir nokta ve iki doğru parçası</strong><br>
+Yeni çalışma düzleminin başlangıç noktası 
+belirtilen noktadadır. Bir nokta ve iki çizgi parçası seçiliyken ve <code>Yeni Grup → Yeni Çalışma Düzleminde Çizim Yap</code> menü yolu ile komut çalıştırılırsa, Seçilen nokta orijin yani merkez 
+olmak üzere, seçili iki çizgi ile çakışık bir çalışma düzlemi 
+oluşturulacak, Çalışma düzlemi iki çizgiye paraleldir. (yani, kullanıcı
+ o yüzey/düzlem üzerinde çizim yapacaktır).</p>
+<p><strong>Bir Nokta</strong><br>
+Yeni çalışma düzleminin başlangıç noktası, 
+belirtilen noktadadır. Çalışma düzlemi, taban koordinat sistemine 
+diktir; örneğin, yatay ve dikey eksenleri +y ve -z yönlerinde veya +x ve
+ +z yönlerinde veya herhangi bir başka kombinasyonda olabilir.<br>
+Çalışma düzleminin oryantasyonu, çalışma düzlemi
+ oluşturulduğunda görünümün konumundan çıkarılır; görünüm en yakın 
+ortografik görünüme yakalanır ve çalışma düzlemi buna hizalanır.<br>
+Bir parça çoğunlukla doksan derecelik açılardan 
+oluşuyorsa, bu, çalışma düzlemleri oluşturmanın hızlı bir yoludur.</p>
+<p>Yeni grubun ilişkili çalışma düzlemi, otomatik olarak etkin çalışma düzlemi olarak ayarlanır.</p>
+<p>Bu gruptaki öğeler kapalı eğriler 
+oluşturmuyorsa ekranda bir hata mesajı görüntülenir ve boşluk boyunca 
+kırmızı bir çizgi çizilir. Eğrilerin tümü eş düzlemli değilse de bir 
+hata görüntülenir. Konfigürasyon kısmından <code>check sketch for closed contour</code> (<em>kapalı kontur için eskizi kontrol et</em>)
+ ayarını kapatırsanız, oluşturulan eskizin/çizimin, kapalı geometri 
+oluşturup oluşturmadığı kontrol edilmez ve ekranda hata mesajı ve 
+kırmızı çizgi gösterilmez.</p>
+<p><img alt="Kapalı olmayan kontur" src="images/solvespace/19%20Kapali%20olmayan%20kontur.png"></p>
+<h2>Dogrusal Kopya</h2>
+<p>Bu grup, aktif gruptaki geometriyi alır ve düz bir çizgi boyunca birçok kez kopyalar.</p>
+<p>Doğrusal Kopya grubu oluşturulduğunda, bir 
+çalışma düzlemi etkinse, öteleme vektörü bu çalışma düzlemine paralel 
+olmalıdır. Aksi takdirde, öteleme vektörü boş uzayda herhangi bir yere 
+gidebilir.</p>
+<p>Oluşturulacak kopya sayısı kullanıcı 
+tarafından belirlenir. Bu değeri değiştirmek için grup sayfasındaki 
+metin penceresindeki [change (değiştir)] bağlantısını tıklayın (Şekil 
+20)</p>
+<p>Kopyalar tek taraflı veya çift taraflı 
+ötelenebilir. Kopyalar tek tarafa ötelenmişse, orijinal eskiz (taslak), 
+tüm kopyaların solunda (veya üstünde, altında vb.) görünecektir. 
+Kopyalar çift tarafa ötelenmişse, orijinal eskiz kopyaların ortasında 
+görünecektir. (Şekil 20 ve 21)</p>
+<p><img alt="Tek Taraflı Doğrusal Kopya" src="images/solvespace/20%20Dogrusal%20Kopyala.png"></p>
+<p><img alt="Çift Taraflı Doğrusal Kopya" src="images/solvespace/21%20Cift%20Tarafli%20Dogrusal%20Kopyala.png"></p>
+<p>Doğrusal Kopya komutu ile oluşturulacak 
+kopyalar, orijinalinden veya 1 numaralı kopyadan (copy #1) başlayarak 
+ötelenebilir. Öteleme işlemi, orijinalden başlıyorsa, öteleme orijinal 
+eskizi içerecektir. (Yani ötelemenin 1. elemanı her zaman çizilen 
+geometri olacak ve orijinal konumunda üretilecektir.) Öteleme komutu 1 
+numaralı kopyadan (copy #1) başlıyorsa, orijinal eskiz çıktıya dahil 
+edilmez. (Böylece 1 elemanlı bir kopya, giriş geometrisinin tek bir 
+kopyasını oluşturur ve kullanıcının bunu uzayda herhangi bir yere 
+çevirmesine olanak tanır.)</p>
+<p>Etkin grup bir eskiz (taslak) çizimiyse, (3d 
+çizim, yeni çalışma düzleminde çizim), çizim kademeli olarak 
+tekrarlanır. Bu durumda, kullanıcı tipik olarak bir bölüm çizer, adım 
+atar ve o bölümü tekrar eder ve ardından adımı çıkarır ve tekrar eder.</p>
+<p>Aktif grup bir katı ise (ekstrüde edilmiş, 
+helislenmiş, döndürmüş), katı model adımlanır ve tekrarlanır (adım adım 
+kopyası çıkarılır). Bu durumda, kullanıcı bir bölüm çizecek, bölümü 
+ekstrüde edecek ve ardından ekstrüzyonu adım adım tekrarlayacaktır.</p>
+<p>Bazı durumlarda, bu iki olasılık (adım 
+ekstrüzyonla &amp; ekstrüzyonu adımla) eşdeğerdir. Çevirme vektörü kesit
+ düzlemine paralel değilse, o zaman sadece ikinci seçenek çalışacaktır.</p>
+<p><img alt="Katıyı doğrusal olarak kopyala" src="images/solvespace/22%20Katiyi%20Otele.png"></p>
+<h2>Dairesel Kopya</h2>
+<p>Bu grup, aktif gruptaki geometriyi alır ve bir daire boyunca defalarca kopyalar.</p>
+<p>Grubu oluşturmadan önce, kullanıcı dönme 
+eksenini seçmelidir. Bunu yapmanın bir yolu, bir nokta ve bir doğru 
+parçası veya bir normal (normal doğrusu) seçmektir; dönme ekseni 
+noktadan geçer ve doğru parçasına paralel veya normaldir.</p>
+<p>Bir çalışma düzlemi aktifse, sadece bir 
+noktayı seçmek de mümkündür; bu durumda, dönme ekseni o noktadan geçer 
+ve çalışma düzlemine diktir. Bu, dönüşün çalışma düzlemi düzlemi içinde 
+kaldığı anlamına gelir.</p>
+<p><img alt="Aktif Çalışma Düzleminde Dairesel Olarak Çoğalt / Kopyala" src="images/solvespace/23%20Aktif%20Calisma%20Duzleminde%20Dairesel%20Kopya.png"></p>
+<p>Bir çalışma düzlemi aktifse, sadece bir 
+noktayı seçmek de mümkündür; bu durumda, dönme ekseni o noktadan geçer 
+ve çalışma düzlemine diktir. Bu, dönüşün çalışma düzlemi içinde kaldığı 
+anlamına gelir.</p>
+<p>Adım ve tekrar seçenekleri (tek taraflı / çift taraf, orijinal ile / kopya #1 ile), doğrusal kopyalama gruplarıyla aynıdır.</p>
+<p>Kopya sayısı, <strong>Doğrusal Kopya</strong> ile aynı şekilde belirtilir. Döndürülmüş geometri henüz 
+sınırlandırılmamışsa, kopyalar bir daire etrafında eşit aralıklarla 
+yerleştirilecektir; örneğin 5 kopya istenirse kopyalar arasındaki açı 
+değeri (boşluk) 360 / 5 = 72 derece olur.</p>
+<p>Kopyaları tam bir daireden daha az (veya daha
+ fazla) değer boyunca yerleştirmek için, fare ile kopyalardan birinin 
+üzerindeki bir noktayı sürükleyin; dönüş açısı adımı değiştirildiği 
+için geri kalan her şey bunu takip edecektir. Kısıtlamalar (örneğin bir 
+açı kısıtlaması veya bir konum üzerinde nokta kısıtlaması) dönüş açısını
+ tam olarak belirtmek için kullanılabilir.</p>
+<p><img alt="Dairesel olarak kopyala ve kısıtla" src="images/solvespace/24%20Dairesel%20Kopya.png"></p>
+<p><img alt="Dairesel olarak kopyala ve Çıkart" src="images/solvespace/25%20Dairesel%20Kopya%20Cikart.png"></p>
+<h2>Uzatarak Katıla (Ekstrude)</h2>
+<p>Bu grup düz bir bölüm alır ve onu bir katı 
+oluşturmak için ekstrüde eder, (düzlemi, normali yönünde uzatarak 
+katılar). Düz kısım, Uzatarak Katıla grubu oluşturulduğunda grubun aktif
+ olan kısmından alınır. (Bu genellikle çalışma düzleminde bir çizimdir 
+veya 3B'de bir çizimdir, ancak bir adım ve tekrar da olabilir.)</p>
+<p>Eskiz (Çizim) tek taraflı veya çift taraflı 
+(simetrik) ekstrüde edilebilir. Çizim tek taraflı ekstrüde edilirse, 
+oluşan yeni katı parça, orijinal çizimin tamamen üst veya alt kısmında 
+oluşur. Ekstrüzyon yönünü ve ayrıca ekstrüzyon derinliğini belirlemek 
+için yeni yüzeyde bir noktayı sürükleyin. Ekstrüzyon derinliği yaklaşık 
+olarak doğru göründüğünde, kısıtlamalar kullanılarak tam olarak 
+belirlenebilir. Örneğin, kullanıcı yeni ekstrüde edilmiş kenarlardan 
+birinin uzunluğunu sınırlayabilir.</p>
+<p>Çizim çift taraflı (simetrik) ekstrüde 
+edilirse, orijinal çizim, yeni katının tam orta noktasında yer alır. Bu,
+ katının orijinal çizim düzlemine göre simetrik olduğu anlamına gelir. 
+Parça simetriye sahip olduğunda sonraki boyutlandırma genellikle daha 
+basit hale gelir, bu nedenle mümkün olduğunda çift taraflı ekstrüzyon 
+yapmak yararlıdır.</p>
+<p>Uzatarak Katılama (Ekstrüde) Grubu 
+oluşturulduğunda, bir çalışma düzlemi etkin olmalıdır ve ekstrüzyon yolu
+ otomatik olarak o çalışma düzlemine normal (yönde) olacak şekilde 
+sınırlandırılır. Bu örneğin, bir dikdörtgenin, bir dikdörtgen prizma 
+oluşturacak şekilde ekstrüde edildiği anlamına gelir. Ekstrüzyon bir 
+serbestlik derecesine sahiptir, bu nedenle tek bir mesafe kısıtlaması 
+onu tamamen sınırlayacaktır. (Eğer <code>Yeni Grup → 3d'de Çizim Yap</code> (kısayol tuşu: <code>Shift+3</code>)
+ seçeneği kullanılarak 3B uzayında, yani ekrana bakış açımız düzleminde
+ bir eskiz çizer, çizim yaparsak) Ekstrüzyon oluşturmadan önce diğer 
+çalışma düzlemi seçilerek (<code>Çizim → Çalışma Düzleminde</code>), 
+çizimin, çizildiği çalışma düzleminden farklı bir çalışma düzlemine dik 
+ekstrüzyon oluşturmak mümkündür. Bu, eğri ekstrüzyonlar oluşturmak için 
+kullanılabilir.</p>
+<p>Varsayılan olarak, yeni bir ekstrüzyon 
+grubunda hiçbir çalışma düzlemi etkin değildir. Bu, kısıtlamaların 3 
+boyutlu olarak uygulanacağı anlamına gelir; örneğin, bir uzunluk 
+kısıtlaması, bir düzleme yansıtılan uzunluk üzerinde değil, gerçek 
+uzunluk üzerinde bir kısıtlamadır. Bu genellikle istenen davranıştır, 
+ancak bir çalışma düzlemini olağan şekilde etkinleştirmek mümkündür (onu
+ seçip ardından <code>Çizim → Çalışma Düzleminde</code>'yi seçerek).</p>
+<p><img alt="3d'de Eskiz Çiz" src="images/solvespace/26%203d'de%20eskiz.png"></p>
+<p><img alt="Eskizi, XZ Düzleminde Uzatarak Katıla" src="images/solvespace/27%20XZ%20Duzleminde%20Uzatarak%20Katila.png"></p>
+<p><img alt="Eskizi, YZ Düzleminde Uzatarak Katıla" src="images/solvespace/28%20YZ%20Duzleminde%20Uzatarak%20Katila.png"></p>
+<h2>Tam Döndürerek Katıla</h2>
+<p>Bu grup, düz bir çizimi (düzleme çizilmiş 2 
+boyutlu kapalı kontura sahip bir eskizi) alır ve bunu belirli bir eksen 
+etrafında süpürerek / döndürerek bir katıya dönüştürür. Tam Döndürerek 
+Katılama grubu oluşturulduğunda aktif olan gruptan kesit alınır , yani 
+aktif grupta çizilen eskiz, Tam Döndürerek Katılama kesit yapısıdır.</p>
+<p>Tam Döndürerek Katılama grubu oluşturmak için bir çizgiyi seçip <code>Yeni Grup → Tam döndürerek katıla</code>'ı seçin (kısayol tuşu: <code>Shift+L</code>).
+ Seçilen doğru parçası, dönüş eksenini belirtir. Çark grubu oluşturmanın
+ bir başka yöntemi ise bir nokta ve bir çizgi parçası ya da normal 
+doğrultusu seçmek, sonrasında <code>Shift+L</code> kısayolunu kullanmaktır.</p>
+<p>Kesit, eğri boyunca süpürüldüğü için kendi 
+kendisiyle kesişmemelidir. Kesit dönme eksenini keserse, kendisini 
+keseceği için işlem başarısız olur.</p>
+<p><img alt="Tam Döndürerek Katıla komutu uygulanacak eskiz (kesit)" src="images/solvespace/29%20Kesit.png"></p>
+<p><img alt="Tam Döndürerek Katıla komutu sonrası oluşan Katı Model" src="images/solvespace/30%20Tam%20Dondurerek%20Katila.png"></p>
+<h2>Kısmi Döndürerek Katıla</h2>
+<p>Bu grup düz bir çizim alır ve bunu belirli 
+bir eksen etrafında süpürerek / döndürerek bir katı model oluşturur. Bu 
+grup ile Tam Döndürerek Katıla grubu arasındaki fark, Kısmi Döndürerek 
+Katıla komutunun eskizi (çizimi) tam 360 derece süpürmemesidir. Ortaya 
+çıkan katı model, belirli bir açıyla sürüklenebilir veya kısıtlanabilir.
+ 360 derecenin ötesine sürüklenirse, bu, Tam Döndürerek Katıla grubuyla
+ tamamen aynı katıyı oluşturacaktır.</p>
+<p>Tam Döndürerek Katıla komutu anlatılırken 
+çizilen eskize, Kısmi Döndürerek Katıla komutu uygulanıp kesit belirli 
+bir açıya kadar sürüklenirse oluşan örnek görüntüyü aşağıda (Resim 31) 
+görebilirsiniz.</p>
+<p><img alt="Kısmi Döndürerek Katıla komutu sonrası oluşan katı model" src="images/solvespace/31%20K%C4%B1smen%20Dondurerek%20Katila.png"></p>
+<h2>Helis</h2>
+<p>Bu grup, düz bir çizimi (düzlem yüzeyde 
+yapılan iki boyutlu kapalı kontura sahip bir eskizi) alır ve belirli bir
+ eksen etrafında süpürürken aynı zamanda o eksen boyunca öteler. Sonuç 
+olarak, vida dişleri veya diğer bükülmüş yüzeyleri modellemek için 
+kullanılabilen sarmal bir yüzey oluşur. En yaygın iki yaklaşım, spiral 
+bir şekil oluşturmak için çizim düzleminde bir eksen veya standart 
+ekstrüzyonun bükülmüş bir versiyonu gibi davranan bir şey oluşturmak 
+için çizim düzlemine dik bir eksen kullanmaktır.</p>
+<p><img alt="Helis Yay" src="images/solvespace/32%20Helis%20Yay.png"></p>
+<p>Bir Helis grubu oluşturulduğunda, sarmalın 
+ekseni boyunca bir yapı hattı da oluşturulacaktır. Bu çizginin uçlarını 
+veya eksen üzerindeki diğer noktaları sürüklemek, sarmal ekstrüzyonun 
+uzunluğunu değiştirecektir. Eksen üzerinde olmayan noktaları sürüklemek,
+ bir <strong>Kısmi Döndürerek Katıla</strong> grubuna benzer şekilde 
+sarmalın açısını değiştirir. Bir sarmalın açısı, çok uzun spiral 
+şekillerin veya bir cıvata üzerindeki tüm dişlerin tek bir grupta 
+oluşturulmasına izin vermek için 360 dereceden çok daha fazla olabilir.</p>
+<p><img alt="Helis Cıvata" src="images/solvespace/33%20Helis%20Civata.png"></p>
+<h2>Bağla / Montajla</h2>
+<p>SolveSpace'de "parça" dosyaları ve "montaj" 
+dosyaları arasında bir ayrım yoktur; bir dosyayı diğerine bağlamak her 
+zaman mümkündür. Bir "montaj", yalnızca bir veya daha fazla parçayı 
+birbirine bağlayan bir parça dosyasıdır.</p>
+<p>Bağlantılı dosyası, montaj (derleme) içinde 
+düzenlenemez. Tam olarak kaynak dosyada göründüğü gibi karşımıza çıkar, 
+ancak isteğe bağlı bir konum ve yönlendirme ile dahil edilmiştir. Bu, 
+bağlantılı parçanın altı serbestlik derecesine sahip olduğu anlamına 
+gelir.</p>
+<p>Parçayı taşımak (çevirmek) için üzerinde 
+herhangi bir noktayı tıklayın ve sürükleyin. Parçayı döndürmek için 
+herhangi bir noktayı tıklayın ve <code>Shift+Farenin Sol tuşu</code> ile Sürükleyin veya <code>Ctrl+Farenin Sol tuşu</code> ile Sürükleyin. Parçanın konumu ve yönü, diğer herhangi bir geometrinin kısıtlandığı şekilde, kısıtlamalarla sabitlenebilir.</p>
+<p>Parça ayrıca altı serbestlik dereceli bir 
+3Dconnexion kontrolör ile dönüştürülebilir. Bir montajdaki bir parçayı 
+manipüle etmek için, o parça içindeki herhangi bir objeyi seçin 
+(örneğin, bir nokta, bir çizgi parçası veya bir normal). 3Dbağlantı 
+denetleyicisi, görünümü dönüştürmek yerine o kısmı hareket ettirir.</p>
+<p>Ekranın içine veya dışına istenmeyen bir dönüş yapmamaya dikkat edin, çünkü bu hareket kolayca algılanamayabilir.</p>
+<p>Parçayı ekrana dik olana en yakın koordinat ekseni (x, y veya z ekseni) etrafında tam olarak doksan derece döndürmek için <code>Düzen → İçe Aktarılanları 90° Döndür</code>'ü
+ seçin. Bağlı gruptaki bir obje seçilirse, o gruptaki parça döndürülür. 
+Bir içe aktarma grubu etkinse, etkin gruptan parça döndürülür.</p>
+<p><strong>Aynı Yön</strong> kısıtlaması, 
+özellikle montaj parçaları bağlanırken kullanışlıdır. Bu tek kısıtlama, 
+bağlantılı parçanın dönüşünü tamamen belirler. (Bağlantılı kısımda bir 
+normal seçin, onu sınırlamak için başka bir normal seçin ve <code>Kısıtla → Aynı Yön</code>'ü seçin).</p>
+<p>Bağlantılı kısım ayrıca ilişkili bir ölçek 
+faktörüne sahiptir. Bu, parçanın daha küçük veya daha büyük bir 
+versiyonunu bağlamayı mümkün kılar. Ölçek faktörü negatifse, parça ölçek
+ faktörünün mutlak değeri ile ölçeklenir ve aynalanır.</p>
+<p><img alt="Montaj - Ölçek Değeri" src="images/solvespace/34%20Montaj%20Olcek.png"></p>
+<p>SolveSpace ayrıca elektronik tasarım 
+araçlarından baskılı devre kartlarını tanımlayan IDF (.emn) dosyalarını 
+içe aktarma yeteneğine de sahiptir. Bu, muhafazaları tasarlamak ve bir 
+montaj içindeki uyumu kontrol etmek için kullanışlıdır. Çizim objeleri 
+ve devre kartını bir ekstrüzyon oluşturulacak ve ölçüm almak için 
+kullanılabilir.</p>
+<p>Dışa aktarım gruplarının özel bir "<strong>solid model as</strong> (<em>katı model olarak</em>)" seçeneği vardır: olağan "<strong>birleşim</strong>", "<strong>fark</strong>" ve "<strong>kesişim</strong>"e ek olarak, "birleştirme" seçeneğine sahiptirler. "<strong>Montaj</strong>"
+ seçeneği, birbiriyle karışmaması (engellememesi) gereken parçalar bir 
+montajda birleştirilirken kullanılmalıdır. Montajın karışmadığını 
+doğrulamak için, <code>Analiz → Engelleyici Parçaları Göster</code>'i seçin.</p>
+<p>Montaj komutu ile oluşturulan içe aktarma 
+grubu, kapalı bir kontur oluşturan bir çizim içeriyorsa, bu grup, kontur
+ aynı dosya içinde çizilmiş gibi aynı şekilde ekstrüde edilebilir. Bu, A
+ dosyasına bir bölüm çizmenin, bu bölümü B dosyasına içe aktarmanın 
+(bazı keyfi öteleme ve döndürmelerle) ve ardından B dosyasındaki 
+parçanın bir özelliğini oluşturmak için ekstrüde etmenin mümkün olduğu 
+anlamına gelir. A dosyasında yapılacak herhangi bir değişiklik, parça 
+yeniden oluşturulduğunda B dosyasına iletilecektir.</p>
+<p>Benzer şekilde, A dosyasına açık bir bölüm 
+çizmek, bu bölümü B dosyasına bağlamak ve daha sonra bu bölümü kapatmak 
+için B dosyasına ek çizgiler veya eğriler (aynı grupta veya başka bir 
+grupta) çizmek mümkündür. C dosyası B dosyasına bağlanırsa, kapalı bölüm
+ ekstrüde edilebilir. Bu, kullanıcının orijinaldeki bir değişikliğin o 
+geometriyi kullanan tüm parçalara yayılacağı şekilde birden çok 
+dosyadaki bölümleri veya bir bölümün bölümlerini yeniden kullanmasına 
+olanak tanır.</p>
+<p>Bir montaj dosyası yüklendiğinde, SolveSpace 
+bağlantılı dosyaların tümünü de yükler. Bağlantılı dosyalar mevcut 
+değilse, bir hata oluşur. Bir montaj dosyasını başka bir bilgisayara 
+aktarırken, bağlantılı tüm dosyaları da aktarmak gerekir.</p>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/solvespace.html">Solvespace</a></li>
+					<li><a href="/tag/3d.html">3D</a></li>
+					<li><a href="/tag/3b.html">3B</a></li>
+					<li><a href="/tag/cad.html">CAD</a></li>
+					<li><a href="/tag/kilavuz.html">Kılavuz</a></li>
+					<li><a href="/tag/grup.html">Grup</a></li>
+					<li><a href="/tag/gruplama.html">Gruplama</a></li>
+					<li><a href="/tag/cizim.html">Çizim</a></li>
+					<li><a href="/tag/calisma-duzlemi.html">Calışma Düzlemi</a></li>
+					<li><a href="/tag/kopya.html">Kopya</a></li>
+					<li><a href="/tag/dogrusal.html">Dogrusal</a></li>
+					<li><a href="/tag/dairesel.html">Dairesel</a></li>
+					<li><a href="/tag/uzat.html">Uzat</a></li>
+					<li><a href="/tag/katila.html">Katıla</a></li>
+					<li><a href="/tag/ekstrude.html">Ekstrude</a></li>
+					<li><a href="/tag/dondur.html">Döndür</a></li>
+					<li><a href="/tag/kismi.html">Kısmi</a></li>
+					<li><a href="/tag/helis.html">Helis</a></li>
+					<li><a href="/tag/bagla.html">Bağla</a></li>
+					<li><a href="/tag/montaj.html">Montaj</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,1798 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Pandas 05 - Eksik - Kayıp Veri Yöntemleri" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/pandas-05-eksik-kayip-veri-yontemleri.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Pandas 05 - Eksik - Kayıp Veri Yöntemleri</h1>
+	<span class="post-date">Cts 22 Ocak 2022</span>
+	<h1>Eksik / Kayıp Veri Tespiti ve Düzenleme Yöntemleri</h1>
+<p>Veri çerçevemizde eksik veri (excel tablosundaki boş hücre gibi düşünebiliriz) olup olmadığını, varsa kaç adet olduğunu tespit edebileceğimiz Pandas yöntemleri mevcuttur. Bunları incelemeye başlayalım.</p>
+<h3>isnull() Fonksiyonu</h3>
+<p>Veri çerçevemizde eksik verileri <strong>isnull()</strong> fonksiyonu ile tespit edebiliriz. <strong>isnull</strong> ifadesini, <strong>boş mu?, geçersiz mi?, kayıp/eksik mi?</strong> sorusu olarak düşünebilirsiniz.
+Hemen inceleyelim bakalım, acaba <strong>IMDB</strong> listemizde eksik veri var mı? varsa hangi sütunda ne kadar eksik veri var?</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">imdb</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/imdb.xlsx&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">imdb</span><span class="o">.</span><span class="n">isnull</span><span class="p">())</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Film_Adı</th>
+<th>Yıl</th>
+<th>Puan</th>
+<th>Oylayan_Kişi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<td>1</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<td>2</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<td>3</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<td>4</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>242</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<td>243</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<td>244</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<td>245</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<td>246</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+</tbody>
+</table>
+<p>247 rows × 4 columns</p>
+<p>Görüldüğü üzere, bu fonksiyon, veri çerçevesindeki her hücreye, kayıp/eksik veri olup olmadığı verisini yazıyor. <strong>False</strong> Yanlış, yani Eksik/Kayıp veri <strong>YOK</strong>, <strong>True</strong> ise Doğru yan, Eksik/Kayıp veri <strong>VAR</strong> anlamına gelir.
+Tabloya tek tek bakmak yerine, tüm sütunlardaki eksik/kayıp verileri python'a saydırıp, sonucu görüntüleyebiliriz.
+Python'da aşina olduğumuz <strong>sum()</strong> fonksiyonu işimize yarayacaktır.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">imdb</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">Film_Adı</span>        <span class="mi">0</span>
+<span class="n">Yıl</span>             <span class="mi">0</span>
+<span class="n">Puan</span>            <span class="mi">0</span>
+<span class="n">Oylayan_Kişi</span>    <span class="mi">0</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+</code></pre></div>
+
+<p>Gördüğümüz kadarıyla tüm sonuçlar sıfır, yani veri çerçevemizde hiç eksik/kayıp veri bulunmamaktadır.</p>
+<p>İçerisinde Kayıp/Eksik veri olan bir <strong>Calc</strong> tablosunu, veri çerçevesine dönüştürerek inceleyelim.</p>
+<div class="highlight"><pre><span></span><code><span class="n">veri</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/eksik_veri.ods&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Film_Adı</th>
+<th>Yıl</th>
+<th>Puan</th>
+<th>Oylayan_Kişi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>The Shawshank Redemption</td>
+<td>1994.0</td>
+<td>9,2</td>
+<td>1071904.0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>The Godfather</td>
+<td>1972.0</td>
+<td>9,2</td>
+<td>751381.0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>The Godfather: Part II</td>
+<td>1974.0</td>
+<td>9</td>
+<td>488889.0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Pulp Fiction</td>
+<td>1994.0</td>
+<td>8,9</td>
+<td>830504.0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>The Dark Knight</td>
+<td>2008.0</td>
+<td>8,9</td>
+<td>1045186.0</td>
+</tr>
+<tr>
+<td>5</td>
+<td>12 Angry Men</td>
+<td>1957.0</td>
+<td>8,9</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Schindler's List</td>
+<td>1993.0</td>
+<td>8,9</td>
+<td>545703.0</td>
+</tr>
+<tr>
+<td>7</td>
+<td>The Lord of the Rings: The Return of the King</td>
+<td>2003.0</td>
+<td>8,8</td>
+<td>758388.0</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Fight Club</td>
+<td>1999.0</td>
+<td>8,8</td>
+<td>814389.0</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Star Wars: Episode V - The Empire Strikes Back</td>
+<td>1980.0</td>
+<td>8,8</td>
+<td>519895.0</td>
+</tr>
+<tr>
+<td>10</td>
+<td>The Lord of the Rings: The Fellowship of the R...</td>
+<td>2001.0</td>
+<td>8,8</td>
+<td>784999.0</td>
+</tr>
+<tr>
+<td>11</td>
+<td>One Flew Over the Cuckoo's Nest</td>
+<td>1975.0</td>
+<td>8,7</td>
+<td>447005.0</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Goodfellas</td>
+<td>1990.0</td>
+<td>8,7</td>
+<td>465445.0</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Seven Samurai</td>
+<td>NaN</td>
+<td>8,7</td>
+<td>161969.0</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Inception</td>
+<td>2010.0</td>
+<td>8,7</td>
+<td>844938.0</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Star Wars</td>
+<td>1977.0</td>
+<td>8,7</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Forrest Gump</td>
+<td>1994.0</td>
+<td>8,7</td>
+<td>711386.0</td>
+</tr>
+<tr>
+<td>17</td>
+<td>The Matrix</td>
+<td>1999.0</td>
+<td>8,7</td>
+<td>770559.0</td>
+</tr>
+<tr>
+<td>18</td>
+<td>The Lord of the Rings: The Two Towers</td>
+<td>2002.0</td>
+<td>8,7</td>
+<td>680983.0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>isnull().sum()</strong> metodlarıyla, yeni veri çerçevemizdeki eksik verilerin bilgilerini görelim</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">Film_Adı</span>        <span class="mi">0</span>
+<span class="n">Yıl</span>             <span class="mi">1</span>
+<span class="n">Puan</span>            <span class="mi">0</span>
+<span class="n">Oylayan_Kişi</span>    <span class="mi">2</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+</code></pre></div>
+
+<p><strong>Yıl</strong> sütununda 1, <strong>Oylayan_Kişi</strong> sütununda 2 adet eksik veri olduğu görünüyor. Eksik veri olan satır ve sütunları silmeye / temizlemeye çalışalım.</p>
+<h3>dropna() Fonksiyonu</h3>
+<p>Veri çerçevelerinde istediğimiz satır ve sütunları <strong>drop()</strong> metodu yardımı ile nasıl silebildiğimizi daha önce öğrenmiştik. İlgili sayfa <a href="https://mhalil.github.io/Pandas_Duzenleme_Yontemleri.html">buradan</a> erişebilirsiniz.</p>
+<p>Eksik veri barındıran Veri Çerçevelerinin hem satır hemde sütunlarını otomatik olarak silmek için <strong>dropna()</strong> metodunu kullanabiliriz. Metodun kullanım şekli aşağıdaki gibidir.</p>
+<div class="highlight"><pre><span></span><code><span class="n">VeriÇerçevesi_Adı</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">ya</span> <span class="n">da</span> <span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span> <span class="n">ya</span> <span class="n">da</span> <span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+
+<h4>axis Parametresi</h4>
+<p>Eksenleri tanımlayan parametredir. Sıfır (0) Satırları, Bir (1) Sütunları temsil eder. Varsayılan değer Sıfır(0) yani Satırlardır.</p>
+<h4>inplace Parametresi</h4>
+<p>Gerçekleştirilen silme işleminin veri çerçevesinde kalıcı ya da geçici olmasını ayarladığımız parametredir. <strong>inplace = True</strong> yazılırsa, yapılan işlem kalıcı hale gelecektir.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="o">.</span><span class="n">dropna</span><span class="p">())</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Film_Adı</th>
+<th>Yıl</th>
+<th>Puan</th>
+<th>Oylayan_Kişi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>The Shawshank Redemption</td>
+<td>1994.0</td>
+<td>9,2</td>
+<td>1071904.0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>The Godfather</td>
+<td>1972.0</td>
+<td>9,2</td>
+<td>751381.0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>The Godfather: Part II</td>
+<td>1974.0</td>
+<td>9</td>
+<td>488889.0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Pulp Fiction</td>
+<td>1994.0</td>
+<td>8,9</td>
+<td>830504.0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>The Dark Knight</td>
+<td>2008.0</td>
+<td>8,9</td>
+<td>1045186.0</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Schindler's List</td>
+<td>1993.0</td>
+<td>8,9</td>
+<td>545703.0</td>
+</tr>
+<tr>
+<td>7</td>
+<td>The Lord of the Rings: The Return of the King</td>
+<td>2003.0</td>
+<td>8,8</td>
+<td>758388.0</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Fight Club</td>
+<td>1999.0</td>
+<td>8,8</td>
+<td>814389.0</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Star Wars: Episode V - The Empire Strikes Back</td>
+<td>1980.0</td>
+<td>8,8</td>
+<td>519895.0</td>
+</tr>
+<tr>
+<td>10</td>
+<td>The Lord of the Rings: The Fellowship of the R...</td>
+<td>2001.0</td>
+<td>8,8</td>
+<td>784999.0</td>
+</tr>
+<tr>
+<td>11</td>
+<td>One Flew Over the Cuckoo's Nest</td>
+<td>1975.0</td>
+<td>8,7</td>
+<td>447005.0</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Goodfellas</td>
+<td>1990.0</td>
+<td>8,7</td>
+<td>465445.0</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Inception</td>
+<td>2010.0</td>
+<td>8,7</td>
+<td>844938.0</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Forrest Gump</td>
+<td>1994.0</td>
+<td>8,7</td>
+<td>711386.0</td>
+</tr>
+<tr>
+<td>17</td>
+<td>The Matrix</td>
+<td>1999.0</td>
+<td>8,7</td>
+<td>770559.0</td>
+</tr>
+<tr>
+<td>18</td>
+<td>The Lord of the Rings: The Two Towers</td>
+<td>2002.0</td>
+<td>8,7</td>
+<td>680983.0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>dropna()</strong> metodunu parametresiz olarak kullandığımızda ( <em>veri.dropna()</em> ), sadece eksik veri tespit edilen <strong>satırlar</strong> silindi. Bir de eksik veri bulunan sütunları silmeye çalışalım.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Film_Adı</th>
+<th>Puan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>The Shawshank Redemption</td>
+<td>9,2</td>
+</tr>
+<tr>
+<td>1</td>
+<td>The Godfather</td>
+<td>9,2</td>
+</tr>
+<tr>
+<td>2</td>
+<td>The Godfather: Part II</td>
+<td>9</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Pulp Fiction</td>
+<td>8,9</td>
+</tr>
+<tr>
+<td>4</td>
+<td>The Dark Knight</td>
+<td>8,9</td>
+</tr>
+<tr>
+<td>5</td>
+<td>12 Angry Men</td>
+<td>8,9</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Schindler's List</td>
+<td>8,9</td>
+</tr>
+<tr>
+<td>7</td>
+<td>The Lord of the Rings: The Return of the King</td>
+<td>8,8</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Fight Club</td>
+<td>8,8</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Star Wars: Episode V - The Empire Strikes Back</td>
+<td>8,8</td>
+</tr>
+<tr>
+<td>10</td>
+<td>The Lord of the Rings: The Fellowship of the R...</td>
+<td>8,8</td>
+</tr>
+<tr>
+<td>11</td>
+<td>One Flew Over the Cuckoo's Nest</td>
+<td>8,7</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Goodfellas</td>
+<td>8,7</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Seven Samurai</td>
+<td>8,7</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Inception</td>
+<td>8,7</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Star Wars</td>
+<td>8,7</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Forrest Gump</td>
+<td>8,7</td>
+</tr>
+<tr>
+<td>17</td>
+<td>The Matrix</td>
+<td>8,7</td>
+</tr>
+<tr>
+<td>18</td>
+<td>The Lord of the Rings: The Two Towers</td>
+<td>8,7</td>
+</tr>
+</tbody>
+</table>
+<h4>thresh Parametresi</h4>
+<p><strong>dropna()</strong> Metodunun, <strong>thresh</strong> parametresi, veri çerçevesinde en az kaç adet veri varsa satır ya da sütunun silinmemesi gerektiğini belirtir. Bu parametreyi de hem satır hem de sütun için uygulayalım.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">thresh</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Film_Adı</th>
+<th>Yıl</th>
+<th>Puan</th>
+<th>Oylayan_Kişi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>The Shawshank Redemption</td>
+<td>1994.0</td>
+<td>9,2</td>
+<td>1071904.0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>The Godfather</td>
+<td>1972.0</td>
+<td>9,2</td>
+<td>751381.0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>The Godfather: Part II</td>
+<td>1974.0</td>
+<td>9</td>
+<td>488889.0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Pulp Fiction</td>
+<td>1994.0</td>
+<td>8,9</td>
+<td>830504.0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>The Dark Knight</td>
+<td>2008.0</td>
+<td>8,9</td>
+<td>1045186.0</td>
+</tr>
+<tr>
+<td>5</td>
+<td>12 Angry Men</td>
+<td>1957.0</td>
+<td>8,9</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Schindler's List</td>
+<td>1993.0</td>
+<td>8,9</td>
+<td>545703.0</td>
+</tr>
+<tr>
+<td>7</td>
+<td>The Lord of the Rings: The Return of the King</td>
+<td>2003.0</td>
+<td>8,8</td>
+<td>758388.0</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Fight Club</td>
+<td>1999.0</td>
+<td>8,8</td>
+<td>814389.0</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Star Wars: Episode V - The Empire Strikes Back</td>
+<td>1980.0</td>
+<td>8,8</td>
+<td>519895.0</td>
+</tr>
+<tr>
+<td>10</td>
+<td>The Lord of the Rings: The Fellowship of the R...</td>
+<td>2001.0</td>
+<td>8,8</td>
+<td>784999.0</td>
+</tr>
+<tr>
+<td>11</td>
+<td>One Flew Over the Cuckoo's Nest</td>
+<td>1975.0</td>
+<td>8,7</td>
+<td>447005.0</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Goodfellas</td>
+<td>1990.0</td>
+<td>8,7</td>
+<td>465445.0</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Seven Samurai</td>
+<td>NaN</td>
+<td>8,7</td>
+<td>161969.0</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Inception</td>
+<td>2010.0</td>
+<td>8,7</td>
+<td>844938.0</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Star Wars</td>
+<td>1977.0</td>
+<td>8,7</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Forrest Gump</td>
+<td>1994.0</td>
+<td>8,7</td>
+<td>711386.0</td>
+</tr>
+<tr>
+<td>17</td>
+<td>The Matrix</td>
+<td>1999.0</td>
+<td>8,7</td>
+<td>770559.0</td>
+</tr>
+<tr>
+<td>18</td>
+<td>The Lord of the Rings: The Two Towers</td>
+<td>2002.0</td>
+<td>8,7</td>
+<td>680983.0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>veri.dropna(thresh=3)</strong>: Bu kod,en az 3 sağlam veri barındıran <strong>satırları</strong> silme demek oluyor. Aynı işlemi, <strong>axis</strong> parametresi kullanarak uygulamak istesek kodu şu şekilde yazmamız gerekecekti: <strong><em>veri.dropna(axis=0, thresh=3)</em></strong></p>
+<p>Bir de en az 4 sağlam veri isteyelim bakalım ne sonuç alacağız. Veri çerçevemizde 4 adet sütun bulunduğu için, tümü geçerli, sağlam veri bulunan (dolu) sütunları bulmak istediğimiz anlamına geliyor.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">thresh</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Film_Adı</th>
+<th>Yıl</th>
+<th>Puan</th>
+<th>Oylayan_Kişi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>The Shawshank Redemption</td>
+<td>1994.0</td>
+<td>9,2</td>
+<td>1071904.0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>The Godfather</td>
+<td>1972.0</td>
+<td>9,2</td>
+<td>751381.0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>The Godfather: Part II</td>
+<td>1974.0</td>
+<td>9</td>
+<td>488889.0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Pulp Fiction</td>
+<td>1994.0</td>
+<td>8,9</td>
+<td>830504.0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>The Dark Knight</td>
+<td>2008.0</td>
+<td>8,9</td>
+<td>1045186.0</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Schindler's List</td>
+<td>1993.0</td>
+<td>8,9</td>
+<td>545703.0</td>
+</tr>
+<tr>
+<td>7</td>
+<td>The Lord of the Rings: The Return of the King</td>
+<td>2003.0</td>
+<td>8,8</td>
+<td>758388.0</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Fight Club</td>
+<td>1999.0</td>
+<td>8,8</td>
+<td>814389.0</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Star Wars: Episode V - The Empire Strikes Back</td>
+<td>1980.0</td>
+<td>8,8</td>
+<td>519895.0</td>
+</tr>
+<tr>
+<td>10</td>
+<td>The Lord of the Rings: The Fellowship of the R...</td>
+<td>2001.0</td>
+<td>8,8</td>
+<td>784999.0</td>
+</tr>
+<tr>
+<td>11</td>
+<td>One Flew Over the Cuckoo's Nest</td>
+<td>1975.0</td>
+<td>8,7</td>
+<td>447005.0</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Goodfellas</td>
+<td>1990.0</td>
+<td>8,7</td>
+<td>465445.0</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Inception</td>
+<td>2010.0</td>
+<td>8,7</td>
+<td>844938.0</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Forrest Gump</td>
+<td>1994.0</td>
+<td>8,7</td>
+<td>711386.0</td>
+</tr>
+<tr>
+<td>17</td>
+<td>The Matrix</td>
+<td>1999.0</td>
+<td>8,7</td>
+<td>770559.0</td>
+</tr>
+<tr>
+<td>18</td>
+<td>The Lord of the Rings: The Two Towers</td>
+<td>2002.0</td>
+<td>8,7</td>
+<td>680983.0</td>
+</tr>
+</tbody>
+</table>
+<p>Tahmin ettiğiniz gibi, her satırda 4 bilgi bulunan satırlar kaldı, geri kalan <strong>satırlar</strong> silindi.</p>
+<p>Bu metodu bir de <strong>sütunlarda</strong> uygulayalım. Veri çerçevemizde 19 satır veri bulunmaktadır. En az 18 adet veri bulunan (yani sütünlarda en fazla 1 adet eksik veriye izin verdiğimiz durumdaki) sütunlar kalsın, geri kalanlar silinsin istersek;</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">thresh</span><span class="o">=</span><span class="mi">18</span><span class="p">))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Film_Adı</th>
+<th>Yıl</th>
+<th>Puan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>The Shawshank Redemption</td>
+<td>1994.0</td>
+<td>9,2</td>
+</tr>
+<tr>
+<td>1</td>
+<td>The Godfather</td>
+<td>1972.0</td>
+<td>9,2</td>
+</tr>
+<tr>
+<td>2</td>
+<td>The Godfather: Part II</td>
+<td>1974.0</td>
+<td>9</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Pulp Fiction</td>
+<td>1994.0</td>
+<td>8,9</td>
+</tr>
+<tr>
+<td>4</td>
+<td>The Dark Knight</td>
+<td>2008.0</td>
+<td>8,9</td>
+</tr>
+<tr>
+<td>5</td>
+<td>12 Angry Men</td>
+<td>1957.0</td>
+<td>8,9</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Schindler's List</td>
+<td>1993.0</td>
+<td>8,9</td>
+</tr>
+<tr>
+<td>7</td>
+<td>The Lord of the Rings: The Return of the King</td>
+<td>2003.0</td>
+<td>8,8</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Fight Club</td>
+<td>1999.0</td>
+<td>8,8</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Star Wars: Episode V - The Empire Strikes Back</td>
+<td>1980.0</td>
+<td>8,8</td>
+</tr>
+<tr>
+<td>10</td>
+<td>The Lord of the Rings: The Fellowship of the R...</td>
+<td>2001.0</td>
+<td>8,8</td>
+</tr>
+<tr>
+<td>11</td>
+<td>One Flew Over the Cuckoo's Nest</td>
+<td>1975.0</td>
+<td>8,7</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Goodfellas</td>
+<td>1990.0</td>
+<td>8,7</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Seven Samurai</td>
+<td>NaN</td>
+<td>8,7</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Inception</td>
+<td>2010.0</td>
+<td>8,7</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Star Wars</td>
+<td>1977.0</td>
+<td>8,7</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Forrest Gump</td>
+<td>1994.0</td>
+<td>8,7</td>
+</tr>
+<tr>
+<td>17</td>
+<td>The Matrix</td>
+<td>1999.0</td>
+<td>8,7</td>
+</tr>
+<tr>
+<td>18</td>
+<td>The Lord of the Rings: The Two Towers</td>
+<td>2002.0</td>
+<td>8,7</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Oylayan_Kişi</strong> sütununda 2 adet eksik veri bulunduğu için o sütun silindi.</p>
+<h3>fillna() Fonksiyonu</h3>
+<p>Veri Çerçevelerimizde eksik veri bulunması durumunda, her zaman satır ve sütunları silmeye çalışmayız. Bazen eksik verilerin yerine, yeni değer atamamız gerekebilir. Örneğin matematiksel işlemlerde, Pandas ile satır ya da sütunların ortalama değerlerini hesaplatıp, eksik verilerin yerine ( eksik veriyi, Excel programındaki boş hüçreler gibi 
+düşünülebilir) yazdırabiliriz/atayabiliriz.</p>
+<h4>value Parametresi</h4>
+<p><strong>value</strong> parametresi, Eksik verilerin yerine istersek yazdırmak istediğimiz değerin belirtildiği kısımdır. <strong>value</strong> parametresine sayısal değer yazacağımız zaman doğrudan değerin kendisini, <strong>metinsel (string)</strong> ifadeler de yazacağımız zaman ise <strong>tırnak işareti "</strong> kullanmamız gerektiğini unutmamalıyız. Şimdiki örnekte, Veri çerçevemizdeki eksik verilerin yerine <strong>Mustafa Halil</strong> ismini yazdıracağım.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s2">&quot;Mustafa Halil&quot;</span><span class="p">))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Film_Adı</th>
+<th>Yıl</th>
+<th>Puan</th>
+<th>Oylayan_Kişi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>The Shawshank Redemption</td>
+<td>1994.0</td>
+<td>9,2</td>
+<td>1071904.0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>The Godfather</td>
+<td>1972.0</td>
+<td>9,2</td>
+<td>751381.0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>The Godfather: Part II</td>
+<td>1974.0</td>
+<td>9</td>
+<td>488889.0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Pulp Fiction</td>
+<td>1994.0</td>
+<td>8,9</td>
+<td>830504.0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>The Dark Knight</td>
+<td>2008.0</td>
+<td>8,9</td>
+<td>1045186.0</td>
+</tr>
+<tr>
+<td>5</td>
+<td>12 Angry Men</td>
+<td>1957.0</td>
+<td>8,9</td>
+<td>Mustafa Halil</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Schindler's List</td>
+<td>1993.0</td>
+<td>8,9</td>
+<td>545703.0</td>
+</tr>
+<tr>
+<td>7</td>
+<td>The Lord of the Rings: The Return of the King</td>
+<td>2003.0</td>
+<td>8,8</td>
+<td>758388.0</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Fight Club</td>
+<td>1999.0</td>
+<td>8,8</td>
+<td>814389.0</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Star Wars: Episode V - The Empire Strikes Back</td>
+<td>1980.0</td>
+<td>8,8</td>
+<td>519895.0</td>
+</tr>
+<tr>
+<td>10</td>
+<td>The Lord of the Rings: The Fellowship of the R...</td>
+<td>2001.0</td>
+<td>8,8</td>
+<td>784999.0</td>
+</tr>
+<tr>
+<td>11</td>
+<td>One Flew Over the Cuckoo's Nest</td>
+<td>1975.0</td>
+<td>8,7</td>
+<td>447005.0</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Goodfellas</td>
+<td>1990.0</td>
+<td>8,7</td>
+<td>465445.0</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Seven Samurai</td>
+<td>Mustafa Halil</td>
+<td>8,7</td>
+<td>161969.0</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Inception</td>
+<td>2010.0</td>
+<td>8,7</td>
+<td>844938.0</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Star Wars</td>
+<td>1977.0</td>
+<td>8,7</td>
+<td>Mustafa Halil</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Forrest Gump</td>
+<td>1994.0</td>
+<td>8,7</td>
+<td>711386.0</td>
+</tr>
+<tr>
+<td>17</td>
+<td>The Matrix</td>
+<td>1999.0</td>
+<td>8,7</td>
+<td>770559.0</td>
+</tr>
+<tr>
+<td>18</td>
+<td>The Lord of the Rings: The Two Towers</td>
+<td>2002.0</td>
+<td>8,7</td>
+<td>680983.0</td>
+</tr>
+</tbody>
+</table>
+<p>Boş hücrelere yani eksik verilerin yerine, <strong>Yıl</strong> sütununun ortalama değerini (1885.0) atamak isteseydik (saçma bir atama işlemi olduğunun farkındayım :) ), aşağıdaki gibi kodlarımızı düzenlememiz gerekecekti.</p>
+<div class="highlight"><pre><span></span><code><span class="n">ortalama</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">veri</span><span class="p">[</span><span class="s2">&quot;Yıl&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">/</span><span class="mi">19</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="n">ortalama</span><span class="p">))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Film_Adı</th>
+<th>Yıl</th>
+<th>Puan</th>
+<th>Oylayan_Kişi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>The Shawshank Redemption</td>
+<td>1994.0</td>
+<td>9,2</td>
+<td>1071904.0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>The Godfather</td>
+<td>1972.0</td>
+<td>9,2</td>
+<td>751381.0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>The Godfather: Part II</td>
+<td>1974.0</td>
+<td>9</td>
+<td>488889.0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Pulp Fiction</td>
+<td>1994.0</td>
+<td>8,9</td>
+<td>830504.0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>The Dark Knight</td>
+<td>2008.0</td>
+<td>8,9</td>
+<td>1045186.0</td>
+</tr>
+<tr>
+<td>5</td>
+<td>12 Angry Men</td>
+<td>1957.0</td>
+<td>8,9</td>
+<td>1885.0</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Schindler's List</td>
+<td>1993.0</td>
+<td>8,9</td>
+<td>545703.0</td>
+</tr>
+<tr>
+<td>7</td>
+<td>The Lord of the Rings: The Return of the King</td>
+<td>2003.0</td>
+<td>8,8</td>
+<td>758388.0</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Fight Club</td>
+<td>1999.0</td>
+<td>8,8</td>
+<td>814389.0</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Star Wars: Episode V - The Empire Strikes Back</td>
+<td>1980.0</td>
+<td>8,8</td>
+<td>519895.0</td>
+</tr>
+<tr>
+<td>10</td>
+<td>The Lord of the Rings: The Fellowship of the R...</td>
+<td>2001.0</td>
+<td>8,8</td>
+<td>784999.0</td>
+</tr>
+<tr>
+<td>11</td>
+<td>One Flew Over the Cuckoo's Nest</td>
+<td>1975.0</td>
+<td>8,7</td>
+<td>447005.0</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Goodfellas</td>
+<td>1990.0</td>
+<td>8,7</td>
+<td>465445.0</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Seven Samurai</td>
+<td>1885.0</td>
+<td>8,7</td>
+<td>161969.0</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Inception</td>
+<td>2010.0</td>
+<td>8,7</td>
+<td>844938.0</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Star Wars</td>
+<td>1977.0</td>
+<td>8,7</td>
+<td>1885.0</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Forrest Gump</td>
+<td>1994.0</td>
+<td>8,7</td>
+<td>711386.0</td>
+</tr>
+<tr>
+<td>17</td>
+<td>The Matrix</td>
+<td>1999.0</td>
+<td>8,7</td>
+<td>770559.0</td>
+</tr>
+<tr>
+<td>18</td>
+<td>The Lord of the Rings: The Two Towers</td>
+<td>2002.0</td>
+<td>8,7</td>
+<td>680983.0</td>
+</tr>
+</tbody>
+</table>
+<h4>method Parametresi</h4>
+<p>Veri çerçevesinde değer girilmemiş hücreleri (boşlukları) doldurmak, başka bir ifadeyle, değer atamak için <code>method</code> parametresi kullanılabilir.</p>
+<p><code>method</code> parametresinin alabileceği değerler;</p>
+<ul>
+<li>backfill</li>
+<li>bfill</li>
+<li>pad</li>
+<li>ffill</li>
+<li>None
+  Varsayılan (öntanımlı) değer None'dır.</li>
+</ul>
+<p>Öncelikle Veri çerçevesi oluşturup inceleyelim;</p>
+<div class="highlight"><pre><span></span><code><span class="n">sozluk</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;isim&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Mustafa&quot;</span><span class="p">,</span> <span class="s2">&quot;Halil&quot;</span><span class="p">,</span> <span class="s2">&quot;Burak&quot;</span><span class="p">,</span> <span class="s2">&quot;Emre&quot;</span><span class="p">,</span> <span class="s2">&quot;Ersin&quot;</span><span class="p">,</span> <span class="s2">&quot;Sertaç&quot;</span><span class="p">,</span> <span class="s2">&quot;Furkan&quot;</span><span class="p">,</span><span class="s2">&quot;Murat&quot;</span><span class="p">,</span><span class="s2">&quot;Ahmet&quot;</span><span class="p">,</span><span class="s2">&quot;Abdülkadir&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;yaş&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">41</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">52</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">38</span><span class="p">],</span>
+                   <span class="s2">&quot;iş-meslek&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;mühendis&quot;</span><span class="p">,</span> <span class="s2">&quot;programcı&quot;</span><span class="p">,</span> <span class="s2">&quot;akademisyen&quot;</span><span class="p">,</span> <span class="s2">&quot;yönetici&quot;</span><span class="p">,</span><span class="s2">&quot;amir&quot;</span><span class="p">,</span><span class="s2">&quot;mühendis&quot;</span><span class="p">,</span> <span class="s2">&quot;yönetici&quot;</span><span class="p">,</span><span class="s2">&quot;müdür&quot;</span><span class="p">,</span><span class="s2">&quot;veteriner&quot;</span><span class="p">,</span><span class="s2">&quot;yönetici&quot;</span><span class="p">],</span>
+                     <span class="s2">&quot;kategori&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Kategori_1&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;Kategori_3&quot;</span><span class="p">,</span> <span class="s2">&quot;Kategori_4&quot;</span><span class="p">,</span> <span class="s2">&quot;Kategori_5&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;Kategori_8&quot;</span><span class="p">,</span> <span class="s2">&quot;Kategori_9&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">]}</span>
+<span class="n">veri</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">sozluk</span><span class="p">)</span>
+<span class="n">veri</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>isim</th>
+<th>yaş</th>
+<th>iş-meslek</th>
+<th>kategori</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Mustafa</td>
+<td>25</td>
+<td>mühendis</td>
+<td>Kategori_1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Halil</td>
+<td>38</td>
+<td>programcı</td>
+<td>None</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Burak</td>
+<td>41</td>
+<td>akademisyen</td>
+<td>Kategori_3</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Emre</td>
+<td>23</td>
+<td>yönetici</td>
+<td>Kategori_4</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Ersin</td>
+<td>37</td>
+<td>amir</td>
+<td>Kategori_5</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Sertaç</td>
+<td>52</td>
+<td>mühendis</td>
+<td>None</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Furkan</td>
+<td>30</td>
+<td>yönetici</td>
+<td>None</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Murat</td>
+<td>23</td>
+<td>müdür</td>
+<td>Kategori_8</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Ahmet</td>
+<td>40</td>
+<td>veteriner</td>
+<td>Kategori_9</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Abdülkadir</td>
+<td>38</td>
+<td>yönetici</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<p>Veri çerçevesini incelediğimzde, Halil, Sertaç, Furkan ve Ahmet'in <strong>kategori</strong> bilgilerinin, geçerli değere sahip olmadığını görüyoruz. Bu değerleri <code>method</code> parametresinin seçeneklerini kullanarak doldurmaya çalışalım.</p>
+<p>Öncelikle <strong>backfill</strong> ve <strong>bfill</strong> seçeneklerini inceleyelim.</p>
+<div class="highlight"><pre><span></span><code><span class="n">veri</span> <span class="o">=</span> <span class="n">veri</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">&quot;backfill&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>isim</th>
+<th>yaş</th>
+<th>iş-meslek</th>
+<th>kategori</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Mustafa</td>
+<td>25</td>
+<td>mühendis</td>
+<td>Kategori_1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Halil</td>
+<td>38</td>
+<td>programcı</td>
+<td>Kategori_3</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Burak</td>
+<td>41</td>
+<td>akademisyen</td>
+<td>Kategori_3</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Emre</td>
+<td>23</td>
+<td>yönetici</td>
+<td>Kategori_4</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Ersin</td>
+<td>37</td>
+<td>amir</td>
+<td>Kategori_5</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Sertaç</td>
+<td>52</td>
+<td>mühendis</td>
+<td>Kategori_8</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Furkan</td>
+<td>30</td>
+<td>yönetici</td>
+<td>Kategori_8</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Murat</td>
+<td>23</td>
+<td>müdür</td>
+<td>Kategori_8</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Ahmet</td>
+<td>40</td>
+<td>veteriner</td>
+<td>Kategori_9</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Abdülkadir</td>
+<td>38</td>
+<td>yönetici</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="n">veri</span> <span class="o">=</span> <span class="n">veri</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">&quot;bfill&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>isim</th>
+<th>yaş</th>
+<th>iş-meslek</th>
+<th>kategori</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Mustafa</td>
+<td>25</td>
+<td>mühendis</td>
+<td>Kategori_1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Halil</td>
+<td>38</td>
+<td>programcı</td>
+<td>Kategori_3</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Burak</td>
+<td>41</td>
+<td>akademisyen</td>
+<td>Kategori_3</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Emre</td>
+<td>23</td>
+<td>yönetici</td>
+<td>Kategori_4</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Ersin</td>
+<td>37</td>
+<td>amir</td>
+<td>Kategori_5</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Sertaç</td>
+<td>52</td>
+<td>mühendis</td>
+<td>Kategori_8</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Furkan</td>
+<td>30</td>
+<td>yönetici</td>
+<td>Kategori_8</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Murat</td>
+<td>23</td>
+<td>müdür</td>
+<td>Kategori_8</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Ahmet</td>
+<td>40</td>
+<td>veteriner</td>
+<td>Kategori_9</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Abdülkadir</td>
+<td>38</td>
+<td>yönetici</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<p>Görüldüğü üzere, <strong>backfill</strong> ve <strong>bfill</strong> seçenekleri sayesinde boş (geçersiz değere sahip) hücreler, <strong>kendinden sonraki</strong> son geçerli (altında bulunan) hücrenin değeri ile dolduruldu.</p>
+<p>Şimdi sıra <strong>pad</strong> ve <strong>ffill</strong> seçeneklerinde;</p>
+<div class="highlight"><pre><span></span><code><span class="n">veri</span> <span class="o">=</span> <span class="n">veri</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">&quot;pad&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>isim</th>
+<th>yaş</th>
+<th>iş-meslek</th>
+<th>kategori</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Mustafa</td>
+<td>25</td>
+<td>mühendis</td>
+<td>Kategori_1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Halil</td>
+<td>38</td>
+<td>programcı</td>
+<td>Kategori_1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Burak</td>
+<td>41</td>
+<td>akademisyen</td>
+<td>Kategori_3</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Emre</td>
+<td>23</td>
+<td>yönetici</td>
+<td>Kategori_4</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Ersin</td>
+<td>37</td>
+<td>amir</td>
+<td>Kategori_5</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Sertaç</td>
+<td>52</td>
+<td>mühendis</td>
+<td>Kategori_5</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Furkan</td>
+<td>30</td>
+<td>yönetici</td>
+<td>Kategori_5</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Murat</td>
+<td>23</td>
+<td>müdür</td>
+<td>Kategori_8</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Ahmet</td>
+<td>40</td>
+<td>veteriner</td>
+<td>Kategori_9</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Abdülkadir</td>
+<td>38</td>
+<td>yönetici</td>
+<td>Kategori_9</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="n">veri</span> <span class="o">=</span> <span class="n">veri</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">&quot;ffill&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>isim</th>
+<th>yaş</th>
+<th>iş-meslek</th>
+<th>kategori</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Mustafa</td>
+<td>25</td>
+<td>mühendis</td>
+<td>Kategori_1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Halil</td>
+<td>38</td>
+<td>programcı</td>
+<td>Kategori_1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Burak</td>
+<td>41</td>
+<td>akademisyen</td>
+<td>Kategori_3</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Emre</td>
+<td>23</td>
+<td>yönetici</td>
+<td>Kategori_4</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Ersin</td>
+<td>37</td>
+<td>amir</td>
+<td>Kategori_5</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Sertaç</td>
+<td>52</td>
+<td>mühendis</td>
+<td>Kategori_5</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Furkan</td>
+<td>30</td>
+<td>yönetici</td>
+<td>Kategori_5</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Murat</td>
+<td>23</td>
+<td>müdür</td>
+<td>Kategori_8</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Ahmet</td>
+<td>40</td>
+<td>veteriner</td>
+<td>Kategori_9</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Abdülkadir</td>
+<td>38</td>
+<td>yönetici</td>
+<td>Kategori_9</td>
+</tr>
+</tbody>
+</table>
+<p><strong>backfill</strong> ve <strong>bfill</strong> seçeneklerinin tersine <strong>pad</strong> ve <strong>ffill</strong> seçenekleri ile sayesinde ise boş (geçersiz değere sahip) hücreler, <strong>kendinden önceki</strong> son geçerli (üstünde bulunan) hücrenin değeri ile dolduruldu.</p>
+<p><a href="pandas-04-secim-yontemleri.html">← Önceki Bölüm</a> | <a href="pandas-06-veri-duzenleme-yontemleri.html">Sonraki Bölüm →</a></p>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/pandas.html">Pandas</a></li>
+					<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+					<li><a href="/tag/modul.html">Modül</a></li>
+					<li><a href="/tag/eksik.html">Eksik</a></li>
+					<li><a href="/tag/kayip.html">Kayıp</a></li>
+					<li><a href="/tag/veri.html">Veri</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>

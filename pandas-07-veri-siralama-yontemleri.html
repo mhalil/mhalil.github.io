@@ -1,0 +1,1462 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Pandas 07 - Veri Sıralama Yöntemleri" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/pandas-07-veri-siralama-yontemleri.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Pandas 07 - Veri Sıralama Yöntemleri</h1>
+	<span class="post-date">Prş 10 Şubat 2022</span>
+	<h1>Sıralama Yöntemleri</h1>
+<p>Oluşturulan Veri Çerçevelerinin, isteğimiz doğrultusunda sıralanması için kullanabileceğimiz yöntemlere, bu bölümde değineceğiz.</p>
+<p>Pandas üç tür sıralamayı destekler ;</p>
+<ul>
+<li>İndeks (dizin) etiketlerine göre sıralama,</li>
+<li>Sütun değerlerine göre sıralama</li>
+<li>Her ikisinin birleşimine göre sıralama.</li>
+</ul>
+<p>Konuya ait yöntemleri incelemek amacıyla <strong>imdb.xlsx</strong> dosyamızı içe aktararak bir veri çerçevesi oluşturarak işe başlayalım. Oluşturacağımız Veri çerçevesinin indeks değeri olarak <strong>Film Adlarını</strong> belirleyelim.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/imdb.xlsx&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s2">&quot;Film_Adı&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Film_Adı</th>
+<th>Yıl</th>
+<th>Puan</th>
+<th>Oylayan_Kişi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The Shawshank Redemption</td>
+<td>1994</td>
+<td>9,2</td>
+<td>1071904</td>
+</tr>
+<tr>
+<td>The Godfather</td>
+<td>1972</td>
+<td>9,2</td>
+<td>751381</td>
+</tr>
+<tr>
+<td>The Godfather: Part II</td>
+<td>1974</td>
+<td>9</td>
+<td>488889</td>
+</tr>
+<tr>
+<td>Pulp Fiction</td>
+<td>1994</td>
+<td>8,9</td>
+<td>830504</td>
+</tr>
+<tr>
+<td>The Dark Knight</td>
+<td>2008</td>
+<td>8,9</td>
+<td>1045186</td>
+</tr>
+<tr>
+<td>12 Angry Men</td>
+<td>1957</td>
+<td>8,9</td>
+<td>264112</td>
+</tr>
+<tr>
+<td>Schindler's List</td>
+<td>1993</td>
+<td>8,9</td>
+<td>545703</td>
+</tr>
+<tr>
+<td>The Lord of the Rings: The Return of the King</td>
+<td>2003</td>
+<td>8,8</td>
+<td>758388</td>
+</tr>
+<tr>
+<td>Fight Club</td>
+<td>1999</td>
+<td>8,8</td>
+<td>814389</td>
+</tr>
+<tr>
+<td>Star Wars: Episode V - The Empire Strikes Back</td>
+<td>1980</td>
+<td>8,8</td>
+<td>519895</td>
+</tr>
+</tbody>
+</table>
+<h2>sort_index() Fonksiyonu</h2>
+<p><code>sort_index()</code> fonksiyonu (metodu), veri çerçevesini indeks (dizin) değerine göre <strong>Alfabetik</strong> olarak sıralama için kullanılır. <strong>df</strong> veri çerçevemizin indekslerini, <strong>Film adı</strong> olarak atadığımız için, <code>sort_index()</code> metodunu kullandığımız zaman, Veri çerçevemizi <strong>Film Adı</strong>na göre sıralamış olacağız.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">sort_index</span><span class="p">())</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Film_Adı</th>
+<th>Yıl</th>
+<th>Puan</th>
+<th>Oylayan_Kişi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>12 Angry Men</td>
+<td>1957</td>
+<td>8,9</td>
+<td>264112</td>
+</tr>
+<tr>
+<td>2001: A Space Odyssey</td>
+<td>1968</td>
+<td>8,3</td>
+<td>275055</td>
+</tr>
+<tr>
+<td>3 Idiots</td>
+<td>2009</td>
+<td>8</td>
+<td>83178</td>
+</tr>
+<tr>
+<td>8½</td>
+<td>1963</td>
+<td>8</td>
+<td>54451</td>
+</tr>
+<tr>
+<td>A Beautiful Mind</td>
+<td>2001</td>
+<td>8</td>
+<td>344294</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>Warrior</td>
+<td>2011</td>
+<td>8,1</td>
+<td>190877</td>
+</tr>
+<tr>
+<td>Who's Afraid of Virginia Woolf?</td>
+<td>1966</td>
+<td>8</td>
+<td>38192</td>
+</tr>
+<tr>
+<td>Wild Strawberries</td>
+<td>1957</td>
+<td>8,2</td>
+<td>41744</td>
+</tr>
+<tr>
+<td>Witness for the Prosecution</td>
+<td>1957</td>
+<td>8,3</td>
+<td>36241</td>
+</tr>
+<tr>
+<td>Yojimbo</td>
+<td>1961</td>
+<td>8,3</td>
+<td>49855</td>
+</tr>
+</tbody>
+</table>
+<p>247 rows × 3 columns</p>
+<h3>ascending Parametresi</h3>
+<p>Sıralamayı ters çevirmek için <code>ascending=False</code> parametresini kullanabiliriz.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Film_Adı</th>
+<th>Yıl</th>
+<th>Puan</th>
+<th>Oylayan_Kişi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Yojimbo</td>
+<td>1961</td>
+<td>8,3</td>
+<td>49855</td>
+</tr>
+<tr>
+<td>Witness for the Prosecution</td>
+<td>1957</td>
+<td>8,3</td>
+<td>36241</td>
+</tr>
+<tr>
+<td>Wild Strawberries</td>
+<td>1957</td>
+<td>8,2</td>
+<td>41744</td>
+</tr>
+<tr>
+<td>Who's Afraid of Virginia Woolf?</td>
+<td>1966</td>
+<td>8</td>
+<td>38192</td>
+</tr>
+<tr>
+<td>Warrior</td>
+<td>2011</td>
+<td>8,1</td>
+<td>190877</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>A Beautiful Mind</td>
+<td>2001</td>
+<td>8</td>
+<td>344294</td>
+</tr>
+<tr>
+<td>8½</td>
+<td>1963</td>
+<td>8</td>
+<td>54451</td>
+</tr>
+<tr>
+<td>3 Idiots</td>
+<td>2009</td>
+<td>8</td>
+<td>83178</td>
+</tr>
+<tr>
+<td>2001: A Space Odyssey</td>
+<td>1968</td>
+<td>8,3</td>
+<td>275055</td>
+</tr>
+<tr>
+<td>12 Angry Men</td>
+<td>1957</td>
+<td>8,9</td>
+<td>264112</td>
+</tr>
+</tbody>
+</table>
+<p>247 rows × 3 columns</p>
+<h3>axis Parametresi</h3>
+<p>Sütunlarda sıralama yapmak istersek <code>axis=1</code> parametresini kullanmamız gerekir. axis parametresinin varsayılan değeri 0 (sıfır) yani <strong>satırlar</strong>dır.</p>
+<p><code>df.sort_index(axis=1)</code> kodunu çalıştırdığımızda, <strong>imdb.xlsx</strong> dosyasını içeriği okunacak, satırlarda bir sıralama yapılmayacak ancak, <strong>sütun isimleri</strong> alfabetik olarak sıralanacaktır. Veri çerçevesi oluşturulurken dosya içeriğindeki <strong>Film_Adı</strong> Sütunu indeks olarak ayarlandığı için, <code>axis=1</code> parametresi ile sıralama yapıldığında bu sütun sabit kalacak, diğer sıralı sütun isimleri (<strong>Yıl, Puan, Oylayan_Kişi</strong>) ve sütun değerleri değişecektir (<strong>Oylayan_Kişi, Puan, Yıl</strong> olacak).</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Film_Adı</th>
+<th>Oylayan_Kişi</th>
+<th>Puan</th>
+<th>Yıl</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The Shawshank Redemption</td>
+<td>1071904</td>
+<td>9,2</td>
+<td>1994</td>
+</tr>
+<tr>
+<td>The Godfather</td>
+<td>751381</td>
+<td>9,2</td>
+<td>1972</td>
+</tr>
+<tr>
+<td>The Godfather: Part II</td>
+<td>488889</td>
+<td>9</td>
+<td>1974</td>
+</tr>
+<tr>
+<td>Pulp Fiction</td>
+<td>830504</td>
+<td>8,9</td>
+<td>1994</td>
+</tr>
+<tr>
+<td>The Dark Knight</td>
+<td>1045186</td>
+<td>8,9</td>
+<td>2008</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>Mystic River</td>
+<td>256159</td>
+<td>7,9</td>
+<td>2003</td>
+</tr>
+<tr>
+<td>In the Heat of the Night</td>
+<td>37081</td>
+<td>7,9</td>
+<td>1967</td>
+</tr>
+<tr>
+<td>Arsenic and Old Lace</td>
+<td>45893</td>
+<td>7,9</td>
+<td>1944</td>
+</tr>
+<tr>
+<td>Before Sunrise</td>
+<td>100974</td>
+<td>7,9</td>
+<td>1995</td>
+</tr>
+<tr>
+<td>Papillon</td>
+<td>62517</td>
+<td>7,9</td>
+<td>1973</td>
+</tr>
+</tbody>
+</table>
+<p>247 rows × 3 columns</p>
+<h2>sort_values() Fonksiyonu</h2>
+<p>Veri çerçevesini <strong>sütun(lar)a göre</strong> sıralamak istersek, <code>sort_values()</code> fonksiyonunu kullanmalıyız.</p>
+<h3>by Parametresi</h3>
+<p><code>sort_values()</code> fonksiyonu ile sütuna göre sıralama yapmak için <code>by</code> parametresi kullanılmalıdır. <code>by</code> parametresi, bir veya daha fazla sütunu belirtmek için kullanılabilir. 
+Bu durumda sütun isimlerini köşeli parantez içinde yani bir <strong>liste</strong> olarak yazmalıyız. Fonksiyonu, örneklerle inceleyelim.</p>
+<p>Örneğin yukarıda oluşturduğumuz <strong>df</strong> veri çerçevesini, <strong>Yıla göre sıralamak</strong> istersek aşağıdaki kodu çalıştırmalıyız.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;Yıl&quot;</span><span class="p">))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Film_Adı</th>
+<th>Yıl</th>
+<th>Puan</th>
+<th>Oylayan_Kişi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The Kid</td>
+<td>1921</td>
+<td>8,2</td>
+<td>35316</td>
+</tr>
+<tr>
+<td>The Gold Rush</td>
+<td>1925</td>
+<td>8,2</td>
+<td>41458</td>
+</tr>
+<tr>
+<td>The General</td>
+<td>1926</td>
+<td>8,2</td>
+<td>34819</td>
+</tr>
+<tr>
+<td>Metropolis</td>
+<td>1927</td>
+<td>8,3</td>
+<td>74994</td>
+</tr>
+<tr>
+<td>All Quiet on the Western Front</td>
+<td>1930</td>
+<td>8</td>
+<td>38373</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>The Avengers</td>
+<td>2012</td>
+<td>8,1</td>
+<td>568037</td>
+</tr>
+<tr>
+<td>The Hobbit: An Unexpected Journey</td>
+<td>2012</td>
+<td>8</td>
+<td>352517</td>
+</tr>
+<tr>
+<td>Life of Pi</td>
+<td>2012</td>
+<td>8</td>
+<td>246325</td>
+</tr>
+<tr>
+<td>Rush</td>
+<td>2013</td>
+<td>8</td>
+<td>28676</td>
+</tr>
+<tr>
+<td>Gravity</td>
+<td>2013</td>
+<td>8,5</td>
+<td>33721</td>
+</tr>
+</tbody>
+</table>
+<p>247 rows × 3 columns</p>
+<p>Sıralama işlemini birden fazla sütuna göre yapmak istersek, sütun isimlerini köşeli parantez içinde yani bir <strong>liste</strong> olarak belirtmemiz gerekir.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Puan&quot;</span><span class="p">,</span> <span class="s2">&quot;Yıl&quot;</span><span class="p">]))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Film_Adı</th>
+<th>Yıl</th>
+<th>Puan</th>
+<th>Oylayan_Kişi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>All Quiet on the Western Front</td>
+<td>1930</td>
+<td>8</td>
+<td>38373</td>
+</tr>
+<tr>
+<td>Rope</td>
+<td>1948</td>
+<td>8</td>
+<td>66041</td>
+</tr>
+<tr>
+<td>A Streetcar Named Desire</td>
+<td>1951</td>
+<td>8</td>
+<td>60767</td>
+</tr>
+<tr>
+<td>Stalag 17</td>
+<td>1953</td>
+<td>8</td>
+<td>33518</td>
+</tr>
+<tr>
+<td>Roman Holiday</td>
+<td>1953</td>
+<td>8</td>
+<td>63443</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>Schindler's List</td>
+<td>1993</td>
+<td>8,9</td>
+<td>545703</td>
+</tr>
+<tr>
+<td>Pulp Fiction</td>
+<td>1994</td>
+<td>8,9</td>
+<td>830504</td>
+</tr>
+<tr>
+<td>The Dark Knight</td>
+<td>2008</td>
+<td>8,9</td>
+<td>1045186</td>
+</tr>
+<tr>
+<td>The Godfather</td>
+<td>1972</td>
+<td>9,2</td>
+<td>751381</td>
+</tr>
+<tr>
+<td>The Shawshank Redemption</td>
+<td>1994</td>
+<td>9,2</td>
+<td>1071904</td>
+</tr>
+</tbody>
+</table>
+<p>247 rows × 3 columns</p>
+<p>Bu kod ile, öncelikle <strong>Puan</strong> sütununa göre sıralama yapılır, <strong>Puan</strong> sütununda aynı değerler yanyana geldiğinde ise, <strong>Yıl</strong> sütunu baz alınarak sıralama yapılır.</p>
+<h3>ascending Parametresi</h3>
+<p>Yukarıdaki örneklerde göreceğiniz gibi Veri çerçevesi, <strong>Yıl</strong>a göre sıralandığında, varsayılan olarak alfabetik artan (küçükten büyüğe) şeklinde sıralandı. Eğer alfabetik azalan (büyükten küçüğe) şeklinde sıralamak istersek (yani sıralamayı ters çevirmek istersek) <code>ascending=False</code> parametresini kullanmalıyız.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;Yıl&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Film_Adı</th>
+<th>Yıl</th>
+<th>Puan</th>
+<th>Oylayan_Kişi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rush</td>
+<td>2013</td>
+<td>8</td>
+<td>28676</td>
+</tr>
+<tr>
+<td>Gravity</td>
+<td>2013</td>
+<td>8,5</td>
+<td>33721</td>
+</tr>
+<tr>
+<td>The Avengers</td>
+<td>2012</td>
+<td>8,1</td>
+<td>568037</td>
+</tr>
+<tr>
+<td>The Dark Knight Rises</td>
+<td>2012</td>
+<td>8,4</td>
+<td>672751</td>
+</tr>
+<tr>
+<td>The Hunt</td>
+<td>2012</td>
+<td>8,1</td>
+<td>39033</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>All Quiet on the Western Front</td>
+<td>1930</td>
+<td>8</td>
+<td>38373</td>
+</tr>
+<tr>
+<td>Metropolis</td>
+<td>1927</td>
+<td>8,3</td>
+<td>74994</td>
+</tr>
+<tr>
+<td>The General</td>
+<td>1926</td>
+<td>8,2</td>
+<td>34819</td>
+</tr>
+<tr>
+<td>The Gold Rush</td>
+<td>1925</td>
+<td>8,2</td>
+<td>41458</td>
+</tr>
+<tr>
+<td>The Kid</td>
+<td>1921</td>
+<td>8,2</td>
+<td>35316</td>
+</tr>
+</tbody>
+</table>
+<p>247 rows × 3 columns</p>
+<h3>na_position Parametresi</h3>
+<p><code>sort_values()</code> fonksiyonu, <code>na_position</code> parametresi aracılığıyla <strong>NA</strong> (yani kayıp / eksik veri) değerlerini özel işleme tabi tutarak sıralayabilir.</p>
+<p><strong>Numpy</strong> Kütüphanesini kullanarak Rastgele sayılardan müteşekkil örnek bir veri çerçevesi oluşturup içeriğine bakalım.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;Sütun_1&quot;</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">]),</span>
+        <span class="s2">&quot;Sütun_2&quot;</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">]),</span>
+        <span class="s2">&quot;Sütun_3&quot;</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">]),</span>
+        <span class="s2">&quot;Sütun_4&quot;</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">]),</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df2</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Sütun_1</th>
+<th>Sütun_2</th>
+<th>Sütun_3</th>
+<th>Sütun_4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a</td>
+<td>-1.485741</td>
+<td>0.063539</td>
+<td>NaN</td>
+<td>-1.125456</td>
+</tr>
+<tr>
+<td>b</td>
+<td>-1.675240</td>
+<td>0.417121</td>
+<td>0.662779</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>c</td>
+<td>-0.341007</td>
+<td>0.701759</td>
+<td>-0.998608</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>d</td>
+<td>NaN</td>
+<td>2.495466</td>
+<td>0.149067</td>
+<td>1.512350</td>
+</tr>
+</tbody>
+</table>
+<p>Görüldüğü üzere, <strong>Sütun_1, Sütun_3</strong> ve <strong>Sütun_4</strong>'te <strong>NaN (Not a Number)</strong> kayıp/eksik veriler bulunmakta.
+Örneğin <strong>Sütun_4</strong>'e göre yapılacak sıralama işleminde, <strong>NaN</strong> değerlerini en üste almak isteyelim. Bunun için <code>na_position</code> parametresinin <code>"first"</code> seçeneğini belirtmemiz gerekir.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df2</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span> <span class="s2">&quot;Sütun_4&quot;</span><span class="p">,</span> <span class="n">na_position</span><span class="o">=</span><span class="s2">&quot;first&quot;</span><span class="p">))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Sütun_1</th>
+<th>Sütun_2</th>
+<th>Sütun_3</th>
+<th>Sütun_4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>b</td>
+<td>-1.675240</td>
+<td>0.417121</td>
+<td>0.662779</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>c</td>
+<td>-0.341007</td>
+<td>0.701759</td>
+<td>-0.998608</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>a</td>
+<td>-1.485741</td>
+<td>0.063539</td>
+<td>NaN</td>
+<td>-1.125456</td>
+</tr>
+<tr>
+<td>d</td>
+<td>NaN</td>
+<td>2.495466</td>
+<td>0.149067</td>
+<td>1.512350</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sütun_4</strong>'e göre yapılacak sıralama işleminde, <strong>NaN</strong> değerlerini en alta almak istersek, bu defa <code>na_position</code> parametresinin <code>"last"</code> seçeneğini belirtmemiz gerekir.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df2</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span> <span class="s2">&quot;Sütun_4&quot;</span><span class="p">,</span> <span class="n">na_position</span><span class="o">=</span><span class="s2">&quot;last&quot;</span><span class="p">))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Sütun_1</th>
+<th>Sütun_2</th>
+<th>Sütun_3</th>
+<th>Sütun_4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a</td>
+<td>-1.485741</td>
+<td>0.063539</td>
+<td>NaN</td>
+<td>-1.125456</td>
+</tr>
+<tr>
+<td>d</td>
+<td>NaN</td>
+<td>2.495466</td>
+<td>0.149067</td>
+<td>1.512350</td>
+</tr>
+<tr>
+<td>b</td>
+<td>-1.675240</td>
+<td>0.417121</td>
+<td>0.662779</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>c</td>
+<td>-0.341007</td>
+<td>0.701759</td>
+<td>-0.998608</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+<h2>reindex() Fonksiyonu</h2>
+<p><code>reindex()</code>, Pandas'ta temel veri sıralama (hizalama) yöntemlerinden biridir. Bir veri çerçevesinin satır ya da sütunlarını yeniden sıralamak için kullanılan en yaygın yöntemdir. Prensip olarak, etiket sıralama mantığına dayanır. Bu işlem, indeks değerlerini ya da sütun isimlerini yeniden sıralamak ve verileri belirli bir eksen (Satır 
+ya da sütun) boyunca belirli bir etiket kümesiyle eşleşecek şekilde uyarlamak anlamına gelir. Bu fonksiyon, <strong>hem seçim hem de sıralama</strong> mantığıyla çalışır. Bu yöntemle şunlar sağlanır ;</p>
+<ul>
+<li>Mevcut verileri, Yeni bir etiket kümesiyle eşleştirerek yeniden sıralar</li>
+<li>Etiket kümesinde eşleşen verinin bulunmaması durumunda, etiket konumlarına eksik değer (NA / NaN) işaretçileri ekler</li>
+<li>Belirtilmişse, mantık kullanarak eksik etiketler için verileri 
+  doldurur (fill). (zaman serisi verileriyle çalışanlar için oldukça 
+  alakalıdır)</li>
+</ul>
+<p><strong>df</strong> veri çerçevemizin ilk 15 verisini inceleyelim.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/imdb.xlsx&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s2">&quot;Film_Adı&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">15</span><span class="p">))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Film_Adı</th>
+<th>Yıl</th>
+<th>Puan</th>
+<th>Oylayan_Kişi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The Shawshank Redemption</td>
+<td>1994</td>
+<td>9,2</td>
+<td>1071904</td>
+</tr>
+<tr>
+<td>The Godfather</td>
+<td>1972</td>
+<td>9,2</td>
+<td>751381</td>
+</tr>
+<tr>
+<td>The Godfather: Part II</td>
+<td>1974</td>
+<td>9</td>
+<td>488889</td>
+</tr>
+<tr>
+<td>Pulp Fiction</td>
+<td>1994</td>
+<td>8,9</td>
+<td>830504</td>
+</tr>
+<tr>
+<td>The Dark Knight</td>
+<td>2008</td>
+<td>8,9</td>
+<td>1045186</td>
+</tr>
+<tr>
+<td>12 Angry Men</td>
+<td>1957</td>
+<td>8,9</td>
+<td>264112</td>
+</tr>
+<tr>
+<td>Schindler's List</td>
+<td>1993</td>
+<td>8,9</td>
+<td>545703</td>
+</tr>
+<tr>
+<td>The Lord of the Rings: The Return of the King</td>
+<td>2003</td>
+<td>8,8</td>
+<td>758388</td>
+</tr>
+<tr>
+<td>Fight Club</td>
+<td>1999</td>
+<td>8,8</td>
+<td>814389</td>
+</tr>
+<tr>
+<td>Star Wars: Episode V - The Empire Strikes Back</td>
+<td>1980</td>
+<td>8,8</td>
+<td>519895</td>
+</tr>
+<tr>
+<td>The Lord of the Rings: The Fellowship of the Ring</td>
+<td>2001</td>
+<td>8,8</td>
+<td>784999</td>
+</tr>
+<tr>
+<td>One Flew Over the Cuckoo's Nest</td>
+<td>1975</td>
+<td>8,7</td>
+<td>447005</td>
+</tr>
+<tr>
+<td>Goodfellas</td>
+<td>1990</td>
+<td>8,7</td>
+<td>465445</td>
+</tr>
+<tr>
+<td>Seven Samurai</td>
+<td>1954</td>
+<td>8,7</td>
+<td>161969</td>
+</tr>
+<tr>
+<td>Inception</td>
+<td>2010</td>
+<td>8,7</td>
+<td>844938</td>
+</tr>
+</tbody>
+</table>
+<p>Hem seçim hem de sıralama mantığı ile çalışan bu fonksiyon ile <strong>Fight Club, Pulp Fiction, Inception, The Godfather, The Dark Knight</strong> ve <strong>Seven Samurai</strong> filmlerini, yazdığımız sıra ile <strong>sirala_filtrele</strong> isimli yeni bir Veri Çerçevesine atayalım.</p>
+<div class="highlight"><pre><span></span><code><span class="n">sirala_filtrele</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">reindex</span><span class="p">([</span><span class="s2">&quot;Fight Club &quot;</span><span class="p">,</span> <span class="s2">&quot;Pulp Fiction&quot;</span><span class="p">,</span> <span class="s2">&quot;Inception&quot;</span><span class="p">,</span> <span class="s2">&quot;The Godfather &quot;</span><span class="p">,</span> <span class="s2">&quot;The Dark Knight &quot;</span><span class="p">,</span> <span class="s2">&quot;Seven Samurai &quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sirala_filtrele</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Film_Adı</th>
+<th>Yıl</th>
+<th>Puan</th>
+<th>Oylayan_Kişi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fight Club</td>
+<td>1999</td>
+<td>8,8</td>
+<td>814389</td>
+</tr>
+<tr>
+<td>Pulp Fiction</td>
+<td>1994</td>
+<td>8,9</td>
+<td>830504</td>
+</tr>
+<tr>
+<td>Inception</td>
+<td>2010</td>
+<td>8,7</td>
+<td>844938</td>
+</tr>
+<tr>
+<td>The Godfather</td>
+<td>1972</td>
+<td>9,2</td>
+<td>751381</td>
+</tr>
+<tr>
+<td>The Dark Knight</td>
+<td>2008</td>
+<td>8,9</td>
+<td>1045186</td>
+</tr>
+<tr>
+<td>Seven Samurai</td>
+<td>1954</td>
+<td>8,7</td>
+<td>161969</td>
+</tr>
+</tbody>
+</table>
+<p><strong>df</strong> veri çerçevemizde bulunmayan (eksik/kayıp veri) bir filmi <strong>sirala_filtrele</strong> veri çerçevemize eklemeye çalışırak ne olacağını görelim.</p>
+<div class="highlight"><pre><span></span><code><span class="n">sirala_filtrele</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">reindex</span><span class="p">([</span><span class="s2">&quot;Deli Yürek&quot;</span><span class="p">,</span> <span class="s2">&quot;Fight Club &quot;</span><span class="p">,</span> <span class="s2">&quot;Pulp Fiction&quot;</span><span class="p">,</span> <span class="s2">&quot;Inception&quot;</span><span class="p">,</span> <span class="s2">&quot;The Godfather &quot;</span><span class="p">,</span> <span class="s2">&quot;The Dark Knight &quot;</span><span class="p">,</span> <span class="s2">&quot;Seven Samurai &quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sirala_filtrele</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Film_Adı</th>
+<th>Yıl</th>
+<th>Puan</th>
+<th>Oylayan_Kişi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Deli Yürek</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>Fight Club</td>
+<td>1999.0</td>
+<td>8,8</td>
+<td>814389.0</td>
+</tr>
+<tr>
+<td>Pulp Fiction</td>
+<td>1994.0</td>
+<td>8,9</td>
+<td>830504.0</td>
+</tr>
+<tr>
+<td>Inception</td>
+<td>2010.0</td>
+<td>8,7</td>
+<td>844938.0</td>
+</tr>
+<tr>
+<td>The Godfather</td>
+<td>1972.0</td>
+<td>9,2</td>
+<td>751381.0</td>
+</tr>
+<tr>
+<td>The Dark Knight</td>
+<td>2008.0</td>
+<td>8,9</td>
+<td>1045186.0</td>
+</tr>
+<tr>
+<td>Seven Samurai</td>
+<td>1954.0</td>
+<td>8,7</td>
+<td>161969.0</td>
+</tr>
+</tbody>
+</table>
+<p>Gördüğünüz gibi, <strong>df</strong> veri çerçevemizde <strong>Deli Yürek</strong> isimli bir filmi bulunmadığı için, <strong>sirala_filtrele</strong> veri çerçevemize sadece <strong>Filmin Adı</strong> eklendi, <strong>Yıl, Puan</strong> ve <strong>Oylayan_Kişi</strong> bilgileri yerine <strong>NaN</strong> değeri atandı.</p>
+<h3>columns Parametresi</h3>
+<p><strong>df</strong> veri çerçevemizin sütun isimleri <strong>Yıl, Puan</strong> ve <strong>Oylayan_Kişi</strong> sırası ile görüntüleniyor. Bu sırayı <code>reindex()</code> fonksiyonu yardımı ile değiştirmek istersek, <code>columns</code> parametresini kullanabiliriz. <strong>sirala_filtrele</strong> isimli veri çerçevemizin sütunlarını <strong>Puan, Yıl, Oylayan_Kişi</strong> sırasına göre hizalamaya çalışalım.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">sirala_filtrele</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Puan&quot;</span><span class="p">,</span> <span class="s2">&quot;Yıl&quot;</span><span class="p">,</span> <span class="s2">&quot;Oylayan_Kişi&quot;</span><span class="p">]))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Film_Adı</th>
+<th>Puan</th>
+<th>Yıl</th>
+<th>Oylayan_Kişi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Deli Yürek</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>Fight Club</td>
+<td>8,8</td>
+<td>1999.0</td>
+<td>814389.0</td>
+</tr>
+<tr>
+<td>Pulp Fiction</td>
+<td>8,9</td>
+<td>1994.0</td>
+<td>830504.0</td>
+</tr>
+<tr>
+<td>Inception</td>
+<td>8,7</td>
+<td>2010.0</td>
+<td>844938.0</td>
+</tr>
+<tr>
+<td>The Godfather</td>
+<td>9,2</td>
+<td>1972.0</td>
+<td>751381.0</td>
+</tr>
+<tr>
+<td>The Dark Knight</td>
+<td>8,9</td>
+<td>2008.0</td>
+<td>1045186.0</td>
+</tr>
+<tr>
+<td>Seven Samurai</td>
+<td>8,7</td>
+<td>1954.0</td>
+<td>161969.0</td>
+</tr>
+</tbody>
+</table>
+<p><code>reindex()</code> fonksiyonunu, <strong>Dilimleme</strong> ve <strong>Filtreleme</strong> işlemi olarak ta kullanabiliriz. <strong>df</strong> veri çerçevemizdeki <strong>Seven Samurai, Fight Club</strong> ve <strong>Inception</strong> isimli filmlere ait sadece <strong>Yıl</strong> ve <strong>Puan</strong> bilgilerini elde etmek istersek <code>reindex()</code> fonksiyonu ile birlikte <code>index</code> ve <code>columns</code> parametrelerini kullanmalıyız.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Seven Samurai &quot;</span><span class="p">,</span> <span class="s2">&quot;Fight Club &quot;</span><span class="p">,</span> <span class="s2">&quot;Inception&quot;</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Yıl&quot;</span><span class="p">,</span> <span class="s2">&quot;Puan&quot;</span><span class="p">]))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Film_Adı</th>
+<th>Yıl</th>
+<th>Puan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Seven Samurai</td>
+<td>1954</td>
+<td>8,7</td>
+</tr>
+<tr>
+<td>Fight Club</td>
+<td>1999</td>
+<td>8,8</td>
+</tr>
+<tr>
+<td>Inception</td>
+<td>2010</td>
+<td>8,7</td>
+</tr>
+</tbody>
+</table>
+<h3>axis parametresi</h3>
+<p>Veri çerçevenizin indeks değerlerini (satırlar) ya da sütun isimlerini/değerlerini <code>reindex()</code> fonksiyonun, <code>axis</code> parametresi ile de sıralayabilirsiniz.</p>
+<p>İndeks değerleri ve Sütun isimleri <strong>0, 1</strong> ve <strong>2</strong> olan bir veri çerçevesi oluşturup göz atalım.</p>
+<div class="highlight"><pre><span></span><code><span class="n">bir</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">60</span><span class="p">],</span> <span class="p">[</span><span class="mi">700</span><span class="p">,</span><span class="mi">800</span><span class="p">,</span><span class="mi">900</span><span class="p">]</span>
+<span class="n">sutun</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
+
+<span class="n">df_1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">bir</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">sutun</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_1</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr>
+<td>1</td>
+<td>40</td>
+<td>50</td>
+<td>60</td>
+</tr>
+<tr>
+<td>2</td>
+<td>700</td>
+<td>800</td>
+<td>900</td>
+</tr>
+</tbody>
+</table>
+<h4>index Seçeneği</h4>
+<p>İndeks değerlerini <strong>2, 1</strong> ve <strong>0</strong> olacak şekilde sıralamak için <code>axis="index"</code> parametre seçeneğini kullanmalıyız.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df_1</span><span class="o">.</span><span class="n">reindex</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;index&quot;</span><span class="p">))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>700</td>
+<td>800</td>
+<td>900</td>
+</tr>
+<tr>
+<td>1</td>
+<td>40</td>
+<td>50</td>
+<td>60</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<h4>columns Seçeneği</h4>
+<p>İndeks değerlerini <strong>2, 1</strong> ve <strong>0</strong> olacak şekilde sıralamak için <code>axis="columns"</code> parametre seçeneğini kullanmalıyız.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df_1</span><span class="o">.</span><span class="n">reindex</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;columns&quot;</span><span class="p">))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>2</th>
+<th>1</th>
+<th>0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>3</td>
+<td>2</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>60</td>
+<td>50</td>
+<td>40</td>
+</tr>
+<tr>
+<td>2</td>
+<td>900</td>
+<td>800</td>
+<td>700</td>
+</tr>
+</tbody>
+</table>
+<h3>Ek Bilgi :</h3>
+<p><code>reindex()</code> fonksiyonunu kullanırken, gerçek eksen etiketlerini (indeksleri) içeren <code>index</code> nesnelerinin, nesneler arasında paylaşılabileceğine dikkat edin!</p>
+<p>Yani bir Seriniz (Series) ve Veri Çerçeveniz (Data Frame) varsa, bunların indeks değerlerini <code>reindex()</code> fonksiyonunda parametre olarak kullanabilirsiniz.</p>
+<div class="highlight"><pre><span></span><code><span class="n">iki</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="s2">&quot;c&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;aa&quot;</span><span class="p">,</span><span class="s2">&quot;bb&quot;</span><span class="p">,</span><span class="s2">&quot;cc&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;aaa&quot;</span><span class="p">,</span><span class="s2">&quot;bbb&quot;</span><span class="p">,</span><span class="s2">&quot;ccc&quot;</span><span class="p">]</span>
+<span class="n">sutun</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">df_2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">iki</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">sutun</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">sutun</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_2</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>1</th>
+<th>2</th>
+<th>0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>a</td>
+<td>b</td>
+<td>c</td>
+</tr>
+<tr>
+<td>2</td>
+<td>aa</td>
+<td>bb</td>
+<td>cc</td>
+</tr>
+<tr>
+<td>0</td>
+<td>aaa</td>
+<td>bbb</td>
+<td>ccc</td>
+</tr>
+</tbody>
+</table>
+<p><strong>df_2</strong> veri çerçevesinde index ve Sütun isimleri <strong>1,2,0</strong> olarak atanmış. <strong>df_1</strong> veri çerçevesinde index ve Sütun isimleri ise <strong>0,1,2</strong> olarak atanmış.</p>
+<p><strong>df_2</strong>'nin indeks değerlerini (satır etiketini) <code>reindex()</code> fonksiyonu ile değiştirirken, yeni sıralamayı <strong>df_1</strong>'in indeks değerleri ile belirleyelim/eşleştirelim.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df_2</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">df_1</span><span class="o">.</span><span class="n">index</span><span class="p">))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>1</th>
+<th>2</th>
+<th>0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>aaa</td>
+<td>bbb</td>
+<td>ccc</td>
+</tr>
+<tr>
+<td>1</td>
+<td>a</td>
+<td>b</td>
+<td>c</td>
+</tr>
+<tr>
+<td>2</td>
+<td>aa</td>
+<td>bb</td>
+<td>cc</td>
+</tr>
+</tbody>
+</table>
+<p><strong>df_2</strong>'nin Sütun isimlerini <code>reindex()</code> fonksiyonun <code>columns</code> parametresi ile değiştirirken, yeni sıralamayı <strong>df_1</strong>'in indeks değerleri ile belirleyelim/eşleştirelim.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df_2</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">df_1</span><span class="o">.</span><span class="n">index</span><span class="p">))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>c</td>
+<td>a</td>
+<td>b</td>
+</tr>
+<tr>
+<td>2</td>
+<td>cc</td>
+<td>aa</td>
+<td>bb</td>
+</tr>
+<tr>
+<td>0</td>
+<td>ccc</td>
+<td>aaa</td>
+<td>bbb</td>
+</tr>
+</tbody>
+</table>
+<h3>Karşılaştırma Operatörü Kullanımı</h3>
+<h3>is Operatorü</h3>
+<p>Veri Çerçevelerinin <code>index</code> değerleri , liste veri tipi olarak belirtildiği için, listeler arasında karşılaştırma operatörlerini kullanmak ta mümkündür.</p>
+<p>Örneğin <code>df_1.index</code> değerlerinin <code>df_2.index</code> değerlerine eşit olup olmadığını denetleyelim;</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df_1</span><span class="o">.</span><span class="n">index</span> <span class="ow">is</span> <span class="n">sirala_filtrele</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="kc">False</span>
+</code></pre></div>
+
+<h3>&gt; Operatörü</h3>
+<p>Python'da kullandığımız <code>&lt;, &gt;, &lt;=, &gt;=, ==</code>, ...vb operatörleri, Pandas Veri çerçevelerinde de kullanabiliriz.</p>
+<p>Örneğin, <strong>df</strong> veri çerçevemizden dilimleme yöntemi ile <strong>sf</strong> isimli bir veri çerçevesi oluşturalım. Ardından <strong>df_1</strong> veri çerçevesinin satır sayısının (<code>len(df_1.index)</code>) <strong>sf</strong> veri çerçevesinin satır sayısından (<code>len(sf.index)</code>) büyük olup olmadığını denetleyelim;</p>
+<div class="highlight"><pre><span></span><code><span class="n">sf</span> <span class="o">=</span> <span class="n">sirala_filtrele</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Puan&quot;</span><span class="p">,</span> <span class="s2">&quot;Yıl&quot;</span><span class="p">,</span> <span class="s2">&quot;Oylayan_Kişi&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sf</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Film_Adı</th>
+<th>Puan</th>
+<th>Yıl</th>
+<th>Oylayan_Kişi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Deli Yürek</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>Fight Club</td>
+<td>8,8</td>
+<td>1999.0</td>
+<td>814389.0</td>
+</tr>
+<tr>
+<td>Pulp Fiction</td>
+<td>8,9</td>
+<td>1994.0</td>
+<td>830504.0</td>
+</tr>
+<tr>
+<td>Inception</td>
+<td>8,7</td>
+<td>2010.0</td>
+<td>844938.0</td>
+</tr>
+<tr>
+<td>The Godfather</td>
+<td>9,2</td>
+<td>1972.0</td>
+<td>751381.0</td>
+</tr>
+<tr>
+<td>The Dark Knight</td>
+<td>8,9</td>
+<td>2008.0</td>
+<td>1045186.0</td>
+</tr>
+<tr>
+<td>Seven Samurai</td>
+<td>8,7</td>
+<td>1954.0</td>
+<td>161969.0</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df_1</span><span class="o">.</span><span class="n">index</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">sf</span><span class="o">.</span><span class="n">index</span><span class="p">))</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="kc">False</span>
+</code></pre></div>
+
+<p>Benzer şekilde KÜÇÜKTÜR (&lt;) operatörünün çıktısını da aşağıda görebilirsiniz;</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df_1</span><span class="o">.</span><span class="n">index</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">sf</span><span class="o">.</span><span class="n">index</span><span class="p">))</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="kc">True</span>
+</code></pre></div>
+
+<p><a href="pandas-06-veri-duzenleme-yontemleri.html">← Önceki Bölüm</a> | <a href="pandas-08-veri-filtreleme-yontemleri.html">Sonraki Bölüm →</a></p>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/pandas.html">Pandas</a></li>
+					<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+					<li><a href="/tag/modul.html">Modül</a></li>
+					<li><a href="/tag/veri.html">Veri</a></li>
+					<li><a href="/tag/siralama.html">Sıralama</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>

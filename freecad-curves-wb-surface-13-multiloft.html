@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="FreeCAD - Curves WB - Surface - 13 - MultiLoft" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/freecad-curves-wb-surface-13-multiloft.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">FreeCAD - Curves WB - Surface - 13 - MultiLoft</h1>
+	<span class="post-date">Cts 05 Kasım 2022</span>
+	<h1><img alt="multiLoft" src="https://raw.githubusercontent.com/tomate44/CurvesWB/9aac6c2365311724487f79df3343dab90ddcb819/freecad/Curves/resources/icons/multiLoft.svg"> MultiLoft</h1>
+<p>Adı üstünde, ÇokluÇatılama. Birden fazla <strong>yüzeyi</strong>, loft komutu mantığı ile birbirine bağlayarak 3D nesne elde etmemizi sağlayan komut. Biliyorsunuz, <strong>PartDesing</strong> çalışma tezgahında bir eskiz içerisinde birden fazla kapalı alan varsa, bu eskiz <strong>Extrude</strong> ya da <strong>Loft</strong> komutu ile 3 boyutlu hale getirilemiyor. <code>MultiLoft</code> komutu, bize bu noktada kolaylık sağlıyor. Aşağıdaki örnek uygulamaları incelediğinizde ne demek istediğimi anlayacaksınız.  </p>
+<p><strong>Kullanım:</strong> Komutu çalıştırmak için aşağıdaki adımları sırası ile uygulayın:</p>
+<ul>
+<li>Öncelikle çatılamak istediğiniz yüzeyleri seçin. (Birlikte seçim için <code>CTRL</code> tuşunu kullanın)</li>
+<li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
+<li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>MultiLoft</strong> seçeneğini kullanın.</li>
+</ul>
+<p>Bir eskiz (sketch) içerisinde 3 adet kapalı çokgen çiziyoruz.<br>
+<img alt="MultiLoft_01" src="../../images/freecad/curves_wb/surfaces_menu/MultiLoft_01.png"><br>
+Çizdiğimiz 2 boyutlu (2B) eskizi, <strong>Part</strong> Çalışma Tezgahındaki <strong>Extrude</strong> komutu ile <strong>0,01 mm</strong> değerinde katılayarak 3 boyutlu (3B) nesne haline getiriyoruz. 
+<img alt="MultiLoft_02" src="../../images/freecad/curves_wb/surfaces_menu/MultiLoft_02.png"><br>
+<strong>MultiLoft</strong> komutunu kullanabilmek için yüzey alanına ihtiyaç vardır. Bu yüzeyi, <strong>Extrude</strong> komutu ile elde edebileceğimiz gibi, <strong>Surface</strong> ya da <strong>Draft</strong> Çalışma Tezgahları komutlarıyla da elde edebiliriz. Aşağıda, eskiz kenarlarını seçerek oluşturulmuş yüzeyler gösterilmektedir.
+<img alt="MultiLoft_03" src="../../images/freecad/curves_wb/surfaces_menu/MultiLoft_03.png"><br>
+<strong>Extrude</strong> komutu ile katıladığımız nesneyi seçerek, <strong>Draft</strong> Çalışma Tezgahı komutlarından olan <strong>Clone (Klon)</strong> komutu ile 3 kez klonluyoruz (kopyasını çıkarıyoruz).
+<img alt="MultiLoft_04" src="../../images/freecad/curves_wb/surfaces_menu/MultiLoft_04.png"><br>
+Klonladığımız her kopyayı Z ekseninde bir miktar yukarı taşıyoruz.
+<img alt="MultiLoft_05" src="../../images/freecad/curves_wb/surfaces_menu/MultiLoft_05.png"><br>
+Orijinal nesne ile birlikte tüm kopyaları seçerek <strong>MultiLoft</strong> komutunu çalıştırıyoruz.
+<img alt="MultiLoft_06" src="../../images/freecad/curves_wb/surfaces_menu/MultiLoft_06.png"><br>
+Nesne ve kopyaları (klonları) paralel olduğu için, <strong>MultiLoft</strong> komut sonucu, <strong>Extrude</strong> komutuna benzer bir sonuç elde ediyoruz.
+<img alt="MultiLoft_07" src="../../images/freecad/curves_wb/surfaces_menu/MultiLoft_07.png"><br>
+<strong>MultiLoft</strong> komut sonrası gizlenmiş olan <strong>Extrude</strong> nesnelerini görüntülediğimizde, değişiklik öncesi tüm klonların birbirine paralel ve aynı doğrultuda olduğunu görebiliyoruz.
+<img alt="MultiLoft_08" src="../../images/freecad/curves_wb/surfaces_menu/MultiLoft_08.png"><br>
+Şimdi klonları sıra il seçip, <strong>Z</strong> ekseninde <strong>10</strong>'ar derece çevirelim. Klonlar arası mesafeyi daha önce <strong>20 mm</strong> olarak belirlediğimiz, özellikler panelinde görünüyor..
+<img alt="MultiLoft_09" src="../../images/freecad/curves_wb/surfaces_menu/MultiLoft_09.png"><br>
+Nesnemizim 4 adet klonunu oluşturduğumuz için, son klonu, <strong>Z</strong> ekseninde <strong>40 derece</strong> çevirmiş olduk. Gördüğünüz gibi klonların açı veya konum bilgilerini değiştirdiğimizde, MultiLoft komutu sonucu elde edilen 3D nesnemiz de anlık olarak güncellenip değişiyor.
+<img alt="MultiLoft_10" src="../../images/freecad/curves_wb/surfaces_menu/MultiLoft_10.png"><br>
+Orijinal Eskizin içerisine girip eskizi düzenlediğimizde (ekleme / silme) ne olacağını inceleyelim.
+<img alt="MultiLoft_11" src="../../images/freecad/curves_wb/surfaces_menu/MultiLoft_11.png"><br>
+Gördüğünüz gibi, eskizi onaylayıp çıktığımız an, yapılan değişiklik diğer klonlara da yansıyor ve MultiLoft komutu yapılan değişikliklere uygun sonuç veriyor.
+<img alt="MultiLoft_12" src="../../images/freecad/curves_wb/surfaces_menu/MultiLoft_12.png"><br>
+Eskizde yeni bir değişiklik yapalım ve sonucu görelim.
+<img alt="MultiLoft_13" src="../../images/freecad/curves_wb/surfaces_menu/MultiLoft_13.png"><br>
+Sonuçta eskize eklenen yeni nesne döndürülmüş olarak katılanırken, kama kanalı (slot) şeklinin içerisine çizilen geometri dolayısı ile yapıda bir boşluk oluşturuldu.
+<img alt="MultiLoft_14" src="../../images/freecad/curves_wb/surfaces_menu/MultiLoft_14.png"><br>
+Bir başka örnek daha yapalım. Bir eskizde 2 kapalı alan oluşturalım ve bu eskizi 3 defa kopyalayalım. 
+<img alt="MultiLoft_15" src="../../images/freecad/curves_wb/surfaces_menu/MultiLoft_15.png"><br>
+Her bir eskizde, şekillerin ebatlarını ve konumlarını (X, Y, Z koordinatı) ve X ekseni etrafındaki açılarını değiştirelim. Ortadaki eskizin Y ekseni ile açısı 45 derece (x ekseni etrafında 45 derece çevrildi), koordinatları: (0, 30, -10) 
+<img alt="MultiLoft_16" src="../../images/freecad/curves_wb/surfaces_menu/MultiLoft_16.png"><br>
+Alt kısımdaki eskizin Y ekseni ile açısı 0 (sıfır) derece (Y ekseni üzerinde ya da paralel), koordinatları: (0, 340, -50)
+<img alt="MultiLoft_17" src="../../images/freecad/curves_wb/surfaces_menu/MultiLoft_17.png"><br>
+2 boyutlu eskizleri sırası ile yüzeye kavuşturuyoruz. Aşağıdaki örnekte <strong>Part</strong> Çalışma Tezgahındaki <strong>Extrude</strong> komutunu kullanarak nesneleri 3 boyutlu (3B) haline getirdim. 
+<img alt="MultiLoft_18" src="../../images/freecad/curves_wb/surfaces_menu/MultiLoft_18.png"><br>
+<strong>Extrude</strong> kalınlığı olarak <strong>0,01mm</strong> değeri belirledim. Sonuçta elde etmek istediğim şey, bir yüzeye sahip olmak. 2 boyutlu bir yüzey elde etmek isterseniz <strong>Draft</strong> Çalışma Tezgahı komutlarından biri olan <strong>Upgrade</strong> komutunu da kullanabilirsiniz.
+<img alt="MultiLoft_19" src="../../images/freecad/curves_wb/surfaces_menu/MultiLoft_19.png"><br>
+3 eskizi de yüzeye kavuşturduktan sonra sıra, nesneleri seçip <strong>MultiLoft</strong> komutunu çalıştırmaya geldi.
+<img alt="MultiLoft_20" src="../../images/freecad/curves_wb/surfaces_menu/MultiLoft_20.png"><br>
+Veeee sonuç karşınızda.
+<img alt="MultiLoft_21" src="../../images/freecad/curves_wb/surfaces_menu/MultiLoft_21.png">  </p>
+<p><a href="freecad-curves-wb-surface-00-menu-komutlari.html">&lt;&lt;&lt; Surfaces Menü Komutlarına Ait Sayfaya Dön</a></p>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/freecad.html">FreeCAD</a></li>
+					<li><a href="/tag/curves.html">Curves</a></li>
+					<li><a href="/tag/workbench.html">Workbench</a></li>
+					<li><a href="/tag/calismatezgahi.html">ÇalışmaTezgahı</a></li>
+					<li><a href="/tag/surface.html">Surface</a></li>
+					<li><a href="/tag/multiloft.html">MultiLoft</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="FreeCAD - Scripting 03 - Komut Dosyası Oluşturmanın Temelleri" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/freecad-scripting-03-komut-dosyasi-olusturmanin-temelleri.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">FreeCAD - Scripting 03 - Komut Dosyası Oluşturmanın Temelleri</h1>
+	<span class="post-date">Paz 03 Nisan 2022</span>
+	<h1>FreeCAD'de Komut Dosyası Oluşturmanın (Scripting) Temelleri</h1>
+<h2>FreeCAD'de Python komut dosyası oluşturmak</h2>
+<p>FreeCAD, Python komut dosyaları tarafından tamamen kontrol edilecek şekilde sıfırdan oluşturulmuştur. Arayüz, sahne içeriği ve hatta bu içeriğin 3B görünümlerdeki temsili gibi FreeCAD'in neredeyse tüm bölümlerine yerleşik Python yorumlayıcısından veya kendi komut dosyalarınızdan erişilebilir. Sonuç olarak, FreeCAD muhtemelen bugün 
+mevcut olan en kapsamlı özelleştirilebilir mühendislik uygulamalarından biridir.</p>
+<p>Python'a aşina değilseniz, internette öğreticiler aramanızı ve yapısına hızlıca göz atmanızı öneririz. Python öğrenmesi çok kolay bir dildir, özellikle de bir yorumlayıcı içinde çalıştırılabilir, burada basit komutlar, programları tamamlamaya kadar, hiçbir şeyi derlemeye gerek kalmadan anında çalıştırılabilir. FreeCAD, yerleşik bir Python 
+yorumlayıcısına sahiptir. Aşağıda gösterildiği gibi <strong>Python konsolu</strong> etiketli pencereyi görmüyorsanız, <code>Görünüm → Paneller → Python konsolu</code> altında etkinleştirebilirsiniz.</p>
+<h2>Yorumlayıcı</h2>
+<p>Yorumlayıcıdan, sistem tarafından kurulmuş tüm Python modüllerinize, yerleşik FreeCAD modüllerine ve daha sonra kurduğunuz tüm ek FreeCAD modüllerine erişebilirsiniz. Aşağıdaki ekran görüntüsü Python yorumlayıcısını göstermektedir.</p>
+<p><img alt="freecad_python_konsolu" src="images/freecad/01_freecad_python_konsol.png"></p>
+<p>Yorumlayıcıdan Python kodunu çalıştırabilir ve mevcut sınıflara ve işlevlere göz atabilirsiniz. FreeCAD, FreeCAD dünyasını keşfetmek için çok kullanışlı bir <code>sınıf tarayıcısı (class browser)</code> sağlar:</p>
+<p>Bilinen bir sınıfın adını ve ardından bir nokta yazdığınızda (bu sınıftan bir şey eklemek istediğiniz anlamına gelir), aralarında gezinebileceğiniz bir sınıf tarayıcı penceresi açılır. Mevcut alt sınıflar ve yöntemler tarayıcıda görüntülenir. Bir şey seçtiğinizde, ilişkili bir yardım metni (varsa) görüntülenir:</p>
+<p><img alt="python konsol class browser" src="images/freecad/02_freecad.newdocument.png"></p>
+<p>Yani, buraya <code>App.</code> yazarak başlayın. veya <code>Gui.</code> ve ne olduğunu görün. Modüllerin ve sınıfların içeriğini keşfetmenin daha genel bir Python yolu da <code>print(dir())</code> komutunu kullanmaktır. Örneğin, <code>print(dir())</code> yazıldığında, o anda FreeCAD'de yüklü olan tüm modüller listelenir. <code>print(dir(App))</code> size Uygulama modülü vb. içindeki her şeyi gösterecektir.</p>
+<p>Yorumlayıcının bir başka kullanışlı özelliği de komut geçmişine geri dönme ve daha önce yazdığınız bir kod satırını alma olasılığıdır. Komut geçmişinde gezinmek için <code>Yukarı ok</code> veya <code>Aşağı ok</code> tuşlarını kullanmanız yeterlidir.</p>
+<p>Yorumlayıcı penceresine sağ tıklayarak, tüm geçmişi kopyalamak (tam bir komut dosyası oluşturmadan önce bir şeylerle deneme yapmak istediğinizde, bu yöntem kullanışlıdır) veya tam yolu olan bir dosya adı eklemek gibi birkaç başka seçeneğiniz de vardır.</p>
+<h2>Python Yardımı</h2>
+<p>FreeCAD <strong>Yardım</strong> menüsünde, Python ve FreeCAD yerleşik modülleri dahil olmak üzere FreeCAD yorumlayıcısı tarafından kullanılabilen tüm Python modüllerinin eksiksiz, gerçek zamanlı olarak oluşturulmuş belgelerini içeren bir tarayıcı penceresi açacak olan <strong>Otomatik python modülleri belgeleri</strong> etiketli bir giriş bulacaksınız; Sistem tarafından kurulan modüller ve FreeCAD ek modülleri. Orada bulunan belgeler, her bir modül 
+geliştiricisinin kodunu belgelemek için ne kadar çaba sarf ettiğine bağlıdır, ancak Python modülleri oldukça iyi belgelenmiş olmalarıyla ünlüdür. Bu dokümantasyon sisteminin çalışması için FreeCAD pencereniz açık kalmalıdır. <strong>Python komut dosyası oluşturma belgeleri</strong>, size <a href="https://wiki.freecadweb.org/Power_users_hub">Power users hub</a> wiki bölümüne hızlı bir bağlantı sağlar.</p>
+<h2>Dahili (Built-in) Modüller</h2>
+<p>FreeCAD, <strong>Grafiksel Kullanıcı Arayüzü (GUI)</strong> olmadan da çalıştırılabilecek şekilde tasarlandığından, hemen hemen tüm işlevleri iki gruba ayrılır: <code>App</code> adlı <strong>Çekirdek</strong> işlevselliği ve <code>Gui</code> adlı <strong>GUI</strong> işlevselliği. Bu iki modüle, sırasıyla <code>FreeCAD</code> ve <code>FreeCADGui</code> adlarıyla, yorumlayıcının dışındaki komut dosyalarından da erişilebilir.</p>
+<ul>
+<li><code>App</code> modülünde, dosyaları açma veya kapatma yöntemleri gibi uygulamanın kendisiyle ve etkin belgeyi ayarlamak veya içeriklerini listelemek gibi belgelerle ilgili her şeyi bulacaksınız.</li>
+<li><code>Gui</code> modülünde, çalışma tezgahları ve bunların araç çubukları gibi Gui öğelerine erişmek ve bunları yönetmek için araçlar ve daha da ilginci, tüm FreeCAD içeriğinin grafiksel gösterimi bulacaksınız.</li>
+</ul>
+<p>FreeCAD gelişimi oldukça hızlı büyüdüğü için bu modüllerin içeriklerini listelemek pek kullanışlı değildir. Ancak sağlanan iki tarama aracı (sınıf tarayıcısı (class browser) ve Python yardımı) size her an eksiksiz ve güncel belgeler sağlamalıdır.</p>
+<h2>App ve Gui Nesneleri</h2>
+<p>Daha önce de belirtildiği gibi, FreeCAD'de her şey çekirdek ve temsile ayrılmıştır. Bu, 3D nesneleri içerir. Nesnelerin <strong>tanımlayıcı özelliklerine</strong> (FreeCAD'deki özellikler olarak adlandırılır) <code>App</code> modülü üzerinden erişebilir ve <code>Gui</code> modülü aracılığıyla <strong>ekranda temsil edildikleri şekli</strong> değiştirebilirsiniz. Örneğin, bir küpün bir <code>App</code> nesnesinde depolanan, onun <strong>tanımlanan özellikleri</strong> (genişlik, uzunluk, yükseklik gibi) ve <code>Gui</code> nesnesinde depolanan <strong>görünüm özellikleri</strong> (yüzey rengi, çizim modu gibi) vardır.</p>
+<p>İşleri bu şekilde yapmak, algoritmaların herhangi bir görsel parçayı önemsemeye gerek kalmadan yalnızca özelliklerin tanım bölümünde çalışması veya hatta belgenin içeriğini listeler, elektronik tablolar veya öğe analizi gibi grafik olmayan uygulamaya yönlendirmesi gibi çok çeşitli kullanımlara izin verir.</p>
+<p>Belgenizdeki her <code>App</code> nesnesine karşılık gelen bir <code>Gui</code> nesnesi vardır. Aslında belgenin kendisi hem <code>App</code> hem de <code>Gui</code> nesnesine sahiptir. Bu, elbette, yalnızca FreeCAD'i tam arayüzü ile çalıştırdığınızda geçerlidir. Komut satırı sürümünde <code>GUI</code> yoktur, bu nedenle yalnızca <code>App</code> nesneleri kullanılabilir. Bir <code>App</code> nesnesi '<strong>yeniden hesaplanacak</strong>' olarak her işaretlendiğinde (örneğin parametrelerinden biri değiştiğinde), nesnelerin <code>Gui</code> bölümünün yeniden oluşturulduğunu unutmayın, bu nedenle doğrudan <code>Gui</code> nesnesinde yapılan tüm değişiklikler kaybolabilir.</p>
+<p>Bir nesnenin <code>App</code> kısmına erişmek için şunu yazın:
+ <code>myObject = App.ActiveDocument.getObject("ObjectName")</code>
+burada <code>"ObjectName"</code>, nesnenizin adıdır. Şunları da yazabilirsiniz:
+ <code>myObject = App.ActiveDocument.ObjectName</code>
+Aynı nesnenin <code>Gui</code> kısmına erişmek için şunu yazın:
+ <code>myViewObject = Gui.ActiveDocument.getObject("ObjectName")</code>
+burada <code>"ObjectName"</code>, nesnenizin adıdır. Şunları da yazabilirsiniz:
+ myViewObject = App.ActiveDocument.ObjectName.ViewObject Komut satırı modundaysanız ve GUI'nız yoksa, son satır <code>None</code> değerini döndürür.</p>
+<h2>Belge Nesneleri</h2>
+<p>FreeCAD'de tüm çalışmalarınız belgelerin içinde bulunur. Bir belge, geometrinizi içerir ve bir dosyaya kaydedilebilir. Aynı anda birkaç belge açılabilir. Belge, içinde bulunan geometri gibi, <code>App</code> ve <code>Gui</code> nesnelerine sahiptir. <code>App</code> nesnesi gerçek geometri tanımlarınızı içerirken <code>Gui</code> nesnesi belgenizin farklı görünümlerini içerir. Her biri çalışmanızı farklı bir yakınlaştırma faktörüyle veya farklı bir yönden görüntüleyen 
+birkaç pencere açabilirsiniz. Bu görünümlerin tümü, belgenizin <code>Gui</code> nesnesinin bir parçasıdır.</p>
+<div class="highlight"><pre><span></span><code><span class="n">myDocument</span> <span class="o">=</span> <span class="n">App</span><span class="o">.</span><span class="n">ActiveDocument</span>
+</code></pre></div>
+
+<p>Yeni bir belge oluşturmak için şunu yazın:
+<code>myDocument = App.newDocument("Document Name")</code></p>
+<p>Şu anda açık olan (etkin) belgenin <code>Gui</code> kısmına erişmek için şunu yazın:
+ <code>myGuiDocument = Gui.ActiveDocument</code></p>
+<p>Geçerli görünüme erişmek için şunu yazın:
+ <code>myView = Gui.ActiveDocument.ActiveView</code></p>
+<h2>Ek modülleri kullanmak</h2>
+<p><code>FreeCAD</code> ve <code>FreeCADGui</code> modülleri, yalnızca FreeCAD belgesinde nesnelerin oluşturulmasından ve yönetilmesinden sorumludur. Aslında geometri oluşturmak veya değiştirmek gibi başka bir şey yapmıyorlar. Bunun nedeni, geometrinin birkaç türde olabilmesi ve bu nedenle her biri belirli bir geometri türünü yönetmekten sorumlu ek 
+modüller gerektirmesidir. Örneğin, <strong>OpenCascade</strong> çekirdeğini kullanan <a href="https://wiki.freecadweb.org/Part_Workbench">Part (Parça) Tezgahı</a>, <a href="http://en.wikipedia.org/wiki/Boundary_representation">BRep</a> tipi geometriyi oluşturabilir ve değiştirebilir. <a href="https://wiki.freecadweb.org/Mesh_Workbench">Mesh Workbench (Kafes/Ağ Çalışma Tezgahı)</a> ise mesh nesneleri oluşturabilir ve değiştirebilir. Bu şekilde FreeCAD,
+ tümü aynı belgede bir arada bulunabilen çok çeşitli nesne türlerini işleyebilir ve gelecekte yeni türler kolayca eklenebilir.</p>
+<h2>Nesneler Oluşturmak</h2>
+<p>Her modülün kendi geometrisiyle uğraşma yöntemi vardır, ancak genellikle yapabildikleri tek şey belgede nesneler oluşturmaktır. Ancak FreeCAD belgesi, modüller tarafından sağlanan mevcut nesne türlerinin de farkındadır:</p>
+<div class="highlight"><pre><span></span><code><span class="n">FreeCAD</span><span class="o">.</span><span class="n">ActiveDocument</span><span class="o">.</span><span class="n">supportedTypes</span><span class="p">()</span>
+</code></pre></div>
+
+<p>bu kod, oluşturabileceğiniz tüm olası nesneleri listeler. Örneğin, 
+bir Mesh (Ağ/Kafes modülü ile) ve bir Part (Parça modülü ile) 
+oluşturalım:</p>
+<div class="highlight"><pre><span></span><code><span class="n">myMesh</span> <span class="o">=</span> <span class="n">FreeCAD</span><span class="o">.</span><span class="n">ActiveDocument</span><span class="o">.</span><span class="n">addObject</span><span class="p">(</span><span class="s2">&quot;Mesh::Feature&quot;</span><span class="p">,</span> <span class="s2">&quot;myMeshName&quot;</span><span class="p">)</span>
+<span class="n">myPart</span> <span class="o">=</span> <span class="n">FreeCAD</span><span class="o">.</span><span class="n">ActiveDocument</span><span class="o">.</span><span class="n">addObject</span><span class="p">(</span><span class="s2">&quot;Part::Feature&quot;</span><span class="p">,</span> <span class="s2">&quot;myPartName&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>İlk argüman (<em>"Mesh::Feature"</em>) nesne türüdür, ikincisi (<em>"myMeshName"</em>) nesnenin adıdır. İki nesnemiz neredeyse aynı görünüyor: Henüz herhangi bir geometri içermiyorlar ve <code>dir(myMesh)</code> ve <code>dir(myPart)</code> ile incelediğinizde özelliklerinin çoğu aynı. Bir şey dışında, <code>myMesh</code>'in <strong>Mesh</strong> özelliği ve <code>myPart</code>'ın <strong>Shape</strong> özelliği vardır. <code>Mesh</code> ve <code>Part</code> verilerinin depolandığı yer burasıdır. Örneğin, bir <code>Part</code> küpü oluşturalım ve onu <code>myPart</code> nesnemizde saklayalım:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">Part</span>
+<span class="n">cube</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">makeBox</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">myPart</span><span class="o">.</span><span class="n">Shape</span> <span class="o">=</span> <span class="n">cube</span>
+</code></pre></div>
+
+<p>Küpü <code>myMesh</code> nesnesinin <strong>Mesh</strong> özelliği 
+içinde saklamayı deneyebilirsiniz, ancak bu bir hata verecektir. Bunun 
+nedeni, her özelliğin yalnızca belirli bir türü depolamak için yapılmış 
+olmasıdır. Bir <strong>Mesh</strong> özelliğinde, yalnızca <code>Mesh</code> modülü ile oluşturulan öğeleri kaydedebilirsiniz. Çoğu modülün ayrıca 
+geometrilerini belgeye eklemek için bir kısayolu olduğunu unutmayın:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">Part</span>
+<span class="n">cube</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">makeBox</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">Part</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">cube</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>Nesneleri Değiştirmek</h2>
+<p>Bir nesneyi değiştirmek aynı şekilde yapılır:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">Part</span>
+<span class="n">cube</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">makeBox</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">myPart</span><span class="o">.</span><span class="n">Shape</span> <span class="o">=</span> <span class="n">cube</span>
+</code></pre></div>
+
+<p>Şimdi şekli daha büyük bir şekille değiştirelim:</p>
+<div class="highlight"><pre><span></span><code><span class="n">biggercube</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">makeBox</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">myPart</span><span class="o">.</span><span class="n">Shape</span> <span class="o">=</span> <span class="n">biggercube</span>
+</code></pre></div>
+
+<h2>Nesneleri Sorgulamak</h2>
+<p>Bir nesnenin türüne her zaman şöyle bakabilirsiniz:</p>
+<div class="highlight"><pre><span></span><code><span class="n">myObj</span> <span class="o">=</span> <span class="n">FreeCAD</span><span class="o">.</span><span class="n">ActiveDocument</span><span class="o">.</span><span class="n">getObject</span><span class="p">(</span><span class="s2">&quot;myObjectName&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">myObj</span><span class="o">.</span><span class="n">TypeId</span><span class="p">)</span>
+</code></pre></div>
+
+<p>veya bir nesnenin, temel olan nesnelerin birinden (Part Feature, Mesh Feature, vb.) türetilmiş olup olmadığını kontrol edin:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">myObj</span><span class="o">.</span><span class="n">isDerivedFrom</span><span class="p">(</span><span class="s2">&quot;Part::Feature&quot;</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Artık FreeCAD ile gerçekten oynamaya/çalışmaya başlayabilirsiniz! Kullanılabilir modüllerin ve araçlarının tam listesi için <a href="https://wiki.freecadweb.org/Category:API">Kategori:API</a> bölümünü ziyaret edin.</p>
+<p>Kaynak: <a href="https://wiki.freecadweb.org/FreeCAD_Scripting_Basics">FreeCAD Scripting Basics</a></p>
+<p><a href="freecad-scripting-02-python-komut-dosyasi-olusturmak.html">← Önceki Bölüm</a> | <a href="freecad-scripting-04-parca-part-komut-dosyasi-olusturmak.html">Sonraki Bölüm →</a></p>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/freecad.html">FreeCAD</a></li>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/scripting.html">Scripting</a></li>
+					<li><a href="/tag/komut.html">Komut</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>

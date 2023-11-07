@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Blender UVMaping Eğitimi - 2. Bölüm" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/blender-uvmaping-egitimi-2-bolum.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Blender UVMaping Eğitimi - 2. Bölüm</h1>
+	<span class="post-date">Çrş 02 Şubat 2022</span>
+	<h2>Blender UVMaping Eğitimi - 2. Bölüm</h2>
+<p>UV Map nedir? Ne işe yarar, UV nasıl açılır, UV Map nasıl  hazırlanır? konularını anlatmak için hazırlamış olduğum Dokümanın 2. bölümünü istifadenize sunuyorum.<br>
+<img alt="giris" src="../images/blender/uvmap2/Giris.png">  </p>
+<p>Bu Dersimizde, Modellemiş olduğum Çöp Konteynerini kullanarak UV Mapping konusuna devam edeceğim.<br>
+<img alt="01" src="../images/blender/uvmap2/01.png"><br>
+UV açma işlemine başlamadan önce, bildiğiniz gibi, modelimizi seçiyor ve rahat çalışabilmek adına, seçili model parçasının dışındaki tüm parçaları <strong>“Shift+H”</strong> tuş kombinasyonu ile gizliyoruz. Eğer UV’sini açmak istediğiniz modelin her bir parçası zaten ayrı ayrı ise, bu durumda, seçim sonrası, <strong>Nümerik Tuş Takımında bulunan “/”</strong> tuşunu kullanıyoruz.
+ Konteyner gövdesi dışındaki tüm nesneler gizlendiğine göre çalışmaya <strong>“TAB”</strong> tuşuna basıp, <strong>Düzenleme (Edit) Moduna</strong> girerek başlayabiliriz.<br>
+<img alt="02" src="../images/blender/uvmap2/02.png"><br>
+<strong>Kenar Seçim Moduna</strong> geçerek Modelin, kesmek istediğimiz kenarlarını, <strong>“Shift”</strong> Tuşuna basılı tutarak seçiyoruz. Birbirini takip eden kenar çizgilerini hızlı bir şekilde seçmek için
+ <strong>“Alt+Shift”</strong> tuşları basılı iken seçim yapmalıyız.<br>
+<img alt="03" src="../images/blender/uvmap2/03.png"><br>
+Alt Taban ve Yan Köşe Noktalarına ait tüm kenarları Seçtikten sonra, seçili kenarların <strong>Kesim Hattı</strong> olduğunu ayarlamak için <strong>“CTRL + E”</strong> ile açılan <strong>“Kenarlar”</strong> (Edges) Menüsünde <strong>“Mark Seam”</strong> seçeneğini seçiyoruz. Bu işlemden sonra işaretlenmiş olan kenarların renginin koyulaştığını göreceksiniz. (bu renk, kullandığınız Temaya göre
+ değişebilir)<br>
+<img alt="04" src="../images/blender/uvmap2/04.png"><br>
+Sıra geldi modeli UV Açılımını tamamlamaya. <strong>“A”</strong> ile modelin tümünü (nokta, kenar veya yüzeyini) seçin. <strong>“U”</strong> ile açılan <strong>“UV Mapping”</strong> menüsünden <strong>“unwrap”</strong> seçeneğini seçin. Böylece modelin (Çöp Konteynerinin Gövdesinin) UV açılımını tamamladık.<br>
+<img alt="05" src="../images/blender/uvmap2/05.png"><br>
+Gövde ile işim bitti. Sahnedeki diğer modellerin  görünmesini (gizliliklerinin giderilmesini) istediğim için <strong>Nümerik tuş takımından “/”</strong> tuşuna basıyorum.<br>
+Benzer bir işlemi Kapak Modeline de uygulayacağım ancak Kapak kısmı fazla sayıda girinti ve çıkıntıdan oluştuğu için kesilmesini istediğim tüm kenarları tek tek seçip 
+işaretlemeyeceğim. Zamandan kazanmak ve Uygun bir UV açılımını benim 
+için Blender’ın kendisinin yapmasını sağlamak adına, Kapak modelini seçip <strong>“TAB”</strong> ile <strong>Düzenleme (Edit) Moduna</strong> giriyorum. <strong>“A”</strong> ile modelin tümünü (nokta, kenar veya yüzeyini) seçin. <strong>“U”</strong> ile açılan <strong>“UV Mapping”</strong> menüsünden <strong>“Smart UV Project”</strong> seçeneğini seçin. Böylece modelin (Kapağın) UV açılımını tamamladık.<br>
+<img alt="06" src="../images/blender/uvmap2/06.png"><br>
+Model Parçalarına ait UV açılımlarını tamamladığımıza göre, doku giydirme ve ölçekleme ayarlarına başlayabiliriz.<br>
+<strong>“TAB”</strong> ile Düzenleme modundan çıkıp <strong>“/”</strong> ile kapak dışındaki model veya model parçalarının görüntülenmesini sağlıyorum. (Aynı Mesh içerisindeki gizlenmiş kısımları 
+görüntüye getirmek için ise <strong>“ALT + H”</strong> kısayol tuşunu kullanmalıyız.) Tekrar Konteyner gövdesini seçip <strong>“TAB”</strong> ile <strong>düzenleme moduna</strong> giriyorum.<br>
+<strong>UV/Image Editor Penceresi</strong> içerisinde, Modelin UV açılımını görüyorum ancak arka planında bir resim dosyası görmüyorum. Arka plana, Blender’ın içerisindeki hazır resimlerden birini atamak için <strong>UV/Image Editor Pencere Başlığındaki “New”</strong> Butonuna tıklıyor, ardından açılan panelden <strong>“Generated Type”</strong> Seçeneğini <strong>“UV Grid”</strong> olarak ayarlıyorum. (oluşacak resmi Materyal atama esnasında kullanacağımız için karışıklık olmaması amacıyla <strong>“Name”</strong> Kısmına bir isim (örneğin “Izgara” ) yazabiliriz. Çözünürlük seçimini, Modelinizi büyüklüğüne ya da Renderda görmek istediğiniz haline göre ayarlayabilirsiniz.)<br>
+<img alt="07" src="../images/blender/uvmap2/07.png"><br>
+UV Açılımının arkasına, Blender tarafından aşağıda resimde gördüğünüz gibi bir resim dosyası oluşturulup yerleştirilmiş olmalı.<br>
+<img alt="08" src="../images/blender/uvmap2/08.png"><br>
+Oluşan arkaplan resmi ile UV açılımını ( noktaları, kenarları ve yüzeyleri daha net görerek) ayırdetmek ve daha rahat çalışmak için <strong>UV/Image Editor</strong> içerisinde <strong>“N”</strong> ile açılan <strong>“Özellikler”</strong> Panelindeki <strong>“Stretch”</strong> Seçeneğini işaretliyoruz. Böylece, UV açılımına ait parçalar (Adalar) mavi renk ile kaplanıyor.<br>
+<img alt="09" src="../images/blender/uvmap2/09.png"><br>
+Arkaplana eklediğimiz resim dosyasını, Konteryer gövdesine giydirmek (atamak) için <strong>Node Editor Penceresine</strong> geçip, yeni bir materyal oluşturuyoruz. Şuan sadece renk bilgisine  sahip bir <strong>“Diffuse Shader”</strong> Mevcut. Materyal üzerinde yapacağımız değişiklikleri anlık olarak görmek için 3D View Pencere başlığındaki <strong>“Viewport Shading”</strong> açılır menüsünden <strong>“Texture”</strong> seçeneğini seçiyoruz. Bunun kısayol tuşu ise <strong>“ALT+Z” dir.</strong><br>
+<img alt="10" src="../images/blender/uvmap2/10.png"><br>
+<strong>Node Editor</strong> Penceresinde, <strong>“SHIFT + A“</strong> ile açılan <strong>“EKLE” (Add)</strong> menüsünden, <strong>“Texture&gt;Image Texture”</strong> yolunu seçerek yeni bir panel ekliyoruz. <strong>Image Texture</strong> Panelindeki açılır menüden, Blender tarafından oluşturulan <strong>Izgara</strong> Resmini seçtiğimiz an, 3D View ekranında Konteynerimize resmin (doku) giydirilmiş olduğunu görüyoruz. Materyal ayarlarının doğru olması, ileride bize sorun oluşturmaması adına <strong>Image Texture Color</strong> Çıkışı ile <strong>Diffuse Sahder Color</strong> Girişini bağlıyoruz.<br>
+<img alt="11" src="../images/blender/uvmap2/11.png"><br>
+Blender’ın Oluşturmuş olduğu ve ismini <strong>IZGARA</strong> olarak değiştirdiğimiz resim dosyasına dikkat edersek, tamamen karelerden oluşan (bir Satranç Tahtası ya da Damalı Bayrak deseni)  ve her bir karenin ortasında farklı renkte Artı  işareti (<strong>+</strong>) bulunan bir dosya olduğunu görüyoruz.<br>
+Eğer 3D View ekranında, Konteynere üzerindeki desenin kare değil de dikdörtgen şeklinde olduğunu görüyorsak, bu sıkıntıyı gidermek için, UV açılımına ait parçaları (Island [Ada/Blok]) tek tek ya da sadece bozuk desene ait parçayı seçerek <strong>“S”</strong> tuşu ile ölçeklememiz gerekir.<br>
+Örnek olarak, Konteynerin ön yüzeyine ait parçayı X ekseninde ölçekleyerek bozdum. Eğer UV açılımı buna benzer şekilde karşımıza çıkmış olsaydı nasıl düzeltirdik onu inceleyelim.<br>
+<img alt="12" src="../images/blender/uvmap2/12.png"><br>
+Bu sorunu gidermek için Ön yüzeye ait parçayı seçerek <strong>X</strong> ekseninde ölçekleyerek (daraltarak) ya da <strong>Y</strong> Ekseninde ölçekleyerek (genişleterek) düzelme yoluna gidiyoruz. Doğru ölçeği bulmak için <strong>3D View ekranında</strong> anlık olarak değişen görüntüden yararlanıyoruz.<br>
+Bozuk görünen parçaları yaklaşık olarak ölçekledikten sonra, tüm UV Açılımlarını aynı <strong>ORTALAMA ADA (BLOK) ÖLÇEĞİNE</strong> getirmek için, <strong>“A”</strong> ile tüm UV Açılım parçaları seçilir ve <strong>“CTRL + A”</strong> ile ya da <strong>“UVs”</strong> menüsünden <strong>“Average Island Scale”</strong> seçeneği seçilerek işlem tamamlanır.<br>
+<img alt="13" src="../images/blender/uvmap2/13.png"><br>
+İşlem sonrası, tüm parçaların ortalama olarak aynı ölçeğe geldiğini görüyoruz ancak parçalar, <strong>IZGARA</strong> resminin dışına taşmış durumda. UV açılımına ait parçaları tek tek 
+seçip ölçeğini bozmadan, çevirerek - taşıyarak, Izgara resminin içine uygun noktaya yerleştirebileceğimiz gibi bu işlemi Blender’ın otomatik yapmasını da sağlayabiliriz.<br>
+Tüm parçalar seçili iken, <strong>“CTRL + P”</strong> ile ya da <strong>“UVs”</strong> menüsünden <strong>“Pack Islands”</strong> seçeneği ile, UV parçalarının resmin içine sığdırılması sağlanmış olur.<br>
+<img alt="14" src="../images/blender/uvmap2/14.png"><br>
+İşlem sonrası Ekran görüntüsü alırsak aşağıdaki şekle benzer bir çıktı elde ederiz.<br>
+Dikkat edilirse, birbirini takip eden yüzeylerin  ortak kenarlarında, desen düzeni sağlanamamış görünüyor. Bu da, sonucun  gerçekçiliğini negatif yönde etkiliyor.<br>
+<img alt="15" src="../images/blender/uvmap2/15.png"><br>
+Bu düzensizliği, UV Image Editörü içerisinde yapacağımız manuel oynamalarla düzeltme yoluna gideceğiz.<br>
+Konteryerın üst kısmındaki dışa kıvrımlı parçanın UV açılımını ayrıca almak istediğim için onun çevre kenarlarını da seçip, <strong>“Mark Seam”</strong> ile bu kenarı da kesim hattı olarak işaretleyerek yeniden <strong>“U &gt; Unwrap”</strong> ile yeni UV Açılımı yapıyorum.<br>
+<img alt="16" src="../images/blender/uvmap2/16.png"><br>
+Bir önceki derste bahsettiğimiz yöntemle (<strong>Keep UV and Edit Mode Mesh Selection in Sync</strong> butonunu kullanarak) açılımı yapılmış UV parçalarının, doğru yerleşimini sağlıyoruz.<br>
+<img alt="17" src="../images/blender/uvmap2/17.png"><br>
+UV açılımlarında, komşu iki yüzeyin ortak kenarlarını, bir komutla birleştireceğiz. Böylece Desen devamlılığını sağlamış olacağız.<br>
+<strong>Kenar (Edge) Seçim modu</strong> ile, UV açılımındaki parçalardan karşılıklı gelen herhangi bir kenarı seçelim. <strong>Keep UV and Edit Mode Mesh Selection in Sync</strong> butonu aktif ise, bir kenarı seçtiğinizde, aynı kenar, diğer UV parçasında da aktif olacak ve rengi değişecektir.<br>
+<img alt="18" src="../images/blender/uvmap2/18.png"><br>
+Eğer Seçtiğiniz kenar, karşısındaki UV parçasının diğer kenarında işaretleniyorsa (Kenar rengi değişiyorsa), UV parçasını çevirerek doğru yöne ayarlayın.<br>
+<img alt="19" src="../images/blender/uvmap2/19.png"><br>
+UV Parçaları doğru yerde ve doğru yönde ise, birleştirmek istediğimiz kenarlardan birini seçerek <strong>“V”</strong> tuşuna basalım ( <strong>“UVs &gt; Stitch”</strong> menü yolunu da kullanabiliriz) ve iki parçanın olası  birleşim önizlemesini görüntüye getirelim.<br>
+Bu durumda, iki parçadan biri yerinde sabit dururken (Mavi renkli), diğer parçanın (telkafes [wire] görünümlü) sabit parçaya doğru hareketlenip yapıştığını görürüz. Hangi parçanın sabit durması, hangisinin hareketlenmesi gerektiği, Limit, Yakalama ayarları, 
+Kenar/Nokta Mode Biçimini gibi ayarları, <strong>UV/Image Pencere başlığındaki</strong> Metinleri okuyarak öğrenebiliriz. Birleştirme işlemini, <strong>ENTER</strong> Tuşu ile ya da <strong>Farenin Sol Tuşu</strong> ile onaylayabiliriz.<br>
+<img alt="20" src="../images/blender/uvmap2/20.png"><br>
+<strong>TAB</strong> tuşu ile Kenar ya da Nokta Modu arasında geçiş yapılabilir.<br>
+<strong>Mode (TAB) Edge:</strong> Kenar Modu aktifse, seçili kenar, hangi parçada kullanılıyorsa onlar birleştirilir.<br>
+<strong>Mode (TAB) Vertex:</strong> Nokta Modu aktifse, seçili nokta, hangi parçada kullanılıyorsa onlar birleştirilir.<br>
+<img alt="21" src="../images/blender/uvmap2/21.png"><br>
+<strong>S Tuşu ile, [ (S)nap ON / OFF ]</strong> Kenar veya noktaların otomatik yakalanmasının Açık ya da Kapalı olması ayarlanabilir.<br>
+<strong>M Tuşu ile, [ (M)idpoints ON / OFF ]</strong> Birleştirilecek Ada/Blok (Island) parçalarının, Orta noktada birleştirilmesi ayarlanabilir.<br>
+<strong>L Tuşu ile, [ (L)imit 0.01 Alt Wheel Adjust ON / OFF]</strong> Limit mesafesi AÇIK ya da KAPALI olarak ayarlanabilir. Limit mesafesi açıksa, belirtilen değerin altındaki mesafede duran parçalar birleştirilmiyor. <strong>ALT + Fare (Mouse) Tekeri</strong> ile değer değiştirilebilir.<br>
+<strong>I Tuşu ile, [ Switch (I)sland ]</strong> Hangi UV Ada/Blok (Island) parçasının, yerinde sabit kalacağı, hangisinin hareket edeceğini ayarlayabiliriz.<br>
+<strong>Shift Tuşu ile, [ shift select vertices ]</strong> İlave noktaları da seçerek birleştirme işlemine daha fazla parça ekleyebiliriz.<br>
+Şimdi yukarıda anlatılan detaylı bilgilere dikkat ederek UV parçalarını birleştiriyoruz. Tercihen Ön, Arka, Alt ve Yan yüzeylere ait parçaları birleştiriyorum.<br>
+<img alt="22" src="../images/blender/uvmap2/22.png"><br>
+Ardından, birleştirilmemiş UV parçalarının alt kenarlarını seçerek sıra ile birleştiriyorum. Tüm Parçalar birbiri ile birleştiğine göre bunları <strong>IZGARA</strong> resmini içerisine taşıyabilirim.<br>
+<img alt="23" src="../images/blender/uvmap2/23.png"><br>
+Taşıma / Döndürme işlemlerini, Blender’a otomatik olarak yaptırmak için <strong>“A”</strong> ile tüm nokta ve kenarları seçiyor ve <strong>“CTRL + P”</strong> tuşuna basıyorum. İşlem tamamlandı.<br>
+<img alt="24" src="../images/blender/uvmap2/24.png"><br>
+Modelin Doku (Texture) giydirilmiş görüntüsüne bakacak olursak, Çoğu kenarın ve komşu yüzeylerinin birbirini takip eder şekilde ayarlandığını görebiliriz.<br>
+<img alt="25" src="../images/blender/uvmap2/25.png"><br>
+UV açılımlarını birleştirme işleminde birbirine yapışmış kenarların dışında, birleşmemiş olan ortak kenarlar da mevcut. Bunu, Modeli incelediğimizde de göreceğiz. Bunun temel sebebini, aşağıdaki UV Map açılımını inceleyerek anlayabilirsiniz.<br>
+<img alt="26" src="../images/blender/uvmap2/26.png"><br>
+Bunu düzeltmek için, <strong>UV/Image Editor Penceresi</strong> içerisinde UV açılımlarını (modelin doku giydirilmiş halini <strong>3D View penceresinde</strong> anlık olarak gözlemlerken) uygun konuma taşıyarak ve ölçekleyerek sağlayabiliriz, sanıyorum. Bu ayarı yapmak oldukça zaman kaybetmemizi sağlar. O nedenle, şahsen, Render alacağım Kamera açısına göre, 
+görüntüde doku (texture) problemi yoksa, Render’da görünmeyen kısımları düzeltmekle uğraşmıyorum.<br>
+Aşağıdaki Render görüntüsünü incelersek, Ön Yüzeyden Sağ Yan Yüzeye geçişte, kaplamada bir bozulma olmadığını, doğru  bir işlem yaptığımızı görebiliriz.<br>
+<img alt="render" src="../images/blender/uvmap2/Render%203.png"><br>
+Umarım Faydalı bir ders olmuştur.<br>
+Dersin hazırlanmasında yararlandığım kaynak; <a href="https://www.youtube.com/watch?v=42XCrtxvhyM">Darrin Lile</a></p>
+<p><a href="blender-uvmaping-egitimi-1-bolum">&lt; Blender UVMaping Eğitimi - 1. Bölüme Git</a></p>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/blender.html">Blender</a></li>
+					<li><a href="/tag/3d.html">3D</a></li>
+					<li><a href="/tag/cad.html">CAD</a></li>
+					<li><a href="/tag/uvmap.html">UVMap</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>

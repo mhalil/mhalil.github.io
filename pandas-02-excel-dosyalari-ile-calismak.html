@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Pandas 02 - Excel Dosyaları ile Çalışmak" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/pandas-02-excel-dosyalari-ile-calismak.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Pandas 02 - Excel Dosyaları ile Çalışmak</h1>
+	<span class="post-date">Çrş 12 Ocak 2022</span>
+	<h1>Excel Dosyalarını Oku ve Düzenle Yöntemleri</h1>
+<p>Bu bölümde <strong>MS Excel</strong> ve <strong>Libre Ofis Calc</strong> programları ile oluşturulan hesap tablolarının Veri Çerçevelerine (Data Frame'e) dönüştürülerek çalışmalarımıza dahil edilmesi konusunu detayı olarak inceleyeceğiz.</p>
+<h3>read_excel() fonksiyonu</h3>
+<p><strong>MS Excel</strong> ve <strong>Libre Ofis Calc</strong> dosyalarının içeriğini çalışmamıza dahil etmek için <strong>read_excel()</strong> fonksiyonunu kullanmalıyız.</p>
+<p><u>Bu fonksiyon;</u></p>
+<ul>
+<li><strong>xls, xlsx, xlsm, xlsb, odf, ods</strong> ve <strong>odt</strong> uzantılı dosyaları destekler.</li>
+<li>Yerel bir dosya sisteminde veya bir URL'de depolanan excel dosyalarını yükleyebilir.</li>
+<li>URL için <strong>http, ftp, s3</strong> ve <strong>dosya</strong>yı destekler.</li>
+<li>Ayrıca tek bir çalışma sayfasından veya bir sayfa listesinden okumayı da destekler.</li>
+<li>İki sayfa okunurken, <strong>DataFrame</strong> bir Sözlük (Dict) yapısı döndürür.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">dosya_adi</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Bu fonksiyon kullanıldığında, varsayılan olarak, excel dosyasının <strong>ilk çalışma sayfası</strong> yüklenir ve <strong>ilk satır</strong> Veri Çerçevesi (DataFrame) <strong>başlığı (sütun adı)</strong> olarak ayarlanır.</p>
+<h3>header ve names Parametreleri</h3>
+<p><strong>read_excel ()</strong> fonksiyonu, Excel'deki ilk satırı varsayılan olarak bir başlık kabul eder ve bunu Veri Çerçevesi (DataFrame) sütun adları olarak kullanır. Excel dosyasındaki ilk satırın başlık değil, bir veri olduğu düşünüldüğünde, yani sadece verilerden 
+oluşan excel dosyası ile çalıştığımızda, <strong>header=None</strong> parametresi kullanılmalıdır. Bu durumda Başlık (sütun adlarını) belirtmek için <strong>names</strong> parametresi kullanılır.</p>
+<p>İlk olarak <strong>OSD</strong> uzantılı bir dosyayı (ODS, LibreOfis Calc Programının uzantısıdır , siz bu dosya yerine MS Excel'in kayıt formatı olan XLS ya da XLSX uzantılı dosya da kullanabilirsiniz.) çalışmamıza dahil edip içeriğine bakalım.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">basliksiz</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/basliksiz.ods&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">basliksiz</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>9</th>
+<th>82</th>
+<th>246</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>7</td>
+<td>78</td>
+<td>180</td>
+</tr>
+<tr>
+<td>1</td>
+<td>8</td>
+<td>83</td>
+<td>565</td>
+</tr>
+<tr>
+<td>2</td>
+<td>6</td>
+<td>82</td>
+<td>486</td>
+</tr>
+<tr>
+<td>3</td>
+<td>4</td>
+<td>37</td>
+<td>615</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2</td>
+<td>18</td>
+<td>341</td>
+</tr>
+</tbody>
+</table>
+<p>Gördüğünüz gibi ilk satır başlık değil, veriden oluşuyor. Bunu <strong>header=None</strong> ve <strong>names</strong> parametreleri ile düzenleyelim.</p>
+<div class="highlight"><pre><span></span><code><span class="n">baslik</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Birler&quot;</span><span class="p">,</span> <span class="s2">&quot;Onlar&quot;</span><span class="p">,</span> <span class="s2">&quot;Yüzler&quot;</span><span class="p">]</span>
+<span class="n">basliksiz</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/basliksiz.ods&quot;</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">names</span> <span class="o">=</span> <span class="n">baslik</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">basliksiz</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Birler</th>
+<th>Onlar</th>
+<th>Yüzler</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>9</td>
+<td>82</td>
+<td>246</td>
+</tr>
+<tr>
+<td>1</td>
+<td>7</td>
+<td>78</td>
+<td>180</td>
+</tr>
+<tr>
+<td>2</td>
+<td>8</td>
+<td>83</td>
+<td>565</td>
+</tr>
+<tr>
+<td>3</td>
+<td>6</td>
+<td>82</td>
+<td>486</td>
+</tr>
+<tr>
+<td>4</td>
+<td>4</td>
+<td>37</td>
+<td>615</td>
+</tr>
+</tbody>
+</table>
+<h3>sheet_name Parametresi</h3>
+<p>Excel dosyamızın içinde birden fazla çalışma sayfası (sekme) bulunması halinde, istediğimiz çalışma sayfasına erişebilmek için, <strong>sheet_name</strong> parametresini kullanmalıyız.</p>
+<p>Aylara göre doğum sayılarını barındıran dosyamızı çalışmamıza dahil edip ilk 5 veriye göz atalım.</p>
+<div class="highlight"><pre><span></span><code><span class="n">dogumlar</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/AyaGöreDoğumlar.xlsx&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dogumlar</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Yıl</th>
+<th>Toplam</th>
+<th>Ocak</th>
+<th>Şubat</th>
+<th>Mart</th>
+<th>Nisan</th>
+<th>Mayıs</th>
+<th>Haziran</th>
+<th>Temmuz</th>
+<th>Ağustos</th>
+<th>Eylül</th>
+<th>Ekim</th>
+<th>Kasım</th>
+<th>Aralık</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>2001</td>
+<td>1323341</td>
+<td>170397</td>
+<td>103476</td>
+<td>107912</td>
+<td>102585</td>
+<td>110391</td>
+<td>111722</td>
+<td>119752</td>
+<td>120963</td>
+<td>109590</td>
+<td>103662</td>
+<td>92554</td>
+<td>70337</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2002</td>
+<td>1229555</td>
+<td>155065</td>
+<td>103446</td>
+<td>102175</td>
+<td>95976</td>
+<td>99501</td>
+<td>102627</td>
+<td>109747</td>
+<td>108061</td>
+<td>99701</td>
+<td>96216</td>
+<td>89285</td>
+<td>67755</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2003</td>
+<td>1198927</td>
+<td>138670</td>
+<td>89548</td>
+<td>101046</td>
+<td>92574</td>
+<td>99531</td>
+<td>104644</td>
+<td>109225</td>
+<td>109159</td>
+<td>98766</td>
+<td>94838</td>
+<td>89542</td>
+<td>71384</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2004</td>
+<td>1222484</td>
+<td>141538</td>
+<td>94596</td>
+<td>100696</td>
+<td>100801</td>
+<td>102214</td>
+<td>105728</td>
+<td>111102</td>
+<td>110425</td>
+<td>98492</td>
+<td>94840</td>
+<td>90833</td>
+<td>71219</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2005</td>
+<td>1244041</td>
+<td>142311</td>
+<td>94234</td>
+<td>100529</td>
+<td>97441</td>
+<td>106833</td>
+<td>108536</td>
+<td>111066</td>
+<td>111430</td>
+<td>103273</td>
+<td>103310</td>
+<td>92364</td>
+<td>72714</td>
+</tr>
+</tbody>
+</table>
+<p>Kodumuza <strong>sheet_name = "ortalama"</strong> ibaresi ekleyerek, aynı dosyadaki "<strong>ortalama</strong>" isimli sekmede bulunan verileri inceleyelim.</p>
+<div class="highlight"><pre><span></span><code><span class="n">dogumlar</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/AyaGöreDoğumlar.xlsx&quot;</span><span class="p">,</span> <span class="n">sheet_name</span> <span class="o">=</span> <span class="s2">&quot;ortalama&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dogumlar</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Yıl</th>
+<th>Toplam</th>
+<th>Ortalama</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>2001</td>
+<td>1323341</td>
+<td>110278.416667</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2002</td>
+<td>1229555</td>
+<td>102462.916667</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2003</td>
+<td>1198927</td>
+<td>99910.583333</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2004</td>
+<td>1222484</td>
+<td>101873.666667</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2005</td>
+<td>1244041</td>
+<td>103670.083333</td>
+</tr>
+</tbody>
+</table>
+<p>Gördüğünüz gibi, kodumuza <strong>sheet_name = "ortalama"</strong> ibaresi ekleyerek, aynı excel dosyasının <strong>ortalama</strong> isimli çalışma sayfasındaki verileri, çalışmamıza veri çerçevesi olarak ekledik.</p>
+<p>Birden fazla çalışma sayfasını, çalışmamıza dahil etmek (içe aktarmak) istersek, <strong>sheet_name</strong> parametresine bir liste girdisi vermeliyiz. Bu durumda çıktı, bir <strong>sözlük yapısı (dict)</strong> olacaktır.</p>
+<div class="highlight"><pre><span></span><code><span class="n">dogumlar</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/AyaGöreDoğumlar.xlsx&quot;</span><span class="p">,</span> <span class="n">sheet_name</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ortalama&quot;</span><span class="p">,</span> <span class="s2">&quot;2001-2021&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dogumlar</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>{&#39;ortalama&#39;:      Yıl   Toplam       Ortalama
+ 0   2001  1323341  110278.416667
+ 1   2002  1229555  102462.916667
+ 2   2003  1198927   99910.583333
+ 3   2004  1222484  101873.666667
+ 4   2005  1244041  103670.083333
+ 5   2006  1255432  104619.333333
+ 6   2007  1289992  107499.333333
+ 7   2008  1295511  107959.250000
+ 8   2009  1266751  105562.583333
+ 9   2010  1261169  105097.416667
+ 10  2011  1252812  104401.000000
+ 11  2012  1294605  107883.750000
+ 12  2013  1297505  108125.416667
+ 13  2014  1351088  112590.666667
+ 14  2015  1336908  111409.000000
+ 15  2016  1316204  109683.666667
+ 16  2017  1299419  108284.916667
+ 17  2018  1255258  104604.833333
+ 18  2019  1188524   99043.666667
+ 19  2020  1115821   92985.083333
+ 20  2021  1079842   89986.833333,
+ &#39;2001-2021&#39;:      Yıl   Toplam    Ocak   Şubat    Mart   Nisan   Mayıs  Haziran  Temmuz  \
+ 0   2001  1323341  170397  103476  107912  102585  110391   111722  119752   
+ 1   2002  1229555  155065  103446  102175   95976   99501   102627  109747   
+ 2   2003  1198927  138670   89548  101046   92574   99531   104644  109225   
+ 3   2004  1222484  141538   94596  100696  100801  102214   105728  111102   
+ 4   2005  1244041  142311   94234  100529   97441  106833   108536  111066   
+ 5   2006  1255432  128708   94760  104126   97624  103903   112016  115097   
+ 6   2007  1289992  131276   93927  102807  100159  108119   110359  122324   
+ 7   2008  1295511  130424   98099  102962  102877  107003   110089  119977   
+ 8   2009  1266751  122407   92414   99419  103432  103783   107847  117160   
+ 9   2010  1261169  119444   95023  103583   99477  103676   109441  113639   
+ 10  2011  1252812  118547   92484  100992   95348   94131   104086  114390   
+ 11  2012  1294605  119556   99966  105499   98880  105807   110056  118649   
+ 12  2013  1297505  118373   94803  102471   96865  106757   109672  123758   
+ 13  2014  1351088  121694   96802  105603  105652  112448   115978  129616   
+ 14  2015  1336908  120373   99169  105792  103110  105254   115681  130945   
+ 15  2016  1316204  114274  100640  105166  101947  104080   117994  120126   
+ 16  2017  1299419  114968   95567  101700   96132  106274   115827  122894   
+ 17  2018  1255258  107530   90002  101283   94776  104719   110383  117967   
+ 18  2019  1188524  104044   85510   96631   93013  105166    97965  112628   
+ 19  2020  1115821   94888   83433   89503   88526   93159    99232  105970   
+ 20  2021  1079842   80733   77535   86214   82789   88506    94266   99252   
+
+     Ağustos   Eylül    Ekim   Kasım  Aralık  
+ 0    120963  109590  103662   92554   70337  
+ 1    108061   99701   96216   89285   67755  
+ 2    109159   98766   94838   89542   71384  
+ 3    110425   98492   94840   90833   71219  
+ 4    111430  103273  103310   92364   72714  
+ 5    117298  107158  105773   93167   75802  
+ 6    118169  111055  109888   99639   82270  
+ 7    120048  114470  107978   97389   84195  
+ 8    116229  115824  105407   96155   86674  
+ 9    113082  110324  104427  101610   87443  
+ 10   121152  112959  105048  102970   90705  
+ 11   123634  110338  108327  102413   91480  
+ 12   121625  112913  110716  104182   95370  
+ 13   126296  119030  111754  105566  100649  
+ 14   123296  116428  112839  106319   97702  
+ 15   124833  114366  107951  104959   99868  
+ 16   122386  110811  108538  104386   99936  
+ 17   116715  107105  107818  100436   96524  
+ 18   109182   99981   98320   92936   93148  
+ 19   100478   96018   93428   87540   83646  
+ 20   100407   97334   93290   92189   87327  }
+</code></pre></div>
+
+<h3>decimal Parametresi</h3>
+<p>Harici kaynaktan içe aktararak oluşturduğumuz veri çerçevelerini incelediğimizde, sayısal olduğunu düşündüğümüz bazı değerlerin, metinsel (string) olduğunu farkederiz. Bunun sebebi, farklı ülkelerin farklı bölgesel ayarlar kullanmalarından kaynaklanır. Örneğin Ülkemiz ve Avrupa ülkelerinde sayıların ondalık kısımlarını temsil etmek için <strong>virgül (,)</strong>, binlik basamakları ayırmak için <strong>nokta (.)</strong> karakteri kullanılırken bazı Ülkelerde bunun tersi kullanılmaktadır.
+Elimde, interneten indirmiş olduğum IMDB (Internet Movie Data Base) verilerinden oluşan bir excel dosyası bulunmaktadır. Bu dosyayı veri çerçevesine dönüştürüp içeriğini inceleyelim.</p>
+<div class="highlight"><pre><span></span><code><span class="n">imdb</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/imdb.xlsx&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">imdb</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Film_Adı</th>
+<th>Yıl</th>
+<th>Puan</th>
+<th>Oylayan_Kişi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>The Shawshank Redemption</td>
+<td>1994</td>
+<td>9,2</td>
+<td>1071904</td>
+</tr>
+<tr>
+<td>1</td>
+<td>The Godfather</td>
+<td>1972</td>
+<td>9,2</td>
+<td>751381</td>
+</tr>
+<tr>
+<td>2</td>
+<td>The Godfather: Part II</td>
+<td>1974</td>
+<td>9</td>
+<td>488889</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Pulp Fiction</td>
+<td>1994</td>
+<td>8,9</td>
+<td>830504</td>
+</tr>
+<tr>
+<td>4</td>
+<td>The Dark Knight</td>
+<td>2008</td>
+<td>8,9</td>
+<td>1045186</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>242</td>
+<td>Mystic River</td>
+<td>2003</td>
+<td>7,9</td>
+<td>256159</td>
+</tr>
+<tr>
+<td>243</td>
+<td>In the Heat of the Night</td>
+<td>1967</td>
+<td>7,9</td>
+<td>37081</td>
+</tr>
+<tr>
+<td>244</td>
+<td>Arsenic and Old Lace</td>
+<td>1944</td>
+<td>7,9</td>
+<td>45893</td>
+</tr>
+<tr>
+<td>245</td>
+<td>Before Sunrise</td>
+<td>1995</td>
+<td>7,9</td>
+<td>100974</td>
+</tr>
+<tr>
+<td>246</td>
+<td>Papillon</td>
+<td>1973</td>
+<td>7,9</td>
+<td>62517</td>
+</tr>
+</tbody>
+</table>
+<p>247 rows × 4 columns</p>
+<p>Gördüğüm kadarı ile <strong>Film_Adı</strong> sütunu <strong>object (yani string)</strong> diğer sütunlar ise <strong>float (ondalıklı sayı)</strong> veri tipinde gibi görünüyor. Sütun biçimlerinin tahmin ettiğim gibi olup olmadığını teyit etmek için <strong>dtype</strong> paramatresini kullanıyorum.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">imdb</span><span class="o">.</span><span class="n">dtypes</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="nx">Film_Adı</span><span class="w">        </span><span class="nx">object</span>
+<span class="nx">Yıl</span><span class="w">              </span><span class="nx">int64</span>
+<span class="nx">Puan</span><span class="w">            </span><span class="nx">object</span>
+<span class="nx">Oylayan_Kişi</span><span class="w">     </span><span class="nx">int64</span>
+<span class="nx">dtype</span><span class="p">:</span><span class="w"> </span><span class="nx">object</span>
+</code></pre></div>
+
+<p>Çıktıyı incelediğimde, <strong>Puan</strong> isimli sütun verilerinin de <strong>object (yani string)</strong> oluğunu görüyorum. Yani Bu sütundaki verilerle matematiksel işlem yapmaya çalışırsam ya hata mesajı alacak ya da yanlış sonuç elde edeceğim. Bunu da örneklerle inceleyelim. <strong>Puan</strong> sütununun 2 katını alıp yeni bir sütun olarak veri çerçevesine eklemeyi deneyelim.</p>
+<div class="highlight"><pre><span></span><code><span class="n">imdb</span><span class="p">[</span><span class="s2">&quot;Puan_2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">imdb</span><span class="p">[</span><span class="s2">&quot;Puan&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">imdb</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Film_Adı</th>
+<th>Yıl</th>
+<th>Puan</th>
+<th>Oylayan_Kişi</th>
+<th>Puan_2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>The Shawshank Redemption</td>
+<td>1994</td>
+<td>9,2</td>
+<td>1071904</td>
+<td>9,29,2</td>
+</tr>
+<tr>
+<td>1</td>
+<td>The Godfather</td>
+<td>1972</td>
+<td>9,2</td>
+<td>751381</td>
+<td>9,29,2</td>
+</tr>
+<tr>
+<td>2</td>
+<td>The Godfather: Part II</td>
+<td>1974</td>
+<td>9</td>
+<td>488889</td>
+<td>18</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Pulp Fiction</td>
+<td>1994</td>
+<td>8,9</td>
+<td>830504</td>
+<td>8,98,9</td>
+</tr>
+<tr>
+<td>4</td>
+<td>The Dark Knight</td>
+<td>2008</td>
+<td>8,9</td>
+<td>1045186</td>
+<td>8,98,9</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>242</td>
+<td>Mystic River</td>
+<td>2003</td>
+<td>7,9</td>
+<td>256159</td>
+<td>7,97,9</td>
+</tr>
+<tr>
+<td>243</td>
+<td>In the Heat of the Night</td>
+<td>1967</td>
+<td>7,9</td>
+<td>37081</td>
+<td>7,97,9</td>
+</tr>
+<tr>
+<td>244</td>
+<td>Arsenic and Old Lace</td>
+<td>1944</td>
+<td>7,9</td>
+<td>45893</td>
+<td>7,97,9</td>
+</tr>
+<tr>
+<td>245</td>
+<td>Before Sunrise</td>
+<td>1995</td>
+<td>7,9</td>
+<td>100974</td>
+<td>7,97,9</td>
+</tr>
+<tr>
+<td>246</td>
+<td>Papillon</td>
+<td>1973</td>
+<td>7,9</td>
+<td>62517</td>
+<td>7,97,9</td>
+</tr>
+</tbody>
+</table>
+<p>247 rows × 5 columns</p>
+<p>Çıktıya bakarsak, <strong>Puan_2</strong> ismiyle oluşturduğumuz yeni sütundaki değerler, <strong>Puan</strong> isimli sütunun 2 katından değil, 2 defa yanyana yazılmazsından oluştu. Bunun sebebi, verilerin <strong>string (metin)</strong> yapıda olmasıdır.
+Bu tür sorunları bertaraf etmek için, <strong>decimal</strong> paramatresini kullanmamız gerekir. Harici veriyi veri çerçevesine dönüştürürken <strong>decimal = ","</strong> parametresini kullanırsak, "," ibaresi bulunan sayısal değerlerden oluşan string ifadeler, <strong>float (ondalıklı sayı)</strong> veri tipine dönüştürülür.</p>
+<div class="highlight"><pre><span></span><code><span class="n">imdb_2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/imdb.xlsx&quot;</span><span class="p">,</span> <span class="n">decimal</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">imdb_2</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Film_Adı</th>
+<th>Yıl</th>
+<th>Puan</th>
+<th>Oylayan_Kişi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>The Shawshank Redemption</td>
+<td>1994</td>
+<td>9.2</td>
+<td>1071904</td>
+</tr>
+<tr>
+<td>1</td>
+<td>The Godfather</td>
+<td>1972</td>
+<td>9.2</td>
+<td>751381</td>
+</tr>
+<tr>
+<td>2</td>
+<td>The Godfather: Part II</td>
+<td>1974</td>
+<td>9.0</td>
+<td>488889</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Pulp Fiction</td>
+<td>1994</td>
+<td>8.9</td>
+<td>830504</td>
+</tr>
+<tr>
+<td>4</td>
+<td>The Dark Knight</td>
+<td>2008</td>
+<td>8.9</td>
+<td>1045186</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>242</td>
+<td>Mystic River</td>
+<td>2003</td>
+<td>7.9</td>
+<td>256159</td>
+</tr>
+<tr>
+<td>243</td>
+<td>In the Heat of the Night</td>
+<td>1967</td>
+<td>7.9</td>
+<td>37081</td>
+</tr>
+<tr>
+<td>244</td>
+<td>Arsenic and Old Lace</td>
+<td>1944</td>
+<td>7.9</td>
+<td>45893</td>
+</tr>
+<tr>
+<td>245</td>
+<td>Before Sunrise</td>
+<td>1995</td>
+<td>7.9</td>
+<td>100974</td>
+</tr>
+<tr>
+<td>246</td>
+<td>Papillon</td>
+<td>1973</td>
+<td>7.9</td>
+<td>62517</td>
+</tr>
+</tbody>
+</table>
+<p>247 rows × 4 columns</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">imdb_2</span><span class="o">.</span><span class="n">dtypes</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="nx">Film_Adı</span><span class="w">         </span><span class="nx">object</span>
+<span class="nx">Yıl</span><span class="w">               </span><span class="nx">int64</span>
+<span class="nx">Puan</span><span class="w">            </span><span class="nx">float64</span>
+<span class="nx">Oylayan_Kişi</span><span class="w">      </span><span class="nx">int64</span>
+<span class="nx">dtype</span><span class="p">:</span><span class="w"> </span><span class="nx">object</span>
+</code></pre></div>
+
+<p>Çıktı incelendiğinde görüyoruz ki, <strong>Puan</strong> isimli sütun <strong>float (ondalıklı sayı)</strong> veri tipine dönüşmüş oldu. Yukarıda yaptığımız işlemi (<strong>Puan</strong> sütununun 2 katını alıp yeni bir sütun olarak veri çerçevesine eklemeyi) tekrar deneyelim.</p>
+<div class="highlight"><pre><span></span><code><span class="n">imdb_2</span><span class="p">[</span><span class="s2">&quot;Puan_2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">imdb_2</span><span class="p">[</span><span class="s2">&quot;Puan&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">imdb_2</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Film_Adı</th>
+<th>Yıl</th>
+<th>Puan</th>
+<th>Oylayan_Kişi</th>
+<th>Puan_2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>The Shawshank Redemption</td>
+<td>1994</td>
+<td>9.2</td>
+<td>1071904</td>
+<td>18.4</td>
+</tr>
+<tr>
+<td>1</td>
+<td>The Godfather</td>
+<td>1972</td>
+<td>9.2</td>
+<td>751381</td>
+<td>18.4</td>
+</tr>
+<tr>
+<td>2</td>
+<td>The Godfather: Part II</td>
+<td>1974</td>
+<td>9.0</td>
+<td>488889</td>
+<td>18.0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Pulp Fiction</td>
+<td>1994</td>
+<td>8.9</td>
+<td>830504</td>
+<td>17.8</td>
+</tr>
+<tr>
+<td>4</td>
+<td>The Dark Knight</td>
+<td>2008</td>
+<td>8.9</td>
+<td>1045186</td>
+<td>17.8</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>242</td>
+<td>Mystic River</td>
+<td>2003</td>
+<td>7.9</td>
+<td>256159</td>
+<td>15.8</td>
+</tr>
+<tr>
+<td>243</td>
+<td>In the Heat of the Night</td>
+<td>1967</td>
+<td>7.9</td>
+<td>37081</td>
+<td>15.8</td>
+</tr>
+<tr>
+<td>244</td>
+<td>Arsenic and Old Lace</td>
+<td>1944</td>
+<td>7.9</td>
+<td>45893</td>
+<td>15.8</td>
+</tr>
+<tr>
+<td>245</td>
+<td>Before Sunrise</td>
+<td>1995</td>
+<td>7.9</td>
+<td>100974</td>
+<td>15.8</td>
+</tr>
+<tr>
+<td>246</td>
+<td>Papillon</td>
+<td>1973</td>
+<td>7.9</td>
+<td>62517</td>
+<td>15.8</td>
+</tr>
+</tbody>
+</table>
+<p>247 rows × 5 columns</p>
+<p>İstediğimiz şeyi başardık. <strong>Puan_2</strong> sütunu, <strong>Puan</strong> sütununun 2 katından oluşmuş oldu.</p>
+<p><a href="pandas-01-veri-cercevesi-olustur.html">← Önceki Bölüm</a> | <a href="pandas-03-veriyi-kesfet-incele.html">Sonraki Bölüm →</a></p>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/pandas.html">Pandas</a></li>
+					<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+					<li><a href="/tag/modul.html">Modül</a></li>
+					<li><a href="/tag/excel.html">Excel</a></li>
+					<li><a href="/tag/libreofis.html">LibreOfis</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>

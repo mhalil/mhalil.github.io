@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="FreeCAD - Curves WB - Surface - 04 - Sketch on Surface" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/freecad-curves-wb-surface-04-sketch-on-surface.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">FreeCAD - Curves WB - Surface - 04 - Sketch on Surface</h1>
+	<span class="post-date">Cts 05 Kasım 2022</span>
+	<h1><img alt="sketch_surf" src="https://raw.githubusercontent.com/tomate44/CurvesWB/9aac6c2365311724487f79df3343dab90ddcb819/freecad/Curves/resources/icons/sketch_surf.svg"> Sketch on Surface</h1>
+<p>Bu komut sayesinde seçili yüzeyin, sanal UV'si açılır ve bu düzlem yüzeye 2 boyutlu Eskiz (sketch) çizimi yapmamıza imkan verilir. 
+Komut sonlandırıldığında, çizilen 2 boyutlu eskiz, yüzey üzerine uygulanır.  </p>
+<p><strong>Kullanım:</strong> Komutu çalıştırmak için aşağıdaki adımları sırası ile uygulayın:</p>
+<ul>
+<li>Öncelikle bir yüzey seçin.</li>
+<li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
+<li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>Sketch on Surface</strong> seçeneğini kullanın.</li>
+</ul>
+<p>Yüzüğe benzer İçi boş bir silindir modelin dış yüzeyine eskiz (şekiller) çizip, bu eskizi, silindir yüzeyinden çıkarmaya çalışalım.<br>
+<strong>Parça Çalışma Tezgahı (Part WB)</strong> komutlarından olan <strong>Tüp/Boru (Tube)</strong> komutunu çalıştırıp parametrelerimizi belirleyelim.
+<img alt="SketchOnSurface_01" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_01.png"><br>
+Modelin dış yüzeyini seçip <strong>Surface</strong> menüsündeki <strong>Sketch on surface</strong> komutunu çalıştıralım.
+<img alt="SketchOnSurface_02" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_02.png"><br>
+Komut sonrasında, Unsur ağacında <strong>Sketch on Surface</strong> ve <strong>Mapped_Sketch</strong> unsurlarının oluştuğunu göreceksiniz.
+<img alt="SketchOnSurface_03" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_03.png"><br>
+<strong>Mapped_Sketch</strong> unsuruna çif tıklayarak düzenleme moduna girdiğimizde referans çizgilerden oluşan bir dikdörtgen göreceksiniz. Bu dikdörtgen şekil, seçili yüzeyin kumaş gibi açılıp karşınıza sunulduğu UV yapısını temsil eder. Anlaşılması açısından, <strong>U:</strong> eskizin X eksenini, <strong>V:</strong> eskizin Y ekseninin tanımlar diyebiliriz.
+<img alt="SketchOnSurface_04" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_04.png"><br>
+Referans çizgilerden oluşan bir dikdörtgenin içine istediğiniz şekli çizebilirsiniz. Aşağıdaki şekli çizip çoğaltarak sonucu görmek istiyorum.
+<img alt="SketchOnSurface_05" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_05.png"><br>
+Çizimin doğrusal 10 kopyasını çıkarıyorum / çoğaltıyorum ve Sol paneldeki <strong>Close</strong> butonu ile eskizden çıkıyorum.
+<img alt="SketchOnSurface_06" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_06.png"><br>
+Eskizi rahat çizebilmek adına Boru (Tube) modelini gizlemiştim. Şimdi unsur ağacından Tube nesnesini seçip tekrar <strong>Boşluk (Space)</strong> tuşu yardımıyla görünür hale getirelim.
+<img alt="SketchOnSurface_07" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_07.png"><br>
+Sonuç, beklediğimiz gibi. Çizdiğimiz eskiz, Boru (Tube) modelinin seçili yüzeyine ilişkilendirildi.
+<img alt="SketchOnSurface_08" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_08.png"><br>
+Şimdi sıra, <strong>Sketch on Surface</strong> komutunun <strong>Ayarlarını (Settings)</strong> incelemeye geldi.
+<img alt="SketchOnSurface_09" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_09.png"><br>
+<strong>Fill Faces (Yüzeyleri Doldur)</strong> seçeneği, çizilen eskizin kapalı çokgenlerinin iç kısmını doldurarak, yüzeye dönüştürür.
+<img alt="SketchOnSurface_10" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_10.png"><br>
+<strong>Thickness (Kalınlık)</strong> seçeneği, çizilen eskize, extrude komutuna benzer şekilde kalınlık kazandırır. <strong>Fill Faces (Yüzeyleri Doldur)</strong> seçeneği <strong>true</strong> ya da <strong>false</strong> olabilir. Her iki seçenekte de komut çalışır.
+<img alt="SketchOnSurface_11" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_11.png"><br>
+<strong>Offset (Ötele)</strong> seçeneği, Çizilen eskizin, seçilen yüzeyden ne kadar ötelenerek eşleştirileceğini belirttiğimiz ayar bölümüdür.
+<img alt="SketchOnSurface_12" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_12.png"><br>
+Ayarlar bölümündeki değerler her zaman pozitif olmak zorunda değildir. Örneğin <strong>Thickness</strong> değerini Negatif yapalım ve sonucu görelim.
+<img alt="SketchOnSurface_13" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_13.png"><br>
+Görüldüğü üzere <strong>Thickness</strong> değeri negatif olduğunda, eskiz, ters doğrultuda kalınlık kazandı. Son olarak ta, <strong>Tube</strong> nesnemizden, kalınlık verdiğimiz eskiz nesnemizi çıkaralım. Önce <strong>Tube</strong> sonra <strong>Sketch on surface</strong> nesnemizi seçelim.
+<img alt="SketchOnSurface_14" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_14.png"><br>
+<strong>Parça Çalışma Tezgahı (Part WB)</strong> komutlarından olan <strong>Kes (Cut)</strong> komutu ile 2. seçili nesneyi, ilk seçili nesneden çıkaralım.
+<img alt="SketchOnSurface_15" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_15.png"><br>
+Sonuç ortada:
+<img alt="SketchOnSurface_16" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_16.png"><br>
+Yüzey'e şekil yerine Yazı ekleyip boşluk oluşturmaya çalışalım ve <strong>Sketch on Surface</strong> komutunun <strong>Rötuş/Düzeltme (Touchup)</strong> ayarlarını inceleyelim. Yukarıda anlatılanlara benzer şekilde <strong>Mapped_Sketch</strong> unsuruna çif tıklayarak düzenleme moduna girdiğimizde referans çizgilerden oluşan bir dikdörtgen içerisine yazımıza ekliyoruz.
+<img alt="SketchOnSurface_17" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_17.png"><br>
+Bezier eğrinin, eğrilik tarakları ve kontrol noktaları kapatıldığında yazımız daha net görünüyor.
+<img alt="SketchOnSurface_18" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_18.png"><br>
+Düzenleme işlemini tamamlayıp eskizden çıktığımızda, yazımız yüzeye uygulanmış olur.
+<img alt="SketchOnSurface_19" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_19.png"><br>
+Gizlemiş olduğumuz <strong>Boru/Tüp (Tube)</strong> nesnemizi görüntüleyelim.
+<img alt="SketchOnSurface_20" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_20.png"><br>
+<strong>Rötuş/Düzeltme (Touchup)</strong> ayarlarını inceleyelim.<br>
+<strong>Reverse U:</strong> Yüzeye çizilen eskizi, U yönünde (bu örnekte X ekseni doğrultusunda yani YZ düzleminde) ters çevirir.<br>
+<img alt="SketchOnSurface_21" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_21.png"><br>
+<strong>Reverse V:</strong> Yüzeye çizilen eskizi, V yönünde (bu örnekte Z ekseni doğrultusunda yani XY düzleminde) ters çevirir.<br>
+<img alt="SketchOnSurface_22" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_22.png"><br>
+<strong>Swap UV:</strong> U ve V eksenlerinin yerlerini değiştirir, UV yapısını 90 derece çevirir / değiştirir gibi düşünebilirsiniz. Örnekte modellediğimiz <strong>Boru/Tüp (Tube)</strong> nesnemiz kısa olduğu için UV'nin 90 derece çevrilmesi oluşan yapı net olarak anlaşılamıyor. Kendi modellerinizde bu ayarı değiştirerek sonucu görebilirsiniz.
+<img alt="SketchOnSurface_23" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_23.png"><br>
+Yukarıdaki örnekte olduğu gibi, yüzeye eşleştirdiğimiz yazımıza kalınlık verip boru nesnemizden çıkaralım.
+<img alt="SketchOnSurface_24" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_24.png"><br>
+<img alt="SketchOnSurface_25" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_25.png"><br>
+<strong>Boru/Tüp (Tube)</strong> nesnemizin yarısı keselim.
+<img alt="SketchOnSurface_26" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_26.png"><br>
+Nesnenin keskin köşeleri hoş görünmüyor, keskin köşelere radyus kazandıralım (yuvarlatalım).
+<img alt="SketchOnSurface_27" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_27.png"><br>
+Bu şekilde daha hoş görünüyor;
+<img alt="SketchOnSurface_28" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_28.png"><br>
+<img alt="SketchOnSurface_29" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_29.png"><br>
+<strong>Sketch on Surface</strong> komutu ile Eğrisel yüzeylerin UV açılımı yapıldığında, bazen ölçüler beklendiğinden farklı olur. 
+Aşağıdaki örneklerle konuyu inceleyelim.
+<img alt="SketchOnSurface_30" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_30.png"><br>
+Yüzeyi seçip <strong>Sketch on Surface</strong> komutunu çalıştıralım.
+<img alt="SketchOnSurface_31" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_31.png"><br>
+<strong>Mapped_Sketch</strong> unsuruna çift tıklayarak düzenleme moduna girelim.
+<img alt="SketchOnSurface_32" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_32.png"><br>
+Gördüğünüz gibi, <strong>U yönü:</strong> 1mm, <strong>V yönü:</strong> 50mm belirlenerek <strong>UV</strong> oluşturulmuş.
+<img alt="SketchOnSurface_33" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_33.png"><br>
+1mm olan ölçüyü 75mm olarak değiştiriyoruz.
+<img alt="SketchOnSurface_34" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_34.png"><br>
+Referans çizgiler içerisinde kalacak şekilde bir eskiz çiziyor ve <strong>Close</strong> butonuna basarak eskizi kapatıyoruz.
+<img alt="SketchOnSurface_35" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_35.png"><br>
+Eskiz, yüzeye eşleştirildi.
+<img alt="SketchOnSurface_36" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_36.png"><br>
+Eskizi kapalı yüzey olarak ayarlıyor ve kalınlık kazandırarak sonuçları görüyoruz.
+<img alt="SketchOnSurface_37" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_37.png"><br>
+<strong>Sketch on Surface</strong> nesnesine kalınlık kazandırıp <strong>Offset</strong> nesnesini gizlersek elde edeceğimiz sonuca ait görüntüleri aşağıda görebiliriz;
+<img alt="SketchOnSurface_38" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_38.png"><br>
+<strong>Offset</strong> nesnesi ile <strong>Sketch on Surface</strong> nesnelerini bir birinden çıkarıyoruz.</p>
+<p><img alt="SketchOnSurface_39" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_39.png"><br>
+Sonucu, farklı bir bakış açısından inceliyoruz.
+<img alt="SketchOnSurface_40" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_40.png"><br>
+<strong>Sketch on Surface</strong> komutunun ayarlarından biri olan <strong>Extra Objects</strong>'i inceleyelim.
+<img alt="SketchOnSurface_41" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_41.png"><br>
+<strong>Taslak Çalışma Tezgahı (Draft WB)</strong> komutlarından biri olan <strong>Metinden şekil (Shape from text)</strong> ile bir metin oluşturduk. Aşağıdaki görüntüye bakarsanız, Metin ile <strong>Sketch on Surface</strong> düzleminin faklı yönlere baktığı ve Z ekseninde farklı seviyelerde olduğunu göreceksiniz.
+<img alt="SketchOnSurface_42" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_42.png"><br>
+Yazıyı X ekseninde 90 derece çevrirerek iki doğrultuyu da eşitledik ancak Z ekseninde hala farklı seviyedeler.
+<img alt="SketchOnSurface_43" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_43.png"><br>
+Metnin (ShapeString) açı ve konum ayarlarını değiştirerek, metni, Mapped_Sketch'in ortasına taşıdık.
+<img alt="SketchOnSurface_44" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_44.png"><br>
+Çizim, şu an aşağıdaki gibi görünüyor. Unsur ağacından <strong>Sketch on Surface</strong> seçilir ve ayarlar kısmından <strong>Extra Objects</strong> kısmındaki butona basılırsa;
+<img alt="SketchOnSurface_45" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_45.png"><br>
+Açılan <strong>Bağlantı (Link)</strong> penceresi karşımıza gelir. Bu bölümde Metni (<strong>ShapeString</strong>) seçelim.
+<img alt="SketchOnSurface_46" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_46.png"><br>
+<strong>Bağlantı (Link)</strong> penceresindeki <strong>OK</strong> butonuna bastığımızda, seçmiş olduğumuz metnin, <strong>Sketch on Surface</strong> yüzeyine uygulandığını göreceksiniz.
+<img alt="SketchOnSurface_47" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_47.png"><br>
+Orjinal Metni (ShapeString) gizleyelim.
+<img alt="SketchOnSurface_48" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_48.png"><br>
+<strong>Sketch on Surface</strong>'e kalınlık kazandıralım.
+<img alt="SketchOnSurface_49" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_49.png"><br>
+Unsur ağacından Orjinal Metni (<strong>ShapeString</strong>) seçip ayarlar kısmından <strong>Metnin içeriğini (string)</strong> ya da <strong>metin boyutunu (Size)</strong> değiştirirsek yazının güncellendiğini görürüz.
+<img alt="SketchOnSurface_50" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_50.png"><br>
+Eskiz içerisinde Metnimizin konumunu değiştirelim.
+<img alt="SketchOnSurface_51" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_51.png"><br>
+Sonucun nasıl olduğunu görüyorsunuz. İstersek çalışmaya pozitif yönde kalınlık verir dışa doğru katılarız.
+<img alt="SketchOnSurface_52" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_52.png"><br>
+İstersek negatif yönde tarafa kalınlık verip, gövdeden çıkarırız.
+<img alt="SketchOnSurface_53" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_53.png"><br>
+Farklı bir bakış açısından sonucu incelersek;
+<img alt="SketchOnSurface_54" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_54.png"><br>
+Metni <strong>Kes (Cut)</strong> komutu ile Gövdeden çıkarmış olsak bile bu aşamada orjinal metni değiştirdiğimizde, sonuç otomatik olarak güncellenir.
+<img alt="SketchOnSurface_55" src="../../images/freecad/curves_wb/surfaces_menu/SketchOnSurface_55.png">  </p>
+<p><a href="freecad-curves-wb-surface-00-menu-komutlari.html">&lt;&lt;&lt; Surfaces Menü Komutlarına Ait Sayfaya Dön</a></p>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/freecad.html">FreeCAD</a></li>
+					<li><a href="/tag/curves.html">Curves</a></li>
+					<li><a href="/tag/workbench.html">Workbench</a></li>
+					<li><a href="/tag/calismatezgahi.html">ÇalışmaTezgahı</a></li>
+					<li><a href="/tag/surface.html">Surface</a></li>
+					<li><a href="/tag/sketch.html">Sketch</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>

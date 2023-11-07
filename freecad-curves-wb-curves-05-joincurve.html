@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="FreeCAD - Curves WB - Curves - 05 - JoinCurve" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/freecad-curves-wb-curves-05-joincurve.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">FreeCAD - Curves WB - Curves - 05 - JoinCurve</h1>
+	<span class="post-date">Cts 15 Ekim 2022</span>
+	<h1><img alt="Curves_JoinCurve" src="https://wiki.freecadweb.org/images/2/2d/Curves_JoinCurve.svg"> JoinCurve:</h1>
+<p><strong>JoinCurve</strong> komutu <u>seçilen çizgileri/eğrileri birleştirerek tek bir Bezier Eğri (BSpline) haline getirir.</u>  </p>
+<p><strong>Kullanım:</strong> 
+Komutu çalıştırmak için aşağıdaki işlemleri sırasıyla uygulayın:</p>
+<ul>
+<li>3B görünümde bir veya birkaç kenar seçin. (birden fazla seçim için <code>CTRL</code> tuşunu kullanın)</li>
+<li>Kenarlar art arda eklenmelidir. Eskizden (Sketch'ten) , herhangi bir şeklin kenarları seçilebilir.</li>
+<li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
+<li><strong>Curves</strong> menüsündeki <strong>JoinCurve</strong> seçeneğini kullanın.</li>
+<li>İşlem sonunda tüm seçili kenarlar birleştirilerek tek bir Bezier eğri (BSpline) olur.</li>
+</ul>
+<p><strong>JoinCurve</strong> komutunu ve özelliklerini bir uygulama yaparak öğrenmeye çalışalım.<br>
+Aşağıdaki resimde görüldüğü üzere elimizde bir adet altıgen eskiz ve bir adet dikdörtgenler prizması var.
+ <img alt="JoinCurve_01" src="../../images/freecad/curves_wb/curves_menu/JoinCurve_01.png"> Sahnede bulunan dikdörtgenler prizmasının 5 kenarını seçelim.
+ <img alt="JoinCurve_02" src="../../images/freecad/curves_wb/curves_menu/JoinCurve_02.png"> Seçimi, sıralı olarak gerçekleştirelim yani birbirini takip eden kenarları ardarda seçelim ve <strong>JoinCurve</strong> komutunu çalıştıralım.
+ <img alt="JoinCurve_03" src="../../images/freecad/curves_wb/curves_menu/JoinCurve_03.png"> Unsur ağacına bakarsak, sahneye <strong>JoinCurve</strong> adında yeni bir nesne eklendiğini görürüz. Yeni nesneyi net olarak görmek için dikdörtgenler prizmasını gizliyorum.<br>
+3B sahnesinde JoinCurve nesnesinin herhangi bir noktası 
+seçildiğinde bütün eğri seçili hale gelir. Aşağıdaki resimde seçili 
+kısımlar yeşil renk ile gösteriliyor.
+ <img alt="JoinCurve_04" src="../../images/freecad/curves_wb/curves_menu/JoinCurve_04.png"> <strong>Corner Break (Köşe Kır)</strong> parametresi <strong>true (doğru/evet)</strong> olarak değiştirildiğinde, <strong>JoinCurve</strong> nesnesinin her bir çizgi parçası ayrı ayrı seçilebilir hale geliyor. 
+Aşağıdaki resimde seçili kısımlar yeşil renk ile gösteriliyor.
+ <img alt="JoinCurve_05" src="../../images/freecad/curves_wb/curves_menu/JoinCurve_05.png"> <strong>Force Closed (Kapatmaya Zorla)</strong> parametresi <strong>true (doğru/evet)</strong> olarak ayarlanırsa, <strong>JoinCurve</strong> eğrisinin, uç noktaları birleştirilir ve kapalı eğri oluşturması sağlanır.<br>
+<strong>Corner Break</strong> parametresini <strong>false (yanlış/hayır)</strong> olarak ayarlı iken <strong>Force Closed (Kapatmaya Zorla)</strong> parametresi <strong>true (doğru/evet)</strong> olarak ayarlandığında elde edilen sonuç aşağıdadır.
+ <img alt="JoinCurve_06" src="../../images/freecad/curves_wb/curves_menu/JoinCurve_06.png"> <strong>Corner Break</strong> parametresini <strong>true (doğru/evet)</strong> olarak ayarlı iken <strong>Force Closed (Kapatmaya Zorla)</strong> parametresi <strong>true (doğru/evet)</strong> olarak ayarlandığında ise elde edilen sonuç aşağıdadır. <strong>Corner Break</strong> parametresi aktif olduğu için her bir çizgi bağımsız gibi hareket 
+ederek başlangıç ve uç nokta birleşmiş oluyor ve bu kez son çizgi 
+parçası, önceki çizgiden ayrılıyor.
+ <img alt="JoinCurve_07" src="../../images/freecad/curves_wb/curves_menu/JoinCurve_07.png"> <strong>Shape Approximation</strong> Özelliği Aktifleştirildiğinde, <strong>JoinCurve</strong> nesnesi , değiştirilen parametre değerlerine bağlı olarak farklı 
+şekiller almaya başlıyor. Örneği aşağıdaki resme bakarsanız, sadece <strong>Active</strong> parametresi <strong>true (doğru/evet)</strong> olarak değiştirildiğinde, eğriye ait keskin köşelerde bir yumuşama/yuvarlanma olmaya başlandı.
+ <img alt="JoinCurve_08" src="../../images/freecad/curves_wb/curves_menu/JoinCurve_08.png"> <strong>Approx Tolerance</strong> parametre değeri artırıldığında yumuşama/radyus değeri de artıyor.
+ <img alt="JoinCurve_09" src="../../images/freecad/curves_wb/curves_menu/JoinCurve_09.png"> <strong>Approx Tolerance</strong> parametre değeri daha fazla artırıldığında, eğrinin uç noktalarında da radyus etkisi görülmeye başlanıyor.
+ <img alt="JoinCurve_10" src="../../images/freecad/curves_wb/curves_menu/JoinCurve_10.png"> <strong>Continuity (Süreklilik)</strong> parametresi, açılır
+ listeden çıkan seçeneklerden birinin seçilerek ayarlandığı 
+özelliklerden biridir. Bu değerler, eğrinin oluşturulması aşamasında 
+kullanılan algoritmik değerlerdir desek yanlış olmaz sanırım. Değeri <strong>C3</strong>'ten <strong>C0</strong>'a değiştirildiğinde elde edilen eğri profili aşağıdaki şekilde değişiyor.
+ <img alt="JoinCurve_11" src="../../images/freecad/curves_wb/curves_menu/JoinCurve_11.png"> <strong>Continuity (Süreklilik)</strong> parametresi <strong>CN</strong> olarak ayarladığımızda ise eğri yine farklı bir hal alıyor.
+ <img alt="JoinCurve_12" src="../../images/freecad/curves_wb/curves_menu/JoinCurve_12.png"> <strong>Samples (Örnekleme)</strong> parametresi, tabiri 
+caizse eğrinin kaç adet çizgi parçasının uç uca eklenmesi ile elde 
+edileceğini belirlediğimiz kısımdır. Değer büyüdükçe, seçili kenarlara 
+daha yakın profilde eğri oluşuyor. Değeri düşürerek eğrinin alacağı 
+şekli inceleyelim.
+ <img alt="JoinCurve_13" src="../../images/freecad/curves_wb/curves_menu/JoinCurve_13.png"> Altıgen Eskiz ve JoinCurve nesnelerini kullanarak <strong>Part Workbench (Parça Çalışma Tezgahı)</strong> komutlarından <strong>Sweep... (Süpür...)</strong>'i çalıştıralım.
+ <img alt="JoinCurve_14" src="../../images/freecad/curves_wb/curves_menu/JoinCurve_14.png"> Curves araç çubuğunda bulunan ilgili düğmeye basarak ya da <strong>Part (Parça)</strong> menüsündeki <strong>Sweep... (Süpür...)</strong> komutunu çalıştır.
+ <img alt="JoinCurve_15" src="../../images/freecad/curves_wb/curves_menu/JoinCurve_15.png"> Profil olarak <strong>Sketch_Altıgen</strong>'i, süpürülecek yol (<strong>Yolu Süper</strong>) olarak <strong>JoinCurve</strong> eğrisini (3B sahnesinden) seçip onaylayalım.
+ <img alt="JoinCurve_16" src="../../images/freecad/curves_wb/curves_menu/JoinCurve_16.png"> Oluşan 3 boyutlu <strong>Altıgen Boru/Kanal</strong> nesnesi aşağıda görülmektedir.
+ <img alt="JoinCurve_17" src="../../images/freecad/curves_wb/curves_menu/JoinCurve_17.png"> Unsur ağacından <strong>JoinCurve</strong> nesnesini seçip <strong>Corner Break (Köşe Kır)</strong> parametresini <strong>true (doğru/evet)</strong> olarak değiştirirsek elde edeceğimiz nesne aşağıdaki hale gelir.
+ <img alt="JoinCurve_18" src="../../images/freecad/curves_wb/curves_menu/JoinCurve_18.png"> <strong>Continuity (Süreklilik)</strong> parametresi <strong>C0</strong> olarak değiştirildiğinde 3 boyutlu şeklin aldığı hal aşağıdaki gibidir.
+ <img alt="JoinCurve_19" src="../../images/freecad/curves_wb/curves_menu/JoinCurve_19.png"> <strong>Continuity (Süreklilik)</strong> parametresi <strong>C0</strong> iken <strong>Reverse (Ters Çevir)</strong> parametresi <strong>true</strong> olarak değiştirildiğinde 3 boyutlu şeklin aldığı hal aşağıdaki gibidir.
+ <img alt="JoinCurve_20" src="../../images/freecad/curves_wb/curves_menu/JoinCurve_20.png"> <strong>Continuity (Süreklilik)</strong> parametrelerini değiştirildiğinde 3 boyutlu şeklin aldığı hali kendiniz inceleyerek görebilirsiniz.<br>
+<strong>Samples (Örnekleme)</strong> değerini düşürerek aşağıdaki şekli elde edebilirsiniz.<br>
+Gördüğünüz gibi, Eğri parametreleri değiştiğinde oluşan 
+eğrinin şekli ve eğriye bağlı olan 3 boyutlu nesnenin şekli de 
+değişiyor.
+ <img alt="JoinCurve_21" src="../../images/freecad/curves_wb/curves_menu/JoinCurve_21.png"></p>
+<p><a href="freecad-curves-wb-curves-00-curves-menu-komutlari.html">&lt;&lt;&lt; Curves Menü Komutlarına Ait Sayfaya Dön</a></p>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/freecad.html">FreeCAD</a></li>
+					<li><a href="/tag/curves.html">Curves</a></li>
+					<li><a href="/tag/workbench.html">Workbench</a></li>
+					<li><a href="/tag/calismatezgahi.html">ÇalışmaTezgahı</a></li>
+					<li><a href="/tag/join.html">Join</a></li>
+					<li><a href="/tag/curve.html">Curve</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>

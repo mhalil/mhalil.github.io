@@ -1,0 +1,1559 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Pandas 01 - Veri Çerçevesi Oluştur" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/pandas-01-veri-cercevesi-olustur.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Pandas 01 - Veri Çerçevesi Oluştur</h1>
+	<span class="post-date">Pzt 10 Ocak 2022</span>
+	<h1>VeriÇerçevesi (DataFrame) Oluştur</h1>
+<p>Bu bölümde sıfırdan <strong>Veri Çerçevesi</strong> (<strong>Data Frame</strong>) oluşturmayı ya da harici kaynaktan <strong>(MS Excel, LibreOfis Calc, CSV, JSON, URL ve Pano'dan)</strong> verileri okuyarak veri çerçevesine dönüştürmeyi öğreneceğiz.</p>
+<h2>import Fonksiyonu</h2>
+<p>Öncelikle <strong>Pandas</strong> Kütüphanesini projemize dahil edip (içe aktarıp), kodlama esnasında hızlı olması adına bu kütüphaneye <strong>pd</strong> adını atayalım;</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</code></pre></div>
+
+<h2>DataFrame() Fonksiyonu</h2>
+<p>Veri Çerçevesi (Data Frame) Oluşturmak ya da Dönüştürmek için <strong>DataFrame()</strong> fonksiyonunu kullanıyoruz. "Veri Çerçevesi"ne dönüştürmek istediğimiz veriyi, parantez içine, parametre olarak yazmalıyız.</p>
+<div class="highlight"><pre><span></span><code><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">veri</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Yukarıdaki kullanımda <strong>veri</strong> parametresi (iterable veri ya da sözlük yapısı) aşağıdakilerden herhangi biri olabilir.</p>
+<ul>
+<li>Sözlüklerden (Dictionary’lerden), serilerden veya listelerden oluşan bir sözlük (dictionary)</li>
+<li>2 boyutlu numpy dizisi</li>
+<li>Başka bir DataFrame</li>
+</ul>
+<p>örneğin bir <strong>sözlük (dict)</strong> yapısı oluşturup bu yapıyı <strong>Veri Çerçevesi</strong>ne (<strong>Data Frame</strong>'e) dönüştürelim;</p>
+<div class="highlight"><pre><span></span><code><span class="n">sozluk</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;isim&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Mustafa&quot;</span><span class="p">,</span> <span class="s2">&quot;Halil&quot;</span><span class="p">,</span> <span class="s2">&quot;Burak&quot;</span><span class="p">,</span> <span class="s2">&quot;Emre&quot;</span><span class="p">,</span> <span class="s2">&quot;Ersin&quot;</span><span class="p">,</span> <span class="s2">&quot;Sertaç&quot;</span><span class="p">,</span> <span class="s2">&quot;Furkan&quot;</span><span class="p">,</span><span class="s2">&quot;Murat&quot;</span><span class="p">,</span><span class="s2">&quot;Ahmet&quot;</span><span class="p">,</span><span class="s2">&quot;Abdülkadir&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;yaş&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">41</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">52</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">38</span><span class="p">],</span>
+                    <span class="s2">&quot;iş-meslek&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;mühendis&quot;</span><span class="p">,</span> <span class="s2">&quot;programcı&quot;</span><span class="p">,</span> <span class="s2">&quot;akademisyen&quot;</span><span class="p">,</span> <span class="s2">&quot;yönetici&quot;</span><span class="p">,</span><span class="s2">&quot;amir&quot;</span><span class="p">,</span><span class="s2">&quot;mühendis&quot;</span><span class="p">,</span> <span class="s2">&quot;yönetici&quot;</span><span class="p">,</span><span class="s2">&quot;müdür&quot;</span><span class="p">,</span><span class="s2">&quot;veteriner&quot;</span><span class="p">,</span><span class="s2">&quot;yönetici&quot;</span><span class="p">]}</span>
+<span class="n">veri</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">sozluk</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Oluşturduğumuz Veri Çerçevesinin içeriğini görelim;</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>isim</th>
+<th>yaş</th>
+<th>iş-meslek</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Mustafa</td>
+<td>25</td>
+<td>mühendis</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Halil</td>
+<td>38</td>
+<td>programcı</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Burak</td>
+<td>41</td>
+<td>akademisyen</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Emre</td>
+<td>23</td>
+<td>yönetici</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Ersin</td>
+<td>37</td>
+<td>amir</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Sertaç</td>
+<td>52</td>
+<td>mühendis</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Furkan</td>
+<td>30</td>
+<td>yönetici</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Murat</td>
+<td>23</td>
+<td>müdür</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Ahmet</td>
+<td>40</td>
+<td>veteriner</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Abdülkadir</td>
+<td>38</td>
+<td>yönetici</td>
+</tr>
+</tbody>
+</table>
+<p>Gördüğünüz gibi verimiz, <strong>DataFrame()</strong> fonksiyonu ile,
+ SQL ya da Excel tablosuna benzer şekilde satır ve sütunlardan oluşan 
+yapıya dönüştürüldü. Artık bu yapıyı yönetmek ve analiz etmek oldukça 
+kolaylaşmış oldu.</p>
+<h2>Harici Dosyalardan Veri Çerçevesi Oluştur</h2>
+<h2>CSV Dosyasını İçe Aktarmak</h2>
+<h3>read_csv() Fonksiyonu</h3>
+<p><strong>csv</strong> uzantılı dosyaların içeriğini çalışmalarımıza/projelerimize eklemek/dahil etmek istersek kullanabileceğimiz fonksiyon, <strong>read_csv()</strong>'dir.</p>
+<p>örneğin <strong>nba.csv</strong> isimli dosyasınının içeriğini çalışmamıza aktarıp, veri çerçevesine dönüştürelim;</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">nba_csv</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/nba.csv&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nba_csv</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Team</th>
+<th>Number</th>
+<th>Position</th>
+<th>Age</th>
+<th>Height</th>
+<th>Weight</th>
+<th>College</th>
+<th>Salary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Avery Bradley</td>
+<td>Boston Celtics</td>
+<td>0.0</td>
+<td>PG</td>
+<td>25.0</td>
+<td>6-2</td>
+<td>180.0</td>
+<td>Texas</td>
+<td>7730337.0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Jae Crowder</td>
+<td>Boston Celtics</td>
+<td>99.0</td>
+<td>SF</td>
+<td>25.0</td>
+<td>6-6</td>
+<td>235.0</td>
+<td>Marquette</td>
+<td>6796117.0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>John Holland</td>
+<td>Boston Celtics</td>
+<td>30.0</td>
+<td>SG</td>
+<td>27.0</td>
+<td>6-5</td>
+<td>205.0</td>
+<td>Boston University</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>3</td>
+<td>R.J. Hunter</td>
+<td>Boston Celtics</td>
+<td>28.0</td>
+<td>SG</td>
+<td>22.0</td>
+<td>6-5</td>
+<td>185.0</td>
+<td>Georgia State</td>
+<td>1148640.0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Jonas Jerebko</td>
+<td>Boston Celtics</td>
+<td>8.0</td>
+<td>PF</td>
+<td>29.0</td>
+<td>6-10</td>
+<td>231.0</td>
+<td>NaN</td>
+<td>5000000.0</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>453</td>
+<td>Shelvin Mack</td>
+<td>Utah Jazz</td>
+<td>8.0</td>
+<td>PG</td>
+<td>26.0</td>
+<td>6-3</td>
+<td>203.0</td>
+<td>Butler</td>
+<td>2433333.0</td>
+</tr>
+<tr>
+<td>454</td>
+<td>Raul Neto</td>
+<td>Utah Jazz</td>
+<td>25.0</td>
+<td>PG</td>
+<td>24.0</td>
+<td>6-1</td>
+<td>179.0</td>
+<td>NaN</td>
+<td>900000.0</td>
+</tr>
+<tr>
+<td>455</td>
+<td>Tibor Pleiss</td>
+<td>Utah Jazz</td>
+<td>21.0</td>
+<td>C</td>
+<td>26.0</td>
+<td>7-3</td>
+<td>256.0</td>
+<td>NaN</td>
+<td>2900000.0</td>
+</tr>
+<tr>
+<td>456</td>
+<td>Jeff Withey</td>
+<td>Utah Jazz</td>
+<td>24.0</td>
+<td>C</td>
+<td>26.0</td>
+<td>7-0</td>
+<td>231.0</td>
+<td>Kansas</td>
+<td>947276.0</td>
+</tr>
+<tr>
+<td>457</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+<p>458 rows × 9 columns</p>
+<h3>index_col Parametresi</h3>
+<p>Harici kaynaktan veri alarak oluşturulan veri çerçevesinin indeks 
+değerini, istediğimiz sütuna eşitleyebiliriz. Bunu yapmak için <strong>index_col</strong> parametresini kullanmalıyız. Örneğin NBA oyuncularının verileri barındıran CSV uzantılı dosyanın <strong>Name</strong> Sütununu, veri çerçevemizin <strong>indeks sütunu</strong> haline getirip veri çerçevemize göz atalım.</p>
+<div class="highlight"><pre><span></span><code><span class="n">nba_csv</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/nba.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s2">&quot;Name&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nba_csv</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Team</th>
+<th>Number</th>
+<th>Position</th>
+<th>Age</th>
+<th>Height</th>
+<th>Weight</th>
+<th>College</th>
+<th>Salary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+</tr>
+<tr>
+<td>Avery Bradley</td>
+<td>Boston Celtics</td>
+<td>0.0</td>
+<td>PG</td>
+<td>25.0</td>
+<td>6-2</td>
+<td>180.0</td>
+<td>Texas</td>
+<td>7730337.0</td>
+</tr>
+<tr>
+<td>Jae Crowder</td>
+<td>Boston Celtics</td>
+<td>99.0</td>
+<td>SF</td>
+<td>25.0</td>
+<td>6-6</td>
+<td>235.0</td>
+<td>Marquette</td>
+<td>6796117.0</td>
+</tr>
+<tr>
+<td>John Holland</td>
+<td>Boston Celtics</td>
+<td>30.0</td>
+<td>SG</td>
+<td>27.0</td>
+<td>6-5</td>
+<td>205.0</td>
+<td>Boston University</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>R.J. Hunter</td>
+<td>Boston Celtics</td>
+<td>28.0</td>
+<td>SG</td>
+<td>22.0</td>
+<td>6-5</td>
+<td>185.0</td>
+<td>Georgia State</td>
+<td>1148640.0</td>
+</tr>
+<tr>
+<td>Jonas Jerebko</td>
+<td>Boston Celtics</td>
+<td>8.0</td>
+<td>PF</td>
+<td>29.0</td>
+<td>6-10</td>
+<td>231.0</td>
+<td>NaN</td>
+<td>5000000.0</td>
+</tr>
+</tbody>
+</table>
+<p>Gördüğünüz gibi artık <strong>indeks bilgileri</strong>, <strong>Oyuncu isimleri</strong>ne dönüşmüş oldu.</p>
+<h3>read_table() Fonksiyonu</h3>
+<p><strong>read_table()</strong> fonksiyonu ile <strong>csv</strong> 
+uzantılı dosyalar içe aktarıldığında, dosyanın her satırı, tablonun bir 
+sütununa yazılır. Yani tabloda 2 sütun oluşturulur birinde index 
+bilgisi, ikinci sütunda ise <strong>csv</strong> dosyasının satırlarındaki bilgiler bulunur.</p>
+<div class="highlight"><pre><span></span><code><span class="n">nba</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/nba.csv&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nba</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name,Team,Number,Position,Age,Height,Weight,College,Salary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Avery Bradley,Boston Celtics,0.0,PG,25.0,6-2,1...</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Jae Crowder,Boston Celtics,99.0,SF,25.0,6-6,23...</td>
+</tr>
+<tr>
+<td>2</td>
+<td>John Holland,Boston Celtics,30.0,SG,27.0,6-5,2...</td>
+</tr>
+<tr>
+<td>3</td>
+<td>R.J. Hunter,Boston Celtics,28.0,SG,22.0,6-5,18...</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Jonas Jerebko,Boston Celtics,8.0,PF,29.0,6-10,...</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>453</td>
+<td>Shelvin Mack,Utah Jazz,8.0,PG,26.0,6-3,203.0,B...</td>
+</tr>
+<tr>
+<td>454</td>
+<td>Raul Neto,Utah Jazz,25.0,PG,24.0,6-1,179.0,,90...</td>
+</tr>
+<tr>
+<td>455</td>
+<td>Tibor Pleiss,Utah Jazz,21.0,C,26.0,7-3,256.0,,...</td>
+</tr>
+<tr>
+<td>456</td>
+<td>Jeff Withey,Utah Jazz,24.0,C,26.0,7-0,231.0,Ka...</td>
+</tr>
+<tr>
+<td>457</td>
+<td>,,,,,,,,</td>
+</tr>
+</tbody>
+</table>
+<p>458 rows × 1 columns</p>
+<h3>delimiter Parametresi</h3>
+<p>CSV dosyaları <strong>read_table()</strong> fonksiyonu ile içe aktarılırken <strong>delimiter = ","</strong> parametresi eklenirse, dosya içeriği, <strong>read_csv</strong> fonksiyonu ile aynı çıktıyı verir. Satırlardaki veriler, <strong>","</strong> virgül kısımlarından ayrılarak, ayrı sütunlara yazılır.</p>
+<div class="highlight"><pre><span></span><code><span class="n">nba</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/nba.csv&quot;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nba</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Team</th>
+<th>Number</th>
+<th>Position</th>
+<th>Age</th>
+<th>Height</th>
+<th>Weight</th>
+<th>College</th>
+<th>Salary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Avery Bradley</td>
+<td>Boston Celtics</td>
+<td>0.0</td>
+<td>PG</td>
+<td>25.0</td>
+<td>6-2</td>
+<td>180.0</td>
+<td>Texas</td>
+<td>7730337.0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Jae Crowder</td>
+<td>Boston Celtics</td>
+<td>99.0</td>
+<td>SF</td>
+<td>25.0</td>
+<td>6-6</td>
+<td>235.0</td>
+<td>Marquette</td>
+<td>6796117.0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>John Holland</td>
+<td>Boston Celtics</td>
+<td>30.0</td>
+<td>SG</td>
+<td>27.0</td>
+<td>6-5</td>
+<td>205.0</td>
+<td>Boston University</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>3</td>
+<td>R.J. Hunter</td>
+<td>Boston Celtics</td>
+<td>28.0</td>
+<td>SG</td>
+<td>22.0</td>
+<td>6-5</td>
+<td>185.0</td>
+<td>Georgia State</td>
+<td>1148640.0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Jonas Jerebko</td>
+<td>Boston Celtics</td>
+<td>8.0</td>
+<td>PF</td>
+<td>29.0</td>
+<td>6-10</td>
+<td>231.0</td>
+<td>NaN</td>
+<td>5000000.0</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>453</td>
+<td>Shelvin Mack</td>
+<td>Utah Jazz</td>
+<td>8.0</td>
+<td>PG</td>
+<td>26.0</td>
+<td>6-3</td>
+<td>203.0</td>
+<td>Butler</td>
+<td>2433333.0</td>
+</tr>
+<tr>
+<td>454</td>
+<td>Raul Neto</td>
+<td>Utah Jazz</td>
+<td>25.0</td>
+<td>PG</td>
+<td>24.0</td>
+<td>6-1</td>
+<td>179.0</td>
+<td>NaN</td>
+<td>900000.0</td>
+</tr>
+<tr>
+<td>455</td>
+<td>Tibor Pleiss</td>
+<td>Utah Jazz</td>
+<td>21.0</td>
+<td>C</td>
+<td>26.0</td>
+<td>7-3</td>
+<td>256.0</td>
+<td>NaN</td>
+<td>2900000.0</td>
+</tr>
+<tr>
+<td>456</td>
+<td>Jeff Withey</td>
+<td>Utah Jazz</td>
+<td>24.0</td>
+<td>C</td>
+<td>26.0</td>
+<td>7-0</td>
+<td>231.0</td>
+<td>Kansas</td>
+<td>947276.0</td>
+</tr>
+<tr>
+<td>457</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+<p>458 rows × 9 columns</p>
+<h2>Excel dosyasını içe aktarmak</h2>
+<h3>read_excel() Fonksiyonu</h3>
+<p><strong>MS Excel</strong> ve <strong>Libre Ofis Calc</strong> programlarıyla oluşturulmuş tabloları, çalışmamıza/projemize dahil etmek için <strong>read_excel()</strong> fonksiyonunu kullanmalıyız.</p>
+<p><u>Bu fonksiyon;</u></p>
+<ul>
+<li><strong>xls, xlsx, xlsm, xlsb, odf, ods</strong> ve odt <strong>uzantılı</strong> dosyaları destekler.</li>
+<li>Yerel bir dosya sisteminde veya bir URL'den depolanan excel, calc dosyalarını yükleyebilir.</li>
+<li>Bir tek çalışma sayfasından veya bir sayfa listesinden içerik okumayı da destekler.</li>
+<li>İki sayfa okunurken, <strong>DataFrame</strong> Sözlük (Dict) yapısına dönüşür.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">dosya_adi</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Bu fonksiyon kullanıldığında, varsayılan olarak, excel dosyasının <strong>ilk çalışma sayfası</strong> yüklenir ve bu sayfanın <strong>ilk satır</strong>, bir Veri Çerçevesi <strong>başlığı (sütun adı)</strong> olarak ayarlanır.</p>
+<div class="highlight"><pre><span></span><code><span class="n">dogumlar</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/AyaGöreDoğumlar.xlsx&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dogumlar</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Yıl</th>
+<th>Toplam</th>
+<th>Ocak</th>
+<th>Şubat</th>
+<th>Mart</th>
+<th>Nisan</th>
+<th>Mayıs</th>
+<th>Haziran</th>
+<th>Temmuz</th>
+<th>Ağustos</th>
+<th>Eylül</th>
+<th>Ekim</th>
+<th>Kasım</th>
+<th>Aralık</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>2001</td>
+<td>1323341</td>
+<td>170397</td>
+<td>103476</td>
+<td>107912</td>
+<td>102585</td>
+<td>110391</td>
+<td>111722</td>
+<td>119752</td>
+<td>120963</td>
+<td>109590</td>
+<td>103662</td>
+<td>92554</td>
+<td>70337</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2002</td>
+<td>1229555</td>
+<td>155065</td>
+<td>103446</td>
+<td>102175</td>
+<td>95976</td>
+<td>99501</td>
+<td>102627</td>
+<td>109747</td>
+<td>108061</td>
+<td>99701</td>
+<td>96216</td>
+<td>89285</td>
+<td>67755</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2003</td>
+<td>1198927</td>
+<td>138670</td>
+<td>89548</td>
+<td>101046</td>
+<td>92574</td>
+<td>99531</td>
+<td>104644</td>
+<td>109225</td>
+<td>109159</td>
+<td>98766</td>
+<td>94838</td>
+<td>89542</td>
+<td>71384</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2004</td>
+<td>1222484</td>
+<td>141538</td>
+<td>94596</td>
+<td>100696</td>
+<td>100801</td>
+<td>102214</td>
+<td>105728</td>
+<td>111102</td>
+<td>110425</td>
+<td>98492</td>
+<td>94840</td>
+<td>90833</td>
+<td>71219</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2005</td>
+<td>1244041</td>
+<td>142311</td>
+<td>94234</td>
+<td>100529</td>
+<td>97441</td>
+<td>106833</td>
+<td>108536</td>
+<td>111066</td>
+<td>111430</td>
+<td>103273</td>
+<td>103310</td>
+<td>92364</td>
+<td>72714</td>
+</tr>
+</tbody>
+</table>
+<p>Pandas kütüphanesi, tablo okumayı kolaylaştırır ve birden çok satıra 
+yayılan (birleştirilmiş hücrelerdeki) verileri, (ilgili sütunu 
+işleyerek) her hücreye kopyalar. Orjinal tablomuz aşağıdaki gibidir.</p>
+<p><img alt="nba" src="https://mhalil.github.io/images/python/nba.png"></p>
+<div class="highlight"><pre><span></span><code><span class="n">nba2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/nba.xlsx&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nba2</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Team</th>
+<th>Number</th>
+<th>Position</th>
+<th>Age</th>
+<th>Height</th>
+<th>Weight</th>
+<th>College</th>
+<th>Salary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Avery Bradley</td>
+<td>Boston Celtics</td>
+<td>0.0</td>
+<td>PG</td>
+<td>25.0</td>
+<td>6-2</td>
+<td>180.0</td>
+<td>Texas</td>
+<td>7730337.0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Jae Crowder</td>
+<td>Boston Celtics</td>
+<td>99.0</td>
+<td>SF</td>
+<td>25.0</td>
+<td>6-6</td>
+<td>235.0</td>
+<td>Marquette</td>
+<td>6796117.0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>John Holland</td>
+<td>Boston Celtics</td>
+<td>30.0</td>
+<td>SG</td>
+<td>27.0</td>
+<td>6-5</td>
+<td>205.0</td>
+<td>Boston University</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>3</td>
+<td>R.J. Hunter</td>
+<td>Boston Celtics</td>
+<td>28.0</td>
+<td>SG</td>
+<td>22.0</td>
+<td>6-5</td>
+<td>185.0</td>
+<td>Georgia State</td>
+<td>1148640.0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Thomas Robinson</td>
+<td>Brooklyn Nets</td>
+<td>41.0</td>
+<td>PF</td>
+<td>25.0</td>
+<td>6-10</td>
+<td>237.0</td>
+<td>Kansas</td>
+<td>981348.0</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Henry Sims</td>
+<td>Brooklyn Nets</td>
+<td>14.0</td>
+<td>C</td>
+<td>26.0</td>
+<td>6-10</td>
+<td>248.0</td>
+<td>Georgetown</td>
+<td>947276.0</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Donald Sloan</td>
+<td>Brooklyn Nets</td>
+<td>15.0</td>
+<td>PG</td>
+<td>28.0</td>
+<td>6-3</td>
+<td>205.0</td>
+<td>Texas A&amp;M</td>
+<td>947276.0</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Thaddeus Young</td>
+<td>Brooklyn Nets</td>
+<td>30.0</td>
+<td>PF</td>
+<td>27.0</td>
+<td>6-8</td>
+<td>221.0</td>
+<td>Georgia Tech</td>
+<td>11235955.0</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Arron Afflalo</td>
+<td>New York Knicks</td>
+<td>4.0</td>
+<td>SG</td>
+<td>30.0</td>
+<td>6-5</td>
+<td>210.0</td>
+<td>UCLA</td>
+<td>8000000.0</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Lou Amundson</td>
+<td>New York Knicks</td>
+<td>17.0</td>
+<td>PF</td>
+<td>33.0</td>
+<td>6-9</td>
+<td>220.0</td>
+<td>UNLV</td>
+<td>1635476.0</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Thanasis Antetokounmpo</td>
+<td>New York Knicks</td>
+<td>43.0</td>
+<td>SF</td>
+<td>23.0</td>
+<td>6-7</td>
+<td>205.0</td>
+<td>NaN</td>
+<td>30888.0</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Carmelo Anthony</td>
+<td>New York Knicks</td>
+<td>7.0</td>
+<td>SF</td>
+<td>32.0</td>
+<td>6-8</td>
+<td>240.0</td>
+<td>Syracuse</td>
+<td>22875000.0</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Jose Calderon</td>
+<td>New York Knicks</td>
+<td>3.0</td>
+<td>PG</td>
+<td>34.0</td>
+<td>6-3</td>
+<td>200.0</td>
+<td>NaN</td>
+<td>7402812.0</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Cleanthony Early</td>
+<td>New York Knicks</td>
+<td>11.0</td>
+<td>SF</td>
+<td>25.0</td>
+<td>6-8</td>
+<td>210.0</td>
+<td>Wichita State</td>
+<td>845059.0</td>
+</tr>
+</tbody>
+</table>
+<p>Pandas kütüphanesi sayesinde, <strong>Team</strong> Sütunundaki 
+birleştirilmiş hücrelerde bulunan veriler, hücrelere ayrı ayrı 
+kopyalanarak düzgün, bir veri çevçevesi oluşturmamızı sağlamış oldu. 
+Benzer işlemi, <a href="https://mhalil.github.io/Pandas_Eksik_Kayip_Veri_Yontemleri.html">Eksik / Kayıp Veri Tespiti ve Düzenleme Yöntemleri</a> bölümündeki <a href="https://mhalil.github.io/Pandas_Eksik_Kayip_Veri_Yontemleri.html#fillna-fonksiyonu"><strong>fillna</strong> fonksiyonu</a>'nun <a href="https://mhalil.github.io/Pandas_Eksik_Kayip_Veri_Yontemleri.html#method-parametresi"><strong>method parametresi</strong></a>ni kullanarak ta gerçekleştirebiliriz.</p>
+<p><strong>MS Excel</strong> ve <strong>Libre Ofis Calc</strong> tabloları ile çalışma konusunu, ayrı sayfada detaylı olarak açıkladık. İlgili bağlantıya <a href="https://mhalil.github.io/Pandas_Excel_Dosyasi_ile_Calis.html">buradan</a> erişebilirsiniz.</p>
+<h2>JSON dosyasını içe aktarmak</h2>
+<h3>read_json() Fonksiyonu</h3>
+<p><strong>read_json()</strong> fonksiyonu ile <strong>json</strong> uzantılı dosyaları çalışmalarınıza dahil edebilirsiniz.</p>
+<div class="highlight"><pre><span></span><code><span class="n">veri_json</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/json_verisi.json&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">veri_json</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Duration</th>
+<th>Pulse</th>
+<th>Maxpulse</th>
+<th>Calories</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>60</td>
+<td>110</td>
+<td>130</td>
+<td>409</td>
+</tr>
+<tr>
+<td>1</td>
+<td>60</td>
+<td>117</td>
+<td>145</td>
+<td>479</td>
+</tr>
+<tr>
+<td>2</td>
+<td>60</td>
+<td>103</td>
+<td>135</td>
+<td>340</td>
+</tr>
+<tr>
+<td>3</td>
+<td>45</td>
+<td>109</td>
+<td>175</td>
+<td>282</td>
+</tr>
+<tr>
+<td>4</td>
+<td>45</td>
+<td>117</td>
+<td>148</td>
+<td>406</td>
+</tr>
+<tr>
+<td>5</td>
+<td>60</td>
+<td>102</td>
+<td>127</td>
+<td>300</td>
+</tr>
+</tbody>
+</table>
+<p>Yerel diskinizde bulunan <strong>json</strong> dosyası dışında, <u>bir websitesindeki <strong>json</strong> dosyasını da</u> çalışmanıza dahil etmek isterseniz yine <strong>read_json()</strong> fonksiyonunu kullanabilirsiniz.</p>
+<div class="highlight"><pre><span></span><code><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://api.exchangerate-api.com/v4/latest/USD&quot;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>provider</th>
+<th>WARNING_UPGRADE_TO_V6</th>
+<th>terms</th>
+<th>base</th>
+<th>date</th>
+<th>time_last_updated</th>
+<th>rates</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AED</td>
+<td>https://www.exchangerate-api.com</td>
+<td>https://www.exchangerate-api.com/docs/free</td>
+<td>https://www.exchangerate-api.com/terms</td>
+<td>USD</td>
+<td>2022-07-11</td>
+<td>1657497602</td>
+<td>3.67</td>
+</tr>
+<tr>
+<td>AFN</td>
+<td>https://www.exchangerate-api.com</td>
+<td>https://www.exchangerate-api.com/docs/free</td>
+<td>https://www.exchangerate-api.com/terms</td>
+<td>USD</td>
+<td>2022-07-11</td>
+<td>1657497602</td>
+<td>87.53</td>
+</tr>
+<tr>
+<td>ALL</td>
+<td>https://www.exchangerate-api.com</td>
+<td>https://www.exchangerate-api.com/docs/free</td>
+<td>https://www.exchangerate-api.com/terms</td>
+<td>USD</td>
+<td>2022-07-11</td>
+<td>1657497602</td>
+<td>114.07</td>
+</tr>
+<tr>
+<td>AMD</td>
+<td>https://www.exchangerate-api.com</td>
+<td>https://www.exchangerate-api.com/docs/free</td>
+<td>https://www.exchangerate-api.com/terms</td>
+<td>USD</td>
+<td>2022-07-11</td>
+<td>1657497602</td>
+<td>409.31</td>
+</tr>
+<tr>
+<td>ANG</td>
+<td>https://www.exchangerate-api.com</td>
+<td>https://www.exchangerate-api.com/docs/free</td>
+<td>https://www.exchangerate-api.com/terms</td>
+<td>USD</td>
+<td>2022-07-11</td>
+<td>1657497602</td>
+<td>1.79</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>XPF</td>
+<td>https://www.exchangerate-api.com</td>
+<td>https://www.exchangerate-api.com/docs/free</td>
+<td>https://www.exchangerate-api.com/terms</td>
+<td>USD</td>
+<td>2022-07-11</td>
+<td>1657497602</td>
+<td>117.34</td>
+</tr>
+<tr>
+<td>YER</td>
+<td>https://www.exchangerate-api.com</td>
+<td>https://www.exchangerate-api.com/docs/free</td>
+<td>https://www.exchangerate-api.com/terms</td>
+<td>USD</td>
+<td>2022-07-11</td>
+<td>1657497602</td>
+<td>249.15</td>
+</tr>
+<tr>
+<td>ZAR</td>
+<td>https://www.exchangerate-api.com</td>
+<td>https://www.exchangerate-api.com/docs/free</td>
+<td>https://www.exchangerate-api.com/terms</td>
+<td>USD</td>
+<td>2022-07-11</td>
+<td>1657497602</td>
+<td>16.83</td>
+</tr>
+<tr>
+<td>ZMW</td>
+<td>https://www.exchangerate-api.com</td>
+<td>https://www.exchangerate-api.com/docs/free</td>
+<td>https://www.exchangerate-api.com/terms</td>
+<td>USD</td>
+<td>2022-07-11</td>
+<td>1657497602</td>
+<td>16.38</td>
+</tr>
+<tr>
+<td>ZWL</td>
+<td>https://www.exchangerate-api.com</td>
+<td>https://www.exchangerate-api.com/docs/free</td>
+<td>https://www.exchangerate-api.com/terms</td>
+<td>USD</td>
+<td>2022-07-11</td>
+<td>1657497602</td>
+<td>374.49</td>
+</tr>
+</tbody>
+</table>
+<p>161 rows × 7 columns</p>
+<h2>URL ya da HTML dosyası içe aktarmak</h2>
+<h3>read_html() Fonksiyonu</h3>
+<p><strong>read_html()</strong> fonksiyonu ile web sitelerinde ya da 
+htm/html uzantılı dosyalardaki tabloları, çalışmalarınıza dahil 
+edebilirsiniz. Öncelikle veri almak istediğimiz sayfanın içerisinde kaç 
+adet tablo olduğunu bulalım.</p>
+<div class="highlight"><pre><span></span><code><span class="n">url_tablo</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_html</span><span class="p">(</span><span class="s2">&quot;https://tr.wikipedia.org/wiki/Van&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sayfada bulunan toplam tablo sayısı: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">url_tablo</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">Sayfada</span> <span class="n">bulunan</span> <span class="n">toplam</span> <span class="n">tablo</span> <span class="n">sayısı</span><span class="p">:</span> <span class="mi">11</span>
+</code></pre></div>
+
+<p>Hangi tabloyu kullanmak (içe aktarmak) istiyorsak öncelikle o tabloyu, tam olarak belirtmemiz/tanımlamamız gerekiyor. Bunu da <strong>read_html()</strong> fonksiyonunun <strong>match (eşle)</strong> parametresi ile yapmamız gerekir. Benim kullanmak istediğim tablonun içerisinde <strong>Van il nüfus bilgileri</strong> ibaresi bulunduğu için ben bu "<u>kelime grubunu</u>" <strong>match</strong> parametresine dahil ediyorum.</p>
+<div class="highlight"><pre><span></span><code><span class="n">url_tablo</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_html</span><span class="p">(</span><span class="s2">&quot;https://tr.wikipedia.org/wiki/Van&quot;</span><span class="p">,</span> <span class="n">match</span><span class="o">=</span><span class="s2">&quot;Van il nüfus bilgileri&quot;</span><span class="p">)</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">url_tablo</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mi">1</span>
+</code></pre></div>
+
+<p>Bu demek oluyor ki, sayfa içeriğinde, <strong>Van il nüfus bilgileri</strong> ibaresi bulunan <u>1 adet eşleşmiş tablo</u> var, artık <strong>url</strong> değişkeni sayfadaki tek tabloyu temsil ediyor ve bu tabloya erişmek için ilk indis olan <strong>0 sıfır</strong>'ı kullanmamız gerekir.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">url_tablo</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Van il nüfus bilgileri</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>Yıl</td>
+<td>Toplam</td>
+<td>Sıra</td>
+<td>Fark</td>
+<td>Şehir - Kır</td>
+</tr>
+<tr>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1965[11]</td>
+<td>266.840</td>
+<td>48</td>
+<td>NaN</td>
+<td>%23 60.686206.154 %77</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1970[12]</td>
+<td>325.763</td>
+<td>43</td>
+<td>%22</td>
+<td>%27 88.227237.536 %73</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1975[13]</td>
+<td>386.314</td>
+<td>42</td>
+<td>%19</td>
+<td>%30 115.830270.484 %70</td>
+</tr>
+<tr>
+<td>3</td>
+<td>1980[14]</td>
+<td>468.646</td>
+<td>39</td>
+<td>%21</td>
+<td>%33 156.852311.794 %67</td>
+</tr>
+<tr>
+<td>4</td>
+<td>1985[15]</td>
+<td>547.216</td>
+<td>35</td>
+<td>%17</td>
+<td>%35 189.269357.947 %65</td>
+</tr>
+<tr>
+<td>5</td>
+<td>1990[16]</td>
+<td>637.433</td>
+<td>32</td>
+<td>%16</td>
+<td>%41 258.967378.466 %59</td>
+</tr>
+<tr>
+<td>6</td>
+<td>2000[17]</td>
+<td>877.524</td>
+<td>23</td>
+<td>%38</td>
+<td>%51 446.976430.548 %49</td>
+</tr>
+<tr>
+<td>7</td>
+<td>2007[18]</td>
+<td>979.671</td>
+<td>19</td>
+<td>%12</td>
+<td>%52 511.678467.993 %48</td>
+</tr>
+<tr>
+<td>8</td>
+<td>2008[19]</td>
+<td>1.004.369</td>
+<td>19</td>
+<td>%3</td>
+<td>%51 514.481489.888 %49</td>
+</tr>
+<tr>
+<td>9</td>
+<td>2009[20]</td>
+<td>1.022.310</td>
+<td>19</td>
+<td>%2</td>
+<td>%52 527.525494.785 %48</td>
+</tr>
+<tr>
+<td>10</td>
+<td>2010[21]</td>
+<td>1.035.418</td>
+<td>19</td>
+<td>%1</td>
+<td>%52 539.619495.799 %48</td>
+</tr>
+<tr>
+<td>11</td>
+<td>2011[22]</td>
+<td>1.022.532</td>
+<td>19</td>
+<td>-%1</td>
+<td>%52 526.725495.807 %48</td>
+</tr>
+<tr>
+<td>12</td>
+<td>2012[23]</td>
+<td>1.051.975</td>
+<td>19</td>
+<td>%3</td>
+<td>%52 548.717503.258 %48</td>
+</tr>
+<tr>
+<td>13</td>
+<td>2013[24]</td>
+<td>1.070.113</td>
+<td>19</td>
+<td>%2</td>
+<td>Şehir ve kır ayrımı kaldırılmıştır.</td>
+</tr>
+<tr>
+<td>14</td>
+<td>2014[25]</td>
+<td>1.085.542</td>
+<td>19</td>
+<td>%1</td>
+<td>Şehir ve kır ayrımı kaldırılmıştır.</td>
+</tr>
+<tr>
+<td>15</td>
+<td>2015[26]</td>
+<td>1.096.397</td>
+<td>19</td>
+<td>%1</td>
+<td>Şehir ve kır ayrımı kaldırılmıştır.</td>
+</tr>
+<tr>
+<td>16</td>
+<td>2016[26]</td>
+<td>1.100.190</td>
+<td>19</td>
+<td>%0</td>
+<td>Şehir ve kır ayrımı kaldırılmıştır.</td>
+</tr>
+<tr>
+<td>17</td>
+<td>2017[26]</td>
+<td>1.106.891</td>
+<td>19</td>
+<td>%1</td>
+<td>Şehir ve kır ayrımı kaldırılmıştır.</td>
+</tr>
+<tr>
+<td>18</td>
+<td>2018[26]</td>
+<td>1.123.784</td>
+<td>19</td>
+<td>%2</td>
+<td>Şehir ve kır ayrımı kaldırılmıştır.</td>
+</tr>
+<tr>
+<td>19</td>
+<td>2019[26]</td>
+<td>1.136.757</td>
+<td>19</td>
+<td>%1</td>
+<td>Şehir ve kır ayrımı kaldırılmıştır.</td>
+</tr>
+<tr>
+<td>20</td>
+<td>2020[26]</td>
+<td>1.149.342</td>
+<td>19</td>
+<td>%1</td>
+<td>Şehir ve kır ayrımı kaldırılmıştır.</td>
+</tr>
+<tr>
+<td>21</td>
+<td>2021[26]</td>
+<td>1.141.015</td>
+<td>19</td>
+<td>-%1</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+<p><strong>len(url_tablo)</strong> çıktısı <strong>1</strong>'den büyük, yani sayfada aranan kelime ile eşleşen 1'den fazla tablo olsaydı, o durumda <strong>url_tablo[0]</strong> kodundaki indis değerini değiştirerek istediğimiz tabloya erişebilecektik. Örneğin; <strong>url_tablo[3]</strong><br>
+Aşağıdaki kodu çalıştırırsanız, ilgili sayfada <strong>ilçe</strong> ibaresi geçen 5 adet tablo bulunduğunu göreceksiniz.</p>
+<div class="highlight"><pre><span></span><code><span class="n">url_tablo</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_html</span><span class="p">(</span><span class="s2">&quot;https://tr.wikipedia.org/wiki/Ankara&quot;</span><span class="p">,</span> <span class="n">match</span><span class="o">=</span><span class="s2">&quot;İlçe&quot;</span><span class="p">)</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">url_tablo</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Bu tablolardan 3. tabloya ulaşmak için <strong>print(url_tablo[2])</strong> komutunu çalıştırmanız gerekecektir (indis değeri 0'dan başladığı için 3 yerine 2 yazmalıyız).</p>
+<h2>Panodan İçe Aktarmak</h2>
+<h3>read_clipboard() Fonksiyonu</h3>
+<p><strong>read_clipboard()</strong> fonksiyonu ile panoya 
+kopyaladığımız veriyi (örneğin bir Excel tablosu ya da websitesindeki 
+tabloyu) Veri Çerçevesine dönüştürebiliriz.</p>
+<div class="highlight"><pre><span></span><code>pano = pd.read_clipboard()
+print(pano)
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>İlçe</th>
+<th>2020</th>
+<th>2021</th>
+<th>Fark</th>
+<th>Nüfus art. %</th>
+<th>Mah. say.</th>
+<th>Alanı km2</th>
+<th>Yoğunluk</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Adalar</td>
+<td>16.033</td>
+<td>16.372</td>
+<td>339.000</td>
+<td>2.11</td>
+<td>5</td>
+<td>11</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Arnavutköy</td>
+<td>296.709</td>
+<td>312.023</td>
+<td>15.314</td>
+<td>5.16</td>
+<td>38</td>
+<td>453</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Ataşehir</td>
+<td>422.594</td>
+<td>427.217</td>
+<td>4.623</td>
+<td>1.09</td>
+<td>17</td>
+<td>25</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Avcılar</td>
+<td>436.897</td>
+<td>457.981</td>
+<td>21.084</td>
+<td>4.82</td>
+<td>10</td>
+<td>50</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Bağcılar</td>
+<td>737.206</td>
+<td>744.351</td>
+<td>7.145</td>
+<td>0.96</td>
+<td>22</td>
+<td>23</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Bahçelievler</td>
+<td>592.371</td>
+<td>605.300</td>
+<td>12.929</td>
+<td>2.18</td>
+<td>11</td>
+<td>17</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Bakırköy</td>
+<td>226.229</td>
+<td>228.759</td>
+<td>2.530</td>
+<td>1.11</td>
+<td>15</td>
+<td>29</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Başakşehir</td>
+<td>469.924</td>
+<td>503.243</td>
+<td>33.319</td>
+<td>7.09</td>
+<td>11</td>
+<td>107</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+<p><a href="pandas-02-excel-dosyalari-ile-calismak.html">Sonraki Bölüm →</a></p>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/pandas.html">Pandas</a></li>
+					<li><a href="/tag/dataframe.html">DataFrame</a></li>
+					<li><a href="/tag/veri-cercevesi.html">Veri Çerçevesi</a></li>
+					<li><a href="/tag/olustur.html">Oluştur</a></li>
+					<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+					<li><a href="/tag/modul.html">Modül</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>

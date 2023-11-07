@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="FreeCAD - Curves WB - Surface - 15 - BlendSolid" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/freecad-curves-wb-surface-15-blendsolid.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">FreeCAD - Curves WB - Surface - 15 - BlendSolid</h1>
+	<span class="post-date">Cts 05 Kasım 2022</span>
+	<h1><img alt="blendSolid" src="https://raw.githubusercontent.com/tomate44/CurvesWB/9aac6c2365311724487f79df3343dab90ddcb819/freecad/Curves/resources/icons/blendSolid.svg"> BlendSolid</h1>
+<p><strong>BlendSolid</strong> komutu, seçili iki yüzeyi, bu yüzeylere ait seçili 2'şer kenarı referans alarak birleştirir. Komut, <strong>Extrude</strong>, <strong>Loft</strong> ve <strong>Sweep</strong> komutlarına benzetilebilir.  </p>
+<p><strong>Kullanım:</strong> Komutu çalıştırmak için aşağıdaki adımları sırası ile uygulayın:</p>
+<ul>
+<li>Öncelikle bir eğri (veya kenar çizgisi) ve yüzey seçin. (Birlikte seçim için <code>CTRL</code> tuşunu kullanın)</li>
+<li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
+<li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>BlendSolid</strong> seçeneğini kullanın.</li>
+</ul>
+<p>Sahnede aynı ölçülere sahip iki adet küp nesnesi var. Bu küpler, <strong>Part Çalışma Tezgahı</strong> ile oluşturuldu.<br>
+<img alt="BlendSolid_01" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_01.png"><br>
+İlk olarak birinci küpün bir yüzeyini ve seçili yüzeye ait iki kenar çizgisini seçiyoruz.
+<img alt="BlendSolid_02" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_02.png"><br>
+Ardından ikinci küpün bir yüzeyini ve seçili yüzeye ait iki kenarı seçiyoruz.
+<img alt="BlendSolid_03" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_03.png"><br>
+Curves araç çubuğunda bulunan <strong>BlendSolid</strong> düğmesi ile ya da <strong>Surface</strong> menüsündeki <strong>BlendSolid</strong> seçeneği ile komutu çalıştırıyoruz.
+<img alt="BlendSolid_04" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_04.png"><br>
+İşlem sonrası, seçili iki yüzey, seçili kenarlar referans alınarak birleştirildi. Unsur ağacında <strong>Blend_Solid</strong> nesnesi oluştu. Seçili kenarlar birbirine paralel ve aynı düzlemde olduğu için sonuç <strong>Extrude</strong> komutuna benzer bir çıktı verdi.
+<img alt="BlendSolid_05" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_05.png"><br>
+Küplerden birinin açısını ve konumunu değiştirip sonucu inceleyelim.<br>
+Sahnenin solunda bulunan küpü, <strong>X</strong> eksenin etrafında çevirip <strong>Z</strong> ekseninde yukarı yönde taşıyalım.
+<img alt="BlendSolid_06" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_06.png"><br>
+<strong>BlendSolid</strong> komutu sonucu elde ettiğimiz <strong>Blend_Solid</strong> unsuru, nesnelerin açısının ve konumunun değişmesi sonucunda yeniden hesaplanarak güncellendi.
+<img alt="BlendSolid_07" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_07.png"><br>
+<strong>Continuity1</strong> ve <strong>Continuity2</strong> süreklilik değerleri varsayılan olarak <strong>2</strong> atanmış. Bu değeri <strong>0</strong> (sıfır) olarak değiştirirsek, <strong>Blend_Solid</strong> unsuru, eğrisel formunu kaybedip, doğrusal bir hal alır.
+<img alt="BlendSolid_08" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_08.png"><br>
+<strong>Continuity1</strong> ve <strong>Continuity2</strong> süreklilik değerleri değiştirilerek farklı sonuçlar elde edilebilir.
+<img alt="BlendSolid_09" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_09.png"><br>
+Küpü biraz da <strong>Y</strong> ekseninde çevirelim.
+<img alt="BlendSolid_10" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_10.png"><br>
+Sonuç gayet başarılı. Yapılan değişiklik neticesinde, burkulmuş bir cisim elde etmiş olduk.
+<img alt="BlendSolid_11" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_11.png"><br>
+Küpün ebatlarını (ölçülerini) değiştirelim.
+<img alt="BlendSolid_12" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_12.png"><br>
+Sahneye sağ yan görünüşten bakıp sonucu inceleyelim.
+<img alt="BlendSolid_13" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_13.png"><br>
+Küpün açısını ve konumunu ilk değerine geri getirip, ölçüsü değişmiş halde bırakalım.
+<img alt="BlendSolid_14" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_14.png"><br>
+<strong>BlendSolid</strong> komutunu, bir de <strong>Part Design</strong> Çalışma Tezgahı ile oluşturduğumuz prizmatik nesnelere üzerinde kullanmaya çalışalım.<br>
+Kare ve Dikdörtgen şekiller çizip <strong>Pad</strong> komutu ile kalınlık verdiğimiz küplerin yüzey ve kenarlarını seçip <strong>BlendSolid</strong> komutunu çalıştıralım.
+<img alt="BlendSolid_15" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_15.png"><br>
+Unsur ağacında <strong>Blend_Solid</strong> unsuru oluştu ancak, sonuç istediğimiz gibi olmadı. <strong>BlendSolid</strong> komutunun çalışması için ilave işlem uygulamamız gerekiyor.
+<img alt="BlendSolid_16" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_16.png"><br>
+<strong>Part Design</strong> Çalışma Tezgahında oluşturduğumuz Gövde (Body) nesnelerini, <strong>Part</strong> Çalışma Tezgahı komutu yardımıyla <strong>Bileşik (Compound)</strong> hale getiriyoruz. 
+<img alt="BlendSolid_17" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_17.png"><br>
+<strong>Bileşik (Compound)</strong> komutu düğmesi, araç çubuğunda da mevcut.
+<img alt="BlendSolid_18" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_18.png"><br>
+Gövde nesnelerini Bileşiğe dönüştürüldükten sonra, yüzey ve kenarları seçerek <strong>BlendSolid</strong> komutunu tekrar çalıştıralım.
+<img alt="BlendSolid_19" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_19.png"><br>
+Sonuç başarılı. Yüzeylere ait seçili kenarlar, aşağıdaki resimde yeşil renkli olarak görünüyor.
+<img alt="BlendSolid_20" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_20.png"><br>
+Dikdörtgenler prizmasının açısını değiştirelim.
+<img alt="BlendSolid_21" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_21.png"><br>
+Burkulmuş doğrusal nesne elde ettik.
+<img alt="BlendSolid_22" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_22.png"><br>
+Dikdörtgenler prizmasının konumunu da değiştirip <strong>Z</strong> ekseninde yukarı taşıyalım.
+<img alt="BlendSolid_23" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_23.png"><br>
+Bu kez, burkulmuş eğrisel nesne elde etmiş olduk.
+<img alt="BlendSolid_24" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_24.png"><br>
+Bir de, dikdörtgen dışındaki şekilleri inceleyelim. Sahneye Dikdörtgenler prizması ile bir Silindir ekleyelim.
+<img alt="BlendSolid_25" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_25.png"><br>
+Yüzeyleri ve kenarları seçip, <strong>BlendSolid</strong> komutunu çalıştıralım.
+<img alt="BlendSolid_26" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_26.png"><br>
+Görüldüğü üzere, Unsur ağacında <strong>Blend_Solid</strong> nesnesi oluştu ancak sonuç beklediğimiz gibi olmadı. Unsur ağacında <strong>Blend_Solid</strong> nesnesinde Ünlem işareti olduğuna dikkat edin.
+<img alt="BlendSolid_27" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_27.png"><br>
+Komutun doğru sonuç vermemesinin, istediğimiz sonucu elde edemememizin sebebi, Silindirin seçili yüzeyine ait sadece bir kenar çizgisi olmasıdır.
+<img alt="BlendSolid_28" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_28.png"><br>
+Silindirin kesit alanını, bir çember yerine birden fazla (örneğin 4) yay parçası ile oluşturalım.
+<img alt="BlendSolid_29" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_29.png"><br>
+Silindir nesnesini <strong>Bileşik (Compound)</strong> hale getirelim.
+<img alt="BlendSolid_30" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_30.png"><br>
+Birer Yüzey ve 2'şer kenar çizgisi seçerek <strong>BlendSolid</strong> komutunu çalıştıralım.
+<img alt="BlendSolid_31" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_31.png"><br>
+Komut bu kez başarılı sonuç verdi. Seçili kenarlara bağlı olarak Eğrisel bir yapı elde edildi.
+<img alt="BlendSolid_32" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_32.png"><br>
+<strong>Blend_Solid</strong> nesnesinin <strong>Continuity1</strong> ve <strong>Continuity2</strong> süreklilik değerleri <strong>0</strong> (sıfır) olarak değiştirildiğinde, <strong>Loft</strong> komutuna benzer doğrusal yapı elde edildi.<br>
+<strong>Fuse</strong> parametresi, <strong>false</strong> olarak ayarlandığı için oluşan <strong>Blend_Solid</strong> nesnesi ayrı bir nesne olarak unsur ağacında görüntüleniyor.
+<img alt="BlendSolid_33" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_33.png"><br>
+Silindirin konumunu ve açısını değiştirip, <strong>Continuity1</strong> ve <strong>Continuity2</strong> süreklilik değerlerini artırdığımızda aşağıdaki sonucu elde ediyoruz.
+<img alt="BlendSolid_34" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_34.png"><br>
+<strong>Fuse</strong> parametresini, <strong>true</strong> olarak ayarladığımızda <strong>Blend_Solid</strong> nesnesi, bağlantılı olduğu nesnelerle (Dikdörtgenler prizması ve Silindir) birleştirilip tek bir nesne olarak unsur ağacında görüntülenir.
+<img alt="BlendSolid_35" src="../../images/freecad/curves_wb/surfaces_menu/BlendSolid_35.png">  </p>
+<p><a href="freecad-curves-wb-surface-00-menu-komutlari.html">&lt;&lt;&lt; Surfaces Menü Komutlarına Ait Sayfaya Dön</a></p>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/freecad.html">FreeCAD</a></li>
+					<li><a href="/tag/curves.html">Curves</a></li>
+					<li><a href="/tag/workbench.html">Workbench</a></li>
+					<li><a href="/tag/calismatezgahi.html">ÇalışmaTezgahı</a></li>
+					<li><a href="/tag/surface.html">Surface</a></li>
+					<li><a href="/tag/blendsolid.html">BlendSolid</a></li>
+					<li><a href="/tag/blend.html">Blend</a></li>
+					<li><a href="/tag/solid.html">Solid</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>

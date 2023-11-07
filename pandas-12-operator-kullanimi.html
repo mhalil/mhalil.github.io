@@ -1,0 +1,1811 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Pandas 12 - Operator Kullanımı" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/pandas-12-operator-kullanimi.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Pandas 12 - Operator Kullanımı</h1>
+	<span class="post-date">Pzt 28 Şubat 2022</span>
+	<h1>Operator Kullanımı</h1>
+<h2>Atama Operatorleri</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</code></pre></div>
+
+<h1>Aritmetik İşlem Operatörleri</h1>
+<h2>sum() Metodu</h2>
+<p>Python'dan kullanmaya aşina olduğumuz <strong>sum()</strong> fonksiyonu, Pandas içerisinde metot olarak bulunuyor.
+Yani Python'da <strong>sum()</strong> fonksiyonuna parametre olarak değişken veriyorduk. </p>
+<p>(Ör. <strong>sum(liste)</strong>).
+Pandasta ise veri çerçevesi adının sonuna metot olarak ekliyoruz. </p>
+<p>(Ör. <strong>VeriCercevesi.sum()</strong>)
+Örneklerle inceleyelim.</p>
+<div class="highlight"><pre><span></span><code><span class="n">baslik</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Birler&quot;</span><span class="p">,</span> <span class="s2">&quot;Onlar&quot;</span><span class="p">,</span> <span class="s2">&quot;Yüzler&quot;</span><span class="p">]</span>
+<span class="n">basliksiz</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/basliksiz.ods&quot;</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">names</span> <span class="o">=</span> <span class="n">baslik</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">basliksiz</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Birler</th>
+<th>Onlar</th>
+<th>Yüzler</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>9</td>
+<td>82</td>
+<td>246</td>
+</tr>
+<tr>
+<td>1</td>
+<td>7</td>
+<td>78</td>
+<td>180</td>
+</tr>
+<tr>
+<td>2</td>
+<td>8</td>
+<td>83</td>
+<td>565</td>
+</tr>
+<tr>
+<td>3</td>
+<td>6</td>
+<td>82</td>
+<td>486</td>
+</tr>
+<tr>
+<td>4</td>
+<td>4</td>
+<td>37</td>
+<td>615</td>
+</tr>
+<tr>
+<td>5</td>
+<td>2</td>
+<td>18</td>
+<td>341</td>
+</tr>
+<tr>
+<td>6</td>
+<td>5</td>
+<td>12</td>
+<td>539</td>
+</tr>
+<tr>
+<td>7</td>
+<td>8</td>
+<td>59</td>
+<td>709</td>
+</tr>
+<tr>
+<td>8</td>
+<td>1</td>
+<td>89</td>
+<td>675</td>
+</tr>
+<tr>
+<td>9</td>
+<td>6</td>
+<td>12</td>
+<td>965</td>
+</tr>
+<tr>
+<td>10</td>
+<td>4</td>
+<td>24</td>
+<td>447</td>
+</tr>
+<tr>
+<td>11</td>
+<td>6</td>
+<td>35</td>
+<td>555</td>
+</tr>
+<tr>
+<td>12</td>
+<td>5</td>
+<td>34</td>
+<td>117</td>
+</tr>
+<tr>
+<td>13</td>
+<td>5</td>
+<td>21</td>
+<td>471</td>
+</tr>
+<tr>
+<td>14</td>
+<td>7</td>
+<td>31</td>
+<td>171</td>
+</tr>
+<tr>
+<td>15</td>
+<td>5</td>
+<td>40</td>
+<td>491</td>
+</tr>
+<tr>
+<td>16</td>
+<td>9</td>
+<td>55</td>
+<td>666</td>
+</tr>
+<tr>
+<td>17</td>
+<td>8</td>
+<td>48</td>
+<td>557</td>
+</tr>
+</tbody>
+</table>
+<p>Elimizde, 17 satır ve 3 sütundan oluşan tablomuz var. Bakalım <strong>sum()</strong> metodunu kullanınca nasıl bir sonuç elde edeceğiz.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">basliksiz</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">Birler</span> <span class="mi">105</span>
+<span class="n">Onlar</span> <span class="mi">840</span>
+<span class="n">Yüzler</span> <span class="mi">8796</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+</code></pre></div>
+
+<p>Görüyoruz ki, <strong>sum()</strong> metodu sayesinde her sütunun 
+toplam değerleri ekrana yazdırılıyor. Peki Tablodaki tüm değerlerin 
+toplamını bulmak istersek ne yapmalıyız? <strong>sum()</strong> metodu bize 3 sütun başlığı ve 3 değer verdiğine göre, ikinci bir <strong>sum()</strong> metodu (yani sum() metodunu peşpeşe iki defa yazmak) bu değerlerin toplamını verir mi dersiniz? Deneyelim.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">basliksiz</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mi">9741</span>
+</code></pre></div>
+
+<p>Tahmin ettiğimiz gibi, iki kez <strong>sum()</strong> metodu kullanmak, tüm veri çerçevesinin toplamını elde etmemizi sağladı.</p>
+<h1>Toplama, Çıkarma, Çarpma ve Bölme İşlemleri</h1>
+<p>Veri çerçevesine yeni sütun ekleme konusunu işlerken buna benzer bir örnek uygulama yapmıştık. Sırayla işlemleri tek tek uygulayıp sonucu görelim.</p>
+<h2>Toplama Operatörü</h2>
+<p><strong>Birler + Onlar</strong> isimli sütun oluşturup, <strong>Birler</strong> ve <strong>Onlar</strong> Sütunlarındaki değerleri toplayıp yeni sütuna dahil edelim.</p>
+<div class="highlight"><pre><span></span><code><span class="n">basliksiz</span><span class="p">[</span><span class="s2">&quot;Birler + Onlar&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">basliksiz</span><span class="p">[</span><span class="s2">&quot;Birler&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">basliksiz</span><span class="p">[</span><span class="s2">&quot;Onlar&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">basliksiz</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Birler</th>
+<th>Onlar</th>
+<th>Yüzler</th>
+<th>Birler + Onlar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>9</td>
+<td>82</td>
+<td>246</td>
+<td>91</td>
+</tr>
+<tr>
+<td>1</td>
+<td>7</td>
+<td>78</td>
+<td>180</td>
+<td>85</td>
+</tr>
+<tr>
+<td>2</td>
+<td>8</td>
+<td>83</td>
+<td>565</td>
+<td>91</td>
+</tr>
+<tr>
+<td>3</td>
+<td>6</td>
+<td>82</td>
+<td>486</td>
+<td>88</td>
+</tr>
+<tr>
+<td>4</td>
+<td>4</td>
+<td>37</td>
+<td>615</td>
+<td>41</td>
+</tr>
+<tr>
+<td>5</td>
+<td>2</td>
+<td>18</td>
+<td>341</td>
+<td>20</td>
+</tr>
+<tr>
+<td>6</td>
+<td>5</td>
+<td>12</td>
+<td>539</td>
+<td>17</td>
+</tr>
+<tr>
+<td>7</td>
+<td>8</td>
+<td>59</td>
+<td>709</td>
+<td>67</td>
+</tr>
+<tr>
+<td>8</td>
+<td>1</td>
+<td>89</td>
+<td>675</td>
+<td>90</td>
+</tr>
+<tr>
+<td>9</td>
+<td>6</td>
+<td>12</td>
+<td>965</td>
+<td>18</td>
+</tr>
+<tr>
+<td>10</td>
+<td>4</td>
+<td>24</td>
+<td>447</td>
+<td>28</td>
+</tr>
+<tr>
+<td>11</td>
+<td>6</td>
+<td>35</td>
+<td>555</td>
+<td>41</td>
+</tr>
+<tr>
+<td>12</td>
+<td>5</td>
+<td>34</td>
+<td>117</td>
+<td>39</td>
+</tr>
+<tr>
+<td>13</td>
+<td>5</td>
+<td>21</td>
+<td>471</td>
+<td>26</td>
+</tr>
+<tr>
+<td>14</td>
+<td>7</td>
+<td>31</td>
+<td>171</td>
+<td>38</td>
+</tr>
+<tr>
+<td>15</td>
+<td>5</td>
+<td>40</td>
+<td>491</td>
+<td>45</td>
+</tr>
+<tr>
+<td>16</td>
+<td>9</td>
+<td>55</td>
+<td>666</td>
+<td>64</td>
+</tr>
+<tr>
+<td>17</td>
+<td>8</td>
+<td>48</td>
+<td>557</td>
+<td>56</td>
+</tr>
+</tbody>
+</table>
+<h2>Çıkarma Operatörü</h2>
+<p><strong>Yüzler - Onlar</strong> isimli sütun oluşturup, <strong>Yüzler</strong> sütunundaki değerlerden <strong>Onlar</strong> Sütunundaki değerleri çıkarıp yeni sütuna dahil edelim.</p>
+<div class="highlight"><pre><span></span><code><span class="n">basliksiz</span><span class="p">[</span><span class="s2">&quot;Yüzler - Onlar&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">basliksiz</span><span class="p">[</span><span class="s2">&quot;Yüzler&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">basliksiz</span><span class="p">[</span><span class="s2">&quot;Onlar&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">basliksiz</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Birler</th>
+<th>Onlar</th>
+<th>Yüzler</th>
+<th>Birler + Onlar</th>
+<th>Yüzler - Onlar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>9</td>
+<td>82</td>
+<td>246</td>
+<td>91</td>
+<td>164</td>
+</tr>
+<tr>
+<td>1</td>
+<td>7</td>
+<td>78</td>
+<td>180</td>
+<td>85</td>
+<td>102</td>
+</tr>
+<tr>
+<td>2</td>
+<td>8</td>
+<td>83</td>
+<td>565</td>
+<td>91</td>
+<td>482</td>
+</tr>
+<tr>
+<td>3</td>
+<td>6</td>
+<td>82</td>
+<td>486</td>
+<td>88</td>
+<td>404</td>
+</tr>
+<tr>
+<td>4</td>
+<td>4</td>
+<td>37</td>
+<td>615</td>
+<td>41</td>
+<td>578</td>
+</tr>
+<tr>
+<td>5</td>
+<td>2</td>
+<td>18</td>
+<td>341</td>
+<td>20</td>
+<td>323</td>
+</tr>
+<tr>
+<td>6</td>
+<td>5</td>
+<td>12</td>
+<td>539</td>
+<td>17</td>
+<td>527</td>
+</tr>
+<tr>
+<td>7</td>
+<td>8</td>
+<td>59</td>
+<td>709</td>
+<td>67</td>
+<td>650</td>
+</tr>
+<tr>
+<td>8</td>
+<td>1</td>
+<td>89</td>
+<td>675</td>
+<td>90</td>
+<td>586</td>
+</tr>
+<tr>
+<td>9</td>
+<td>6</td>
+<td>12</td>
+<td>965</td>
+<td>18</td>
+<td>953</td>
+</tr>
+<tr>
+<td>10</td>
+<td>4</td>
+<td>24</td>
+<td>447</td>
+<td>28</td>
+<td>423</td>
+</tr>
+<tr>
+<td>11</td>
+<td>6</td>
+<td>35</td>
+<td>555</td>
+<td>41</td>
+<td>520</td>
+</tr>
+<tr>
+<td>12</td>
+<td>5</td>
+<td>34</td>
+<td>117</td>
+<td>39</td>
+<td>83</td>
+</tr>
+<tr>
+<td>13</td>
+<td>5</td>
+<td>21</td>
+<td>471</td>
+<td>26</td>
+<td>450</td>
+</tr>
+<tr>
+<td>14</td>
+<td>7</td>
+<td>31</td>
+<td>171</td>
+<td>38</td>
+<td>140</td>
+</tr>
+<tr>
+<td>15</td>
+<td>5</td>
+<td>40</td>
+<td>491</td>
+<td>45</td>
+<td>451</td>
+</tr>
+<tr>
+<td>16</td>
+<td>9</td>
+<td>55</td>
+<td>666</td>
+<td>64</td>
+<td>611</td>
+</tr>
+<tr>
+<td>17</td>
+<td>8</td>
+<td>48</td>
+<td>557</td>
+<td>56</td>
+<td>509</td>
+</tr>
+</tbody>
+</table>
+<h2>Çarpma Operatörü</h2>
+<p><strong>Yüzler * Birler</strong> isimli sütun oluşturup, <strong>Yüzler</strong> sütunundaki değerleri <strong>Birler</strong> Sütunundaki değerlerle çarpıp yeni sütuna dahil edelim.</p>
+<div class="highlight"><pre><span></span><code><span class="n">basliksiz</span><span class="p">[</span><span class="s2">&quot;Yüzler * Birler&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">basliksiz</span><span class="p">[</span><span class="s2">&quot;Yüzler&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">basliksiz</span><span class="p">[</span><span class="s2">&quot;Birler&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">basliksiz</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Birler</th>
+<th>Onlar</th>
+<th>Yüzler</th>
+<th>Birler + Onlar</th>
+<th>Yüzler - Onlar</th>
+<th>Yüzler * Birler</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>9</td>
+<td>82</td>
+<td>246</td>
+<td>91</td>
+<td>164</td>
+<td>2214</td>
+</tr>
+<tr>
+<td>1</td>
+<td>7</td>
+<td>78</td>
+<td>180</td>
+<td>85</td>
+<td>102</td>
+<td>1260</td>
+</tr>
+<tr>
+<td>2</td>
+<td>8</td>
+<td>83</td>
+<td>565</td>
+<td>91</td>
+<td>482</td>
+<td>4520</td>
+</tr>
+<tr>
+<td>3</td>
+<td>6</td>
+<td>82</td>
+<td>486</td>
+<td>88</td>
+<td>404</td>
+<td>2916</td>
+</tr>
+<tr>
+<td>4</td>
+<td>4</td>
+<td>37</td>
+<td>615</td>
+<td>41</td>
+<td>578</td>
+<td>2460</td>
+</tr>
+<tr>
+<td>5</td>
+<td>2</td>
+<td>18</td>
+<td>341</td>
+<td>20</td>
+<td>323</td>
+<td>682</td>
+</tr>
+<tr>
+<td>6</td>
+<td>5</td>
+<td>12</td>
+<td>539</td>
+<td>17</td>
+<td>527</td>
+<td>2695</td>
+</tr>
+<tr>
+<td>7</td>
+<td>8</td>
+<td>59</td>
+<td>709</td>
+<td>67</td>
+<td>650</td>
+<td>5672</td>
+</tr>
+<tr>
+<td>8</td>
+<td>1</td>
+<td>89</td>
+<td>675</td>
+<td>90</td>
+<td>586</td>
+<td>675</td>
+</tr>
+<tr>
+<td>9</td>
+<td>6</td>
+<td>12</td>
+<td>965</td>
+<td>18</td>
+<td>953</td>
+<td>5790</td>
+</tr>
+<tr>
+<td>10</td>
+<td>4</td>
+<td>24</td>
+<td>447</td>
+<td>28</td>
+<td>423</td>
+<td>1788</td>
+</tr>
+<tr>
+<td>11</td>
+<td>6</td>
+<td>35</td>
+<td>555</td>
+<td>41</td>
+<td>520</td>
+<td>3330</td>
+</tr>
+<tr>
+<td>12</td>
+<td>5</td>
+<td>34</td>
+<td>117</td>
+<td>39</td>
+<td>83</td>
+<td>585</td>
+</tr>
+<tr>
+<td>13</td>
+<td>5</td>
+<td>21</td>
+<td>471</td>
+<td>26</td>
+<td>450</td>
+<td>2355</td>
+</tr>
+<tr>
+<td>14</td>
+<td>7</td>
+<td>31</td>
+<td>171</td>
+<td>38</td>
+<td>140</td>
+<td>1197</td>
+</tr>
+<tr>
+<td>15</td>
+<td>5</td>
+<td>40</td>
+<td>491</td>
+<td>45</td>
+<td>451</td>
+<td>2455</td>
+</tr>
+<tr>
+<td>16</td>
+<td>9</td>
+<td>55</td>
+<td>666</td>
+<td>64</td>
+<td>611</td>
+<td>5994</td>
+</tr>
+<tr>
+<td>17</td>
+<td>8</td>
+<td>48</td>
+<td>557</td>
+<td>56</td>
+<td>509</td>
+<td>4456</td>
+</tr>
+</tbody>
+</table>
+<h2>Bölme Operatörü</h2>
+<p><strong>Yüzler / Onlar</strong> isimli sütun oluşturup, <strong>Yüzler</strong> sütunundaki değerleri <strong>Onlar</strong> Sütunundaki değerlere Bölüp yeni sütuna dahil edelim.</p>
+<div class="highlight"><pre><span></span><code><span class="n">basliksiz</span><span class="p">[</span><span class="s2">&quot;Yüzler * Onlar&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">basliksiz</span><span class="p">[</span><span class="s2">&quot;Yüzler&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">basliksiz</span><span class="p">[</span><span class="s2">&quot;Onlar&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">basliksiz</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Birler</th>
+<th>Onlar</th>
+<th>Yüzler</th>
+<th>Birler + Onlar</th>
+<th>Yüzler - Onlar</th>
+<th>Yüzler * Birler</th>
+<th>Yüzler * Onlar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>9</td>
+<td>82</td>
+<td>246</td>
+<td>91</td>
+<td>164</td>
+<td>2214</td>
+<td>3.000000</td>
+</tr>
+<tr>
+<td>1</td>
+<td>7</td>
+<td>78</td>
+<td>180</td>
+<td>85</td>
+<td>102</td>
+<td>1260</td>
+<td>2.307692</td>
+</tr>
+<tr>
+<td>2</td>
+<td>8</td>
+<td>83</td>
+<td>565</td>
+<td>91</td>
+<td>482</td>
+<td>4520</td>
+<td>6.807229</td>
+</tr>
+<tr>
+<td>3</td>
+<td>6</td>
+<td>82</td>
+<td>486</td>
+<td>88</td>
+<td>404</td>
+<td>2916</td>
+<td>5.926829</td>
+</tr>
+<tr>
+<td>4</td>
+<td>4</td>
+<td>37</td>
+<td>615</td>
+<td>41</td>
+<td>578</td>
+<td>2460</td>
+<td>16.621622</td>
+</tr>
+<tr>
+<td>5</td>
+<td>2</td>
+<td>18</td>
+<td>341</td>
+<td>20</td>
+<td>323</td>
+<td>682</td>
+<td>18.944444</td>
+</tr>
+<tr>
+<td>6</td>
+<td>5</td>
+<td>12</td>
+<td>539</td>
+<td>17</td>
+<td>527</td>
+<td>2695</td>
+<td>44.916667</td>
+</tr>
+<tr>
+<td>7</td>
+<td>8</td>
+<td>59</td>
+<td>709</td>
+<td>67</td>
+<td>650</td>
+<td>5672</td>
+<td>12.016949</td>
+</tr>
+<tr>
+<td>8</td>
+<td>1</td>
+<td>89</td>
+<td>675</td>
+<td>90</td>
+<td>586</td>
+<td>675</td>
+<td>7.584270</td>
+</tr>
+<tr>
+<td>9</td>
+<td>6</td>
+<td>12</td>
+<td>965</td>
+<td>18</td>
+<td>953</td>
+<td>5790</td>
+<td>80.416667</td>
+</tr>
+<tr>
+<td>10</td>
+<td>4</td>
+<td>24</td>
+<td>447</td>
+<td>28</td>
+<td>423</td>
+<td>1788</td>
+<td>18.625000</td>
+</tr>
+<tr>
+<td>11</td>
+<td>6</td>
+<td>35</td>
+<td>555</td>
+<td>41</td>
+<td>520</td>
+<td>3330</td>
+<td>15.857143</td>
+</tr>
+<tr>
+<td>12</td>
+<td>5</td>
+<td>34</td>
+<td>117</td>
+<td>39</td>
+<td>83</td>
+<td>585</td>
+<td>3.441176</td>
+</tr>
+<tr>
+<td>13</td>
+<td>5</td>
+<td>21</td>
+<td>471</td>
+<td>26</td>
+<td>450</td>
+<td>2355</td>
+<td>22.428571</td>
+</tr>
+<tr>
+<td>14</td>
+<td>7</td>
+<td>31</td>
+<td>171</td>
+<td>38</td>
+<td>140</td>
+<td>1197</td>
+<td>5.516129</td>
+</tr>
+<tr>
+<td>15</td>
+<td>5</td>
+<td>40</td>
+<td>491</td>
+<td>45</td>
+<td>451</td>
+<td>2455</td>
+<td>12.275000</td>
+</tr>
+<tr>
+<td>16</td>
+<td>9</td>
+<td>55</td>
+<td>666</td>
+<td>64</td>
+<td>611</td>
+<td>5994</td>
+<td>12.109091</td>
+</tr>
+<tr>
+<td>17</td>
+<td>8</td>
+<td>48</td>
+<td>557</td>
+<td>56</td>
+<td>509</td>
+<td>4456</td>
+<td>11.604167</td>
+</tr>
+</tbody>
+</table>
+<h2>Mean, ortalama alma/hesaplama</h2>
+<p>kare alma, karekok alma,
+Max, Min,
+Sin? Cos?</p>
+<p>...............</p>
+<h2>Mantıksal / Karşılaştırma Operatörleri</h2>
+<p>Bu konuya da diğer bölümlerde değinmiştik, Konu başlığı bu bölüme ait olduğu için tekrar anlatmakta farar görüyorum.</p>
+<p>Mantıksal Operatorler (Boolean), <strong>True (Doğru)</strong> ya da <strong>False (Yanlış)</strong> çıktı verirler. Veri çerçevemizdeki değer ya da metinlerin (string 
+ifadelerin) belirlenen değerlere uyup uymadığına dair çıktı almak ya da 
+hesap yapmak için kullanılabilir.</p>
+<p><strong>Bu Operatörler;</strong></p>
+<ul>
+<li>Büyüktür (&gt;),</li>
+<li>Küçüktür (&lt;),</li>
+<li>Eşittir (==),</li>
+<li>Eşit Değildir (!=),</li>
+<li>İçerir (contains),</li>
+<li>İçermez / Değil (not)</li>
+</ul>
+<p>örnek olarak verilebilir.</p>
+<p>Şimdi bu operatorleri inceleyelim. Öncelikle varolan tablolarımızda birini içe aktarıp veri çerçevesine dönüştürelim.</p>
+<div class="highlight"><pre><span></span><code><span class="n">json</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/json_verisi.json&quot;</span><span class="p">)</span>
+<span class="n">json</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Duration</th>
+<th>Pulse</th>
+<th>Maxpulse</th>
+<th>Calories</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>60</td>
+<td>110</td>
+<td>130</td>
+<td>409</td>
+</tr>
+<tr>
+<td>1</td>
+<td>60</td>
+<td>117</td>
+<td>145</td>
+<td>479</td>
+</tr>
+<tr>
+<td>2</td>
+<td>60</td>
+<td>103</td>
+<td>135</td>
+<td>340</td>
+</tr>
+<tr>
+<td>3</td>
+<td>45</td>
+<td>109</td>
+<td>175</td>
+<td>282</td>
+</tr>
+<tr>
+<td>4</td>
+<td>45</td>
+<td>117</td>
+<td>148</td>
+<td>406</td>
+</tr>
+<tr>
+<td>5</td>
+<td>60</td>
+<td>102</td>
+<td>127</td>
+<td>300</td>
+</tr>
+</tbody>
+</table>
+<h2>Büyüktür (&gt;) ve Küçüktür (&lt;) Operatörleri</h2>
+<p>Veri çerçevemizde 110'dan büyük verileri bulmaya çalışalım. Bu işlemi <strong>büyüktür (&gt;)</strong> operatörü ile yapacağız.</p>
+<div class="highlight"><pre><span></span><code><span class="n">json</span> <span class="o">&gt;</span> <span class="mi">110</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Duration</th>
+<th>Pulse</th>
+<th>Maxpulse</th>
+<th>Calories</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+<td>True</td>
+</tr>
+<tr>
+<td>1</td>
+<td>False</td>
+<td>True</td>
+<td>True</td>
+<td>True</td>
+</tr>
+<tr>
+<td>2</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+<td>True</td>
+</tr>
+<tr>
+<td>3</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+<td>True</td>
+</tr>
+<tr>
+<td>4</td>
+<td>False</td>
+<td>True</td>
+<td>True</td>
+<td>True</td>
+</tr>
+<tr>
+<td>5</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+<p>Gördüğünüz gibi, tablodaki tüm değerler verilen kriter olan 110'dan 
+büyük olup olmadığına göre sorgulandı ve cevabı her bir hücreye işlendi.</p>
+<p>Sütunlarda, Değeri 110'dan büyük kaçar adet sayı olduğunu bulmak istersek;</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">json</span> <span class="o">&gt;</span> <span class="mi">110</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Duration    0
+Pulse       2
+Maxpulse    6
+Calories    6
+dtype: int64</p>
+<p>Veri çerçevemizde, 110'dan büyük toplam kaç adet sayı vardır, diye merak edersek;</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">json</span> <span class="o">&gt;</span> <span class="mi">110</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mi">14</span>
+</code></pre></div>
+
+<p><strong>Küçüktür (&lt;)</strong> operatörünün kullanımı da aynıdır.
+Veri çerçevemizdeki, <strong>150'den küçük</strong> verileri görelim.</p>
+<div class="highlight"><pre><span></span><code><span class="n">json</span> <span class="o">&lt;</span> <span class="mi">150</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Duration</th>
+<th>Pulse</th>
+<th>Maxpulse</th>
+<th>Calories</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>True</td>
+<td>True</td>
+<td>True</td>
+<td>False</td>
+</tr>
+<tr>
+<td>1</td>
+<td>True</td>
+<td>True</td>
+<td>True</td>
+<td>False</td>
+</tr>
+<tr>
+<td>2</td>
+<td>True</td>
+<td>True</td>
+<td>True</td>
+<td>False</td>
+</tr>
+<tr>
+<td>3</td>
+<td>True</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<td>4</td>
+<td>True</td>
+<td>True</td>
+<td>True</td>
+<td>False</td>
+</tr>
+<tr>
+<td>5</td>
+<td>True</td>
+<td>True</td>
+<td>True</td>
+<td>False</td>
+</tr>
+</tbody>
+</table>
+<h2>Eşittir (==) ve Eşit Değil (!=) Operatörleri</h2>
+<p><strong>Eşittir (==)</strong> ya da bir başka deyimle <strong>Eşit midir?</strong> operatörü :) (Eşitse True değeri döndür demektir)</p>
+<p>Veri çerçevemizde <strong>60</strong>'a eşit değerleri bulalım. Bunu <strong>==</strong> operatörü ile tespit edeceğiz.</p>
+<div class="highlight"><pre><span></span><code><span class="n">json</span> <span class="o">==</span> <span class="mi">60</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Duration</th>
+<th>Pulse</th>
+<th>Maxpulse</th>
+<th>Calories</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<td>1</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<td>2</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<td>3</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<td>4</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<td>5</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+</tbody>
+</table>
+<p>Veri çerçevemizde <strong>60</strong>'a eşit kaç adet toplam değer var?</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">json</span> <span class="o">==</span> <span class="mi">60</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mi">4</span>
+</code></pre></div>
+
+<p>Veri çerçevemizde <strong>117</strong>'ye eşit olmayan sayı var mı? Varsa "True" diye göster.</p>
+<div class="highlight"><pre><span></span><code><span class="n">json</span> <span class="o">!=</span> <span class="mi">117</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Duration</th>
+<th>Pulse</th>
+<th>Maxpulse</th>
+<th>Calories</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>True</td>
+<td>True</td>
+<td>True</td>
+<td>True</td>
+</tr>
+<tr>
+<td>1</td>
+<td>True</td>
+<td>False</td>
+<td>True</td>
+<td>True</td>
+</tr>
+<tr>
+<td>2</td>
+<td>True</td>
+<td>True</td>
+<td>True</td>
+<td>True</td>
+</tr>
+<tr>
+<td>3</td>
+<td>True</td>
+<td>True</td>
+<td>True</td>
+<td>True</td>
+</tr>
+<tr>
+<td>4</td>
+<td>True</td>
+<td>False</td>
+<td>True</td>
+<td>True</td>
+</tr>
+<tr>
+<td>5</td>
+<td>True</td>
+<td>True</td>
+<td>True</td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+<p>Veri çerçevemizde <strong>117</strong>'den farklı kaç sayı var?</p>
+<p>Bunların Sütun dağılımları nasıl?</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">json</span> <span class="o">!=</span> <span class="mi">117</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mi">22</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">json</span> <span class="o">!=</span> <span class="mi">117</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">Duration</span>    <span class="mi">6</span>
+<span class="n">Pulse</span>       <span class="mi">4</span>
+<span class="n">Maxpulse</span>    <span class="mi">6</span>
+<span class="n">Calories</span>    <span class="mi">6</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+</code></pre></div>
+
+<h2>İçerir / İçermez Operatörleri</h2>
+<p>Bu
+ konuyu, Metin bazlı (string ifadeler) veri çerçeveleri ile daha rahat 
+anlatabileceğimi düşünüyorum. Hemen yeni bir Veri çerçevesi oluşturalım.</p>
+<div class="highlight"><pre><span></span><code><span class="n">nba</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/nba.csv&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nba</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Team</th>
+<th>Number</th>
+<th>Position</th>
+<th>Age</th>
+<th>Height</th>
+<th>Weight</th>
+<th>College</th>
+<th>Salary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Avery Bradley</td>
+<td>Boston Celtics</td>
+<td>0.0</td>
+<td>PG</td>
+<td>25.0</td>
+<td>6-2</td>
+<td>180.0</td>
+<td>Texas</td>
+<td>7730337.0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Jae Crowder</td>
+<td>Boston Celtics</td>
+<td>99.0</td>
+<td>SF</td>
+<td>25.0</td>
+<td>6-6</td>
+<td>235.0</td>
+<td>Marquette</td>
+<td>6796117.0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>John Holland</td>
+<td>Boston Celtics</td>
+<td>30.0</td>
+<td>SG</td>
+<td>27.0</td>
+<td>6-5</td>
+<td>205.0</td>
+<td>Boston University</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>3</td>
+<td>R.J. Hunter</td>
+<td>Boston Celtics</td>
+<td>28.0</td>
+<td>SG</td>
+<td>22.0</td>
+<td>6-5</td>
+<td>185.0</td>
+<td>Georgia State</td>
+<td>1148640.0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Jonas Jerebko</td>
+<td>Boston Celtics</td>
+<td>8.0</td>
+<td>PF</td>
+<td>29.0</td>
+<td>6-10</td>
+<td>231.0</td>
+<td>NaN</td>
+<td>5000000.0</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>453</td>
+<td>Shelvin Mack</td>
+<td>Utah Jazz</td>
+<td>8.0</td>
+<td>PG</td>
+<td>26.0</td>
+<td>6-3</td>
+<td>203.0</td>
+<td>Butler</td>
+<td>2433333.0</td>
+</tr>
+<tr>
+<td>454</td>
+<td>Raul Neto</td>
+<td>Utah Jazz</td>
+<td>25.0</td>
+<td>PG</td>
+<td>24.0</td>
+<td>6-1</td>
+<td>179.0</td>
+<td>NaN</td>
+<td>900000.0</td>
+</tr>
+<tr>
+<td>455</td>
+<td>Tibor Pleiss</td>
+<td>Utah Jazz</td>
+<td>21.0</td>
+<td>C</td>
+<td>26.0</td>
+<td>7-3</td>
+<td>256.0</td>
+<td>NaN</td>
+<td>2900000.0</td>
+</tr>
+<tr>
+<td>456</td>
+<td>Jeff Withey</td>
+<td>Utah Jazz</td>
+<td>24.0</td>
+<td>C</td>
+<td>26.0</td>
+<td>7-0</td>
+<td>231.0</td>
+<td>Kansas</td>
+<td>947276.0</td>
+</tr>
+<tr>
+<td>457</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+<p>458 rows × 9 columns</p>
+<p><strong>nba</strong> isimli veri çerçevemizde isminin içinde <strong>Jordan</strong> kelimesi bulunan kaç adet oyunucu olduğunu bulmaya çalışalım. Bunu, String Metotlarında <strong>contains()</strong> ile tespit etmeye çalışacağız.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">nba</span><span class="p">[</span><span class="s2">&quot;Name&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;Jordan&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mi">8</span>
+</code></pre></div>
+
+<p>İsim-Soyisim içinde <strong>Jordan</strong> kelimesi bulunan oyuncuların hangi sütunda kaç adet verisi bulunuyor?</p>
+<div class="highlight"><pre><span></span><code><span class="n">jordan</span> <span class="o">=</span> <span class="n">nba</span><span class="p">[</span><span class="s2">&quot;Name&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;Jordan&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nba</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">jordan</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">())</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Team</th>
+<th>Number</th>
+<th>Position</th>
+<th>Age</th>
+<th>Height</th>
+<th>Weight</th>
+<th>College</th>
+<th>Salary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+</tr>
+<tr>
+<td>False</td>
+<td>449</td>
+<td>449</td>
+<td>449</td>
+<td>449</td>
+<td>449</td>
+<td>449</td>
+<td>449</td>
+<td>365</td>
+<td>439</td>
+</tr>
+<tr>
+<td>True</td>
+<td>8</td>
+<td>8</td>
+<td>8</td>
+<td>8</td>
+<td>8</td>
+<td>8</td>
+<td>8</td>
+<td>8</td>
+<td>7</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="n">nba2</span> <span class="o">=</span> <span class="n">nba</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nba2</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Team</th>
+<th>Number</th>
+<th>Position</th>
+<th>Age</th>
+<th>Height</th>
+<th>Weight</th>
+<th>College</th>
+<th>Salary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Avery Bradley</td>
+<td>Boston Celtics</td>
+<td>0.0</td>
+<td>PG</td>
+<td>25.0</td>
+<td>6-2</td>
+<td>180.0</td>
+<td>Texas</td>
+<td>7730337.0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Jae Crowder</td>
+<td>Boston Celtics</td>
+<td>99.0</td>
+<td>SF</td>
+<td>25.0</td>
+<td>6-6</td>
+<td>235.0</td>
+<td>Marquette</td>
+<td>6796117.0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>R.J. Hunter</td>
+<td>Boston Celtics</td>
+<td>28.0</td>
+<td>SG</td>
+<td>22.0</td>
+<td>6-5</td>
+<td>185.0</td>
+<td>Georgia State</td>
+<td>1148640.0</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Jordan Mickey</td>
+<td>Boston Celtics</td>
+<td>55.0</td>
+<td>PF</td>
+<td>21.0</td>
+<td>6-8</td>
+<td>235.0</td>
+<td>LSU</td>
+<td>1170960.0</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Kelly Olynyk</td>
+<td>Boston Celtics</td>
+<td>41.0</td>
+<td>C</td>
+<td>25.0</td>
+<td>7-0</td>
+<td>238.0</td>
+<td>Gonzaga</td>
+<td>2165160.0</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>449</td>
+<td>Rodney Hood</td>
+<td>Utah Jazz</td>
+<td>5.0</td>
+<td>SG</td>
+<td>23.0</td>
+<td>6-8</td>
+<td>206.0</td>
+<td>Duke</td>
+<td>1348440.0</td>
+</tr>
+<tr>
+<td>451</td>
+<td>Chris Johnson</td>
+<td>Utah Jazz</td>
+<td>23.0</td>
+<td>SF</td>
+<td>26.0</td>
+<td>6-6</td>
+<td>206.0</td>
+<td>Dayton</td>
+<td>981348.0</td>
+</tr>
+<tr>
+<td>452</td>
+<td>Trey Lyles</td>
+<td>Utah Jazz</td>
+<td>41.0</td>
+<td>PF</td>
+<td>20.0</td>
+<td>6-10</td>
+<td>234.0</td>
+<td>Kentucky</td>
+<td>2239800.0</td>
+</tr>
+<tr>
+<td>453</td>
+<td>Shelvin Mack</td>
+<td>Utah Jazz</td>
+<td>8.0</td>
+<td>PG</td>
+<td>26.0</td>
+<td>6-3</td>
+<td>203.0</td>
+<td>Butler</td>
+<td>2433333.0</td>
+</tr>
+<tr>
+<td>456</td>
+<td>Jeff Withey</td>
+<td>Utah Jazz</td>
+<td>24.0</td>
+<td>C</td>
+<td>26.0</td>
+<td>7-0</td>
+<td>231.0</td>
+<td>Kansas</td>
+<td>947276.0</td>
+</tr>
+</tbody>
+</table>
+<p>364 rows × 9 columns</p>
+<div class="highlight"><pre><span></span><code><span class="n">isimler</span> <span class="o">=</span> <span class="n">nba2</span><span class="p">[</span><span class="s2">&quot;Name&quot;</span><span class="p">]</span>
+<span class="n">jrd</span> <span class="o">=</span> <span class="n">isimler</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;Jordan&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nba2</span><span class="p">[</span><span class="n">jrd</span><span class="p">])</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Team</th>
+<th>Number</th>
+<th>Position</th>
+<th>Age</th>
+<th>Height</th>
+<th>Weight</th>
+<th>College</th>
+<th>Salary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6</td>
+<td>Jordan Mickey</td>
+<td>Boston Celtics</td>
+<td>55.0</td>
+<td>PF</td>
+<td>21.0</td>
+<td>6-8</td>
+<td>235.0</td>
+<td>LSU</td>
+<td>1170960.0</td>
+</tr>
+<tr>
+<td>98</td>
+<td>DeAndre Jordan</td>
+<td>Los Angeles Clippers</td>
+<td>6.0</td>
+<td>C</td>
+<td>27.0</td>
+<td>6-11</td>
+<td>265.0</td>
+<td>Texas A&amp;M</td>
+<td>19689000.0</td>
+</tr>
+<tr>
+<td>110</td>
+<td>Jordan Clarkson</td>
+<td>Los Angeles Lakers</td>
+<td>6.0</td>
+<td>PG</td>
+<td>24.0</td>
+<td>6-5</td>
+<td>194.0</td>
+<td>Missouri</td>
+<td>845059.0</td>
+</tr>
+<tr>
+<td>175</td>
+<td>Jordan McRae</td>
+<td>Cleveland Cavaliers</td>
+<td>12.0</td>
+<td>SG</td>
+<td>25.0</td>
+<td>6-5</td>
+<td>179.0</td>
+<td>Tennessee</td>
+<td>111196.0</td>
+</tr>
+<tr>
+<td>201</td>
+<td>Jordan Hill</td>
+<td>Indiana Pacers</td>
+<td>27.0</td>
+<td>C</td>
+<td>28.0</td>
+<td>6-10</td>
+<td>235.0</td>
+<td>Arizona</td>
+<td>4000000.0</td>
+</tr>
+<tr>
+<td>257</td>
+<td>Jordan Adams</td>
+<td>Memphis Grizzlies</td>
+<td>3.0</td>
+<td>SG</td>
+<td>21.0</td>
+<td>6-5</td>
+<td>209.0</td>
+<td>UCLA</td>
+<td>1404600.0</td>
+</tr>
+<tr>
+<td>289</td>
+<td>Jordan Hamilton</td>
+<td>New Orleans Pelicans</td>
+<td>25.0</td>
+<td>SG</td>
+<td>25.0</td>
+<td>6-7</td>
+<td>220.0</td>
+<td>Texas</td>
+<td>1015421.0</td>
+</tr>
+</tbody>
+</table>
+<p><a href="pandas-11-melt-fonksiyonunun-kullanimi.html">← Önceki Bölüm </a> |</p>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/pandas.html">Pandas</a></li>
+					<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+					<li><a href="/tag/modul.html">Modül</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>

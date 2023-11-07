@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="FreeCAD - Scripting 04 - Parça (Part) Komut Dosyası Oluşturmak" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/freecad-scripting-04-parca-part-komut-dosyasi-olusturmak.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">FreeCAD - Scripting 04 - Parça (Part) Komut Dosyası Oluşturmak</h1>
+	<span class="post-date">Paz 03 Nisan 2022</span>
+	<h1>Parça (Part) Komut Dosyası Oluşturmak</h1>
+<h2>Takdim</h2>
+<p><code>Part (Parça)</code> modülünde kullanılan ana veri yapısı, <a href="https://wiki.freecadweb.org/OpenCASCADE">OpenCASCADE</a>'den <a href="http://en.wikipedia.org/wiki/Boundary_representation">BRep</a> veri türüdür. <code>Part</code> modülünün hemen hemen tüm içeriği ve nesne türleri, Python komut dosyasında mevcuttur. Bu, <strong>Çizgiler</strong>, <strong>Daireler</strong> ve <strong>Yaylar</strong> gibi geometrik temel şekilleri ve <strong>Noktalar, Kenarlar, Kafes/Ağ Yapıları, Yüzeyler, Katılar ve Bileşikler</strong> gibi tüm <strong>TopoShapes</strong> aralığını içerir. Bu nesnelerin her biri için çeşitli oluşturma yöntemleri mevcuttur ve bazıları için, özellikle <strong>TopoShapes</strong> için, <strong>boole birleşim/fark/kesişim</strong> gibi gelişmiş işlemler de mevcuttur. Daha fazla bilgi için <a href="freecad-03-komut-dosyasi-olusturmanin-temelleri.html">FreeCAD Komut Dosyası Oluşturma Temelleri</a> sayfasında açıklandığı gibi <code>Part (Parça)</code> modülünün içeriğini keşfedin.</p>
+<p>Oluşturulabilecek en temel nesne, basit bir <em>Data</em> <code>Placement</code> özelliğini, rengini ve görünümünü tanımlayan temel özelliklere sahip bir <a href="https://wiki.freecadweb.org/Part_Feature">Parça Özelliğidir (Part Feature)</a>.</p>
+<p>2B geometrik nesnelerde kullanılan diğer bir basit nesne, <a href="https://wiki.freecadweb.org/Sketcher_SketchObject">Sketcher SketchObject</a> ve çoğu <a href="https://wiki.freecadweb.org/Draft_Workbench">Draft öğelerinin</a> temeli olan <a href="https://wiki.freecadweb.org/Part_Part2DObject">Part Part2DObject</a>'dir.</p>
+<h3>Ayrıca bakınız</h3>
+<ul>
+<li><a href="freecad-05-topolojik-veri-kodlamasi">Topolojik veri kodlaması</a></li>
+<li><a href="https://wiki.freecadweb.org/OpenCASCADE">OpenCASCADE</a></li>
+</ul>
+<h2>Test komut dosyası</h2>
+<p>Bir komut dosyasıyla <a href="https://wiki.freecadweb.org/Part_Primitives">Parça Temel Şekillerinin</a> oluşturulmasını test edin. <em>0.19 sürümünde tanıtıldı</em></p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">parttests.part_test_objects</span> <span class="k">as</span> <span class="nn">pto</span>
+<span class="n">pto</span><span class="o">.</span><span class="n">create_test_file</span><span class="p">(</span><span class="s2">&quot;example_file&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Bu betik (script), programın kurulum dizininde bulunur ve temel şekillerin nasıl oluşturulduğunu görmek için incelenebilir.</p>
+<div class="highlight"><pre><span></span><code>$INSTALL_DIR/Mod/Part/parttests/part_test_objects.py
+</code></pre></div>
+
+<h2>Örnekler</h2>
+<h2>Çizgi</h2>
+<p>Bir çizgi öğesi oluşturmak için <a href="https://wiki.freecadweb.org/Python_console">Python konsolu</a>na geçin ve şunu girin:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">FreeCAD</span> <span class="k">as</span> <span class="nn">App</span>
+<span class="kn">import</span> <span class="nn">Part</span>
+
+<span class="n">doc</span> <span class="o">=</span> <span class="n">App</span><span class="o">.</span><span class="n">newDocument</span><span class="p">()</span>
+
+<span class="n">line</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">LineSegment</span><span class="p">()</span>
+<span class="n">line</span><span class="o">.</span><span class="n">StartPoint</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="n">line</span><span class="o">.</span><span class="n">EndPoint</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">addObject</span><span class="p">(</span><span class="s2">&quot;Part::Feature&quot;</span><span class="p">,</span> <span class="s2">&quot;Line&quot;</span><span class="p">)</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">Shape</span><span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">toShape</span><span class="p">()</span>
+
+<span class="n">doc</span><span class="o">.</span><span class="n">recompute</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Yukarıdaki Python örneğini adım adım inceleyelim:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">FreeCAD</span> <span class="k">as</span> <span class="nn">App</span>
+<span class="kn">import</span> <span class="nn">Part</span>
+<span class="n">doc</span> <span class="o">=</span> <span class="n">App</span><span class="o">.</span><span class="n">newDocument</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Bu, FreeCAD ve <code>Part (Parça)</code> modüllerini yükler ve yeni bir belge oluşturur.</p>
+<div class="highlight"><pre><span></span><code><span class="n">line</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">LineSegment</span><span class="p">()</span>
+<span class="n">line</span><span class="o">.</span><span class="n">StartPoint</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="n">line</span><span class="o">.</span><span class="n">EndPoint</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çizgi (<code>line</code>) aslında bir çizgi parçasıdır, dolayısıyla başlangıç ve bitiş noktası vardır.</p>
+<div class="highlight"><pre><span></span><code><span class="n">obj</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">addObject</span><span class="p">(</span><span class="s2">&quot;Part::Feature&quot;</span><span class="p">,</span> <span class="s2">&quot;Line&quot;</span><span class="p">)</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">Shape</span><span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">toShape</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Bu, belgeye bir <code>Parça (Part)</code> nesne türü ekler ve çizgi parçasının şekil temsilini, eklenen nesnenin <code>Shape</code> özelliğine atar. Burada bir <code>TopoShape</code> oluşturmak için bir geometrik temel şekil (<code>Part.LineSegment</code>) kullandığımızı anlamak önemlidir (<code>toShape</code> yöntemiyle). Belgeye yalnız şekil eklenebilir. FreeCAD'de geometrik temel şekilleri "<strong>bina yapıları</strong>" olarak kullanılır.</p>
+<div class="highlight"><pre><span></span><code>doc.recompute()
+</code></pre></div>
+
+<p>Bu komut belgeyi günceller. Bu aynı zamanda yeni Part nesnesinin görsel temsilini de hazırlar.</p>
+<p>Bir çizgi parçasının başlangıç ​​ve bitiş noktası doğrudan yapıcıda belirtilerek de oluşturulabileceğini unutmayın, örneğin <code>Part.LineSegment(nokta1, nokta2)</code> veya burada yaptığımız gibi varsayılan bir çizgi oluşturup özelliklerini daha sonra ayarlayabiliriz.</p>
+<p>Bir Çizgi, ayrıca şu kod bloğunu yazarak (fonksiyon oluşturarak) ta oluşturuşabilir:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">FreeCAD</span> <span class="k">as</span> <span class="nn">App</span>
+<span class="kn">import</span> <span class="nn">Part</span>
+
+<span class="k">def</span> <span class="nf">my_create_line</span><span class="p">(</span><span class="n">pt1</span><span class="p">,</span> <span class="n">pt2</span><span class="p">,</span> <span class="n">obj_name</span><span class="p">):</span>
+    <span class="n">obj</span> <span class="o">=</span> <span class="n">App</span><span class="o">.</span><span class="n">ActiveDocument</span><span class="o">.</span><span class="n">addObject</span><span class="p">(</span><span class="s2">&quot;Part::Line&quot;</span><span class="p">,</span> <span class="n">obj_name</span><span class="p">)</span>
+    <span class="n">obj</span><span class="o">.</span><span class="n">X1</span> <span class="o">=</span> <span class="n">pt1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">obj</span><span class="o">.</span><span class="n">Y1</span> <span class="o">=</span> <span class="n">pt1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">obj</span><span class="o">.</span><span class="n">Z1</span> <span class="o">=</span> <span class="n">pt1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+
+    <span class="n">obj</span><span class="o">.</span><span class="n">X2</span> <span class="o">=</span> <span class="n">pt2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">obj</span><span class="o">.</span><span class="n">Y2</span> <span class="o">=</span> <span class="n">pt2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">obj</span><span class="o">.</span><span class="n">Z2</span> <span class="o">=</span> <span class="n">pt2</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+
+    <span class="n">App</span><span class="o">.</span><span class="n">ActiveDocument</span><span class="o">.</span><span class="n">recompute</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">obj</span>
+
+<span class="n">line</span> <span class="o">=</span> <span class="n">my_create_line</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="s2">&quot;LineName&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>Çember / Daire</h2>
+<p>Bir çember / daire benzer şekilde oluşturulabilir:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">FreeCAD</span> <span class="k">as</span> <span class="nn">App</span>
+<span class="kn">import</span> <span class="nn">Part</span>
+
+<span class="n">doc</span> <span class="o">=</span> <span class="n">App</span><span class="o">.</span><span class="n">activeDocument</span><span class="p">()</span>
+
+<span class="n">circle</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">Circle</span><span class="p">()</span> 
+<span class="n">circle</span><span class="o">.</span><span class="n">Radius</span> <span class="o">=</span> <span class="mf">10.0</span>  
+<span class="n">obj</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">addObject</span><span class="p">(</span><span class="s2">&quot;Part::Feature&quot;</span><span class="p">,</span> <span class="s2">&quot;Circle&quot;</span><span class="p">)</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">Shape</span> <span class="o">=</span> <span class="n">circle</span><span class="o">.</span><span class="n">toShape</span><span class="p">()</span>
+
+<span class="n">doc</span><span class="o">.</span><span class="n">recompute</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Veya şu kod bloğunu yazarak (fonksiyon oluşturarak) ta çember oluşturabilisiniz:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">FreeCAD</span> <span class="k">as</span> <span class="nn">App</span>
+<span class="kn">import</span> <span class="nn">Part</span>
+
+<span class="k">def</span> <span class="nf">my_create_circle</span><span class="p">(</span><span class="n">rad</span><span class="p">,</span> <span class="n">obj_name</span><span class="p">):</span>
+    <span class="n">obj</span> <span class="o">=</span> <span class="n">App</span><span class="o">.</span><span class="n">ActiveDocument</span><span class="o">.</span><span class="n">addObject</span><span class="p">(</span><span class="s2">&quot;Part::Circle&quot;</span><span class="p">,</span> <span class="n">obj_name</span><span class="p">)</span>
+    <span class="n">obj</span><span class="o">.</span><span class="n">Radius</span> <span class="o">=</span> <span class="n">rad</span>
+
+    <span class="n">App</span><span class="o">.</span><span class="n">ActiveDocument</span><span class="o">.</span><span class="n">recompute</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">obj</span>
+
+<span class="n">circle</span> <span class="o">=</span> <span class="n">my_create_circle</span><span class="p">(</span><span class="mf">5.0</span><span class="p">,</span> <span class="s2">&quot;CircleName&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Alternatif olarak, merkezini, eksenini ve yarıçapını tanımlayarak bir daire oluşturabiliriz:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">FreeCAD</span> <span class="k">as</span> <span class="nn">App</span>
+<span class="kn">import</span> <span class="nn">Part</span>
+
+<span class="n">doc</span> <span class="o">=</span> <span class="n">App</span><span class="o">.</span><span class="n">activeDocument</span><span class="p">()</span>
+
+<span class="n">center</span> <span class="o">=</span> <span class="n">App</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">axis</span> <span class="o">=</span> <span class="n">App</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">radius</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">circle</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">Circle</span><span class="p">(</span><span class="n">center</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="n">radius</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">addObject</span><span class="p">(</span><span class="s2">&quot;Part::Feature&quot;</span><span class="p">,</span> <span class="s2">&quot;Circle&quot;</span><span class="p">)</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">Shape</span> <span class="o">=</span> <span class="n">circle</span><span class="o">.</span><span class="n">toShape</span><span class="p">()</span>
+
+<span class="n">doc</span><span class="o">.</span><span class="n">recompute</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Veya çember çevresi üzerinde üç nokta tanımlayarak (3 noktaya teğet çember):</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">FreeCAD</span> <span class="k">as</span> <span class="nn">App</span>
+<span class="kn">import</span> <span class="nn">Part</span>
+
+<span class="n">doc</span> <span class="o">=</span> <span class="n">App</span><span class="o">.</span><span class="n">activeDocument</span><span class="p">()</span>
+
+<span class="n">p1</span> <span class="o">=</span> <span class="n">App</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="n">App</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">p3</span> <span class="o">=</span> <span class="n">App</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">circle</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">Circle</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">p3</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">addObject</span><span class="p">(</span><span class="s2">&quot;Part::Feature&quot;</span><span class="p">,</span> <span class="s2">&quot;Circle&quot;</span><span class="p">)</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">Shape</span> <span class="o">=</span> <span class="n">circle</span><span class="o">.</span><span class="n">toShape</span><span class="p">()</span>
+
+<span class="n">doc</span><span class="o">.</span><span class="n">recompute</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Tekrar not edin, bir şekil oluşturmak için daireyi (geometrik temel şekilleri) kullandık. Elbette daha sonra aşağıdakileri yaparak yapı geometrimize hala erişebiliriz:</p>
+<div class="highlight"><pre><span></span><code><span class="n">shape</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">Shape</span>
+<span class="n">edge</span> <span class="o">=</span> <span class="n">shape</span><span class="o">.</span><span class="n">Edges</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">curve</span> <span class="o">=</span> <span class="n">edge</span><span class="o">.</span><span class="n">Curve</span>
+</code></pre></div>
+
+<p>Burada nesnemizin (<code>obj</code>) Şeklini (<code>Shape</code>) ve ardından Kenarlar (<code>edges</code>) listesini alıyoruz. Bu durumda şekli tek bir daireden oluşturduğumuz için sadece bir kenar olacaktır. Bu yüzden Kenarlar listesinde yalnızca ilk öğeyi alıyoruz ve ardından eğrisini (<code>curve</code>) alıyoruz. Her kenarın, dayandığı geometrik temel nesne olan bir Eğrisi vardır.</p>
+<h2>Yay</h2>
+<p>Bir yay şu şekilde oluşturulabilir:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">FreeCAD</span> <span class="k">as</span> <span class="nn">App</span>
+<span class="kn">import</span> <span class="nn">Part</span>
+
+<span class="n">doc</span> <span class="o">=</span> <span class="n">App</span><span class="o">.</span><span class="n">activeDocument</span><span class="p">()</span>
+
+<span class="n">p1</span> <span class="o">=</span> <span class="n">App</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="n">App</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">p3</span> <span class="o">=</span> <span class="n">App</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">arc</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">Arc</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">p3</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">addObject</span><span class="p">(</span><span class="s2">&quot;Part::Feature&quot;</span><span class="p">,</span> <span class="s2">&quot;Arc&quot;</span><span class="p">)</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">Shape</span> <span class="o">=</span> <span class="n">arc</span><span class="o">.</span><span class="n">toShape</span><span class="p">()</span>
+
+<span class="n">doc</span><span class="o">.</span><span class="n">recompute</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Bu kod, yarım daire çizer. Merkez (0, 0, 0) konumundadır. Yarıçap 10'dur. P1, +X eksenindeki başlangıç ​​noktasıdır. P2, +Y ekseninde orta nokta ve P3, -X ekseninde bitiş noktasıdır.</p>
+<p>Ayrıca bir çemberden bir yay da oluşturabiliriz:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">FreeCAD</span> <span class="k">as</span> <span class="nn">App</span>
+<span class="kn">import</span> <span class="nn">Part</span>
+
+<span class="n">doc</span> <span class="o">=</span> <span class="n">App</span><span class="o">.</span><span class="n">activeDocument</span><span class="p">()</span>
+
+<span class="n">p1</span> <span class="o">=</span> <span class="n">App</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="n">App</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">p3</span> <span class="o">=</span> <span class="n">App</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">circle</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">Circle</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">p3</span><span class="p">)</span>
+<span class="n">arc</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">ArcOfCircle</span><span class="p">(</span><span class="n">circle</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.7854</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">addObject</span><span class="p">(</span><span class="s2">&quot;Part::Feature&quot;</span><span class="p">,</span> <span class="s2">&quot;Arc&quot;</span><span class="p">)</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">Shape</span> <span class="o">=</span> <span class="n">arc</span><span class="o">.</span><span class="n">toShape</span><span class="p">()</span>
+
+<span class="n">doc</span><span class="o">.</span><span class="n">recompute</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Bu kodun çalışabilmesi için bir daireye ve radyan cinsinden bir başlangıç ​​açısına ve bitiş açısına ihtiyacı var.</p>
+<p>Kaynak: <a href="https://wiki.freecadweb.org/Part_scripting">Part scripting</a></p>
+<p><a href="freecad-scripting-03-komut-dosyasi-olusturmanin-temelleri.html">← Önceki Bölüm</a> | <a href="freecad-scripting-05-topolojik-veri-kodlamasi.html">Sonraki Bölüm →</a></p>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/freecad.html">FreeCAD</a></li>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/scripting.html">Scripting</a></li>
+					<li><a href="/tag/komut.html">Komut</a></li>
+					<li><a href="/tag/parca.html">Parça</a></li>
+					<li><a href="/tag/part.html">Part</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="FreeCAD - Curves WB - Curves - 07 - Discretize" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/freecad-curves-wb-curves-07-discretize.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">FreeCAD - Curves WB - Curves - 07 - Discretize</h1>
+	<span class="post-date">Cum 21 Ekim 2022</span>
+	<h1><img alt="Curves_Discretize" src="https://wiki.freecadweb.org/images/c/c5/Curves_Discretize.svg"> Discretize:</h1>
+<p><strong>Discretize</strong> komutu, sahneye seçili çizgi ya da eğri boyunca, belirlenen parametre değerlerine göre noktalar ekler.<br>
+Eklenen noktaların sayısı ve noktalar arası mesafe, seçilen <strong>Algoritma</strong> türü ve bu algoritmaya ait parametre değerlerine göre oluşacaktır.</p>
+<p><strong>Kullanım:</strong> Komutu çalıştırmak için aşağıdaki işlemleri sırasıyla uygulayın:</p>
+<ul>
+<li>Öncelikle Kenar ya da Eğriyi/Teli seçin.</li>
+<li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
+<li><strong>Curves</strong> menüsündeki <strong>Discretize</strong> seçeneğini kullanın.</li>
+</ul>
+<p><img alt="Discretize_01" src="../../images/freecad/curves_wb/curves_menu/Discretize_01.png"> Komut çalıştrıldıktan sonra seçili eğri üzerinde <strong>Varsayılan</strong> olarak <strong>Number (Sayı)</strong> algoritması ile <strong>100</strong> adet nokta oluşturulur.
+ <img alt="Discretize_02" src="../../images/freecad/curves_wb/curves_menu/Discretize_02.png"> <strong>Number (Sayı)</strong> parametresi 50 olarak değiştirildiğinde, oluşan nokta sayısı ve noktalar arası mesafe, güncellenir.
+ <img alt="Discretize_03" src="../../images/freecad/curves_wb/curves_menu/Discretize_03.png"> <strong>Discretize</strong> komutunu, sadece <strong>Curves</strong> Çalışma tezgahında oluşturulan çizgi ve eğrilerle değil, <strong>Sketch (Eskiz) / Draft (Taslak), ...vb</strong> çalışma tezgahları komutlarıyla oluşturulan öğelere de uygulanabilir.
+ <img alt="Discretize_04" src="../../images/freecad/curves_wb/curves_menu/Discretize_04.png"> <strong>Sketch (Eskiz)</strong> çalışma tezgahında çizdiğimiz Bezier eğrisini seçip <strong>Discretize</strong> komutunu çalıştıralım.
+ <img alt="Discretize_05" src="../../images/freecad/curves_wb/curves_menu/Discretize_05.png"> <strong>Varsayılan</strong> olarak <strong>Number (Sayı)</strong> algoritması ile <strong>100</strong> adet nokta oluşturuldu.
+ <img alt="Discretize_06" src="../../images/freecad/curves_wb/curves_menu/Discretize_06.png"> <strong>Number (Sayı)</strong> parametresini <strong>300</strong>'e yükseltirsek, toplam 300 adet nokta yani daha yüksek çözünürlüklü bir nokta blutu elde etmiş olduk.
+ <img alt="Discretize_07" src="../../images/freecad/curves_wb/curves_menu/Discretize_07.png"> <strong>QuasiNumber</strong> parametresi, <strong>Number</strong> parametresine benzer bir sonuç veriyor. Belki farklı eğri tiplerinde 
+fark daha net anlaşılabilir ancak bu örnekteki eğride her iki algoritma 
+da çok yakın sonuç verdi.
+ <img alt="Discretize_08" src="../../images/freecad/curves_wb/curves_menu/Discretize_08.png"> <strong>Distance (Mesafe)</strong>, noktalar arası mesafe değerlerini belirterek nokta yapısı oluşturan bir algoritma türüdür.
+ <img alt="Discretize_09" src="../../images/freecad/curves_wb/curves_menu/Discretize_09.png"> <strong>Distance (Mesafe)</strong> parametresi <strong>10,00</strong> iken, eğri şekline uygun olarak ortalama <strong>10 mm</strong> aralıklı noktalar oluşturuldu.
+ <img alt="Discretize_10" src="../../images/freecad/curves_wb/curves_menu/Discretize_10.png"> <strong>Distance (Mesafe)</strong> parametresi <strong>3,00</strong> olarak değiştiğinde, ortalama <strong>3 mm</strong> aralıklı noktalar oluşturuldu/ güncellendi.
+ <img alt="Discretize_11" src="../../images/freecad/curves_wb/curves_menu/Discretize_11.png"> <strong>Deflection</strong> Algoritması, noktalar arası doğruluğun sapma/bozulma derecesine göre nokta elde edilmesini sağlayan algoritma türüdür.<br>
+<strong>Deflection</strong> parametresi <strong>0,10</strong> iken elde edilen nokta yapısı aşağıdadır.
+ <img alt="Discretize_12" src="../../images/freecad/curves_wb/curves_menu/Discretize_12.png"> <strong>Deflection (Sapma)</strong> parametresi <strong>0,50</strong> olarak değiştirildiğinde, daha yüksek sapma değerine müsade edilerek daha az sayıda nokta oluşturulması sağlanır.
+ <img alt="Discretize_13" src="../../images/freecad/curves_wb/curves_menu/Discretize_13.png"> <strong>Deflection (Sapma)</strong> parametresini <strong>1,00</strong> olarak değiştirelim ve oluşan noktaları <strong>parametrik çizgi</strong>ler ile birleştirelim.
+ <img alt="Discretize_14" src="../../images/freecad/curves_wb/curves_menu/Discretize_14.png"> Noktalar <strong>Parametrik çizgi</strong>ler ile birleştirildikten sonra, <strong>Deflection (Sapma)</strong> parametresi tekrar <strong>0,50</strong> olarak değiştirildiğinde, noktaların sayısı ve oluşturulma sırasının nasıl değiştiğini aşağıdaki resimde görebilirsiniz.
+ <img alt="Discretize_15" src="../../images/freecad/curves_wb/curves_menu/Discretize_15.png"> <strong>QuasiDeflection</strong> algoritması da <strong>Deflection (Sapma)</strong> algoritmasına benzer bir yapıya sahiptir.<br>
+<strong>Deflection (Sapma)</strong> parametresi <strong>0,01</strong> iken elde edilen nokta yapısı aşağıdadır.
+ <img alt="Discretize_16" src="../../images/freecad/curves_wb/curves_menu/Discretize_16.png"> <strong>Deflection (Sapma)</strong> parametre değeri <strong>0,10</strong> olarak değiştiğinde elde edilen nokta yapısı aşağıdaki gibi daha düşük çözünürlüklü oluyor.
+ <img alt="Discretize_17" src="../../images/freecad/curves_wb/curves_menu/Discretize_17.png"> <strong>Angular-Curvature (Açısal-Eğrilik)</strong> algoritması, bir diğer algoritma seçeneğidir.<br>
+Bu algoritma yapısında <strong>Açısallık (Angular), Eğrilik (Curvature)</strong> ve <strong>En az nokta sayısı (Minimum)</strong> parametreleri belirtilerek nokta yapısı oluşturulur.<br>
+Parametre değerleri aşağıdaki şekilde belirtildiğinde elde edilen sonuç aşağıda mevcuttur.<br>
+<em>Açısallık (Angular): 0,10<br>
+Eğrilik (Curvature): 0,10<br>
+En az nokta sayısı (Minimum) : 2</em> <img alt="Discretize_18" src="../../images/freecad/curves_wb/curves_menu/Discretize_18.png"> <strong>Açısallık (Angular)</strong> Parametre değeri aşağıdaki şekilde değiştirildiğinde elde edilen sonuç aşağıda mevcuttur.<br>
+<em>Açısallık (Angular): 2,00<br>
+Eğrilik (Curvature): 0,10<br>
+En az nokta sayısı (Minimum) : 2</em> <img alt="Discretize_19" src="../../images/freecad/curves_wb/curves_menu/Discretize_19.png"> <strong>Eğrilik (Curvature)</strong> Parametre değeri aşağıdaki şekilde değiştirildiğinde elde edilen sonuç aşağıda mevcuttur.<br>
+<em>Açısallık (Angular): 2,00<br>
+Eğrilik (Curvature): 1,00<br>
+En az nokta sayısı (Minimum) : 2</em> <img alt="Discretize_20" src="../../images/freecad/curves_wb/curves_menu/Discretize_20.png"></p>
+<p><a href="freecad-curves-wb-curves-00-curves-menu-komutlari.html">&lt;&lt;&lt; Curves Menü Komutlarına Ait Sayfaya Dön</a></p>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/freecad.html">FreeCAD</a></li>
+					<li><a href="/tag/curves.html">Curves</a></li>
+					<li><a href="/tag/workbench.html">Workbench</a></li>
+					<li><a href="/tag/calismatezgahi.html">ÇalışmaTezgahı</a></li>
+					<li><a href="/tag/discretize.html">Discretize</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>

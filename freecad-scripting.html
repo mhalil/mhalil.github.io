@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="FreeCAD - Scripting" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/freecad-scripting.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">FreeCAD - Scripting</h1>
+	<span class="post-date">Cts 01 Ocak 2022</span>
+	<h2>FreeCAD için Python ile Komut Dosyası Oluşturma (Scripting) Eğitimi</h2>
+<p><strong>FreeCAD ve Python Birlikteliğinin Muhteşem Gücü</strong><br>
+    Bu Bölümde, <a href="https://wiki.freecadweb.org/Power_users_hub">FreeCAD Wiki Belgelerini</a> inceleyerek, FreeCAD içerisinde <strong>Komut Dosyası Oluşturma (Scripting)</strong> Konusunu öğrenmeye çalışıyor ve <strong>Türkçe içerikli</strong> Kaynak oluşturmayı hedefliyorum. İlk etapta Python programlama dili hakkında kısa bir bilgi verecek ardından betik (komut dosyası) yazma konusuna devam edeceğim.</p>
+<p>Konu anlatımları esnasında yazdığım kodları / betik dosyalarını ve FreeCAD kullanıcıları tarafından oluşturulmuş betik (script) dosyalarını da incelemeniz amacıyla 
+paylaşmayı düşünüyorum.</p>
+<p>Konu Başlıkları aşağıda sıralanmıştır. FreeCAD içerisinde Komut dosyası oluşturma konusunda yeniyseniz, konuları sıraya göre takip etmenizi öneririm.</p>
+<p><img alt="FreeCAD_Python" src="images/freecad/FreeCAD_Python.png"></p>
+<h2>Konu Başlıkları</h2>
+<ol>
+<li><a href="freecad-scripting-01-pythona-giris.html">Python'a Giriş</a></li>
+<li><a href="freecad-scripting-02-python-komut-dosyasi-olusturmak.html">Python Komut Dosyası Oluşturmak</a></li>
+<li><a href="freecad-scripting-03-komut-dosyasi-olusturmanin-temelleri.html">FreeCAD Komut Dosyası Temelleri</a></li>
+<li><a href="freecad-scripting-04-parca-part-komut-dosyasi-olusturmak.html">Parça (Part) Komut Dosyası Oluşturmak</a></li>
+<li><a href="freecad-scripting-05-topolojik-veri-kodlamasi.html">Topolojik Veri Kodlaması</a></li>
+<li><a href="freecad-scripting-06-komut-dosyasiyla-yazilmis-nesneler.html">Komut Dosyasıyla Yazılmış Nesneler</a></li>
+</ol>
+<hr>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/freecad.html">FreeCAD</a></li>
+					<li><a href="/tag/3d.html">3D</a></li>
+					<li><a href="/tag/cad.html">CAD</a></li>
+					<li><a href="/tag/scripting.html">Scripting</a></li>
+					<li><a href="/tag/komut.html">Komut</a></li>
+					<li><a href="/tag/egitim.html">Eğitim</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>

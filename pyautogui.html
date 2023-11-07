@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="PyAutoGUI" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/pyautogui.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">PyAutoGUI</h1>
+	<span class="post-date">Paz 05 Haziran 2022</span>
+	<h1>PyAutoGUI Kütüphanesi</h1>
+<p><strong>PyAutoGUI</strong>, fare ve klavyeleri kontrol etmemizi sağlayan, böylece otomatik görevler yapan kodlar/botlar yazmamıza yardımcı olan güzel, faydalı bir Python kütüphanesidir (modülüdür).</p>
+<p><img alt="pyautogui" src="../images/python/pyautogui/pyautogui.png"></p>
+<p><strong>PyAutoGUI</strong> kütüphanesi ile aşağıda listelenen işlemleri yapabiliriz;</p>
+<ul>
+<li>İmleci hareket ettirme,</li>
+<li>İstenilen yere tek, çift ya da daha fazla tıklama,</li>
+<li>Pencere, diyalog kutusu taşıma, kaydırma çubuğunu  hareket ettirme,</li>
+<li>Klavyeden yazı yazma, Ekrandaki metnin bir bölümü ya da tamamını seçme,</li>
+<li>Komut gönderme,</li>
+<li>Ekran görüntüsü alma,</li>
+<li>Ekran görüntüsüne sahip olduğumuz buton, pencere ve simgeleri bulma ve tıklama.</li>
+</ul>
+<p><strong>PyAutoGUI</strong> kütüphanesini indirme/yükleme konusunda <a href="https://pypi.org/project/PyAutoGUI/">bu adresten</a> ya da <a href="https://github.com/asweigart/pyautogui">şu adresten</a> bilgi alabilirsiniz.</p>
+<h2>Pip Yüklemek;</h2>
+<p><strong>Pip</strong>, python kütüphanelerini barındıran bir paket yönetim sistemidir. Paket
+ yönetim sistemi ise, geliştiriciler tarafından hazırlanan o dile ya da yazılıma ait kütüphaneleri / modülleri tek komut kullanarak kolayca yükleyebilmenizi, güncelleyebilmenizi ve isterseniz silebilmenizi sağlayan araçtır.</p>
+<p>Eğer bilgisayarınızda <strong>pip</strong> yüklü değilse öncelikle <strong>pip3</strong>'ü yüklemelisiniz. </p>
+<div class="highlight"><pre><span></span><code><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">pip</span>
+</code></pre></div>
+
+<h2>PyAutoGUI kütüphanesini yüklemek;</h2>
+<h3>Windows Kullanıcısı;</h3>
+<p>Windows işletim sistemi kullanıyorsanız PyAutoGUI kütüphanesini yüklemek için aşağıdaki komutu, komut satırına yazmalısınız.</p>
+<div class="highlight"><pre><span></span><code><span class="n">C</span><span class="p">:</span>\<span class="n">Python34</span>\<span class="n">pip</span><span class="o">.</span><span class="n">exe</span> <span class="n">install</span> <span class="n">pyautogui</span>
+</code></pre></div>
+
+<h3>Linux Kullanıcısı;</h3>
+<p>Linux işletim sistemi kullanıyorsanız PyAutoGUI kütüphanesini yüklemek için aşağıdaki komutu, terminale  yazmalısınız.</p>
+<div class="highlight"><pre><span></span><code><span class="n">pip3</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">xlib</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">ins</span>
+</code></pre></div>
+
+<h1>Genel Fonksiyonlar;</h1>
+<p>Öncelikle <strong>pyautogui</strong> modülünü, çalışmamıza dahil (import) edelim.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pyautogui</span>
+</code></pre></div>
+
+<h2>size()</h2>
+<p>Ekran Boyutunu öğrenelim.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">pyautogui</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>  
+</code></pre></div>
+
+<blockquote>
+<p>Çıktı:</p>
+<p><code>python
+Size(width=1920, height=1080)</code></p>
+</blockquote>
+<h2>onScreen(x, y)</h2>
+<p>Belirttiğimiz (0, 3000) Koordinatları, ekran sınırları içerisinde mi? Öğrenelim.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">pyautogui</span><span class="o">.</span><span class="n">onScreen</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3000</span><span class="p">))</span>
+</code></pre></div>
+
+<blockquote>
+<p>Çıktı</p>
+<p><code>python
+False</code></p>
+</blockquote>
+<h2>UYARI:</h2>
+<p>PyAutoGUI kütüphanesini kullanırken, koordinatlar hakkında bilmeniz gereken bir husus var. Fare kontrolü yapabilmemiz için ekrandaki koordinat sistemini anlayabilmemiz gerekir.</p>
+<p>Bu koordinat sistemi <code>X</code> (yatay) ve <code>Y</code> (dikey) düzlemlerden oluşmaktadır.</p>
+<p>Başlangıç Koordinatı olan (0, 0) noktası (Orijin), Ekranın sol üst kısmıdır. <code>X</code> ekseni sağa doğru artarken, <code>Y</code> ekseni aşağı yönde artış gösterir.</p>
+<p><img alt="koordinat" src="../images/python/pyautogui/koordinat.png"></p>
+<h1>Fare Hareketi Fonksiyonları;</h1>
+<h2>position()</h2>
+<p>İmleç konumunu tespit et, <strong>x</strong> ve <strong>y</strong> değerlerini al, "a" ve "b" değişkenlerine ata. Değişkenleri ekrana yazdır.</p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">pyautogui</span><span class="o">.</span><span class="n">position</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</code></pre></div>
+
+<blockquote>
+<p>Çıktı:</p>
+<p><code>python
+1583 259</code></p>
+</blockquote>
+<p>İmleç konumunu doğrudan ekrana yazdır;</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">pyautogui</span><span class="o">.</span><span class="n">position</span><span class="p">())</span>
+</code></pre></div>
+
+<blockquote>
+<p>Çıktı;</p>
+<p><code>python
+Point(x=1577, y=229)</code></p>
+</blockquote>
+<h2>displayMousePosition()</h2>
+<p>Bu fonksiyon, İmleç koordinatlarını eş zamanlı şekilde konsolda görüntüler. Ayrıca imleçin bulunduğu konumun RGB renk kodunu da görüntüler. Komuttan çıkmak için, imleç konsoldayken  <code>Ctrl + C</code> tuşlarına basmalısınız.</p>
+<div class="highlight"><pre><span></span><code><span class="n">pyautogui</span><span class="o">.</span><span class="n">displayMousePosition</span><span class="p">()</span>
+</code></pre></div>
+
+<blockquote>
+<p>Çıktı</p>
+<p><code>python
+Press Ctrl-C to quit.
+X: 1018 Y:  991 RGB: ( 62,  68,  80)</code></p>
+</blockquote>
+<h2>moveTo(x, y)</h2>
+<p>İmleci X'te 100 ve Y'de 200 konumuna taşı.</p>
+<div class="highlight"><pre><span></span><code><span class="n">pyautogui</span><span class="o">.</span><span class="n">moveTo</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+</code></pre></div>
+
+<p>İmleci X'te sabit tut ve Y'de 500 konumuna taşı.</p>
+<div class="highlight"><pre><span></span><code><span class="n">pyautogui</span><span class="o">.</span><span class="n">moveTo</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+</code></pre></div>
+
+<p>İmleci X'te 600  konumuna taşı, Y'de mevcut (500 konumunda) sabit tut.</p>
+<div class="highlight"><pre><span></span><code><span class="n">pyautogui</span><span class="o">.</span><span class="n">moveTo</span><span class="p">(</span><span class="mi">600</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+</code></pre></div>
+
+<p>imleci 2 saniye süre içinde X'te 100, Y'de 200 koordinatlarına taşı.</p>
+<div class="highlight"><pre><span></span><code><span class="n">pyautogui</span><span class="o">.</span><span class="n">moveTo</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>moveRel(x, y)</h2>
+<p>İmleci <strong>mevcut bulunduğu konumdan</strong> 50 pixel sağa (x ekseni yönünde) taşı</p>
+<div class="highlight"><pre><span></span><code><span class="n">pyautogui</span><span class="o">.</span><span class="n">moveRel</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+
+<p>İmleci (fareyi) bulunduğu konumdan 50 pixel sola (-x ekseni yönünde) taşı</p>
+<div class="highlight"><pre><span></span><code><span class="n">pyautogui</span><span class="o">.</span><span class="n">moveRel</span><span class="p">(</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>dragTo(x, y, button="right/left")</h2>
+<p>Farenin <strong>sol tuşuna</strong> basılı tutarak imleci X'te 750, Y'de 200 piksel konumuna sürükle-bırak. Sürükle-bırak işlemi yapar.</p>
+<div class="highlight"><pre><span></span><code><span class="n">pyautogui</span><span class="o">.</span><span class="n">dragTo</span><span class="p">(</span><span class="mi">750</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="n">button</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Farenin <strong>sağ tuşuna</strong> basılı tutarak <strong>2 saniye içinde</strong> imleci bulunduğu konumdan 30 pixel sağa sürükle.</p>
+<div class="highlight"><pre><span></span><code><span class="n">pyautogui</span><span class="o">.</span><span class="n">dragRel</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">button</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>dragRel(x,y)</h2>
+<p>Farenin <strong>sol tuşuna</strong> basılı tutarak imleci <strong>mevcut bulunduğu konumdan</strong> X'te 150 sağa, Y'de 200 piksel yukarı sürükle-bırak.</p>
+<div class="highlight"><pre><span></span><code><span class="n">pyautogui</span><span class="o">.</span><span class="n">dragRel</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span><span class="o">-</span><span class="mi">200</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>duration</strong> parametresi ile, sürükle-bırak işleminin kaç saniye içerisinde yapılması gerektiğini belirtebilirsiniz. </p>
+<div class="highlight"><pre><span></span><code><span class="n">pyautogui</span><span class="o">.</span><span class="n">dragRel</span><span class="p">(</span><span class="o">-</span><span class="mi">150</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="n">duration</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>click()</h2>
+<p>Hiç bir parametre girilmeden çalıştırılırsa bulunduğu konumda <strong>farenin sol butonu</strong> ile bir kez tıklar.</p>
+<div class="highlight"><pre><span></span><code><span class="n">pyautogui</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+</code></pre></div>
+
+<h2>click(x, y)</h2>
+<p>x'te 100, y'de 200 koordinatlarına git ve sonra sol tıkla.</p>
+<div class="highlight"><pre><span></span><code><span class="n">pyautogui</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>click(button='right')</h2>
+<p>Bulunduğu konumda <strong><em>*farenin sağ butonu</em>* ile tıklar. Bunun için </strong>rightClick(x, y)** komutu da kullanılabilir. Bu komut aşağıda anlatıldı.</p>
+<div class="highlight"><pre><span></span><code><span class="n">pyautogui</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="n">button</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span> 
+</code></pre></div>
+
+<h2>click(clicks=...)</h2>
+<p><strong>Farenin sol butonu</strong> ile birden fazla tıklar. Çift (iki kez) tıklamak için <strong>doubleClick(x, y)</strong> metodu da kullanılabilir. <strong>doubleClick()</strong> metodu aşağıda anlatıldı.</p>
+<div class="highlight"><pre><span></span><code><span class="n">pyautogui</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="n">clicks</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>click(interval=...)</h2>
+<p><strong>Farenin sol butonu</strong> ile çift tıklarken, tıklamalar arasında 0.25sn süre ile bekler.</p>
+<div class="highlight"><pre><span></span><code><span class="n">pyautogui</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="n">clicks</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>Farenin sağ butonu</strong> ile üç kez tıklarken, tıklamalar arasında 0.25sn süre ile bekler. </p>
+<div class="highlight"><pre><span></span><code><span class="n">pyautogui</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="n">button</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">,</span> <span class="n">clicks</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>click("resim.png")</h2>
+<p><strong>click()</strong> metodunun bir başka kullanım yöntemi de, bir görseli referans olarak belirterek, o görselin koordinatlarını otomatik olarak belirleyip o koordinata tıklamasıdır. Bunu aşağıdaki kod ile basit bir şekilde gerçekleştirebiliriz.</p>
+<div class="highlight"><pre><span></span><code><span class="n">click</span><span class="p">(</span><span class="s2">&quot;begen.png&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Referans resme sağ tıklamak için;</p>
+<div class="highlight"><pre><span></span><code><span class="n">pyautogui</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="s2">&quot;link.png&quot;</span><span class="p">,</span> <span class="n">button</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>PyAutoGUI</strong> kütüphanesini referans resimler/grafikler ile kullanırken dikkat etmemiz gerekir. Kodları yazdığımız bilgisayar ile kodu/uygulamayı kullanacağımız bilgisayarın  ekran çözünürlüklerinin farklı olması halinde, referans resimlere ait görselleri uygulamayı kullanacağımız bilgisayarda yeniden almamız gerekir. Zira referans görüntülerdeki ufak değişiklikler bile kütüphane için olumsuz sonuçlar verecektir. 
+Ayrıca ekranda referans görüntünün bir benzerinin olmaması gerekir. Aksi taktirde yanlış koordinat elde edilir ve istediğimizden farklı bir koordinata tıklanarak yanlış sonuç elde edebiliriz.</p>
+<h2>rightClick(x, y)</h2>
+<p>İstenilen (örneğin 650, 550) konuma gidip <strong>farenin sağ butonuna</strong> tıkla.</p>
+<div class="highlight"><pre><span></span><code><span class="n">pyautogui</span><span class="o">.</span><span class="n">rightClick</span><span class="p">(</span><span class="mi">650</span><span class="p">,</span> <span class="mi">550</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>middleClick(x, y)</h2>
+<p>İstenilen (örneğin 500, 1000) konuma gidip <strong>farenin orta butonuna</strong> tıkla.</p>
+<div class="highlight"><pre><span></span><code><span class="n">middleClick</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>doubleClick(x, y)</h2>
+<p>İstenilen (örneğin 100, 200) konuma gidip <strong>farenin sol butonuna çift</strong> tıkla.</p>
+<div class="highlight"><pre><span></span><code><span class="n">pyautogui</span><span class="o">.</span><span class="n">doubleClick</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>tripleClick(x, y)</h2>
+<p>İstenilen (örneğin 300, 600) konuma gidip <strong>farenin sol butonuna üç kez</strong> tıkla.</p>
+<div class="highlight"><pre><span></span><code><span class="n">pyautogui</span><span class="o">.</span><span class="n">tripleClick</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">600</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>mouseDown() / mouseUp()</h2>
+<p><strong>Farenin sol butonuna</strong> bas (mouseDown()) ve elini butondan çek (mouseUp())  </p>
+<div class="highlight"><pre><span></span><code><span class="n">pyautogui</span><span class="o">.</span><span class="n">mouseDown</span><span class="p">();</span> <span class="n">pyautogui</span><span class="o">.</span><span class="n">mouseUp</span><span class="p">()</span>
+</code></pre></div>
+
+<h2>mouseDown(x, y, button="left/right")</h2>
+<p><strong>Farenin sağ / sol / orta butonuna</strong> bas,  çek komutu gelmeden butonu bırakma. Kopyalamak amacıyla <strong>Metin seçimi yaparken</strong> kullanabileceğimiz bir fonksiyon.</p>
+<div class="highlight"><pre><span></span><code><span class="n">pyautogui</span><span class="o">.</span><span class="n">mouseDown</span><span class="p">(</span><span class="mi">864</span><span class="p">,</span> <span class="mi">486</span><span class="p">,</span> <span class="n">button</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">)</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">mouseUp</span><span class="p">(</span><span class="mi">864</span><span class="p">,</span> <span class="mi">864</span><span class="p">,</span> <span class="n">button</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>mouseDown(button='right / left / middle')</h2>
+<p>Farenin Sağ / Sol / Orta butona bas.</p>
+<div class="highlight"><pre><span></span><code><span class="n">pyautogui</span><span class="o">.</span><span class="n">mouseDown</span><span class="p">(</span><span class="n">button</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>mouseUp(x, y, button='right / left / middle')</h2>
+<p>(100,200) koordinatlarına gittikten sonra farenin sağ butonuna basmayı bırak. Bu fonksiyon, Metin seçimi yaparken, seçimin nerede bitmesi gerektiğini belirtirken kullanılabilir.</p>
+<div class="highlight"><pre><span></span><code><span class="n">pyautogui</span><span class="o">.</span><span class="n">mouseUp</span><span class="p">(</span><span class="n">button</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Parametreler yer değiştirebilir. Aynı kod aşağıdaki şekilde de yazılabilir;</p>
+<div class="highlight"><pre><span></span><code><span class="n">pyautogui</span><span class="o">.</span><span class="n">mouseUp</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">button</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>scrool(...)</h2>
+<p>Sayfada kaydırma işlemi yapar. Fare tekerini 5 kez yukarı (ileri) hareket ettirelim.</p>
+<div class="highlight"><pre><span></span><code><span class="n">pyautogui</span><span class="o">.</span><span class="n">scroll</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Kodu çalıştırdığımızda öncelikle imlec (1750, 400) konumuna gidip bir kez sol tıklasın ardından fare tekerini 50 kez aşağı (geri/kendimize) doğru hareket ettirsin.</p>
+<div class="highlight"><pre><span></span><code><span class="n">pyautogui</span><span class="o">.</span><span class="n">moveTo</span><span class="p">(</span><span class="mi">1750</span><span class="p">,</span><span class="mi">400</span><span class="p">)</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">scroll</span><span class="p">(</span><span class="o">-</span><span class="mi">50</span><span class="p">)</span>
+</code></pre></div>
+
+<h1>Klavye Kontrol Fonksiyonları;</h1>
+<h2>typewrite('...')</h2>
+<p>İmlecin bulunduğu konuma, anında "Merhaba Dünya" yazdırır.</p>
+<div class="highlight"><pre><span></span><code><span class="n">pyautogui</span><span class="o">.</span><span class="n">typewrite</span><span class="p">(</span><span class="s1">&#39;Merhaba Dünya!&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Karakterler arası çeyrek (0.25) saniye bekleyerek "Merhaba Dünya" yazar.</p>
+<div class="highlight"><pre><span></span><code><span class="n">pyautogui</span><span class="o">.</span><span class="n">typewrite</span><span class="p">(</span><span class="s2">&quot;Merhaba Dunya!&quot;</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>KEYBOARD_KEYS</h2>
+<p>Özel tuşların listesine ulaşmak için aşağıdaki kodu çalıştırabilirsiniz.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">pyautogui</span><span class="o">.</span><span class="n">KEYBOARD_KEYS</span><span class="p">)</span>
+</code></pre></div>
+
+<blockquote>
+<p>Çıktı;</p>
+<p><code>python
+['\t', '\n', '\r', ' ', '!', '"', '#', '$', '%', '&amp;', "'", '(', ')', '*', '+', ',', '-', '.', '/', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ':', ';', '&lt;', '=', '&gt;', '?', '@', '[', '\\', ']', '^', '_', '`', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '{', '|', '}', '~', 'accept', 'add', 'alt', 'altleft', 'altright', 'apps', 'backspace', 'browserback', 'browserfavorites', 'browserforward', 'browserhome', 'browserrefresh', 'browsersearch', 'browserstop', 'capslock', 'clear', 'convert', 'ctrl', 'ctrlleft', 'ctrlright', 'decimal', 'del', 'delete', 'divide', 'down', 'end', 'enter', 'esc', 'escape', 'execute', 'f1', 'f10', 'f11', 'f12', 'f13', 'f14', 'f15', 'f16', 'f17', 'f18', 'f19', 'f2', 'f20', 'f21', 'f22', 'f23', 'f24', 'f3', 'f4', 'f5', 'f6', 'f7', 'f8', 'f9', 'final', 'fn', 'hanguel', 'hangul', 'hanja', 'help', 'home', 'insert', 'junja', 'kana', 'kanji', 'launchapp1', 'launchapp2', 'launchmail', 'launchmediaselect', 'left', 'modechange', 'multiply', 'nexttrack', 'nonconvert', 'num0', 'num1', 'num2', 'num3', 'num4', 'num5', 'num6', 'num7', 'num8', 'num9', 'numlock', 'pagedown', 'pageup', 'pause', 'pgdn', 'pgup', 'playpause', 'prevtrack', 'print', 'printscreen', 'prntscrn', 'prtsc', 'prtscr', 'return', 'right', 'scrolllock', 'select', 'separator', 'shift', 'shiftleft', 'shiftright', 'sleep', 'space', 'stop', 'subtract', 'tab', 'up', 'volumedown', 'volumemute', 'volumeup', 'win', 'winleft', 'winright', 'yen', 'command', 'option', 'optionleft', 'optionright']</code></p>
+</blockquote>
+<h2>press("...")</h2>
+<p><strong>Enter</strong> tuşuna bas ve çek.</p>
+<div class="highlight"><pre><span></span><code><span class="n">pyautogui</span><span class="o">.</span><span class="n">press</span><span class="p">(</span><span class="s2">&quot;enter&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>F1</strong> tuşuna bas ve çek.</p>
+<div class="highlight"><pre><span></span><code><span class="n">pyautogui</span><span class="o">.</span><span class="n">press</span><span class="p">(</span><span class="s2">&quot;f1&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>Sol ok</strong> tuşuna bas ve çek.</p>
+<div class="highlight"><pre><span></span><code><span class="n">pyautogui</span><span class="o">.</span><span class="n">press</span><span class="p">(</span><span class="s2">&quot;left&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>typewrite()</strong> fonksiyonu gibi birden fazla tuşa <strong>press()</strong> fonksiyonu ile bas.</p>
+<div class="highlight"><pre><span></span><code><span class="n">pyautogui</span><span class="o">.</span><span class="n">press</span><span class="p">([</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="s1">&#39;left&#39;</span><span class="p">])</span>
+</code></pre></div>
+
+<p>Yukarıdaki kod, bizi şu şekilde kod yazmaktan kurtarıyor.</p>
+<div class="highlight"><pre><span></span><code><span class="n">pyautogui</span><span class="o">.</span><span class="n">press</span><span class="p">(</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">press</span><span class="p">(</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">press</span><span class="p">(</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>keyDown('...')</h2>
+<p><strong>Shift</strong> tuşuna basılı tut. Bırak komutu gelinceye kadar basmaya devam et. Büyük harf ya da üst karakterleri yazdırmak istediğimizde kullanabiliriz.</p>
+<div class="highlight"><pre><span></span><code><span class="n">pyautogui</span><span class="o">.</span><span class="n">keyDown</span><span class="p">(</span><span class="s1">&#39;shift&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>keyUp('...')</h2>
+<p><strong>Shift</strong> tuşuna basmayı bırak.</p>
+<div class="highlight"><pre><span></span><code><span class="n">pyautogui</span><span class="o">.</span><span class="n">keyUp</span><span class="p">(</span><span class="s1">&#39;shift&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>keyDown() ve keyUp() metotları ile basit bir örnek yapalım;</p>
+<div class="highlight"><pre><span></span><code><span class="n">pyautogui</span><span class="o">.</span><span class="n">keyDown</span><span class="p">(</span><span class="s2">&quot;shift&quot;</span><span class="p">)</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">typewrite</span><span class="p">(</span><span class="s2">&quot;8&quot;</span><span class="p">)</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">keyUp</span><span class="p">(</span><span class="s2">&quot;shift&quot;</span><span class="p">)</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">typewrite</span><span class="p">(</span><span class="s2">&quot;150&quot;</span><span class="p">)</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">keyDown</span><span class="p">(</span><span class="s2">&quot;shift&quot;</span><span class="p">)</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">typewrite</span><span class="p">(</span><span class="s2">&quot;7&quot;</span><span class="p">)</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">keyUp</span><span class="p">(</span><span class="s2">&quot;shift&quot;</span><span class="p">)</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">typewrite</span><span class="p">(</span><span class="s2">&quot;3&quot;</span><span class="p">)</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">keyDown</span><span class="p">(</span><span class="s2">&quot;shift&quot;</span><span class="p">)</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">typewrite</span><span class="p">(</span><span class="s2">&quot;9&quot;</span><span class="p">)</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">keyUp</span><span class="p">(</span><span class="s2">&quot;shift&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<blockquote>
+<p>Çıktı;</p>
+<p><code>python
+(150/3)</code></p>
+</blockquote>
+<h2>hotkey('...', '...')</h2>
+<p><strong>Ctrl+Shift+Esc</strong> kısayol tuşlarına bas.</p>
+<div class="highlight"><pre><span></span><code><span class="n">pyautogui</span><span class="o">.</span><span class="n">hotkey</span><span class="p">(</span><span class="s1">&#39;ctrl&#39;</span><span class="p">,</span> <span class="s1">&#39;shift&#39;</span><span class="p">,</span> <span class="s1">&#39;left&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Shift+Home kısayol tuşlarına bas.</p>
+<div class="highlight"><pre><span></span><code><span class="n">pyautogui</span><span class="o">.</span><span class="n">hotkey</span><span class="p">(</span><span class="s1">&#39;shift&#39;</span><span class="p">,</span> <span class="s1">&#39;home&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Bu metodu, iş hayatında en sık kullandığımız komutlardan olan Kopyala - Yapıştır tuşları için kullanabiliriz.</p>
+<div class="highlight"><pre><span></span><code><span class="n">pyautogui</span><span class="o">.</span><span class="n">hotkey</span><span class="p">(</span><span class="s1">&#39;ctrl&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">)</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">hotkey</span><span class="p">(</span><span class="s1">&#39;ctrl&#39;</span><span class="p">,</span> <span class="s1">&#39;v&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h1>Mesaj Kutusu Fonksiyonları;</h1>
+<h2>alert()</h2>
+<p>Bu metot, <strong>Metin, başlık ve tek bir buton</strong>dan oluşan bir ileti/mesaj kutusu gösterir. Butona tıklandıktan sonra buton (button) metnini döndürür.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">pyautogui</span><span class="o">.</span><span class="n">alert</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Uyarı metnini buraya yazıyoruz&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Başlığımız&#39;</span><span class="p">,</span> <span class="n">button</span><span class="o">=</span><span class="s1">&#39;Tamam len!&#39;</span><span class="p">))</span>
+</code></pre></div>
+
+<blockquote>
+<p>Çıktı;</p>
+<p>```python</p>
+<blockquote>
+<p>Tamam len!
+```</p>
+</blockquote>
+</blockquote>
+<p><img alt="alert" src="../images/python/pyautogui//alert.png"></p>
+<h2>confirm()</h2>
+<p>Liste halinde belirtilen butonları, metni ve başlığı gösteren bir metin kutusu oluşturur. (Liste halinde yazılmak kaydıyla) butonlar birden fazla olabilir. Butonlara tıklandığında sonuç olarak tıklanan butonun (buttons) metnini gönderir.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">pyautogui</span><span class="o">.</span><span class="n">confirm</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Doğruluyor musun?&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Emin misiniz?&#39;</span><span class="p">,</span> <span class="n">buttons</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Doğruluyorum&#39;</span><span class="p">,</span> <span class="s1">&#39;Doğrulamıyorum&#39;</span><span class="p">]))</span>
+</code></pre></div>
+
+<blockquote>
+<p><strong>Doğruluyorum</strong>* yazan butona bastığımızda döndürülen sonuç / çıktı;</p>
+<p><code>python
+Doğruluyorum</code></p>
+</blockquote>
+<p><img alt="confirm" src="../images/python/pyautogui/confirm.png"></p>
+<h2>prompt()</h2>
+<p>Metin girebileceğimiz / yazabileceğimiz bir Metin alanı (Text Area), “<strong>Ok</strong>” ve “<strong>Cancel</strong>” butonlarının bulunduğu bir metin kutusu görüntülenir. “<strong>Ok</strong>” butonuna tıklandığında sonuç olarak <strong>girilen metni</strong>, “<strong>Cancel</strong>” butonuna tıklandığında <strong>None</strong> değerini döndürür.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">pyautogui</span><span class="o">.</span><span class="n">prompt</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Metninizi yazın...&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Başlık&#39;</span><span class="p">))</span>
+</code></pre></div>
+
+<p><img alt="prompt" src="../images/python/pyautogui/prompt.png"></p>
+<blockquote>
+<p><strong>OK</strong> butonuna basıldığında elde edilen çıktı;</p>
+<p><code>python
+PyAutoGUI - Python</code></p>
+</blockquote>
+<h2>password()</h2>
+<p>Metin girebileceğimiz / yazabileceğimiz bir Metin alanı (Text Area), “<strong>Ok</strong>” ve “<strong>Cancel</strong>” butonlarının bulunduğu bir metin kutusu görüntülenir. Bu fonksiyonun <strong>prompt()</strong> fonksiyonundan tek farkı, yazılan metinler <code>*</code> şeklinde görüntülenir. “<strong>Ok</strong>” butonuna tıklanır ise <strong>yazılan metin</strong>, “<strong>Cancel</strong>” butonuna tıklanır ise <strong>None</strong> değerini <strong>sonuç</strong> olarak döndürür.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">pyautogui</span><span class="o">.</span><span class="n">password</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Şifrenizi Giriniz:&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Giriş Ekranı&#39;</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="s1">&#39;*&#39;</span><span class="p">))</span>
+</code></pre></div>
+
+<p><img alt="password" src="../images/python/pyautogui/password.png"></p>
+<blockquote>
+<p>OK butonuna basılınca elde edilen çıktı;</p>
+<p><code>deneme</code></p>
+</blockquote>
+<h1>Ekran Görüntüsü Fonksiyonları;</h1>
+<h2>screenshot('...')</h2>
+<p><strong>Ekran görüntüsünü almak</strong> için kullanacağımız fonksiyondur. Bu işlemi python konsolunda yaptığınızda fotoğrafı python’nun yüklü olduğu dizine kaydeder.</p>
+<div class="highlight"><pre><span></span><code><span class="n">resim</span> <span class="o">=</span> <span class="n">pyautogui</span><span class="o">.</span><span class="n">screenshot</span><span class="p">(</span><span class="s1">&#39;ekran_goruntum.png&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>region=(a,b,c,d)</h2>
+<p>Ekranının sadece <strong>belirli bir kısmının</strong> görüntüsünü almak isteyince "<strong>region</strong>" argümanını/parametresini kullanacağız. Burada vereceğimiz değerilerin ilk ikisi <strong>x, y başlangıç koordinatını</strong> daha sonra vereceğimiz iki değer ise ilki <strong>x ekseni boyunca (sağa doğru) genişliğini, ikincisi ise y ekseni boyunca (aşağı doğru) yüksekliğini</strong> belirtir.</p>
+<div class="highlight"><pre><span></span><code><span class="n">resim</span> <span class="o">=</span> <span class="n">pyautogui</span><span class="o">.</span><span class="n">screenshot</span><span class="p">(</span><span class="s2">&quot;goruntu.png&quot;</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">500</span><span class="p">))</span>
+</code></pre></div>
+
+<h2>locateCenterOnScreen()</h2>
+<p>Bu metot ile, bilgisayarınızda kayıtlı bir resmin, ekranda olup olmadığını denetler, varsa koordinatlarını döndürür. İlgili görsel birden fazla varsa tümüne ait koordinatları döndürür.</p>
+<p>Resimler klasöründe bulunan <strong>Like.png</strong> isimli resim ekranda varsa koordinatlarını tespit et, x ve y değişkenlerine ata. Ardından imleci belirlenen (x, y) konuma 1 saniyede taşı ve bir kez sol tıkla.</p>
+<div class="highlight"><pre><span></span><code><span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">pyautogui</span><span class="o">.</span><span class="n">locateCenterOnScreen</span><span class="p">(</span><span class="s2">&quot;/home/halil/Resimler/Like.png&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">650</span><span class="p">,</span> <span class="mi">325</span><span class="p">)</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">moveTo</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Resmin bulunmasını hızlandırmak için aramayı siyah beyaz resim üzerinde yapmak için <strong>grayscale=True</strong> parametresi kullanabiliriz.</p>
+<div class="highlight"><pre><span></span><code><span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">pyautogui</span><span class="o">.</span><span class="n">locateCenterOnScreen</span><span class="p">(</span><span class="s2">&quot;/home/halil/Resimler/Like.png&quot;</span><span class="p">,</span> <span class="n">grayscale</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">650</span><span class="p">,</span> <span class="mi">325</span><span class="p">)</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">moveTo</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">pyautogui</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+</code></pre></div>
+
+<h3>Kaynaklar;</h3>
+<ul>
+<li><a href="https://www.sinanerdinc.com/python-pyautogui-modulu-kullanimi">Python PyAutoGui Modülü Kullanımı | Sinan Erdinç</a></li>
+<li><a href="https://medium.com/@ibrahimirdem/python-ile-klavye-ve-fare-kontrol%C3%BC-pyautogui-6da4eb31b269">Python ile Klavye ve Fare Kontrolü (pyautogui) - İbrahim İrdem</a></li>
+<li><a href="https://kronnika.com/tr/robotik-surec-otomasyonunda-pyautogui-kutuphanesi/">Robotik Süreç Otomasyonunda PyAutoGUI Kütüphanesi - Kronnika RPA</a></li>
+</ul>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/pyautogui.html">PyAutoGUI</a></li>
+					<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+					<li><a href="/tag/modul.html">Modül</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Pandas - Giriş" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/pandas-giris.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Pandas - Giriş</h1>
+	<span class="post-date">Cts 08 Ocak 2022</span>
+	<h1>Pandas Kütüphanesi Notları</h1>
+<p><strong>Python'a Giriş</strong> konusuna ait notları, FreeCAD için Python ile Komut Dosyası Oluşturma (Scripting) Eğitiminde paylaşmıştık.  İlave olarak Python'ın en güçlü ve işlevsel kütüphanelerinden biri olan <strong>Pandas</strong>'a ait notları paylaşmaya devam ediyorum.</p>
+<p><img alt="pandas" src="../../images/pandas_logo.png"></p>
+<h2>PANDAS NEDİR?</h2>
+<p><strong>Python'a Giriş</strong> konusu ile alakalı bilgileri, <a href="../freecad-scripting-egitimi.html">FreeCAD Eğitim Notları</a> bölümünde <a href="../freecad-01-pythona-giris.html">1. Python'a Giriş</a> başlığı altında paylaşmıştık. Python'da yeniyseniz ya da Python 
+hakkında hiç bir şey bilmiyorsanız, öncelikle bu bölüme göz atmanızı öneririm.  </p>
+<p>Önceki bölüme ilave olarak burada, Python'ın en güçlü ve işlevsel kütüphanelerinden biri olan <strong>Pandas</strong> notlarını paylaşmaya devam ediyorum.</p>
+<p>Pandas Kütüphanesinin ne olduğu ve bu kütüphane ile (<strong>Özellikle Veri Çerçevesi (Data Frame) konusunda</strong>) neler yapılabildiğine dair öğrendiklerimi bu bölümde paylaşıyorum.</p>
+<p><strong>Pandas</strong>, veri işleme ve veri analizi için yazılmış olan Python kütüphanesidir.</p>
+<p>Bu kütüphane, <strong>Seriler (Series)</strong> ve <strong>Veri Çerçevesi (DataFrame)</strong> isimli iki veri yapısının üzerine kurulmuştur. Serileri tek boyutlu diziler, Veri Çerçevelerini ise iki boyutlu matrisler (SQL ya da Excel tabloları) gibi düşünebiliriz.</p>
+<p><strong>Pandas kütüphanesinin özellikleri</strong></p>
+<ul>
+<li>İndeksli DataFrame (veri çerçevesi) objeleri ile veri işlemesi yapabilmek.</li>
+<li>Hafızadaki veya farklı türlerde bulunan veriyi okuyabilmek ve yazabilmek için araçlar sağlamak.</li>
+<li>Veri sıralama ve bütünleşik kayıp veri senaryolarına karşı esnek imkanlar sunmak</li>
+<li>Veri setlerinin tekrar boyutlandırılması veya döndürülmesi.</li>
+<li>Etiket bazlı dilimleme, özel indeksleme ve büyük veri setlerini ayrıştırmak</li>
+<li>Veri çerçevesine sütun ekleme veya var olan sütunu çıkarma/silme.</li>
+<li>Veri gruplama özelliği ile ayırma-birleştirme uygulamaları yapılabilmek.</li>
+<li>Veri setlerini birleştirilmek ve birbirine eklemek.</li>
+<li>Çok boyutlu veriden, daha az boyutlu veri elde edilebilmek.</li>
+<li>Veri filtrelemek.</li>
+</ul>
+<p>Kütüphane performans konusunda son derece iyidir. Bu yüzden kütüphanenin önemli parçaları CPython ve C üzerinde yazılmışlardır.</p>
+<p><strong>NOT:</strong><br>
+Eğitimlerde kullandığım Veri Setlerine <a href="https://github.com/mhalil/Pandas_Notlari/tree/main/Veri_Setleri">GitHub adresimden</a> erişebilirsiniz.</p>
+<h2>Pandas Veri Çerçevesi (Data Frame) Konu Başlıkları</h2>
+<p><a href="../pandas-01-veri-cercevesi-olustur.html">1- VERİ ÇERÇEVESİ (DATA FRAME) OLUŞTUR</a></p>
+<p>DataFrame() Fonksiyonu</p>
+<p>read_csv() Fonksiyonu</p>
+<p>&gt;&gt;&gt; index_col Parametresi</p>
+<p>read_table() Fonksiyonu </p>
+<p>&gt;&gt;&gt; delimiter Parametresi</p>
+<p>read_excel() Fonksiyonu</p>
+<p>read_json() Fonksiyonu</p>
+<p>read_html() Fonksiyonu</p>
+<p>read_clipboard() Fonksiyonu</p>
+<p><a href="pandas-02-excel-dosyalari-ile-calismak.html">2- EXCEL DOSYALARI İLE ÇALIŞMAK</a></p>
+<p>read_excel() Fonksiyonu</p>
+<p>&gt;&gt;&gt; header ve names Parametreleri</p>
+<p>&gt;&gt;&gt; sheet_name Parametresi</p>
+<p>&gt;&gt;&gt; decimal Parametresi</p>
+<p><a href="pandas-03-veriyi-kesfet-incele.html">3- VERİYİ KEŞFET (İNCELE)</a></p>
+<p>head() Fonksiyonu</p>
+<p>tail() Fonksiyonu</p>
+<p>columns Fonksiyonu</p>
+<p>len() Fonksiyonu</p>
+<p>info() Fonksiyonu</p>
+<p>dtypes Fonksiyonu</p>
+<p>describe() Fonksiyonu</p>
+<p>shape Fonksiyonu</p>
+<p>index Fonksiyonu</p>
+<p>isnull() Fonksiyonu</p>
+<p>value_counts() Fonksiyonu</p>
+<p><a href="pandas-04-secim-yontemleri.html">4- VERİ SEÇİM YÖNTEMLERİ</a></p>
+<p>iloc[] Metodu</p>
+<p>loc[] Metodu</p>
+<p>Index() Fonksiyonu</p>
+<p>lambda() Fonksiyonu</p>
+<p>at[] metodu</p>
+<p>iat[] metodu</p>
+<p><a href="pandas-05-eksik-kayip-veri-yontemleri.html">5- EKSİK - KAYIP VERİ YÖNTEMLERİ</a></p>
+<p>isnull() Fonksiyonu</p>
+<p>dropna() Fonksiyonu</p>
+<p>&gt;&gt;&gt; axis Parametresi</p>
+<p>&gt;&gt;&gt; inplace Parametresi</p>
+<p>&gt;&gt;&gt; thresh Parametresi</p>
+<p>fillna() Fonksiyonu</p>
+<p>&gt;&gt;&gt; value Parametresi</p>
+<p>&gt;&gt;&gt; method Parametresi</p>
+<p><a href="pandas-06-veri-duzenleme-yontemleri.html">6- VERİ DÜZENLEME YÖNTEMLERİ</a></p>
+<p>İndeks Değerlerini Ayarlamak</p>
+<p>&gt;&gt;&gt; index_col Parametresi</p>
+<p>set_index() Fonksiyonu</p>
+<p>Sütunları Atla</p>
+<p>&gt;&gt;&gt; usecols Parametresi</p>
+<p>Satırları Atla</p>
+<p>&gt;&gt;&gt; skiprows Parametresi</p>
+<p>Sütun Ekle</p>
+<p>Satır ya da Sütun Sil</p>
+<p>&gt;&gt;&gt; drop() Fonksiyonu</p>
+<p>&gt;&gt;&gt;&gt;&gt;&gt; axis Parametresi</p>
+<p>&gt;&gt;&gt;&gt;&gt;&gt; inplace Parametresi</p>
+<p>&gt;&gt;&gt; drop_duplicates() Fonksiyonu</p>
+<p>&gt;&gt;&gt;&gt;&gt;&gt; subset Parametresi</p>
+<p>&gt;&gt;&gt;&gt;&gt;&gt; keep Parametresi</p>
+<p>String Metotları</p>
+<p>transpose() Fonksiyonu</p>
+<p>apply() Fonksiyonu</p>
+<p>Veri Çerçevelerini Birleştir</p>
+<p>&gt;&gt;&gt; concat() Fonksiyonu</p>
+<p>&gt;&gt;&gt; join() Fonksiyonu</p>
+<p>&gt;&gt;&gt;&gt;&gt;&gt; how parametresi</p>
+<p>&gt;&gt;&gt;&gt;&gt;&gt; left join</p>
+<p>&gt;&gt;&gt;&gt;&gt;&gt; right join</p>
+<p>&gt;&gt;&gt;&gt;&gt;&gt; outer join</p>
+<p>&gt;&gt;&gt;&gt;&gt;&gt; inner join</p>
+<p>&gt;&gt;&gt; merge() Fonksiyonu</p>
+<p>&gt;&gt;&gt;&gt;&gt;&gt; on Parametresi</p>
+<p>&gt;&gt;&gt;&gt;&gt;&gt; how Parametresi</p>
+<p>&gt;&gt;&gt;&gt;&gt;&gt; inner Seçeneği</p>
+<p>&gt;&gt;&gt;&gt;&gt;&gt; outer Seçeneği</p>
+<p>&gt;&gt;&gt;&gt;&gt;&gt; left Seçeneği</p>
+<p>&gt;&gt;&gt;&gt;&gt;&gt; right Seçeneği</p>
+<p>&gt;&gt;&gt;&gt;&gt;&gt; cross Seçeneği</p>
+<p>&gt;&gt;&gt; left_on Parametresi</p>
+<p>&gt;&gt;&gt; right_on Parametresi</p>
+<p>&gt;&gt;&gt; suffixes Parametresi</p>
+<p><a href="pandas-07-veri-siralama-yontemleri.html">7- VERİ SIRALAMA YÖNTEMLERİ</a></p>
+<p>sort_index() Fonksiyonu</p>
+<p>&gt;&gt;&gt; ascending Parametresi</p>
+<p>&gt;&gt;&gt; axis Parametresi</p>
+<p>sort_values() Fonksiyonu</p>
+<p>&gt;&gt;&gt; by Parametresi</p>
+<p>&gt;&gt;&gt; ascending Parametresi</p>
+<p>&gt;&gt;&gt; na_position Parametresi</p>
+<p>reindex() Fonksiyonu</p>
+<p>&gt;&gt;&gt; columns Parametresi</p>
+<p>&gt;&gt;&gt; axis parametresi</p>
+<p>&gt;&gt;&gt;&gt;&gt;&gt; index Seçeneği</p>
+<p>&gt;&gt;&gt;&gt;&gt;&gt; columns Seçeneği</p>
+<p>&gt;&gt;&gt; Ek Bilgi</p>
+<p>&gt;&gt;&gt; Karşılaştırma Operatörü Kullanımı</p>
+<p>&gt;&gt;&gt;&gt;&gt;&gt; "is" Operatorü</p>
+<p>&gt;&gt;&gt;&gt;&gt;&gt; "&gt;" Operatorü</p>
+<p><a href="pandas-08-veri-filtreleme-yontemleri.html">8- VERİ FİLTRELEME YÖNTEMLERİ</a></p>
+<p>Karşılaştırma Operatorü Kullanımı</p>
+<p>between() Fonksiyonu</p>
+<p>Mantıksal Operatör Kullanımı</p>
+<p><a href="pandas-09-veri-gruplama-yontemleri.html">9- GRUPLAMA YÖNTEMLERİ</a></p>
+<p>groupby() Fonksiyonu</p>
+<p><a href="pandas-10-pivot_table-fonksiyonunun-kullanimi.html">10- pivot_table() FONKSİYONUNUN KULLANIMI</a></p>
+<p><a href="pandas-11-melt-fonksiyonunun-kullanimi.html">11- melt() FONKSİYONUNUN KULLANIMI</a></p>
+<p><a href="pandas-12-operator-kullanimi.html">12- Operatör Kullanımı</a></p>
+<h2>Pandas Veri Çerçevesi Özet Bilgileri (CheatSheet)</h2>
+<p>Pandas Veri Çerçevesi (Data Frame) komutlarını (fonksiyon, metot, parametre) bir yerde toplayarak ihtiyaç halinde, farklı konulara ait komutlara daha hızlı ulaşabileceğimiz bir <strong>Başvuru Kılavuzu / Özet Bilgi Tablosu (CheatSheet)</strong> oluşturmaya çalışıyorum. Başvuru kılavuzunu / Özet Bilgi Tablosunu (CheatSheet) oluştururken, komutları, <strong>Pandas Veri Çerçevesi (Data Frame) Konu Başlıkları</strong>na göre kategorize etmeyi planlıyorum.</p>
+<p>Sayfaya Yeni Konu başlıkları ekledikçe, Özet Bilgi Tablosunu da güncellemeye gayret edeceğim.<br>
+Şuana kadar oluşturduğum <strong>Başvuru Kılavuzu / Özet Bilgi Tablosu (CheatSheet)</strong> na ağaşıdaki bağlantıdan erişebilirsiniz.</p>
+<ul>
+<li><a href="pandas-ozet-bilgi-tablosu-cheatsheet.html">Pandas Özet Bilgi Tablosu (CheatSheet) Sayfası</a></li>
+</ul>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/pandas.html">Pandas</a></li>
+					<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+					<li><a href="/tag/modul.html">Modül</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>

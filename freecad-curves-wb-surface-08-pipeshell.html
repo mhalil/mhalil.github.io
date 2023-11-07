@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="FreeCAD - Curves WB - Surface - 08 - Pipeshell" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/freecad-curves-wb-surface-08-pipeshell.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">FreeCAD - Curves WB - Surface - 08 - Pipeshell</h1>
+	<span class="post-date">Cts 05 Kasım 2022</span>
+	<h1><img alt="pipeshell" src="https://raw.githubusercontent.com/tomate44/CurvesWB/9aac6c2365311724487f79df3343dab90ddcb819/freecad/Curves/resources/icons/pipeshell.svg"> Pipeshell</h1>
+<p><strong>Pipeshell</strong> komutu, <strong>Parça Çalışma Tezgahı (Part WB)</strong> ve <strong>Parça Tasarımı Çalışma Tezgahı (Part Desing WB)</strong> komutlarından olan <strong>Süpür/Borula (Sweep/AddivitePipe)</strong> ve <strong>Çatıla (Loft)</strong> komutlarına benzer şekilde bir yol boyunca <strong>seçili kesit alanını süpürerek yüzey oluşturur</strong>. Komut kabaca, Sweep ve Loft komutlarının birer benzeridir diyebiliriz.  </p>
+<p><strong>Kullanım:</strong> Komutu çalıştırmak için aşağıdaki adımları sırası ile uygulayın:</p>
+<ul>
+<li>Öncelikle <strong>3D Ekranı içerisinden (sahneden)</strong> süpürülecek yol (eğri, yay, çizgi, ...vb) seçin. (Birlikte seçim için <code>CTRL</code> tuşunu kullanın)</li>
+<li>Ardından <strong>Unsur ağacından</strong>, (sahne içerisinden seçmemelisiniz) <strong>Pipeshell profile</strong> komutu ile oluşturulmuş kesitleri seçin. (Birlikte seçim için <code>CTRL</code> tuşunu kullanın)</li>
+<li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
+<li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>Pipeshell</strong> seçeneğini kullanın.</li>
+</ul>
+<p><strong>3D Ekranı içerisinden</strong> yolu (eğri, yay, çizgi, ...vb) seçin. Daha sonra <strong>Unsur ağacından</strong>, (sahne içerisinden değil) <strong>Pipeshell profile</strong> komutu ile oluşturulmuş kesitleri (profilleri) seçin ve <strong>Pipeshell</strong> komutunu çalıştırın.
+<img alt="Pipeshell_01" src="../../images/freecad/curves_wb/surfaces_menu/Pipeshell_01.png"><br>
+<strong>Pipeshell</strong> komutu çalıştırılınca aşağıdaki şekil oluştu. Yani seçili Yol boyunca, Kesitler (Profiller) arasına yeni kesitler ebatları nispetinde eklendi. 
+<img alt="Pipeshell_02" src="../../images/freecad/curves_wb/surfaces_menu/Pipeshell_02.png"><br>
+Unsur ağacından <strong>Pipeshell</strong> nesnesi seçilip <strong>Output (Çıktı/Ürün/Sonuç)</strong> seçeneği <strong>Surface (Yüzey)</strong> olarak ayarlanırsa, aşağıdaki şekli elde ederiz.
+<img alt="Pipeshell_03" src="../../images/freecad/curves_wb/surfaces_menu/Pipeshell_03.png"><br>
+Yüzeye dönüştürülen çizimin arka kısmında bir bozukluk olduğunu görüyoruz.
+<img alt="Pipeshell_04" src="../../images/freecad/curves_wb/surfaces_menu/Pipeshell_04.png"><br>
+Görüntüyü çevirip modeli incelediğimizde, Son Kesitin (profilin) başlangıç noktasının, diğer profillerden farklı yönde olduğunu tespit ediyoruz. Yüzey oluşturulurken, profillerin noktaları referans alındığı için, modelin son kısımda bir bozulma yaşanmış. Gelin bu bozukluğu düzeltelim.
+<img alt="Pipeshell_05" src="../../images/freecad/curves_wb/surfaces_menu/Pipeshell_05.png"><br>
+Bozulmanın yaşandığı kesit (profil), <strong>Sketch004</strong> eskizi referans alınarak oluşturulduğu için, bu eskizde yapacağımız düzenleme, Profili de etkileyecek, düzeltecektir.<br>
+Unsur ağacından <strong>Sketch004</strong> eskizini seçip, <strong>Attachment</strong> ayarlarından <strong>Açı</strong> değerini inceliyoruz.
+<img alt="Pipeshell_06" src="../../images/freecad/curves_wb/surfaces_menu/Pipeshell_06.png"><br>
+<strong>Sketch004</strong> eskizinin, <strong>Attachment</strong> ayarındaki <strong>Açı</strong> değerini <strong>180</strong> olarak değiştirerek, eskizi kendi merkezindeki Z ekseninde 180 derece döndürüyoruz. Gördüğünüz gibi, modeldeki bozulma düzeliyor ve istediğimiz / beklediğimiz sonucu elde ediyoruz. Bazen, bozulmanın olduğu eskizi düzenleme modunda açıp değiştirerek te benzer sonuç elde edebiliyoruz. Dairesel kesitli eskizlerde yukarıda uyguladığımız yöntemin (ayarlarda değişiklik yapmak) daha uygun olduğu kanaatindeyim.
+<img alt="Pipeshell_07" src="../../images/freecad/curves_wb/surfaces_menu/Pipeshell_07.png"><br>
+<a href="https://mhalil.github.io/Freecad_curves_wb_surfaces.html#pipeshellprofile"><strong>Pipeshell profile</strong></a> komutu anlatılırken çizdiğimiz farklı kesitlere ait örnek çalışmaların <strong>Pipeshell</strong> komutu ile yüzeye dönüştürülmüş hallerini aşağıda görüp inceleyebilirsiniz.
+<img alt="Pipeshell_08" src="../../images/freecad/curves_wb/surfaces_menu/Pipeshell_08.png"><br>
+<img alt="Pipeshell_09" src="../../images/freecad/curves_wb/surfaces_menu/Pipeshell_09.png"><br>
+<img alt="Pipeshell_10" src="../../images/freecad/curves_wb/surfaces_menu/Pipeshell_10.png"><br>
+<img alt="Pipeshell_11" src="../../images/freecad/curves_wb/surfaces_menu/Pipeshell_11.png"><br>
+<img alt="Pipeshell_12" src="../../images/freecad/curves_wb/surfaces_menu/Pipeshell_12.png"><br>
+<img alt="Pipeshell_13" src="../../images/freecad/curves_wb/surfaces_menu/Pipeshell_13.png"><br>
+<img alt="Pipeshell_14" src="../../images/freecad/curves_wb/surfaces_menu/Pipeshell_14.png">  </p>
+<p><a href="freecad-curves-wb-surface-00-menu-komutlari.html">&lt;&lt;&lt; Surfaces Menü Komutlarına Ait Sayfaya Dön</a></p>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/freecad.html">FreeCAD</a></li>
+					<li><a href="/tag/curves.html">Curves</a></li>
+					<li><a href="/tag/workbench.html">Workbench</a></li>
+					<li><a href="/tag/calismatezgahi.html">ÇalışmaTezgahı</a></li>
+					<li><a href="/tag/surface.html">Surface</a></li>
+					<li><a href="/tag/pipeshell.html">Pipeshell</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Solvespace Bölüm 5: Çizgi Biçimleri" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/solvespace-bolum-5-cizgi-bicimleri.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Solvespace Bölüm 5: Çizgi Biçimleri</h1>
+	<span class="post-date">Prş 06 Ocak 2022</span>
+	<h2>Bölüm 5: Çizgi Biçimleri</h2>
+<p>Bir çizginin veya eğrinin rengini, çizgi 
+genişliğini veya diğer yardımcı çizgi (kozmetik) özelliklerini doğrudan 
+değiştirmek asla mümkün değildir. Bunun yerine, bir öğenin kozmetik 
+özellikleri, o öğe bir çizgi biçimine (stilini) atanarak belirtilebilir.
+ Biçim rengi, çizgi genişliğini, metin yüksekliğini, metin kaynağını, 
+metin dönme açısını ve bir nesnenin ekranda ve dışa aktarılan bir 
+dosyada nasıl görüneceğini (ve olup olmayacağını) belirleyen diğer bazı 
+özellikleri belirtir.</p>
+<p>SolveSpace'in temel renk şeması, varsayılan 
+biçimler (stiller) tarafından tanımlanır. Bunları görüntülemek için, 
+Özellik penceresindeki ana ekrandan "<code>line styles</code> (<em>çizgi biçimleri/stilleri</em>)"ni
+ seçin. Örneğin, çizgilerin varsayılan olarak beyaz, kısıtlamaların mor 
+ve noktaların yeşil olarak belirlendiği yer burasıdır. Varsayılan 
+biçimler değiştirilebilir. Bu değişiklikler kullanıcı yapılandırmasına 
+(Windows'ta kayıt defteri, diğer platformlarda bir .json dosyası) 
+kaydedilecek ve o bilgisayarda açılan tüm dosyalara uygulanacaktır.</p>
+<p><img alt="Çizgi Biçimleri" src="images/solvespace/35%20Cizgi%20Bicimi.png"></p>
+<p>Çizimi güzelleştirmek (Kozmetik) veya başka 
+amaçlar için özel biçimler oluşturmak da mümkündür. (Örneğin, lazer 
+kesiciler, kesilecek gücü ve beslemeyi belirtmek için genellikle bir 
+çizginin rengini kullanır.) Özel bir biçim oluşturmak için stil 
+ekranında "<code>create a new custom style</code> (<em>yeni bir özel stil oluştur</em>)"ui seçin. Yeni stil, <code>s-100-new-custom-style</code> (<em>s-100-yeni -özel-biçim</em>) varsayılan adı ile stiller listesinin altında görünecektir.</p>
+<p><img alt="Yeni Özel Çizgi Biçimi/Stili" src="images/solvespace/36%20Yeni%20Cizgi%20Bicimi.png"></p>
+<p>Bir stili değiştirmek için stiller listesindeki 
+bağlantısını tıklayın. Renk, her bileşenin 0 ile 1 arasında olduğu 
+kırmızı, yeşil, mavi seçenekleri olarak belirtilir. Çizgi genişliği 
+piksel, inç veya milimetre olarak belirtilebilir. Çizgi genişliği piksel
+ cinsinden belirtilirse, dışa aktarılan bir dosyadaki çizgi genişliği 
+ekrandaki yakınlaştırma düzeyine bağlı olacaktır. Kullanıcı görüntüyü 
+uzaklaştırırsa (böylece model ekranda daha küçük görünür), geometri 
+küçülür, ancak piksel cinsinden ölçülen çizgiler aynı boyutta kalır; bu,
+ dışa aktarılan dosyadaki modele kıyasla çizgilerin daha kalın 
+görüneceği anlamına gelir.</p>
+<p>Öğeler (çizgiler, çemberler veya yaylar gibi) bir
+ çizgi stiline atanabilir. Bunu yapmanın bir yolu, Özellik penceresinde 
+istenen çizgi stilinin ekranına girmek ve ardından istenen objeleri 
+seçmektir. Ardından metin penceresindeki "<code>assign to style ...</code> (<em>... stilini ata</em>)" bağlantısını tıklayın. Bunu yapmanın başka bir yolu, varlığa sağ tıklayıp bağlam menüsünü kullanarak stile atamaktır.</p>
+<p><img alt="Yeni Çizgi Biçimini Uygula" src="images/solvespace/37%20Cizgi%20Bicimi%20Ata.png"></p>
+<p><img alt="Çizgi Biçiminin Uygulanmış Hali" src="images/solvespace/38%20Cizgi%20Bicimi%20Atanmis.png"></p>
+<p>Yorumlara da (<code>Kısıtla → Yorum</code>) biçim
+ (stil) atanabilir. Stil, metin yüksekliğini, metnin derece cinsinden 
+dönüş açısını ve metnin hangi noktadan (üst, alt, sol, sağ, orta) 
+hizalanacağını belirtmek için kullanılabilir. Izgarası Yakalama (<code>Görünüm → Yakalama Izgarasını Göster</code>, <code>Düzen → Seçimi Izgaraya Tuttur</code>) genellikle kozmetik metin oluştururken kullanışlıdır.</p>
+<p>Kullanıcı tarafından oluşturulan stiller, 
+geometriyle birlikte .slvs dosyasına kaydedilir. Kullanıcı tarafından 
+oluşturulan stiller içeren bir parça bağlanırsa, stiller içe aktarılmaz;
+ ancak bağlantılı varlıklar için stil tanımlayıcıları korunur. Bu, 
+kullanıcının bağlanan (yani, "montajlanan") dosyadaki çizgi stillerini 
+belirleyebileceği anlamına gelir.</p>
+<p>Bir biçim/stil gizlenmişse, o stildeki tüm 
+nesneler, grupları gösterilse bile gizlenecektir. Bir stil dışa 
+aktarılabilir olarak işaretlenmemişse, o stildeki nesneler ekranda 
+görünür, ancak dışa aktarılan bir dosyada görünmez. Bu davranış, yapı 
+hatlarının davranışına benzer.</p>
+<p><img alt="Çizgi biçimini ekrandan göster/gizle" src="images/solvespace/39%20Cizgi%20Bicimini%20Gizle.png"></p>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/solvespace.html">Solvespace</a></li>
+					<li><a href="/tag/3d.html">3D</a></li>
+					<li><a href="/tag/3b.html">3B</a></li>
+					<li><a href="/tag/cad.html">CAD</a></li>
+					<li><a href="/tag/kilavuz.html">Kılavuz</a></li>
+					<li><a href="/tag/cizgi.html">Çizgi</a></li>
+					<li><a href="/tag/bicim.html">Biçim</a></li>
+					<li><a href="/tag/kozmetik.html">Kozmetik</a></li>
+					<li><a href="/tag/kisitla.html">Kısıtla</a></li>
+					<li><a href="/tag/yorum.html">Yorum</a></li>
+					<li><a href="/tag/secim.html">Seçim</a></li>
+					<li><a href="/tag/izgara.html">Izgara</a></li>
+					<li><a href="/tag/gorunum.html">Görünüm</a></li>
+					<li><a href="/tag/yakala.html">Yakala</a></li>
+					<li><a href="/tag/goster.html">Göster</a></li>
+					<li><a href="/tag/duzen.html">Düzen</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>

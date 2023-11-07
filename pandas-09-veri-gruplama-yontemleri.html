@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Pandas 09 - Veri Gruplama Yöntemleri" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/pandas-09-veri-gruplama-yontemleri.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Pandas 09 - Veri Gruplama Yöntemleri</h1>
+	<span class="post-date">Sal 15 Şubat 2022</span>
+	<h1>Gruplama Yöntemleri</h1>
+<p>Veri Çerçevemizde aynı isme ya da aynı değere sahip birden fazla veri bilgisi olabilir. Verileri gruplayarak, grupların toplam değerleri, ortalama değerleri, grupta kaç adet veri bulunduğu, gruptaki verilrden en küçük ya da en büyük verinin hangisi olduğu gibi pek çok bilgi edinmek için, bu bölümdeki komutlardan yararlanacağız.</p>
+<h2>groupby() Fonksiyonu</h2>
+<p>Veri çerçevemizdeki verileri gruplamak istediğimizde <strong>groupby()</strong> metodunu kullanabiliriz. Önce NBA oyuncularının bilgilerinin bulunduu csv dosyamızı veri çerçevesine dönüştürüp içeriğine göz atalım.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">nba</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/nba.csv&quot;</span><span class="p">,</span> <span class="n">decimal</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nba</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Team</th>
+<th>Number</th>
+<th>Position</th>
+<th>Age</th>
+<th>Height</th>
+<th>Weight</th>
+<th>College</th>
+<th>Salary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Avery Bradley</td>
+<td>Boston Celtics</td>
+<td>0.0</td>
+<td>PG</td>
+<td>25.0</td>
+<td>6-2</td>
+<td>180.0</td>
+<td>Texas</td>
+<td>7730337.0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Jae Crowder</td>
+<td>Boston Celtics</td>
+<td>99.0</td>
+<td>SF</td>
+<td>25.0</td>
+<td>6-6</td>
+<td>235.0</td>
+<td>Marquette</td>
+<td>6796117.0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>John Holland</td>
+<td>Boston Celtics</td>
+<td>30.0</td>
+<td>SG</td>
+<td>27.0</td>
+<td>6-5</td>
+<td>205.0</td>
+<td>Boston University</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>3</td>
+<td>R.J. Hunter</td>
+<td>Boston Celtics</td>
+<td>28.0</td>
+<td>SG</td>
+<td>22.0</td>
+<td>6-5</td>
+<td>185.0</td>
+<td>Georgia State</td>
+<td>1148640.0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Jonas Jerebko</td>
+<td>Boston Celtics</td>
+<td>8.0</td>
+<td>PF</td>
+<td>29.0</td>
+<td>6-10</td>
+<td>231.0</td>
+<td>NaN</td>
+<td>5000000.0</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>453</td>
+<td>Shelvin Mack</td>
+<td>Utah Jazz</td>
+<td>8.0</td>
+<td>PG</td>
+<td>26.0</td>
+<td>6-3</td>
+<td>203.0</td>
+<td>Butler</td>
+<td>2433333.0</td>
+</tr>
+<tr>
+<td>454</td>
+<td>Raul Neto</td>
+<td>Utah Jazz</td>
+<td>25.0</td>
+<td>PG</td>
+<td>24.0</td>
+<td>6-1</td>
+<td>179.0</td>
+<td>NaN</td>
+<td>900000.0</td>
+</tr>
+<tr>
+<td>455</td>
+<td>Tibor Pleiss</td>
+<td>Utah Jazz</td>
+<td>21.0</td>
+<td>C</td>
+<td>26.0</td>
+<td>7-3</td>
+<td>256.0</td>
+<td>NaN</td>
+<td>2900000.0</td>
+</tr>
+<tr>
+<td>456</td>
+<td>Jeff Withey</td>
+<td>Utah Jazz</td>
+<td>24.0</td>
+<td>C</td>
+<td>26.0</td>
+<td>7-0</td>
+<td>231.0</td>
+<td>Kansas</td>
+<td>947276.0</td>
+</tr>
+<tr>
+<td>457</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+<p>458 rows × 9 columns</p>
+<p>Veri çerçevemizi incelediğimizde, <strong>Takım (Team)</strong> ismine göre grulama yapmanın uygun olacağını düşünüyorum. Takıma göre gruplama yaparak, Takımda bulunan Oyuncuların Ortalama, En az ya da En fazla Yaş (Age), Boy uzunluğu (Height), Kilo (Weight) ya da Yıllık 
+Kazançlarını (Salary) görebiliriz.</p>
+<p>Aşağıdaki örnekte, Takımlara göre tüm sütunların ortalama değerlerini göreceğiz. Ortalama değeri bulmak için <strong>mean()</strong> metodunu kullanacağız.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">nba</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Team&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Team</th>
+<th>Number</th>
+<th>Age</th>
+<th>Weight</th>
+<th>Salary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Atlanta Hawks</td>
+<td>19.000000</td>
+<td>28.200000</td>
+<td>221.266667</td>
+<td>4.860197e+06</td>
+</tr>
+<tr>
+<td>Boston Celtics</td>
+<td>31.866667</td>
+<td>24.733333</td>
+<td>219.466667</td>
+<td>4.181505e+06</td>
+</tr>
+<tr>
+<td>Brooklyn Nets</td>
+<td>18.266667</td>
+<td>25.600000</td>
+<td>215.600000</td>
+<td>3.501898e+06</td>
+</tr>
+<tr>
+<td>Charlotte Hornets</td>
+<td>17.133333</td>
+<td>26.133333</td>
+<td>220.400000</td>
+<td>5.222728e+06</td>
+</tr>
+<tr>
+<td>Chicago Bulls</td>
+<td>19.200000</td>
+<td>27.400000</td>
+<td>218.933333</td>
+<td>5.785559e+06</td>
+</tr>
+<tr>
+<td>Cleveland Cavaliers</td>
+<td>14.466667</td>
+<td>29.533333</td>
+<td>227.866667</td>
+<td>7.642049e+06</td>
+</tr>
+<tr>
+<td>Dallas Mavericks</td>
+<td>20.000000</td>
+<td>29.733333</td>
+<td>227.000000</td>
+<td>4.746582e+06</td>
+</tr>
+<tr>
+<td>Denver Nuggets</td>
+<td>15.266667</td>
+<td>25.733333</td>
+<td>217.533333</td>
+<td>4.294424e+06</td>
+</tr>
+<tr>
+<td>Detroit Pistons</td>
+<td>17.266667</td>
+<td>26.200000</td>
+<td>222.200000</td>
+<td>4.477884e+06</td>
+</tr>
+<tr>
+<td>Golden State Warriors</td>
+<td>20.866667</td>
+<td>27.666667</td>
+<td>224.600000</td>
+<td>5.924600e+06</td>
+</tr>
+<tr>
+<td>Houston Rockets</td>
+<td>14.666667</td>
+<td>26.866667</td>
+<td>220.333333</td>
+<td>5.018868e+06</td>
+</tr>
+<tr>
+<td>Indiana Pacers</td>
+<td>18.933333</td>
+<td>26.400000</td>
+<td>222.266667</td>
+<td>4.450122e+06</td>
+</tr>
+<tr>
+<td>Los Angeles Clippers</td>
+<td>19.533333</td>
+<td>29.466667</td>
+<td>219.733333</td>
+<td>6.323643e+06</td>
+</tr>
+<tr>
+<td>Los Angeles Lakers</td>
+<td>16.066667</td>
+<td>27.533333</td>
+<td>227.066667</td>
+<td>4.784695e+06</td>
+</tr>
+<tr>
+<td>Memphis Grizzlies</td>
+<td>15.555556</td>
+<td>28.388889</td>
+<td>218.000000</td>
+<td>5.467920e+06</td>
+</tr>
+<tr>
+<td>Miami Heat</td>
+<td>10.466667</td>
+<td>28.933333</td>
+<td>218.400000</td>
+<td>6.347359e+06</td>
+</tr>
+<tr>
+<td>Milwaukee Bucks</td>
+<td>20.000000</td>
+<td>24.562500</td>
+<td>224.062500</td>
+<td>4.350220e+06</td>
+</tr>
+<tr>
+<td>Minnesota Timberwolves</td>
+<td>19.571429</td>
+<td>26.357143</td>
+<td>228.642857</td>
+<td>4.593054e+06</td>
+</tr>
+<tr>
+<td>New Orleans Pelicans</td>
+<td>17.000000</td>
+<td>26.894737</td>
+<td>221.000000</td>
+<td>4.355304e+06</td>
+</tr>
+<tr>
+<td>New York Knicks</td>
+<td>13.250000</td>
+<td>27.000000</td>
+<td>223.625000</td>
+<td>4.581494e+06</td>
+</tr>
+<tr>
+<td>Oklahoma City Thunder</td>
+<td>14.000000</td>
+<td>27.066667</td>
+<td>229.400000</td>
+<td>6.251020e+06</td>
+</tr>
+<tr>
+<td>Orlando Magic</td>
+<td>16.428571</td>
+<td>25.071429</td>
+<td>213.357143</td>
+<td>4.297248e+06</td>
+</tr>
+<tr>
+<td>Philadelphia 76ers</td>
+<td>18.066667</td>
+<td>24.600000</td>
+<td>222.133333</td>
+<td>2.213778e+06</td>
+</tr>
+<tr>
+<td>Phoenix Suns</td>
+<td>15.466667</td>
+<td>25.866667</td>
+<td>218.600000</td>
+<td>4.229676e+06</td>
+</tr>
+<tr>
+<td>Portland Trail Blazers</td>
+<td>16.000000</td>
+<td>25.066667</td>
+<td>218.600000</td>
+<td>3.220121e+06</td>
+</tr>
+<tr>
+<td>Sacramento Kings</td>
+<td>16.933333</td>
+<td>26.800000</td>
+<td>221.333333</td>
+<td>4.778911e+06</td>
+</tr>
+<tr>
+<td>San Antonio Spurs</td>
+<td>17.933333</td>
+<td>31.600000</td>
+<td>223.933333</td>
+<td>5.629516e+06</td>
+</tr>
+<tr>
+<td>Toronto Raptors</td>
+<td>22.466667</td>
+<td>26.133333</td>
+<td>221.800000</td>
+<td>4.741174e+06</td>
+</tr>
+<tr>
+<td>Utah Jazz</td>
+<td>17.866667</td>
+<td>24.466667</td>
+<td>220.000000</td>
+<td>4.204006e+06</td>
+</tr>
+<tr>
+<td>Washington Wizards</td>
+<td>17.600000</td>
+<td>27.866667</td>
+<td>219.000000</td>
+<td>5.088576e+06</td>
+</tr>
+</tbody>
+</table>
+<p>Takımlara göre tüm sütunların ortalama değerleri yerine sadece Ortalama Yaş bilgisini görmek isteseydik aşağıdaki kodu çalıştırmamız yeterli olacaktı.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">nba</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Team&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s2">&quot;Age&quot;</span><span class="p">])</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">Team</span>
+<span class="n">Atlanta</span> <span class="n">Hawks</span>             <span class="mf">28.200000</span>
+<span class="n">Boston</span> <span class="n">Celtics</span>            <span class="mf">24.733333</span>
+<span class="n">Brooklyn</span> <span class="n">Nets</span>             <span class="mf">25.600000</span>
+<span class="n">Charlotte</span> <span class="n">Hornets</span>         <span class="mf">26.133333</span>
+<span class="n">Chicago</span> <span class="n">Bulls</span>             <span class="mf">27.400000</span>
+<span class="n">Cleveland</span> <span class="n">Cavaliers</span>       <span class="mf">29.533333</span>
+<span class="n">Dallas</span> <span class="n">Mavericks</span>          <span class="mf">29.733333</span>
+<span class="n">Denver</span> <span class="n">Nuggets</span>            <span class="mf">25.733333</span>
+<span class="n">Detroit</span> <span class="n">Pistons</span>           <span class="mf">26.200000</span>
+<span class="n">Golden</span> <span class="n">State</span> <span class="n">Warriors</span>     <span class="mf">27.666667</span>
+<span class="n">Houston</span> <span class="n">Rockets</span>           <span class="mf">26.866667</span>
+<span class="n">Indiana</span> <span class="n">Pacers</span>            <span class="mf">26.400000</span>
+<span class="n">Los</span> <span class="n">Angeles</span> <span class="n">Clippers</span>      <span class="mf">29.466667</span>
+<span class="n">Los</span> <span class="n">Angeles</span> <span class="n">Lakers</span>        <span class="mf">27.533333</span>
+<span class="n">Memphis</span> <span class="n">Grizzlies</span>         <span class="mf">28.388889</span>
+<span class="n">Miami</span> <span class="n">Heat</span>                <span class="mf">28.933333</span>
+<span class="n">Milwaukee</span> <span class="n">Bucks</span>           <span class="mf">24.562500</span>
+<span class="n">Minnesota</span> <span class="n">Timberwolves</span>    <span class="mf">26.357143</span>
+<span class="n">New</span> <span class="n">Orleans</span> <span class="n">Pelicans</span>      <span class="mf">26.894737</span>
+<span class="n">New</span> <span class="n">York</span> <span class="n">Knicks</span>           <span class="mf">27.000000</span>
+<span class="n">Oklahoma</span> <span class="n">City</span> <span class="n">Thunder</span>     <span class="mf">27.066667</span>
+<span class="n">Orlando</span> <span class="n">Magic</span>             <span class="mf">25.071429</span>
+<span class="n">Philadelphia</span> <span class="mi">76</span><span class="n">ers</span>        <span class="mf">24.600000</span>
+<span class="n">Phoenix</span> <span class="n">Suns</span>              <span class="mf">25.866667</span>
+<span class="n">Portland</span> <span class="n">Trail</span> <span class="n">Blazers</span>    <span class="mf">25.066667</span>
+<span class="n">Sacramento</span> <span class="n">Kings</span>          <span class="mf">26.800000</span>
+<span class="n">San</span> <span class="n">Antonio</span> <span class="n">Spurs</span>         <span class="mf">31.600000</span>
+<span class="n">Toronto</span> <span class="n">Raptors</span>           <span class="mf">26.133333</span>
+<span class="n">Utah</span> <span class="n">Jazz</span>                 <span class="mf">24.466667</span>
+<span class="n">Washington</span> <span class="n">Wizards</span>        <span class="mf">27.866667</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">Age</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">float64</span>
+</code></pre></div>
+
+<p>Takımlardaki en ağır (kilolu) Oyuncuları listelemek istersek , bu işlemi <strong>max()</strong> metodu ile gerçekleştirebiliriz. Amerika'da, Ülkemizde kullanılan <strong>SI Metrik Ölçü birimi</strong> yerine <strong>İngiliz Ölçü birimi</strong>nden türemiş olan <strong>ABD geleneksel ölçü birimleri</strong> kullanıldığı için, tabloda gördüğünüz <strong>Boy uzunluğu (Height)</strong> ve <strong>Kilo (Weight)</strong> değerleri sizi şaşırtmış olabilir.</p>
+<div class="highlight"><pre><span></span><code><span class="n">nba</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nba</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Team&quot;</span><span class="p">)[</span><span class="s2">&quot;Weight&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">Team</span>
+<span class="n">Atlanta</span> <span class="n">Hawks</span>             <span class="mf">260.0</span>
+<span class="n">Boston</span> <span class="n">Celtics</span>            <span class="mf">260.0</span>
+<span class="n">Brooklyn</span> <span class="n">Nets</span>             <span class="mf">275.0</span>
+<span class="n">Charlotte</span> <span class="n">Hornets</span>         <span class="mf">289.0</span>
+<span class="n">Chicago</span> <span class="n">Bulls</span>             <span class="mf">275.0</span>
+<span class="n">Cleveland</span> <span class="n">Cavaliers</span>       <span class="mf">275.0</span>
+<span class="n">Dallas</span> <span class="n">Mavericks</span>          <span class="mf">275.0</span>
+<span class="n">Denver</span> <span class="n">Nuggets</span>            <span class="mf">280.0</span>
+<span class="n">Detroit</span> <span class="n">Pistons</span>           <span class="mf">279.0</span>
+<span class="n">Golden</span> <span class="n">State</span> <span class="n">Warriors</span>     <span class="mf">273.0</span>
+<span class="n">Houston</span> <span class="n">Rockets</span>           <span class="mf">265.0</span>
+<span class="n">Indiana</span> <span class="n">Pacers</span>            <span class="mf">255.0</span>
+<span class="n">Los</span> <span class="n">Angeles</span> <span class="n">Clippers</span>      <span class="mf">265.0</span>
+<span class="n">Los</span> <span class="n">Angeles</span> <span class="n">Lakers</span>        <span class="mf">270.0</span>
+<span class="n">Memphis</span> <span class="n">Grizzlies</span>         <span class="mf">270.0</span>
+<span class="n">Miami</span> <span class="n">Heat</span>                <span class="mf">265.0</span>
+<span class="n">Milwaukee</span> <span class="n">Bucks</span>           <span class="mf">265.0</span>
+<span class="n">Minnesota</span> <span class="n">Timberwolves</span>    <span class="mf">307.0</span>
+<span class="n">New</span> <span class="n">Orleans</span> <span class="n">Pelicans</span>      <span class="mf">270.0</span>
+<span class="n">New</span> <span class="n">York</span> <span class="n">Knicks</span>           <span class="mf">278.0</span>
+<span class="n">Oklahoma</span> <span class="n">City</span> <span class="n">Thunder</span>     <span class="mf">255.0</span>
+<span class="n">Orlando</span> <span class="n">Magic</span>             <span class="mf">260.0</span>
+<span class="n">Philadelphia</span> <span class="mi">76</span><span class="n">ers</span>        <span class="mf">275.0</span>
+<span class="n">Phoenix</span> <span class="n">Suns</span>              <span class="mf">260.0</span>
+<span class="n">Portland</span> <span class="n">Trail</span> <span class="n">Blazers</span>    <span class="mf">265.0</span>
+<span class="n">Sacramento</span> <span class="n">Kings</span>          <span class="mf">270.0</span>
+<span class="n">San</span> <span class="n">Antonio</span> <span class="n">Spurs</span>         <span class="mf">290.0</span>
+<span class="n">Toronto</span> <span class="n">Raptors</span>           <span class="mf">255.0</span>
+<span class="n">Utah</span> <span class="n">Jazz</span>                 <span class="mf">265.0</span>
+<span class="n">Washington</span> <span class="n">Wizards</span>        <span class="mf">250.0</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">Weight</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">float64</span>
+</code></pre></div>
+
+<p>Takımlardaki en genç Oyuncuları listelemek istersek , bu işlemi <strong>min()</strong> metodu ile gerçekleştirebiliriz.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">nba</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Team&quot;</span><span class="p">)[</span><span class="s2">&quot;Age&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">Team</span>
+<span class="n">Atlanta</span> <span class="n">Hawks</span>             <span class="mf">22.0</span>
+<span class="n">Boston</span> <span class="n">Celtics</span>            <span class="mf">20.0</span>
+<span class="n">Brooklyn</span> <span class="n">Nets</span>             <span class="mf">21.0</span>
+<span class="n">Charlotte</span> <span class="n">Hornets</span>         <span class="mf">21.0</span>
+<span class="n">Chicago</span> <span class="n">Bulls</span>             <span class="mf">21.0</span>
+<span class="n">Cleveland</span> <span class="n">Cavaliers</span>       <span class="mf">24.0</span>
+<span class="n">Dallas</span> <span class="n">Mavericks</span>          <span class="mf">22.0</span>
+<span class="n">Denver</span> <span class="n">Nuggets</span>            <span class="mf">20.0</span>
+<span class="n">Detroit</span> <span class="n">Pistons</span>           <span class="mf">20.0</span>
+<span class="n">Golden</span> <span class="n">State</span> <span class="n">Warriors</span>     <span class="mf">20.0</span>
+<span class="n">Houston</span> <span class="n">Rockets</span>           <span class="mf">22.0</span>
+<span class="n">Indiana</span> <span class="n">Pacers</span>            <span class="mf">20.0</span>
+<span class="n">Los</span> <span class="n">Angeles</span> <span class="n">Clippers</span>      <span class="mf">23.0</span>
+<span class="n">Los</span> <span class="n">Angeles</span> <span class="n">Lakers</span>        <span class="mf">20.0</span>
+<span class="n">Memphis</span> <span class="n">Grizzlies</span>         <span class="mf">21.0</span>
+<span class="n">Miami</span> <span class="n">Heat</span>                <span class="mf">20.0</span>
+<span class="n">Milwaukee</span> <span class="n">Bucks</span>           <span class="mf">19.0</span>
+<span class="n">Minnesota</span> <span class="n">Timberwolves</span>    <span class="mf">20.0</span>
+<span class="n">New</span> <span class="n">Orleans</span> <span class="n">Pelicans</span>      <span class="mf">23.0</span>
+<span class="n">New</span> <span class="n">York</span> <span class="n">Knicks</span>           <span class="mf">20.0</span>
+<span class="n">Oklahoma</span> <span class="n">City</span> <span class="n">Thunder</span>     <span class="mf">21.0</span>
+<span class="n">Orlando</span> <span class="n">Magic</span>             <span class="mf">20.0</span>
+<span class="n">Philadelphia</span> <span class="mi">76</span><span class="n">ers</span>        <span class="mf">20.0</span>
+<span class="n">Phoenix</span> <span class="n">Suns</span>              <span class="mf">19.0</span>
+<span class="n">Portland</span> <span class="n">Trail</span> <span class="n">Blazers</span>    <span class="mf">20.0</span>
+<span class="n">Sacramento</span> <span class="n">Kings</span>          <span class="mf">22.0</span>
+<span class="n">San</span> <span class="n">Antonio</span> <span class="n">Spurs</span>         <span class="mf">22.0</span>
+<span class="n">Toronto</span> <span class="n">Raptors</span>           <span class="mf">20.0</span>
+<span class="n">Utah</span> <span class="n">Jazz</span>                 <span class="mf">20.0</span>
+<span class="n">Washington</span> <span class="n">Wizards</span>        <span class="mf">20.0</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">Age</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">float64</span>
+</code></pre></div>
+
+<p>Takımlardaki en genç Oyuncuları, Oyuncu yaşına göre küçükten büyüğe doğru listelemek/sıralamak istersek , bu işlemi <strong>sort()</strong> metodu ile gerçekleştirebiliriz.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">nba</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Team&quot;</span><span class="p">)[</span><span class="s2">&quot;Age&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">())</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">Team</span>
+<span class="n">Phoenix</span> <span class="n">Suns</span>              <span class="mf">19.0</span>
+<span class="n">Milwaukee</span> <span class="n">Bucks</span>           <span class="mf">19.0</span>
+<span class="n">Washington</span> <span class="n">Wizards</span>        <span class="mf">20.0</span>
+<span class="n">Miami</span> <span class="n">Heat</span>                <span class="mf">20.0</span>
+<span class="n">Utah</span> <span class="n">Jazz</span>                 <span class="mf">20.0</span>
+<span class="n">Los</span> <span class="n">Angeles</span> <span class="n">Lakers</span>        <span class="mf">20.0</span>
+<span class="n">New</span> <span class="n">York</span> <span class="n">Knicks</span>           <span class="mf">20.0</span>
+<span class="n">Indiana</span> <span class="n">Pacers</span>            <span class="mf">20.0</span>
+<span class="n">Golden</span> <span class="n">State</span> <span class="n">Warriors</span>     <span class="mf">20.0</span>
+<span class="n">Detroit</span> <span class="n">Pistons</span>           <span class="mf">20.0</span>
+<span class="n">Orlando</span> <span class="n">Magic</span>             <span class="mf">20.0</span>
+<span class="n">Philadelphia</span> <span class="mi">76</span><span class="n">ers</span>        <span class="mf">20.0</span>
+<span class="n">Portland</span> <span class="n">Trail</span> <span class="n">Blazers</span>    <span class="mf">20.0</span>
+<span class="n">Toronto</span> <span class="n">Raptors</span>           <span class="mf">20.0</span>
+<span class="n">Boston</span> <span class="n">Celtics</span>            <span class="mf">20.0</span>
+<span class="n">Denver</span> <span class="n">Nuggets</span>            <span class="mf">20.0</span>
+<span class="n">Minnesota</span> <span class="n">Timberwolves</span>    <span class="mf">20.0</span>
+<span class="n">Oklahoma</span> <span class="n">City</span> <span class="n">Thunder</span>     <span class="mf">21.0</span>
+<span class="n">Memphis</span> <span class="n">Grizzlies</span>         <span class="mf">21.0</span>
+<span class="n">Chicago</span> <span class="n">Bulls</span>             <span class="mf">21.0</span>
+<span class="n">Charlotte</span> <span class="n">Hornets</span>         <span class="mf">21.0</span>
+<span class="n">Brooklyn</span> <span class="n">Nets</span>             <span class="mf">21.0</span>
+<span class="n">Houston</span> <span class="n">Rockets</span>           <span class="mf">22.0</span>
+<span class="n">Dallas</span> <span class="n">Mavericks</span>          <span class="mf">22.0</span>
+<span class="n">Sacramento</span> <span class="n">Kings</span>          <span class="mf">22.0</span>
+<span class="n">San</span> <span class="n">Antonio</span> <span class="n">Spurs</span>         <span class="mf">22.0</span>
+<span class="n">Atlanta</span> <span class="n">Hawks</span>             <span class="mf">22.0</span>
+<span class="n">Los</span> <span class="n">Angeles</span> <span class="n">Clippers</span>      <span class="mf">23.0</span>
+<span class="n">New</span> <span class="n">Orleans</span> <span class="n">Pelicans</span>      <span class="mf">23.0</span>
+<span class="n">Cleveland</span> <span class="n">Cavaliers</span>       <span class="mf">24.0</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">Age</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">float64</span>
+</code></pre></div>
+
+<p>Veri Çerçevemizi <strong>Takım (Team)</strong> ismine göre gruplayarak, hangi sütunda kaç adet veri olduğunu bulmak istersek, <strong>count()</strong> metodundan yararlanabiliriz.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">nba</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Team&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">())</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Team</th>
+<th>Name</th>
+<th>Number</th>
+<th>Position</th>
+<th>Age</th>
+<th>Height</th>
+<th>Weight</th>
+<th>College</th>
+<th>Salary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Atlanta Hawks</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>11</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Boston Celtics</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>13</td>
+<td>14</td>
+</tr>
+<tr>
+<td>Brooklyn Nets</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>13</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Charlotte Hornets</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>13</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Chicago Bulls</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>12</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Cleveland Cavaliers</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>12</td>
+<td>14</td>
+</tr>
+<tr>
+<td>Dallas Mavericks</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>12</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Denver Nuggets</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>9</td>
+<td>14</td>
+</tr>
+<tr>
+<td>Detroit Pistons</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Golden State Warriors</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>12</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Houston Rockets</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>11</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Indiana Pacers</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>12</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Los Angeles Clippers</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>14</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Los Angeles Lakers</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>12</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Memphis Grizzlies</td>
+<td>18</td>
+<td>18</td>
+<td>18</td>
+<td>18</td>
+<td>18</td>
+<td>18</td>
+<td>17</td>
+<td>14</td>
+</tr>
+<tr>
+<td>Miami Heat</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>11</td>
+<td>13</td>
+</tr>
+<tr>
+<td>Milwaukee Bucks</td>
+<td>16</td>
+<td>16</td>
+<td>16</td>
+<td>16</td>
+<td>16</td>
+<td>16</td>
+<td>14</td>
+<td>16</td>
+</tr>
+<tr>
+<td>Minnesota Timberwolves</td>
+<td>14</td>
+<td>14</td>
+<td>14</td>
+<td>14</td>
+<td>14</td>
+<td>14</td>
+<td>9</td>
+<td>13</td>
+</tr>
+<tr>
+<td>New Orleans Pelicans</td>
+<td>19</td>
+<td>19</td>
+<td>19</td>
+<td>19</td>
+<td>19</td>
+<td>19</td>
+<td>16</td>
+<td>19</td>
+</tr>
+<tr>
+<td>New York Knicks</td>
+<td>16</td>
+<td>16</td>
+<td>16</td>
+<td>16</td>
+<td>16</td>
+<td>16</td>
+<td>11</td>
+<td>16</td>
+</tr>
+<tr>
+<td>Oklahoma City Thunder</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>14</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Orlando Magic</td>
+<td>14</td>
+<td>14</td>
+<td>14</td>
+<td>14</td>
+<td>14</td>
+<td>14</td>
+<td>10</td>
+<td>14</td>
+</tr>
+<tr>
+<td>Philadelphia 76ers</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>14</td>
+</tr>
+<tr>
+<td>Phoenix Suns</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>13</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Portland Trail Blazers</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Sacramento Kings</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>13</td>
+<td>15</td>
+</tr>
+<tr>
+<td>San Antonio Spurs</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>11</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Toronto Raptors</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>10</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Utah Jazz</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>10</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Washington Wizards</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>13</td>
+<td>15</td>
+</tr>
+</tbody>
+</table>
+<p>Veri Çerçevemizi <strong>Takım (Team)</strong> ismine göre gruplayarak, <strong>Yaş (Age)</strong> Sütununda hangi değerden kaç adet veri olduğunu bulmak istersek, <strong>value_counts()</strong> metodundan yararlanabiliriz.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">nba</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Team&quot;</span><span class="p">)[</span><span class="s2">&quot;Age&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">Team</span>                <span class="n">Age</span> 
+<span class="n">Atlanta</span> <span class="n">Hawks</span>       <span class="mf">24.0</span>    <span class="mi">4</span>
+                    <span class="mf">31.0</span>    <span class="mi">3</span>
+                    <span class="mf">27.0</span>    <span class="mi">2</span>
+                    <span class="mf">35.0</span>    <span class="mi">2</span>
+                    <span class="mf">22.0</span>    <span class="mi">1</span>
+                           <span class="o">..</span>
+<span class="n">Washington</span> <span class="n">Wizards</span>  <span class="mf">26.0</span>    <span class="mi">1</span>
+                    <span class="mf">27.0</span>    <span class="mi">1</span>
+                    <span class="mf">29.0</span>    <span class="mi">1</span>
+                    <span class="mf">32.0</span>    <span class="mi">1</span>
+                    <span class="mf">34.0</span>    <span class="mi">1</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">Age</span><span class="p">,</span> <span class="n">Length</span><span class="p">:</span> <span class="mi">288</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+</code></pre></div>
+
+<p><a href="pandas-08-veri-filtreleme-yontemleri.html">← Önceki Bölüm</a> | <a href="pandas-10-pivot_table-fonksiyonunun-kullanimi.html">Sonraki Bölüm →</a></p>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/pandas.html">Pandas</a></li>
+					<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+					<li><a href="/tag/modul.html">Modül</a></li>
+					<li><a href="/tag/grup.html">Grup</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Düzenli İfadeler" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/duzenli-ifadeler.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Düzenli İfadeler</h1>
+	<span class="post-date">Çrş 15 Haziran 2022</span>
+	<h1>Düzenli İfadeler (Regular Expressions - Regex )</h1>
+<p>Düzenli İfadeler (Regular Expressions) konusunu farklı kaynaklardan okuyup inceleyerek öğrenmeye çalışıyor ve öğrendiklerimi repoma ekleyerek paylaşıyorum. </p>
+<p>İlerleyen zamanlarda Düzenli İfadelere ait Türkçe içerikli Özet Tablo (Cheat Sheet) hazırlamayı ve belirlediğimiz özelliklere göre Düzenli ifade yapılarını oluşturan python kodu / programı yazıp paylaşmayı düşünüyorum.</p>
+<p><img alt="regex" src="../../images/python/regex.png"></p>
+<h3>Düzenli İfadeler (Regular Expressions) Nedir ?</h3>
+<blockquote>
+<p>Düzenli ifadeler (Regular Expressions, kısaca "Regex" ya da "Regexp"), Python programlama dilinin en çetrefilli konularından biridir. Ama bütün zorluklarına rağmen programlama deneyimimizin bir noktasında mutlaka karşımıza çıkacak olan bu yapıyı öğrenmemizde büyük fayda var. Düzenli ifadeleri öğrendikten sonra, elle yapılması saatler sürecek bir işlemi saliseler içinde yapabildiğinizi gördüğünüzde eminim düzenli ifadelerin ne büyük bir nimet olduğunu siz de anlayacaksınız. </p>
+<p>Peki, düzenli ifadeleri kullanarak neler yapabiliriz? Çok genel bir ifadeyle, bu yapıyı kullanarak metinleri veya karakter dizilerini parmağımızda oynatabiliriz. Örneğin bir web sitesinde dağınık halde duran verileri bir çırpıda ayıklayabiliriz. Bu veriler, mesela, toplu halde görmek istediğimiz web adreslerinin bir listesi olabilir. Bunun dışında, örneğin, çok sayıda belge üzerinde tek adımda istediğimiz değişiklikleri yapabiliriz.</p>
+<p>Ancak genel bir kural olarak, düzenli ifadelerden kaçabildiğimiz müddetçe kaçmamız gerekir. Eğer Python’daki karakter dizisi metotları, o anda yapmak istediğimiz şey için yeterli geliyorsa mutlaka o metotları kullanmalıyız. Çünkü karakter dizisi metotları, düzenli ifadelere kıyasla hem daha basit, hem de çok daha hızlıdır. Ama bir noktadan sonra karakter dizilerini kullanarak yazdığınız kodlar iyice karmaşıklaşmaya başlamışsa, kodların her tarafı if deyimleriyle dolmuşsa, hatta basit bir işlemi gerçekleştirmek için yazdığınız kod sayfa sınırlarını zorlamaya başlamışsa, işte o noktada artık düzenli ifadelerin dünyasına adım atmanız gerekiyor olabilir. </p>
+<p>Kaynak: <a href="https://python-istihza.yazbel.com/standart_moduller/regex.html">Düzenli İfadeler - Yazbel Python Belgeleri</a></p>
+</blockquote>
+<h1>Konu Başlıkları</h1>
+<ol>
+<li>
+<p><a href="duzenli-ifadeler-tanim-ve-fonksiyonlar.html">Düzenli İfadeler</a></p>
+</li>
+<li>
+<p>match() Metodu </p>
+<ul>
+<li>
+<p>span() Metodu</p>
+</li>
+<li>
+<p>string Özelliği</p>
+</li>
+<li>
+<p>group() Metodu</p>
+</li>
+</ul>
+</li>
+<li>
+<p>split() Metodu</p>
+</li>
+<li>
+<p>search() Metodu</p>
+<ul>
+<li>
+<p>start() Metodu</p>
+</li>
+<li>
+<p>end() Metodu</p>
+</li>
+</ul>
+</li>
+<li>
+<p>findall() Metodu</p>
+</li>
+<li>
+<p>finditer() Metodu</p>
+</li>
+<li>
+<p>sub() Metodu</p>
+</li>
+<li>
+<p><a href="duzenli-ifadeler-metakarakterler.html">MetaKarakterler (Özel Karakterler)</a></p>
+</li>
+<li>
+<p>"[ ]" Köşeli Parantez</p>
+</li>
+<li>
+<p>"." Nokta</p>
+</li>
+<li>
+<p>"*" Yıldız</p>
+</li>
+<li>
+<p>"+" Artı</p>
+</li>
+<li>
+<p>"?" Soru İşareti</p>
+</li>
+<li>
+<p>"{ }" Küme Parantezi</p>
+</li>
+<li>
+<p>"^" Şapka</p>
+</li>
+<li>
+<p>"$" Dolar</p>
+</li>
+<li>
+<p>"\" Ters Bölü</p>
+</li>
+<li>
+<p>"|" Dik Çizgi, Boru (Pipe) Sembolü</p>
+</li>
+<li>
+<p>"( )" Parantez </p>
+</li>
+<li>
+<p>Eşleşme Nesnelerinin Metotları</p>
+<ul>
+<li>
+<p>group() metodu</p>
+</li>
+<li>
+<p>groups() metodu</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Özel Diziler</p>
+<ul>
+<li>
+<p>\s</p>
+</li>
+<li>
+<p>\S</p>
+</li>
+<li>
+<p>\d</p>
+</li>
+<li>
+<p>\D</p>
+</li>
+<li>
+<p>\w</p>
+</li>
+<li>
+<p>\W</p>
+</li>
+<li>
+<p>\b</p>
+</li>
+<li>
+<p>\B</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Düzenli İfadelerin Derlenmesi</p>
+<ul>
+<li>
+<p>compile() metodu</p>
+</li>
+<li>
+<p>re.IGNORECASE veya re.I</p>
+</li>
+<li>
+<p>re.DOTALL veya re.S</p>
+</li>
+<li>Düzenli İfadelerle Metin/Karakter Dizisi Değiştirme İşlemleri</li>
+</ul>
+</li>
+<li>
+<p>sub() metodu</p>
+</li>
+<li>
+<p>subn() metodu</p>
+</li>
+<li>
+<p>Sonuç</p>
+</li>
+</ol>
+<p><a href="duzenli-ifadeler-ozet-tablo.html">Düzenli Tablo Özet Tablosu (Cheat Sheet)</a></p>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/duzenli-ifadeler.html">Düzenli İfadeler</a></li>
+					<li><a href="/tag/regular-expressions.html">Regular Expressions</a></li>
+					<li><a href="/tag/regex.html">Regex</a></li>
+					<li><a href="/tag/re.html">Re</a></li>
+					<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+					<li><a href="/tag/modul.html">Modül</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>

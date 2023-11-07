@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="FreeCAD - Curves WB - Surface - 14 - BlendSurface" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/freecad-curves-wb-surface-14-blendsurface.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">FreeCAD - Curves WB - Surface - 14 - BlendSurface</h1>
+	<span class="post-date">Cts 05 Kasım 2022</span>
+	<h1><img alt="blendSurf" src="https://raw.githubusercontent.com/tomate44/CurvesWB/9aac6c2365311724487f79df3343dab90ddcb819/freecad/Curves/resources/icons/blendSurf.svg"> BlendSurface</h1>
+<p><strong>BlendSurface</strong> komutu, iki yüzeyi, seçili kenarları arasında yeni yüzey oluşturarak bağlar. Komutu çalıştırmadan önce birinci yüzeye ait bir kenarın ve yüzeyin kendisinin, sonrasında ikinci yüzeyin bir kenarının ve yüzeyin kendisinin seçilmesi gerekir.  </p>
+<p><strong>Kullanım:</strong> Komutu çalıştırmak için aşağıdaki adımları sırası ile uygulayın:</p>
+<ul>
+<li>Öncelikle, birinci yüzeye ait bir kenarı ve yüzeyin kendisini seçin. (Önce yüzey sonra kenar da seçilebilir. Birlikte seçim için <code>CTRL</code> tuşunu kullanın)</li>
+<li>İkinci olarak, ikinci yüzeyin bir kenarını sonra yüzeyin kendisini seçin. (Önce yüzey sonra kenar da seçilebilir. Tüm seçim işlemlerinde <code>CTRL</code> tuşuna basılı tutun)</li>
+<li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
+<li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>BlendSurface</strong> seçeneğini kullanın.</li>
+</ul>
+<p><strong>BlendSurface</strong> komutunun kullanımına yönelik örnekler yapalım.<br>
+Aşağıda, kenar çizgileri birbirine 45 derece açılı duran 3 adet kare şekil (yüzey) var. Şekillerin tamamı aynı düzlemde ve birbirine paralel konumda.
+<img alt="BlendSurface_01" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_01.png"><br>
+Sol kısımdaki şeklin yüzeyini ve kenarını <code>CTRL</code> tuşuna basılı tutarak seçiyoruz, ardından ortadaki şeklin yüzeyi ve kenar çizgisini <code>CTRL</code> tuşu yardımıyla seçiyoruz. Seçim işlemi tamamlandıktan sonra araç çubuğunda bulunan <code>BlendSurface</code> düğmesine basıyoruz. İşlem sonucunda seçili kenarlar arasında yeni bir düzlem yüzey oluşturuldu. Yüzeyin kenarları eğriler vasıtası ile elde edildi.
+<img alt="BlendSurface_02" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_02.png"><br>
+Yeni oluşan <strong>Blend_Surface</strong> yüzeyini, Unsur ağacından seçerek özelliklerini incelediğimizde, yüzeyi oluşturan eğrilerin süreklilik değerlerinin ne olduğunu görüyoruz. Bu değerleri isteğimiz doğrultusunda değiştirebiliyoruz.
+<img alt="BlendSurface_03" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_03.png"><br>
+Birinci (Continuity1) ve ikinci (Continuity2) eğrinin değerlerini <strong>2</strong>'den <strong>5</strong>'e yükseltip sonucu inceliyoruz.
+<img alt="BlendSurface_04" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_04.png"><br>
+Sahnenin ortasındaki ve sağ alt kısmındaki şekillerin de ilgili yüzey ve kenar çizgilerini seçerek <strong>BlendSurface</strong> komutu çalıştıralım. İşlem sonucu yeni bir yüzey (mavi renkli) oluştuğunu aşağıdaki resimde görüyoruz.
+<img alt="BlendSurface_05" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_05.png"><br>
+Unsur ağacından <strong>Blend_Surface001</strong> isimli yeni yüzeyi seçerek eğrilerin süreklilik (Continuity1 / Continuity2) değerlerini değiştirerek oluşan yüzey şeklini inceliyoruz.
+<img alt="BlendSurface_06" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_06.png"><br>
+<strong>BlendSurface</strong> komutu, sadece paralel yüzeyde çalışmaz. Aşağıdaki örnekte, birbirine 90 derece açı ile konumlanmış yüzeyleri görmektesiniz. <strong>BlendSurface</strong> komutunu, bu yüzeyler arasında eğrisel bir yüzey oluşturmak için kullanalım.
+<img alt="BlendSurface_07" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_07.png"><br>
+Kenar ve Yüzeyleri seçerek <strong>BlendSurface</strong> komutu çalıştırıyoruz.
+<img alt="BlendSurface_08" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_08.png"><br>
+İşlem sonrası oluşan eğrisel yüzeyi aşağıda görmektesiniz.
+<img alt="BlendSurface_09" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_09.png"><br>
+<strong>Blend_Surface002</strong> yüzeyinin süreklilik değerleri;<br>
+Continuity1:<strong>2</strong><br>
+Continuity2: <strong>2</strong> 
+<img alt="BlendSurface_10" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_10.png"><br>
+<strong>Blend_Surface002</strong> yüzeyinin süreklilik değerlerini değiştiriyor ve elde edilen yüzeyi inceliyoruz;<br>
+Continuity1:<strong>9</strong><br>
+Continuity2: <strong>2</strong> 
+<img alt="BlendSurface_11" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_11.png"><br>
+Sahnenin sol kısmında duran ve <strong>YZ</strong> düzlemine paralel konumdaki şekli seçerek, <strong>Z</strong> ekseninde aşağı doğru taşıyoruz. 
+<img alt="BlendSurface_12" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_12.png"><br>
+<code>OK</code> (Tamam) butonuna basıp şeklin yeni konumu onaylandığında, <strong>BlendSurface</strong> komutu ile oluşturulan yüzey (<strong>Blend_Surface002</strong> ), otomatik olarak güncelleniyor.
+<img alt="BlendSurface_13" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_13.png"><br>
+<strong>Blend_Surface002</strong> yüzeyinin süreklilik değerleri incelendiğinde biraz önce belirlediğimiz değerlerin geçerli olduğu görülüyor.;<br>
+Continuity1:<strong>9</strong><br>
+Continuity2: <strong>2</strong> 
+<img alt="BlendSurface_14" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_14.png"><br>
+<strong>BlendSurface</strong> komutunu kullanabileceğimiz güzel bir örnekle konuyu kapatalım.<br>
+<strong>Part</strong> Çalışma Tezgahında Parametrik Silindir oluşturalım. Silindirin Yarıçap değerini <strong>2,00 mm</strong>, Yükseklik değerini <strong>5,00 mm</strong> olarak belirleyelim.
+<img alt="BlendSurface_15" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_15.png"><br>
+Silindirin <strong>2</strong> adet kopyasını çıkararak, aşağıdaki resimde göründüğü gibi, silindirleri birbiri ile 120'şer derece açı ile konumlandıralım.
+<img alt="BlendSurface_16" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_16.png"><br>
+Silindirlerden birinin çemberini seçerek <strong>Discretize</strong> komutunu çalıştıralım. <strong>Discretize</strong> komutu hakkında daha fazla bilgi için <a href="https://mhalil.github.io/Freecad_curves_wb_curves.html#discretize">BURAYI</a> ziyaret edebilirsiniz.
+<img alt="BlendSurface_17" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_17.png"><br>
+Komut çalıştrıldıktan sonra seçili eğri üzerinde Varsayılan olarak Number (Sayı) algoritması ile <strong>100</strong> adet nokta oluşturulur. 
+<img alt="BlendSurface_18" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_18.png"><br>
+Number (Sayı) parametresi <strong>4</strong> olarak değiştirildiğinde, oluşan nokta sayısı ve noktalar arası mesafe, güncellendi. 
+<img alt="BlendSurface_19" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_19.png"><br>
+Aynı işlemleri diğer Silindirlere de uygulayarak, her bir silindirin bir yüzeyindeki çember üzerine, eşit aralıklı <strong>4</strong>'er adet nokta ekliyoruz.
+<img alt="BlendSurface_20" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_20.png"><br>
+Silindir yüzeyini seçerek <strong>Surface</strong> menüsündeki <strong>Segment surface</strong> komutunu çalıştırıyoruz. <strong>Segment surface</strong> komutu hakkında daha fazla bilgi almak isterseniz <a href="https://mhalil.github.io/Freecad_curves_wb_surfaces.html#segmentsurface">BURAYI</a> ziyaret edebilirsiniz.
+<img alt="BlendSurface_21" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_21.png"><br>
+Komut çalıştırıldıktan sonra silindir nesnesini gizliyoruz ve oluşan Segment Yüzeyi (Segment_Surface) görüyoruz.<br>
+<strong>Option (Seçenek)</strong> özelliği, <strong>Custom (Özel)</strong> olarak değiştiriyoruz.<br>
+<img alt="BlendSurface_22" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_22.png"><br>
+<strong>Knots UProvider</strong> seçeneğini kullanarak oluşturduğumuz <strong>4</strong> noktayı değer olarak atayalım. <strong>Knots UProvider</strong> seçeneğinin yanındaki <code>...</code> butonuna basınca karşımıza çıkan <strong>Bağlantı (Link)</strong> penceresinden, <strong>4</strong> noktaya ait öğeyi (<strong>Discretize_Edge</strong>) seçip ardından <code>OK</code> (Tamam) butonuna basıyoruz. 
+<img alt="BlendSurface_23" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_23.png"><br>
+İşlem sonrası seçili yüzey, belirlenen öğedeki (<strong>Discretize_Edge</strong>) nokta sayısı ve konumundan itibaren dikey parçalara ayrılıyor. 
+<img alt="BlendSurface_24" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_24.png"><br>
+Aynı işlemleri diğer silindirler için de yapıyoruz. Böylece, <strong>BlendSurface</strong> komutu ile birleştirilecek yüzey ve kenarları elde etmiş olduk.
+<img alt="BlendSurface_25" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_25.png"><br>
+Aşağıda gösterildiği şekilde <strong>Segment_Surface</strong> ve <strong>Segment_Surface_002</strong> nesnelerinin kenar ve yüzeyleri seçerek <strong>BlendSurface</strong> komutunu çalıştırıyoruz.
+<img alt="BlendSurface_26" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_26.png"><br>
+Seçilen kenar ve yüzeylerin konum ve açılarına bağlı olarak yeni bir eğrisel yüzey (mavi renkli yüzey) oluşuyor. 
+<img alt="BlendSurface_27" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_27.png"><br>
+<strong>Segment_Surface</strong> ve <strong>Segment_Surface_001</strong> nesnelerine de aynı işlemi uyguluyoruz.
+<img alt="BlendSurface_28" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_28.png"><br>
+<strong>Segment_Surface_001</strong> ve <strong>Segment_Surface_002</strong> nesnelerine de aynı işlemi uyguluyor ve sonucu inceliyoruz. Oluşan yeni yüzeylerin arasında bir boşluk (yırtık) olduğunu görüyoruz. 
+<img alt="BlendSurface_29" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_29.png"><br>
+Eğrisel Üçgen yapısına sahip boşluğu kapatmak/doldurmak için <strong>Surface</strong> Çalışma tezgahı komutlarından <strong>Boundaries</strong> komutunu kullanıyoruz.
+<img alt="BlendSurface_30" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_30.png"><br>
+Komut doğru bir şekilde çalıştırılıp tamamlandıktan sonra, yırtık / boşluk kısmı kapanmış oluyor.
+<img alt="BlendSurface_31" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_31.png"><br>
+Sonuçu beğeninize sunuyorum.
+<img alt="BlendSurface_32" src="../../images/freecad/curves_wb/surfaces_menu/BlendSurface_32.png">  </p>
+<p><a href="freecad-curves-wb-surface-00-menu-komutlari.html">&lt;&lt;&lt; Surfaces Menü Komutlarına Ait Sayfaya Dön</a></p>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/freecad.html">FreeCAD</a></li>
+					<li><a href="/tag/curves.html">Curves</a></li>
+					<li><a href="/tag/workbench.html">Workbench</a></li>
+					<li><a href="/tag/calismatezgahi.html">ÇalışmaTezgahı</a></li>
+					<li><a href="/tag/surface.html">Surface</a></li>
+					<li><a href="/tag/blend.html">Blend</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>

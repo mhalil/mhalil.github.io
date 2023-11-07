@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Düzenli İfadeler - Özet Tablo" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/duzenli-ifadeler-ozet-tablo.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Düzenli İfadeler - Özet Tablo</h1>
+	<span class="post-date">Cts 25 Haziran 2022</span>
+	<h1>Düzenli İfadeler Özet Tablosu (Regular Expressions Cheat Sheet)</h1>
+<h2>Sabitleyiciler / Sınırlayıcılar</h2>
+<table>
+<thead>
+<tr>
+<th>Simge</th>
+<th>Desen Açıklaması</th>
+<th>Örnek Desen</th>
+<th>Eşleşen Örnek</th>
+<th>Açıklama</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>^</code></td>
+<td>Çok satırlı desende ya da bir karakter dizisinin <strong>başlangıç verisini</strong> belirtir.</td>
+<td><code>^rec</code></td>
+<td><strong>rec</strong>ep</td>
+<td>Sadece kendinden sonra gelen BİR karaktere BAKMIYOR. Desenin tümüne bakıyor. Farklı Paragraflarda arama yapar.</td>
+</tr>
+<tr>
+<td><code>\A</code></td>
+<td>Sadece karakter dizisinin <strong>(Dizenin) başlangıcını</strong> belirtir.</td>
+<td><code>\Ar</code></td>
+<td><strong>r</strong>amazan</td>
+<td>Sadece Kelime dizisinde  arama yapar, paragrafa bakmaz.</td>
+</tr>
+<tr>
+<td><code>$</code></td>
+<td>Çok satırlı desenin ya da dizelerin nasıl <strong>biteceğini</strong> belirtir.</td>
+<td><code>zan$</code></td>
+<td>rama<strong>zan</strong></td>
+<td>Sadece kendinden önceki BİR karaktere BAKMIYOR, tüm desene bakıyor.</td>
+</tr>
+<tr>
+<td><code>\Z</code></td>
+<td>Karakter dizisinin nasıl <strong>biteceğini</strong> belirtir.</td>
+<td><code>an\Z</code></td>
+<td>ramaz<strong>an</strong></td>
+<td>Kelime, kendinden önceki desen (<strong>an</strong>) ile bitmeli.</td>
+</tr>
+<tr>
+<td><code>\b</code></td>
+<td>Kelime <strong>başlangıcını</strong> belirtir</td>
+<td><code>\bman</code></td>
+<td><strong>man</strong>zara</td>
+<td>Kelimenin <strong>man</strong> ile <strong>başlaması</strong> gerektiğini belirtiyor.</td>
+</tr>
+<tr>
+<td><code>\b</code></td>
+<td>Kelime <strong>bitimini</strong> belirtir</td>
+<td><code>man\b</code></td>
+<td>za<strong>man</strong></td>
+<td>Kelimenin <strong>man</strong> ile <strong>bitmesi</strong> gerektiğini belirtiyor.</td>
+</tr>
+<tr>
+<td><code>\b</code></td>
+<td>Kelime <strong>kesin sınırını</strong> belirtir</td>
+<td><code>\bHalil\b</code></td>
+<td><strong>"Halil."</strong>, <strong>"(Halil)"</strong> ve  "adım <strong>Halil</strong> demiştim."</td>
+<td>Karakter dizini içinde tam kelime eşleşmesi arar. <strong>Halili</strong> kelimesi desen ile eşleşmez çünkü kelime içinde başka harf te bulunuyor. Noktalama işaretleri, parantez,...vb karakterler harf olmadığı için sorun oluşturmuyor.</td>
+</tr>
+<tr>
+<td><code>\B</code></td>
+<td><code>\b</code> nin tam tersidir.</td>
+<td>'py\B'</td>
+<td><strong>"python, py3, py2"</strong></td>
+<td><code>py</code> içeren ancak <code>py</code> ile BİTMEYENLERİ göster demiş olduk. <strong>"py," , "py."</strong> ve <strong>"py!"</strong> ile eşleşmez</td>
+</tr>
+<tr>
+<td><code>\B</code></td>
+<td><code>\b</code> nin tam tersidir. <code>\B...\B</code> şeklinde kullanımına dair örnek</td>
+<td>'\Ber\B'</td>
+<td><strong>"Sertaç"</strong> <code>er</code> ibaresi kelimenin içinde olacak ancak başında ve sonunda OLMAYACAK.</td>
+<td><strong>"erkek,"</strong>, <strong>seher</strong>,  ve <strong>"şeker"</strong> kelimeleri eşleşmez, çünkü bu kelimeler <strong>er</strong> ibaresi kelimelerin başında ya da sonunda bulunuyor. Sadece içinde <strong>er</strong> ibaresi olan kelimeler eşleşir.</td>
+</tr>
+</tbody>
+</table>
+<h2>Karakter Türleri</h2>
+<table>
+<thead>
+<tr>
+<th>Simge</th>
+<th>Desen Açıklaması</th>
+<th>Örnek Desen</th>
+<th>Eşleşen Örnek</th>
+<th>Açıklama</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.</code></td>
+<td>herhangi bir tek karakterle eşleşir</td>
+<td><code>"öz.an"</code></td>
+<td>öz<strong>c</strong>an, öz<strong>k</strong>an, öz<strong>h</strong>an</td>
+<td><strong>öz</strong> ile başla ardından herhangi BİR karakter gelsin <strong>an</strong> ile bitsin.</td>
+</tr>
+<tr>
+<td><code>\d</code></td>
+<td>herhangi bir rakamla (digit) eşleşir</td>
+<td><code>"\d{2}"</code></td>
+<td><strong>41</strong>, <strong>60</strong>, <strong>65</strong></td>
+<td>2 tane rakam yanyana gelsin.</td>
+</tr>
+<tr>
+<td><code>\D</code></td>
+<td>rakam olmayan herhangi bir karakterle eşleşir</td>
+<td><code>"-\D"</code></td>
+<td><strong>-A</strong>, <strong>-$</strong></td>
+<td>Tire (-) olsun ardından rakam olmayan bir karakter gelsin.</td>
+</tr>
+<tr>
+<td><code>\w</code></td>
+<td>herhangi bir kelime karakteriyle (word) eşleşir (alfanümerik karakterler ve alt çizgi).</td>
+<td><code>"\w{3}"</code></td>
+<td><strong>TR_</strong> , <strong>015</strong> , <strong>Vn4</strong></td>
+<td><code>[a-zA-Z0-9_]</code> ifadesine eşittir.</td>
+</tr>
+<tr>
+<td><code>\W</code></td>
+<td>alfanümerik karakterler ve alt çizgi dışındaki karakterlerle eşleşir</td>
+<td><code>"\d\W"</code></td>
+<td><strong>9&amp;</strong>, <strong>1+</strong>, <strong>3]</strong></td>
+<td><code>\w</code> 'nin tersidir. <code>[^a-zA-Z0-9_]</code> ifadesine eşittir.</td>
+</tr>
+<tr>
+<td><code>\s</code></td>
+<td>herhangi bir (space) boşluk karakteriyle (boşluk, sekme, yeni satır vb.) eşleşir.</td>
+<td><code>"\d\s\w"</code></td>
+<td><strong>5 W</strong>, <strong>7 a</strong></td>
+<td>Bir rakam, ardından bir boşluk ve son olarak alfanümerik karakter ile eşleş.</td>
+</tr>
+<tr>
+<td><code>\S</code></td>
+<td>boşluk karakteri (boşluk, sekme, yeni satır vb.) dışında karakterle eşleşir.</td>
+<td><code>"\d+\S\w+"</code></td>
+<td><strong>2Nisan</strong>, <strong>1-Ocak</strong></td>
+<td><code>\s</code> 'nin tersidir. Başta Rakam olsun, sonrasında Boşluk dışında bir karakter gelsin ve onu bir veya daha fazla alfanumerik karakter takip etsin.</td>
+</tr>
+<tr>
+<td><code>\metacharacter</code></td>
+<td>Metakarakterle eşleşecek bir karakterle eşleşir.</td>
+<td><code>"\d\.\w+"</code></td>
+<td><strong>3.14</strong>, <strong>6.Mart</strong></td>
+<td><code>\.</code> ifadesi nokta karakteri arar. <code>\\</code> ifadesi <code>\</code> karakterini arar.</td>
+</tr>
+</tbody>
+</table>
+<h2>Karakter Sınıfları</h2>
+<table>
+<thead>
+<tr>
+<th>Simge</th>
+<th>Desen Açıklaması</th>
+<th>Örnek Desen</th>
+<th>Eşleşen Örnek</th>
+<th>Açıklama</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[xy]</code></td>
+<td>Köşeli parantez içindeki her bir karakteri eşleştirir.</td>
+<td><code>h[au]y</code></td>
+<td><strong>hay, huy</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><code>[x-y]</code></td>
+<td><code>-</code> ile belirtilen karakter aralığındaki her bir karakteri eşleştirir.</td>
+<td><code>se[h-r]+</code></td>
+<td><strong>seher, sertaç</strong></td>
+<td><strong>se</strong> 'den sonra <strong>h</strong> ile <strong>r</strong> arasındaki tüm harfler gelebilir.</td>
+</tr>
+<tr>
+<td><code>[^xy]</code></td>
+<td><code>^</code> simgesi köşeli parantez içinde kullanıldığında <strong>HARİÇ TUT</strong> anlamına gelir.</td>
+<td><code>se[^h-m]+</code></td>
+<td><strong>sertaç</strong></td>
+<td><strong>se</strong> 'den sonra <strong>h</strong> ile <strong>m</strong> arasındaki hiçbir harfler <strong>GELEMEZ</strong></td>
+</tr>
+<tr>
+<td><code>[^.]</code></td>
+<td>Karakter sınıfı içindeki metakarakterleri eşleştir.</td>
+<td><code>.+[.^]</code></td>
+<td><strong>2.345</strong>, <strong>3^2</strong>, <strong>py.</strong></td>
+<td>İçinde <strong>.</strong> (nokta) ya da <strong>^</strong> (şapka) işareti olan ifadeyle eşleşir. Köşeli parantez dışında meta karakterleri eşleştirirken kaçış dizisi olan ters taksim <code>\</code> sembolü kullanılmalı. Örneğin <code>\.</code></td>
+</tr>
+</tbody>
+</table>
+<h2>Tekrar / Yineleme / Kopya</h2>
+<table>
+<thead>
+<tr>
+<th>Simge</th>
+<th>Desen Açıklaması</th>
+<th>Örnek Desen</th>
+<th>Eşleşen Örnek</th>
+<th>Açıklama</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>*</code></td>
+<td>Kendinden önce gelen karakteri SIFIR veya DAHA FAZLA sayıda eşleştirir.</td>
+<td><code>sa*t</code></td>
+<td>st, s<strong>a</strong>t, s<strong>aa</strong>t, s<strong>aaa</strong>t</td>
+<td><code>a</code> karakteri <strong>hiç</strong> olmasada, <strong>birden fazla</strong> kez olsa da olur.</td>
+</tr>
+<tr>
+<td><code>+</code></td>
+<td>Kendisinden önce gelen karakteri BİR veya DAHA FAZLA sayıda eşleştirir.</td>
+<td><code>.+met</code></td>
+<td>ah<strong>met</strong>, meh<strong>met</strong></td>
+<td><code>met</code> karakter dizisinden önce <strong>BİR veya DAHA FAZLA</strong> karakter bulunsun.</td>
+</tr>
+<tr>
+<td><code>?</code></td>
+<td>Kendisinden önce gelen karakterin SIFIR veya BİR defa eşleştirir.</td>
+<td><code>sa?t</code></td>
+<td>st, s<strong>a</strong>t</td>
+<td><code>a</code> karakteri ya <strong>HİÇ</strong> olmasın ya da <strong>BİR</strong> tane olsun.</td>
+</tr>
+<tr>
+<td><code>{}</code></td>
+<td>Bir eşleşmeden kaç adet istediğimizi belirtebiliyoruz.</td>
+<td><code>sa{3}t</code></td>
+<td>s<strong>aaa</strong>t</td>
+<td><code>a</code> karakteri <strong>3 kez</strong> tekrar etsin</td>
+</tr>
+<tr>
+<td><code>{x,}</code></td>
+<td>Bir karakterin <strong>en az</strong> kaç kez tekrar etmesini istediğimizi belirtebiliriz</td>
+<td><code>sa{2,}t</code></td>
+<td>s<strong>aa</strong>t, s<strong>aaa</strong>t</td>
+<td><code>a</code> karakteri 2 ve daha fazla tekrar etsin.</td>
+</tr>
+<tr>
+<td><code>{x,y}</code></td>
+<td>Bir karakterin <strong>en az ve en çok</strong> kaç kez tekrar etmesini istediğimizi belirtebiliriz</td>
+<td><code>sa{1,2}t</code></td>
+<td>s<strong>a</strong>t, s<strong>aa</strong>t</td>
+<td><code>a</code> karakteri <strong>en az BİR, en fazla İKİ</strong> kez bulunsun.</td>
+</tr>
+</tbody>
+</table>
+<h2>Gruplama, Yakalama, değiştirme ve geri referanslar</h2>
+<table>
+<thead>
+<tr>
+<th>Simge</th>
+<th>Desen Açıklaması</th>
+<th>Örnek Desen</th>
+<th>Eşleşen Örnek</th>
+<th>Açıklama</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>(x)</code></td>
+<td>Bir deseni gruplamak için kullanılır</td>
+<td><code>\w+(li)+\w+</code></td>
+<td>a<strong>li</strong>, ha<strong>li</strong>l, ha<strong>lili</strong></td>
+<td><code>(li)+</code> ile birden fazla karakteri grup olarak ayarlayıp, <strong>li</strong> ifadesinden birden fazla var mı? ya da <code>(li){3}</code> deseni ile <strong>li</strong> ifadesinden peşpeşe 3 tane  var mı? diye aratabiliyoruz.</td>
+</tr>
+<tr>
+<td><code>(?:x)</code></td>
+<td>Yakalamadan grup oluşturur.</td>
+<td><code>(?:us)(ta)</code></td>
+<td>M<strong>usta</strong>fa</td>
+<td><code>us</code> ifadesini <code>group()</code> metodunu kullanarak yakalayamayız. <code>group() = group(0)</code> yani tüm eşleşmeyi yazdırır. <code>group(1)</code> ifadesi <strong>ta</strong> yı işaret eder, yani ilk eşleşmeyi.</td>
+</tr>
+<tr>
+<td><code>(?P&lt;isim&gt;x)</code></td>
+<td>Adlandırılmış bir yakalama grubu oluştur</td>
+<td>(?P\<birinci>\d{2})(?P\<ikinci>\d{2})</td>
+<td>Eşleşen: <strong>1325</strong>, "birinci": 13, "ikinci": 25</td>
+<td><code>..group(1)</code> yerine, <code>...group("birinci")</code> yazarak eşleşme bölümlerine ulaşılabilir. Dikkat edin adlar, <code>group()</code> metodu içerisine <strong>çift tırnak içinde</strong> yazılmalı.</td>
+</tr>
+<tr>
+<td><code>(x\|y)</code></td>
+<td>Düzenli ifade kalıplarını gruplar.</td>
+<td><code>a(b\|l)i</code></td>
+<td>a<strong>l</strong>i, a<strong>b</strong>i</td>
+<td><strong>a</strong>'dan sonra <strong>b</strong> ya da <strong>l</strong> gelsin, desen <strong>i</strong> ile bisin</td>
+</tr>
+<tr>
+<td><code>(x-y)</code></td>
+<td>Düzenli ifade kalıplarını bir aralık dahilinde gruplar.</td>
+<td><code>(a-g)lim</code></td>
+<td><strong>a</strong>lim, <strong>e</strong>lim</td>
+<td>desen <strong>a</strong> ile <strong>g</strong> arasındaki tüm harflerle başlasın, <strong>lim</strong> ifadesi ile bitsin.</td>
+</tr>
+</tbody>
+</table>
+<h2>Kaynak:</h2>
+<ul>
+<li><a href="https://www.datacamp.com/cheat-sheet/regular-expresso">DataCamp.com</a></li>
+<li><a href="https://docs.python.org/tr/3/library/re.html#module-re">Python.org</a></li>
+<li><a href="https://www.youtube.com/watch?v=V3Jr2sAHNno&amp;list=WL&amp;index=36&amp;t=10">Evieplus Academy</a></li>
+</ul>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/duzenli-ifadeler.html">Düzenli İfadeler</a></li>
+					<li><a href="/tag/regular-expressions.html">Regular Expressions</a></li>
+					<li><a href="/tag/regex.html">Regex</a></li>
+					<li><a href="/tag/re.html">Re</a></li>
+					<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+					<li><a href="/tag/modul.html">Modül</a></li>
+					<li><a href="/tag/metakarakter.html">Metakarakter</a></li>
+					<li><a href="/tag/ozet-tablo.html">Özet Tablo</a></li>
+					<li><a href="/tag/cheat-sheet.html">Cheat Sheet</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>

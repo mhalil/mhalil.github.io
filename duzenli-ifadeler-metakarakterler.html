@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Düzenli İfadeler - Metakarakterler" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/duzenli-ifadeler-metakarakterler.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Düzenli İfadeler - Metakarakterler</h1>
+	<span class="post-date">Pzt 20 Haziran 2022</span>
+	<h1>Metakarakterler (Özel Karakterler)</h1>
+<p>Metakarakterler; kabaca, programlama dilleri için özel anlam ifade eden sembollerdir. Örneğin <code>\n</code> bir bakıma bir metakarakterdir, çünkü <code>\n</code> sembolü Python programlama dili için özel bir anlam taşır. Python bu sembolü gördüğü yerde yeni bir satıra geçer. Metakarakterler, <strong>Kendisiyle eşleşmeyen karakterler</strong> olarak ifade edilebilir. Örneğin, <strong>a</strong> harfi yalnızca kendisiyle eşleşir. Tıpkı <strong>istihza</strong> kelimesinin yalnızca kendisiyle eşleşeceği gibi. Ancak mesela <code>\t</code> ifadesi kendisiyle eşleşmez. Python bu işareti gördüğü yerde sekme (tab) düğmesine basılmış gibi tepki verecektir. İşte düzenli ifadelerde de buna benzer metakarakterlerden yararlanacağız. Düzenli ifadeler içinde de, özel anlam ifade eden pek çok sembol, yani metakarakter vardır. Şimdi bu meta karakterleri ayrı ayrı başlıklar altında inceleyelim.</p>
+<h2>[] Köşeli Parantez</h2>
+<p>İlk inceleyeceğimiz metakarakterlerden biri Köşeli Parantez <code>[ ]</code> sembolüdür. 
+Python, <strong>köşeli parantez içinde gördüğü bütün karakterleri tek tek liste öğelerine uygular.</strong></p>
+<p>Şimdi aşağıdaki listeden <strong>özcan</strong>, <strong>özhan</strong> ve <strong>özkan</strong> öğelerini bu sembolden yararlanarak nasıl ayıklayacağımızı görelim:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;özcan&quot;</span><span class="p">,</span> <span class="s2">&quot;mehmet&quot;</span><span class="p">,</span> <span class="s2">&quot;süleyman&quot;</span><span class="p">,</span> <span class="s2">&quot;selim&quot;</span><span class="p">,</span> <span class="s2">&quot;kemal&quot;</span><span class="p">,</span> <span class="s2">&quot;özkan&quot;</span><span class="p">,</span> <span class="s2">&quot;esra&quot;</span><span class="p">,</span> <span class="s2">&quot;dündar&quot;</span><span class="p">,</span> <span class="s2">&quot;esin&quot;</span><span class="p">,</span> <span class="s2">&quot;esma&quot;</span><span class="p">,</span> <span class="s2">&quot;özhan&quot;</span><span class="p">,</span> 
+         <span class="s2">&quot;özlem&quot;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">liste</span><span class="p">:</span>
+    <span class="n">nesne</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;öz[chk]an&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">nesne</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">nesne</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>özcan
+özkan
+özhan
+</code></pre></div>
+
+<p>Yukarıdaki örnekte, bir liste içinde geçen <strong>özcan</strong>, <strong>özhan</strong> ve <strong>özkan</strong> öğelerini ayıklıyoruz. Burada bu üç öğedeki farklı karakterleri (<strong>c</strong>, <strong>h</strong> ve <strong>k</strong>) köşeli parantez içinde nasıl belirttiğimize dikkat edin. </p>
+<p>Python, köşeli parantez içinde gördüğü bütün karakterleri tek tek liste öğelerine uyguluyor. Önce <strong>öz</strong> ile başlayan bütün öğeleri alıyor, ardından <strong>öz</strong> hecesinden sonra <strong>c</strong> harfiyle devam eden ve <strong>an</strong> hecesi ile biten öğeyi buluyor. Böylece <strong>özcan</strong> öğesini bulmuş oldu. </p>
+<p>Aynı işlemi, <strong>öz</strong> hecesinden sonra <strong>h</strong> harfini barındıran ve <strong>an</strong> hecesiyle biten öğeye uyguluyor. Bu şekilde ise <strong>özhan</strong> öğesini bulmuş oldu. </p>
+<p>En son hedef ise <strong>öz</strong> ile başlayıp <strong>k</strong> harfi ile devam eden ve <strong>an</strong> ile biten öğe. Yani listedeki <strong>özkan</strong> öğesi… En nihayetinde de elimizde <strong>özcan</strong>, <strong>özhan</strong> ve <strong>özkan</strong> öğeleri kalmış oluyor.</p>
+<p>Yeni bir örnek ile devam edelim.</p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;23BH56&quot;</span><span class="p">,</span><span class="s2">&quot;TY76Z&quot;</span><span class="p">,</span><span class="s2">&quot;4Y7UZ&quot;</span><span class="p">,</span><span class="s2">&quot;TYUDZ&quot;</span><span class="p">,</span><span class="s2">&quot;34534&quot;</span><span class="p">]</span>
+</code></pre></div>
+
+<p>Mesela biz bu listedeki öğeler içinde, sayıyla başlayanları ayıklayalım:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;[0-9]&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mf">23</span><span class="n">BH56</span>
+<span class="mf">4</span><span class="n">Y7UZ</span>
+<span class="mf">34534</span>
+</code></pre></div>
+
+<p>Burada parantez içinde kullandığımız ifadeye dikkat edin. <strong>0</strong> ile <strong>9</strong> arasındaki bütün öğeleri içeren bir karakter dizisi tanımladık. Yani kısaca, içinde herhangi bir sayı barındıran öğeleri kapsama alanımıza aldık. Burada ayrıca <code>search()</code> yerine <code>match()</code> metodunu kullandığımıza da dikkat edin. <code>match()</code> metodunu kullanmamızın nedeni, bu metodun bir karakter dizisinin sadece en başına bakması. Amacımız sayı ile başlayan bütün öğeleri ayıklamak olduğuna göre, yukarıda yazdığımız kod, liste öğeleri içinde yer alan ve sayı ile başlayan bütün öğeleri ayıklayacaktır.</p>
+<p>Şimdi de isterseniz listedeki <strong>TY76Z</strong> öğesini nasıl alabileceğimize bakalım:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;[A-Z][A-Z][0-9]&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>TY76Z
+</code></pre></div>
+
+<p>Burada dikkat ederseniz düzenli ifademizin başında <strong>A-Z</strong> diye bir şey yazdık. Bu ifade “A” ile “Z” harfleri arasındaki bütün karakterleri temsil ediyor. Biz burada yalnızca büyük harfleri sorguladık. Eğer küçük harfleri sorgulamak isteseydik <strong>A-Z</strong> yerine <strong>a-z</strong> diyecektik. </p>
+<p>Düzenli ifademiz içinde geçen birinci “A-Z” ifadesi aradığımız karakter dizisi olan “TY76Z” içindeki “T” harfini, ikinci “A-Z” ifadesi “Y” harfini, “0-9” ifadesi ise “7” sayısını temsil ediyor. Karakter dizisi içindeki geri kalan harfler ve sayılar otomatik olarak eşleştirilecektir. O yüzden onlar için ayrı bir şey yazmaya gerek yok. Yalnız bu söylediğimiz son şey sizi aldatmasın. Bu “otomatik eşleştirme” işlemi bizim şu anda karşı karşıya olduğumuz karakter dizisi için geçerlidir. Farklı nitelikteki karakter dizilerinin söz konusu olduğu başka durumlarda işler böyle yürümeyebilir. Düzenli ifadeleri başarılı bir şekilde kullanabilmenin ilk şartı, üzerinde işlem yapılacak karakter dizisini tanımaktır. Bizim örneğimizde yukarıdaki gibi bir düzenli ifade kalıbı oluşturmak işimizi görüyor. Ama başka durumlarda, duruma uygun başka kalıplar yazmak gerekebilir/gerekecektir. Dolayısıyla, tek bir düzenli ifade kalıbıyla hayatın geçmeyeceğini unutmamalıyız.</p>
+<p>Bu arada, düzenli ifadelerle ilgili daha fazla şey öğrendiğimizde yukarıdaki kodu çok daha sade bir biçimde yazabileceğiz.</p>
+<h2>. Nokta</h2>
+<p>Bu metakarakter, <strong>yeni satır karakteri hariç bütün karakterleri temsil etmek için kullanılır.</strong>  <code>.</code> metakarakteri, <strong>sadece tek bir karakterin yerini tutar</strong>. Aşağıdaki örneği inceleyelim:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">liste</span><span class="p">:</span>
+    <span class="n">nesne</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;öz.an&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">nesne</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">nesne</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>özcan
+özkan
+özhan
+</code></pre></div>
+
+<p>Gördüğünüz gibi, daha önce <code>[]</code> metakarakterini kullanarak yazdığımız bir düzenli ifadeyi bu kez farklı şekilde yazıyoruz. Unutmayın, bir düzenli ifade birkaç farklı şekilde yazılabilir. Biz bunlar içinde en basit ve en anlaşılır olanını seçmeliyiz. Ayrıca yukarıdaki kodu birkaç farklı şekilde de yazabilirsiniz. Mesela şu yazım da bizim durumumuzda geçerli bir seçenek olacaktır:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">liste</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;öz.an&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>özcan
+özkan
+özhan
+</code></pre></div>
+
+<p>Yalnız, unutmamamız gereken şey, bu <code>.</code> adlı metakarakterin sadece tek bir karakterin yerini tutuyor olmasıdır. Yani şöyle bir kullanım bize istediğimiz sonucu vermez:</p>
+<div class="highlight"><pre><span></span><code><span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ahmet&quot;</span><span class="p">,</span><span class="s2">&quot;kemal&quot;</span><span class="p">,</span> <span class="s2">&quot;kamil&quot;</span><span class="p">,</span> <span class="s2">&quot;mehmet&quot;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">liste</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;.met&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Burada <code>.</code> sembolü “ah” ve “meh” hecelerinin yerini tutamaz. <code>.</code> sembolünün görevi sadece tek bir karakterin yerini tutmaktır (yeni satır karakteri hariç). Ama biraz sonra öğreneceğimiz metakarakter yardımıyla “ah” ve “meh” hecelerinin yerini de tutabileceğiz.</p>
+<p><code>.</code> sembolünü kullanarak bir örnek daha yapalım.</p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;23BH56&#39;</span><span class="p">,</span> <span class="s1">&#39;TY76Z&#39;</span><span class="p">,</span> <span class="s1">&#39;4Y7UZ&#39;</span><span class="p">,</span> <span class="s1">&#39;TYUDZ&#39;</span><span class="p">,</span> <span class="s1">&#39;34534&#39;</span><span class="p">,</span> <span class="s2">&quot;1agAY54&quot;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;.[0-9a-z]&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mf">23</span><span class="n">BH56</span>
+<span class="mf">34534</span>
+<span class="mf">1</span><span class="n">agAY54</span>
+</code></pre></div>
+
+<p>Burada yaptığımız şey çok basit. Şu özelliklere sahip bir karakter dizisi arıyoruz:</p>
+<ol>
+<li>Herhangi bir karakter ile başlayacak. Bu karakter sayı, harf veya başka bir karakter olabilir.</li>
+<li>Ardından bir sayı veya alfabedeki küçük harflerden herhangi birisi gelecek.</li>
+<li>Bu ölçütleri karşıladıktan sonra, aradığımız karakter dizisi herhangi bir karakter ile devam edebilir.</li>
+</ol>
+<p>Yukarıdaki ölçütlere uyan karakter dizilerimiz: “23BH56”, “34534”, “1agAY54”</p>
+<h2>* Yıldız</h2>
+<p>Bu metakarakter, <strong>kendinden önce gelen karakteri SIFIR veya daha fazla</strong> sayıda eşleştirir. Tanımı biraz karışık olsa da örnek yardımıyla bunu da anlayacağız:</p>
+<div class="highlight"><pre><span></span><code><span class="n">yeniliste</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;st&quot;</span><span class="p">,</span> <span class="s2">&quot;sat&quot;</span><span class="p">,</span> <span class="s2">&quot;saat&quot;</span><span class="p">,</span> <span class="s2">&quot;saaat&quot;</span><span class="p">,</span> <span class="s2">&quot;falanca&quot;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">yeniliste</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;sa*t&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>st
+sat
+saat
+saaat
+</code></pre></div>
+
+<p>Burada <code>*</code> sembolü kendinden önce gelen <code>a</code> karakterini sıfır veya daha fazla sayıda eşleştiriyor. Yani mesela <code>st</code> içinde sıfır adet <code>a</code> karakteri var. Dolayısıyla bu karakter yazdığımız düzenli ifadeyle eşleşiyor. <code>sat</code> içinde bir adet <code>a</code> karakteri var. Dolayısıyla bu da eşleşiyor. <code>saat</code> ve <code>saaat</code> karakter dizilerinde sırasıyla iki ve üç adet <code>a</code> karakteri var. Tabii ki bunlar da yazdığımız düzenli ifadeyle eşleşiyor. Listemizin en son öğesi olan <code>falanca</code>da da ilk hecede bir adet <code>a</code> karakteri var. Ama bu öğedeki sorun, bunun <code>s</code> harfiyle başlamaması. Çünkü biz yazdığımız düzenli ifadede, aradığımız şeyin <code>s</code> harfi ile başlamasını, sıfır veya daha fazla sayıda <code>a</code> karakteri ile devam etmesini ve ardından da <code>t</code> harfinin gelmesini istemiştik. <code>falanca</code> öğesi bu koşulları karşılamadığı için süzgecimizin dışında kaldı.</p>
+<p><code>s</code> harfinin de sıfır veya daha fazla sayıda eşleşmesini istersek düzenli ifademizi <code>s*a*t</code> veya <code>[sa]*t</code> biçiminde yazmamız gerekir. Bu iki seçenek içinde <code>[sa]*t</code> şeklindeki yazımı tercih etmenizi tavsiye ederim. </p>
+<p>Bir başka örnek inceleyelim:</p>
+<div class="highlight"><pre><span></span><code><span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ahmet&quot;</span><span class="p">,</span> <span class="s2">&quot;kemal&quot;</span><span class="p">,</span> <span class="s2">&quot;kamil&quot;</span><span class="p">,</span> <span class="s2">&quot;mehmet&quot;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">liste</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;.*met&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>ahmet
+mehmet
+</code></pre></div>
+
+<p>Gördüğünüz gibi <code>ahmet</code> ve <code>mehmet</code> öğelerini başarıyla ayıkladık. Bunu yapmamızı sağlayan şey de <code>*</code> adlı metakarakter oldu. Burada Python’a şu emri verdik: <em>Bana kelime başında herhangi bir karakteri (<code>.</code> sembolü herhangi bir karakterin yerini tutuyor) sıfır veya daha fazla sayıda içeren ve sonu da <code>met</code> ile biten bütün öğeleri ver!</em></p>
+<p>Kısaca ifade etmek gerekirse, bu komut sayesinde, sonu <code>met</code> ile biten her şey (<code>met</code> ifadesinin kendisi de dâhil olmak üzere) kapsama alanımıza girecektir.</p>
+<h2>+ Artı</h2>
+<p><code>+</code> metakarakteri <strong>kendisinden önce gelen karakteri BİR veya DAHA FAZLA sayıda</strong> tekrar eden karakterleri ayıklar.</p>
+<div class="highlight"><pre><span></span><code><span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ahmet&quot;</span><span class="p">,</span> <span class="s2">&quot;mehmet&quot;</span><span class="p">,</span> <span class="s2">&quot;met&quot;</span><span class="p">,</span> <span class="s2">&quot;kezban&quot;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">liste</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;.+met&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>ahmet
+mehmet
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">yeniliste</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;st&quot;</span><span class="p">,</span> <span class="s2">&quot;sat&quot;</span><span class="p">,</span> <span class="s2">&quot;saat&quot;</span><span class="p">,</span> <span class="s2">&quot;saaat&quot;</span><span class="p">,</span> <span class="s2">&quot;falanca&quot;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">yeniliste</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;sa+t&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>sat
+saat
+saaat
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;23BH56&quot;</span><span class="p">,</span> <span class="s2">&quot;TY76Z&quot;</span><span class="p">,</span> <span class="s2">&quot;4Y7UZ&quot;</span><span class="p">,</span> <span class="s2">&quot;TYUDZ&quot;</span><span class="p">,</span> <span class="s2">&quot;34534&quot;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;[A-Z]+[0-9]&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>TY76Z
+</code></pre></div>
+
+<h2>? Soru İşareti</h2>
+<p><code>?</code> metakarakteri, <strong>kendisinden önce gelen karakterin SIFIR veya BİR defa</strong> eşleştiği durumları kapsar. Örneğe bakalım:</p>
+<div class="highlight"><pre><span></span><code><span class="n">yeniliste</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;st&quot;</span><span class="p">,</span> <span class="s2">&quot;sat&quot;</span><span class="p">,</span> <span class="s2">&quot;saat&quot;</span><span class="p">,</span> <span class="s2">&quot;saaat&quot;</span><span class="p">,</span> <span class="s2">&quot;falanca&quot;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">yeniliste</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;sa?t&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>st
+sat
+</code></pre></div>
+
+<p>Şimdi bu metakarakteri kullanarak gerçek hayatta karşımıza çıkabilecek bir örnek verelim. Bu metakarakterin tanımına tekrar bakarsak, <strong>olsa da olur olmasa da olur</strong> diyebileceğimiz durumlar için bu metakarakterin rahatlıkla kullanılabileceğini görürüz. </p>
+<p>Şöyle bir örnek verelim: Diyelim ki bir metin üzerinde arama yapacaksınız. Aradığınız kelime <code>uluslararası</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Uluslararası hukuk, uluslar arası ilişkiler altında bir disiplindir. Uluslararası ilişkilerin hukuksal </span>
+<span class="s2">boyutunu bilimsel bir disiplin içinde inceler. Devletlerarası hukuk da denir. Ancak uluslar arası ilişkilere yeni</span>
+<span class="s2">aktörlerin girişi bu dalı sadece devletlerarası olmaktan çıkarmıştır.&quot;&quot;&quot;</span>
+</code></pre></div>
+
+<p>Şimdi yapmak istediğimiz şey <code>uluslararası</code> kelimesini bulmak. Ama dikkat ederseniz metin içinde <code>uluslararası</code> kelimesi aynı zamanda <code>uluslar arası</code> şeklinde de geçiyor. Bizim bu iki kullanımı da kapsayacak bir düzenli ifade yazmamız gerekecek.</p>
+<div class="highlight"><pre><span></span><code><span class="n">nesne</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s2">&quot;[Uu]luslar ?arası&quot;</span><span class="p">,</span> <span class="n">metin</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">nesne</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>Uluslararası
+uluslar arası
+Uluslararası
+uluslar arası
+</code></pre></div>
+
+<p>Verdiğimiz düzenli ifade kalıbını dikkatlice inceleyin. Bildiğiniz gibi, <code>?</code> metakarakteri, kendinden önce gelen karakterin <strong>sıfır veya bir kez</strong> geçtiği durumları arıyor. Burada <code>?</code> sembolünü <code></code> karakterinden, yani <code>boşluk</code> karakterinden sonra kullandık. Dolayısıyla, <em>boşluk karakterinin sıfır veya bir kez geçtiği durumları</em> hedefledik. Bu şekilde hem <code>uluslar arası</code> hem de <code>uluslararası</code> kelimesini ayıklamış olduk. Düzenli ifademizde ayrıca <code>[Uu]</code> yazdık, çünkü metnimiz içinde <code>uluslararası</code> kelimesinin büyük harfle başladığı yerler de var. Bildiğiniz gibi, <code>uluslar</code> ve <code>Uluslar</code> kelimeleri asla aynı değildir. Dolayısıyla hem <code>u</code> harfini hem de <code>U</code> harfini bulmak için, daha önce öğrendiğimiz <code>[]</code> metakarakterini kullanıyoruz.</p>
+<h2>{} Küme Parantezi</h2>
+<p>{ } Küme Parantezi metakarakterimiz yardımıyla <strong>bir eşleşmeden kaç adet istediğimizi</strong> belirtebiliyoruz. Yine aynı örnek üzerinden gidelim:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">yeniliste</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;sa</span><span class="si">{3}</span><span class="s2">t&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>saaat
+</code></pre></div>
+
+<p>Burada <code>a</code> karakterinin <strong>3 kez</strong> tekrar etmesini istediğimizi belirttik. Python da bu emrimizi hemen yerine getirdi.</p>
+<p>Bu metakarakterin ilginç bir özelliği daha vardır. Küme içinde iki farklı sayı yazarak, <strong>bir karakterin en az ve en çok</strong> kaç kez tekrar etmesini istediğimizi belirtebiliriz. Örneğin:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">yeniliste</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;sa{0,3}t&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>st
+sat
+saat
+saaat
+</code></pre></div>
+
+<p><code>sa{0,3}t</code> ifadesiyle, <code>a</code> harfinin en az sıfır kez, en çok da üç kez tekrar etmesini istediğimiz söyledik. Dolayısıyla, “a” harfinin sıfır, bir, iki ve üç kez tekrar ettiği durumlar ayıklanmış oldu. </p>
+<h2>^ Şapka</h2>
+<p><code>^</code> sembolünün iki işlevi var. Birinci işlevi, <strong>Çok satırlı desende ya da bir karakter dizisinin en başındaki veriyi sorgulamaktır</strong>. Yani aslında <code>match()</code> metodunun varsayılan olarak yerine getirdiği işlevi bu metakarakter yardımıyla <code>search()</code> metodunda da kullanabiliyoruz. <strong>Sadece kendinden sonra gelen BİR karaktere BAKMIYOR</strong>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;23BH56&#39;</span><span class="p">,</span> <span class="s1">&#39;TY76Z&#39;</span><span class="p">,</span> <span class="s1">&#39;4Y7UZ&#39;</span><span class="p">,</span> <span class="s1">&#39;TYUDZ&#39;</span><span class="p">,</span> <span class="s1">&#39;34534&#39;</span><span class="p">,</span> <span class="s1">&#39;1agAY54&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+    <span class="n">nesne</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;^[A-Z]+[0-9]&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">nesne</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">nesne</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>TY7
+</code></pre></div>
+
+<p>Gördüğünüz gibi, <code>^</code> (şapka) metakarakteri <code>search()</code> metodunun, karakter dizilerinin sadece en başına bakmasını sağladı. O yüzden de bize sadece, <code>TY7</code> çıktısını verdi. </p>
+<p>Aynı kodu, şapkasız olarak, şu şekilde kullanırsak:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+    <span class="n">nesne</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;[A-Z]+[0-9]&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">nesne</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">nesne</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>BH5
+TY7
+Y7
+AY5
+</code></pre></div>
+
+<p>Gördüğünüz gibi, <code>^</code> şapka sembolü olmadığında <code>search()</code> metodu karakter dizisinin tamamını tarıyor. Biz yukarıdaki koda bir <code>^</code> sembolü ekleyerek, metodumuzun sadece karakter dizisinin en başına bakmasını istedik. </p>
+<p>Burada dikkatimizi çekmesi gereken başka bir nokta da, <code>search()</code> metodundaki çıktının <strong>kırpılmış</strong> olması. Dikkat ettiyseniz, <code>search()</code> metodu bize öğenin tamamını vermedi. Öğelerin yalnızca <code>[A-Z]+[0-9]</code> kalıbına uyan kısımlarını verdi. Çünkü biz ona tersini söylemedik. Eğer öğelerin tamamını istiyorsak bunu açık açık belirtmemiz gerekir:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+    <span class="n">nesne</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;[A-Z]+[0-9].*&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">nesne</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">nesne</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>BH56
+TY76Z
+Y7UZ
+AY54
+</code></pre></div>
+
+<p>Veya metodumuzun karakter dizisinin sadece en başına bakmasını istersek:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+    <span class="n">nesne</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;^[A-Z]+[0-9].*&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">nesne</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">nesne</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>TY76Z
+</code></pre></div>
+
+<p>Bu kodlarda düzenli ifade kalıbının sonuna <code>.*</code> sembolünü eklediğimize dikkat edin. Böylelikle metodumuzun sonu herhangi bir şekilde biten öğeleri bize vermesini sağladık.</p>
+<p><code>^</code> metakarakterinin, karakter dizilerinin en başına demir atmak dışında başka bir görevi daha vardır: <strong>Hariç</strong> anlamına gelmektedir.</p>
+<p>Bu görevini sadece <code>[]</code> metakarakterinin içinde kullanıldığı zaman yerine getirir. Bunu bir örnekle görelim. Yukarıdaki listemiz üzerinde öyle bir süzgeç uygulayalım ki, <strong>1agAY54</strong> öğesi çıktılarımız arasında görünmesin. </p>
+<p>Bu öğeyi avlayabilmek için kullanmamız gereken düzenli ifade şöyle olacaktır: <code>[0-9A-Z][^a-z]+</code></p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+    <span class="n">nesne</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;[0-9A-Z][^a-z]+&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">nesne</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">nesne</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mf">23</span><span class="n">BH56</span>
+<span class="n">TY76Z</span>
+<span class="mf">4</span><span class="n">Y7UZ</span>
+<span class="n">TYUDZ</span>
+<span class="mf">34534</span>
+</code></pre></div>
+
+<p>Burada şu ölçütlere sahip bir öğe arıyoruz:</p>
+<ol>
+<li>Aradığımız öğe bir sayı veya büyük harf ile başlamalı</li>
+<li>En baştaki sayı veya büyük harften sonra küçük harf <strong>GELMEMELİ</strong> (Bu ölçütü “^” işareti sağlıyor)</li>
+<li>Üstelik bu <strong>“küçük harf gelmeme durumu”</strong> bir veya daha fazla sayıda tekrar etmeli. Yani baştaki sayı veya büyük harften sonra kaç tane olursa olsun asla küçük harf gelmemeli (Bu ölçütü de “+” işareti sağlıyor”)</li>
+</ol>
+<p>Bu ölçütlere uymayan tek öğe “1agAY54” olacaktır. Dolayısıyla bu öğe çıktıda görünmez.</p>
+<p>Burada, <code>^</code> işaretinin nasıl kullanıldığına ve küçük harfleri nasıl dışarıda bıraktığına dikkat edin. Unutmayalım, bu <code>^</code> işaretinin <strong>hariç</strong> anlamı sadece <code>[]</code> metakarakterinin içinde kullanıldığı zaman geçerlidir.</p>
+<h2>$ Dolar</h2>
+<p><code>$</code> metakarakteri, <strong>Çok satırlı desenin ya da dizelerin nasıl biteceğini</strong> belirliyor. Bu sembol arama/eşleştirme işleminin karakter dizisinin en sonuna bakmasını sağlıyor. <strong>Sadece kendinden önceki BİR karaktere BAKMIYOR</strong>. Hatırlarsınız <code>^</code> metakarakteri eşleştirme işleminin karakter dizisinin en başından başlamasını sağlıyordu.</p>
+<div class="highlight"><pre><span></span><code><span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;at&quot;</span><span class="p">,</span> <span class="s2">&quot;katkı&quot;</span><span class="p">,</span> <span class="s2">&quot;fakat&quot;</span><span class="p">,</span> <span class="s2">&quot;atkı&quot;</span><span class="p">,</span> <span class="s2">&quot;rahat&quot;</span><span class="p">,</span> <span class="s2">&quot;mat&quot;</span><span class="p">,</span> <span class="s2">&quot;yat&quot;</span><span class="p">,</span> <span class="s2">&quot;sat&quot;</span><span class="p">,</span> <span class="s2">&quot;satılık&quot;</span><span class="p">,</span> <span class="s2">&quot;katılım&quot;</span><span class="p">]</span>
+</code></pre></div>
+
+<p>Diyelim ki yukarıda tanımlı listeden, <strong>at</strong> hecesiyle biten kelimeleri ayıklamak istiyoruz:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">liste</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;at$&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>at
+fakat
+rahat
+mat
+yat
+sat
+</code></pre></div>
+
+<p>Burada <code>$</code> metakarakteri sayesinde aradığımız karakter dizisinin nasıl bitmesi gerektiğini belirleyebildik. Eğer biz <strong>at</strong> ile başlayan bütün öğeleri ayıklamak isteseydik ne yapmamız gerektiğini biliyorsunuz:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">liste</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;^at&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>at
+atkı
+</code></pre></div>
+
+<p>Gördüğünüz gibi, <code>^</code> işareti bir karakter dizisinin nasıl başlayacağını belirlerken, <code>$</code> işareti aynı karakter dizisinin nasıl biteceğini belirliyor. </p>
+<p>Dikkat edilmesi gereken bir husu ta şudur ki;</p>
+<ul>
+<li><code>^</code> işareti bir karakter dizisinin başına yazılırken</li>
+<li><code>$</code> işareti karakter dizisinin sonuna yazılırken</li>
+</ul>
+<h2>\ Ters Bölü</h2>
+<p>Bu işaret bildiğimiz <strong>kaçış dizisi</strong>dir. Peki burada ne işi var? Şimdiye kadar öğrendiğimiz konulardan gördüğünüz gibi, Python’daki düzenli ifadeler açısından özel anlam taşıyan bir takım semboller/metakarakterler var. Bunlar kendileriyle eşleşmiyorlar. Yani bir karakter dizisi içinde bu sembolleri arıyorsak eğer, bunların taşıdıkları özel anlam yüzünden bu sembolleri ayıklamak hemencecik mümkün olmayacaktır. Yani mesela biz <code>$</code> sembolünü arıyor olsak, bunu Python’a nasıl anlatacağız? Çünkü bu sembolü yazdığımız zaman Python bunu farklı algılıyor. Lafı dolandırmadan hemen bir örnek verelim…</p>
+<p>Diyelim ki elimizde şöyle bir liste var:</p>
+<div class="highlight"><pre><span></span><code><span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;10$&quot;</span><span class="p">,</span> <span class="s2">&quot;25€&quot;</span><span class="p">,</span> <span class="s2">&quot;20$&quot;</span><span class="p">,</span> <span class="s2">&quot;10TL&quot;</span><span class="p">,</span> <span class="s2">&quot;25£&quot;</span><span class="p">]</span>
+</code></pre></div>
+
+<p>Amacımız bu listedeki <strong>dolarlı</strong> değerleri ayıklamaksa ne yapacağız? Şunu deneyelim önce:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">liste</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;[0-9]+$&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Python <code>$</code> işaretinin özel anlamından dolayı, bizim sayıyla biten bir karakter dizisi aradığımızı zannedecek, dolayısıyla da herhangi bir çıktı vermeyecektir. Çünkü listemizde sayıyla biten bir karakter dizisi yok.</p>
+<p>Peki biz ne yapacağız? İşte bu noktada <code>\</code> metakarakteri devreye girecek. Hemen bakalım:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">liste</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;[0-9]+\$&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mf">10</span><span class="err">$</span>
+<span class="mf">20</span><span class="err">$</span>
+</code></pre></div>
+
+<p>Gördüğünüz gibi, “\” sembolünü kullanarak “$” işaretinin özel anlamından kaçtık.</p>
+<h2>| Dik Çizgi, Boru (Pipe) Sembolü</h2>
+<p>Bu metakarakter, birden fazla düzenli ifade kalıbını birlikte eşleştirmemizi sağlar. <code>|</code> sembolü, <strong>VEYA</strong> anlamına gelir diyebiliriz. Yani birkaç alternatif modelden <strong>herhangi birini</strong> eşleştirir. Eşleştirme için birden fazla kriter belirlermek için <code>|</code> sembölünü kullanabiliriz. Hemen örnek yapalım:</p>
+<div class="highlight"><pre><span></span><code><span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;at&quot;</span><span class="p">,</span> <span class="s2">&quot;katkı&quot;</span><span class="p">,</span> <span class="s2">&quot;fakat&quot;</span><span class="p">,</span> <span class="s2">&quot;atkı&quot;</span><span class="p">,</span> <span class="s2">&quot;rahat&quot;</span><span class="p">,</span> <span class="s2">&quot;mat&quot;</span><span class="p">,</span> <span class="s2">&quot;yat&quot;</span><span class="p">,</span> <span class="s2">&quot;sat&quot;</span><span class="p">,</span> <span class="s2">&quot;satılık&quot;</span><span class="p">,</span> <span class="s2">&quot;katılım&quot;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">liste</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;^at|at$&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>at
+fakat
+atkı
+rahat
+mat
+yat
+sat
+</code></pre></div>
+
+<p>Gördüğünüz gibi <code>|</code> metakarakterini kullanarak <strong>at</strong> ile başlayan <strong>ve</strong> biten kelimeleri bulduk / ayıkladık. <code>|</code> sembolünü kullanmasaydık ve aşağıdaki ifadesiyi yazsaydık <strong>atat</strong> ile başlayan ve biten kelime aramış olurduk ve sonuç bulamazdık.</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">liste</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;^atat$&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Aşağıdaki ifadesiyi yazmış olsaydık ise <strong>at</strong> ile başlayan ve biten kelime aramış olurduk ve sadece <strong>at</strong> sonucunu elde ederdik.</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">liste</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;^at$&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>at
+</code></pre></div>
+
+<h2>( ) Parantez</h2>
+<p>Bu metakarakter yardımıyla <strong>düzenli ifade kalıplarını gruplayacağız</strong>. Ayrıca gruplandırılmış ifadelerine denk gelen kalıpları saklar ve en fazla 9 kalıp saklayabilir. Bu metakarakter bizim bir karakter dizisinin istediğimiz kısımlarını ayıklamamızda çok büyük kolaylıklar sağlayacak.</p>
+<div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ali&quot;</span><span class="p">,</span> <span class="s2">&quot;veli&quot;</span><span class="p">,</span> <span class="s2">&quot;deli&quot;</span><span class="p">,</span> <span class="s2">&quot;zeki&quot;</span><span class="p">,</span> <span class="s2">&quot;abi&quot;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;a(b|l)i&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>ali
+abi
+</code></pre></div>
+
+<p>Parantez ile gruplanan desenler, <strong>bir bütünsel yapı olarak</strong> değerlendirilir. Yani <code>ha+</code> kodu yazıldığında <code>h</code> harfinden sonra <code>a</code> harfinden Bir veya daha fazla olması anlaşılırken, <code>(ha)+</code> kodu ile <code>ha</code> ifadesinden bir veya daha fazla olması istenildiği ifade edilmiş olunur. Bir örnek yapalım;</p>
+<div class="highlight"><pre><span></span><code><span class="n">veri</span> <span class="o">=</span> <span class="s2">&quot;ali veli hakiki deli zeki abi samimi&quot;</span>
+
+<span class="n">desen</span> <span class="o">=</span> <span class="s2">&quot;\w+(\w</span><span class="si">{2}</span><span class="s2">)</span><span class="si">{2}</span><span class="s2">&quot;</span>
+<span class="n">sonuc</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="n">desen</span><span class="p">,</span> <span class="n">veri</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">sonuc</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>hakiki
+samimi
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">veri</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;650-654-7544&#39;</span><span class="p">,</span> <span class="s1">&#39;Mustafa Halil&#39;</span><span class="p">,</span> <span class="s1">&#39;650524495&#39;</span><span class="p">,</span> <span class="s1">&#39;65080976&#39;</span><span class="p">,</span> <span class="s1">&#39;08069114&#39;</span><span class="p">,</span> <span class="s1">&#39;656037422&#39;</span><span class="p">,</span> <span class="s1">&#39;6504476824&#39;</span><span class="p">,</span> <span class="s1">&#39;6508000010&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;6501552207&#39;</span><span class="p">,</span> <span class="s1">&#39;(650)605 09 96&#39;</span><span class="p">,</span> <span class="s1">&#39;650-537-82-34&#39;</span><span class="p">,</span> <span class="s1">&#39;6503320122&#39;</span><span class="p">,</span> <span class="s1">&#39;650_919_64&#39;</span><span class="p">,</span> <span class="s1">&#39;650-abc-7425&#39;</span><span class="p">,</span> <span class="s1">&#39;6509318724&#39;</span><span class="p">,</span> <span class="s1">&#39;6502184706&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;650-xyz-1653&#39;</span><span class="p">,</span> <span class="s1">&#39;6501921596&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">veri</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(\d</span><span class="si">{3}</span><span class="s2">)-([a-z]</span><span class="si">{3}</span><span class="s2">)-(\d</span><span class="si">{4}</span><span class="s2">)&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mf">650</span><span class="o">-</span><span class="n">abc</span><span class="o">-</span><span class="mf">7425</span>
+<span class="mf">650</span><span class="o">-</span><span class="n">xyz</span><span class="o">-</span><span class="mf">1653</span>
+</code></pre></div>
+
+<p><code>r"(\d{3})-([a-z]{3})-(\d{4})"</code> deseni ile 3 adet grup oluşturduk. Bu desenleri açıklayalım;</p>
+<ul>
+<li><code>(\d{3})</code> = <strong>3 adet rakam</strong>, ardından  </li>
+<li><code>-</code> = <strong>Tire işareti</strong> , ardından</li>
+<li><code>([a-z]{3})</code> = <strong>a'dan z'ye kadar 3 adet küçük harf</strong> , ardından</li>
+<li><code>-</code> = <strong>Tire işareti</strong> ve son olarak</li>
+<li><code>(\d{4})</code> = <strong>4 adet rakam</strong></li>
+</ul>
+<p>dan oluşan bir değer arıyorum.</p>
+<p>Şimdi grupları açıklamaya çalışayım.</p>
+<div class="highlight"><pre><span></span><code><span class="n">veri</span> <span class="o">=</span> <span class="s2">&quot;08069114 6501552207 650-abc-7425 (650)605 09 96 650-537-82-34 650_919_64 6509318724 650-xyz-1653&quot;</span>
+
+<span class="n">desen</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;(\d</span><span class="si">{3}</span><span class="s2">)-([a-z]</span><span class="si">{3}</span><span class="s2">)-(\d</span><span class="si">{4}</span><span class="s2">)&quot;</span>
+<span class="n">eslesen</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="n">desen</span><span class="p">,</span> <span class="n">veri</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">es</span> <span class="ow">in</span> <span class="n">eslesen</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">es</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mf">650</span><span class="o">-</span><span class="n">abc</span><span class="o">-</span><span class="mf">7425</span>
+<span class="mf">650</span><span class="o">-</span><span class="n">xyz</span><span class="o">-</span><span class="mf">1653</span>
+</code></pre></div>
+
+<p>Görüldüğü üzere aranan desene uygun 2 adet sonuç elde ettik; <strong>650-abc-7425</strong> ve <strong>650-xyz-1653</strong>. </p>
+<p>Parantez içine aldığımız desenlerin her biri <strong>bir grubu ifade ediyor</strong>.  Bu değerleri ekrana yazdırmak için <code>group()</code> metodunu kullandık. <code>group()</code> metodu ile <code>group(0)</code> metodu aynıdır. Desenimizde (parantez içinde) 3 grup olduğu için <code>group(1), group(2)</code> ve <code>group(3)</code> yöntemiyle, eşleşen 3 gruba ayrı ayrı erişebiliriz. Aşağıdaki kodları inceleyin;</p>
+<div class="highlight"><pre><span></span><code><span class="n">desen</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;(\d</span><span class="si">{3}</span><span class="s2">)-([a-z]</span><span class="si">{3}</span><span class="s2">)-(\d</span><span class="si">{4}</span><span class="s2">)&quot;</span>
+<span class="n">eslesen</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="n">desen</span><span class="p">,</span> <span class="n">veri</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1. Grup Değerleri:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">es</span> <span class="ow">in</span> <span class="n">eslesen</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">es</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mf">1.</span><span class="w"> </span><span class="n">Grup</span><span class="w"> </span><span class="n">Değerleri</span><span class="p">:</span>
+<span class="mf">650</span>
+<span class="mf">650</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">desen</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;(\d</span><span class="si">{3}</span><span class="s2">)-([a-z]</span><span class="si">{3}</span><span class="s2">)-(\d</span><span class="si">{4}</span><span class="s2">)&quot;</span>
+<span class="n">eslesen</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="n">desen</span><span class="p">,</span> <span class="n">veri</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2. Grup Değerleri:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">es</span> <span class="ow">in</span> <span class="n">eslesen</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">es</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mf">2.</span><span class="w"> </span><span class="n">Grup</span><span class="w"> </span><span class="n">Değerleri</span><span class="p">:</span>
+<span class="n">abc</span>
+<span class="n">xyz</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">desen</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;(\d</span><span class="si">{3}</span><span class="s2">)-([a-z]</span><span class="si">{3}</span><span class="s2">)-(\d</span><span class="si">{4}</span><span class="s2">)&quot;</span>
+<span class="n">eslesen</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="n">desen</span><span class="p">,</span> <span class="n">veri</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;3. Grup Değerleri:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">es</span> <span class="ow">in</span> <span class="n">eslesen</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">es</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mf">3.</span><span class="w"> </span><span class="n">Grup</span><span class="w"> </span><span class="n">Değerleri</span><span class="p">:</span>
+<span class="mf">7425</span>
+<span class="mf">1653</span>
+</code></pre></div>
+
+<h1>Eşleşme Nesnelerinin Metotları</h1>
+<h2>group() metodu</h2>
+<p>Bu bölümde doğrudan düzenli ifadelerin değil, ama düzenli ifadeler kullanılarak üretilen eşleşme nesnelerinin bir metodu olan <code>group()</code> metodundan bahsedeceğiz. Esasında biz bu metodu önceki bölümlerde de kullanmıştık. Ama burada bu metoda biraz daha ayrıntılı olarak bakacağız.</p>
+<p>Daha önceki bölümlerden hatırlayacağınız gibi, bu metot düzenli ifadeleri kullanarak eşleştirdiğimiz karakter dizilerini görme imkanı sağlıyordu. Bu bölümde bu metodu <code>( )</code> metakarakteri yardımıyla daha verimli bir şekilde kullanacağız. İsterseniz ilk olarak şöyle basit bir örnek verelim:</p>
+<div class="highlight"><pre><span></span><code><span class="n">kardiz</span> <span class="o">=</span> <span class="s2">&quot;python bir programlama dilidir&quot;</span>
+<span class="n">nesne</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;(python) (bir) (programlama) (dilidir)&quot;</span><span class="p">,</span> <span class="n">kardiz</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">nesne</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>python bir programlama dilidir
+</code></pre></div>
+
+<p>Burada düzenli ifade kalıbımızı nasıl grupladığımıza dikkat edin. <code>print(nesne.group())</code> komutunu verdiğimizde eşleşen karakter dizileri ekrana döküldü. Şimdi bu grupladığımız bölümlere tek tek erişelim:</p>
+<div class="highlight"><pre><span></span><code><span class="n">nesne</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>&#39;python bir programlama dilidir&#39;
+</code></pre></div>
+
+<p>Gördüğünüz gibi, “0” indeksi eşleşen karakter dizisinin tamamını veriyor. Gerisinin nasıl olacağını tahmin edebilirsiniz:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">nesne</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nesne</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nesne</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nesne</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>python
+bir
+programlama
+dilidir
+</code></pre></div>
+
+<p><code>group()</code> metoduna ait benzer bir örnek yukarıdaki <strong>( ) Parantez</strong> başlığı altında detaylı anlatıldı.</p>
+<h2>groups() metodu</h2>
+<p>Bu metot, bize kullanabileceğimiz bütün grupları bir <em>demet</em> halinde sunar:</p>
+<div class="highlight"><pre><span></span><code><span class="n">nesne</span><span class="o">.</span><span class="n">groups</span><span class="p">()</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>(&#39;python&#39;, &#39;bir&#39;, &#39;programlama&#39;, &#39;dilidir&#39;)
+</code></pre></div>
+
+<h1>Özel Diziler</h1>
+<h2>\s   Boşluk Karakterinin Yerini Tutan Özel Dizi.</h2>
+<p>Bu sembol (<code>\s</code>), bir karakter dizisi içinde geçen <strong>boşlukları (boşluk, tab ve enter karakterlerini) yakalamak</strong> için kullanılır.</p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;5 Ocak&quot;</span><span class="p">,</span> <span class="s2">&quot;27Mart&quot;</span><span class="p">,</span> <span class="s2">&quot;4 Ekim&quot;</span><span class="p">,</span> <span class="s2">&quot;Nisan 3&quot;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+    <span class="n">nesne</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;[0-9]\s[A-Za-z]+&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">nesne</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">nesne</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mf">5</span><span class="w"> </span><span class="n">Ocak</span>
+<span class="mf">4</span><span class="w"> </span><span class="n">Ekim</span>
+</code></pre></div>
+
+<p>Yukarıdaki örnekte, bir sayı ile başlayan, ardından bir adet boşluk karakteri içeren, sonra da bir büyük veya küçük harfle devam eden karakter dizilerini ayıkladık. Burada boşluk karakterini <code>\s</code> simgesi ile gösterdiğimize dikkat edin.</p>
+<h2>\S   Boşluk Karakterinin Dışındaki Karakterlerin Tutan Özel Dizi.</h2>
+<p><code>\S</code> özel dizisi, <strong>boşluk olmayan karakterleri</strong> avlar.</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+    <span class="n">nesne</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;\d+\S\w+&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">nesne</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">nesne</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mf">27</span><span class="n">Mart</span>
+</code></pre></div>
+
+<h2>\d   Sayıların Yerini Tutan Özel Dizi.</h2>
+<p>Bu sembol, bir karakter dizisi içinde geçen <strong>rakamları (ondalık sayıları) eşleştirmek için</strong> kullanılır. Yani <code>[0-9]</code> ifadesi ile eşdeğerdir.</p>
+<p>Buraya kadar olan örneklerde bu işlevi yerine getirmek için <code>[0-9]</code> ifadesinden yararlanıyorduk. Şimdi artık aynı işlevi daha kısa yoldan, <code>\d</code> dizisi ile yerine getirebiliriz. İsterseniz yine yukarıdaki örnekten gidelim:</p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;5 Ocak&quot;</span><span class="p">,</span> <span class="s2">&quot;27Mart&quot;</span><span class="p">,</span> <span class="s2">&quot;4 Ekim&quot;</span><span class="p">,</span> <span class="s2">&quot;Nisan 3&quot;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+    <span class="n">nesne</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;\d\s[A-Za-z]+&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">nesne</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">nesne</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mf">5</span><span class="w"> </span><span class="n">Ocak</span>
+<span class="mf">4</span><span class="w"> </span><span class="n">Ekim</span>
+</code></pre></div>
+
+<p>Burada, <code>[0-9]</code> yerine <code>\d</code> yerleştirerek daha kısa yoldan sonuca vardık.</p>
+<h2>\D   Sayı Olmayan Karakterlerin Yerini Tutan Özel Dizi.</h2>
+<p><code>\D</code> özel dizisi <strong>rakam (ondalık sayı) olmayan karakterleri</strong> avlar. Yani <code>[^0-9]</code> ile eşdeğerdir.</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+    <span class="n">nesne</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;\D+&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">nesne</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">nesne</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code> Ocak
+Mart
+ Ekim
+Nisan
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+    <span class="n">nesne</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;\s\D+&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">nesne</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">nesne</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code> Ocak
+ Ekim
+</code></pre></div>
+
+<h2>\w   Alfanümerik Karakterlerin Yerini Tutan Özel Dizi.</h2>
+<p>Bu sembol, bir karakter dizisi içinde geçen <strong>alfanümerik karakterleri (harf, rakam) ve buna ek olarak alt çizgi karakterini</strong> <code>_</code> bulmak için kullanılır. </p>
+<p>Bu özel dizi şu ifadeyle aynı anlama gelir: <code>[a-zA-Z0-9_]</code>. Bu ifadeyi yazmaktansa <code>\w</code> yazmanın ne kadar kolay olduğu ortada.</p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;abc123_$%+&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;\w*&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>abc123_
+</code></pre></div>
+
+<h2>\W   Alfanümerik Karakterlerin Dışındaki Karakterlerin Yerini Tutan Özel Dizi.</h2>
+<p>Bu sembol <strong>Harf, rakam ve alt çizgi karakteri dışında</strong> herhangi bir şeyle eşleşir. </p>
+<p>Bu özel dizi şu ifadeyle aynı anlama gelir: <code>[^a-zA-Z0-9_]</code> ile eşdeğerdir</p>
+<div class="highlight"><pre><span></span><code><span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;abc&quot;</span><span class="p">,</span> <span class="s2">&quot;123&quot;</span><span class="p">,</span> <span class="s2">&quot;$%+&quot;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">b</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;\W*&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>$%+
+</code></pre></div>
+
+<p>Şimdi bu özel diziler için genel bir örnek verip konuyu kapatalım.</p>
+<div class="highlight"><pre><span></span><code><span class="n">veriler</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;esra : istinye 05331233445&quot;</span><span class="p">,</span> <span class="s2">&quot;esma : levent 05322134344&quot;</span><span class="p">,</span> <span class="s2">&quot;sevgi : dudullu 05354445434&quot;</span><span class="p">,</span> 
+           <span class="s2">&quot;kemal : sanayi 05425455555&quot;</span><span class="p">,</span> <span class="s2">&quot;osman : tahtakale 02124334444&quot;</span><span class="p">,</span><span class="s2">&quot;metin : taksim 02124344332&quot;</span><span class="p">]</span>
+</code></pre></div>
+
+<p>Amacımız bu listede yer alan isim ve telefon numaralarını <code>isim &gt; telefon numarası</code> şeklinde almak:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">veriler</span><span class="p">:</span>
+    <span class="n">nesne</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;(\w+)\s+:\s(\w+)\s+(\d+)&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">nesne</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> &gt; </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">nesne</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">nesne</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">3</span><span class="p">)))</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>esra &gt; 05331233445
+esma &gt; 05322134344
+sevgi &gt; 05354445434
+kemal &gt; 05425455555
+osman &gt; 02124334444
+metin &gt; 02124344332
+</code></pre></div>
+
+<p>Burada formülümüz şu şekilde: <code>Bir veya daha fazla karakter</code> + <code>bir veya daha fazla boşluk</code> + <code>’:’ işareti</code> + <code>“bir adet boşluk</code> + <code>bir veya daha fazla sayı</code></p>
+<h2>\b Kelime Sınırını Belirten Özel Dizi</h2>
+<p><code>\b</code> sembolü ile Kelimenin nasıl <strong>başlaması</strong>, nasıl <strong>bitmesi</strong> ya da tam olarak <strong>sınırlarının ne olması</strong> gerektiğini belirtebiliriz.</p>
+<div class="highlight"><pre><span></span><code><span class="n">veri</span> <span class="o">=</span> <span class="s2">&quot;Doğum günüm 01.02.1980. Ağabeyim Doğum günü ise 03.04.1975&#39;te doğdu. Bilgisayarın ip adresi 04.05.18741&#39;dir.&quot;</span>
+<span class="n">desen</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;\b[A-Z]\w+&quot;</span>
+<span class="n">b_harf</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">desen</span><span class="p">,</span> <span class="n">veri</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">b_harf</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>[&#39;Doğum&#39;, &#39;Ağabeyim&#39;, &#39;Doğum&#39;, &#39;Bilgisayarın&#39;]
+</code></pre></div>
+
+<p>Büyük harf ile başlayan kelimeleri görmek istediğimizde yukarıdaki deseni kullanabiliriz.</p>
+<p>Cümle sonlarını bulmak için ise aşağıdaki desen işimize yarayabilir.</p>
+<div class="highlight"><pre><span></span><code><span class="n">desen</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;\w+\.\s\b&quot;</span>
+<span class="n">cumle_sonu</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">desen</span><span class="p">,</span> <span class="n">veri</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">cumle_sonu</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>[&#39;1980. &#39;, &#39;doğdu. &#39;]
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">veri</span> <span class="o">=</span> <span class="s2">&quot;Doğum günüm 01.02.1980. ağabeyim ise 03.04.1975&#39;te doğdu. bilgisayarımın ip adresi 04.05.18741&#39;dir.&quot;</span>
+
+<span class="n">desen</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;\d</span><span class="si">{2}</span><span class="s2">\.\d</span><span class="si">{2}</span><span class="s2">\.\d</span><span class="si">{4}</span><span class="s2">&quot;</span>
+<span class="n">d_gunleri</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">desen</span><span class="p">,</span> <span class="n">veri</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">d_gunleri</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>[&#39;01.02.1980&#39;, &#39;03.04.1975&#39;, &#39;04.05.1874&#39;]
+</code></pre></div>
+
+<p>Görüldüğü gibi desene uygun sonuçlar aldık ancak çıktıdaki son değer, doğum günü olmamasına rağmen desenle eşleşti. Bu sorunu çözmek için, deseni başlangıç ve bitiş sınırlarını belirterek tanımlamalıyız. Yani desenin başına ve sonuna <code>\b</code> sembolünü eklemeliyiz.</p>
+<div class="highlight"><pre><span></span><code><span class="n">desen</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;\b\d</span><span class="si">{2}</span><span class="s2">\.\d</span><span class="si">{2}</span><span class="s2">\.\d</span><span class="si">{4}</span><span class="s2">\b&quot;</span>
+<span class="n">d_gunleri</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">desen</span><span class="p">,</span> <span class="n">veri</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">d_gunleri</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>[&#39;01.02.1980&#39;, &#39;03.04.1975&#39;]
+</code></pre></div>
+
+<p>Desenin başına ve sonuna <code>\b</code> sembolünü ekleyerek, kelimenin tüm sınırlarını tanımlamış olduk. Bu desen ile; Kelime başında 2 adet rakam, ardından 1 nokta (.) sonrasında tekrar 2 adet rakam ve ardından nokta (.) gelsin son olarak ta 4 adet rakam olsun demiş olduk. BU desen sayesinde <strong>04.05.18741</strong> değerini safdışı bırakış olduk.</p>
+<p>Eğer verimizde tarih yazım biçimi farklı (örneğin nokta (.) ve taksim, bölü (/) işareti) olan birden fazla değerler olsaydı nasıl bir yol izlemeliydik? Buna da bir örnek verelim.</p>
+<div class="highlight"><pre><span></span><code><span class="n">veri</span> <span class="o">=</span> <span class="s2">&quot;Doğum günüm 01.02.1980. ağabeyim ise 03/04/1975&#39;te doğdu. bilgisayarımın ip adresi 04.05.18741&#39;dir.&quot;</span>
+
+<span class="n">desen</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;\b\d</span><span class="si">{2}</span><span class="s2">[./]\d</span><span class="si">{2}</span><span class="s2">[./]\d</span><span class="si">{4}</span><span class="s2">\b&quot;</span>
+<span class="n">d_gunleri</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">desen</span><span class="p">,</span> <span class="n">veri</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">d_gunleri</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>[&#39;01.02.1980&#39;, &#39;03/04/1975&#39;]
+</code></pre></div>
+
+<p>Gördüğünüz gibi nokta (.) ve taksim, bölü (/) işaretini, köşeli parantez içerisine yazarak alternatif seçenekler oluşturmuş olduk.</p>
+<p><strong>NOT:</strong> <strong>Nokta işaretini</strong> desen içinde doğrudan yazarken kaçış dizisi olan ters taksim işaretini yazmamız gerekiyor. Oysa köşeli parantez içerisinde yazdığımızda kaçış dizini olan ters bölü işaretini kullanmıyoruz. Bu, Köşeli parantezin bir özelliğidir. Diğer sembolleri de nokta gibi yazabiliyoruz.</p>
+<h2>\B Özel Dizisi</h2>
+<p><code>\b</code> özel dizisinin tam tersidir.</p>
+<p>Örneğin <code>py\b</code> deseni, <strong>py</strong> ile biten dizilerle eşleşirken <code>py\B</code> deseni,    <strong>py</strong> ifadesini içeren ancak <strong>py</strong> ile <strong>BİTMEYENLERLE</strong> eşleşir. </p>
+<div class="highlight"><pre><span></span><code><span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;Recep Ramazan Seher (Halil) Sertaç Halili zaman erkek Halil. şeker 2.345 python, py3, py2 py py. py!&quot;</span>
+<span class="n">desen</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;\w+er\b&quot;</span> <span class="c1"># başında alfanümerik karakterler olan sonu &quot;er&quot; ile biten kelimeleri bul.</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">desen</span><span class="p">,</span> <span class="n">metin</span><span class="p">))</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>[&#39;Seher&#39;, &#39;şeker&#39;]
+</code></pre></div>
+
+<p><code>"\w+er\b"</code> deseni ile, başında alfanümerik karakterler olan sonu <strong>er</strong> ile biten kelimeleri bulmaya çalıştık.</p>
+<div class="highlight"><pre><span></span><code><span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Recep&#39;</span><span class="p">,</span> <span class="s1">&#39;Ramazan&#39;</span><span class="p">,</span> <span class="s1">&#39;Seher&#39;</span><span class="p">,</span> <span class="s1">&#39;(Halil)&#39;</span><span class="p">,</span> <span class="s1">&#39;manzara&#39;</span><span class="p">,</span> <span class="s1">&#39;Sertaç&#39;</span><span class="p">,</span> <span class="s1">&#39;Halili&#39;</span><span class="p">,</span> <span class="s1">&#39;zaman&#39;</span><span class="p">,</span> <span class="s1">&#39;erkek&#39;</span><span class="p">,</span> <span class="s1">&#39;Halil.&#39;</span><span class="p">,</span> 
+         <span class="s1">&#39;şeker&#39;</span><span class="p">,</span> <span class="s1">&#39;2.345&#39;</span><span class="p">,</span> <span class="s1">&#39;python,&#39;</span><span class="p">,</span> <span class="s1">&#39;py3,&#39;</span><span class="p">,</span> <span class="s1">&#39;py2&#39;</span><span class="p">,</span><span class="s1">&#39;py&#39;</span><span class="p">,</span> <span class="s1">&#39;py.&#39;</span><span class="p">,</span> <span class="s1">&#39;py!&#39;</span><span class="p">]</span>
+
+<span class="n">desen</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;er\B&quot;</span> 
+
+<span class="k">for</span> <span class="n">oge</span> <span class="ow">in</span> <span class="n">liste</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">desen</span><span class="p">,</span> <span class="n">oge</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">oge</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>Sertaç
+erkek
+</code></pre></div>
+
+<p><code>"er\B"</code> deseni ile, içinde <strong>er</strong> ifadesi olan ancak sonu <strong>er</strong> ile <strong>bitmeyen</strong> kelimeleri bulmaya çalıştık.</p>
+<div class="highlight"><pre><span></span><code><span class="n">desen</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;\Ber\B&quot;</span> 
+
+<span class="k">for</span> <span class="n">oge</span> <span class="ow">in</span> <span class="n">liste</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">desen</span><span class="p">,</span> <span class="n">oge</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">oge</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>Sertaç
+</code></pre></div>
+
+<p><code>"\Ber\B"</code> deseni ile, içinde <strong>er</strong> ifadesi olan ancak başında ve sonunda <strong>er</strong> ifadesi <strong>bulunmayan</strong> kelimeleri bulmaya çalıştık.</p>
+<h1>Düzenli İfadelerin Derlenmesi</h1>
+<h2>compile() metodu</h2>
+<p>En başta da söylediğimiz gibi, düzenli ifadeler, karakter dizilerine göre biraz daha yavaş çalışırlar. Ancak düzenli ifadelerin işleyişini hızlandırmanın da bazı yolları vardır. Bu yollardan biri de <code>compile()</code> metodunu kullanmaktır.</p>
+<p><strong>compile</strong> kelimesi İngilizcede <strong>derlemek</strong> anlamına gelir. İşte biz de bu <code>compile()</code> metodu yardımıyla düzenli ifade kalıplarımızı kullanmadan önce derleyerek daha hızlı çalışmalarını sağlayacağız. </p>
+<p>Küçük boyutlu projelerde <code>compile()</code> metodu pek hissedilir bir fark yaratmasa da özellikle büyük çaplı programlarda bu metodu kullanmak oldukça faydalı olacaktır.</p>
+<p>Basit bir örnekle başlayalım:</p>
+<div class="highlight"><pre><span></span><code><span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Python2.7&quot;</span><span class="p">,</span> <span class="s2">&quot;Python3.2&quot;</span><span class="p">,</span> <span class="s2">&quot;Python3.3&quot;</span><span class="p">,</span> <span class="s2">&quot;Python3.4&quot;</span><span class="p">,</span> <span class="s2">&quot;Java&quot;</span><span class="p">]</span>
+
+<span class="n">derli</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;[A-Za-z]+[0-9]\.[0-9]&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">liste</span><span class="p">:</span>
+    <span class="n">nesne</span> <span class="o">=</span> <span class="n">derli</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">nesne</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">nesne</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>Python2.7
+Python3.2
+Python3.3
+Python3.4
+</code></pre></div>
+
+<p>Burada öncelikle düzenli ifade kalıbımızı derledik. Derleme işlemini nasıl yaptığımıza dikkat edin. </p>
+<p>Derlenecek düzenli ifade kalıbını <code>compile()</code> metodunda parantez içinde belirtiyoruz. </p>
+<p>Daha sonra <code>search()</code> metodunu kullanırken ise, <code>re.search()</code> demek yerine, <code>derli.search()</code> şeklinde bir ifade kullanıyoruz. Ayrıca dikkat ederseniz <code>derli.search()</code> kullanımında parantez içinde sadece eşleşecek karakter dizisini <code>(i)</code> kullandık. </p>
+<p>Eğer derleme işlemi yapmamış olsaydık, hem bu karakter dizisini, hem de düzenli ifade kalıbını yan yana kullanmamız gerekecektir <code>.search("[A-Za-z]+[0-9].[0-9], i)"</code>. Ama düzenli ifade kalıbımızı yukarıda derleme işlemi esnasında belirttiğimiz için, bu kalıbı ikinci kez yazmamıza gerek kalmadı. </p>
+<p>Ayrıca burada kullandığımız düzenli ifade kalıbına da dikkat edin. Nasıl bir şablon oturttuğumuzu anlamaya çalışın. Gördüğünüz gibi, liste öğelerinde bulunan <code>.</code> işaretini eşleştirmek için düzenli ifade kalıbı içinde <code>\.</code> ifadesini kullandık. Çünkü bildiğiniz gibi, tek başına <code>.</code> işaretinin Python açısından özel bir anlamı var. Dolayısıyla bu özel anlamdan kaçmak için <code>\</code> işaretini de kullanmamız gerekiyor.</p>
+<h2>compile() ile Derleme Seçenekleri</h2>
+<p>Bir önceki bölümde <code>compile()</code> metodunun ne olduğunu, ne işe yaradığını ve nasıl kullanıldığını görmüştük. Bu bölümde ise <strong>compile (derleme)</strong> işlemi sırasında kullanılabilecek seçenekleri anlatacağız.</p>
+<h2>re.IGNORECASE veya re.I</h2>
+<p>Bildiğiniz gibi, Python’da büyük-küçük harfler önemlidir. Yani eğer <strong>python</strong> kelimesini arıyorsanız, alacağınız çıktılar arasında <strong>Python</strong> olmayacaktır. Çünkü <strong>python</strong> ve <strong>Python</strong> birbirlerinden farklı iki karakter dizisidir. İşte <code>re.IGNORECASE</code> veya kısaca <code>re.I</code> adlı derleme seçenekleri bize <strong>büyük-küçük harfe dikkat etmeden arama yapma</strong> imkanı sağlar. Hemen bir örnek verelim:</p>
+<div class="highlight"><pre><span></span><code><span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Programlama dili, programcının bir bilgisayara ne yapmasını</span>
+<span class="s2">istediğini anlatmasının standartlaştırılmış bir yoludur. Programlama</span>
+<span class="s2">dilleri, programcının bilgisayara hangi veri üzerinde işlem yapacağını,</span>
+<span class="s2">verinin nasıl depolanıp iletileceğini, hangi koşullarda hangi işlemlerin</span>
+<span class="s2">yapılacağını tam olarak anlatmasını sağlar. Şu ana kadar 2500’den fazla</span>
+<span class="s2">programlama dili yapılmıştır. Bunlardan bazıları: Pascal, Basic, C, C#,</span>
+<span class="s2">C++, Java, Cobol, Perl, Python, Ada, Fortran, Delphi programlama</span>
+<span class="s2">dilleridir.&quot;&quot;&quot;</span>
+
+<span class="n">derli</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;programlama&quot;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">derli</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">metin</span><span class="p">))</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>[&#39;Programlama&#39;, &#39;Programlama&#39;, &#39;programlama&#39;, &#39;programlama&#39;]
+</code></pre></div>
+
+<p>Gördüğünüz gibi, metinde geçen hem <strong>programlama</strong> kelimesini hem de <strong>Programlama</strong> kelimesini ayıklayabildik. Bunu yapmamızı sağlayan şey de <code>re.IGNORECASE</code> adlı derleme seçeneği oldu. </p>
+<p>Eğer bu seçeneği kullanmasaydık, çıktıda yalnızca <strong>programlama</strong> kelimesini görürdük. Çünkü aradığımız şey aslında <strong>programlama</strong> kelimesi idi. Biz istersek <code>re.IGNORECASE</code> yerine kısaca <code>re.I</code> ifadesini de kullanabiliriz. Aynı anlama gelecektir.</p>
+<h2>re.DOTALL veya re.S</h2>
+<p>Bildiğiniz gibi, metakarakterler arasında yer alan <code>.</code> sembolü herhangi bir karakterin yerini tutuyordu. Bu metakarakter bütün karakterlerin yerini tutmak üzere kullanılabilir. Hatırlarsanız, <code>.</code> metakarakterini anlatırken, bu metakarakterin, <strong>yeni satır karakterinin yerini tutmayacağını</strong> söylemiştik. Bunu bir örnek yardımıyla görelim. Diyelim ki elimizde şöyle bir karakter dizisi var:</p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;Ben Python,</span><span class="se">\n</span><span class="s2">Monty Python&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>Ben Python,
+Monty Python
+</code></pre></div>
+
+<p>Bu karakter dizisi içinde <strong>Python</strong> kelimesini temel alarak bir arama yapmak istiyorsak eğer, kullanacağımız şu kod istediğimiz şeyi yeterince yerine getiremeyecektir:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;Python.*&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>Python,
+</code></pre></div>
+
+<p>Bunun sebebi, <code>.</code> metakarakterinin <code>\n</code> (yeni satır) kaçış dizisini dikkate almamasıdır. Bu yüzden <strong>bu kaçış dizisinin ötesine geçip orada arama yapmıyor</strong>. Ama şimdi biz ona bu yeteneği de kazandıracağız:</p>
+<div class="highlight"><pre><span></span><code><span class="n">derle</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;Python.*&quot;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">DOTALL</span><span class="p">)</span>
+<span class="n">nesne</span> <span class="o">=</span> <span class="n">derle</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">nesne</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">nesne</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>Python,
+Monty Python
+</code></pre></div>
+
+<p><code>re.DOTALL</code> seçeneğini sadece <code>re.S</code> şeklinde de kısaltabilirsiniz.</p>
+<h1>Düzenli İfadelerle Metin/Karakter Dizisi Değiştirme İşlemleri</h1>
+<h2>sub() metodu</h2>
+<p>Şimdiye kadar hep düzenli ifadeler yoluyla bir karakter dizisini nasıl eşleştireceğimizi inceledik. Ama tabii ki düzenli ifadeler yalnızca bir karakter dizisi <strong>bulmak</strong>la ilgili değildir. Bu araç aynı zamanda bir karakter dizisini <strong>değiştirmeyi</strong> de kapsar. Bu iş için temel olarak iki metot kullanılır. Bunlardan ilki <code>sub()</code> metodudur. Bu bölümde sub() metodunu inceleyeceğiz.</p>
+<p>En basit şekliyle <code>sub()</code> metodunu şu şekilde kullanabiliriz:</p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;Kırmızı başlıklı kız, kırmızı elma dolu sepetiyle anneannesinin evine gidiyormuş!&quot;</span>
+
+<span class="n">derle</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;kırmızı&quot;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">derle</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;yeşil&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">))</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>yeşil başlıklı kız, yeşil elma dolu sepetiyle anneannesinin evine gidiyormuş!
+</code></pre></div>
+
+<p>Burada karakter dizimiz içinde geçen bütün <strong>kırmızı</strong> kelimelerini <strong>yeşil</strong> kelimesiyle değiştirdik. Bunu yaparken de <code>re.IGNORECASE</code> adlı derleme seçeneğinden yararlandık.</p>
+<p>Elbette <code>sub()</code> metoduyla daha karmaşık işlemler yapılabilir. Bu noktada şöyle bir hatırlatma yapalım. Bu <code>sub()</code> metodu karakter dizilerinin <code>replace()</code> metoduna çok benzer. Ama tabii ki <code>sub()</code> metodu hem kendi başına <code>replace()</code> metodundan çok daha güçlüdür, hem de beraber kullanılabilecek derleme seçenekleri sayesinde <code>replace()</code> metodundan çok daha esnektir. Ama tabii ki, eğer yapmak istediğiniz iş <code>replace()</code> metoduyla halledilebiliyorsa en doğru yol, <code>replace()</code> metodunu kullanmaktır.</p>
+<p>Şimdi bu <code>sub()</code> metodunu kullanarak biraz daha karmaşık bir işlem yapacağız. Aşağıdaki metne bakalım:</p>
+<div class="highlight"><pre><span></span><code><span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Karadeniz Ereğlisi denince akla ilk olarak kömür ve demir-çelik</span>
+<span class="s2">gelir. Kokusu ve tadıyla dünyaya nam salmış meşhur Osmanlı çileği ise ismini</span>
+<span class="s2">verdiği festival günleri dışında pek hatırlanmaz. Oysa Çin&#39;den Arnavutköy&#39;e</span>
+<span class="s2">oradan da Ereğli&#39;ye getirilen kralların meyvesi çilek, burada geçirdiği değişim</span>
+<span class="s2">sonucu tadına doyulmaz bir hal alır. Ereğli&#39;nin havasından mı suyundan mı</span>
+<span class="s2">bilinmez, kokusu, tadı bambaşka bir hale dönüşür ve meşhur Osmanlı çileği</span>
+<span class="s2">unvanını hak eder. Bu nazik ve aromalı çilekten yapılan reçel de likör de bir</span>
+<span class="s2">başka olur. Bu yıl dokuzuncusu düzenlenen Uluslararası Osmanlı Çileği Kültür</span>
+<span class="s2">Festivali&#39;nde 36 üretici arasında yetiştirdiği çileklerle birinci olan Kocaali</span>
+<span class="s2">Köyü&#39;nden Güner Özdemir, yılda bir ton ürün alıyor. 60 yaşındaki Özdemir,</span>
+<span class="s2">çileklerinin sırrını yoğun ilgiye ve içten duyduğu sevgiye bağlıyor: &quot;Erkekler</span>
+<span class="s2">bahçemize giremez. Koca ayaklarıyla ezerler çileklerimizi&quot; Çileği toplamanın zor</span>
+<span class="s2">olduğunu söyleyen Ayşe Özhan da çocukluğundan bu yana çilek bahçesinde</span>
+<span class="s2">çalışıyor. Her sabah 04.00&#39;te kalkan Özhan, çileklerini özenle suluyor. Kasım</span>
+<span class="s2">başında ektiği çilek fideleri haziran başında meyve veriyor.&quot;&quot;&quot;</span>
+</code></pre></div>
+
+<p>Gelin bu metin içinde geçen <strong>çilek</strong> kelimelerini <strong>erik</strong> kelimesi ile değiştirelim. Ama bunu yaparken, metin içinde <strong>çilek</strong> kelimesinin <strong>Çilek</strong> şeklinde de geçtiğine dikkat edelim. Ayrıca Türkçe kuralları gereği bu <strong>çilek</strong> kelimesinin bazı yerlerde ünsüz yumuşamasına uğrayarak <strong>çileğ-</strong> şekline dönüştüğünü de unutmayalım.</p>
+<p>Bu metin içinde geçen <strong>çilek</strong> kelimelerini <strong>erik</strong>'le değiştirmek için birkaç yol kullanabilirsiniz. </p>
+<p>Birinci yolda, her değişiklik için ayrı bir düzenli ifade oluşturulabilir. Ancak bu yolun dezavantajı, metnin de birkaç kez kopyalanmasını gerektirmesidir. Çünkü ilk düzenli ifade oluşturulup buna göre metinde bir değişiklik yapıldıktan sonra, ilk değişiklikleri içeren metnin, farklı bir metin olarak kopyalanması gerekir (metin2 gibi.).</p>
+<p>Ardından ikinci değişiklik yapılacağı zaman, bu değişikliğin metin2 üzerinden yapılması gerekir. Aynı şekilde bu metin de, mesela, metin3 şeklinde tekrar kopyalanmalıdır. Bundan sonraki yeni bir değişiklik de bu metin3 üzerinden yapılacaktır. Bu durum bu şekilde uzar gider. Metni tekrar tekrar kopyalamak yerine, düzenli ifadeleri kullanarak şöyle bir çözüm de üretebiliriz:</p>
+<div class="highlight"><pre><span></span><code><span class="n">derle</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;çile[kğ]&quot;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">degistir</span><span class="p">(</span><span class="n">nesne</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;çileğ&quot;</span><span class="p">:</span><span class="s2">&quot;eriğ&quot;</span><span class="p">,</span> <span class="s2">&quot;Çileğ&quot;</span><span class="p">:</span><span class="s2">&quot;Eriğ&quot;</span><span class="p">,</span> <span class="s2">&quot;Çilek&quot;</span><span class="p">:</span><span class="s2">&quot;Erik&quot;</span><span class="p">,</span> <span class="s2">&quot;çilek&quot;</span><span class="p">:</span><span class="s2">&quot;erik&quot;</span><span class="p">}</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">nesne</span><span class="o">.</span><span class="n">group</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">b</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">derle</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">degistir</span><span class="p">,</span> <span class="n">metin</span><span class="p">))</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>Karadeniz Ereğlisi denince akla ilk olarak kömür ve demir-çelik
+gelir. Kokusu ve tadıyla dünyaya nam salmış meşhur Osmanlı eriği ise ismini
+verdiği festival günleri dışında pek hatırlanmaz. Oysa Çin&#39;den Arnavutköy&#39;e
+oradan da Ereğli&#39;ye getirilen kralların meyvesi erik, burada geçirdiği değişim
+sonucu tadına doyulmaz bir hal alır. Ereğli&#39;nin havasından mı suyundan mı
+bilinmez, kokusu, tadı bambaşka bir hale dönüşür ve meşhur Osmanlı eriği
+unvanını hak eder. Bu nazik ve aromalı erikten yapılan reçel de likör de bir
+başka olur. Bu yıl dokuzuncusu düzenlenen Uluslararası Osmanlı Eriği Kültür
+Festivali&#39;nde 36 üretici arasında yetiştirdiği eriklerle birinci olan Kocaali
+Köyü&#39;nden Güner Özdemir, yılda bir ton ürün alıyor. 60 yaşındaki Özdemir,
+eriklerinin sırrını yoğun ilgiye ve içten duyduğu sevgiye bağlıyor: &quot;Erkekler
+bahçemize giremez. Koca ayaklarıyla ezerler eriklerimizi&quot; Eriği toplamanın zor
+olduğunu söyleyen Ayşe Özhan da çocukluğundan bu yana erik bahçesinde
+çalışıyor. Her sabah 04.00&#39;te kalkan Özhan, eriklerini özenle suluyor. Kasım
+başında ektiği erik fideleri haziran başında meyve veriyor.
+</code></pre></div>
+
+<p>Gördüğünüz gibi, <code>sub()</code> metodu, argüman olarak bir <strong>fonksiyon</strong> da alabiliyor. Yukarıdaki kodlar biraz karışık görünmüş olabilir. Tek tek açıklayalım.</p>
+<p>Öncelikle şu satıra bakalım:</p>
+<div class="highlight"><pre><span></span><code><span class="n">derle</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;çile[kğ]&quot;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Burada amacımız, metin içinde geçen <strong>çilek</strong> ve <strong>çileğ</strong> kelimelerini bulmak. Neden <strong>çileğ</strong>? Çünkü <strong>çilek</strong> kelimesi bir sesli harften önce geldiğinde sonundaki <strong>k</strong> harfi <strong>ğ</strong>'ye dönüşüyor. Bu seçenekli yapıyı, daha önceki bölümlerde gördüğümüz <code>[ ]</code> adlı metakarakter yardımıyla oluşturduk. Düzenli ifade kalıbımızın hem büyük harfleri hem de küçük harfleri aynı anda bulması için <code>re.IGNORECASE</code> seçeneğinden yararlandık.</p>
+<p>Şimdi de şu satırlara bakalım:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">degistir</span><span class="p">(</span><span class="n">nesne</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;çileğ&quot;</span><span class="p">:</span><span class="s2">&quot;eriğ&quot;</span><span class="p">,</span> <span class="s2">&quot;Çileğ&quot;</span><span class="p">:</span><span class="s2">&quot;Eriğ&quot;</span><span class="p">,</span> <span class="s2">&quot;Çilek&quot;</span><span class="p">:</span><span class="s2">&quot;Erik&quot;</span><span class="p">,</span> <span class="s2">&quot;çilek&quot;</span><span class="p">:</span><span class="s2">&quot;erik&quot;</span><span class="p">}</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">nesne</span><span class="o">.</span><span class="n">group</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">b</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+</code></pre></div>
+
+<p>Burada, daha sonra <code>sub()</code> metodu içinde kullanacağımız fonksiyonu yazıyoruz. Fonksiyonu, <code>def degistir(nesne)</code> şeklinde tanımladık. Burada <strong>“nesne”</strong> adlı bir argüman kullanmamızın nedeni, fonksiyon içinde <code>group()</code> metodunu kullanacak olmamız. Bu metodu fonksiyon içinde <strong>“nesne”</strong> adlı argümana bağlayacağız. Bu fonksiyon, daha sonra yazacağımız <code>sub()</code> metodu tarafından çağrıldığında, yaptığımız arama işlemi sonucunda ortaya çıkan <strong>“eşleşme nesnesi”</strong> fonksiyona atanacaktır (eşleşme nesnesinin ne demek olduğunu ilk bölümlerden hatırlıyorsunuz). İşte <strong>“nesne”</strong> adlı bir argüman kullanmamızın nedeni de, eşleşme nesnelerinin bir metodu olan <code>group()</code> metodunu fonksiyon içinde kullanabilmek.</p>
+<p>Bir sonraki satırda bir adet sözlük görüyoruz:</p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;çileğ&quot;</span><span class="p">:</span><span class="s2">&quot;eriğ&quot;</span><span class="p">,</span> <span class="s2">&quot;Çileğ&quot;</span><span class="p">:</span><span class="s2">&quot;Eriğ&quot;</span><span class="p">,</span> <span class="s2">&quot;Çilek&quot;</span><span class="p">:</span><span class="s2">&quot;Erik&quot;</span><span class="p">,</span> <span class="s2">&quot;çilek&quot;</span><span class="p">:</span><span class="s2">&quot;erik&quot;</span><span class="p">}</span>
+</code></pre></div>
+
+<p>Bu sözlüğü oluşturmamızın nedeni, metin içinde geçen bütün <strong>“çilek”</strong> kelimelerini tek bir <strong>“erik”</strong> kelimesiyle değiştiremeyecek olmamız. Çünkü <strong>“çilek”</strong> kelimesi metin içinde pek çok farklı biçimde geçiyor. Başta da dediğimiz gibi, yukarıdaki yol yerine metni birkaç kez kopyalayarak ve her defasında bir değişiklik yaparak da sorunu çözebilirsiniz. (Mesela önce <strong>“çilek”</strong> kelimelerini bulup bunları <strong>“erik”</strong> ile değiştirirsiniz. Daha sonra <strong>“çileğ”</strong> kelimelerini arayıp bunları <strong>“eriğ”</strong> ile değiştirirsiniz, vb…) Ama metni tekrar tekrar oluşturmak pek performanslı bir yöntem olmayacaktır. Bizim şimdi kullandığımız yöntem metin kopyalama zorunluluğunu ortadan kaldırıyor. Bu sözlük içinde <strong>“çilek”</strong> kelimesinin alacağı şekilleri sözlük içinde birer anahtar olarak, <strong>“erik”</strong> kelimesinin alacağı şekilleri ise birer <strong>“değer”</strong> olarak belirliyoruz.</p>
+<p>Sonraki satırda iki metot birden var:</p>
+<p><code>b = nesne.group().split()</code></p>
+<p>Burada, fonksiyonumuzun argümanı olarak vazife gören eşleşme nesnesine ait metotlardan biri olan <code>group()</code> metodunu kullanıyoruz. Böylece <code>derle = re.compile("çile[kğ]", re.IGNORECASE)</code> satırı yardımıyla metin içinde bulduğumuz bütün <strong>“çilek”</strong> ve çeşitlerini alıyoruz. Karakter dizilerinin <code>split()</code> metodunu kullanmamızın nedeni ise <code>group()</code> metodunun verdiği çıktıyı liste haline getirip daha kolay manipüle etmek. Burada <code>for i in b: print(i)</code> komutunu verirseniz <code>group()</code> metodu yardımıyla ne bulduğumuzu görebilirsiniz:</p>
+<p><code>
+çileğ
+çilek
+çileğ
+çilek
+Çileğ
+çilek
+çilek
+çilek
+Çileğ
+çilek
+çilek
+çilek
+</code></p>
+<p>Bu çıktıyı gördükten sonra, kodlarda yapmaya çalıştığımız şey daha anlamlı görünmeye başlamış olmalı. Şimdi sonraki satıra geçiyoruz:</p>
+<p><code>for i in b:
+    return a[i]
+</code></p>
+<p>Burada, <code>group()</code> metodu yardımıyla bulduğumuz eşleşmeler üzerinde bir <code>for</code> döngüsü oluşturduk. 
+    Ardından da <code>return a[i]</code> komutunu vererek “a” adlı sözlük içinde yer alan öğeleri yazdırıyoruz. Bu arada, buradaki <strong>“i”</strong>nin yukarıda verdiğimiz <code>group()</code> çıktılarını temsil ettiğine dikkat edin. <code>a[i]</code> gibi bir komut verdiğimizde aslında sırasıyla şu komutları vermiş oluyoruz:  </p>
+<p><code>
+a["çilek"]
+a["çileğ"]
+a["çilek"]
+a["Çileğ"]
+a["çilek"]
+a["çilek"]
+a["çilek"]
+a["Çileğ"]
+a["çilek"]
+a["çilek"]
+</code></p>
+<p>Bu komutların çıktıları sırasıyla <strong>“erik”, “eriğ”, “erik”, “Eriğ”, “erik”, “erik”, “erik”, “Eriğ”, “erik”, “erik”</strong> olacaktır. İşte bu return satırı bir sonraki kod olan <code>print(derle.sub(degistir,metin))</code> ifadesinde etkinlik kazanacak. Bu son satırımız sözlük öğelerini tek tek metne uygulayacak ve mesela <code>a["çilek"]</code> komutu sayesinde metin içinde <strong>“çilek”</strong> gördüğü yerde <strong>“erik”</strong> kelimesini yapıştıracak ve böylece bize istediğimiz şekilde değiştirilmiş bir metin verecektir…</p>
+<p>Bu kodların biraz karışık gibi göründüğünü biliyorum, ama aslında çok basit bir mantığı var: <code>group()</code> metodu ile metin içinde aradığımız kelimeleri ayıklıyor. Ardından da <strong>“a”</strong> sözlüğü içinde bunları anahtar olarak kullanarak <strong>“çilek”</strong> ve çeşitleri yerine <strong>“erik”</strong> ve çeşitlerini koyuyor.</p>
+<p>Yukarıda verdiğimiz düzenli ifadeyi böyle ufak bir metinde kullanmak çok anlamlı olmayabilir. Ama çok büyük metinler üzerinde çok çeşitli ve karmaşık değişiklikler yapmak istediğinizde bu kodların işinize yarayabileceğini göreceksiniz.</p>
+<h2>subn() metodu</h2>
+<p>Bu metodu çok kısa bir şekilde anlatıp geçeceğiz. Çünkü bu metot <code>sub()</code> metoduyla neredeyse tamamen aynıdır. Tek farkı, <code>subn()</code> metodunun bir metin içinde yapılan değişiklik sayısını da göstermesidir. Yani bu metodu kullanarak, kullanıcılarınıza <strong>“toplam şu kadar sayıda değişiklik yapılmıştır”</strong> şeklinde bir bilgi verebilirsiniz. Bu metot çıktı olarak iki öğeli bir demet verir. </p>
+<p>Birinci öğe değiştirilen metin, ikinci öğe ise yapılan değişiklik sayısıdır. Yani kullanıcıya değişiklik sayısını göstermek için yapmanız gereken şey, bu demetin ikinci öğesini almaktır. Mesela <code>sub()</code> metodunu anlatırken verdiğimiz kodların son satırını şöyle değiştirebilirsiniz:</p>
+<div class="highlight"><pre><span></span><code><span class="n">ab</span> <span class="o">=</span> <span class="n">derle</span><span class="o">.</span><span class="n">subn</span><span class="p">(</span><span class="n">degistir</span><span class="p">,</span> <span class="n">metin</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Toplam </span><span class="si">{}</span><span class="s2"> değişiklik yapılmıştır.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ab</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>Toplam 12 değişiklik yapılmıştır.
+</code></pre></div>
+
+<h1>Sonuç</h1>
+<p>Böylelikle düzenli ifadeler konusunu bitirmiş olduk. Buradaki amacımız, size düzenli ifadeler konusunda genel bir bakış sunabilmekti. Bu yazıları okuduktan sonra kafanızda düzenli ifadelerle ilgili kabataslak da olsa bir resim oluştuysa bu yazılar amacına ulaşmış demektir. Elbette düzenli ifadeler burada anlattıklarımızdan ibaret değildir. Bu konunun üzerine eğildiğinizde aslında düzenli ifadelerin dipsiz bir kuyu gibi olduğunu göreceksiniz. </p>
+<p>Esasında en başta da dediğimiz gibi, düzenli ifadeler apayrı bir dil gibidir. Doğrusu şu ki, düzenli ifadeler başlı başına bağımsız bir sistemdir. Hemen hemen bütün programlama dilleri öyle ya da böyle düzenli ifadeleri destekler. Python’da düzenli ifadeleri bünyesine adapte etmiş dillerden biridir. Bizim düzenli ifadeler konusundaki yaklaşımımız, her zaman bunları <strong>“gerektiğinde”</strong> kullanmak olmalıdır. Dediğimiz gibi, eğer yapmak istediğiniz bir işlemi karakter dizilerinin metotları yardımıyla yapabiliyorsanız düzenli ifadelere girişmemek en iyisidir. Çünkü karakter dizisi metotları hem daha hızlıdır hem de anlaması daha kolaydır.</p>
+<p>Kaynak: <a href="https://python-istihza.yazbel.com/standart_moduller/regex.html">İstihza YazBel</a></p>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/duzenli-ifadeler.html">Düzenli İfadeler</a></li>
+					<li><a href="/tag/regular-expressions.html">Regular Expressions</a></li>
+					<li><a href="/tag/regex.html">Regex</a></li>
+					<li><a href="/tag/re.html">Re</a></li>
+					<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+					<li><a href="/tag/modul.html">Modül</a></li>
+					<li><a href="/tag/metakarakter.html">Metakarakter</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>
