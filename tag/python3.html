@@ -76,126 +76,110 @@
 </div>		<div class="content container">
 	<div class="posts">
 			<div class="post">
-				<h1 class="post-title" href="/pandas-04-secim-yontemleri.html">
-					<a href="/pandas-04-secim-yontemleri.html">Pandas 04 - Seçim Yöntemleri</a>
+				<h1 class="post-title" href="/freecad-scripting-04-parca-part-komut-dosyasi-olusturmak.html">
+					<a href="/freecad-scripting-04-parca-part-komut-dosyasi-olusturmak.html">FreeCAD - Scripting 04 - Parça (Part) Komut Dosyası Oluşturmak</a>
 				</h1>
-				<span class="post-date">Prş 20 Ocak 2022</span>
+				<span class="post-date">Sal 22 Şubat 2022</span>
 					<span class="post-tags">
 						Tags:
 						<ul>
+								<li><a href="/tag/freecad.html">FreeCAD</a></li>
 								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/pandas.html">Pandas</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
-								<li><a href="/tag/secim.html">Seçim</a></li>
+								<li><a href="/tag/scripting.html">Scripting</a></li>
+								<li><a href="/tag/komut.html">Komut</a></li>
+								<li><a href="/tag/parca.html">Parça</a></li>
+								<li><a href="/tag/part.html">Part</a></li>
 						</ul>
 					</span>
 				<p>
-					<h1>Seçim Yöntemleri</h1>
-<p>Veri Çerçevesi oluştururken ya da oluşturduktan sonra istenilen satır ve sütunların seçilmesi/görüntülenmesi ya da seçilmemesi/görüntülenmemesi konusunu inceleyelim. Veri çerçevesinde işimize yaramayacak verileri devre dışı bırakmak için bu yöntemleri kullanabiliriz.</p>
-<h2>Satır ve Sütun Seçimi</h2>
-<h3>iloc[] Metodu</h3>
-<p>Veri Çerçevesindeki istenilen satır ve sütunu seçmek/görüntülemek için <strong>iloc[]</strong> metodu …</p>
+					<h1>Parça (Part) Komut Dosyası Oluşturmak</h1>
+<h2>Takdim</h2>
+<p><code>Part (Parça)</code> modülünde kullanılan ana veri yapısı, <a href="https://wiki.freecadweb.org/OpenCASCADE">OpenCASCADE</a>'den <a href="http://en.wikipedia.org/wiki/Boundary_representation">BRep</a> veri türüdür. <code>Part</code> modülünün hemen hemen tüm içeriği ve nesne türleri, Python komut dosyasında mevcuttur. Bu, <strong>Çizgiler</strong>, <strong>Daireler</strong> ve <strong>Yaylar</strong> gibi geometrik temel şekilleri ve <strong>Noktalar, Kenarlar, Kafes/Ağ Yapıları, Yüzeyler, Katılar ve Bileşikler …</strong></p>
 				</p>
-				<a class="read-more" href="pandas-04-secim-yontemleri.html">Continue reading »</a>
+				<a class="read-more" href="freecad-scripting-04-parca-part-komut-dosyasi-olusturmak.html">Continue reading »</a>
 			</div>
 			<div class="post">
-				<h1 class="post-title" href="/pandas-03-veriyi-kesfet-incele.html">
-					<a href="/pandas-03-veriyi-kesfet-incele.html">Pandas 03 -  Veriyi Keşfet - İncele</a>
+				<h1 class="post-title" href="/freecad-scripting-05-topolojik-veri-kodlamasi.html">
+					<a href="/freecad-scripting-05-topolojik-veri-kodlamasi.html">FreeCAD - Scripting 05 - Topolojik Veri Kodlaması</a>
 				</h1>
-				<span class="post-date">Cts 15 Ocak 2022</span>
+				<span class="post-date">Sal 22 Şubat 2022</span>
 					<span class="post-tags">
 						Tags:
 						<ul>
+								<li><a href="/tag/freecad.html">FreeCAD</a></li>
 								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/pandas.html">Pandas</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/scripting.html">Scripting</a></li>
+								<li><a href="/tag/komut.html">Komut</a></li>
+								<li><a href="/tag/topoloji.html">Topoloji</a></li>
 						</ul>
 					</span>
 				<p>
-					<h2>Veriyi Keşfet / İncele</h2>
-<p>Bu bölümde <strong>Veri Çerçevesi</strong> (<strong>Data Frame</strong>) içeriğini görüntülemeye dair komutları öğreneceğiz.</p>
-<p>Öncelikle <strong>Pandas</strong> Kütüphanesini içe aktarıp, kodlama esnasında hızlı olması adına bu kütüphaneye <strong>pd</strong> adını atayalım;</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-</code></pre></div>
-
-<p>Bu eğitimde, fonksiyon ve metotlar konusunu anlatırken kullanmak üzere, basit bir Veri Çerçevesi (Data Frame) oluşturalım ve …</p>
+					<h1>Topolojik Veri Kodlaması</h1>
+<h2>Takdim</h2>
+<p>Burada, <code>Parça (Part)</code> modülünü, doğrudan FreeCAD Python Yorumlayıcısından veya herhangi bir harici komut dosyasından nasıl kontrol edeceğinizi açıklayacağız. Python komut dosyasının FreeCAD'de nasıl çalıştığı hakkında daha fazla bilgiye ihtiyacınız varsa, <a href="https://wiki.freecadweb.org/Power_users_hub">Komut Dosyası</a> bölümüne ve <a href="freecad-03-komut-dosyasi-olusturmanin-temelleri.html">FreeCAD Komut Dosyası Oluşturma Temelleri 
+</a>sayfalarına göz attığınızdan emin olun. Python'da yeniyseniz …</p>
 				</p>
-				<a class="read-more" href="pandas-03-veriyi-kesfet-incele.html">Continue reading »</a>
+				<a class="read-more" href="freecad-scripting-05-topolojik-veri-kodlamasi.html">Continue reading »</a>
 			</div>
 			<div class="post">
-				<h1 class="post-title" href="/pandas-02-excel-dosyalari-ile-calismak.html">
-					<a href="/pandas-02-excel-dosyalari-ile-calismak.html">Pandas 02 - Excel Dosyaları ile Çalışmak</a>
+				<h1 class="post-title" href="/freecad-scripting-03-komut-dosyasi-olusturmanin-temelleri.html">
+					<a href="/freecad-scripting-03-komut-dosyasi-olusturmanin-temelleri.html">FreeCAD - Scripting 03 - Komut Dosyası Oluşturmanın Temelleri</a>
 				</h1>
-				<span class="post-date">Çrş 12 Ocak 2022</span>
+				<span class="post-date">Prş 17 Şubat 2022</span>
 					<span class="post-tags">
 						Tags:
 						<ul>
+								<li><a href="/tag/freecad.html">FreeCAD</a></li>
 								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/pandas.html">Pandas</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
-								<li><a href="/tag/excel.html">Excel</a></li>
-								<li><a href="/tag/libreofis.html">LibreOfis</a></li>
+								<li><a href="/tag/scripting.html">Scripting</a></li>
+								<li><a href="/tag/komut.html">Komut</a></li>
 						</ul>
 					</span>
 				<p>
-					<h1>Excel Dosyalarını Oku ve Düzenle Yöntemleri</h1>
-<p>Bu bölümde <strong>MS Excel</strong> ve <strong>Libre Ofis Calc</strong> programları ile oluşturulan hesap tablolarının Veri Çerçevelerine (Data Frame'e) dönüştürülerek çalışmalarımıza dahil edilmesi konusunu detayı olarak inceleyeceğiz.</p>
-<h3>read_excel() fonksiyonu</h3>
-<p><strong>MS Excel</strong> ve <strong>Libre Ofis Calc</strong> dosyalarının içeriğini çalışmamıza dahil etmek için <strong>read_excel()</strong> fonksiyonunu kullanmalıyız.</p>
-<p><u>Bu fonksiyon …</u></p>
+					<h1>FreeCAD'de Komut Dosyası Oluşturmanın (Scripting) Temelleri</h1>
+<h2>FreeCAD'de Python komut dosyası oluşturmak</h2>
+<p>FreeCAD, Python komut dosyaları tarafından tamamen kontrol edilecek şekilde sıfırdan oluşturulmuştur. Arayüz, sahne içeriği ve hatta bu içeriğin 3B görünümlerdeki temsili gibi FreeCAD'in neredeyse tüm bölümlerine yerleşik Python yorumlayıcısından veya kendi komut dosyalarınızdan erişilebilir. Sonuç olarak, FreeCAD muhtemelen bugün …</p>
 				</p>
-				<a class="read-more" href="pandas-02-excel-dosyalari-ile-calismak.html">Continue reading »</a>
+				<a class="read-more" href="freecad-scripting-03-komut-dosyasi-olusturmanin-temelleri.html">Continue reading »</a>
 			</div>
 			<div class="post">
-				<h1 class="post-title" href="/pandas-01-veri-cercevesi-olustur.html">
-					<a href="/pandas-01-veri-cercevesi-olustur.html">Pandas 01 - Veri Çerçevesi Oluştur</a>
+				<h1 class="post-title" href="/freecad-scripting-02-python-komut-dosyasi-olusturmak.html">
+					<a href="/freecad-scripting-02-python-komut-dosyasi-olusturmak.html">FreeCAD - Scripting 02 - Python Komut Dosyası Oluşturmak</a>
 				</h1>
-				<span class="post-date">Pzt 10 Ocak 2022</span>
+				<span class="post-date">Sal 15 Şubat 2022</span>
 					<span class="post-tags">
 						Tags:
 						<ul>
+								<li><a href="/tag/freecad.html">FreeCAD</a></li>
 								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/pandas.html">Pandas</a></li>
-								<li><a href="/tag/dataframe.html">DataFrame</a></li>
-								<li><a href="/tag/veri-cercevesi.html">Veri Çerçevesi</a></li>
-								<li><a href="/tag/olustur.html">Oluştur</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/scripting.html">Scripting</a></li>
 						</ul>
 					</span>
 				<p>
-					<h1>VeriÇerçevesi (DataFrame) Oluştur</h1>
-<p>Bu bölümde sıfırdan <strong>Veri Çerçevesi</strong> (<strong>Data Frame</strong>) oluşturmayı ya da harici kaynaktan <strong>(MS Excel, LibreOfis Calc, CSV, JSON, URL ve Pano'dan)</strong> verileri okuyarak veri çerçevesine dönüştürmeyi öğreneceğiz.</p>
-<h2>import Fonksiyonu</h2>
-<p>Öncelikle <strong>Pandas</strong> Kütüphanesini projemize dahil edip (içe aktarıp), kodlama esnasında hızlı olması adına bu kütüphaneye <strong>pd</strong> adını atayalım …</p>
+					<h1>Python Komut Dosyası Oluşturma (Scripting) Eğitimi</h1>
+<p><a href="http://en.wikipedia.org/wiki/Python_%28programming_language%29">Python</a> kullanımı ve öğrenilmesi çok kolay bir programlama dilidir. Açık kaynak kodlu, çok platformlu ve basit kabuk komut dosyalarının programlanmasından, çok karmaşık programlara kadar pek çok şey için tek başına kullanılabilir. Ancak en yaygın kullanım yönteminden biri, diğer uygulamalara gömülerek kullanılmasıdır. FreeCAD içinde tam …</p>
 				</p>
-				<a class="read-more" href="pandas-01-veri-cercevesi-olustur.html">Continue reading »</a>
+				<a class="read-more" href="freecad-scripting-02-python-komut-dosyasi-olusturmak.html">Continue reading »</a>
 			</div>
 			<div class="post">
-				<h1 class="post-title" href="/pandas-giris.html">
-					<a href="/pandas-giris.html">Pandas - Giriş</a>
+				<h1 class="post-title" href="/freecad-scripting-01-pythona-giris.html">
+					<a href="/freecad-scripting-01-pythona-giris.html">FreeCAD - Scripting 01 - Python'a Giriş</a>
 				</h1>
-				<span class="post-date">Cts 08 Ocak 2022</span>
+				<span class="post-date">Paz 13 Şubat 2022</span>
 					<span class="post-tags">
 						Tags:
 						<ul>
+								<li><a href="/tag/freecad.html">FreeCAD</a></li>
 								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/pandas.html">Pandas</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/giris.html">Giriş</a></li>
 						</ul>
 					</span>
 				<p>
-					<h1>Pandas Kütüphanesi Notları</h1>
-<p><strong>Python'a Giriş</strong> konusuna ait notları, FreeCAD için Python ile Komut Dosyası Oluşturma (Scripting) Eğitiminde paylaşmıştık.  İlave olarak Python'ın en güçlü ve işlevsel kütüphanelerinden biri olan <strong>Pandas</strong>'a ait notları paylaşmaya devam ediyorum.</p>
-<p><img alt="pandas" src="../../images/pandas_logo.png"></p>
-<h2>PANDAS NEDİR?</h2>
-<p><strong>Python'a Giriş</strong> konusu ile alakalı bilgileri, <a href="../freecad-scripting-egitimi.html">FreeCAD Eğitim Notları</a> bölümünde <a href="../freecad-01-pythona-giris.html">1. Python'a Giriş …</a></p>
+					<h1>Python'a Giriş</h1>
+<p>Bu bölümün amacı, Python programlama dili hakkında kısaca bilgi vermek ve ardından FreeCAD programı içerisinde Python kodu yazmayı ve/veya yazdığımız kodları çalıştırmayı öğrenmektir.</p>
+<p>Bu, Python'a yeni başlayanlar için kısa bir eğitimdir. Python, açık kaynaklı, çok platformlu bir programlama dilidir. Onu diğer programlama dillerinden farklı ve yeni kullanıcılar …</p>
 				</p>
-				<a class="read-more" href="pandas-giris.html">Continue reading »</a>
+				<a class="read-more" href="freecad-scripting-01-pythona-giris.html">Continue reading »</a>
 			</div>
 	</div>
 	<div class="pagination">
