@@ -76,209 +76,228 @@
 </div>		<div class="content container">
 <div class="post">
 	<h1 class="post-title">Pandas Özet Bilgi Tablosu (CheatSheet)</h1>
-	<span class="post-date">Cts 30 Temmuz 2022</span>
-	<h2>Pandas Özet Bilgi Tablosu (CheatSheet)</h2>
-<p>Pandas Veri Çerçevesi (Data 
-Frame) komutlarını (fonksiyon, metot, parametre) bir yerde toplayarak 
-ihtiyaç halinde, farklı konulara ait komutlara daha hızlı 
-ulaşabileceğimiz bir <strong>Başvuru Kılavuzu / Özet Bilgi Tablosu (CheatSheet)</strong> oluşturmaya çalışıyorum. Başvuru kılavuzunu / Özet Bilgi Tablosunu (CheatSheet) oluşturuken, komutları, <strong>Pandas Veri Çerçevesi (Data Frame) Konu Başlıkları</strong>na göre kategorize etmeyi planlıyorum.</p>
+	<span class="post-date">Pzt 28 Şubat 2022</span>
+	<h1>Pandas Özet Bilgi Tablosu (CheatSheet)</h1>
+<p>Pandas Veri Çerçevesi (Data Frame) komutlarını (fonksiyon, metot, parametre) bir yerde toplayarak ihtiyaç halinde, farklı konulara ait komutlara daha hızlı ulaşabileceğimiz bir <strong>Başvuru Kılavuzu / Özet Bilgi Tablosu (CheatSheet)</strong> oluşturmaya çalışıyorum. </p>
+<p>Başvuru kılavuzunu / Özet Bilgi Tablosunu (CheatSheet) oluştururken, komutları, <strong>Pandas Veri Çerçevesi (Data Frame) Konu Başlıkları</strong>na göre kategorize etmeyi planlıyorum.</p>
 <p>Sayfaya Yeni Konu başlıkları eklendikçe, Özet Bilgi Tablosunu da güncellemeye gayret edeceğim.<br>
 Şuana kadar oluşturduğum <strong>Başvuru Kılavuzu / Özet Bilgi Tablosu (CheatSheet)</strong> aşağıda istifadenize sunulmuştur.<br>
 Başvuru Kılavuzu / Özet Bilgi Tablosunun (CheatSheet) <strong>PDF uzantılı</strong> halini aşağıdaki bağlantıdan indirebilirsiniz.</p>
 <ul>
 <li><a href="https://mhalil.github.io/dosyalar/python/Pandas_Veri_Cercevesi_Ozet_Bilgileri_(CheatSheet).pdf"><strong>PDF Dosyası:</strong> Pandas Özet Bilgi Tablosu (CheatSheet)</a></li>
 </ul>
-<p>Tablonun <strong>PNG Uzantılı</strong> Hali;<br>
-<img alt="CheatSheet" src="../../images/python/pandas/Pandas_Veri_Cercevesi_Ozet_Bilgileri_(CheatSheet).png"></p>
+<h2>Tablonun <strong>PNG Uzantılı</strong> Hali;</h2>
+<p><img alt="CheatSheet" src="../../images/python/pandas/Pandas_Veri_Cercevesi_Ozet_Bilgileri_(CheatSheet).png"></p>
+<h2>KÜTÜPHANEYİ İÇE AKTAR ( IMPORT )</h2>
 <table>
 <thead>
 <tr>
-<th><strong>.:: AÇIKLAMA ::.</strong></th>
-<th></th>
+<th><strong>Fonksiyon / Metot / Parametre</strong></th>
+<th><strong>Açıklama</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>import pandas as pd</td>
-<td>pd : pandas kütüphanesi için atanmış kısaltmayı temsil eder.</td>
+<td><code>import pandas as pd</code></td>
+<td><strong>pd</strong> : pandas kütüphanesi için atanmış kısaltmayı temsil eder.</td>
 </tr>
 <tr>
-<td>df = pd.DataFrame(Veri_Yapısı)<br>df = pd.read_excel(“excel.xlsx”)</td>
-<td>df : Oluşturulan Veri Çerçevesine (Data Frame’e) atanan kısaltmayı temsil eder. Bu kısaltmalar aşağıda kullanılmıştır.</td>
+<td><code>df = pd.DataFrame(Veri_Yapısı)</code></td>
+<td><strong>df</strong> : Oluşturulan Veri Çerçevesine (Data Frame’e) atanan kısaltmayı temsil eder. Bu kısaltmalar aşağıda kullanılmıştır.</td>
 </tr>
 <tr>
-<td><strong>.:: VERİ ÇERÇEVESİ OLUŞTUR ::.</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><strong>Fonksiyon / Metot / Parametre</strong></td>
-<td><strong>Açıklama</strong></td>
-</tr>
-<tr>
-<td>pd.DataFrame(dosya, nesne ya da sözlük)</td>
-<td>Bir Dosyadan, İterable Nesneden ya da Sözlük yapısından Veri Çerçevesi (Data Frame) Oluştur.</td>
-</tr>
-<tr>
-<td>pd.read_csv(“dosya_adı.csv”)</td>
-<td>CSV dosyasını içe aktararak Veri Çerçevesi Oluştur.</td>
-</tr>
-<tr>
-<td>pd.read_excel(“dosya_adı.uzantı”)</td>
-<td>Excel, Calc dosyalarını içe aktararak Veri Çerçevesi Oluştur.<br>Bu fonksiyon xls, xlsx, xlsm, xlsb, odf, ods ve odt uzantılı dosyaları destekler.</td>
-</tr>
-<tr>
-<td>pd.read_sql(query,connection_object)</td>
-<td>Bir SQL veritabanını içe aktararak Veri Çerçevesi Oluştur.</td>
-</tr>
-<tr>
-<td>pd.read_html(url)</td>
-<td>Bir URL (websitesi) ya da yerel html dosyasından tablo içe aktararak Veri Çerçevesi Oluştur.</td>
-</tr>
-<tr>
-<td>pd.read_json(dosya_adı.json)</td>
-<td>JSON biçimindeki dosyayı içe aktararak Veri Çerçevesi Oluştur.</td>
-</tr>
-<tr>
-<td>pd.read_table(dosya_adı.csv)</td>
-<td>CSV<br> dosyasını tablo olarak içe aktararak Veri Çerçevesi Oluştur. delimiter <br>parametresi ile, tablo verilerini sütunlara bölebiliriz. Aksi halde her <br>satırdaki veri bir sütuna yazılır.</td>
-</tr>
-<tr>
-<td>pd.read_table(“dosya_adı.csv”, delimiter=”,”)</td>
-<td></td>
-</tr>
-<tr>
-<td>pd.read_clipboard()</td>
-<td>CTRL + C ile Panoya kopyaladığımız veriyi (örneğin bir Excel tablosu ya da websitesindeki tabloyu) Veri Çerçevesine dönüştürür.</td>
-</tr>
-<tr>
-<td><strong>.:: VERİ ÇERÇEVESİNİ KEŞFET ::.</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><strong>Fonksiyon / Metot / Parametre</strong></td>
-<td><strong>Açıklama</strong></td>
-</tr>
-<tr>
-<td>df.head() / df.head(n)</td>
-<td>Veri<br> Çerçevesinin ilk n satırını görüntüler. Parantez içerisine sayı <br>yazmazsak ilk 5 satırı görüntüler. Böylece Veri Çerçevesi hakkında ön <br>bilgi edinmemizi sağlar.</td>
-</tr>
-<tr>
-<td>df.tail() / df.tail(n)</td>
-<td>Veri Çerçevesinin son n satırını görüntüler. Parantez içerisine sayı yazmazsak son 5 satırı görüntüler.</td>
-</tr>
-<tr>
-<td>df.columns</td>
-<td>Veri Çerçevelerinin başlık satırını çıktı olarak verir / görüntüler.</td>
-</tr>
-<tr>
-<td>len(df)</td>
-<td>Veri Çerçevesinin kaç satırdan oluştuğu bilgisini döndürür.</td>
-</tr>
-<tr>
-<td>df.info()</td>
-<td>Veri<br> Çerçevesinin satır ve sütun sayısı, başlık tipleri (sayı, metin, ...vb)<br> ve doluluk oranı (boş olmayan hücre sayısı) hakkında bilgi görüntüler.</td>
-</tr>
-<tr>
-<td>df.dtypes</td>
-<td>Veri çerçevesinin başlık tiplerini görüntüler.</td>
-</tr>
-<tr>
-<td>df.describe()</td>
-<td>Sayısal<br> veri barındıran sütunlar hakkında detaylı matematiksel bilgiler verir. <br>(Kaç adet veri olduğu, ortalamaları, en küçük ve en büyük sayı,...vb)</td>
-</tr>
-<tr>
-<td>df.shape</td>
-<td>Veri Çerçevesinin satır ve sütun bilgisini döndürür/görüntüler.</td>
-</tr>
-<tr>
-<td>df.index</td>
-<td>Veri Çerçevesinin indeks isimlerini döndürür/görüntüler.</td>
-</tr>
-<tr>
-<td>df.isnull().any()</td>
-<td>Veri Çerçevesinin herhangi bir boş değer içerip içermediğini görüntüler.</td>
-</tr>
-<tr>
-<td><strong>.:: VERİ ÇERÇEVESİNİ DÜZENLE ::.</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><strong>Fonksiyon / Metot / Parametre</strong></td>
-<td><strong>Açıklama</strong></td>
-</tr>
-<tr>
-<td>df = pd.read_excel(“dosya_adı.xls” ,index_col=0)</td>
-<td>Veri<br> Çerçevesi (Data Frame) oluştururken, sütunlardan birini, indeks değeri <br>olarak ayarlamak/atamak için index_col parametresi kullanılır. <br>Parametreye, değer olarak, indis olarak atanacak Sütunun indis değeri <br>yazılır.</td>
-</tr>
-<tr>
-<td>df.set_index(“Sütun_adı”)</td>
-<td>Veri<br> Çerçevesi oluşturduktan sonra, istediğimiz zaman indeks değerlerini <br>değiştiremek / atamak için set_index() parametresi kullanılır.</td>
-</tr>
-<tr>
-<td>df = pd.read_excel(“dosya_adı.xls”, usecols = [“Sütun1”, “Sütun5”, Sütun9”]</td>
-<td>Veri<br> Çerçevesi (DataFrame) oluştururken, sadece istediğimiz sütunları <br>kullanmak istediğimizde usecols parametresini kullanmalıyız. Değer <br>olarak sütun adı ya da sütun indisi yazılabilir.</td>
-</tr>
-<tr>
-<td>df = pd.read_excel(“dosya_adı.xls”, usecols = [2,3,8]</td>
-<td></td>
-</tr>
-<tr>
-<td>df = pd.read_excel(“dosya_adı.xls”, skiprows = [0,5,6]</td>
-<td>Veri<br> Çerçevesi (DataFrame) oluştururken, atlamak / göz ardı etmek Veri <br>Çerçevesine dahil etmemek için, skiprows parametresi kullanmalıyız.</td>
-</tr>
-<tr>
-<td>df["Yeni_Sütun_Adı"] = Atanacak_Değerler<br><br>Örnek:<br>df[“Toplam”] = df[“Sütun1”] + df[“Sütun2”]</td>
-<td>Veri<br> Çerçevesi (DataFrame) Yeni Sütun eklemek ve bu sütuna Değer Atamak için<br> bu yapıyı kullanabiliriz. Atanacak_Değerler, Liste yapısında <br>olabileceği gibi, Diğer sütunların kopyası, matematik, mantık ya da <br>karşılaştırma operatörleri ile belirlenmiş halleri de olabilir.</td>
-</tr>
-<tr>
-<td>df.drop("Satır ya da Sütun Adı", axis=0/1, inplace=True/False)</td>
-<td>Veri Çerçevesinden (Data Frame’den) Satır ya da Sütun Silmek istediğimizde drop() metodunu kullanabiliriz.<br>axis = 0 (Sıfır) Satırları, axis = 1 (Bir) Sütunları temsil eder.<br>inplace<br> parametresi, gerçekleştirilen silme işleminin kalıcı ya da geçici <br>olmasını ayarladığımız kısımdır. inplace = True yazılırsa, yapılan işlem<br> kalıcı hale gelecektir.</td>
-</tr>
-<tr>
-<td><strong>.:: STRİNG METOTLARI ::.</strong></td>
-<td></td>
-</tr>
-<tr>
-<td>df[“Sütun1”].str.upper()</td>
-<td>Sütun1’deki Metinsel ifadelerin tümünü büyük harf çevirir.</td>
-</tr>
-<tr>
-<td>df[“Sütun1”].str.lower()</td>
-<td>Sütun1’deki Metinsel ifadelerin tümünü küçük harf çevirir.</td>
-</tr>
-<tr>
-<td>df[“Sütun1”].str.capitalize()</td>
-<td>Sütun1’deki Metinsel ifadelerin sadece baş harflerini büyük harf çevirir.</td>
-</tr>
-<tr>
-<td><strong>.:: VERİYİ DIŞA AKTAR / FARKLI BİÇİMDE KAYDET ::.</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><strong>Fonksiyon / Metot / Parametre</strong></td>
-<td><strong>Açıklama</strong></td>
-</tr>
-<tr>
-<td>df.to_csv(“dosya_adı.csv”)</td>
-<td>Veri Çerçevesini CSV dosyası olarak Dışa Aktar/Kaydet.</td>
-</tr>
-<tr>
-<td>df.to_excel(“dosya_adı.uzantı”)</td>
-<td>Veri Çerçevesini Excel / Calc olarak Dışa Aktar/Kaydet.<br>xls, xlsx, xlsm, xlsb, odf, ods ve odt uzantılı dosyalar desteklenir.</td>
-</tr>
-<tr>
-<td>df.to_sql(tablo_adı,baglantı_nesnesi)</td>
-<td>Veri Çerçevesini SQL Veri Tabanı olarak Dışa Aktar/Kaydet.</td>
-</tr>
-<tr>
-<td>df.to_json(“dosya_adı.json”)</td>
-<td>Veri Çerçevesini JSON dosyası olarak Dışa Aktar/Kaydet.</td>
+<td><code>df = pd.read_excel(“Verilerim.xlsx”)</code></td>
+<td><strong>Verilerim.xlsx</strong> isimli Excel dosyasını okuyarak veri çerçevesi oluştur ve bu veri çerçevesini <strong>df</strong> adında bir değişkene ata.</td>
 </tr>
 </tbody>
 </table>
-<ul>
-<li></li>
-</ul>
+<h2>VERİ ÇERÇEVESİ OLUŞTUR</h2>
+<table>
+<thead>
+<tr>
+<th><strong>Fonksiyon / Metot / Parametre</strong></th>
+<th><strong>Açıklama</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pd.DataFrame(dosya, nesne ya da sözlük)</code></td>
+<td>Bir Dosyadan, İterable Nesneden ya da Sözlük yapısından Veri Çerçevesi (Data Frame) Oluştur.</td>
+</tr>
+<tr>
+<td><code>pd.read_csv(“dosya_adı.csv”)</code></td>
+<td>Bir <strong>CSV</strong> dosyasının içeriğinden Veri Çerçevesi Oluştur. <code>read_csv</code> kodu ile <strong>TXT</strong> uzantılı dosya içeriğini de okuyabiliriz.</td>
+</tr>
+<tr>
+<td><code>pd.read_excel(“dosya_adı.uzantı”)</code></td>
+<td><strong>Excel</strong>, <strong><em>*Calc</em>* dosyalarını içeriğinden Veri Çerçevesi Oluştur. Bu fonksiyon </strong>xls, xlsx, xlsm, xlsb, odf, ods<strong> ve </strong>odt** uzantılı dosyaları destekler.</td>
+</tr>
+<tr>
+<td><code>pd.read_sql(query,connection_object)</code></td>
+<td>Bir <strong>SQL</strong> veritabanını okuyarak Veri Çerçevesi Oluştur.</td>
+</tr>
+<tr>
+<td><code>pd.read_html(url)</code></td>
+<td>Bir <strong>URL</strong> (websitesi) ya da yerel <strong>html</strong> dosyası içeriğinden Veri Çerçevesi Oluştur.</td>
+</tr>
+<tr>
+<td><code>pd.read_json(dosya_adı.json)</code></td>
+<td><strong>JSON</strong> biçimindeki dosyayı içe aktararak Veri Çerçevesi Oluştur.</td>
+</tr>
+<tr>
+<td><code>pd.read_table(dosya_adı.csv)</code></td>
+<td><strong>CSV</strong> dosya içeriğinden <strong>tablo olarak</strong>  Veri Çerçevesi Oluştur.</td>
+</tr>
+<tr>
+<td><code>pd.read_table(“dosya_adı.csv”, delimiter=”,”)</code></td>
+<td><strong>delimiter</strong> parametresi ile, tablo verilerini sütunlara bölebiliriz. <em>Aksi halde her satırdaki veri bir sütuna yazılır.</em></td>
+</tr>
+<tr>
+<td><code>pd.read_clipboard()</code></td>
+<td><strong>CTRL + C</strong> ile Panoya kopyaladığımız veriden (örneğin bir Excel tablosundan ya da websitesindeki tablodan) Veri Çerçevesine oluştur.</td>
+</tr>
+</tbody>
+</table>
+<h2>VERİ ÇERÇEVESİNİ KEŞFET</h2>
+<table>
+<thead>
+<tr>
+<th><strong>Fonksiyon / Metot / Parametre</strong></th>
+<th><strong>Açıklama</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>df.head()</code> <code>df.head(n)</code></td>
+<td>Veri Çerçevesinin <strong>ilk 5 satırını</strong> görüntüler. Parantez içerisine sayı yazarsak <strong>ilk n satırı</strong> görüntüler. Böylece Veri Çerçevesi hakkında ön bilgi edinmemizi sağlar.</td>
+</tr>
+<tr>
+<td><code>df.tail()</code> <code>df.tail(n)</code></td>
+<td>Veri Çerçevesinin <strong>son 5 satırını</strong> görüntüler. Parantez içerisine sayı yazarsak <strong>son n satırı</strong> görüntüler.</td>
+</tr>
+<tr>
+<td><code>df.columns</code></td>
+<td>Veri Çerçevelerinin <strong>başlık satırını</strong> çıktı olarak verir, görüntüler.</td>
+</tr>
+<tr>
+<td><code>len(df)</code></td>
+<td>Veri Çerçevesinin <strong>kaç satırdan oluştuğu bilgisini</strong> döndürür.</td>
+</tr>
+<tr>
+<td><code>df.info()</code></td>
+<td>Veri Çerçevesinin <strong>satır ve sütun sayısı, başlık tipleri</strong> (sayı, metin, ...vb) ve <strong>doluluk oranı</strong> (boş olmayan hücre sayısı) hakkında bilgi görüntüler.</td>
+</tr>
+<tr>
+<td><code>df.dtypes</code></td>
+<td>Veri çerçevesinin <strong>başlık tiplerini</strong> görüntüler.</td>
+</tr>
+<tr>
+<td><code>df.describe()</code></td>
+<td>Sayısal veri barındıran sütunlar hakkında detaylı <strong>matematiksel bilgiler</strong> verir. (Kaç adet veri olduğu, ortalamaları, en küçük ve en büyük sayı,...vb)</td>
+</tr>
+<tr>
+<td><code>df.shape</code></td>
+<td>Veri Çerçevesinin <strong>satır ve sütun bilgisini</strong> döndürür, görüntüler.</td>
+</tr>
+<tr>
+<td><code>df.index</code></td>
+<td>Veri Çerçevesinin <strong>indeks isimlerini</strong> döndürür, görüntüler.</td>
+</tr>
+<tr>
+<td><code>df.isnull().any()</code></td>
+<td>Veri Çerçevesinin herhangi bir <strong>boş değer içerip içermediğini</strong> görüntüler.</td>
+</tr>
+</tbody>
+</table>
+<h2>VERİ ÇERÇEVESİNİ DÜZENLE</h2>
+<table>
+<thead>
+<tr>
+<th><strong>Fonksiyon / Metot / Parametre</strong></th>
+<th><strong>Açıklama</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>df = pd.read_excel(“dosya_adı.xls” ,index_col=0)</code></td>
+<td>Veri Çerçevesi (Data Frame) oluştururken, sütunlardan birini, <strong>indeks değeri olarak ayarlamak, atamak</strong> için <code>index_col</code> parametresi kullanılır. Parametreye, değer olarak, indis olarak atanacak Sütunun <strong>indis değeri</strong> yazılır.</td>
+</tr>
+<tr>
+<td><code>df.set_index(“Sütun_adı”)</code></td>
+<td>Veri Çerçevesi oluşturduktan sonra, istediğimiz zaman <strong>indeks değerlerini değiştiremek / atamak</strong> için <code>set_index()</code> parametresi kullanılır.</td>
+</tr>
+<tr>
+<td><code>df = pd.read_excel(“dosya_adı.xls”, usecols = [“Sütun1”, “Sütun5”, Sütun9”]</code></td>
+<td>Veri Çerçevesi (DataFrame) oluştururken, sadece <strong>istediğimiz sütunları kullanmak</strong> istediğimizde <code>usecols</code> parametresini kullanmalıyız. Değer olarak <strong>sütun adı</strong> da yazılabilir.</td>
+</tr>
+<tr>
+<td><code>df = pd.read_excel(“dosya_adı.xls”, usecols = [2,3,8]</code></td>
+<td><code>usecols</code> parametresine değer olarak <strong>sütun indisi</strong> de yazılabilir.</td>
+</tr>
+<tr>
+<td><code>df = pd.read_excel(“dosya_adı.xls”, skiprows = [0,5,6]</code></td>
+<td>Veri Çerçevesi (DataFrame) oluştururken, <strong>atlamak / göz ardı etmek</strong> Veri Çerçevesine <strong>dahil etmemek</strong> için, <code>skiprows</code> parametresi kullanmalıyız.</td>
+</tr>
+<tr>
+<td><code>df["Yeni_Sütun_Adı"] = Atanacak_Değerler Örnek: df[“Toplam”] = df[“Sütun1”] + df[“Sütun2”]</code></td>
+<td>Veri Çerçevesi (DataFrame) <strong>Yeni Sütun eklemek</strong> ve bu <strong>sütuna Değer Atamak</strong> için bu yapıyı kullanabiliriz. Atanacak_Değerler, Liste yapısında olabileceği gibi, Diğer sütunların kopyası, matematik, mantık ya da karşılaştırma operatörleri ile belirlenmiş halleri de olabilir.</td>
+</tr>
+<tr>
+<td><code>df.drop("Satır ya da Sütun Adı", axis=0/1, inplace=True/False)</code></td>
+<td>Veri Çerçevesinden (Data Frame’den) <strong>Satır ya da Sütun Silmek</strong> istediğimizde <code>drop()</code> metodunu kullanabiliriz. <code>axis = 0</code> (Sıfır) <strong>Satırları</strong>, <code>axis = 1</code> (Bir) <strong>Sütunları</strong> temsil eder. <code>inplace</code> parametresi, gerçekleştirilen silme işleminin kalıcı ya da geçici olmasını ayarladığımız kısımdır. <code>inplace = True</code> yazılırsa, yapılan işlem kalıcı hale gelecektir.</td>
+</tr>
+</tbody>
+</table>
+<h2>STRİNG METOTLARI</h2>
+<table>
+<thead>
+<tr>
+<th><strong>Fonksiyon / Metot / Parametre</strong></th>
+<th><strong>Açıklama</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>df[“Sütun1”].str.upper()</code></td>
+<td>Sütun1’deki Metinsel ifadelerin tümünü <strong>büyük harf çevirir</strong>.</td>
+</tr>
+<tr>
+<td><code>df[“Sütun1”].str.lower()</code></td>
+<td>Sütun1’deki Metinsel ifadelerin tümünü <strong>küçük harf çevirir.</strong></td>
+</tr>
+<tr>
+<td><code>df[“Sütun1”].str.capitalize()</code></td>
+<td>Sütun1’deki Metinsel ifadelerin sadece <strong>baş harflerini büyük harf çevirir.</strong></td>
+</tr>
+</tbody>
+</table>
+<h2>VERİYİ DIŞA AKTAR / FARKLI BİÇİMDE KAYDET</h2>
+<table>
+<thead>
+<tr>
+<th><strong>Fonksiyon / Metot / Parametre</strong></th>
+<th><strong>Açıklama</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>df.to_csv(“dosya_adı.csv”)</code></td>
+<td>Veri Çerçevesini <strong>CSV</strong> dosyası olarak <strong>Dışa Aktar/Kaydet.</strong></td>
+</tr>
+<tr>
+<td><code>df.to_excel(“dosya_adı.uzantı”)</code></td>
+<td>Veri Çerçevesini <strong>Excel / Calc</strong> olarak <strong>Dışa Aktar/Kaydet</strong> <em>xls, xlsx, xlsm, xlsb, odf, ods ve odt</em> uzantılı dosyalar desteklenir.</td>
+</tr>
+<tr>
+<td><code>df.to_sql(tablo_adı,baglantı_nesnesi)</code></td>
+<td>Veri Çerçevesini <strong>SQL</strong> Veri Tabanı olarak <strong>Dışa Aktar/Kaydet.</strong></td>
+</tr>
+<tr>
+<td><code>df.to_json(“dosya_adı.json”)</code></td>
+<td>Veri Çerçevesini <strong>JSON</strong> dosyası olarak <strong>Dışa Aktar/Kaydet.</strong></td>
+</tr>
+</tbody>
+</table>
 
 		<span class="post-tags">
 			Tags:
