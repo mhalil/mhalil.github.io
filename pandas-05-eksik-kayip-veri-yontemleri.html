@@ -356,8 +356,8 @@ Python'da aşina olduğumuz <strong>sum()</strong> fonksiyonu işimize yarayacak
 
 <p><strong>Yıl</strong> sütununda 1, <strong>Oylayan_Kişi</strong> sütununda 2 adet eksik veri olduğu görünüyor. Eksik veri olan satır ve sütunları silmeye / temizlemeye çalışalım.</p>
 <h3>dropna() Fonksiyonu</h3>
-<p>Veri çerçevelerinde istediğimiz satır ve sütunları <strong>drop()</strong> metodu yardımı ile nasıl silebildiğimizi daha önce öğrenmiştik. İlgili sayfa <a href="https://mhalil.github.io/Pandas_Duzenleme_Yontemleri.html">buradan</a> erişebilirsiniz.</p>
-<p>Eksik veri barındıran Veri Çerçevelerinin hem satır hemde sütunlarını otomatik olarak silmek için <strong>dropna()</strong> metodunu kullanabiliriz. Metodun kullanım şekli aşağıdaki gibidir.</p>
+<p>Veri çerçevelerinde istediğimiz satır ve sütunları <strong>drop()</strong> metodu yardımı ile nasıl silebildiğimizi  <a href="pandas-06-veri-duzenleme-yontemleri.html">burada</a> anlatıyoruz.</p>
+<p>Veri Çerçevelerinde eksik veri bulunan satır ve sütunları otomatik olarak silmek için <strong>dropna()</strong> metodunu kullanabiliriz. Metodun kullanım şekli aşağıdaki gibidir.</p>
 <div class="highlight"><pre><span></span><code><span class="n">VeriÇerçevesi_Adı</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">ya</span> <span class="n">da</span> <span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span> <span class="n">ya</span> <span class="n">da</span> <span class="kc">False</span><span class="p">)</span>
 </code></pre></div>
 
@@ -1600,7 +1600,7 @@ düşünülebilir) yazdırabiliriz/atayabiliriz.</p>
 </tr>
 </tbody>
 </table>
-<p>Görüldüğü üzere, <strong>backfill</strong> ve <strong>bfill</strong> seçenekleri sayesinde boş (geçersiz değere sahip) hücreler, <strong>kendinden sonraki</strong> son geçerli (altında bulunan) hücrenin değeri ile dolduruldu.</p>
+<p>Görüldüğü üzere, <strong>backfill</strong> ve <strong>bfill</strong> seçenekleri sayesinde boş (geçersiz değere sahip) hücreler, <strong>kendinden sonraki</strong> (altında bulunan) son geçerli  hücrenin değeri ile dolduruldu.</p>
 <p>Şimdi sıra <strong>pad</strong> ve <strong>ffill</strong> seçeneklerinde;</p>
 <div class="highlight"><pre><span></span><code><span class="n">veri</span> <span class="o">=</span> <span class="n">veri</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">&quot;pad&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="p">)</span>
@@ -1776,7 +1776,7 @@ düşünülebilir) yazdırabiliriz/atayabiliriz.</p>
 </tr>
 </tbody>
 </table>
-<p><strong>backfill</strong> ve <strong>bfill</strong> seçeneklerinin tersine <strong>pad</strong> ve <strong>ffill</strong> seçenekleri ile sayesinde ise boş (geçersiz değere sahip) hücreler, <strong>kendinden önceki</strong> son geçerli (üstünde bulunan) hücrenin değeri ile dolduruldu.</p>
+<p><strong>backfill</strong> ve <strong>bfill</strong> seçeneklerinin tersine <strong>pad</strong> ve <strong>ffill</strong> seçenekleri ile sayesinde ise boş (geçersiz değere sahip) hücreler, <strong>kendinden önceki</strong> (üstünde bulunan) son geçerli  hücrenin değeri ile dolduruldu.</p>
 <p><a href="pandas-04-secim-yontemleri.html">← Önceki Bölüm</a> | <a href="pandas-06-veri-duzenleme-yontemleri.html">Sonraki Bölüm →</a></p>
 
 		<span class="post-tags">

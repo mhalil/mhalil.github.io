@@ -219,8 +219,8 @@
 </tr>
 </tbody>
 </table>
-<h3>Sadece Satırları Listelemek</h3>
-<h4>Bir Tamsayı ile Satır Seçimi</h4>
+<h2>Sadece Satırları Listelemek</h2>
+<h3>Bir Tamsayı ile Satır Seçimi</h3>
 <p><code>iloc[]</code> metoduna parametre olarak sadece <strong>bir tamsayı değeri</strong> girildiğinde, girilen sayıya (indeks bilgisine) ait <strong>satır</strong> verisi döndürülür. Bu veri, Seri (Series) tipindedir. Hemen aşağıdaki örneğe bakalım.</p>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
 </code></pre></div>
@@ -231,7 +231,7 @@
 <span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="nx">dtype</span><span class="p">:</span><span class="w"> </span><span class="nx">object</span>
 </code></pre></div>
 
-<h4>Bir Sayı Listesi ile Satır Seçimi</h4>
+<h3>Bir Sayı Listesi ile Satır Seçimi</h3>
 <p>Veri çerçevemizden <strong>belirli bazı satırları</strong> seçmek istersek <code>iloc[]</code> metoduna parametre olarak bir <strong>liste</strong> tanımlamalıyız. Bu liste, bir satırdan başlayıp diğer bir satıra kadar olan aralık (dilimleme) olabileceği gibi tek tek te belirtilebilir. 
 Şimdi bunları inceleyelim.</p>
 <p>Örneğin veri çerçevemizde indeks değeri 3, 5 ve 7 olan satırları seçmek istersek aşağıdaki şekilde kod yazmamız gerekir.</p>
@@ -269,7 +269,7 @@
 </tbody>
 </table>
 <p><code>print(veri.iloc[[3,5,7]])</code> koduna dikkat ederseniz <code>iloc[]</code> metoduna parametre olarak sadece bir adet köşeli parantez yazıldı, ikinci köşeli parantez yazılmadı. Bu demek oluyor ki, <strong>parametre olarak sadece satır bilgisi</strong> var yani sütunlarda seçme ya da kısıtlamaya işlemi yapılmadı, tüm sütun bilgileri gösterilmeli. Zaten Çıktıya baktığımızda anlattığımız gibi sonuç elde ettiğimizi görüyoruz.</p>
-<h4>Dilimleyerek Satır Seçimi</h4>
+<h3>Dilimleyerek Satır Seçimi</h3>
 <p>Python'da <strong>listeler</strong> konusunu okuduğunuzda, dilimlemenin nasıl yapıldığını da görmüş olmalısınız. Kısaca bahsedecek olursak, dilimleme için <code>:</code> karakteri kullanılır. <code>:</code> karakterinin solunda <strong>başlangıç</strong>, sağında <strong>bitiş</strong> değeri yazılır. Elimizde veri çerçevemizin indeks değerleri gibi <strong>0 ile 9</strong> arasında sayılardan oluşan bir liste varsa, bu listeden aralık seçmek yani dilimleme yapmak istersek aşağıdaki kodu yazmalıyız.</p>
 <p><code>[1:5]</code></p>
 <p>Bu kodun anlamı, 1. öğeden başlayarak <strong>5. öğeye kadar</strong> (yani 5. öğe dahil <strong>DEĞİL</strong>) dilimleme yap, 1,2,3,4 sonucunu ver.</p>
@@ -417,7 +417,7 @@
 </table>
 <h3>Satır ve Sütunları Belirterek Listelemek</h3>
 <p>Yukarıda yazdığımız <code>veri.iloc[8,2]</code> kodu, hem satır hemde sütun belirterek değer elde ettiğimiz bir indeksleme yöntemidir.</p>
-<h4>Satır ve Sütunda dilimleme yapmak</h4>
+<h3>Satır ve Sütunda dilimleme yapmak</h3>
 <p>Hem satırda hemde sütunda dilimleme yapmak istersek aşağıdaki şekilde kod yazmalıyız;</p>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">8</span><span class="p">,:</span><span class="mi">2</span><span class="p">])</span>
 </code></pre></div>
@@ -459,7 +459,7 @@
 </tbody>
 </table>
 <p><code>veri.iloc[3:8,:2]</code> kodu ile, 3-8 arası satır, 0-2 arası sütun verileri dilimlenmiş. (<strong>Satırlarda</strong>, 3'ten başlayan 8'de biten bir sınırlama yazılmış, <strong>Sütunlarda</strong> başlangıçta sınır yok yani 0'dan başlıyor, 2. sütuna kadar sınırlama getirilmiş.)</p>
-<h4>Satırla aynı uzunluktaki mantık (boole) listesiyle / maskesiyle Satır Seçimi</h4>
+<h3>Satırla aynı uzunluktaki mantık (boole) listesiyle / maskesiyle Satır Seçimi</h3>
 <p>Python'da Mantık (boolean) işlemleri <strong>0</strong> ya da <strong>1</strong>, <strong>Evet</strong> ya da <strong>Hayır</strong> anlamında, <strong>True</strong> ya da <strong>False</strong> sonucu döndürür. Bu mantı anlamak için, yukarıda oluşturduğumuz 10 satırlık veri çerçevemizi kullanalım. Örneğin <strong>1., 3., 6. ve 9.</strong> indisleri gizlemek isteyelim. O halde görmek istediğimiz satırlar için <strong>True</strong>, gizlemek istediğimiz satırlar için <strong>False</strong> anahtar kelimelerini sırasıyla <strong>liste veri tipi olarak</strong> yazmalı ve <code>iloc[]</code> metoduna paramatre olarak eklemeliyiz.</p>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">]])</span>
 </code></pre></div>
@@ -513,7 +513,7 @@
 </tbody>
 </table>
 <h2>loc[] Metodu</h2>
-<h4>Etiketlere veya mantık (boole) dizisine göre bir satır ve sütun grubuna erişim</h4>
+<h3>Etiketlere veya mantık (boole) dizisine göre bir satır ve sütun grubuna erişim</h3>
 <p><code>loc[]</code> metodu, <code>iloc[]</code> metoduna benzer bir metottur ancak <code>loc[]</code> metodunda, satır ve sütun seçmek/görüntülemek istediğimiz zaman, satır ve sütunların isimlerini (metinsel / string ifadelerini) yazmalıyız. <code>loc[]</code> metodu aslında etiket tabanlıdır, ancak bir mantık (boole) dizisiyle de kullanılabilir. <code>iloc[]</code> metodunun alabileceği parametreler şunlardır:</p>
 <ul>
 <li>Tek bir etiket, ör. <code>5</code> veya <code>'a'</code>, (<code>5</code>'in dizinin bir etiketi olarak yorumlandığını ve <strong>asla</strong> dizin boyunca bir tamsayı konumu olarak yorumlanmadığını unutmayın).</li>
@@ -538,25 +538,13 @@
 <table>
 <thead>
 <tr>
-<th></th>
+<th>Film_Adı</th>
 <th>Yıl</th>
 <th>Puan</th>
 <th>Oylayan_Kişi</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td>Film_Adı</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>---</td>
-<td>---</td>
-<td>---</td>
-<td>---</td>
-</tr>
 <tr>
 <td>The Shawshank Redemption</td>
 <td>1994</td>
@@ -676,7 +664,7 @@
 </tr>
 </tbody>
 </table>
-<h4>Tek etiket ile Satır Seçimi</h4>
+<h3>Tek etiket ile Satır Seçimi</h3>
 <p><code>loc[]</code> metodunda tek etiket kullanıldığında, sonucun satırı bir Seri olarak döndürüldüğünü unutmayın. Örneğe bakalım;</p>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;viper&#39;</span><span class="p">])</span>
 </code></pre></div>
@@ -686,7 +674,7 @@
 <span class="n">Name</span><span class="p">:</span> <span class="n">viper</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
 </code></pre></div>
 
-<h4>Etiket listesi ile Satır Seçimi</h4>
+<h3>Etiket listesi ile Satır Seçimi</h3>
 <p>Köşeli parantez <code>[[]]</code> kullanımı , sonuc olarak bir Veri Çerçevesi (DataFrame) döndürür. İnceleyelim;</p>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s1">&#39;viper&#39;</span><span class="p">,</span> <span class="s1">&#39;sidewinder&#39;</span><span class="p">]])</span>
 </code></pre></div>
@@ -712,7 +700,7 @@
 </tr>
 </tbody>
 </table>
-<h4>Satır ve sütun belirterek Değer Seçimi</h4>
+<h3>Satır ve sütun belirterek Değer Seçimi</h3>
 <p>Tıpkı <code>iloc[]</code> metodunda olduğu gibi <code>loc[]</code> metoduna da hem satır hem de sütun değeri girilebilir. Bu durumda MS Excel ve Libre Ofis Calc programında olduğu gibi satır ve sütunların kesişimindeki hücre ya da hücre değer(ler)i, sonuç olarak döndürülür.</p>
 <p>Aşağıdaki örnekte, <code>loc[]</code> metoduna birer adet satır ve sütun değeri girilecek. Sonucu incelersek sadece bir değer döndürdüğünü göreceksiniz.</p>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;cobra&#39;</span><span class="p">,</span> <span class="s1">&#39;shield&#39;</span><span class="p">])</span>
@@ -721,7 +709,7 @@
 <div class="highlight"><pre><span></span><code><span class="mi">2</span>
 </code></pre></div>
 
-<h4>Satır için aralıklı etiket, Sütun için ise tek etiketle dilimleme</h4>
+<h3>Satır için aralıklı etiket, Sütun için ise tek etiketle dilimleme</h3>
 <p>Bu kısımda, satır seçiminde bir aralık, sütün seçiminde ise sadece tek bir değer (yani tek sütun) belirterek sonucun nasıl çıkacağını inceleyelim.</p>
 <p>Yukarıdaki <strong>Uyarıda</strong> belirtildiği gibi, Pandas'ta dilimleme esnasında hem <strong>başlangıç</strong> hem de <strong>bitiş</strong> değerlerinin seçime dahil edildiğini unutmayın.</p>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;cobra&#39;</span><span class="p">:</span><span class="s1">&#39;viper&#39;</span><span class="p">,</span> <span class="s1">&#39;max_speed&#39;</span><span class="p">])</span>
@@ -732,7 +720,7 @@
 <span class="n">Name</span><span class="p">:</span> <span class="n">max_speed</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
 </code></pre></div>
 
-<h4>Satır ile aynı uzunlukta Mantık (Boole) listesi ile Seçim</h4>
+<h3>Satır ile aynı uzunlukta Mantık (Boole) listesi ile Seçim</h3>
 <p><strong>df</strong> isimli veri çerçevemiz 3 satırdan oluştuğu için, toplam 3 adet <strong>True</strong> ya da <strong>False</strong> anahtar kelimesi kullanarak bir mantık (boole) listesi oluşturacak ve <strong>True</strong> olarak belirttiğimiz satırları göreceğimiz bir sonuç elde edeceğiz.</p>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">]])</span>
 </code></pre></div>
@@ -753,7 +741,7 @@
 </tr>
 </tbody>
 </table>
-<h4>Hizalanabilir Mantık (boole) Serisi ile Satır Seçimi</h4>
+<h3>Hizalanabilir Mantık (boole) Serisi ile Satır Seçimi</h3>
 <p>Pandas Seriler (Series) veri yapısını kullanarak, oluşturmuş olduğumuz veri çerçevemizde indeks sırasını değiştirerek (hizalayarak) mantıksal (boole) listesi ile belirttiğimiz satırları filtreleyerek satır seçimi yapabiliriz. Anlatım biraz karışık gelmiş olabilir. </p>
 <p>Aşağıdaki örneği incelerken konuyu anlayacağınızı düşünüyorum. Öncelikle <strong>df</strong> isimli veri çerçevemize göz atalım.</p>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
@@ -826,7 +814,7 @@
 </tbody>
 </table>
 <p><code>index=['viper', 'sidewinder', 'cobra']</code> kodu ile indeks sırasını değiştirip ardında 0. ve 2. indekste kayıtlı satırları gizle, sadece 1. indekste kayıtlı satırını göster demiş olduk. Satır sırası değiştiği için 1. indeksteki satır <strong>sidewinder</strong> oldu ve bu satıra ait bilgiler ekrana yazdırıldı.</p>
-<h4>Index Fonksiyonu (df.reindex ile aynı davranış)</h4>
+<h3>Index Fonksiyonu (df.reindex ile aynı davranış)</h3>
 <p><code>Index</code> metodu, veri çerçevesindeki index isimlerine göre Sıralama ve satır seçimi yapmamızı sağlar. <code>name</code> parametresi ise, indeks başlığı olarak kullanacağımız değeri atamamıza yarar. Önce Veri Çerçevemize göz atalım;</p>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </code></pre></div>
@@ -864,22 +852,12 @@
 <table>
 <thead>
 <tr>
-<th></th>
+<th>Baslik</th>
 <th>max_speed</th>
 <th>shield</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td>Baslik</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>---</td>
-<td>---</td>
-<td>---</td>
-</tr>
 <tr>
 <td>viper</td>
 <td>4</td>
@@ -892,7 +870,7 @@
 </tr>
 </tbody>
 </table>
-<h4>Koşullu Satır Seçimi</h4>
+<h2>Koşullu Satır Seçimi</h2>
 <p>Veri çerçevemizde belirttiğimiz koşullara uyan satırları seçmek istersek, bunu Python operatörleri ile rahatlıkla gerçekleştirebiliriz. <strong>shield</strong> sütununda 6'dan büyük değerleri barındıran satırları seçmek istediğimizi varsayalım ve buna uygun kodu yazıp çalıştıralım;</p>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;shield&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">6</span><span class="p">])</span>
 </code></pre></div>
@@ -913,7 +891,7 @@
 </tr>
 </tbody>
 </table>
-<h4>Koşullu Sütun seçimi</h4>
+<h2>Koşullu Sütun seçimi</h2>
 <p>Veri çerçevemizde belirttiğimiz koşullara uyan sütunları seçmek istersek, benzer kodu kullanabiliriz. Örneğin <strong>shield</strong> sütununda 6'dan büyük değerleri barındıran satırları ve bu satırların sadece <strong>max_speed</strong> sütununu seçmek istediğimizi varsayalım. Bunun için aşağıdaki kodu yazıp çalıştıralım;</p>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;shield&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">6</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;max_speed&#39;</span><span class="p">]])</span>
 </code></pre></div>
@@ -932,7 +910,7 @@
 </tr>
 </tbody>
 </table>
-<h4>lambda() Fonksiyonu ile Satır Seçimi</h4>
+<h3>lambda() Fonksiyonu ile Satır Seçimi</h3>
 <p><code>lambda</code> fonksiyonu ile belirteceğimiz koşulu sağlayan satırı seçmek için aşağıdaki kod mantığını kullanabiliriz. Örneğin <strong>shield</strong> satırında <strong>8</strong>'e eşit değer barındıran satırları seçelim.</p>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;shield&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">8</span><span class="p">])</span>
 </code></pre></div>
@@ -1004,22 +982,12 @@ Bunları da örneklerle görelim.</p>
 <table>
 <thead>
 <tr>
-<th></th>
+<th>Film_Adı</th>
 <th>Yıl</th>
 <th>Puan</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td>Film_Adı</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>---</td>
-<td>---</td>
-<td>---</td>
-</tr>
 <tr>
 <td>The Shawshank Redemption</td>
 <td>1994</td>
@@ -1124,7 +1092,7 @@ Bunları da örneklerle görelim.</p>
 </tr>
 </tbody>
 </table>
-<h4>Belirtilen satır/sütun çiftinde değer alın</h4>
+<h3>Belirtilen satır/sütun çiftinde değer alın</h3>
 <p>Satır/sütun etiket çifti belirterek tek bir değere erişmek isteyelim.
  Bu işlem, Excel ya da Calc uygulamalarındaki satır ve sütun değerlerinin kesişimindeki hücre değerine ulaşmak ile aynı mantığa sahip.</p>
 <p>Veri çerçevemizdeki <strong>4.</strong> indeks ile <strong>B</strong> sütununun kesişim değerini seçelim.</p>
@@ -1134,7 +1102,7 @@ Bunları da örneklerle görelim.</p>
 <div class="highlight"><pre><span></span><code><span class="mi">2</span>
 </code></pre></div>
 
-<h4>Bir Seri içinden değer elde etmek</h4>
+<h3>Bir Seri içinden değer elde etmek</h3>
 <p>Malumunuz, veri çerçevesinden sadece bir satır seçtiğimiz zaman sonuç olarak bir seri elde etmiş oluyoruz, çünkü Seriler tek boyutlu dizilerdir. Bu seri içerisinden bir değer almak istersen aşağıdaki şekilde kod yazmamız yeterli olacaktır.</p>
 <p>Örneğin Öncelikle veri çerçevemizdeki <strong>5.</strong> indekse ait satırı seçip ardıdan <strong>B</strong> sütununun değerini alalım;</p>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="s1">&#39;B&#39;</span><span class="p">])</span>
@@ -1146,7 +1114,7 @@ Bunları da örneklerle görelim.</p>
 <h3>iat[] Metodu</h3>
 <p><code>iat[]</code> metodu, satır/sütun çiftinde tamsayı belirtilerek <strong>tek bir değere</strong> erişim sağlamak için kullanılır. ve <code>iloc[]</code> metoduna benzerdir, her iki metot ta tamsayı tabanlı aramalar sağlar. <code>at[]</code> metodunda <strong>etiket</strong> kullanırken <code>iat[]</code> metodunda <strong>indeks değeri olan tamsayı</strong> kullanılır. <code>loc[]</code> ve <code>iloc[]</code> metoduna benzer mantık.</p>
 <p>Bir Veri çerçevesi (DataFrame) veya Seride (Series) <strong>yalnızca tek bir değer</strong> almanız veya ayarlamanız gerekiyorsa <code>iat[]</code> metodunu kullanın.</p>
-<h4>IndexError (İndeksHatası)</h4>
+<h3>IndexError (İndeksHatası)</h3>
 <p><code>iat[]</code> metoduna parametre olarak yazılan <strong>tamsayı değeri</strong>, Veri çerçevesi ya da Seri sınırlarının dışında bulunuyorsa <code>IndexError</code> hatası alınır.</p>
 <p><code>iat[]</code> metodunun <code>iloc[]</code> metoduna benzer şekilde kullanıldığını ifade ettik. O nedenle konuyu uzun uzun açıklamaya gerek görmüyorum. Sadece bir kaç örnek kod inceleyerek konuyu kapatacağım.<br>
 Örnek uygulamalar için bir veri çerçevesi oluşturarak devam edelim;</p>
@@ -1185,7 +1153,7 @@ Bunları da örneklerle görelim.</p>
 </tr>
 </tbody>
 </table>
-<h4>Belirtilen satır/sütun çiftinde değer alın</h4>
+<h3>Belirtilen satır/sütun çiftinde değer alın</h3>
 <p>Satır/sütun değer çifti belirterek tek bir değere erişmek isteyelim. 
 Bu işlem, Excel ya da Calc uygulamalarındaki satır ve sütun değerlerinin kesişimindeki hücre değerine ulaşmak ile aynı mantığa sahip.</p>
 <p>Veri çerçevemizde satırın 1 numaralı indeksi ile sütunun 2 numaralı indeksinin kesişim değerini seçelim. (İndeks değeri 0'dan başladığı için <strong>2</strong> nolu indeks <strong>C</strong> sütun etiketine tekabül ediyor.)</p>
@@ -1195,7 +1163,7 @@ Bu işlem, Excel ya da Calc uygulamalarındaki satır ve sütun değerlerinin ke
 <div class="highlight"><pre><span></span><code><span class="mi">1</span>
 </code></pre></div>
 
-<h4>Bir Seri içinden değer elde etmek</h4>
+<h3>Bir Seri içinden değer elde etmek</h3>
 <p>Bir seri içerisinden bir değer almak istersen aşağıdaki şekilde kod yazmamız yeterli olacaktır.</p>
 <p>Örneğin Öncelikle veri çerçevemizdeki <strong>0.</strong> indekse ait satırı seçip ardıdan <strong>1.</strong> indekse sahip (B) sütununun değerini alalım;</p>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">iat</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
