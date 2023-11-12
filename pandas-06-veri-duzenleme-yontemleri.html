@@ -2028,7 +2028,7 @@ Bunun için <strong>drop()</strong> metodu kullanılıyor.</p>
 </tr>
 </tbody>
 </table>
-<p>Veri çerçevemizi incelediğimizde 2. ve 10. satırlardaki ile 4. ve 11. satırlardaki verilerin aynı olduğunu görüyoruz. Bu fazla verilerden kurtulalım.</p>
+<p>Veri çerçevemizi incelediğimizde 1. ve 10. indeksli satırlardaki ile 4. ve 11. indeksli satırlardaki verilerin aynı olduğunu görüyoruz. Bu fazla verilerden kurtulalım.</p>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">())</span>
 </code></pre></div>
 
@@ -3540,7 +3540,7 @@ birleşimini ya da kesişimini de alabiliriz. <strong>how</strong> parametresi, 
 <li><code>inner</code></li>
 </ul>
 <p>Şimdi bu seçenekleri sıra ile inceleyelim.</p>
-<p><img alt="join_merge" src="https://mhalil.github.io/images/python/join_merge.png"></p>
+<p><img alt="join_merge" src="../../images/python/pandas/join_merge.png"></p>
 <h3>left join</h3>
 <p><code>join()</code> metodunun, <code>how</code> parametresi almadan kullanıldığında varsayılan olarak <strong>left join</strong> (<code>how = "left"</code>) değerini aldığından bahsetmiştik. Bu durumda <strong>Sol tarafta yazılan veri çerçevesindeki tüm değerler alınır, bu çerçevedeki indeks değerleri sağ tarafta yazılan veri çerçevesinde varsa, bu değerlere birleştirilir</strong>. Soldaki indeks değeri sağdaki veri çerçeveside yoksa o halde ilgili satır ve sütunlara eksik veri mahiyetinde <strong>NaN</strong> (Not a Number) değeri atanır.<br>
 <code>how = "left"</code> kodunu eklesek te eklemesekte aynı sonucu elde ederiz. Ağaşıdaki kodları ayrı ayrı çalıştırıp, göreabilirsiniz.</p>
