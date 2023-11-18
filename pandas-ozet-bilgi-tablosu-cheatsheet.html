@@ -363,7 +363,7 @@ Başvuru Kılavuzu / Özet Bilgi Tablosunun (CheatSheet) <strong>PDF uzantılı<
 </tr>
 </tbody>
 </table>
-<h2>VERİ ÇERÇEVESİNİ DÜZENLE</h2>
+<h2>VERİ ÇERÇEVESİ DÜZENLEME YÖNTEMLERİ</h2>
 <table>
 <thead>
 <tr>
@@ -385,7 +385,7 @@ Başvuru Kılavuzu / Özet Bilgi Tablosunun (CheatSheet) <strong>PDF uzantılı<
 <td>Veri Çerçevesi (DataFrame) oluştururken, sadece <strong>istediğimiz sütunları kullanmak</strong> istediğimizde <code>usecols</code> parametresini kullanmalıyız. Değer olarak <strong>sütun adı</strong> da yazılabilir. <strong>Ör.</strong> <code>df = pd.read_excel(“dosya_adı.xls”, usecols=[“Sütun1”, “Sütun5”, Sütun9”]</code></td>
 </tr>
 <tr>
-<td>* <code>read_excel(usecols=)</code></td>
+<td><code>read_excel(usecols=)</code></td>
 <td><code>usecols</code> parametresine değer olarak <strong>sütun indisi</strong> de yazılabilir. <strong>Ör.</strong> <code>df = pd.read_excel(“dosya_adı.xls”, usecols = [2,3,8]</code></td>
 </tr>
 <tr>
@@ -430,7 +430,7 @@ Başvuru Kılavuzu / Özet Bilgi Tablosunun (CheatSheet) <strong>PDF uzantılı<
 </tr>
 </tbody>
 </table>
-<h2>VERİ ÇERÇEVELERİNİ BİRLEŞTİR</h2>
+<h2>VERİ ÇERÇEVESİ BİRLEŞTİRME YÖNTEMLERİ</h2>
 <table>
 <thead>
 <tr>
@@ -473,6 +473,99 @@ Başvuru Kılavuzu / Özet Bilgi Tablosunun (CheatSheet) <strong>PDF uzantılı<
 </tr>
 <tr>
 <td><code>merge()</code></td>
+<td><code>join()</code> fonksiyonuna benzer ancak bazı farklı özellikleri vardır. Veri Çerçevesi veya adlandırılmış Seri nesneleri <strong>veritabanı stili birleştirme yöntemi</strong> ile (<em>SQL’de bulunan inner join, outer join … ‘e benzer</em>) birleştirmek için <code>merge()</code> fonksiyonunu kullanılabilir. <strong>Ör.</strong> <code>DataFrame.merge(right, how='inner', on=None, left_on=None, right_on=None, left_index=False, right_index=False, sort=False, suffixes=('_x', '_y'), copy=True, indicator=False, validate=None)</code></td>
+</tr>
+<tr>
+<td>* <code>merge(on=)</code></td>
+<td><code>on</code>parametresi, Veri Çerçevelerinin <strong>hangi sütun baz alınarak birleştirileceğini</strong> belirteceğimiz parametredir. <strong>Ör.</strong> <code>pd.merge(vize, final, on = "Ogrenci")</code></td>
+</tr>
+<tr>
+<td>* <code>merge(how=)</code></td>
+<td><code>how</code> parametresi, veri çerçevelerini birleştirirken <strong>matematikteki Kümeler konusuna benzer seçenekler sunar</strong>. <code>merge()</code>fonksiyonunda <code>how</code> parametresi kullanılmadığı taktirde varsayılan olarak <code>inner</code> seçeneği belirtilmiş olur ve birleştirilecek veri çerçevelerinin <strong>sadece ortak değerleri alınarak birleştirme</strong> işlemi gerçekleştirilir. <strong>Ör.</strong> <code>pd.merge(vize, final, on = "Ogrenci", how = "inner")</code> <br><code>how</code> Parametresi için kullanılabilecek seçenekler:<br/><br/>    <strong>inner</strong> (varsayılan)<br/>    <strong>outer</strong><br/>    <strong>left</strong><br/>    <strong>right</strong><br/>    <strong>cross</strong></td>
+</tr>
+<tr>
+<td>** <code>merge(how="inner")</code></td>
+<td>İki veri çerçevesinde de bulunan <strong>ortak değerleri birleştirir</strong>. <code>how = "inner"</code> ibaresini yazsak ta yazmasak ta aynı sonucu elde ederiz. <strong>Ör.</strong> <code>pd.merge(vize, final, on = "Ogrenci", how = "inner")</code></td>
+</tr>
+<tr>
+<td>** <code>merge(how="outer")</code></td>
+<td>İki veri çerçevesinde bulunan <strong>tüm değerler birleştirilir</strong>. <strong>Sol tarafta yazılan</strong> veri çerçevesindeki değerler <strong>temel alınır</strong>. İki veri çerçevesinde bulunan ortak değerler korunur, aksi halde eksik değerler için <strong>NaN</strong> değeri atanır. <strong>Ör.</strong> <code>pd.merge(vize, final, on = "Ogrenci", how = "outer")</code></td>
+</tr>
+<tr>
+<td>** <code>merge(how="left")</code></td>
+<td>Yapılan birleştirme işleminde, <strong>sol tarafta yazılan veri çerçevesinin tüm değerlerini alır ve sağ tarafta yazılan veri çerçevesindeki ortak değerleri tabloya ekler.</strong> Solda yazılan veri çerçevesindeki değerlerin, sağda yazılan veri çerçevesinde karşılığı yoksa, ilgili sütuna <strong>NaN</strong> değeri atanır. Sağ tarafta yazılan veri çerçevesinin, sol tarafta yazılan veri çerçevesinde karşılığı yoksa, bu değerler yok sayılır, birleştirme işlemine dahil edilmez. <strong>Ör.</strong> <code>pd.merge(vize, final, on = "Ogrenci", how = "left")</code></td>
+</tr>
+<tr>
+<td>** <code>merge(how="right")</code></td>
+<td>Yapılan birleştirme işleminde, <strong>sağ tarafta yazılan veri çerçevesinin tüm değerlerini alır ve sol tarafta yazılan veri çerçevesindeki ortak değerleri tabloya ekler.</strong> Sağda yazılan veri çerçevesindeki değerlerin, solda yazılan veri çerçevesinde karşılığı yoksa, ilgili sütuna <strong>NaN</strong> değeri atanır. Sol tarafta yazılan veri çerçevesinin, sağ tarafta yazılan veri çerçevesinde karşılığı yoksa, bu değerler yok sayılır, birleştirme işlemine dahil edilmez. <strong>Ör.</strong> <code>pd.merge(vize, final, on = "Ogrenci", how = "right")</code></td>
+</tr>
+<tr>
+<td>** <code>merge(how="cross")</code></td>
+<td><code>cross</code> seçeneği sonucunda, <strong>kartezyen çarpımı yöntemi ile birleştirme</strong> yapılır. <strong>Ör.</strong> <code>pd.merge(veri1, veri2, how="cross")</code></td>
+</tr>
+<tr>
+<td>** <code>merge(left_on=)</code></td>
+<td><strong>Soldaki</strong> Veri Çerçevesi üzerinde <strong>birleştirmenin hangi düzeyde yapılacağını belirtmek</strong> için kullanılır. Sütun başlıklarının sonuna varsayılan <strong>_x</strong> ve <strong>_y</strong> sonekleri eklenir.<br/><code>left_on</code> parametresi, etiket veya liste ya da dizi benzeri veri alır. <strong>Ör.</strong> <code>df1.merge(df2, left_on='Manav_1', right_on='Manav_2')</code></td>
+</tr>
+<tr>
+<td>** <code>merge(right_on=)</code></td>
+<td><strong>Sağdaki</strong> Veri Çerçevesi üzerinde <strong>birleştirmenin hangi düzeyde yapılacağını belirtmek</strong> için kullanılır. Sütun başlıklarının sonuna varsayılan <strong>_x</strong> ve <strong>_y</strong> sonekleri eklenir.<br/><code>right_on</code> parametresi, etiket veya liste ya da dizi benzeri veri alır. <strong>Ör.</strong> <code>df1.merge(df2, right_on='Manav_1', left_on='Manav_2')</code></td>
+</tr>
+<tr>
+<td>** <code>merge(suffixes=)</code></td>
+<td><code>merge()</code>fonksiyonu ile birleştirme işlemi sonucunda, sütun başlıklarının sonuna eklenen <strong>_x</strong> ve <strong>_y</strong> değerini değiştirmek ve sütun başlıklarının sonuna, istediğimiz değeri eklemek için <code>suffixes</code> parametresini kullanırız. <strong>Ör.</strong> <code>df1.merge(df2, left_on='Manav_1', right_on='Manav_2',            suffixes=("_bir", "_iki"))</code></td>
+</tr>
+</tbody>
+</table>
+<h2>VERİ SIRALAMA YÖNTEMLERİ</h2>
+<table>
+<thead>
+<tr>
+<th><strong>Fonksiyon / Metot / Parametre</strong></th>
+<th><strong>Açıklama</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2>VERİ FİLTRELEME YÖNTEMLERİ</h2>
+<table>
+<thead>
+<tr>
+<th><strong>Fonksiyon / Metot / Parametre</strong></th>
+<th><strong>Açıklama</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2>VERİ GRUPLAMA YÖNTEMLERİ</h2>
+<table>
+<thead>
+<tr>
+<th><strong>Fonksiyon / Metot / Parametre</strong></th>
+<th><strong>Açıklama</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
 <td></td>
 </tr>
 <tr>
