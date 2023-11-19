@@ -132,9 +132,9 @@
 └─────────┴─────────────────────┴───────┘
 </code></pre></div>
 
-<h3>Verileri Görüntülemek</h3>
+<h2>Verileri Görüntülemek</h2>
 <p>Bu  bölüm, bir <code>DataFrame</code>'deki verileri görüntülemeye odaklanır. Yukarıdaki örnekteki oluşturulan VeriÇerçevesini (DataFrame'i) başlangıç ​​noktası olarak kullanacağız ve aşağıda anlatılan komutlar / metotlar, bu VeriÇerçevesi ve içeriğindeki veriler kullanılarak anlatılacak.</p>
-<h4>Head</h4>
+<h2>head</h2>
 <p><code>head</code> metodu varsayılan olarak bir <code>VeriÇerçevesi (DataFrame)</code>'in <strong>ilk 5 satırını</strong> görüntüler.  İsterseniz, görmek istediğiniz satır sayısını metod içinde parametre olarak belirtebilirsiniz (ör. <code>df.head(10)</code>).</p>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
 </code></pre></div>
@@ -151,7 +151,7 @@
 └─────────┴─────────────────────┴───────┘
 </code></pre></div>
 
-<h4>Tail</h4>
+<h2>tail</h2>
 <p><code>tail</code> metodu, bir <code>VeriÇerçevesi (DataFrame)</code>'in <strong>son 5 satırını</strong> gösterir. <code>head</code> metoduna benzer şekilde görmek istediğiniz satır sayısını da belirtebilirsiniz. (ör. <code>df.tail(8)</code>)</p>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
 </code></pre></div>
@@ -168,7 +168,7 @@
 └─────────┴─────────────────────┴───────┘
 </code></pre></div>
 
-<h4>Sample</h4>
+<h2>sample</h2>
 <p>VeriÇerçevenizin (DataFrame'inizin) verileri hakkında bir izlenim edinmek istiyorsanız, <code>sample</code> metodunu da kullanabilirsiniz. <code>sample</code> metodu ile, <code>DataFrame</code>'den <code>n</code> sayıda rasgele satır alırsınız. Bu metodu, <code>random</code> modülündeki <code>sample</code> metoduna benzetebilirsiniz.</p>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
 </code></pre></div>
@@ -184,7 +184,7 @@
 └─────────┴─────────────────────┴───────┘
 </code></pre></div>
 
-<h4>Describe</h4>
+<h2>describe</h2>
 <p><code>Describe</code> metodu, VeriÇerçevenizin (DataFrame'inizin) özet istatistiklerini döndürür. VeriÇerçevenizde sayısal değerler varsa, bu metot size birkaç hızlı istatistik bilgisi sağlayacaktır. <code>Pandas</code>kütüphanesinin <code>describe</code> metodu gibi düşünebilirsiniz.</p>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
 </code></pre></div>
@@ -213,7 +213,7 @@
 <p><strong>std</strong> : sütunlardaki verilerin standart sapmasını,</p>
 <p><strong>min</strong>: sütunlardaki verilerin en küçük değerini</p>
 <p><strong>max</strong> : sütunlardaki verilerin en büyük değerini,</p>
-<p><strong>median</strong> : sütunlardaki verilerin Ortanca medyanını,</p>
+<p><strong>median</strong> : sütunlardaki verilerin ortanca medyanını,</p>
 <p><strong>%25</strong> : sütunlardaki verilerin medyanın alt çeyreğini (dörttebirliğini),</p>
 <p><strong>%75</strong> : sütunlardaki verilerin medyanın üst çeyreğini (dörttebirliğini) tanımlar</p>
 <table>

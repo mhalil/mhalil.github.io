@@ -111,9 +111,9 @@
 └──────┴───────┴──────────┴────────┘
 </code></pre></div>
 
-<h2>Select</h2>
-<p><code>select</code> bağlamı ile seçim yapılırken, ifadeler, sütunlar üzerinden uygulanır. Yani Sütunlar baz alınarak seçim yapılır. Bu bağlamdaki ifadeler, tümü aynı uzunlukta veya 1 birim uzunluğunda olan Serileri (<code>series</code>) üretmelidir. Bu şu demek, select bağlamı sonrası, seçim yapılan veri çerçevesinin uzunluğuna (satır sayısına) eşit yeni seri(ler) üretilir.</p>
-<p><code>DataFrame</code>'in  yüksekliğine (satır sayısın) uyması için 1 birim uzunluğunda bir Seri (<code>series</code>) yayınlanacaktır. <code>select</code> bağlamı ile bir seçimin kümeleri, ifade kombinasyonları veya hazır değerleri olan yeni sütunlar üretebileceğini unutmayın.</p>
+<h2>select</h2>
+<p><code>select</code> bağlamı ile seçim yapılırken, ifadeler, sütunlar üzerinden uygulanır. Yani Sütunlar baz alınarak seçim yapılır. Bu bağlamdaki ifadeler, tümü aynı uzunlukta veya 1 birim uzunluğunda olan Serileri (<code>series</code>) üretmelidir. Bu şu demek, <code>select</code> bağlamı sonrası, seçim yapılan veri çerçevesinin uzunluğuna (satır sayısına) eşit yeni seri(ler) üretilir.</p>
+<p><code>DataFrame</code>'in  yüksekliğine (satır sayısına) uyması için 1 birim uzunluğunda bir Seri (<code>series</code>) yayınlanacaktır. <code>select</code> bağlamı ile bir seçimin kümeleri, ifade kombinasyonları veya hazır değerleri olan yeni sütunlar üretebileceğini unutmayın.</p>
 <div class="highlight"><pre><span></span><code><span class="n">out</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
     <span class="p">[</span>
         <span class="n">pl</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s2">&quot;nrs&quot;</span><span class="p">),</span>
