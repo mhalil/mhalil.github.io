@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Polars - 0303 Bağlamlar" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/polars-0303-baglamlar.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Polars - 0303 Bağlamlar</h1>
+	<span class="post-date">Prş 30 Haziran 2022</span>
+	<h1>Bağlamlar</h1>
+<p>Polars,  verileri dönüştürmek için kendi EtkiAlanına Özgü Dil (DSL - Domain Specific Language) geliştirmiştir. Dilin kullanımı çok kolaydır ve insan tarafından okunabilen karmaşık sorgulara izin verir. Dilin iki temel bileşeni,  Bağlamlar ve İfadelerdir (sonraki bölümde ele alacağız).</p>
+<p>Adından da anlaşılacağı gibi bir bağlam, bir ifadenin değerlendirilmesi gereken bağlamı ifade eder. Üç ana bağlam vardır. (<em>Bu  kılavuzda daha sonra ele alınacak olan ek Liste ve SQL bağlamları vardır. Ancak basit olması için bunları şimdilik kapsam dışında bırakıyoruz.</em> ):</p>
+<ol>
+<li>Seçim: <code>df.select([..])</code>, <code>df.with_columns([..])</code></li>
+<li>Filtreleme: <code>df.filter()</code></li>
+<li>Gruplama / Kümeleme: <code>df.groupby(..).agg([..])</code></li>
+</ol>
+<p>Örnekler, aşağıdaki DataFrame üzerinden gerçekleştirilir:</p>
+<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;nrs&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+        <span class="s2">&quot;names&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span> <span class="s2">&quot;ham&quot;</span><span class="p">,</span> <span class="s2">&quot;spam&quot;</span><span class="p">,</span> <span class="s2">&quot;egg&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span>
+        <span class="s2">&quot;random&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span>
+        <span class="s2">&quot;groups&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">],</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="nv">shape</span>:<span class="w"> </span><span class="ss">(</span><span class="mi">5</span>,<span class="w"> </span><span class="mi">4</span><span class="ss">)</span>
+┌──────┬───────┬──────────┬────────┐
+│<span class="w"> </span><span class="nv">nrs</span><span class="w">  </span>┆<span class="w"> </span><span class="nv">names</span><span class="w"> </span>┆<span class="w"> </span><span class="k">random</span><span class="w">   </span>┆<span class="w"> </span><span class="nv">groups</span><span class="w"> </span>│
+│<span class="w"> </span><span class="o">---</span><span class="w">  </span>┆<span class="w"> </span><span class="o">---</span><span class="w">   </span>┆<span class="w"> </span><span class="o">---</span><span class="w">      </span>┆<span class="w"> </span><span class="o">---</span><span class="w">    </span>│
+│<span class="w"> </span><span class="nv">i64</span><span class="w">  </span>┆<span class="w"> </span><span class="nv">str</span><span class="w">   </span>┆<span class="w"> </span><span class="nv">f64</span><span class="w">      </span>┆<span class="w"> </span><span class="nv">str</span><span class="w">    </span>│
+╞══════╪═══════╪══════════╪════════╡
+│<span class="w"> </span><span class="mi">1</span><span class="w">    </span>┆<span class="w"> </span><span class="nv">foo</span><span class="w">   </span>┆<span class="w"> </span><span class="mi">0</span>.<span class="mi">154163</span><span class="w"> </span>┆<span class="w"> </span><span class="nv">A</span><span class="w">      </span>│
+│<span class="w"> </span><span class="mi">2</span><span class="w">    </span>┆<span class="w"> </span><span class="nv">ham</span><span class="w">   </span>┆<span class="w"> </span><span class="mi">0</span>.<span class="mi">74005</span><span class="w">  </span>┆<span class="w"> </span><span class="nv">A</span><span class="w">      </span>│
+│<span class="w"> </span><span class="mi">3</span><span class="w">    </span>┆<span class="w"> </span><span class="nv">spam</span><span class="w">  </span>┆<span class="w"> </span><span class="mi">0</span>.<span class="mi">263315</span><span class="w"> </span>┆<span class="w"> </span><span class="nv">B</span><span class="w">      </span>│
+│<span class="w"> </span><span class="nv">null</span><span class="w"> </span>┆<span class="w"> </span><span class="nv">egg</span><span class="w">   </span>┆<span class="w"> </span><span class="mi">0</span>.<span class="mi">533739</span><span class="w"> </span>┆<span class="w"> </span><span class="nv">C</span><span class="w">      </span>│
+│<span class="w"> </span><span class="mi">5</span><span class="w">    </span>┆<span class="w"> </span><span class="nv">null</span><span class="w">  </span>┆<span class="w"> </span><span class="mi">0</span>.<span class="mi">014575</span><span class="w"> </span>┆<span class="w"> </span><span class="nv">B</span><span class="w">      </span>│
+└──────┴───────┴──────────┴────────┘
+</code></pre></div>
+
+<h2>Select</h2>
+<p><code>select</code> bağlamı ile seçim yapılırken, ifadeler, sütunlar üzerinden uygulanır. Yani Sütunlar baz alınarak seçim yapılır. Bu bağlamdaki ifadeler, tümü aynı uzunlukta veya 1 birim uzunluğunda olan Serileri (<code>series</code>) üretmelidir. Bu şu demek, select bağlamı sonrası, seçim yapılan veri çerçevesinin uzunluğuna (satır sayısına) eşit yeni seri(ler) üretilir.</p>
+<p><code>DataFrame</code>'in  yüksekliğine (satır sayısın) uyması için 1 birim uzunluğunda bir Seri (<code>series</code>) yayınlanacaktır. <code>select</code> bağlamı ile bir seçimin kümeleri, ifade kombinasyonları veya hazır değerleri olan yeni sütunlar üretebileceğini unutmayın.</p>
+<div class="highlight"><pre><span></span><code><span class="n">out</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s2">&quot;nrs&quot;</span><span class="p">),</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;names&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">sort</span><span class="p">(),</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;names&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;first name&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s2">&quot;nrs&quot;</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;10xnrs&quot;</span><span class="p">),</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>shape: (5, 4)
+┌─────┬───────┬────────────┬────────┐
+│ nrs ┆ names ┆ first name ┆ 10xnrs │
+│ --- ┆ ---   ┆ ---        ┆ ---    │
+│ i64 ┆ str   ┆ str        ┆ f64    │
+╞═════╪═══════╪════════════╪════════╡
+│ 11  ┆ null  ┆ foo        ┆ 27.5   │
+│ 11  ┆ egg   ┆ foo        ┆ 27.5   │
+│ 11  ┆ foo   ┆ foo        ┆ 27.5   │
+│ 11  ┆ ham   ┆ foo        ┆ 27.5   │
+│ 11  ┆ spam  ┆ foo        ┆ 27.5   │
+└─────┴───────┴────────────┴────────┘
+</code></pre></div>
+
+<p><strong><em>Şimdi kodları satır satır açıklamaya çalışayım;</em></strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">pl</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s2">&quot;nrs&quot;</span><span class="p">),</span>
+</code></pre></div>
+
+<ul>
+<li><code>sum</code> metodu ile, "<strong>nrs</strong>" sütununda bulunan sayıların toplamını hesapla ve "<strong>nrs</strong>" sütununa yaz. Veri Çerçevesi 5 satırdan oluştuğu için elde edilen seri de 5 elemanlı olacak. Böylece her satıra aynı değer yazılacak.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;names&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">sort</span><span class="p">(),</span>
+</code></pre></div>
+
+<ul>
+<li>
+<p><code>col</code> metodu (column yani satır anlamına gelir) ile "<strong>names</strong>" isimli satırı seç, </p>
+</li>
+<li>
+<p><code>sort</code> metodu ile de değerleri alfabetik olarak sırala. Öncelik <code>null</code> yani boş değerlere verilir.</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;names&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;first name&quot;</span><span class="p">),</span>
+</code></pre></div>
+
+<ul>
+<li>
+<p><code>col</code> metodu ile "<strong>names</strong>" isimli satırı seç,</p>
+</li>
+<li>
+<p><code>first()</code> metodu ile ilk değeri al,</p>
+</li>
+<li>
+<p><code>alias()</code> metodu ile yeni sütuna "<strong>first name</strong>" başlığını / adını ver. (<strong>alias</strong> : takma ad, başka ad, sahte isim, namı diğer anlamlarına gelir) </p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">pl</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s2">&quot;nrs&quot;</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;10xnrs&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<ul>
+<li>
+<p><code>mean()</code>metodu ile "<strong>nrs</strong>" sütununun ortalamasını al [(1+2+3+5) / 4] (<strong>mean</strong> : "ortalama" anlamına gelir.)</p>
+</li>
+<li>
+<p><code>* 10</code> ile ortalama değeri 10 ile çarp,</p>
+</li>
+<li>
+<p><code>alias()</code> metodu ile yeni sütun ismini "<strong>10xnrs</strong>" olarak belirle.</p>
+</li>
+</ul>
+<p>Sorgudan  görebileceğiniz gibi, <code>select</code> bağlamı çok güçlüdür ve birbirinden 
+bağımsız (ve paralel olarak) rasgele ifadeler gerçekleştirmenize izin verir.</p>
+<p><code>select</code> ifadesine benzer, <code>with_columns</code> ifadesi de vardır. Temel fark, <code>with_columns</code>  bağlamı kullanıldığında veri çerçevesindeki <strong>orijinal sütunlar tutulur</strong>, yeni sütunlar veri çerçevesine eklenir, <code>select</code> bağlamı kullanıldığında ise <strong>orijinal sütunlar tutulmaz</strong>, yeni sütunlar eklenir.</p>
+<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">with_columns</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s2">&quot;nrs&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;nrs_sum&quot;</span><span class="p">),</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;random&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;count&quot;</span><span class="p">),</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>shape: (5, 6)
+┌──────┬───────┬──────────┬────────┬─────────┬───────┐
+│ nrs  ┆ names ┆ random   ┆ groups ┆ nrs_sum ┆ count │
+│ ---  ┆ ---   ┆ ---      ┆ ---    ┆ ---     ┆ ---   │
+│ i64  ┆ str   ┆ f64      ┆ str    ┆ i64     ┆ u32   │
+╞══════╪═══════╪══════════╪════════╪═════════╪═══════╡
+│ 1    ┆ foo   ┆ 0.154163 ┆ A      ┆ 11      ┆ 5     │
+│ 2    ┆ ham   ┆ 0.74005  ┆ A      ┆ 11      ┆ 5     │
+│ 3    ┆ spam  ┆ 0.263315 ┆ B      ┆ 11      ┆ 5     │
+│ null ┆ egg   ┆ 0.533739 ┆ C      ┆ 11      ┆ 5     │
+│ 5    ┆ null  ┆ 0.014575 ┆ B      ┆ 11      ┆ 5     │
+└──────┴───────┴──────────┴────────┴─────────┴───────┘
+</code></pre></div>
+
+<p><strong><em>Kodları açıklayalım</em></strong>;</p>
+<div class="highlight"><pre><span></span><code> <span class="n">pl</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s2">&quot;nrs&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;nrs_sum&quot;</span><span class="p">),</span>
+</code></pre></div>
+
+<ul>
+<li>
+<p><code>sum()</code> metodu ile "<strong>nrs</strong>" isimli sütunun toplamı alınır. (<strong>sum</strong>, toplam anlamına gelir)</p>
+</li>
+<li>
+<p><code>.alias()</code> metodu ile toplamı alınan sütunun değeri "<strong>nrs_sum</strong>" isimli yeni sütuna eklensin.</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;random&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;count&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<ul>
+<li>
+<p><code>col</code> metodu ile "<strong>random</strong>" isimli satırı seç,</p>
+</li>
+<li>
+<p><code>count()</code> metodu ile <strong>random</strong> sütununda kaç adet veri bulunduğunu tespit et,</p>
+</li>
+<li>
+<p><code>alias()</code> metodu ile, tespit edilen veri serisini "<strong>count</strong>" ismi ile yeni sütuna ekle,</p>
+</li>
+</ul>
+<h2>Filter</h2>
+<p><code>filter</code> bağlamında, mevcut veri çerçevesini, <code>Boolean</code> veri türü (<code>True / False</code>) olarak değerlendirilen keyfi ifadeye göre filtrelersiniz.</p>
+<div class="highlight"><pre><span></span><code><span class="n">out</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;nrs&quot;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>shape: (2, 6)
+┌─────┬───────┬──────────┬────────┬─────────┬───────┐
+│ nrs ┆ names ┆ random   ┆ groups ┆ nrs_sum ┆ count │
+│ --- ┆ ---   ┆ ---      ┆ ---    ┆ ---     ┆ ---   │
+│ i64 ┆ str   ┆ f64      ┆ str    ┆ i64     ┆ u32   │
+╞═════╪═══════╪══════════╪════════╪═════════╪═══════╡
+│ 3   ┆ spam  ┆ 0.263315 ┆ B      ┆ 11      ┆ 5     │
+│ 5   ┆ null  ┆ 0.014575 ┆ B      ┆ 11      ┆ 5     │
+└─────┴───────┴──────────┴────────┴─────────┴───────┘
+</code></pre></div>
+
+<p><strong><em>Kodları açıklayalım;</em></strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;nrs&quot;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+
+<ul>
+<li>
+<p><code>df.filter()</code> metodu ile df isimli veri çerçevesine (Data Frame'e) filtre uygula,</p>
+</li>
+<li>
+<p><code>col()</code> metou ile "<strong>nrs</strong>" isimli sütunu seç,</p>
+</li>
+<li>
+<p><code>&gt; 2</code> karşılaştırma operatörü ile, "<strong>nrs</strong>" isimli sütunda değeri 2'den büyük olanları seç (2'den büyük olanlar <code>True</code> değeri döndürür)</p>
+</li>
+</ul>
+<h2>Groupby / Aggregation</h2>
+<p><code>Groupby</code> bağlamında, ifadeler gruplar üzerinde çalışır ve bu nedenle farklı 
+uzunlukta sonuçlar verebilir (bir grubun birçok üyesi olabilir).</p>
+<div class="highlight"><pre><span></span><code><span class="n">out</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;groups&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s2">&quot;nrs&quot;</span><span class="p">),</span>  <span class="c1"># sum nrs by groups</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;random&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;count&quot;</span><span class="p">),</span>  <span class="c1"># count group members</span>
+        <span class="c1"># sum random where name != null</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;random&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;names&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_not_null</span><span class="p">())</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">suffix</span><span class="p">(</span><span class="s2">&quot;_sum&quot;</span><span class="p">),</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;names&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span><span class="o">.</span><span class="n">alias</span><span class="p">((</span><span class="s2">&quot;reversed names&quot;</span><span class="p">)),</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="nl">shape</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span>
+<span class="err">┌────────┬──────┬───────┬────────────┬────────────────┐</span>
+<span class="err">│</span><span class="w"> </span><span class="n">groups</span><span class="w"> </span><span class="err">┆</span><span class="w"> </span><span class="n">nrs</span><span class="w">  </span><span class="err">┆</span><span class="w"> </span><span class="nf">count</span><span class="w"> </span><span class="err">┆</span><span class="w"> </span><span class="n">random_sum</span><span class="w"> </span><span class="err">┆</span><span class="w"> </span><span class="n">reversed</span><span class="w"> </span><span class="k">names</span><span class="w"> </span><span class="err">│</span>
+<span class="err">│</span><span class="w"> </span><span class="o">---</span><span class="w">    </span><span class="err">┆</span><span class="w"> </span><span class="o">---</span><span class="w">  </span><span class="err">┆</span><span class="w"> </span><span class="o">---</span><span class="w">   </span><span class="err">┆</span><span class="w"> </span><span class="o">---</span><span class="w">        </span><span class="err">┆</span><span class="w"> </span><span class="o">---</span><span class="w">            </span><span class="err">│</span>
+<span class="err">│</span><span class="w"> </span><span class="nf">str</span><span class="w">    </span><span class="err">┆</span><span class="w"> </span><span class="n">i64</span><span class="w">  </span><span class="err">┆</span><span class="w"> </span><span class="n">u32</span><span class="w">   </span><span class="err">┆</span><span class="w"> </span><span class="n">f64</span><span class="w">        </span><span class="err">┆</span><span class="w"> </span><span class="n">list</span><span class="o">[</span><span class="n">str</span><span class="o">]</span><span class="w">      </span><span class="err">│</span>
+<span class="err">╞════════╪══════╪═══════╪════════════╪════════════════╡</span>
+<span class="err">│</span><span class="w"> </span><span class="n">B</span><span class="w">      </span><span class="err">┆</span><span class="w"> </span><span class="mi">8</span><span class="w">    </span><span class="err">┆</span><span class="w"> </span><span class="mi">2</span><span class="w">     </span><span class="err">┆</span><span class="w"> </span><span class="mf">0.263315</span><span class="w">   </span><span class="err">┆</span><span class="w"> </span><span class="o">[</span><span class="n">null, &quot;spam&quot;</span><span class="o">]</span><span class="w"> </span><span class="err">│</span>
+<span class="err">│</span><span class="w"> </span><span class="n">C</span><span class="w">      </span><span class="err">┆</span><span class="w"> </span><span class="k">null</span><span class="w"> </span><span class="err">┆</span><span class="w"> </span><span class="mi">1</span><span class="w">     </span><span class="err">┆</span><span class="w"> </span><span class="mf">0.533739</span><span class="w">   </span><span class="err">┆</span><span class="w"> </span><span class="o">[</span><span class="n">&quot;egg&quot;</span><span class="o">]</span><span class="w">        </span><span class="err">│</span>
+<span class="err">│</span><span class="w"> </span><span class="n">A</span><span class="w">      </span><span class="err">┆</span><span class="w"> </span><span class="mi">3</span><span class="w">    </span><span class="err">┆</span><span class="w"> </span><span class="mi">2</span><span class="w">     </span><span class="err">┆</span><span class="w"> </span><span class="mf">0.894213</span><span class="w">   </span><span class="err">┆</span><span class="w"> </span><span class="o">[</span><span class="n">&quot;ham&quot;, &quot;foo&quot;</span><span class="o">]</span><span class="w"> </span><span class="err">│</span>
+<span class="err">└────────┴──────┴───────┴────────────┴────────────────┘</span>
+</code></pre></div>
+
+<p><strong><em>Kodları açıklayalım;</em></strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;groups&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">()</span>
+</code></pre></div>
+
+<ul>
+<li>
+<p><code>groupby()</code> metodu ile <code>df</code> isimli veri çerçevesini, "<strong>groups</strong>" isimli (etiketi, başlıklı) sütuna göre grupla,</p>
+</li>
+<li>
+<p><code>.agg()</code>metodu ile, kodun devamında yazılan kriterlere göre <strong>kümeleme</strong> yap,</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">pl</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s2">&quot;nrs&quot;</span><span class="p">),</span>  <span class="c1"># sum nrs by groups</span>
+</code></pre></div>
+
+<ul>
+<li><code>sum()</code> metodu ile "<strong>nrs</strong>" sütunun değerlerini, gruplarına göre topla, (ör. <strong>"B"</strong> grubuna dahil "<strong>nrs</strong>" sütunu değerlerinin toplamı 3+5 = 8'dir)</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;random&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;count&quot;</span><span class="p">),</span>  <span class="c1"># count group members</span>
+</code></pre></div>
+
+<ul>
+<li>
+<p><code>col()</code> metou ile "<strong>random</strong>" isimli sütunu seç,</p>
+</li>
+<li>
+<p><code>count()</code> metodu ile <strong>random</strong> sütununda her grup için kaç adet veri bulunduğunu tespit et,</p>
+</li>
+<li>
+<p><code>alias()</code> metodu ile, tespit edilen değerleri "<strong>count</strong>" ismi ile yeni sütuna ekle,</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;random&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;names&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_not_null</span><span class="p">())</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">suffix</span><span class="p">(</span><span class="s2">&quot;_sum&quot;</span><span class="p">),</span>
+</code></pre></div>
+
+<ul>
+<li>
+<p><code>col()</code> metodu ile "<strong>random</strong>" isimli sütunu seç,</p>
+</li>
+<li>
+<p><code>filter()</code>  metodu ile <strong>random</strong> sütununa <strong>filtre</strong> uygula,</p>
+</li>
+<li>
+<p><code>col("names").is_not_null())</code> ile, "<strong>names</strong>" sütununda <strong>boş olmayan değerleri</strong> tespit et,</p>
+</li>
+<li>
+<p><code>sum()</code> ile boş olmadığı tespit edilen satırların "<strong>random</strong>" sütunu değerlerini topla,</p>
+</li>
+<li>
+<p><code>suffix()</code> metodu ile toplamı alınan "<strong>random</strong>" sütunun değerlerinin ekleneceği yeni sütunun isminin sonuna "<strong>_sum</strong>" ifadesini ekle.</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;names&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span><span class="o">.</span><span class="n">alias</span><span class="p">((</span><span class="s2">&quot;reversed names&quot;</span><span class="p">)),</span>
+</code></pre></div>
+
+<ul>
+<li>
+<p><code>col()</code> metodu ile "<strong>names</strong>" isimli sütunu seç,</p>
+</li>
+<li>
+<p><code>reverse()</code> metodu ile (aynı gruba sahip) "<strong>names</strong>" sütun isimlerini ters çevir yani Z'den A'ya doğru sırala, </p>
+</li>
+<li>
+<p><code>alias()</code> metodu ile sütun ismini "<strong>reversed names</strong>" olarak belirle,</p>
+</li>
+</ul>
+<p>Sonuçtan da görebileceğiniz gibi, tüm ifadeler <code>groupby</code> bağlamı tarafından 
+tanımlanan gruba uygulanır. Standart <code>groupby</code>'nin yanı sıra, <code>groupby_dynamic</code> ve <code>groupby_rolling</code> de <code>groupby</code> bağlamına giriştir.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">&lt;&lt; Önceki Bölüm</th>
+<th style="text-align: center;">Sonraki Bölüm &gt;&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><a href="polars-0302-veri-yapilari.html">Veri Yapıları</a></td>
+<td style="text-align: center;"><a href="polars-0304-ifadeler.html">İfadeler</a></td>
+</tr>
+</tbody>
+</table>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/polars.html">Polars</a></li>
+					<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+					<li><a href="/tag/modul.html">Modül</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>

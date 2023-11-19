@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Polars - 0302 Veri Yapıları" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/polars-0302-veri-yapilari.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Polars - 0302 Veri Yapıları</h1>
+	<span class="post-date">Prş 30 Haziran 2022</span>
+	<h1>Veri Yapıları</h1>
+<p><code>Polars</code> tarafından sağlanan temel veri yapıları <code>Series (Seriler)</code> ve <code>DataFrame (VeriÇerçeveleri)</code>'dir.</p>
+<h1>Series (Seriler)</h1>
+<p>Seriler, 1-boyutlu bir veri yapısıdır. Bir dizi içindeki tüm öğeler aynı <a href="polars-0301-veri-tipleri.html">Veri Türüne / Tipine</a> sahiptir. Aşağıdaki kod parçacığı, basit bir <code>Series</code> nesnesinin nasıl oluşturulacağını gösterir.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polars</span> <span class="k">as</span> <span class="nn">pl</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="nl">shape</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="mi">5</span><span class="p">,)</span>
+<span class="nl">Series</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;a&#39;</span><span class="w"> </span><span class="o">[</span><span class="n">i64</span><span class="o">]</span>
+<span class="o">[</span>
+<span class="n">    1</span>
+<span class="n">    2</span>
+<span class="n">    3</span>
+<span class="n">    4</span>
+<span class="n">    5</span>
+<span class="o">]</span>
+</code></pre></div>
+
+<h1>DataFrame (VeriÇerçevesi)</h1>
+<p>VeriÇerçevesi (DataFrame), bir <code>Seri (Series)</code> tarafından desteklenen 2-boyutlu bir veri yapısıdır ve bir <code>Series</code> koleksiyonunun (ör. liste) soyutlaması olarak görülebilir. Bir <code>DataFrame</code> üzerinde yürütülebilen işlemler, <code>SQL</code> benzeri bir sorguda  yapılanlara çok benzer. <code>GROUP BY</code>, <code>JOIN</code>, <code>PIVOT</code> yapabilir, aynı zamanda özel fonksiyonlar da tanımlayabilirsiniz.</p>
+<p>Aşağıda, Sütun bilgileri ve veri türleri / tipleri sırasıyla, Tamsayı (<code>integer</code>), Tarih (<code>datetime</code>), ve Ondalıklı Sayı (<code>float</code>)  olan bir VeriÇerçevesi (<code>DataFrame</code>) tanımlanıyor ve çıktısı gösterilyor.</p>
+<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;integer&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+        <span class="s2">&quot;date&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="n">datetime</span><span class="p">(</span><span class="mi">2022</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+            <span class="n">datetime</span><span class="p">(</span><span class="mi">2022</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+            <span class="n">datetime</span><span class="p">(</span><span class="mi">2022</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+            <span class="n">datetime</span><span class="p">(</span><span class="mi">2022</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+            <span class="n">datetime</span><span class="p">(</span><span class="mi">2022</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;float&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">4.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mf">6.0</span><span class="p">,</span> <span class="mf">7.0</span><span class="p">,</span> <span class="mf">8.0</span><span class="p">],</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>shape: (5, 3)
+┌─────────┬─────────────────────┬───────┐
+│ integer ┆ date                ┆ float │
+│ ---     ┆ ---                 ┆ ---   │
+│ i64     ┆ datetime[μs]        ┆ f64   │
+╞═════════╪═════════════════════╪═══════╡
+│ 1       ┆ 2022-01-01 00:00:00 ┆ 4.0   │
+│ 2       ┆ 2022-01-02 00:00:00 ┆ 5.0   │
+│ 3       ┆ 2022-01-03 00:00:00 ┆ 6.0   │
+│ 4       ┆ 2022-01-04 00:00:00 ┆ 7.0   │
+│ 5       ┆ 2022-01-05 00:00:00 ┆ 8.0   │
+└─────────┴─────────────────────┴───────┘
+</code></pre></div>
+
+<h3>Verileri Görüntülemek</h3>
+<p>Bu  bölüm, bir <code>DataFrame</code>'deki verileri görüntülemeye odaklanır. Yukarıdaki örnekteki oluşturulan VeriÇerçevesini (DataFrame'i) başlangıç ​​noktası olarak kullanacağız ve aşağıda anlatılan komutlar / metotlar, bu VeriÇerçevesi ve içeriğindeki veriler kullanılarak anlatılacak.</p>
+<h4>Head</h4>
+<p><code>head</code> metodu varsayılan olarak bir <code>VeriÇerçevesi (DataFrame)</code>'in <strong>ilk 5 satırını</strong> görüntüler.  İsterseniz, görmek istediğiniz satır sayısını metod içinde parametre olarak belirtebilirsiniz (ör. <code>df.head(10)</code>).</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>shape: (3, 3)
+┌─────────┬─────────────────────┬───────┐
+│ integer ┆ date                ┆ float │
+│ ---     ┆ ---                 ┆ ---   │
+│ i64     ┆ datetime[μs]        ┆ f64   │
+╞═════════╪═════════════════════╪═══════╡
+│ 1       ┆ 2022-01-01 00:00:00 ┆ 4.0   │
+│ 2       ┆ 2022-01-02 00:00:00 ┆ 5.0   │
+│ 3       ┆ 2022-01-03 00:00:00 ┆ 6.0   │
+└─────────┴─────────────────────┴───────┘
+</code></pre></div>
+
+<h4>Tail</h4>
+<p><code>tail</code> metodu, bir <code>VeriÇerçevesi (DataFrame)</code>'in <strong>son 5 satırını</strong> gösterir. <code>head</code> metoduna benzer şekilde görmek istediğiniz satır sayısını da belirtebilirsiniz. (ör. <code>df.tail(8)</code>)</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>shape: (3, 3)
+┌─────────┬─────────────────────┬───────┐
+│ integer ┆ date                ┆ float │
+│ ---     ┆ ---                 ┆ ---   │
+│ i64     ┆ datetime[μs]        ┆ f64   │
+╞═════════╪═════════════════════╪═══════╡
+│ 3       ┆ 2022-01-03 00:00:00 ┆ 6.0   │
+│ 4       ┆ 2022-01-04 00:00:00 ┆ 7.0   │
+│ 5       ┆ 2022-01-05 00:00:00 ┆ 8.0   │
+└─────────┴─────────────────────┴───────┘
+</code></pre></div>
+
+<h4>Sample</h4>
+<p>VeriÇerçevenizin (DataFrame'inizin) verileri hakkında bir izlenim edinmek istiyorsanız, <code>sample</code> metodunu da kullanabilirsiniz. <code>sample</code> metodu ile, <code>DataFrame</code>'den <code>n</code> sayıda rasgele satır alırsınız. Bu metodu, <code>random</code> modülündeki <code>sample</code> metoduna benzetebilirsiniz.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>shape: (2, 3)
+┌─────────┬─────────────────────┬───────┐
+│ integer ┆ date                ┆ float │
+│ ---     ┆ ---                 ┆ ---   │
+│ i64     ┆ datetime[μs]        ┆ f64   │
+╞═════════╪═════════════════════╪═══════╡
+│ 1       ┆ 2022-01-01 00:00:00 ┆ 4.0   │
+│ 5       ┆ 2022-01-05 00:00:00 ┆ 8.0   │
+└─────────┴─────────────────────┴───────┘
+</code></pre></div>
+
+<h4>Describe</h4>
+<p><code>Describe</code> metodu, VeriÇerçevenizin (DataFrame'inizin) özet istatistiklerini döndürür. VeriÇerçevenizde sayısal değerler varsa, bu metot size birkaç hızlı istatistik bilgisi sağlayacaktır. <code>Pandas</code>kütüphanesinin <code>describe</code> metodu gibi düşünebilirsiniz.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>shape: (9, 4)
+┌────────────┬──────────┬─────────────────────┬──────────┐
+│ describe   ┆ integer  ┆ date                ┆ float    │
+│ ---        ┆ ---      ┆ ---                 ┆ ---      │
+│ str        ┆ f64      ┆ str                 ┆ f64      │
+╞════════════╪══════════╪═════════════════════╪══════════╡
+│ count      ┆ 5.0      ┆ 5                   ┆ 5.0      │
+│ null_count ┆ 0.0      ┆ 0                   ┆ 0.0      │
+│ mean       ┆ 3.0      ┆ null                ┆ 6.0      │
+│ std        ┆ 1.581139 ┆ null                ┆ 1.581139 │
+│ min        ┆ 1.0      ┆ 2022-01-01 00:00:00 ┆ 4.0      │
+│ max        ┆ 5.0      ┆ 2022-01-05 00:00:00 ┆ 8.0      │
+│ median     ┆ 3.0      ┆ null                ┆ 6.0      │
+│ 25%        ┆ 2.0      ┆ null                ┆ 5.0      │
+│ 75%        ┆ 4.0      ┆ null                ┆ 7.0      │
+└────────────┴──────────┴─────────────────────┴──────────┘
+</code></pre></div>
+
+<p><strong>count</strong> : sütunlarda kaç adet veri olduğunu,</p>
+<p><strong>null_count</strong> : sütunlarda kaç adet kayıp veri olduğunu,</p>
+<p><strong>mean</strong> : sütunlardaki verilerin ortalamasını,</p>
+<p><strong>std</strong> : sütunlardaki verilerin standart sapmasını,</p>
+<p><strong>min</strong>: sütunlardaki verilerin en küçük değerini</p>
+<p><strong>max</strong> : sütunlardaki verilerin en büyük değerini,</p>
+<p><strong>median</strong> : sütunlardaki verilerin Ortanca medyanını,</p>
+<p><strong>%25</strong> : sütunlardaki verilerin medyanın alt çeyreğini (dörttebirliğini),</p>
+<p><strong>%75</strong> : sütunlardaki verilerin medyanın üst çeyreğini (dörttebirliğini) tanımlar</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">&lt;&lt; Önceki Bölüm</th>
+<th style="text-align: center;">Sonraki Bölüm &gt;&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><a href="polars-0301-veri-tipleri.html">Veri Tipleri</a></td>
+<td style="text-align: center;"><a href="polars-0303-baglamlar.html">Bağlamlar</a></td>
+</tr>
+</tbody>
+</table>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/polars.html">Polars</a></li>
+					<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+					<li><a href="/tag/modul.html">Modül</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Polars - 00 Giriş" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/polars-00-giris.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Polars - 00 Giriş</h1>
+	<span class="post-date">Paz 26 Haziran 2022</span>
+	<h1>Polars Notları</h1>
+<p><strong>Polars</strong> kütüphanesinin kullanımına dair öğrendiklerimi ve tercüme çalışmalarımı paylaştığım repo.</p>
+<p><img alt="polars" src="../../images/python/polars/polars_github_logo.svg"></p>
+<p><strong>Rust ve Python için Işık Hızında VeriÇerçevesi (DataFrame) Kütüphanesi.</strong></p>
+<h2>Polars Nedir?</h2>
+<p><code>Polars</code>, <code>Rust</code> programlama dilinde yazılmış ve temel olarak <code>Apache Arrow</code>’u kullanan bir <strong>DataFrame kütüphanesidir</strong>. Veri düzenleme alışkanlıklarını bilen <code>Polars</code>, okunabilir ve yüksek performanslı kod oluşturmanızı sağlayacak bir ifade dili kullanarak DataFrame'leri işlemek için tüm özellikleri içeren eksiksiz bir <code>Python API</code> 'ı sunar.</p>
+<h3>Apache Arrow Nedir?</h3>
+<p><code>Apache Arrow</code>, sütunlu verileri işleyen veri analitiği uygulamaları geliştirmek için dilden bağımsız bir yazılım çerçevesidir.</p>
+<h3>Polars Kütüphanesini Ne Zaman Kullanmalıyız?</h3>
+<p>Verimiz <code>Pandas</code> için çok büyük, <code>Spark</code> için çok küçük olduğunda <code>Polars</code>  kütüphanesi iyi bir çözüm olacaktır.</p>
+<h2>Polars - Python</h2>
+<p><code>Python</code> programlama diline aşina olduğum için, bu repoda paylaştığım örnekler,  <code>polar</code> kütüphanesinin <code>python</code> kodları içine dahil edildiği örnekler olacaktır.</p>
+<p><img alt="polars-pyton" src="../../images/python/polars/polars-logo-python.svg"></p>
+<h1>KONU BAŞLIKLARI</h1>
+<p><a href="polars-01-takdim.html">Takdim</a></p>
+<p><a href="polars-02-kurulum.html">Kurulum</a></p>
+<p><strong>Kavramlar</strong></p>
+<ul>
+<li><a href="polars-0301-veri-tipleri.html">Veri Tipleri</a></li>
+<li><a href="polars-0302-veri-yapilari.html">Veri Yapıları</a></li>
+<li><a href="polars-0303-baglamlar.html">Bağlamlar</a></li>
+<li><a href="polars-0304-ifadeler.html">İfadeler</a></li>
+<li>Tembel / İstekli API</li>
+<li>Akış API'sı</li>
+</ul>
+<p><strong>İfadeler</strong></p>
+<ul>
+<li>Temel Operatörler</li>
+<li>Fonksiyonlar</li>
+<li>Çevrim (Casting)</li>
+<li>Diziler (Strings)</li>
+<li>Kümeleme (# Aggregation)</li>
+<li>Kayıp Veri</li>
+<li>Pencere Fonksiyonları</li>
+<li>Katlamalar / Kıvrımlar (Folds)</li>
+<li>Listeler ve Diziler</li>
+<li>Kullanıcı Tanımlı Fonksiyonlar</li>
+<li>Numpy</li>
+</ul>
+<p><strong>Dönüşümler</strong></p>
+<ul>
+<li>Birleştirmeler (Joins)</li>
+<li>Birleştirmeler (Concatenation)</li>
+<li>Özet Tablolar (Pivots)</li>
+<li>Eritmeler (Melts)</li>
+<li>Zaman Serileri</li>
+<li>Ayrıştırma (Parsing)</li>
+<li>Filtreleme</li>
+<li>Gruplama</li>
+<li>Yeniden Örnekleme</li>
+<li>Zaman dilimleri</li>
+</ul>
+<p><strong>Tembel API</strong></p>
+<ul>
+<li>Kullanım</li>
+<li>Optimizasyon</li>
+<li>Şema</li>
+<li>Sorgu Planı</li>
+<li>Sorgu yürütme</li>
+</ul>
+<p><strong>IO (Girdi / Çıktı)</strong></p>
+<ul>
+<li>CSV</li>
+<li>Parquet</li>
+<li>JSON dosyaları</li>
+<li>Çoklu</li>
+<li>Veritabanları</li>
+<li>AWS</li>
+<li>Google BigQuery</li>
+</ul>
+<p><strong>SQL</strong></p>
+<ul>
+<li>Giriş</li>
+<li>SHOW TABLES (TABLOLARI GÖSTER)</li>
+<li>SELECT (SEÇİM / SEÇMEK)</li>
+<li>CREATE (OLUŞTUR)</li>
+<li>Ortak Tablo İfadeleri</li>
+</ul>
+<p><strong>Taşıma / Göç</strong></p>
+<ul>
+<li>Pandas'tan Gelenler</li>
+<li>Apache Spark'tan Gelenler</li>
+</ul>
+<p><strong>Çeşitli</strong></p>
+<ul>
+<li>Çoklu İşlem (Multiprocessing)</li>
+<li>Alternatifler</li>
+<li>Başvuru Kılavuzları</li>
+<li>Katkı</li>
+</ul>
+<h2>Kaynak:</h2>
+<p><a href="https://www.pola.rs/">Polars Kullanım Kılavuzu - Polars User Guide </a></p>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/polars.html">Polars</a></li>
+					<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+					<li><a href="/tag/modul.html">Modül</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>

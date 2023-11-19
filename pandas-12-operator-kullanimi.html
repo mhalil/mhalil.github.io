@@ -235,7 +235,43 @@ toplamını bulmak istersek ne yapmalıyız? <strong>sum()</strong> metodu bize 
 </code></pre></div>
 
 <p>Tahmin ettiğimiz gibi, iki kez <strong>sum()</strong> metodu kullanmak, tüm veri çerçevesinin toplamını elde etmemizi sağladı.</p>
-<h1>Toplama, Çıkarma, Çarpma ve Bölme İşlemleri</h1>
+<h2>mean() Metodu</h2>
+<p><strong>Her sütun için</strong> ortalama değer hesaplamak için <code>mean()</code> metodunu kullanabiliriz.</p>
+<div class="highlight"><pre><span></span><code><span class="n">basliksiz</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">Birler</span>      <span class="mf">5.833333</span>
+<span class="n">Onlar</span>      <span class="mf">46.666667</span>
+<span class="n">Yüzler</span>    <span class="mf">488.666667</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="n">float64</span>
+</code></pre></div>
+
+<p><strong>Her satır için</strong> ortalama değer hesaplamak için ise <code>axis = 1</code> parametresini ekleyin kodu çalıştırın;</p>
+<div class="highlight"><pre><span></span><code><span class="n">basliksiz</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mi">0</span>     <span class="mf">112.333333</span>
+<span class="mi">1</span>      <span class="mf">88.333333</span>
+<span class="mi">2</span>     <span class="mf">218.666667</span>
+<span class="mi">3</span>     <span class="mf">191.333333</span>
+<span class="mi">4</span>     <span class="mf">218.666667</span>
+<span class="mi">5</span>     <span class="mf">120.333333</span>
+<span class="mi">6</span>     <span class="mf">185.333333</span>
+<span class="mi">7</span>     <span class="mf">258.666667</span>
+<span class="mi">8</span>     <span class="mf">255.000000</span>
+<span class="mi">9</span>     <span class="mf">327.666667</span>
+<span class="mi">10</span>    <span class="mf">158.333333</span>
+<span class="mi">11</span>    <span class="mf">198.666667</span>
+<span class="mi">12</span>     <span class="mf">52.000000</span>
+<span class="mi">13</span>    <span class="mf">165.666667</span>
+<span class="mi">14</span>     <span class="mf">69.666667</span>
+<span class="mi">15</span>    <span class="mf">178.666667</span>
+<span class="mi">16</span>    <span class="mf">243.333333</span>
+<span class="mi">17</span>    <span class="mf">204.333333</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="n">float64</span>
+</code></pre></div>
+
+<h2>Toplama, Çıkarma, Çarpma ve Bölme İşlemleri</h2>
 <p>Veri çerçevesine yeni sütun ekleme konusunu işlerken buna benzer bir örnek uygulama yapmıştık. Sırayla işlemleri tek tek uygulayıp sonucu görelim.</p>
 <h2>Toplama Operatörü</h2>
 <p><strong>Birler + Onlar</strong> isimli sütun oluşturup, <strong>Birler</strong> ve <strong>Onlar</strong> Sütunlarındaki değerleri toplayıp yeni sütuna dahil edelim.</p>
@@ -931,11 +967,6 @@ toplamını bulmak istersek ne yapmalıyız? <strong>sum()</strong> metodu bize 
 </tr>
 </tbody>
 </table>
-<h2>Mean, ortalama alma/hesaplama</h2>
-<p>kare alma, karekok alma,
-Max, Min,
-Sin? Cos?</p>
-<p>...............</p>
 <h2>Mantıksal / Karşılaştırma Operatörleri</h2>
 <p>Bu konuya da diğer bölümlerde değinmiştik, Konu başlığı bu bölüme ait olduğu için tekrar anlatmakta farar görüyorum.</p>
 <p>Mantıksal Operatorler (Boolean), <strong>True (Doğru)</strong> ya da <strong>False (Yanlış)</strong> çıktı verirler. Veri çerçevemizdeki değer ya da metinlerin (string 

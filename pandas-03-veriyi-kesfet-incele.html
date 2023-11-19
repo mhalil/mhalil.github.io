@@ -357,7 +357,7 @@
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
 </code></pre></div>
 
-<div class="highlight"><pre><span></span><code><span class="nx">Index</span><span class="p">([</span><span class="err">&#39;</span><span class="nx">isim</span><span class="err">&#39;</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;</span><span class="nx">yaş</span><span class="err">&#39;</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;</span><span class="nx">iş</span><span class="o">-</span><span class="nx">meslek</span><span class="err">&#39;</span><span class="p">],</span><span class="w"> </span><span class="nx">dtype</span><span class="p">=</span><span class="err">&#39;</span><span class="nx">object</span><span class="err">&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">Index</span><span class="p">([</span><span class="s1">&#39;isim&#39;</span><span class="p">,</span> <span class="s1">&#39;yaş&#39;</span><span class="p">,</span> <span class="s1">&#39;iş-meslek&#39;</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;object&#39;</span><span class="p">)</span>
 </code></pre></div>
 
 <h3>len() Fonksiyonu</h3>
@@ -374,16 +374,16 @@
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="o">.</span><span class="n">info</span><span class="p">())</span>
 </code></pre></div>
 
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="kd">class</span><span class="w"> </span><span class="err">&#39;</span><span class="nx">pandas</span><span class="p">.</span><span class="nx">core</span><span class="p">.</span><span class="nx">frame</span><span class="p">.</span><span class="nx">DataFrame</span><span class="err">&#39;</span><span class="p">&gt;</span>
-<span class="nx">RangeIndex</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="nx">entries</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="mi">9</span>
-<span class="nx">Data</span><span class="w"> </span><span class="nx">columns</span><span class="w"> </span><span class="p">(</span><span class="nx">total</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="nx">columns</span><span class="p">):</span>
-<span class="w"> </span><span class="err">#</span><span class="w">   </span><span class="nx">Column</span><span class="w">     </span><span class="nx">Non</span><span class="o">-</span><span class="nx">Null</span><span class="w"> </span><span class="nx">Count</span><span class="w">  </span><span class="nx">Dtype</span><span class="w"> </span>
-<span class="o">---</span><span class="w">  </span><span class="o">------</span><span class="w">     </span><span class="o">--------------</span><span class="w">  </span><span class="o">-----</span><span class="w"> </span>
-<span class="w"> </span><span class="mi">0</span><span class="w">   </span><span class="nx">isim</span><span class="w">       </span><span class="mi">10</span><span class="w"> </span><span class="nx">non</span><span class="o">-</span><span class="nx">null</span><span class="w">     </span><span class="nx">object</span>
-<span class="w"> </span><span class="mi">1</span><span class="w">   </span><span class="nx">yaş</span><span class="w">        </span><span class="mi">10</span><span class="w"> </span><span class="nx">non</span><span class="o">-</span><span class="nx">null</span><span class="w">     </span><span class="nx">int64</span><span class="w"> </span>
-<span class="w"> </span><span class="mi">2</span><span class="w">   </span><span class="nx">iş</span><span class="o">-</span><span class="nx">meslek</span><span class="w">  </span><span class="mi">10</span><span class="w"> </span><span class="nx">non</span><span class="o">-</span><span class="nx">null</span><span class="w">     </span><span class="nx">object</span>
-<span class="nx">dtypes</span><span class="p">:</span><span class="w"> </span><span class="nx">int64</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="nx">object</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="nx">memory</span><span class="w"> </span><span class="nx">usage</span><span class="p">:</span><span class="w"> </span><span class="m m-Double">368.0</span><span class="o">+</span><span class="w"> </span><span class="nx">bytes</span>
+<div class="highlight"><pre><span></span><code><span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">DataFrame</span><span class="s1">&#39;&gt;</span>
+<span class="n">RangeIndex</span><span class="p">:</span> <span class="mi">10</span> <span class="n">entries</span><span class="p">,</span> <span class="mi">0</span> <span class="n">to</span> <span class="mi">9</span>
+<span class="n">Data</span> <span class="n">columns</span> <span class="p">(</span><span class="n">total</span> <span class="mi">3</span> <span class="n">columns</span><span class="p">):</span>
+ <span class="c1">#   Column     Non-Null Count  Dtype </span>
+<span class="o">---</span>  <span class="o">------</span>     <span class="o">--------------</span>  <span class="o">-----</span> 
+ <span class="mi">0</span>   <span class="n">isim</span>       <span class="mi">10</span> <span class="n">non</span><span class="o">-</span><span class="n">null</span>     <span class="nb">object</span>
+ <span class="mi">1</span>   <span class="n">yaş</span>        <span class="mi">10</span> <span class="n">non</span><span class="o">-</span><span class="n">null</span>     <span class="n">int64</span> 
+ <span class="mi">2</span>   <span class="n">iş</span><span class="o">-</span><span class="n">meslek</span>  <span class="mi">10</span> <span class="n">non</span><span class="o">-</span><span class="n">null</span>     <span class="nb">object</span>
+<span class="n">dtypes</span><span class="p">:</span> <span class="n">int64</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="nb">object</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">memory</span> <span class="n">usage</span><span class="p">:</span> <span class="mf">368.0</span><span class="o">+</span> <span class="nb">bytes</span>
 </code></pre></div>
 
 <p><u>Çıktıyı incelersek;</u><br>
@@ -400,10 +400,10 @@
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="o">.</span><span class="n">dtypes</span><span class="p">)</span>
 </code></pre></div>
 
-<div class="highlight"><pre><span></span><code><span class="nx">isim</span><span class="w">         </span><span class="nx">object</span>
-<span class="nx">yaş</span><span class="w">           </span><span class="nx">int64</span>
-<span class="nx">iş</span><span class="o">-</span><span class="nx">meslek</span><span class="w">    </span><span class="nx">object</span>
-<span class="nx">dtype</span><span class="p">:</span><span class="w"> </span><span class="nx">object</span>
+<div class="highlight"><pre><span></span><code><span class="n">isim</span>         <span class="nb">object</span>
+<span class="n">yaş</span>           <span class="n">int64</span>
+<span class="n">iş</span><span class="o">-</span><span class="n">meslek</span>    <span class="nb">object</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
 </code></pre></div>
 
 <h3>describe() Fonksiyonu</h3>
@@ -467,7 +467,7 @@
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </code></pre></div>
 
-<div class="highlight"><pre><span></span><code>(10, 3)
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 </code></pre></div>
 
 <h3>index Fonksiyonu</h3>
@@ -475,7 +475,7 @@
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
 </code></pre></div>
 
-<div class="highlight"><pre><span></span><code>RangeIndex(start=0, stop=10, step=1)
+<div class="highlight"><pre><span></span><code><span class="n">RangeIndex</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
 
 <p>Veri çerçevesi oluşturulurken indeks değerlerinin otomatik olarak belirlenmesi halinde, yukarıdaki şekilde çıktı alırız. Çıktıyı incelersek;</p>
@@ -492,25 +492,13 @@
 <table>
 <thead>
 <tr>
-<th></th>
+<th>Film_Adı</th>
 <th>Yıl</th>
 <th>Puan</th>
 <th>Oylayan_Kişi</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td>Film_Adı</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>---</td>
-<td>---</td>
-<td>---</td>
-<td>---</td>
-</tr>
 <tr>
 <td>The Shawshank Redemption</td>
 <td>1994</td>
@@ -546,17 +534,17 @@
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">imdb</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
 </code></pre></div>
 
-<div class="highlight"><pre><span></span><code><span class="nx">Index</span><span class="p">([</span><span class="err">&#39;</span><span class="nx">The</span><span class="w"> </span><span class="nx">Shawshank</span><span class="w"> </span><span class="nx">Redemption</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;</span><span class="nx">The</span><span class="w"> </span><span class="nx">Godfather</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span>
-<span class="w">       </span><span class="err">&#39;</span><span class="nx">The</span><span class="w"> </span><span class="nx">Godfather</span><span class="p">:</span><span class="w"> </span><span class="nx">Part</span><span class="w"> </span><span class="nx">II</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;</span><span class="nx">Pulp</span><span class="w"> </span><span class="nx">Fiction</span><span class="err">&#39;</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;</span><span class="nx">The</span><span class="w"> </span><span class="nx">Dark</span><span class="w"> </span><span class="nx">Knight</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span>
-<span class="w">       </span><span class="err">&#39;</span><span class="mi">12</span><span class="w"> </span><span class="nx">Angry</span><span class="w"> </span><span class="nx">Men</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;</span><span class="nx">Schindler</span><span class="err">&#39;</span><span class="nx">s</span><span class="w"> </span><span class="nx">List</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span>
-<span class="w">       </span><span class="err">&#39;</span><span class="nx">The</span><span class="w"> </span><span class="nx">Lord</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">Rings</span><span class="p">:</span><span class="w"> </span><span class="nx">The</span><span class="w"> </span><span class="nx">Return</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">King</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;</span><span class="nx">Fight</span><span class="w"> </span><span class="nx">Club</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span>
-<span class="w">       </span><span class="err">&#39;</span><span class="nx">Star</span><span class="w"> </span><span class="nx">Wars</span><span class="p">:</span><span class="w"> </span><span class="nx">Episode</span><span class="w"> </span><span class="nx">V</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">The</span><span class="w"> </span><span class="nx">Empire</span><span class="w"> </span><span class="nx">Strikes</span><span class="w"> </span><span class="nx">Back</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span>
-<span class="w">       </span><span class="o">...</span>
-<span class="w">       </span><span class="err">&#39;</span><span class="nx">The</span><span class="w"> </span><span class="nx">Artist</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;</span><span class="nx">Nausicaä</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">Valley</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">Wind</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span>
-<span class="w">       </span><span class="err">&#39;</span><span class="nx">Beauty</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">Beast</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;</span><span class="nx">Three</span><span class="w"> </span><span class="nx">Colors</span><span class="p">:</span><span class="w"> </span><span class="nx">Red</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;</span><span class="nx">Bringing</span><span class="w"> </span><span class="nx">Up</span><span class="w"> </span><span class="nx">Baby</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span>
-<span class="w">       </span><span class="err">&#39;</span><span class="nx">Mystic</span><span class="w"> </span><span class="nx">River</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;</span><span class="nx">In</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">Heat</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">Night</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;</span><span class="nx">Arsenic</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="nx">Old</span><span class="w"> </span><span class="nx">Lace</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span>
-<span class="w">       </span><span class="err">&#39;</span><span class="nx">Before</span><span class="w"> </span><span class="nx">Sunrise</span><span class="w"> </span><span class="err">&#39;</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;</span><span class="nx">Papillon</span><span class="w"> </span><span class="err">&#39;</span><span class="p">],</span>
-<span class="w">      </span><span class="nx">dtype</span><span class="p">=</span><span class="err">&#39;</span><span class="nx">object</span><span class="err">&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="p">=</span><span class="err">&#39;</span><span class="nx">Film_Adı</span><span class="err">&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">length</span><span class="p">=</span><span class="mi">247</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">Index</span><span class="p">([</span><span class="s1">&#39;The Shawshank Redemption &#39;</span><span class="p">,</span> <span class="s1">&#39;The Godfather &#39;</span><span class="p">,</span>
+       <span class="s1">&#39;The Godfather: Part II &#39;</span><span class="p">,</span> <span class="s1">&#39;Pulp Fiction&#39;</span><span class="p">,</span> <span class="s1">&#39;The Dark Knight &#39;</span><span class="p">,</span>
+       <span class="s1">&#39;12 Angry Men &#39;</span><span class="p">,</span> <span class="s1">&#39;Schindler&#39;</span><span class="n">s</span> <span class="n">List</span> <span class="s1">&#39;,</span>
+       <span class="s1">&#39;The Lord of the Rings: The Return of the King &#39;</span><span class="p">,</span> <span class="s1">&#39;Fight Club &#39;</span><span class="p">,</span>
+       <span class="s1">&#39;Star Wars: Episode V - The Empire Strikes Back &#39;</span><span class="p">,</span>
+       <span class="o">...</span>
+       <span class="s1">&#39;The Artist &#39;</span><span class="p">,</span> <span class="s1">&#39;Nausicaä of the Valley of the Wind &#39;</span><span class="p">,</span>
+       <span class="s1">&#39;Beauty and the Beast &#39;</span><span class="p">,</span> <span class="s1">&#39;Three Colors: Red &#39;</span><span class="p">,</span> <span class="s1">&#39;Bringing Up Baby &#39;</span><span class="p">,</span>
+       <span class="s1">&#39;Mystic River &#39;</span><span class="p">,</span> <span class="s1">&#39;In the Heat of the Night &#39;</span><span class="p">,</span> <span class="s1">&#39;Arsenic and Old Lace &#39;</span><span class="p">,</span>
+       <span class="s1">&#39;Before Sunrise &#39;</span><span class="p">,</span> <span class="s1">&#39;Papillon &#39;</span><span class="p">],</span>
+      <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;object&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Film_Adı&#39;</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">247</span><span class="p">)</span>
 </code></pre></div>
 
 <p>Gördüğünüz gibi, <strong>indeks</strong> bilgisi Metinsel veriler olduğunda, <strong>index</strong> fonksiyonunun çıktısı yukarıda şekilde alınıyor. Çıktıyı incelersek;</p>
@@ -647,10 +635,10 @@
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">())</span>
 </code></pre></div>
 
-<div class="highlight"><pre><span></span><code><span class="nx">isim</span><span class="w">         </span><span class="nx">False</span>
-<span class="nx">yaş</span><span class="w">          </span><span class="nx">False</span>
-<span class="nx">iş</span><span class="o">-</span><span class="nx">meslek</span><span class="w">    </span><span class="nx">False</span>
-<span class="nx">dtype</span><span class="p">:</span><span class="w"> </span><span class="kt">bool</span>
+<div class="highlight"><pre><span></span><code><span class="n">isim</span>         <span class="kc">False</span>
+<span class="n">yaş</span>          <span class="kc">False</span>
+<span class="n">iş</span><span class="o">-</span><span class="n">meslek</span>    <span class="kc">False</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="nb">bool</span>
 </code></pre></div>
 
 <p>Görüyoruz ki, veri çerçevemizde hiç eksik/kayıp veri bulunmamaktadır.
@@ -815,10 +803,10 @@ Sütun bazlı eksik/kayıp veri olup olmadığını incelersek;</p>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri_2</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">())</span>
 </code></pre></div>
 
-<div class="highlight"><pre><span></span><code><span class="nx">isim</span><span class="w">          </span><span class="nx">True</span>
-<span class="nx">yaş</span><span class="w">           </span><span class="nx">True</span>
-<span class="nx">iş</span><span class="o">-</span><span class="nx">meslek</span><span class="w">    </span><span class="nx">False</span>
-<span class="nx">dtype</span><span class="p">:</span><span class="w"> </span><span class="kt">bool</span>
+<div class="highlight"><pre><span></span><code><span class="n">isim</span>          <span class="kc">True</span>
+<span class="n">yaş</span>           <span class="kc">True</span>
+<span class="n">iş</span><span class="o">-</span><span class="n">meslek</span>    <span class="kc">False</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="nb">bool</span>
 </code></pre></div>
 
 <p>Çıktıdan anlıyoruz ki;</p>

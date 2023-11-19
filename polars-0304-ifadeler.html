@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Polars - 0304 İfadeler" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/polars-0304-ifadeler.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Polars - 0304 İfadeler</h1>
+	<span class="post-date">Prş 30 Haziran 2022</span>
+	<h1>İfadeler</h1>
+<p><code>Polars</code>, çok hızlı performansının merkezinde yer alan, ifadeler (expressions) adı verilen güçlü bir konsepte sahiptir.</p>
+<p>İfadeler, birçok veri bilimi işleminin merkezinde yer alır:</p>
+<ul>
+<li>
+<p>bir sütundan satır örneği alma</p>
+</li>
+<li>
+<p>bir sütundaki değerleri çarpma</p>
+</li>
+<li>
+<p>tarihlerden bir yıl sütunu çıkarma</p>
+</li>
+<li>
+<p>bir dize sütununu küçük harfe dönüştürme</p>
+</li>
+<li>
+<p>ve benzeri!</p>
+</li>
+</ul>
+<p>Ancak ifadeler diğer işlemlerde de kullanılır:</p>
+<ul>
+<li>
+<p><code>groupby</code> işleminde bir grubun ortalamasının alınması</p>
+</li>
+<li>
+<p><code>groupby</code> işleminde grupların boyutunu hesaplama</p>
+</li>
+<li>
+<p>toplamı, sütunlar arasında yatay olarak almak</p>
+</li>
+</ul>
+<p><code>Polars</code>, bu temel veri dönüşümlerini şu yollarla çok hızlı gerçekleştirir:</p>
+<ul>
+<li>
+<p>her ifadede otomatik sorgu optimizasyonu</p>
+</li>
+<li>
+<p>birçok sütundaki ifadelerin otomatik olarak paralelleştirilmesi</p>
+</li>
+</ul>
+<p>Polars ifadeleri, bir diziden bir diziye (veya matematiksel olarak <code>Fn(Series) -&gt; Series</code>) eşlemedir. İfadelerin girdi olarak bir <code>Series</code> ve çıktı olarak bir <code>Series</code> sahip olması nedeniyle, bir ifade dizisi yapmak kolaydır (<code>Pandas</code>'taki yöntem zincirlemesine benzer).</p>
+<h2>Örnekler</h2>
+<p>Aşağıdaki bir ifadedir:</p>
+<div class="highlight"><pre><span></span><code><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Yukarıdaki parçacığı diyor ki:</p>
+<ol>
+<li>
+<p>"foo" sütununu seçin</p>
+</li>
+<li>
+<p>Ardından sütunu sıralayın (ters sırada değil)</p>
+</li>
+<li>
+<p>Ardından, sıralanan çıktının ilk iki değerini alın</p>
+</li>
+</ol>
+<p>İfadelerin gücü, her ifadenin yeni bir ifade üretmesi ve bunların bir araya 
+getirilebilmesidir. Bir ifadeyi <code>Polars</code> yürütme bağlamlarından birine 
+geçirerek çalıştırabilirsiniz.</p>
+<p>Burada <code>df.select</code>'i çalıştırarak iki ifade çalıştırıyoruz:</p>
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;bar&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>Tüm  ifadeler paralel olarak çalıştırılır, yani ayrı <code>Polars</code> ifadeleri <strong>utanç verici bir şekilde paraleldir</strong>. Bir ifade içinde daha fazla paralelleştirme olabileceğini unutmayın.</p>
+<h2>Çözüm</h2>
+<p>Bu, olası ifadeler açısından buzdağının görünen kısmıdır. Bir ton daha var ve bunlar çeşitli şekillerde birleştirilebilir. Bu sayfa, ifadeler kavramına aşina olmanızı amaçlamaktadır, ifadeler bölümünde daha derine ineceğiz.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">&lt;&lt; Önceki Bölüm</th>
+<th style="text-align: center;">Sonraki Bölüm &gt;&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><a href="polars-0303-baglamlar.html">Bağlamlar</a></td>
+<td style="text-align: center;">Tembel / İstekli API</td>
+</tr>
+</tbody>
+</table>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/polars.html">Polars</a></li>
+					<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+					<li><a href="/tag/modul.html">Modül</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>

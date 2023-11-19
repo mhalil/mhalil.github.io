@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Polars - 02 Kurulum" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/polars-02-kurulum.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Polars - 02 Kurulum</h1>
+	<span class="post-date">Paz 26 Haziran 2022</span>
+	<h1>Kurulum</h1>
+<p><code>Polars</code> bir kitaplıktır/kütüphanedir ve kurulumu, ilgili programlama dilinin paket yöneticisini çağırmak kadar basittir. Aşağıda farklı programlama dillerine göre kurulum kodları verilmiştir. Bu kodları konsoldan yazarak <code>polars</code>'ı yükleyebilirsiniz.</p>
+<h4>Python</h4>
+<div class="highlight"><pre><span></span><code><span class="n">pip</span> <span class="n">install</span> <span class="n">polars</span>
+</code></pre></div>
+
+<h4>Rust</h4>
+<div class="highlight"><pre><span></span><code><span class="n">cargo</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="n">polars</span><span class="w"> </span><span class="o">-</span><span class="n">F</span><span class="w"> </span><span class="n">lazy</span>
+
+#<span class="w"> </span><span class="n">Or</span><span class="w"> </span><span class="n">Cargo</span><span class="p">.</span><span class="n">toml</span>
+<span class="p">[</span><span class="n">dependencies</span><span class="p">]</span>
+<span class="n">polars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;x&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">features</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;lazy&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">..</span><span class="p">.]}</span>
+</code></pre></div>
+
+<h4>NodeJS</h4>
+<div class="highlight"><pre><span></span><code><span class="nx">yarn</span><span class="w"> </span><span class="nx">add</span><span class="w"> </span><span class="nx">nodejs</span><span class="o">-</span><span class="nx">polars</span>
+</code></pre></div>
+
+<h2>İçe Aktar / Çalışmaya Dahil Et (Import)</h2>
+<p>Kütüphaneyi kullanmak için, sisteminize kurmuş olduğunuz modülü projenize dahil etmelisiniz. Kitaplığın/Modülün farklı programlama dillerinde, kod içine nasıl dahil  edilebileceğine dair gösterim aşağıda mevcuttur.</p>
+<h4>Python</h4>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polars</span> <span class="k">as</span> <span class="nn">pl</span>
+</code></pre></div>
+
+<h4>Rust</h4>
+<div class="highlight"><pre><span></span><code><span class="k">use</span><span class="w"> </span><span class="n">polars</span>::<span class="n">prelude</span>::<span class="o">*</span><span class="p">;</span>
+</code></pre></div>
+
+<h4>NodeJS</h4>
+<div class="highlight"><pre><span></span><code><span class="c1">// esm</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">pl</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;nodejs-polars&#39;</span><span class="p">;</span>
+
+<span class="c1">// require</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">pl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;nodejs-polars&#39;</span><span class="p">);</span><span class="w"> </span>
+</code></pre></div>
+
+<h2>Özellik Bayrakları</h2>
+<p>Yukarıdaki <strong>kurulum</strong> komutunu kullanarak <code>Polars</code>'ın çekirdeğini sisteminize kurarsınız. Ancak kullanım durumunuza bağlı olarak, isteğe bağlı bağımlılıkları da yüklemek isteyebilirsiniz. Bunlar, kullanım alanını en aza indirmek için isteğe bağlı yapılır. Bayraklar, programlama diline bağlı olarak farklıdır. Kılavuz boyunca, ek bir bağımlılık gerektiren bir işlevsellik kullanıldığında, bu konudan bahsedeceğiz.</p>
+<h3>Python</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># For example</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">polars</span><span class="p">[</span><span class="n">numpy</span><span class="p">,</span> <span class="n">fsspec</span><span class="p">]</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Etiket</th>
+<th>Açıklama</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>all</td>
+<td>Tüm isteğe bağlı bağımlılıkları kurun (aşağıdakilerin tümü)</td>
+</tr>
+<tr>
+<td>pandas</td>
+<td>Verileri Pandas Dataframelere/Serilere dönüştürmek için Pandas ile kurun</td>
+</tr>
+<tr>
+<td>numpy</td>
+<td>Verileri numpy dizilerine ve dizilerden (array) dönüştürmek için numpy ile yükle</td>
+</tr>
+<tr>
+<td>pyarrow</td>
+<td>PyArrow kullanarak veri formatlarını okuma</td>
+</tr>
+<tr>
+<td>fsspec</td>
+<td>Uzak dosya sistemlerinden okuma desteği</td>
+</tr>
+<tr>
+<td>connectorx</td>
+<td>SQL veritabanlarından okuma desteği</td>
+</tr>
+<tr>
+<td>xlsx2csv</td>
+<td>Excel dosyalarından okuma desteği</td>
+</tr>
+<tr>
+<td>deltalake</td>
+<td>Delta Lake Tablolarından okuma desteği</td>
+</tr>
+<tr>
+<td>timezone</td>
+<td>Saat dilimi desteği, yalnızca şu durumlarda gereklidir: <br/>1. Python &lt; 3.9 kullanıyorsanız ve/veya <br/>2. Windows kullanıyorsanız, aksi halde hiçbir bağımlılık kurulmaz</td>
+</tr>
+</tbody>
+</table>
+<p><code>Rust</code>bağımlılıkları hakkında bilgi almak için <a href="https://pola-rs.github.io/polars-book/user-guide/installation/#rust">bu sayfayı</a> ziyaret edin.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">&lt;&lt; Önceki Bölüm</th>
+<th style="text-align: center;">Sonraki Bölüm &gt;&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><a href="polars-01-takdim.html">Takdim</a></td>
+<td style="text-align: center;"><a href="polars-0301-veri-tipleri.html"> Veri Tipleri</a></td>
+</tr>
+</tbody>
+</table>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/polars.html">Polars</a></li>
+					<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+					<li><a href="/tag/modul.html">Modül</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>

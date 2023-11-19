@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Polars - 0301 Veri Tipleri" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/polars-0301-veri-tipleri.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Polars - 0301 Veri Tipleri</h1>
+	<span class="post-date">Pzt 27 Haziran 2022</span>
+	<h1>Veri Tipleri</h1>
+<p><code>Polars</code>,  tamamen <code>Arrow</code> veri türlerini temel alır ve <code>Arrow</code> bellek dizileriyle 
+desteklenir. Bu, veri işlemeyi önbellek açısından verimli hale getirir ve İşlemler Arası İletişim için iyi desteklenir. Çoğu veri türü, <code>Utf8</code> (bu aslında <code>LargeUtf8</code>'dir), <code>Kategorik (Categorical)</code> ve <code>Nesne (Object)</code> (destek sınırlıdır) dışında <code>Arrow</code>'daki tam uygulamayı izler. </p>
+<p>Veri türleri şunlardır:</p>
+<table>
+<thead>
+<tr>
+<th>Grup</th>
+<th>Tür</th>
+<th>Detaylar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Sayısal (Numeric)</strong></td>
+<td>Int8</td>
+<td>8 bit işaretli tamsayı.</td>
+</tr>
+<tr>
+<td></td>
+<td>Int16</td>
+<td>16 bit işaretli tamsayı.</td>
+</tr>
+<tr>
+<td></td>
+<td>Int32</td>
+<td>32 bit işaretli tamsayı.</td>
+</tr>
+<tr>
+<td></td>
+<td>Int64</td>
+<td>64 bit işaretli tamsayı.</td>
+</tr>
+<tr>
+<td></td>
+<td>UInt8</td>
+<td>8 bitlik işaretsiz tamsayı.</td>
+</tr>
+<tr>
+<td></td>
+<td>UInt16</td>
+<td>16 bitlik işaretsiz tamsayı.</td>
+</tr>
+<tr>
+<td></td>
+<td>UInt32</td>
+<td>32 bitlik işaretsiz tamsayı.</td>
+</tr>
+<tr>
+<td></td>
+<td>UInt64</td>
+<td>64 bitlik işaretsiz tamsayı.</td>
+</tr>
+<tr>
+<td></td>
+<td>Float32</td>
+<td>32 bitlik ondalıklı sayı.</td>
+</tr>
+<tr>
+<td></td>
+<td>Float64</td>
+<td>64 bitlik ondalıklı sayı.</td>
+</tr>
+<tr>
+<td><strong>İçiçe (Nested)</strong></td>
+<td>Struct</td>
+<td>Bir yapı dizisi, bir <code>Vec&lt;Series&gt;</code>olarak temsil edilir ve birden çok/heterojen değeri tek bir sütunda paketlemek için kullanışlıdır.</td>
+</tr>
+<tr>
+<td></td>
+<td>List</td>
+<td>Bir liste dizisi, liste değerlerini ve bir ofset dizisini içeren bir alt dizi içerir. (bu aslında dahili olarak <code>Arrow</code> <code>LargeList</code>'tir).</td>
+</tr>
+<tr>
+<td><strong>Geçici (Temporal)</strong></td>
+<td>Date</td>
+<td>32 bit işaretli bir tamsayı tarafından kodlanan UNIX döneminden bu yana dahili olarak gün olarak temsil edilen tarih gösterimi.</td>
+</tr>
+<tr>
+<td></td>
+<td>Datetime</td>
+<td>64 bit işaretli bir tamsayı tarafından kodlanan UNIX döneminden bu yana dahili olarak mikrosaniye olarak temsil edilen tarih-zaman gösterimi.</td>
+</tr>
+<tr>
+<td></td>
+<td>Duration</td>
+<td>Dahili olarak mikrosaniye olarak temsil edilen bir timedelta türü. <code>Date/Datetime</code> çıkarıldığında oluşturulur.</td>
+</tr>
+<tr>
+<td></td>
+<td>Time</td>
+<td>Zaman gösterimi, dahili olarak gece yarısından bu yana nanosaniye olarak temsil edilir.</td>
+</tr>
+<tr>
+<td><strong>Diğer</strong></td>
+<td>Boolean</td>
+<td>Boole tipi (True/False) etkili bir şekilde paketlenmiştir.</td>
+</tr>
+<tr>
+<td></td>
+<td>Utf8</td>
+<td>Dize verileri (bu aslında dahili olarak Arrow LargeUtf8'dir).</td>
+</tr>
+<tr>
+<td></td>
+<td>Binary</td>
+<td>Verileri bayt olarak saklar.</td>
+</tr>
+<tr>
+<td></td>
+<td>Object</td>
+<td>Herhangi bir değer olabilen sınırlı, desteklenen bir veri türü.</td>
+</tr>
+<tr>
+<td></td>
+<td>Categorical</td>
+<td>Bir dizgi (string) dizisinin kategorik kodlaması.</td>
+</tr>
+</tbody>
+</table>
+<p>Bu veri türlerinin dahili gösterimi hakkında daha fazla bilgi edinmek için <a href="https://arrow.apache.org/docs/format/Columnar.html">Arrow sütun biçimini</a> kontrol edin.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">&lt;&lt; Önceki Bölüm</th>
+<th style="text-align: center;">Sonraki Bölüm &gt;&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><a href="polars-02-kurulum.html">Kurulum</a></td>
+<td style="text-align: center;"><a href="polars-0302-veri-yapilari.html">Veri Yapıları</a></td>
+</tr>
+</tbody>
+</table>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/polars.html">Polars</a></li>
+					<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+					<li><a href="/tag/modul.html">Modül</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>
