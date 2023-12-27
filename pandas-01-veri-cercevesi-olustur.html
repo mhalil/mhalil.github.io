@@ -95,7 +95,7 @@
 <li>2 boyutlu numpy dizisi</li>
 <li>Başka bir DataFrame</li>
 </ul>
-<p>örneğin bir <strong>sözlük (dict)</strong> yapısı oluşturup bu yapıyı <strong>Veri Çerçevesi</strong>ne (<strong>Data Frame</strong>'e) dönüştürelim;</p>
+<p>örneğin bir <strong>sözlük (dict)</strong> veri yapısı oluşturup bu yapıyı <strong>Veri Çerçevesi</strong>ne (<strong>Data Frame</strong>'e) dönüştürelim;</p>
 <div class="highlight"><pre><span></span><code><span class="n">sozluk</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;isim&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Mustafa&quot;</span><span class="p">,</span> <span class="s2">&quot;Halil&quot;</span><span class="p">,</span> <span class="s2">&quot;Burak&quot;</span><span class="p">,</span> <span class="s2">&quot;Emre&quot;</span><span class="p">,</span> <span class="s2">&quot;Ersin&quot;</span><span class="p">,</span> <span class="s2">&quot;Sertaç&quot;</span><span class="p">,</span> <span class="s2">&quot;Furkan&quot;</span><span class="p">,</span><span class="s2">&quot;Murat&quot;</span><span class="p">,</span><span class="s2">&quot;Ahmet&quot;</span><span class="p">,</span><span class="s2">&quot;Abdülkadir&quot;</span><span class="p">],</span>
                     <span class="s2">&quot;yaş&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">41</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">52</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">38</span><span class="p">],</span>
                     <span class="s2">&quot;iş-meslek&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;mühendis&quot;</span><span class="p">,</span> <span class="s2">&quot;programcı&quot;</span><span class="p">,</span> <span class="s2">&quot;akademisyen&quot;</span><span class="p">,</span> <span class="s2">&quot;yönetici&quot;</span><span class="p">,</span><span class="s2">&quot;amir&quot;</span><span class="p">,</span><span class="s2">&quot;mühendis&quot;</span><span class="p">,</span> <span class="s2">&quot;yönetici&quot;</span><span class="p">,</span><span class="s2">&quot;müdür&quot;</span><span class="p">,</span><span class="s2">&quot;veteriner&quot;</span><span class="p">,</span><span class="s2">&quot;yönetici&quot;</span><span class="p">]}</span>
@@ -182,6 +182,31 @@
  SQL ya da Excel tablosuna benzer şekilde satır ve sütunlardan oluşan 
 yapıya dönüştürüldü. Artık bu yapıyı yönetmek ve analiz etmek oldukça 
 kolaylaşmış oldu.</p>
+<p>Örnek olması açısından, bir de <strong>liste (list)</strong> veri yapısındaki değerlerin <strong>Veri Çerçevesi</strong>ne (<strong>Data Frame</strong>'e) nasıl dönüştürüldüğünü görelim;</p>
+<div class="highlight"><pre><span></span><code><span class="n">veri1</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Kerem Ali&quot;</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="s2">&quot;öğrenci&quot;</span><span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">veri1</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;isim&quot;</span><span class="p">,</span> <span class="s2">&quot;yaş&quot;</span><span class="p">,</span> <span class="s2">&quot;meslek&quot;</span><span class="p">])</span>
+<span class="c1"># df = pd.DataFrame([[&quot;Kerem Ali&quot;, 14, &quot;öğrenci&quot;]], columns=[&quot;isim&quot;, &quot;yaş&quot;, &quot;meslek&quot;])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>isim</th>
+<th>yaş</th>
+<th>iş-meslek</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Kerem Ali</td>
+<td>14</td>
+<td>öğrenci</td>
+</tr>
+</tbody>
+</table>
 <h2>Harici Dosyalardan Veri Çerçevesi Oluştur</h2>
 <h2>CSV Dosyasını İçe Aktarmak</h2>
 <h3>read_csv() Fonksiyonu</h3>
