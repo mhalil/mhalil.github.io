@@ -185,8 +185,15 @@ kolaylaşmış oldu.</p>
 <p>Örnek olması açısından, bir de <strong>liste (list)</strong> veri yapısındaki değerlerin <strong>Veri Çerçevesi</strong>ne (<strong>Data Frame</strong>'e) nasıl dönüştürüldüğünü görelim;</p>
 <div class="highlight"><pre><span></span><code><span class="n">veri1</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Kerem Ali&quot;</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="s2">&quot;öğrenci&quot;</span><span class="p">]</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">veri1</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;isim&quot;</span><span class="p">,</span> <span class="s2">&quot;yaş&quot;</span><span class="p">,</span> <span class="s2">&quot;meslek&quot;</span><span class="p">])</span>
-<span class="c1"># df = pd.DataFrame([[&quot;Kerem Ali&quot;, 14, &quot;öğrenci&quot;]], columns=[&quot;isim&quot;, &quot;yaş&quot;, &quot;meslek&quot;])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<p><code>DataFrame()</code> metodunun içine yazdığımız <strong>liste veri yapısının</strong>, <strong>ayrı bir liste içinde</strong> belirtildiğine dikkat edin. </p>
+<p>Aynı kodu aşağıdaki şekilde yazarak ta aynı sonuca ulaşabiliriz.</p>
+<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="s2">&quot;Kerem Ali&quot;</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="s2">&quot;öğrenci&quot;</span><span class="p">]],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;isim&quot;</span><span class="p">,</span> <span class="s2">&quot;yaş&quot;</span><span class="p">,</span> <span class="s2">&quot;meslek&quot;</span><span class="p">])</span>
+</code></pre></div>
+
+<p>Oluşturduğumuz Veri Çerçevesinin içeriğini görelim;</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </code></pre></div>
 
 <table>
