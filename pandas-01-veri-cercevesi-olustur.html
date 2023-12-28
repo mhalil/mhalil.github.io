@@ -183,13 +183,13 @@
 yapıya dönüştürüldü. Artık bu yapıyı yönetmek ve analiz etmek oldukça 
 kolaylaşmış oldu.</p>
 <p>Örnek olması açısından, bir de <strong>liste (list)</strong> veri yapısındaki değerlerin <strong>Veri Çerçevesi</strong>ne (<strong>Data Frame</strong>'e) nasıl dönüştürüldüğünü görelim;</p>
-<div class="highlight"><pre><span></span><code><span class="n">veri1</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Kerem Ali&quot;</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="s2">&quot;öğrenci&quot;</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="n">veri1</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Kerem&quot;</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="s2">&quot;öğrenci&quot;</span><span class="p">]</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">veri1</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;isim&quot;</span><span class="p">,</span> <span class="s2">&quot;yaş&quot;</span><span class="p">,</span> <span class="s2">&quot;meslek&quot;</span><span class="p">])</span>
 </code></pre></div>
 
 <p><code>DataFrame()</code> metodunun içine yazdığımız <strong>liste veri yapısının</strong>, <strong>ayrı bir liste içinde</strong> belirtildiğine dikkat edin. </p>
 <p>Aynı kodu aşağıdaki şekilde yazarak ta aynı sonuca ulaşabiliriz.</p>
-<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="s2">&quot;Kerem Ali&quot;</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="s2">&quot;öğrenci&quot;</span><span class="p">]],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;isim&quot;</span><span class="p">,</span> <span class="s2">&quot;yaş&quot;</span><span class="p">,</span> <span class="s2">&quot;meslek&quot;</span><span class="p">])</span>
+<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="s2">&quot;Kerem&quot;</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="s2">&quot;öğrenci&quot;</span><span class="p">]],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;isim&quot;</span><span class="p">,</span> <span class="s2">&quot;yaş&quot;</span><span class="p">,</span> <span class="s2">&quot;meslek&quot;</span><span class="p">])</span>
 </code></pre></div>
 
 <p>Oluşturduğumuz Veri Çerçevesinin içeriğini görelim;</p>
@@ -208,8 +208,37 @@ kolaylaşmış oldu.</p>
 <tbody>
 <tr>
 <td>0</td>
-<td>Kerem Ali</td>
-<td>14</td>
+<td>Kerem</td>
+<td>23</td>
+<td>öğrenci</td>
+</tr>
+</tbody>
+</table>
+<p>Birden fazla satır kaydı oluşturmak için, aşağıdaki şekilde liste yapısını kullanabilirsiniz;</p>
+<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="s2">&quot;Kerem&quot;</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="s2">&quot;öğrenci&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;Safa&quot;</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span><span class="s2">&quot;öğrenci&quot;</span><span class="p">]],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;isim&quot;</span><span class="p">,</span> <span class="s2">&quot;yaş&quot;</span><span class="p">,</span> <span class="s2">&quot;meslek&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>isim</th>
+<th>yaş</th>
+<th>iş-meslek</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Kerem</td>
+<td>23</td>
+<td>öğrenci</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Safa</td>
+<td>18</td>
 <td>öğrenci</td>
 </tr>
 </tbody>
