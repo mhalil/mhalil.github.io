@@ -868,6 +868,11 @@ erkek
 <div class="highlight"><pre><span></span><code>Python
 </code></pre></div>
 
+<p>Bayraklar, <code>Flags</code> etiketi ile de kullanılabilir;</p>
+<div class="highlight"><pre><span></span><code><span class="n">derli</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;programlama&quot;</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">derli</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">metin</span><span class="p">))</span>
+</code></pre></div>
+
 <h2>re.MULTILINE veya re.M</h2>
 <p><code>re.MULTILINE</code> bayrağı (flag), bir düzenli ifadenin <strong>çok satırlı</strong> bir metin içindeki eşleşmeleri nasıl ele aldığını kontrol etmek için kullanılır. Bu bayrak, bir metin içindeki <strong>her bir satırı ayrı ayrı ele alarak</strong> düzenli ifadenin davranışını etkiler. Özellikle, <code>^</code> (başlangıç) ve <code>$</code> (bitiş) meta karakterlerinin metnin başı ve sonu yerine her satırın başı ve sonuyla eşleşmesini sağlar.</p>
 <h3>Neden Kullanılır?</h3>

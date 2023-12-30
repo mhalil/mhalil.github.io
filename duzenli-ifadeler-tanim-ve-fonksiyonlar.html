@@ -597,6 +597,62 @@ başında ektiği erik fideleri haziran başında meyve veriyor.
 
 <p>Bu komutların çıktıları sırasıyla <strong>“erik”, “eriğ”, “erik”, “Eriğ”, “erik”, “erik”, “erik”, “Eriğ”, “erik”, “erik”</strong> olacaktır. İşte bu return satırı bir sonraki kod olan <code>print(derle.sub(degistir,metin))</code> ifadesinde etkinlik kazanacak. Bu son satırımız sözlük öğelerini tek tek metne uygulayacak ve mesela <code>a["çilek"]</code> komutu sayesinde metin içinde <strong>“çilek”</strong> gördüğü yerde <strong>“erik”</strong> kelimesini yapıştıracak ve böylece bize istediğimiz şekilde değiştirilmiş bir metin verecektir.</p>
 <p>Bu kodların biraz karışık gibi göründüğünü biliyorum, ama aslında çok basit bir mantığı var: <code>group()</code> metodu ile metin içinde aradığımız kelimeleri ayıklıyor. Ardından da <strong>“a”</strong> sözlüğü içinde bunları anahtar olarak kullanarak <strong>“çilek”</strong> ve çeşitleri yerine <strong>“erik”</strong> ve çeşitlerini koyuyor.</p>
+<p>Bir tane tarih verisi ile ilgili kullanım örneği verelim. Verilerimizde farklı tarih formatları bulunuyor. Örneğin, "01/01/2023", "1.5.2021", "12-2-1980", "25/10/18". Bu tarih formatlarını belirli bir formata dönüştürmek için <code>re.sub()</code> kullanabiliriz. Aşağıda, bu tarih formatlarını "dd/mm/yyyy" formatına dönüştüren bir örnek var:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">tarihler</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">01/01/2023</span>
+<span class="s2">1.5.2021</span>
+<span class="s2">12-2-1980</span>
+<span class="s2">25/10/18</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="k">def</span> <span class="nf">duzenle</span><span class="p">(</span><span class="n">match</span><span class="p">):</span>
+    <span class="n">gun</span><span class="p">,</span> <span class="n">ay</span><span class="p">,</span> <span class="n">yil</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">groups</span><span class="p">()</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">gun</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">ay</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">yil</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="n">pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(\d{1,2})[\/\.\-](\d{1,2})[\/\.\-](\d{2,4})&quot;</span><span class="p">)</span>
+<span class="n">duzenlenmis_tarihler</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">duzenle</span><span class="p">,</span> <span class="n">tarihler</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">duzenlenmis_tarihler</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Bu kod, <code>re.sub()</code> fonksiyonunu kullanarak tarih formatlarını belirli bir formata dönüştürür. <code>duzenle</code> fonksiyonu, her eşleşme için çağrılır ve tarihi "dd/mm/yyyy" formatına dönüştürür.</p>
+<div class="highlight"><pre><span></span><code><span class="mi">01</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">2023</span>
+<span class="mi">01</span><span class="o">/</span><span class="mi">05</span><span class="o">/</span><span class="mi">2021</span>
+<span class="mi">12</span><span class="o">/</span><span class="mi">02</span><span class="o">/</span><span class="mi">1980</span>
+<span class="mi">25</span><span class="o">/</span><span class="mi">10</span><span class="o">/</span><span class="mi">2018</span>
+</code></pre></div>
+
+<p>Bu örnekte <code>zfill</code> kullanarak gün, ay ve yılın sırasıyla 2, 2 ve 4 karakterli olmasını sağladık. İhtiyacınıza göre bu düzenlemeleri değiştirebilirsiniz.</p>
+<p>Son olarak ta farklı biçimlerdeki telefon numaralarını düzenlemek için de <code>re.sub()</code> fonksiyonunu kullanarak bir örnek yapalım:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">numaralar</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">1234567890</span>
+<span class="s2">533-456-7891</span>
+<span class="s2">544 456 7892</span>
+<span class="s2">(216) 456-7893</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="k">def</span> <span class="nf">duzenle_telefon</span><span class="p">(</span><span class="n">match</span><span class="p">):</span>
+    <span class="n">operator</span><span class="p">,</span> <span class="n">üçhane</span><span class="p">,</span> <span class="n">dorthane</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">groups</span><span class="p">()</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{</span><span class="n">operator</span><span class="si">}</span><span class="s2">) </span><span class="si">{</span><span class="n">üçhane</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">dorthane</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="n">telefon_pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\(?(?P&lt;operator&gt;\d</span><span class="si">{3}</span><span class="s2">)\)?[ \-]?(?P&lt;üçhane&gt;\d</span><span class="si">{3}</span><span class="s2">)[ \-]?(?P&lt;dorthane&gt;\d</span><span class="si">{4}</span><span class="s2">)&quot;</span><span class="p">)</span>
+<span class="n">duzenlenmis_numaralar</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">telefon_pattern</span><span class="p">,</span> <span class="n">duzenle_telefon</span><span class="p">,</span> <span class="n">numaralar</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">duzenlenmis_numaralar</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Bu kod, farklı biçimlerdeki telefon numaralarını aynı formata ("(123) 
+456-7890") dönüştürür. <code>duzenle_telefon</code> fonksiyonu, her eşleşme için çağrılır ve telefon numarasını belirli bir formata dönüştürür.</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="mi">123</span><span class="p">)</span> <span class="mi">456</span><span class="o">-</span><span class="mi">7890</span>
+<span class="p">(</span><span class="mi">533</span><span class="p">)</span> <span class="mi">456</span><span class="o">-</span><span class="mi">7891</span>
+<span class="p">(</span><span class="mi">544</span><span class="p">)</span> <span class="mi">456</span><span class="o">-</span><span class="mi">7892</span>
+<span class="p">(</span><span class="mi">216</span><span class="p">)</span> <span class="mi">456</span><span class="o">-</span><span class="mi">7893</span>
+</code></pre></div>
+
 <p>Yukarıda verdiğimiz düzenli ifadeyi böyle ufak bir metinde kullanmak çok anlamlı olmayabilir. Ama çok büyük metinler üzerinde çok çeşitli ve karmaşık değişiklikler yapmak istediğinizde bu kodların işinize yarayabileceğini göreceksiniz.</p>
 <h2>subn() metodu</h2>
 <p>Bu metodu çok kısa bir şekilde anlatıp geçeceğiz. Çünkü bu metot <code>sub()</code> metoduyla neredeyse tamamen aynıdır. Tek farkı, <code>subn()</code> metodunun bir metin içinde yapılan değişiklik sayısını da göstermesidir. Yani bu metodu kullanarak, kullanıcılarınıza <strong>“toplam şu kadar sayıda değişiklik yapılmıştır”</strong> şeklinde bir bilgi verebilirsiniz. Bu metot çıktı olarak iki öğeli bir demet verir. </p>
