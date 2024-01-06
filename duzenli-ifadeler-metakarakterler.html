@@ -653,7 +653,7 @@ dilidir
 </code></pre></div>
 
 <h2>\d   Sayıların Yerini Tutan Özel Dizi.</h2>
-<p>Bu sembol, bir karakter dizisi içinde geçen <strong>rakamları (ondalık sayıları) eşleştirmek için</strong> kullanılır. Yani <code>[0-9]</code> ifadesi ile eşdeğerdir.</p>
+<p>Bu sembol, bir karakter dizisi içinde geçen <strong>rakamları (ondalık sayıları) eşleştirmek için</strong> kullanılır. <code>[0-9]</code> ifadesi ile arasında önemli bir fark vardır. <strong>\d</strong> yazdığımızda, Arapça, Rusça, Çince,...vb dillerdeki rakamları da yakalar, eşleştirir. Çok dilli metinlerle çalışırken bu konuya dikkat etmek gerekir.</p>
 <p>Buraya kadar olan örneklerde bu işlevi yerine getirmek için <code>[0-9]</code> ifadesinden yararlanıyorduk. Şimdi artık aynı işlevi daha kısa yoldan, <code>\d</code> dizisi ile yerine getirebiliriz. İsterseniz yine yukarıdaki örnekten gidelim:</p>
 <div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;5 Ocak&quot;</span><span class="p">,</span> <span class="s2">&quot;27Mart&quot;</span><span class="p">,</span> <span class="s2">&quot;4 Ekim&quot;</span><span class="p">,</span> <span class="s2">&quot;Nisan 3&quot;</span><span class="p">]</span>
 
@@ -779,7 +779,7 @@ metin &gt; 02124344332
 <div class="highlight"><pre><span></span><code>[&#39;01.02.1980&#39;, &#39;03.04.1975&#39;]
 </code></pre></div>
 
-<p>Desenin başına ve sonuna <code>\b</code> sembolünü ekleyerek, kelimenin tüm sınırlarını tanımlamış olduk. Bu desen ile; Kelime başında 2 adet rakam, ardından 1 nokta (.) sonrasında tekrar 2 adet rakam ve ardından nokta (.) gelsin son olarak ta 4 adet rakam olsun demiş olduk. BU desen sayesinde <strong>04.05.18741</strong> değerini safdışı bırakış olduk.</p>
+<p>Desenin başına ve sonuna <code>\b</code> sembolünü ekleyerek, kelimenin tüm sınırlarını tanımlamış olduk. Bu desen ile; Kelime başında 2 adet rakam, ardından 1 nokta (.) sonrasında tekrar 2 adet rakam ve ardından nokta (.) gelsin son olarak ta 4 adet rakam olsun demiş olduk. Bu desen sayesinde <strong>04.05.18741</strong> değerini safdışı bırakış olduk.</p>
 <p>Eğer verimizde tarih yazım biçimi farklı (örneğin nokta (.) ve taksim, bölü (/) işareti) olan birden fazla değerler olsaydı nasıl bir yol izlemeliydik? Buna da bir örnek verelim.</p>
 <div class="highlight"><pre><span></span><code><span class="n">veri</span> <span class="o">=</span> <span class="s2">&quot;Doğum günüm 01.02.1980. ağabeyim ise 03/04/1975&#39;te doğdu. bilgisayarımın ip adresi 04.05.18741&#39;dir.&quot;</span>
 
