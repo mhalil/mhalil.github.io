@@ -312,7 +312,7 @@ saaat
 
 <p><code>sa{0,3}t</code> ifadesiyle, <code>a</code> harfinin en az sıfır kez, en çok da üç kez tekrar etmesini istediğimiz söyledik. Dolayısıyla, “a” harfinin sıfır, bir, iki ve üç kez tekrar ettiği durumlar ayıklanmış oldu. </p>
 <h2>^ Şapka</h2>
-<p><code>^</code> sembolünün iki işlevi var. Birinci işlevi, <strong>Çok satırlı desende ya da bir karakter dizisinin en başındaki veriyi sorgulamaktır</strong>. Yani aslında <code>match()</code> metodunun varsayılan olarak yerine getirdiği işlevi bu metakarakter yardımıyla <code>search()</code> metodunda da kullanabiliyoruz. <strong>Sadece kendinden sonra gelen BİR karaktere BAKMIYOR</strong>.</p>
+<p><code>^</code> sembolünün iki işlevi var. Birinci işlevi, <strong>Çok satırlı desende ya da bir karakter dizisinin en başındaki veriyi sorgulamaktır</strong>. <code>^</code> Şapka metakarakteri, düzenli ifadenin <strong>metnin herhangi bir satırının başında uyması durumunu kontrol eder.</strong> Bu metakarakter çok satırlı bir metin içinde kullanılıyorsa, her satırın başındaki kelime ile eşleşme olup olmadığını sorgular. Bunun için <code>re.M</code> ya da <code>re.MULTILINE</code> ifadesini koda eklemek gerekir. Yani aslında <code>match()</code> metodunun varsayılan olarak yerine getirdiği işlevi bu metakarakter yardımıyla <code>search()</code> metodunda da kullanabiliyoruz. <strong>Sadece kendinden sonra gelen BİR karaktere BAKMIYOR</strong>.</p>
 <div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;23BH56&#39;</span><span class="p">,</span> <span class="s1">&#39;TY76Z&#39;</span><span class="p">,</span> <span class="s1">&#39;4Y7UZ&#39;</span><span class="p">,</span> <span class="s1">&#39;TYUDZ&#39;</span><span class="p">,</span> <span class="s1">&#39;34534&#39;</span><span class="p">,</span> <span class="s1">&#39;1agAY54&#39;</span><span class="p">]</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
@@ -387,8 +387,28 @@ AY54
 </ol>
 <p>Bu ölçütlere uymayan tek öğe “1agAY54” olacaktır. Dolayısıyla bu öğe çıktıda görünmez.</p>
 <p>Burada, <code>^</code> işaretinin nasıl kullanıldığına ve küçük harfleri nasıl dışarıda bıraktığına dikkat edin. Unutmayalım, bu <code>^</code> işaretinin <strong>hariç</strong> anlamı sadece <code>[]</code> metakarakterinin içinde kullanıldığı zaman geçerlidir.</p>
+<p><code>^</code> metakarakterinin <code>findall</code> fonksiyonu ile çok satırlı / paragraflı metin içinde kullanımına bir örnek verelim.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+<span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Python (C, C++, Perl, Ruby ve benzerleri gibi) bir programlama dilidir ve tıpkı öteki programlama dilleri gibi, önünüzde duran kara kutuya, yani bilgisayara hükmetmenizi sağlar.</span>
+<span class="s2">Bu programlama dili Guido Van Rossum adlı Hollandalı bir programcı tarafından 90’lı yılların başında geliştirilmeye başlanmıştır. Çoğu insan, isminin Python olmasına aldanarak, bu programlama dilinin, adını piton yılanından aldığını düşünür.</span>
+<span class="s2">Peki neden piyasada iki farklı Python sürümü var ve bu bizim için ne anlama geliyor?</span>
+<span class="s2">Python programlama dili 1990 yılından bu yana geliştirilen bir dil. Bu süre içinde pek çok Python programı yazıldı ve insanların kullanımına sunuldu. Şu anda piyasada Python’ın 2.x serisinden bir sürümle yazılmış pek çok program bulunuyor. 3.x serisi ise ancak son yıllarda yaygınlık kazanmaya başladı.&quot;&quot;&quot;</span>
+
+<span class="n">desen</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;^P\w+&quot;</span>
+<span class="n">eslesme</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">desen</span><span class="p">,</span> <span class="n">metin</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">MULTILINE</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">eslesen</span> <span class="ow">in</span> <span class="n">eslesme</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">eslesen</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Yukarıdaki kodu incelersek; desen ile <strong>P</strong> harfi ile başlayan ve devamında harf gruplarının geldiği tüm kelimelerin tespit edilmeye çalışıldığını görüyoruz. <code>findall</code> fonksiyonu içerisinde <code>re.MULTILINE</code> ifadesi kullanıldığı için tüm paragraflarda eşleşme aranır. <code>^</code> metakarakteri ile <strong>tüm paragrafların başlarında</strong> eşleşme olup olmadığı sorgulanır. Kodun çıktısı aşağıdaki gibidir.</p>
+<div class="highlight"><pre><span></span><code><span class="n">Python</span>
+<span class="n">Peki</span>
+<span class="n">Python</span>
+</code></pre></div>
+
 <h2>$ Dolar</h2>
-<p><code>$</code> metakarakteri, <strong>Çok satırlı desenin ya da dizelerin nasıl biteceğini</strong> belirliyor. Bu sembol arama/eşleştirme işleminin karakter dizisinin en sonuna bakmasını sağlıyor. <strong>Sadece kendinden önceki BİR karaktere BAKMIYOR</strong>. Hatırlarsınız <code>^</code> metakarakteri eşleştirme işleminin karakter dizisinin en başından başlamasını sağlıyordu.</p>
+<p><code>$</code> metakarakteri, <strong>Çok satırlı desenin ya da dizelerin nasıl biteceğini</strong> belirliyor. Bu sembol arama/eşleştirme işleminin karakter dizisinin en sonuna bakmasını sağlıyor. Bu metakarakter çok satırlı bir metin içinde kullanılıyorsa, her satırın sonundaki kelime ile eşleşme olup olmadığı sorgulanır. Bunun için <code>re.M</code> ya da <code>re.MULTILINE</code> ifadesini koda eklemek gerekir. <strong>Sadece kendinden önceki BİR karaktere BAKMIYOR</strong>. Hatırlarsınız <code>^</code> metakarakteri eşleştirme işleminin karakter dizisinin en başından başlamasını sağlıyordu.</p>
 <div class="highlight"><pre><span></span><code><span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;at&quot;</span><span class="p">,</span> <span class="s2">&quot;katkı&quot;</span><span class="p">,</span> <span class="s2">&quot;fakat&quot;</span><span class="p">,</span> <span class="s2">&quot;atkı&quot;</span><span class="p">,</span> <span class="s2">&quot;rahat&quot;</span><span class="p">,</span> <span class="s2">&quot;mat&quot;</span><span class="p">,</span> <span class="s2">&quot;yat&quot;</span><span class="p">,</span> <span class="s2">&quot;sat&quot;</span><span class="p">,</span> <span class="s2">&quot;satılık&quot;</span><span class="p">,</span> <span class="s2">&quot;katılım&quot;</span><span class="p">]</span>
 </code></pre></div>
 
@@ -417,7 +437,29 @@ atkı
 </code></pre></div>
 
 <p>Gördüğünüz gibi, <code>^</code> işareti bir karakter dizisinin nasıl başlayacağını belirlerken, <code>$</code> işareti aynı karakter dizisinin nasıl biteceğini belirliyor. </p>
-<p>Dikkat edilmesi gereken bir husu ta şudur ki;</p>
+<p>Başka bir örnekle devam edelim. Bu defa  <strong>liste</strong> veri tipi yerine <strong>dizgi/dize (string)</strong> veri tipi kullanalım. Elimizde aşağıdaki şekilde bir metin olduğunu düşünerek <code>$</code> metakarakterini inceleyelim.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Python (C, C++, Perl, Ruby ve benzerleri gibi) bir programlama dilidir ve tıpkı öteki programlama dilleri gibi, önünüzde duran kara kutuya, yani bilgisayara hükmetmenizi sağlar.</span>
+<span class="s2">Bu programlama dili Guido Van Rossum adlı Hollandalı bir programcı tarafından 90’lı yılların başında geliştirilmeye başlanmıştır. Çoğu insan, isminin Python olmasına aldanarak, bu programlama dilinin, adını piton yılanından aldığını düşünür. </span>
+<span class="s2">Dediğimiz gibi, Python bir programlama dilidir. Üstelik pek çok dile kıyasla öğrenmesi kolay bir programlama dilidir. Bu yüzden, eğer daha önce hiç programlama deneyiminiz olmamışsa, programlama maceranıza Python’la başlamayı tercih edebilirsiniz.</span>
+<span class="s2">Eğer daha önce Python programlama dili ile ilgili araştırma yaptıysanız, şu anda piyasada iki farklı Python serisinin olduğu dikkatinizi çekmiş olmalı. 15.12.2023 tarihi itibariyle piyasada olan en yeni Python sürümleri Python 2.7.18 ve Python 3.12.1’dir.</span>
+<span class="s2">Eğer bir Python sürümü 2 sayısı ile başlıyorsa (mesela 2.7.15), o sürüm Python 2.x serisine aittir. Yok eğer bir Python sürümü 3 sayısı ile başlıyorsa (mesela 3.7.0), o sürüm Python 3.x serisine aittir.&quot;&quot;&quot;</span>
+
+<span class="n">desen</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;\w+r\.$&quot;</span>
+<span class="n">eslesme</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">desen</span><span class="p">,</span> <span class="n">metin</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">MULTILINE</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">eslesen</span> <span class="ow">in</span> <span class="n">eslesme</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">eslesen</span><span class="p">)</span> 
+</code></pre></div>
+
+<p>Yukarıdaki kodu incelersek; desen ile öncesinde harf gruplarının geldiği sonrasında ise <strong>r.</strong> ile biten tüm kelimelerin tespit edilmeye çalışıldığını görüyoruz. <code>findall</code> fonksiyonu içerisinde <code>re.MULTILINE</code> ifadesi kullanıldığı için tüm paragraflarda eşleşme aranır. <code>$</code> metakarakteri ile <strong>tüm paragrafların sonlarında</strong> eşleşme olup olmadığı sorgulanır. Kodun çıktısı aşağıdaki gibidir.</p>
+<div class="highlight"><pre><span></span><code><span class="n">sağlar</span><span class="o">.</span>
+<span class="nb">dir</span><span class="o">.</span>
+<span class="n">aittir</span><span class="o">.</span>
+</code></pre></div>
+
+<p>Dikkat edilmesi gereken bir husus ta şudur ki;</p>
 <ul>
 <li><code>^</code> işareti bir karakter dizisinin başına yazılırken</li>
 <li><code>$</code> işareti karakter dizisinin sonuna yazılırken</li>
@@ -441,8 +483,8 @@ atkı
         <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </code></pre></div>
 
-<div class="highlight"><pre><span></span><code><span class="mf">10</span><span class="err">$</span>
-<span class="mf">20</span><span class="err">$</span>
+<div class="highlight"><pre><span></span><code><span class="mi">10</span><span class="err">$</span>
+<span class="mi">20</span><span class="err">$</span>
 </code></pre></div>
 
 <p>Gördüğünüz gibi, “\” sembolünü kullanarak “$” işaretinin özel anlamından kaçtık.</p>
@@ -735,6 +777,49 @@ metin &gt; 02124344332
 </code></pre></div>
 
 <p>Burada formülümüz şu şekilde: <code>Bir veya daha fazla karakter</code> + <code>bir veya daha fazla boşluk</code> + <code>’:’ işareti</code> + <code>“bir adet boşluk</code> + <code>bir veya daha fazla sayı</code></p>
+<h2>\A Metin Başında Eşleşme Kontrolü</h2>
+<p><code>\A</code> meta karakteri, <strong>bir düzenli ifadenin (string ifade çok satırlı da olsa) yalnız başlangıcı ile eşleşme olup olmadığını tespit eder.</strong> Başka bir deyişle, <code>\A</code> ifadesi sadece tüm metnin başlangıcında eşleşmeye çalışır. <code>^</code> (şapka) metakarakteri ile tüm paragraf başlarında eşleşme olup olmadığı kontrol edilirken <code>\A</code> ile sadece metnin en baş kısmına bakılır. </p>
+<p><code>\A</code> metakarakterinin <code>findall</code> fonksiyonu ile (çok satırlı / paragraflı metin içinde) kullanımına bir örnek verelim.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+<span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Python (C, C++, Perl, Ruby ve benzerleri gibi) bir programlama dilidir ve tıpkı öteki programlama dilleri gibi, önünüzde duran kara kutuya, yani bilgisayara hükmetmenizi sağlar.</span>
+<span class="s2">Bu programlama dili Guido Van Rossum adlı Hollandalı bir programcı tarafından 90’lı yılların başında geliştirilmeye başlanmıştır. Çoğu insan, isminin Python olmasına aldanarak, bu programlama dilinin, adını piton yılanından aldığını düşünür.</span>
+<span class="s2">Peki neden piyasada iki farklı Python sürümü var ve bu bizim için ne anlama geliyor?</span>
+<span class="s2">Python programlama dili 1990 yılından bu yana geliştirilen bir dil. Bu süre içinde pek çok Python programı yazıldı ve insanların kullanımına sunuldu. Şu anda piyasada Python’ın 2.x serisinden bir sürümle yazılmış pek çok program bulunuyor. 3.x serisi ise ancak son yıllarda yaygınlık kazanmaya başladı.&quot;&quot;&quot;</span>
+
+<span class="n">desen</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;\AP\w+&quot;</span>
+<span class="n">eslesme</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">desen</span><span class="p">,</span> <span class="n">metin</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">MULTILINE</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">eslesen</span> <span class="ow">in</span> <span class="n">eslesme</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">eslesen</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Yukarıdaki kodu incelersek; desen ile <strong>P</strong> harfi ile başlayan ve devamında harf gruplarının geldiği tüm kelimelerin tespit edilmeye çalışıldığını görüyoruz. <code>findall</code> fonksiyonu içerisinde <code>re.MULTILINE</code> ifadesi kullanılmasına rağmen <code>\A</code> metakarakteri tüm paragraflarda eşleşme aramaz, sadece metnin başını kontrol eder. Kodun çıktısı aşağıdadır.</p>
+<div class="highlight"><pre><span></span><code><span class="n">Python</span>
+</code></pre></div>
+
+<h2>\Z Metin Sonunda Eşleşme Kontrolü</h2>
+<p><code>\Z</code> metakarakteri, <strong>dizelerin (stringlerin) sonunda eşleşme olup olmadığını sorgulamak için kullanılır.</strong> Bu sembol arama/eşleştirme işleminin karakter dizisinin en sonuna bakmasını sağlıyor. Bu metakarakter çok satırlı bir metin içinde kullanılıyorsa, <strong>sadece metnin en sonuna, son satırın sonuna bakar, her satırın sonundaki kelime ile eşleşme olup olmadığına bakmaz.</strong> Çok satırlı metinde eşleştirme yapmak için <code>re.M</code> ya da <code>re.MULTILINE</code> ifadesini koda eklemek gerekir. <strong>Sadece kendinden önceki BİR karaktere BAKMIYOR</strong>. Hatırlarsınız <code>^</code> metakarakteri eşleştirme işleminin karakter dizisinin en başından başlamasını sağlıyordu.</p>
+<p>Bir örnek verelim;</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Python (C, C++, Perl, Ruby ve benzerleri gibi) bir programlama dilidir ve tıpkı öteki programlama dilleri gibi, önünüzde duran kara kutuya, yani bilgisayara hükmetmenizi sağlar.</span>
+<span class="s2">Bu programlama dili Guido Van Rossum adlı Hollandalı bir programcı tarafından 90’lı yılların başında geliştirilmeye başlanmıştır. Çoğu insan, isminin Python olmasına aldanarak, bu programlama dilinin, adını piton yılanından aldığını düşünür. </span>
+<span class="s2">Dediğimiz gibi, Python bir programlama dilidir. Üstelik pek çok dile kıyasla öğrenmesi kolay bir programlama dilidir. Bu yüzden, eğer daha önce hiç programlama deneyiminiz olmamışsa, programlama maceranıza Python’la başlamayı tercih edebilirsiniz.</span>
+<span class="s2">Eğer daha önce Python programlama dili ile ilgili araştırma yaptıysanız, şu anda piyasada iki farklı Python serisinin olduğu dikkatinizi çekmiş olmalı. 15.12.2023 tarihi itibariyle piyasada olan en yeni Python sürümleri Python 2.7.18 ve Python 3.12.1’dir.</span>
+<span class="s2">Eğer bir Python sürümü 2 sayısı ile başlıyorsa (mesela 2.7.15), o sürüm Python 2.x serisine aittir. Yok eğer bir Python sürümü 3 sayısı ile başlıyorsa (mesela 3.7.0), o sürüm Python 3.x serisine aittir.&quot;&quot;&quot;</span>
+
+<span class="n">desen</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;\w+r\.\Z&quot;</span>       
+
+<span class="n">eslesme</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">desen</span><span class="p">,</span> <span class="n">metin</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">MULTILINE</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">eslesen</span> <span class="ow">in</span> <span class="n">eslesme</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">eslesen</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Yukarıdaki kodu incelersek; desen ile öncesinde harf gruplarının geldiği sonrasında ise <strong>r.</strong> ile biten kelimelerin tespit edilmeye çalışıldığını görüyoruz. <code>findall</code> fonksiyonu içerisinde <code>re.MULTILINE</code> ifadesi kullanılmasına rağmen tüm paragraflarda eşleşme aranmaz. <code>\Z</code> metakarakteri ile <strong>sadece son paragrafın bitiminde</strong> eşleşme olup olmadığı sorgulanır. Kodun çıktısı aşağıdaki gibidir.</p>
+<div class="highlight"><pre><span></span><code><span class="n">aittir</span><span class="o">.</span>
+</code></pre></div>
+
 <h2>\b Kelime Sınırını Belirten Özel Dizi</h2>
 <p><code>\b</code> sembolü ile Kelimenin nasıl <strong>başlaması</strong>, nasıl <strong>bitmesi</strong> ya da tam olarak <strong>sınırlarının ne olması</strong> gerektiğini belirtebiliriz.</p>
 <div class="highlight"><pre><span></span><code><span class="n">veri</span> <span class="o">=</span> <span class="s2">&quot;Doğum günüm 01.02.1980. Ağabeyim Doğum günü ise 03.04.1975&#39;te doğdu. Bilgisayarın ip adresi 04.05.18741&#39;dir.&quot;</span>
