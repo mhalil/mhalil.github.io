@@ -80,7 +80,7 @@
 <div class="post">
 	<h1 class="post-title">Pandas Özet Bilgi Tablosu (CheatSheet)</h1>
 	<span class="post-date">Pzt 28 Şubat 2022</span>
-	<p>Modified: 2023-11-12 17:00
+	<p>Modified: 2024-01-19 19:58
 Category: Pandas
 Tags: Python, Pandas, Kütüphane, Modül
 Author: Mustafa Halil</p>
@@ -530,12 +530,48 @@ Başvuru Kılavuzu / Özet Bilgi Tablosunun (CheatSheet) <strong>PDF uzantılı<
 </thead>
 <tbody>
 <tr>
-<td></td>
-<td></td>
+<td><code>sort_index()</code></td>
+<td>Veri çerçevesini <strong>indeks</strong> (dizin) değerine göre alfabetik olarak <strong>sıralamak</strong> için kullanılır. <code>df.sort_index()</code></td>
 </tr>
 <tr>
-<td></td>
-<td></td>
+<td>* <code>ascending</code></td>
+<td>Sıralamayı <strong>ters çevirmek için</strong> <code>ascending=False</code> parametresi kullanılabilir. <code>df.sort_index(ascending=False)</code></td>
+</tr>
+<tr>
+<td>* <code>axis</code></td>
+<td><strong>Sütunlarda (sütun isimlerini) sıralama yapmak</strong> istersek <code>axis=1</code> parametresini kullanmamız gerekir. <code>axis</code> parametresinin varsayılan değeri 0 (sıfır) yani satırlardır. <code>df.sort_index(axis=1)</code> yazarak sütun isimlerinin alfabetik olarak sıralamış oluruz.</td>
+</tr>
+<tr>
+<td><code>sort_values()</code></td>
+<td>Veri çerçevesini <strong>istenilen sütun(lar)a göre sıralamak</strong> istersek, <code>sort_values()</code> fonksiyonunu kullanmalıyız. <code>df.sort_values(by="Yıl")</code> bu kod ile <strong>Yıl sütununa göre</strong> sıralama yapmış olduk. Sıralama işlemini <strong>birden fazla sütuna göre yapmak istersek</strong>, sütun isimlerini köşeli parantez içinde yani bir liste olarak belirtmemiz gerekir. <code>df.sort_values(by=["Puan", "Yıl"])</code></td>
+</tr>
+<tr>
+<td>* <code>ascending</code></td>
+<td>Sıralamayı <strong>ters çevirmek için</strong> <code>ascending=False</code> parametresi kullanılabilir. <code>df.sort_values(by="Yıl", ascending=False)</code></td>
+</tr>
+<tr>
+<td>* <code>na_position</code></td>
+<td><code>sort_values()</code> fonksiyonu, <code>na_position</code> parametresi aracılığıyla <strong>NA (yani kayıp / eksik veri)</strong> değerlerini özel işleme tabi tutarak sıralayabilir. <code>df2.sort_values(by= "Sütun_4", na_position="first")</code> bu kod ile <strong>Sütun_4</strong>'e göre yapılacak sıralama işleminde, <strong>NaN</strong> değerlerini en üstte yer alır. Tersi istenirse <code>na_position</code> parametresine <code>"last"</code> seçeneğini vermemiz gerekir.</td>
+</tr>
+<tr>
+<td><code>reindex()</code></td>
+<td><code>reindex()</code>, Pandas'ta temel veri sıralama (hizalama) yöntemlerinden biridir. Bir veri çerçevesinin satır ya da sütunlarını yeniden sıralamak için kullanılan en yaygın yöntemdir. Bu fonksiyon, <strong>hem seçim hem de sıralama</strong> (<strong>Dilimleme ve Filtreleme</strong>) mantığıyla çalışır. <code>df.reindex(["Fight Club ", "Pulp Fiction", "Inception", "The Godfather ", "The Dark Knight ", "Seven Samurai "])</code></td>
+</tr>
+<tr>
+<td>* <code>columns</code></td>
+<td>Sütun isimlerinin sırasını <code>reindex()</code> fonksiyonu yardımı ile değiştirmek istersek, <code>columns</code> parametresini kullanabiliriz. <code>df.reindex(columns=["Puan", "Yıl", "Oylayan_Kişi"])</code></td>
+</tr>
+<tr>
+<td>* <code>axis</code></td>
+<td>Veri çerçevenizin indeks değerlerini (satırlar) ya da sütun isimlerini <code>reindex()</code> fonksiyonun, <code>axis</code> parametresi ile de sıralayabilirsiniz. Bu parametre <code>index</code> ya da <code>columns</code> seçeneğini alır;</td>
+</tr>
+<tr>
+<td>** <code>index</code></td>
+<td><strong>Belirtilen bir index değerine göre sıralama yapmak</strong> için <code>axis</code> parametresine <code>index</code> seçeneğini yazmalıyız. <code>df.reindex([2,1,0], axis="index"</code> bu kod ile <strong>index</strong>'i <strong>2,1,0</strong> şeklinde sıralamış olduk.</td>
+</tr>
+<tr>
+<td>** <code>columns</code></td>
+<td><strong>Belirtilen bir Sütun ismine göre sıralama yapmak</strong> için <code>axis</code> parametresine <code>columns</code> seçeneğini yazmalıyız. <code>df.reindex(["S2","S1","S0"], axis="columns")</code></td>
 </tr>
 </tbody>
 </table>
