@@ -614,35 +614,11 @@ Başvuru Kılavuzu / Özet Bilgi Tablosunun (CheatSheet) <strong>PDF uzantılı<
 </tr>
 <tr>
 <td><code>|</code> operatörü</td>
-<td>Birden fazla kriter içeren filtreleme işlemi uygulamak istersek,  <strong>İki kriterden biri sağlandığında</strong> filtrelemek istediğimizde <strong>YA DA / VEYA</strong><strong> simgesi olan </strong>|** kullanılmalı; <br><code>filtre1 = df["MİKTAR"] &gt; 80</code> <br><code>filtre2 = df["deger"] &lt; 100</code><br/><code>df[filtre1 | filtre2]</code></td>
+<td>Birden fazla kriter içeren filtreleme işlemi uygulamak istersek,  <strong>İki kriterden biri sağlandığında</strong> filtrelemek istediğimizde <strong>YA DA / VEYA</strong> simgesi olan <strong>|</strong> kullanılmalı; <br><code>filtre1 = df["MİKTAR"] &gt; 80</code> <br><code>filtre2 = df["deger"] &lt; 100</code><br/><code>df[filtre1 | filtre2]</code></td>
 </tr>
 <tr>
 <td><code>between()</code> metodu</td>
 <td>Bir sayısal aralık belirterek filtreleme yapmak istersek <code>between()</code> metodunu kullanabiliriz. Örneği 1960 ile 1980 yılları arasındaki filmleri filtrelemeye çalışalım. <code>df[df["Yıl"].between(1960,1980)]</code></td>
-</tr>
-<tr>
-<td><code>str</code> Metotları</td>
-<td>Filtreleme esnasında <strong>String</strong> Metotlarını kullanmak için <code>str</code> kelimesinden yararlanıyoruz.</td>
-</tr>
-<tr>
-<td>* <code>str.lower()</code></td>
-<td>"<strong>Film Adı</strong>" sütunundaki tüm verileri <strong>küçük harfe dönüştürmek</strong> istersek <code>lower()</code> metodunu kullanmalıyız; <br><code>df["Film Adı"] = df["Film Adı"].str.lower()</code></td>
-</tr>
-<tr>
-<td>* <code>str.upper()</code></td>
-<td>"<strong>Film Adı</strong>" sütunundaki tüm verileri <strong>büyük harfe dönüştürmek</strong> istersek <code>upper()</code> metodunu kullanmalıyız; <br><code>df["Film Adı"] = df["Film Adı"].str.upper()</code></td>
-</tr>
-<tr>
-<td>* <code>str.contains()</code></td>
-<td>String metotlarından biri olan <code>contains</code> ile <strong>metin içerisinde içeren kelime ya da kelimeleri aratabiliyoruz</strong>. <code>df[df["Film Adı"].str.contains("star wars")]</code></td>
-</tr>
-<tr>
-<td>* <code>str.startswith()</code></td>
-<td><code>startswith()</code> metodu ile bir karakter dizisinin hangi karakter veya karakterlerle <strong>başladığını</strong> denetleyebiliriz. Örneğin <strong>E</strong> harfi ile başlayan malzemeleri filtreleyelim; <code>df[df["MALZEME"].str.startswith("E")]</code></td>
-</tr>
-<tr>
-<td>* <code>str.endswith()</code></td>
-<td><code>endswith()</code> metodu ile bir karakter dizisinin hangi karakter veya karakterlerle <strong>bittiğini</strong> denetleyebiliriz. Örneğin <strong>Ü</strong> harfi ile biten malzemeleri filtreleyelim; <code>df[df["MALZEME"].str.endswith("Ü")]</code></td>
 </tr>
 </tbody>
 </table>
@@ -675,16 +651,32 @@ Başvuru Kılavuzu / Özet Bilgi Tablosunun (CheatSheet) <strong>PDF uzantılı<
 </thead>
 <tbody>
 <tr>
-<td><code>str.upper()</code></td>
-<td>Sütun1’deki Metinsel ifadelerin tümünü <strong>büyük harf çevirir</strong>. <code>df[“Sütun1”].str.upper()</code></td>
+<td><code>str</code> Metotları</td>
+<td>Filtreleme esnasında <strong>String</strong> Metotlarını kullanmak için <code>str</code> kelimesinden yararlanıyoruz.</td>
 </tr>
 <tr>
-<td><code>str.lower()</code></td>
-<td>Sütun1’deki Metinsel ifadelerin tümünü <strong>küçük harf çevirir.</strong> <code>df[“Sütun1”].str.lower()</code></td>
+<td>* <code>str.lower()</code></td>
+<td>"<strong>Film Adı</strong>" sütunundaki tüm metinsel ifadeleri <strong>küçük harfe dönüştürmek</strong> istersek <code>lower()</code> metodunu kullanmalıyız; <br><code>df["Film Adı"] = df["Film Adı"].str.lower()</code></td>
 </tr>
 <tr>
-<td><code>str.capitalize()</code></td>
-<td>Sütun1’deki Metinsel ifadelerin sadece <strong>baş harflerini büyük harf çevirir.</strong> <code>df[“Sütun1”].str.capitalize()</code></td>
+<td>* <code>str.upper()</code></td>
+<td>"<strong>Film Adı</strong>" sütunundaki tüm metinsel ifadeleri <strong>büyük harfe dönüştürmek</strong> istersek <code>upper()</code> metodunu kullanmalıyız; <br><code>df["Film Adı"] = df["Film Adı"].str.upper()</code></td>
+</tr>
+<tr>
+<td>* <code>str.capitalize()</code></td>
+<td>"<strong>Film Adı</strong>" sütunundaki tüm metinsel ifadelerin sadece <strong>baş harflerini büyük harf çevirir.</strong> <br><code>df["Film Adı"] = df[“Film Adı”].str.capitalize()</code></td>
+</tr>
+<tr>
+<td>* <code>str.contains()</code></td>
+<td>String metotlarından biri olan <code>contains</code> ile <strong>metin içerisinde içeren kelime ya da kelimeleri aratabiliyoruz</strong> <code>df[df["Film Adı"].str.contains("star wars")]</code></td>
+</tr>
+<tr>
+<td>* <code>str.startswith()</code></td>
+<td><code>startswith()</code> metodu ile bir karakter dizisinin hangi karakter veya karakterlerle <strong>başladığını</strong> denetleyebiliriz. Örneğin <strong>E</strong> harfi ile başlayan malzemeleri filtreleyelim; <code>df[df["MALZEME"].str.startswith("E")]</code></td>
+</tr>
+<tr>
+<td>* <code>str.endswith()</code></td>
+<td><code>endswith()</code> metodu ile bir karakter dizisinin hangi karakter veya karakterlerle <strong>bittiğini</strong> denetleyebiliriz. Örneğin <strong>Ü</strong> harfi ile biten malzemeleri filtreleyelim; <code>df[df["MALZEME"].str.endswith("Ü")]</code></td>
 </tr>
 </tbody>
 </table>
