@@ -80,7 +80,7 @@
 <div class="post">
 	<h1 class="post-title">Pandas Özet Bilgi Tablosu (CheatSheet)</h1>
 	<span class="post-date">Pzt 28 Şubat 2022</span>
-	<p>Modified: 2024-01-19 19:58
+	<p>Modified: 2024-01-20 15:38
 Category: Pandas
 Tags: Python, Pandas, Kütüphane, Modül
 Author: Mustafa Halil</p>
@@ -585,12 +585,64 @@ Başvuru Kılavuzu / Özet Bilgi Tablosunun (CheatSheet) <strong>PDF uzantılı<
 </thead>
 <tbody>
 <tr>
-<td></td>
-<td></td>
+<td><code>==</code> operatörü</td>
+<td>Veri çerçevesinin <strong>Yıl</strong> sütunu <strong>2010</strong>'a <strong>eşit</strong> <strong>olan</strong> verileri filtrelemek istersek; <code>df[df["Yıl"] == 2010]</code></td>
 </tr>
 <tr>
-<td></td>
-<td></td>
+<td><code>!=</code> operatörü</td>
+<td>Veri çerçevesinin <strong>Yıl</strong> sütunu <strong>20210</strong>'a <strong>eşit</strong> <strong>olmayan</strong> verileri filtrelemek istersek; <code>df[df["Yıl"] != 2010]</code></td>
+</tr>
+<tr>
+<td><code>&gt;</code> operatörü</td>
+<td>Veri çerçevesinin <strong>Yıl</strong> sütunu <strong>2015'ten büyük</strong> <strong>olan</strong> verileri filtrelemek istersek; <code>df[df["Yıl"] &gt; 2015]</code></td>
+</tr>
+<tr>
+<td><code>&lt;</code> operatörü</td>
+<td>Veri çerçevesinin <strong>Yıl</strong> sütunu <strong>2015'ten küçük</strong> <strong>olan</strong> verileri filtrelemek istersek; <code>df[df["Yıl"] &lt; 2015]</code></td>
+</tr>
+<tr>
+<td><code>&gt;=</code> operaörü</td>
+<td>Veri çerçevesinin <strong>Puan</strong> sütununda <strong>8.8</strong> <strong>ve üzeri değere sahip</strong> verileri filtrelemek istersek; <code>df[df["Puan"] &gt;= 8.8]</code></td>
+</tr>
+<tr>
+<td><code>&lt;=</code> operatörü</td>
+<td>Veri çerçevesinin <strong>Puan</strong> sütununda <strong>8.8</strong> <strong>ve küçük değere sahip</strong> verileri filtrelemek istersek; <code>df[df["Puan"] &lt;= 8.8]</code></td>
+</tr>
+<tr>
+<td><code>&amp;</code> operatörü</td>
+<td>Birden fazla kriter içeren filtreleme işlemi uygulamak istersek,  <strong>İki kriteri bir arada kullanmak</strong> istediğimizde <strong>VE</strong> simgesi olan <strong>&amp;</strong> kullanılmalı; <br><code>filtre1 = df["MİKTAR"] &gt; 80</code> <br><code>filtre2 = df["deger"] &lt; 100</code><br/><code>df[filtre1 &amp; filtre2]</code></td>
+</tr>
+<tr>
+<td><code>|</code> operatörü</td>
+<td>Birden fazla kriter içeren filtreleme işlemi uygulamak istersek,  <strong>İki kriterden biri sağlandığında</strong> filtrelemek istediğimizde <strong>YA DA / VEYA</strong><strong> simgesi olan </strong>|** kullanılmalı; <br><code>filtre1 = df["MİKTAR"] &gt; 80</code> <br><code>filtre2 = df["deger"] &lt; 100</code><br/><code>df[filtre1 | filtre2]</code></td>
+</tr>
+<tr>
+<td><code>between()</code> metodu</td>
+<td>Bir sayısal aralık belirterek filtreleme yapmak istersek <code>between()</code> metodunu kullanabiliriz. Örneği 1960 ile 1980 yılları arasındaki filmleri filtrelemeye çalışalım. <code>df[df["Yıl"].between(1960,1980)]</code></td>
+</tr>
+<tr>
+<td><code>str</code> Metotları</td>
+<td>Filtreleme esnasında <strong>String</strong> Metotlarını kullanmak için <code>str</code> kelimesinden yararlanıyoruz.</td>
+</tr>
+<tr>
+<td>* <code>str.lower()</code></td>
+<td>"<strong>Film Adı</strong>" sütunundaki tüm verileri <strong>küçük harfe dönüştürmek</strong> istersek <code>lower()</code> metodunu kullanmalıyız; <br><code>df["Film Adı"] = df["Film Adı"].str.lower()</code></td>
+</tr>
+<tr>
+<td>* <code>str.upper()</code></td>
+<td>"<strong>Film Adı</strong>" sütunundaki tüm verileri <strong>büyük harfe dönüştürmek</strong> istersek <code>upper()</code> metodunu kullanmalıyız; <br><code>df["Film Adı"] = df["Film Adı"].str.upper()</code></td>
+</tr>
+<tr>
+<td>* <code>str.contains()</code></td>
+<td>String metotlarından biri olan <code>contains</code> ile <strong>metin içerisinde içeren kelime ya da kelimeleri aratabiliyoruz</strong>. <code>df[df["Film Adı"].str.contains("star wars")]</code></td>
+</tr>
+<tr>
+<td>* <code>str.startswith()</code></td>
+<td><code>startswith()</code> metodu ile bir karakter dizisinin hangi karakter veya karakterlerle <strong>başladığını</strong> denetleyebiliriz. Örneğin <strong>E</strong> harfi ile başlayan malzemeleri filtreleyelim; <code>df[df["MALZEME"].str.startswith("E")]</code></td>
+</tr>
+<tr>
+<td>* <code>str.endswith()</code></td>
+<td><code>endswith()</code> metodu ile bir karakter dizisinin hangi karakter veya karakterlerle <strong>bittiğini</strong> denetleyebiliriz. Örneğin <strong>Ü</strong> harfi ile biten malzemeleri filtreleyelim; <code>df[df["MALZEME"].str.endswith("Ü")]</code></td>
 </tr>
 </tbody>
 </table>
