@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Flet 02 - Giriş" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/flet-02-giris.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.instagram.com/acikkaynakci/" target="_blank">
+						<i class="fa fa-instagram"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Flet 02 - Giriş</h1>
+	<span class="post-date">Pzt 05 Şubat 2024</span>
+	<h1>Flet Nedir?</h1>
+<p>Flet, front-end geliştirme deneyimi olmadan, en sevdiğiniz programlama dilinde etkileşimli, çok kullanıcılı web, masaüstü ve mobil uygulamalar oluşturmaya izin veren bir çerçevedir.  </p>
+<p>Google'ın Flutter'ını temel alan Flet denetimleriyle, programınız için bir kullanıcı arabirimi oluşturursunuz. Flet, Flutter widget'larını yalnızca "sarmalamakla" kalmaz, aynı zamanda daha küçük widget'ları birleştirerek, karmaşıklıkları gizleyerek, UI (kullanıcı arabirimi) en iyi uygulamalarını uygulayarak, makul varsayılanları uygulayarak kendi "görüşünü" ekler, tüm bunlar, uygulamalarınızın fazladan çaba harcamadan havalı ve profesyonel görünmesini sağlar.</p>
+<h2>Flet uygulaması örneği</h2>
+<p>Tabi aşağıdaki örneği yazıp çalıştırmak için öncelikle <strong>flet modülü</strong>nü yüklemek gerekir. Aşağıdaki kodu kullanarak flet modülünü (kütüphanesini) yükleyebilirsiniz:</p>
+<div class="highlight"><pre><span></span><code>pip install flet
+</code></pre></div>
+
+<p>Şu anda Python'da Flet uygulamaları yazabilirsiniz ve diğer diller yakında eklenecektir.  </p>
+<p>Aşağıda örnek bir "Sayaç (Counter)" uygulamasına ait kodlar bulunmaktadır:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">flet</span> <span class="k">as</span> <span class="nn">ft</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">page</span><span class="p">:</span> <span class="n">ft</span><span class="o">.</span><span class="n">Page</span><span class="p">):</span>
+    <span class="n">page</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Flet counter example&quot;</span>
+    <span class="n">page</span><span class="o">.</span><span class="n">vertical_alignment</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">MainAxisAlignment</span><span class="o">.</span><span class="n">CENTER</span>
+
+    <span class="n">txt_number</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="n">text_align</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">TextAlign</span><span class="o">.</span><span class="n">RIGHT</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">minus_click</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
+        <span class="n">txt_number</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">txt_number</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">page</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">plus_click</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
+        <span class="n">txt_number</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">txt_number</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">page</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+
+    <span class="n">page</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+        <span class="n">ft</span><span class="o">.</span><span class="n">Row</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="n">ft</span><span class="o">.</span><span class="n">IconButton</span><span class="p">(</span><span class="n">ft</span><span class="o">.</span><span class="n">icons</span><span class="o">.</span><span class="n">REMOVE</span><span class="p">,</span> <span class="n">on_click</span><span class="o">=</span><span class="n">minus_click</span><span class="p">),</span>
+                <span class="n">txt_number</span><span class="p">,</span>
+                <span class="n">ft</span><span class="o">.</span><span class="n">IconButton</span><span class="p">(</span><span class="n">ft</span><span class="o">.</span><span class="n">icons</span><span class="o">.</span><span class="n">ADD</span><span class="p">,</span> <span class="n">on_click</span><span class="o">=</span><span class="n">plus_click</span><span class="p">),</span>
+            <span class="p">],</span>
+            <span class="n">alignment</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">MainAxisAlignment</span><span class="o">.</span><span class="n">CENTER</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+
+<span class="n">ft</span><span class="o">.</span><span class="n">app</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">main</span><span class="p">)</span>
+</code></pre></div>
+
+<p>kodu çalıştırmak için (dosya adının counter.py olduğunu varsayıyorum);</p>
+<div class="highlight"><pre><span></span><code>python counter.py
+</code></pre></div>
+
+<p>Uygulama, yerel bir işletim sistemi penceresinde başlatılacak. Electron'a ne güzel bir alternatif!</p>
+<p><strong>macOS</strong></p>
+<p><img alt="macos" src="https://flet.dev/img/docs/getting-started/flet-counter-macos.png"></p>
+<p><strong>Windows</strong></p>
+<p><img alt="windows" src="https://flet.dev/img/docs/getting-started/flet-counter-windows.png"></p>
+<p><strong>Linux</strong></p>
+<p><img alt="linux_flet_ui" src="images/python/flet/linux_flet_ui.png"></p>
+<div class="highlight"><pre><span></span><code><span class="n">ft</span><span class="o">.</span><span class="n">app</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">main</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">WEB_BROWSER</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Kodu tekrar çalıştırın ve şimdi anında bir web uygulamasına sahip olursunuz:</p>
+<p><img alt="" src="https://flet.dev/img/docs/getting-started/flet-counter-safari.png"></p>
+<table>
+<thead>
+<tr>
+<th>Önceki Bölüm</th>
+<th>Sonraki Bölüm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#">&lt;&lt;&lt; 01 Temel Özellikler</a></td>
+<td><a href="#">03 Python Rehberi &gt;&gt;&gt;</a></td>
+</tr>
+</tbody>
+</table>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/flet.html">Flet</a></li>
+					<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+					<li><a href="/tag/modul.html">Modül</a></li>
+					<li><a href="/tag/gui.html">GUI</a></li>
+					<li><a href="/tag/arabirim.html">Arabirim</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>

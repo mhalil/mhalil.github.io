@@ -79,6 +79,54 @@
 </div>		<div class="content container">
 	<div class="posts">
 			<div class="post">
+				<h1 class="post-title" href="/pandas-giris.html">
+					<a href="/pandas-giris.html">Pandas - Giriş</a>
+				</h1>
+				<span class="post-date">Cts 09 Temmuz 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>Pandas Kütüphanesi Notları</h1>
+<p><strong>Python'a Giriş</strong> konusuna ait notları, FreeCAD için Python ile Komut Dosyası Oluşturma (Scripting) Eğitiminde paylaşmıştık.  İlave olarak Python'ın en güçlü ve işlevsel kütüphanelerinden biri olan <strong>Pandas</strong>'a ait notları paylaşmaya devam ediyorum.</p>
+<p><img alt="pandas" src="../../images/pandas_logo.png"></p>
+<h2>PANDAS NEDİR?</h2>
+<p><strong>Python'a Giriş</strong> konusu ile alakalı bilgileri, <a href="../freecad-scripting-egitimi.html">FreeCAD Eğitim Notları</a> bölümünde <a href="../freecad-01-pythona-giris.html">1. Python'a Giriş …</a></p>
+				</p>
+				<a class="read-more" href="pandas-giris.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="/polars-0302-veri-yapilari.html">
+					<a href="/polars-0302-veri-yapilari.html">Polars - 0302 Veri Yapıları</a>
+				</h1>
+				<span class="post-date">Prş 30 Haziran 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/polars.html">Polars</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>Veri Yapıları</h1>
+<p><code>Polars</code> tarafından sağlanan temel veri yapıları <code>Series (Seriler)</code> ve <code>DataFrame (VeriÇerçeveleri)</code>'dir.</p>
+<h1>Series (Seriler)</h1>
+<p>Seriler, 1-boyutlu bir veri yapısıdır. Bir dizi içindeki tüm öğeler aynı <a href="polars-0301-veri-tipleri.html">Veri Türüne / Tipine</a> sahiptir. Aşağıdaki kod parçacığı, basit bir <code>Series</code> nesnesinin nasıl oluşturulacağını gösterir.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polars</span> <span class="k">as</span> <span class="nn">pl</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1 …</span></code></pre></div>
+				</p>
+				<a class="read-more" href="polars-0302-veri-yapilari.html">Continue reading »</a>
+			</div>
+			<div class="post">
 				<h1 class="post-title" href="/polars-0303-baglamlar.html">
 					<a href="/polars-0303-baglamlar.html">Polars - 0303 Bağlamlar</a>
 				</h1>
@@ -281,50 +329,6 @@ olarak diğer herhangi bir FreeCAD nesnesi gibi davranacak ve dosya kaydetme/yü
 <p><code>Part (Parça)</code> modülünde kullanılan ana veri yapısı, <a href="https://wiki.freecadweb.org/OpenCASCADE">OpenCASCADE</a>'den <a href="http://en.wikipedia.org/wiki/Boundary_representation">BRep</a> veri türüdür. <code>Part</code> modülünün hemen hemen tüm içeriği ve nesne türleri, Python komut dosyasında mevcuttur. Bu, <strong>Çizgiler</strong>, <strong>Daireler</strong> ve <strong>Yaylar</strong> gibi geometrik temel şekilleri ve <strong>Noktalar, Kenarlar, Kafes/Ağ Yapıları, Yüzeyler, Katılar ve Bileşikler …</strong></p>
 				</p>
 				<a class="read-more" href="freecad-scripting-04-parca-part-komut-dosyasi-olusturmak.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="/freecad-scripting-05-topolojik-veri-kodlamasi.html">
-					<a href="/freecad-scripting-05-topolojik-veri-kodlamasi.html">FreeCAD - Scripting 05 - Topolojik Veri Kodlaması</a>
-				</h1>
-				<span class="post-date">Sal 22 Şubat 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/freecad.html">FreeCAD</a></li>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/scripting.html">Scripting</a></li>
-								<li><a href="/tag/komut.html">Komut</a></li>
-								<li><a href="/tag/topoloji.html">Topoloji</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1>Topolojik Veri Kodlaması</h1>
-<h2>Takdim</h2>
-<p>Burada, <code>Parça (Part)</code> modülünü, doğrudan FreeCAD Python Yorumlayıcısından veya herhangi bir harici komut dosyasından nasıl kontrol edeceğinizi açıklayacağız. Python komut dosyasının FreeCAD'de nasıl çalıştığı hakkında daha fazla bilgiye ihtiyacınız varsa, <a href="https://wiki.freecadweb.org/Power_users_hub">Komut Dosyası</a> bölümüne ve <a href="freecad-03-komut-dosyasi-olusturmanin-temelleri.html">FreeCAD Komut Dosyası Oluşturma Temelleri 
-</a>sayfalarına göz attığınızdan emin olun. Python'da yeniyseniz …</p>
-				</p>
-				<a class="read-more" href="freecad-scripting-05-topolojik-veri-kodlamasi.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="/freecad-scripting-03-komut-dosyasi-olusturmanin-temelleri.html">
-					<a href="/freecad-scripting-03-komut-dosyasi-olusturmanin-temelleri.html">FreeCAD - Scripting 03 - Komut Dosyası Oluşturmanın Temelleri</a>
-				</h1>
-				<span class="post-date">Prş 17 Şubat 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/freecad.html">FreeCAD</a></li>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/scripting.html">Scripting</a></li>
-								<li><a href="/tag/komut.html">Komut</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1>FreeCAD'de Komut Dosyası Oluşturmanın (Scripting) Temelleri</h1>
-<h2>FreeCAD'de Python komut dosyası oluşturmak</h2>
-<p>FreeCAD, Python komut dosyaları tarafından tamamen kontrol edilecek şekilde sıfırdan oluşturulmuştur. Arayüz, sahne içeriği ve hatta bu içeriğin 3B görünümlerdeki temsili gibi FreeCAD'in neredeyse tüm bölümlerine yerleşik Python yorumlayıcısından veya kendi komut dosyalarınızdan erişilebilir. Sonuç olarak, FreeCAD muhtemelen bugün …</p>
-				</p>
-				<a class="read-more" href="freecad-scripting-03-komut-dosyasi-olusturmanin-temelleri.html">Continue reading »</a>
 			</div>
 	</div>
 	<div class="pagination">

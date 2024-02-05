@@ -613,8 +613,8 @@ Başvuru Kılavuzu / Özet Bilgi Tablosunun (CheatSheet) <strong>PDF uzantılı<
 <td>Birden fazla kriter içeren filtreleme işlemi uygulamak istersek,  <strong>İki kriteri bir arada kullanmak</strong> istediğimizde <strong>VE</strong> simgesi olan <strong>&amp;</strong> kullanılmalı; <br><code>filtre1 = df["MİKTAR"] &gt; 80</code> <br><code>filtre2 = df["deger"] &lt; 100</code><br/><code>df[filtre1 &amp; filtre2]</code></td>
 </tr>
 <tr>
-<td><code>|</code> operatörü</td>
-<td>Birden fazla kriter içeren filtreleme işlemi uygulamak istersek,  <strong>İki kriterden biri sağlandığında</strong> filtrelemek istediğimizde <strong>YA DA / VEYA</strong> simgesi olan <strong>|</strong> kullanılmalı; <br><code>filtre1 = df["MİKTAR"] &gt; 80</code> <br><code>filtre2 = df["deger"] &lt; 100</code><br/><code>df[filtre1 | filtre2]</code></td>
+<td><code>\|</code> operatörü</td>
+<td>Birden fazla kriter içeren filtreleme işlemi uygulamak istersek,  <strong>İki kriterden biri sağlandığında</strong> filtrelemek istediğimizde <strong>YA DA / VEYA</strong><strong> simgesi olan </strong>|** kullanılmalı; <br><code>filtre1 = df["MİKTAR"] &gt; 80</code> <br><code>filtre2 = df["deger"] &lt; 100</code><br/><code>df[filtre1 \| filtre2]</code></td>
 </tr>
 <tr>
 <td><code>between()</code> metodu</td>
