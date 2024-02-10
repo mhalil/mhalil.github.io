@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Flet 03 - Python Rehberi" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/flet-03-python-rehberi.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.instagram.com/acikkaynakci/" target="_blank">
+						<i class="fa fa-instagram"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Flet 03 - Python Rehberi</h1>
+	<span class="post-date">Cts 10 Şubat 2024</span>
+	<h1>Python Rehberi</h1>
+<h1>Python'da Flet uygulamaları oluşturma</h1>
+<p>Bir <strong>Flet</strong> uygulaması yazmak için front-end gurusu olmanız gerekmez, ancak temel 
+<strong>Python</strong> bilgisine ve Nesne Yönelimli Programlama (OOP) bilgisine sahip olmanız önerilir.</p>
+<p>Bu kılavuzda (rehberde), bir Flet uygulamasının yapısını inceleyeceğiz, <strong>Flet</strong> <strong>kontrollerini</strong> kullanarak veri çıktısını almayı, bir kullanıcıdan veri istemeyi ve temel sayfa düzenleri oluşturmayı öğreneceğiz. 
+Kullanıcılarınıza hazır bir uygulama sunmak için bazı paketleme ve dağıtım seçeneklerini de ele alacağız.</p>
+<h2>Flet modülünü yükleme</h2>
+<p><strong>Flet</strong>, <u>Python 3.7 veya üst sürümünü</u> gerektirir. Flet ile arabirim oluşturmak için önce <strong>flet</strong> modülünü kurmanız gerekir:</p>
+<div class="highlight"><pre><span></span><code>pip install flet
+</code></pre></div>
+
+<blockquote>
+<p>Flet modülünü yükseltmek için aşağıdaki kodu çalıştırmalısınız:</p>
+<p><code>pip install flet --upgrade</code></p>
+</blockquote>
+<p>Flet ön-sürümünü (pre-release) yüklemek için (ileri düzey kullanıcılar için) aşağıdaki kodu çalıştırın:</p>
+<div class="highlight"><pre><span></span><code>pip install flet --pre
+</code></pre></div>
+
+<blockquote>
+<p>Dikkat!</p>
+<p>Ön-sürüm (pre-release) yapılarını, bir sanal ortama yüklemenizi öneririz.</p>
+</blockquote>
+<h3>Linux</h3>
+<p><strong>Flet</strong> uygulamalarını Linux ve <strong>WSL</strong>'de çalıştırmak için <a href="https://gstreamer.freedesktop.org/">GStreamer</a> kitaplıklarının kurulu olması gerekir. Büyük olasılıkla zaten sisteminizde vardır, ancak Flet uygulamasını çalıştırırken <code>error while loading shared libraries: libgstapp-1.0.so.0: cannot open shared object file: No such file or directory</code> şeklinde hata alıyorsanız, <strong>GStreamer</strong>'ı yüklemeniz gerekir .</p>
+<p>GStreamer'ı Ubuntu/Debian'a yüklemek için aşağıdaki komutları çalıştırın:</p>
+<div class="highlight"><pre><span></span><code><span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="o">-</span><span class="n">get</span><span class="w"> </span><span class="n">update</span>
+<span class="n">sudo</span><span class="w"> </span><span class="n">apt</span><span class="o">-</span><span class="n">get</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">libgstreamer1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libgstreamer</span><span class="o">-</span><span class="n">plugins</span><span class="o">-</span><span class="n">base1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">libgstreamer</span><span class="o">-</span><span class="n">plugins</span><span class="o">-</span><span class="n">bad1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">dev</span><span class="w"> </span><span class="n">gstreamer1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">plugins</span><span class="o">-</span><span class="n">base</span><span class="w"> </span><span class="n">gstreamer1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">plugins</span><span class="o">-</span><span class="n">good</span><span class="w"> </span><span class="n">gstreamer1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">plugins</span><span class="o">-</span><span class="n">bad</span><span class="w"> </span><span class="n">gstreamer1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">plugins</span><span class="o">-</span><span class="n">ugly</span><span class="w"> </span><span class="n">gstreamer1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">libav</span><span class="w"> </span><span class="n">gstreamer1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">doc</span><span class="w"> </span><span class="n">gstreamer1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">tools</span><span class="w"> </span><span class="n">gstreamer1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">x</span><span class="w"> </span><span class="n">gstreamer1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">alsa</span><span class="w"> </span><span class="n">gstreamer1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">gl</span><span class="w"> </span><span class="n">gstreamer1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">gtk3</span><span class="w"> </span><span class="n">gstreamer1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">qt5</span><span class="w"> </span><span class="n">gstreamer1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">pulseaudio</span>
+</code></pre></div>
+
+<p>GStreamer'ı, diğer Linux dağıtımlarına yüklemek için <a href="https://gstreamer.freedesktop.org/documentation/installing/on-linux.html?gi-language=c">bu kılavuza</a> göz atın.</p>
+<h3>WSL</h3>
+<p>Flet uygulamaları WSL2'de çalıştırılabilir. <code>cannot open display (ekran açılamıyor)</code> hatası alıyorsanız, sorun giderme için <a href="https://github.com/microsoft/wslg/wiki/Diagnosing-%22cannot-open-display%22-type-issues-with-WSLg">bu kılavuza</a> göz atın.  </p>
+<h1>Temel uygulama yapısı</h1>
+<p>Çok minimal bir Flet uygulaması aşağıdaki yapıya sahiptir:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">flet</span> <span class="k">as</span> <span class="nn">ft</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">page</span><span class="p">:</span> <span class="n">ft</span><span class="o">.</span><span class="n">Page</span><span class="p">):</span>
+    <span class="c1"># add/update controls on Page</span>
+    <span class="k">pass</span>
+
+<span class="n">ft</span><span class="o">.</span><span class="n">app</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">main</span><span class="p">)</span>
+</code></pre></div>
+
+<p><img alt="basic-app-structure" src="https://flet.dev/img/docs/getting-started/basic-app-structure.png"></p>
+<blockquote>
+<p><strong>NOT:</strong></p>
+<p>Bu bölüm kasıtlı olarak "<strong>temel</strong>" olarak adlandırılmıştır, çünkü bu kılavuzun ilerleyen bölümlerinde yeniden kullanılabilir kontrollerle uygulama yapısına yönelik daha gerçekçi yaklaşımlara bakacağız.</p>
+</blockquote>
+<p>Tipik bir Flet programı, uygulamanın yeni kullanıcı oturumlarını beklemeye başladığı <code>flet.app()</code> çağrısıyla sona erer. <code>main()</code> fonksiyonu, bir Flet uygulamasındaki giriş noktasıdır. <code>Page (Sayfa)</code> örneğinin aktarıldığı her kullanıcı oturumu için yeni bir iş parçacığı çağrılıyor. Flet uygulamasını tarayıcıda çalıştırırken, açılan her sekme veya sayfa için yeni bir kullanıcı oturumu başlatılır. Bir <strong>masaüstü uygulaması</strong> olarak çalışırken oluşturulan <strong>yalnızca bir oturum vardır</strong>.</p>
+<p><code>Page (Sayfa)</code>, kullanıcıya özgü bir "<strong>canvas (tuval)</strong>" gibidir, kullanıcı oturumunun görsel halidir. Bir uygulama arabirimi oluşturmak için bir sayfaya (page) kontroller ekler ve kaldırırsınız, kontrollerin özelliklerini güncellersiniz. Yukarıdaki kod örneği, içerisine hiçbir <strong>kontrol</strong> eklenmediği için her kullanıcıya sadece boş bir sayfa (page) görüntüleyecektir.</p>
+<p>Flet uygulaması varsayılan olarak, yerel işletim sistemi penceresinde (uygulama/yazılım olarak) başlar. Ancak, <code>flet.app</code> çağrısını aşağıdaki gibi değiştirerek onu yeni bir <strong>tarayıcı penceresinde</strong> açabilirsiniz:</p>
+<div class="highlight"><pre><span></span><code><span class="n">ft</span><span class="o">.</span><span class="n">app</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">main</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">WEB_BROWSER</span><span class="p">)</span>
+</code></pre></div>
+
+<blockquote>
+<p><strong>NOT</strong>:</p>
+<p>Dahili olarak, her Flet uygulaması bir web uygulamasıdır ve yerel bir işletim 
+sistemi penceresinde açılsa bile yerleşik bir web sunucusu arka planda başlatılır. Flet web sunucusuna "<strong>Fletd</strong>" adı verilir ve varsayılan olarak rastgele bir <strong>TCP</strong> bağlantı noktasını dinler. Özel bir TCP bağlantı noktası belirtebilir ve ardından uygulamayı <strong>masaüstü görünümüyle</strong> birlikte tarayıcıda açabilirsiniz:</p>
+<p><code>python
+flet.app(port=8550, target=main)</code></p>
+<p>Flet uygulamanızın <strong>web sürümünü</strong> görmek için tarayıcınızda <code>http://localhost:&lt;port&gt;</code> öğesini açın.</p>
+</blockquote>
+<h1>Kontroller (controls)</h1>
+<p>Kullanıcı arayüzü, <strong>Kontrollerden (Controls)</strong> (widget olarak da bilinir) yapılmıştır. 
+Kontrollerin bir kullanıcı tarafından görülebilmesi için bir <code>Sayfaya (Page)</code> veya diğer kontrollerin içine eklenmesi gerekir. <strong>Page (Sayfa)</strong>, en üstteki denetimdir. İç içe geçmiş denetimler, kök olarak Page (Sayfa) ile bir ağaç yapısı olarak temsil edilebilir.</p>
+<p>Kontroller, temelde normal Python sınıflarıdır. Özellikleriyle eşleşen parametreleri kullanarak, yapıcılar (constructors) aracılığıyla kontrol örnekleri oluşturulur. örneğin:</p>
+<div class="highlight"><pre><span></span><code><span class="n">t</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s2">&quot;Hello, world!&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Bir sayfada kontrolü görüntülemek istiyorsanız, o kontrolü sayfanın <code>kontroller (controls)</code> <strong>listesine</strong> eklemeli ve <strong>sayfa değişikliklerini</strong> bir tarayıcıya veya masaüstü istemcisine göndermek / güncellemek için <code>page.update()</code> öğesini çağırmalısınız:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">flet</span> <span class="k">as</span> <span class="nn">ft</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">page</span><span class="p">:</span> <span class="n">ft</span><span class="o">.</span><span class="n">Page</span><span class="p">):</span>    
+    <span class="n">t</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s2">&quot;Hello, world!&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">)</span>    
+    <span class="n">page</span><span class="o">.</span><span class="n">controls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>    
+    <span class="n">page</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+
+<span class="n">ft</span><span class="o">.</span><span class="n">app</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">main</span><span class="p">)</span>
+</code></pre></div>
+
+<p><img alt="controls-text" src="https://flet.dev/img/docs/getting-started/controls-text.png"></p>
+<blockquote>
+<p><strong>NOT</strong>:</p>
+<p>Aşağıdaki örneklerde sadece ana (main) fonksiyonun içeriğini göstereceğiz.</p>
+</blockquote>
+<p>Kontrol özelliklerini değiştirebilirsiniz ancak yaptığınız değişiklikler kullanıcı arayüzünde bir sonraki <code>page.update():</code> komutu ile güncellenecektir. </p>
+<div class="highlight"><pre><span></span><code><span class="n">t</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">Text</span><span class="p">()</span>
+<span class="n">page</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="c1"># it&#39;s a shortcut for page.controls.append(t) and then page.update()</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Step </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="n">page</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Bazı kontroller, diğer kontrolleri içerebilen "kapsayıcı (container)" kontrollerdir ( Page (Sayfa) gibi ). Örneğin, <code>Row (Satır)</code> kontrolü, diğer kontrollerin bir satırda tek tek düzenlenmesine izin verir:</p>
+<div class="highlight"><pre><span></span><code><span class="n">page</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+    <span class="n">ft</span><span class="o">.</span><span class="n">Row</span><span class="p">(</span><span class="n">controls</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">ft</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">),</span>
+        <span class="n">ft</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s2">&quot;B&quot;</span><span class="p">),</span>
+        <span class="n">ft</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">)</span>
+    <span class="p">])</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p><img alt="row" src="images/python/flet/row_1.png"></p>
+<p>veya <code>TextField</code> (metin alanı) ve yanında <code>ElevatedButton</code> (Yükseltilmiş Düğme):</p>
+<div class="highlight"><pre><span></span><code><span class="n">page</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+    <span class="n">ft</span><span class="o">.</span><span class="n">Row</span><span class="p">(</span><span class="n">controls</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">ft</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Your name&quot;</span><span class="p">),</span>
+        <span class="n">ft</span><span class="o">.</span><span class="n">ElevatedButton</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;Say my name!&quot;</span><span class="p">)</span>
+    <span class="p">])</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p><img alt="row_2" src="images/python/flet/row_2.png"></p>
+<p><code>page.update()</code> yalnız son çağrısından bu yana yapılan değişiklikleri güncelleyecek 
+kadar akıllıdır. Bir sayfaya birkaç yeni kontrol ekleyebilir, bazılarını kaldırabilir, diğer kontrollerin özelliklerini değiştirebilirsiniz ancak bu değişikliklerin  topluca güncellenmesi için <code>page.update()</code>'i çağırabilirsiniz. , örneğin:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">page</span><span class="o">.</span><span class="n">controls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ft</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Line </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">:</span>
+        <span class="n">page</span><span class="o">.</span><span class="n">controls</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">page</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.3</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Düğmeler (Butonlar) gibi bazı kontroller (denetimler), bir kullanıcı girişine tepki veren  "<strong>olay işleyicilere (fonksiyonlara)</strong> sahip olabilir, örneğin <code>ElevatedButton.on_click:</code> (butona tıklamak sonucunda bir işlemin gerçekleşmesi gibi)</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">button_clicked</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
+    <span class="n">page</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">ft</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s2">&quot;Clicked!&quot;</span><span class="p">))</span>
+
+<span class="n">page</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">ft</span><span class="o">.</span><span class="n">ElevatedButton</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;Click me&quot;</span><span class="p">,</span> <span class="n">on_click</span><span class="o">=</span><span class="n">button_clicked</span><span class="p">))</span>
+</code></pre></div>
+
+<p>ve basit bir Yapılacaklar Lisesi (To-Do) için daha gelişmiş bir örnek:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">flet</span> <span class="k">as</span> <span class="nn">ft</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">page</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">add_clicked</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
+        <span class="n">page</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">ft</span><span class="o">.</span><span class="n">Checkbox</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">new_task</span><span class="o">.</span><span class="n">value</span><span class="p">))</span>
+        <span class="n">new_task</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="n">new_task</span><span class="o">.</span><span class="n">focus</span><span class="p">()</span>
+        <span class="n">new_task</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+
+    <span class="n">new_task</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">hint_text</span><span class="o">=</span><span class="s2">&quot;Whats needs to be done?&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+    <span class="n">page</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">ft</span><span class="o">.</span><span class="n">Row</span><span class="p">([</span><span class="n">new_task</span><span class="p">,</span> <span class="n">ft</span><span class="o">.</span><span class="n">ElevatedButton</span><span class="p">(</span><span class="s2">&quot;Add&quot;</span><span class="p">,</span> <span class="n">on_click</span><span class="o">=</span><span class="n">add_clicked</span><span class="p">)]))</span>
+
+<span class="n">ft</span><span class="o">.</span><span class="n">app</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">main</span><span class="p">)</span>
+</code></pre></div>
+
+<p><img alt="to-do" src="https://flet.dev/img/docs/getting-started/simple-ToDo.png"></p>
+<blockquote>
+<p><strong>NOT</strong>:
+<strong>Flet</strong>, kullanıcı arayüzünü durum bilgisi olan kontrollerle "manuel" oluşturduğunuz ve ardından kontrol özelliklerini güncelleyerek değişikliğe uğrattığınız zorunlu kullanıcı arayüzü modelini uygular. <strong>Flutter</strong>, kullanıcı arayüzünün uygulama verisi değişikliklerine göre <strong>otomatik olarak</strong> yeniden oluşturulduğu bildirime dayalı modeli uygular. Modern front-end uygulamalarında, uygulama durumunu yönetmek, doğası gereği karmaşık bir görevdir ve Flet'in "<strong>eski usul</strong>" yaklaşımı, front-end deneyimi olmayan programcılar için daha çekici olabilir.</p>
+</blockquote>
+<h3>visible (görünürlük) özelliği;</h3>
+<p>Her kontrolün (denetimin), Sayfa (Page) oluşturulurken, varsayılan değeri <code>true (doğru)</code> olan <code>visible (görünür)</code> özelliği vardır. <code>visible (görünür)</code> değerini <code>false (yanlış / hayır)</code> olarak ayarlamak, kontrolün (ve varsa tüm alt öğelerinin) bir sayfa tuvalinde oluşturulmasını tamamen engeller. Gizli kontrollere klavye veya fare ile odaklanılamaz veya seçilemez ve herhangi bir olay (event) belirtemez.</p>
+<h3>disabled (devre dışı / engelli) özelliği;</h3>
+<p>Her kontrol (denetim), varsayılan olarak <code>false (yanlış)</code> değerini barındıran <code>disabled (devre dışı)</code> özelliğine sahiptir. Yani kontrol (denetim) ve tüm alt öğeleri etkindir. <code>disabled</code> özelliği çoğunlukla <code>TextField</code>, <code>Dropdown</code>, <code>Checkbox</code> ve butonlar gibi veri giriş kontrolleri ile kullanılır. Bununla birlikte, bir üst denetim (Parent Control) <code>disabled (devre dışı)</code> olarak ayarlanabilir ve değeri, yinelemeli olarak tüm alt kontrollere (çocuklara) yayılır / uygulanır.</p>
+<p>Örneğin, çoklu giriş kontrolüne sahip bir formunuz varsa, her kontrol için <code>disabled (devre dışı)</code> bırakılan özelliği ayrı ayrı ayarlayabilirsiniz:</p>
+<div class="highlight"><pre><span></span><code><span class="n">first_name</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
+<span class="n">last_name</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
+<span class="n">first_name</span><span class="o">.</span><span class="n">disabled</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">last_name</span><span class="o">.</span><span class="n">disabled</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">page</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">first_name</span><span class="p">,</span> <span class="n">last_name</span><span class="p">)</span>
+</code></pre></div>
+
+<p>veya form kontrollerini bir <strong>kapsayıcı (container)</strong> içerisine koyabilirsiniz, ör.kontrolleri <code>Column (Sütun)</code> içerisine koyun ve ardından <code>Column (sütun)</code>'un  <code>disabled (devre dışı)</code> özelliğinini <code>True (Doğru/Aktif)</code> olarak ayarlayın:</p>
+<div class="highlight"><pre><span></span><code><span class="n">first_name</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
+<span class="n">last_name</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">controls</span><span class="o">=</span><span class="p">[</span>
+    <span class="n">first_name</span><span class="p">,</span>
+    <span class="n">last_name</span>
+<span class="p">])</span>
+<span class="n">c</span><span class="o">.</span><span class="n">disabled</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">page</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</code></pre></div>
+
+<h1>Kontrol Referansları (Değişkenler)</h1>
+<p>Flet kontrolleri nesnelerdir ve özelliklerine erişmek için bu nesnelere, referanslar (değişkenler) tutmamız gerekir.</p>
+<p>Aşağıdaki örneği göz önünde bulundurun:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">flet</span> <span class="k">as</span> <span class="nn">ft</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">page</span><span class="p">):</span>
+
+    <span class="n">first_name</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;First name&quot;</span><span class="p">,</span> <span class="n">autofocus</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">last_name</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Last name&quot;</span><span class="p">)</span>
+    <span class="n">greetings</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">Column</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">btn_click</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
+        <span class="n">greetings</span><span class="o">.</span><span class="n">controls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ft</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hello, </span><span class="si">{</span><span class="n">first_name</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">last_name</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">!&quot;</span><span class="p">))</span>
+        <span class="n">first_name</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="n">last_name</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="n">page</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+        <span class="n">first_name</span><span class="o">.</span><span class="n">focus</span><span class="p">()</span>
+
+    <span class="n">page</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+        <span class="n">first_name</span><span class="p">,</span>
+        <span class="n">last_name</span><span class="p">,</span>
+        <span class="n">ft</span><span class="o">.</span><span class="n">ElevatedButton</span><span class="p">(</span><span class="s2">&quot;Say hello!&quot;</span><span class="p">,</span> <span class="n">on_click</span><span class="o">=</span><span class="n">btn_click</span><span class="p">),</span>
+        <span class="n">greetings</span><span class="p">,</span>
+    <span class="p">)</span>
+
+<span class="n">ft</span><span class="o">.</span><span class="n">app</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">main</span><span class="p">)</span>
+</code></pre></div>
+
+<p><img alt="control-refs" src="https://flet.dev/img/docs/getting-started/control-refs.png"></p>
+<p><code>main()</code> metodunun en başında, butonun <code>on_click</code> fonksiyonunda (işleyicisinde) kullanacağımız üç adet kontrol oluşturuyoruz. Bunlar <strong>ad (first name)</strong> ve <strong>soyad (lastname)</strong> için iki <code>TextField</code> kontrolü ile <strong>karşılama (greetings)</strong> mesajı için bir <code>Column (Sütun)</code> konteyneri (container) kullanılıyor. Kontrolleri, tüm özellikleri ayarlanmış olarak oluşturuyoruz ve <code>main()</code> metodunun sonundaki <code>page.add()</code> çağrısında, bunların referanslarını kullanıyoruz.</p>
+<p>Giderek daha fazla denetim ve olay işleyicisi eklendiğinde, tüm denetim tanımlarını (ad, soyad, karşılama,...vb) tek bir yerde tutmak zorlaşır, bu nedenle <code>ana gövdeye (main)</code> dağılırlar. <code>page.add()</code> parametrelerine bakarak (IDE'deki değişken tanımlarına sürekli bakıp tekrar geri dönmeden) formun nasıl görüneceğini hayal etmek zordur:</p>
+<div class="highlight"><pre><span></span><code>    <span class="n">page</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+        <span class="n">first_name</span><span class="p">,</span>
+        <span class="n">last_name</span><span class="p">,</span>
+        <span class="n">ft</span><span class="o">.</span><span class="n">ElevatedButton</span><span class="p">(</span><span class="s2">&quot;Say hello!&quot;</span><span class="p">,</span> <span class="n">on_click</span><span class="o">=</span><span class="n">btn_click</span><span class="p">),</span>
+        <span class="n">greetings</span><span class="p">,</span>
+    <span class="p">)</span>
+</code></pre></div>
+
+<p>Yani kapsamlı bir çalışma içerisinde, yukarıdaki kod parçasına bakarak <code>first_name</code> 'in bir <code>TextField</code> olup olmadığı, otomatik odaklanma ayarının varlığı ya da yokluğu, <code>greetings</code> (Karşılama) kontrolünün Satırı mı (<code>Row</code>) yoksa Sütunu mu (<code>Column</code>)? ifade ettiği gibi kontrollerin ne olduğuna dair doğru karar vermek zordur, doğru teşhis için kod sayfası içinde aşağı yukarı gezmemiz gerekir ki bu da bize vakit kaybettirir.</p>
+<p><strong>Flet</strong>, kontrole bir referans tanımlamaya (kontrolü bir değişkene atamaya), bu referansı olay işleyicilerinde (fonksiyonlarda) kullanmaya ve daha sonra bir ağaç (yapısı) oluştururken referansı gerçek bir kontrole ayarlamaya izin veren <code>Ref</code> yardımcı sınıfı sağlar. Fikir <a href="https://reactjs.org/docs/refs-and-the-dom.html">React</a>'tan gelmektedir.</p>
+<p>Yeni yazılan bir kontrol referansını (Referanslı kontrol) tanımlamak için:</p>
+<div class="highlight"><pre><span></span><code><span class="n">first_name</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">Ref</span><span class="p">[</span><span class="n">ft</span><span class="o">.</span><span class="n">TextField</span><span class="p">]()</span>
+</code></pre></div>
+
+<p>Referanslı kontrole erişmek için <code>Ref.current</code> özelliğini kullanın:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># empty first name</span>
+<span class="n">first_name</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+</code></pre></div>
+
+<p>Kontrolü bir referansa atamak için <code>Control.ref</code> özelliğini bir referansa ayarlayın:</p>
+<div class="highlight"><pre><span></span><code><span class="n">page</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+    <span class="n">ft</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">ref</span><span class="o">=</span><span class="n">first_name</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;First name&quot;</span><span class="p">,</span> <span class="n">autofocus</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<blockquote>
+<p><strong>NOT</strong>:</p>
+<p>Tüm Flet kontrolleri <code>ref</code> özelliğine sahiptir.</p>
+</blockquote>
+<p>Referansları kullanacak şekilde programımızı yeniden yazabiliriz:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">flet</span> <span class="k">as</span> <span class="nn">ft</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">page</span><span class="p">):</span>
+
+    <span class="n">first_name</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">Ref</span><span class="p">[</span><span class="n">ft</span><span class="o">.</span><span class="n">TextField</span><span class="p">]()</span>
+    <span class="n">last_name</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">Ref</span><span class="p">[</span><span class="n">ft</span><span class="o">.</span><span class="n">TextField</span><span class="p">]()</span>
+    <span class="n">greetings</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">Ref</span><span class="p">[</span><span class="n">ft</span><span class="o">.</span><span class="n">Column</span><span class="p">]()</span>
+
+    <span class="k">def</span> <span class="nf">btn_click</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
+        <span class="n">greetings</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">controls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="n">ft</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hello, </span><span class="si">{</span><span class="n">first_name</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">last_name</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">!&quot;</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="n">first_name</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="n">last_name</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="n">page</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+        <span class="n">first_name</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">focus</span><span class="p">()</span>
+
+    <span class="n">page</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+        <span class="n">ft</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">ref</span><span class="o">=</span><span class="n">first_name</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;First name&quot;</span><span class="p">,</span> <span class="n">autofocus</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+        <span class="n">ft</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">ref</span><span class="o">=</span><span class="n">last_name</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Last name&quot;</span><span class="p">),</span>
+        <span class="n">ft</span><span class="o">.</span><span class="n">ElevatedButton</span><span class="p">(</span><span class="s2">&quot;Say hello!&quot;</span><span class="p">,</span> <span class="n">on_click</span><span class="o">=</span><span class="n">btn_click</span><span class="p">),</span>
+        <span class="n">ft</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">ref</span><span class="o">=</span><span class="n">greetings</span><span class="p">),</span>
+    <span class="p">)</span>
+
+<span class="n">ft</span><span class="o">.</span><span class="n">app</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">main</span><span class="p">)</span>
+</code></pre></div>
+
+<p><img alt="control-refs-rewritten" src="https://flet.dev/img/docs/getting-started/control-refs-rewritten.png"></p>
+<p>Artık kodlarımızı incelerken <code>page.add()</code> içinde sayfanın yapısını ve oluşturduğu tüm kontrolleri açıkça görebiliriz.</p>
+<p>Evet, referanslı kontrolün özelliklerine erişmek için <code>.current.</code> ibaresinin eklenmesi gerektiğinden, mantık biraz daha ayrıntılı hale geliyor, ancak referanslı kontrol kullanma konusu, kişisel tercih meselesi :)</p>
+<table>
+<thead>
+<tr>
+<th>Önceki Bölüm</th>
+<th>Sonraki Bölüm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="flet-02-giris.html">&lt;&lt;&lt; 02 Giris</a></td>
+<td><a href="#">04 Kullanicidan Girdi Almak &gt;&gt;&gt;</a></td>
+</tr>
+</tbody>
+</table>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/rehber.html">Rehber</a></li>
+					<li><a href="/tag/flet.html">Flet</a></li>
+					<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+					<li><a href="/tag/modul.html">Modül</a></li>
+					<li><a href="/tag/gui.html">GUI</a></li>
+					<li><a href="/tag/arabirim.html">Arabirim</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>
