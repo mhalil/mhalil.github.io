@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Flet 04 - Kullanıcıdan girdi almak" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/flet-04-kullanicidan-girdi-almak.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.instagram.com/acikkaynakci/" target="_blank">
+						<i class="fa fa-instagram"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Flet 04 - Kullanıcıdan girdi almak</h1>
+	<span class="post-date">Paz 11 Şubat 2024</span>
+	<h1>Kullanıcıdan girdi almak</h1>
+<p><strong>Flet</strong> ile etkileşimli web uygulamaları yapmak çocuk oyuncağı! Bu yalnızca verileri görüntülemekle sınırlı değildir, bir kullanıcıdan girdi talep edebilir ve sayfa kontrolleri tarafından oluşturulan çeşitli olaylara yanıt verebilirsiniz.</p>
+<h2>Butonlar / Düğmeler</h2>
+<p><code>Button</code> (Düğme), basıldığında oluşturan <code>click</code> (tıklama) olayı, en önemli girdi kontrolüdür:</p>
+<div class="highlight"><pre><span></span><code><span class="n">btn</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">ElevatedButton</span><span class="p">(</span><span class="s2">&quot;Click me!&quot;</span><span class="p">)</span>
+<span class="n">page</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">btn</span><span class="p">)</span>
+</code></pre></div>
+
+<p><img alt="buton" src="https://flet.dev/img/docs/getting-started/getting-user-input-elevated-button.png"></p>
+<p>Bir web sayfasındaki kontroller tarafından oluşturulan tüm olaylar, sürekli olarak komut dosyanıza geri gönderilir, peki bir düğme tıklamasına nasıl yanıt verirsiniz?</p>
+<h2>Olay (Etkinlik) İşleyicileri</h2>
+<p>"Sayaç (Counter)" uygulamasındaki etkinlikleri içeren düğmeler:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">flet</span> <span class="k">as</span> <span class="nn">ft</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">page</span><span class="p">:</span> <span class="n">ft</span><span class="o">.</span><span class="n">Page</span><span class="p">):</span>
+    <span class="n">page</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Flet counter example&quot;</span>
+    <span class="n">page</span><span class="o">.</span><span class="n">vertical_alignment</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">MainAxisAlignment</span><span class="o">.</span><span class="n">CENTER</span>
+
+    <span class="n">txt_number</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="n">text_align</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">minus_click</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
+        <span class="n">txt_number</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">txt_number</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">page</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">plus_click</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
+        <span class="n">txt_number</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">txt_number</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">page</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+
+    <span class="n">page</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+        <span class="n">ft</span><span class="o">.</span><span class="n">Row</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="n">ft</span><span class="o">.</span><span class="n">IconButton</span><span class="p">(</span><span class="n">ft</span><span class="o">.</span><span class="n">icons</span><span class="o">.</span><span class="n">REMOVE</span><span class="p">,</span> <span class="n">on_click</span><span class="o">=</span><span class="n">minus_click</span><span class="p">),</span>
+                <span class="n">txt_number</span><span class="p">,</span>
+                <span class="n">ft</span><span class="o">.</span><span class="n">IconButton</span><span class="p">(</span><span class="n">ft</span><span class="o">.</span><span class="n">icons</span><span class="o">.</span><span class="n">ADD</span><span class="p">,</span> <span class="n">on_click</span><span class="o">=</span><span class="n">plus_click</span><span class="p">),</span>
+            <span class="p">],</span>
+            <span class="n">alignment</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">MainAxisAlignment</span><span class="o">.</span><span class="n">CENTER</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+
+<span class="n">ft</span><span class="o">.</span><span class="n">app</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">main</span><span class="p">)</span>
+</code></pre></div>
+
+<p><img alt="sayac" src="https://flet.dev/img/docs/getting-started/getting-user-input-event-handlers.png"></p>
+<h2>Metin kutusu (Textbox)</h2>
+<p><strong>Flet</strong>, form oluşturmak için bir dizi <a href="https://flet.dev/docs/controls">kontrol</a> sağlar: <a href="https://flet.dev/docs/controls/textfield">TextField (Metin Alanı)</a>, <a href="https://flet.dev/docs/controls/checkbox">Checkbox (Onay Kutusu)</a>, <a href="https://flet.dev/docs/controls/dropdown">Dropdown (Açılır Menü)</a>, <a href="https://flet.dev/docs/controls/elevatedbutton">ElevatedButton (Yükseltilmiş Düğme)</a>.</p>
+<p>Kullanıcıdan bir isim isteyelim:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">flet</span> <span class="k">as</span> <span class="nn">ft</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">page</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">btn_click</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">txt_name</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
+            <span class="n">txt_name</span><span class="o">.</span><span class="n">error_text</span> <span class="o">=</span> <span class="s2">&quot;Please enter your name&quot;</span>
+            <span class="n">page</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">txt_name</span><span class="o">.</span><span class="n">value</span>
+            <span class="n">page</span><span class="o">.</span><span class="n">clean</span><span class="p">()</span>
+            <span class="n">page</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">ft</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hello, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">!&quot;</span><span class="p">))</span>
+
+    <span class="n">txt_name</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Your name&quot;</span><span class="p">)</span>
+
+    <span class="n">page</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">txt_name</span><span class="p">,</span> <span class="n">ft</span><span class="o">.</span><span class="n">ElevatedButton</span><span class="p">(</span><span class="s2">&quot;Say hello!&quot;</span><span class="p">,</span> <span class="n">on_click</span><span class="o">=</span><span class="n">btn_click</span><span class="p">))</span>
+
+<span class="n">ft</span><span class="o">.</span><span class="n">app</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">main</span><span class="p">)</span>
+</code></pre></div>
+
+<p><img alt="metin_kutusu" src="https://flet.dev/img/docs/getting-started/getting-user-input-textbox.png"></p>
+<h2>Onay Kutusu (Checkbox)</h2>
+<p><a href="https://flet.dev/docs/controls/checkbox">Onay Kutusu (Checkbox)</a> kontrolü, kullanım kolaylığı için size çeşitli özellikler ve olay yayıcılar sağlar.</p>
+<p>Bir tek onay kutusu içeren, <strong>Yapılacaklar (ToDo)</strong> uygulaması oluşturalım:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">flet</span> <span class="k">as</span> <span class="nn">ft</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">page</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">checkbox_changed</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
+        <span class="n">output_text</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;You have learned how to ski :  </span><span class="si">{</span><span class="n">todo_check</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">.&quot;</span>
+        <span class="p">)</span>
+        <span class="n">page</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+
+    <span class="n">output_text</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">Text</span><span class="p">()</span>
+    <span class="n">todo_check</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">Checkbox</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;ToDo: Learn how to use ski&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">on_change</span><span class="o">=</span><span class="n">checkbox_changed</span><span class="p">)</span>
+    <span class="n">page</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">todo_check</span><span class="p">,</span> <span class="n">output_text</span><span class="p">)</span>
+
+<span class="n">ft</span><span class="o">.</span><span class="n">app</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">main</span><span class="p">)</span>
+</code></pre></div>
+
+<p><img alt="onay_kutusu" src="https://flet.dev/img/docs/getting-started/getting-user-input-checkbox.png"></p>
+<h2>Açılır Menü (Dropdown)</h2>
+<p>İçerisinde <strong>KIRMIZI</strong>, <strong>YEŞİL</strong> ve <strong>MAVİ</strong> seçenekleri bulunan bir açılır menü oluşturalım:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">flet</span> <span class="k">as</span> <span class="nn">ft</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">page</span><span class="p">:</span> <span class="n">ft</span><span class="o">.</span><span class="n">Page</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">button_clicked</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
+        <span class="n">output_text</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Dropdown value is:  </span><span class="si">{</span><span class="n">color_dropdown</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">page</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+
+    <span class="n">output_text</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">Text</span><span class="p">()</span>
+    <span class="n">submit_btn</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">ElevatedButton</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;Submit&quot;</span><span class="p">,</span> <span class="n">on_click</span><span class="o">=</span><span class="n">button_clicked</span><span class="p">)</span>
+    <span class="n">color_dropdown</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span>
+        <span class="n">width</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+        <span class="n">options</span><span class="o">=</span><span class="p">[</span>
+            <span class="n">ft</span><span class="o">.</span><span class="n">dropdown</span><span class="o">.</span><span class="n">Option</span><span class="p">(</span><span class="s2">&quot;KIRMIZI&quot;</span><span class="p">),</span>
+            <span class="n">ft</span><span class="o">.</span><span class="n">dropdown</span><span class="o">.</span><span class="n">Option</span><span class="p">(</span><span class="s2">&quot;YEŞİL&quot;</span><span class="p">),</span>
+            <span class="n">ft</span><span class="o">.</span><span class="n">dropdown</span><span class="o">.</span><span class="n">Option</span><span class="p">(</span><span class="s2">&quot;MAVİ&quot;</span><span class="p">),</span>
+        <span class="p">],</span>
+    <span class="p">)</span>
+    <span class="n">page</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">color_dropdown</span><span class="p">,</span> <span class="n">submit_btn</span><span class="p">,</span> <span class="n">output_text</span><span class="p">)</span>
+
+<span class="n">ft</span><span class="o">.</span><span class="n">app</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">main</span><span class="p">)</span>
+</code></pre></div>
+
+<p><img alt="acilir_menu" src="https://flet.dev/img/docs/getting-started/getting-user-input-dropdown.png"></p>
+<table>
+<thead>
+<tr>
+<th>Önceki Bölüm</th>
+<th>Sonraki Bölüm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="flet-03-python-rehberi.html">&lt;&lt;&lt; 03 Python Rehberi</a></td>
+<td><a href="#">05 Klavye Kısayolları &gt;&gt;&gt;</a></td>
+</tr>
+</tbody>
+</table>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/flet.html">Flet</a></li>
+					<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+					<li><a href="/tag/modul.html">Modül</a></li>
+					<li><a href="/tag/gui.html">GUI</a></li>
+					<li><a href="/tag/arabirim.html">Arabirim</a></li>
+					<li><a href="/tag/kullanici.html">Kullanıcı</a></li>
+					<li><a href="/tag/girdi.html">Girdi</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>
