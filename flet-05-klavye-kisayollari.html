@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Flet 05 - Klavye Kısayolları" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/flet-05-klavye-kisayollari.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.instagram.com/acikkaynakci/" target="_blank">
+						<i class="fa fa-instagram"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Flet 05 - Klavye Kısayolları</h1>
+	<span class="post-date">Paz 11 Şubat 2024</span>
+	<h1>Klavye Kısayolları</h1>
+<p>Sağlam bir klavye desteği, web'inizi ve özellikle masaüstü uygulamanızı kullanırken kullanıcı üretkenliği için bir anahtardır. Gerçekten de, sürekli olarak fare ve klavye arasında geçiş yapmak gerçekten can sıkıcı olabilir.</p>
+<p>Form kontrollerinin <code>.autofocus</code> özelliğine ve <a href="https://flet.dev/docs/controls/textfield#focus">TextField.focus()</a> metoduna ek olarak Flet, "<strong>global</strong>" klavye olaylarının işlenmesine olanak tanır.</p>
+<p>Tüm  tuş vuruşlarını (basılan tuşları) yakalamak için <code>page.on_keyboard_event</code> işleyicisini uygulayın. Olay işleyici parametresi <code>e</code>, aşağıdaki özelliklere sahip bir <code>KeyboardEvent</code> sınıfı örneğidir:</p>
+<ul>
+<li>
+<p><code>key</code> - basılan bir tuşun metinsel gösterimi, örn. <code>A</code>, <code>Enter</code> veya <code>F5</code>.</p>
+</li>
+<li>
+<p><code>shift</code> - <code>True</code> ise "<strong>Shift</strong>" tuşuna basılır.</p>
+</li>
+<li>
+<p><code>ctrl</code> - <code>True</code> ise "<strong>Ctrl</strong>" tuşuna basılır.</p>
+</li>
+<li>
+<p><code>alt</code> - <code>True</code> ise "<strong>Alt (Option)</strong>" tuşuna basılır.</p>
+</li>
+<li>
+<p><code>meta</code> - <code>True</code> ise "<strong>Command</strong>" tuşuna basılır.</p>
+</li>
+</ul>
+<p>Basit bir kullanım örneği görelim:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">flet</span> <span class="k">as</span> <span class="nn">ft</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">page</span><span class="p">:</span> <span class="n">ft</span><span class="o">.</span><span class="n">Page</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">on_keyboard</span><span class="p">(</span><span class="n">e</span><span class="p">:</span> <span class="n">ft</span><span class="o">.</span><span class="n">KeyboardEvent</span><span class="p">):</span>
+        <span class="n">page</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+            <span class="n">ft</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Key: </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">key</span><span class="si">}</span><span class="s2">, Shift: </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">shift</span><span class="si">}</span><span class="s2">, Control: </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">ctrl</span><span class="si">}</span><span class="s2">, Alt: </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">alt</span><span class="si">}</span><span class="s2">, Meta: </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">meta</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="n">page</span><span class="o">.</span><span class="n">on_keyboard_event</span> <span class="o">=</span> <span class="n">on_keyboard</span>
+    <span class="n">page</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+        <span class="n">ft</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s2">&quot;Press any key with a combination of CTRL, ALT, SHIFT and META keys...&quot;</span><span class="p">)</span>
+    <span class="p">)</span>
+
+<span class="n">ft</span><span class="o">.</span><span class="n">app</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">main</span><span class="p">)</span>
+</code></pre></div>
+
+<p><img alt="keyboard-shortcuts" src="https://flet.dev/img/docs/getting-started/keyboard-shortcuts.png"></p>
+<p>Burada <a href="https://github.com/flet-dev/examples/blob/main/python/controls/page/keyboard-events.py">daha gelişmiş bir örnek</a> mevcut.</p>
+<table>
+<thead>
+<tr>
+<th>Önceki Bölüm</th>
+<th>Sonraki Bölüm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="flet-04-kullanicidan-girdi-almak.html">&lt;&lt;&lt; 04 Kullanicidan Girdi Almak</a></td>
+<td><a href="#">06 Büyük Listeler &gt;&gt;&gt;</a></td>
+</tr>
+</tbody>
+</table>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/flet.html">Flet</a></li>
+					<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+					<li><a href="/tag/modul.html">Modül</a></li>
+					<li><a href="/tag/gui.html">GUI</a></li>
+					<li><a href="/tag/arabirim.html">Arabirim</a></li>
+					<li><a href="/tag/klavye.html">Klavye</a></li>
+					<li><a href="/tag/kisayol.html">Kısayol</a></li>
+					<li><a href="/tag/shortcut.html">Shortcut</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>

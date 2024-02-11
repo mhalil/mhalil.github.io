@@ -16,7 +16,7 @@
 		<!-- Enable responsiveness on mobile devices-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-		<title>mhalil - Kısayol tag - Programlama ve 3D</title>
+		<title>mhalil - Kütüphane tag - Programlama ve 3D</title>
 
 		<!-- CSS -->
 		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
@@ -79,99 +79,42 @@
 </div>		<div class="content container">
 	<div class="posts">
 			<div class="post">
-				<h1 class="post-title" href="/flet-05-klavye-kisayollari.html">
-					<a href="/flet-05-klavye-kisayollari.html">Flet 05 - Klavye Kısayolları</a>
+				<h1 class="post-title" href="/polars-02-kurulum.html">
+					<a href="/polars-02-kurulum.html">Polars - 02 Kurulum</a>
 				</h1>
-				<span class="post-date">Paz 11 Şubat 2024</span>
+				<span class="post-date">Paz 26 Haziran 2022</span>
 					<span class="post-tags">
 						Tags:
 						<ul>
 								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/flet.html">Flet</a></li>
+								<li><a href="/tag/polars.html">Polars</a></li>
 								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
 								<li><a href="/tag/modul.html">Modül</a></li>
-								<li><a href="/tag/gui.html">GUI</a></li>
-								<li><a href="/tag/arabirim.html">Arabirim</a></li>
-								<li><a href="/tag/klavye.html">Klavye</a></li>
-								<li><a href="/tag/kisayol.html">Kısayol</a></li>
-								<li><a href="/tag/shortcut.html">Shortcut</a></li>
 						</ul>
 					</span>
 				<p>
-					<h1>Klavye Kısayolları</h1>
-<p>Sağlam bir klavye desteği, web'inizi ve özellikle masaüstü uygulamanızı kullanırken kullanıcı üretkenliği için bir anahtardır. Gerçekten de, sürekli olarak fare ve klavye arasında geçiş yapmak gerçekten can sıkıcı olabilir.</p>
-<p>Form kontrollerinin <code>.autofocus</code> özelliğine ve <a href="https://flet.dev/docs/controls/textfield#focus">TextField.focus()</a> metoduna ek olarak Flet, "<strong>global</strong>" klavye olaylarının işlenmesine olanak tanır.</p>
-<p>Tüm  tuş …</p>
+					<h1>Kurulum</h1>
+<p><code>Polars</code> bir kitaplıktır/kütüphanedir ve kurulumu, ilgili programlama dilinin paket yöneticisini çağırmak kadar basittir. Aşağıda farklı programlama dillerine göre kurulum kodları verilmiştir. Bu kodları konsoldan yazarak <code>polars</code>'ı yükleyebilirsiniz.</p>
+<h4>Python</h4>
+<div class="highlight"><pre><span></span><code><span class="n">pip</span> <span class="n">install</span> <span class="n">polars</span>
+</code></pre></div>
+
+<h4>Rust</h4>
+<div class="highlight"><pre><span></span><code><span class="n">cargo</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="n">polars</span><span class="w"> </span><span class="o">-</span><span class="n">F</span><span class="w"> </span><span class="n">lazy</span>
+
+#<span class="w"> </span><span class="n">Or</span><span class="w"> </span><span class="n">Cargo</span><span class="p">.</span><span class="n">toml</span>
+<span class="p">[</span><span class="n">dependencies</span><span class="p">]</span>
+<span class="n">polars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;x&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">features</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;lazy&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">..</span><span class="p">.]}</span>
+</code></pre></div>
+
+<h4>NodeJS …</h4>
 				</p>
-				<a class="read-more" href="flet-05-klavye-kisayollari.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="/librecad-kisayol-tuslari.html">
-					<a href="/librecad-kisayol-tuslari.html">LibreCAD Kısayol Tuşları</a>
-				</h1>
-				<span class="post-date">Prş 24 Şubat 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/librecad.html">librecad</a></li>
-								<li><a href="/tag/cad.html">CAD</a></li>
-								<li><a href="/tag/kisayol.html">Kısayol</a></li>
-						</ul>
-					</span>
-				<p>
-					<table>
-<thead>
-<tr>
-<th>Kısayol Tuşu</th>
-<th>Kısayol Tuşu Açıklaması</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>CTRL N</td>
-<td>Yeni Dosya Oluştur</td>
-</tr>
-<tr>
-<td>CTRL O</td>
-<td>Dosya Aç</td>
-</tr>
-<tr>
-<td>CTRL S</td>
-<td>Çalışmayı Kaydet</td>
-</tr>
-<tr>
-<td>CTRL SHİFT S</td>
-<td>Çalışmayı Farklı Kaydet</td>
-</tr>
-<tr>
-<td>CTRL P</td>
-<td>Yazdır</td>
-</tr>
-<tr>
-<td>CTRL W</td>
-<td>Çizimi Kapat</td>
-</tr>
-<tr>
-<td>CTRL SHIFT W</td>
-<td>Tüm Açık Çizimleri Kapat</td>
-</tr>
-<tr>
-<td>CTRL Q</td>
-<td>LibreCAD Programını Kapat</td>
-</tr>
-<tr>
-<td>CTRL Z</td>
-<td>Geri Al (Undo)</td>
-</tr>
-<tr>
-<td>CTRL SHIFT …</td></tr></tbody></table>
-				</p>
-				<a class="read-more" href="librecad-kisayol-tuslari.html">Continue reading »</a>
+				<a class="read-more" href="polars-02-kurulum.html">Continue reading »</a>
 			</div>
 	</div>
 	<div class="pagination">
 
-		<span class="pagination-item older">Newer</span>
+		<span class="pagination-item older"><a href="/tag/kutuphane3.html">Newer</a></span>
 
 		<span class="pagination-item newer">Older</span>
 	</div>
