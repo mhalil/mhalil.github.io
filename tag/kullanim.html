@@ -16,7 +16,7 @@
 		<!-- Enable responsiveness on mobile devices-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-		<title>mhalil - Modül tag - Programlama ve 3D</title>
+		<title>mhalil - Kullanım tag - Programlama ve 3D</title>
 
 		<!-- CSS -->
 		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
@@ -79,63 +79,54 @@
 </div>		<div class="content container">
 	<div class="posts">
 			<div class="post">
-				<h1 class="post-title" href="/polars-01-takdim.html">
-					<a href="/polars-01-takdim.html">Polars - 01 Takdim</a>
+				<h1 class="post-title" href="/flet-00-giris.html">
+					<a href="/flet-00-giris.html">Flet 00 - Giriş</a>
 				</h1>
-				<span class="post-date">Paz 26 Haziran 2022</span>
+				<span class="post-date">Paz 11 Şubat 2024</span>
 					<span class="post-tags">
 						Tags:
 						<ul>
 								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/polars.html">Polars</a></li>
+								<li><a href="/tag/flet.html">Flet</a></li>
 								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
 								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/gui.html">GUI</a></li>
+								<li><a href="/tag/arabirim.html">Arabirim</a></li>
+								<li><a href="/tag/kullanim.html">Kullanım</a></li>
+								<li><a href="/tag/kilavuz.html">Kılavuz</a></li>
+								<li><a href="/tag/dokuman.html">Doküman</a></li>
 						</ul>
 					</span>
 				<p>
-					<h1>Takdim</h1>
-<p>Bu Kılavuz, <a href="https://github.com/pola-rs/polars">Polars DataFrame kitaplığına</a> bir giriş niteliğindedir. Amacı, örnekler üzerinden geçerek ve diğer çözümlerle karşılaştırarak size <code>Polars</code> kitaplığını tanıtmaktır. Bazı tasarım seçenekleri burada tanıtılmaktadır. Kılavuz ayrıca size <code>Polars</code>kitaplığının optimum kullanımını tanıtacaktır.</p>
-<p><code>Polars</code> tamamen <a href="https://www.rust-lang.org/">Rust</a>'ta yazılmış olsa da ve temel olarak <code>Arrow</code>'u (<a href="https://github.com/jorgecarleitao/arrow2">yerel arrow2 Rust uygulaması …</a></p>
+					<h1>Flet Kullanım Kılavuzu Konu Başlıkları</h1>
+<h2>Kullanım Kılavuzu</h2>
+<ol>
+<li><a href="flet-01-temel-ozellikler.html">Temel Özellikler</a></li>
+<li><a href="flet-02-giris.html">Giriş</a></li>
+<li><a href="flet-03-python-rehberi.html">Python Rehberi</a></li>
+<li><a href="flet-04-kullanicidan-girdi-almak.html">Kullanıcıdan Girdi Almak</a></li>
+<li><a href="flet-05-klavye-kisayollari.html">Klavye Kısayolları</a></li>
+<li>...</li>
+<li>...</li>
+</ol>
+<h2>Kontrol Detayları</h2>
+<ul>
+<li>Düzen, Yerleşim (Layout)</li>
+<li>Navigasyon (Navigation)</li>
+<li>Bilgi Ekranları (Information Displays)</li>
+<li>Butonlar, Düğmeler (Buttons)</li>
+<li>Girdi ve Seçimler (Input and Selections)</li>
+<li>Diyaloglar, Uyarılar ve Paneller (Dialogs, Alerts and Panels)</li>
+<li>Grafikler (Charts)</li>
+<li>Animasyon (Animations)</li>
+<li>Yardımcı …</li></ul>
 				</p>
-				<a class="read-more" href="polars-01-takdim.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="/polars-02-kurulum.html">
-					<a href="/polars-02-kurulum.html">Polars - 02 Kurulum</a>
-				</h1>
-				<span class="post-date">Paz 26 Haziran 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/polars.html">Polars</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1>Kurulum</h1>
-<p><code>Polars</code> bir kitaplıktır/kütüphanedir ve kurulumu, ilgili programlama dilinin paket yöneticisini çağırmak kadar basittir. Aşağıda farklı programlama dillerine göre kurulum kodları verilmiştir. Bu kodları konsoldan yazarak <code>polars</code>'ı yükleyebilirsiniz.</p>
-<h4>Python</h4>
-<div class="highlight"><pre><span></span><code><span class="n">pip</span> <span class="n">install</span> <span class="n">polars</span>
-</code></pre></div>
-
-<h4>Rust</h4>
-<div class="highlight"><pre><span></span><code><span class="n">cargo</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="n">polars</span><span class="w"> </span><span class="o">-</span><span class="n">F</span><span class="w"> </span><span class="n">lazy</span>
-
-#<span class="w"> </span><span class="n">Or</span><span class="w"> </span><span class="n">Cargo</span><span class="p">.</span><span class="n">toml</span>
-<span class="p">[</span><span class="n">dependencies</span><span class="p">]</span>
-<span class="n">polars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;x&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">features</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;lazy&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">..</span><span class="p">.]}</span>
-</code></pre></div>
-
-<h4>NodeJS …</h4>
-				</p>
-				<a class="read-more" href="polars-02-kurulum.html">Continue reading »</a>
+				<a class="read-more" href="flet-00-giris.html">Continue reading »</a>
 			</div>
 	</div>
 	<div class="pagination">
 
-		<span class="pagination-item older"><a href="/tag/modul3.html">Newer</a></span>
+		<span class="pagination-item older">Newer</span>
 
 		<span class="pagination-item newer">Older</span>
 	</div>
