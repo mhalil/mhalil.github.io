@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="FreeCAD - Silk WB - 02 - İş Akışı" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/freecad-silk-wb-02-is-akisi.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.instagram.com/acikkaynakci/" target="_blank">
+						<i class="fa fa-instagram"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">FreeCAD - Silk WB - 02 - İş Akışı</h1>
+	<span class="post-date">Paz 11 Şubat 2024</span>
+	<h1>Silk ÇalışmaTezgahı İş Akışı</h1>
+<p><strong>Silk WB</strong>'in temel iş akışları aşağıdaki gibidir:</p>
+<p>1 - Eskiz(ler) [Sketch(es)] bir tasarımın ana yüzeyleri üzerinde kontrol sağlar. Yüzey(ler), çizilen eskizlere (sketch) bağlı olarak oluşturulur. O nedenle doğru eskiz (sketch) çizmek çok önemlidir.</p>
+<ul>
+<li>
+<p>Eskiz(ler)  &gt; Kontrol Çokgeni ( Sketch(es) &gt; Control Polygon)</p>
+</li>
+<li>
+<p>Kontrol Çokgeni &gt; Kübik Eğri  (Control Polygon &gt; Cubic Curve)</p>
+</li>
+<li>
+<p>3 veya 4 Kontrol Çokgeni &gt; Kontrol Izgarası (3 or 4 Control Polygons &gt; Control Grid)</p>
+</li>
+<li>
+<p>Kontrol Izgarası &gt; Kübik Yüzey (Control Grid &gt; Cubic Surface )</p>
+</li>
+</ul>
+<p><img alt="Bezier Primary Surfaces By Master Layout Sketch" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/development_FC_models/parametric/FreeCAD%200.17.9528/Bezier%20Primary%20Surfaces%20By%20Master%20Layout%20Sketch.gif"></p>
+<p>2 - Ana yüzeyleri alt bölümlere ayırın ve köşeleri karıştırın</p>
+<ul>
+<li>
+<p>Kübik Eğri &gt; Eğri Üzerindeki Noktalar &gt; Eğri Segmenti Kontrol Çokgeni (Cubic Curve &gt; Points On Curve &gt; Curve Segment Control Polygon)</p>
+</li>
+<li>
+<p>Çeşitli yöntemler Kontrol çokgenlerini ve Kontrol Izgaralarını Segmentlerini karıştırır.</p>
+</li>
+</ul>
+<p><img alt="Bezier primary Surface Volume 66-07" src="https://github.com/edwardvmills/NURBSlib_EVM/raw/master/development_FC_models/parametric/FreeCAD%200.17.9528/Bezier%20primary%20Surface%20Volume%2066-07.bmp.png?raw=true"></p>
+<p>Yukarıdaki model üç yüzeyin birleştiği bir köşenin karışımını göstermektedir. Büyük bir 'yarıçap' üst yüzeyle ön yüzeyi karıştırmaktadır, ancak üstten sola ve soldan öne yüzeyler küçük bir karışım  'yarıçapına' sahiptir. Bu model, dikişlerinin %95'i boyunca (dikiş uzunluğuna göre, yaklaşık olarak) G2 pürüzsüz veya daha iyidir. Mevcut tekniğin bazı kusurları var, ancak bunlar oldukça iyi anlaşılmış durumda ve bunları düzeltmek için net bir plan var.</p>
+<p>Uygulanan ve planlanan çalışmaların ayrıntılı bir özeti için lütfen <a href="https://github.com/edwardvmills/Silk/wiki/Development-Plan">geliştirme planına</a> bakınız.</p>
+<h3>Kaynak</h3>
+<p>Sayfada paylaşılan bilgiler <a href="https://github.com/edwardvmills/Silk/wiki">Home · edwardvmills/Silk Wiki · GitHub</a> adresinden yararlanılarak oluşturulmuştur.</p>
+<table>
+<thead>
+<tr>
+<th>Önceki Sayfa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="freecad-silk-wb-01-genel-bakis.html">&lt;&lt; 01 Genel Bakış</a></td>
+</tr>
+</tbody>
+</table>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/freecad.html">FreeCAD</a></li>
+					<li><a href="/tag/silk.html">Silk</a></li>
+					<li><a href="/tag/workbench.html">Workbench</a></li>
+					<li><a href="/tag/calismatezgahi.html">ÇalışmaTezgahı</a></li>
+					<li><a href="/tag/is-akisi.html">İş Akışı</a></li>
+					<li><a href="/tag/akis.html">Akış</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>

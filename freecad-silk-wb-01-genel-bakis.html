@@ -8,9 +8,9 @@
 		<!-- Metadata -->
 	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
 	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
-	<meta property="og:title" content="FreeCAD - Silk ÇalışmaTezgahı" />
+	<meta property="og:title" content="FreeCAD - Silk WB - 01 - Genel Bakış" />
 	<meta property="og:type" content="article" />
-	<meta property="og:url" content="/freecad-silk-calismatezgahi.html" />
+	<meta property="og:url" content="/freecad-silk-wb-01-genel-bakis.html" />
 		<meta property="og:image" content="/images/avatar.png" />
 
 		<!-- Enable responsiveness on mobile devices-->
@@ -78,11 +78,11 @@
 	</div>
 </div>		<div class="content container">
 <div class="post">
-	<h1 class="post-title">FreeCAD - Silk ÇalışmaTezgahı</h1>
+	<h1 class="post-title">FreeCAD - Silk WB - 01 - Genel Bakış</h1>
 	<span class="post-date">Cum 30 Haziran 2023</span>
-	<h1>Silk ÇalışmaTezgahı (WorkBench) Notları</h1>
-<p>Silk ÇalışmaTezgahı (Workbench) Notlarının paylaşıldığı repo.
-<img alt="silk" src="https://github.com/edwardvmills/Silk/raw/master/Resources/Demo_files/Silk_Demo_02.png?raw=true"></p>
+	<h1>Silk ÇalışmaTezgahına Genel Bakış</h1>
+<p>Tasarım ve mühendislik için yüksek kaliteli ve düşük ağırlıklı yüzey modelleme araçları barındıran çalışma tezgahı.</p>
+<p><img alt="silk" src="https://github.com/edwardvmills/Silk/raw/master/Resources/Demo_files/Silk_Front_Page_02.png?raw=true"></p>
 <h2>Silk ÇalışmaTezgahı (WorkBench) Nedir?</h2>
 <p>Silk ÇalışmaTezgahı (WorkBench), FreeCAD'de NURBS yüzeyleri oluşturan bir Harici çalışma tezgahıdır.
 Silk, NURBS Düşük derece ve dikiş sürekliliğine odaklanan yüzey modelleme araçlarıdır.</p>
@@ -92,17 +92,32 @@ Silk, NURBS Düşük derece ve dikiş sürekliliğine odaklanan yüzey modelleme
 Adından da anlaşılacağı gibi, "kontrol noktaları", kullanıcının eğrileri veya yüzeyleri kontrol etmek için değiştirdiği şeylerdir. 
 Bir NURBS'nin "iyileştirilmesi" derecesi tarafından kontrol edilir ve bir kontrol noktasının "etki mesafesi" NURBS'nin düğüm vektörü tarafından kontrol edilir.</p>
 <p><strong>Düşük Derece (Low Degree)</strong>: Silk NURBS eğrileri ve yüzeyleri, istenilen amaca uygun minimum derecededir. Düğüm vektörleri küçük bir tutarlı kümede tutulur. Genellikle NURBS modelleme problemlerinde görünen çözüm, düğümlerin derecesini ve sayısını artırmaktır. Bu tamamen geçerli olsa da, kontrol noktalarının hesaplama zorluklarını ve organizasyon zorluklarını artırıyor. Silk, çözülen her problem için mutlak minimum matematiksel karmaşıklığa sahip araçlar sağlamayı amaçlar.</p>
-<p><strong>Dikiş Sürekliliği (Seam Continuity)</strong>: Silk'in amacı, farklı NURBS bölümlerinden karmaşık modellerin oluşturulmasına olanak tanımak, alternatif olarak mevcut yüzeylere sürekli olacak yeni yüzeyler oluşturmak veya yüzeylerin başlangıçta süreksizliklerle oluşturulduğu yerlerde yumuşak geçişler oluşturmak için araçlar sağlamaktır.</p>
+<p><strong>Dikiş Sürekliliği (Seam Continuity)</strong>: Silk'in amacı, farklı NURBS bölümlerinden karmaşık modellerin oluşturulmasına olanak tanımak, alternatif olarak mevcut yüzeylere sürekli olacak yeni yüzeyler oluşturmak veya yüzeylerin başlangıçta süreksizliklerle oluşturulduğu yerlerde, yumuşak geçişler oluşturmak için araçlar sağlamaktır.</p>
 <p>Aşağıdaki animasyon, eğri ve yüzey sürekliliğinin tam mühendislik kontrolü ile eskizler aracılığıyla ince yüzey ayarını göstermektedir. Profil kontrol çiziminde kullanılan kontrol noktası sayısının az olduğuna dikkat edin. Belirli bir karmaşıklığa kadar Silk, eskiz düzenleme ile neredeyse gerçek zamanlı olarak güncellenir.</p>
 <p><img alt="anim" src="https://github.com/edwardvmills/Silk/raw/master/Resources/Demo_files/Steering_Wheel_01_01.gif?raw=true"></p>
 <h2>Kısıtlamalar</h2>
 <p>Silk, uzun vadede verimli ve kullanıcı dostu araçlar sağlamayı amaçlasa da, şu anda işlevlerine GUI erişimi olan düşük seviyeli bir kitaplık gibi davranıyor. Bağımsız işlevler, ayrı belge nesneleri oluşturur ve gelecekte, karmaşık iç içe nesneler oluşturmak için ilgili işlevler otomatik olarak birbirine zincirlenebilir. Mevcut nesnelerin, hem bireysel belge nesneleri olarak hem de gelecekte alt nesneler olarak kalma olasılığı çok yüksektir.</p>
 <p>Mevcut durumda modelleme yapılabilir ve ortaya çıkan veri yapıları verimlidir, ancak süreç zahmetli olabilir. Kullanıcı dostu olmaya yönelik en iyi yol, büyük ölçüde FreeCAD topluluğu içinde parçaların, katı gövdelerin, düzeneklerin ve nesne bağlantılarının nasıl organize edildiğine dair çeşitli tartışmaların sonucuna bağlı olacaktır.</p>
-<p>Bu arada Silk, FreeCAD'de başka türlü bulunmayan birkaç araç (örn. <code>3D spline</code>) sunar ve genel olarak yüzey tasarımı, kontrol stratejileri, veri yapıları ve algoritmalar için bir sanal alan olarak görülebilir.</p>
+<p>Bu arada Silk, FreeCAD'de başka türlü bulunmayan (örn. <code>3D spline</code>) birkaç araç sunar ve genel olarak yüzey tasarımı, kontrol stratejileri, veri yapıları ve algoritmalar için bir sanal alan olarak görülebilir.</p>
 <p><img alt="Steering_Wheel_03_05" src="https://github.com/edwardvmills/Silk/raw/master/Resources/Demo_files/Steering_Wheel_03_05.png?raw=true"></p>
 <h2>Kurulum</h2>
 <p>Silk ÇalışmaTezgahı (WorkBench), <code>Araçlar -&gt; Eklenti Yöneticisi (Tools -&gt; Addon Manager)</code> menü yolu kullanılarak ulaşılan, <a href="https://wiki.freecadweb.org/AddonManager">FreeCAD Eklenti Yöneticisi (Addon Manager)</a> aracılığıyla kolayca kurulabilir.</p>
-<p>Kaynak: <a href="https://github.com/edwardvmills/Silk">edwardvmills/Silk</a></p>
+<h3>Kaynak</h3>
+<p>Sayfada paylaşılan bilgiler <a href="https://github.com/edwardvmills/Silk">edwardvmills/Silk</a> adresinden yararlanılarak oluşturulmuştur.</p>
+<table>
+<thead>
+<tr>
+<th>Önceki Sayfa</th>
+<th>Sonraki Sayfa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="freecad-silk-wb-00-giris.html">&lt;&lt; 00 Silk WB Giriş</a></td>
+<td><a href="freecad-silk-wb-02-is-akisi.html">02 İş Akışı &gt;&gt;</a></td>
+</tr>
+</tbody>
+</table>
 
 		<span class="post-tags">
 			Tags:
@@ -111,6 +126,8 @@ Bir NURBS'nin "iyileştirilmesi" derecesi tarafından kontrol edilir ve bir kont
 					<li><a href="/tag/silk.html">Silk</a></li>
 					<li><a href="/tag/workbench.html">Workbench</a></li>
 					<li><a href="/tag/calismatezgahi.html">ÇalışmaTezgahı</a></li>
+					<li><a href="/tag/genel.html">Genel</a></li>
+					<li><a href="/tag/bakis.html">Bakış</a></li>
 			</ul>
 		</span>
 
