@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Flet 06 - Büyük listeler" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/flet-06-buyuk-listeler.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.instagram.com/acikkaynakci/" target="_blank">
+						<i class="fa fa-instagram"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Flet 06 - Büyük listeler</h1>
+	<span class="post-date">Prş 15 Şubat 2024</span>
+	<h1>Büyük listeler</h1>
+<p>Listeleri görüntülemek için çoğu durumda  <a href="https://flet.dev/docs/controls/column">Sütun (Column)</a> ve <a href="https://flet.dev/docs/controls/row">Satır (Row)</a> kontrollerini 
+kullanabilirsiniz. Ancak liste yüzlerce veya binlerce öğe içeriyorsa, <strong>Sütun</strong> ve <strong>Satır</strong> kullanmak pek mantıklı olmaz. Bunun sebebi, satır ve sütun kontrolü kullanıldığında, uygulama ekranında (kaydırma konumunda) görünmese bile, tüm öğeler bir kerede oluşturulur. Dolayısı ile uygulama çalıştırıldığında veriler yükleninceye kadar kullanıcı arabirimi tepkisiz kalacak ve fare hareketleri gecikmeli olarak tepki verecektir. </p>
+<p>Aşağıdaki örnekte, bir sayfaya 5.000 metin denetimi ekliyoruz. Sayfa, varsayılan düzen kapsayıcısı (container) olarak <code>Column (Sütun)</code>'u kullanır:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">flet</span> <span class="k">as</span> <span class="nn">ft</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">page</span><span class="p">:</span> <span class="n">ft</span><span class="o">.</span><span class="n">Page</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5000</span><span class="p">):</span>
+        <span class="n">page</span><span class="o">.</span><span class="n">controls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ft</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Line </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
+    <span class="n">page</span><span class="o">.</span><span class="n">scroll</span> <span class="o">=</span> <span class="s2">&quot;always&quot;</span>
+    <span class="n">page</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+
+<span class="n">ft</span><span class="o">.</span><span class="n">app</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">main</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">WEB_BROWSER</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Programı (kodu) çalıştırın ve sayfadaki tüm metin satırlarını başlangıçta yükleyip 
+işlenmesinin birkaç saniye sürmediğini, kaydırmanın da yavaş ve gecikmeli olduğunu fark edin:</p>
+<p><img alt="scroll-column" src="https://flet.dev/img/docs/getting-started/scroll-column.gif"></p>
+<p>Çok  sayıda öğeye sahip listeleri görüntülemek için, yalnızca mevcut 
+kaydırma konumunda görünür olan öğeleri isteğe bağlı olarak işleyen 
+<a href="https://flet.dev/docs/controls/listview">ListView (ListeGörünümü)</a> ve <a href="https://flet.dev/docs/controls/gridview">GridView (IzgaraGörünümü)</a> kontrollerini kullanın.</p>
+<h1>ListView (ListeGörünümü)</h1>
+<p><a href="https://flet.dev/docs/controls/listview">ListView (ListeGörünümü)</a> dikey (varsayılan) veya yatay olabilir. ListView öğeleri, kaydırma yönünde birbiri ardına görüntülenir.</p>
+<p>ListView, zaten alt öğelerinin isteğe bağlı olarak işlenmesinde etkilidir, ancak tüm öğeler ("kapsam") için aynı sabit yükseklik veya genişliği (<code>horizontal (yatay)</code> ListView için) ayarlayabilirseniz kaydırma performansı daha da iyileştirilebilir. Bu, <code>item_extent</code> özelliğiyle mutlak kapsamı ayarlayarak veya <code>first_item_prototype</code> öğesini <code>True</code> olarak ayarlayarak tüm alt öğelerin kapsamını ilk alt öğe kapsamına eşit hale getirerek yapılabilir.</p>
+<p>ListView (ListeGörünümü) kontrolünü kullanarak 5.000 öğelik bir liste çıkaralım:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">flet</span> <span class="k">as</span> <span class="nn">ft</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">page</span><span class="p">:</span> <span class="n">ft</span><span class="o">.</span><span class="n">Page</span><span class="p">):</span>
+    <span class="n">lv</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">ListView</span><span class="p">(</span><span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">spacing</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5000</span><span class="p">):</span>
+        <span class="n">lv</span><span class="o">.</span><span class="n">controls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ft</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Line </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
+    <span class="n">page</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">lv</span><span class="p">)</span>
+
+<span class="n">ft</span><span class="o">.</span><span class="n">app</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">main</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">WEB_BROWSER</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Artık kaydırma düzgün ve fare hareketlerini takip edecek kadar hızlı:</p>
+<p><img alt="scroll-listview" src="https://flet.dev/img/docs/getting-started/scroll-listview.gif"></p>
+<blockquote>
+<p><strong>NOT</strong>:</p>
+<p>ListView yapıcısında <code>expand=True</code> kullandık. Düzgün çalışması için ListView'in belirtilen bir yüksekliği (ya da <code>horizontal (yataysa)</code> genişliği) olması gerekir. 
+Mutlak bir boyut ayarlayabilirsiniz, örn. <code>ListView(height=300, space=10)</code>, ancak yukarıdaki örnekte ListView'ün sayfadaki tüm kullanılabilir alanı almasını sağlıyoruz, yani genişletiyoruz. <a href="https://flet.dev/docs/controls#expand"><code>Control.expand</code></a> özelliği hakkında daha fazlasını okuyun.</p>
+</blockquote>
+<h1>GridView (IzgaraGörünümü)</h1>
+<p>GridView (IzgaraGörünümü), kontrollerin kaydırılabilir bir ızgarada düzenlenmesine izin verir.</p>
+<p><code>ft.Column(wrap=True)</code>veya <code>ft.Row(wrap=True)</code> ile bir "<strong>grid (ızgara)</strong>" oluşturabilirsiniz, örneğin:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">flet</span> <span class="k">as</span> <span class="nn">ft</span>
+
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;FLET_WS_MAX_MESSAGE_SIZE&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;8000000&quot;</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">page</span><span class="p">:</span> <span class="n">ft</span><span class="o">.</span><span class="n">Page</span><span class="p">):</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">Row</span><span class="p">(</span><span class="n">wrap</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scroll</span><span class="o">=</span><span class="s2">&quot;always&quot;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">page</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5000</span><span class="p">):</span>
+        <span class="n">r</span><span class="o">.</span><span class="n">controls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="n">ft</span><span class="o">.</span><span class="n">Container</span><span class="p">(</span>
+                <span class="n">ft</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Item </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">),</span>
+                <span class="n">width</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+                <span class="n">height</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+                <span class="n">alignment</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">alignment</span><span class="o">.</span><span class="n">center</span><span class="p">,</span>
+                <span class="n">bgcolor</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">AMBER_100</span><span class="p">,</span>
+                <span class="n">border</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">border</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">ft</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">AMBER_400</span><span class="p">),</span>
+                <span class="n">border_radius</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">border_radius</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+    <span class="n">page</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+
+<span class="n">ft</span><span class="o">.</span><span class="n">app</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">main</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">WEB_BROWSER</span><span class="p">)</span>
+</code></pre></div>
+
+<p><img alt="row-wrap-as-grid" src="https://flet.dev/img/docs/getting-started/row-wrap-as-grid.png"></p>
+<p>Tarayıcı penceresini kaydırmayı ve yeniden boyutlandırmayı deneyin - her şey çalışıyor, ancak çok gecikmeli.</p>
+<blockquote>
+<p><strong>NOT</strong>:</p>
+<p>Programın  başlangıcında, <code>FLET_WS_MAX_MESSAGE_SIZE</code> ortam değişkeninin değerini <code>8000000</code> olarak ayarlıyoruz - bu, Flet Sunucusu tarafından sayfayı 
+işleyerek alınabilecek bayt cinsinden WebSocket mesajının maksimum boyutudur. Varsayılan boyut 1 MB'dir, ancak 5.000 kapsayıcı denetimini 
+açıklayan JSON mesajının boyutu 1 MB'ı aşacaktır, bu nedenle izin verilen boyutu 8 MB'a çıkarıyoruz.</p>
+<p>Büyük mesajları WebSocket kanalı aracılığıyla sıkıştırmak genellikle iyi bir fikir değildir, bu nedenle kanal yükünü kontrol etmek için aşağıda anlatılan <strong>Toplu Güncelleme (Batch updates)</strong> konusuna göz atın.</p>
+</blockquote>
+<p>GridView, ListView'e benzer, birçok alt öğeyi işlemek için çok etkilidir. Yukarıdaki örneği GridView kullanarak uygulayalım:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">flet</span> <span class="k">as</span> <span class="nn">ft</span>
+
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;FLET_WS_MAX_MESSAGE_SIZE&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;8000000&quot;</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">page</span><span class="p">:</span> <span class="n">ft</span><span class="o">.</span><span class="n">Page</span><span class="p">):</span>
+    <span class="n">gv</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">GridView</span><span class="p">(</span><span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">max_extent</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">child_aspect_ratio</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">page</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">gv</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5000</span><span class="p">):</span>
+        <span class="n">gv</span><span class="o">.</span><span class="n">controls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="n">ft</span><span class="o">.</span><span class="n">Container</span><span class="p">(</span>
+                <span class="n">ft</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Item </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">),</span>
+                <span class="n">alignment</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">alignment</span><span class="o">.</span><span class="n">center</span><span class="p">,</span>
+                <span class="n">bgcolor</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">AMBER_100</span><span class="p">,</span>
+                <span class="n">border</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">border</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">ft</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">AMBER_400</span><span class="p">),</span>
+                <span class="n">border_radius</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">border_radius</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+    <span class="n">page</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+
+<span class="n">ft</span><span class="o">.</span><span class="n">app</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">main</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">WEB_BROWSER</span><span class="p">)</span>
+</code></pre></div>
+
+<p><img alt="grid-view" src="https://flet.dev/img/docs/getting-started/grid-view.png"></p>
+<p>GridView ile kaydırma ve pencere yeniden boyutlandırma sorunsuz ve duyarlı!</p>
+<p><code>run_count</code> özelliği ile sabit sayıda satır veya sütun (çalışma) veya <code>max_extent</code> 
+özelliği ile bir "döşemenin" maksimum boyutunu belirleyebilirsiniz, böylece çalıştırma sayısı otomatik olarak değişebilir. Örneğimizde, maksimum karo boyutunu 150 piksele ayarladık ve şeklini <code>child_aspect_ratio=1</code> ile "kare" olarak ayarladık. <code>child_aspect_ratio</code>, çapraz eksenin, her alt öğenin ana eksen kapsamına oranıdır. Bu değeri <code>0,5</code> veya <code>2</code> olarak değiştirmeyi deneyin. (değeri <code>0.5</code> olarak ayarladığımızda dikey doğrultusa, <code>2</code> alarak ayarladığımızda ise yatay doğrultusa dikdörtgen elde ederiz.)</p>
+<h1>Toplu Güncelleme (Batch updates)</h1>
+<p><code>page.update()</code> çağrıldığında, son <code>page.update()</code>'den bu yana sayfa güncellemelerini 
+içeren WebSockets üzerinden Flet sunucusuna bir mesaj gönderilmektedir. Binlerce
+ ek kontrol içeren büyük bir mesaj göndermek, kullanıcının mesajlar tamamen alınana ve kontroller sağlanana kadar birkaç saniye beklemesine neden olabilir.</p>
+<p>Programınızın kullanılabilirliğini artırmak ve sonuçları bir kullanıcıya en kısa sürede sunmak için sayfa güncellemelerini toplu olarak gönderebilirsiniz. Örneğin, aşağıdaki program, 500 öğelik gruplar halinde bir ListView'e 5.100 alt denetim ekler:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">flet</span> <span class="k">as</span> <span class="nn">ft</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">page</span><span class="p">:</span> <span class="n">ft</span><span class="o">.</span><span class="n">Page</span><span class="p">):</span>
+
+    <span class="c1"># add ListView to a page first</span>
+    <span class="n">lv</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">ListView</span><span class="p">(</span><span class="n">expand</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">spacing</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">item_extent</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+    <span class="n">page</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">lv</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5100</span><span class="p">):</span>
+        <span class="n">lv</span><span class="o">.</span><span class="n">controls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ft</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Line </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
+        <span class="c1"># send page to a page</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">500</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">page</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+    <span class="c1"># send the rest to a page</span>
+    <span class="n">page</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+
+<span class="n">ft</span><span class="o">.</span><span class="n">app</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">main</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">WEB_BROWSER</span><span class="p">)</span>
+</code></pre></div>
+
+<p><img alt="sending-page-updates-in-batches" src="https://flet.dev/img/docs/getting-started/sending-page-updates-in-batches.png"></p>
+<table>
+<thead>
+<tr>
+<th>Önceki Bölüm</th>
+<th>Sonraki Bölüm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="flet-05-klavye-kisayollari.html">&lt;&lt;&lt; 05 Klavye Kısayolları</a></td>
+<td><a href="#">07 Sürükle ve Bırak &gt;&gt;&gt;</a></td>
+</tr>
+</tbody>
+</table>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/flet.html">Flet</a></li>
+					<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+					<li><a href="/tag/modul.html">Modül</a></li>
+					<li><a href="/tag/gui.html">GUI</a></li>
+					<li><a href="/tag/arabirim.html">Arabirim</a></li>
+					<li><a href="/tag/liste.html">Liste</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>
