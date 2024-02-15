@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="FreeCAD - Silk WB - Öğretici Doküman 1" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/freecad-silk-wb-ogretici-dokuman-1.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.instagram.com/acikkaynakci/" target="_blank">
+						<i class="fa fa-instagram"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">FreeCAD - Silk WB - Öğretici Doküman 1</h1>
+	<span class="post-date">Prş 15 Şubat 2024</span>
+	<h1>Öğretici Doküman 1 (Tutorial 0.01)</h1>
+<h2>NURBSlib_EVM'de ControlPoly4 ve CubicCurve4 makroları (komutları)</h2>
+<p>Öncelikle <strong>NURBSlib_EVM</strong>'nin ne olduğunu açıklayalım. NURBSlib_EVM, FreeCAD'de NURBS yüzeyleri oluşturmak için yazılmış python komut dosyaları ve makrolardır. <strong>Silk</strong>, <strong>NURBSlib_EVM</strong> projesinin yeni adıdır.</p>
+<p><strong>ControlPoly4</strong> ve <strong>CubicCurve4</strong> makroları (komutları) sırasıyla rasyonel bir kübik bezier eğrisini kontrol eden ve kullanan nesnelerdir</p>
+<p><a href="http://edwardvmills.github.io/NURBSlib_EVM/">NURBSlib_EVM projesinin ana sayfasına git.</a></p>
+<h2>Bu özel eğitim / sunum için hedef kitle;</h2>
+<p>Bu eğitim, FreeCAD'in bilgili kullanıcılarına <strong>NURBSlib_EVM</strong> kütüphanesi hakkında bir fikir vermek için hazırlanmıştır. Şu anda temel FreeCAD işlemlerine ilişkin herhangi bir açıklama yapılmamaktadır.</p>
+<p>Bir kütüphane olarak NURBSlib_EVM, model üretmek için kullanılabilecek temel öğeleri sağlar, ancak modernize edilmemiştir. Bu eğitimdeki bazı adımlar tekrarlayıcı olacaktır. Bunlar otomatikleştirilebilir ve sonunda bir çalışma tezgahı şeklinde otomatikleştirilecektir. Şu anda, nesnelerin kararlılığına ve çok yönlülüğüne öncelik verilmektedir. Arayüz minimaldır.</p>
+<h2>Bu eğitimi / sunumu takip etmek için gerekenler</h2>
+<ul>
+<li>
+<p>FreeCAD 0.17'de bir makro ve Eklenti (Addon) kurma/yükleme becerisi gereklidir</p>
+</li>
+<li>
+<p>FreeCAD'de çizgi ve yay çizimleri oluşturma becerisi</p>
+</li>
+<li>
+<p>FreeCAD'deki üç temel düzlemin anlaşılması</p>
+</li>
+<li>
+<p>Inkscape veya Illustrator'da bulunan NURBS veya Bezier eğrileri hakkında en azından belli belirsiz bir fikre sahip olmak çok faydalıdır.</p>
+</li>
+</ul>
+<h2>Motivasyon mu? Birkaç eğitim almanız gerekecek ama hedefimiz şu:</h2>
+<p><img alt="Bezier primary Surface Volume 66-07" src="https://github.com/edwardvmills/NURBSlib_EVM/raw/master/development_FC_models/parametric/FreeCAD%200.17.9528/Bezier%20primary%20Surface%20Volume%2066-07.bmp.png?raw=true"></p>
+<p>Yukarıdaki resimde ilgi çeken unsur, ön üst köşedeki üç ana yüzeyin oldukça düzgün bir şekilde harmanlanmasıdır. Üst ve dar ön yüzey arasında büyük bir 'harmanlama yarıçapı' ve geniş yan yüzey ile ilk ikisi arasında keskin bir 'harmanlama yarıçapı' vardır. Bu yarıçaplar parametrik olarak kontrol edilir ve dikişler %95 eğrilik sürekliliğine sahiptir. Bilinen bazı kusurlar da var, ancak şimdilik olumlu yönlere odaklanalım!</p>
+<p>Silk Çalışma Tezgahını Yüklediğinizi varsayarak açıklamaları ekliyorum.</p>
+<blockquote>
+<p>Silk ÇalışmaTezgahı (WorkBench), <code>Araçlar -&gt; Eklenti Yöneticisi (Tools -&gt; Addon Manager)</code> menü yolu kullanılarak ulaşılan, <a href="https://wiki.freecadweb.org/AddonManager">FreeCAD Eklenti Yöneticisi (Addon Manager)</a> aracılığıyla kolayca kurulabilir.</p>
+</blockquote>
+<h2>Kullanım</h2>
+<h3>-1-</h3>
+<p>FreeCAD'de yeni bir belge açın. <strong>Sketcher</strong> çalışma tezgahında, sırayla uç uca bağlanmış <strong><u>3 çizgi içeren bir çizim</u></strong> yapın (çizilen ikinci çizgi birinciye ve üçüncü de ikinciye bağlanmalıdır. <strong>Sketcher Polyline</strong> aracını kullanmak bunun her zaman böyle olmasını sağlayacaktır). <u>Eskizde başka hiçbir şey olmamalıdır</u> (şimdilik). Çizim (Eskiz), Parça Tasarım tezgahında (Part Design WB) <u><em>değil</em></u>, Eskiz tezgahında (Sketcher WB) <u><em>olmalıdır</em></u>.</p>
+<p><img alt="_01 A sketch of three lines connected end to end" src="https://github.com/edwardvmills/NURBSlib_EVM/raw/master/Tutorial%20Models/ControlPoly4%20and%20CubicCurve4/_01%20A%20sketch%20of%20three%20lines%20connected%20end%20to%20end.png?raw=true"></p>
+<h3>-2-</h3>
+<p>3 çizgili taslağı seçin ve <strong>ControlPoly4</strong> makrosuna tıklayın (komutu çalıştırın).  <img alt="02" src="https://github.com/edwardvmills/NURBSlib_EVM/raw/master/icons/ControlPoly4.png?raw=true"></p>
+<p>Bu komutu çalıştığında, belgede bir <strong>ControlPoly4_3L</strong> nesnesi oluşturur. '<strong>3L</strong>' son ekine dikkat edin. Bu, <strong>ControlPoly4</strong> nesne kategorisinin birkaç farklı çeşidinden biridir.</p>
+<p><img alt="_03 ControlPoly4_3L object" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/Tutorial%20Models/ControlPoly4%20and%20CubicCurve4/_03%20ControlPoly4_3L%20object.png"></p>
+<p>Üç çizgili eskiz (sketch), oluşan <strong>ControlPoly4_3L</strong> nesnesinin üzerinde olduğu için ControlPoly4_3L nesnesini gizler. İsterseniz ControlPoly4_3L nesnesini doğrudan görmek için eskizi (sketch'i) gizleyin.</p>
+<p><strong><em>*ControlPoly4_3L</em>* nesnesi seçildiğinde, </strong>Veri (Data)** Sekmesinde iki parametre görebilirsiniz:</p>
+<ul>
+<li>
+<p><strong>Sketch</strong> (Eskiz) - Bu girdi nesnesi seçimidir ve başka bir taslakla yeniden eşleştirilebilir (ayrıca uçtan uca tam olarak üç satırdan oluşur)</p>
+</li>
+<li>
+<p><strong>Weights</strong> (Ağırlıklar) - Bu konu hakkında birazdan tekrar konuşacağız</p>
+</li>
+</ul>
+<p>Henüz sonuç çok ilginç değil, bu yüzden bir sonraki adıma geçelim!</p>
+<h3>-3-</h3>
+<p><strong>ControlPoly_3L</strong> nesnesini seçin ve <strong>CubicCurve4</strong> makrosuna tıklayın (komutu çalıştırın). <img alt="CubicCurve4" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/icons/CubicCurve4.png"></p>
+<p>Bu makro / komut, belgede bir <strong>CubicCurve4</strong> nesnesi oluşturur.</p>
+<p><img alt="_05 CubicCurve4 object" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/Tutorial%20Models/ControlPoly4%20and%20CubicCurve4/_05%20CubicCurve4%20object.png"></p>
+<p><strong>CubicCurve4</strong> nesnesi seçildiğinde, <strong>Veri (Data)</strong> Sekmesinde tek bir parametre görebilirsiniz:</p>
+<ul>
+<li><strong>Poly = ControlPoly4_3L</strong> . Bu girdi nesnesi seçimini temsil eder ve herhangi bir <strong>ControlPoly4</strong> nesnesine yeniden eşlenebilir / değiştirilebilir. (şu anda 3 çeşidi vardır)</li>
+</ul>
+<p>Neden eğri doğrudan eskizle eşlenmiyor? Ağırlıklar sadece eğri nesnesinin bir özelliği olabilir, değil mi? Aslında bu şekilde ayarlamıştım, ancak Kontrol Poligonlarını (<em>Control Polygons</em>) NURBS nesnelerinden mümkün olduğunca ayırmayı seçtim.
+İşte nedeni:</p>
+<ul>
+<li>
+<p>Bazen bir poligona ihtiyaç duyarız, ancak NURBS eğrisini hesaplamak gibi bir amacımız yoktur.</p>
+</li>
+<li>
+<p>NURBS'ün birçok özelliği doğrudan poligondan belirlenebilir. Bunlar başka poligonlar oluşturmak için kullanılabilir.</p>
+</li>
+<li>
+<p>İhtiyacımız olmayan eğrileri ve yüzeyleri hesaplamak, FreeCAD aşırı yüklenmeden ve çökmeden önce ne kadar inşa edebileceğimizi sınırlar.</p>
+</li>
+<li>
+<p>Nesneleri birbirinin içine yerleştirmeyi öğrenmek için uzun zaman harcayabilirim, ancak FreeCAD bu haliyle tamamen tutarlı değil ve en iyi yerleştirme stratejisinin ne olduğunu henüz bildiğimden bile emin değilim (birkaç rakip yöntemin farkındayım).</p>
+</li>
+<li>
+<p>Bu arada, tüm nesnelere isim verme ve onları klasörlerde istediğim gibi düzenleme konusunda tam bir özgürlüğe sahibim. FreeCAD'in model ağacında (unsur ağacında) bir şeyleri hareket ettirmesi gerçekten can sıkıcı (örneğin bir yüzeyi yansıtırken)</p>
+</li>
+</ul>
+<h3>-4-</h3>
+<p>Sketcher çalışma tezgahı içinde çizdiğiniz Orijinal eskizi (çizimi) düzenleyin. Bir çizgiyi 'sürükleyin', 'açısını ya da uzunluğunu değiştirin'...vb. işlemler yapıp eskizden çıkın. Eskiz kullanılarak oluşturulan poligon (ControlPoly4_3L) ve eğrinin (CubicCurve_4), güncellendiğini göreceksiniz.</p>
+<h3>-5-</h3>
+<p>Artık <strong>ControlPoly4</strong>'e bağlı bir <strong>CubicCurve4</strong>'ümüz olduğuna göre, <strong>ControlPoly4</strong> nesnesine geri dönelim ve <strong>ağırlık kontrollerini (weight controls)</strong> inceleyelim.</p>
+<p>Poligonun veri sekmesinde, <strong>ağırlıklar (weight)</strong> varsayılan değerleri [1,1,1,1] olan bir liste olarak görüntülenir. Listenin sağ tarafındaki <strong>...</strong> düğmesine basıldığında çok basit bir liste düzenleyici penceresi açılır.</p>
+<p><img alt="_06 the weight list of all ControlPoly4 objects" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/Tutorial%20Models/ControlPoly4%20and%20CubicCurve4/_06%20the%20weight%20list%20of%20all%20ControlPoly4%20objects.png"></p>
+<h3>-6-</h3>
+<p>Bu pencerede ağırlıklardan birini değiştirin. Düzenleyici penceresini kapatmak için <strong>Tamam (Ok)</strong> düğmesine basın.</p>
+<p><img alt="_07 editing a specific weight of the ControlPoly4 object" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/Tutorial%20Models/ControlPoly4%20and%20CubicCurve4/_07%20editing%20a%20specific%20weight%20of%20the%20ControlPoly4%20object.png"></p>
+<h3>-7-</h3>
+<p>Modeli yeniden hesaplamak için <strong>F5 ya da "CTRL+R"</strong> tuşuna basın. Resimde gösterilen durumda, ikinci kutup için ağırlıkları 1.0'dan 4.0'a yükseltmek eğrinin ikinci kutba doğru çizilmesine neden olur.</p>
+<p><img alt="_08 the CubicCurve4 object updates to the modified ControlPoly4 weight" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/Tutorial%20Models/ControlPoly4%20and%20CubicCurve4/_08%20the%20CubicCurve4%20object%20updates%20to%20the%20modified%20ControlPoly4%20weight.png"></p>
+<p>Ağırlıklar modeli doğrudan etkilemek için kullanılabilir, ancak temel bir modelleme stratejisi olarak önerilmez. Ağırlıkların birincil işlevi, dairelerin (ve elipslerin ve diğer koniklerin) yaylarının tam olarak dönüştürülmesine izin vermektir. Bu otomatik olarak yapılır ve genellikle karıştırılmamalıdır. Mekanizma burada python nesne modelini sunmak için açığa çıkarılmıştır.</p>
+<h3>-8-</h3>
+<p>XY düzleminde yeni bir eskiz (çizim) başlatın. <strong>1 daire</strong> ve <strong>1 çizgi</strong> çizin. <u>Çizginin tam olarak daire merkezinde bir noktası (bitiş noktası veya başlangıç noktası) olmalıdır</u>. Çizime başka bir şey eklemeyin. İlk çizimle çakışmayacak şekilde yerleştirin. Tuhaf açılar iyidir, çünkü daha sonra bize daha fazlasını göstereceklerdir. Çizim (Eskiz), Parça Tasarım tezgahında (Part Design WB) <u><em>değil</em></u>, Eskiz tezgahında (Sketcher WB) <u><em>olmalıdır</em></u>.</p>
+<p><img alt="_09 a single Node sketch on xy" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/Tutorial%20Models/ControlPoly4%20and%20CubicCurve4/_09%20a%20single%20Node%20sketch%20on%20xy.png"></p>
+<p>Bu tür taslaklara <strong><em>Düğüm</em> eskizi (<em>Node</em> sketch)</strong> denir.</p>
+<h3>-9-</h3>
+<p>YZ düzleminde yeni bir eskiz (çizim) başlatın. Başka bir <strong>düğüm eskizi</strong> çizin. Diğer çizimlerle çakışmayacak şekilde yerleştirin. Tuhaf açılar iyidir, çünkü daha sonra bize daha fazlasını göstereceklerdir. Çizim (Eskiz), Parça Tasarım tezgahında (Part Design WB) <u><em>değil</em></u>, Eskiz tezgahında (Sketcher WB) <u><em>olmalıdır</em></u>.</p>
+<p><img alt="_10 a single Node sketch on yz" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/Tutorial%20Models/ControlPoly4%20and%20CubicCurve4/_10%20a%20single%20Node%20sketch%20on%20yz.png"></p>
+<h3>-10-</h3>
+<p>Her iki <strong>Düğüm (Node) eskizi</strong> seçin ve <strong>ControlPoly4</strong> makrosuna tıklayın (komutu çalıştırın). <img alt="ControlPoly4" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/icons/ControlPoly4.png"></p>
+<p><img alt="_11 run ControlPoly4 macro on two Node sketches" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/Tutorial%20Models/ControlPoly4%20and%20CubicCurve4/_11%20run%20ControlPoly4%20macro%20on%20two%20Node%20sketches.png"></p>
+<p>Bu komut (makro), belgede bir <strong>ControlPoly4_2N</strong> nesnesi oluşturur. '<strong>2N</strong>' son ekine dikkat edin. Bu, <strong>ControlPoly4</strong> nesne kategorisinin ikinci çeşididir.</p>
+<p><img alt="_12 ControlPoly4_2N object" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/Tutorial%20Models/ControlPoly4%20and%20CubicCurve4/_12%20ControlPoly4_2N%20object.png"></p>
+<p><strong>Veri (Data)</strong> Sekmesinde, bu nesneye ait <u>üç parametre</u> görebilirsiniz:</p>
+<ul>
+<li>
+<p><strong>Sketch0</strong> - bu ilk girdi nesnesinin seçimiydi ve başka bir sketch'e yeniden eşlenebilir (ayrıca bir düğüm sketch'i olmalıdır).</p>
+</li>
+<li>
+<p><strong>Sketch1</strong> - bu ikinci girdi nesnesinin seçimiydi ve başka bir sketch'e yeniden eşlenebilir (ayrıca bir düğüm sketch'i olmalıdır).</p>
+</li>
+<li>
+<p><strong>Weights</strong> (Ağırlıklar) - ControlPoly_3L'deki ile tamamen aynı.</p>
+</li>
+</ul>
+<p>Bu aşamada, unsur (model) ağacında farklı nesneleri seçerek gizlemek/göstermek için bir dakikanızı ayırın. Modeli ters çevirin ve inceleyin. <u>İki düğümün ayrı düzlemlerde olduğuna ve ControlPoly4_2N'nin düzlemsel olmayan bir çokgen oluşturmak için bunları birleştirdiğine dikkat edin.</u></p>
+<h3>-11-</h3>
+<p>ControlPoly_2N nesnesini seçin ve <strong>CubicCurve4</strong> makrosuna tıklayın (komutu çalıştırın). <img alt="CubicCurve4" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/icons/CubicCurve4.png"></p>
+<p><img alt="_14 non planar CubicCurve4 object" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/Tutorial%20Models/ControlPoly4%20and%20CubicCurve4/_14%20non%20planar%20CubicCurve4%20object.png"></p>
+<p>Bu komut (makro), belgede bir <strong>CubicCurve4</strong> nesnesi daha oluşturur. <strong>Veri (Data)</strong> Sekmesinde, bu nesneye ait <u>tek bir parametre</u> görebilirsiniz:</p>
+<ul>
+<li><strong>Poly = ControlPoly4_2N</strong>. Bu girdi nesnesi seçimidir ve herhangi bir <strong>ControlPoly4</strong> nesnesine yeniden eşlenebilir (şu anda 3 çeşidi vardır)</li>
+</ul>
+<p>Şimdi Düğüm eskizlerinin (Node sketches) ve bileşenlerinin oynadığı farklı rolleri görebiliriz. <strong>ControlPoly4_2N</strong>'ye geri dönelim:</p>
+<ul>
+<li>
+<p><strong>Sketch0</strong>'a aktarılan Düğüm, eğrinin başlangıcını kontrol eder.</p>
+</li>
+<li>
+<p><strong>Sketch1</strong>'e aktarılan Düğüm, eğrinin sonunu kontrol eder.</p>
+</li>
+<li>
+<p>Her düğümdeki <strong>dairenin merkezi</strong> eğrinin <strong>başlangıç</strong> (/ <strong>bitiş</strong>) noktasını belirler.</p>
+</li>
+<li>
+<p><strong>Çizgi</strong>, eğrinin başlangıç(/son) <strong>teğetini</strong> kontrol eder.</p>
+</li>
+</ul>
+<h3>-12- (isteğe bağlı)</h3>
+<p><strong>Weights (Ağırlık)</strong> kontrollerinin çalıştığını doğrulamak için <strong>ControlPoly4_2N</strong> ile 5, 6 ve 7. adımları tekrarlayın. Düğüm çizimlerini düzenleyin ve eğrilerin güncellenmesini izleyin.</p>
+<p><img alt="_15 non planar ControlPoly4 weight edit" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/Tutorial%20Models/ControlPoly4%20and%20CubicCurve4/_15%20non%20planar%20ControlPoly4%20weight%20edit.png"></p>
+<h3>-13-</h3>
+<p>ZX düzleminde yeni bir eskiz (çizim) başlatın. Bir daire yayı çizin, 90 derecenin altında ALTTAN KAVİSLİ bir eğri olsun (aşağıdaki şekil gibi). Genellikle 180 dereceye kadar sorun olmaz, ancak 90 derece kaya gibi sağlamdır. Ben modelleri çok dengeli yapmayı seviyorum, bu yüzden yaylarımı gerektiği gibi bölüyorum. Bu taslağa başka ne isterseniz koyabilirsiniz, ancak önce yay çizilmelidir. Çizim (Eskiz), Parça Tasarım tezgahında (Part Design WB) <u><em>değil</em></u>, Eskiz tezgahında (Sketcher WB) <u><em>olmalıdır</em></u>.</p>
+<p><img alt="_16 a sketch of an arc of circle SUBTENDING 90 degrees" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/Tutorial%20Models/ControlPoly4%20and%20CubicCurve4/_16%20a%20sketch%20of%20an%20arc%20of%20circle%20SUBTENDING%2090%20degrees.png"></p>
+<h3>-14-</h3>
+<p>Yay içeren eskizi seçin ve <strong>ControlPoly4</strong> makrosuna tıklayın (komutunu çalıştırın)  <img alt="ControlPoly4" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/icons/ControlPoly4.png"></p>
+<p>Bu komut, belgede bir <strong>ControlPoly4_Arc</strong> nesnesi oluşturur. '<strong>Arc</strong>' son ekine dikkat edin. Bu, <strong>ControlPoly4</strong> nesne kategorisinin üçüncü çeşididir.</p>
+<p><img alt="_18 ControlPoly4_Arc object" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/Tutorial%20Models/ControlPoly4%20and%20CubicCurve4/_18%20ControlPoly4_Arc%20object.png"></p>
+<p><strong>Veri (Data)</strong> Sekmesinde, bu nesneye <u>iki parametre</u> görebilirsiniz:</p>
+<ul>
+<li><strong>Sketch (Eskiz)</strong> - Bu girdi nesnesi seçimidir ve başka bir eskizle (yay da olabilir) yeniden eşleştirilebilir.</li>
+<li><strong>Weights (Ağırlıklar)</strong> = [1,0.8356,0.8356,1]</li>
+</ul>
+<p>Bu sefer ağırlıkların varsayılan [1,1,1,1] olmadığına dikkat edin. Otomatik olarak oluşturulan değerler gerçek bir dairesel yay verecektir.</p>
+<h3>-15-</h3>
+<p><strong>ControlPoly4_Arc</strong> nesnesini seçin ve <strong>CubicCurve4</strong> makrosuna tıklayın (komutunu çalıştırın). <img alt="cc" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/icons/CubicCurve4.png"></p>
+<p><img alt="_20 CubicCurve4 exact arc object" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/Tutorial%20Models/ControlPoly4%20and%20CubicCurve4/_20%20CubicCurve4%20exact%20arc%20object.png"></p>
+<p>Bu komut, belgede bir <strong>CubicCurve4</strong> nesnesi daha oluşturur. <strong>**Veri (Data)</strong> Sekmesinde, bu nesneye ait <u>tek bir parametre</u> görebilirsiniz:</p>
+<ul>
+<li><strong>Poly = ControlPoly4_Arc</strong>. Bu girdi nesnesi seçimidir ve herhangi bir ControlPoly4 nesnesine yeniden eşlenebilir (şu anda 3 çeşidi vardır)</li>
+</ul>
+<p>Aynı yay ile sonuçlanacaksa 14. ve 15. adımların ne anlamı var?</p>
+<ul>
+<li><em>Sketcher yayları</em> kuadratik NURBS'dir.</li>
+<li><em>Yayın CubicCurve4 versiyonu</em> bir kübik NURBS'dir.</li>
+<li><em>Kübik NURBS</em>, genellikle serbest form modelleme için uygun olduğu düşünülen en basit formdur.</li>
+<li><em>Sketcher yayımız</em> <em>ControlPoly4_arc</em> veya <em>CubicCurve4</em> formuna girdikten sonra, artık yüzeyler oluşturmak için diğer eğrilerle birlikte kullanılabilir.</li>
+<li>(Yüzey oluşturmak için) Genellikle sadece çokgene ihtiyacımız vardır, bu nedenle yayı çizer, çokgeni yapar ve eğri yapmayı atlarız. Dönüşümü elde etmek için çok az ekstra çaba gerekir.</li>
+</ul>
+<p>İşte bir sketcher yay ekstrüzyonunu dikişte tam eşleştirme ile serbest biçimli bir yüzeye karıştırmanın örnek bir resmi. Bu eğitim için KAPSAM DIŞI, sadece somut bir örnek göstermek istiyorum.</p>
+<p><img alt="live 66 02" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/development_FC_models/parametric/FreeCAD%200.16/blend%20arc%20to%2066%20demo/live%2066%2002.PNG"></p>
+<h3>-16- BONUS</h3>
+<p>Herhangi bir tek eskiz için <strong>ControlPoly4</strong> makrosu (komutu), tam olarak 3 eskiz nesnesi (3L modu) yoksa Yay modunu kullanır. Bu her zaman eskizdeki ilk geometri nesnesi için geçerlidir. Net etki şudur ;</p>
+<ul>
+<li>eliptik yaylar tam olarak dönüştürülür.</li>
+<li>bir çizgi otomatik olarak üçe bölünür (bu, üç çizgi çizmek için çok tembel olduğunuzda kullanışlıdır, ancak kötü bir alışkanlıktır)</li>
+<li>parabol ve hiperbol henüz çalışmıyor, ancak bu sadece başlangıç noktası ve bitiş noktasını açığa çıkarma meselesi. Şu anda bu konuda endişelenmiyorum</li>
+</ul>
+<p><img alt="_21 freebie elliptic arc and line come for free" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/Tutorial%20Models/ControlPoly4%20and%20CubicCurve4/_21%20freebie%20elliptic%20arc%20and%20line%20come%20for%20free.png"></p>
+<table>
+<thead>
+<tr>
+<th>Sonraki Sayfa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#">Eğitici Doküman 2 &gt;&gt;</a></td>
+</tr>
+</tbody>
+</table>
+<h3>Kaynak:</h3>
+<p><a href="https://github.com/edwardvmills/NURBSlib_EVM/blob/gh-pages/Tutorial%200.01%20ControlPoly4%20and%20CubicCurve4.md">Edwardvmills / NURBSlib_EVM / Tutorial 0.01</a></p>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/freecad.html">FreeCAD</a></li>
+					<li><a href="/tag/silk.html">Silk</a></li>
+					<li><a href="/tag/workbench.html">Workbench</a></li>
+					<li><a href="/tag/calismatezgahi.html">ÇalışmaTezgahı</a></li>
+					<li><a href="/tag/egitsel.html">Eğitsel</a></li>
+					<li><a href="/tag/ogretici.html">Öğretici</a></li>
+					<li><a href="/tag/dokuman.html">Doküman</a></li>
+					<li><a href="/tag/tutorial.html">Tutorial</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>
