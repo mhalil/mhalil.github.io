@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Flet 07 - Sürükle ve Bırak" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/flet-07-surukle-ve-birak.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.instagram.com/acikkaynakci/" target="_blank">
+						<i class="fa fa-instagram"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Flet 07 - Sürükle ve Bırak</h1>
+	<span class="post-date">Cts 17 Şubat 2024</span>
+	<h1>Sürükle ve Bırak</h1>
+<p>Flet'te sürükle ve bırak mekanizması oldukça basittir - bir kullanıcı <a href="https://flet.dev/docs/controls/draggable">Sürüklenebilir (<code>Draggable</code>)</a> kontrolü sürüklemeye başlar ve onu <a href="https://flet.dev/docs/controls/dragtarget">SürüklemeHedefi (<code>DragTarget</code>)</a>'ne "bırakır". Hem sürüklenebilir öğe hem de sürüklenebilir hedef aynı <code>gruba (group)</code> sahipse, bir sürükleme hedefi <code>on_accept</code> olay işleyicisini çağırır ve sürüklenebilir kontrol kimliğini (ID) olay verisi olarak iletir. Bu durumda sürüklenebilir öğe, sürükle ve bırak işlemi için bir kaynak "veri" görevi görür.</p>
+<p>Aşağıdaki örneğe bir göz atalım. Aşağıdaki programda "<strong>1</strong>" olarak gösterilen <strong>sol</strong> kontrolü , "<strong>0</strong>" olarak gösterilen <strong>sağ</strong> kontrolün üzerine sürükleyebilirsiniz ve sürükleme işlemi tamamlandığında <strong>sol</strong> kontrol "<strong>0</strong>" ile değiştirilir ve <strong>sağ</strong> kontrol "<strong>1</strong>" olur:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">flet</span> <span class="k">as</span> <span class="nn">ft</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">page</span><span class="p">:</span> <span class="n">ft</span><span class="o">.</span><span class="n">Page</span><span class="p">):</span>
+    <span class="n">page</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Drag and Drop example&quot;</span>
+
+    <span class="k">def</span> <span class="nf">drag_accept</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
+        <span class="c1"># get draggable (source) control by its ID</span>
+        <span class="n">src</span> <span class="o">=</span> <span class="n">page</span><span class="o">.</span><span class="n">get_control</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">src_id</span><span class="p">)</span>
+        <span class="c1"># update text inside draggable control</span>
+        <span class="n">src</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s2">&quot;0&quot;</span>
+        <span class="c1"># update text inside drag target control</span>
+        <span class="n">e</span><span class="o">.</span><span class="n">control</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s2">&quot;1&quot;</span>
+        <span class="n">page</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+
+    <span class="n">page</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+        <span class="n">ft</span><span class="o">.</span><span class="n">Row</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="n">ft</span><span class="o">.</span><span class="n">Draggable</span><span class="p">(</span>
+                    <span class="n">group</span><span class="o">=</span><span class="s2">&quot;number&quot;</span><span class="p">,</span>
+                    <span class="n">content</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">Container</span><span class="p">(</span>
+                        <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+                        <span class="n">height</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+                        <span class="n">bgcolor</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">CYAN_200</span><span class="p">,</span>
+                        <span class="n">border_radius</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+                        <span class="n">content</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">),</span>
+                        <span class="n">alignment</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">alignment</span><span class="o">.</span><span class="n">center</span><span class="p">,</span>
+                    <span class="p">),</span>
+                <span class="p">),</span>
+                <span class="n">ft</span><span class="o">.</span><span class="n">Container</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">100</span><span class="p">),</span>
+                <span class="n">ft</span><span class="o">.</span><span class="n">DragTarget</span><span class="p">(</span>
+                    <span class="n">group</span><span class="o">=</span><span class="s2">&quot;number&quot;</span><span class="p">,</span>
+                    <span class="n">content</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">Container</span><span class="p">(</span>
+                        <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+                        <span class="n">height</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+                        <span class="n">bgcolor</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">PINK_200</span><span class="p">,</span>
+                        <span class="n">border_radius</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+                        <span class="n">content</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">),</span>
+                        <span class="n">alignment</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">alignment</span><span class="o">.</span><span class="n">center</span><span class="p">,</span>
+                    <span class="p">),</span>
+                    <span class="n">on_accept</span><span class="o">=</span><span class="n">drag_accept</span><span class="p">,</span>
+                <span class="p">),</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+
+<span class="n">ft</span><span class="o">.</span><span class="n">app</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">main</span><span class="p">)</span>
+</code></pre></div>
+
+<p><img alt="drag-and-drop-number" src="https://flet.dev/img/docs/getting-started/drag-and-drop-number.gif"></p>
+<p>Bu nedenle, <code>on_accept</code> olayı gerçekleştiğinde "<strong>kaynak</strong>" (sürüklenebilir) ve "<strong>hedef</strong>" (sürükleme hedefi) kontrollerine ne olacağını belirlemek geliştiricinin  sorumluluğundadır.</p>
+<blockquote>
+<p><strong>Şunu Deneyin</strong>:</p>
+<p>Sürükleme hedefinin (DragTarget) grup özelliğini <code>number 1 (sayı 1)</code> olarak değiştirin ve hedefe "1" nesnesini sürükleyip bıraktığınızda, artık <code>on_accept</code>'in çağrılmadığına dikkat edin.</p>
+</blockquote>
+<p>Sürükle ve bırak işlemini daha etkileşimli hale getirmek için ek özellikler ve olay işleyicileri vardır. Örneğin sürüklenebilir kontrol (draggable) , sürükleme işlemi devam ederken <code>content (içerik)</code> yerine farklı bir denetim görüntülemek için <code>content_When_dragging</code> özelliğine sahiptir. İşaretçi  altında farklı bir denetim göstermek için <code>content_feedback</code> özelliği de vardır. Varsayılan olarak, aynı <code>content (içerik)</code> kontrolü, ancak %50 opaklıkla sürüklenirken imlecin altında görüntülenir.</p>
+<p>Sürüklenen kontrolün yerine bir "<strong>boşluk</strong>" ve sürükleme esnasında imlecin altında sadece "<strong>1</strong>" ifadesi gösterecek şekilde örneğimizde Draggable'ı değiştirelim:</p>
+<div class="highlight"><pre><span></span><code><span class="o">...</span>
+                <span class="n">ft</span><span class="o">.</span><span class="n">Draggable</span><span class="p">(</span>
+                    <span class="n">group</span><span class="o">=</span><span class="s2">&quot;number&quot;</span><span class="p">,</span>
+                    <span class="n">content</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">Container</span><span class="p">(</span>
+                        <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+                        <span class="n">height</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+                        <span class="n">bgcolor</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">CYAN_200</span><span class="p">,</span>
+                        <span class="n">border_radius</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+                        <span class="n">content</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">),</span>
+                        <span class="n">alignment</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">alignment</span><span class="o">.</span><span class="n">center</span><span class="p">,</span>
+                    <span class="p">),</span>
+                    <span class="n">content_when_dragging</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">Container</span><span class="p">(</span>
+                        <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+                        <span class="n">height</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+                        <span class="n">bgcolor</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">BLUE_GREY_200</span><span class="p">,</span>
+                        <span class="n">border_radius</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+                    <span class="p">),</span>
+                    <span class="n">content_feedback</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s2">&quot;1&quot;</span><span class="p">),</span>
+                <span class="p">),</span>
+<span class="o">...</span>
+</code></pre></div>
+
+<p><img alt="drag-and-drop-number-2" src="https://flet.dev/img/docs/getting-started/drag-and-drop-number-2.gif"></p>
+<p>Sürükleme hedefi denetimi ayrıca, hedefe bir şey "bırakmak" için iyi bir zaman 
+geldiğinde daha iyi görselleştirmeye yardımcı olan <code>on_will_accept</code> ve <code>on_leave</code> olay işleyicilerine sahiptir. Gelen sürüklemeyi kabul etmeye hazır olduğunda, hedef kontrolün etrafına bir sınır çizmek için örneğimizde DragTarget'ı değiştirelim:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">flet</span> <span class="k">as</span> <span class="nn">ft</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">page</span><span class="p">:</span> <span class="n">ft</span><span class="o">.</span><span class="n">Page</span><span class="p">):</span>
+    <span class="n">page</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Drag and Drop example 2&quot;</span>
+
+    <span class="k">def</span> <span class="nf">drag_accept</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
+        <span class="c1"># get draggable (source) control by its ID</span>
+        <span class="n">src</span> <span class="o">=</span> <span class="n">page</span><span class="o">.</span><span class="n">get_control</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">src_id</span><span class="p">)</span>
+        <span class="c1"># update text inside draggable control</span>
+        <span class="n">src</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s2">&quot;0&quot;</span>
+        <span class="c1"># reset source group, so it cannot be dropped to a target anymore</span>
+        <span class="n">src</span><span class="o">.</span><span class="n">group</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="c1"># update text inside drag target control</span>
+        <span class="n">e</span><span class="o">.</span><span class="n">control</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s2">&quot;1&quot;</span>
+        <span class="c1"># reset border</span>
+        <span class="n">e</span><span class="o">.</span><span class="n">control</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">border</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">page</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">drag_will_accept</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
+        <span class="c1"># black border when it&#39;s allowed to drop and red when it&#39;s not</span>
+        <span class="n">e</span><span class="o">.</span><span class="n">control</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">border</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">border</span><span class="o">.</span><span class="n">all</span><span class="p">(</span>
+            <span class="mi">2</span><span class="p">,</span> <span class="n">ft</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">BLACK45</span> <span class="k">if</span> <span class="n">e</span><span class="o">.</span><span class="n">data</span> <span class="o">==</span> <span class="s2">&quot;true&quot;</span> <span class="k">else</span> <span class="n">ft</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">RED</span>
+        <span class="p">)</span>
+        <span class="n">e</span><span class="o">.</span><span class="n">control</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">drag_leave</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
+        <span class="n">e</span><span class="o">.</span><span class="n">control</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">border</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">e</span><span class="o">.</span><span class="n">control</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+
+    <span class="n">page</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+        <span class="n">ft</span><span class="o">.</span><span class="n">Row</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="n">ft</span><span class="o">.</span><span class="n">Draggable</span><span class="p">(</span>
+                    <span class="n">group</span><span class="o">=</span><span class="s2">&quot;number&quot;</span><span class="p">,</span>
+                    <span class="n">content</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">Container</span><span class="p">(</span>
+                        <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+                        <span class="n">height</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+                        <span class="n">bgcolor</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">CYAN_200</span><span class="p">,</span>
+                        <span class="n">border_radius</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+                        <span class="n">content</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">),</span>
+                        <span class="n">alignment</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">alignment</span><span class="o">.</span><span class="n">center</span><span class="p">,</span>
+                    <span class="p">),</span>
+                    <span class="n">content_when_dragging</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">Container</span><span class="p">(</span>
+                        <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+                        <span class="n">height</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+                        <span class="n">bgcolor</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">BLUE_GREY_200</span><span class="p">,</span>
+                        <span class="n">border_radius</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+                    <span class="p">),</span>
+                    <span class="n">content_feedback</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s2">&quot;1&quot;</span><span class="p">),</span>
+                <span class="p">),</span>
+                <span class="n">ft</span><span class="o">.</span><span class="n">Container</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">100</span><span class="p">),</span>
+                <span class="n">ft</span><span class="o">.</span><span class="n">DragTarget</span><span class="p">(</span>
+                    <span class="n">group</span><span class="o">=</span><span class="s2">&quot;number&quot;</span><span class="p">,</span>
+                    <span class="n">content</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">Container</span><span class="p">(</span>
+                        <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+                        <span class="n">height</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+                        <span class="n">bgcolor</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">PINK_200</span><span class="p">,</span>
+                        <span class="n">border_radius</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+                        <span class="n">content</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">),</span>
+                        <span class="n">alignment</span><span class="o">=</span><span class="n">ft</span><span class="o">.</span><span class="n">alignment</span><span class="o">.</span><span class="n">center</span><span class="p">,</span>
+                    <span class="p">),</span>
+                    <span class="n">on_accept</span><span class="o">=</span><span class="n">drag_accept</span><span class="p">,</span>
+                    <span class="n">on_will_accept</span><span class="o">=</span><span class="n">drag_will_accept</span><span class="p">,</span>
+                    <span class="n">on_leave</span><span class="o">=</span><span class="n">drag_leave</span><span class="p">,</span>
+                <span class="p">),</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+
+<span class="n">ft</span><span class="o">.</span><span class="n">app</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">main</span><span class="p">)</span>
+</code></pre></div>
+
+<p><img alt="drag-and-drop-number-3" src="https://flet.dev/img/docs/getting-started/drag-and-drop-number-3.gif"></p>
+<table>
+<thead>
+<tr>
+<th>Önceki Bölüm</th>
+<th>Sonraki Bölüm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="flet-06-buyuk-listeler.html">&lt;&lt;&lt; 06 Büyük Listeler</a></td>
+<td><a href="#">08 Navigasyon ve Yönlendirme &gt;&gt;&gt;</a></td>
+</tr>
+</tbody>
+</table>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/flet.html">Flet</a></li>
+					<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+					<li><a href="/tag/modul.html">Modül</a></li>
+					<li><a href="/tag/gui.html">GUI</a></li>
+					<li><a href="/tag/arabirim.html">Arabirim</a></li>
+					<li><a href="/tag/surukle.html">Sürükle</a></li>
+					<li><a href="/tag/birak.html">Bırak</a></li>
+					<li><a href="/tag/drag.html">Drag</a></li>
+					<li><a href="/tag/drop.html">Drop</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>
