@@ -80,16 +80,16 @@
 <div class="post">
 	<h1 class="post-title">FreeCAD - Silk WB - Öğretici Doküman 2.1</h1>
 	<span class="post-date">Pzt 19 Şubat 2024</span>
-	<h1>Öğretici Doküman 2.1 (Tutorial 0.02)</h1>
+	<h1>Öğretici Doküman 2.1 (Tutorial 0.02 - P1, P2)</h1>
 <h2>ControlGrid44 ve CubicSurface44 makroları/komutları</h2>
 <p>Bu bölümde, Silk Çalışma Tezgahındaki (eski adıyla NURBSlib_EVM'deki) ControlGrid44 ve CubicSurface44 makroları/komutları anlatılacaktır.</p>
 <h2>Bu özel eğitim / sunum için hedef kitle;</h2>
-<p>Bu eğitim, FreeCAD'in bilgili kullanıcılarına Silk çalışma tezgahı (NURBSlib_EVM kütüphanesi) hakkında bir fikir vermek için hazırlanmıştır. Şu anda temel FreeCAD eylemleri hakkında hiçbir açıklama yapılmamaktadır. Yüzey modelleme için kullanılan eskizlerle ilgili olarak FreeCAD'in şaşırtıcı Ek Düzenleyicisi üzerinde biraz daha fazla çaba harcayacağım. FreeCAD'in, 2D çizim editörü, Part Workbench eklenti editörü ve sınırsız harici referanslarla birleştirildiğinde, şimdiye kadar gördüğüm en iyi 3D çizim sistemi olduğunu sötyleyebilirim (deneyimim Solidworks ve Autodesk Inventor ile sınırlıdır).</p>
+<p>Bu eğitim, FreeCAD'in bilgili kullanıcılarına Silk çalışma tezgahı (NURBSlib_EVM kütüphanesi) hakkında bir fikir vermek için hazırlanmıştır. Şu anda temel FreeCAD eylemleri hakkında hiçbir açıklama yapılmamaktadır. Yüzey modelleme için kullanılan eskizlerle ilgili olarak FreeCAD'in şaşırtıcı Ek Düzenleyicisi üzerinde biraz daha fazla çaba harcayacağım. FreeCAD'in, 2D çizim editörü, Part Workbench bağlantı editörü ve sınırsız harici referanslarla birleştirildiğinde, şimdiye kadar gördüğüm en iyi 3D çizim sistemi olduğunu sötyleyebilirim (deneyimim Solidworks ve Autodesk Inventor ile sınırlıdır).</p>
 <p>Silk çalışma tezgahı ile ızgara ve oluşturmak bir dakikadan az sürer, ancak (yüzeyi oluşturacak olan) çizimler doğru şekilde yani bağlantılı olmadan, komutların doğru sonuç vermesi mümkün değildir.</p>
 <h2>Bu eğitimi takip etmek için gerekenler;</h2>
 <ul>
 <li><a href="freecad-silk-wb-ogretici-dokuman-1.html">Öğretici 1</a>'i tamamlamış olmak (özellikle kurulum kısmı),</li>
-<li><a href="http://www.freecadweb.org/">FreeCAD</a> 0.17'de bir makro / eklenti yöneticisi ile çalışma tezgahı kurma yeteneği, </li>
+<li><a href="http://www.freecadweb.org/">FreeCAD</a> 0.17'de bir makro / bağlantı yöneticisi ile çalışma tezgahı kurma yeteneği, </li>
 <li>FreeCAD'de çizgi ve yay çizimleri oluşturma becerisi,</li>
 <li>FreeCAD'deki üç temel düzlemin anlaşılması,</li>
 <li>Inkscape veya Illustrator'da bulunan NURBS veya Bezier eğrileri hakkında en azından belli belirsiz bir fikre sahip olmak çok faydalıdır.</li>
@@ -112,7 +112,30 @@
 <p><strong>CTRL + V</strong> (yapıştır) tuşuna basın. Klasörü <strong><em>3D node controller - front left</em></strong> (3D düğüm denetleyicisi - sol ön)  olacak şekilde yeniden adlandırın.</p>
 <p><img alt="ControlGrid44 and CubicSurface44 03" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/Tutorial%20Models/ControlGridd44%20and%20CubicSurface44/ControlGrid44%20and%20CubicSurface44%2003.png"></p>
 <h3>-3-</h3>
-<p>devamı gelecek inşallah, hazırlanıyor ...</p>
+<p>Klasörü genişletin ve <strong>Anchor - xy001</strong>'i seçin (benimkinde içeriğe 001 eklendi, çünkü tam olarak bir kez kopyaladım/yapıştırdım. Bunu tekrar tekrar yaparsanız, nesne adlarınıza 002, 003, 004 vb. eklenecektir. Ekran görüntülerine dikkat edin, çünkü nesne adlarımız muhtemelen senkronize olmayacaktır. isterseniz, nesne adlarımı görmek ve kendinizinkini ayarlamak için ekran görüntülerini kullanabilirsiniz. Bir nesne seçin ve yeniden adlandırmak için <strong>F2</strong>'ye basın)</p>
+<p><strong>Parça çalışma tezgahına (Part WB)</strong> gidin, <strong>Parça (Part) menüsü</strong> altında, menü listesinden <strong>bağlantı... (attachment...</strong>) seçeneğini seçin. (bu işlevi/komutu özel bir araç çubuğuna ekledim, böylece çalışma tezgahları arasında çok fazla geçiş yapmak zorunda kalmıyorum)</p>
+<p><img alt="ControlGrid44 and CubicSurface44 04" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/Tutorial%20Models/ControlGridd44%20and%20CubicSurface44/ControlGrid44%20and%20CubicSurface44%2004.png"></p>
+<p><strong>front_profile_zx</strong> eskizinin en sol noktasını seçin. Bu, noktanın kendisi olmalıdır. Çizgi değil. Çizgiyi seçmek farklı bir harika şey yapar.</p>
+<p><img alt="ControlGrid44 and CubicSurface44 05" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/Tutorial%20Models/ControlGridd44%20and%20CubicSurface44/ControlGrid44%20and%20CubicSurface44%2005.png"></p>
+<p>Noktayı seçtiğinizde, ek düzenleyicinin ilk referansın bir uç nokta olduğunu bildirdiğini görebilirsiniz, <strong>Sketch:Vertex1</strong>.</p>
+<p><strong>Anchor - xy001</strong>, açık mavi eskiz, seçtiğinizde hemen uç noktaya nakledilir / taşınır. Yalnızca bir eskiz (seçili eskiz) hareket eder.</p>
+<p>Bir uç nokta seçtiğimiz için <strong>Bağlantı modu (Attachment mode</strong>) otomatik olarak <strong>Orijini Naklet (Translate origin</strong>) olarak ayarlanır. Bizim istediğimiz de bu. Tamam'a (OK) basın.</p>
+<p><img alt="ControlGrid44 and CubicSurface44 06" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/Tutorial%20Models/ControlGridd44%20and%20CubicSurface44/ControlGrid44%20and%20CubicSurface44%2006.png"></p>
+<h3>-4-</h3>
+<p>Bağlantı Düzenleyiciden (Attachment Editor) çıktıktan sonra, <strong>Anchor - xy001</strong> yeniden hesaplanmak üzere işaretlenir. Modeli yeniden hesaplamak için <strong>F5</strong> ya da <strong>CTRL+R</strong> tuşlarına basın.</p>
+<p><img alt="ControlGrid44 and CubicSurface44 07" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/Tutorial%20Models/ControlGridd44%20and%20CubicSurface44/ControlGrid44%20and%20CubicSurface44%2007.png"></p>
+<p>Yeniden hesaplama işleminden sonra, tüm eskizin <em>front_profile_zx</em>'in sol ucuna taşındığını görüyoruz.</p>
+<p><strong>Çapayı (Anchor) yeniden bağlamak tüm grubu taşır. Birbiriyle bağlantılı eskiz koleksiyonları, bir klasör kopyalanıp yapıştırılarak yeniden kullanılabilir. Klasöre iyi bir isim verdiğiniz sürece, içindeki her bir öğeyi yeniden adlandırmanız gerekmez. 'Kök (root)' veya 'Çapa (Anchor)' öğesini kolayca tanımlayabildiğiniz sürece, tüm grubu yeniden kullanabilirsiniz</strong></p>
+<h3>-5-</h3>
+<p>Orijinal <strong>3D node controller blank - COPY-PASTE THIS FOLDER</strong> klasörünü gizleyin.</p>
+<p><img alt="ControlGrid44 and CubicSurface44 08" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/Tutorial%20Models/ControlGridd44%20and%20CubicSurface44/ControlGrid44%20and%20CubicSurface44%2008.png"></p>
+<h3>-6-</h3>
+<p><strong>Anchor - xy0001</strong> eskizini düzenlemeye başlayın. Lütfen ilk seferde talimatları tam olarak uygulayın. Bu eskiz yenilmez değildir, sadece bir gösterimdir ve kapsamı dışında kullanılırsa kolayca bozulabilir. Daha sonra geri dönüp üzerinde biraz daha oynama fırsatı olacaktır.</p>
+<p>Aşağıda orijinal dosyadaki eskiz durumu gösterilmektedir.</p>
+<p><img alt="ControlGrid44 and CubicSurface44 09" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/Tutorial%20Models/ControlGridd44%20and%20CubicSurface44/ControlGrid44%20and%20CubicSurface44%2009.png"></p>
+<h3>-7-</h3>
+<p>Açıyı -20 ile 85 derece arasında değiştirin.</p>
+<p><img alt="ControlGrid44 and CubicSurface44 10" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/Tutorial%20Models/ControlGridd44%20and%20CubicSurface44/ControlGrid44%20and%20CubicSurface44%2010.png"></p>
 <table>
 <thead>
 <tr>
@@ -123,7 +146,7 @@
 <tbody>
 <tr>
 <td><a href="freecad-silk-wb-ogretici-dokuman-1.html">&lt;&lt; Öğretici Doküman 1 </a></td>
-<td><a href="#">Öğretici Doküman 2.2 &gt;&gt;</a></td>
+<td><a href="freecad-silk-wb-ogretici-dokuman-22.html">Öğretici Doküman 2.2 &gt;&gt;</a></td>
 </tr>
 </tbody>
 </table>
