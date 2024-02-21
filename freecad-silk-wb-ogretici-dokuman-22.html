@@ -67,9 +67,6 @@
 					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
 						<i class="fa fa-github"></i>
 					</a>
-					<a class="sidebar-social-item" href="https://www.instagram.com/acikkaynakci/" target="_blank">
-						<i class="fa fa-instagram"></i>
-					</a>
 			<a class="sidebar-social-item" href="/">
 				<i class="fa fa-rss"></i>
 			</a>
@@ -79,12 +76,38 @@
 </div>		<div class="content container">
 <div class="post">
 	<h1 class="post-title">FreeCAD - Silk WB - Öğretici Doküman 2.2</h1>
-	<span class="post-date">Sal 20 Şubat 2024</span>
+	<span class="post-date">Çrş 21 Şubat 2024</span>
 	<h1>Öğretici Doküman 2.2 (Tutorial 0.02 - P3)</h1>
 <h3>Kullanım - devam</h3>
 <p>Açık mavi eskiz olan <strong>Anchor - xy001</strong>'i az önce düzenledik. <strong>zx001</strong> ve <strong>merge001</strong> eskizleri de güncellendi. Bir anda nasıl bağlandıklarını görmek üzereyiz.</p>
 <p><img alt="ControlGrid44 and CubicSurface44 11" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/Tutorial%20Models/ControlGridd44%20and%20CubicSurface44/ControlGrid44%20and%20CubicSurface44%2011.png"></p>
-<p>DEVAMI GELECEK İNŞALLAH, HAZIRLANIYOR ...</p>
+<h3>-8-</h3>
+<p><strong>zx001</strong> eskizini düzenlemeye başlayın. (<strong>zx002</strong> eskizinde gereksiz kısıtlamalar varsa kaldırın.) Lütfen yalnızca ilk seferde belirtilen değişikliği yapın.</p>
+<p><img alt="ControlGrid44 and CubicSurface44 12" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/Tutorial%20Models/ControlGridd44%20and%20CubicSurface44/ControlGrid44%20and%20CubicSurface44%2012.png"></p>
+<p>Açıyı 5 ila -85 derece arasında değiştirin.</p>
+<p><img alt="ControlGrid44 and CubicSurface44 13" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/Tutorial%20Models/ControlGridd44%20and%20CubicSurface44/ControlGrid44%20and%20CubicSurface44%2013.png"></p>
+<p>Köşegeni çizilmiş dikdörtgenin, açı değiştirmekten çok daha fazlasını yaptığına, aynı zamanda önemli ölçüde uzadığına dikkat edin. Bunun nedeni, dikdörtgenin, dairenin merkezinin karşısındaki köşesinin <strong>Anchor - xy001</strong> ile bağlantılı olmasıdır.</p>
+<p>Eskizden çıkın ve incelemek için modeli döndürün.</p>
+<p><img alt="ControlGrid44 and CubicSurface44 14" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/Tutorial%20Models/ControlGridd44%20and%20CubicSurface44/ControlGrid44%20and%20CubicSurface44%2014.png"></p>
+<p><strong>merge001</strong>, 3B uzayda herhangi bir yönü işaret edebilen <u><em>tek düğümlü bir eskizdir</em></u>; burada <em>teğetin konumu ve xy değeri</em> <strong>Anchor - xy001</strong>'de bulunur ve <em>teğetin z bileşeni</em> <strong>zx001</strong> tarafından kontrol edilir. Aynı sonucu elde etmek için çizimleri yapılandırmanın başka birçok yolu vardır. Eskizlerde açılar yerine yatay ve dikey boyutlar kullanabiliriz. Bu özel yöntem, <strong>merge001</strong> düğümünün uzunluğunu <strong>xy</strong> düzleminde yansıtıldığı şekilde kontrol eder.</p>
+<h3>-9-</h3>
+<p><strong>front_profile_zx</strong> eskizini düzenlemeye başlayın.</p>
+<p><img alt="ControlGrid44 and CubicSurface44 15" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/Tutorial%20Models/ControlGridd44%20and%20CubicSurface44/ControlGrid44%20and%20CubicSurface44%2015.png"></p>
+<h3>-10-</h3>
+<p>Sol taraftaki çizgiyi tıklayın + basılı tutun, ardından sola sürükleyin,</p>
+<p><img alt="ControlGrid44 and CubicSurface44 16" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/Tutorial%20Models/ControlGridd44%20and%20CubicSurface44/ControlGrid44%20and%20CubicSurface44%2016.png"></p>
+<p>ve bırakın.</p>
+<p><img alt="ControlGrid44 and CubicSurface44 17" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/Tutorial%20Models/ControlGridd44%20and%20CubicSurface44/ControlGrid44%20and%20CubicSurface44%2017.png"></p>
+<p>Eskizdeki bir nesneyi her sürükleyip bıraktığımızda, modelin geri kalanı bırakma işlemine göre güncellenir.</p>
+<h3>-11-</h3>
+<p><strong><em>Anchor - xy001</em></strong> ve <strong><em>zx001</em></strong> eskizlerini gizleyin.</p>
+<p><img alt="ControlGrid44 and CubicSurface44 18" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/Tutorial%20Models/ControlGridd44%20and%20CubicSurface44/ControlGrid44%20and%20CubicSurface44%2018.png"></p>
+<p>Tek bir düğüm yapmak için oldukça çaba harcadık. Çoğu zaman, tam bir 3D denetleyici gerekli değildir. En azından başlangıçta. Bu derste geri kalan eğrileri çok daha hızlı yapacağız. Aslında bunlardan birini "yanlış" yapacağız ve daha sonra bileşenlerin modülerliğini göstermek için düzelteceğiz.</p>
+<h3>-12-</h3>
+<p><strong>front_profile_zx</strong> üzerinde az önce oluşturduğumuz kırmızı düğümün tam karşısındaki noktayı seçin.</p>
+<p><img alt="ControlGrid44 and CubicSurface44 19" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/Tutorial%20Models/ControlGridd44%20and%20CubicSurface44/ControlGrid44%20and%20CubicSurface44%2019.png"></p>
+<p>Bir eskiz oluşturun. Eskizi oluşturduğumuzda etkin bir seçimimiz olduğu için, <em>eskiz ekleme penceresi</em> açılır. Varsayılan değer <strong>Orijini Naklet</strong>'tir ve bizim istediğimiz de budur. Tamam (OK) düğmesine basın.</p>
+<p><img alt="ControlGrid44 and CubicSurface44 20" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/Tutorial%20Models/ControlGridd44%20and%20CubicSurface44/ControlGrid44%20and%20CubicSurface44%2020.png"></p>
 <table>
 <thead>
 <tr>
