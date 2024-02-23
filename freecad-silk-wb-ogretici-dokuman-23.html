@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="FreeCAD - Silk WB - Öğretici Doküman 2.3" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/freecad-silk-wb-ogretici-dokuman-23.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">FreeCAD - Silk WB - Öğretici Doküman 2.3</h1>
+	<span class="post-date">Cum 23 Şubat 2024</span>
+	<h1>Öğretici Doküman 2.3 (Tutorial 0.02 - P4)</h1>
+<h3>Kullanım - devam</h3>
+<p>Aşağıda gösterildiği gibi bir düğüm çizimi oluşturun. 100 derecelik açı, taslağın x ekseninden ölçülür.</p>
+<p><img alt="ControlGrid44 and CubicSurface44 21" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/Tutorial%20Models/ControlGridd44%20and%20CubicSurface44/ControlGrid44%20and%20CubicSurface44%2021.png">
+eskizden çıkın.</p>
+<h3>-13-</h3>
+<p>ÜST GÖRÜNÜM'e (TOP VIEW) geçin.</p>
+<p>Hiçbir şeyin seçili olmadığından emin olmak için boş alana tıklayın.</p>
+<p>Yeni bir eskiz oluşturun. Hiçbir şey seçili olmadığı için, geleneksel düzlem seçici penceresi krşınıza gelir. <strong>XY-Düzlemini (XY-Plane)</strong> seçin ve <strong>Tamam</strong>'a (<strong>OK</strong>) basın.</p>
+<p><img alt="ControlGrid44 and CubicSurface44 22" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/Tutorial%20Models/ControlGridd44%20and%20CubicSurface44/ControlGrid44%20and%20CubicSurface44%2022.png"></p>
+<p>Gösterildiği gibi bir daire yayı çizin. Merkez <strong>y eksenine kısıtlanmıştır</strong> ve yayın uç noktaları ile <strong>y ekseni arasında bir simetri kısıtı</strong> vardır.</p>
+<p><img alt="ControlGrid44 and CubicSurface44 23" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/Tutorial%20Models/ControlGridd44%20and%20CubicSurface44/ControlGrid44%20and%20CubicSurface44%2023.png"></p>
+<p>eskizden çıkın.</p>
+<h3>-14-</h3>
+<p>Hiçbir şeyin seçili olmadığından emin olmak için boş alana tıklayın.</p>
+<p>Yeni bir eskiz oluşturun. Hiçbir şey seçili olmadığı için, geleneksel düzlem seçici penceresi karşınıza gelir. <strong>XY-Düzlemini (XY-Plane)</strong> seçin ve <strong>Tamam</strong>'a basın.</p>
+<p>Sketcher araç çubuğundan <strong>Harici Geometri Oluştur (<a href="https://wiki.freecad.org/Sketcher_External">Create external geometry</a>)</strong> düğmesine basın, yayı seçin, komuttan çıkın.</p>
+<p><img alt="ControlGrid44 and CubicSurface44 24" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/Tutorial%20Models/ControlGridd44%20and%20CubicSurface44/ControlGrid44%20and%20CubicSurface44%2024.png"></p>
+<p>Aşağıda gösterilen düğümü çizin. Dairenin merkezi, yayın bitiş noktasındadır. Bu ilk bakışta çalışacak olan çizimdir, ancak daha sonra düzeltmemiz gerekecektir.</p>
+<p><img alt="ControlGrid44 and CubicSurface44 25" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/Tutorial%20Models/ControlGridd44%20and%20CubicSurface44/ControlGrid44%20and%20CubicSurface44%2025.png"></p>
+<h3>-15-</h3>
+<p>Hiçbir şeyin seçili olmadığından emin olmak için boş alana tıklayın.</p>
+<p>Yeni bir eskiz oluşturun. Hiçbir şey seçili olmadığı için, geleneksel düzlem seçici penceresi karşınıza gelir. <strong>YZ-Düzlemini (YZ-Plane)</strong> seçin ve <strong>Tamam</strong>'a basın.</p>
+<p><img alt="ControlGrid44 and CubicSurface44 26" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/Tutorial%20Models/ControlGridd44%20and%20CubicSurface44/ControlGrid44%20and%20CubicSurface44%2026.png"></p>
+<p>Aşağıda gösterilen düğümü çizin. Daire merkezi, orijinin üzerindedir.</p>
+<p><img alt="ControlGrid44 and CubicSurface44 27" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/Tutorial%20Models/ControlGridd44%20and%20CubicSurface44/ControlGrid44%20and%20CubicSurface44%2027.png">
+Son çizilen eskizi (YZ üzerinde) seçin ve Parça Çalışma Tezgahı, Parça Menüsündeki (Part WB &gt; Part) <strong>Bağlantı düzenleyiciyi (Attachment editor</strong>) etkinleştirin. Yay eskizinin sağ taraftaki uç noktasını referans nesne olarak seçin.</p>
+<p><img alt="ControlGrid44 and CubicSurface44 28" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/Tutorial%20Models/ControlGridd44%20and%20CubicSurface44/ControlGrid44%20and%20CubicSurface44%2028.png"></p>
+<p>Yayın bitiş noktası seçildiğinde, düğüm, yaya doğru hareket eder / taşınır / nakedilir. <strong>Bağlantı Modu (Attachment mode)</strong> varsayılan olarak <strong>Orijini Naklet (Translate origin)</strong> olmalıdır. İstediğimiz budur. <strong>Tamam</strong>'a basın.</p>
+<p><img alt="ControlGrid44 and CubicSurface44 29" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/Tutorial%20Models/ControlGridd44%20and%20CubicSurface44/ControlGrid44%20and%20CubicSurface44%2029.png"></p>
+<h3>-17-</h3>
+<p>Nerede olduğumuzu ve şimdiye kadarki çizimlerin birbirleriyle ve temel düzlemlerle nasıl ilişkili olduğunu anlamak için modeli döndürün. Bir sonraki resimde DAG görünümünü (DAG View) inceleyin:</p>
+<ul>
+<li>3 bağımsız grup vardır</li>
+<li>birincisi <em>boş (blank)</em> 3D denetleyicidir, bunu göz ardı edebiliriz.</li>
+<li>ikinci grup ön profil ve ona bağlı iki düğümdür</li>
+<li>üçüncü grup yay ve ona bağlı iki düğümdür</li>
+</ul>
+<p><img alt="ControlGrid44 and CubicSurface44 30" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/Tutorial%20Models/ControlGridd44%20and%20CubicSurface44/ControlGrid44%20and%20CubicSurface44%2030.png"></p>
+<table>
+<thead>
+<tr>
+<th>Önceki Sayfa</th>
+<th>Sonraki Sayfa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="freecad-silk-wb-ogretici-dokuman-22.html">&lt;&lt; Öğretici Doküman 2.2 </a></td>
+<td><a href="#">Öğretici Doküman 2.4 &gt;&gt;</a></td>
+</tr>
+</tbody>
+</table>
+<h3>Kaynak:</h3>
+<ul>
+<li><a href="https://github.com/edwardvmills/NURBSlib_EVM/blob/gh-pages/Tutorial%200.02%20ControlGrid44%20and%20CubicSurface44%20-%20page%2004.md">Tutorial 0.02 ControlGrid44 and CubicSurface44 - page 04</a></li>
+</ul>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/freecad.html">FreeCAD</a></li>
+					<li><a href="/tag/silk.html">Silk</a></li>
+					<li><a href="/tag/workbench.html">Workbench</a></li>
+					<li><a href="/tag/calismatezgahi.html">ÇalışmaTezgahı</a></li>
+					<li><a href="/tag/egitsel.html">Eğitsel</a></li>
+					<li><a href="/tag/ogretici.html">Öğretici</a></li>
+					<li><a href="/tag/dokuman.html">Doküman</a></li>
+					<li><a href="/tag/tutorial.html">Tutorial</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>
