@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="FreeCAD - Silk WB - Öğretici Doküman 3.1" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/freecad-silk-wb-ogretici-dokuman-31.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">FreeCAD - Silk WB - Öğretici Doküman 3.1</h1>
+	<span class="post-date">Cts 09 Mart 2024</span>
+	<h1>Öğretici Doküman 3.1 (Tutorial 0.03 - P1)</h1>
+<h2>İki kübik Bezier eğrisinin köşesini harmanlama - 0.17.10980 üzerinde test edildi</h2>
+<h2>Point_onCurve, ControlPoly4_segment, ControlPoly6 ve CubicCurve6 makroları / komutları</h2>
+<p>Burada eğrilerle çalışmak için gösterilen yöntemler, yüzeylerle çalışmak için kullanılan yöntemlerle neredeyse aynıdır.</p>
+<p><code>Point_onCurve</code> ve <code>ControlPoly4_segment</code> ifadeleri sırasıyla bir eğri boyunca noktaları ve bir eğrinin bölümlerini (bu noktalarda) tanımlar.</p>
+<p><code>ControlPoly6</code> ve <code>CubicCurve6</code> ifadeleri sırasıyla 6 kontrol noktalı bir kübik NURBS eğrisini kontrol eder ve kullanır.</p>
+<h2>Motivasyon</h2>
+<p><img alt="Point_onCurve ControlPoly4_segment ControlPoly6 and CubicCurve6 00" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/Tutorial%20Models/Point_onCurve%20ControlPoly4_segment%20ControlPoly6%20and%20CubicCurve6/Point_onCurve%20ControlPoly4_segment%20ControlPoly6%20and%20CubicCurve6%2000.png"></p>
+<p>Düz bir çizgi, bir karıştırma eğrisi kullanılarak, sabit eğriliğe sahip gerçek bir yaya  dönüştürülür. Eğrilik süreklidir (bu henüz üst sınıf yüzey kaplama değildir, ancak yol boyunca önemli bir adımdır).</p>
+<p>Bir Bezier eğrisinin uçlarındaki eğriliği eşleştirmek çok zordur. Bazı durumlarda mümkündür, ancak sonuç genellikle tasarım açısından tatmin edici değildir (eğrilik eşleşir, ancak eğriler eskisi gibi görünmez). Amacım Bezier ile geniş konturlar tasarlamak olduğu için, Bezier eğri/yüzey çiftlerini temiz bir şekilde birleştirmek için özel bir eğriye/yüzeye ihtiyacım var.</p>
+<p><code>ControlPoly6</code> ve <code>CubicCurve6</code> burada devreye girer. Bu nesneler kendi başlarına modelleme yapmak için kullanılabilir, ancak Bezier nesnelerini harmanlama görevi için özel olarak oluşturulmuştur.</p>
+<p>Dereceyi hala kübik olarak sınırlarken 4 değil 6 kontrol noktası olması, bizi Bezier nesnelerinin ötesine, kütüphanenin ilk tam NURBS'süne götürür. Ek noktalar, eğrinin her bir ucundaki eğriliği bağımsız olarak ayarlamamıza olanak tanır. Bu, yukarıdaki resimde gösterilmektedir. Keskin bir köşede buluşan iki Bezier eğrisi verildiğinde, keyfi  hareket noktaları (kırmızı noktalar) tanımlayabilir ve iki eğriyi hareket noktaları ve köşeler arasında harmanlayabiliriz.</p>
+<p>NURBS'nin kübik olarak sınırlandırılması, mozaikleme işleminin ve diğer tüm dahili NURBS işlevlerinin verimli olmasını sağlar. Yukarıdaki karışımın <code>ControlPoly6</code>'sı kutunun dışında gösterilmiştir. Eğrilik sürekliliği (G2) sağlar ve varsayılan ayarlar kaba taslaklar için uygundur. Dikkatli bir ayarlama ile bizi G3'e veya çok yakınına götürebilecek manuel olarak ayarlanabilir parametreler vardır. Bu ayarlamalar başlı başına bir konudur ve burada sadece göz atılacaktır.</p>
+<h3>Bu özel eğitim için hedef kitle</h3>
+<p>Bu eğitim, FreeCAD'in bilgili kullanıcılarına Silk Workbench (eski adıyla NURBSlib_EVM kütüphanesi) hakkında bir fikir vermek için hazırlanmıştır. Şu anda temel FreeCAD eylemleri hakkında hiçbir açıklama yapılmamaktadır.</p>
+<p>Tembel için bir başlangıç noktası modeli ve bir nihai model ekledim.</p>
+<h3>Bu eğitimi takip etmek için gerekenler</h3>
+<ul>
+<li>
+<p><a href="freecad-silk-wb-ogretici-dokuman-1.html">Öğretici Doküman 1</a> kesinlikle zorunludur (özellikle kurulum kısmı)</p>
+</li>
+<li>
+<p><a href="freecad-silk-wb-ogretici-dokuman-21.html">Öğretici Doküman 2.1</a> şiddetle tavsiye edilir ancak teknik olarak gerekli değildir</p>
+</li>
+<li>
+<p><a href="https://www.freecad.org/">FreeCAD</a> 0.17'de bir makro / eklenti (addon) yöneticisi ile çalışma tezgahı kurma,  yeteneği gereklidir </p>
+</li>
+<li>
+<p>FreeCAD'de çizgi ve yay çizimleri oluşturma becerisi</p>
+</li>
+<li>
+<p>FreeCAD'deki üç temel düzlemin anlaşılması</p>
+</li>
+<li>
+<p>Inkscape veya Illustrator'da bulunan NURBS veya Bezier eğrileri hakkında en azından belli belirsiz bir fikre sahip olmak çok faydalıdır</p>
+</li>
+</ul>
+<h3>Dosyalar</h3>
+<p>Öncelikle, <a href="https://github.com/edwardvmills/NURBSlib_EVM">master</a> adresindeki <strong>Tutorial Models / Point_onCurve ControlPoly4_segment ControlPoly6 ve CubicCurve6</strong> klasöründe bulunan aşağıdaki dosyaları kopyalayın:</p>
+<ul>
+<li>
+<p><em>Point_onCurve ControlPoly4_segment ControlPoly6 and CubicCurve6 00 starting point.FCStd</em></p>
+</li>
+<li>
+<p><em>Point_onCurve ControlPoly4_segment ControlPoly6 and CubicCurve6 01 finish.FCStd</em></p>
+</li>
+</ul>
+<h3>Kullanım</h3>
+<h3>-1-</h3>
+<p><strong>Point_onCurve ControlPoly4_segment ControlPoly6 and CubicCurve6 00 starting point.FCStd</strong> dosyasını açın.</p>
+<p>Bunu hemen <strong><em>Point_onCurve ControlPoly4_segment ControlPoly6 and CubicCurve6 in progress.FCStd</em></strong> adıyla ya da istediğiniz başka bir isimle kaydetmenizi tavsiye ederim. Bu, orjinal dosyayı korumak içindir.</p>
+<p>( Model ağacını net bir şekilde okuyabilmek, simgeleri görebilmek ve nesne bağımlılıklarını anlamak için DAG görünümünü kontrol edebilmek için aşağıdaki grafikleri (ekran görüntülerini) browser'ınızda tam ekran boyutunda açabilirsiniz. )</p>
+<p><img alt="Point_onCurve ControlPoly4_segment ControlPoly6 and CubicCurve6 01" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/Tutorial%20Models/Point_onCurve%20ControlPoly4_segment%20ControlPoly6%20and%20CubicCurve6/Point_onCurve%20ControlPoly4_segment%20ControlPoly6%20and%20CubicCurve6%2001.png"></p>
+<p>Bu model, başlangıç unsurlarından oluşan bir klasör içerir:</p>
+<ul>
+<li>
+<p>Düz bir çizginin taslağı</p>
+</li>
+<li>
+<p>Bir ucundan düz çizgiye bağlanmış bir yay çizimi</p>
+</li>
+<li>
+<p>Düz çizgi taslağına bağlı <code>ControlPoly4_Arc</code> nesneleri (her ikisinin de neden "<code>Arc</code>" tipini kullandığını merak ediyorsanız <a href="freecad-silk-wb-ogretici-dokuman-1.html">Öğretici Doküman 1</a>'e bakın. bu sadece basit bir örnek model için hızlı ve kolay bir hiledir)</p>
+</li>
+<li>
+<p>Yukarıdaki kontrol çokgenlerine bağlı <code>CubicCurve_4</code> nesneleri</p>
+</li>
+<li>
+<p>Yukarıdaki <code>CubicCurve_4</code> nesnelerine bağlı ekstrüzyon yüzeyleri (bunlar <strong>PartDesign</strong> değil, <strong>Part workbench</strong>'te bulunan' <strong>extrude</strong> komutu kullanılarak yapılmıştır). Bir eğriyi ekstrüde etmek (katılamak), eğrilerin vurgularını görmemizi sağlar. Kötü vurgular, kendi başlarına gayet iyi görünen iki eğrinin bir yüzeyde kullanıldığında çok yapay görünmesine neden olur. Eğer <a href="freecad-silk-wb-ogretici-dokuman-21.html">Öğretici Doküman 2</a>'de' çalıştıysanız, ızgaralarla uğraşmadan hızlı bir şekilde test yüzeyi oluşturabilmeyi değerlendireceksiniz!</p>
+</li>
+</ul>
+<h3>-2-</h3>
+<p>Eskizleri gizleyin ve <strong>CubicCurve</strong> nesnelerini gösterin (unsur ağacından seçin ve görünürlüğü değiştirmek için <strong>boşluk</strong> tuşuna basın.</p>
+<p><img alt="Point_onCurve ControlPoly4_segment ControlPoly6 and CubicCurve6 02" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/Tutorial%20Models/Point_onCurve%20ControlPoly4_segment%20ControlPoly6%20and%20CubicCurve6/Point_onCurve%20ControlPoly4_segment%20ControlPoly6%20and%20CubicCurve6%2002.png"></p>
+<ul>
+<li>
+<p><strong>CubicCurve_4</strong> <strong>yayının</strong> merkezi (ortası) ile iki eğrinin birleştiği yer arasında bir yere (noktaya) tıklayın (aşağıdaki resme bakın)</p>
+</li>
+<li>
+<p>Point_onCurve makrosunu / komutunu çalıştırın <img alt="Point_onCurve" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/icons/Point_OnCurve.png"></p>
+</li>
+</ul>
+<p><img alt="qq" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/Tutorial%20Models/Point_onCurve%20ControlPoly4_segment%20ControlPoly6%20and%20CubicCurve6/Point_onCurve%20ControlPoly4_segment%20ControlPoly6%20and%20CubicCurve6%2003.png"></p>
+<ul>
+<li>
+<p>Model (unsur) ağacından <strong>Point_onCurve</strong> nesnesini seçin</p>
+</li>
+<li>
+<p>Görünüm sekmesine gidin</p>
+</li>
+<li>
+<p>Nokta boyutunu 5.0 olarak ayarlayın</p>
+</li>
+<li>
+<p>Rengi kırmızı olarak ayarlayın</p>
+</li>
+</ul>
+<p><img alt="Point_onCurve ControlPoly4_segment ControlPoly6 and CubicCurve6 04" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/Tutorial%20Models/Point_onCurve%20ControlPoly4_segment%20ControlPoly6%20and%20CubicCurve6/Point_onCurve%20ControlPoly4_segment%20ControlPoly6%20and%20CubicCurve6%2004.png"></p>
+<ul>
+<li>
+<p><strong>Point_onCurve</strong> nesnesi hala seçiliyken, <strong>veri</strong> sekmesine gidin
+  referans eğri bağlantısına dikkat edin</p>
+</li>
+<li>
+<p>Nesnenin bir <strong>Position</strong> özelliğine sahip olduğuna dikkat edin (diğer nesneler tarafından kullanılır)</p>
+</li>
+<li>
+<p><strong>u</strong> olarak etiketlenen son parametre eğri boyunca parametrik konumdur (0.0 başlangıç noktası, 1.0 bitiş noktasıdır)</p>
+</li>
+<li>
+<p><strong>u</strong>'yu 0,60 olarak değiştirin.</p>
+</li>
+</ul>
+<p><img alt="Point_onCurve ControlPoly4_segment ControlPoly6 and CubicCurve6 05" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/Tutorial%20Models/Point_onCurve%20ControlPoly4_segment%20ControlPoly6%20and%20CubicCurve6/Point_onCurve%20ControlPoly4_segment%20ControlPoly6%20and%20CubicCurve6%2005.png"></p>
+<p>Nokta, varsayılan olarak fare tıklamasının konumunda oluşturulur. Ortaya çok yakın tıklamaktan kaçınmak iyidir. Eğrinin bir ucuna veya diğer ucuna çok daha yakın tıklandığında, <strong>u</strong> değeri her zaman 0 veya 1'e çok daha yakın olur. Bu, söz konusu eğri için <strong>u</strong>'nun hangi yöne gittiğini ve noktayı eğri boyunca istediğiniz yöne nasıl kaydıracağınızı görmeyi kolaylaştırır.</p>
+<p>Şu anda, tıklamak ve manuel olarak ayarlamak parametreleri ayarlamanın tek iki yoludur (sonunda daha birçok yöntem planlanmaktadır. Zor değiller, sadece zaman alıcılar).</p>
+<h3>-3-</h3>
+<p>Aşağıdaki resimlerde gösterildiği gibi eğrilere daha fazla nokta ekleyin (ve bunları da kırmızı renk ve 5.0 boyutunda yapın)</p>
+<ul>
+<li>Yay eğrisi, iki eğrinin köşesine çok yakın. <strong>u</strong> değerini 1.0 olarak ayarlayın, böylece nokta, köşenin üzerinde olur.</li>
+</ul>
+<p><img alt="Point_onCurve ControlPoly4_segment ControlPoly6 and CubicCurve6 06" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/Tutorial%20Models/Point_onCurve%20ControlPoly4_segment%20ControlPoly6%20and%20CubicCurve6/Point_onCurve%20ControlPoly4_segment%20ControlPoly6%20and%20CubicCurve6%2006.png"></p>
+<p><img alt="Point_onCurve ControlPoly4_segment ControlPoly6 and CubicCurve6 07" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/Tutorial%20Models/Point_onCurve%20ControlPoly4_segment%20ControlPoly6%20and%20CubicCurve6/Point_onCurve%20ControlPoly4_segment%20ControlPoly6%20and%20CubicCurve6%2007.png"></p>
+<p><img alt="Point_onCurve ControlPoly4_segment ControlPoly6 and CubicCurve6 08" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/Tutorial%20Models/Point_onCurve%20ControlPoly4_segment%20ControlPoly6%20and%20CubicCurve6/Point_onCurve%20ControlPoly4_segment%20ControlPoly6%20and%20CubicCurve6%2008.png"></p>
+<p>Sonraki birkaç resmi takip edin: önce tüm noktaları oluşturun, ardından boyut ve rengi değiştirmek için hepsini bir kerede seçin, ardından <strong>"u"</strong> değerlerini ayarlayın (ayrıntılar yol boyunca tekrarlanacaktır, bu özet, ne yaptığımıza dair genel bir bakış sağlamak içindir)</p>
+<ul>
+<li>Yay eğrisi, en sol uca çok yakın. <strong>u</strong> değerini <strong>0,0</strong> olarak ayarlayın, böylece uzak kenarda olur</li>
+<li>Çizgi eğrisi üzerine eklenen nokta, köşeye doğru olsun ancak çok yakın olmasın. <strong>u</strong> değerini <strong>0,22</strong>'ye ayarlayın</li>
+<li>Çizgi eğrisi üzerine eklenen diğer nokta, sağ uca doğru olsun. <strong>u</strong> değerini <strong>0,7</strong>'ye ayarlayın</li>
+</ul>
+<p><img alt="Point_onCurve ControlPoly4_segment ControlPoly6 and CubicCurve6 09" src="https://raw.githubusercontent.com/edwardvmills/NURBSlib_EVM/master/Tutorial%20Models/Point_onCurve%20ControlPoly4_segment%20ControlPoly6%20and%20CubicCurve6/Point_onCurve%20ControlPoly4_segment%20ControlPoly6%20and%20CubicCurve6%2009.png"></p>
+<p>Bu Eğitim birkaç sayfaya (Öğretici Dokümana) bölünmüştür, bu nedenle sayfa başına en fazla 10 tam boyutlu ekran görüntüsü vardır.</p>
+<table>
+<thead>
+<tr>
+<th>Önceki Sayfa</th>
+<th>Sonraki Sayfa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="freecad-silk-wb-ogretici-dokuman-26.html">&lt;&lt; Öğretici Doküman 2.6 </a></td>
+<td><a href="#">Öğretici Doküman 3.2 &gt;&gt;</a></td>
+</tr>
+</tbody>
+</table>
+<h3>Kaynak:</h3>
+<ul>
+<li><a href="https://github.com/edwardvmills/NURBSlib_EVM/blob/gh-pages/Tutorial%200.03%20Point_onCurve%20ControlPoly4_segment%20ControlPoly6%20and%20CubicCurve6%20-%20page%2001.md">Tutorial 0.03 Point_onCurve ControlPoly4_segment ControlPoly6 and CubicCurve6 - page 01</a></li>
+</ul>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/freecad.html">FreeCAD</a></li>
+					<li><a href="/tag/silk.html">Silk</a></li>
+					<li><a href="/tag/workbench.html">Workbench</a></li>
+					<li><a href="/tag/calismatezgahi.html">ÇalışmaTezgahı</a></li>
+					<li><a href="/tag/egitsel.html">Eğitsel</a></li>
+					<li><a href="/tag/ogretici.html">Öğretici</a></li>
+					<li><a href="/tag/dokuman.html">Doküman</a></li>
+					<li><a href="/tag/tutorial.html">Tutorial</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>
