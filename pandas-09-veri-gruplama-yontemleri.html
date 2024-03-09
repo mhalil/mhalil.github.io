@@ -78,9 +78,9 @@
 	<h1 class="post-title">Pandas 09 - Veri Gruplama Yöntemleri</h1>
 	<span class="post-date">Paz 17 Temmuz 2022</span>
 	<h1>Gruplama Yöntemleri</h1>
-<p>Veri Çerçevemizde aynı isme ya da aynı değere sahip birden fazla veri bilgisi olabilir. Verileri gruplayarak, grupların toplam değerleri, ortalama değerleri, grupta kaç adet veri bulunduğu, gruptaki verilrden en küçük ya da en büyük verinin hangisi olduğu gibi pek çok bilgi edinmek için, bu bölümdeki komutlardan yararlanacağız.</p>
+<p>Veri Çerçevemizde aynı isme ya da aynı değere sahip birden fazla veri bilgisi olabilir. Verileri gruplayarak, grupların toplam değerleri, ortalama değerleri, grupta kaç adet veri bulunduğu, gruptaki verilerden en küçük ya da en büyük verinin hangisi olduğu gibi pek çok bilgi edinmek için, <code>groupby()</code> metodundan yararlanacağız.</p>
 <h2>groupby() Fonksiyonu</h2>
-<p>Veri çerçevemizdeki verileri gruplamak istediğimizde <strong>groupby()</strong> metodunu kullanabiliriz. Önce NBA oyuncularının bilgilerinin bulunduu csv dosyamızı veri çerçevesine dönüştürüp içeriğine göz atalım.</p>
+<p>Veri çerçevemizdeki verileri gruplamak istediğimizde <code>groupby()</code> metodunu kullanabiliriz. Önce NBA oyuncularının bilgilerinin bulunduu <strong>.csv</strong> dosyamızı veri çerçevesine dönüştürüp içeriğine göz atalım.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="n">nba</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/nba.csv&quot;</span><span class="p">,</span> <span class="n">decimal</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">nba</span><span class="p">)</span>
@@ -237,9 +237,8 @@
 </tbody>
 </table>
 <p>458 rows × 9 columns</p>
-<p>Veri çerçevemizi incelediğimizde, <strong>Takım (Team)</strong> ismine göre grulama yapmanın uygun olacağını düşünüyorum. Takıma göre gruplama yaparak, Takımda bulunan Oyuncuların Ortalama, En az ya da En fazla Yaş (Age), Boy uzunluğu (Height), Kilo (Weight) ya da Yıllık 
-Kazançlarını (Salary) görebiliriz.</p>
-<p>Aşağıdaki örnekte, Takımlara göre tüm sütunların ortalama değerlerini göreceğiz. Ortalama değeri bulmak için <strong>mean()</strong> metodunu kullanacağız.</p>
+<p>Veri çerçevemizi incelediğimizde, <strong>Takım (Team)</strong> ismine göre grulama yapmanın uygun olacağını düşünüyorum. Takıma göre gruplama yaparak, Takımda bulunan Oyuncuların Ortalama, En az ya da En fazla Yaş (Age), Boy uzunluğu (Height), Kilo (Weight) ya da Yıllık Kazançlarını (Salary) görebiliriz.</p>
+<p>Aşağıdaki örnekte, Takımlara göre tüm sütunların ortalama değerlerini göreceğiz. Ortalama değeri bulmak için <code>mean()</code> metodunu kullanacağız.</p>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">nba</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Team&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
 </code></pre></div>
 
