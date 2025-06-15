@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Pandas - read_html" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/pandas-read_html.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Pandas - read_html</h1>
+	<span class="post-date">Cts 09 Temmuz 2022</span>
+	<h1>read_html() Fonksiyonu Nedir? Nasıl Kullanılır?</h1>
+<p><strong>read_html()</strong> fonksiyonu ile web sitelerinde ya da htm/html uzantılı dosyalardaki tabloları, çalışmalarınıza dahil edebilirsiniz. Öncelikle veri almak istediğimiz sayfanın içerisinde kaç adet tablo olduğunu bulalım.</p>
+<div class="highlight"><pre><span></span><code><span class="n">url_tablo</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_html</span><span class="p">(</span><span class="s2">&quot;https://tr.wikipedia.org/wiki/Van&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sayfada bulunan toplam tablo sayısı: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">url_tablo</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">Sayfada</span> <span class="n">bulunan</span> <span class="n">toplam</span> <span class="n">tablo</span> <span class="n">sayısı</span><span class="p">:</span> <span class="mi">11</span>
+</code></pre></div>
+
+<h2>match Parametresi</h2>
+<p>Hangi tabloyu kullanmak (içe aktarmak) istiyorsak öncelikle o tabloyu, tam olarak belirtmemiz/tanımlamamız gerekiyor. Bunu da <strong>read_html()</strong> fonksiyonunun <strong>match (eşle)</strong> parametresi ile yapmamız gerekir. Benim kullanmak istediğim tablonun içerisinde <strong>Van il nüfus bilgileri</strong> ibaresi bulunduğu için ben bu "<u>kelime grubunu</u>" <strong>match</strong> parametresine dahil ediyorum.</p>
+<div class="highlight"><pre><span></span><code><span class="n">url_tablo</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_html</span><span class="p">(</span><span class="s2">&quot;https://tr.wikipedia.org/wiki/Van&quot;</span><span class="p">,</span> <span class="n">match</span><span class="o">=</span><span class="s2">&quot;Van il nüfus bilgileri&quot;</span><span class="p">)</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">url_tablo</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mi">1</span>
+</code></pre></div>
+
+<p>Bu demek oluyor ki, sayfa içeriğinde, <strong>Van il nüfus bilgileri</strong> ibaresi bulunan <strong>1 adet eşleşmiş tablo</strong> var, artık <strong>url</strong> değişkeni sayfadaki tek tabloyu temsil ediyor ve bu tabloya erişmek için ilk indis olan <strong>0 sıfır</strong>'ı kullanmamız gerekir.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">url_tablo</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</code></pre></div>
+
+<p><strong>Van il nüfus bilgileri</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Yıl</th>
+<th>Toplam</th>
+<th>Sıra</th>
+<th>Fark</th>
+<th>Şehir - Kır</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1965[11]</td>
+<td>266.840</td>
+<td>48</td>
+<td>NaN</td>
+<td>%23 60.686206.154 %77</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1970[12]</td>
+<td>325.763</td>
+<td>43</td>
+<td>%22</td>
+<td>%27 88.227237.536 %73</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1975[13]</td>
+<td>386.314</td>
+<td>42</td>
+<td>%19</td>
+<td>%30 115.830270.484 %70</td>
+</tr>
+<tr>
+<td>3</td>
+<td>1980[14]</td>
+<td>468.646</td>
+<td>39</td>
+<td>%21</td>
+<td>%33 156.852311.794 %67</td>
+</tr>
+<tr>
+<td>4</td>
+<td>1985[15]</td>
+<td>547.216</td>
+<td>35</td>
+<td>%17</td>
+<td>%35 189.269357.947 %65</td>
+</tr>
+<tr>
+<td>5</td>
+<td>1990[16]</td>
+<td>637.433</td>
+<td>32</td>
+<td>%16</td>
+<td>%41 258.967378.466 %59</td>
+</tr>
+<tr>
+<td>6</td>
+<td>2000[17]</td>
+<td>877.524</td>
+<td>23</td>
+<td>%38</td>
+<td>%51 446.976430.548 %49</td>
+</tr>
+<tr>
+<td>7</td>
+<td>2007[18]</td>
+<td>979.671</td>
+<td>19</td>
+<td>%12</td>
+<td>%52 511.678467.993 %48</td>
+</tr>
+<tr>
+<td>8</td>
+<td>2008[19]</td>
+<td>1.004.369</td>
+<td>19</td>
+<td>%3</td>
+<td>%51 514.481489.888 %49</td>
+</tr>
+<tr>
+<td>9</td>
+<td>2009[20]</td>
+<td>1.022.310</td>
+<td>19</td>
+<td>%2</td>
+<td>%52 527.525494.785 %48</td>
+</tr>
+<tr>
+<td>10</td>
+<td>2010[21]</td>
+<td>1.035.418</td>
+<td>19</td>
+<td>%1</td>
+<td>%52 539.619495.799 %48</td>
+</tr>
+<tr>
+<td>11</td>
+<td>2011[22]</td>
+<td>1.022.532</td>
+<td>19</td>
+<td>-%1</td>
+<td>%52 526.725495.807 %48</td>
+</tr>
+<tr>
+<td>12</td>
+<td>2012[23]</td>
+<td>1.051.975</td>
+<td>19</td>
+<td>%3</td>
+<td>%52 548.717503.258 %48</td>
+</tr>
+<tr>
+<td>13</td>
+<td>2013[24]</td>
+<td>1.070.113</td>
+<td>19</td>
+<td>%2</td>
+<td>Şehir ve kır ayrımı kaldırılmıştır.</td>
+</tr>
+<tr>
+<td>14</td>
+<td>2014[25]</td>
+<td>1.085.542</td>
+<td>19</td>
+<td>%1</td>
+<td>Şehir ve kır ayrımı kaldırılmıştır.</td>
+</tr>
+<tr>
+<td>15</td>
+<td>2015[26]</td>
+<td>1.096.397</td>
+<td>19</td>
+<td>%1</td>
+<td>Şehir ve kır ayrımı kaldırılmıştır.</td>
+</tr>
+<tr>
+<td>16</td>
+<td>2016[26]</td>
+<td>1.100.190</td>
+<td>19</td>
+<td>%0</td>
+<td>Şehir ve kır ayrımı kaldırılmıştır.</td>
+</tr>
+<tr>
+<td>17</td>
+<td>2017[26]</td>
+<td>1.106.891</td>
+<td>19</td>
+<td>%1</td>
+<td>Şehir ve kır ayrımı kaldırılmıştır.</td>
+</tr>
+<tr>
+<td>18</td>
+<td>2018[26]</td>
+<td>1.123.784</td>
+<td>19</td>
+<td>%2</td>
+<td>Şehir ve kır ayrımı kaldırılmıştır.</td>
+</tr>
+<tr>
+<td>19</td>
+<td>2019[26]</td>
+<td>1.136.757</td>
+<td>19</td>
+<td>%1</td>
+<td>Şehir ve kır ayrımı kaldırılmıştır.</td>
+</tr>
+<tr>
+<td>20</td>
+<td>2020[26]</td>
+<td>1.149.342</td>
+<td>19</td>
+<td>%1</td>
+<td>Şehir ve kır ayrımı kaldırılmıştır.</td>
+</tr>
+<tr>
+<td>21</td>
+<td>2021[26]</td>
+<td>1.141.015</td>
+<td>19</td>
+<td>-%1</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+<p><strong>len(url_tablo)</strong> çıktısı <strong>1</strong>'den büyük, yani sayfada aranan kelime ile eşleşen 1'den fazla tablo olsaydı, o durumda <strong>url_tablo[0]</strong> kodundaki indis değerini değiştirerek istediğimiz tabloya erişebilecektik. Örneğin; <strong>url_tablo[3]</strong><br>
+Aşağıdaki kodu çalıştırırsanız, ilgili sayfada <strong>ilçe</strong> ibaresi geçen 5 adet tablo bulunduğunu göreceksiniz.</p>
+<div class="highlight"><pre><span></span><code><span class="n">url_tablo</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_html</span><span class="p">(</span><span class="s2">&quot;https://tr.wikipedia.org/wiki/Ankara&quot;</span><span class="p">,</span> <span class="n">match</span><span class="o">=</span><span class="s2">&quot;İlçe&quot;</span><span class="p">)</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">url_tablo</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Bu tablolardan <strong>üçüncü</strong> tabloya ulaşmak için <strong>print(url_tablo[2])</strong> komutunu çalıştırmanız gerekecektir (indis değeri 0'dan başladığı için 3 yerine 2 yazmalıyız).</p>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/pandas.html">Pandas</a></li>
+					<li><a href="/tag/dataframe.html">DataFrame</a></li>
+					<li><a href="/tag/veri-cercevesi.html">Veri Çerçevesi</a></li>
+					<li><a href="/tag/read_html.html">read_html</a></li>
+					<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+					<li><a href="/tag/modul.html">Modül</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>
