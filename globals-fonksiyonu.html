@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="globals() Fonksiyonu" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/globals-fonksiyonu.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">globals() Fonksiyonu</h1>
+	<span class="post-date">Cts 05 Ekim 2024</span>
+	<h1>globals() Fonksiyonu</h1>
+<h2>Tanım</h2>
+<h3>1. Tanım:</h3>
+<p><code>globals()</code> fonksiyonu, Python'da gömülü (built-in) bir fonksiyondur ve geçerli global sembol tablosunu temsil eden bir sözlük (dict) yapısı döndürür.</p>
+<p><strong>Sembol Tablosu</strong>: Bir programla ilgili tüm gerekli bilgileri içeren bir veri yapısıdır. Değişken adları, fonksiyonlar, sınıflar vb. bilgileri barındırır. Global sembol tablosu, programın global kapsamıyla ilgili tüm bilgileri depolar ve Python'da <code>globals()</code> fonksiyonu kullanılarak erişilir. Herhangi bir sınıf veya fonksiyonla ilişkilendirilmemiş değişkenler ve fonksiyonlar <code>global</code> kapsamda depolanır.</p>
+<h3>2. Tanım</h3>
+<p><code>globals()</code> fonksiyonu,  çalıştığımız dosyanın adı, yolu, dosya içerisinde tanımlanan global kapsamdaki tüm değişkenleri, fonksiyonları, sınıfları ve diğer sembolleri içeren bir sözlük döndürür. Çıktısı <strong>sözlük (dictionary)</strong> veri yapısındadır. Bu sözlük yapısının içindeki herhangi bir anahtar değerinin karşılığını <code>print(globals()["degisken_adi"])</code> şekilde yazdırabiliriz .</p>
+<h3>3. Tanım</h3>
+<p>Bir başka tanımla,  <code>globals()</code> fonksiyonu, Python'da mevcut global <strong>sembol tablosu</strong> sözlüğü döndüren yerleşik (dahili) bir fonksiyondur.</p>
+<p><strong>Sembol tablosu</strong> nedir derseniz; Sembol tablosu, program hakkında gerekli tüm bilgileri içeren bir veri yapısıdır. Bunlar değişken adlarını, fonksiyonları, sınıfları, ... vb. verileri içerir. Global sembol tablosu, programın global kapsamıyla ilgili tüm bilgileri depolar ve Python'da <code>globals()</code> fonksiyonu kullanılarak erişilir. Herhangi bir sınıf veya fonksiyonla ilişkili olmayan fonksiyonlar ve değişkenler global kapsamda saklanır. Bir sınıf veya fonksiyonla ilişkili olan fonksiyon ve değişkenlere ise <code>locals()</code> fonksiyonu ile erişilebilir.</p>
+<h2>Ek Tanımlar:</h2>
+<h3>Global Alan</h3>
+<p>Bir Python programında, tüm fonksiyonların ve blokların dışında tanımlanan değişkenlerin ve nesnelerin bulunduğu alandır. Global alandaki değişkenlere, programın herhangi bir yerinden erişilebilir.</p>
+<h3>Yerel Alan</h3>
+<p>Bir Python fonksiyonu veya bloğu içinde tanımlanan değişkenlerin bulunduğu alandır. Yerel alandaki değişkenlere yalnızca tanımlandıkları fonksiyon veya blok içinden erişilebilir.</p>
+<h3>Sembol Tablosu</h3>
+<p>Bir programdaki tüm değişkenlerin, fonksiyonların ve sınıfların adlarını ve bilgilerini içeren bir veri yapısıdır.</p>
+<h3>Sözlük</h3>
+<p>Python'da anahtar-değer çiftleri şeklinde veri depolayan bir veri yapısıdır. Anahtarlar benzersiz olmalıdır ve değerlere anahtarları kullanılarak erişilir.</p>
+<h3>Metaprogramlama</h3>
+<p>Çalışma zamanında kendisini değiştirebilen veya üretebilen programlar yazma tekniğidir.</p>
+<h2>Sözdizimi:</h2>
+<p><code>globals()</code> fonksiyonu herhangi bir parametre almaz. Sözdizimi basitçe şöyledir:</p>
+<p><code>globals()</code></p>
+<h2>Kullanım Alanları:</h2>
+<h3>Global Sembol Tablosunu İnceleme:</h3>
+<ul>
+<li><code>globals()</code> fonksiyonu, global kapsamda tanımlı olan tüm değişkenleri, fonksiyonları, sınıfları ve diğer nesneleri listelemek için kullanılabilir. Bu, özellikle programın çalışma zamanında hangi nesnelerin mevcut olduğunu anlamak için faydalıdır.</li>
+</ul>
+<p><code>print(globals())</code>
+Bu kod, global sembol tablosunu içeren bir sözlük yazdırır.</p>
+<ul>
+<li><code>globals()</code> fonksiyonunun döndürdüğü sözlükte, değişkenin adını anahtar olarak kullanarak değerine erişebilir ve bu değeri istediğiniz gibi değiştirebilirsiniz.</li>
+</ul>
+<p>kisiler.py dosyası oluşturup içerisine sadece aşağıdaki kodu yazalım ve kodu çalıştıralım.</p>
+<p><code>print(globals())</code></p>
+<p>ÇIKTI:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="s1">&#39;__name__&#39;</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;__main__&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;__doc__&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">None</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;__package__&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">None</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;__loader__&#39;</span><span class="p">:</span><span class="w"> </span><span class="o">&lt;</span><span class="n">_frozen_importlib_external</span><span class="o">.</span><span class="n">SourceFileLoader</span><span class="w"> </span><span class="n">object</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="mh">0x7559f6209d60</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;__spec__&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">None</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;__annotations__&#39;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w"> </span><span class="s1">&#39;__builtins__&#39;</span><span class="p">:</span><span class="w"> </span><span class="o">&lt;</span><span class="n">module</span><span class="w"> </span><span class="s1">&#39;builtins&#39;</span><span class="w"> </span><span class="p">(</span><span class="n">built</span><span class="o">-</span><span class="ow">in</span><span class="p">)</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;__file__&#39;</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;/home/mhalil/python/kisiler.py&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;__cached__&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">None</span><span class="p">}</span>
+</code></pre></div>
+
+<p>Çıktı, bir sözlük veri tipi olarak karşımıza geldi.</p>
+<p>Dosyanın içerisine a, b ve c isimli 3 adet değişken ekleyip bu değişkenlere sırayla 1, 2 ve 3 değerlerini atıyorum. kisiler.py dosyasının içeriği;</p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">globals</span><span class="p">())</span>
+</code></pre></div>
+
+<p>Kodu çalıştıralım.</p>
+<p>ÇIKTI:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="s1">&#39;__name__&#39;</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;__main__&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;__doc__&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">None</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;__package__&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">None</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;__loader__&#39;</span><span class="p">:</span><span class="w"> </span><span class="o">&lt;</span><span class="n">_frozen_importlib_external</span><span class="o">.</span><span class="n">SourceFileLoader</span><span class="w"> </span><span class="n">object</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="mh">0x76e273105d00</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;__spec__&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">None</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;__annotations__&#39;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w"> </span><span class="s1">&#39;__builtins__&#39;</span><span class="p">:</span><span class="w"> </span><span class="o">&lt;</span><span class="n">module</span><span class="w"> </span><span class="s1">&#39;builtins&#39;</span><span class="w"> </span><span class="p">(</span><span class="n">built</span><span class="o">-</span><span class="ow">in</span><span class="p">)</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;__file__&#39;</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;/home/mhalil/python/kisiler.py&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;__cached__&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">None</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;a&#39;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;b&#39;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;c&#39;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">}</span>
+</code></pre></div>
+
+<p>Gördüğünüz gibi yukarıdaki ilk çıktıdan farklı olarak sözlük içerisine <code>'a': 1, 'b': 2, 'c': 3</code> key (anahtar) ve value (değer) bilgileri eklenmiş. a değişkenine şu şekilde erişebiliriz;</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="nb">globals</span><span class="p">()[</span><span class="s2">&quot;a&quot;</span><span class="p">])</span>
+</code></pre></div>
+
+<p>diyeceksiniz ki, a değişkenine direkt <code>print(a)</code> yazarak ta erişebilirdik, ne anladım bu işten :) Aşağıdaki kodu ve çıktısını inceleyelim:</p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="k">def</span> <span class="nf">deger</span><span class="p">():</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="mi">50</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Lokal a değeri:&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+    <span class="n">global_a</span> <span class="o">=</span> <span class="nb">globals</span><span class="p">()[</span><span class="s2">&quot;a&quot;</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fonksiyon içerisinde global a değeri:&quot;</span><span class="p">,</span> <span class="n">global_a</span><span class="p">)</span>
+
+<span class="n">deger</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Global a değeri:&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+</code></pre></div>
+
+<p>ÇIKTI:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Lokal</span> <span class="n">a</span> <span class="n">değeri</span><span class="p">:</span> <span class="mi">50</span>
+<span class="n">Fonksiyon</span> <span class="n">içerisinde</span> <span class="k">global</span> <span class="n">a</span> <span class="n">değeri</span><span class="p">:</span> <span class="mi">100</span>
+<span class="n">Global</span> <span class="n">a</span> <span class="n">değeri</span><span class="p">:</span> <span class="mi">100</span>
+</code></pre></div>
+
+<p>Gördüğünüz gibi aynı isme sahip (a) iki değişkeni sorunsuz bir şekilde kullabildik.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">degis</span><span class="p">():</span>
+      <span class="k">global</span> <span class="n">a</span>
+      <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">degis</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> 
+</code></pre></div>
+
+<p>Çıktı: <code>10</code></p>
+<p>Bu örnekte, <code>degis()</code> fonksiyonu içinde <code>global</code> anahtar kelimesi kullanılarak <code>a</code> değişkeninin global olarak tanımlandığını görüyoruz. <code>degis()</code> fonksiyonu çağrıldığında, <strong>global a</strong> değişkeninin değeri <strong>10</strong> olarak güncellenir.</p>
+<h3>Dinamik Kod Üretme:</h3>
+<p><code>globals()</code> fonksiyonu, dinamik olarak kod üretmek için de kullanılabilir. Örneğin, kullanıcıdan alınan bir girdiye göre yeni değişkenler oluşturmak veya fonksiyonları çağırmak için kullanılabilir.</p>
+<div class="highlight"><pre><span></span><code><span class="n">degisken_adi</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Değişken adı girin: &quot;</span><span class="p">)</span>
+<span class="n">degisken_degeri</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Değişken değeri girin: &quot;</span><span class="p">)</span>
+
+<span class="nb">globals</span><span class="p">()[</span><span class="n">degisken_adi</span><span class="p">]</span> <span class="o">=</span> <span class="n">degisken_degeri</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">degisken_adi</span><span class="p">,</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span> <span class="nb">globals</span><span class="p">()[</span><span class="n">degisken_adi</span><span class="p">])</span>
+</code></pre></div>
+
+<p>Bu örnekte, kullanıcıdan bir değişken adı ve değeri alınır. Daha sonra, <code>globals()</code> fonksiyonu kullanılarak kullanıcı tarafından belirtilen isimde bir <strong>global</strong> değişken oluşturulur ve değeri atanır.</p>
+<p>Farklı dosyalardaki (örneğin bir modüldeki) değişken ismini <code>globals</code> ile tekrar değişken ismi olarak kullanabilirsiniz.</p>
+<h2>Önemli Noktalar:</h2>
+<h3>Global Değişkenleri Değiştirme Riski:</h3>
+<p><code>globals()</code> fonksiyonu kullanılarak global değişkenleri değiştirmek, beklenmeyen yan etkilere neden olabilir ve kodun okunabilirliğini azaltabilir. Bu nedenle, global değişkenleri değiştirmek yerine fonksiyonlara parametre olarak iletmek ve dönüş değerlerini kullanmak daha iyi bir uygulamadır.</p>
+<h3>Yerel Kapsam:</h3>
+<p><code>globals()</code> fonksiyonu yalnızca global kapsamdaki nesnelere erişim sağlar. Yerel kapsamda (örneğin bir fonksiyon içinde) <code>globals()</code> fonksiyonu çağrılırsa, yine global sembol tablosunu döndürür.</p>
+<h2>Sonuç:</h2>
+<ul>
+<li><code>globals()</code> fonksiyonu, Python'da gömülü (built-in) bir fonksiyondur.</li>
+<li><code>globals()</code> fonksiyonu,  çalıştığımız dosyanın adı, yolu, dosya içerisinde tanımlanan global kapsamdaki tüm değişkenleri, fonksiyonları, sınıfları ve diğer sembolleri içeren bir sözlük döndürür.</li>
+<li><code>globals()</code> fonksiyonunun aşırı veya dikkatsizce kullanılması, kodunuzun okunmasını ve bakımını zorlaştırabilir; Dikkatli kullanılmalı ve olası yan etkileri göz önünde bulundurulmalıdır.</li>
+<li><code>globals()</code> fonksiyonu kullanılarak global değişkenlerin değerlerini değiştirmek, beklenmeyen sonuçlara yol açabilir ve programın okunabilirliğini azaltabilir.</li>
+<li>Çoğu durumda, global değişkenleri değiştirmek yerine, fonksiyonlara argümanlar iletmek veya sınıflar içindeki verileri yönetmek gibi daha yapılandırılmış yaklaşımlar daha uygundur.</li>
+<li><code>globals()</code> fonksiyonu tarafından döndürülen sözlükte "file" anahtarının değeri, programın çalıştığı dosyanın adını içerir.</li>
+<li><code>globals()</code> fonksiyonu tarafından döndürülen sözlükte, <strong>fonksiyonun adı</strong> anahtar olarak bulunur. Bu anahtara karşılık gelen değer, fonksiyonun kendisidir.</li>
+<li><code>globals()</code> fonksiyonu, programın global alanına dinamik olarak erişmek gerektiğinde, örneğin bir eklenti / modül (kütüphane) sisteminde veya metaprogramlama yaparken kullanışlı olabilir.</li>
+</ul>
+<h2>Kaynaklar:</h2>
+<ul>
+<li>https://python-istihza.yazbel.com/gomulu_fonksiyonlar.html</li>
+<li>https://docs.python.org/tr/3/library/functions.html#globals</li>
+<li>https://python-istihza.yazbel.com/gomulu_fonksiyonlar.html</li>
+<li>https://www.geeksforgeeks.org/python-globals-function/</li>
+<li>https://www.w3schools.com/python/ref_func_globals.asp</li>
+<li>https://notebooklm.google.com/</li>
+</ul>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/globals.html">globals</a></li>
+					<li><a href="/tag/fonksiyon.html">fonksiyon</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>

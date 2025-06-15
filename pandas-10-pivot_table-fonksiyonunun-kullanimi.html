@@ -274,7 +274,7 @@ sayfaya ekleyeceğim.</p>
 Aşağıdaki örneklerde DataFrame fonksiyonu yerine Pandas fonksiyonunu 
 kullanıyoruz. Bu nedenle, <code>data=</code> parameresini belirtmemiz gerekiyor. Yöntemi doğrudan DataFrame'e uygularsak (örneğin: <code>df.pivot_table(...)</code>), bu parametre <code>data= df</code> şeklinde ima edilmiş olur.</p>
 <div class="highlight"><pre><span></span><code><span class="n">sales_by_region</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s1">&#39;Region&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">sales_by_region</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pivot</span><span class="p">)</span>
 </code></pre></div>
 
 <table>
@@ -385,7 +385,7 @@ dizi/string listesi iletmemize izin verir.</p>
 <h2>Pandas Özet Tablosunda Toplama Yöntemleriyle Çalışmak</h2>
 <p>Pandas'ta ilk pivot tablonuzu oluşturduğunuza göre, şimdi toplama yöntemlerini değiştirmeye çalışalım. Bu, verilerinizin nasıl bir araya getirilmesini istediğinizi belirtmenize olanak tanır. Pandas'ın gücünün gerçekten ortaya çıktığı yer burasıdır ve karmaşık analizleri kolaylıkla hesaplamanıza olanak tanır.</p>
 <h2>Pandas Özet Tablosunda Toplama Yöntemini Belirtmek</h2>
-<p>Özet (Pivot) tablo oluşturulurken verilerin toplamının mı? ortalamasının mı? hesaplanacağı konusu önemlidir. Bunu belirleyebileceğimiz parametre, <code>aggfunc=</code> (aggregation function yani toplama fonksiyonu)'dir. Pandas, <code>pivot_table()</code> ile özet tablo oluştururken <strong>varsayılan olarak</strong> <code>.mean()</code> yani <strong>ortalama</strong> yöntemini kullanır. <code>aggfunc=</code> parametresine, <code>'mean'</code> (ortalama), <code>'sum'</code> (toplam) veya <code>'max'</code> (en büyük değer) gibi adlandırılmış bir fonksiyonu veya <code>np.mean</code> gibi çağrılabilir bir fonksiyonu değer olarak atayabiliriz.</p>
+<p>Verilerin bir pivot tabloda nasıl toplandığını değiştirmek için <code>aggfunc=</code> (aggregation function yani toplama fonksiyonu) parametresini kullanabilirsiniz. Pandas, varsayılan olarak verileri toplamak için <code>.mean()</code> yöntemini kullanır. <code>'mean'</code>, <code>'sum'</code> veya <code>'max'</code> gibi adlandırılmış bir işlevi veya <code>np.mean</code> gibi çağrılabilir bir fonksiyon/işlevi iletebilirsiniz.</p>
 <p>Şimdi tüm bölgelerdeki satışlarımızın <strong>toplamını</strong> bulmak için davranışımızı değiştirmeye çalışalım:</p>
 <div class="highlight"><pre><span></span><code><span class="n">pivot</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s1">&#39;Region&#39;</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s1">&#39;sum&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">pivot</span><span class="p">)</span>
@@ -1126,6 +1126,20 @@ Fonksiyon/İşlev, çok çeşitli parametreler aracılığıyla önemli esneklik
 <h3>Kaynak:</h3>
 <p>Bu Eğitimin hazırlanmasında faydalandığım kaynağın bağlantısını paylaşmak istiyorum. <a href="https://datagy.io/python-pivot-tables/">Pivot Tables in Pandas with Python for Python and Pandas - datagy</a></p>
 <p><a href="pandas-09-veri-gruplama-yontemleri.html">← Önceki Bölüm</a> | <a href="pandas-11-melt-fonksiyonunun-kullanimi.html">Sonraki Bölüm →</a></p>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/pandas.html">Pandas</a></li>
+					<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+					<li><a href="/tag/modul.html">Modül</a></li>
+					<li><a href="/tag/pivot.html">pivot</a></li>
+					<li><a href="/tag/table.html">table</a></li>
+					<li><a href="/tag/pivot-table.html">pivot table</a></li>
+			</ul>
+		</span>
+
 </div>
 		</div>
 	</body>
