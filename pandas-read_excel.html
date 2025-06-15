@@ -501,7 +501,7 @@ Benzer işlemi, <a href="pandas-05-eksik-kayip-veri-yontemleri.html">Eksik / Kay
 </tr>
 </tbody>
 </table>
-<h3>sheet_name Parametresi</h3>
+<h2>sheet_name Parametresi</h2>
 <p>Excel dosyamızın içinde birden fazla çalışma sayfası (sekme) bulunması halinde, istediğimiz çalışma sayfasına erişebilmek için, <strong>sheet_name</strong> parametresini kullanmalıyız.</p>
 <p>Aylara göre doğum sayılarını barındıran dosyamızı çalışmamıza dahil edip ilk 5 veriye göz atalım.</p>
 <div class="highlight"><pre><span></span><code><span class="n">dogumlar</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/AyaGöreDoğumlar.xlsx&quot;</span><span class="p">)</span>
@@ -738,7 +738,7 @@ Benzer işlemi, <a href="pandas-05-eksik-kayip-veri-yontemleri.html">Eksik / Kay
  <span class="mi">20</span>   <span class="mi">100407</span>   <span class="mi">97334</span>   <span class="mi">93290</span>   <span class="mi">92189</span>   <span class="mi">87327</span>  <span class="p">}</span>
 </code></pre></div>
 
-<h3>decimal Parametresi</h3>
+<h2>decimal Parametresi</h2>
 <p>Harici kaynaktan içe aktararak oluşturduğumuz veri çerçevelerini incelediğimizde, sayısal olduğunu düşündüğümüz bazı değerlerin, <strong>metinsel (string)</strong> olduğunu farkederiz. Bunun sebebi, farklı ülkelerin farklı bölgesel ayarlar kullanmalarından kaynaklanır. Örneğin Ülkemiz ve Avrupa ülkelerinde sayıların ondalık kısımlarını temsil etmek için <strong>virgül (,)</strong>, binlik basamakları ayırmak için <strong>nokta (.)</strong> karakteri kullanılırken bazı Ülkelerde bunun tersi kullanılmaktadır.
 Elimde, interneten indirmiş olduğum IMDB (Internet Movie Data Base) verilerinden oluşan bir excel dosyası bulunmaktadır. Bu dosyayı veri çerçevesine dönüştürüp içeriğini inceleyelim.</p>
 <div class="highlight"><pre><span></span><code><span class="n">imdb</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/imdb.xlsx&quot;</span><span class="p">)</span>
