@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Pandas - loc" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/pandas-loc.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Pandas - loc</h1>
+	<span class="post-date">Pzt 11 Temmuz 2022</span>
+	<h1>loc[] Fonksiyonu Nedir? Nasıl Kullanılır?</h1>
+<blockquote>
+<p>Etiketlere veya mantık (boole) dizisine göre bir satır ve sütun grubuna erişim</p>
+</blockquote>
+<p><code>loc[]</code> metodu, <code>iloc[]</code> metoduna benzer bir metottur ancak <code>loc[]</code> metodunda, satır ve sütun seçmek/görüntülemek istediğimiz zaman, satır ve sütunların <strong>isimlerini / ifadelerini</strong> (metinsel / string ifadelerini) yazmalıyız. <code>loc[]</code> metodu aslında etiket tabanlıdır, ancak bir mantık (boole) dizisiyle de kullanılabilir. <code>loc[]</code> metodunun alabileceği parametreler şunlardır:</p>
+<ul>
+<li>Tek bir etiket, ör. <code>5</code> veya <code>'a'</code>, (<code>5</code>'in dizinin bir etiketi olarak yorumlandığını ve <strong>asla</strong> dizin boyunca bir tamsayı konumu olarak yorumlanmadığını unutmayın).</li>
+<li>Bir liste veya etiket dizisi, ör. <code>['a', 'b', 'c']</code></li>
+<li>Etiketleri olan bir dilim nesnesi, ör. <code>'a':'f'</code></li>
+</ul>
+<h5>UYARI:</h5>
+<p><code>loc[]</code> metodu ile dilimleme işlemi yapılırken <code>:</code> karakterinin sağındaki bitiş değeri, standart python dilimleme işlemlerinin aksine, seçime <strong>DAHİL EDİLİR</strong>, unutmayın.</p>
+<ul>
+<li>Dilimlenen eksenle aynı uzunlukta bir mantık (boole) dizisi, ör. <code>[True, False, True]</code></li>
+<li>Hizalanabilir bir mantık (boole) Serisi. Anahtarın dizini, maskelemeden önce hizalanacaktır.</li>
+<li>Hizalanabilir bir İndeks. Döndürülen seçimin Dizini girdi olacaktır.</li>
+<li>Tek argümanlı (çağıran Series veya DataFrame) ve indeksleme için 
+  geçerli çıktı döndüren (yukarıdakilerden biri) çağrılabilir bir 
+  fonksiyon</li>
+</ul>
+<p>Elimizde aşağıdaki gibi bir veri çerçevesi olduğunu varsayalım.</p>
+<div class="highlight"><pre><span></span><code><span class="n">imdb</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/imdb.xlsx&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s2">&quot;Film_Adı&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">imdb</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Film_Adı</th>
+<th>Yıl</th>
+<th>Puan</th>
+<th>Oylayan_Kişi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The Shawshank Redemption</td>
+<td>1994</td>
+<td>9,2</td>
+<td>1071904</td>
+</tr>
+<tr>
+<td>The Godfather</td>
+<td>1972</td>
+<td>9,2</td>
+<td>751381</td>
+</tr>
+<tr>
+<td>The Godfather: Part II</td>
+<td>1974</td>
+<td>9</td>
+<td>488889</td>
+</tr>
+<tr>
+<td>Pulp Fiction</td>
+<td>1994</td>
+<td>8,9</td>
+<td>830504</td>
+</tr>
+<tr>
+<td>The Dark Knight</td>
+<td>2008</td>
+<td>8,9</td>
+<td>1045186</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>Mystic River</td>
+<td>2003</td>
+<td>7,9</td>
+<td>256159</td>
+</tr>
+<tr>
+<td>In the Heat of the Night</td>
+<td>1967</td>
+<td>7,9</td>
+<td>37081</td>
+</tr>
+<tr>
+<td>Arsenic and Old Lace</td>
+<td>1944</td>
+<td>7,9</td>
+<td>45893</td>
+</tr>
+<tr>
+<td>Before Sunrise</td>
+<td>1995</td>
+<td>7,9</td>
+<td>100974</td>
+</tr>
+<tr>
+<td>Papillon</td>
+<td>1973</td>
+<td>7,9</td>
+<td>62517</td>
+</tr>
+</tbody>
+</table>
+<p>247 rows × 3 columns</p>
+<p><strong>Pulp Fiction</strong> Filminin <strong>Puan</strong>ını öğrenmek istediğimizi düşünelim. Bu durumda aşağıdaki kodları yazmamız doğru sonucu verecektir.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">imdb</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;Pulp Fiction&quot;</span><span class="p">,</span> <span class="s2">&quot;Puan&quot;</span><span class="p">])</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="s1">&#39;8,9&#39;</span>
+</code></pre></div>
+
+<p><strong>Star Wars</strong> isimli satır verisine ulaşmak için <code>loc[]</code> metoduna <strong>Star Wars</strong> metinsel (string) ibaresini eklemeliyiz.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">imdb</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;Star Wars&quot;</span><span class="p">])</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Yıl</span>               <span class="mi">1977</span>
+<span class="n">Puan</span>               <span class="mi">8</span><span class="p">,</span><span class="mi">7</span>
+<span class="n">Oylayan_Kişi</span>    <span class="mi">585132</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">Star</span> <span class="n">Wars</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
+</code></pre></div>
+
+<p><code>loc[]</code> metodunda daha fazla pratik yapmak için <strong>df</strong> isminde bir veri çerçevesi oluşturalım;</p>
+<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]],</span>
+     <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;cobra&#39;</span><span class="p">,</span> <span class="s1">&#39;viper&#39;</span><span class="p">,</span> <span class="s1">&#39;sidewinder&#39;</span><span class="p">],</span>
+     <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;max_speed&#39;</span><span class="p">,</span> <span class="s1">&#39;shield&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>max_speed</th>
+<th>shield</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cobra</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>viper</td>
+<td>4</td>
+<td>5</td>
+</tr>
+<tr>
+<td>sidewinder</td>
+<td>7</td>
+<td>8</td>
+</tr>
+</tbody>
+</table>
+<h2>Tek etiket ile Satır Seçimi</h2>
+<p><code>loc[]</code> metodunda tek etiket kullanıldığında, sonucun satırı bir Seri olarak döndürüldüğünü unutmayın. Örneğe bakalım;</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;viper&#39;</span><span class="p">])</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">max_speed</span>    <span class="mi">4</span>
+<span class="n">shield</span>       <span class="mi">5</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">viper</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+</code></pre></div>
+
+<h2>Etiket listesi ile Satır Seçimi</h2>
+<p>Köşeli parantez <code>[[]]</code> kullanımı , sonuc olarak bir Veri Çerçevesi (DataFrame) döndürür. İnceleyelim;</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s1">&#39;viper&#39;</span><span class="p">,</span> <span class="s1">&#39;sidewinder&#39;</span><span class="p">]])</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>max_speed</th>
+<th>shield</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>viper</td>
+<td>4</td>
+<td>5</td>
+</tr>
+<tr>
+<td>sidewinder</td>
+<td>7</td>
+<td>8</td>
+</tr>
+</tbody>
+</table>
+<h2>Satır ve sütun belirterek Değer Seçimi</h2>
+<p>Tıpkı <code>iloc[]</code> metodunda olduğu gibi <code>loc[]</code> metoduna da hem satır hem de sütun değeri girilebilir. Bu durumda MS Excel ve Libre Ofis Calc programında olduğu gibi satır ve sütunların kesişimindeki hücre ya da hücre değer(ler)i, sonuç olarak döndürülür.</p>
+<p>Aşağıdaki örnekte, <code>loc[]</code> metoduna birer adet satır ve sütun değeri girilecek. Sonucu incelersek sadece bir değer döndürdüğünü göreceksiniz.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;cobra&#39;</span><span class="p">,</span> <span class="s1">&#39;shield&#39;</span><span class="p">])</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="mi">2</span>
+</code></pre></div>
+
+<h2>Satır için aralıklı etiket, Sütun için ise tek etiketle dilimleme</h2>
+<p>Bu kısımda, satır seçiminde bir aralık, sütün seçiminde ise sadece tek bir değer (yani tek sütun) belirterek sonucun nasıl çıkacağını inceleyelim.</p>
+<p>Yukarıdaki <strong>Uyarıda</strong> belirtildiği gibi, Pandas'ta dilimleme esnasında hem <strong>başlangıç</strong> hem de <strong>bitiş</strong> değerlerinin seçime dahil edildiğini unutmayın.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;cobra&#39;</span><span class="p">:</span><span class="s1">&#39;viper&#39;</span><span class="p">,</span> <span class="s1">&#39;max_speed&#39;</span><span class="p">])</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">cobra</span>    <span class="mi">1</span>
+<span class="n">viper</span>    <span class="mi">4</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">max_speed</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+</code></pre></div>
+
+<h2>Satır ile aynı uzunlukta Mantık (Boole) listesi ile Seçim</h2>
+<p><strong>df</strong> isimli veri çerçevemiz 3 satırdan oluştuğu için, toplam 3 adet <strong>True</strong> ya da <strong>False</strong> anahtar kelimesi kullanarak bir mantık (boole) listesi oluşturacak ve <strong>True</strong> olarak belirttiğimiz satırları göreceğimiz bir sonuç elde edeceğiz.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">]])</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>max_speed</th>
+<th>shield</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sidewinder</td>
+<td>7</td>
+<td>8</td>
+</tr>
+</tbody>
+</table>
+<h2>Hizalanabilir Mantık (boole) Serisi ile Satır Seçimi</h2>
+<p>Pandas Seriler (Series) veri yapısını kullanarak, oluşturmuş olduğumuz veri çerçevemizde indeks sırasını değiştirerek (hizalayarak) mantıksal (boole) listesi ile belirttiğimiz satırları filtreleyerek satır seçimi yapabiliriz. Anlatım biraz karışık gelmiş olabilir. </p>
+<p>Aşağıdaki örneği incelerken konuyu anlayacağınızı düşünüyorum. Öncelikle <strong>df</strong> isimli veri çerçevemize göz atalım.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>max_speed</th>
+<th>shield</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cobra</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>viper</td>
+<td>4</td>
+<td>5</td>
+</tr>
+<tr>
+<td>sidewinder</td>
+<td>7</td>
+<td>8</td>
+</tr>
+</tbody>
+</table>
+<p>Görüldüğü üzere, satır sırası aşağı doğru, <strong>cobra, viper ve sidewinder</strong> olarak devam ediyor. Yukarıda öğrendiğimiz şekilde sadece, mantık (boole) listesi ile seçim yaparsak yani <code>df[[False, True, False]]</code> yazar ve kodu çalıştırısak 0. ve 2. indekste kayıtlı satırları gizle, sadece 1. indekste kayıtlı <strong>viper</strong> satırını göster demiş oluruz. Kodun çıktısını aşağıda görebilirsiniz;</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">]])</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>max_speed</th>
+<th>shield</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>viper</td>
+<td>4</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<p><code>[False, True, False]</code> listesini, Pandas Seriler (Series) veri yapısını kullanarak, aynı veri çerçevesine, indeks sırasını değiştirerek (hizalayarak) uygulayıp sonucu görelim.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;viper&#39;</span><span class="p">,</span> <span class="s1">&#39;sidewinder&#39;</span><span class="p">,</span> <span class="s1">&#39;cobra&#39;</span><span class="p">])])</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>max_speed</th>
+<th>shield</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sidewinder</td>
+<td>7</td>
+<td>8</td>
+</tr>
+</tbody>
+</table>
+<p><code>index=['viper', 'sidewinder', 'cobra']</code> kodu ile indeks sırasını değiştirip ardında 0. ve 2. indekste kayıtlı satırları gizle, sadece 1. indekste kayıtlı satırını göster demiş olduk. Satır sırası değiştiği için 1. indeksteki satır <strong>sidewinder</strong> oldu ve bu satıra ait bilgiler ekrana yazdırıldı.</p>
+<h1></h1>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/pandas.html">Pandas</a></li>
+					<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+					<li><a href="/tag/modul.html">Modül</a></li>
+					<li><a href="/tag/fonksiyon.html">Fonksiyon</a></li>
+					<li><a href="/tag/secim.html">Seçim</a></li>
+					<li><a href="/tag/loc.html">loc</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>
