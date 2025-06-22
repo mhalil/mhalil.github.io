@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Pandas - concat" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/pandas-concat.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Pandas - concat</h1>
+	<span class="post-date">Cum 15 Temmuz 2022</span>
+	<h1>concat() Fonksiyonu</h1>
+<p><strong>Concat</strong> kelimesi Concatenate kelimesinin kısaltamasıdır. <strong>Concatenate</strong> kelimesinin Türkçe karşılığı <strong>Birleştir</strong>'dir.<br>
+<code>concat()</code> fonksiyonu ile veri çerçeveleri <strong>alt alta ya da yan yana birleştirilebilir</strong>. Varsayılan değer satır bazlı yani alt alta birleştirmedir.</p>
+<p>Birleştirme örneklerini öğrenemek için öncelikle 2 sözlük yapısı oluşturup, bunları veri çerçevesine dönüştürelim.</p>
+<div class="highlight"><pre><span></span><code><span class="n">veri1</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;A1&#39;</span><span class="p">,</span><span class="s1">&#39;A2&#39;</span><span class="p">,</span><span class="s1">&#39;A3&#39;</span><span class="p">,</span><span class="s1">&#39;A4&#39;</span><span class="p">],</span><span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;B1&#39;</span><span class="p">,</span><span class="s1">&#39;B2&#39;</span><span class="p">,</span><span class="s1">&#39;B3&#39;</span><span class="p">,</span><span class="s1">&#39;B4&#39;</span><span class="p">],</span><span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;C1&#39;</span><span class="p">,</span><span class="s1">&#39;C2&#39;</span><span class="p">,</span><span class="s1">&#39;C3&#39;</span><span class="p">,</span><span class="s1">&#39;C4&#39;</span><span class="p">]}</span>
+<span class="n">veri2</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;A5&#39;</span><span class="p">,</span><span class="s1">&#39;A6&#39;</span><span class="p">,</span><span class="s1">&#39;A7&#39;</span><span class="p">,</span><span class="s1">&#39;A8&#39;</span><span class="p">],</span><span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;B5&#39;</span><span class="p">,</span><span class="s1">&#39;B6&#39;</span><span class="p">,</span><span class="s1">&#39;B7&#39;</span><span class="p">,</span><span class="s1">&#39;B8&#39;</span><span class="p">],</span><span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;C5&#39;</span><span class="p">,</span><span class="s1">&#39;C6&#39;</span><span class="p">,</span><span class="s1">&#39;C7&#39;</span><span class="p">,</span><span class="s1">&#39;C8&#39;</span><span class="p">]}</span>
+<span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">veri1</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">veri2</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df1</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>A1</td>
+<td>B1</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>A2</td>
+<td>B2</td>
+<td>C2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>A3</td>
+<td>B3</td>
+<td>C3</td>
+</tr>
+<tr>
+<td>4</td>
+<td>A4</td>
+<td>B4</td>
+<td>C4</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df2</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5</td>
+<td>A5</td>
+<td>B5</td>
+<td>C5</td>
+</tr>
+<tr>
+<td>6</td>
+<td>A6</td>
+<td>B6</td>
+<td>C6</td>
+</tr>
+<tr>
+<td>7</td>
+<td>A7</td>
+<td>B7</td>
+<td>C7</td>
+</tr>
+<tr>
+<td>8</td>
+<td>A8</td>
+<td>B8</td>
+<td>C8</td>
+</tr>
+</tbody>
+</table>
+<p>Oluşturduğumuz veri çerçevelerini, <code>concat()</code> fonksiyonu ile birleştirelim. <code>concat()</code> fonksiyonuna en az iki adet veri çevçevesi eklemek gerekir. Malumunuz, Pandas'ta genellikle birden fazla parametre, seçenek ekleneceği zaman, bu değerler köşeli parantez içerisinde yani <strong>liste</strong> veri tipi olarak yazılır.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">]))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>A1</td>
+<td>B1</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>A2</td>
+<td>B2</td>
+<td>C2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>A3</td>
+<td>B3</td>
+<td>C3</td>
+</tr>
+<tr>
+<td>4</td>
+<td>A4</td>
+<td>B4</td>
+<td>C4</td>
+</tr>
+<tr>
+<td>5</td>
+<td>A5</td>
+<td>B5</td>
+<td>C5</td>
+</tr>
+<tr>
+<td>6</td>
+<td>A6</td>
+<td>B6</td>
+<td>C6</td>
+</tr>
+<tr>
+<td>7</td>
+<td>A7</td>
+<td>B7</td>
+<td>C7</td>
+</tr>
+<tr>
+<td>8</td>
+<td>A8</td>
+<td>B8</td>
+<td>C8</td>
+</tr>
+</tbody>
+</table>
+<p>Gördüğünüz gibi, iki veri çerçevesi altalta birleştirildi.</p>
+<h1>Parametreler</h1>
+<h2>axis parametresi</h2>
+<p>Hatırlarsanız <strong>drop</strong> metodunu anlatırken <strong>axis</strong> parametresinden bahsetmiştik. <strong>axis</strong> parametresi, <strong>0 ve 1</strong> değerlerini alır, <strong>0 satırları, 1 ise sütunları</strong> temsil eder demiştik. Aynı parametreyi birleştirme işleminde de kullanabiliriz. eğer <strong>axis</strong> parametresi kullanılmaz ise, varsayılan değer <strong>axis = 0</strong> olduğu için yani satırları baz alarak birleştirme yapılır.</p>
+<p>Şimdi <strong>axis=1</strong> parametresini ekleyerek veri çerçevelerini yanyana birleştirmeyi deneyelim.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>A1</td>
+<td>B1</td>
+<td>C1</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>2</td>
+<td>A2</td>
+<td>B2</td>
+<td>C2</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>3</td>
+<td>A3</td>
+<td>B3</td>
+<td>C3</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>4</td>
+<td>A4</td>
+<td>B4</td>
+<td>C4</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>5</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>A5</td>
+<td>B5</td>
+<td>C5</td>
+</tr>
+<tr>
+<td>6</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>A6</td>
+<td>B6</td>
+<td>C6</td>
+</tr>
+<tr>
+<td>7</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>A7</td>
+<td>B7</td>
+<td>C7</td>
+</tr>
+<tr>
+<td>8</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>A8</td>
+<td>B8</td>
+<td>C8</td>
+</tr>
+</tbody>
+</table>
+<p>Bu durumda, 2 veri çerçevesi yanyana birleştirildi ancak veri çerçevelerinde aynı indeks değerleri bulunmadığı için ilgili indeks değerinin karşılığında <strong>NaN (Not A Number)</strong> değeri atandı.</p>
+<p>Eğer aşağıdaki gibi bir veri çerçevemiz olsaydı ve bu veri çerçevesini df1 ile yanyana birleştirseydik nasıl bir sonuç elde ederdik dersiniz.</p>
+<div class="highlight"><pre><span></span><code><span class="n">veri3</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;A5&#39;</span><span class="p">,</span><span class="s1">&#39;A6&#39;</span><span class="p">,</span><span class="s1">&#39;A7&#39;</span><span class="p">,</span><span class="s1">&#39;A8&#39;</span><span class="p">],</span><span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;B5&#39;</span><span class="p">,</span><span class="s1">&#39;B6&#39;</span><span class="p">,</span><span class="s1">&#39;B7&#39;</span><span class="p">,</span><span class="s1">&#39;B8&#39;</span><span class="p">],</span><span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;C5&#39;</span><span class="p">,</span><span class="s1">&#39;C6&#39;</span><span class="p">,</span><span class="s1">&#39;C7&#39;</span><span class="p">,</span><span class="s1">&#39;C8&#39;</span><span class="p">]}</span>
+<span class="n">df3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">veri3</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">8</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df3</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>A5</td>
+<td>B5</td>
+<td>C5</td>
+</tr>
+<tr>
+<td>6</td>
+<td>A6</td>
+<td>B6</td>
+<td>C6</td>
+</tr>
+<tr>
+<td>3</td>
+<td>A7</td>
+<td>B7</td>
+<td>C7</td>
+</tr>
+<tr>
+<td>8</td>
+<td>A8</td>
+<td>B8</td>
+<td>C8</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span> <span class="n">df3</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>A1</td>
+<td>B1</td>
+<td>C1</td>
+<td>A5</td>
+<td>B5</td>
+<td>C5</td>
+</tr>
+<tr>
+<td>2</td>
+<td>A2</td>
+<td>B2</td>
+<td>C2</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>3</td>
+<td>A3</td>
+<td>B3</td>
+<td>C3</td>
+<td>A7</td>
+<td>B7</td>
+<td>C7</td>
+</tr>
+<tr>
+<td>4</td>
+<td>A4</td>
+<td>B4</td>
+<td>C4</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>6</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>A6</td>
+<td>B6</td>
+<td>C6</td>
+</tr>
+<tr>
+<td>8</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>A8</td>
+<td>B8</td>
+<td>C8</td>
+</tr>
+</tbody>
+</table>
+<p>df1 ve df3'te ortak indeks değerleri olduğu için 1. ve 3. satırlar tamamen geçerli veri ile doldu.</p>
+<p><strong>concat</strong> fonksiyonu sadece 2 veri çerçevesini birleştirmiyor. 2'den fazla veri çerçevesini de birleştiriyor. Oluşturduğumuz df1, df2 ve df3 veri çerçevelerini altalta ve yanyana birleştirip sonuçları inceleyelim.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">,</span> <span class="n">df3</span><span class="p">]))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>A1</td>
+<td>B1</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>A2</td>
+<td>B2</td>
+<td>C2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>A3</td>
+<td>B3</td>
+<td>C3</td>
+</tr>
+<tr>
+<td>4</td>
+<td>A4</td>
+<td>B4</td>
+<td>C4</td>
+</tr>
+<tr>
+<td>5</td>
+<td>A5</td>
+<td>B5</td>
+<td>C5</td>
+</tr>
+<tr>
+<td>6</td>
+<td>A6</td>
+<td>B6</td>
+<td>C6</td>
+</tr>
+<tr>
+<td>7</td>
+<td>A7</td>
+<td>B7</td>
+<td>C7</td>
+</tr>
+<tr>
+<td>8</td>
+<td>A8</td>
+<td>B8</td>
+<td>C8</td>
+</tr>
+<tr>
+<td>1</td>
+<td>A5</td>
+<td>B5</td>
+<td>C5</td>
+</tr>
+<tr>
+<td>6</td>
+<td>A6</td>
+<td>B6</td>
+<td>C6</td>
+</tr>
+<tr>
+<td>3</td>
+<td>A7</td>
+<td>B7</td>
+<td>C7</td>
+</tr>
+<tr>
+<td>8</td>
+<td>A8</td>
+<td>B8</td>
+<td>C8</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">,</span> <span class="n">df3</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>A1</td>
+<td>B1</td>
+<td>C1</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>A5</td>
+<td>B5</td>
+<td>C5</td>
+</tr>
+<tr>
+<td>2</td>
+<td>A2</td>
+<td>B2</td>
+<td>C2</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>3</td>
+<td>A3</td>
+<td>B3</td>
+<td>C3</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>A7</td>
+<td>B7</td>
+<td>C7</td>
+</tr>
+<tr>
+<td>4</td>
+<td>A4</td>
+<td>B4</td>
+<td>C4</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>5</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>A5</td>
+<td>B5</td>
+<td>C5</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>6</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>A6</td>
+<td>B6</td>
+<td>C6</td>
+<td>A6</td>
+<td>B6</td>
+<td>C6</td>
+</tr>
+<tr>
+<td>7</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>A7</td>
+<td>B7</td>
+<td>C7</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>8</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>A8</td>
+<td>B8</td>
+<td>C8</td>
+<td>A8</td>
+<td>B8</td>
+<td>C8</td>
+</tr>
+</tbody>
+</table>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/pandas.html">Pandas</a></li>
+					<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+					<li><a href="/tag/modul.html">Modül</a></li>
+					<li><a href="/tag/bitlestir.html">Bitleştir</a></li>
+					<li><a href="/tag/concat.html">concat</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>

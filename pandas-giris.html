@@ -103,8 +103,8 @@ hakkında hiç bir şey bilmiyorsanız, öncelikle bu bölüme göz atmanızı �
 <p>Kütüphane performans konusunda son derece iyidir. Bu yüzden kütüphanenin önemli parçaları CPython ve C üzerinde yazılmışlardır.</p>
 <p><strong>NOT:</strong><br>
 Eğitimlerde kullandığım Veri Setlerine <a href="https://github.com/mhalil/Pandas_Notlari/tree/main/Veri_Setleri">GitHub adresimden</a> erişebilirsiniz.</p>
-<h2>Pandas Veri Çerçevesi (Data Frame) Konu Başlıkları</h2>
-<p><a href="../pandas-01-veri-cercevesi-olustur.html">1- VERİ ÇERÇEVESİ (DATA FRAME) OLUŞTUR</a> </p>
+<h1>Pandas Fonksiyonları</h1>
+<h2>VERİ ÇERÇEVESİ (DATA FRAME) OLUŞTUR</h2>
 <ul>
 <li>
 <p><a href="pandas-dataframe.html">DataFrame() Fonksiyonu</a></p>
@@ -124,6 +124,9 @@ Eğitimlerde kullandığım Veri Setlerine <a href="https://github.com/mhalil/Pa
 <p><em>...... header ve names Parametreleri</em></p>
 <p><em>...... sheet_name Parametresi</em></p>
 <p><em>...... decimal Parametresi</em></p>
+<p><em>...... index_col Parametresi</em></p>
+<p><em>...... usecols Parametresi (Sütunları Atla)</em></p>
+<p><em>...... skiprows Parametresi (Satırları atla)</em></p>
 <ul>
 <li>
 <p><a href="pandas-read_json.html">read_json() Fonksiyonu</a></p>
@@ -135,11 +138,7 @@ Eğitimlerde kullandığım Veri Setlerine <a href="https://github.com/mhalil/Pa
 <p><a href="pandas-read_clipboard.html">read_clipboard() Fonksiyonu</a></p>
 </li>
 </ul>
-<p><a href="pandas-02-excel-dosyalari-ile-calismak.html">2- EXCEL DOSYALARI İLE ÇALIŞMAK</a></p>
-<ul>
-<li>read_excel() Fonksiyonu</li>
-</ul>
-<p><a href="pandas-03-veriyi-kesfet-incele.html">3- VERİYİ KEŞFET (İNCELE)</a></p>
+<h2>VERİYİ KEŞFET (İNCELE)</h2>
 <ul>
 <li>
 <p><a href="/pandas-head.html">head() Fonksiyonu</a> </p>
@@ -169,13 +168,10 @@ Eğitimlerde kullandığım Veri Setlerine <a href="https://github.com/mhalil/Pa
 <p><a href="/pandas-index.html">index Fonksiyonu</a> </p>
 </li>
 <li>
-<p><a href="/pandas-isnull.html">isnull() Fonksiyonu</a> </p>
-</li>
-<li>
 <p><a href="/pandas-value_counts.html">value_counts() Fonksiyonu</a> </p>
 </li>
 </ul>
-<p><a href="pandas-04-secim-yontemleri.html">4- VERİ SEÇİM YÖNTEMLERİ</a></p>
+<h2>VERİ SEÇİM YÖNTEMLERİ</h2>
 <ul>
 <li>
 <p><a href="/pandas-iloc.html">iloc[] Metodu</a> </p>
@@ -197,53 +193,85 @@ Eğitimlerde kullandığım Veri Setlerine <a href="https://github.com/mhalil/Pa
 </li>
 </ul>
 <p><em>......lambda() Fonksiyonu ile koşul belirtmek</em></p>
-<p><a href="pandas-05-eksik-kayip-veri-yontemleri.html">5- EKSİK - KAYIP VERİ YÖNTEMLERİ</a></p>
-<p>isnull() Fonksiyonu</p>
-<p>dropna() Fonksiyonu</p>
-<p>... axis Parametresi</p>
-<p>... inplace Parametresi</p>
-<p>... thresh Parametresi</p>
-<p>fillna() Fonksiyonu</p>
-<p>... value Parametresi</p>
-<p>... method Parametresi</p>
-<p><a href="pandas-06-veri-duzenleme-yontemleri.html">6- VERİ DÜZENLEME YÖNTEMLERİ</a></p>
-<p>İndeks Değerlerini Ayarlamak</p>
-<p>... index_col Parametresi</p>
-<p>set_index() Fonksiyonu</p>
-<p>Sütunları Atla</p>
-<p>... usecols Parametresi</p>
-<p>Satırları Atla</p>
-<p>... skiprows Parametresi</p>
-<p>Sütun Ekle</p>
-<p>Satır ya da Sütun Sil</p>
-<p>... drop() Fonksiyonu</p>
-<p>...... axis Parametresi</p>
-<p>...... inplace Parametresi</p>
-<p>... drop_duplicates() Fonksiyonu</p>
-<p>...... subset Parametresi</p>
-<p>...... keep Parametresi</p>
-<p>String Metotları</p>
-<p>transpose() Fonksiyonu</p>
-<p>apply() Fonksiyonu</p>
-<p>Veri Çerçevelerini Birleştir</p>
-<p>... concat() Fonksiyonu</p>
-<p>... join() Fonksiyonu</p>
-<p>...... how parametresi</p>
-<p>...... left join</p>
-<p>...... right join</p>
-<p>...... outer join</p>
-<p>...... inner join</p>
-<p>... merge() Fonksiyonu</p>
-<p>...... on Parametresi</p>
-<p>...... how Parametresi</p>
-<p>...... inner Seçeneği</p>
-<p>...... outer Seçeneği</p>
-<p>...... left Seçeneği</p>
-<p>...... right Seçeneği</p>
-<p>...... cross Seçeneği</p>
-<p>... left_on Parametresi</p>
-<p>... right_on Parametresi</p>
-<p>... suffixes Parametresi</p>
+<h2>EKSİK - KAYIP VERİ YÖNTEMLERİ</h2>
+<ul>
+<li>
+<p><a href="/pandas-isnull.html">isnull() Fonksiyonu</a></p>
+</li>
+<li>
+<p><a href="/pandas-dropna.html">dropna() Fonksiyonu</a></p>
+</li>
+</ul>
+<p><em>...... axis Parametresi</em></p>
+<p><em>...... inplace Parametresi</em></p>
+<p><em>...... thresh Parametresi</em></p>
+<ul>
+<li><a href="/pandas-fillna.html">fillna() Fonksiyonu</a></li>
+</ul>
+<p><em>...... value Parametresi</em></p>
+<p><em>...... method Parametresi</em></p>
+<p><em>......... backfill</em></p>
+<p><em>......... bfill</em></p>
+<p><em>......... pad</em></p>
+<p><em>......... ffill</em></p>
+<p><em>......... None</em></p>
+<h2>VERİ DÜZENLEME YÖNTEMLERİ</h2>
+<ul>
+<li>
+<p><a href="/pandas-set_index.html">set_index() Fonksiyonu (İndeks Değerlerini Ata)</a></p>
+</li>
+<li>
+<p><a href="/pandas-drop.html">drop() Fonksiyonu (Satır ya da Sütun Sil)</a></p>
+</li>
+</ul>
+<p><em>...... axis Parametresi</em></p>
+<p><em>...... inplace Parametresi</em></p>
+<ul>
+<li><a href="/pandas-drop_duplicates.html">drop_duplicates() Fonksiyonu</a></li>
+</ul>
+<p><em>...... subset Parametresi</em></p>
+<p><em>...... keep Parametresi</em></p>
+<ul>
+<li>
+<p><a href="/pandas-transpose.html">transpose() Fonksiyonu</a></p>
+</li>
+<li>
+<p><a href="/pandas-apply.html">apply() Fonksiyonu</a></p>
+</li>
+<li>
+<p><a href="/pandas-string_metotlari.html">String Metotları</a></p>
+</li>
+<li>
+<p><a href="/pandas-sutun_ekle.html">Sütun Ekle</a></p>
+</li>
+</ul>
+<h2>VERİ ÇERÇEVELERİNİ BİRLEŞTİR</h2>
+<ul>
+<li>
+<p><a href="/pandas-concat.html">concat() Fonksiyonu</a></p>
+</li>
+<li>
+<p><a href="/pandas-join.html">join() Fonksiyonu</a></p>
+</li>
+</ul>
+<p><em>...... how Parametresi</em></p>
+<p><em>......... left</em></p>
+<p><em>......... right</em></p>
+<p><em>......... outer</em></p>
+<p><em>......... inner</em></p>
+<ul>
+<li><a href="/pandas-merge.html">merge() Fonksiyonu</a></li>
+</ul>
+<p><em>...... on Parametresi</em></p>
+<p><em>...... how Parametresi</em></p>
+<p><em>......... inner</em></p>
+<p><em>......... outer</em></p>
+<p><em>......... left</em></p>
+<p><em>......... right</em></p>
+<p><em>......... cross</em></p>
+<p><em>...... left_on Parametresi</em></p>
+<p><em>...... right_on Parametresi</em></p>
+<p><em>...... suffixes Parametresi</em></p>
 <p><a href="pandas-07-veri-siralama-yontemleri.html">7- VERİ SIRALAMA YÖNTEMLERİ</a></p>
 <p>sort_index() Fonksiyonu</p>
 <p>... ascending Parametresi</p>

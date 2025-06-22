@@ -105,6 +105,107 @@
 				<a class="read-more" href="pandas-07-veri-siralama-yontemleri.html">Continue reading »</a>
 			</div>
 			<div class="post">
+				<h1 class="post-title" href="/pandas-string_metotlari.html">
+					<a href="/pandas-string_metotlari.html">Pandas - String_Metotlari</a>
+				</h1>
+				<span class="post-date">Cum 15 Temmuz 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/veri.html">Veri</a></li>
+								<li><a href="/tag/duzenleme.html">Düzenleme</a></li>
+								<li><a href="/tag/string.html">String</a></li>
+								<li><a href="/tag/metot.html">Metot</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>String Metotları</h1>
+<p>Python ile kodlama yaparken, metinsel ifadelerle uğraştığımızda kullandığımız <strong>string metotlarını</strong> hatırlarsınız. Örneğin, Metinlerin tümünü büyük harfe ya da küçük harfe
+ çevirmek. Bu tür string metotları Pandas ile kulanmak ve veri çerçevesine uygulamak mümkün. Bunun için <code>str</code> ifadesini kullanabiliriz. </p>
+<p>Önce Bir Veri Çerçevesi oluşturalım ve gözatalım.</p>
+<div class="highlight"><pre><span></span><code><span class="n">sozluk</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;isim&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Mustafa …</span></code></pre></div>
+				</p>
+				<a class="read-more" href="pandas-string_metotlari.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="/pandas-sutun_ekle.html">
+					<a href="/pandas-sutun_ekle.html">Pandas - Sutun_Ekle</a>
+				</h1>
+				<span class="post-date">Cum 15 Temmuz 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/veri.html">Veri</a></li>
+								<li><a href="/tag/duzenleme.html">Düzenleme</a></li>
+								<li><a href="/tag/sutun.html">Sütun</a></li>
+								<li><a href="/tag/ekle.html">Ekle</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>Sütun Eklemek</h1>
+<p>Veri çerçevesine yeni bir sütun ekleyip bu sütuna değer atamak mümkündür. Bunu şu yöntemle yapabiliriz.</p>
+<p><code>Veri_Çerçevesi_Adı["Yeni_Sütun_Adı"] = Atanacak_Değerler</code></p>
+<p>Örneğin NBA oyuncularının çeşitli bilgilerinin bulunduğu veri çerçevesinden, yıllık kazanç miktarlarını (<strong>Salary</strong>) 12'ye bölerek aylık kazançlarını hesaplayarak, <strong>Aylık Kazanç</strong> isimli yeni sütuna yazmaya çalışalım.
+Önce Veri çerçevemizin orijinal haline göz …</p>
+				</p>
+				<a class="read-more" href="pandas-sutun_ekle.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="/pandas-transpose.html">
+					<a href="/pandas-transpose.html">Pandas - transpose</a>
+				</h1>
+				<span class="post-date">Cum 15 Temmuz 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/veri.html">Veri</a></li>
+								<li><a href="/tag/duzenleme.html">Düzenleme</a></li>
+								<li><a href="/tag/transpose.html">transpose</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>transpose() Fonksiyonu</h1>
+<p><strong>Satırların sütuna, sütunların satıra çevrilme işlemini</strong> <code>transpose()</code> fonksiyonu yardımıyla gerçekleştirebiliriz. Bu fonksiyon, Excel, LibreOfis,...vb uygulamalarda, "İşlemi tersine çevir" komutu ile aynı sonucu verir. Yukarıda oluşturduğumuz veri çerçevemizin transpozunu aşağıdaki şekilde alabiliriz.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="o">.</span><span class="n">transpose</span><span class="p">())</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>isim</td>
+<td>Mustafa</td>
+<td>Halil …</td></tr></tbody></table>
+				</p>
+				<a class="read-more" href="pandas-transpose.html">Continue reading »</a>
+			</div>
+			<div class="post">
 				<h1 class="post-title" href="/pandas-05-eksik-kayip-veri-yontemleri.html">
 					<a href="/pandas-05-eksik-kayip-veri-yontemleri.html">Pandas 05 - Eksik - Kayıp Veri Yöntemleri</a>
 				</h1>
@@ -128,6 +229,70 @@
 <p>Veri çerçevemizde eksik verileri <strong>isnull()</strong> fonksiyonu ile tespit edebiliriz. <strong>isnull</strong> ifadesini, <strong>boş mu?, geçersiz mi?, kayıp/eksik …</strong></p>
 				</p>
 				<a class="read-more" href="pandas-05-eksik-kayip-veri-yontemleri.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="/pandas-dropna.html">
+					<a href="/pandas-dropna.html">Pandas - dropna</a>
+				</h1>
+				<span class="post-date">Sal 12 Temmuz 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/eksik.html">Eksik</a></li>
+								<li><a href="/tag/kayip.html">Kayıp</a></li>
+								<li><a href="/tag/veri.html">Veri</a></li>
+								<li><a href="/tag/dropna.html">dropna</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>dropna() Fonksiyonu</h1>
+<p>Veri Çerçevelerinde <strong>eksik veri bulunan satır ve sütunları otomatik olarak silmek</strong> için <strong>dropna()</strong> metodunu kullanabiliriz. Metodun kullanım şekli aşağıdaki gibidir.</p>
+<div class="highlight"><pre><span></span><code><span class="n">VeriÇerçevesi_Adı</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">ya</span> <span class="n">da</span> <span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span> <span class="n">ya</span> <span class="n">da</span> <span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>axis Parametresi</h2>
+<p>Eksenleri tanımlayan parametredir. </p>
+<ul>
+<li>
+<p>Sıfır (0) Satırları, </p>
+</li>
+<li>
+<p>Bir (1) Sütunları </p>
+</li>
+</ul>
+<p>temsil eder. Varsayılan değer Sıfır …</p>
+				</p>
+				<a class="read-more" href="pandas-dropna.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="/pandas-fillna.html">
+					<a href="/pandas-fillna.html">Pandas - fillna</a>
+				</h1>
+				<span class="post-date">Sal 12 Temmuz 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/eksik.html">Eksik</a></li>
+								<li><a href="/tag/kayip.html">Kayıp</a></li>
+								<li><a href="/tag/veri.html">Veri</a></li>
+								<li><a href="/tag/fillna.html">fillna</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>fillna() Fonksiyonu</h1>
+<p>Veri Çerçevelerimizde eksik veri bulunması durumunda, her zaman satır ve sütunları silmeye çalışmayız. Bazen <strong>eksik verilerin yerine, yeni değer atamamız</strong> gerekebilir. Örneğin matematiksel işlemlerde, Pandas ile satır ya da sütunların ortalama değerlerini hesaplatıp, eksik verilerin yerine ( eksik veriyi, Excel programındaki boş hüçreler gibi 
+düşünülebilir) yazdırabiliriz/atayabiliriz.</p>
+<div class="highlight"><pre><span></span><code><span class="n">DataFrame</span><span class="o">.</span><span class="n">fillna …</span></code></pre></div>
+				</p>
+				<a class="read-more" href="pandas-fillna.html">Continue reading »</a>
 			</div>
 	</div>
 	<div class="pagination">

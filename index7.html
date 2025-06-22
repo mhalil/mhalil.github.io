@@ -268,29 +268,6 @@ sayfaya ekleyeceğim.</p>
 				<a class="read-more" href="pandas-08-veri-filtreleme-yontemleri.html">Continue reading »</a>
 			</div>
 			<div class="post">
-				<h1 class="post-title" href="/pandas-06-veri-duzenleme-yontemleri.html">
-					<a href="/pandas-06-veri-duzenleme-yontemleri.html">Pandas 06 - Veri Düzenleme Yöntemleri</a>
-				</h1>
-				<span class="post-date">Cum 15 Temmuz 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/pandas.html">Pandas</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1>Düzenleme Yöntemleri</h1>
-<p>Bu bölümde, Oluşturulan Veri Çerçevelerinin düzenlemesine dair pek çok komut, fonksiyon ve parametre öğreneceğiz. Pandas kullanırken en fazla ihtiyaç duyacağımız Yöntemlerin bir kısmını bu bölümde ele alacak, anlatacağız.</p>
-<h3>İndeks Değerlerini Ayarlamak</h3>
-<h3>index_col Parametresi</h3>
-<p>Veri Çerçevesi (Data Frame) oluştururken sütunlardan birini, indeks değeri olarak ayarlamak/atamak istersek, <strong>index_col</strong> parametresini …</p>
-				</p>
-				<a class="read-more" href="pandas-06-veri-duzenleme-yontemleri.html">Continue reading »</a>
-			</div>
-			<div class="post">
 				<h1 class="post-title" href="/pandas-07-veri-siralama-yontemleri.html">
 					<a href="/pandas-07-veri-siralama-yontemleri.html">Pandas 07 - Veri Sıralama Yöntemleri</a>
 				</h1>
@@ -318,6 +295,32 @@ sayfaya ekleyeceğim.</p>
 <p>Konuya ait yöntemleri incelemek amacıyla <strong>imdb.xlsx</strong> dosyamızı içe aktararak bir veri çerçevesi oluşturarak işe başlayalım. Oluşturacağımız …</p>
 				</p>
 				<a class="read-more" href="pandas-07-veri-siralama-yontemleri.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="/pandas-apply.html">
+					<a href="/pandas-apply.html">Pandas - apply</a>
+				</h1>
+				<span class="post-date">Cum 15 Temmuz 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/apply.html">apply</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>apply() Fonksiyonu</h1>
+<p>Python programlama dilini öğrenirken karşılaştığımız <strong>fonksiyonlar</strong> konusunu hatırlarsınız Kullanıcı tarafından yazılan ya da standart python fonksiyonlarını, veri çerçevemize uygulamak istersek, <code>apply()</code> fonksiyonu kullanmamız gerekir.</p>
+<p>Yukarıdaki <strong>iş-meslek</strong> sütunundaki metinlerin büyük harfe dönüştürülmesi örneğini, bir de <code>apply()</code> fonksiyonu ile uygulayalım.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">buyuk_harf</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="p">[</span><span class="s2">&quot;IŞ-MESLEK&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply …</span></code></pre></div>
+				</p>
+				<a class="read-more" href="pandas-apply.html">Continue reading »</a>
 			</div>
 	</div>
 	<div class="pagination">

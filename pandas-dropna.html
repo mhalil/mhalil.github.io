@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Pandas - dropna" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/pandas-dropna.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Pandas - dropna</h1>
+	<span class="post-date">Sal 12 Temmuz 2022</span>
+	<h1>dropna() Fonksiyonu</h1>
+<p>Veri Çerçevelerinde <strong>eksik veri bulunan satır ve sütunları otomatik olarak silmek</strong> için <strong>dropna()</strong> metodunu kullanabiliriz. Metodun kullanım şekli aşağıdaki gibidir.</p>
+<div class="highlight"><pre><span></span><code><span class="n">VeriÇerçevesi_Adı</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">ya</span> <span class="n">da</span> <span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span> <span class="n">ya</span> <span class="n">da</span> <span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>axis Parametresi</h2>
+<p>Eksenleri tanımlayan parametredir. </p>
+<ul>
+<li>
+<p>Sıfır (0) Satırları, </p>
+</li>
+<li>
+<p>Bir (1) Sütunları </p>
+</li>
+</ul>
+<p>temsil eder. Varsayılan değer Sıfır(0) yani Satırlardır.</p>
+<h2>inplace Parametresi</h2>
+<p>Gerçekleştirilen silme işleminin veri çerçevesinde kalıcı ya da geçici olmasını ayarladığımız parametredir. <strong>inplace = True</strong> yazılırsa, yapılan işlem kalıcı hale gelecektir.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="o">.</span><span class="n">dropna</span><span class="p">())</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Film_Adı</th>
+<th>Yıl</th>
+<th>Puan</th>
+<th>Oylayan_Kişi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>The Shawshank Redemption</td>
+<td>1994.0</td>
+<td>9,2</td>
+<td>1071904.0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>The Godfather</td>
+<td>1972.0</td>
+<td>9,2</td>
+<td>751381.0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>The Godfather: Part II</td>
+<td>1974.0</td>
+<td>9</td>
+<td>488889.0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Pulp Fiction</td>
+<td>1994.0</td>
+<td>8,9</td>
+<td>830504.0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>The Dark Knight</td>
+<td>2008.0</td>
+<td>8,9</td>
+<td>1045186.0</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Schindler's List</td>
+<td>1993.0</td>
+<td>8,9</td>
+<td>545703.0</td>
+</tr>
+<tr>
+<td>7</td>
+<td>The Lord of the Rings: The Return of the King</td>
+<td>2003.0</td>
+<td>8,8</td>
+<td>758388.0</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Fight Club</td>
+<td>1999.0</td>
+<td>8,8</td>
+<td>814389.0</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Star Wars: Episode V - The Empire Strikes Back</td>
+<td>1980.0</td>
+<td>8,8</td>
+<td>519895.0</td>
+</tr>
+<tr>
+<td>10</td>
+<td>The Lord of the Rings: The Fellowship of the R...</td>
+<td>2001.0</td>
+<td>8,8</td>
+<td>784999.0</td>
+</tr>
+<tr>
+<td>11</td>
+<td>One Flew Over the Cuckoo's Nest</td>
+<td>1975.0</td>
+<td>8,7</td>
+<td>447005.0</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Goodfellas</td>
+<td>1990.0</td>
+<td>8,7</td>
+<td>465445.0</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Inception</td>
+<td>2010.0</td>
+<td>8,7</td>
+<td>844938.0</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Forrest Gump</td>
+<td>1994.0</td>
+<td>8,7</td>
+<td>711386.0</td>
+</tr>
+<tr>
+<td>17</td>
+<td>The Matrix</td>
+<td>1999.0</td>
+<td>8,7</td>
+<td>770559.0</td>
+</tr>
+<tr>
+<td>18</td>
+<td>The Lord of the Rings: The Two Towers</td>
+<td>2002.0</td>
+<td>8,7</td>
+<td>680983.0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>dropna()</strong> metodunu parametresiz olarak kullandığımızda ( <code>veri.dropna()</code>), sadece eksik veri tespit edilen <strong>satırlar</strong> silindi. Bir de eksik veri bulunan sütunları silmeye çalışalım.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Film_Adı</th>
+<th>Puan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>The Shawshank Redemption</td>
+<td>9,2</td>
+</tr>
+<tr>
+<td>1</td>
+<td>The Godfather</td>
+<td>9,2</td>
+</tr>
+<tr>
+<td>2</td>
+<td>The Godfather: Part II</td>
+<td>9</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Pulp Fiction</td>
+<td>8,9</td>
+</tr>
+<tr>
+<td>4</td>
+<td>The Dark Knight</td>
+<td>8,9</td>
+</tr>
+<tr>
+<td>5</td>
+<td>12 Angry Men</td>
+<td>8,9</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Schindler's List</td>
+<td>8,9</td>
+</tr>
+<tr>
+<td>7</td>
+<td>The Lord of the Rings: The Return of the King</td>
+<td>8,8</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Fight Club</td>
+<td>8,8</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Star Wars: Episode V - The Empire Strikes Back</td>
+<td>8,8</td>
+</tr>
+<tr>
+<td>10</td>
+<td>The Lord of the Rings: The Fellowship of the R...</td>
+<td>8,8</td>
+</tr>
+<tr>
+<td>11</td>
+<td>One Flew Over the Cuckoo's Nest</td>
+<td>8,7</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Goodfellas</td>
+<td>8,7</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Seven Samurai</td>
+<td>8,7</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Inception</td>
+<td>8,7</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Star Wars</td>
+<td>8,7</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Forrest Gump</td>
+<td>8,7</td>
+</tr>
+<tr>
+<td>17</td>
+<td>The Matrix</td>
+<td>8,7</td>
+</tr>
+<tr>
+<td>18</td>
+<td>The Lord of the Rings: The Two Towers</td>
+<td>8,7</td>
+</tr>
+</tbody>
+</table>
+<h2>thresh Parametresi</h2>
+<p><strong>dropna()</strong> Metodunun, <strong>thresh</strong> parametresi, veri çerçevesinde <strong>en az kaç adet veri varsa satır ya da sütunun silinmemesi gerektiğini</strong> belirtir. Bu parametreyi de hem satır hem de sütun için uygulayalım.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">thresh</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Film_Adı</th>
+<th>Yıl</th>
+<th>Puan</th>
+<th>Oylayan_Kişi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>The Shawshank Redemption</td>
+<td>1994.0</td>
+<td>9,2</td>
+<td>1071904.0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>The Godfather</td>
+<td>1972.0</td>
+<td>9,2</td>
+<td>751381.0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>The Godfather: Part II</td>
+<td>1974.0</td>
+<td>9</td>
+<td>488889.0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Pulp Fiction</td>
+<td>1994.0</td>
+<td>8,9</td>
+<td>830504.0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>The Dark Knight</td>
+<td>2008.0</td>
+<td>8,9</td>
+<td>1045186.0</td>
+</tr>
+<tr>
+<td>5</td>
+<td>12 Angry Men</td>
+<td>1957.0</td>
+<td>8,9</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Schindler's List</td>
+<td>1993.0</td>
+<td>8,9</td>
+<td>545703.0</td>
+</tr>
+<tr>
+<td>7</td>
+<td>The Lord of the Rings: The Return of the King</td>
+<td>2003.0</td>
+<td>8,8</td>
+<td>758388.0</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Fight Club</td>
+<td>1999.0</td>
+<td>8,8</td>
+<td>814389.0</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Star Wars: Episode V - The Empire Strikes Back</td>
+<td>1980.0</td>
+<td>8,8</td>
+<td>519895.0</td>
+</tr>
+<tr>
+<td>10</td>
+<td>The Lord of the Rings: The Fellowship of the R...</td>
+<td>2001.0</td>
+<td>8,8</td>
+<td>784999.0</td>
+</tr>
+<tr>
+<td>11</td>
+<td>One Flew Over the Cuckoo's Nest</td>
+<td>1975.0</td>
+<td>8,7</td>
+<td>447005.0</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Goodfellas</td>
+<td>1990.0</td>
+<td>8,7</td>
+<td>465445.0</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Seven Samurai</td>
+<td>NaN</td>
+<td>8,7</td>
+<td>161969.0</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Inception</td>
+<td>2010.0</td>
+<td>8,7</td>
+<td>844938.0</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Star Wars</td>
+<td>1977.0</td>
+<td>8,7</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Forrest Gump</td>
+<td>1994.0</td>
+<td>8,7</td>
+<td>711386.0</td>
+</tr>
+<tr>
+<td>17</td>
+<td>The Matrix</td>
+<td>1999.0</td>
+<td>8,7</td>
+<td>770559.0</td>
+</tr>
+<tr>
+<td>18</td>
+<td>The Lord of the Rings: The Two Towers</td>
+<td>2002.0</td>
+<td>8,7</td>
+<td>680983.0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>veri.dropna(thresh=3)</strong>: Bu kod, en az 3 sağlam veri barındıran <strong>satırları</strong> silme demek oluyor. Aynı işlemi, <strong>axis</strong> parametresi kullanarak uygulamak istesek kodu şu şekilde yazmamız gerekecekti: <code>veri.dropna(axis=0, thresh=3)</code></p>
+<p>Bir de en az 4 sağlam veri isteyelim bakalım ne sonuç alacağız. Veri çerçevemizde 4 adet sütun bulunduğu için, tümü geçerli, sağlam veri bulunan (dolu) sütunları bulmak istediğimiz anlamına geliyor.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">thresh</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Film_Adı</th>
+<th>Yıl</th>
+<th>Puan</th>
+<th>Oylayan_Kişi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>The Shawshank Redemption</td>
+<td>1994.0</td>
+<td>9,2</td>
+<td>1071904.0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>The Godfather</td>
+<td>1972.0</td>
+<td>9,2</td>
+<td>751381.0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>The Godfather: Part II</td>
+<td>1974.0</td>
+<td>9</td>
+<td>488889.0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Pulp Fiction</td>
+<td>1994.0</td>
+<td>8,9</td>
+<td>830504.0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>The Dark Knight</td>
+<td>2008.0</td>
+<td>8,9</td>
+<td>1045186.0</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Schindler's List</td>
+<td>1993.0</td>
+<td>8,9</td>
+<td>545703.0</td>
+</tr>
+<tr>
+<td>7</td>
+<td>The Lord of the Rings: The Return of the King</td>
+<td>2003.0</td>
+<td>8,8</td>
+<td>758388.0</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Fight Club</td>
+<td>1999.0</td>
+<td>8,8</td>
+<td>814389.0</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Star Wars: Episode V - The Empire Strikes Back</td>
+<td>1980.0</td>
+<td>8,8</td>
+<td>519895.0</td>
+</tr>
+<tr>
+<td>10</td>
+<td>The Lord of the Rings: The Fellowship of the R...</td>
+<td>2001.0</td>
+<td>8,8</td>
+<td>784999.0</td>
+</tr>
+<tr>
+<td>11</td>
+<td>One Flew Over the Cuckoo's Nest</td>
+<td>1975.0</td>
+<td>8,7</td>
+<td>447005.0</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Goodfellas</td>
+<td>1990.0</td>
+<td>8,7</td>
+<td>465445.0</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Inception</td>
+<td>2010.0</td>
+<td>8,7</td>
+<td>844938.0</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Forrest Gump</td>
+<td>1994.0</td>
+<td>8,7</td>
+<td>711386.0</td>
+</tr>
+<tr>
+<td>17</td>
+<td>The Matrix</td>
+<td>1999.0</td>
+<td>8,7</td>
+<td>770559.0</td>
+</tr>
+<tr>
+<td>18</td>
+<td>The Lord of the Rings: The Two Towers</td>
+<td>2002.0</td>
+<td>8,7</td>
+<td>680983.0</td>
+</tr>
+</tbody>
+</table>
+<p>Tahmin ettiğiniz gibi, her satırda 4 bilgi bulunan satırlar kaldı, geri kalan <strong>satırlar</strong> silindi.</p>
+<p>Bu metodu bir de <strong>sütunlarda</strong> uygulayalım. Veri çerçevemizde 19 satır veri bulunmaktadır. En az 18 adet veri bulunan (yani sütünlarda en fazla 1 adet eksik veriye izin verdiğimiz durumdaki) sütunlar kalsın, geri kalanlar silinsin istersek;</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">thresh</span><span class="o">=</span><span class="mi">18</span><span class="p">))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Film_Adı</th>
+<th>Yıl</th>
+<th>Puan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>The Shawshank Redemption</td>
+<td>1994.0</td>
+<td>9,2</td>
+</tr>
+<tr>
+<td>1</td>
+<td>The Godfather</td>
+<td>1972.0</td>
+<td>9,2</td>
+</tr>
+<tr>
+<td>2</td>
+<td>The Godfather: Part II</td>
+<td>1974.0</td>
+<td>9</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Pulp Fiction</td>
+<td>1994.0</td>
+<td>8,9</td>
+</tr>
+<tr>
+<td>4</td>
+<td>The Dark Knight</td>
+<td>2008.0</td>
+<td>8,9</td>
+</tr>
+<tr>
+<td>5</td>
+<td>12 Angry Men</td>
+<td>1957.0</td>
+<td>8,9</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Schindler's List</td>
+<td>1993.0</td>
+<td>8,9</td>
+</tr>
+<tr>
+<td>7</td>
+<td>The Lord of the Rings: The Return of the King</td>
+<td>2003.0</td>
+<td>8,8</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Fight Club</td>
+<td>1999.0</td>
+<td>8,8</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Star Wars: Episode V - The Empire Strikes Back</td>
+<td>1980.0</td>
+<td>8,8</td>
+</tr>
+<tr>
+<td>10</td>
+<td>The Lord of the Rings: The Fellowship of the R...</td>
+<td>2001.0</td>
+<td>8,8</td>
+</tr>
+<tr>
+<td>11</td>
+<td>One Flew Over the Cuckoo's Nest</td>
+<td>1975.0</td>
+<td>8,7</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Goodfellas</td>
+<td>1990.0</td>
+<td>8,7</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Seven Samurai</td>
+<td>NaN</td>
+<td>8,7</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Inception</td>
+<td>2010.0</td>
+<td>8,7</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Star Wars</td>
+<td>1977.0</td>
+<td>8,7</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Forrest Gump</td>
+<td>1994.0</td>
+<td>8,7</td>
+</tr>
+<tr>
+<td>17</td>
+<td>The Matrix</td>
+<td>1999.0</td>
+<td>8,7</td>
+</tr>
+<tr>
+<td>18</td>
+<td>The Lord of the Rings: The Two Towers</td>
+<td>2002.0</td>
+<td>8,7</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Oylayan_Kişi</strong> sütununda 2 adet eksik veri bulunduğu için o sütun silindi.</p>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/pandas.html">Pandas</a></li>
+					<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+					<li><a href="/tag/modul.html">Modül</a></li>
+					<li><a href="/tag/eksik.html">Eksik</a></li>
+					<li><a href="/tag/kayip.html">Kayıp</a></li>
+					<li><a href="/tag/veri.html">Veri</a></li>
+					<li><a href="/tag/dropna.html">dropna</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>

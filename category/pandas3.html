@@ -76,10 +76,10 @@
 </div>		<div class="content container">
 	<div class="posts">
 			<div class="post">
-				<h1 class="post-title" href="/pandas-head.html">
-					<a href="/pandas-head.html">Pandas - head</a>
+				<h1 class="post-title" href="/pandas-04-secim-yontemleri.html">
+					<a href="/pandas-04-secim-yontemleri.html">Pandas 04 - Seçim Yöntemleri</a>
 				</h1>
-				<span class="post-date">Paz 10 Temmuz 2022</span>
+				<span class="post-date">Pzt 11 Temmuz 2022</span>
 					<span class="post-tags">
 						Tags:
 						<ul>
@@ -87,26 +87,23 @@
 								<li><a href="/tag/pandas.html">Pandas</a></li>
 								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
 								<li><a href="/tag/modul.html">Modül</a></li>
-								<li><a href="/tag/fonksiyon.html">Fonksiyon</a></li>
-								<li><a href="/tag/head.html">head</a></li>
+								<li><a href="/tag/secim.html">Seçim</a></li>
 						</ul>
 					</span>
 				<p>
-					<h1>head() Fonksiyonu</h1>
-<p><strong>head()</strong> fonksiyonunu, oluşturduğumuz ya da çalışmamıza dahil ettiğimiz (içe aktardığımız) Veri Çerçevelerinin ilk satırlarını görüntüleyerek, içerik hakkında bilgi edinmemizi sağlar. <strong>Head</strong> kelimesi Türkçede <strong>Baş, Kafa</strong> anlamına gelmektedir.</p>
-<p>Öncelikle <strong>Pandas</strong> Kütüphanesini içe aktarıp, kodlama esnasında hızlı olması adına bu kütüphaneye <strong>pd</strong> adını atayalım;</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-</code></pre></div>
-
-<p>Basit bir …</p>
+					<h1>Seçim Yöntemleri</h1>
+<p>Veri Çerçevesi oluştururken ya da oluşturduktan sonra istenilen satır ve sütunların seçilmesi/görüntülenmesi ya da seçilmemesi/görüntülenmemesi konusunu inceleyelim. Veri çerçevesinde işimize yaramayacak verileri devre dışı bırakmak için bu yöntemleri kullanabiliriz.</p>
+<h2>Satır ve Sütun Seçimi</h2>
+<h3>iloc[] Metodu</h3>
+<p>Veri Çerçevesindeki istenilen satır ve sütunu seçmek/görüntülemek için <strong>iloc[]</strong> metodu …</p>
 				</p>
-				<a class="read-more" href="pandas-head.html">Continue reading »</a>
+				<a class="read-more" href="pandas-04-secim-yontemleri.html">Continue reading »</a>
 			</div>
 			<div class="post">
-				<h1 class="post-title" href="/pandas-index.html">
-					<a href="/pandas-index.html">Pandas - index</a>
+				<h1 class="post-title" href="/pandas-at.html">
+					<a href="/pandas-at.html">Pandas - at</a>
 				</h1>
-				<span class="post-date">Paz 10 Temmuz 2022</span>
+				<span class="post-date">Pzt 11 Temmuz 2022</span>
 					<span class="post-tags">
 						Tags:
 						<ul>
@@ -114,26 +111,198 @@
 								<li><a href="/tag/pandas.html">Pandas</a></li>
 								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
 								<li><a href="/tag/modul.html">Modül</a></li>
-								<li><a href="/tag/describe.html">describe</a></li>
 								<li><a href="/tag/fonksiyon.html">Fonksiyon</a></li>
+								<li><a href="/tag/at.html">at</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>at[] Metodu</h1>
+<p><code>at[]</code> metodunu, bir satır/sütun etiket çifti belirterek <strong>tek bir değere erişmek</strong> için kullanabiliriz. MS Excel ya da Libre Ofis Calc uygulamalarındaki <u>satır ve sütun değerlerinin kesişimindeki hücre değerine ulaşmak</u> ile aynı mantık.</p>
+<blockquote>
+<p><code>loc[]</code> metoduna benzer şekilde kullanılır, her ikisi de etiket tabanlı aramalar sağlar. Bir Veri çerçevesi …</p></blockquote>
+				</p>
+				<a class="read-more" href="pandas-at.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="/pandas-iat.html">
+					<a href="/pandas-iat.html">Pandas - iat</a>
+				</h1>
+				<span class="post-date">Pzt 11 Temmuz 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/fonksiyon.html">Fonksiyon</a></li>
+								<li><a href="/tag/iat.html">iat</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>iat[] Metodu</h1>
+<p><code>iat[]</code> metodu, satır/sütun çiftinde tamsayı belirtilerek <strong>tek bir değere</strong> erişim sağlamak için kullanılır. ve <code>iloc[]</code> metoduna benzerdir, her iki metot ta tamsayı tabanlı aramalar sağlar. <code>at[]</code> metodunda <strong>etiket</strong> kullanırken <code>iat[]</code> metodunda <strong>indeks değeri olan tamsayı</strong> kullanılır. <code>loc[]</code> ve <code>iloc[]</code> metoduna benzer mantık.</p>
+<blockquote>
+<p>Bir Veri çerçevesi (DataFrame) veya …</p></blockquote>
+				</p>
+				<a class="read-more" href="pandas-iat.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="/pandas-iloc.html">
+					<a href="/pandas-iloc.html">Pandas - iloc</a>
+				</h1>
+				<span class="post-date">Pzt 11 Temmuz 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/fonksiyon.html">Fonksiyon</a></li>
+								<li><a href="/tag/secim.html">Seçim</a></li>
+								<li><a href="/tag/iloc.html">iloc</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>iloc[] Fonksiyonu Nedir? Nasıl Kullanılır?</h1>
+<p>Veri Çerçevesindeki istenilen satır ve sütunu seçmek/görüntülemek için <strong>iloc[]</strong> metodu kullanılır. <strong>iloc[]</strong> kelimesini unutmamak için <strong>İndex Location</strong> (<strong>Konumun İndeks Değeri</strong>) ya da <strong>İnteger Location (Konumun Tamsayı değeri)</strong> gibi düşünebilir, hafızanızda kodlayabilirsiniz. Bir başka ifadeyle, <code>iloc[]</code> için, Tamsayı değerine dayalı konum indeksleme metodu diyebiliriz. Esas …</p>
+				</p>
+				<a class="read-more" href="pandas-iloc.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="/pandas-kosullu-secim.html">
+					<a href="/pandas-kosullu-secim.html">Pandas - Koşullu Seçim</a>
+				</h1>
+				<span class="post-date">Pzt 11 Temmuz 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/fonksiyon.html">Fonksiyon</a></li>
+								<li><a href="/tag/kosul.html">Koşul</a></li>
+								<li><a href="/tag/secim.html">Seçim</a></li>
+								<li><a href="/tag/lambda.html">lambda</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>Koşullu Satır Seçimi</h1>
+<p>Veri çerçevemizde belirttiğimiz koşullara uyan satırları seçmek istersek, bunu Python operatörleri ile rahatlıkla gerçekleştirebiliriz.
+Önce Veri Çerçevemize göz atalım;</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>max_speed</th>
+<th>shield</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cobra</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>viper</td>
+<td>4</td>
+<td>5</td>
+</tr>
+<tr>
+<td>sidewinder</td>
+<td>7</td>
+<td>8</td>
+</tr>
+</tbody>
+</table>
+<p><strong>shield</strong> sütununda <strong>6'dan büyük</strong> değerleri barındıran satırları seçmek istediğimizi varsayalım ve buna uygun kodu yazıp …</p>
+				</p>
+				<a class="read-more" href="pandas-kosullu-secim.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="/pandas-loc.html">
+					<a href="/pandas-loc.html">Pandas - loc</a>
+				</h1>
+				<span class="post-date">Pzt 11 Temmuz 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/fonksiyon.html">Fonksiyon</a></li>
+								<li><a href="/tag/secim.html">Seçim</a></li>
+								<li><a href="/tag/loc.html">loc</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>loc[] Fonksiyonu Nedir? Nasıl Kullanılır?</h1>
+<blockquote>
+<p>Etiketlere veya mantık (boole) dizisine göre bir satır ve sütun grubuna erişim</p>
+</blockquote>
+<p><code>loc[]</code> metodu, <code>iloc[]</code> metoduna benzer bir metottur ancak <code>loc[]</code> metodunda, satır ve sütun seçmek/görüntülemek istediğimiz zaman, satır ve sütunların <strong>isimlerini / ifadelerini</strong> (metinsel / string ifadelerini) yazmalıyız. <code>loc[]</code> metodu aslında etiket tabanlıdır, ancak bir …</p>
+				</p>
+				<a class="read-more" href="pandas-loc.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="/pandas-pandas-index.html">
+					<a href="/pandas-pandas-index.html">Pandas - pandas-index</a>
+				</h1>
+				<span class="post-date">Pzt 11 Temmuz 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/fonksiyon.html">Fonksiyon</a></li>
+								<li><a href="/tag/secim.html">Seçim</a></li>
 								<li><a href="/tag/index.html">index</a></li>
+								<li><a href="/tag/pandasindex.html">pandas.index</a></li>
 						</ul>
 					</span>
 				<p>
-					<h1>index Fonksiyonu</h1>
-<p><strong>index</strong> fonksiyonu, Veri Çerçevesinin indeks bilgisini döndürür.</p>
-<p>Öncelikle <strong>Pandas</strong> Kütüphanesini içe aktarıp, kodlama esnasında hızlı olması adına bu kütüphaneye <strong>pd</strong> adını atayalım;</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+					<h1>Index() Fonksiyonu Nedir? Nasıl Kullanılır?</h1>
+<blockquote>
+<p>Index() Fonksiyonu, df.reindex ile aynı davranır.</p>
+</blockquote>
+<p><code>Index</code> metodu, veri çerçevesindeki index isimlerine göre Sıralama ve satır seçimi yapmamızı sağlar. <code>name</code> parametresi ise, indeks başlığı olarak kullanacağımız değeri atamamıza yarar. </p>
+<p>Önce Veri Çerçevemize göz atalım;</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </code></pre></div>
 
-<p>Basit bir Veri Çerçevesi (Data Frame) oluşturalım ve oluşturduğumuz Veri Çerçevesinin içeriğini görelim;</p>
-<div class="highlight"><pre><span></span><code><span class="n">sozluk</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;isim&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Mustafa&quot;</span><span class="p">,</span> <span class="s2">&quot;Halil&quot;</span><span class="p">,</span> <span class="s2">&quot;Burak&quot;</span><span class="p">,</span> <span class="s2">&quot;Emre&quot;</span><span class="p">,</span> <span class="s2">&quot;Ersin&quot;</span><span class="p">,</span> <span class="s2">&quot;Sertaç&quot;</span><span class="p">,</span> <span class="s2">&quot;Furkan …</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>max_speed</th>
+<th>shield</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cobra</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>viper</td>
+<td>4</td>
+<td>5 …</td></tr></tbody></table>
 				</p>
-				<a class="read-more" href="pandas-index.html">Continue reading »</a>
+				<a class="read-more" href="pandas-pandas-index.html">Continue reading »</a>
 			</div>
 			<div class="post">
-				<h1 class="post-title" href="/pandas-info.html">
-					<a href="/pandas-info.html">Pandas - info</a>
+				<h1 class="post-title" href="/pandas-03-veriyi-kesfet-incele.html">
+					<a href="/pandas-03-veriyi-kesfet-incele.html">Pandas 03 -  Veriyi Keşfet - İncele</a>
 				</h1>
 				<span class="post-date">Paz 10 Temmuz 2022</span>
 					<span class="post-tags">
@@ -143,21 +312,45 @@
 								<li><a href="/tag/pandas.html">Pandas</a></li>
 								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
 								<li><a href="/tag/modul.html">Modül</a></li>
-								<li><a href="/tag/fonksiyon.html">Fonksiyon</a></li>
-								<li><a href="/tag/info.html">info</a></li>
 						</ul>
 					</span>
 				<p>
-					<h1>info() Fonksiyonu</h1>
-<p><strong>info()</strong> fonksiyonu, Veri Çerçevesinin satır ve sütun sayısı, sütun veri tipleri (sayı [int, float], metin [object, string], ...vb) ve doluluk oranı (boş olmayan hücre sayısı [non-null]) hakkında bilgi verir.</p>
+					<h2>Veriyi Keşfet / İncele</h2>
+<p>Bu bölümde <strong>Veri Çerçevesi</strong> (<strong>Data Frame</strong>) içeriğini görüntülemeye dair komutları öğreneceğiz.</p>
 <p>Öncelikle <strong>Pandas</strong> Kütüphanesini içe aktarıp, kodlama esnasında hızlı olması adına bu kütüphaneye <strong>pd</strong> adını atayalım;</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd …</span></code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</code></pre></div>
+
+<p>Bu eğitimde, fonksiyon ve metotlar konusunu anlatırken kullanmak üzere, basit bir Veri Çerçevesi (Data Frame) oluşturalım ve …</p>
 				</p>
-				<a class="read-more" href="pandas-info.html">Continue reading »</a>
+				<a class="read-more" href="pandas-03-veriyi-kesfet-incele.html">Continue reading »</a>
 			</div>
 			<div class="post">
-				<h1 class="post-title" href="/pandas-isnull.html">
-					<a href="/pandas-isnull.html">Pandas - isnull</a>
+				<h1 class="post-title" href="/pandas-columns.html">
+					<a href="/pandas-columns.html">Pandas - columns</a>
+				</h1>
+				<span class="post-date">Paz 10 Temmuz 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/columns.html">columns</a></li>
+								<li><a href="/tag/fonksiyon.html">Fonksiyon</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>columns Fonksiyonu</h1>
+<p><strong>columns</strong> fonksiyonu, oluşturulan ya da içe aktarılan Veri Çerçevelerinin <strong>başlık satırını</strong> çıktı olarak verir. <strong>columns</strong> fonksiyonunu kullanırken sonunda <u>parantez işaretleri kullanmadığımıza</u> dikkat edin.</p>
+<p>Veri çerçevesine filtreleme işlemi uygulamak istediğimiz zaman, bu fonksiyon çok işimize yarar. Sütun isimlerini hızlı bir şekilde görüntülüyerek filtrelemek ya da seçmek istediğimiz sütun başlıklarını …</p>
+				</p>
+				<a class="read-more" href="pandas-columns.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="/pandas-describe.html">
+					<a href="/pandas-describe.html">Pandas - describe</a>
 				</h1>
 				<span class="post-date">Paz 10 Temmuz 2022</span>
 					<span class="post-tags">
@@ -169,173 +362,19 @@
 								<li><a href="/tag/modul.html">Modül</a></li>
 								<li><a href="/tag/describe.html">describe</a></li>
 								<li><a href="/tag/fonksiyon.html">Fonksiyon</a></li>
-								<li><a href="/tag/isnull.html">isnull</a></li>
 						</ul>
 					</span>
 				<p>
-					<h1>isnull() Fonksiyonu</h1>
-<p>Veri çerçevesinde boş, kayıp veri olup olmadığını <strong>isnull()</strong> fonksiyonu ile tespit edebiliriz. Bu fonksiyonu çalıştırdığımızda veri çerçevesinin satır ve sütun başlıkları ekrana yazdırılır ancak veri yerine <strong>True</strong> ya da <strong>False</strong> bilgisi görüntülenir.</p>
-<p>Öncelikle <strong>Pandas</strong> Kütüphanesini içe aktarıp, kodlama esnasında hızlı olması adına bu kütüphaneye <strong>pd</strong> adını atayalım;</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import …</span></code></pre></div>
-				</p>
-				<a class="read-more" href="pandas-isnull.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="/pandas-len.html">
-					<a href="/pandas-len.html">Pandas - len</a>
-				</h1>
-				<span class="post-date">Paz 10 Temmuz 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/pandas.html">Pandas</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
-								<li><a href="/tag/fonksiyon.html">Fonksiyon</a></li>
-								<li><a href="/tag/len.html">len</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1>len() Fonksiyonu</h1>
-<p><strong>len()</strong> foknsiyonu, Veri Çerçevesinin kaç satırdan oluştuğunu bildirir.</p>
+					<h1>describe Fonksiyonu</h1>
+<p><strong>describe()</strong> fonksiyonu, sayısal veri barındıran sütunlar hakkında detaylı matematiksel bilgiler verir.</p>
 <p>Öncelikle <strong>Pandas</strong> Kütüphanesini içe aktarıp, kodlama esnasında hızlı olması adına bu kütüphaneye <strong>pd</strong> adını atayalım;</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 </code></pre></div>
 
 <p>Basit bir Veri Çerçevesi (Data Frame) oluşturalım ve oluşturduğumuz Veri Çerçevesinin içeriğini görelim;</p>
-<div class="highlight"><pre><span></span><code><span class="n">sozluk</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;isim&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Mustafa&quot;</span><span class="p">,</span> <span class="s2">&quot;Halil&quot;</span><span class="p">,</span> <span class="s2">&quot;Burak&quot;</span><span class="p">,</span> <span class="s2">&quot;Emre&quot;</span><span class="p">,</span> <span class="s2">&quot;Ersin&quot;</span><span class="p">,</span> <span class="s2">&quot;Sertaç …</span></code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">sozluk</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;isim&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Mustafa&quot;</span><span class="p">,</span> <span class="s2">&quot;Halil&quot;</span><span class="p">,</span> <span class="s2">&quot;Burak …</span></code></pre></div>
 				</p>
-				<a class="read-more" href="pandas-len.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="/pandas-shape.html">
-					<a href="/pandas-shape.html">Pandas - shape</a>
-				</h1>
-				<span class="post-date">Paz 10 Temmuz 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/pandas.html">Pandas</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
-								<li><a href="/tag/describe.html">describe</a></li>
-								<li><a href="/tag/fonksiyon.html">Fonksiyon</a></li>
-								<li><a href="/tag/shape.html">shape</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1>shape Fonksiyonu</h1>
-<p><strong>shape</strong> fonksiyonu ile, Veri Çerçevesinin yapısını yani satır ve sütun bilgisini öğrenebiliriz.</p>
-<p>Öncelikle <strong>Pandas</strong> Kütüphanesini içe aktarıp, kodlama esnasında hızlı olması adına bu kütüphaneye <strong>pd</strong> adını atayalım;</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-</code></pre></div>
-
-<p>Basit bir Veri Çerçevesi (Data Frame) oluşturalım ve oluşturduğumuz Veri Çerçevesinin içeriğini görelim;</p>
-<div class="highlight"><pre><span></span><code><span class="n">sozluk</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;isim&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Mustafa&quot;</span><span class="p">,</span> <span class="s2">&quot;Halil …</span></code></pre></div>
-				</p>
-				<a class="read-more" href="pandas-shape.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="/pandas-tail.html">
-					<a href="/pandas-tail.html">Pandas - tail</a>
-				</h1>
-				<span class="post-date">Paz 10 Temmuz 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/pandas.html">Pandas</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
-								<li><a href="/tag/fonksiyon.html">Fonksiyon</a></li>
-								<li><a href="/tag/tail.html">tail</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1>tail() Fonksiyonu</h1>
-<p><strong>tail()</strong> fonksiyonu, <strong>head()</strong> fonksiyonuna oldukça benzer bir fonksiyondur. Oluşturduğumuz ya da çalışmamıza dahil ettiğimiz Veri Çerçevelerinin <strong>son satırlarını</strong> görüp içerik hakkında bilgi edinmek istersek <strong>tail()</strong> fonksiyonunu kullanabiliriz. <strong>Tail</strong> kelimesi Türkçede, <strong>kuyruk, son kısım</strong> anlamına gelmektedir.</p>
-<p>Öncelikle <strong>Pandas</strong> Kütüphanesini içe aktarıp, kodlama esnasında hızlı olması adına bu kütüphaneye <strong>pd …</strong></p>
-				</p>
-				<a class="read-more" href="pandas-tail.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="/pandas-02-excel-dosyalari-ile-calismak.html">
-					<a href="/pandas-02-excel-dosyalari-ile-calismak.html">Pandas 02 - Excel Dosyaları ile Çalışmak</a>
-				</h1>
-				<span class="post-date">Cts 09 Temmuz 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/pandas.html">Pandas</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
-								<li><a href="/tag/excel.html">Excel</a></li>
-								<li><a href="/tag/libreofis.html">LibreOfis</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1>Excel Dosyalarını Oku ve Düzenle Yöntemleri</h1>
-<p>Bu bölümde <strong>MS Excel</strong> ve <strong>Libre Ofis Calc</strong> programları ile oluşturulan hesap tablolarının Veri Çerçevelerine (Data Frame'e) dönüştürülerek çalışmalarımıza dahil edilmesi konusunu detayı olarak inceleyeceğiz.</p>
-<h3>read_excel() fonksiyonu</h3>
-<p><strong>MS Excel</strong> ve <strong>Libre Ofis Calc</strong> dosyalarının içeriğini çalışmamıza dahil etmek için <strong>read_excel()</strong> fonksiyonunu kullanmalıyız.</p>
-<p><u>Bu fonksiyon …</u></p>
-				</p>
-				<a class="read-more" href="pandas-02-excel-dosyalari-ile-calismak.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="/pandas-read_excel.html">
-					<a href="/pandas-read_excel.html">Pandas - read_excel</a>
-				</h1>
-				<span class="post-date">Cts 09 Temmuz 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/pandas.html">Pandas</a></li>
-								<li><a href="/tag/read_excel.html">read_excel</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
-								<li><a href="/tag/excel.html">Excel</a></li>
-								<li><a href="/tag/libreofis.html">LibreOfis</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1>read_excel() Fonksiyonu Nedir? Nasıl Kullanılır?</h1>
-<p>Bu bölümde <strong>MS Excel</strong> ve <strong>Libre Ofis Calc</strong> programları ile oluşturulan hesap tablolarının Veri Çerçevelerine (Data Frame'e) dönüştürülerek çalışmalarımıza dahil edilmesi konusunu detayı olarak inceleyeceğiz.</p>
-<h1>read_excel() fonksiyonu</h1>
-<p><strong>MS Excel</strong> ve <strong>Libre Ofis Calc</strong> dosyalarının içeriğini çalışmamıza dahil etmek için <strong>read_excel()</strong> fonksiyonunu kullanmalıyız.</p>
-<p><u>Bu fonksiyon;</u></p>
-<ul>
-<li><strong>xls …</strong></li></ul>
-				</p>
-				<a class="read-more" href="pandas-read_excel.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="/pandas-01-veri-cercevesi-olustur.html">
-					<a href="/pandas-01-veri-cercevesi-olustur.html">Pandas 01 - Veri Çerçevesi Oluştur</a>
-				</h1>
-				<span class="post-date">Cts 09 Temmuz 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/pandas.html">Pandas</a></li>
-								<li><a href="/tag/dataframe.html">DataFrame</a></li>
-								<li><a href="/tag/veri-cercevesi.html">Veri Çerçevesi</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1>VeriÇerçevesi (DataFrame) Oluştur</h1>
-<p>Bu bölümde sıfırdan <strong>Veri Çerçevesi</strong> (<strong>Data Frame</strong>) oluşturmayı ya da harici kaynaktan <strong>(MS Excel, LibreOfis Calc, CSV, JSON, URL ve Pano'dan)</strong> verileri okuyarak veri çerçevesine dönüştürmeyi öğreneceğiz.</p>
-<h2>import Fonksiyonu</h2>
-<p>Öncelikle <strong>Pandas</strong> Kütüphanesini projemize dahil edip (içe aktarıp), kodlama esnasında hızlı olması adına bu kütüphaneye <strong>pd</strong> adını atayalım …</p>
-				</p>
-				<a class="read-more" href="pandas-01-veri-cercevesi-olustur.html">Continue reading »</a>
+				<a class="read-more" href="pandas-describe.html">Continue reading »</a>
 			</div>
 	</div>
 	<div class="pagination">
