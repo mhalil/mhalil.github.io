@@ -104,6 +104,128 @@
 				</p>
 				<a class="read-more" href="pandas-07-veri-siralama-yontemleri.html">Continue reading »</a>
 			</div>
+			<div class="post">
+				<h1 class="post-title" href="/pandas-karsilastirma_operatoru.html">
+					<a href="/pandas-karsilastirma_operatoru.html">Pandas - karsilastirma_operatoru</a>
+				</h1>
+				<span class="post-date">Cum 15 Temmuz 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/veri.html">Veri</a></li>
+								<li><a href="/tag/siralama.html">Sıralama</a></li>
+								<li><a href="/tag/re_index.html">re_index</a></li>
+								<li><a href="/tag/columns.html">columns</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>Karşılaştırma Operatörü Kullanımı</h1>
+<h2>is Operatorü</h2>
+<p>Veri Çerçevelerinin <code>index</code> değerleri , liste veri tipi olarak belirtildiği için, listeler arasında karşılaştırma operatörlerini kullanmak ta mümkündür.</p>
+<p>Örneğin <code>df_1.index</code> değerlerinin <code>df_2.index</code> değerlerine eşit olup olmadığını denetleyelim;</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df_1</span><span class="o">.</span><span class="n">index</span> <span class="ow">is</span> <span class="n">sirala_filtrele</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="kc">False</span>
+</code></pre></div>
+
+<h2>&gt; Operatörü</h2>
+<p>Python'da kullandığımız <code>&lt;, &gt;, &lt;=, &gt;=, ==</code>, ...vb operatörleri, Pandas Veri çerçevelerinde de kullanabiliriz …</p>
+				</p>
+				<a class="read-more" href="pandas-karsilastirma_operatoru.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="/pandas-reindex.html">
+					<a href="/pandas-reindex.html">Pandas - reindex</a>
+				</h1>
+				<span class="post-date">Cum 15 Temmuz 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/veri.html">Veri</a></li>
+								<li><a href="/tag/siralama.html">Sıralama</a></li>
+								<li><a href="/tag/reindex.html">reindex</a></li>
+								<li><a href="/tag/columns.html">columns</a></li>
+								<li><a href="/tag/index.html">index</a></li>
+								<li><a href="/tag/axis.html">axis</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>reindex() Fonksiyonu</h1>
+<p><code>reindex()</code> fonksiyonu, Pandas'ta temel veri sıralama (hizalama) yöntemlerinden biridir. Bir veri çerçevesinin satır ya da sütunlarını yeniden sıralamak için kullanılan en yaygın yöntemdir. Prensip olarak, etiket sıralama mantığına dayanır. Bu işlem, indeks değerlerini ya da sütun isimlerini yeniden sıralamak ve verileri belirli bir eksen (Satır 
+ya da sütun …</p>
+				</p>
+				<a class="read-more" href="pandas-reindex.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="/pandas-sort_index.html">
+					<a href="/pandas-sort_index.html">Pandas - sort_index</a>
+				</h1>
+				<span class="post-date">Cum 15 Temmuz 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/veri.html">Veri</a></li>
+								<li><a href="/tag/siralama.html">Sıralama</a></li>
+								<li><a href="/tag/sort_index.html">sort_index</a></li>
+								<li><a href="/tag/ascending.html">ascending</a></li>
+								<li><a href="/tag/axis.html">axis</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>Sıralama Yöntemleri</h1>
+<p>Oluşturulan Veri Çerçevelerinin, isteğimiz doğrultusunda sıralanması için kullanabileceğimiz yöntemlere, bu bölümde değineceğiz.</p>
+<p>Pandas üç tür sıralamayı destekler ;</p>
+<ul>
+<li>İndeks (dizin) etiketlerine göre sıralama,</li>
+<li>Sütun değerlerine göre sıralama</li>
+<li>Her ikisinin birleşimine göre sıralama.</li>
+</ul>
+<p>Konuya ait yöntemleri incelemek amacıyla <strong>imdb.xlsx</strong> dosyamızı içe aktararak bir veri çerçevesi oluşturarak işe başlayalım. Oluşturacağımız …</p>
+				</p>
+				<a class="read-more" href="pandas-sort_index.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="/pandas-sort_values.html">
+					<a href="/pandas-sort_values.html">Pandas - sort_values</a>
+				</h1>
+				<span class="post-date">Cum 15 Temmuz 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/veri.html">Veri</a></li>
+								<li><a href="/tag/siralama.html">Sıralama</a></li>
+								<li><a href="/tag/sort_values.html">sort_values</a></li>
+								<li><a href="/tag/by.html">by</a></li>
+								<li><a href="/tag/ascending.html">ascending</a></li>
+								<li><a href="/tag/na_position.html">na_position</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>sort_values() Fonksiyonu</h1>
+<p>Veri çerçevesini <strong>sütun(lar)daki değerlere göre</strong> sıralamak istersek (sütun başlıklarına göre <strong>değil)</strong>, <code>sort_values()</code> fonksiyonunu kullanmalıyız. Sütun başlıklarına (isimlerine) göre sıralama yapmak isterseniz, <a href="/pandas-sort_index.html">sort_index() Fonksiyonu</a>nu ya da <a href="/pandas-reindex.html">reindex() Fonksiyonu</a> inceleyebilirsiniz</p>
+<h1>Parametreler</h1>
+<h2>by Parametresi</h2>
+<p><code>sort_values()</code> fonksiyonu ile sütun değerlerine göre sıralama yapmak için <code>by</code> parametresi kullanılmalıdır. <code>by</code> parametresi …</p>
+				</p>
+				<a class="read-more" href="pandas-sort_values.html">Continue reading »</a>
+			</div>
 	</div>
 	<div class="pagination">
 

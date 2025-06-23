@@ -16,7 +16,7 @@
 		<!-- Enable responsiveness on mobile devices-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-		<title>mhalil - columns tag - Programlama ve 3D</title>
+		<title>mhalil - Pandas tag - Programlama ve 3D</title>
 
 		<!-- CSS -->
 		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
@@ -76,44 +76,106 @@
 </div>		<div class="content container">
 	<div class="posts">
 			<div class="post">
-				<h1 class="post-title" href="/pandas-karsilastirma_operatoru.html">
-					<a href="/pandas-karsilastirma_operatoru.html">Pandas - karsilastirma_operatoru</a>
+				<h1 class="post-title" href="/pandas-read_json.html">
+					<a href="/pandas-read_json.html">Pandas - read_json</a>
 				</h1>
-				<span class="post-date">Cum 15 Temmuz 2022</span>
+				<span class="post-date">Cts 09 Temmuz 2022</span>
 					<span class="post-tags">
 						Tags:
 						<ul>
 								<li><a href="/tag/python.html">Python</a></li>
 								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/dataframe.html">DataFrame</a></li>
+								<li><a href="/tag/veri-cercevesi.html">Veri Çerçevesi</a></li>
+								<li><a href="/tag/read_json.html">read_json</a></li>
 								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
 								<li><a href="/tag/modul.html">Modül</a></li>
-								<li><a href="/tag/veri.html">Veri</a></li>
-								<li><a href="/tag/siralama.html">Sıralama</a></li>
-								<li><a href="/tag/re_index.html">re_index</a></li>
-								<li><a href="/tag/columns.html">columns</a></li>
 						</ul>
 					</span>
 				<p>
-					<h1>Karşılaştırma Operatörü Kullanımı</h1>
-<h2>is Operatorü</h2>
-<p>Veri Çerçevelerinin <code>index</code> değerleri , liste veri tipi olarak belirtildiği için, listeler arasında karşılaştırma operatörlerini kullanmak ta mümkündür.</p>
-<p>Örneğin <code>df_1.index</code> değerlerinin <code>df_2.index</code> değerlerine eşit olup olmadığını denetleyelim;</p>
-<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df_1</span><span class="o">.</span><span class="n">index</span> <span class="ow">is</span> <span class="n">sirala_filtrele</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+					<h1>read_json() Fonksiyonu Nedir? Nasıl Kullanılır?</h1>
+<p><strong>read_json()</strong> fonksiyonu ile <strong>json</strong> uzantılı dosyaları çalışmalarınıza dahil edebilirsiniz.</p>
+<div class="highlight"><pre><span></span><code><span class="n">veri_json</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/json_verisi.json&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">veri_json</span><span class="p">)</span>
 </code></pre></div>
 
-<div class="highlight"><pre><span></span><code><span class="kc">False</span>
-</code></pre></div>
-
-<h2>&gt; Operatörü</h2>
-<p>Python'da kullandığımız <code>&lt;, &gt;, &lt;=, &gt;=, ==</code>, ...vb operatörleri, Pandas Veri çerçevelerinde de kullanabiliriz …</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Duration</th>
+<th>Pulse</th>
+<th>Maxpulse</th>
+<th>Calories</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>60</td>
+<td>110</td>
+<td>130</td>
+<td>409</td>
+</tr>
+<tr>
+<td>1</td>
+<td>60</td>
+<td>117</td>
+<td>145</td>
+<td>479</td>
+</tr>
+<tr>
+<td>2</td>
+<td>60</td>
+<td>103</td>
+<td>135</td>
+<td>340</td>
+</tr>
+<tr>
+<td>3</td>
+<td>45</td>
+<td>109</td>
+<td>175</td>
+<td>282</td>
+</tr>
+<tr>
+<td>4</td>
+<td>45</td>
+<td>117</td>
+<td>148 …</td></tr></tbody></table>
 				</p>
-				<a class="read-more" href="pandas-karsilastirma_operatoru.html">Continue reading »</a>
+				<a class="read-more" href="pandas-read_json.html">Continue reading »</a>
 			</div>
 			<div class="post">
-				<h1 class="post-title" href="/pandas-reindex.html">
-					<a href="/pandas-reindex.html">Pandas - reindex</a>
+				<h1 class="post-title" href="/pandas-read_table.html">
+					<a href="/pandas-read_table.html">Pandas - read_table</a>
 				</h1>
-				<span class="post-date">Cum 15 Temmuz 2022</span>
+				<span class="post-date">Cts 09 Temmuz 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/dataframe.html">DataFrame</a></li>
+								<li><a href="/tag/veri-cercevesi.html">Veri Çerçevesi</a></li>
+								<li><a href="/tag/read_table.html">read_table</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>read_table() Fonksiyonu Nedir? Nasıl Kullanılır?</h1>
+<p>Bu bölümde harici kaynaktan bir <strong>CSV</strong> dosyasından verileri okuyarak veri çerçevesine dönüştürmeyi öğreneceğiz.</p>
+<h3>read_table() Fonksiyonu</h3>
+<p><strong>read_table()</strong> fonksiyonu ile <strong>CSV</strong> uzantılı dosyalar içe aktarıldığında, dosyanın her satırı, tablonun bir sütununa yazılır. Yani tabloda 2 sütun oluşturulur, birinci sütunda index bilgisi, ikinci sütunda ise <strong>csv</strong> dosyasının satırlarındaki …</p>
+				</p>
+				<a class="read-more" href="pandas-read_table.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="/pandas-giris.html">
+					<a href="/pandas-giris.html">Pandas - Giriş</a>
+				</h1>
+				<span class="post-date">Cts 09 Temmuz 2022</span>
 					<span class="post-tags">
 						Tags:
 						<ul>
@@ -121,48 +183,21 @@
 								<li><a href="/tag/pandas.html">Pandas</a></li>
 								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
 								<li><a href="/tag/modul.html">Modül</a></li>
-								<li><a href="/tag/veri.html">Veri</a></li>
-								<li><a href="/tag/siralama.html">Sıralama</a></li>
-								<li><a href="/tag/reindex.html">reindex</a></li>
-								<li><a href="/tag/columns.html">columns</a></li>
-								<li><a href="/tag/index.html">index</a></li>
-								<li><a href="/tag/axis.html">axis</a></li>
 						</ul>
 					</span>
 				<p>
-					<h1>reindex() Fonksiyonu</h1>
-<p><code>reindex()</code> fonksiyonu, Pandas'ta temel veri sıralama (hizalama) yöntemlerinden biridir. Bir veri çerçevesinin satır ya da sütunlarını yeniden sıralamak için kullanılan en yaygın yöntemdir. Prensip olarak, etiket sıralama mantığına dayanır. Bu işlem, indeks değerlerini ya da sütun isimlerini yeniden sıralamak ve verileri belirli bir eksen (Satır 
-ya da sütun …</p>
+					<h1>Pandas Kütüphanesi Notları</h1>
+<p><strong>Python'a Giriş</strong> konusuna ait notları, FreeCAD için Python ile Komut Dosyası Oluşturma (Scripting) Eğitiminde paylaşmıştık.  İlave olarak Python'ın en güçlü ve işlevsel kütüphanelerinden biri olan <strong>Pandas</strong>'a ait notları paylaşmaya devam ediyorum.</p>
+<p><img alt="pandas" src="../../images/pandas_logo.png"></p>
+<h2>PANDAS NEDİR?</h2>
+<p><strong>Python'a Giriş</strong> konusu ile alakalı bilgileri, <a href="../freecad-scripting.html">FreeCAD Eğitim Notları</a> bölümünde <a href="../freecad-scripting-01-pythona-giris.html">1. Python'a Giriş …</a></p>
 				</p>
-				<a class="read-more" href="pandas-reindex.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="/pandas-columns.html">
-					<a href="/pandas-columns.html">Pandas - columns</a>
-				</h1>
-				<span class="post-date">Paz 10 Temmuz 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/pandas.html">Pandas</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
-								<li><a href="/tag/columns.html">columns</a></li>
-								<li><a href="/tag/fonksiyon.html">Fonksiyon</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1>columns Fonksiyonu</h1>
-<p><strong>columns</strong> fonksiyonu, oluşturulan ya da içe aktarılan Veri Çerçevelerinin <strong>başlık satırını</strong> çıktı olarak verir. <strong>columns</strong> fonksiyonunu kullanırken sonunda <u>parantez işaretleri kullanmadığımıza</u> dikkat edin.</p>
-<p>Veri çerçevesine filtreleme işlemi uygulamak istediğimiz zaman, bu fonksiyon çok işimize yarar. Sütun isimlerini hızlı bir şekilde görüntülüyerek filtrelemek ya da seçmek istediğimiz sütun başlıklarını …</p>
-				</p>
-				<a class="read-more" href="pandas-columns.html">Continue reading »</a>
+				<a class="read-more" href="pandas-giris.html">Continue reading »</a>
 			</div>
 	</div>
 	<div class="pagination">
 
-		<span class="pagination-item older">Newer</span>
+		<span class="pagination-item older"><a href="/tag/pandas5.html">Newer</a></span>
 
 		<span class="pagination-item newer">Older</span>
 	</div>
