@@ -160,7 +160,85 @@
 </tr>
 </tbody>
 </table>
-<p>Veri Çerçevemizin <strong>iş-meslek</strong> sütunundaki tüm metinleri büyük harfe çevirip ekrana yazdıralım.</p>
+<h2>upper()</h2>
+<p>Veri çerçevemizim <strong>sütun başlık</strong>larının <strong>tüm karakterlerini büyük harfe çevirelim</strong>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">veri</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">veri</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>ISIM</th>
+<th>YAŞ</th>
+<th>IŞ-MESLEK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Mustafa</td>
+<td>25</td>
+<td>mühendis</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Halil</td>
+<td>38</td>
+<td>programci</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Burak</td>
+<td>41</td>
+<td>akademisyen</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Emre</td>
+<td>23</td>
+<td>yönetici</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Ersin</td>
+<td>37</td>
+<td>amir</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Sertaç</td>
+<td>52</td>
+<td>mühendis</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Furkan</td>
+<td>30</td>
+<td>yönetici</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Murat</td>
+<td>23</td>
+<td>müdür</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Ahmet</td>
+<td>40</td>
+<td>veteriner</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Abdülkadir</td>
+<td>38</td>
+<td>yönetici</td>
+</tr>
+</tbody>
+</table>
+<p>Şimdi de Veri Çerçevemizin <strong>iş-meslek</strong> sütunundaki tüm metinleri büyük harfe çevirip ekrana yazdıralım.</p>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="p">[</span><span class="s2">&quot;iş-meslek&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
 </code></pre></div>
 
@@ -187,9 +265,9 @@
 <thead>
 <tr>
 <th></th>
-<th>isim</th>
-<th>yaş</th>
-<th>iş-meslek</th>
+<th>ISIM</th>
+<th>YAŞ</th>
+<th>IŞ-MESLEK</th>
 </tr>
 </thead>
 <tbody>
@@ -255,7 +333,87 @@
 </tr>
 </tbody>
 </table>
-<p>Şimdi de <strong>iş-meslek</strong> Sütunundaki verilerin sadece baş harflerini büyük yapalım.</p>
+<h2>lower()</h2>
+<p><u>İlk oluşturulan</u> veri çerçevemizdeki <strong>isim</strong> sütunundaki verilerin <strong>tüm karakterlerini küçük harfe çevirelim</strong>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">veri</span><span class="o">.</span><span class="n">isim</span> <span class="o">=</span> <span class="n">veri</span><span class="o">.</span><span class="n">isim</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>isim</th>
+<th>yaş</th>
+<th>iş-meslek</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>mustafa</td>
+<td>25</td>
+<td>mühendis</td>
+</tr>
+<tr>
+<td>1</td>
+<td>halil</td>
+<td>38</td>
+<td>programcı</td>
+</tr>
+<tr>
+<td>2</td>
+<td>burak</td>
+<td>41</td>
+<td>akademisyen</td>
+</tr>
+<tr>
+<td>3</td>
+<td>emre</td>
+<td>23</td>
+<td>yönetici</td>
+</tr>
+<tr>
+<td>4</td>
+<td>ersin</td>
+<td>37</td>
+<td>amir</td>
+</tr>
+<tr>
+<td>5</td>
+<td>sertaç</td>
+<td>52</td>
+<td>mühendis</td>
+</tr>
+<tr>
+<td>6</td>
+<td>furkan</td>
+<td>30</td>
+<td>yönetici</td>
+</tr>
+<tr>
+<td>7</td>
+<td>murat</td>
+<td>23</td>
+<td>müdür</td>
+</tr>
+<tr>
+<td>8</td>
+<td>ahmet</td>
+<td>40</td>
+<td>veteriner</td>
+</tr>
+<tr>
+<td>9</td>
+<td>abdülkadir</td>
+<td>38</td>
+<td>yönetici</td>
+</tr>
+</tbody>
+</table>
+<h2>capitalize()</h2>
+<p><u>İlk oluşturulan</u> veri çerçevemizdeki <strong>iş-meslek</strong> Sütunundaki verilerin <strong>sadece baş harflerini büyük</strong> yapalım.</p>
 <div class="highlight"><pre><span></span><code><span class="n">veri</span><span class="p">[</span><span class="s2">&quot;iş-meslek&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">veri</span><span class="p">[</span><span class="s2">&quot;iş-meslek&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="p">)</span>
 </code></pre></div>
@@ -332,83 +490,68 @@
 </tr>
 </tbody>
 </table>
-<p>Son olarak ta, veri çerçevemizim sütun başlıklarını büyük harfe çevirelim.</p>
-<div class="highlight"><pre><span></span><code><span class="n">veri</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">veri</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="p">)</span>
+<h2>contains</h2>
+<p><strong>String</strong> metotlarından biri olan <strong>contains</strong> ile metin içerisinde <strong>içeren</strong> kelime ya da kelimeleri aratabiliyoruz. <code>lower()</code> metodu ile <strong>isim</strong> sütunundaki  tüm karakterleri küçük harfe çevirelim ve ardından isim içinde <strong>er</strong> ibaresi bulunan tüm verileri filtreleyelim.</p>
+<div class="highlight"><pre><span></span><code><span class="n">veri</span><span class="o">.</span><span class="n">isim</span> <span class="o">=</span> <span class="n">veri</span><span class="o">.</span><span class="n">isim</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<span class="n">iceren</span> <span class="o">=</span> <span class="n">veri</span><span class="o">.</span><span class="n">isim</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;er&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="p">[</span><span class="n">iceren</span><span class="p">])</span>
 </code></pre></div>
 
 <table>
 <thead>
 <tr>
 <th></th>
-<th>ISIM</th>
-<th>YAŞ</th>
-<th>IŞ-MESLEK</th>
+<th>isim</th>
+<th>yaş</th>
+<th>iş-meslek</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>0</td>
-<td>Mustafa</td>
-<td>25</td>
-<td>Mühendis</td>
+<td>4</td>
+<td>ersin</td>
+<td>37</td>
+<td>amir</td>
 </tr>
 <tr>
-<td>1</td>
-<td>Halil</td>
-<td>38</td>
-<td>Programci</td>
+<td>5</td>
+<td>sertaç</td>
+<td>52</td>
+<td>mühendis</td>
 </tr>
+</tbody>
+</table>
+<p>Görüldüğü üzere <strong>4. ve 5.</strong> indekslerdeki <strong>ersin</strong> ve <strong>sertaç</strong> ifadelerinin içerisinde <strong>er</strong> ibaresi bulunduğu için filtre işlemi sonucu yukarıdaki çıktıya ulaşıyoruz. </p>
+<p>Benzer sonuca aşağıdaki kod ile de ulaşabiliriz.</p>
+<div class="highlight"><pre><span></span><code><span class="n">iceren</span> <span class="o">=</span> <span class="n">veri</span><span class="o">.</span><span class="n">isim</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;er&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="p">[</span><span class="n">iceren</span><span class="p">])</span>
+</code></pre></div>
+
+<table>
+<thead>
 <tr>
-<td>2</td>
-<td>Burak</td>
-<td>41</td>
-<td>Akademisyen</td>
+<th></th>
+<th>isim</th>
+<th>yaş</th>
+<th>iş-meslek</th>
 </tr>
-<tr>
-<td>3</td>
-<td>Emre</td>
-<td>23</td>
-<td>Yönetici</td>
-</tr>
+</thead>
+<tbody>
 <tr>
 <td>4</td>
 <td>Ersin</td>
 <td>37</td>
-<td>Amir</td>
+<td>amir</td>
 </tr>
 <tr>
 <td>5</td>
 <td>Sertaç</td>
 <td>52</td>
-<td>Mühendis</td>
-</tr>
-<tr>
-<td>6</td>
-<td>Furkan</td>
-<td>30</td>
-<td>Yönetici</td>
-</tr>
-<tr>
-<td>7</td>
-<td>Murat</td>
-<td>23</td>
-<td>Müdür</td>
-</tr>
-<tr>
-<td>8</td>
-<td>Ahmet</td>
-<td>40</td>
-<td>Veteriner</td>
-</tr>
-<tr>
-<td>9</td>
-<td>Abdülkadir</td>
-<td>38</td>
-<td>Yönetici</td>
+<td>mühendis</td>
 </tr>
 </tbody>
 </table>
+<p>Son iki tabloyu incelerseniz <strong>İsim</strong> sütunundaki verilerin <strong>büyük-küçük harf</strong> değerlerinin farklı olduğudur.</p>
 
 		<span class="post-tags">
 			Tags:
@@ -421,6 +564,10 @@
 					<li><a href="/tag/duzenleme.html">Düzenleme</a></li>
 					<li><a href="/tag/string.html">String</a></li>
 					<li><a href="/tag/metot.html">Metot</a></li>
+					<li><a href="/tag/upper.html">upper</a></li>
+					<li><a href="/tag/lower.html">lower</a></li>
+					<li><a href="/tag/capitalize.html">capitalize</a></li>
+					<li><a href="/tag/contains.html">contains</a></li>
 			</ul>
 		</span>
 

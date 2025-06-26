@@ -105,6 +105,7 @@ hakkında hiç bir şey bilmiyorsanız, öncelikle bu bölüme göz atmanızı �
 Eğitimlerde kullandığım Veri Setlerine <a href="https://github.com/mhalil/Pandas_Notlari/tree/main/Veri_Setleri">GitHub adresimden</a> erişebilirsiniz.</p>
 <h1>Pandas Fonksiyonları</h1>
 <h2>VERİ ÇERÇEVESİ (DATA FRAME) OLUŞTUR</h2>
+<p>Bu başlık altında, sıfırdan <strong>Veri Çerçevesi</strong> (<strong>Data Frame</strong>) oluşturma ya da harici kaynaktan <strong>(MS Excel, LibreOfis Calc, CSV, JSON, URL ve Pano'dan)</strong> okunarak veri çerçevesi oluşturma konularında kullanabileceğimiz Fonksiyonlar anlatılmıştır.</p>
 <ul>
 <li>
 <p><a href="pandas-dataframe.html">DataFrame() Fonksiyonu</a></p>
@@ -139,6 +140,7 @@ Eğitimlerde kullandığım Veri Setlerine <a href="https://github.com/mhalil/Pa
 </li>
 </ul>
 <h2>VERİYİ KEŞFET (İNCELE)</h2>
+<p>Bu başlık altında, <strong>Veri Çerçevesi</strong> (<strong>Data Frame</strong>) içeriğini, sayısal bazı değerlerini ve biçimlerinin görüntülemeye dair fonksiyonları öğreneceğiz.</p>
 <ul>
 <li>
 <p><a href="/pandas-head.html">head() Fonksiyonu</a> </p>
@@ -172,6 +174,7 @@ Eğitimlerde kullandığım Veri Setlerine <a href="https://github.com/mhalil/Pa
 </li>
 </ul>
 <h2>VERİ SEÇİM YÖNTEMLERİ</h2>
+<p>Bu başlık altında, Veri Çerçevesi oluştururken ya da oluşturduktan sonra istenilen satır ve sütunların seçilmesi ya da seçilmemesi konusunda kullanabileceğimiz Fonksiyonları / metotları inceleyelim. Veri çerçevesinde işimize yaramayacak verileri devre dışı bırakmak için bu yöntemleri kullanabiliriz.</p>
 <ul>
 <li>
 <p><a href="/pandas-iloc.html">iloc[] Metodu</a> </p>
@@ -194,6 +197,7 @@ Eğitimlerde kullandığım Veri Setlerine <a href="https://github.com/mhalil/Pa
 </ul>
 <p><em>......lambda() Fonksiyonu ile koşul belirtmek</em></p>
 <h2>EKSİK - KAYIP VERİ YÖNTEMLERİ</h2>
+<p>Bu başlık altında, Veri çerçevemizde eksik veri (excel tablosundaki boş hücre gibi düşünebiliriz) olup olmadığını, varsa kaç adet olduğunu tespit edebileceğimiz Pandas fonksiyonları mevcuttur. Eksik / Kayıp verileri istersek farklı fonksiyonları kullanarak silebilir ya da istediğimiz değer ile doldurabiliriz.</p>
 <ul>
 <li>
 <p><a href="/pandas-isnull.html">isnull() Fonksiyonu</a></p>
@@ -216,6 +220,7 @@ Eğitimlerde kullandığım Veri Setlerine <a href="https://github.com/mhalil/Pa
 <p><em>......... ffill</em></p>
 <p><em>......... None</em></p>
 <h2>VERİ DÜZENLEME YÖNTEMLERİ</h2>
+<p>Bu başlık altında, Veri çerçevemizi düzenlemek ve değiştirmek için kullanabileceğimiz fonksiyonlar anlatılmaktadır.</p>
 <ul>
 <li>
 <p><a href="/pandas-set_index.html">set_index() Fonksiyonu (İndeks Değerlerini Ata)</a></p>
@@ -241,11 +246,16 @@ Eğitimlerde kullandığım Veri Setlerine <a href="https://github.com/mhalil/Pa
 <li>
 <p><a href="/pandas-string_metotlari.html">String Metotları</a></p>
 </li>
-<li>
-<p><a href="/pandas-sutun_ekle.html">Sütun Ekle</a></p>
-</li>
+</ul>
+<p><em>......... upper()</em></p>
+<p><em>......... lower()</em></p>
+<p><em>......... capitalize</em></p>
+<p><em>......... contains</em></p>
+<ul>
+<li><a href="/pandas-sutun_ekle.html">Sütun Ekle</a></li>
 </ul>
 <h2>VERİ ÇERÇEVELERİNİ BİRLEŞTİR</h2>
+<p>Pandas Kütüphanesinde Veri çerçevelerini birleştirmek için kullanılabilecek birden fazla Fonksiyon/Metot vardır. Bu başlık altında, bu Fonksiyonların kullanımı anlatılmıştır</p>
 <ul>
 <li>
 <p><a href="/pandas-concat.html">concat() Fonksiyonu</a></p>
@@ -273,9 +283,20 @@ Eğitimlerde kullandığım Veri Setlerine <a href="https://github.com/mhalil/Pa
 <p><em>...... right_on Parametresi</em></p>
 <p><em>...... suffixes Parametresi</em></p>
 <h2><a href="pandas-07-veri-siralama-yontemleri.html">VERİ SIRALAMA YÖNTEMLERİ</a></h2>
-<ul>
+<p>Oluşturulan Veri Çerçevelerinin, isteğimiz doğrultusunda sıralanması için kullanabileceğimiz yöntemlere, bu başlık altında değineceğiz.</p>
+<p>Pandas üç tür sıralamayı destekler ;</p>
+<ol>
+<li>
+<p>İndeks (dizin) etiketlerine göre sıralama,</p>
+</li>
+<li>
+<p>Sütun değerlerine göre sıralama</p>
+</li>
+<li>
+<p>Her ikisinin birleşimine göre sıralama.</p>
+</li>
 <li><a href="/pandas-sort_index.html">sort_index() Fonksiyonu</a></li>
-</ul>
+</ol>
 <p><em>...... ascending Parametresi</em></p>
 <p><em>...... axis Parametresi</em></p>
 <ul>
@@ -292,13 +313,44 @@ Eğitimlerde kullandığım Veri Setlerine <a href="https://github.com/mhalil/Pa
 <p><em>...... axis Parametresi</em></p>
 <p><em>......... index Seçeneği</em></p>
 <p><em>......... columns Seçeneği</em></p>
-<p>... Karşılaştırma Operatörü Kullanımı</p>
-<p>...... "is" Operatorü</p>
-<p>...... "." Operatorü</p>
 <h2><a href="pandas-08-veri-filtreleme-yontemleri.html">VERİ FİLTRELEME YÖNTEMLERİ</a></h2>
-<p>Karşılaştırma Operatorü Kullanımı</p>
-<p>between() Fonksiyonu</p>
-<p>Mantıksal Operatör Kullanımı</p>
+<p>Pandas kütüphanesi ile en sık yapılan işlemlerden biri de Filtreleme işlemidir. Binlerce, onbinlerce hatta milyonlarca kayıt arasından istediğimize ulaşmak için filreleme komutlarını kullanacağız. Bu bölümdeki anlatılanları da dikkatle okuyup öğrenmenizi tavsiye ederim.</p>
+<p>Sütun içerisindeki verilere göre filtreleme uygulamak istersek; 
+<code>VeriCervecesiAdı["SütunAdı"] operatör (==, &lt;, ...vb) "Filtre_Kriteri"</code> yöntemi kullanılabilir.</p>
+<p>Pythonda kullanıdığımız <strong>Karşılaştırma operatörlerini (&lt; , &gt; , &lt;=, &gt;=, ==, !=, )</strong> ve <strong>Mantıksal Operatörleri ( (and, ve) &amp; ve (or, Ya da) |</strong> Pandas içerisinde de kullanabiliriz.</p>
+<ul>
+<li><a href="/pandas-between.html">between() Fonksiyonu</a></li>
+</ul>
+<h3>Karşılaştırma Operatorleri</h3>
+<ul>
+<li>
+<p><a href="/pandas-esittir-operatoru.html">esittir (==) Operatörü</a></p>
+</li>
+<li>
+<p><a href="/pandas-esit-degil-operatoru.html">esit değil (!=) Operatörü</a></p>
+</li>
+<li>
+<p><a href="/pandas-buyuktur-operatoru.html">büyüktür (&gt;) Operatörü</a></p>
+</li>
+<li>
+<p><a href="/pandas-buyukesit-operatoru.html">büyükeşit (&gt;=) Operatörü</a></p>
+</li>
+<li>
+<p><a href="/pandas-kucuktur-operatoru.html">küçüktür (&lt;) Operatörü</a></p>
+</li>
+<li>
+<p><a href="/pandas-kucukesittir-operatoru.html">küçükeşit (&lt;=) Operatörü</a></p>
+</li>
+</ul>
+<h3>Mantıksal Operatörler</h3>
+<ul>
+<li>
+<p><a href="/pandas-ve-operatoru.html">ve (&amp;) Operatörü</a></p>
+</li>
+<li>
+<p><a href="/pandas-ya-da-operatoru.html">ya da (|) Operatörü</a></p>
+</li>
+</ul>
 <h2><a href="pandas-09-veri-gruplama-yontemleri.html">GRUPLAMA YÖNTEMLERİ</a></h2>
 <p>groupby() Fonksiyonu</p>
 <h2><a href="pandas-10-pivot_table-fonksiyonunun-kullanimi.html">pivot_table() FONKSİYONUNUN KULLANIMI</a></h2>

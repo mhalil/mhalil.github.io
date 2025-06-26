@@ -268,10 +268,10 @@ sayfaya ekleyeceğim.</p>
 				<a class="read-more" href="pandas-08-veri-filtreleme-yontemleri.html">Continue reading »</a>
 			</div>
 			<div class="post">
-				<h1 class="post-title" href="/pandas-07-veri-siralama-yontemleri.html">
-					<a href="/pandas-07-veri-siralama-yontemleri.html">Pandas 07 - Veri Sıralama Yöntemleri</a>
+				<h1 class="post-title" href="/pandas-between.html">
+					<a href="/pandas-between.html">Pandas - Between</a>
 				</h1>
-				<span class="post-date">Cum 15 Temmuz 2022</span>
+				<span class="post-date">Cts 16 Temmuz 2022</span>
 					<span class="post-tags">
 						Tags:
 						<ul>
@@ -279,28 +279,52 @@ sayfaya ekleyeceğim.</p>
 								<li><a href="/tag/pandas.html">Pandas</a></li>
 								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
 								<li><a href="/tag/modul.html">Modül</a></li>
-								<li><a href="/tag/veri.html">Veri</a></li>
-								<li><a href="/tag/siralama.html">Sıralama</a></li>
+								<li><a href="/tag/filtre.html">Filtre</a></li>
+								<li><a href="/tag/between.html">Between</a></li>
+								<li><a href="/tag/fonksiyon.html">Fonksiyon</a></li>
 						</ul>
 					</span>
 				<p>
-					<h1>Sıralama Yöntemleri</h1>
-<p>Oluşturulan Veri Çerçevelerinin, isteğimiz doğrultusunda sıralanması için kullanabileceğimiz yöntemlere, bu bölümde değineceğiz.</p>
-<p>Pandas üç tür sıralamayı destekler ;</p>
-<ul>
-<li>İndeks (dizin) etiketlerine göre sıralama,</li>
-<li>Sütun değerlerine göre sıralama</li>
-<li>Her ikisinin birleşimine göre sıralama.</li>
-</ul>
-<p>Konuya ait yöntemleri incelemek amacıyla <strong>imdb.xlsx</strong> dosyamızı içe aktararak bir veri çerçevesi oluşturarak işe başlayalım. Oluşturacağımız …</p>
+					<h1>between() Fonksiyonu</h1>
+<p>Bir sayısal aralık belirterek filtreleme yapmak istersek <code>between()</code> metodunu / fonksiyonunu kullanabiliriz.</p>
+<p>Örnek Veri çerçevemiz aşağıda görünmektedir.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">imdb</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/imdb.xlsx&quot;</span><span class="p">,</span> <span class="n">decimal</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">imdb</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Film_Adı</th>
+<th>Yıl</th>
+<th>Puan</th>
+<th>Oylayan_Kişi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>The Shawshank Redemption</td>
+<td>1994</td>
+<td>9.2</td>
+<td>1071904</td>
+</tr>
+<tr>
+<td>1</td>
+<td>The Godfather</td>
+<td>1972</td>
+<td>9.2</td>
+<td>751381 …</td></tr></tbody></table>
 				</p>
-				<a class="read-more" href="pandas-07-veri-siralama-yontemleri.html">Continue reading »</a>
+				<a class="read-more" href="pandas-between.html">Continue reading »</a>
 			</div>
 			<div class="post">
-				<h1 class="post-title" href="/pandas-apply.html">
-					<a href="/pandas-apply.html">Pandas - apply</a>
+				<h1 class="post-title" href="/pandas-buyukesit-operatoru.html">
+					<a href="/pandas-buyukesit-operatoru.html">Pandas - BüyükEşit Operatörü</a>
 				</h1>
-				<span class="post-date">Cum 15 Temmuz 2022</span>
+				<span class="post-date">Cts 16 Temmuz 2022</span>
 					<span class="post-tags">
 						Tags:
 						<ul>
@@ -308,19 +332,56 @@ sayfaya ekleyeceğim.</p>
 								<li><a href="/tag/pandas.html">Pandas</a></li>
 								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
 								<li><a href="/tag/modul.html">Modül</a></li>
-								<li><a href="/tag/apply.html">apply</a></li>
+								<li><a href="/tag/filtre.html">Filtre</a></li>
+								<li><a href="/tag/buyukesittir.html">BüyükEşittir</a></li>
+								<li><a href="/tag/operator.html">Operatör</a></li>
 						</ul>
 					</span>
 				<p>
-					<h1>apply() Fonksiyonu</h1>
-<p>Python programlama dilini öğrenirken karşılaştığımız <strong>fonksiyonlar</strong> konusunu hatırlarsınız Kullanıcı tarafından yazılan ya da standart python fonksiyonlarını, veri çerçevemize uygulamak istersek, <code>apply()</code> fonksiyonu kullanmamız gerekir.</p>
-<p>Yukarıdaki <strong>iş-meslek</strong> sütunundaki metinlerin büyük harfe dönüştürülmesi örneğini, bir de <code>apply()</code> fonksiyonu ile uygulayalım.</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">buyuk_harf</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">x</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+					<h1>&gt;= Operatörü</h1>
+<p>Örnek Veri çerçevemiz aşağıda görünmektedir.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">imdb</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/imdb.xlsx&quot;</span><span class="p">,</span> <span class="n">decimal</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">imdb</span><span class="p">)</span>
+</code></pre></div>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="p">[</span><span class="s2">&quot;IŞ-MESLEK&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply …</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Film_Adı</th>
+<th>Yıl</th>
+<th>Puan</th>
+<th>Oylayan_Kişi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>The Shawshank Redemption</td>
+<td>1994</td>
+<td>9.2</td>
+<td>1071904</td>
+</tr>
+<tr>
+<td>1</td>
+<td>The Godfather</td>
+<td>1972</td>
+<td>9.2</td>
+<td>751381</td>
+</tr>
+<tr>
+<td>2</td>
+<td>The Godfather: Part II</td>
+<td>1974</td>
+<td>9.0</td>
+<td>488889</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Pulp Fiction …</td></tr></tbody></table>
 				</p>
-				<a class="read-more" href="pandas-apply.html">Continue reading »</a>
+				<a class="read-more" href="pandas-buyukesit-operatoru.html">Continue reading »</a>
 			</div>
 	</div>
 	<div class="pagination">

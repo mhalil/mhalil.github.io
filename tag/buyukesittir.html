@@ -16,7 +16,7 @@
 		<!-- Enable responsiveness on mobile devices-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-		<title>mhalil - re_index tag - Programlama ve 3D</title>
+		<title>mhalil - BüyükEşittir tag - Programlama ve 3D</title>
 
 		<!-- CSS -->
 		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
@@ -76,10 +76,10 @@
 </div>		<div class="content container">
 	<div class="posts">
 			<div class="post">
-				<h1 class="post-title" href="/pandas-karsilastirma_operatoru.html">
-					<a href="/pandas-karsilastirma_operatoru.html">Pandas - karsilastirma_operatoru</a>
+				<h1 class="post-title" href="/pandas-buyukesit-operatoru.html">
+					<a href="/pandas-buyukesit-operatoru.html">Pandas - BüyükEşit Operatörü</a>
 				</h1>
-				<span class="post-date">Cum 15 Temmuz 2022</span>
+				<span class="post-date">Cts 16 Temmuz 2022</span>
 					<span class="post-tags">
 						Tags:
 						<ul>
@@ -87,27 +87,56 @@
 								<li><a href="/tag/pandas.html">Pandas</a></li>
 								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
 								<li><a href="/tag/modul.html">Modül</a></li>
-								<li><a href="/tag/veri.html">Veri</a></li>
-								<li><a href="/tag/siralama.html">Sıralama</a></li>
-								<li><a href="/tag/re_index.html">re_index</a></li>
-								<li><a href="/tag/columns.html">columns</a></li>
+								<li><a href="/tag/filtre.html">Filtre</a></li>
+								<li><a href="/tag/buyukesittir.html">BüyükEşittir</a></li>
+								<li><a href="/tag/operator.html">Operatör</a></li>
 						</ul>
 					</span>
 				<p>
-					<h1>Karşılaştırma Operatörü Kullanımı</h1>
-<h2>is Operatorü</h2>
-<p>Veri Çerçevelerinin <code>index</code> değerleri , liste veri tipi olarak belirtildiği için, listeler arasında karşılaştırma operatörlerini kullanmak ta mümkündür.</p>
-<p>Örneğin <code>df_1.index</code> değerlerinin <code>df_2.index</code> değerlerine eşit olup olmadığını denetleyelim;</p>
-<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df_1</span><span class="o">.</span><span class="n">index</span> <span class="ow">is</span> <span class="n">sirala_filtrele</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+					<h1>&gt;= Operatörü</h1>
+<p>Örnek Veri çerçevemiz aşağıda görünmektedir.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">imdb</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/imdb.xlsx&quot;</span><span class="p">,</span> <span class="n">decimal</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">imdb</span><span class="p">)</span>
 </code></pre></div>
 
-<div class="highlight"><pre><span></span><code><span class="kc">False</span>
-</code></pre></div>
-
-<h2>&gt; Operatörü</h2>
-<p>Python'da kullandığımız <code>&lt;, &gt;, &lt;=, &gt;=, ==</code>, ...vb operatörleri, Pandas Veri çerçevelerinde de kullanabiliriz …</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Film_Adı</th>
+<th>Yıl</th>
+<th>Puan</th>
+<th>Oylayan_Kişi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>The Shawshank Redemption</td>
+<td>1994</td>
+<td>9.2</td>
+<td>1071904</td>
+</tr>
+<tr>
+<td>1</td>
+<td>The Godfather</td>
+<td>1972</td>
+<td>9.2</td>
+<td>751381</td>
+</tr>
+<tr>
+<td>2</td>
+<td>The Godfather: Part II</td>
+<td>1974</td>
+<td>9.0</td>
+<td>488889</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Pulp Fiction …</td></tr></tbody></table>
 				</p>
-				<a class="read-more" href="pandas-karsilastirma_operatoru.html">Continue reading »</a>
+				<a class="read-more" href="pandas-buyukesit-operatoru.html">Continue reading »</a>
 			</div>
 	</div>
 	<div class="pagination">

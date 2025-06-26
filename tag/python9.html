@@ -76,6 +76,233 @@
 </div>		<div class="content container">
 	<div class="posts">
 			<div class="post">
+				<h1 class="post-title" href="/polars-0304-ifadeler.html">
+					<a href="/polars-0304-ifadeler.html">Polars - 0304 İfadeler</a>
+				</h1>
+				<span class="post-date">Prş 30 Haziran 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/polars.html">Polars</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>İfadeler</h1>
+<p><code>Polars</code>, çok hızlı performansının merkezinde yer alan, ifadeler (expressions) adı verilen güçlü bir konsepte sahiptir.</p>
+<p>İfadeler, birçok veri bilimi işleminin merkezinde yer alır:</p>
+<ul>
+<li>
+<p>bir sütundan satır örneği alma</p>
+</li>
+<li>
+<p>bir sütundaki değerleri çarpma</p>
+</li>
+<li>
+<p>tarihlerden bir yıl sütunu çıkarma</p>
+</li>
+<li>
+<p>bir dize sütununu küçük harfe dönüştürme</p>
+</li>
+<li>
+<p>ve benzeri!</p>
+</li>
+</ul>
+<p>Ancak ifadeler diğer işlemlerde …</p>
+				</p>
+				<a class="read-more" href="polars-0304-ifadeler.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="/polars-0301-veri-tipleri.html">
+					<a href="/polars-0301-veri-tipleri.html">Polars - 0301 Veri Tipleri</a>
+				</h1>
+				<span class="post-date">Pzt 27 Haziran 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/polars.html">Polars</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>Veri Tipleri</h1>
+<p><code>Polars</code>,  tamamen <code>Arrow</code> veri türlerini temel alır ve <code>Arrow</code> bellek dizileriyle 
+desteklenir. Bu, veri işlemeyi önbellek açısından verimli hale getirir ve İşlemler Arası İletişim için iyi desteklenir. Çoğu veri türü, <code>Utf8</code> (bu aslında <code>LargeUtf8</code>'dir), <code>Kategorik (Categorical)</code> ve <code>Nesne (Object)</code> (destek sınırlıdır) dışında <code>Arrow</code>'daki tam uygulamayı izler …</p>
+				</p>
+				<a class="read-more" href="polars-0301-veri-tipleri.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="/polars-00-giris.html">
+					<a href="/polars-00-giris.html">Polars - 00 Giriş</a>
+				</h1>
+				<span class="post-date">Paz 26 Haziran 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/polars.html">Polars</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>Polars Notları</h1>
+<p><img alt="polars" src="../../images/python/polars/polars_github_logo.svg"></p>
+<p><strong>Rust ve Python için Işık Hızında VeriÇerçevesi (DataFrame) Kütüphanesi.</strong></p>
+<h2>Polars Nedir?</h2>
+<p><code>Polars</code>, <code>Rust</code> programlama dilinde yazılmış ve temel olarak <code>Apache Arrow</code>’u kullanan bir <strong>DataFrame kütüphanesidir</strong>. Veri düzenleme alışkanlıklarını bilen <code>Polars</code>, okunabilir ve yüksek performanslı kod oluşturmanızı sağlayacak bir ifade dili kullanarak DataFrame'leri işlemek için tüm özellikleri içeren …</p>
+				</p>
+				<a class="read-more" href="polars-00-giris.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="/polars-01-takdim.html">
+					<a href="/polars-01-takdim.html">Polars - 01 Takdim</a>
+				</h1>
+				<span class="post-date">Paz 26 Haziran 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/polars.html">Polars</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>Takdim</h1>
+<p>Bu Kılavuz, <a href="https://github.com/pola-rs/polars">Polars DataFrame kitaplığına</a> bir giriş niteliğindedir. Amacı, örnekler üzerinden geçerek ve diğer çözümlerle karşılaştırarak size <code>Polars</code> kitaplığını tanıtmaktır. Bazı tasarım seçenekleri burada tanıtılmaktadır. Kılavuz ayrıca size <code>Polars</code>kitaplığının optimum kullanımını tanıtacaktır.</p>
+<p><code>Polars</code> tamamen <a href="https://www.rust-lang.org/">Rust</a>'ta yazılmış olsa da ve temel olarak <code>Arrow</code>'u (<a href="https://github.com/jorgecarleitao/arrow2">yerel arrow2 Rust uygulaması …</a></p>
+				</p>
+				<a class="read-more" href="polars-01-takdim.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="/polars-02-kurulum.html">
+					<a href="/polars-02-kurulum.html">Polars - 02 Kurulum</a>
+				</h1>
+				<span class="post-date">Paz 26 Haziran 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/polars.html">Polars</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>Kurulum</h1>
+<p><code>Polars</code> bir kitaplıktır/kütüphanedir ve kurulumu, ilgili programlama dilinin paket yöneticisini çağırmak kadar basittir. Aşağıda farklı programlama dillerine göre kurulum kodları verilmiştir. Bu kodları konsoldan yazarak <code>polars</code>'ı yükleyebilirsiniz.</p>
+<h4>Python</h4>
+<div class="highlight"><pre><span></span><code><span class="n">pip</span> <span class="n">install</span> <span class="n">polars</span>
+</code></pre></div>
+
+<h4>Rust</h4>
+<div class="highlight"><pre><span></span><code><span class="n">cargo</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="n">polars</span><span class="w"> </span><span class="o">-</span><span class="n">F</span><span class="w"> </span><span class="n">lazy</span>
+
+<span class="p">#</span><span class="w"> </span><span class="n">Or</span><span class="w"> </span><span class="n">Cargo</span><span class="p">.</span><span class="n">toml</span>
+<span class="p">[</span><span class="n">dependencies</span><span class="p">]</span>
+<span class="n">polars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;x&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">features</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;lazy&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">..</span><span class="p">.]}</span>
+</code></pre></div>
+
+<h4>NodeJS …</h4>
+				</p>
+				<a class="read-more" href="polars-02-kurulum.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="/freecad-scripting-06-komut-dosyasiyla-yazilmis-nesneler.html">
+					<a href="/freecad-scripting-06-komut-dosyasiyla-yazilmis-nesneler.html">FreeCAD - Scripting 06 - Komut Dosyasıyla Yazılmış Nesneler</a>
+				</h1>
+				<span class="post-date">Cts 26 Şubat 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/freecad.html">FreeCAD</a></li>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/scripting.html">Scripting</a></li>
+								<li><a href="/tag/komut.html">Komut</a></li>
+								<li><a href="/tag/nesne.html">Nesne</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>Komut Dosyasıyla Yazılmış Nesneler</h1>
+<h2>Takdim</h2>
+<p>Açıklamalar, ağlar ve parça nesneleri gibi standart nesne türlerinin yanı sıra, FreeCAD ayrıca <a href="https://wiki.freecadweb.org/App_FeaturePython">Python Özellikleri</a> adı verilen %100 python komut dosyasıyla oluşturulmuş parametrik nesneler oluşturmak için harika bir olanak sunar. Bu nesneler, tam 
+olarak diğer herhangi bir FreeCAD nesnesi gibi davranacak ve dosya kaydetme/yükleme …</p>
+				</p>
+				<a class="read-more" href="freecad-scripting-06-komut-dosyasiyla-yazilmis-nesneler.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="/freecad-scripting-04-parca-part-komut-dosyasi-olusturmak.html">
+					<a href="/freecad-scripting-04-parca-part-komut-dosyasi-olusturmak.html">FreeCAD - Scripting 04 - Parça (Part) Komut Dosyası Oluşturmak</a>
+				</h1>
+				<span class="post-date">Sal 22 Şubat 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/freecad.html">FreeCAD</a></li>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/scripting.html">Scripting</a></li>
+								<li><a href="/tag/komut.html">Komut</a></li>
+								<li><a href="/tag/parca.html">Parça</a></li>
+								<li><a href="/tag/part.html">Part</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>Parça (Part) Komut Dosyası Oluşturmak</h1>
+<h2>Takdim</h2>
+<p><code>Part (Parça)</code> modülünde kullanılan ana veri yapısı, <a href="https://wiki.freecadweb.org/OpenCASCADE">OpenCASCADE</a>'den <a href="http://en.wikipedia.org/wiki/Boundary_representation">BRep</a> veri türüdür. <code>Part</code> modülünün hemen hemen tüm içeriği ve nesne türleri, Python komut dosyasında mevcuttur. Bu, <strong>Çizgiler</strong>, <strong>Daireler</strong> ve <strong>Yaylar</strong> gibi geometrik temel şekilleri ve <strong>Noktalar, Kenarlar, Kafes/Ağ Yapıları, Yüzeyler, Katılar ve Bileşikler …</strong></p>
+				</p>
+				<a class="read-more" href="freecad-scripting-04-parca-part-komut-dosyasi-olusturmak.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="/freecad-scripting-05-topolojik-veri-kodlamasi.html">
+					<a href="/freecad-scripting-05-topolojik-veri-kodlamasi.html">FreeCAD - Scripting 05 - Topolojik Veri Kodlaması</a>
+				</h1>
+				<span class="post-date">Sal 22 Şubat 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/freecad.html">FreeCAD</a></li>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/scripting.html">Scripting</a></li>
+								<li><a href="/tag/komut.html">Komut</a></li>
+								<li><a href="/tag/topoloji.html">Topoloji</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>Topolojik Veri Kodlaması</h1>
+<h2>Takdim</h2>
+<p>Burada, <code>Parça (Part)</code> modülünü, doğrudan FreeCAD Python Yorumlayıcısından veya herhangi bir harici komut dosyasından nasıl kontrol edeceğinizi açıklayacağız. Python komut dosyasının FreeCAD'de nasıl çalıştığı hakkında daha fazla bilgiye ihtiyacınız varsa, <a href="https://wiki.freecadweb.org/Power_users_hub">Komut Dosyası</a> bölümüne ve <a href="freecad-03-komut-dosyasi-olusturmanin-temelleri.html">FreeCAD Komut Dosyası Oluşturma Temelleri 
+</a>sayfalarına göz attığınızdan emin olun. Python'da yeniyseniz …</p>
+				</p>
+				<a class="read-more" href="freecad-scripting-05-topolojik-veri-kodlamasi.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="/freecad-scripting-03-komut-dosyasi-olusturmanin-temelleri.html">
+					<a href="/freecad-scripting-03-komut-dosyasi-olusturmanin-temelleri.html">FreeCAD - Scripting 03 - Komut Dosyası Oluşturmanın Temelleri</a>
+				</h1>
+				<span class="post-date">Prş 17 Şubat 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/freecad.html">FreeCAD</a></li>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/scripting.html">Scripting</a></li>
+								<li><a href="/tag/komut.html">Komut</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>FreeCAD'de Komut Dosyası Oluşturmanın (Scripting) Temelleri</h1>
+<h2>FreeCAD'de Python komut dosyası oluşturmak</h2>
+<p>FreeCAD, Python komut dosyaları tarafından tamamen kontrol edilecek şekilde sıfırdan oluşturulmuştur. Arayüz, sahne içeriği ve hatta bu içeriğin 3B görünümlerdeki temsili gibi FreeCAD'in neredeyse tüm bölümlerine yerleşik Python yorumlayıcısından veya kendi komut dosyalarınızdan erişilebilir. Sonuç olarak, FreeCAD muhtemelen bugün …</p>
+				</p>
+				<a class="read-more" href="freecad-scripting-03-komut-dosyasi-olusturmanin-temelleri.html">Continue reading »</a>
+			</div>
+			<div class="post">
 				<h1 class="post-title" href="/freecad-scripting-02-python-komut-dosyasi-olusturmak.html">
 					<a href="/freecad-scripting-02-python-komut-dosyasi-olusturmak.html">FreeCAD - Scripting 02 - Python Komut Dosyası Oluşturmak</a>
 				</h1>
@@ -94,32 +321,12 @@
 				</p>
 				<a class="read-more" href="freecad-scripting-02-python-komut-dosyasi-olusturmak.html">Continue reading »</a>
 			</div>
-			<div class="post">
-				<h1 class="post-title" href="/freecad-scripting-01-pythona-giris.html">
-					<a href="/freecad-scripting-01-pythona-giris.html">FreeCAD - Scripting 01 - Python'a Giriş</a>
-				</h1>
-				<span class="post-date">Paz 13 Şubat 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/freecad.html">FreeCAD</a></li>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/giris.html">Giriş</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1>Python'a Giriş</h1>
-<p>Bu bölümün amacı, Python programlama dili hakkında kısaca bilgi vermek ve ardından FreeCAD programı içerisinde Python kodu yazmayı ve/veya yazdığımız kodları çalıştırmayı öğrenmektir.</p>
-<p>Bu, Python'a yeni başlayanlar için kısa bir eğitimdir. Python, açık kaynaklı, çok platformlu bir programlama dilidir. Onu diğer programlama dillerinden farklı ve yeni kullanıcılar …</p>
-				</p>
-				<a class="read-more" href="freecad-scripting-01-pythona-giris.html">Continue reading »</a>
-			</div>
 	</div>
 	<div class="pagination">
 
 		<span class="pagination-item older"><a href="/tag/python8.html">Newer</a></span>
 
-		<span class="pagination-item newer">Older</span>
+		<span class="pagination-item newer"><a href="/tag/python10.html">Older</a></span>
 	</div>
 		</div>
 	</body>
