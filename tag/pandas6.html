@@ -76,6 +76,35 @@
 </div>		<div class="content container">
 	<div class="posts">
 			<div class="post">
+				<h1 class="post-title" href="/pandas-shape.html">
+					<a href="/pandas-shape.html">Pandas - shape</a>
+				</h1>
+				<span class="post-date">Paz 10 Temmuz 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/describe.html">describe</a></li>
+								<li><a href="/tag/fonksiyon.html">Fonksiyon</a></li>
+								<li><a href="/tag/shape.html">shape</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>shape Fonksiyonu</h1>
+<p><strong>shape</strong> fonksiyonu ile, Veri Çerçevesinin yapısını yani satır ve sütun bilgisini öğrenebiliriz.</p>
+<p>Öncelikle <strong>Pandas</strong> Kütüphanesini içe aktarıp, kodlama esnasında hızlı olması adına bu kütüphaneye <strong>pd</strong> adını atayalım;</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</code></pre></div>
+
+<p>Basit bir Veri Çerçevesi (Data Frame) oluşturalım ve oluşturduğumuz Veri Çerçevesinin içeriğini görelim;</p>
+<div class="highlight"><pre><span></span><code><span class="n">sozluk</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;isim&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Mustafa&quot;</span><span class="p">,</span> <span class="s2">&quot;Halil …</span></code></pre></div>
+				</p>
+				<a class="read-more" href="pandas-shape.html">Continue reading »</a>
+			</div>
+			<div class="post">
 				<h1 class="post-title" href="/pandas-tail.html">
 					<a href="/pandas-tail.html">Pandas - tail</a>
 				</h1>
@@ -348,77 +377,6 @@
 <div class="highlight"><pre><span></span><code><span class="n">Sayfada …</span></code></pre></div>
 				</p>
 				<a class="read-more" href="pandas-read_html.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="/pandas-read_json.html">
-					<a href="/pandas-read_json.html">Pandas - read_json</a>
-				</h1>
-				<span class="post-date">Cts 09 Temmuz 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/pandas.html">Pandas</a></li>
-								<li><a href="/tag/dataframe.html">DataFrame</a></li>
-								<li><a href="/tag/veri-cercevesi.html">Veri Çerçevesi</a></li>
-								<li><a href="/tag/read_json.html">read_json</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1>read_json() Fonksiyonu Nedir? Nasıl Kullanılır?</h1>
-<p><strong>read_json()</strong> fonksiyonu ile <strong>json</strong> uzantılı dosyaları çalışmalarınıza dahil edebilirsiniz.</p>
-<div class="highlight"><pre><span></span><code><span class="n">veri_json</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/json_verisi.json&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">veri_json</span><span class="p">)</span>
-</code></pre></div>
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th>Duration</th>
-<th>Pulse</th>
-<th>Maxpulse</th>
-<th>Calories</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td>60</td>
-<td>110</td>
-<td>130</td>
-<td>409</td>
-</tr>
-<tr>
-<td>1</td>
-<td>60</td>
-<td>117</td>
-<td>145</td>
-<td>479</td>
-</tr>
-<tr>
-<td>2</td>
-<td>60</td>
-<td>103</td>
-<td>135</td>
-<td>340</td>
-</tr>
-<tr>
-<td>3</td>
-<td>45</td>
-<td>109</td>
-<td>175</td>
-<td>282</td>
-</tr>
-<tr>
-<td>4</td>
-<td>45</td>
-<td>117</td>
-<td>148 …</td></tr></tbody></table>
-				</p>
-				<a class="read-more" href="pandas-read_json.html">Continue reading »</a>
 			</div>
 	</div>
 	<div class="pagination">

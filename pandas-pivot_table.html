@@ -8,9 +8,9 @@
 		<!-- Metadata -->
 	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
 	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
-	<meta property="og:title" content="Pandas 10 - pivot_table() Fonksiyonunun Kullanımı" />
+	<meta property="og:title" content="Pandas - pivot_table()" />
 	<meta property="og:type" content="article" />
-	<meta property="og:url" content="/pandas-10-pivot_table-fonksiyonunun-kullanimi.html" />
+	<meta property="og:url" content="/pandas-pivot_table.html" />
 		<meta property="og:image" content="/images/avatar.png" />
 
 		<!-- Enable responsiveness on mobile devices-->
@@ -75,13 +75,12 @@
 	</div>
 </div>		<div class="content container">
 <div class="post">
-	<h1 class="post-title">Pandas 10 - pivot_table() Fonksiyonunun Kullanımı</h1>
+	<h1 class="post-title">Pandas - pivot_table()</h1>
 	<span class="post-date">Sal 19 Temmuz 2022</span>
 	<h1>Pandas'ta Pivot Table (Özet Tablo) Fonksiyonunun Kullanımı</h1>
-<p>Verilerinize ilişkin özet tablola oluşturmak konusunda, Excel'deki pivot tablolara aşina olabilirsiniz. Burada, <code>.pivot_table()</code> metodunu kullanarak Python ve Pandas'ta nasıl pivot (özet) tablolar oluşturacağımızı öğreneceğiz. Elimden geldiğince öğrendiklerimi bu 
-sayfaya ekleyeceğim.</p>
-<p>Pivot Tablolar, verileri hızlı bir şekilde özetleyebilmek, verilerinizin nasıl göründüğüne dair bir fikir edinebilmek için önemli bir beceridir. İşlev, Pandas'ta da bulunan
- <code>.groupby()</code> yöntemine oldukça benzer, ancak burada daha sonra göreceğimiz gibi, önemli ölçüde daha fazla özelleştirme sunar.</p>
+<p>Verilerinize ilişkin özet tablola oluşturmak konusunda, Excel'deki pivot tablolara aşina olabilirsiniz. Burada, <code>.pivot_table()</code> metodunu kullanarak Python ve Pandas'ta nasıl pivot (özet) tablolar oluşturacağımızı öğreneceğiz. </p>
+<p>Pivot Tablolar, verileri hızlı bir şekilde özetleyebilmek, verilerinizin nasıl göründüğüne dair bir fikir edinebilmek için önemli bir beceridir. Fonksiyon, Pandas'ta da bulunan
+ <code>.groupby()</code> yöntemine oldukça benzer, ancak daha fazla özelleştirme imkanı sunar.</p>
 <p>Bu eğitimin sonunda şunları öğrenmiş olacaksınız:</p>
 <ul>
 <li><code>pivot_table()</code> fonksiyonu nasıl kullanılır? ve parametreleri neyi temsil eder.</li>
@@ -90,25 +89,23 @@ sayfaya ekleyeceğim.</p>
 <li>Kendi toplama yöntemlerinizi nasıl belirleyip oluşturabilirsiniz?</li>
 <li>Toplamlar nasıl hesaplanır ve eksik verilerle nasıl başa çıkılır?</li>
 </ul>
-<h2>Python'da Pivot Tablo Nasıl Oluşturulur</h2>
-<p>Pivot tablo, daha büyük bir tablonun verilerini, bu verileri <strong>'işleyerek'</strong> özetlemeye yardımcı olan bir istatistik tablosudur. Microsoft Excel, PivotTable olarak bilinen pivot tabloyu popüler hale getirdi. Pandas, <code>.pivot_table()</code> fonksiyonunu kullanarak, Python'da özet tablolar oluşturmaya imkan sağlar. Fonksiyon, aşağıdaki varsayılan parametrelere sahiptir:</p>
-<div class="highlight"><pre><span></span><code>    <span class="c1"># .pivot_table() fonksiyonunun sözdizimi;</span>
-    <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-    <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
-    <span class="n">data</span><span class="o">=</span><span class="p">,</span>
-    <span class="n">values</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
-    <span class="n">index</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
-    <span class="n">columns</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
-    <span class="n">aggfunc</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> 
-    <span class="n">fill_value</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
-    <span class="n">margins</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> 
-    <span class="n">dropna</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
-    <span class="n">margins_name</span><span class="o">=</span><span class="s1">&#39;All&#39;</span><span class="p">,</span> 
-    <span class="n">observed</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="n">sort</span><span class="o">=</span><span class="kc">True</span> <span class="p">)</span>     
+<h1>Python'da Pivot Tablo Nasıl Oluşturulur?</h1>
+<p>Pivot tablo, daha büyük bir tablonun verilerini, bu verileri <strong>'işleyerek'</strong> özetlemeye yardımcı olan bir istatistik tablosudur. Microsoft Excel, PivotTable olarak bilinen pivot tabloyu popüler hale getirdi. Pandas, <code>.pivot_table()</code> fonksiyonunu kullanarak, Python'da özet tablolar oluşturmaya imkan sağlar. Fonksiyon, aşağıdaki varsayılan parametrelere sahiptir.</p>
+<p><code>pivot_table()</code> fonksiyonunun sözdizimi aşağıdaki gibidir;</p>
+<div class="highlight"><pre><span></span><code><span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">,</span>
+                <span class="n">values</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
+                <span class="n">index</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
+                <span class="n">columns</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
+                <span class="n">aggfunc</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> 
+                <span class="n">fill_value</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
+                <span class="n">margins</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> 
+                <span class="n">dropna</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+                <span class="n">margins_name</span><span class="o">=</span><span class="s1">&#39;All&#39;</span><span class="p">,</span> 
+                <span class="n">observed</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                <span class="n">sort</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>     
 </code></pre></div>
 
-<p>Metot/Yöntem bir Veri Çerçevesi (DataFrame) alır ve ardından bir DataFrame döndürür. Aşağıdaki tablo, fonksiyonda bulunan parametrelere genel bir bakış sağlar:</p>
+<p>Metot bir Veri Çerçevesi alır ve ardından bir Veri Çerçevesi döndürür. Aşağıdaki tablo, fonksiyonda bulunan parametrelere genel bir bakış sunar:</p>
 <table>
 <thead>
 <tr>
@@ -131,12 +128,12 @@ sayfaya ekleyeceğim.</p>
 <tr>
 <td>index=</td>
 <td></td>
-<td>Verilerin gruplanacağı sütun veya sütunlar. Tekil sütun için bir <br>dize/string ifade olabilirken, çoklu sütunlar için bir dize/string <br>listesi (<strong>list()</strong> yapısı) olmalıdır</td>
+<td>Verilerin gruplanacağı sütun veya sütunlar. Tekil sütun için bir dize/string ifade olabilirken, çoklu sütunlar için bir dize/string listesi (<strong>list()</strong> yapısı) olmalıdır</td>
 </tr>
 <tr>
 <td>columns=</td>
 <td></td>
-<td>Verilerin gruplanacağı sütun veya sütunlar. Tekil sütun için bir <br>dize/string ifade olabilirken, çoklu sütunlar için bir dize/string <br>listesi (<strong>list()</strong> yapısı) olmalıdır</td>
+<td>Verilerin gruplanacağı sütun veya sütunlar. Tekil sütun için bir dize/string ifade olabilirken, çoklu sütunlar için bir dize/string listesi (<strong>list()</strong> yapısı) olmalıdır</td>
 </tr>
 <tr>
 <td>aggfunc=</td>
@@ -176,7 +173,6 @@ sayfaya ekleyeceğim.</p>
 </tbody>
 </table>
 <p>Artık fonksiyonda bulunan parametreleri anladığınıza göre, veri setimizi yükleyelim ve verilerimizi keşfetmeye başlayalım.</p>
-<h2>Örnek Veri Çerçevesi (DataFrame) Oluşturalım</h2>
 <p>Bu eğitimi takip etmek için örnek bir Pandas Veri Çerçevesi (DataFrame) oluşturalım. DataFrame'i aşağııdaki GitHub sayfasındaki ilgili dosyadan <code>pd.read_excel()</code> işlevini kullanarak yükleyebiliriz. Ardından, <code>.head()</code> yöntemini kullanarak veri kümesinin ilk beş kaydını yazdırabiliriz.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;https://github.com/datagy/mediumdata/raw/master/sample_pivot.xlsx&#39;</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">])</span>
@@ -269,11 +265,14 @@ sayfaya ekleyeceğim.</p>
 </tbody>
 </table>
 <p>Artık verilerle ilgili biraz daha fazla bilgimiz olduğuna göre, Pandas'ta ilk Pivot (Özet) Tablomuzu oluşturalım.</p>
-<h2>Pandas'ta Pivot Tablo Oluşturmak</h2>
-<p>İlk Pandas pivot tablonuzu oluşturalım. En azından, <code>index=</code> veya <code>column=</code> parametrelerini kullanarak bir tür grup anahtarı belirlemeliyiz. 
-Aşağıdaki örneklerde DataFrame fonksiyonu yerine Pandas fonksiyonunu 
-kullanıyoruz. Bu nedenle, <code>data=</code> parameresini belirtmemiz gerekiyor. Yöntemi doğrudan DataFrame'e uygularsak (örneğin: <code>df.pivot_table(...)</code>), bu parametre <code>data= df</code> şeklinde ima edilmiş olur.</p>
-<div class="highlight"><pre><span></span><code><span class="n">sales_by_region</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s1">&#39;Region&#39;</span><span class="p">)</span>
+<h1>pivot_table() Fonksiyonu</h1>
+<h2>data ve index Parametreleri</h2>
+<p>İlk pivot tablomuzu oluşturalım. </p>
+<blockquote>
+<p>Özet tablo oluştururken en azından, <code>index=</code> veya <code>column=</code> parametrelerini kullanarak bir tür grup anahtarı belirlemeliyiz. </p>
+</blockquote>
+<p>Aşağıdaki örneklerde  <code>DataFrame()</code> fonksiyonu yerine direkt <code>pivot_table()</code> fonksiyonunu kullanarak özet tablo oluşturuyoruz. Yani istesek yukarıda oluşturduğumuz df isimli veri çerçevesini <code>df.pivot_table(...)</code> şeklinde kullanarak ta özet tablo oluşturabilirdik ancak bunu yapmadığımızi çin, <code>pivot_table()</code> fonksiyonunda <code>data=</code> parameresini belirtmemiz gerekiyor. </p>
+<div class="highlight"><pre><span></span><code><span class="n">pivot</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s1">&#39;Region&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">pivot</span><span class="p">)</span>
 </code></pre></div>
 
@@ -282,29 +281,34 @@ kullanıyoruz. Bu nedenle, <code>data=</code> parameresini belirtmemiz gerekiyor
 <tr>
 <th>Region</th>
 <th>Sales</th>
+<th>Units</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>East</td>
 <td>408.182482</td>
+<td>19.732360</td>
 </tr>
 <tr>
 <td>North</td>
 <td>438.924051</td>
+<td>19.202643</td>
 </tr>
 <tr>
 <td>South</td>
 <td>432.956204</td>
+<td>20.423358</td>
 </tr>
 <tr>
 <td>West</td>
 <td>452.029412</td>
+<td>19.29411</td>
 </tr>
 </tbody>
 </table>
-<p>Yukarıdaki kodu, daha anlaşılır olduğunu düşünenler aşağıdaki şekilde yazıp çalıştırabilir. İkisi de aynı sonucu verir.</p>
-<div class="highlight"><pre><span></span><code><span class="n">sales_by_region</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
+<p>Yukarıdaki kod, daha okunaklı kılınmak adına aşağıdaki şekilde de yazıp çalıştırabilir. İkisi de aynı sonucu verir.</p>
+<div class="highlight"><pre><span></span><code><span class="n">pivot</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
     <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
     <span class="n">index</span><span class="o">=</span><span class="s1">&#39;Region&#39;</span>
 <span class="p">)</span>
@@ -316,41 +320,47 @@ kullanıyoruz. Bu nedenle, <code>data=</code> parameresini belirtmemiz gerekiyor
 <tr>
 <th>Region</th>
 <th>Sales</th>
+<th>Units</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>East</td>
 <td>408.182482</td>
+<td>19.732360</td>
 </tr>
 <tr>
 <td>North</td>
 <td>438.924051</td>
+<td>19.202643</td>
 </tr>
 <tr>
 <td>South</td>
 <td>432.956204</td>
+<td>20.423358</td>
 </tr>
 <tr>
 <td>West</td>
 <td>452.029412</td>
+<td>19.29411</td>
 </tr>
 </tbody>
 </table>
 <p>Çıktıyı parçalara bölüp irdeleyelim.</p>
 <ol>
-<li><code>pd.pivot_table()</code> fonksiyonu kullanılarak oluşturulan, <strong>sales_by_region</strong> adlı yeni bir DataFrame oluşturduk.</li>
-<li>Veri Çerçevesi (DataFrame) olarak, <code>df</code>'yi belirtik ve <code>index='region'</code> parametresi ile <strong>region</strong> sütununu indeks değeri olarak belirledik, yani veriler bölge sütununa göre gruplanacak.</li>
+<li><code>pd.pivot_table()</code> fonksiyonu kullanılarak oluşturulan, <strong>pivot</strong> adlı <strong>yeni bir DataFrame oluşturduk.</strong></li>
+<li><code>data</code> değeri olarak, daha önce oluşturduğumuz <code>df</code> isimli veri çerçevemizi belirtik ve <code>index='region'</code> parametresi ile <strong>region</strong> sütununu indeks değeri olarak belirledik, yani veriler bölge sütununa göre gruplanacak.</li>
 </ol>
 <p>Diğer tüm parametreler varsayılan değerlerine bırakıldığı için Pandas şu varsayımı yaptı:</p>
 <ul>
-<li>Veriler, her sütunun ortalamasına göre toplanmalıdır (aggfunc='mean')</li>
-<li>Değerler herhangi bir sayısal sütun olmalıdır</li>
+<li>Veriler, her sütunun <strong>ortalamasına</strong> göre toplanmalıdır (<code>aggfunc='mean'</code>),</li>
+<li>Değerler herhangi bir sayısal sütun olmalıdır.</li>
 </ul>
-<h2>Pandas Özet Tablosunda Sadece Belirli Sütunları Toplamak</h2>
-<p>Yukarıdaki örnekte, <code>values=</code> parametresini değiştirmediniz. Bu nedenle, tüm sayısal sütunlar toplanmış oldu. Bu, her zaman ideal olmayabilir. Bu nedenle Pandas, tek bir sütunu temsil eden tek bir dize/string veya birden çok sütunu temsil eden bir 
-dizi/string listesi iletmemize izin verir.</p>
-<p>Şimdi kodumuzu, sadece <strong>Satışların (Sales)</strong> ortalamasını hesaplayacak şekilde değiştirelim:</p>
+<h2>values Parametresi</h2>
+<p><strong>Pandas Özet Tablosunda Sadece Belirli Sütunları Toplamak</strong></p>
+<p>Yukarıdaki örnekte, <code>values=</code> parametresini belirtmedik. Bu nedenle, tüm sayısal sütunları toplamış olduk. Bu, her zaman ideal olmayabilir. Bu nedenle Pandas, tek bir sütunu temsil eden tek bir string veya birden çok sütunu temsil eden bir 
+string listesi iletmemize izin verir.</p>
+<p>Şimdi kodumuzu, sadece <strong>Satışların (Sales) ortalamasını</strong> hesaplayacak şekilde değiştirelim:</p>
 <div class="highlight"><pre><span></span><code><span class="n">pivot</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s1">&#39;Region&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;Sales&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">pivot</span><span class="p">)</span>
 </code></pre></div>
@@ -381,11 +391,13 @@ dizi/string listesi iletmemize izin verir.</p>
 </tr>
 </tbody>
 </table>
-<p>Tüm sayısal sütunları toplamak yerine yalnızca belirtilen sütunun toplandığını görebiliriz.</p>
-<h2>Pandas Özet Tablosunda Toplama Yöntemleriyle Çalışmak</h2>
-<p>Pandas'ta ilk pivot tablonuzu oluşturduğunuza göre, şimdi toplama yöntemlerini değiştirmeye çalışalım. Bu, verilerinizin nasıl bir araya getirilmesini istediğinizi belirtmenize olanak tanır. Pandas'ın gücünün gerçekten ortaya çıktığı yer burasıdır ve karmaşık analizleri kolaylıkla hesaplamanıza olanak tanır.</p>
-<h2>Pandas Özet Tablosunda Toplama Yöntemini Belirtmek</h2>
-<p>Verilerin bir pivot tabloda nasıl toplandığını değiştirmek için <code>aggfunc=</code> (aggregation function yani toplama fonksiyonu) parametresini kullanabilirsiniz. Pandas, varsayılan olarak verileri toplamak için <code>.mean()</code> yöntemini kullanır. <code>'mean'</code>, <code>'sum'</code> veya <code>'max'</code> gibi adlandırılmış bir işlevi veya <code>np.mean</code> gibi çağrılabilir bir fonksiyon/işlevi iletebilirsiniz.</p>
+<p>Tüm sayısal veri barındıran sütunları (Sales ve Units) toplamak yerine yalnızca belirtilen sütunun (<strong>Sales</strong>) toplandığını görebiliriz.</p>
+<h2>aggfunc Parametresi</h2>
+<p><strong>Pandas Özet Tablosunda Toplama Yöntemleriyle Çalışmak</strong></p>
+<p>Pandas'ta ilk pivot tablonuzu oluşturduğunuza göre, şimdi toplama yöntemlerini değiştirmeye çalışalım. Bu yöntem, verilerinizin nasıl bir araya getirilmesini istediğinizi belirtmenize olanak tanır. Pandas'ın gücünün gerçekten ortaya çıktığı yer burasıdır ve karmaşık analizleri kolaylıkla hesaplamanıza olanak tanır.</p>
+<p><strong>Pandas Özet Tablosunda Toplama Yöntemini Belirtmek</strong></p>
+<p>Verilerin bir pivot tabloda nasıl toplandığını değiştirmek için <code>aggfunc=</code> (aggregation function yani toplama fonksiyonu) parametresini kullanabilirsiniz. Pandas, varsayılan olarak verileri toplamak için <code>.mean()</code> yöntemini kullanır. <code>aggfunc</code> fonksiyonuna, <code>"mean"</code>, <code>"sum"</code> veya <code>"max"</code> gibi adlandırılmış bir değeri veya <code>np.mean</code> gibi çağrılabilir bir fonksiyonu atayabiliriz.</p>
+<h3>sum() değeri</h3>
 <p>Şimdi tüm bölgelerdeki satışlarımızın <strong>toplamını</strong> bulmak için davranışımızı değiştirmeye çalışalım:</p>
 <div class="highlight"><pre><span></span><code><span class="n">pivot</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s1">&#39;Region&#39;</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s1">&#39;sum&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">pivot</span><span class="p">)</span>
@@ -422,8 +434,8 @@ dizi/string listesi iletmemize izin verir.</p>
 </tr>
 </tbody>
 </table>
-<h2>Pandas DataFrame'de Çoklu Toplama Yöntemi</h2>
-<p>Benzer şekilde, bir Pandas pivot tablosuna birden çok toplama yöntemi belirtebiliriz. Bu oldukça kolaydır ve sadece bir fonksiyon listesi yazmanızı gerektirir ve fonksiyon, tüm değer barındıran sütunlarına uygulanır. Hem <strong>ortalama</strong> hem de <strong>toplam</strong> için değerler üretelim:</p>
+<h3>Pandas DataFrame'de Çoklu Toplama Yöntemi</h3>
+<p>Benzer şekilde, bir Pandas pivot tablosuna birden çok toplama yöntemi belirtebiliriz. Bu oldukça kolaydır ve bunun için sadece bir <u>fonksiyon listesi </u>yazmanız gerekir. Yazılan fonksiyon, tüm değer barındıran sütunlara uygulanır. Hem <strong>ortalama (mean)</strong> hem de <strong>toplam (sum)</strong> için değerler üretelim:</p>
 <div class="highlight"><pre><span></span><code><span class="n">pivot</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s1">&#39;Region&#39;</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;sum&#39;</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">pivot</span><span class="p">)</span>
 </code></pre></div>
@@ -479,7 +491,7 @@ dizi/string listesi iletmemize izin verir.</p>
 <p>Bunun ne kadar kolay olduğunu ve ne kadar daha fazla veri sağladığını görebiliyoruz! Sayısal verileri içeren her sütun için hem <strong>ortalama</strong> hem de <strong>toplam</strong> oluşturuldu.</p>
 <h2>Farklı Sütunlar için Farklı Toplama Yöntemi Belirtmek</h2>
 <p>Şimdi, Farklı Sütunlar için Farklı Toplama Yöntemi Belirtmek istediğinizi hayal edin. 
-Bunu yapmak için, aşağıdaki anahtar/değer çifti biçimini içeren bir <strong>sözlüğü</strong> iletebilirsiniz: <code>'sütun': fonksiyon</code>. <code>Birimlerin (Units) toplamını ve ortalama satış sayısını</code> hesaplamak istediğimizi varsayalım:</p>
+Bunu yapmak için, aşağıdaki gibi anahtar ve değer çifti biçiminde bir <strong>sözlük</strong> yapısı (örneğin: <code>{'sütun': fonksiyon}</code> ) oluşturup fonksiyona değer olarak atamamız yeterli olacaktır. <strong>Birimler (Units) sütununun toplamını ve Satış Maliyeti (Sales) sütununun ise ortalama değerlerini</strong> hesaplamak istediğimizi varsayalım. Bu durumda aşağıdaki kod, işimize yarayacaktır:</p>
 <div class="highlight"><pre><span></span><code><span class="n">pivot</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
     <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
     <span class="n">index</span><span class="o">=</span><span class="s1">&#39;Region&#39;</span><span class="p">,</span>
@@ -520,11 +532,12 @@ Bunu yapmak için, aşağıdaki anahtar/değer çifti biçimini içeren bir <str
 </tr>
 </tbody>
 </table>
-<p>Bu, aynı DataFrame'de farklı temel performans göstergeleri arasında karşılaştırılan verileri kolayca görmenizi sağlar.</p>
-<h2>Pandas'ta Özet Tablolarında Özel Toplamaları</h2>
-<p>Pandas, ayrıca özel bir fonksiyonu <strong>.pivot_table()</strong> fonksiyonu olarak kullanmanızı (pandas fonksiyonuna dönüştürmeyi) sağlar. Bu, ihtiyaçlarınıza göre özel olarak tasarlanmış analizlerle çalışma yeteneğimizi büyük ölçüde genişletir! Bir sütunun ortalamasını herhangi bir aykırı değer olmadan hesaplayan bir fonksiyona nasıl 
+<p>Bu, aynı DataFrame'de farklı temel performans göstergeleri arasında karşılaştırılan verileri kolayca görmemizi sağlar.</p>
+<h2>Pandas'ta Özet Tabloların da Özel Toplamaları</h2>
+<h3>quantiles()</h3>
+<p>Pandas, ayrıca özel bir fonksiyonu <code>.pivot_table()</code> fonksiyonu olarak kullanmanızı (pandas fonksiyonuna dönüştürmeyi) sağlar. Bu, ihtiyaçlarınıza göre özel olarak tasarlanmış analizlerle çalışma yeteneğimizi büyük ölçüde genişletir. Bir sütunun ortalamasını herhangi bir aykırı değer olmadan hesaplayan bir fonksiyona nasıl 
 dönüştürebileceğimizi görelim.</p>
-<p>Pandas, veri aralığındaki yüzdelerine göre seçmek istediğimiz bir dizi değeri tanımlamamıza izin veren bir <strong>.quantiles()</strong> yöntemiyle birlikte gelir. Diyelim ki, verilerin üst ve alt <strong>%10</strong>'unu kaldırarak bir sütunun ortalamasını hesaplamak istedik. Aşağıdaki fonksiyonu tanımlayabiliriz:</p>
+<p>Pandas, veri aralığındaki yüzdelerine göre seçmek istediğimiz bir dizi değeri tanımlamamıza izin veren bir <code>.quantiles()</code> yöntemiyle birlikte gelir. Diyelim ki, verilerin üst ve alt <strong>%10</strong>'unu kaldırarak bir sütunun ortalamasını hesaplamak istedik. Aşağıdaki fonksiyonu tanımlayabiliriz:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="k">def</span> <span class="nf">mean_no_outliers</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
     <span class="n">no_outliers</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="n">quantile</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">])</span>
@@ -532,8 +545,8 @@ dönüştürebileceğimizi görelim.</p>
     <span class="k">return</span> <span class="n">mean</span>
 </code></pre></div>
 
-<p>Yukarıdaki fonksiyon, <code>.pivot_table()</code> fonksiyonu tarafından iletilen <code>değerler (values)</code> olacak olan tek bir parametreyi kabul eder. Değerler daha sonra <code>.quantile()</code> metodu/yöntemi kullanılarak filtrelenir. Son olarak, bu değerlerin 
-ortalaması hesaplanır. Satış (Sales) sütunumuza uygulanan pivot tablomuzda bunu (ve normal <code>ortalama (mean)</code> toplamayı) nasıl kullanabileceğimizi görelim.</p>
+<p>Yukarıdaki fonksiyon, <code>.pivot_table()</code> fonksiyonu tarafından iletilen <code>değerler (values)</code> olacak olan tek bir parametreyi kabul eder. Değerler daha sonra <code>.quantile()</code> metodu kullanılarak filtrelenir. Son olarak, bu değerlerin 
+ortalaması hesaplanır. <strong>Satış (Sales)</strong> sütunumuza uygulanan pivot tablomuzda bunu (ve normal <code>ortalama (mean)</code> toplamayı) nasıl kullanabileceğimizi görelim.</p>
 <div class="highlight"><pre><span></span><code><span class="n">pivot</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
     <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
     <span class="n">index</span><span class="o">=</span><span class="s1">&#39;Region&#39;</span><span class="p">,</span>
@@ -583,8 +596,9 @@ ortalaması hesaplanır. Satış (Sales) sütunumuza uygulanan pivot tablomuzda 
 <h2>Daha Karmaşık Pandas Pivot Tabloları</h2>
 <p>Artık <code>.pivot_table()</code> fonksiyonunun Pandas'ta nasıl kullanıldığını anladığınıza göre, şimdi anlayışımızı nasıl genişletebileceğimize bir göz atalım. Bu bölümde, Pandas pivot 
 tablolarımıza nasıl sütun ve çoklu indeks ekleyeceğinizi öğreneceksiniz.</p>
-<h2>Pandas Özet Tablosuna Sütun Eklemek</h2>
-<p>Bir Pandas pivot tablosuna sütun eklediğimizde, verilere başka bir boyut ekleriz. <code>index=</code> parametresi verileri dikey olarak bölerken, <code>column=</code> parametresi verileri yatay olarak gruplar ve böler. Bu, okunması kolay bir tablo oluşturmamızı sağlar. Verileri <strong>Type</strong> sütununa göre bölmek için <code>column=</code> parametresini nasıl kullanabileceğimizi görelim.</p>
+<h2>columns Parametresi</h2>
+<p><strong>Pandas Özet Tablosuna Sütun Eklemek</strong></p>
+<p>Bir pivot tablosuna sütun eklediğimizde, verilere başka bir boyut ekleriz. <code>index=</code> parametresi verileri dikey olarak bölerken, <code>column=</code> parametresi verileri yatay olarak gruplar ve böler. Bu, okunması kolay bir tablo oluşturmamızı sağlar. Verileri <strong>Type</strong> sütununa göre bölmek için <code>column=</code> parametresini nasıl kullanabileceğimizi görelim.</p>
 <div class="highlight"><pre><span></span><code><span class="n">pivot</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
     <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
     <span class="n">index</span><span class="o">=</span><span class="s1">&#39;Region&#39;</span><span class="p">,</span>
@@ -637,10 +651,10 @@ tablolarımıza nasıl sütun ve çoklu indeks ekleyeceğinizi öğreneceksiniz.
 </tr>
 </tbody>
 </table>
-<p>Tamamen başka bir veri boyutunu eklemenin ne kadar kolay olduğunu görebiliriz. Bu, gruplandırmalar arasındaki farkları okunması kolay bir biçimde belirlememizi sağlar.</p>
-<h2>Pandas Özet Tablolarına Birden Çok Dizin Eklemek</h2>
-<p>Sütunlar yatay bir boyut eklerken, verilerimizde mantıksal bir hiyerarşi olduğunda birden çok dizin de belirtebiliriz. Örneğin, pivot tablomuza bir tarih boyutu ekleyebiliriz. Verilerimizi çeyreklere göre gruplandırmak için Pandas'ın yerleşik tarih formatını kullanalım. Bu, daha sonra, verilerimizi belirli bir süre boyunca görselleştirmemizi 
-sağlar. Bunun nasıl çalıştığını görelim:</p>
+<p>Özet tabloya tamamen başka bir boyut eklemenin ne kadar kolay olduğunu görebiliriz. Bu, gruplandırmalar arasındaki farkların okunmasını, kolay bir biçimde belirlememizi sağlar.</p>
+<h2>index Parametresi</h2>
+<p><strong>Pandas Özet Tablolarına Birden Çok Dizin Eklemek</strong></p>
+<p><code>columns</code> parametresi özet tablosuna  yatay bir boyut eklerken, verilerimizde mantıksal bir hiyerarşi olduğunda birden çok dizin de belirtebiliriz. Örneğin, pivot tablomuza bir tarih boyutu ekleyebiliriz. Verilerimizi çeyreklere göre gruplandırmak için Pandas'ın yerleşik tarih formatını kullanalım. Bu, daha sonra, verilerimizi belirli bir süre boyunca görselleştirmemizi sağlar. Bunun nasıl çalıştığını görelim:</p>
 <div class="highlight"><pre><span></span><code><span class="n">pivot</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
     <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
     <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Region&#39;</span><span class="p">,</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">quarter</span><span class="p">],</span>
@@ -648,7 +662,7 @@ sağlar. Bunun nasıl çalıştığını görelim:</p>
     <span class="n">values</span><span class="o">=</span><span class="s1">&#39;Sales&#39;</span>
 <span class="p">)</span>
 
-<span class="n">pivot</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pivot</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 </code></pre></div>
 
 <table>
@@ -706,7 +720,7 @@ sağlar. Bunun nasıl çalıştığını görelim:</p>
 </tr>
 </tbody>
 </table>
-<p>Bu, çok indeksli bir Pandas DataFrame döndürür. Daha karmaşık görünse de, çok indeksli bir Pandas DataFrame'deki verilere erişim, diğer herhangi bir DataFrame'deki verilere erişmeye oldukça benzer şekilde çalışır. Bununla birlikte, artık 1 yerine <strong>iki dizin sütunumuz</strong> olduğundan, bir dize/string dizini iletebiliriz. Diyelim sadece <strong>Doğu Bölgesi(East), Çeyrek 1</strong> ve <strong>Erkek giyim (Men's Clothing)</strong> kesişimine erişmek istedik, bu durumda, aşağıdaki kodu kullanabiliriz:</p>
+<p>Bu, çok indeksli bir Pandas DataFrame döndürür. Daha karmaşık görünse de, çok indeksli bir Pandas DataFrame'deki verilere erişim, diğer herhangi bir DataFrame'deki verilere erişmeye oldukça benzer şekilde çalışır. Bununla birlikte, artık 1 yerine <strong>iki dizin sütunumuz</strong> olduğundan, bir string dizini iletebiliriz. Diyelim sadece <strong>Doğu Bölgesi(East), Çeyrek 1</strong> ve <strong>Erkek giyim (Men's Clothing)</strong> kesişimine erişmek istedik, bu durumda, aşağıdaki kodu kullanabiliriz:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">pivot</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="s1">&#39;East&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="s2">&quot;Men&#39;s Clothing&quot;</span><span class="p">])</span>
 </code></pre></div>
 
@@ -715,8 +729,9 @@ sağlar. Bunun nasıl çalıştığını görelim:</p>
 
 <h2>Panda Pivot Tablolarını Özelleştirmek</h2>
 <p>Bu başlık altında, Pandas pivot tablolarınızı nasıl özelleştireceğinizi öğreneceksiniz. Bu, toplamları ekleme ve eksik verilerle çalışma gibi daha da fazla özelleştirme eklemenize olanak tanır. Ayrıca, belirli bir değerle ortaya çıkan bir pivot tabloda, eksik verileri nasıl dolduracağınızı da öğreneceksiniz.</p>
-<h2>Pandas Özet Tablolarına Toplamların Eklemesi</h2>
-<p>Pandas pivot tablosuna toplamları nasıl ekleyeceğinizi öğrenerek başlayalım. Bu, bir boole değeri kabul eden <code>margins=</code> parametresi tarafından kontrol edilir. Varsayılan olarak bu, <code>False</code> olarak ayarlanmıştır, ancak <code>True</code> olarak değiştirildiğinde, <strong>toplamlar satırlara ve sütunlara eklenir</strong>. Bunun neye benzediğini görelim:</p>
+<h2>margins Parametresi</h2>
+<p><strong>Pandas Özet Tablolarına Toplamların Eklemesi</strong></p>
+<p>Pandas <strong>pivot tablosuna toplamları nasıl ekleyeceğinizi</strong> öğrenerek başlayalım. Bu, bir boole değeri kabul eden <code>margins=</code> parametresi tarafından kontrol edilir. Varsayılan olarak bu, <code>False</code> olarak ayarlanmıştır, ancak <code>True</code> olarak değiştirildiğinde, <strong>toplamlar satırlara ve sütunlara eklenir</strong>. Bunun neye benzediğini görelim:</p>
 <div class="highlight"><pre><span></span><code><span class="n">pivot</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
     <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
     <span class="n">index</span><span class="o">=</span><span class="s1">&#39;Region&#39;</span><span class="p">,</span>
@@ -783,8 +798,9 @@ sağlar. Bunun nasıl çalıştığını görelim:</p>
 </tr>
 </tbody>
 </table>
+<h2>margins_name Parametresi</h2>
 <p>Varsayılan olarak, Pandas toplamları 'All (Tümü)' olarak adlandırır. 
-Bu etiketleri yeniden adlandırmak istiyorsanız, değerleri yeniden etiketlemek üzere bir dize/string iletmek için <code>margins_name=</code> parametresini kullanabilirsiniz.</p>
+Bu etiketleri yeniden adlandırmak istiyorsanız, değerleri yeniden etiketlemek üzere bir string iletmek için <code>margins_name=</code> parametresini kullanabilirsiniz.</p>
 <div class="highlight"><pre><span></span><code><span class="n">pivot</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
     <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
     <span class="n">index</span><span class="o">=</span><span class="s1">&#39;Region&#39;</span><span class="p">,</span>
@@ -909,6 +925,7 @@ Bu etiketleri yeniden adlandırmak istiyorsanız, değerleri yeniden etiketlemek
 </tr>
 </tbody>
 </table>
+<h2>fill_value Parametresi</h2>
 <p>Özellikle teknik bilgisi olmayan kullanıcılar için bir <code>NaN</code> değeri görmek her zaman ideal olmayabilir. Bu nedenle Pandas, bu eksik veri noktalarını doldurmak için bir değer iletmenizi sağlayan <code>fill_value=</code> parametresini sunar. Örneğin, tüm bu <code>NaN</code> değerleri <strong>0</strong> ile doldurmak istersek, basitçe bu parametreyi ekleyebiliriz:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Region&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;East&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Children&#39;s Clothing&quot;</span><span class="p">),</span> <span class="s1">&#39;Sales&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">NaN</span>
@@ -966,8 +983,9 @@ Bu etiketleri yeniden adlandırmak istiyorsanız, değerleri yeniden etiketlemek
 </tr>
 </tbody>
 </table>
-<h2>Pandas Özet Tablo Verilerini Sıralamak</h2>
-<p>Pandas'a, sürüm 1.3.0'dan başlayarak, elde edilen DataFrame'i sıralamanıza olanak tanıyan yeni bir parametre eklendi. Eskiden, önce DataFrame'i oluşturmanız ve ardından verileri sıralamak için bir yöntem iletmeniz gerekirdi. Şimdi, elde ettiğiniz DataFrame'inizi sıralamaya yardımcı olması için <code>sort=True</code> parametresini/argümanını basitçe iletebilirsiniz.</p>
+<h2>sort Parametresi</h2>
+<p><strong>Pandas Özet Tablo Verilerini Sıralamak</strong></p>
+<p>Pandas'a, sürüm 1.3.0'dan başlayarak, elde edilen DataFrame'i sıralamanıza olanak tanıyan yeni bir parametre eklendi. Eskiden, önce DataFrame'i oluşturmanız ve ardından verileri sıralamak için bir yöntem iletmeniz gerekirdi. Şimdi, elde ettiğiniz DataFrame'inizi sıralamaya yardımcı olması için <code>sort=True</code> parametresini/argümanını basitçe belirtebiliriz.</p>
 <div class="highlight"><pre><span></span><code><span class="n">pivot</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
     <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
     <span class="n">index</span><span class="o">=</span><span class="s1">&#39;Region&#39;</span><span class="p">,</span>
@@ -1115,17 +1133,19 @@ yazabiliriz:</p>
 </table>
 <p>Bu kod, tam olarak istediğimizi görmemizi sağladı.</p>
 <h2>Sonuç ve Özet</h2>
-<p>Bu eğitim içeriğinde, doğrudan bir Pandas DataFrame'den Excel stili pivot tablolar oluşturmak için Pandas <code>.pivot_table()</code> fonksiyonunun/işlevinin nasıl kullanılacağını öğrendiniz. 
-Fonksiyon/İşlev, çok çeşitli parametreler aracılığıyla önemli esneklik sağlar. Aşağıdaki bölüm, öğrendiklerinizin bir özetini sunar:</p>
+<p>Bu eğitim içeriğinde, doğrudan bir Pandas DataFrame'den Excel stili pivot tablolar oluşturmak için Pandas <code>.pivot_table()</code> fonksiyonunun nasıl kullanılacağını öğrendik. 
+Fonksiyon, çok çeşitli parametreler aracılığıyla bizlere önemli esneklik sağlar. Aşağıdaki bölüm, öğrendiklerinizin bir özetini sunar:</p>
 <ul>
-<li>Pandas pivot_table() fonksiyonu, Excel stili pivot tablolar oluşturmak için tanıdık bir arabirim sağlar</li>
+<li>Pandas <code>pivot_table()</code> fonksiyonu, Excel stili pivot tablolar oluşturmak için tanıdık bir arabirim sağlar</li>
 <li>Fonksiyonlar, verilerin satır ve sütunlara göre nasıl bölüneceğini/gruplanacağını belirtmek için en azından <code>index=</code> veya <code>column=</code> parametrelerini gerektirir.</li>
 <li>Fonksiyon, özel işlevlerin kullanılması da dahil olmak üzere bir veya birden çok toplama yöntemini hesaplayabilir</li>
 <li>Fonksiyon, diğer herhangi bir DataFrame gibi filtrelenebilen veya sorgulanabilen bir DataFrame döndürür.</li>
 </ul>
-<h3>Kaynak:</h3>
-<p>Bu Eğitimin hazırlanmasında faydalandığım kaynağın bağlantısını paylaşmak istiyorum. <a href="https://datagy.io/python-pivot-tables/">Pivot Tables in Pandas with Python for Python and Pandas - datagy</a></p>
-<p><a href="pandas-09-veri-gruplama-yontemleri.html">← Önceki Bölüm</a> | <a href="pandas-11-melt-fonksiyonunun-kullanimi.html">Sonraki Bölüm →</a></p>
+<h2>Kaynak:</h2>
+<p>Bu Eğitimin hazırlanmasında faydalandığım kaynağın bağlantısını paylaşmak istiyorum;</p>
+<ul>
+<li><a href="https://datagy.io/python-pivot-tables/">Pivot Tables in Pandas with Python for Python and Pandas - datagy</a></li>
+</ul>
 
 		<span class="post-tags">
 			Tags:
@@ -1136,7 +1156,16 @@ Fonksiyon/İşlev, çok çeşitli parametreler aracılığıyla önemli esneklik
 					<li><a href="/tag/modul.html">Modül</a></li>
 					<li><a href="/tag/pivot.html">pivot</a></li>
 					<li><a href="/tag/table.html">table</a></li>
-					<li><a href="/tag/pivot-table.html">pivot table</a></li>
+					<li><a href="/tag/pivot_table.html">pivot_table</a></li>
+					<li><a href="/tag/values.html">values</a></li>
+					<li><a href="/tag/index.html">index</a></li>
+					<li><a href="/tag/columns.html">columns</a></li>
+					<li><a href="/tag/aggfunc.html">aggfunc</a></li>
+					<li><a href="/tag/mean.html">mean</a></li>
+					<li><a href="/tag/fill_value.html">fill_value</a></li>
+					<li><a href="/tag/margins.html">margins</a></li>
+					<li><a href="/tag/margins_name.html">margins_name</a></li>
+					<li><a href="/tag/sort.html">sort</a></li>
 			</ul>
 		</span>
 
