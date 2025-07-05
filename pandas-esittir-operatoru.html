@@ -77,7 +77,8 @@
 <div class="post">
 	<h1 class="post-title">Pandas - Eşittir Operatörü</h1>
 	<span class="post-date">Cts 16 Temmuz 2022</span>
-	<h1>== Operatörü</h1>
+	<h1>== (Eşittir) Operatörü</h1>
+<p><strong>Eşittir (==)</strong> ya da bir başka deyimle <strong>Eşit midir?</strong> operatörü kullanım mantığı şu şekildedir; Eğer <strong>Eşit ise</strong> <code>True</code> değeri döndür.</p>
 <p>Örnek Veri çerçevemiz aşağıda görünmektedir.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="n">imdb</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/imdb.xlsx&quot;</span><span class="p">,</span> <span class="n">decimal</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
@@ -309,6 +310,131 @@
 </tr>
 </tbody>
 </table>
+<p>Başka bir örnek yapalım. Öncelikle varolan tablolarımızda birini içe aktarıp veri çerçevesine dönüştürelim.</p>
+<div class="highlight"><pre><span></span><code><span class="n">json</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/json_verisi.json&quot;</span><span class="p">)</span>
+<span class="n">json</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Duration</th>
+<th>Pulse</th>
+<th>Maxpulse</th>
+<th>Calories</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>60</td>
+<td>110</td>
+<td>130</td>
+<td>409</td>
+</tr>
+<tr>
+<td>1</td>
+<td>60</td>
+<td>117</td>
+<td>145</td>
+<td>479</td>
+</tr>
+<tr>
+<td>2</td>
+<td>60</td>
+<td>103</td>
+<td>135</td>
+<td>340</td>
+</tr>
+<tr>
+<td>3</td>
+<td>45</td>
+<td>109</td>
+<td>175</td>
+<td>282</td>
+</tr>
+<tr>
+<td>4</td>
+<td>45</td>
+<td>117</td>
+<td>148</td>
+<td>406</td>
+</tr>
+<tr>
+<td>5</td>
+<td>60</td>
+<td>102</td>
+<td>127</td>
+<td>300</td>
+</tr>
+</tbody>
+</table>
+<p>Veri çerçevemizdeki <strong>her bir değerin 60</strong>'a eşit olup olmadığını sorgulayalım.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">json</span> <span class="o">==</span> <span class="mi">60</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Duration</th>
+<th>Pulse</th>
+<th>Maxpulse</th>
+<th>Calories</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<td>1</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<td>2</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<td>3</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<td>4</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<td>5</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+</tbody>
+</table>
+<p>Veri çerçevemizde <strong>60'a eşit</strong>* kaç adet toplam değer var? Bunu da <code>sum()</code> metodu ile hesaplatalım.</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">json</span> <span class="o">==</span> <span class="mi">60</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mi">4</span>
+</code></pre></div>
 
 		<span class="post-tags">
 			Tags:

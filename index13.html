@@ -76,133 +76,6 @@
 </div>		<div class="content container">
 	<div class="posts">
 			<div class="post">
-				<h1 class="post-title" href="/pandas-read_csv.html">
-					<a href="/pandas-read_csv.html">Pandas - read_csv</a>
-				</h1>
-				<span class="post-date">Cts 09 Temmuz 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/pandas.html">Pandas</a></li>
-								<li><a href="/tag/dataframe.html">DataFrame</a></li>
-								<li><a href="/tag/veri-cercevesi.html">Veri Çerçevesi</a></li>
-								<li><a href="/tag/read_csv.html">read_csv</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1>read_csv() Fonksiyonu Nedir? Nasıl Kullanılır?</h1>
-<p>Bu bölümde harici kaynaktan bir <strong>CSV</strong> dosyasından verileri okuyarak veri çerçevesine dönüştürmeyi öğreneceğiz.</p>
-<h2>read_csv() Fonksiyonu</h2>
-<p><strong>CSV</strong> uzantılı dosyaların içeriğini projelerimize dahil etmek istersek kullanabileceğimiz fonksiyon, <strong>read_csv()</strong>'dir.</p>
-<p>örneğin <strong>nba.csv</strong> isimli dosyasınının içeriğini çalışmamıza aktarıp, veri çerçevesine dönüştürelim;</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="n">nba_csv</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv …</span></code></pre></div>
-				</p>
-				<a class="read-more" href="pandas-read_csv.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="/pandas-read_html.html">
-					<a href="/pandas-read_html.html">Pandas - read_html</a>
-				</h1>
-				<span class="post-date">Cts 09 Temmuz 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/pandas.html">Pandas</a></li>
-								<li><a href="/tag/dataframe.html">DataFrame</a></li>
-								<li><a href="/tag/veri-cercevesi.html">Veri Çerçevesi</a></li>
-								<li><a href="/tag/read_html.html">read_html</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1>read_html() Fonksiyonu Nedir? Nasıl Kullanılır?</h1>
-<p><strong>read_html()</strong> fonksiyonu ile web sitelerinde ya da htm/html uzantılı dosyalardaki tabloları, çalışmalarınıza dahil edebilirsiniz. Öncelikle veri almak istediğimiz sayfanın içerisinde kaç adet tablo olduğunu bulalım.</p>
-<div class="highlight"><pre><span></span><code><span class="n">url_tablo</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_html</span><span class="p">(</span><span class="s2">&quot;https://tr.wikipedia.org/wiki/Van&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sayfada bulunan toplam tablo sayısı: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">url_tablo</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="n">Sayfada …</span></code></pre></div>
-				</p>
-				<a class="read-more" href="pandas-read_html.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="/pandas-read_json.html">
-					<a href="/pandas-read_json.html">Pandas - read_json</a>
-				</h1>
-				<span class="post-date">Cts 09 Temmuz 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/pandas.html">Pandas</a></li>
-								<li><a href="/tag/dataframe.html">DataFrame</a></li>
-								<li><a href="/tag/veri-cercevesi.html">Veri Çerçevesi</a></li>
-								<li><a href="/tag/read_json.html">read_json</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1>read_json() Fonksiyonu Nedir? Nasıl Kullanılır?</h1>
-<p><strong>read_json()</strong> fonksiyonu ile <strong>json</strong> uzantılı dosyaları çalışmalarınıza dahil edebilirsiniz.</p>
-<div class="highlight"><pre><span></span><code><span class="n">veri_json</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/json_verisi.json&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">veri_json</span><span class="p">)</span>
-</code></pre></div>
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th>Duration</th>
-<th>Pulse</th>
-<th>Maxpulse</th>
-<th>Calories</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td>60</td>
-<td>110</td>
-<td>130</td>
-<td>409</td>
-</tr>
-<tr>
-<td>1</td>
-<td>60</td>
-<td>117</td>
-<td>145</td>
-<td>479</td>
-</tr>
-<tr>
-<td>2</td>
-<td>60</td>
-<td>103</td>
-<td>135</td>
-<td>340</td>
-</tr>
-<tr>
-<td>3</td>
-<td>45</td>
-<td>109</td>
-<td>175</td>
-<td>282</td>
-</tr>
-<tr>
-<td>4</td>
-<td>45</td>
-<td>117</td>
-<td>148 …</td></tr></tbody></table>
-				</p>
-				<a class="read-more" href="pandas-read_json.html">Continue reading »</a>
-			</div>
-			<div class="post">
 				<h1 class="post-title" href="/pandas-read_table.html">
 					<a href="/pandas-read_table.html">Pandas - read_table</a>
 				</h1>
@@ -378,6 +251,84 @@ desteklenir. Bu, veri işlemeyi önbellek açısından verimli hale getirir ve �
 <p><code>Polars</code>, <code>Rust</code> programlama dilinde yazılmış ve temel olarak <code>Apache Arrow</code>’u kullanan bir <strong>DataFrame kütüphanesidir</strong>. Veri düzenleme alışkanlıklarını bilen <code>Polars</code>, okunabilir ve yüksek performanslı kod oluşturmanızı sağlayacak bir ifade dili kullanarak DataFrame'leri işlemek için tüm özellikleri içeren …</p>
 				</p>
 				<a class="read-more" href="polars-00-giris.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="/polars-01-takdim.html">
+					<a href="/polars-01-takdim.html">Polars - 01 Takdim</a>
+				</h1>
+				<span class="post-date">Paz 26 Haziran 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/polars.html">Polars</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>Takdim</h1>
+<p>Bu Kılavuz, <a href="https://github.com/pola-rs/polars">Polars DataFrame kitaplığına</a> bir giriş niteliğindedir. Amacı, örnekler üzerinden geçerek ve diğer çözümlerle karşılaştırarak size <code>Polars</code> kitaplığını tanıtmaktır. Bazı tasarım seçenekleri burada tanıtılmaktadır. Kılavuz ayrıca size <code>Polars</code>kitaplığının optimum kullanımını tanıtacaktır.</p>
+<p><code>Polars</code> tamamen <a href="https://www.rust-lang.org/">Rust</a>'ta yazılmış olsa da ve temel olarak <code>Arrow</code>'u (<a href="https://github.com/jorgecarleitao/arrow2">yerel arrow2 Rust uygulaması …</a></p>
+				</p>
+				<a class="read-more" href="polars-01-takdim.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="/polars-02-kurulum.html">
+					<a href="/polars-02-kurulum.html">Polars - 02 Kurulum</a>
+				</h1>
+				<span class="post-date">Paz 26 Haziran 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/polars.html">Polars</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>Kurulum</h1>
+<p><code>Polars</code> bir kitaplıktır/kütüphanedir ve kurulumu, ilgili programlama dilinin paket yöneticisini çağırmak kadar basittir. Aşağıda farklı programlama dillerine göre kurulum kodları verilmiştir. Bu kodları konsoldan yazarak <code>polars</code>'ı yükleyebilirsiniz.</p>
+<h4>Python</h4>
+<div class="highlight"><pre><span></span><code><span class="n">pip</span> <span class="n">install</span> <span class="n">polars</span>
+</code></pre></div>
+
+<h4>Rust</h4>
+<div class="highlight"><pre><span></span><code><span class="n">cargo</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="n">polars</span><span class="w"> </span><span class="o">-</span><span class="n">F</span><span class="w"> </span><span class="n">lazy</span>
+
+<span class="p">#</span><span class="w"> </span><span class="n">Or</span><span class="w"> </span><span class="n">Cargo</span><span class="p">.</span><span class="n">toml</span>
+<span class="p">[</span><span class="n">dependencies</span><span class="p">]</span>
+<span class="n">polars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;x&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">features</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;lazy&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">..</span><span class="p">.]}</span>
+</code></pre></div>
+
+<h4>NodeJS …</h4>
+				</p>
+				<a class="read-more" href="polars-02-kurulum.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="/blender-uvmaping-egitimi-1-bolum.html">
+					<a href="/blender-uvmaping-egitimi-1-bolum.html">Blender UVMaping Eğitimi - 1. Bölüm</a>
+				</h1>
+				<span class="post-date">Cts 18 Haziran 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/blender.html">Blender</a></li>
+								<li><a href="/tag/3d.html">3D</a></li>
+								<li><a href="/tag/cad.html">CAD</a></li>
+								<li><a href="/tag/uvmap.html">UVMap</a></li>
+						</ul>
+					</span>
+				<p>
+					<h2>Blender UVMaping Eğitimi - 1. Bölüm</h2>
+<p>UV Map nedir? Ne işe yarar, UV nasıl açılır, UV Map nasıl  hazırlanır? konularını anlatmak için hazırlamış olduğum Dokümanın 1. bölümünü istifadenize sunuyorum.<br>
+<img alt="giris" src="../images/blender/uvmap1/Giris.png"></p>
+<p>Blender’da UV Mapping Kullanımı isimli anlatımda kullanacağımız Modelimiz, aşağıda gördüğümüz gibi, basit bir Şişe Nesnesidir.<br>
+<img alt="1" src="../images/blender/uvmap1/01.png"><br>
+Öncelikle, Model (Nesne) Gövdesinin UV açılımını …</p>
+				</p>
+				<a class="read-more" href="blender-uvmaping-egitimi-1-bolum.html">Continue reading »</a>
 			</div>
 	</div>
 	<div class="pagination">

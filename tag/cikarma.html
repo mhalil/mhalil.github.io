@@ -16,7 +16,7 @@
 		<!-- Enable responsiveness on mobile devices-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-		<title>mhalil - Python tag - Programlama ve 3D</title>
+		<title>mhalil - çıkarma tag - Programlama ve 3D</title>
 
 		<!-- CSS -->
 		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
@@ -76,48 +76,75 @@
 </div>		<div class="content container">
 	<div class="posts">
 			<div class="post">
-				<h1 class="post-title" href="/freecad-scripting-02-python-komut-dosyasi-olusturmak.html">
-					<a href="/freecad-scripting-02-python-komut-dosyasi-olusturmak.html">FreeCAD - Scripting 02 - Python Komut Dosyası Oluşturmak</a>
+				<h1 class="post-title" href="/pandas-cikarma-operatoru.html">
+					<a href="/pandas-cikarma-operatoru.html">Pandas - Çıkarma Operatörü</a>
 				</h1>
-				<span class="post-date">Sal 15 Şubat 2022</span>
+				<span class="post-date">Prş 28 Temmuz 2022</span>
 					<span class="post-tags">
 						Tags:
 						<ul>
-								<li><a href="/tag/freecad.html">FreeCAD</a></li>
 								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/scripting.html">Scripting</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/operator.html">Operatör</a></li>
+								<li><a href="/tag/cikarma.html">çıkarma</a></li>
 						</ul>
 					</span>
 				<p>
-					<h1>Python Komut Dosyası Oluşturma (Scripting) Eğitimi</h1>
-<p><a href="http://en.wikipedia.org/wiki/Python_%28programming_language%29">Python</a> kullanımı ve öğrenilmesi çok kolay bir programlama dilidir. Açık kaynak kodlu, çok platformlu ve basit kabuk komut dosyalarının programlanmasından, çok karmaşık programlara kadar pek çok şey için tek başına kullanılabilir. Ancak en yaygın kullanım yönteminden biri, diğer uygulamalara gömülerek kullanılmasıdır. FreeCAD içinde tam …</p>
+					<h1>- (Çıkarma) Operatörü</h1>
+<p>İki sütun verisini <code>-</code> <strong>çıkarma operatörü</strong> ile çıkarabiliriz, farkını alabiliriz.</p>
+<div class="highlight"><pre><span></span><code><span class="n">baslik</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Birler&quot;</span><span class="p">,</span> <span class="s2">&quot;Onlar&quot;</span><span class="p">,</span> <span class="s2">&quot;Yüzler&quot;</span><span class="p">]</span>
+<span class="n">basliksiz</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/basliksiz.ods&quot;</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">names</span> <span class="o">=</span> <span class="n">baslik</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">basliksiz</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Birler</th>
+<th>Onlar</th>
+<th>Yüzler</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>9</td>
+<td>82</td>
+<td>246</td>
+</tr>
+<tr>
+<td>1</td>
+<td>7</td>
+<td>78</td>
+<td>180</td>
+</tr>
+<tr>
+<td>2</td>
+<td>8</td>
+<td>83</td>
+<td>565</td>
+</tr>
+<tr>
+<td>3</td>
+<td>6</td>
+<td>82</td>
+<td>486</td>
+</tr>
+<tr>
+<td>4</td>
+<td>4</td>
+<td>37</td>
+<td>615 …</td></tr></tbody></table>
 				</p>
-				<a class="read-more" href="freecad-scripting-02-python-komut-dosyasi-olusturmak.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="/freecad-scripting-01-pythona-giris.html">
-					<a href="/freecad-scripting-01-pythona-giris.html">FreeCAD - Scripting 01 - Python'a Giriş</a>
-				</h1>
-				<span class="post-date">Paz 13 Şubat 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/freecad.html">FreeCAD</a></li>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/giris.html">Giriş</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1>Python'a Giriş</h1>
-<p>Bu bölümün amacı, Python programlama dili hakkında kısaca bilgi vermek ve ardından FreeCAD programı içerisinde Python kodu yazmayı ve/veya yazdığımız kodları çalıştırmayı öğrenmektir.</p>
-<p>Bu, Python'a yeni başlayanlar için kısa bir eğitimdir. Python, açık kaynaklı, çok platformlu bir programlama dilidir. Onu diğer programlama dillerinden farklı ve yeni kullanıcılar …</p>
-				</p>
-				<a class="read-more" href="freecad-scripting-01-pythona-giris.html">Continue reading »</a>
+				<a class="read-more" href="pandas-cikarma-operatoru.html">Continue reading »</a>
 			</div>
 	</div>
 	<div class="pagination">
 
-		<span class="pagination-item older"><a href="/tag/python9.html">Newer</a></span>
+		<span class="pagination-item older">Newer</span>
 
 		<span class="pagination-item newer">Older</span>
 	</div>

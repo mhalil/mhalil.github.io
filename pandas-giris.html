@@ -191,11 +191,7 @@ Eğitimlerde kullandığım Veri Setlerine <a href="https://github.com/mhalil/Pa
 <li>
 <p><a href="/pandas-pandas-index.html">Index() Fonksiyonu</a> </p>
 </li>
-<li>
-<p><a href="/pandas-kosullu-secim.html">Koşullu Seçim</a> </p>
-</li>
 </ul>
-<p><em>......lambda() Fonksiyonu ile koşul belirtmek</em></p>
 <h2>EKSİK - KAYIP VERİ YÖNTEMLERİ</h2>
 <p>Bu başlık altında, Veri çerçevemizde eksik veri (excel tablosundaki boş hücre gibi düşünebiliriz) olup olmadığını, varsa kaç adet olduğunu tespit edebileceğimiz Pandas fonksiyonları mevcuttur. Eksik / Kayıp verileri istersek farklı fonksiyonları kullanarak silebilir ya da istediğimiz değer ile doldurabiliriz.</p>
 <ul>
@@ -251,8 +247,26 @@ Eğitimlerde kullandığım Veri Setlerine <a href="https://github.com/mhalil/Pa
 <p><em>......... lower()</em></p>
 <p><em>......... capitalize</em></p>
 <p><em>......... contains</em></p>
+<h3>Metot ve Operatör Kullanımı ile Yeni Sütun Eklemek</h3>
 <ul>
-<li><a href="/pandas-sutun_ekle.html">Sütun Ekle</a></li>
+<li>
+<p><a href="/pandas-sum-operatoru.html">sum() Metodu (Toplam)</a></p>
+</li>
+<li>
+<p><a href="/pandas-mean.html">mean() Metodu (Ortalama)</a></p>
+</li>
+<li>
+<p><a href="/pandas-toplama-operatoru.html">+ (Toplama) Operatörü</a></p>
+</li>
+<li>
+<p><a href="/pandas-cikarma-operatoru.html">- (Çıkarma) Operatörü</a></p>
+</li>
+<li>
+<p><a href="/pandas-carpma-operatoru.html">* (Çarpma) Operatörü</a></p>
+</li>
+<li>
+<p><a href="/pandas-bolme-operatoru.html">/ (Bölme) Operatörü</a></p>
+</li>
 </ul>
 <h2>VERİ ÇERÇEVELERİNİ BİRLEŞTİR</h2>
 <p>Pandas Kütüphanesinde Veri çerçevelerini birleştirmek için kullanılabilecek birden fazla Fonksiyon/Metot vardır. Bu başlık altında, bu Fonksiyonların kullanımı anlatılmıştır</p>
@@ -282,7 +296,7 @@ Eğitimlerde kullandığım Veri Setlerine <a href="https://github.com/mhalil/Pa
 <p><em>...... left_on Parametresi</em></p>
 <p><em>...... right_on Parametresi</em></p>
 <p><em>...... suffixes Parametresi</em></p>
-<h2><a href="pandas-07-veri-siralama-yontemleri.html">VERİ SIRALAMA YÖNTEMLERİ</a></h2>
+<h2>VERİ SIRALAMA YÖNTEMLERİ</h2>
 <p>Oluşturulan Veri Çerçevelerinin, isteğimiz doğrultusunda sıralanması için kullanabileceğimiz yöntemlere, bu başlık altında değineceğiz.</p>
 <p>Pandas üç tür sıralamayı destekler ; İndeks (dizin) etiketlerine göre sıralama, Sütun değerlerine göre sıralama ve Her ikisinin birleşimine göre sıralama.)</p>
 <ul>
@@ -304,13 +318,21 @@ Eğitimlerde kullandığım Veri Setlerine <a href="https://github.com/mhalil/Pa
 <p><em>...... axis Parametresi</em></p>
 <p><em>......... index Seçeneği</em></p>
 <p><em>......... columns Seçeneği</em></p>
-<h2><a href="pandas-08-veri-filtreleme-yontemleri.html">VERİ FİLTRELEME YÖNTEMLERİ</a></h2>
+<h2>VERİ FİLTRELEME YÖNTEMLERİ</h2>
 <p>Pandas kütüphanesi ile en sık yapılan işlemlerden biri de Filtreleme işlemidir. Binlerce, onbinlerce hatta milyonlarca kayıt arasından istediğimize ulaşmak için filreleme komutlarını kullanacağız. Bu bölümdeki anlatılanları da dikkatle okuyup öğrenmenizi tavsiye ederim.</p>
 <p>Sütun içerisindeki verilere göre filtreleme uygulamak istersek; 
 <code>VeriCervecesiAdı["SütunAdı"] operatör (==, &lt;, ...vb) "Filtre_Kriteri"</code> yöntemi kullanılabilir.</p>
 <p>Pythonda kullanıdığımız <strong>Karşılaştırma operatörlerini (&lt; , &gt; , &lt;=, &gt;=, ==, !=, )</strong> ve <strong>Mantıksal Operatörleri ( (and, ve) &amp; ve (or, Ya da) |</strong> Pandas içerisinde de kullanabiliriz.</p>
 <ul>
-<li><a href="/pandas-between.html">between() Fonksiyonu</a></li>
+<li>
+<p><a href="/pandas-between.html">between() Fonksiyonu</a></p>
+</li>
+<li>
+<p><a href="/pandas-lambda.html">lambda() Fonksiyonu</a></p>
+</li>
+<li>
+<p><a href="/pandas-sutun-filtrele.html">Sütun Filtrelemek</a></p>
+</li>
 </ul>
 <h3>Karşılaştırma Operatorleri</h3>
 <ul>
@@ -331,6 +353,9 @@ Eğitimlerde kullandığım Veri Setlerine <a href="https://github.com/mhalil/Pa
 </li>
 <li>
 <p><a href="/pandas-kucukesittir-operatoru.html">küçükeşit (&lt;=) Operatörü</a></p>
+</li>
+<li>
+<p><a href="/pandas-metot-ve-operator-kullanarak-filtreleme.html">Metot ve Operatörü Birlikte Kullanarak Filtrelemek</a></p>
 </li>
 </ul>
 <h3>Mantıksal Operatörler</h3>
@@ -363,32 +388,19 @@ Eğitimlerde kullandığım Veri Setlerine <a href="https://github.com/mhalil/Pa
 <p><em>...... fill_value Parametresi</em></p>
 <p><em>...... margins Parametresi</em></p>
 <p><em>...... margins_name Parametresi</em></p>
-<p>...... sort Parametresi*</p>
+<p><em>...... sort Parametresi</em></p>
 <ul>
 <li><a href="/pandas-melt.html">melt() Fonksiyonu</a></li>
 </ul>
-<h2><a href="pandas-12-operator-kullanimi.html">Operatör Kullanımı</a></h2>
-<p>Aritmetik İşlem Operatörleri</p>
-<p>... sum() Metodu</p>
-<p>... mean() Metodu</p>
-<p>Toplama, Çıkarma, Çarpma ve Bölme İşlemleri</p>
-<p>... Toplama Operatörü</p>
-<p>... Çıkarma Operatörü</p>
-<p>... Çarpma Operatörü</p>
-<p>... Bölme Operatörü</p>
-<p>Mantıksal / Karşılaştırma Operatörleri</p>
-<p>... Büyüktür (&gt;)</p>
-<p>... Küçüktür (&lt;)</p>
-<p>... Eşittir (==)</p>
-<p>... Eşit Değildir (!=)</p>
-<p>... İçerir (contains)</p>
-<p>... İçermez / Değil (not)</p>
+<p><em>...... id_vars Parametresi</em></p>
+<p><em>...... var_name Parametresi</em></p>
+<p><em>...... value_name Parametresi</em></p>
 <h1>Pandas Veri Çerçevesi Özet Bilgileri (CheatSheet)</h1>
 <p>Pandas Veri Çerçevesi (Data Frame) komutlarını (fonksiyon, metot, parametre) bir yerde toplayarak ihtiyaç halinde, farklı konulara ait komutlara daha hızlı ulaşabileceğimiz bir <strong>Başvuru Kılavuzu / Özet Bilgi Tablosu (CheatSheet)</strong> oluşturmaya çalışıyorum. Başvuru kılavuzunu / Özet Bilgi Tablosunu (CheatSheet) oluştururken, komutları, <strong>Pandas Veri Çerçevesi (Data Frame) Konu Başlıkları</strong>na göre kategorize etmeyi planlıyorum.</p>
 <p>Sayfaya Yeni Konu başlıkları ekledikçe, Özet Bilgi Tablosunu da güncellemeye gayret edeceğim.<br>
 Şuana kadar oluşturduğum <strong>Başvuru Kılavuzu / Özet Bilgi Tablosu (CheatSheet)</strong> na ağaşıdaki bağlantıdan erişebilirsiniz.</p>
 <ul>
-<li><a href="pandas-ozet-bilgi-tablosu-cheatsheet.html">Pandas Özet Bilgi Tablosu (CheatSheet) Sayfası</a></li>
+<li><a href="/pandas-ozet-bilgi-tablosu-cheatsheet.html">Pandas Özet Bilgi Tablosu (CheatSheet) Sayfası</a></li>
 </ul>
 
 		<span class="post-tags">

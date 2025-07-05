@@ -76,30 +76,6 @@
 </div>		<div class="content container">
 	<div class="posts">
 			<div class="post">
-				<h1 class="post-title" href="/pandas-08-veri-filtreleme-yontemleri.html">
-					<a href="/pandas-08-veri-filtreleme-yontemleri.html">Pandas 08 - Veri Filtreleme Yöntemleri</a>
-				</h1>
-				<span class="post-date">Cts 16 Temmuz 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/pandas.html">Pandas</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
-								<li><a href="/tag/filtre.html">Filtre</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1>Filtreleme Yöntemleri</h1>
-<p>Pandas kütüphanesi ile en sık yapılan işlemlerden biri de Filtreleme işlemidir. Binlerce, onbinlerce hatta milyonlarca kayıt arasından istediğimize ulaşmak için filreleme komutlarını kullanacağız. Bu bölümdeki anlatılanları da dikkatle okuyup öğrenmenizi tavsiye ederim.</p>
-<h3>Karşılaştırma Operatorü Kullanımı</h3>
-<p>Sütun içerisindeki verilere göre filtreleme uygulamak istersek,  <code>VeriCervecesiAdı["SütunAdı"] == "Filtre_Kriteri"</code> yöntemi kullanılabilir.</p>
-<p>Pythonda …</p>
-				</p>
-				<a class="read-more" href="pandas-08-veri-filtreleme-yontemleri.html">Continue reading »</a>
-			</div>
-			<div class="post">
 				<h1 class="post-title" href="/pandas-between.html">
 					<a href="/pandas-between.html">Pandas - Between</a>
 				</h1>
@@ -170,7 +146,7 @@
 						</ul>
 					</span>
 				<p>
-					<h1>&gt;= Operatörü</h1>
+					<h1>&gt;= (BüyükEşit)Operatörü</h1>
 <p>Örnek Veri çerçevemiz aşağıda görünmektedir.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="n">imdb</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/imdb.xlsx&quot;</span><span class="p">,</span> <span class="n">decimal</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
@@ -211,7 +187,7 @@
 </tr>
 <tr>
 <td>3</td>
-<td>Pulp Fiction …</td></tr></tbody></table>
+<td>Pulp …</td></tr></tbody></table>
 				</p>
 				<a class="read-more" href="pandas-buyukesit-operatoru.html">Continue reading »</a>
 			</div>
@@ -233,7 +209,7 @@
 						</ul>
 					</span>
 				<p>
-					<h1>&gt; Operatörü</h1>
+					<h1>&gt; (Büyüktür) Operatörü</h1>
 <p>Örnek Veri çerçevemiz aşağıda görünmektedir.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="n">imdb</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/imdb.xlsx&quot;</span><span class="p">,</span> <span class="n">decimal</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
@@ -274,7 +250,7 @@
 </tr>
 <tr>
 <td>3</td>
-<td>Pulp Fiction …</td></tr></tbody></table>
+<td>Pulp …</td></tr></tbody></table>
 				</p>
 				<a class="read-more" href="pandas-buyuktur-operatoru.html">Continue reading »</a>
 			</div>
@@ -296,7 +272,7 @@
 						</ul>
 					</span>
 				<p>
-					<h1>!= Operatörü</h1>
+					<h1>!= (Eşit Değil) Operatörü</h1>
 <p>Örnek Veri çerçevemiz caşağıda görünmektedir.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="n">imdb</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/imdb.xlsx&quot;</span><span class="p">,</span> <span class="n">decimal</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
@@ -336,8 +312,7 @@
 <td>488889</td>
 </tr>
 <tr>
-<td>3</td>
-<td>Pulp Fiction …</td></tr></tbody></table>
+<td>3 …</td></tr></tbody></table>
 				</p>
 				<a class="read-more" href="pandas-esit-degil-operatoru.html">Continue reading »</a>
 			</div>
@@ -359,7 +334,8 @@
 						</ul>
 					</span>
 				<p>
-					<h1>== Operatörü</h1>
+					<h1>== (Eşittir) Operatörü</h1>
+<p><strong>Eşittir (==)</strong> ya da bir başka deyimle <strong>Eşit midir?</strong> operatörü kullanım mantığı şu şekildedir; Eğer <strong>Eşit ise</strong> <code>True</code> değeri döndür.</p>
 <p>Örnek Veri çerçevemiz aşağıda görünmektedir.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="n">imdb</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/imdb.xlsx&quot;</span><span class="p">,</span> <span class="n">decimal</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
@@ -381,26 +357,7 @@
 <td>0</td>
 <td>The Shawshank Redemption</td>
 <td>1994</td>
-<td>9.2</td>
-<td>1071904</td>
-</tr>
-<tr>
-<td>1</td>
-<td>The Godfather</td>
-<td>1972</td>
-<td>9.2</td>
-<td>751381</td>
-</tr>
-<tr>
-<td>2</td>
-<td>The Godfather: Part II</td>
-<td>1974</td>
-<td>9.0</td>
-<td>488889</td>
-</tr>
-<tr>
-<td>3</td>
-<td>Pulp Fiction …</td></tr></tbody></table>
+<td>9.2 …</td></tr></tbody></table>
 				</p>
 				<a class="read-more" href="pandas-esittir-operatoru.html">Continue reading »</a>
 			</div>
@@ -422,7 +379,7 @@
 						</ul>
 					</span>
 				<p>
-					<h1>&lt;= Operatörü</h1>
+					<h1>&lt;= (KüçükEşit) Operatörü</h1>
 <p>Örnek Veri çerçevemiz aşağıda görünmektedir.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="n">imdb</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/imdb.xlsx&quot;</span><span class="p">,</span> <span class="n">decimal</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
@@ -463,7 +420,7 @@
 </tr>
 <tr>
 <td>3</td>
-<td>Pulp Fiction …</td></tr></tbody></table>
+<td>Pulp …</td></tr></tbody></table>
 				</p>
 				<a class="read-more" href="pandas-kucukesittir-operatoru.html">Continue reading »</a>
 			</div>
@@ -485,7 +442,7 @@
 						</ul>
 					</span>
 				<p>
-					<h1>&lt; Operatörü</h1>
+					<h1>&lt; (Küçüktür) Operatörü</h1>
 <p>Örnek Veri çerçevemiz aşağıda görünmektedir.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="n">imdb</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/imdb.xlsx&quot;</span><span class="p">,</span> <span class="n">decimal</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
@@ -526,7 +483,7 @@
 </tr>
 <tr>
 <td>3</td>
-<td>Pulp Fiction …</td></tr></tbody></table>
+<td>Pulp …</td></tr></tbody></table>
 				</p>
 				<a class="read-more" href="pandas-kucuktur-operatoru.html">Continue reading »</a>
 			</div>
@@ -617,12 +574,67 @@
 				</p>
 				<a class="read-more" href="pandas-ya-da-operatoru.html">Continue reading »</a>
 			</div>
+			<div class="post">
+				<h1 class="post-title" href="/pandas-lambda.html">
+					<a href="/pandas-lambda.html">Pandas - Lambda</a>
+				</h1>
+				<span class="post-date">Pzt 11 Temmuz 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/fonksiyon.html">Fonksiyon</a></li>
+								<li><a href="/tag/kosul.html">Koşul</a></li>
+								<li><a href="/tag/filtre.html">Filtre</a></li>
+								<li><a href="/tag/lambda.html">lambda</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>lambda() Fonksiyonu ile Satır Filtrelemek</h1>
+<p>Veri çerçevemizde belirttiğimiz koşullara uyan satırları filtrelemek istersek, bunu <code>lambda()</code> fonksiyonu ile rahatlıkla gerçekleştirebiliriz.
+Önce Veri Çerçevemize göz atalım;</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>max_speed</th>
+<th>shield</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cobra</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>viper</td>
+<td>4</td>
+<td>5</td>
+</tr>
+<tr>
+<td>sidewinder</td>
+<td>7</td>
+<td>8</td>
+</tr>
+</tbody>
+</table>
+<p><code>lambda</code> fonksiyonu ile belirteceğimiz koşulu sağlayan satırı filtrelemek için aşağıdaki kod mantığını kullanabiliriz …</p>
+				</p>
+				<a class="read-more" href="pandas-lambda.html">Continue reading »</a>
+			</div>
 	</div>
 	<div class="pagination">
 
 		<span class="pagination-item older">Newer</span>
 
-		<span class="pagination-item newer">Older</span>
+		<span class="pagination-item newer"><a href="/tag/filtre2.html">Older</a></span>
 	</div>
 		</div>
 	</body>

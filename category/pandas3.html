@@ -76,6 +76,60 @@
 </div>		<div class="content container">
 	<div class="posts">
 			<div class="post">
+				<h1 class="post-title" href="/pandas-concat.html">
+					<a href="/pandas-concat.html">Pandas - concat</a>
+				</h1>
+				<span class="post-date">Cum 15 Temmuz 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/bitlestir.html">Bitleştir</a></li>
+								<li><a href="/tag/concat.html">concat</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>concat() Fonksiyonu</h1>
+<p><strong>Concat</strong> kelimesi Concatenate kelimesinin kısaltamasıdır. <strong>Concatenate</strong> kelimesinin Türkçe karşılığı <strong>Birleştir</strong>'dir.<br>
+<code>concat()</code> fonksiyonu ile veri çerçeveleri <strong>alt alta ya da yan yana birleştirilebilir</strong>. Varsayılan değer satır bazlı yani alt alta birleştirmedir.</p>
+<p>Birleştirme örneklerini öğrenemek için öncelikle 2 sözlük yapısı oluşturup, bunları veri çerçevesine dönüştürelim.</p>
+<div class="highlight"><pre><span></span><code><span class="n">veri1</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;A1&#39;</span><span class="p">,</span><span class="s1">&#39;A2 …</span></code></pre></div>
+				</p>
+				<a class="read-more" href="pandas-concat.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="/pandas-drop.html">
+					<a href="/pandas-drop.html">Pandas - drop</a>
+				</h1>
+				<span class="post-date">Cum 15 Temmuz 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/drop.html">drop</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>drop() Fonksiyonu</h1>
+<p>Bu metodun kullanım/yazım şekli aşağıdaki gibidir.</p>
+<div class="highlight"><pre><span></span><code><span class="n">Veri_Çerçevesi_Adı</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;Satır ya da Sütun Adı&quot;</span><span class="p">,</span> 
+                        <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">ya</span> <span class="n">da</span> <span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="o">/</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+
+<ul>
+<li><strong>Satır ya da Sütun Adı</strong>, adından belli olduğu üzere, silinecek sütunun adıdır. Birden fazla sütun silinmek istenirse, isimler liste şeklinde yani köşeli parantez içinde yazılmalıdır.</li>
+</ul>
+<h2>axis …</h2>
+				</p>
+				<a class="read-more" href="pandas-drop.html">Continue reading »</a>
+			</div>
+			<div class="post">
 				<h1 class="post-title" href="/pandas-drop_duplicates.html">
 					<a href="/pandas-drop_duplicates.html">Pandas - drop_duplicates</a>
 				</h1>
@@ -292,80 +346,6 @@ ya da sütun …</p>
 <div class="highlight"><pre><span></span><code><span class="n">sozluk</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;isim&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Mustafa …</span></code></pre></div>
 				</p>
 				<a class="read-more" href="pandas-string_metotlari.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="/pandas-sutun_ekle.html">
-					<a href="/pandas-sutun_ekle.html">Pandas - Sutun_Ekle</a>
-				</h1>
-				<span class="post-date">Cum 15 Temmuz 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/pandas.html">Pandas</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
-								<li><a href="/tag/veri.html">Veri</a></li>
-								<li><a href="/tag/duzenleme.html">Düzenleme</a></li>
-								<li><a href="/tag/sutun.html">Sütun</a></li>
-								<li><a href="/tag/ekle.html">Ekle</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1>Sütun Eklemek</h1>
-<p>Veri çerçevesine yeni bir sütun ekleyip bu sütuna değer atamak mümkündür. Bunu şu yöntemle yapabiliriz.</p>
-<p><code>Veri_Çerçevesi_Adı["Yeni_Sütun_Adı"] = Atanacak_Değerler</code></p>
-<p>Örneğin NBA oyuncularının çeşitli bilgilerinin bulunduğu veri çerçevesinden, yıllık kazanç miktarlarını (<strong>Salary</strong>) 12'ye bölerek aylık kazançlarını hesaplayarak, <strong>Aylık Kazanç</strong> isimli yeni sütuna yazmaya çalışalım.
-Önce Veri çerçevemizin orijinal haline göz …</p>
-				</p>
-				<a class="read-more" href="pandas-sutun_ekle.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="/pandas-transpose.html">
-					<a href="/pandas-transpose.html">Pandas - transpose</a>
-				</h1>
-				<span class="post-date">Cum 15 Temmuz 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/pandas.html">Pandas</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
-								<li><a href="/tag/veri.html">Veri</a></li>
-								<li><a href="/tag/duzenleme.html">Düzenleme</a></li>
-								<li><a href="/tag/transpose.html">transpose</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1>transpose() Fonksiyonu</h1>
-<p><strong>Satırların sütuna, sütunların satıra çevrilme işlemini</strong> <code>transpose()</code> fonksiyonu yardımıyla gerçekleştirebiliriz. Bu fonksiyon, Excel, LibreOfis,...vb uygulamalarda, "İşlemi tersine çevir" komutu ile aynı sonucu verir. Yukarıda oluşturduğumuz veri çerçevemizin transpozunu aşağıdaki şekilde alabiliriz.</p>
-<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="o">.</span><span class="n">transpose</span><span class="p">())</span>
-</code></pre></div>
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th>0</th>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-<th>4</th>
-<th>5</th>
-<th>6</th>
-<th>7</th>
-<th>8</th>
-<th>9</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>isim</td>
-<td>Mustafa</td>
-<td>Halil …</td></tr></tbody></table>
-				</p>
-				<a class="read-more" href="pandas-transpose.html">Continue reading »</a>
 			</div>
 	</div>
 	<div class="pagination">

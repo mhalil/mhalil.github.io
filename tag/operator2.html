@@ -16,7 +16,7 @@
 		<!-- Enable responsiveness on mobile devices-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-		<title>mhalil - Ekle tag - Programlama ve 3D</title>
+		<title>mhalil - Operatör tag - Programlama ve 3D</title>
 
 		<!-- CSS -->
 		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
@@ -76,8 +76,8 @@
 </div>		<div class="content container">
 	<div class="posts">
 			<div class="post">
-				<h1 class="post-title" href="/pandas-sutun_ekle.html">
-					<a href="/pandas-sutun_ekle.html">Pandas - Sutun_Ekle</a>
+				<h1 class="post-title" href="/pandas-is-operatotu.html">
+					<a href="/pandas-is-operatotu.html">Pandas - is Operatötü</a>
 				</h1>
 				<span class="post-date">Cum 15 Temmuz 2022</span>
 					<span class="post-tags">
@@ -88,24 +88,81 @@
 								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
 								<li><a href="/tag/modul.html">Modül</a></li>
 								<li><a href="/tag/veri.html">Veri</a></li>
-								<li><a href="/tag/duzenleme.html">Düzenleme</a></li>
-								<li><a href="/tag/sutun.html">Sütun</a></li>
-								<li><a href="/tag/ekle.html">Ekle</a></li>
+								<li><a href="/tag/siralama.html">Sıralama</a></li>
+								<li><a href="/tag/is.html">is</a></li>
+								<li><a href="/tag/operator.html">operatör</a></li>
 						</ul>
 					</span>
 				<p>
-					<h1>Sütun Eklemek</h1>
-<p>Veri çerçevesine yeni bir sütun ekleyip bu sütuna değer atamak mümkündür. Bunu şu yöntemle yapabiliriz.</p>
-<p><code>Veri_Çerçevesi_Adı["Yeni_Sütun_Adı"] = Atanacak_Değerler</code></p>
-<p>Örneğin NBA oyuncularının çeşitli bilgilerinin bulunduğu veri çerçevesinden, yıllık kazanç miktarlarını (<strong>Salary</strong>) 12'ye bölerek aylık kazançlarını hesaplayarak, <strong>Aylık Kazanç</strong> isimli yeni sütuna yazmaya çalışalım.
-Önce Veri çerçevemizin orijinal haline göz …</p>
+					<h1>is Operatorü</h1>
+<p>Karşılaştırma operatörlerinden biri olan <code>is</code> ile </p>
+<p>Veri Çerçevelerinin <code>index</code> değerleri , liste veri tipi olarak belirtildiği için, listeler arasında karşılaştırma operatörlerini kullanmak ta mümkündür.</p>
+<p>İndeks değerleri ve Sütun isimleri <strong>0, 1</strong> ve <strong>2</strong> olan df_1 isimli veri çerçevesi oluşturup göz atalım.</p>
+<div class="highlight"><pre><span></span><code><span class="n">bir</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">60</span><span class="p">],</span> <span class="p">[</span><span class="mi">700 …</span></code></pre></div>
 				</p>
-				<a class="read-more" href="pandas-sutun_ekle.html">Continue reading »</a>
+				<a class="read-more" href="pandas-is-operatotu.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="/pandas-metot-ve-operator-kullanarak-filtreleme.html">
+					<a href="/pandas-metot-ve-operator-kullanarak-filtreleme.html">Pandas - Metot ve Operatör Kullanarak Filtreleme</a>
+				</h1>
+				<span class="post-date">Pzt 11 Temmuz 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/fonksiyon.html">Fonksiyon</a></li>
+								<li><a href="/tag/kosul.html">Koşul</a></li>
+								<li><a href="/tag/filtre.html">Filtre</a></li>
+								<li><a href="/tag/metot.html">Metot</a></li>
+								<li><a href="/tag/operator.html">Operatör</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>Metot ve Operatörün Birlikte Kullanımı ile Filtreleme</h1>
+<p>Veri çerçevemizde belirttiğimiz koşullara uyan satırları filtrelemek istersek, bunu Python <strong>metot ve operatörlerini birlikte kullanarak</strong> ta gerçekleştirebiliriz.
+Önce Veri Çerçevemize göz atalım;</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>max_speed</th>
+<th>shield</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cobra</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>viper</td>
+<td>4</td>
+<td>5</td>
+</tr>
+<tr>
+<td>sidewinder</td>
+<td>7</td>
+<td>8</td>
+</tr>
+</tbody>
+</table>
+<h2>loc Metodu ve &gt; Operatörünün Birlikte Kullanımı</h2>
+<p><strong>shield</strong> sütununda …</p>
+				</p>
+				<a class="read-more" href="pandas-metot-ve-operator-kullanarak-filtreleme.html">Continue reading »</a>
 			</div>
 	</div>
 	<div class="pagination">
 
-		<span class="pagination-item older">Newer</span>
+		<span class="pagination-item older"><a href="/tag/operator.html">Newer</a></span>
 
 		<span class="pagination-item newer">Older</span>
 	</div>

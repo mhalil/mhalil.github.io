@@ -76,54 +76,6 @@
 </div>		<div class="content container">
 	<div class="posts">
 			<div class="post">
-				<h1 class="post-title" href="/pandas-at.html">
-					<a href="/pandas-at.html">Pandas - at</a>
-				</h1>
-				<span class="post-date">Pzt 11 Temmuz 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/pandas.html">Pandas</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
-								<li><a href="/tag/fonksiyon.html">Fonksiyon</a></li>
-								<li><a href="/tag/at.html">at</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1>at[] Metodu</h1>
-<p><code>at[]</code> metodunu, bir satır/sütun etiket çifti belirterek <strong>tek bir değere erişmek</strong> için kullanabiliriz. MS Excel ya da Libre Ofis Calc uygulamalarındaki <u>satır ve sütun değerlerinin kesişimindeki hücre değerine ulaşmak</u> ile aynı mantık.</p>
-<blockquote>
-<p><code>loc[]</code> metoduna benzer şekilde kullanılır, her ikisi de etiket tabanlı aramalar sağlar. Bir Veri çerçevesi …</p></blockquote>
-				</p>
-				<a class="read-more" href="pandas-at.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="/pandas-iat.html">
-					<a href="/pandas-iat.html">Pandas - iat</a>
-				</h1>
-				<span class="post-date">Pzt 11 Temmuz 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/pandas.html">Pandas</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
-								<li><a href="/tag/fonksiyon.html">Fonksiyon</a></li>
-								<li><a href="/tag/iat.html">iat</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1>iat[] Metodu</h1>
-<p><code>iat[]</code> metodu, satır/sütun çiftinde tamsayı belirtilerek <strong>tek bir değere</strong> erişim sağlamak için kullanılır. ve <code>iloc[]</code> metoduna benzerdir, her iki metot ta tamsayı tabanlı aramalar sağlar. <code>at[]</code> metodunda <strong>etiket</strong> kullanırken <code>iat[]</code> metodunda <strong>indeks değeri olan tamsayı</strong> kullanılır. <code>loc[]</code> ve <code>iloc[]</code> metoduna benzer mantık.</p>
-<blockquote>
-<p>Bir Veri çerçevesi (DataFrame) veya …</p></blockquote>
-				</p>
-				<a class="read-more" href="pandas-iat.html">Continue reading »</a>
-			</div>
-			<div class="post">
 				<h1 class="post-title" href="/pandas-iloc.html">
 					<a href="/pandas-iloc.html">Pandas - iloc</a>
 				</h1>
@@ -147,8 +99,8 @@
 				<a class="read-more" href="pandas-iloc.html">Continue reading »</a>
 			</div>
 			<div class="post">
-				<h1 class="post-title" href="/pandas-kosullu-secim.html">
-					<a href="/pandas-kosullu-secim.html">Pandas - Koşullu Seçim</a>
+				<h1 class="post-title" href="/pandas-lambda.html">
+					<a href="/pandas-lambda.html">Pandas - Lambda</a>
 				</h1>
 				<span class="post-date">Pzt 11 Temmuz 2022</span>
 					<span class="post-tags">
@@ -160,13 +112,13 @@
 								<li><a href="/tag/modul.html">Modül</a></li>
 								<li><a href="/tag/fonksiyon.html">Fonksiyon</a></li>
 								<li><a href="/tag/kosul.html">Koşul</a></li>
-								<li><a href="/tag/secim.html">Seçim</a></li>
+								<li><a href="/tag/filtre.html">Filtre</a></li>
 								<li><a href="/tag/lambda.html">lambda</a></li>
 						</ul>
 					</span>
 				<p>
-					<h1>Koşullu Satır Seçimi</h1>
-<p>Veri çerçevemizde belirttiğimiz koşullara uyan satırları seçmek istersek, bunu Python operatörleri ile rahatlıkla gerçekleştirebiliriz.
+					<h1>lambda() Fonksiyonu ile Satır Filtrelemek</h1>
+<p>Veri çerçevemizde belirttiğimiz koşullara uyan satırları filtrelemek istersek, bunu <code>lambda()</code> fonksiyonu ile rahatlıkla gerçekleştirebiliriz.
 Önce Veri Çerçevemize göz atalım;</p>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </code></pre></div>
@@ -197,9 +149,9 @@
 </tr>
 </tbody>
 </table>
-<p><strong>shield</strong> sütununda <strong>6'dan büyük</strong> değerleri barındıran satırları seçmek istediğimizi varsayalım ve buna uygun kodu yazıp …</p>
+<p><code>lambda</code> fonksiyonu ile belirteceğimiz koşulu sağlayan satırı filtrelemek için aşağıdaki kod mantığını kullanabiliriz …</p>
 				</p>
-				<a class="read-more" href="pandas-kosullu-secim.html">Continue reading »</a>
+				<a class="read-more" href="pandas-lambda.html">Continue reading »</a>
 			</div>
 			<div class="post">
 				<h1 class="post-title" href="/pandas-loc.html">
@@ -226,6 +178,63 @@
 <p><code>loc[]</code> metodu, <code>iloc[]</code> metoduna benzer bir metottur ancak <code>loc[]</code> metodunda, satır ve sütun seçmek/görüntülemek istediğimiz zaman, satır ve sütunların <strong>isimlerini / ifadelerini</strong> (metinsel / string ifadelerini) yazmalıyız. <code>loc[]</code> metodu aslında etiket tabanlıdır, ancak bir …</p>
 				</p>
 				<a class="read-more" href="pandas-loc.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="/pandas-metot-ve-operator-kullanarak-filtreleme.html">
+					<a href="/pandas-metot-ve-operator-kullanarak-filtreleme.html">Pandas - Metot ve Operatör Kullanarak Filtreleme</a>
+				</h1>
+				<span class="post-date">Pzt 11 Temmuz 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/fonksiyon.html">Fonksiyon</a></li>
+								<li><a href="/tag/kosul.html">Koşul</a></li>
+								<li><a href="/tag/filtre.html">Filtre</a></li>
+								<li><a href="/tag/metot.html">Metot</a></li>
+								<li><a href="/tag/operator.html">Operatör</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>Metot ve Operatörün Birlikte Kullanımı ile Filtreleme</h1>
+<p>Veri çerçevemizde belirttiğimiz koşullara uyan satırları filtrelemek istersek, bunu Python <strong>metot ve operatörlerini birlikte kullanarak</strong> ta gerçekleştirebiliriz.
+Önce Veri Çerçevemize göz atalım;</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>max_speed</th>
+<th>shield</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cobra</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>viper</td>
+<td>4</td>
+<td>5</td>
+</tr>
+<tr>
+<td>sidewinder</td>
+<td>7</td>
+<td>8</td>
+</tr>
+</tbody>
+</table>
+<h2>loc Metodu ve &gt; Operatörünün Birlikte Kullanımı</h2>
+<p><strong>shield</strong> sütununda …</p>
+				</p>
+				<a class="read-more" href="pandas-metot-ve-operator-kullanarak-filtreleme.html">Continue reading »</a>
 			</div>
 			<div class="post">
 				<h1 class="post-title" href="/pandas-pandas-index.html">
@@ -277,10 +286,10 @@
 				<a class="read-more" href="pandas-pandas-index.html">Continue reading »</a>
 			</div>
 			<div class="post">
-				<h1 class="post-title" href="/pandas-03-veriyi-kesfet-incele.html">
-					<a href="/pandas-03-veriyi-kesfet-incele.html">Pandas 03 -  Veriyi Keşfet - İncele</a>
+				<h1 class="post-title" href="/pandas-sutun-filtrele.html">
+					<a href="/pandas-sutun-filtrele.html">Pandas - Sütun Filtrele</a>
 				</h1>
-				<span class="post-date">Paz 10 Temmuz 2022</span>
+				<span class="post-date">Pzt 11 Temmuz 2022</span>
 					<span class="post-tags">
 						Tags:
 						<ul>
@@ -288,18 +297,22 @@
 								<li><a href="/tag/pandas.html">Pandas</a></li>
 								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
 								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/fonksiyon.html">Fonksiyon</a></li>
+								<li><a href="/tag/kosul.html">Koşul</a></li>
+								<li><a href="/tag/filtre.html">Filtre</a></li>
+								<li><a href="/tag/sutun.html">Sütun</a></li>
 						</ul>
 					</span>
 				<p>
-					<h2>Veriyi Keşfet / İncele</h2>
-<p>Bu bölümde <strong>Veri Çerçevesi</strong> (<strong>Data Frame</strong>) içeriğini görüntülemeye dair komutları öğreneceğiz.</p>
-<p>Öncelikle <strong>Pandas</strong> Kütüphanesini içe aktarıp, kodlama esnasında hızlı olması adına bu kütüphaneye <strong>pd</strong> adını atayalım;</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-</code></pre></div>
-
-<p>Bu eğitimde, fonksiyon ve metotlar konusunu anlatırken kullanmak üzere, basit bir Veri Çerçevesi (Data Frame) oluşturalım ve …</p>
+					<h1>Sütun Filtrelemek</h1>
+<p>Sadece bir Sütunu filtrelemek/görüntülemek için veri çerçevesinin adı ile birlikte filtrelemek/görüntülemek istediğimiz sütunun ismini yazmak yeterlidir. Bu da iki şekilde gerçekleştirilebilir.</p>
+<ol>
+<li><code>VeriCervecesiAdı.SütunAdı</code></li>
+<li><code>VeriCervecesiAdı["SütunAdı"]</code></li>
+</ol>
+<p>Sütun isminde <strong>boşluk</strong> ya da <strong>nokta</strong> karakterleri bulunması halinde, ilk (noktalı) seçeneği KULLANAMAYIZ, o durumda 2. seçeneği  yani <strong>köşeli parantez</strong>li …</p>
 				</p>
-				<a class="read-more" href="pandas-03-veriyi-kesfet-incele.html">Continue reading »</a>
+				<a class="read-more" href="pandas-sutun-filtrele.html">Continue reading »</a>
 			</div>
 			<div class="post">
 				<h1 class="post-title" href="/pandas-columns.html">
@@ -378,6 +391,33 @@
 <p>Basit bir Veri Çerçevesi (Data Frame) oluşturalım ve oluşturduğumuz Veri …</p>
 				</p>
 				<a class="read-more" href="pandas-dtypes.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="/pandas-head.html">
+					<a href="/pandas-head.html">Pandas - head</a>
+				</h1>
+				<span class="post-date">Paz 10 Temmuz 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/fonksiyon.html">Fonksiyon</a></li>
+								<li><a href="/tag/head.html">head</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>head() Fonksiyonu</h1>
+<p><strong>head()</strong> fonksiyonunu, oluşturduğumuz ya da çalışmamıza dahil ettiğimiz (içe aktardığımız) Veri Çerçevelerinin ilk satırlarını görüntüleyerek, içerik hakkında bilgi edinmemizi sağlar. <strong>Head</strong> kelimesi Türkçede <strong>Baş, Kafa</strong> anlamına gelmektedir.</p>
+<p>Öncelikle <strong>Pandas</strong> Kütüphanesini içe aktarıp, kodlama esnasında hızlı olması adına bu kütüphaneye <strong>pd</strong> adını atayalım;</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</code></pre></div>
+
+<p>Basit bir …</p>
+				</p>
+				<a class="read-more" href="pandas-head.html">Continue reading »</a>
 			</div>
 	</div>
 	<div class="pagination">

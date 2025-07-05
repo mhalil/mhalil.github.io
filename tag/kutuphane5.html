@@ -76,6 +76,56 @@
 </div>		<div class="content container">
 	<div class="posts">
 			<div class="post">
+				<h1 class="post-title" href="/pandas-merge.html">
+					<a href="/pandas-merge.html">Pandas - merge</a>
+				</h1>
+				<span class="post-date">Cum 15 Temmuz 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/birlestir.html">Birleştir</a></li>
+								<li><a href="/tag/merge.html">merge</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>merge() Fonksiyonu</h1>
+<p><code>merge()</code> fonksiyonu <code>join()</code> fonksiyonuna benzer ancak bazı farklı özellikleri vardır. Veri Çerçevesi (DataFrame) veya adlandırılmış Seri nesnelerini (Series) veritabanı stili birleştirme yöntemi ile (SQL’de bulunan inner join, outer join … ‘e benzer) birleştirmek için <code>merge()</code> fonksiyonunu kullanılabilir.<br>
+Adlandırılmış Seri nesnesi (Series), adlandırılmış tek bir sütuna sahip Veri çerçevesi …</p>
+				</p>
+				<a class="read-more" href="pandas-merge.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="/pandas-reindex.html">
+					<a href="/pandas-reindex.html">Pandas - reindex</a>
+				</h1>
+				<span class="post-date">Cum 15 Temmuz 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/veri.html">Veri</a></li>
+								<li><a href="/tag/siralama.html">Sıralama</a></li>
+								<li><a href="/tag/reindex.html">reindex</a></li>
+								<li><a href="/tag/columns.html">columns</a></li>
+								<li><a href="/tag/index.html">index</a></li>
+								<li><a href="/tag/axis.html">axis</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>reindex() Fonksiyonu</h1>
+<p><code>reindex()</code> fonksiyonu, Pandas'ta temel veri sıralama (hizalama) yöntemlerinden biridir. Bir veri çerçevesinin satır ya da sütunlarını yeniden sıralamak için kullanılan en yaygın yöntemdir. Prensip olarak, etiket sıralama mantığına dayanır. Bu işlem, indeks değerlerini ya da sütun isimlerini yeniden sıralamak ve verileri belirli bir eksen (Satır 
+ya da sütun …</p>
+				</p>
+				<a class="read-more" href="pandas-reindex.html">Continue reading »</a>
+			</div>
+			<div class="post">
 				<h1 class="post-title" href="/pandas-sort_index.html">
 					<a href="/pandas-sort_index.html">Pandas - sort_index</a>
 				</h1>
@@ -168,33 +218,6 @@
 				<a class="read-more" href="pandas-string_metotlari.html">Continue reading »</a>
 			</div>
 			<div class="post">
-				<h1 class="post-title" href="/pandas-sutun_ekle.html">
-					<a href="/pandas-sutun_ekle.html">Pandas - Sutun_Ekle</a>
-				</h1>
-				<span class="post-date">Cum 15 Temmuz 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/pandas.html">Pandas</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
-								<li><a href="/tag/veri.html">Veri</a></li>
-								<li><a href="/tag/duzenleme.html">Düzenleme</a></li>
-								<li><a href="/tag/sutun.html">Sütun</a></li>
-								<li><a href="/tag/ekle.html">Ekle</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1>Sütun Eklemek</h1>
-<p>Veri çerçevesine yeni bir sütun ekleyip bu sütuna değer atamak mümkündür. Bunu şu yöntemle yapabiliriz.</p>
-<p><code>Veri_Çerçevesi_Adı["Yeni_Sütun_Adı"] = Atanacak_Değerler</code></p>
-<p>Örneğin NBA oyuncularının çeşitli bilgilerinin bulunduğu veri çerçevesinden, yıllık kazanç miktarlarını (<strong>Salary</strong>) 12'ye bölerek aylık kazançlarını hesaplayarak, <strong>Aylık Kazanç</strong> isimli yeni sütuna yazmaya çalışalım.
-Önce Veri çerçevemizin orijinal haline göz …</p>
-				</p>
-				<a class="read-more" href="pandas-sutun_ekle.html">Continue reading »</a>
-			</div>
-			<div class="post">
 				<h1 class="post-title" href="/pandas-transpose.html">
 					<a href="/pandas-transpose.html">Pandas - transpose</a>
 				</h1>
@@ -213,82 +236,12 @@
 					</span>
 				<p>
 					<h1>transpose() Fonksiyonu</h1>
-<p><strong>Satırların sütuna, sütunların satıra çevrilme işlemini</strong> <code>transpose()</code> fonksiyonu yardımıyla gerçekleştirebiliriz. Bu fonksiyon, Excel, LibreOfis,...vb uygulamalarda, "İşlemi tersine çevir" komutu ile aynı sonucu verir. Yukarıda oluşturduğumuz veri çerçevemizin transpozunu aşağıdaki şekilde alabiliriz.</p>
-<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="o">.</span><span class="n">transpose</span><span class="p">())</span>
-</code></pre></div>
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th>0</th>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-<th>4</th>
-<th>5</th>
-<th>6</th>
-<th>7</th>
-<th>8</th>
-<th>9</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>isim</td>
-<td>Mustafa</td>
-<td>Halil …</td></tr></tbody></table>
+<p><strong>Satırların sütuna, sütunların satıra çevrilme işlemini</strong> <code>transpose()</code> fonksiyonu yardımıyla gerçekleştirebiliriz. Bu fonksiyon, Excel, LibreOfis,...vb uygulamalarda, "İşlemi tersine çevir" komutu ile aynı sonucu verir. </p>
+<p>Aşağıda bir veri çerçevesi oluşturup, veri çerçevemizin transpozunu alalım.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">sozluk</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;isim&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Mustafa&quot;</span><span class="p">,</span> <span class="s2">&quot;Halil&quot;</span><span class="p">,</span> <span class="s2">&quot;Burak&quot;</span><span class="p">,</span> <span class="s2">&quot;Emre&quot;</span><span class="p">,</span> <span class="s2">&quot;Ersin&quot;</span><span class="p">,</span> <span class="s2">&quot;Sertaç&quot;</span><span class="p">,</span> <span class="s2">&quot;Furkan&quot;</span><span class="p">,</span><span class="s2">&quot;Murat&quot;</span><span class="p">,</span><span class="s2">&quot;Ahmet …</span></code></pre></div>
 				</p>
 				<a class="read-more" href="pandas-transpose.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="/pandas-veri-duzenleme-yontemleri.html">
-					<a href="/pandas-veri-duzenleme-yontemleri.html">Pandas - Veri Düzenleme Yöntemleri</a>
-				</h1>
-				<span class="post-date">Cum 15 Temmuz 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/pandas.html">Pandas</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1>Düzenleme Yöntemleri</h1>
-<h2>Sütun Ekle</h2>
-<p>Veri çerçevesine yeni bir sütun ekleyip bu sütuna değer atamak mümkündür. Bunu şu yöntemle yapabiliriz.</p>
-<p><code>Veri_Çerçevesi_Adı["Yeni_Sütun_Adı"] = Atanacak_Değerler</code></p>
-<p>Örneğin NBA oyuncularının çeşitli bilgilerinin bulunduğu veri çerçevesinden, yıllık kazanç miktarlarını (<strong>Salary</strong>) 12'ye bölerek aylık kazançlarını hesaplayarak, <strong>Aylık Kazanç</strong> isimli yeni sütuna yazmaya çalışalım.
-Önce Veri çerçevemizin orijinal …</p>
-				</p>
-				<a class="read-more" href="pandas-veri-duzenleme-yontemleri.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="/pandas-05-eksik-kayip-veri-yontemleri.html">
-					<a href="/pandas-05-eksik-kayip-veri-yontemleri.html">Pandas 05 - Eksik - Kayıp Veri Yöntemleri</a>
-				</h1>
-				<span class="post-date">Sal 12 Temmuz 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/pandas.html">Pandas</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
-								<li><a href="/tag/eksik.html">Eksik</a></li>
-								<li><a href="/tag/kayip.html">Kayıp</a></li>
-								<li><a href="/tag/veri.html">Veri</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1>Eksik / Kayıp Veri Tespiti ve Düzenleme Yöntemleri</h1>
-<p>Veri çerçevemizde eksik veri (excel tablosundaki boş hücre gibi düşünebiliriz) olup olmadığını, varsa kaç adet olduğunu tespit edebileceğimiz Pandas yöntemleri mevcuttur. Bunları incelemeye başlayalım.</p>
-<h3>isnull() Fonksiyonu</h3>
-<p>Veri çerçevemizde eksik verileri <strong>isnull()</strong> fonksiyonu ile tespit edebiliriz. <strong>isnull</strong> ifadesini, <strong>boş mu?, geçersiz mi?, kayıp/eksik …</strong></p>
-				</p>
-				<a class="read-more" href="pandas-05-eksik-kayip-veri-yontemleri.html">Continue reading »</a>
 			</div>
 			<div class="post">
 				<h1 class="post-title" href="/pandas-dropna.html">
@@ -355,8 +308,8 @@ düşünülebilir) yazdırabiliriz/atayabiliriz.</p>
 				<a class="read-more" href="pandas-fillna.html">Continue reading »</a>
 			</div>
 			<div class="post">
-				<h1 class="post-title" href="/pandas-04-secim-yontemleri.html">
-					<a href="/pandas-04-secim-yontemleri.html">Pandas 04 - Seçim Yöntemleri</a>
+				<h1 class="post-title" href="/pandas-at.html">
+					<a href="/pandas-at.html">Pandas - at</a>
 				</h1>
 				<span class="post-date">Pzt 11 Temmuz 2022</span>
 					<span class="post-tags">
@@ -366,17 +319,41 @@ düşünülebilir) yazdırabiliriz/atayabiliriz.</p>
 								<li><a href="/tag/pandas.html">Pandas</a></li>
 								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
 								<li><a href="/tag/modul.html">Modül</a></li>
-								<li><a href="/tag/secim.html">Seçim</a></li>
+								<li><a href="/tag/fonksiyon.html">Fonksiyon</a></li>
+								<li><a href="/tag/at.html">at</a></li>
 						</ul>
 					</span>
 				<p>
-					<h1>Seçim Yöntemleri</h1>
-<p>Veri Çerçevesi oluştururken ya da oluşturduktan sonra istenilen satır ve sütunların seçilmesi/görüntülenmesi ya da seçilmemesi/görüntülenmemesi konusunu inceleyelim. Veri çerçevesinde işimize yaramayacak verileri devre dışı bırakmak için bu yöntemleri kullanabiliriz.</p>
-<h2>Satır ve Sütun Seçimi</h2>
-<h3>iloc[] Metodu</h3>
-<p>Veri Çerçevesindeki istenilen satır ve sütunu seçmek/görüntülemek için <strong>iloc[]</strong> metodu …</p>
+					<h1>at[] Metodu</h1>
+<p><code>at[]</code> metodunu, bir satır/sütun etiket çifti belirterek <strong>tek bir değere erişmek</strong> için kullanabiliriz. MS Excel ya da Libre Ofis Calc uygulamalarındaki <u>satır ve sütun değerlerinin kesişimindeki hücre değerine ulaşmak</u> ile aynı mantık.</p>
+<blockquote>
+<p><code>loc[]</code> metoduna benzer şekilde kullanılır, her ikisi de etiket tabanlı aramalar sağlar. Bir Veri çerçevesi …</p></blockquote>
 				</p>
-				<a class="read-more" href="pandas-04-secim-yontemleri.html">Continue reading »</a>
+				<a class="read-more" href="pandas-at.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="/pandas-iat.html">
+					<a href="/pandas-iat.html">Pandas - iat</a>
+				</h1>
+				<span class="post-date">Pzt 11 Temmuz 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/fonksiyon.html">Fonksiyon</a></li>
+								<li><a href="/tag/iat.html">iat</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>iat[] Metodu</h1>
+<p><code>iat[]</code> metodu, satır/sütun çiftinde tamsayı belirtilerek <strong>tek bir değere</strong> erişim sağlamak için kullanılır. ve <code>iloc[]</code> metoduna benzerdir, her iki metot ta tamsayı tabanlı aramalar sağlar. <code>at[]</code> metodunda <strong>etiket</strong> kullanırken <code>iat[]</code> metodunda <strong>indeks değeri olan tamsayı</strong> kullanılır. <code>loc[]</code> ve <code>iloc[]</code> metoduna benzer mantık.</p>
+<blockquote>
+<p>Bir Veri çerçevesi (DataFrame) veya …</p></blockquote>
+				</p>
+				<a class="read-more" href="pandas-iat.html">Continue reading »</a>
 			</div>
 	</div>
 	<div class="pagination">

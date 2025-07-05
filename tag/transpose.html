@@ -94,31 +94,10 @@
 					</span>
 				<p>
 					<h1>transpose() Fonksiyonu</h1>
-<p><strong>Satırların sütuna, sütunların satıra çevrilme işlemini</strong> <code>transpose()</code> fonksiyonu yardımıyla gerçekleştirebiliriz. Bu fonksiyon, Excel, LibreOfis,...vb uygulamalarda, "İşlemi tersine çevir" komutu ile aynı sonucu verir. Yukarıda oluşturduğumuz veri çerçevemizin transpozunu aşağıdaki şekilde alabiliriz.</p>
-<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="o">.</span><span class="n">transpose</span><span class="p">())</span>
-</code></pre></div>
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th>0</th>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-<th>4</th>
-<th>5</th>
-<th>6</th>
-<th>7</th>
-<th>8</th>
-<th>9</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>isim</td>
-<td>Mustafa</td>
-<td>Halil …</td></tr></tbody></table>
+<p><strong>Satırların sütuna, sütunların satıra çevrilme işlemini</strong> <code>transpose()</code> fonksiyonu yardımıyla gerçekleştirebiliriz. Bu fonksiyon, Excel, LibreOfis,...vb uygulamalarda, "İşlemi tersine çevir" komutu ile aynı sonucu verir. </p>
+<p>Aşağıda bir veri çerçevesi oluşturup, veri çerçevemizin transpozunu alalım.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">sozluk</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;isim&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Mustafa&quot;</span><span class="p">,</span> <span class="s2">&quot;Halil&quot;</span><span class="p">,</span> <span class="s2">&quot;Burak&quot;</span><span class="p">,</span> <span class="s2">&quot;Emre&quot;</span><span class="p">,</span> <span class="s2">&quot;Ersin&quot;</span><span class="p">,</span> <span class="s2">&quot;Sertaç&quot;</span><span class="p">,</span> <span class="s2">&quot;Furkan&quot;</span><span class="p">,</span><span class="s2">&quot;Murat&quot;</span><span class="p">,</span><span class="s2">&quot;Ahmet …</span></code></pre></div>
 				</p>
 				<a class="read-more" href="pandas-transpose.html">Continue reading »</a>
 			</div>

@@ -8,9 +8,9 @@
 		<!-- Metadata -->
 	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
 	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
-	<meta property="og:title" content="Pandas - Koşullu Seçim" />
+	<meta property="og:title" content="Pandas - Sütun Filtrele" />
 	<meta property="og:type" content="article" />
-	<meta property="og:url" content="/pandas-kosullu-secim.html" />
+	<meta property="og:url" content="/pandas-sutun-filtrele.html" />
 		<meta property="og:image" content="/images/avatar.png" />
 
 		<!-- Enable responsiveness on mobile devices-->
@@ -75,108 +75,100 @@
 	</div>
 </div>		<div class="content container">
 <div class="post">
-	<h1 class="post-title">Pandas - Koşullu Seçim</h1>
+	<h1 class="post-title">Pandas - Sütun Filtrele</h1>
 	<span class="post-date">Pzt 11 Temmuz 2022</span>
-	<h1>Koşullu Satır Seçimi</h1>
-<p>Veri çerçevemizde belirttiğimiz koşullara uyan satırları seçmek istersek, bunu Python operatörleri ile rahatlıkla gerçekleştirebiliriz.
-Önce Veri Çerçevemize göz atalım;</p>
-<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-</code></pre></div>
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th>max_speed</th>
-<th>shield</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>cobra</td>
-<td>1</td>
-<td>2</td>
-</tr>
-<tr>
-<td>viper</td>
-<td>4</td>
-<td>5</td>
-</tr>
-<tr>
-<td>sidewinder</td>
-<td>7</td>
-<td>8</td>
-</tr>
-</tbody>
-</table>
-<p><strong>shield</strong> sütununda <strong>6'dan büyük</strong> değerleri barındıran satırları seçmek istediğimizi varsayalım ve buna uygun kodu yazıp çalıştıralım;</p>
-<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;shield&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">6</span><span class="p">])</span>
-</code></pre></div>
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th>max_speed</th>
-<th>shield</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>sidewinder</td>
-<td>7</td>
-<td>8</td>
-</tr>
-</tbody>
-</table>
-<h1>Koşullu Sütun seçimi</h1>
-<p>Veri çerçevemizde belirttiğimiz koşullara uyan sütunları seçmek istersek, benzer kodu kullanabiliriz. Örneğin <strong>shield</strong> sütununda <strong>6'dan büyük</strong> değerleri barındıran satırları ve bu satırların sadece <strong>max_speed</strong> sütununu seçmek istediğimizi varsayalım. Bunun için aşağıdaki kodu yazıp çalıştıralım;</p>
-<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;shield&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">6</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;max_speed&#39;</span><span class="p">]])</span>
-</code></pre></div>
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th>max_speed</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>sidewinder</td>
-<td>7</td>
-</tr>
-</tbody>
-</table>
-<h1>lambda() Fonksiyonu ile Satır Seçimi</h1>
-<p><code>lambda</code> fonksiyonu ile belirteceğimiz koşulu sağlayan satırı seçmek için aşağıdaki kod mantığını kullanabiliriz. Örneğin <strong>shield</strong> satırında <strong>8</strong>'e eşit değer barındıran satırları seçelim.</p>
-<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;shield&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">8</span><span class="p">])</span>
-</code></pre></div>
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th>max_speed</th>
-<th>shield</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>sidewinder</td>
-<td>7</td>
-<td>8</td>
-</tr>
-</tbody>
-</table>
-<h1>Sütun Seçimi</h1>
-<p>Sadece bir Sütunu seçmek/görüntülemek için veri çerçevesinin adı ile birlikte seçmek/görüntülemek istediğimiz sütunun ismini yazmak yeterlidir. Bu da iki şekilde gerçekleştirilebilir.</p>
+	<h1>Sütun Filtrelemek</h1>
+<p>Sadece bir Sütunu filtrelemek/görüntülemek için veri çerçevesinin adı ile birlikte filtrelemek/görüntülemek istediğimiz sütunun ismini yazmak yeterlidir. Bu da iki şekilde gerçekleştirilebilir.</p>
 <ol>
-<li><strong>VeriCervecesiAdı.SütunAdı</strong></li>
-<li><strong>VeriCervecesiAdı["SütunAdı"]</strong></li>
+<li><code>VeriCervecesiAdı.SütunAdı</code></li>
+<li><code>VeriCervecesiAdı["SütunAdı"]</code></li>
 </ol>
-<p>Sütun isminde boşluk ya da nokta karakterleri bulunması halinde, ilk (noktalı) seçeneği kullanamayız, o durumda 2. seçeneği (köşeli parantezli) kullanmak gerekir.
-Bunları da örneklerle görelim.</p>
+<p>Sütun isminde <strong>boşluk</strong> ya da <strong>nokta</strong> karakterleri bulunması halinde, ilk (noktalı) seçeneği KULLANAMAYIZ, o durumda 2. seçeneği  yani <strong>köşeli parantez</strong>li seçeneği kullanmamız gerekir.
+Bunları da örneklerle görelim. Elimizde aşağıdaki gibi bir veri çerçevesi olduğunu varsayalım.</p>
+<div class="highlight"><pre><span></span><code><span class="n">imdb</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/imdb.xlsx&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s2">&quot;Film_Adı&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">imdb</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Film_Adı</th>
+<th>Yıl</th>
+<th>Puan</th>
+<th>Oylayan_Kişi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The Shawshank Redemption</td>
+<td>1994</td>
+<td>9,2</td>
+<td>1071904</td>
+</tr>
+<tr>
+<td>The Godfather</td>
+<td>1972</td>
+<td>9,2</td>
+<td>751381</td>
+</tr>
+<tr>
+<td>The Godfather: Part II</td>
+<td>1974</td>
+<td>9</td>
+<td>488889</td>
+</tr>
+<tr>
+<td>Pulp Fiction</td>
+<td>1994</td>
+<td>8,9</td>
+<td>830504</td>
+</tr>
+<tr>
+<td>The Dark Knight</td>
+<td>2008</td>
+<td>8,9</td>
+<td>1045186</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>Mystic River</td>
+<td>2003</td>
+<td>7,9</td>
+<td>256159</td>
+</tr>
+<tr>
+<td>In the Heat of the Night</td>
+<td>1967</td>
+<td>7,9</td>
+<td>37081</td>
+</tr>
+<tr>
+<td>Arsenic and Old Lace</td>
+<td>1944</td>
+<td>7,9</td>
+<td>45893</td>
+</tr>
+<tr>
+<td>Before Sunrise</td>
+<td>1995</td>
+<td>7,9</td>
+<td>100974</td>
+</tr>
+<tr>
+<td>Papillon</td>
+<td>1973</td>
+<td>7,9</td>
+<td>62517</td>
+</tr>
+</tbody>
+</table>
+<p>247 rows × 3 columns</p>
+<p>Eğer İndex verisi dışında sadece <strong>Puan</strong> isimli sütun verilerini görmek istersek;</p>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">imdb</span><span class="o">.</span><span class="n">Puan</span><span class="p">)</span>
 </code></pre></div>
 
@@ -195,6 +187,7 @@ Bunları da örneklerle görelim.</p>
 <span class="n">Name</span><span class="p">:</span> <span class="n">Puan</span><span class="p">,</span> <span class="n">Length</span><span class="p">:</span> <span class="mi">247</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
 </code></pre></div>
 
+<p>Aynı sonuca, aşağıdaki kodu yazarak ta ulaşabiliriz;</p>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">imdb</span><span class="p">[</span><span class="s2">&quot;Puan&quot;</span><span class="p">])</span>
 </code></pre></div>
 
@@ -213,7 +206,8 @@ Bunları da örneklerle görelim.</p>
 <span class="n">Name</span><span class="p">:</span> <span class="n">Puan</span><span class="p">,</span> <span class="n">Length</span><span class="p">:</span> <span class="mi">247</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
 </code></pre></div>
 
-<p>Birden fazla sütun seçmek istediğimiz durumda, sütun isimlerini liste olarak (bildiğiniz gibi liste veri tipleri köşeli parantez ile temsil edilir) belirtmek/yazmak gerekir.</p>
+<h2>Çoklu Sütun Filtrelemek</h2>
+<p><strong>Birden fazla sütun filtrelemek</strong> istediğimiz durumda, sütun isimlerini <strong>liste</strong> olarak (bildiğiniz gibi liste veri tipleri köşeli parantez ile temsil edilir) belirtmek/yazmak gerekir.</p>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">imdb</span><span class="p">[[</span><span class="s2">&quot;Yıl&quot;</span><span class="p">,</span> <span class="s2">&quot;Puan&quot;</span><span class="p">]])</span>
 </code></pre></div>
 
@@ -284,7 +278,7 @@ Bunları da örneklerle görelim.</p>
 </tbody>
 </table>
 <p>247 rows × 2 columns</p>
-<p>Yukarıda anlatılan <code>loc</code> ve <code>iloc</code> metodlarını, <strong>Satır</strong>lar da olduğu gibi, <strong>Sütun</strong>larda da kullanabiliriz.</p>
+<p>Gördüğünüz gibi artık sadece <strong>Yıl</strong> ve <strong>Puan</strong> Sütunlarına ait verileri filtrelemiş olduk.</p>
 
 		<span class="post-tags">
 			Tags:
@@ -295,8 +289,8 @@ Bunları da örneklerle görelim.</p>
 					<li><a href="/tag/modul.html">Modül</a></li>
 					<li><a href="/tag/fonksiyon.html">Fonksiyon</a></li>
 					<li><a href="/tag/kosul.html">Koşul</a></li>
-					<li><a href="/tag/secim.html">Seçim</a></li>
-					<li><a href="/tag/lambda.html">lambda</a></li>
+					<li><a href="/tag/filtre.html">Filtre</a></li>
+					<li><a href="/tag/sutun.html">Sütun</a></li>
 			</ul>
 		</span>
 

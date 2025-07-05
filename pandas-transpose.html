@@ -78,7 +78,89 @@
 	<h1 class="post-title">Pandas - transpose</h1>
 	<span class="post-date">Cum 15 Temmuz 2022</span>
 	<h1>transpose() Fonksiyonu</h1>
-<p><strong>Satırların sütuna, sütunların satıra çevrilme işlemini</strong> <code>transpose()</code> fonksiyonu yardımıyla gerçekleştirebiliriz. Bu fonksiyon, Excel, LibreOfis,...vb uygulamalarda, "İşlemi tersine çevir" komutu ile aynı sonucu verir. Yukarıda oluşturduğumuz veri çerçevemizin transpozunu aşağıdaki şekilde alabiliriz.</p>
+<p><strong>Satırların sütuna, sütunların satıra çevrilme işlemini</strong> <code>transpose()</code> fonksiyonu yardımıyla gerçekleştirebiliriz. Bu fonksiyon, Excel, LibreOfis,...vb uygulamalarda, "İşlemi tersine çevir" komutu ile aynı sonucu verir. </p>
+<p>Aşağıda bir veri çerçevesi oluşturup, veri çerçevemizin transpozunu alalım.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">sozluk</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;isim&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Mustafa&quot;</span><span class="p">,</span> <span class="s2">&quot;Halil&quot;</span><span class="p">,</span> <span class="s2">&quot;Burak&quot;</span><span class="p">,</span> <span class="s2">&quot;Emre&quot;</span><span class="p">,</span> <span class="s2">&quot;Ersin&quot;</span><span class="p">,</span> <span class="s2">&quot;Sertaç&quot;</span><span class="p">,</span> <span class="s2">&quot;Furkan&quot;</span><span class="p">,</span><span class="s2">&quot;Murat&quot;</span><span class="p">,</span><span class="s2">&quot;Ahmet&quot;</span><span class="p">,</span><span class="s2">&quot;Abdülkadir&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;yaş&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">52</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">38</span><span class="p">],</span>
+                    <span class="s2">&quot;iş-meslek&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;mühendis&quot;</span><span class="p">,</span> <span class="s2">&quot;programcı&quot;</span><span class="p">,</span> <span class="s2">&quot;akademisyen&quot;</span><span class="p">,</span> <span class="s2">&quot;yönetici&quot;</span><span class="p">,</span><span class="s2">&quot;amir&quot;</span><span class="p">,</span><span class="s2">&quot;mühendis&quot;</span><span class="p">,</span> <span class="s2">&quot;yönetici&quot;</span><span class="p">,</span><span class="s2">&quot;müdür&quot;</span><span class="p">,</span><span class="s2">&quot;veteriner&quot;</span><span class="p">,</span><span class="s2">&quot;yönetici&quot;</span><span class="p">]}</span>
+<span class="n">veri</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">sozluk</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>isim</th>
+<th>yaş</th>
+<th>iş-meslek</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Mustafa</td>
+<td>25</td>
+<td>mühendis</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Halil</td>
+<td>42</td>
+<td>programcı</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Burak</td>
+<td>43</td>
+<td>akademisyen</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Emre</td>
+<td>23</td>
+<td>yönetici</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Ersin</td>
+<td>37</td>
+<td>amir</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Sertaç</td>
+<td>52</td>
+<td>mühendis</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Furkan</td>
+<td>30</td>
+<td>yönetici</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Murat</td>
+<td>38</td>
+<td>müdür</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Ahmet</td>
+<td>40</td>
+<td>veteriner</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Abdülkadir</td>
+<td>38</td>
+<td>yönetici</td>
+</tr>
+</tbody>
+</table>
+<p>Veri çerçevemizin transpozunu aşağıdaki şekilde alabiliriz.</p>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="o">.</span><span class="n">transpose</span><span class="p">())</span>
 </code></pre></div>
 
@@ -115,13 +197,13 @@
 <tr>
 <td>yaş</td>
 <td>25</td>
-<td>38</td>
-<td>41</td>
+<td>42</td>
+<td>43</td>
 <td>23</td>
 <td>37</td>
 <td>52</td>
 <td>30</td>
-<td>23</td>
+<td>38</td>
 <td>40</td>
 <td>38</td>
 </tr>
