@@ -181,10 +181,14 @@
 </code></pre></div>
 
 <h1>nunique() Fonksiyonu</h1>
-<p><strong>Benzersiz değerlerin miktarını (kaç adet olduğunu) bulmak</strong> için <code>nunique()</code> Fonksiyonunu kullanabiliriz. <strong>NaN</strong> değerlerini yoksayabilir. <strong>nunique</strong>:  <u>Number of Unique yani Benzersiz Sayısı</u> anlamına gelmektedir.</p>
+<p><strong>Benzersiz değerlerin miktarını (kaç adet olduğunu) bulmak</strong> için <code>nunique()</code> Fonksiyonunu kullanabiliriz. </p>
+<p><strong>nunique</strong>:  Number of Unique yani Benzersiz Sayısı ifadesini temsil etmektedir.</p>
 <h2>nunique() Fonksiyonunun Kullanımı</h2>
 <p><strong>Sözdizimi</strong>:</p>
-<div class="highlight"><pre><span></span><code><span class="n">Veri_Çerçevesi_Adı</span><span class="p">[</span><span class="s2">&quot;Sütun_Adı&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dropna</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">Veri_Çerçevesi_Adı</span><span class="o">.</span><span class="n">nunique</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dropna</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Aşağıdaki şekilde Sütun ismi belirterek te kullanılabilir;</span>
+<span class="n">Veri_Çerçevesi_Adı</span><span class="p">[</span><span class="s2">&quot;Sütun_Adı&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dropna</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
 
 <h2>Parametreler</h2>
@@ -198,9 +202,9 @@
 <p><strong>1</strong> : Satır bazında benzersiz değerleri listeler.</p>
 </li>
 </ul>
-<p>Varsayılan değer <strong>0</strong>'dır. Yani Sütun bazında benzersiz değerleri listeler.</p>
+<p>Varsayılan değer <strong>0</strong>'dır. Yani <strong>Sütun bazında</strong> benzersiz değerleri listeler.</p>
 <h3>dropna</h3>
-<p><code>dropna</code> bool değer alır. Parametrenin alabileceği değer:</p>
+<p>Bu parametre sayesinde <strong>NaN</strong> (eksik, kayıp, boş, geçersiz) değerlerin sayıma dahil edilip edilmeyeceği belirlenir. <code>dropna</code> <strong>bool</strong> yani mantıksal değer alır. Parametrenin alabileceği değer:</p>
 <ul>
 <li>
 <p><strong>True</strong></p>
@@ -209,8 +213,7 @@
 <p><strong>False</strong></p>
 </li>
 </ul>
-<p>Varsayılan değer <strong>True</strong>'dur.  </p>
-<p>Bu parametre sayesinde Nan değerlerin sayıma dahil edilip edilmeyeceği belirlenebilir.</p>
+<p>Varsayılan değer <strong>True</strong>'dur.  <code>True</code>değeri ile Eksik / Kayıp veri <strong>dikkate alınmaz, yok sayılır</strong>. <code>False</code> değeri ise eksik/kayıp veriyi de benzersiz bir veri olarak görür, hesaba dahil eder.</p>
 <p>Yukarıdaki veri çerçevesinin her bir sütunundaki benzersiz değerlerin miktarını tespit etmek için <code>nunique()</code> Fonksiyonunu kullanalım.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># &quot;A&quot; Sütunundaki benzersiz verileri tespit edelim</span>
 <span class="n">benzersiz_degerler_A</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span>
@@ -246,6 +249,312 @@
 <span class="s1">&#39;E&#39;</span> <span class="n">Sütunundaki</span> <span class="n">benzersiz</span> <span class="n">veri</span> <span class="n">sayısı</span><span class="p">:</span> <span class="mi">1</span>
 </code></pre></div>
 
+<p>Kodu daha kısa yazarak ta <strong>tüm sütunlardaki benzersiz değerleri</strong> tek seferde elde edebiliriz;</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">nunique</span><span class="p">())</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">A</span>    <span class="mi">5</span>
+<span class="n">B</span>    <span class="mi">4</span>
+<span class="n">C</span>    <span class="mi">3</span>
+<span class="n">D</span>    <span class="mi">2</span>
+<span class="n">E</span>    <span class="mi">1</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+</code></pre></div>
+
+<h1>Parametreler</h1>
+<h2>axis Parametresi</h2>
+<p><code>axis</code> parametresi ile, <strong>satır</strong> ve <strong>sütunlardaki</strong> benzersiz değerleri tespit edelim.
+<code>axis = 0</code> ile <strong>sütunlardaki</strong> benzersiz verileri bulalım;</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">nunique</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">))</span>    <span class="c1"># Bu ifade print(df.nunique()) ile aynıdır.</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">A</span>    <span class="mi">5</span>
+<span class="n">B</span>    <span class="mi">4</span>
+<span class="n">C</span>    <span class="mi">3</span>
+<span class="n">D</span>    <span class="mi">2</span>
+<span class="n">E</span>    <span class="mi">1</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+</code></pre></div>
+
+<p><code>axis = 1</code> ile <strong>satırlardaki</strong> benzersiz verileri bulalım;</p>
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">nunique</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="mi">0</span>    <span class="mi">5</span>
+<span class="mi">1</span>    <span class="mi">5</span>
+<span class="mi">2</span>    <span class="mi">5</span>
+<span class="mi">3</span>    <span class="mi">5</span>
+<span class="mi">4</span>    <span class="mi">5</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+</code></pre></div>
+
+<p>İndex değerlerini değiştirip satırlardaki benzersiz değerleri tekrar bulmaya çalışalım;</p>
+<div class="highlight"><pre><span></span><code><span class="n">yeni_index</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;satir_1&quot;</span><span class="p">,</span><span class="s2">&quot;satir_2&quot;</span><span class="p">,</span><span class="s2">&quot;satir_3&quot;</span><span class="p">,</span><span class="s2">&quot;satir_4&quot;</span><span class="p">,</span><span class="s2">&quot;satir_5&quot;</span><span class="p">]</span>
+<span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">yeni_index</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+<th>E</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>satir_1</td>
+<td>A1</td>
+<td>B1</td>
+<td>C1</td>
+<td>D1</td>
+<td>E1</td>
+</tr>
+<tr>
+<td>satir_2</td>
+<td>A2</td>
+<td>B2</td>
+<td>C2</td>
+<td>D2</td>
+<td>E1</td>
+</tr>
+<tr>
+<td>satir_3</td>
+<td>A3</td>
+<td>B3</td>
+<td>C3</td>
+<td>D2</td>
+<td>E1</td>
+</tr>
+<tr>
+<td>satir_4</td>
+<td>A4</td>
+<td>B4</td>
+<td>C3</td>
+<td>D2</td>
+<td>E1</td>
+</tr>
+<tr>
+<td>satir_5</td>
+<td>A5</td>
+<td>B4</td>
+<td>C3</td>
+<td>D2</td>
+<td>E</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">nunique</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">satir_1</span>    <span class="mi">5</span>
+<span class="n">satir_2</span>    <span class="mi">5</span>
+<span class="n">satir_3</span>    <span class="mi">5</span>
+<span class="n">satir_4</span>    <span class="mi">5</span>
+<span class="n">satir_5</span>    <span class="mi">5</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+</code></pre></div>
+
+<h2>dropna Parametresi</h2>
+<p>Sıra geldi <code>dropna</code> Parametresini incelemeye. <strong>B</strong> sütunu ve <strong>satir_4</strong> isimli satırın kesişimindeki değeri <code>pd.NA</code> olarak değiştirelim.</p>
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">NA</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+<th>E</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>satir_1</td>
+<td>A1</td>
+<td>B1</td>
+<td>C1</td>
+<td>D1</td>
+<td>E1</td>
+</tr>
+<tr>
+<td>satir_2</td>
+<td>A2</td>
+<td>B2</td>
+<td>C2</td>
+<td>D2</td>
+<td>E1</td>
+</tr>
+<tr>
+<td>satir_3</td>
+<td>A3</td>
+<td>B3</td>
+<td>C3</td>
+<td>D2</td>
+<td>E1</td>
+</tr>
+<tr>
+<td>satir_4</td>
+<td>A4</td>
+<td></td>
+<td>C3</td>
+<td>D2</td>
+<td>E1</td>
+</tr>
+<tr>
+<td>satir_5</td>
+<td>A5</td>
+<td>B4</td>
+<td>C3</td>
+<td>D2</td>
+<td>E1</td>
+</tr>
+</tbody>
+</table>
+<p>Artık Veri çerçevemizde bir eksik verimiz bulunuyor. <code>nunique()</code> fonksiyonunu parametresiz ya da <code>axis = 0</code> parametresi ile çalıştırıp sonuca bakalım.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">nunique</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">))</span>    <span class="c1"># print(df.nunique()) ile aynıdır.</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">A</span>    <span class="mi">5</span>
+<span class="n">B</span>    <span class="mi">4</span>
+<span class="n">C</span>    <span class="mi">3</span>
+<span class="n">D</span>    <span class="mi">2</span>
+<span class="n">E</span>    <span class="mi">1</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+</code></pre></div>
+
+<p><strong>B</strong> Sütununda <strong>4 adet</strong> benzersiz değer tespit edildi. Şimdi bir de <code>dropna=True</code> değeri ile sonucu inceleyelim;</p>
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">A</span>    <span class="mi">5</span>
+<span class="n">B</span>    <span class="mi">4</span>
+<span class="n">C</span>    <span class="mi">3</span>
+<span class="n">D</span>    <span class="mi">2</span>
+<span class="n">E</span>    <span class="mi">1</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+</code></pre></div>
+
+<p>Yukarıdaki ile aynı sonucu elde ettik yani <code>dropna</code> parametresi Varsayılan olarak <code>True</code> değeri ile Eksik / Kayıp veriyi dikkate almadı.</p>
+<p>Peki <code>dropna</code> parametresi <code>False</code> değeri alırsa, benzersiz değerler hesaplanırken Eksik / Kayıp veriyi dikkate alınacak mı? İnceleyelim.</p>
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">nunique</span><span class="p">(</span><span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>    <span class="c1"># eksik verileri görmezden gelme, say.</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">A</span>    <span class="mi">5</span>
+<span class="n">B</span>    <span class="mi">5</span>
+<span class="n">C</span>    <span class="mi">3</span>
+<span class="n">D</span>    <span class="mi">2</span>
+<span class="n">E</span>    <span class="mi">1</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+</code></pre></div>
+
+<p>Çıktıya bakınca görüyoruz ki, eksik / kayıp veri de bir değer olarak kabul edilmiş. <strong>B</strong> sütununda toplam <strong>5 adet</strong> benzersiz değer hesaplanmış.</p>
+<p><strong>E</strong> Sütununa ait <strong>satir_4</strong> isimli satırındaki değeri de silelim.</p>
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">NA</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+<th>E</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>satir_1</td>
+<td>A1</td>
+<td>B1</td>
+<td>C1</td>
+<td>D1</td>
+<td>E1</td>
+</tr>
+<tr>
+<td>satir_2</td>
+<td>A2</td>
+<td>B2</td>
+<td>C2</td>
+<td>D2</td>
+<td>E1</td>
+</tr>
+<tr>
+<td>satir_3</td>
+<td>A3</td>
+<td>B3</td>
+<td>C3</td>
+<td>D2</td>
+<td>E1</td>
+</tr>
+<tr>
+<td>satir_4</td>
+<td>A4</td>
+<td><NA></td>
+<td>C3</td>
+<td>D2</td>
+<td><NA></td>
+</tr>
+<tr>
+<td>satir_5</td>
+<td>A5</td>
+<td>B4</td>
+<td>C3</td>
+<td>D2</td>
+<td>E1</td>
+</tr>
+</tbody>
+</table>
+<p>E sütununda kaç adet benzersiz değer varmış görelim;</p>
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">E</span><span class="o">.</span><span class="n">nunique</span><span class="p">(</span><span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="mi">2</span>
+</code></pre></div>
+
+<p>Peki <strong>satir_4</strong> isimli satırda kaç adet benzersiz veri var dersiniz?</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">nunique</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dropna</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">satir_1</span>    <span class="mi">5</span>
+<span class="n">satir_2</span>    <span class="mi">5</span>
+<span class="n">satir_3</span>    <span class="mi">5</span>
+<span class="n">satir_4</span>    <span class="mi">3</span>
+<span class="n">satir_5</span>    <span class="mi">5</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+</code></pre></div>
+
+<p>Sonuç 3 olarak görünüyor. Peki Eksik / kayıp verileri de hesaba dahil edersek sonuç ne olur? görelim;</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">nunique</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">satir_1</span>    <span class="mi">5</span>
+<span class="n">satir_2</span>    <span class="mi">5</span>
+<span class="n">satir_3</span>    <span class="mi">5</span>
+<span class="n">satir_4</span>    <span class="mi">4</span>
+<span class="n">satir_5</span>    <span class="mi">5</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+</code></pre></div>
+
+<p>Eksik / kayıp verileri de hesaba dahil edince <strong>satir_4</strong> isimli satırda toplam <strong>4 adet</strong> benzersiz değer olduğu tespit edilmiş oldu.</p>
 <h1>Ek Bilgi</h1>
 <p><code>unique ()</code> Fonksiyonuna ek olarak, bir Pandas veri çerçevesinden benzersiz değerleri almanın başka yolları da vardır:</p>
 <ul>
