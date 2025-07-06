@@ -76,6 +76,57 @@
 </div>		<div class="content container">
 	<div class="posts">
 			<div class="post">
+				<h1 class="post-title" href="/pandas-read_clipboard.html">
+					<a href="/pandas-read_clipboard.html">Pandas - read_clipboard</a>
+				</h1>
+				<span class="post-date">Cts 09 Temmuz 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/dataframe.html">DataFrame</a></li>
+								<li><a href="/tag/veri-cercevesi.html">Veri Çerçevesi</a></li>
+								<li><a href="/tag/read_clipboard.html">read_clipboard</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>read_clipboard() Fonksiyonu Nedir? Nasıl Kullanılır?</h1>
+<p><strong>read_clipboard()</strong> fonksiyonu ile panoya kopyaladığımız veriyi (örneğin bir Excel tablosu ya da websitesindeki tabloyu) Veri Çerçevesine dönüştürebiliriz.</p>
+<div class="highlight"><pre><span></span><code><span class="n">pano</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_clipboard</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pano</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>İlçe</th>
+<th>2020</th>
+<th>2021</th>
+<th>Fark</th>
+<th>Nüfus art. %</th>
+<th>Mah. say.</th>
+<th>Alanı km2</th>
+<th>Yoğunluk</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Adalar</td>
+<td>16.033</td>
+<td>16.372</td>
+<td>339.000</td>
+<td>2.11</td>
+<td>5</td>
+<td>11 …</td></tr></tbody></table>
+				</p>
+				<a class="read-more" href="pandas-read_clipboard.html">Continue reading »</a>
+			</div>
+			<div class="post">
 				<h1 class="post-title" href="/pandas-read_csv.html">
 					<a href="/pandas-read_csv.html">Pandas - read_csv</a>
 				</h1>
@@ -355,29 +406,6 @@
 desteklenir. Bu, veri işlemeyi önbellek açısından verimli hale getirir ve İşlemler Arası İletişim için iyi desteklenir. Çoğu veri türü, <code>Utf8</code> (bu aslında <code>LargeUtf8</code>'dir), <code>Kategorik (Categorical)</code> ve <code>Nesne (Object)</code> (destek sınırlıdır) dışında <code>Arrow</code>'daki tam uygulamayı izler …</p>
 				</p>
 				<a class="read-more" href="polars-0301-veri-tipleri.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="/polars-00-giris.html">
-					<a href="/polars-00-giris.html">Polars - 00 Giriş</a>
-				</h1>
-				<span class="post-date">Paz 26 Haziran 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/polars.html">Polars</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1>Polars Notları</h1>
-<p><img alt="polars" src="../../images/python/polars/polars_github_logo.svg"></p>
-<p><strong>Rust ve Python için Işık Hızında VeriÇerçevesi (DataFrame) Kütüphanesi.</strong></p>
-<h2>Polars Nedir?</h2>
-<p><code>Polars</code>, <code>Rust</code> programlama dilinde yazılmış ve temel olarak <code>Apache Arrow</code>’u kullanan bir <strong>DataFrame kütüphanesidir</strong>. Veri düzenleme alışkanlıklarını bilen <code>Polars</code>, okunabilir ve yüksek performanslı kod oluşturmanızı sağlayacak bir ifade dili kullanarak DataFrame'leri işlemek için tüm özellikleri içeren …</p>
-				</p>
-				<a class="read-more" href="polars-00-giris.html">Continue reading »</a>
 			</div>
 	</div>
 	<div class="pagination">

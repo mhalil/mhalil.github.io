@@ -76,6 +76,51 @@
 </div>		<div class="content container">
 	<div class="posts">
 			<div class="post">
+				<h1 class="post-title" href="/pandas-esittir-operatoru.html">
+					<a href="/pandas-esittir-operatoru.html">Pandas - Eşittir Operatörü</a>
+				</h1>
+				<span class="post-date">Cts 16 Temmuz 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/filtre.html">Filtre</a></li>
+								<li><a href="/tag/esittir.html">Eşittir</a></li>
+								<li><a href="/tag/operator.html">Operatör</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>== (Eşittir) Operatörü</h1>
+<p><strong>Eşittir (==)</strong> ya da bir başka deyimle <strong>Eşit midir?</strong> operatörü kullanım mantığı şu şekildedir; Eğer <strong>Eşit ise</strong> <code>True</code> değeri döndür.</p>
+<p>Örnek Veri çerçevemiz aşağıda görünmektedir.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">imdb</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/imdb.xlsx&quot;</span><span class="p">,</span> <span class="n">decimal</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">imdb</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Film_Adı</th>
+<th>Yıl</th>
+<th>Puan</th>
+<th>Oylayan_Kişi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>The Shawshank Redemption</td>
+<td>1994</td>
+<td>9.2 …</td></tr></tbody></table>
+				</p>
+				<a class="read-more" href="pandas-esittir-operatoru.html">Continue reading »</a>
+			</div>
+			<div class="post">
 				<h1 class="post-title" href="/pandas-kucukesittir-operatoru.html">
 					<a href="/pandas-kucukesittir-operatoru.html">Pandas - KüçükEşittir Operatörü</a>
 				</h1>
@@ -419,30 +464,6 @@
 <div class="highlight"><pre><span></span><code><span class="n">bir</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">60</span><span class="p">],</span> <span class="p">[</span><span class="mi">700 …</span></code></pre></div>
 				</p>
 				<a class="read-more" href="pandas-is-operatotu.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="/pandas-join.html">
-					<a href="/pandas-join.html">Pandas - join</a>
-				</h1>
-				<span class="post-date">Cum 15 Temmuz 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/pandas.html">Pandas</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
-								<li><a href="/tag/birlestir.html">Birleştir</a></li>
-								<li><a href="/tag/join.html">join</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1>join() Fonksiyonu</h1>
-<p><code>join()</code> metodu, Veri çerçevelerini birleştirmek için kullanılan fonksiyonlardan biridir. <code>join()</code> fonksiyonunun parametreleri kullanılarak, matematik dersinteki <strong>Kümeler</strong> konusu mantığında birleştirme işlemleri yapılabilir.<br>
-<strong>join()</strong> metodu, parametresiz kullanıldığında varsayılan olarak <strong>left join</strong> (<code>how = "left"</code>)
- değerini alır. Sol tarafta yazılan veri çerçevesindeki tüm değerler alınır, bu çerçevedeki indeks değerleri sağ tarafta yazılan …</p>
-				</p>
-				<a class="read-more" href="pandas-join.html">Continue reading »</a>
 			</div>
 	</div>
 	<div class="pagination">
