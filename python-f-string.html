@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Python - f-string" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/python-f-string.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Python - f-string</h1>
+	<span class="post-date">Cts 02 Ağustos 2025</span>
+	<h1>F-String Kullanımı</h1>
+<p>F-String, bir dizenin (string ifadenin) seçilen kısımlarını biçimlendirmenize olanak tanır.</p>
+<p>F-String, python 3.6'da tanıtıldı ve şu anda dizeleri biçimlendirmek için tercih edilen yöntemdir.</p>
+<p>Python 3.6'dan önce<code>format()</code> yöntemini kullanmak zorundaydık. <code>format()</code> yöntemi hala kullanılabilir, ancak f-string daha hızlıdır ve dizileri biçimlendirmek için tercih edilen yöntemdir. O nedenle <code>format</code> yöntemini/metodunu anlatmayacağım.</p>
+<p>Bir dizeyi f-string olarak belirtmek için, dize sabitinin önüne <code>f</code> harfini eklemeniz yeterlidir, örneğin:</p>
+<div class="highlight"><pre><span></span><code><span class="n">metin</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Fiyat 4900 Türk Lirası&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">metin</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Fiyat</span> <span class="mi">4900</span> <span class="n">Türk</span> <span class="n">Lirası</span>
+</code></pre></div>
+
+<h2>Yer tutucular ve Değiştiriciler</h2>
+<p>Bir f-stringdeki değerleri biçimlendirmek için yer tutucular<code>{}</code> ekleyin. Bir yer tutucu, değeri biçimlendirmek için kullanılır ve <strong>değişkenler</strong>, <strong>işlemler</strong>, <strong>fonksiyonlar</strong> ile <strong>değiştiriciler</strong> içerebilir.</p>
+<p>Örneğin:</p>
+<p>Fiyat değişkeni için bir yer tutucu ekleyin:</p>
+<div class="highlight"><pre><span></span><code><span class="n">ücret</span> <span class="o">=</span> <span class="mi">5900</span>
+<span class="n">metin</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Fiyat </span><span class="si">{</span><span class="n">ücret</span><span class="si">}</span><span class="s2"> Türk Lirası&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">metin</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Fiyat</span> <span class="mi">5900</span> <span class="n">Türk</span> <span class="n">Lirası</span>
+</code></pre></div>
+
+<p><strong>Yer tutucu</strong>, değeri biçimlendirmek için bir <strong>değiştirici</strong> de içerebilir.</p>
+<p>Değiştirici, iki nokta üst üste (<code>:</code>) ve ardından geçerli bir biçimlendirme türü eklenerek dahil edilir. Örneğin, <code>.2f</code> ifadesi, 2 basamaklı ondalıklı sayı anlamına gelir.</p>
+<p>Fiyatı 2 ondalık basamakla göster:</p>
+<div class="highlight"><pre><span></span><code><span class="n">ücret</span> <span class="o">=</span> <span class="mi">59</span>
+<span class="n">metin</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Fiyat </span><span class="si">{</span><span class="n">ücret</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> Türk Lirası&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">metin</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Fiyat</span> <span class="mf">59.00</span> <span class="n">Türk</span> <span class="n">Lirası</span>
+</code></pre></div>
+
+<p>Bir değeri bir değişkende tutmadan doğrudan da biçimlendirebilirsiniz:</p>
+<div class="highlight"><pre><span></span><code><span class="n">metin</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Fiyat </span><span class="si">{</span><span class="mi">95</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> Türk Lirası&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">metin</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Fiyat</span> <span class="mf">59.00</span> <span class="n">Türk</span> <span class="n">Lirası</span>
+</code></pre></div>
+
+<h2>F-String ile İşlemler Gerçekleştirmek</h2>
+<p>Yer tutucuların içinde Python işlemleri gerçekleştirebilirsiniz. Örneğin doğrudan matematiksel işlemler yapabilirsiniz:</p>
+<div class="highlight"><pre><span></span><code><span class="n">metin</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Fiyat </span><span class="si">{</span><span class="mi">20</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">59</span><span class="si">}</span><span class="s2"> Türk Lirası&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">metin</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Fiyat</span> <span class="mi">1180</span> <span class="n">Türk</span> <span class="n">Lirası</span>
+</code></pre></div>
+
+<p>Değişkenler üzerinde de matematik işlemleri gerçekleştirebilirsiniz:</p>
+<div class="highlight"><pre><span></span><code><span class="n">ücret</span> <span class="o">=</span> <span class="mi">65</span>
+<span class="n">kdv</span> <span class="o">=</span> <span class="mf">0.25</span>
+<span class="n">metin</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;KDV&#39;li fiyat </span><span class="si">{</span><span class="n">ücret</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">kdv</span><span class="p">)</span><span class="si">}</span><span class="s2"> Türk Lirası&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">metin</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">KDV</span><span class="s1">&#39;li fiyat 81.25 Türk Lirası</span>
+</code></pre></div>
+
+<p>Yer tutucuların içinde <code>if...else</code> ifadeleri kullanabilirsiniz.</p>
+<p>Fiyat 5000 'in üzerindeyse "Pahalı" değerini, aksi takdirde "Ucuz" değerini döndür:</p>
+<div class="highlight"><pre><span></span><code><span class="n">ücret</span> <span class="o">=</span> <span class="mi">5000</span>
+<span class="n">metin</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Bu ürün üçün fiyat oldukça </span><span class="si">{</span><span class="s1">&#39;Pahalı&#39;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">ücret</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">3000</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">&#39;Ucuz&#39;</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">metin</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Bu</span> <span class="n">ürün</span> <span class="n">üçün</span> <span class="n">fiyat</span> <span class="n">oldukça</span> <span class="n">Pahalı</span>
+</code></pre></div>
+
+<h2>F-String içinde Fonksiyon Çalıştırmak</h2>
+<p>Yer tutucunun içindeki fonksiyon çalıştırabilirsiniz.</p>
+<p>Bir değeri büyük harflere dönüştürmek için <code>upper()</code> dizi (string) metodunu kullanın:</p>
+<div class="highlight"><pre><span></span><code><span class="n">meyve</span> <span class="o">=</span> <span class="s2">&quot;Çilek&quot;</span>
+<span class="n">metin</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;En sevdiğim meyve: </span><span class="si">{</span><span class="n">meyve</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="si">}</span><span class="s2">&#39;tir.&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">metin</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">En</span> <span class="n">sevdiğim</span> <span class="n">meyve</span><span class="p">:</span> <span class="n">ÇİLEK</span><span class="s1">&#39;tir.</span>
+</code></pre></div>
+
+<p>F-String içinde kullanılan fonksiyon, dahili (yerleşik) bir Python metodu olmak zorunda değildir; kendi fonksiyonlarınızı da oluşturup kullanabilirsiniz.</p>
+<p><strong>Feet</strong> ölçü birimini <strong>metre</strong>ye dönüştüren bir fonksiyon oluşturun ve bunu f-string içinde kullanın.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">fonksiyonum</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+  <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="mf">0.3048</span>
+
+<span class="n">metin</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Uçak şuan </span><span class="si">{</span><span class="n">fonksiyonum</span><span class="p">(</span><span class="mi">30000</span><span class="p">)</span><span class="si">}</span><span class="s2"> metre yükseklikte uçuyor.&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">metin</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Uçak</span> <span class="n">şuan</span> <span class="mf">9144.0</span> <span class="n">metre</span> <span class="n">yükseklikte</span> <span class="n">uçuyor</span><span class="o">.</span>
+</code></pre></div>
+
+<h2>Daha Fazla Değiştirici</h2>
+<p>Bu bölümün başında, <code>.2f</code> değiştiricisini kullanarak bir sayıyı, 2 basamaklı ondalıklı sayı olarak biçimlendirmeyi açıklamıştık.</p>
+<p>Değerleri biçimlendirmek için kullanılabilecek birkaç başka değiştiriciler de mevcut. Şimdi bunları inceleyelim.</p>
+<p>Binlik ayırıcı olarak virgül kullanın:</p>
+<div class="highlight"><pre><span></span><code><span class="n">ücret</span> <span class="o">=</span> <span class="mi">65000</span>
+<span class="n">metin</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Ürünün fiyatı </span><span class="si">{</span><span class="n">ücret</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> Türk Lirası&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">metin</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Ürünün</span> <span class="n">fiyatı</span> <span class="mi">65</span><span class="p">,</span><span class="mi">000</span> <span class="n">Türk</span> <span class="n">Lirası</span>
+</code></pre></div>
+
+<p>Aşağıdaki tabloda tüm biçimlendirme türlerini ve ne işe yaradıklarına dair açıklamalarını görebilirsiniz.</p>
+<h3>Biçimlendirme Türleri</h3>
+<table>
+<thead>
+<tr>
+<th>Biçimlendirme Türü</th>
+<th>Kullanım Amacı</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:&lt;</code></td>
+<td>Sonucu  sola hizalar (kullanılabilir alan içinde)</td>
+</tr>
+<tr>
+<td><code>:&gt;</code></td>
+<td>Sonucu  sağa hizalar (kullanılabilir alan içinde)</td>
+</tr>
+<tr>
+<td><code>:^</code></td>
+<td>Sonucu  ortalar (kullanılabilir alan içinde)</td>
+</tr>
+<tr>
+<td><code>:=</code></td>
+<td>İşareti en sol konuma yerleştirir</td>
+</tr>
+<tr>
+<td><code>:+</code></td>
+<td>Sonucun pozitif veya negatif olduğunu belirtmek için artı işareti kullanın</td>
+</tr>
+<tr>
+<td><code>:-</code></td>
+<td>Yalnızca negatif değerler için eksi işareti kullanın</td>
+</tr>
+<tr>
+<td><code>:</code></td>
+<td>Pozitif sayıların önüne ekstra boşluk eklemek için boşluk kullanır (ve negatif sayıların önüne eksi işareti ekler)</td>
+</tr>
+<tr>
+<td><code>:,</code></td>
+<td>Binlik ayırıcı olarak virgül kullanır</td>
+</tr>
+<tr>
+<td><code>:_</code></td>
+<td>Binlik ayırıcı olarak alt çizgi kullanır</td>
+</tr>
+<tr>
+<td><code>:b</code></td>
+<td>İkili (Binary) biçim</td>
+</tr>
+<tr>
+<td><code>:c</code></td>
+<td>Değeri, karşılık gelen Unicode karakterine dönüştürür</td>
+</tr>
+<tr>
+<td><code>:d</code></td>
+<td>Ondalıklı biçim</td>
+</tr>
+<tr>
+<td><code>:e</code></td>
+<td>Bilimsel biçim, küçük e harfi ile</td>
+</tr>
+<tr>
+<td><code>:E</code></td>
+<td>Bilimsel biçim, büyük E harfi ile</td>
+</tr>
+<tr>
+<td><code>:f</code></td>
+<td>Sabit ondalıklı sayı biçimi</td>
+</tr>
+<tr>
+<td><code>:F</code></td>
+<td>Sabit ondalıklı sayı biçimi, büyük harf biçiminde (<code>inf</code> ve <code>nan</code>'ı <code>INF</code> ve <code>NAN</code> olarak göster)</td>
+</tr>
+<tr>
+<td><code>:g</code></td>
+<td>Genel biçim</td>
+</tr>
+<tr>
+<td><code>:G</code></td>
+<td>Genel biçim (bilimsel gösterimler için büyük E harfi kullanılır)</td>
+</tr>
+<tr>
+<td><code>:o</code></td>
+<td>Sekizlik (Octal) biçim</td>
+</tr>
+<tr>
+<td><code>:x</code></td>
+<td>Onaltılık (Hex) biçim, küçük harf</td>
+</tr>
+<tr>
+<td><code>:X</code></td>
+<td>Onaltılık (Hex) biçim, büyük harf</td>
+</tr>
+<tr>
+<td><code>:n</code></td>
+<td>Sayı (number) biçimi</td>
+</tr>
+<tr>
+<td><code>:%</code></td>
+<td>Yüzde biçimi</td>
+</tr>
+</tbody>
+</table>
+<h3>Örnekler</h3>
+<p>Aşağıda sola hizala <code>:&lt;</code> biçimine dair örnek bir uygulama göstermek istiyorum.</p>
+<p>Standart f-string ile kodu yazarsak aşağıdaki sonucu elde ederiz.</p>
+<div class="highlight"><pre><span></span><code><span class="n">bilgiler</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Mustafa&quot;</span><span class="p">,</span> <span class="s2">&quot;Halil&quot;</span><span class="p">,</span> <span class="s2">&quot;Makine Mühendisi&quot;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">no</span><span class="p">,</span> <span class="n">deger</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">bilgiler</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;| </span><span class="si">{</span><span class="n">no</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">deger</span><span class="si">}</span><span class="s2"> |&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="o">|</span> <span class="mi">0</span> <span class="o">|</span> <span class="n">Mustafa</span> <span class="o">|</span>
+<span class="o">|</span> <span class="mi">1</span> <span class="o">|</span> <span class="n">Halil</span> <span class="o">|</span>
+<span class="o">|</span> <span class="mi">2</span> <span class="o">|</span> <span class="n">Makine</span> <span class="n">Mühendisi</span> <span class="o">|</span>
+</code></pre></div>
+
+<p>Koda <code>:&lt;</code> biçimini eklersek bir değişiklik olur mu? görelim:</p>
+<div class="highlight"><pre><span></span><code><span class="n">bilgiler</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Mustafa&quot;</span><span class="p">,</span> <span class="s2">&quot;Halil&quot;</span><span class="p">,</span> <span class="s2">&quot;Makine Mühendisi&quot;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">no</span><span class="p">,</span> <span class="n">deger</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">bilgiler</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;| </span><span class="si">{</span><span class="n">no</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">deger</span><span class="si">:</span><span class="s2">&lt;</span><span class="si">}</span><span class="s2"> |&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="o">|</span> <span class="mi">0</span> <span class="o">|</span> <span class="n">Mustafa</span> <span class="o">|</span>
+<span class="o">|</span> <span class="mi">1</span> <span class="o">|</span> <span class="n">Halil</span> <span class="o">|</span>
+<span class="o">|</span> <span class="mi">2</span> <span class="o">|</span> <span class="n">Makine</span> <span class="n">Mühendisi</span> <span class="o">|</span>
+</code></pre></div>
+
+<p>Gördüğünüz gibi sonuç değişmedi. Peki ya, <code>:&lt;</code> ifadesinden sonra bir sayı değeri kullansak ne olur?.</p>
+<div class="highlight"><pre><span></span><code><span class="n">bilgiler</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Mustafa&quot;</span><span class="p">,</span> <span class="s2">&quot;Halil&quot;</span><span class="p">,</span> <span class="s2">&quot;Makine Mühendisi&quot;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">no</span><span class="p">,</span> <span class="n">deger</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">bilgiler</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;| </span><span class="si">{</span><span class="n">no</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">deger</span><span class="si">:</span><span class="s2">&lt;20</span><span class="si">}</span><span class="s2"> |&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="o">|</span> <span class="mi">0</span> <span class="o">|</span> <span class="n">Mustafa</span>              <span class="o">|</span>
+<span class="o">|</span> <span class="mi">1</span> <span class="o">|</span> <span class="n">Halil</span>                <span class="o">|</span>
+<span class="o">|</span> <span class="mi">2</span> <span class="o">|</span> <span class="n">Makine</span> <span class="n">Mühendisi</span>     <span class="o">|</span>
+</code></pre></div>
+
+<p>İşte istediğim sonuç. F-string biçiminin yanına 20 sayısını yazmakla (<code>:&lt;20</code>) , <strong>deger</strong> ifadesinin toplamda 20 karakterlik yer işgal etmesi ve <strong>değer</strong>'in bu alanda sola hizalanmasını istemiş olduk.</p>
+<p>Bu kez de <strong>30</strong> karekterlik yer işgal edip, değeri <strong>sağa</strong> hizalayalım. Bunu için <code>:&gt;30</code> ifadesini kullanacağız.</p>
+<div class="highlight"><pre><span></span><code><span class="n">bilgiler</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Mustafa&quot;</span><span class="p">,</span> <span class="s2">&quot;Halil&quot;</span><span class="p">,</span> <span class="s2">&quot;Makine Mühendisi&quot;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">no</span><span class="p">,</span> <span class="n">deger</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">bilgiler</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;| </span><span class="si">{</span><span class="n">no</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">deger</span><span class="si">:</span><span class="s2">&gt;30</span><span class="si">}</span><span class="s2"> |&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="o">|</span> <span class="mi">0</span> <span class="o">|</span>                        <span class="n">Mustafa</span> <span class="o">|</span>
+<span class="o">|</span> <span class="mi">1</span> <span class="o">|</span>                          <span class="n">Halil</span> <span class="o">|</span>
+<span class="o">|</span> <span class="mi">2</span> <span class="o">|</span>               <span class="n">Makine</span> <span class="n">Mühendisi</span> <span class="o">|</span>
+</code></pre></div>
+
+<h2>Kaynaklar</h2>
+<ul>
+<li><a href="https://www.w3schools.com/python/python_string_formatting.asp">Python String Formatting - w3schools</a></li>
+<li><a href="https://www.youtube.com/watch?v=sqKuYiUSHXQ&amp;t=2s">Python BEGINNER to ADVANCED in 10 levels - YouTube</a></li>
+</ul>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/f-string.html">f-string</a></li>
+					<li><a href="/tag/string.html">string</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>
