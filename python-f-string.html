@@ -300,6 +300,7 @@
 </tbody>
 </table>
 <h3>Örnekler</h3>
+<h3>:&lt;</h3>
 <p>Aşağıda sola hizala <code>:&lt;</code> biçimine dair örnek bir uygulama göstermek istiyorum.</p>
 <p>Standart f-string ile kodu yazarsak aşağıdaki sonucu elde ederiz.</p>
 <div class="highlight"><pre><span></span><code><span class="n">bilgiler</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Mustafa&quot;</span><span class="p">,</span> <span class="s2">&quot;Halil&quot;</span><span class="p">,</span> <span class="s2">&quot;Makine Mühendisi&quot;</span><span class="p">]</span>
@@ -340,6 +341,7 @@
 <span class="o">|</span> <span class="mi">2</span> <span class="o">|</span> <span class="n">Makine</span> <span class="n">Mühendisi</span>     <span class="o">|</span>
 </code></pre></div>
 
+<h3>:&gt;</h3>
 <p>İşte istediğim sonuç. F-string biçiminin yanına 20 sayısını yazmakla (<code>:&lt;20</code>) , <strong>deger</strong> ifadesinin toplamda 20 karakterlik yer işgal etmesi ve <strong>değer</strong>'in bu alanda sola hizalanmasını istemiş olduk.</p>
 <p>Bu kez de <strong>30</strong> karekterlik yer işgal edip, değeri <strong>sağa</strong> hizalayalım. Bunu için <code>:&gt;30</code> ifadesini kullanacağız.</p>
 <div class="highlight"><pre><span></span><code><span class="n">bilgiler</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Mustafa&quot;</span><span class="p">,</span> <span class="s2">&quot;Halil&quot;</span><span class="p">,</span> <span class="s2">&quot;Makine Mühendisi&quot;</span><span class="p">]</span>
@@ -354,10 +356,132 @@
 <span class="o">|</span> <span class="mi">2</span> <span class="o">|</span>               <span class="n">Makine</span> <span class="n">Mühendisi</span> <span class="o">|</span>
 </code></pre></div>
 
+<div class="highlight"><pre><span></span><code><span class="n">bilgiler</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Mustafa&quot;</span><span class="p">,</span> <span class="s2">&quot;Halil&quot;</span><span class="p">,</span> <span class="s2">&quot;Makine Mühendisi&quot;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">bilgi</span> <span class="ow">in</span> <span class="n">bilgiler</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">bilgi</span><span class="si">:</span><span class="s2">_&gt;20</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">_____________Mustafa</span>
+<span class="n">_______________Halil</span>
+<span class="n">____Makine</span> <span class="n">Mühendisi</span>
+</code></pre></div>
+
+<h3>.^</h3>
+<div class="highlight"><pre><span></span><code><span class="n">bilgiler</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Mustafa&quot;</span><span class="p">,</span> <span class="s2">&quot;Halil&quot;</span><span class="p">,</span> <span class="s2">&quot;Makine Mühendisi&quot;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">bilgi</span> <span class="ow">in</span> <span class="n">bilgiler</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">bilgi</span><span class="si">:</span><span class="s2">_^20</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">______Mustafa_______</span>
+<span class="n">_______Halil________</span>
+<span class="n">__Makine</span> <span class="n">Mühendisi__</span>
+</code></pre></div>
+
+<h3>.&lt;</h3>
+<div class="highlight"><pre><span></span><code><span class="n">bilgiler</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Mustafa&quot;</span><span class="p">,</span> <span class="s2">&quot;Halil&quot;</span><span class="p">,</span> <span class="s2">&quot;Makine Mühendisi&quot;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">bilgi</span> <span class="ow">in</span> <span class="n">bilgiler</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">bilgi</span><span class="si">:</span><span class="s2">_&lt;20</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Mustafa_____________</span>
+<span class="n">Halil_______________</span>
+<span class="n">Makine</span> <span class="n">Mühendisi____</span>
+</code></pre></div>
+
+<h3>Değişken ile sayı atama</h3>
+<p>Yukarıdaki biçimlendirme türlerinin kaçar karakter yer tutacağını, değişken kullanarak ta belirtebiliriz. İçiçe köşeli parantez kullanımına dikkat edin.</p>
+<div class="highlight"><pre><span></span><code><span class="n">bilgiler</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Mustafa&quot;</span><span class="p">,</span> <span class="s2">&quot;Halil&quot;</span><span class="p">,</span> <span class="s2">&quot;Makine Mühendisi&quot;</span><span class="p">]</span>
+<span class="n">deger</span> <span class="o">=</span> <span class="mi">34</span>
+
+<span class="k">for</span> <span class="n">bilgi</span> <span class="ow">in</span> <span class="n">bilgiler</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">bilgi</span><span class="si">:</span><span class="s2">_&lt;</span><span class="si">{</span><span class="n">deger</span><span class="si">}}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">bilgi</span><span class="si">:</span><span class="s2">_^</span><span class="si">{</span><span class="n">deger</span><span class="si">}}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">bilgi</span><span class="si">:</span><span class="s2">_&gt;</span><span class="si">{</span><span class="n">deger</span><span class="si">}}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Mustafa___________________________</span>
+<span class="n">_____________Mustafa______________</span>
+<span class="n">___________________________Mustafa</span>
+
+
+<span class="n">Halil_____________________________</span>
+<span class="n">______________Halil_______________</span>
+<span class="n">_____________________________Halil</span>
+
+
+<span class="n">Makine</span> <span class="n">Mühendisi__________________</span>
+<span class="n">_________Makine</span> <span class="n">Mühendisi_________</span>
+<span class="n">__________________Makine</span> <span class="n">Mühendisi</span>
+</code></pre></div>
+
+<h3>.f ve .%</h3>
+<div class="highlight"><pre><span></span><code><span class="n">ondalik</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span>  <span class="mf">1234.5678</span>
+<span class="n">yuzdelik</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">.5678</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ondalik</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">yuzdelik</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="mf">1234.57</span>
+<span class="mf">56.78</span><span class="o">%</span>
+</code></pre></div>
+
+<h3>,.f</h3>
+<div class="highlight"><pre><span></span><code><span class="n">buyuksayi</span> <span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1_234_567.8910</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">buyuksayi</span><span class="si">:</span><span class="s2">,.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="mi">1</span><span class="p">,</span><span class="mi">234</span><span class="p">,</span><span class="mf">567.9</span>
+</code></pre></div>
+
+<h3>datetime %x</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="n">now</span><span class="p">:</span> <span class="n">datetime</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">now</span><span class="si">:</span><span class="s1">%x</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span> 
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="mi">08</span><span class="o">/</span><span class="mi">31</span><span class="o">/</span><span class="mi">25</span>
+</code></pre></div>
+
+<h3>datetime %c</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="n">now</span><span class="p">:</span> <span class="n">datetime</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">now</span><span class="si">:</span><span class="s1">%c</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span> 
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Sun</span> <span class="n">Aug</span> <span class="mi">31</span> <span class="mi">14</span><span class="p">:</span><span class="mi">28</span><span class="p">:</span><span class="mi">15</span> <span class="mi">2025</span>
+</code></pre></div>
+
+<h3>datetime %H %M %S</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="n">now</span><span class="p">:</span> <span class="n">datetime</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">now</span><span class="si">:</span><span class="s1">%H:%M:%S</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span> 
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="mi">14</span><span class="p">:</span><span class="mi">32</span><span class="p">:</span><span class="mi">06</span>
+</code></pre></div>
+
 <h2>Kaynaklar</h2>
 <ul>
 <li><a href="https://www.w3schools.com/python/python_string_formatting.asp">Python String Formatting - w3schools</a></li>
 <li><a href="https://www.youtube.com/watch?v=sqKuYiUSHXQ&amp;t=2s">Python BEGINNER to ADVANCED in 10 levels - YouTube</a></li>
+<li><a href="https://www.youtube.com/watch?v=9saytqA0J9A">Every F-String Trick In Python Explained - YouTube</a></li>
 </ul>
 
 		<span class="post-tags">
