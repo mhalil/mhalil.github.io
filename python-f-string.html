@@ -239,7 +239,7 @@
 </tr>
 <tr>
 <td><code>:_</code></td>
-<td>Binlik ayırıcı olarak alt çizgi kullanır</td>
+<td>Binlik ayırıcı olarak alt çizgi de kullanılabilir</td>
 </tr>
 <tr>
 <td><code>:b</code></td>
@@ -436,7 +436,7 @@
 </code></pre></div>
 
 <h3>,.f</h3>
-<div class="highlight"><pre><span></span><code><span class="n">buyuksayi</span> <span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1_234_567.8910</span>
+<div class="highlight"><pre><span></span><code><span class="n">buyuksayi</span> <span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1234567.8910</span>    <span class="c1"># 1_234_567.8910 bu gösterim de aynı sonucu verir, birbirine eşittir.</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">buyuksayi</span><span class="si">:</span><span class="s2">,.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div>
 
@@ -477,11 +477,50 @@
 <div class="highlight"><pre><span></span><code><span class="mi">14</span><span class="p">:</span><span class="mi">32</span><span class="p">:</span><span class="mi">06</span>
 </code></pre></div>
 
+<h3>Not:</h3>
+<p>F-String ile biçimlendirme türlerini kullanırken, aşağıdaki sıralamaya göre yerleşim yapılabilir.</p>
+<p><strong>:[Doldurulacak_Karakter][Hizalama_Karakteri (Biçimlendirme_Türü)][Genişlik],.[Ondalik_Ayrimi][Biçim]</strong></p>
+<p>Örneğin:</p>
+<div class="highlight"><pre><span></span><code><span class="n">f_sicaklik_gunes</span> <span class="o">=</span> <span class="mi">27_000_000</span> <span class="c1"># Fahrenheit</span>
+<span class="n">f_sicaklik_dunya</span> <span class="o">=</span> <span class="mi">58</span> <span class="c1"># Fahrenheit</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Güneşin sıcaklığı </span><span class="si">{</span><span class="p">(</span><span class="n">f_sicaklik_gunes</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">32</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1.8</span><span class="si">}</span><span class="s2"> Celcius derecedir.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dünyanın sıcaklığı </span><span class="si">{</span><span class="p">(</span><span class="n">f_sicaklik_dunya</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">32</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1.8</span><span class="si">}</span><span class="s2"> Celcius derecedir.&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Güneşin</span> <span class="n">sıcaklığı</span> <span class="mf">14999982.222222222</span> <span class="n">Celcius</span> <span class="n">derecedir</span><span class="o">.</span>
+<span class="n">Dünyanın</span> <span class="n">sıcaklığı</span> <span class="mf">14.444444444444445</span> <span class="n">Celcius</span> <span class="n">derecedir</span><span class="o">.</span>
+</code></pre></div>
+
+<p>Yukarıdaki Sıralamaya göre kodu düzenleyelim;</p>
+<div class="highlight"><pre><span></span><code><span class="n">f_sicaklik_gunes</span> <span class="o">=</span> <span class="mi">27_000_000</span> <span class="c1"># Fahrenheit</span>
+<span class="n">f_sicaklik_dunya</span> <span class="o">=</span> <span class="mi">58</span> <span class="c1"># Fahrenheit</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Güneşin sıcaklığı </span><span class="si">{</span><span class="p">(</span><span class="n">f_sicaklik_gunes</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">32</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1.8</span><span class="si">:</span><span class="s2">*15^,.2f</span><span class="si">}</span><span class="s2"> Celcius derecedir.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dünyanın sıcaklığı </span><span class="si">{</span><span class="p">(</span><span class="n">f_sicaklik_dunya</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">32</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1.8</span><span class="si">:</span><span class="s2">*15^,.2f</span><span class="si">}</span><span class="s2"> Celcius derecedir.&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Güneşin</span> <span class="n">sıcaklığı</span> <span class="o">*</span><span class="mi">14</span><span class="p">,</span><span class="mi">999</span><span class="p">,</span><span class="mf">982.22</span><span class="o">*</span> <span class="n">Celcius</span> <span class="n">derecedir</span><span class="o">.</span>
+<span class="n">Dünyanın</span> <span class="n">sıcaklığı</span> <span class="o">*****</span><span class="mf">14.44</span><span class="o">*****</span> <span class="n">Celcius</span> <span class="n">derecedir</span><span class="o">.</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Güneşin sıcaklığı </span><span class="si">{</span><span class="p">(</span><span class="n">f_sicaklik_gunes</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">32</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1.8</span><span class="si">:</span><span class="s2">~&gt;15_.1f</span><span class="si">}</span><span class="s2"> Celcius derecedir.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dünyanın sıcaklığı </span><span class="si">{</span><span class="p">(</span><span class="n">f_sicaklik_dunya</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">32</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1.8</span><span class="si">:</span><span class="s2">~&gt;15_.1f</span><span class="si">}</span><span class="s2"> Celcius derecedir.&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Güneşin</span> <span class="n">sıcaklığı</span> <span class="o">~~~</span><span class="mf">14_999_982.2</span> <span class="n">Celcius</span> <span class="n">derecedir</span><span class="o">.</span>
+<span class="n">Dünyanın</span> <span class="n">sıcaklığı</span> <span class="o">~~~~~~~~~~~</span><span class="mf">14.4</span> <span class="n">Celcius</span> <span class="n">derecedir</span><span class="o">.</span>
+</code></pre></div>
+
 <h2>Kaynaklar</h2>
 <ul>
 <li><a href="https://www.w3schools.com/python/python_string_formatting.asp">Python String Formatting - w3schools</a></li>
 <li><a href="https://www.youtube.com/watch?v=sqKuYiUSHXQ&amp;t=2s">Python BEGINNER to ADVANCED in 10 levels - YouTube</a></li>
 <li><a href="https://www.youtube.com/watch?v=9saytqA0J9A">Every F-String Trick In Python Explained - YouTube</a></li>
+<li><a href="https://www.youtube.com/watch?v=H_TPIAEJl68&amp;list=WL&amp;index=28">Python F-strings: Visually Explained - YouTube</a></li>
 </ul>
 
 		<span class="post-tags">
