@@ -78,8 +78,9 @@
 	<h1 class="post-title">Düzenli İfadeler - Tanım ve Fonksiyonlar</h1>
 	<span class="post-date">Cum 01 Eylül 2023</span>
 	<h1>Düzenli İfadeler (Regular Expressions)</h1>
-<p><strong>Düzenli ifadeler (RegEx ya da Regular Expression)</strong>, bir karakter dizisi içinde bulunan, belli bir düzene uyan eşleşmeleri bulmanıza ve yönetmenize yardımcı olacak <strong>desenler</strong> oluşturmanıza izin veren bir metin dizisidir (bir string ifadedir). Bir metinde geçen karakterleri <strong>RegEx desenleri (pattern)</strong> kullanarak arayabiliriz.</p>
-<p>Düzenli ifadeler bir arama işleminde eşleştirilecek deseni temsil eden özel dizelerdir. <strong>Java</strong> ve <strong>Perl</strong> gibi programlama dillerinden <strong>grep, sed</strong> ve metin düzenleyici <strong>vim</strong> gibi metin işleme araçlarına kadar çok çeşitli bilgi işlem uygulamalarında kullanılan önemli bir araçtır. </p>
+<p><strong>Düzenli ifadeler (RegEx ya da Regular Expression)</strong>, bir arama işleminde eşleştirilecek <strong>deseni</strong> temsil eden özel dizelerdir. Bir başka tanımla bir karakter dizisi içinde bulunan, belli bir düzene uyan eşleşmeleri bulmanıza ve yönetmenize yardımcı olacak <strong>desenler</strong> oluşturmanıza izin veren bir metin dizisidir (bir string ifadedir). Bir metinde geçen karakterleri <strong>RegEx desenleri (pattern)</strong> kullanarak arayabiliriz. </p>
+<p>Tanım biraz karmaşık gelmiş olabilir. Ancak kısa bir örnek vererek konuyu açıklamaya çalışayım. Diyelim ki elimizde uzun bir metin var. Bu metin içerisindeki sayıları, telefon numaralarını, e-posta adreslerini, ...vb bir yapıyı otomatik olarak bulmak / tespit etmek isteyelim. Bu durumda bulmak istediğimiz yapıyı temsil eden bir <strong>desen</strong> tanımlayarak metinde eşleşen tüm sonuçları bulabiliriz. Deyatlı açıklama ve örneklerle konuyu daha iyi öğreneceksiniz. </p>
+<p>Düzenli ifadeler <strong>Java</strong> ve <strong>Perl</strong> gibi programlama dillerinden <strong>grep, sed</strong> ve metin düzenleyici <strong>vim</strong> gibi metin işleme araçlarına kadar çok çeşitli bilgi işlem uygulamalarında kullanılan önemli bir araçtır. </p>
 <p><strong>Düzenli ifadeler sayesinde ne yapabiliriz bir bakalım :</strong></p>
 <ul>
 <li>
@@ -98,7 +99,7 @@
 <p><strong>Metni Yeniden Biçimlendirme :</strong> Örneğin, Bir programdaki verileri metin dosyası olarak dışa aktarabilir, ardından düzenini değiştirerek metin düzenleyicisi kullanarak başka bir programa aktarabilirsiniz.</p>
 </li>
 </ul>
-<p>Python’daki düzenli ifadelere ilişkin her şey, bir modül içinde tutulur. Bu modülün adı <strong>re</strong>'dir. <strong>re</strong> modülü Python'ın dahili (build-in) modeüllerindendir. Ayrıca yüklememize gerek yoktur. Bilgisayarınızda Python yüklü ise, <strong>re modülü</strong> de yüklenmiş ve kullanıma hazır olarak bekliyordur.</p>
+<p>Python’daki düzenli ifadelere ilişkin her şey, bir modül içinde tutulur. Bu modülün adı <strong>re</strong>'dir. <strong>re</strong> modülü Python'ın dahili (build-in) modüllerindendir. İlave olarak yüklememize gerek yoktur. Bilgisayarınızda Python yüklü ise, <strong>re modülü</strong> de yüklenmiş ve kullanıma hazır olarak bekliyordur.</p>
 <p>Düzenli ifadeleri kullanabilmemiz için öncelikle bu <strong>re</strong> modülünü içe aktarmamız gerekir:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
 </code></pre></div>
@@ -115,15 +116,15 @@
 <tbody>
 <tr>
 <td><strong>match()</strong></td>
-<td>Karakter dizisinin başında eşleşme olup olmadığını göster</td>
+<td>Karakter dizisinin başında eşleşme olup olmadığını göster. Aranılan desen, stringin başında bulunduğu durumda eşleşmenin konumunu belirten bir eşleşme nesnesi üretir. Herhangi bir eşleşme bulunamadığı durumda <strong>None</strong> değeri üretir.</td>
 </tr>
 <tr>
 <td><strong>search()</strong></td>
-<td>Eşleşme olup olmadığını göster</td>
+<td>Eşleşme olup olmadığını göster. <strong>match()</strong> fonksiyonu ile aynı işlevi vardır. Yalnızca ilk eşleşmeye dair eşleşme nesnesi üretir.</td>
 </tr>
 <tr>
 <td><strong>findall()</strong></td>
-<td>Tüm eşleşmeleri göster (liste halinde)</td>
+<td>Tüm eşleşmeleri gösterir (liste halinde). Aranılan desen string içerisinde bulunduğu durumda, yakaladığı tüm eşleşmeleri liste olarak getirir.</td>
 </tr>
 <tr>
 <td><strong>finditer()</strong></td>
@@ -131,11 +132,11 @@
 </tr>
 <tr>
 <td><strong>split()</strong></td>
-<td>Eşleşme noktalarından böl ve liste oluştur</td>
+<td>Aranılan desen string içerisinde bulunduğu durumda, string’i eşleştiği bölgelerden  böler ve bölünmüş halini liste olarak getirir. Herhangi bir eşleşme olmadığı durumda stringin kendisini getirir.</td>
 </tr>
 <tr>
 <td><strong>sub()</strong></td>
-<td>Eşleşmeleri verilen ifade ile değiştir</td>
+<td>Eşleşmeleri verilen ifade ile değiştir. Aranılan deseni string içerisinde bulduğu durumda, verilen diğer string değeri ile değiştirir.</td>
 </tr>
 <tr>
 <td><strong>subn()</strong></td>
@@ -155,8 +156,10 @@
 </tr>
 </tbody>
 </table>
-<h2>match() Metodu</h2>
-<p>Bir <strong>karakter dizisi başında</strong> belirli bir kelimenin ya da kelime grubunun geçip geçmediğini öğrenmek istiyorsak bu işlemi <code>match()</code> metodunu kullanarak yapabiliriz.</p>
+<h2>Önemli Not</h2>
+<p>Düzenli ifadeler konusunu öğrenmeye yeni başladığımız için, aşağıdaki örneklerde <strong>özel karakterleri</strong> kullanarak konuyu anlatmak öğrenmeyi zorlaştıracaktır. Bu nedenle  aşağıdaki örneklerde direkt string ifade kullanacağız. İlk etapta kullanım saçma gelecektir. </p>
+<h2>match() Fonksiyonu</h2>
+<p>Bir <strong>karakter dizisinin başında</strong> belirli bir kelimenin ya da kelime grubunun geçip geçmediğini öğrenmek istiyorsak bu işlemi <code>match()</code> metodunu kullanarak yapabiliriz.</p>
 <p><strong>match()</strong> metodunun;</p>
 <ul>
 <li>ilk argümanı eşleştirilecek (aranacak) değer, yani desen</li>
@@ -172,14 +175,14 @@
 
 <p>Yukarıdaki <code>r"python"</code> deseni, yani aranan değer, zaten bulunan değeri ile aynı olduğu için, bu arama/eşleşme yönteminin kullanımı size anlamsız/saçma gelmiş olabilir. </p>
 <p>İlerleyen bölümlerde <strong>Metakarakterler</strong> konusunu anlatılırken çok farklı desenler oluştururarak farklı sonuçlar bulacağız. O bölümde düzenli ifadelerin ne için kullanılabileceğini ve bizlere ne kadar kolaylık sağladığını anlayacaksınız. </p>
-<p>Düzenli ifadeler için bir desen tanımlarken, <code>r</code> ifadesini yazmamız istenir. İlerleyen bölümlerde göreceğimiz üzere, <strong>özel metakarakterleri</strong> desen içerisinde yazmamız gerektiğinde <code>r</code> ifadesini kullanmadığımızda sorun ile karşılaşırız. Özel metakarakterleri desen içerisinde yazmadığımız zaman da <code>r</code> ifadesini kullanmak sorun çıkarmıyor. Üstelik <code>r</code> ile tanımlanan ifade, bir değişken mi? yoksa bir düzenli ifade deseni mi? olduğu kodu inceleyenlere yardımcı oluyor.</p>
+<p>Düzenli ifadeler için bir desen tanımlarken, (esasen desen içinde <code>\</code> karakteri kullanıldığında) tırnak işaretlerinin öncesinde <code>r</code> ifadesini yazmamız istenir. İlerleyen bölümlerde göreceğimiz üzere, <strong>özel metakarakterleri</strong> desen içerisinde yazmamız gerektiğinde <code>r</code> ifadesini kullanmadığımızda sorun ile karşılaşırız. Özel metakarakterleri desen içerisinde yazmadığımız zaman da <code>r</code> ifadesini kullanmak sorun çıkarmıyor. Üstelik <code>r</code> ile tanımlanan ifade, bir değişken mi? yoksa bir düzenli ifade deseni mi? olduğu kodu inceleyenlere yardımcı oluyor.</p>
 <p><code>match</code> nesnesinin dönen değeri ile bazı işlemler yapılabilir. Bunun için nesnenin yöntemleri kullanılır. Bunlar;</p>
 <ul>
 <li><code>span()</code> Başlangıç ve bitiş konumlarını <strong>tuple</strong> olarak verir.</li>
 <li><code>string</code> Dönen metinsel dizgi ifadesini (string) yazdırır</li>
 <li><code>group()</code> Eşleşen grupları yazdırır. (<code>group(1)</code>, <code>group(2)</code>, ...vb. <code>group(0) = group()</code> eşittir, tüm eşleşmeleri yazdırır.)</li>
 </ul>
-<p>Bu çıktıdaki <strong>span</strong> parametresi bize, aradığımız <strong>python</strong> karakter dizisinin (yani desenin), <strong>cumle</strong> değişkeninin 0. ile 6. karakterleri arasında yer aldığını söylüyor.</p>
+<p>Yukarıda verilen çıktıdaki <strong>span</strong> parametresi bize, aradığımız <strong>python</strong> karakter dizisinin (yani desenin), <strong>cumle</strong> değişkeninin <strong>0.</strong> ile <strong>6.</strong> karakterleri arasında yer aldığını söylüyor.</p>
 <h3>span() metodu</h3>
 <p>Eşleşmenin başladığı ve sona erdiği karakterlerin sırasını verir (0 değeri 1. karakteri temsil eder):</p>
 <div class="highlight"><pre><span></span><code><span class="n">cumle</span> <span class="o">=</span> <span class="s2">&quot;python güçlü bir programlama dilidir.&quot;</span>
@@ -190,7 +193,7 @@
 <div class="highlight"><pre><span></span><code>(0, 6)
 </code></pre></div>
 
-<p><code>match()</code> metodunun <code>span()</code> metodunu kullanarak değerleri doğrudan elde edebiliriz.</p>
+<p><code>match()</code> fonksiyonunun <code>span()</code> metodunu kullanarak değerleri doğrudan elde edebiliriz.</p>
 <div class="highlight"><pre><span></span><code><span class="n">cumle</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span>
 </code></pre></div>
 
@@ -222,7 +225,7 @@
 <div class="highlight"><pre><span></span><code><span class="n">Bu</span> <span class="n">sabah</span> <span class="n">yağmur</span> <span class="n">var</span> <span class="n">İstanbul</span><span class="s1">&#39;da...</span>
 </code></pre></div>
 
-<h3>group() Metodu</h3>
+<h3>group() Fonksiyonu</h3>
 <p>Belirtilen desen ile eşleşen değeri döndürür.</p>
 <div class="highlight"><pre><span></span><code><span class="n">txt</span> <span class="o">=</span> <span class="s2">&quot;Bu sabah yağmur var İstanbul&#39;da...&quot;</span>
 <span class="n">a</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\by\w+&quot;</span><span class="p">,</span> <span class="n">txt</span><span class="p">)</span>
@@ -270,7 +273,7 @@
 <p>Aslında bu gayet normal. Çünkü <code>match()</code> metodu bir karakter dizisinin sadece en başına bakar. 
 Yani "<strong>python güçlü bir programlama dilidir.</strong>" ifadesini tutan <strong>cumle</strong> değişkenine <code>re.match(“güçlü”, cumle)</code> gibi bir fonksiyon uyguladığımızda, <code>match()</code> metodu <strong>cumle</strong> değişkeninin yalnızca en başına bakacak ve <strong>cumle</strong> değişkeninin en başında <strong>güçlü</strong> yerine <strong>python</strong> ifadesini gördüğü için, bize olumsuz yanıt verecektir.</p>
 <p>Aslında <code>match()</code> metodunun yaptığı bu işi, karakter dizilerinin <code>split()</code> metodu yardımıyla da yapabiliriz:</p>
-<h2>search() Metodu</h2>
+<h2>search() Fonksiyonu</h2>
 <p><code>search()</code> metodu ile <code>match()</code> metodu arasında çok önemli bir fark vardır. <code>match()</code> metodu bir karakter dizisinin en başına bakıp bir <strong>eşleştirme</strong> işlemi yaparken, <code>search()</code> metodu karakter dizisinin genelinde bir <strong>arama</strong> işlemi yapar. Yani biri eşleştirir, öbürü arar.</p>
 <p><code>search()</code> metodu, eşleşmenin gerçekleştiği ilk değeri döndürür. Aranan değer ya da desen, karakter dizisi içerisinde birden fazla geçse bile, ilk eşleşmede işlem sonlanır.</p>
 <p><strong>güçlü</strong> ifadesini <code>search()</code> metodu yardımı ile, <strong>cumle</strong> değişkeni içerisinde <strong>arayalım</strong>.</p>
@@ -351,8 +354,8 @@ Bunlar doğrudan listeler üzerinde işlem yapamaz. O yüzden bizim Python’a b
 <div class="highlight"><pre><span></span><code>kebap
 </code></pre></div>
 
-<h2>findall() Metodu</h2>
-<p>Bir metin içinde geçen belirli kelimelerin tümünü bulmak istiyorsak <code>findall()</code> metodunu kullanmalıyız.</p>
+<h2>findall() Fonksiyonu</h2>
+<p>Bir metin içinde geçen belirli desenlerin tümünü bulmak istiyorsak <code>findall()</code> metodunu kullanmalıyız. Bu metot bize bir liste veri türünde çıktı verir. Bulunan ya da desen ile eşleşen tüm sonuçlar liste veri tipine eklenmiş olarak çıktı verilir.</p>
 <div class="highlight"><pre><span></span><code><span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Guido Van Rossum Python&#39;ı geliştirmeye 1990 yılında başlamış... Yani aslında Python için nispeten yeni</span>
 <span class="s2">bir dil denebilir. Ancak Python&#39;un çok uzun bir geçmişi olmasa da, bu dil öteki dillere kıyasla kolay olması, hızlı</span>
 <span class="s2">olması, ayrı bir derleyici programa ihtiyaç duymaması ve bunun gibi pek çok nedenden ötürü çoğu kimsenin gözdesi</span>
@@ -369,8 +372,9 @@ Bunlar doğrudan listeler üzerinde işlem yapamaz. O yüzden bizim Python’a b
 </code></pre></div>
 
 <p>Gördüğünüz gibi, metinde geçen bütün “Python” kelimelerini bir çırpıda liste olarak aldık.</p>
-<h2>finditer() Metodu</h2>
-<p>Belirtilen desenlerin karakter dizileri içerisindeki konumunu bulmak için <code>finditer()</code> metodunu kullanabiliriz. <code>finditer()</code> metodu liste döndürmez, iterable bir nesne döndürür.</p>
+<h2>finditer() Fonksiyonu</h2>
+<p>Belirtilen desenlerin tamamını karakter dizileri içerisinde <code>finditer()</code> metodu ile bulabiliriz ancak bu metot, liste döndürmez, iterable bir nesne döndürür. </p>
+<p>Özellikle Uzun metinlerde aranan desenin bulunması için bu metot kullanılabilir, böylece boşuna tekrar bir liste oluşturmaya gerek kalınmaz. Bulunan değerler for döngüsü ile doğrudan işlenebilir (yazdırılabilir, veri tabanına eklenebilir, ...vb)</p>
 <p>Örneğin, yukarıda belirtilen <strong>metin</strong> değişkeni içerisinde <strong>Python</strong> ifadesinin (deseninin) hangi konumda olduğunu (aranan desenin başlangıç ve bitiş değerlerini) bulmaya çalışalım.</p>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">re</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="s2">&quot;Python&quot;</span><span class="p">,</span> <span class="n">metin</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">span</span><span class="p">())</span>
@@ -394,7 +398,7 @@ Bunlar doğrudan listeler üzerinde işlem yapamaz. O yüzden bizim Python’a b
 <div class="highlight"><pre><span></span><code><span class="mf">1990</span>
 </code></pre></div>
 
-<h2>split() Metodu</h2>
+<h2>split() Fonksiyonu</h2>
 <p><code>split()</code> metodu veriyi eşleşmelerin olduğu noktalardan böler ve liste haline getirir. Örneğin aşağıdaki kod çalıştırılırsa cümle boşluk (<code>\s</code>) karakterlerinden bölünür (yani kelimelere ayrılır):</p>
 <div class="highlight"><pre><span></span><code><span class="n">desen</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;Python&quot;</span>
 <span class="n">bol</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">desen</span><span class="p">,</span> <span class="n">metin</span><span class="p">)</span>
@@ -444,7 +448,7 @@ Bunlar doğrudan listeler üzerinde işlem yapamaz. O yüzden bizim Python’a b
 <p>Aynı işi sadece <code>startswith()</code> metodunu kullanarak dahi yapabiliriz:</p>
 <p>Eğer düzenli ifadelerden tek beklentiniz bir karakter dizisinin en başındaki veriyle eşleştirme işlemi yapmaksa, <code>split()</code> veya <code>startswith()</code> metotlarını kullanmak daha mantıklıdır. Çünkü <code>split()</code> ve <code>startswith()</code> metotları <code>match()</code> metodundan çok daha hızlı çalışacaktır.</p>
 <h2>Metin/Karakter Dizisi Değiştirme İşlemleri</h2>
-<h2>sub() metodu</h2>
+<h2>sub() Fonksiyonu</h2>
 <p>Şimdiye kadar hep düzenli ifadeler yoluyla bir karakter dizisini nasıl eşleştireceğimizi inceledik. Ama tabii ki düzenli ifadeler yalnızca bir karakter dizisi <strong>bulmak</strong>la ilgili değildir. Bu araç aynı zamanda bir karakter dizisini <strong>değiştirmeyi</strong> de kapsar. Bu iş için temel olarak iki metot kullanılır. Bunlardan ilki <code>sub()</code> metodudur. <strong>Substitute</strong> kelimesi, yerine koy, değiştir anlamına gelir. Bu metot, pek çok uygulamadan bildiğimiz <strong>Bul ve Değiştir</strong> fonksiyonudur aslında. Bu bölümde <code>sub()</code> metodunu inceleyeceğiz.</p>
 <p><code>sub()</code> metodunun;</p>
 <ul>
@@ -651,7 +655,7 @@ başında ektiği erik fideleri haziran başında meyve veriyor.
 </code></pre></div>
 
 <p>Yukarıda verdiğimiz düzenli ifadeyi böyle ufak bir metinde kullanmak çok anlamlı olmayabilir. Ama çok büyük metinler üzerinde çok çeşitli ve karmaşık değişiklikler yapmak istediğinizde bu kodların işinize yarayabileceğini göreceksiniz.</p>
-<h2>subn() metodu</h2>
+<h2>subn() Fonksiyonu</h2>
 <p>Bu metodu çok kısa bir şekilde anlatıp geçeceğiz. Çünkü bu metot <code>sub()</code> metoduyla neredeyse tamamen aynıdır. Tek farkı, <code>subn()</code> metodunun bir metin içinde yapılan değişiklik sayısını da göstermesidir. Yani bu metodu kullanarak, kullanıcılarınıza <strong>“toplam şu kadar sayıda değişiklik yapılmıştır”</strong> şeklinde bir bilgi verebilirsiniz. Bu metot çıktı olarak iki öğeli bir demet verir. </p>
 <p>Birinci öğe değiştirilen metin, ikinci öğe ise yapılan değişiklik sayısıdır. Yani kullanıcıya değişiklik sayısını göstermek için yapmanız gereken şey, bu demetin ikinci öğesini almaktır. Mesela <code>sub()</code> metodunu anlatırken verdiğimiz kodların son satırını şöyle değiştirebilirsiniz:</p>
 <div class="highlight"><pre><span></span><code><span class="n">ab</span> <span class="o">=</span> <span class="n">derle</span><span class="o">.</span><span class="n">subn</span><span class="p">(</span><span class="n">degistir</span><span class="p">,</span> <span class="n">metin</span><span class="p">)</span>
@@ -661,7 +665,7 @@ başında ektiği erik fideleri haziran başında meyve veriyor.
 <div class="highlight"><pre><span></span><code>Toplam 12 değişiklik yapılmıştır.
 </code></pre></div>
 
-<h2>escape() metodu</h2>
+<h2>escape() Fonksiyonu</h2>
 <p><code>escape()</code> metodu (fonksiyonu), <strong>bir metni düzenli ifade (regular expression) içinde kullanılmaya uygun hale getirmek için kullanılır.</strong> Bu fonksiyon, metindeki özel karakterleri kaçış karakterleri ile değiştirir, böylece bu karakterler düzenli ifade içinde özel anlam taşımazlar ve doğrudan metin olarak eşleştirilebilirler.</p>
 <p>Örneğin, bir kullanıcının girdiği metni doğrudan bir düzenli ifade içinde kullanmak istediğinizi düşünün. Kullanıcının girdisi içinde özel karakterler bulunabilir ve bu karakterlerin düzenli ifade içinde kullanılması sorunlara neden olabilir. <code>escape()</code> fonksiyonu, bu tür durumlar için kullanışlıdır.</p>
 <p>Örneğin, elimizde kullanıcı tarafından tanımlanmış bir değişken (<code>user_input</code>) olduğunu ve bu değişkenin, düzenli ifadelerde kullanılan özel karakterler içerdiğini düşünün. 
@@ -696,7 +700,7 @@ başında ektiği erik fideleri haziran başında meyve veriyor.
 <p>Bu örnekte, <code>re.escape()</code> fonksiyonu, <code>user_input</code> içindeki özel karakterleri kaçış karakterleriyle değiştirir ve bu düzenli ifade içinde güvenli bir şekilde kullanılabilir hale getirir. Bu, kullanıcının girdisinin düzenli ifade içinde istenmeyen yan etkiler oluşturmasını önler.</p>
 <p>Bu fonksiyon özellikle dinamik olarak oluşturulan düzenli ifadelerde veya kullanıcı tarafından sağlanan metinlerle çalışırken güvenlik sağlamak için önemlidir.</p>
 <h2>Düzenli İfadelerin Derlenmesi</h2>
-<h2>compile() metodu</h2>
+<h2>compile() Fonksiyonu</h2>
 <p>En başta da söylediğimiz gibi, düzenli ifadeler, karakter dizilerine göre biraz daha yavaş çalışırlar. Ancak düzenli ifadelerin işleyişini hızlandırmanın da bazı yolları vardır. Bu yollardan biri de <code>compile()</code> metodunu kullanmaktır.</p>
 <p><strong>compile</strong> kelimesi İngilizcede <strong>derlemek</strong> anlamına gelir. İşte biz de bu <code>compile()</code> metodu yardımıyla düzenli ifade kalıplarımızı kullanmadan önce derleyerek daha hızlı çalışmalarını sağlayacağız. </p>
 <p>Küçük boyutlu projelerde <code>compile()</code> metodu pek hissedilir bir fark yaratmasa da özellikle büyük çaplı programlarda bu metodu kullanmak oldukça faydalı olacaktır.</p>
@@ -755,7 +759,7 @@ Python3.4
 </code></pre></div>
 
 <p>Bu avantajlar, <code>re.compile()</code> fonksiyonunu kullanmanın genellikle tercih edilen bir yöntem haline getirir. Ancak, küçük uygulamalarda veya tek seferlik kullanımlarda <code>re.compile()</code> kullanmak zorunlu değildir; <code>re.findall()</code> veya diğer <code>re</code> fonksiyonları doğrudan düzenli ifade desenini alabilir.</p>
-<h2>purge() metodu</h2>
+<h2>purge() Fonksiyonu</h2>
 <p><code>purge()</code> metodu, <strong>düzenli ifade (regex) önbelleğini temizlemek için kullanılır</strong>. <code>re</code> modülü, derlenmiş düzenli ifade desenlerini ve ilgili verileri bir önbellekte saklar. Bu önbellek, aynı desenleri tekrar tekrar derlememek ve performansı artırmak için kullanılır. Ancak, bazen bu önbelleği temizlemek isteyebilirsiniz, özellikle çok sayıda düzenli ifade deseni kullanılıyorsa veya bellek kullanımını kontrol etmek istiyorsanız.</p>
 <p>İşte <code>purge()</code> fonksiyonunun kullanımı:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
