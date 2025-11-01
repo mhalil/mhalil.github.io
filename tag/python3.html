@@ -120,10 +120,16 @@
 						</ul>
 					</span>
 				<p>
-					<h2>Önemli Not</h2>
-<p>Düzenli ifadeler konusunu öğrenmeye yeni başladığımız için, aşağıdaki örneklerde <strong>özel karakterleri</strong> kullanarak konuyu anlatmak öğrenmeyi zorlaştıracaktır. Bu nedenle  aşağıdaki örneklerde direkt string ifade kullanacağız. İlk etapta kullanım saçma gelecektir. </p>
-<h1>match() Fonksiyonu</h1>
-<p>Bir <strong>karakter dizisinin başında</strong> belirli bir kelimenin ya da kelime grubunun geçip geçmediğini öğrenmek istiyorsak bu işlemi …</p>
+					<h1>match() Fonksiyonu</h1>
+<p>Bir <strong>karakter dizisinin başında</strong> (örneğin bir paragraf başında) belirli bir kelimenin ya da kelime grubunun geçip geçmediğini öğrenmek istiyorsak bu işlemi <code>match()</code> metodunu kullanarak yapabiliriz.</p>
+<p><strong>match()</strong> metodunun;</p>
+<ul>
+<li><strong>ilk argümanı</strong> eşleştirilecek (aranacak) değer, yani <strong>desen</strong></li>
+<li><strong>ikinci argümanı</strong> ise, <strong>aramanın yapılacağı karakter dizisi</strong> olmalıdır.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">cumle</span> <span class="o">=</span> <span class="s2">&quot;python güçlü bir …</span></code></pre></div>
 				</p>
 				<a class="read-more" href="duzenli-ifadeler-match.html">Continue reading »</a>
 			</div>
@@ -172,10 +178,9 @@
 						</ul>
 					</span>
 				<p>
-					<h2>Önemli Not</h2>
-<p>Düzenli ifadeler konusunu öğrenmeye yeni başladığımız için, aşağıdaki örneklerde <strong>özel karakterleri</strong> kullanarak konuyu anlatmak öğrenmeyi zorlaştıracaktır. Bu nedenle  aşağıdaki örneklerde direkt string ifade kullanacağız. İlk etapta kullanım saçma gelecektir. </p>
-<h1>search() Fonksiyonu</h1>
-<p><code>search()</code> metodu ile <code>match()</code> metodu arasında çok önemli bir fark vardır. <code>match()</code> metodu bir karakter dizisinin en …</p>
+					<h1>search() Fonksiyonu</h1>
+<p><code>search()</code> metodu ile <code>match()</code> metodu arasında çok önemli bir fark vardır. <code>match()</code> metodu bir karakter dizisinin (örneğin bir paragrafta) en başına bakıp bir <strong>eşleştirme</strong> işlemi yaparken, <code>search()</code> metodu karakter dizisinin genelinde bir <strong>arama</strong> işlemi yapar. Yani biri eşleştirir, öbürü arar.</p>
+<p><code>search()</code> metodu, <strong>eşleşmenin gerçekleştiği ilk değeri döndürür</strong>. Aranan …</p>
 				</p>
 				<a class="read-more" href="duzenli-ifadeler-search.html">Continue reading »</a>
 			</div>
@@ -198,10 +203,10 @@
 						</ul>
 					</span>
 				<p>
-					<h2>Önemli Not</h2>
-<p>Düzenli ifadeler konusunu öğrenmeye yeni başladığımız için, aşağıdaki örneklerde <strong>özel karakterleri</strong> kullanarak konuyu anlatmak öğrenmeyi zorlaştıracaktır. Bu nedenle  aşağıdaki örneklerde direkt string ifade kullanacağız. İlk etapta kullanım saçma gelecektir. </p>
-<h1>split() Fonksiyonu</h1>
-<p><code>split()</code> metodu veriyi eşleşmelerin olduğu noktalardan böler ve liste haline getirir. Örneğin aşağıdaki kod çalıştırılırsa cümle boşluk …</p>
+					<h1>split() Fonksiyonu</h1>
+<p><code>split()</code> metodu, veriyi, eşleşmelerin olduğu noktalardan itibaren böler ve liste haline getirir. Örneğin aşağıdaki kod çalıştırılırsa cümle boşluk (<code>\s</code>) karakterlerinden bölünür (yani kelimelere ayrılır):</p>
+<div class="highlight"><pre><span></span><code><span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Guido Van Rossum Python&#39;ı geliştirmeye 1990 yılında başlamış... Yani aslında Python için nispeten yeni</span>
+<span class="s2">bir dil denebilir. Ancak Python&#39;un çok uzun …</span></code></pre></div>
 				</p>
 				<a class="read-more" href="duzenli-ifadeler-split.html">Continue reading »</a>
 			</div>

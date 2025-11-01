@@ -77,14 +77,12 @@
 <div class="post">
 	<h1 class="post-title">Düzenli İfadeler - match</h1>
 	<span class="post-date">Cum 01 Eylül 2023</span>
-	<h2>Önemli Not</h2>
-<p>Düzenli ifadeler konusunu öğrenmeye yeni başladığımız için, aşağıdaki örneklerde <strong>özel karakterleri</strong> kullanarak konuyu anlatmak öğrenmeyi zorlaştıracaktır. Bu nedenle  aşağıdaki örneklerde direkt string ifade kullanacağız. İlk etapta kullanım saçma gelecektir. </p>
-<h1>match() Fonksiyonu</h1>
-<p>Bir <strong>karakter dizisinin başında</strong> belirli bir kelimenin ya da kelime grubunun geçip geçmediğini öğrenmek istiyorsak bu işlemi <code>match()</code> metodunu kullanarak yapabiliriz.</p>
+	<h1>match() Fonksiyonu</h1>
+<p>Bir <strong>karakter dizisinin başında</strong> (örneğin bir paragraf başında) belirli bir kelimenin ya da kelime grubunun geçip geçmediğini öğrenmek istiyorsak bu işlemi <code>match()</code> metodunu kullanarak yapabiliriz.</p>
 <p><strong>match()</strong> metodunun;</p>
 <ul>
-<li>ilk argümanı eşleştirilecek (aranacak) değer, yani desen</li>
-<li>ikinci argümanı ise, aramanın yapılacağı karakter dizisi olmalıdır.</li>
+<li><strong>ilk argümanı</strong> eşleştirilecek (aranacak) değer, yani <strong>desen</strong></li>
+<li><strong>ikinci argümanı</strong> ise, <strong>aramanın yapılacağı karakter dizisi</strong> olmalıdır.</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
 
@@ -93,26 +91,31 @@
 <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;python&quot;</span><span class="p">,</span> <span class="n">cumle</span><span class="p">)</span>
 </code></pre></div>
 
+<p><strong>Çıktı</strong>:</p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;</span><span class="n">re</span><span class="o">.</span><span class="n">Match</span> <span class="nb">object</span><span class="p">;</span> <span class="n">span</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">match</span><span class="o">=</span><span class="s1">&#39;python&#39;</span><span class="o">&gt;</span>
 </code></pre></div>
 
-<p>Yukarıdaki <code>r"python"</code> deseni, yani aranan değer, zaten bulunan değeri ile aynı olduğu için, bu arama/eşleşme yönteminin kullanımı size anlamsız/saçma gelmiş olabilir. </p>
-<p>İlerleyen bölümlerde <strong>Metakarakterler</strong> konusunu anlatılırken çok farklı desenler oluştururarak farklı sonuçlar bulacağız. O bölümde düzenli ifadelerin ne için kullanılabileceğini ve bizlere ne kadar kolaylık sağladığını anlayacaksınız. </p>
+<p>Yukarıdaki <code>r"python"</code> deseni, yani aranan değer / desen, zaten bulunan değeri ile aynı olduğu için, bu arama/eşleşme yönteminin kullanımı size anlamsız/saçma gelmiş olabilir. </p>
+<p>İlerleyen bölümlerde <strong>Metakarakterler</strong> konusunu anlatılırken çok farklı desenler oluştururarak farklı sonuçlar bulacağız. O bölümde düzenli ifadelerin ne için kullanılabileceğini ve bizlere ne kadar kolaylık sağladığını anlayacaksınız. Aşağıda da metakarakter kullanımına örnek vereceğiz ancak detaylı anlatımı kendi sayfalarında inceleyeceğiz.</p>
 <p>Düzenli ifadeler için bir desen tanımlarken, (esasen desen içinde <code>\</code> karakteri kullanıldığında) tırnak işaretlerinin öncesinde <code>r</code> ifadesini yazmamız istenir. İlerleyen bölümlerde göreceğimiz üzere, <strong>özel metakarakterleri</strong> desen içerisinde yazmamız gerektiğinde <code>r</code> ifadesini kullanmadığımızda sorun ile karşılaşırız. Özel metakarakterleri desen içerisinde yazmadığımız zaman da <code>r</code> ifadesini kullanmak sorun çıkarmıyor. Üstelik <code>r</code> ile tanımlanan ifade, bir değişken mi? yoksa bir düzenli ifade deseni mi? olduğu kodu inceleyenlere yardımcı oluyor.</p>
-<p><code>match</code> nesnesinin dönen değeri ile bazı işlemler yapılabilir. Bunun için nesnenin yöntemleri kullanılır. Bunlar;</p>
+<p><code>match</code> fonksiyonunu çalıştırdığımızda elde edilen sonuç ile, (nesnesinin dönen değeri ile) bazı işlemler yapılabilir. Bunun için nesnenin yöntemleri kullanılır. Bunlar;</p>
 <ul>
-<li><code>span()</code> Başlangıç ve bitiş konumlarını <strong>tuple</strong> olarak verir.</li>
-<li><code>string</code> Dönen metinsel dizgi ifadesini (string) yazdırır</li>
-<li><code>group()</code> Eşleşen grupları yazdırır. (<code>group(1)</code>, <code>group(2)</code>, ...vb. <code>group(0) = group()</code> eşittir, tüm eşleşmeleri yazdırır.)</li>
+<li><code>span()</code> Eşleşen değerin başlangıç ve bitiş konumlarını <strong>tuple</strong> olarak verir.</li>
+<li><code>string</code> Eşleşen (Dönen) metinsel dizgi ifadesinin (string)  tamamını yazdırır.</li>
+<li><code>group()</code> Desenle eşleşen grupları yazdırır. (<code>group(1)</code>, <code>group(2)</code>, ...vb.) </li>
 </ul>
-<p>Yukarıda verilen çıktıdaki <strong>span</strong> parametresi bize, aradığımız <strong>python</strong> karakter dizisinin (yani desenin), <strong>cumle</strong> değişkeninin <strong>0.</strong> ile <strong>6.</strong> karakterleri arasında yer aldığını söylüyor.</p>
+<blockquote>
+<p><strong>BİLGİ:</strong> <code>group(0)</code> ifadesi ile <code>group()</code> ifadesi birbirine eşittir. Yani tüm eşleşmeleri yazdırır.</p>
+</blockquote>
+<p>Yukarıdaki çıktıda bulunan <strong>span</strong> parametresi bize, aradığımız <strong>python</strong> karakter dizisinin (yani desenin), <strong>cumle</strong> değişkeninin <strong>0.</strong> ile <strong>6.</strong> karakterleri arasında yer aldığını söylüyor.</p>
 <h2>span() metodu</h2>
-<p>Eşleşmenin <strong>metin içerisinde başladığı ve sona erdiği karakterlerin sayısal değerini</strong>* verir (0 değeri 1. karakteri temsil eder):</p>
+<p>Eşleşmenin <strong>metin içerisinde başladığı ve sona erdiği karakterlerin sayısal değerini</strong> verir (0 değeri 1. karakteri temsil eder):</p>
 <div class="highlight"><pre><span></span><code><span class="n">cumle</span> <span class="o">=</span> <span class="s2">&quot;python güçlü bir programlama dilidir.&quot;</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;python&quot;</span><span class="p">,</span> <span class="n">cumle</span><span class="p">)</span>
 <span class="n">x</span><span class="o">.</span><span class="n">span</span><span class="p">()</span>
 </code></pre></div>
 
+<p><strong>Çıktı</strong>:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
 </code></pre></div>
 
@@ -120,13 +123,15 @@
 <div class="highlight"><pre><span></span><code><span class="n">cumle</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span>
 </code></pre></div>
 
+<p><strong>Çıktı</strong>:</p>
 <div class="highlight"><pre><span></span><code><span class="s1">&#39;python&#39;</span>
 </code></pre></div>
 
-<p>farklı tarzda yazmak istersek, şu ifadeyi de kullanabiliriz;</p>
+<p>Farklı tarzda yazmak istersek, şu ifadeyi de kullanabiliriz;</p>
 <div class="highlight"><pre><span></span><code><span class="n">cumle</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">span</span><span class="p">()[</span><span class="mi">0</span><span class="p">]:</span><span class="n">x</span><span class="o">.</span><span class="n">span</span><span class="p">()[</span><span class="mi">1</span><span class="p">]]</span>
 </code></pre></div>
 
+<p><strong>Çıktı</strong>:</p>
 <div class="highlight"><pre><span></span><code><span class="s1">&#39;python&#39;</span>
 </code></pre></div>
 
@@ -137,36 +142,40 @@
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">span</span><span class="p">())</span>        <span class="c1"># **y** harfi ile başlayan kelimelerin konumlarını bul</span>
 </code></pre></div>
 
+<p><strong>Çıktı</strong>:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
 </code></pre></div>
 
 <h2>group() Metodu</h2>
-<p>Belirtilen <strong>desen ile eşleşen değeri</strong> döndürür. </p>
-<p>Özel karakter kullanılarak arama yapılmak istenirse, aşağıdaki şekilde kod yazılabilir.</p>
-<p>Örneğin <strong>y</strong> harfi ile başlayan kelimeleri bulmak için aşağıdaki kodu kullanabiliriz.</p>
-<div class="highlight"><pre><span></span><code><span class="n">txt</span> <span class="o">=</span> <span class="s2">&quot;Bu sabah yağmur var İstanbul&#39;da...&quot;</span>
-<span class="n">a</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\by\w+&quot;</span><span class="p">,</span> <span class="n">txt</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>    <span class="c1"># **y** harfi ile başlayan kelimeleri bul</span>
+<p><code>group()</code> metodu, belirtilen <strong>desen ile eşleşen değeri</strong> döndürür. </p>
+<div class="highlight"><pre><span></span><code><span class="n">cumle</span> <span class="o">=</span> <span class="s2">&quot;python güçlü bir programlama dilidir.&quot;</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;python&quot;</span><span class="p">,</span> <span class="n">cumle</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">group</span><span class="p">())</span> 
 </code></pre></div>
 
-<div class="highlight"><pre><span></span><code><span class="n">yağmur</span>
+<p><strong>Çıktı</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">python</span>
 </code></pre></div>
 
 <p><code>x = re.match("python", cumle)</code> ifadesi ile eşleştirme komutunu bir değişkene (<strong>x</strong>'e) atamıştık. Hatırlarsanız bu fonksiyonu komut satırına yazdığımızda bir eşleşme nesnesi elde ediyorduk. İşte burada değişkene atadığımız şey aslında bu eşleşme nesnesinin kendisi oluyor. Bu durumu şu şekilde teyit edebilirsiniz:</p>
 <div class="highlight"><pre><span></span><code><span class="n">cumle</span> <span class="o">=</span> <span class="s2">&quot;python güçlü bir programlama dilidir.&quot;</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;python&quot;</span><span class="p">,</span> <span class="n">cumle</span><span class="p">)</span>
-<span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 </code></pre></div>
 
+<p><strong>Çıktı</strong>:</p>
 <div class="highlight"><pre><span></span><code><span class="n">re</span><span class="o">.</span><span class="n">Match</span>
 </code></pre></div>
 
 <p>Gördüğünüz gibi <strong>x</strong> bir eşleştirme (match) nesnesidir.
 <strong><code>group()</code> metodu, düzenli ifadelerin değil, eşleşme nesnelerinin bir metodudur.</strong></p>
 <p>Bu metodu kullandığımızda direkt aranan değer ekrana yazdırılacaktır. Bu aşamada, metodun gereksiz ya da saçma olduğunu düşünüyor olabilirsiniz. <a href="/duzenli-ifadeler-gruplar.html">Eşleşme Nesnesi Metotları ve Gruplar</a> sayfasında  <code>group()</code> metodunun ne işe yaradığını daha detaylı inceleyeceğiz.</p>
-<div class="highlight"><pre><span></span><code><span class="n">x</span><span class="o">.</span><span class="n">group</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="n">cumle</span> <span class="o">=</span> <span class="s2">&quot;python güçlü bir programlama dilidir.&quot;</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;python&quot;</span><span class="p">,</span> <span class="n">cumle</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
 </code></pre></div>
 
+<p><strong>Çıktı</strong>:</p>
 <div class="highlight"><pre><span></span><code><span class="s1">&#39;python&#39;</span>
 </code></pre></div>
 
@@ -175,6 +184,7 @@
 <span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;Java&quot;</span><span class="p">,</span> <span class="n">cumle</span><span class="p">))</span>
 </code></pre></div>
 
+<p><strong>Çıktı</strong>:</p>
 <div class="highlight"><pre><span></span><code><span class="kc">None</span>
 </code></pre></div>
 
@@ -183,6 +193,7 @@
 <span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;güçlü&quot;</span><span class="p">,</span> <span class="n">cumle</span><span class="p">))</span>
 </code></pre></div>
 
+<p><strong>Çıktı</strong>:</p>
 <div class="highlight"><pre><span></span><code><span class="kc">None</span>
 </code></pre></div>
 
@@ -190,15 +201,6 @@
 <p>Aslında bu gayet normal. Çünkü <code>match()</code> metodu bir karakter dizisinin sadece en başına bakar. 
 Yani "<strong>python güçlü bir programlama dilidir.</strong>" ifadesini tutan <strong>cumle</strong> değişkenine <code>re.match(“güçlü”, cumle)</code> gibi bir fonksiyon uyguladığımızda, <code>match()</code> metodu <strong>cumle</strong> değişkeninin yalnızca en başına bakacak ve <strong>cumle</strong> değişkeninin en başında <strong>güçlü</strong> yerine <strong>python</strong> ifadesini gördüğü için, bize olumsuz yanıt verecektir.</p>
 <p>Aslında <code>match()</code> metodunun yaptığı bu işi, karakter dizilerinin <code>split()</code> metodu yardımıyla da yapabiliriz. İncelemek isterseniz <a href="/duzenli-ifadeler-split.html">Split Metodu</a>na ait sayfayı ziyaret edebilirsiniz.</p>
-<h2>string Özelliği</h2>
-<p>Eşleşme bulunan <strong>tüm metni</strong> gösterir.</p>
-<div class="highlight"><pre><span></span><code><span class="n">txt</span> <span class="o">=</span> <span class="s2">&quot;Bu sabah yağmur var İstanbul&#39;da...&quot;</span>
-<span class="n">a</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\by\w+&quot;</span><span class="p">,</span> <span class="n">txt</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">string</span><span class="p">)</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="n">Bu</span> <span class="n">sabah</span> <span class="n">yağmur</span> <span class="n">var</span> <span class="n">İstanbul</span><span class="s1">&#39;da...</span>
-</code></pre></div>
 
 		<span class="post-tags">
 			Tags:

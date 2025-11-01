@@ -77,12 +77,10 @@
 <div class="post">
 	<h1 class="post-title">Düzenli İfadeler - search</h1>
 	<span class="post-date">Cum 01 Eylül 2023</span>
-	<h2>Önemli Not</h2>
-<p>Düzenli ifadeler konusunu öğrenmeye yeni başladığımız için, aşağıdaki örneklerde <strong>özel karakterleri</strong> kullanarak konuyu anlatmak öğrenmeyi zorlaştıracaktır. Bu nedenle  aşağıdaki örneklerde direkt string ifade kullanacağız. İlk etapta kullanım saçma gelecektir. </p>
-<h1>search() Fonksiyonu</h1>
-<p><code>search()</code> metodu ile <code>match()</code> metodu arasında çok önemli bir fark vardır. <code>match()</code> metodu bir karakter dizisinin en başına bakıp bir <strong>eşleştirme</strong> işlemi yaparken, <code>search()</code> metodu karakter dizisinin genelinde bir <strong>arama</strong> işlemi yapar. Yani biri eşleştirir, öbürü arar.</p>
-<p><code>search()</code> metodu, eşleşmenin gerçekleştiği ilk değeri döndürür. Aranan değer ya da desen, karakter dizisi içerisinde birden fazla geçse bile, ilk eşleşmede işlem sonlanır.</p>
-<p><strong>güçlü</strong> ifadesini <code>search()</code> metodu yardımı ile, <strong>cumle</strong> değişkeni içerisinde <strong>arayalım</strong>.</p>
+	<h1>search() Fonksiyonu</h1>
+<p><code>search()</code> metodu ile <code>match()</code> metodu arasında çok önemli bir fark vardır. <code>match()</code> metodu bir karakter dizisinin (örneğin bir paragrafta) en başına bakıp bir <strong>eşleştirme</strong> işlemi yaparken, <code>search()</code> metodu karakter dizisinin genelinde bir <strong>arama</strong> işlemi yapar. Yani biri eşleştirir, öbürü arar.</p>
+<p><code>search()</code> metodu, <strong>eşleşmenin gerçekleştiği ilk değeri döndürür</strong>. Aranan değer ya da desen, karakter dizisi içerisinde birden fazla geçse bile, ilk eşleşmede işlem sonlanır.</p>
+<p>Örneğin, <strong>güçlü</strong> ifadesini <code>search()</code> metodu yardımı ile, <strong>cumle</strong> değişkeni içerisinde <strong>arayalım</strong>.</p>
 <div class="highlight"><pre><span></span><code><span class="n">cumle</span> <span class="o">=</span> <span class="s2">&quot;python güçlü bir programlama dilidir.&quot;</span>
 <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;güçlü&quot;</span><span class="p">,</span> <span class="n">cumle</span><span class="p">)</span>
 </code></pre></div>
@@ -91,18 +89,21 @@
 </code></pre></div>
 
 <p>Gördüğünüz gibi, <code>search()</code> metodu <strong>güçlü</strong> kelimesini buldu. Çünkü <code>search()</code> metodu, <code>match()</code> metodunun aksine, bir karakter dizisinin sadece baş tarafına bakmakla yetinmiyor, karakter dizisinin geneli üzerinde bir arama işlemi gerçekleştiriyor.</p>
-<p>Tıpkı <code>match()</code> metodunda olduğu gibi, <code>search()</code> metodunda da <code>span()</code> ve <code>group()</code> metotlarından faydalanarak bulunan şeyin hangi aralıkta olduğunu ve bu şeyin ne olduğunu görüntüleyebiliriz:</p>
+<p>Tıpkı <code>match()</code> metodunda olduğu gibi, <code>search()</code> metodunda da <code>span()</code> ve <code>group()</code> metotlarından faydalanarak bulunan şeyin hangi aralıkta olduğunu (konumunu) ve bu şeyin ne olduğunu görüntüleyebiliriz:</p>
 <div class="highlight"><pre><span></span><code><span class="n">kardiz</span> <span class="o">=</span> <span class="s2">&quot;Python güçlü bir dildir&quot;</span>
 <span class="n">nesne</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;güçlü&quot;</span><span class="p">,</span> <span class="n">kardiz</span><span class="p">)</span>
-<span class="n">nesne</span><span class="o">.</span><span class="n">span</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nesne</span><span class="o">.</span><span class="n">span</span><span class="p">())</span>
 </code></pre></div>
 
+<p><strong>Çıktı</strong>:</p>
 <div class="highlight"><pre><span></span><code>(7, 12)
 </code></pre></div>
 
+<p>Eşleşen sonucu görelim:</p>
 <div class="highlight"><pre><span></span><code><span class="n">nesne</span><span class="o">.</span><span class="n">group</span><span class="p">()</span>
 </code></pre></div>
 
+<p><strong>Çıktı</strong>:</p>
 <div class="highlight"><pre><span></span><code>&#39;güçlü&#39;
 </code></pre></div>
 
@@ -111,6 +112,7 @@
 <div class="highlight"><pre><span></span><code><span class="n">nesne</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 </code></pre></div>
 
+<p><strong>Çıktı</strong>:</p>
 <div class="highlight"><pre><span></span><code><span class="mf">7</span>
 </code></pre></div>
 
@@ -119,6 +121,7 @@
 <div class="highlight"><pre><span></span><code><span class="n">nesne</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
 </code></pre></div>
 
+<p><strong>Çıktı</strong>:</p>
 <div class="highlight"><pre><span></span><code><span class="mf">12</span>
 </code></pre></div>
 
@@ -157,6 +160,7 @@ Bunlar doğrudan listeler üzerinde işlem yapamaz. O yüzden bizim Python’a b
         <span class="nb">print</span><span class="p">(</span><span class="n">nesne</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
 </code></pre></div>
 
+<p><strong>Çıktı</strong>:</p>
 <div class="highlight"><pre><span></span><code>kebap
 </code></pre></div>
 

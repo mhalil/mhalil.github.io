@@ -77,57 +77,70 @@
 <div class="post">
 	<h1 class="post-title">Düzenli İfadeler - split</h1>
 	<span class="post-date">Cum 01 Eylül 2023</span>
-	<h2>Önemli Not</h2>
-<p>Düzenli ifadeler konusunu öğrenmeye yeni başladığımız için, aşağıdaki örneklerde <strong>özel karakterleri</strong> kullanarak konuyu anlatmak öğrenmeyi zorlaştıracaktır. Bu nedenle  aşağıdaki örneklerde direkt string ifade kullanacağız. İlk etapta kullanım saçma gelecektir. </p>
-<h1>split() Fonksiyonu</h1>
-<p><code>split()</code> metodu veriyi eşleşmelerin olduğu noktalardan böler ve liste haline getirir. Örneğin aşağıdaki kod çalıştırılırsa cümle boşluk (<code>\s</code>) karakterlerinden bölünür (yani kelimelere ayrılır):</p>
-<div class="highlight"><pre><span></span><code><span class="n">desen</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;Python&quot;</span>
+	<h1>split() Fonksiyonu</h1>
+<p><code>split()</code> metodu, veriyi, eşleşmelerin olduğu noktalardan itibaren böler ve liste haline getirir. Örneğin aşağıdaki kod çalıştırılırsa cümle boşluk (<code>\s</code>) karakterlerinden bölünür (yani kelimelere ayrılır):</p>
+<div class="highlight"><pre><span></span><code><span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Guido Van Rossum Python&#39;ı geliştirmeye 1990 yılında başlamış... Yani aslında Python için nispeten yeni</span>
+<span class="s2">bir dil denebilir. Ancak Python&#39;un çok uzun bir geçmişi olmasa da, bu dil öteki dillere kıyasla kolay olması, hızlı</span>
+<span class="s2">olması, ayrı bir derleyici programa ihtiyaç duymaması ve bunun gibi pek çok nedenden ötürü çoğu kimsenin gözdesi</span>
+<span class="s2">haline gelmiştir. Ayrıca Google&#39;ın da Python&#39;a özel bir önem ve değer verdiğini, çok iyi derecede Python bilenlere</span>
+<span class="s2">iş olanağı sunduğunu da hemen söyleyelim. Mesela bundan kısa bir süre önce Python&#39;ın yaratıcısı Guido Van Rossum </span>
+<span class="s2">Google&#39;de işe başladı...&quot;&quot;&quot;</span>
+
+<span class="n">desen</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;Python&quot;</span>
 <span class="n">bol</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">desen</span><span class="p">,</span> <span class="n">metin</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">bol</span><span class="p">)</span>
 </code></pre></div>
 
+<p><strong>Çıktı</strong>:</p>
 <div class="highlight"><pre><span></span><code>[&#39;Guido Van Rossum &#39;, &quot;&#39;ı geliştirmeye 1990 yılında başlamış... Yani aslında &quot;, &#39; için nispeten yeni\nbir dil denebilir. Ancak &#39;, &quot;&#39;un çok uzun bir geçmişi olmasa da, bu dil öteki dillere kıyasla kolay olması, hızlı\nolması, ayrı bir derleyici programa ihtiyaç duymaması ve bunun gibi pek çok nedenden ötürü çoğu kimsenin gözdesi\nhaline gelmiştir. Ayrıca Google&#39;ın da &quot;, &quot;&#39;a özel bir önem ve değer verdiğini, çok iyi derecede &quot;, &#39; bilenlere\niş olanağı sunduğunu da hemen söyleyelim. Mesela bundan kısa bir süre önce &#39;, &quot;&#39;ın yaratıcısı Guido Van Rossum \nGoogle&#39;de işe başladı...&quot;]
 </code></pre></div>
 
-<p>Gördüğünüz gibi, metin, <strong>Python</strong> ibaresi gördüğün yerden itibaren parçalara ayrılarak liste oluşturdu. <strong>Python</strong> ibaresi listeye dahil edilmedi.</p>
+<p>Gördüğünüz gibi, metin, <strong>Python</strong> ibaresi gördüğün yerden itibaren parçalara ayrılarak liste oluşturdu. <strong>Python</strong> ibaresi listeye dahil <strong>edilmedi.</strong></p>
 <div class="highlight"><pre><span></span><code><span class="n">cumle</span> <span class="o">=</span> <span class="s2">&quot;python güçlü bir programlama dilidir.&quot;</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;\s&quot;</span><span class="p">,</span> <span class="n">cumle</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </code></pre></div>
 
+<p><strong>Çıktı</strong>:</p>
 <div class="highlight"><pre><span></span><code>[&#39;python&#39;, &#39;güçlü&#39;, &#39;bir&#39;, &#39;programlama&#39;, &#39;dilidir.&#39;]
 </code></pre></div>
 
+<p>Bölme sonrası kelime doğrulamak için de aşağıdaki kodlar kullanılabilir. İlk Kelime <strong>python</strong> mu? diye sorgulayalım.</p>
 <div class="highlight"><pre><span></span><code><span class="n">cumle</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;python&quot;</span>
 </code></pre></div>
 
+<p><strong>Çıktı</strong>:</p>
 <div class="highlight"><pre><span></span><code>True
 </code></pre></div>
 
+<p><strong>String</strong> metotlarından biri olan <code>startswith</code> kullanılarak ta ilk kelimenin <strong>python</strong> olup olmadığı şu şekilde de sorgulanabilir.</p>
+<p>Eğer düzenli ifadelerden tek beklentiniz bir karakter dizisinin en başındaki veriyle eşleştirme işlemi yapmaksa, <code>split()</code> veya <code>startswith()</code> metotlarını kullanmak daha mantıklıdır. Çünkü <code>split()</code> ve <code>startswith()</code> metotları <code>match()</code> metodundan çok daha hızlı çalışacaktır.</p>
 <div class="highlight"><pre><span></span><code><span class="n">cumle</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;python&quot;</span><span class="p">)</span>
 </code></pre></div>
 
+<p><strong>Çıktı</strong>:</p>
 <div class="highlight"><pre><span></span><code>True
 </code></pre></div>
 
+<p>İlk Kelime <strong>güçlü</strong> mü? diye sorgulayalım.</p>
 <div class="highlight"><pre><span></span><code><span class="n">cumle</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;güçlü&quot;</span>
 </code></pre></div>
 
+<p><strong>Çıktı</strong>:</p>
 <div class="highlight"><pre><span></span><code>False
 </code></pre></div>
 
-<p>Bölünme sayısı <code>split()</code> fonksiyonunun 3. parametresinde <strong>(maxsplit)</strong> belirtilebilir. Aşağıdaki örnekte veri en çok 2 boşluk kadar (3 parça) bölünecektir:</p>
+<p><code>split()</code> fonksiyonunun bölümleme sayısını <strong>(maxsplit)</strong> fonksiyonun 3. parametresinde belirtilebilir. </p>
+<p>Aşağıdaki örnekte veri en çok 2 boşluk kadar (3 parça) bölünecektir:</p>
 <div class="highlight"><pre><span></span><code><span class="n">cumle</span> <span class="o">=</span> <span class="s2">&quot;python güçlü bir programlama dilidir.&quot;</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;\s&quot;</span><span class="p">,</span> <span class="n">cumle</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </code></pre></div>
 
+<p><strong>Çıktı</strong>:</p>
 <div class="highlight"><pre><span></span><code>[&#39;python&#39;, &#39;güçlü&#39;, &#39;bir programlama dilidir.&#39;]
 </code></pre></div>
-
-<p>Aynı işi sadece <code>startswith()</code> metodunu kullanarak dahi yapabiliriz:</p>
-<p>Eğer düzenli ifadelerden tek beklentiniz bir karakter dizisinin en başındaki veriyle eşleştirme işlemi yapmaksa, <code>split()</code> veya <code>startswith()</code> metotlarını kullanmak daha mantıklıdır. Çünkü <code>split()</code> ve <code>startswith()</code> metotları <code>match()</code> metodundan çok daha hızlı çalışacaktır.</p>
 
 		<span class="post-tags">
 			Tags:
