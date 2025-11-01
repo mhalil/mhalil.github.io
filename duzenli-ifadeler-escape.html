@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Düzenli İfadeler - escape" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/duzenli-ifadeler-escape.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Düzenli İfadeler - escape</h1>
+	<span class="post-date">Cum 01 Eylül 2023</span>
+	<h2>Önemli Not</h2>
+<p>Düzenli ifadeler konusunu öğrenmeye yeni başladığımız için, aşağıdaki örneklerde <strong>özel karakterleri</strong> kullanarak konuyu anlatmak öğrenmeyi zorlaştıracaktır. Bu nedenle  aşağıdaki örneklerde direkt string ifade kullanacağız. İlk etapta kullanım saçma gelecektir. </p>
+<h1>escape() Fonksiyonu</h1>
+<p><code>escape()</code> metodu (fonksiyonu), <strong>bir metni düzenli ifade (regular expression) içinde kullanılmaya uygun hale getirmek için kullanılır.</strong> Bu fonksiyon, metindeki özel karakterleri kaçış karakterleri ile değiştirir, böylece bu karakterler düzenli ifade içinde özel anlam taşımazlar ve doğrudan metin olarak eşleştirilebilirler.</p>
+<p>Örneğin, bir kullanıcının girdiği metni doğrudan bir düzenli ifade içinde kullanmak istediğinizi düşünün. Kullanıcının girdisi içinde özel karakterler bulunabilir ve bu karakterlerin düzenli ifade içinde kullanılması sorunlara neden olabilir. <code>escape()</code> fonksiyonu, bu tür durumlar için kullanışlıdır.</p>
+<p>Örneğin, elimizde kullanıcı tarafından tanımlanmış bir değişken (<code>user_input</code>) olduğunu ve bu değişkenin, düzenli ifadelerde kullanılan özel karakterler içerdiğini düşünün. 
+<code>user_input</code> değişkenini <code>escape()</code> metoduna parametre olarak verdiğimizde nasıl bir sonuç elde ettiğimizi görelim;</p>
+<div class="highlight"><pre><span></span><code><span class="n">user_input</span> <span class="o">=</span> <span class="s2">&quot;(.*$&quot;</span>
+<span class="n">escaped_input</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">user_input</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">escaped_input</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Kullanıcı tarafından belirlenen <code>(.*$</code> ifadesi, <code>escape()</code> metodu sayesinde aşağıdaki hale dönüştürülerek, düzenli ifadelerle rahatça kullanılabilecek hale getirilmiş olur.</p>
+<div class="highlight"><pre><span></span><code>\<span class="p">(</span>\<span class="o">.</span>\<span class="o">*</span>\<span class="p">$</span>
+</code></pre></div>
+
+<p>İşte örneğe ait tüm kodlar:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">user_input</span> <span class="o">=</span> <span class="s2">&quot;(.*$&quot;</span>
+
+<span class="c1"># Kullanıcı girdisini düzenli ifade içinde güvenli hale getirme</span>
+<span class="n">escaped_input</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">user_input</span><span class="p">)</span>
+
+<span class="c1"># Düzenli ifadeyi kullanma</span>
+<span class="n">pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">escaped_input</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">pattern</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;(.*$&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>  
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="s1">&#39;(.*$&#39;</span>
+</code></pre></div>
+
+<p>Bu örnekte, <code>re.escape()</code> fonksiyonu, <code>user_input</code> içindeki özel karakterleri kaçış karakterleriyle değiştirir ve bu düzenli ifade içinde güvenli bir şekilde kullanılabilir hale getirir. Bu, kullanıcının girdisinin düzenli ifade içinde istenmeyen yan etkiler oluşturmasını önler.</p>
+<p>Bu fonksiyon özellikle dinamik olarak oluşturulan düzenli ifadelerde veya kullanıcı tarafından sağlanan metinlerle çalışırken güvenlik sağlamak için önemlidir.</p>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/duzenli-ifadeler.html">Düzenli İfadeler</a></li>
+					<li><a href="/tag/regular-expressions.html">Regular Expressions</a></li>
+					<li><a href="/tag/regex.html">Regex</a></li>
+					<li><a href="/tag/re.html">Re</a></li>
+					<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+					<li><a href="/tag/modul.html">Modül</a></li>
+					<li><a href="/tag/escape.html">Escape</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>

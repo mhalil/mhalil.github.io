@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Düzenli İfadeler - sub" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/duzenli-ifadeler-sub.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Düzenli İfadeler - sub</h1>
+	<span class="post-date">Cum 01 Eylül 2023</span>
+	<h2>Önemli Not</h2>
+<p>Düzenli ifadeler konusunu öğrenmeye yeni başladığımız için, aşağıdaki örneklerde <strong>özel karakterleri</strong> kullanarak konuyu anlatmak öğrenmeyi zorlaştıracaktır. Bu nedenle  aşağıdaki örneklerde direkt string ifade kullanacağız. İlk etapta kullanım saçma gelecektir. </p>
+<h1>sub() Fonksiyonu</h1>
+<p>Şimdiye kadar hep düzenli ifadeler yoluyla bir karakter dizisini nasıl eşleştireceğimizi inceledik. Ama tabii ki düzenli ifadeler yalnızca bir karakter dizisi <strong>bulmak</strong>la ilgili değildir. Bu araç aynı zamanda bir karakter dizisini <strong>değiştirmeyi</strong> de kapsar. Bu iş için temel olarak iki metot kullanılır. Bunlardan ilki <code>sub()</code> metodudur. <strong>Substitute</strong> kelimesi, yerine koy, değiştir anlamına gelir. Bu metot, pek çok uygulamadan bildiğimiz <strong>Bul ve Değiştir</strong> fonksiyonudur aslında. Bu bölümde <code>sub()</code> metodunu inceleyeceğiz.</p>
+<h2>Metin/Karakter Dizisi Değiştirme İşlemleri</h2>
+<p><code>sub()</code> metodunun;</p>
+<ul>
+<li>ilk argümanı, değiştirilecek değeri,</li>
+<li>ikinci argümanı, yerine konulacak değeri,</li>
+<li>üçüncü argümanı, hangi yapı/ dizgi/ paragraf içinde değişimin yapılacağını,</li>
+<li>dördüncü argümanı, kaç eşleşmede değişiklik yapılacağını,</li>
+</ul>
+<p>tanımlar.</p>
+<p>Aşağıdaki örnekte <strong>kavun</strong> kelimesini bulacak, ardından <strong>karpuz</strong> olarak değiştirecektir:</p>
+<div class="highlight"><pre><span></span><code><span class="n">txt</span> <span class="o">=</span> <span class="s2">&quot;Bugün kavun yedim.&quot;</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;kavun&quot;</span><span class="p">,</span> <span class="s2">&quot;karpuz&quot;</span><span class="p">,</span> <span class="n">txt</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>Bugün karpuz yedim.
+</code></pre></div>
+
+<p>yukarıdaki açıklamada <code>sub()</code> metodu ile kaç eşleşmede değişiklik yapılacağı, metodun 4. parametresinde (count) belirtilebileceğinden bahsetmiştik. Basit bir örnek yapalım;</p>
+<div class="highlight"><pre><span></span><code><span class="n">txt</span> <span class="o">=</span> <span class="s2">&quot;Yaz Yaz Yaz Bir Kenara Yaz&quot;</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;Yaz&quot;</span><span class="p">,</span> <span class="s2">&quot;Çiz&quot;</span><span class="p">,</span> <span class="n">txt</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>Çiz Çiz Yaz Bir Kenara Yaz
+</code></pre></div>
+
+<p><code>sub()</code> metodunu,  <code>compile()</code> metodu ile şu şekilde kullanabiliriz:</p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;Kırmızı başlıklı kız, kırmızı elma dolu sepetiyle anneannesinin evine gidiyormuş!&quot;</span>
+
+<span class="n">derle</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;kırmızı&quot;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">derle</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;yeşil&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">))</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>yeşil başlıklı kız, yeşil elma dolu sepetiyle anneannesinin evine gidiyormuş!
+</code></pre></div>
+
+<p>Burada karakter dizimiz içinde geçen bütün <strong>kırmızı</strong> kelimelerini <strong>yeşil</strong> kelimesiyle değiştirdik. Bunu yaparken de <code>re.IGNORECASE</code> adlı derleme seçeneğinden yararlandık.</p>
+<p>Elbette <code>sub()</code> metoduyla daha karmaşık işlemler yapılabilir. Bu noktada şöyle bir hatırlatma yapalım. Bu <code>sub()</code> metodu karakter dizilerinin <code>replace()</code> metoduna çok benzer. Ama <code>sub()</code> metodu hem kendi başına <code>replace()</code> metodundan çok daha güçlüdür, hem de beraber kullanılabilecek derleme seçenekleri sayesinde <code>replace()</code> metodundan çok daha esnektir. Eğer yapmak istediğiniz iş <code>replace()</code> metoduyla halledilebiliyorsa en doğru yol, <code>replace()</code> metodunu kullanmaktır.</p>
+<p>Şimdi bu <code>sub()</code> metodunu kullanarak biraz daha karmaşık bir işlem yapacağız. Aşağıdaki metne bakalım:</p>
+<div class="highlight"><pre><span></span><code><span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Karadeniz Ereğlisi denince akla ilk olarak kömür ve demir-çelik</span>
+<span class="s2">gelir. Kokusu ve tadıyla dünyaya nam salmış meşhur Osmanlı çileği ise ismini</span>
+<span class="s2">verdiği festival günleri dışında pek hatırlanmaz. Oysa Çin&#39;den Arnavutköy&#39;e</span>
+<span class="s2">oradan da Ereğli&#39;ye getirilen kralların meyvesi çilek, burada geçirdiği değişim</span>
+<span class="s2">sonucu tadına doyulmaz bir hal alır. Ereğli&#39;nin havasından mı suyundan mı</span>
+<span class="s2">bilinmez, kokusu, tadı bambaşka bir hale dönüşür ve meşhur Osmanlı çileği</span>
+<span class="s2">unvanını hak eder. Bu nazik ve aromalı çilekten yapılan reçel de likör de bir</span>
+<span class="s2">başka olur. Bu yıl dokuzuncusu düzenlenen Uluslararası Osmanlı Çileği Kültür</span>
+<span class="s2">Festivali&#39;nde 36 üretici arasında yetiştirdiği çileklerle birinci olan Kocaali</span>
+<span class="s2">Köyü&#39;nden Güner Özdemir, yılda bir ton ürün alıyor. 60 yaşındaki Özdemir,</span>
+<span class="s2">çileklerinin sırrını yoğun ilgiye ve içten duyduğu sevgiye bağlıyor: &quot;Erkekler</span>
+<span class="s2">bahçemize giremez. Koca ayaklarıyla ezerler çileklerimizi&quot; Çileği toplamanın zor</span>
+<span class="s2">olduğunu söyleyen Ayşe Özhan da çocukluğundan bu yana çilek bahçesinde</span>
+<span class="s2">çalışıyor. Her sabah 04.00&#39;te kalkan Özhan, çileklerini özenle suluyor. Kasım</span>
+<span class="s2">başında ektiği çilek fideleri haziran başında meyve veriyor.&quot;&quot;&quot;</span>
+</code></pre></div>
+
+<p>Gelin bu metin içinde geçen <strong>çilek</strong> kelimelerini <strong>erik</strong> kelimesi ile değiştirelim. Ama bunu yaparken, metin içinde <strong>çilek</strong> kelimesinin <strong>Çilek</strong> şeklinde de geçtiğine dikkat edelim. Ayrıca Türkçe kuralları gereği bu <strong>çilek</strong> kelimesinin bazı yerlerde ünsüz yumuşamasına uğrayarak <strong>çileğ-</strong> şekline dönüştüğünü de unutmayalım.</p>
+<p>Bu metin içinde geçen <strong>çilek</strong> kelimelerini <strong>erik</strong>'le değiştirmek için birkaç yol kullanabilirsiniz. </p>
+<p>Birinci yolda, her değişiklik için ayrı bir düzenli ifade oluşturulabilir. Ancak bu yolun dezavantajı, metnin de birkaç kez kopyalanmasını gerektirmesidir. Çünkü ilk düzenli ifade oluşturulup buna göre metinde bir değişiklik yapıldıktan sonra, ilk değişiklikleri içeren metnin, farklı bir metin olarak kopyalanması gerekir (metin2 gibi.).</p>
+<p>Ardından ikinci değişiklik yapılacağı zaman, bu değişikliğin metin2 üzerinden yapılması gerekir. Aynı şekilde bu metin de, mesela, metin3 şeklinde tekrar kopyalanmalıdır. Bundan sonraki yeni bir değişiklik de bu metin3 üzerinden yapılacaktır. Bu durum bu şekilde uzar gider. Metni tekrar tekrar kopyalamak yerine, düzenli ifadeleri kullanarak şöyle bir çözüm de üretebiliriz:</p>
+<div class="highlight"><pre><span></span><code><span class="n">derle</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;çile[kğ]&quot;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">degistir</span><span class="p">(</span><span class="n">nesne</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;çileğ&quot;</span><span class="p">:</span><span class="s2">&quot;eriğ&quot;</span><span class="p">,</span> <span class="s2">&quot;Çileğ&quot;</span><span class="p">:</span><span class="s2">&quot;Eriğ&quot;</span><span class="p">,</span> <span class="s2">&quot;Çilek&quot;</span><span class="p">:</span><span class="s2">&quot;Erik&quot;</span><span class="p">,</span> <span class="s2">&quot;çilek&quot;</span><span class="p">:</span><span class="s2">&quot;erik&quot;</span><span class="p">}</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">nesne</span><span class="o">.</span><span class="n">group</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">b</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">derle</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">degistir</span><span class="p">,</span> <span class="n">metin</span><span class="p">))</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>Karadeniz Ereğlisi denince akla ilk olarak kömür ve demir-çelik
+gelir. Kokusu ve tadıyla dünyaya nam salmış meşhur Osmanlı eriği ise ismini
+verdiği festival günleri dışında pek hatırlanmaz. Oysa Çin&#39;den Arnavutköy&#39;e
+oradan da Ereğli&#39;ye getirilen kralların meyvesi erik, burada geçirdiği değişim
+sonucu tadına doyulmaz bir hal alır. Ereğli&#39;nin havasından mı suyundan mı
+bilinmez, kokusu, tadı bambaşka bir hale dönüşür ve meşhur Osmanlı eriği
+unvanını hak eder. Bu nazik ve aromalı erikten yapılan reçel de likör de bir
+başka olur. Bu yıl dokuzuncusu düzenlenen Uluslararası Osmanlı Eriği Kültür
+Festivali&#39;nde 36 üretici arasında yetiştirdiği eriklerle birinci olan Kocaali
+Köyü&#39;nden Güner Özdemir, yılda bir ton ürün alıyor. 60 yaşındaki Özdemir,
+eriklerinin sırrını yoğun ilgiye ve içten duyduğu sevgiye bağlıyor: &quot;Erkekler
+bahçemize giremez. Koca ayaklarıyla ezerler eriklerimizi&quot; Eriği toplamanın zor
+olduğunu söyleyen Ayşe Özhan da çocukluğundan bu yana erik bahçesinde
+çalışıyor. Her sabah 04.00&#39;te kalkan Özhan, eriklerini özenle suluyor. Kasım
+başında ektiği erik fideleri haziran başında meyve veriyor.
+</code></pre></div>
+
+<p>Gördüğünüz gibi, <code>sub()</code> metodu, argüman olarak bir <strong>fonksiyon</strong> da alabiliyor. Yukarıdaki kodlar biraz karışık görünmüş olabilir. Tek tek açıklayalım.</p>
+<p>Öncelikle şu satıra bakalım:</p>
+<div class="highlight"><pre><span></span><code><span class="n">derle</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;çile[kğ]&quot;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Burada amacımız, metin içinde geçen <strong>çilek</strong> ve <strong>çileğ</strong> kelimelerini bulmak. Neden <strong>çileğ</strong>? Çünkü <strong>çilek</strong> kelimesi bir sesli harften önce geldiğinde sonundaki <strong>k</strong> harfi <strong>ğ</strong>'ye dönüşüyor. Bu seçenekli yapıyı, daha önceki bölümlerde gördüğümüz <code>[ ]</code> adlı metakarakter yardımıyla oluşturduk. Düzenli ifade kalıbımızın hem büyük harfleri hem de küçük harfleri aynı anda bulması için <code>re.IGNORECASE</code> seçeneğinden yararlandık.</p>
+<p>Şimdi de şu satırlara bakalım:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">degistir</span><span class="p">(</span><span class="n">nesne</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;çileğ&quot;</span><span class="p">:</span><span class="s2">&quot;eriğ&quot;</span><span class="p">,</span> <span class="s2">&quot;Çileğ&quot;</span><span class="p">:</span><span class="s2">&quot;Eriğ&quot;</span><span class="p">,</span> <span class="s2">&quot;Çilek&quot;</span><span class="p">:</span><span class="s2">&quot;Erik&quot;</span><span class="p">,</span> <span class="s2">&quot;çilek&quot;</span><span class="p">:</span><span class="s2">&quot;erik&quot;</span><span class="p">}</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">nesne</span><span class="o">.</span><span class="n">group</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">b</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+</code></pre></div>
+
+<p>Burada, daha sonra <code>sub()</code> metodu içinde kullanacağımız fonksiyonu yazıyoruz. Fonksiyonu, <code>def degistir(nesne)</code> şeklinde tanımladık. Burada <strong>“nesne”</strong> adlı bir argüman kullanmamızın nedeni, fonksiyon içinde <code>group()</code> metodunu kullanacak olmamız. Bu metodu fonksiyon içinde <strong>“nesne”</strong> adlı argümana bağlayacağız. Bu fonksiyon, daha sonra yazacağımız <code>sub()</code> metodu tarafından çağrıldığında, yaptığımız arama işlemi sonucunda ortaya çıkan <strong>“eşleşme nesnesi”</strong> fonksiyona atanacaktır (eşleşme nesnesinin ne demek olduğunu ilk bölümlerden hatırlıyorsunuz). İşte <strong>“nesne”</strong> adlı bir argüman kullanmamızın nedeni de, eşleşme nesnelerinin bir metodu olan <code>group()</code> metodunu fonksiyon içinde kullanabilmek.</p>
+<p>Bir sonraki satırda bir adet sözlük görüyoruz:</p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;çileğ&quot;</span><span class="p">:</span><span class="s2">&quot;eriğ&quot;</span><span class="p">,</span> <span class="s2">&quot;Çileğ&quot;</span><span class="p">:</span><span class="s2">&quot;Eriğ&quot;</span><span class="p">,</span> <span class="s2">&quot;Çilek&quot;</span><span class="p">:</span><span class="s2">&quot;Erik&quot;</span><span class="p">,</span> <span class="s2">&quot;çilek&quot;</span><span class="p">:</span><span class="s2">&quot;erik&quot;</span><span class="p">}</span>
+</code></pre></div>
+
+<p>Bu sözlüğü oluşturmamızın nedeni, metin içinde geçen bütün <strong>“çilek”</strong> kelimelerini tek bir <strong>“erik”</strong> kelimesiyle değiştiremeyecek olmamız. Çünkü <strong>“çilek”</strong> kelimesi metin içinde pek çok farklı biçimde geçiyor. Başta da dediğimiz gibi, yukarıdaki yol yerine metni birkaç kez kopyalayarak ve her defasında bir değişiklik yaparak da sorunu çözebilirsiniz. (Mesela önce <strong>“çilek”</strong> kelimelerini bulup bunları <strong>“erik”</strong> ile değiştirirsiniz. Daha sonra <strong>“çileğ”</strong> kelimelerini arayıp bunları <strong>“eriğ”</strong> ile değiştirirsiniz, vb…) Ama metni tekrar tekrar oluşturmak pek performanslı bir yöntem olmayacaktır. Bizim şimdi kullandığımız yöntem metin kopyalama zorunluluğunu ortadan kaldırıyor. Bu sözlük içinde <strong>“çilek”</strong> kelimesinin alacağı şekilleri sözlük içinde birer anahtar olarak, <strong>“erik”</strong> kelimesinin alacağı şekilleri ise birer <strong>“değer”</strong> olarak belirliyoruz.</p>
+<p>Sonraki satırda iki metot birden var:</p>
+<div class="highlight"><pre><span></span><code><span class="n">b</span> <span class="o">=</span> <span class="n">nesne</span><span class="o">.</span><span class="n">group</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Burada, fonksiyonumuzun argümanı olarak vazife gören eşleşme nesnesine ait metotlardan biri olan <code>group()</code> metodunu kullanıyoruz. Böylece <code>derle = re.compile("çile[kğ]", re.IGNORECASE)</code> satırı yardımıyla metin içinde bulduğumuz bütün <strong>“çilek”</strong> ve çeşitlerini alıyoruz. Karakter dizilerinin <code>split()</code> metodunu kullanmamızın nedeni ise <code>group()</code> metodunun verdiği çıktıyı liste haline getirip daha kolay manipüle etmek. Burada <code>for i in b: print(i)</code> komutunu verirseniz <code>group()</code> metodu yardımıyla ne bulduğumuzu görebilirsiniz:</p>
+<div class="highlight"><pre><span></span><code><span class="n">çileğ</span>
+<span class="n">çilek</span>
+<span class="n">çileğ</span>
+<span class="n">çilek</span>
+<span class="n">Çileğ</span>
+<span class="n">çilek</span>
+<span class="n">çilek</span>
+<span class="n">çilek</span>
+<span class="n">Çileğ</span>
+<span class="n">çilek</span>
+<span class="n">çilek</span>
+<span class="n">çilek</span>
+</code></pre></div>
+
+<p>Bu çıktıyı gördükten sonra, kodlarda yapmaya çalıştığımız şey daha anlamlı görünmeye başlamış olmalı. Şimdi sonraki satıra geçiyoruz:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">b</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+</code></pre></div>
+
+<p>Burada, <code>group()</code> metodu yardımıyla bulduğumuz eşleşmeler üzerinde bir <code>for</code> döngüsü oluşturduk. 
+    Ardından da <code>return a[i]</code> komutunu vererek “a” adlı sözlük içinde yer alan öğeleri yazdırıyoruz. Bu arada, buradaki <strong>“i”</strong>nin yukarıda verdiğimiz <code>group()</code> çıktılarını temsil ettiğine dikkat edin. <code>a[i]</code> gibi bir komut verdiğimizde aslında sırasıyla şu komutları vermiş oluyoruz:  </p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span><span class="p">[</span><span class="s2">&quot;çilek&quot;</span><span class="p">]</span>
+<span class="n">a</span><span class="p">[</span><span class="s2">&quot;çileğ&quot;</span><span class="p">]</span>
+<span class="n">a</span><span class="p">[</span><span class="s2">&quot;çilek&quot;</span><span class="p">]</span>
+<span class="n">a</span><span class="p">[</span><span class="s2">&quot;Çileğ&quot;</span><span class="p">]</span>
+<span class="n">a</span><span class="p">[</span><span class="s2">&quot;çilek&quot;</span><span class="p">]</span>
+<span class="n">a</span><span class="p">[</span><span class="s2">&quot;çilek&quot;</span><span class="p">]</span>
+<span class="n">a</span><span class="p">[</span><span class="s2">&quot;çilek&quot;</span><span class="p">]</span>
+<span class="n">a</span><span class="p">[</span><span class="s2">&quot;Çileğ&quot;</span><span class="p">]</span>
+<span class="n">a</span><span class="p">[</span><span class="s2">&quot;çilek&quot;</span><span class="p">]</span>
+<span class="n">a</span><span class="p">[</span><span class="s2">&quot;çilek&quot;</span><span class="p">]</span>
+</code></pre></div>
+
+<p>Bu komutların çıktıları sırasıyla <strong>“erik”, “eriğ”, “erik”, “Eriğ”, “erik”, “erik”, “erik”, “Eriğ”, “erik”, “erik”</strong> olacaktır. İşte bu return satırı bir sonraki kod olan <code>print(derle.sub(degistir,metin))</code> ifadesinde etkinlik kazanacak. Bu son satırımız sözlük öğelerini tek tek metne uygulayacak ve mesela <code>a["çilek"]</code> komutu sayesinde metin içinde <strong>“çilek”</strong> gördüğü yerde <strong>“erik”</strong> kelimesini yapıştıracak ve böylece bize istediğimiz şekilde değiştirilmiş bir metin verecektir.</p>
+<p>Bu kodların biraz karışık gibi göründüğünü biliyorum, ama aslında çok basit bir mantığı var: <code>group()</code> metodu ile metin içinde aradığımız kelimeleri ayıklıyor. Ardından da <strong>“a”</strong> sözlüğü içinde bunları anahtar olarak kullanarak <strong>“çilek”</strong> ve çeşitleri yerine <strong>“erik”</strong> ve çeşitlerini koyuyor.</p>
+<p>Bir tane tarih verisi ile ilgili kullanım örneği verelim. Verilerimizde farklı tarih formatları bulunuyor. Örneğin, "01/01/2023", "1.5.2021", "12-2-1980", "25/10/18". Bu tarih formatlarını belirli bir formata dönüştürmek için <code>re.sub()</code> kullanabiliriz. Aşağıda, bu tarih formatlarını "dd/mm/yyyy" formatına dönüştüren bir örnek var:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">tarihler</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">01/01/2023</span>
+<span class="s2">1.5.2021</span>
+<span class="s2">12-2-1980</span>
+<span class="s2">25/10/18</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="k">def</span> <span class="nf">duzenle</span><span class="p">(</span><span class="n">match</span><span class="p">):</span>
+    <span class="n">gun</span><span class="p">,</span> <span class="n">ay</span><span class="p">,</span> <span class="n">yil</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">groups</span><span class="p">()</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">gun</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">ay</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">yil</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="n">pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(\d{1,2})[\/\.\-](\d{1,2})[\/\.\-](\d{2,4})&quot;</span><span class="p">)</span>
+<span class="n">duzenlenmis_tarihler</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">duzenle</span><span class="p">,</span> <span class="n">tarihler</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">duzenlenmis_tarihler</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Bu kod, <code>re.sub()</code> fonksiyonunu kullanarak tarih formatlarını belirli bir formata dönüştürür. <code>duzenle</code> fonksiyonu, her eşleşme için çağrılır ve tarihi "dd/mm/yyyy" formatına dönüştürür.</p>
+<div class="highlight"><pre><span></span><code><span class="mi">01</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">2023</span>
+<span class="mi">01</span><span class="o">/</span><span class="mi">05</span><span class="o">/</span><span class="mi">2021</span>
+<span class="mi">12</span><span class="o">/</span><span class="mi">02</span><span class="o">/</span><span class="mi">1980</span>
+<span class="mi">25</span><span class="o">/</span><span class="mi">10</span><span class="o">/</span><span class="mi">2018</span>
+</code></pre></div>
+
+<p>Bu örnekte <code>zfill</code> kullanarak gün, ay ve yılın sırasıyla 2, 2 ve 4 karakterli olmasını sağladık. İhtiyacınıza göre bu düzenlemeleri değiştirebilirsiniz.</p>
+<p>Son olarak ta farklı biçimlerdeki telefon numaralarını düzenlemek için de <code>re.sub()</code> fonksiyonunu kullanarak bir örnek yapalım:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">numaralar</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">1234567890</span>
+<span class="s2">533-456-7891</span>
+<span class="s2">544 456 7892</span>
+<span class="s2">(216) 456-7893</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="k">def</span> <span class="nf">duzenle_telefon</span><span class="p">(</span><span class="n">match</span><span class="p">):</span>
+    <span class="n">operator</span><span class="p">,</span> <span class="n">üçhane</span><span class="p">,</span> <span class="n">dorthane</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">groups</span><span class="p">()</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{</span><span class="n">operator</span><span class="si">}</span><span class="s2">) </span><span class="si">{</span><span class="n">üçhane</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">dorthane</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="n">telefon_pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\(?(?P&lt;operator&gt;\d</span><span class="si">{3}</span><span class="s2">)\)?[ \-]?(?P&lt;üçhane&gt;\d</span><span class="si">{3}</span><span class="s2">)[ \-]?(?P&lt;dorthane&gt;\d</span><span class="si">{4}</span><span class="s2">)&quot;</span><span class="p">)</span>
+<span class="n">duzenlenmis_numaralar</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">telefon_pattern</span><span class="p">,</span> <span class="n">duzenle_telefon</span><span class="p">,</span> <span class="n">numaralar</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">duzenlenmis_numaralar</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Bu kod, farklı biçimlerdeki telefon numaralarını aynı formata ("(123) 
+456-7890") dönüştürür. <code>duzenle_telefon</code> fonksiyonu, her eşleşme için çağrılır ve telefon numarasını belirli bir formata dönüştürür.</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="mi">123</span><span class="p">)</span> <span class="mi">456</span><span class="o">-</span><span class="mi">7890</span>
+<span class="p">(</span><span class="mi">533</span><span class="p">)</span> <span class="mi">456</span><span class="o">-</span><span class="mi">7891</span>
+<span class="p">(</span><span class="mi">544</span><span class="p">)</span> <span class="mi">456</span><span class="o">-</span><span class="mi">7892</span>
+<span class="p">(</span><span class="mi">216</span><span class="p">)</span> <span class="mi">456</span><span class="o">-</span><span class="mi">7893</span>
+</code></pre></div>
+
+<p>Yukarıda verdiğimiz düzenli ifadeyi böyle ufak bir metinde kullanmak çok anlamlı olmayabilir. Ama çok büyük metinler üzerinde çok çeşitli ve karmaşık değişiklikler yapmak istediğinizde bu kodların işinize yarayabileceğini göreceksiniz.</p>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/duzenli-ifadeler.html">Düzenli İfadeler</a></li>
+					<li><a href="/tag/regular-expressions.html">Regular Expressions</a></li>
+					<li><a href="/tag/regex.html">Regex</a></li>
+					<li><a href="/tag/re.html">Re</a></li>
+					<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+					<li><a href="/tag/modul.html">Modül</a></li>
+					<li><a href="/tag/sub.html">Sub</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>

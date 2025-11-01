@@ -202,7 +202,7 @@
 					</span>
 				<p>
 					<h1>Düzenli İfadeler Özet Tablosu (Regular Expressions Cheat Sheet)</h1>
-<h2>Sabitleyiciler / Sınırlayıcılar</h2>
+<h2>Karakter Türleri</h2>
 <table>
 <thead>
 <tr>
@@ -215,15 +215,15 @@
 </thead>
 <tbody>
 <tr>
-<td><code>^</code></td>
-<td>Çok satırlı desende ya da bir karakter dizisinin <strong>başlangıç verisini</strong> belirtir.</td>
-<td><code>^rec</code></td>
-<td><strong>rec</strong>ep</td>
-<td>Sadece kendinden sonra gelen BİR karaktere BAKMIYOR. Desenin tümüne bakıyor. Farklı Paragraflarda arama yapar.</td>
+<td><code>.</code></td>
+<td>herhangi bir tek karakterle eşleşir</td>
+<td><code>"öz.an"</code></td>
+<td>öz<strong>c</strong>an, öz<strong>k</strong>an, öz<strong>h</strong>an</td>
+<td><strong>öz</strong> ile başla ardından herhangi BİR karakter gelsin <strong>an</strong> ile bitsin.</td>
 </tr>
 <tr>
-<td><code>\A</code></td>
-<td>Sadece karakter dizisinin …</td></tr></tbody></table>
+<td><code>\d</code></td>
+<td>herhangi bir rakamla (digit …</td></tr></tbody></table>
 				</p>
 				<a class="read-more" href="duzenli-ifadeler-ozet-tablo.html">Continue reading »</a>
 			</div>
@@ -279,8 +279,8 @@
 				<a class="read-more" href="duzenli-ifadeler.html">Continue reading »</a>
 			</div>
 			<div class="post">
-				<h1 class="post-title" href="/duzenli-ifadeler-tanim-ve-fonksiyonlar.html">
-					<a href="/duzenli-ifadeler-tanim-ve-fonksiyonlar.html">Düzenli İfadeler - Tanım ve Fonksiyonlar</a>
+				<h1 class="post-title" href="/duzenli-ifadeler-compile.html">
+					<a href="/duzenli-ifadeler-compile.html">Düzenli İfadeler - compile</a>
 				</h1>
 				<span class="post-date">Cum 01 Eylül 2023</span>
 					<span class="post-tags">
@@ -293,109 +293,69 @@
 								<li><a href="/tag/re.html">Re</a></li>
 								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
 								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/compile.html">Compile</a></li>
 						</ul>
 					</span>
 				<p>
-					<h1>Düzenli İfadeler (Regular Expressions)</h1>
-<p><strong>Düzenli ifadeler (RegEx ya da Regular Expression)</strong>, bir arama işleminde eşleştirilecek <strong>deseni</strong> temsil eden özel dizelerdir. Bir başka tanımla bir karakter dizisi içinde bulunan, belli bir düzene uyan eşleşmeleri bulmanıza ve yönetmenize yardımcı olacak <strong>desenler</strong> oluşturmanıza izin veren bir metin dizisidir (bir string ifadedir). Bir metinde …</p>
+					<h2>Önemli Not</h2>
+<p>Düzenli ifadeler konusunu öğrenmeye yeni başladığımız için, aşağıdaki örneklerde <strong>özel karakterleri</strong> kullanarak konuyu anlatmak öğrenmeyi zorlaştıracaktır. Bu nedenle  aşağıdaki örneklerde direkt string ifade kullanacağız. İlk etapta kullanım saçma gelecektir. </p>
+<h1>compile() Fonksiyonu</h1>
+<h2>Düzenli İfadelerin Derlenmesi</h2>
+<p>En başta da söylediğimiz gibi, düzenli ifadeler, karakter dizilerine göre biraz daha yavaş çalışırlar …</p>
 				</p>
-				<a class="read-more" href="duzenli-ifadeler-tanim-ve-fonksiyonlar.html">Continue reading »</a>
+				<a class="read-more" href="duzenli-ifadeler-compile.html">Continue reading »</a>
 			</div>
 			<div class="post">
-				<h1 class="post-title" href="/pyautogui.html">
-					<a href="/pyautogui.html">PyAutoGUI</a>
+				<h1 class="post-title" href="/duzenli-ifadeler-escape.html">
+					<a href="/duzenli-ifadeler-escape.html">Düzenli İfadeler - escape</a>
 				</h1>
-				<span class="post-date">Cts 15 Nisan 2023</span>
+				<span class="post-date">Cum 01 Eylül 2023</span>
 					<span class="post-tags">
 						Tags:
 						<ul>
 								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/pyautogui.html">PyAutoGUI</a></li>
+								<li><a href="/tag/duzenli-ifadeler.html">Düzenli İfadeler</a></li>
+								<li><a href="/tag/regular-expressions.html">Regular Expressions</a></li>
+								<li><a href="/tag/regex.html">Regex</a></li>
+								<li><a href="/tag/re.html">Re</a></li>
 								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
 								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/escape.html">Escape</a></li>
 						</ul>
 					</span>
 				<p>
-					<h1>PyAutoGUI Kütüphanesi</h1>
-<p><strong>PyAutoGUI</strong>, fare ve klavyeleri kontrol etmemizi sağlayan, böylece otomatik görevler yapan kodlar/botlar yazmamıza yardımcı olan güzel, faydalı bir Python kütüphanesidir (modülüdür).</p>
-<p><img alt="pyautogui" src="../images/python/pyautogui/pyautogui.png"></p>
-<p><strong>PyAutoGUI</strong> kütüphanesi ile aşağıda listelenen işlemleri yapabiliriz;</p>
-<ul>
-<li>İmleci hareket ettirme,</li>
-<li>İstenilen yere tek, çift ya da daha fazla tıklama,</li>
-<li>Pencere, diyalog kutusu taşıma, kaydırma çubuğunu  hareket …</li></ul>
+					<h2>Önemli Not</h2>
+<p>Düzenli ifadeler konusunu öğrenmeye yeni başladığımız için, aşağıdaki örneklerde <strong>özel karakterleri</strong> kullanarak konuyu anlatmak öğrenmeyi zorlaştıracaktır. Bu nedenle  aşağıdaki örneklerde direkt string ifade kullanacağız. İlk etapta kullanım saçma gelecektir. </p>
+<h1>escape() Fonksiyonu</h1>
+<p><code>escape()</code> metodu (fonksiyonu), <strong>bir metni düzenli ifade (regular expression) içinde kullanılmaya uygun hale getirmek için kullanılır.</strong> Bu …</p>
 				</p>
-				<a class="read-more" href="pyautogui.html">Continue reading »</a>
+				<a class="read-more" href="duzenli-ifadeler-escape.html">Continue reading »</a>
 			</div>
 			<div class="post">
-				<h1 class="post-title" href="/pandas-bolme-operatoru.html">
-					<a href="/pandas-bolme-operatoru.html">Pandas - Bölme Operatörü</a>
+				<h1 class="post-title" href="/duzenli-ifadeler-findall.html">
+					<a href="/duzenli-ifadeler-findall.html">Düzenli İfadeler - findall</a>
 				</h1>
-				<span class="post-date">Prş 28 Temmuz 2022</span>
+				<span class="post-date">Cum 01 Eylül 2023</span>
 					<span class="post-tags">
 						Tags:
 						<ul>
 								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/duzenli-ifadeler.html">Düzenli İfadeler</a></li>
+								<li><a href="/tag/regular-expressions.html">Regular Expressions</a></li>
+								<li><a href="/tag/regex.html">Regex</a></li>
+								<li><a href="/tag/re.html">Re</a></li>
 								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
 								<li><a href="/tag/modul.html">Modül</a></li>
-								<li><a href="/tag/operator.html">Operatör</a></li>
-								<li><a href="/tag/bolme.html">bölme</a></li>
+								<li><a href="/tag/findall.html">Findall</a></li>
 						</ul>
 					</span>
 				<p>
-					<h1>/ (Bölme) Operatörü</h1>
-<p>İki sütun verisini <code>/</code> <strong>bölme operatörü</strong> ile bölebiliriz.</p>
-<div class="highlight"><pre><span></span><code><span class="n">baslik</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Birler&quot;</span><span class="p">,</span> <span class="s2">&quot;Onlar&quot;</span><span class="p">,</span> <span class="s2">&quot;Yüzler&quot;</span><span class="p">]</span>
-<span class="n">basliksiz</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/basliksiz.ods&quot;</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">names</span> <span class="o">=</span> <span class="n">baslik</span> <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">basliksiz</span><span class="p">)</span>
-</code></pre></div>
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th>Birler</th>
-<th>Onlar</th>
-<th>Yüzler</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td>9</td>
-<td>82</td>
-<td>246</td>
-</tr>
-<tr>
-<td>1</td>
-<td>7</td>
-<td>78</td>
-<td>180</td>
-</tr>
-<tr>
-<td>2</td>
-<td>8</td>
-<td>83</td>
-<td>565</td>
-</tr>
-<tr>
-<td>3</td>
-<td>6</td>
-<td>82</td>
-<td>486</td>
-</tr>
-<tr>
-<td>4</td>
-<td>4</td>
-<td>37</td>
-<td>615</td>
-</tr>
-<tr>
-<td>5</td>
-<td>2 …</td></tr></tbody></table>
+					<h2>Önemli Not</h2>
+<p>Düzenli ifadeler konusunu öğrenmeye yeni başladığımız için, aşağıdaki örneklerde <strong>özel karakterleri</strong> kullanarak konuyu anlatmak öğrenmeyi zorlaştıracaktır. Bu nedenle  aşağıdaki örneklerde direkt string ifade kullanacağız. İlk etapta kullanım saçma gelecektir. </p>
+<h1>findall() Fonksiyonu</h1>
+<p>Bir metin içinde geçen belirli desenlerin tümünü bulmak istiyorsak <code>findall()</code> metodunu kullanmalıyız. Bu metot bize bir liste …</p>
 				</p>
-				<a class="read-more" href="pandas-bolme-operatoru.html">Continue reading »</a>
+				<a class="read-more" href="duzenli-ifadeler-findall.html">Continue reading »</a>
 			</div>
 	</div>
 	<div class="pagination">

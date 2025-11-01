@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Düzenli İfadeler - search" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/duzenli-ifadeler-search.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Düzenli İfadeler - search</h1>
+	<span class="post-date">Cum 01 Eylül 2023</span>
+	<h2>Önemli Not</h2>
+<p>Düzenli ifadeler konusunu öğrenmeye yeni başladığımız için, aşağıdaki örneklerde <strong>özel karakterleri</strong> kullanarak konuyu anlatmak öğrenmeyi zorlaştıracaktır. Bu nedenle  aşağıdaki örneklerde direkt string ifade kullanacağız. İlk etapta kullanım saçma gelecektir. </p>
+<h1>search() Fonksiyonu</h1>
+<p><code>search()</code> metodu ile <code>match()</code> metodu arasında çok önemli bir fark vardır. <code>match()</code> metodu bir karakter dizisinin en başına bakıp bir <strong>eşleştirme</strong> işlemi yaparken, <code>search()</code> metodu karakter dizisinin genelinde bir <strong>arama</strong> işlemi yapar. Yani biri eşleştirir, öbürü arar.</p>
+<p><code>search()</code> metodu, eşleşmenin gerçekleştiği ilk değeri döndürür. Aranan değer ya da desen, karakter dizisi içerisinde birden fazla geçse bile, ilk eşleşmede işlem sonlanır.</p>
+<p><strong>güçlü</strong> ifadesini <code>search()</code> metodu yardımı ile, <strong>cumle</strong> değişkeni içerisinde <strong>arayalım</strong>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">cumle</span> <span class="o">=</span> <span class="s2">&quot;python güçlü bir programlama dilidir.&quot;</span>
+<span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;güçlü&quot;</span><span class="p">,</span> <span class="n">cumle</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="o">&lt;</span><span class="n">re</span><span class="o">.</span><span class="n">Match</span> <span class="nb">object</span><span class="p">;</span> <span class="n">span</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span> <span class="n">match</span><span class="o">=</span><span class="s1">&#39;güçlü&#39;</span><span class="o">&gt;</span>
+</code></pre></div>
+
+<p>Gördüğünüz gibi, <code>search()</code> metodu <strong>güçlü</strong> kelimesini buldu. Çünkü <code>search()</code> metodu, <code>match()</code> metodunun aksine, bir karakter dizisinin sadece baş tarafına bakmakla yetinmiyor, karakter dizisinin geneli üzerinde bir arama işlemi gerçekleştiriyor.</p>
+<p>Tıpkı <code>match()</code> metodunda olduğu gibi, <code>search()</code> metodunda da <code>span()</code> ve <code>group()</code> metotlarından faydalanarak bulunan şeyin hangi aralıkta olduğunu ve bu şeyin ne olduğunu görüntüleyebiliriz:</p>
+<div class="highlight"><pre><span></span><code><span class="n">kardiz</span> <span class="o">=</span> <span class="s2">&quot;Python güçlü bir dildir&quot;</span>
+<span class="n">nesne</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;güçlü&quot;</span><span class="p">,</span> <span class="n">kardiz</span><span class="p">)</span>
+<span class="n">nesne</span><span class="o">.</span><span class="n">span</span><span class="p">()</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>(7, 12)
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">nesne</span><span class="o">.</span><span class="n">group</span><span class="p">()</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>&#39;güçlü&#39;
+</code></pre></div>
+
+<h2>Start() Medodu</h2>
+<p>Arama deseni ile eşleşen ifadenin, karakter dizisinin kaçıncı karakterinde <strong>başladığını</strong> görmek için <code>start()</code> metodunu kullanabiliriz ;</p>
+<div class="highlight"><pre><span></span><code><span class="n">nesne</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mf">7</span>
+</code></pre></div>
+
+<h2>End() Medodu</h2>
+<p>Arama deseni ile eşleşen ifadenin, karakter dizisinin kaçıncı karakterinde <strong>bittiğini</strong> görmek için <code>end()</code> metodunu kullanabiliriz ;</p>
+<div class="highlight"><pre><span></span><code><span class="n">nesne</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mf">12</span>
+</code></pre></div>
+
+<p>Şimdiye kadar hep karakter dizileri üzerinde çalıştık. İsterseniz biraz da listeler üzerinde örnekler verelim.</p>
+<p>Şöyle bir listemiz olsun:</p>
+<div class="highlight"><pre><span></span><code><span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;elma&quot;</span><span class="p">,</span> <span class="s2">&quot;armut&quot;</span><span class="p">,</span> <span class="s2">&quot;kebap&quot;</span><span class="p">]</span>
+<span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;kebap&quot;</span><span class="p">,</span> <span class="n">liste</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="o">---------------------------------------------------------------------------</span>
+
+<span class="ne">TypeError</span>                                 <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">)</span>
+
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_3704</span><span class="o">/</span><span class="mf">1944706800.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+      <span class="mi">1</span> <span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;elma&quot;</span><span class="p">,</span> <span class="s2">&quot;armut&quot;</span><span class="p">,</span> <span class="s2">&quot;kebap&quot;</span><span class="p">]</span>
+<span class="o">----&gt;</span> <span class="mi">2</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;kebap&quot;</span><span class="p">,</span> <span class="n">liste</span><span class="p">)</span>
+
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">re</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="n">search</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">string</span><span class="p">,</span> <span class="n">flags</span><span class="p">)</span>
+    <span class="mi">198</span>     <span class="s2">&quot;&quot;&quot;Scan through string looking for a match to the pattern, returning</span>
+<span class="s2">    199     a Match object, or None if no match was found.&quot;&quot;&quot;</span>
+<span class="o">--&gt;</span> <span class="mi">200</span>     <span class="k">return</span> <span class="n">_compile</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">flags</span><span class="p">)</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+    <span class="mi">201</span> 
+    <span class="mi">202</span> <span class="k">def</span> <span class="nf">sub</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">repl</span><span class="p">,</span> <span class="n">string</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+
+
+<span class="ne">TypeError</span><span class="p">:</span> <span class="n">expected</span> <span class="n">string</span> <span class="ow">or</span> <span class="nb">bytes</span><span class="o">-</span><span class="n">like</span> <span class="nb">object</span>
+</code></pre></div>
+
+<p>Ne oldu? Hata aldınız, değil mi? Bu normal. Çünkü düzenli ifadeler karakter dizileri üzerinde işler. 
+Bunlar doğrudan listeler üzerinde işlem yapamaz. O yüzden bizim Python’a biraz yardımcı olmamız gerekiyor:</p>
+<div class="highlight"><pre><span></span><code><span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;elma&quot;</span><span class="p">,</span> <span class="s2">&quot;armut&quot;</span><span class="p">,</span> <span class="s2">&quot;kebap&quot;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">liste</span><span class="p">:</span>
+    <span class="n">nesne</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;kebap&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">nesne</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">nesne</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>kebap
+</code></pre></div>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/duzenli-ifadeler.html">Düzenli İfadeler</a></li>
+					<li><a href="/tag/regular-expressions.html">Regular Expressions</a></li>
+					<li><a href="/tag/regex.html">Regex</a></li>
+					<li><a href="/tag/re.html">Re</a></li>
+					<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+					<li><a href="/tag/modul.html">Modül</a></li>
+					<li><a href="/tag/search.html">Search</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>

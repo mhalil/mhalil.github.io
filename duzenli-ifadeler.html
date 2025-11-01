@@ -84,27 +84,27 @@
 <blockquote>
 <p>Düzenli ifadeler (Regular Expressions, kısaca "Regex" ya da "Regexp"), Python programlama dilinin en çetrefilli konularından biridir. Ama bütün zorluklarına rağmen programlama deneyimimizin bir noktasında mutlaka karşımıza çıkacak olan bu yapıyı öğrenmemizde büyük fayda var. Düzenli ifadeleri öğrendikten sonra, elle yapılması saatler sürecek bir işlemi saliseler içinde yapabildiğinizi gördüğünüzde eminim düzenli ifadelerin ne büyük bir nimet olduğunu siz de anlayacaksınız. </p>
 <p>Peki, düzenli ifadeleri kullanarak neler yapabiliriz? Çok genel bir ifadeyle, bu yapıyı kullanarak metinleri veya karakter dizilerini parmağımızda oynatabiliriz. Örneğin bir web sitesinde dağınık halde duran verileri bir çırpıda ayıklayabiliriz. Bu veriler, mesela, toplu halde görmek istediğimiz web adreslerinin bir listesi olabilir. Bunun dışında, örneğin, çok sayıda belge üzerinde tek adımda istediğimiz değişiklikleri yapabiliriz.</p>
-<p>Ancak genel bir kural olarak, düzenli ifadelerden kaçabildiğimiz müddetçe kaçmamız gerekir. Eğer Python’daki karakter dizisi metotları, o anda yapmak istediğimiz şey için yeterli geliyorsa mutlaka o metotları kullanmalıyız. Çünkü karakter dizisi metotları, düzenli ifadelere kıyasla hem daha basit, hem de çok daha hızlıdır. Ama bir noktadan sonra karakter dizilerini kullanarak yazdığınız kodlar iyice karmaşıklaşmaya başlamışsa, kodların her tarafı if deyimleriyle dolmuşsa, hatta basit bir işlemi gerçekleştirmek için yazdığınız kod sayfa sınırlarını zorlamaya başlamışsa, işte o noktada artık düzenli ifadelerin dünyasına adım atmanız gerekiyor olabilir. </p>
+<p>Ancak <u>genel bir kural olarak, düzenli ifadelerden kaçabildiğimiz müddetçe kaçmamız gerekir. Eğer Python’daki karakter dizisi metotları, o anda yapmak istediğimiz şey için yeterli geliyorsa mutlaka o metotları kullanmalıyız.</u> Çünkü karakter dizisi metotları, düzenli ifadelere kıyasla hem daha basit, hem de çok daha hızlıdır. Ama bir noktadan sonra karakter dizilerini kullanarak yazdığınız kodlar iyice karmaşıklaşmaya başlamışsa, kodların her tarafı <strong>if</strong> deyimleriyle dolmuşsa, hatta basit bir işlemi gerçekleştirmek için yazdığınız kod sayfa sınırlarını zorlamaya başlamışsa, işte o noktada artık düzenli ifadelerin dünyasına adım atmanız gerekiyor olabilir. </p>
 <p>Kaynak: <a href="https://python-istihza.yazbel.com/standart_moduller/regex.html">Düzenli İfadeler - Yazbel Python Belgeleri</a></p>
 </blockquote>
 <h1>Konu Başlıkları</h1>
-<p><a href="/duzenli-ifadeler-tanim-ve-fonksiyonlar.html">Düzenli İfade Metotları (Fonksiyonları)</a></p>
-<p>... <strong>match()</strong> Metodu </p>
+<h2><a href="/duzenli-ifadeler-tanim-ve-fonksiyonlar.html">Düzenli İfade Metotları (Fonksiyonları)</a></h2>
+<p>... <a href="/duzenli-ifadeler-match.html">match() Metodu</a> </p>
 <p>...... <em>span() Metodu</em></p>
 <p>...... <em>string Özelliği</em></p>
 <p>...... <em>group() Metodu</em></p>
-<p>... <strong>split()</strong> Metodu</p>
-<p>... <strong>search()</strong> Metodu</p>
+<p>... <a href="/duzenli-ifadeler-split.html">split() Metodu</a></p>
+<p>... <a href="/duzenli-ifadeler-search.html">search() Metodu</a></p>
 <p>...... <em>start() Metodu</em></p>
 <p>...... <em>end() Metodu</em></p>
-<p>... <strong>findall()</strong> Metodu</p>
-<p>... <strong>finditer()</strong> Metodu</p>
-<p>... <strong>sub()</strong> Metodu</p>
-<p><strong>... subn()</strong> Metodu</p>
-<p><strong>... escape()</strong> Metodu</p>
-<p><strong>... compile()</strong> Metodu</p>
-<p><strong>... purge()</strong> Metodu</p>
-<p><a href="/duzenli-ifadeler-metakarakterler.html">MetaKarakterler, Özel Dizinler ve Bayraklar</a></p>
+<p>... <a href="/duzenli-ifadeler-findall.html">findall() Metodu</a></p>
+<p>... <a href="/duzenli-ifadeler-finditer.html">finditer() Metodu</a></p>
+<p>... <a href="/duzenli-ifadeler-sub.html">sub() Metodu</a></p>
+<p>... <a href="/duzenli-ifadeler-subn.html">subn() Metodu</a></p>
+<p>... <a href="/duzenli-ifadeler-escape.html">escape() Metodu</a></p>
+<p>... <a href="/duzenli-ifadeler-compile.html">compile() Metodu</a></p>
+<p>... <a href="/duzenli-ifadeler-purge.html">purge() Metodu</a></p>
+<h2><a href="/duzenli-ifadeler-metakarakterler.html">MetaKarakterler, Özel Dizinler ve Bayraklar</a></h2>
 <p>... <strong>Meta Karakterler</strong></p>
 <p>...... <strong>[ ]</strong> Köşeli Parantez</p>
 <p>...... <strong>.</strong> Nokta</p>
@@ -134,7 +134,7 @@
 <p>...... <em>re.DOTALL</em> veya <em>re.S</em></p>
 <p>...... <em>re.UNICODE veya re.U</em></p>
 <p>... <strong>Sonuç</strong></p>
-<p><a href="/duzenli-ifadeler-gruplar.html">Eşleşme Nesnesi Metotları ve Gruplar</a></p>
+<h2><a href="/duzenli-ifadeler-gruplar.html">Eşleşme Nesnesi Metotları ve Gruplar</a></h2>
 <p>... group() metodu</p>
 <p>... groups() metodu</p>
 <p>... (?P&lt;...&gt; ile Etiketleme</p>
@@ -144,6 +144,15 @@
 <p>... Look Behind (Geriye bak)</p>
 <p>...... <em>(?&lt;=...) Pozitif Lookbehind</em></p>
 <p>...... <em>(?&lt;!...) Negatif Lookbehind</em></p>
+<h1>Kaynaklar:</h1>
+<p>Düzenli İfadeler (Regular Expressions) konusu hazırlanırken faydalanılan tüm kaynakları, her sayfada ayrı ayrı belitrmek yerine burada toplu olarak belirtmek istiyorum. </p>
+<ul>
+<li><a href="https://python-istihza.yazbel.com/standart_moduller/regex.html">İstihza YazBel</a></li>
+<li><a href="https://python.sitesi.web.tr/python-regex.html">python.sitesi.web.tr</a></li>
+<li><a href="https://medium.com/@zeynepengin/regular-expressions-d%C3%BCzenli-i%CC%87fadeler-2e75f44d4f6f">Zeynep ENGİN</a></li>
+<li><a href="https://www.youtube.com/watch?v=bKWzIvYZmfA">Yakın Kampüs</a></li>
+<li><a href="https://chat.openai.com">ChatGPT</a></li>
+</ul>
 
 		<span class="post-tags">
 			Tags:

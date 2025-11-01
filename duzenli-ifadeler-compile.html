@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Düzenli İfadeler - compile" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/duzenli-ifadeler-compile.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Düzenli İfadeler - compile</h1>
+	<span class="post-date">Cum 01 Eylül 2023</span>
+	<h2>Önemli Not</h2>
+<p>Düzenli ifadeler konusunu öğrenmeye yeni başladığımız için, aşağıdaki örneklerde <strong>özel karakterleri</strong> kullanarak konuyu anlatmak öğrenmeyi zorlaştıracaktır. Bu nedenle  aşağıdaki örneklerde direkt string ifade kullanacağız. İlk etapta kullanım saçma gelecektir. </p>
+<h1>compile() Fonksiyonu</h1>
+<h2>Düzenli İfadelerin Derlenmesi</h2>
+<p>En başta da söylediğimiz gibi, düzenli ifadeler, karakter dizilerine göre biraz daha yavaş çalışırlar. Ancak düzenli ifadelerin işleyişini hızlandırmanın da bazı yolları vardır. Bu yollardan biri de <code>compile()</code> metodunu kullanmaktır.</p>
+<p><strong>compile</strong> kelimesi İngilizcede <strong>derlemek</strong> anlamına gelir. İşte biz de bu <code>compile()</code> metodu yardımıyla düzenli ifade kalıplarımızı kullanmadan önce derleyerek daha hızlı çalışmalarını sağlayacağız. </p>
+<p>Küçük boyutlu projelerde <code>compile()</code> metodu pek hissedilir bir fark yaratmasa da özellikle büyük çaplı programlarda bu metodu kullanmak oldukça faydalı olacaktır.</p>
+<p>Basit bir örnekle başlayalım:</p>
+<div class="highlight"><pre><span></span><code><span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Python2.7&quot;</span><span class="p">,</span> <span class="s2">&quot;Python3.2&quot;</span><span class="p">,</span> <span class="s2">&quot;Python3.3&quot;</span><span class="p">,</span> <span class="s2">&quot;Python3.4&quot;</span><span class="p">,</span> <span class="s2">&quot;Java&quot;</span><span class="p">]</span>
+
+<span class="n">derli</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;[A-Za-z]+[0-9]\.[0-9]&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">liste</span><span class="p">:</span>
+    <span class="n">nesne</span> <span class="o">=</span> <span class="n">derli</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">nesne</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">nesne</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>Python2.7
+Python3.2
+Python3.3
+Python3.4
+</code></pre></div>
+
+<p>Burada öncelikle düzenli ifade kalıbımızı derledik. Derleme işlemini nasıl yaptığımıza dikkat edin. </p>
+<p>Derlenecek düzenli ifade kalıbını <code>compile()</code> metodunda parantez içinde belirtiyoruz. </p>
+<p>Daha sonra <code>search()</code> metodunu kullanırken ise, <code>re.search()</code> demek yerine, <code>derli.search()</code> şeklinde bir ifade kullanıyoruz. Ayrıca dikkat ederseniz <code>derli.search()</code> kullanımında parantez içinde sadece eşleşecek karakter dizisini <code>(i)</code> kullandık. </p>
+<p>Eğer derleme işlemi yapmamış olsaydık, hem bu karakter dizisini, hem de düzenli ifade kalıbını yan yana kullanmamız gerekecektir <code>.search("[A-Za-z]+[0-9].[0-9], i)"</code>. Ama düzenli ifade kalıbımızı yukarıda derleme işlemi esnasında belirttiğimiz için, bu kalıbı ikinci kez yazmamıza gerek kalmadı. </p>
+<p>Ayrıca burada kullandığımız düzenli ifade kalıbına da dikkat edin. Nasıl bir şablon oturttuğumuzu anlamaya çalışın. Gördüğünüz gibi, liste öğelerinde bulunan <code>.</code> işaretini eşleştirmek için düzenli ifade kalıbı içinde <code>\.</code> ifadesini kullandık. Çünkü bildiğiniz gibi, tek başına <code>.</code> işaretinin Python açısından özel bir anlamı var. Dolayısıyla bu özel anlamdan kaçmak için <code>\</code> işaretini de kullanmamız gerekiyor.</p>
+<h2>Detaylandıralım;</h2>
+<p><code>re.compile()</code>fonksiyonu, düzenli ifade desenini derler ve bir<code>re.RegexObject</code> nesnesi döner. Bu nesne, derlenmiş düzenli ifadeyi temsil eder ve aynı deseni birden çok kez kullanmak için daha verimli bir yol sunar.</p>
+<p>İşte <code>re.compile()</code> fonksiyonunun temel amacı ve avantajları:</p>
+<p><strong>Performans Artışı:</strong> </p>
+<p>Düzenli ifade desenleri büyük ve karmaşık olabilir. Bu desenleri her seferinde kullanmak yerine, <code>re.compile()</code> ile derlenmiş bir nesneyi oluşturabilir ve bu nesneyi kullanarak performans avantajı elde edebilirsiniz. Derleme işlemi, desenin daha hızlı eşleşmesine ve işlenmesine olanak tanır.</p>
+<p>Örneğin:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\b\w+\b&#39;</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">pattern</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s2">&quot;Python is powerful&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>Tekrar Kullanım Kolaylığı:</strong> </p>
+<p>Derlenmiş bir düzenli ifade nesnesi oluşturduktan sonra, aynı deseni farklı metinler üzerinde birden çok kez kullanabilirsiniz. Bu, aynı deseni defalarca yazmak yerine daha temiz ve okunabilir kod sağlar.</p>
+<p>Örneğin:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\b\w+\b&#39;</span><span class="p">)</span>
+
+<span class="n">result1</span> <span class="o">=</span> <span class="n">pattern</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s2">&quot;Python is powerful&quot;</span><span class="p">)</span>
+<span class="n">result2</span> <span class="o">=</span> <span class="n">pattern</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s2">&quot;Regular expressions are versatile&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>Bayrakları Ayarlama:</strong> </p>
+<p><code>re.compile()</code> fonksiyonu, düzenli ifadenin derlenmesi sırasında bayrakları (flags) ayarlamanıza olanak tanır. (<em>Bayraklar konusu </em><em>metakarakterler</em><em> sayfasında detaylı olarak anlatılmaktadır.</em>) Örneğin, <code>re.IGNORECASE</code> veya <code>re.UNICODE</code> bayraklarını belirleyerek deseni derleyebilirsiniz.</p>
+<p>Örneğin:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\b\w+\b&#39;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">pattern</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s2">&quot;Python is case-insensitive&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Bu avantajlar, <code>re.compile()</code> fonksiyonunu kullanmanın genellikle tercih edilen bir yöntem haline getirir. Ancak, küçük uygulamalarda veya tek seferlik kullanımlarda <code>re.compile()</code> kullanmak zorunlu değildir; <code>re.findall()</code> veya diğer <code>re</code> fonksiyonları doğrudan düzenli ifade desenini alabilir.</p>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/duzenli-ifadeler.html">Düzenli İfadeler</a></li>
+					<li><a href="/tag/regular-expressions.html">Regular Expressions</a></li>
+					<li><a href="/tag/regex.html">Regex</a></li>
+					<li><a href="/tag/re.html">Re</a></li>
+					<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+					<li><a href="/tag/modul.html">Modül</a></li>
+					<li><a href="/tag/compile.html">Compile</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>
