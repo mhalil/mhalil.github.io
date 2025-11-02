@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Düzenli İfadeler - bayraklar" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/duzenli-ifadeler-bayraklar.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Düzenli İfadeler - bayraklar</h1>
+	<span class="post-date">Cts 02 Eylül 2023</span>
+	<h1>Bayraklar (Flags)</h1>
+<p>Buraya kadar öğrendiğimiz konularda, <strong>re</strong> modülünü kullanırken, eksiklik hissettiğiniz bazı durumlar ile karşılaşmış olabiliriz. Örneğin eşleşme yaparken <strong>küçük-büyük harf duyarlılığı</strong> ya da <strong>çok satırlı bir metin içindeki eşleşmeleri arama</strong> konuları bazen  eksik sonuç elde etmenize sebep olmuş olabilir. Bu bölümde bahsedeceğim bayrak (flag) konusu, bu tür sorunların üstesinden gelmenize yardımcı olacaktır. İlk bayrak ile başlayalım.</p>
+<h2>re.IGNORECASE veya re.I</h2>
+<p>Bildiğiniz gibi, Python’da büyük-küçük harfler önemlidir. Yani eğer <strong>python</strong> kelimesini arıyorsanız, alacağınız çıktılar arasında <strong>Python</strong> olmayacaktır. Çünkü <strong>python</strong> ve <strong>Python</strong> birbirlerinden farklı iki karakter dizisidir. </p>
+<h3>Neden Kullanılır?</h3>
+<p><code>re.IGNORECASE</code> özelliği, metin maddeleme, metin analizi veya kullanıcı girdileri gibi durumlarda, kullanıcıların büyük harf küçük harf karışımıyla yazdığı verilere karşı daha esnek olmak için kullanılır. Özellikle, arama işlemlerini sırasında harf büyüklüğünün önemli olmadığı durumlarda faydalıdır.</p>
+<p>Bir kullanıcı tarafından sağlanan veriyle çalışırken veya çok dilli metinlerle uğraşırken <code>re.IGNORECASE</code> özelliği, arama işlemlerini daha geniş bir kapsama yaymak ve daha fazla esneklik sağlamak için kullanışlı bir araçtır.</p>
+<p><code>re.IGNORECASE</code> veya kısaca <code>re.I</code> adlı bayrak, bize <strong>büyük-küçük harfe dikkat etmeden (büyük harf ve küçük harf arasındaki farkı önemsemeden) arama / eşleme yapma</strong> imkanı sağlar. Hemen bir örnek verelim: </p>
+<div class="highlight"><pre><span></span><code><span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Programlama dili, programcının bir bilgisayara ne yapmasını</span>
+<span class="s2">istediğini anlatmasının standartlaştırılmış bir yoludur. Programlama</span>
+<span class="s2">dilleri, programcının bilgisayara hangi veri üzerinde işlem yapacağını,</span>
+<span class="s2">verinin nasıl depolanıp iletileceğini, hangi koşullarda hangi işlemlerin</span>
+<span class="s2">yapılacağını tam olarak anlatmasını sağlar. Şu ana kadar 2500’den fazla</span>
+<span class="s2">programlama dili yapılmıştır. Bunlardan bazıları: Pascal, Basic, C, C#,</span>
+<span class="s2">C++, Java, Cobol, Perl, Python, Ada, Fortran, Delphi programlama</span>
+<span class="s2">dilleridir.&quot;&quot;&quot;</span>
+
+<span class="c1"># `re.compile()` ile kullanım</span>
+<span class="n">derli</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;programlama&quot;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">derli</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">metin</span><span class="p">))</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>[&#39;Programlama&#39;, &#39;Programlama&#39;, &#39;programlama&#39;, &#39;programlama&#39;]
+</code></pre></div>
+
+<p>Gördüğünüz gibi, metinde geçen hem <strong>programlama</strong> kelimesini hem de <strong>Programlama</strong> kelimesini ayıklayabildik. Bunu yapmamızı sağlayan şey de <code>re.IGNORECASE</code> adlı bayrak (flag) oldu. </p>
+<p>Eğer bu seçeneği kullanmasaydık, çıktıda yalnızca <strong>programlama</strong> kelimesini görürdük. Çünkü aradığımız şey aslında <strong>programlama</strong> kelimesi idi. Biz istersek <code>re.IGNORECASE</code> yerine kısaca <code>re.I</code> ifadesini de kullanabiliriz. Aynı anlama gelecektir.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Düzenli ifade içinde kullanım</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;python&#39;</span><span class="p">,</span> <span class="s1">&#39;Python is powerful!&#39;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>Python
+</code></pre></div>
+
+<p>Bayraklar, <code>Flags</code> etiketi ile de kullanılabilir;</p>
+<div class="highlight"><pre><span></span><code><span class="n">derli</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;programlama&quot;</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">derli</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">metin</span><span class="p">))</span>
+</code></pre></div>
+
+<h2>re.MULTILINE veya re.M</h2>
+<p><code>re.MULTILINE</code> bayrağı (flag), bir düzenli ifadenin <strong>çok satırlı</strong> bir metin içindeki eşleşmeleri nasıl ele aldığını kontrol etmek için kullanılır. Bu bayrak, bir metin içindeki <strong>her bir satırı ayrı ayrı ele alarak</strong> düzenli ifadenin davranışını etkiler. Özellikle, <code>^</code> (başlangıç) ve <code>$</code> (bitiş) meta karakterlerinin metnin başı ve sonu yerine her satırın başı ve sonuyla eşleşmesini sağlar.</p>
+<h3>Neden Kullanılır?</h3>
+<p><code>re.MULTILINE</code> özelliği, çok satırlı metinlerle çalışırken ve her bir satırın başı veya sonu ile eşleşme yapmak istediğinizde kullanılır. Özellikle, metni satırlara bölüp her bir satıra ayrı ayrı düzenli ifadeler uygulamak istediğiniz durumlar için uygundur.</p>
+<p>Bu özellik, metin maddeleme, metin analizi veya log dosyaları gibi çok satırlı metinlerle çalışırken kullanışlıdır. <code>re.MULTILINE</code> sayesinde, düzenli ifadelerle satırları tek tek ele alabilir ve her bir satır için eşleşmeleri bulabilirsiniz.</p>
+<h3>Kullanımı</h3>
+<p><code>re.MULTILINE</code> bayrağı, <code>re.compile()</code> fonksiyonu ile birlikte veya bir düzenli ifade string'i içinde kullanılabilir. İşte kullanım örnekleri:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="c1"># `re.compile()` ile kullanım</span>
+<span class="n">pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^\w+&#39;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">MULTILINE</span><span class="p">)</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Python</span>
+<span class="s2">is</span>
+<span class="s2">awesome&quot;&quot;&quot;</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">pattern</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># [&#39;Python&#39;, &#39;is&#39;, &#39;awesome&#39;]</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Python</span>
+<span class="s2">is</span>
+<span class="s2">awesome&quot;&quot;&quot;</span>
+
+<span class="c1"># Düzenli ifade içinde kullanım</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^\w+&#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">MULTILINE</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="s1">&#39;Python&#39;</span><span class="p">,</span> <span class="s1">&#39;is&#39;</span><span class="p">,</span> <span class="s1">&#39;awesome&#39;</span><span class="p">]</span>
+</code></pre></div>
+
+<p>Bu örneklerde, <code>re.MULTILINE</code> bayrağı kullanılarak <code>^\w+</code> düzenli ifadesi her satırın başındaki kelimeyi eşleştirmektedir.</p>
+<h2>re.DOTALL veya re.S</h2>
+<p>Bildiğiniz gibi, metakarakterler arasında yer alan <code>.</code> sembolü herhangi bir karakterin yerini tutuyordu. Bu metakarakter bütün karakterlerin yerini tutmak üzere kullanılabilir. Hatırlarsanız, <code>.</code> metakarakterini anlatırken, <strong>bu metakarakterin, yeni satır karakterinin yerini tutmayacağını</strong> söylemiştik.  <code>re.DOTALL</code> veya <code>re.S</code> bayrağı, bir düzenli ifadenin <code>.</code> karakterinin metin içinde yeni satır karakterleriyle de eşleşmesini sağlar. Bunu bir örnek yardımıyla görelim. Diyelim ki elimizde şöyle bir karakter dizisi var:</p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Ben Python,</span>
+<span class="s2">Monty Python&quot;&quot;&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>Ben Python,
+Monty Python
+</code></pre></div>
+
+<p>Bu karakter dizisi içinde <strong>Python</strong> kelimesini temel alarak bir arama yapmak istiyorsak eğer, kullanacağımız şu kod istediğimiz şeyi yeterince yerine getiremeyecektir:</p>
+<div class="highlight"><pre><span></span><code><span class="n">derle</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;Python.*&quot;</span><span class="p">)</span>
+<span class="n">nesne</span> <span class="o">=</span> <span class="n">derle</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">nesne</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">nesne</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>Python,
+</code></pre></div>
+
+<p>Bunun sebebi, <code>.</code> metakarakterinin <code>\n</code> (yeni satır) kaçış dizisini dikkate almamasıdır. Bu yüzden <strong>bu kaçış dizisinin ötesine geçip orada arama yapmıyor</strong>. Ama şimdi biz ona bu yeteneği de kazandıracağız:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># `re.compile()` ile kullanım</span>
+<span class="n">derle</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;Python.*&quot;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">DOTALL</span><span class="p">)</span>
+<span class="n">nesne</span> <span class="o">=</span> <span class="n">derle</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">nesne</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">nesne</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>Python,
+Monty Python
+</code></pre></div>
+
+<p><code>re.DOTALL</code> seçeneğini <code>re.S</code> şeklinde de kısaltabilirsiniz / kullanabilirsiniz.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;This is a multiline</span>
+<span class="s2">text with new lines.</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="c1"># Düzenli ifade içinde kullanım</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;.+&#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">S</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>  
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>This is a multiline
+text with new lines.
+</code></pre></div>
+
+<h2>re.UNICODE veya re.U</h2>
+<p><code>re.UNICODE</code>, bayrağı (flag), bir düzenli ifadenin <strong>Unicode karakter setini kullanmasını sağlar</strong>. Varsayılan durumda, bazı düzenli ifade karakter sınıfları, yalnızca <strong>ASCII</strong> karakter setini anlar. Ancak, <code>re.UNICODE</code> özelliği ile Unicode karakterler de dikkate alınır. Özellikle, çok dilli uygulamalarda veya farklı dil ve alfabeleri içeren metinlerle uğraşırken kullanışlıdır. Bu özellik sayesinde, Unicode karakterler, düzenli ifadelerde doğru şekilde ele alınır ve beklenen eşleşmeleri sağlar.</p>
+<h3>Kullanımı</h3>
+<p><code>re.UNICODE</code> bayrağı, <code>re.compile()</code> fonksiyonu ile birlikte veya bir düzenli ifade string'i içinde kullanılabilir. İşte kullanım örnekleri:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="c1"># `re.compile()` ile kullanım</span>
+<span class="n">pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\w+&#39;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">U</span><span class="p">)</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Yüksek Yapılı Dağlar Çok Haşmetlidir&quot;</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">pattern</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>    
+
+<span class="c1"># ÇIKTI: [&#39;Yüksek&#39;, &#39;Yapılı&#39;, &#39;Dağlar&#39;, &#39;Çok&#39;, &#39;Haşmetlidir&#39;]</span>
+
+<span class="c1"># Düzenli ifade içinde kullanım</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\w+&#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">UNICODE</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  
+
+<span class="c1"># ÇIKTI : [&#39;Yüksek&#39;, &#39;Yapılı&#39;, &#39;Dağlar&#39;, &#39;Çok&#39;, &#39;Haşmetlidir&#39;]</span>
+</code></pre></div>
+
+<p>Bu örnekte, <code>re.UNICODE</code> bayrağı kullanılarak <code>\w+</code> düzenli ifadesi Unicode karakterlerle kelime karakterlerini eşleştirmektedir.</p>
+<h1></h1>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/duzenli-ifadeler.html">Düzenli İfadeler</a></li>
+					<li><a href="/tag/regular-expressions.html">Regular Expressions</a></li>
+					<li><a href="/tag/regex.html">Regex</a></li>
+					<li><a href="/tag/re.html">Re</a></li>
+					<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+					<li><a href="/tag/modul.html">Modül</a></li>
+					<li><a href="/tag/metakarakter.html">Metakarakter</a></li>
+					<li><a href="/tag/bayraklar.html">Bayraklar</a></li>
+					<li><a href="/tag/flags.html">Flags</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>

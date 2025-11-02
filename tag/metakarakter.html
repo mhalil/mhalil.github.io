@@ -123,6 +123,32 @@
 				<a class="read-more" href="duzenli-ifadeler-ozet-tablo.html">Continue reading »</a>
 			</div>
 			<div class="post">
+				<h1 class="post-title" href="/duzenli-ifadeler-bayraklar.html">
+					<a href="/duzenli-ifadeler-bayraklar.html">Düzenli İfadeler - bayraklar</a>
+				</h1>
+				<span class="post-date">Cts 02 Eylül 2023</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/duzenli-ifadeler.html">Düzenli İfadeler</a></li>
+								<li><a href="/tag/regular-expressions.html">Regular Expressions</a></li>
+								<li><a href="/tag/regex.html">Regex</a></li>
+								<li><a href="/tag/re.html">Re</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/metakarakter.html">Metakarakter</a></li>
+								<li><a href="/tag/bayraklar.html">Bayraklar</a></li>
+								<li><a href="/tag/flags.html">Flags</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>Bayraklar (Flags)</h1>
+<p>Buraya kadar öğrendiğimiz konularda, <strong>re</strong> modülünü kullanırken, eksiklik hissettiğiniz bazı durumlar ile karşılaşmış olabiliriz. Örneğin eşleşme yaparken <strong>küçük-büyük harf duyarlılığı</strong> ya da <strong>çok satırlı bir metin içindeki eşleşmeleri arama</strong> konuları bazen  eksik sonuç elde etmenize sebep olmuş olabilir. Bu bölümde bahsedeceğim bayrak (flag) konusu, bu tür sorunların üstesinden …</p>
+				</p>
+				<a class="read-more" href="duzenli-ifadeler-bayraklar.html">Continue reading »</a>
+			</div>
+			<div class="post">
 				<h1 class="post-title" href="/duzenli-ifadeler-metakarakterler.html">
 					<a href="/duzenli-ifadeler-metakarakterler.html">Düzenli İfadeler - Metakarakterler</a>
 				</h1>
@@ -145,6 +171,39 @@
 <p>Metakarakterler; kabaca, programlama dilleri için özel anlam ifade eden sembollerdir. Örneğin <code>\n</code> bir bakıma bir metakarakterdir, çünkü <code>\n</code> sembolü Python programlama dili için özel bir anlam taşır. Python bu sembolü gördüğü yerde yeni bir satıra geçer. Metakarakterler, <strong>Kendisiyle eşleşmeyen karakterler</strong> olarak ifade edilebilir. Örneğin, <strong>a</strong> harfi yalnızca …</p>
 				</p>
 				<a class="read-more" href="duzenli-ifadeler-metakarakterler.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="/duzenli-ifadeler-ozel-diziler.html">
+					<a href="/duzenli-ifadeler-ozel-diziler.html">Düzenli İfadeler - Ozel Diziler</a>
+				</h1>
+				<span class="post-date">Cts 02 Eylül 2023</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/duzenli-ifadeler.html">Düzenli İfadeler</a></li>
+								<li><a href="/tag/regular-expressions.html">Regular Expressions</a></li>
+								<li><a href="/tag/regex.html">Regex</a></li>
+								<li><a href="/tag/re.html">Re</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/metakarakter.html">Metakarakter</a></li>
+								<li><a href="/tag/ozel-diziler.html">Ozel Diziler</a></li>
+								<li><a href="/tag/ozel-diziler.html">Özel Diziler</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>Özel Diziler</h1>
+<h2>\s   Boşluk Karakterinin Yerini Tutan Özel Dizi.</h2>
+<p>Bu sembol (<code>\s</code>), bir karakter dizisi içinde geçen <strong>boşlukları (boşluk, tab ve enter karakterlerini) yakalamak</strong> için kullanılır.</p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;5 Ocak&quot;</span><span class="p">,</span> <span class="s2">&quot;27Mart&quot;</span><span class="p">,</span> <span class="s2">&quot;4 Ekim&quot;</span><span class="p">,</span> <span class="s2">&quot;Nisan 3&quot;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+    <span class="n">nesne</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;[0-9]\s[A-Za-z]+&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">nesne</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">nesne</span><span class="o">.</span><span class="n">group …</span></code></pre></div>
+				</p>
+				<a class="read-more" href="duzenli-ifadeler-ozel-diziler.html">Continue reading »</a>
 			</div>
 	</div>
 	<div class="pagination">

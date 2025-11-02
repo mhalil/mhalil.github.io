@@ -76,6 +76,70 @@
 </div>		<div class="content container">
 	<div class="posts">
 			<div class="post">
+				<h1 class="post-title" href="/pandas-transpose.html">
+					<a href="/pandas-transpose.html">Pandas - transpose</a>
+				</h1>
+				<span class="post-date">Cum 15 Temmuz 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/veri.html">Veri</a></li>
+								<li><a href="/tag/duzenleme.html">Düzenleme</a></li>
+								<li><a href="/tag/transpose.html">transpose</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>transpose() Fonksiyonu</h1>
+<p><strong>Satırların sütuna, sütunların satıra çevrilme işlemini</strong> <code>transpose()</code> fonksiyonu yardımıyla gerçekleştirebiliriz. Bu fonksiyon, Excel, LibreOfis,...vb uygulamalarda, "İşlemi tersine çevir" komutu ile aynı sonucu verir. </p>
+<p>Aşağıda bir veri çerçevesi oluşturup, veri çerçevemizin transpozunu alalım.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">sozluk</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;isim&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Mustafa&quot;</span><span class="p">,</span> <span class="s2">&quot;Halil&quot;</span><span class="p">,</span> <span class="s2">&quot;Burak&quot;</span><span class="p">,</span> <span class="s2">&quot;Emre&quot;</span><span class="p">,</span> <span class="s2">&quot;Ersin&quot;</span><span class="p">,</span> <span class="s2">&quot;Sertaç&quot;</span><span class="p">,</span> <span class="s2">&quot;Furkan&quot;</span><span class="p">,</span><span class="s2">&quot;Murat&quot;</span><span class="p">,</span><span class="s2">&quot;Ahmet …</span></code></pre></div>
+				</p>
+				<a class="read-more" href="pandas-transpose.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="/pandas-dropna.html">
+					<a href="/pandas-dropna.html">Pandas - dropna</a>
+				</h1>
+				<span class="post-date">Sal 12 Temmuz 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/eksik.html">Eksik</a></li>
+								<li><a href="/tag/kayip.html">Kayıp</a></li>
+								<li><a href="/tag/veri.html">Veri</a></li>
+								<li><a href="/tag/dropna.html">dropna</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>dropna() Fonksiyonu</h1>
+<p>Veri Çerçevelerinde <strong>eksik veri bulunan satır ve sütunları otomatik olarak silmek</strong> için <strong>dropna()</strong> metodunu kullanabiliriz. Metodun kullanım şekli aşağıdaki gibidir.</p>
+<div class="highlight"><pre><span></span><code><span class="n">VeriÇerçevesi_Adı</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">ya</span> <span class="n">da</span> <span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span> <span class="n">ya</span> <span class="n">da</span> <span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>axis Parametresi</h2>
+<p>Eksenleri tanımlayan parametredir. </p>
+<ul>
+<li>
+<p>Sıfır (0) Satırları, </p>
+</li>
+<li>
+<p>Bir (1) Sütunları </p>
+</li>
+</ul>
+<p>temsil eder. Varsayılan değer Sıfır …</p>
+				</p>
+				<a class="read-more" href="pandas-dropna.html">Continue reading »</a>
+			</div>
+			<div class="post">
 				<h1 class="post-title" href="/pandas-fillna.html">
 					<a href="/pandas-fillna.html">Pandas - fillna</a>
 				</h1>
@@ -358,58 +422,6 @@ düşünülebilir) yazdırabiliriz/atayabiliriz.</p>
 <td>5 …</td></tr></tbody></table>
 				</p>
 				<a class="read-more" href="pandas-pandas-index.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="/pandas-sutun-filtrele.html">
-					<a href="/pandas-sutun-filtrele.html">Pandas - Sütun Filtrele</a>
-				</h1>
-				<span class="post-date">Pzt 11 Temmuz 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/pandas.html">Pandas</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
-								<li><a href="/tag/fonksiyon.html">Fonksiyon</a></li>
-								<li><a href="/tag/kosul.html">Koşul</a></li>
-								<li><a href="/tag/filtre.html">Filtre</a></li>
-								<li><a href="/tag/sutun.html">Sütun</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1>Sütun Filtrelemek</h1>
-<p>Sadece bir Sütunu filtrelemek/görüntülemek için veri çerçevesinin adı ile birlikte filtrelemek/görüntülemek istediğimiz sütunun ismini yazmak yeterlidir. Bu da iki şekilde gerçekleştirilebilir.</p>
-<ol>
-<li><code>VeriCervecesiAdı.SütunAdı</code></li>
-<li><code>VeriCervecesiAdı["SütunAdı"]</code></li>
-</ol>
-<p>Sütun isminde <strong>boşluk</strong> ya da <strong>nokta</strong> karakterleri bulunması halinde, ilk (noktalı) seçeneği KULLANAMAYIZ, o durumda 2. seçeneği  yani <strong>köşeli parantez</strong>li …</p>
-				</p>
-				<a class="read-more" href="pandas-sutun-filtrele.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="/pandas-columns.html">
-					<a href="/pandas-columns.html">Pandas - columns</a>
-				</h1>
-				<span class="post-date">Paz 10 Temmuz 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/pandas.html">Pandas</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
-								<li><a href="/tag/columns.html">columns</a></li>
-								<li><a href="/tag/fonksiyon.html">Fonksiyon</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1>columns Fonksiyonu</h1>
-<p><strong>columns</strong> fonksiyonu, oluşturulan ya da içe aktarılan Veri Çerçevelerinin <strong>başlık satırını</strong> çıktı olarak verir. <strong>columns</strong> fonksiyonunu kullanırken sonunda <u>parantez işaretleri kullanmadığımıza</u> dikkat edin.</p>
-<p>Veri çerçevesine filtreleme işlemi uygulamak istediğimiz zaman, bu fonksiyon çok işimize yarar. Sütun isimlerini hızlı bir şekilde görüntülüyerek filtrelemek ya da seçmek istediğimiz sütun başlıklarını …</p>
-				</p>
-				<a class="read-more" href="pandas-columns.html">Continue reading »</a>
 			</div>
 	</div>
 	<div class="pagination">

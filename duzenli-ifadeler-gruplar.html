@@ -77,7 +77,7 @@
 <div class="post">
 	<h1 class="post-title">Düzenli İfadeler - Gruplar</h1>
 	<span class="post-date">Cts 30 Aralık 2023</span>
-	<h1># Gruplama, Etikeleme ve Özellikler</h1>
+	<h1>Gruplama ve Etikeleme</h1>
 <h2>group() metodu</h2>
 <p>Bu bölümde doğrudan düzenli ifadelerin değil, ama düzenli ifadeler kullanılarak üretilen eşleşme nesnelerinin bir metodu olan <code>group()</code> metodundan bahsedeceğiz. </p>
 <p>Düzenli ifadelerde parantez içine alınan bölümler grup olarak adlandırılır. <code>group()</code> metodu, bir eşleşme nesnesi üzerinde çağrıldığında, bu <strong>eşleşmenin içindeki belirli bir grupla eşleşen alt dizeyi döndürür</strong>.  <code>group()</code> <strong>metodu</strong>, <strong>bir</strong> <code>re.Match</code> <strong>nesnesinin belirli bir grup içindeki eşleşmeyi almak için kullanılır.</strong> <code>re.findall()</code> <strong>metodu</strong>, <code>re.Match</code> <strong>nesnelerini döndürmez; bu nedenle</strong> <code>group()</code> <strong>metodu</strong> <code>re.findall()</code> <strong>ile doğrudan kullanılamaz.</strong> Düzenli ifade  içinde parantezle gruplandırılmış alt ifadeler, gruplar oluşturur ve bu gruplara, eşleşen metni belirli bir düzenleme tabi tutarak erişebiliriz. Esasında biz bu metodu önceki bölümlerde de kullanmıştık. Ama burada bu metoda biraz daha ayrıntılı olarak bakacağız.</p>
@@ -144,6 +144,39 @@ dilidir
 
 <p>Bu kontrol, eşleşme gerçekleşip gerçekleşmediğini kontrol etmede yardımcı olacaktır.</p>
 <p><code>group()</code> metoduna ait benzer bir örnek <strong>( ) Parantez</strong> metakarakter başlığı altında ilgili sayfada detaylı anlatıldı.</p>
+<p>Gruplama ile alakalı güzel bir özellik daha göstermek istiyorum. Bu, aynı ifadenin peş peşe (arka arkaya) kullanıldığı durumu tespit etmek için oldukça faydalıdır.</p>
+<div class="highlight"><pre><span></span><code><span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;Seni her gördüğümde gözlerim ışıl ışıl parlıyor, koşa koşa yanına gelmek istiyorum.&quot;</span>
+
+<span class="n">desen</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;(\w+\s)\1&quot;</span>
+<span class="n">ara</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">desen</span><span class="p">,</span> <span class="n">metin</span><span class="p">)</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">ara</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>Çıktı</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="s1">&#39;ışıl &#39;</span><span class="p">,</span> <span class="s1">&#39;koşa &#39;</span><span class="p">]</span>
+</code></pre></div>
+
+<p><strong>metin</strong> değişkeni içindeki cümlede peş peşe tekrar eden kelimelerin <strong>ışıl</strong> ve <strong>koşa</strong> olduğunu kolayca tespit etmiş olduk.</p>
+<p>Görüldüğü gibi <code>(\w+\s)\1</code> deseninde önce parantez kullanılarak bir grup oluşturuldu. Ardından aynı desenin tekrar kullanılmasını temsil etmek için <code>\1</code> ifadesi kullanıldı. Biliyoruz ki parantez kulanılarak gruplama yapıldığında <code>.group(1)</code> gibi bir ifade kullanarak ilk eşleşmeyi elde edebiliyorduk. Bu mantığı kullanarak desen içinde bir gruptan bahsetmek istediğimizde <code>\</code> ifadesinden sonra kaçıncı gruptan bahsetmek istediğimize dair ilgili sayı değerini kullanmalıyız. </p>
+<p>Bir başka örnek daha yapalım. Bu kez farklı biçimde gösterilen tarih bilgilerini aynı biçime çevirelim.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;Bugün 02.11.2025. 10 gün önceki tarih 23-10-2025 idi.&quot;</span>
+
+<span class="n">desen</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;\b(\d</span><span class="si">{2}</span><span class="s2">)[.-](\d</span><span class="si">{2}</span><span class="s2">)[.-](\d</span><span class="si">{4}</span><span class="s2">)\b&quot;</span>
+<span class="n">siralama</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;\3/\2/\1&quot;</span>
+
+<span class="n">yeni_metin</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">desen</span><span class="p">,</span> <span class="n">siralama</span><span class="p">,</span> <span class="n">metin</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">yeni_metin</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>Çıktı</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Bugün</span> <span class="mi">2025</span><span class="o">/</span><span class="mi">11</span><span class="o">/</span><span class="mf">02.</span> <span class="mi">10</span> <span class="n">gün</span> <span class="n">önceki</span> <span class="n">tarih</span> <span class="mi">2025</span><span class="o">/</span><span class="mi">10</span><span class="o">/</span><span class="mi">23</span> <span class="n">idi</span><span class="o">.</span>
+</code></pre></div>
+
 <h2>groups() metodu</h2>
 <p>Bu metot, bize kullanabileceğimiz bütün grupları bir <em>demet</em> halinde sunar:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
@@ -156,9 +189,29 @@ dilidir
 <div class="highlight"><pre><span></span><code>(&#39;python&#39;, &#39;bir&#39;, &#39;programlama&#39;, &#39;dilidir&#39;)
 </code></pre></div>
 
-<h2>Grupları Etiketleme</h2>
-<p>Gruplama, bu desenler içindeki alt örüntüleri belirlemek ve bu gruplara etiketler eklemek için kullanışlı bir özelliktir. Bu bölüme kadar yaptığımız örneklerde, düzenli ifadeler ile desen oluşturup, oluşturduğumuz gruplara <strong>group(1), group(2)</strong>, ...vb şekilde eriştik.  Yani sürekli aşağıdaki şekilde örnekler verdik;</p>
-<h3>Gruplama ve Parantez Kullanımı</h3>
+<p>Başka bir örnek;</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">Guido Van Rossum Python&#39;ı geliştirmeye 1990 yılında başlamış... Yani aslında Python için nispeten yeni</span>
+<span class="s2">bir dil denebilir. Ancak Python&#39;un çok uzun bir geçmişi olmasa da, bu dil öteki dillere kıyasla kolay olması, hızlı</span>
+<span class="s2">olması, ayrı bir derleyici programa ihtiyaç duymaması ve bunun gibi pek çok nedenden ötürü çoğu kimsenin gözdesi</span>
+<span class="s2">haline gelmiştir. Ayrıca Google&#39;ın da Python&#39;a özel bir önem ve değer verdiğini, çok iyi derecede Python bilenlere</span>
+<span class="s2">iş olanağı sunduğunu da hemen söyleyelim. Mesela bundan kısa bir süre önce Python&#39;ın yaratıcısı Guido Van Rossum </span>
+<span class="s2">Google&#39;de işe başladı...&quot;&quot;&quot;</span>
+
+<span class="n">bul</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;([0-9]+)\s+([a-z]+)&quot;</span><span class="p">,</span> <span class="n">metin</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">bul</span><span class="o">.</span><span class="n">groups</span><span class="p">())</span>
+</code></pre></div>
+
+<p><strong>Çıktı</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="s1">&#39;1990&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h1>Grupları Etiketleme</h1>
+<p>Gruplama, bu desenler içindeki alt örüntüleri belirlemek ve bu gruplara etiketler eklemek için kullanışlı bir özelliktir. Bu bölüme kadar yaptığımız örneklerde, düzenli ifadeler ile desen oluşturup, oluşturduğumuz gruplara <strong>.group(1), .group(2)</strong>, ...vb şekilde eriştik.  Yani sürekli aşağıdaki şekilde örnekler verdik;</p>
+<h2>Gruplama ve Parantez Kullanımı</h2>
 <p>Gruplama, bir desen içinde belirli bir alt örüntüyü tanımlamak ve bu örüntüyü daha sonra referans almak için kullanılır. Gruplama için parantez <code>()</code> kullanılır. Örneğin:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
 <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;John Doe, Jane Smith&quot;</span>
@@ -178,7 +231,7 @@ dilidir
 <span class="n">Soyad</span><span class="p">:</span> <span class="n">Doe</span>
 </code></pre></div>
 
-<h3>(?P&lt;...&gt; ile Etiketleme ile Gruplama</h3>
+<h2>(?P&lt;...&gt; ile Etiketleme ile Gruplama</h2>
 <p>Desen içinde gruplama yaparken, gruplara etiket eklemek, grupları daha anlamlı hale getirmek ve daha sonra bu etiketleri kullanmak için faydalıdır. Etiketleme, <code>?P&lt;etiket&gt;</code> sözdizimi ile yapılır. <code>P</code> harfi <code>Placeholder</code>'ın (Yer Tutucu'nun) kısalmasıdır. Örneğin:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
 <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;John Doe, Jane Smith&quot;</span>
@@ -272,10 +325,10 @@ Soyad: Doe
 <span class="n">Gun</span><span class="p">:</span> <span class="mi">11</span><span class="p">,</span> <span class="n">Ay</span><span class="p">:</span> <span class="mi">01</span><span class="p">,</span> <span class="n">Yil</span><span class="p">:</span> <span class="mi">17</span>
 </code></pre></div>
 
-<h1>Lookahead (İleriye bak)</h1>
+<h2>Lookahead (İleriye bak)</h2>
 <p><strong>Lookahead</strong>, düzenli ifadelerde kullanılan bir özelliktir ve <strong>bir eşleşmeyi sınırlamak veya filtrelemek için kullanılır</strong>. Lookahead, bir düzenli ifade içinde belirli bir deseni kontrol etmek ve ardından bir eşleşme oluşturmak için kullanılır, ancak bu kontrolün sonucu eşleşme sonucuna dahil edilmez. Lookahead için <code>?</code> işareti, ile başlayan düzenli ifadeler kullanılır.</p>
 <p>Lookahead iki türde gelir: <strong>pozitif lookahead</strong> ve <strong>negatif lookahead</strong>.</p>
-<h2>(?= ...) Pozitif Lookahead</h2>
+<h3>(?= ...) Pozitif Lookahead</h3>
 <p><strong>Bir eşleşme sadece belirli bir desenin arkasında varsa</strong> gerçekleşir. Ancak, bu desen eşleşmenin sonucuna dahil edilmez.</p>
 <p>Örneğin:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
@@ -325,7 +378,7 @@ Soyad: Doe
 <div class="highlight"><pre><span></span><code><span class="p">[</span><span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]</span>
 </code></pre></div>
 
-<h2>(?! ...) Negatif Lookahead</h2>
+<h3>(?! ...) Negatif Lookahead</h3>
 <p><strong>Bir eşleşme, belirli bir desenin arkasında yoksa</strong> gerçekleşir. Yani belirlediğimiz karakter ile devam etmeyen ifadeleri seçer. </p>
 <p>Örneğin:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
@@ -364,11 +417,11 @@ Soyad: Doe
 </code></pre></div>
 
 <p>Lookahead, daha karmaşık eşleşme şartlarını ifade etmek ve belirli durumları kontrol etmek için kullanışlıdır. Ancak, düzenli ifadelerin anlaşılması ve kullanılması bazen karmaşık olabilir, bu nedenle dikkatlice kullanılmalıdır.</p>
-<h1>Look Behind (geriye bak)</h1>
+<h2>Look Behind (geriye bak)</h2>
 <p>Öncesinde belirlediğimiz karakter ya da karakter gruplarıyla <strong>devam eden</strong> ya da <strong>devam etmeyen</strong> ifadeleri seçmemizi sağlar. <strong>Lookbehind</strong>’ lar bir ifadeden önce başka bir ifade olup olmadığını kontrol etmek için kullanılır. Lookbehind için <code>?&lt;</code> işareti ile başlayan düzenli ifadeler kullanılır.</p>
 <p><code>Lookbehind</code> (geriye bak) düzenli ifade özelliği, bir eşleşmenin gerçekleşebilmesi için önceki bir desenin arkasında belirli bir desenin bulunmasını kontrol etmeye yarar. <code>Lookbehind</code> özelliği, bir eşleşmenin önceki bir deseni içermesi gerektiğinde kullanılır ancak bu deseni eşleşmenin bir parçası olarak almaz.</p>
 <p><code>Lookbehind</code> iki türdedir: <strong>pozitif lookbehind</strong> <code>(?&lt;=...)</code> ve <strong>negatif lookbehind</strong> <code>(?&lt;!...)</code>.</p>
-<h2>(?&lt;=...) Pozitif Lookbehind</h2>
+<h3>(?&lt;=...) Pozitif Lookbehind</h3>
 <p>Bir eşleşme, <strong>belirli bir desenin önceki bir desenin arkasında varsa</strong> gerçekleşir.</p>
 <p>Örneğin:</p>
 <p>Bu örnekte, <code>(?&lt;=\s)orange</code> deseni, boşluk karakteri (<code>\s</code>) ile ayrılmış olarak "orange" <strong>kelimesinden</strong> önce gelen kelimeyi eşleştirir.</p>
@@ -399,7 +452,7 @@ Soyad: Doe
 <div class="highlight"><pre><span></span><code><span class="p">[</span><span class="s1">&#39;punisher&#39;</span><span class="p">,</span> <span class="s1">&#39;man&#39;</span><span class="p">]</span>
 </code></pre></div>
 
-<h2>(?&lt;!...) Negatif Lookbehind</h2>
+<h3>(?&lt;!...) Negatif Lookbehind</h3>
 <p><strong>Pozitif lookbehind</strong>'ın tam tersidir. Belirtilen ifade ile başlamayan ifadeleri kontrol etmek için kullanılır. <code>(?&lt;!ifade)</code> şeklinde kullanılır. </p>
 <p>Örneğin; a harfinden önce b harfi olmayan bütün ifadeleri yakala demek için <code>(?&lt;!b)a</code> ifadesi kullanılır.</p>
 <p>Örnek:</p>
@@ -429,15 +482,9 @@ Soyad: Doe
 
 <p>Bu örnekte, <code>(?&lt;!\s)pie</code> deseni, boşluk karakteri (<code>\s</code>) ile ayrılmamış olarak "<strong>pie</strong>" kelimesini eşleştirir. Yani, eğer "<strong>pie</strong>" kelimesi bir boşluk karakteri ile başlamıyorsa, bu kelimeyi eşleştirir. <code>pie</code> kelimesi burada <code>orange juice</code> içindeki <code>pie</code> kelimesine eşleşir, çünkü onun önünde bir boşluk karakteri yok.</p>
 <p><code>Lookbehind</code> özelliği, belirli bir desenin önceki bir deseni kontrol etmek için kullanılır ve eşleşmenin gerçekleşmesini sınırlar. Ancak, Python'da kullanılan bazı diğer programlama dillerinde olduğu gibi, <code>Lookbehind</code> özelliği tamamen genişletilmiş (fixed-width) desenlere izin vermez; yani, lookbehind deseni bir değişken uzunluktaysa hata alabilirsiniz.</p>
-<h3>Kaynaklar:</h3>
-<ul>
-<li>
-<p><a href="https://github.com/gkandemi/regex">gkandemi/regex: Düzenli ifadeler</a></p>
-</li>
-<li>
-<p><a href="https://chat.openai.com/">ChatGPT</a></p>
-</li>
-</ul>
+<h1>Sonuç</h1>
+<p>Böylelikle düzenli ifadeler konusunu bitirmiş olduk. Buradaki amacımız, size düzenli ifadeler konusunda genel bir bakış sunabilmekti. Bu yazıları okuduktan sonra kafanızda düzenli ifadelerle ilgili kabataslak da olsa bir resim oluştuysa bu yazılar amacına ulaşmış demektir. Elbette düzenli ifadeler burada anlattıklarımızdan ibaret değildir. Bu konunun üzerine eğildiğinizde aslında düzenli ifadelerin dipsiz bir kuyu gibi olduğunu göreceksiniz.</p>
+<p>Esasında en başta da dediğimiz gibi, düzenli ifadeler apayrı bir dil gibidir. Doğrusu şu ki, düzenli ifadeler başlı başına bağımsız bir sistemdir. Hemen hemen bütün programlama dilleri öyle ya da böyle düzenli ifadeleri destekler. Python’da düzenli ifadeleri bünyesine adapte etmiş dillerden biridir. Bizim düzenli ifadeler konusundaki yaklaşımımız, her zaman bunları <strong>“gerektiğinde”</strong> kullanmak olmalıdır. Dediğimiz gibi, eğer yapmak istediğiniz bir işlemi karakter dizilerinin metotları yardımıyla yapabiliyorsanız düzenli ifadelere girişmemek en iyisidir. Çünkü karakter dizisi metotları hem daha hızlıdır hem de anlaması daha kolaydır.</p>
 
 		<span class="post-tags">
 			Tags:
