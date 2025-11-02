@@ -77,9 +77,7 @@
 <div class="post">
 	<h1 class="post-title">Düzenli İfadeler - escape</h1>
 	<span class="post-date">Cum 01 Eylül 2023</span>
-	<h2>Önemli Not</h2>
-<p>Düzenli ifadeler konusunu öğrenmeye yeni başladığımız için, aşağıdaki örneklerde <strong>özel karakterleri</strong> kullanarak konuyu anlatmak öğrenmeyi zorlaştıracaktır. Bu nedenle  aşağıdaki örneklerde direkt string ifade kullanacağız. İlk etapta kullanım saçma gelecektir. </p>
-<h1>escape() Fonksiyonu</h1>
+	<h1>escape() Fonksiyonu</h1>
 <p><code>escape()</code> metodu (fonksiyonu), <strong>bir metni düzenli ifade (regular expression) içinde kullanılmaya uygun hale getirmek için kullanılır.</strong> Bu fonksiyon, metindeki özel karakterleri kaçış karakterleri ile değiştirir, böylece bu karakterler düzenli ifade içinde özel anlam taşımazlar ve doğrudan metin olarak eşleştirilebilirler.</p>
 <p>Örneğin, bir kullanıcının girdiği metni doğrudan bir düzenli ifade içinde kullanmak istediğinizi düşünün. Kullanıcının girdisi içinde özel karakterler bulunabilir ve bu karakterlerin düzenli ifade içinde kullanılması sorunlara neden olabilir. <code>escape()</code> fonksiyonu, bu tür durumlar için kullanışlıdır.</p>
 <p>Örneğin, elimizde kullanıcı tarafından tanımlanmış bir değişken (<code>user_input</code>) olduğunu ve bu değişkenin, düzenli ifadelerde kullanılan özel karakterler içerdiğini düşünün. 
@@ -90,6 +88,7 @@
 </code></pre></div>
 
 <p>Kullanıcı tarafından belirlenen <code>(.*$</code> ifadesi, <code>escape()</code> metodu sayesinde aşağıdaki hale dönüştürülerek, düzenli ifadelerle rahatça kullanılabilecek hale getirilmiş olur.</p>
+<p><strong>Çıktı</strong>:</p>
 <div class="highlight"><pre><span></span><code>\<span class="p">(</span>\<span class="o">.</span>\<span class="o">*</span>\<span class="p">$</span>
 </code></pre></div>
 
@@ -108,6 +107,7 @@
 <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>  
 </code></pre></div>
 
+<p><strong>Çıktı</strong>:</p>
 <div class="highlight"><pre><span></span><code><span class="s1">&#39;(.*$&#39;</span>
 </code></pre></div>
 

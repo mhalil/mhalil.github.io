@@ -77,10 +77,8 @@
 <div class="post">
 	<h1 class="post-title">Düzenli İfadeler - purge</h1>
 	<span class="post-date">Cum 01 Eylül 2023</span>
-	<h2>Önemli Not</h2>
-<p>Düzenli ifadeler konusunu öğrenmeye yeni başladığımız için, aşağıdaki örneklerde <strong>özel karakterleri</strong> kullanarak konuyu anlatmak öğrenmeyi zorlaştıracaktır. Bu nedenle  aşağıdaki örneklerde direkt string ifade kullanacağız. İlk etapta kullanım saçma gelecektir. </p>
-<h1>purge() Fonksiyonu</h1>
-<p><code>purge()</code> metodu, <strong>düzenli ifade (regex) önbelleğini temizlemek için kullanılır</strong>. <code>re</code> modülü, derlenmiş düzenli ifade desenlerini ve ilgili verileri bir önbellekte saklar. Bu önbellek, aynı desenleri tekrar tekrar derlememek ve performansı artırmak için kullanılır. Ancak, bazen bu önbelleği temizlemek isteyebilirsiniz, özellikle çok sayıda düzenli ifade deseni kullanılıyorsa veya bellek kullanımını kontrol etmek istiyorsanız.</p>
+	<h1>purge() Fonksiyonu</h1>
+<p><code>purge()</code> metodu, <strong>düzenli ifade (regex) önbelleğini temizlemek için kullanılır</strong>. <code>re</code> modülü, derlenmiş düzenli ifade desenlerini ve ilgili verileri bir önbellekte saklar. Bu önbellek, aynı desenleri tekrar tekrar derlememek ve performansı artırmak için kullanılır. Ancak, bazen bu önbelleği temizlemek isteyebilirsiniz, özellikle çok sayıda düzenli ifade deseni kullanılıyorsa veya bellek kullanımını kontrol etmek istiyorsanız bu fonksiyonun kullanmalısınız.</p>
 <p>İşte <code>purge()</code> fonksiyonunun kullanımı:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
 
@@ -91,12 +89,17 @@
 <span class="c1"># re modülü önbelleği temizleme</span>
 <span class="n">re</span><span class="o">.</span><span class="n">purge</span><span class="p">()</span>
 
-<span class="c1"># Yeniden derleme yapmadan önce temizlenmiş önbelleği kullanma</span>
+<span class="c1"># Yeniden derleme yapmadan önce temizlenmiş önbelleği kullanmak</span>
 <span class="n">result1</span> <span class="o">=</span> <span class="n">pattern1</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s2">&quot;This is a sample text.&quot;</span><span class="p">)</span>
 <span class="n">result2</span> <span class="o">=</span> <span class="n">pattern2</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s2">&quot;123 456&quot;</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">result1</span><span class="p">)</span>  <span class="c1"># [&#39;This&#39;, &#39;is&#39;, &#39;a&#39;, &#39;sample&#39;, &#39;text&#39;]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">result2</span><span class="p">)</span>  <span class="c1"># [&#39;123&#39;, &#39;456&#39;]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result2</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="s1">&#39;This&#39;</span><span class="p">,</span> <span class="s1">&#39;is&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;sample&#39;</span><span class="p">,</span> <span class="s1">&#39;text&#39;</span><span class="p">]</span>
+<span class="p">[</span><span class="s1">&#39;123&#39;</span><span class="p">,</span> <span class="s1">&#39;456&#39;</span><span class="p">]</span>
 </code></pre></div>
 
 <p>Bu örnekte, <code>re.purge()</code> fonksiyonu çağrılarak <code>re</code> modülünün önbelleği temizlenir. Daha sonra, temizlenmiş önbelleği kullanarak <code>pattern1</code> ve <code>pattern2</code> düzenli ifade desenlerini tekrar derleriz.</p>

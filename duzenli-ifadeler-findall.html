@@ -77,10 +77,8 @@
 <div class="post">
 	<h1 class="post-title">Düzenli İfadeler - findall</h1>
 	<span class="post-date">Cum 01 Eylül 2023</span>
-	<h2>Önemli Not</h2>
-<p>Düzenli ifadeler konusunu öğrenmeye yeni başladığımız için, aşağıdaki örneklerde <strong>özel karakterleri</strong> kullanarak konuyu anlatmak öğrenmeyi zorlaştıracaktır. Bu nedenle  aşağıdaki örneklerde direkt string ifade kullanacağız. İlk etapta kullanım saçma gelecektir. </p>
-<h1>findall() Fonksiyonu</h1>
-<p>Bir metin içinde geçen belirli desenlerin tümünü bulmak istiyorsak <code>findall()</code> metodunu kullanmalıyız. Bu metot bize bir liste veri türünde çıktı verir. Bulunan ya da desen ile eşleşen tüm sonuçlar liste veri tipine eklenmiş olarak çıktı verilir.</p>
+	<h1>findall() Fonksiyonu</h1>
+<p>Bir metin içinde geçen belirli desenlerin tümünü bulmak istiyorsak <code>findall()</code> metodunu kullanmalıyız. Bu metot bize bir <strong>liste veri türünde çıktı verir</strong>. Bulunan ya da desen ile eşleşen tüm sonuçlar liste veri tipine eklenmiş olarak çıktı verilir.</p>
 <div class="highlight"><pre><span></span><code><span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Guido Van Rossum Python&#39;ı geliştirmeye 1990 yılında başlamış... Yani aslında Python için nispeten yeni</span>
 <span class="s2">bir dil denebilir. Ancak Python&#39;un çok uzun bir geçmişi olmasa da, bu dil öteki dillere kıyasla kolay olması, hızlı</span>
 <span class="s2">olması, ayrı bir derleyici programa ihtiyaç duymaması ve bunun gibi pek çok nedenden ötürü çoğu kimsenin gözdesi</span>
@@ -96,7 +94,42 @@
 <div class="highlight"><pre><span></span><code>[&#39;Python&#39;, &#39;Python&#39;, &#39;Python&#39;, &#39;Python&#39;, &#39;Python&#39;, &#39;Python&#39;]
 </code></pre></div>
 
-<p>Gördüğünüz gibi, metinde geçen bütün “Python” kelimelerini bir çırpıda liste olarak aldık.</p>
+<p>Gördüğünüz gibi, metinde geçen bütün “Python” kelimelerini bir çırpıda liste olarak aldık. Tabi bu örnekte kaç adet "Python"" ifadesi olduğunu tespit etmiş olduk. Bunu düzenli ifedaleri kullanmadan da bulabiliriz, neden düzenli ifadeyi kullanayım diye düşünebilirsiniz. </p>
+<p>Konuyu biraz derinleştirip "meta karakterleri" kullanarak (ilerleyen bölümlerde detaylı anlatılıyor) düzenli ifadelerin bize ne kadar esneklik sağladığını görelim.</p>
+<p>Diyelim ki, <strong>metin</strong> değişkeninin içinde, <strong>P</strong> harfi ile başlayan tüm kelimeleri <code>findall()</code>fonksiyonu yardımıyla bulalım.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;P\w+&quot;</span><span class="p">,</span> <span class="n">metin</span><span class="p">))</span>    <span class="c1"># P harfi ile başlayan kelimeleri bul</span>
+</code></pre></div>
+
+<p><strong>Çıktı</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="s1">&#39;Python&#39;</span><span class="p">,</span> <span class="s1">&#39;Python&#39;</span><span class="p">,</span> <span class="s1">&#39;Python&#39;</span><span class="p">,</span> <span class="s1">&#39;Python&#39;</span><span class="p">,</span> <span class="s1">&#39;Python&#39;</span><span class="p">,</span> <span class="s1">&#39;Python&#39;</span><span class="p">]</span>
+</code></pre></div>
+
+<p>Görüldüğü gibi metin içerisinde büyük P harfi ile başlayan sadece Python kelimeleri varmış.</p>
+<p>Peki hem küçük hem de büyük P ile başlayan kelimeleri bulmak istersek hangi kodu kullanmalıyız derseniz;</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[Pp]\w+&quot;</span><span class="p">,</span> <span class="n">metin</span><span class="p">))</span>
+</code></pre></div>
+
+<p><strong>Çıktı</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="s1">&#39;Python&#39;</span><span class="p">,</span> <span class="s1">&#39;Python&#39;</span><span class="p">,</span> <span class="s1">&#39;peten&#39;</span><span class="p">,</span> <span class="s1">&#39;Python&#39;</span><span class="p">,</span> <span class="s1">&#39;programa&#39;</span><span class="p">,</span> <span class="s1">&#39;pek&#39;</span><span class="p">,</span> <span class="s1">&#39;Python&#39;</span><span class="p">,</span> <span class="s1">&#39;Python&#39;</span><span class="p">,</span> <span class="s1">&#39;Python&#39;</span><span class="p">]</span>
+</code></pre></div>
+
+<p>Metin içinde sadece büyük harflerle başlayan kelimeleri bulalım;</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[A-Z]\w+&quot;</span><span class="p">,</span> <span class="n">metin</span><span class="p">))</span>
+</code></pre></div>
+
+<p><strong>Çıktı</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="s1">&#39;Guido&#39;</span><span class="p">,</span> <span class="s1">&#39;Van&#39;</span><span class="p">,</span> <span class="s1">&#39;Rossum&#39;</span><span class="p">,</span> <span class="s1">&#39;Python&#39;</span><span class="p">,</span> <span class="s1">&#39;Yani&#39;</span><span class="p">,</span> <span class="s1">&#39;Python&#39;</span><span class="p">,</span> <span class="s1">&#39;Ancak&#39;</span><span class="p">,</span> <span class="s1">&#39;Python&#39;</span><span class="p">,</span> <span class="s1">&#39;Ayrıca&#39;</span><span class="p">,</span> <span class="s1">&#39;Google&#39;</span><span class="p">,</span> <span class="s1">&#39;Python&#39;</span><span class="p">,</span> <span class="s1">&#39;Python&#39;</span><span class="p">,</span> <span class="s1">&#39;Mesela&#39;</span><span class="p">,</span> <span class="s1">&#39;Python&#39;</span><span class="p">,</span> <span class="s1">&#39;Guido&#39;</span><span class="p">,</span> <span class="s1">&#39;Van&#39;</span><span class="p">,</span> <span class="s1">&#39;Rossum&#39;</span><span class="p">,</span> <span class="s1">&#39;Google&#39;</span><span class="p">]</span>
+</code></pre></div>
+
+<p>Metin içindeki sayıları bulalım;</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\d+&quot;</span><span class="p">,</span> <span class="n">metin</span><span class="p">))</span>
+</code></pre></div>
+
+<p><strong>Çıktı</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="s1">&#39;1990&#39;</span><span class="p">]</span>
+</code></pre></div>
+
+<p>Daha fazla örnek vermek mümkün ancak sanıyorum Düzenli ifadelerin gücü ve faydasını anlatmak için bu örnekler yeterli.</p>
 
 		<span class="post-tags">
 			Tags:

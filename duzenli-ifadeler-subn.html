@@ -77,13 +77,63 @@
 <div class="post">
 	<h1 class="post-title">Düzenli İfadeler - subn</h1>
 	<span class="post-date">Cum 01 Eylül 2023</span>
-	<h2>Önemli Not</h2>
-<p>Düzenli ifadeler konusunu öğrenmeye yeni başladığımız için, aşağıdaki örneklerde <strong>özel karakterleri</strong> kullanarak konuyu anlatmak öğrenmeyi zorlaştıracaktır. Bu nedenle  aşağıdaki örneklerde direkt string ifade kullanacağız. İlk etapta kullanım saçma gelecektir. </p>
+	<h1></h1>
 <h1>subn() Fonksiyonu</h1>
 <p>Bu metodu çok kısa bir şekilde anlatıp geçeceğiz. Çünkü bu metot <code>sub()</code> metoduyla neredeyse tamamen aynıdır. Tek farkı, <code>subn()</code> metodunun bir metin içinde yapılan değişiklik sayısını da göstermesidir. Yani bu metodu kullanarak, kullanıcılarınıza <strong>“toplam şu kadar sayıda değişiklik yapılmıştır”</strong> şeklinde bir bilgi verebilirsiniz. Bu metot çıktı olarak iki öğeli bir demet verir. </p>
-<p>Birinci öğe değiştirilen metin, ikinci öğe ise yapılan değişiklik sayısıdır. Yani kullanıcıya değişiklik sayısını göstermek için yapmanız gereken şey, bu demetin ikinci öğesini almaktır. Mesela <code>sub()</code> metodunu anlatırken verdiğimiz kodların son satırını şöyle değiştirebilirsiniz:</p>
-<div class="highlight"><pre><span></span><code><span class="n">ab</span> <span class="o">=</span> <span class="n">derle</span><span class="o">.</span><span class="n">subn</span><span class="p">(</span><span class="n">degistir</span><span class="p">,</span> <span class="n">metin</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Toplam </span><span class="si">{}</span><span class="s2"> değişiklik yapılmıştır.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ab</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+<p><strong>Birinci öğe değiştirilen metin, ikinci öğe ise yapılan değişiklik sayısıdır</strong>. Yani kullanıcıya değişiklik sayısını göstermek için yapmanız gereken şey, bu demetin ikinci öğesini almaktır. </p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">txt</span> <span class="o">=</span> <span class="s2">&quot;Yaz Yaz Yaz Bir Kenara Yaz&quot;</span>
+<span class="n">say</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">subn</span><span class="p">(</span><span class="s2">&quot;Yaz&quot;</span><span class="p">,</span> <span class="s2">&quot;Çiz&quot;</span><span class="p">,</span> <span class="n">txt</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">say</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>Çıktı</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="s1">&#39;Çiz Çiz Çiz Bir Kenara Çiz&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Sadece<strong> kaç adet değişiklik yapıldığını</strong> görmek istersek kodu şu şekilde kullanabiliriz;</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">txt</span> <span class="o">=</span> <span class="s2">&quot;Yaz Yaz Yaz Bir Kenara Yaz&quot;</span>
+<span class="n">say</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">subn</span><span class="p">(</span><span class="s2">&quot;Yaz&quot;</span><span class="p">,</span> <span class="s2">&quot;Çiz&quot;</span><span class="p">,</span> <span class="n">txt</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">say</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</code></pre></div>
+
+<p><strong>Çıktı</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="mi">4</span>
+</code></pre></div>
+
+<p><code>sub()</code> metodunu anlatırken verdiğimiz örnekteki kodların son satırını aşağıdaki gibi değiştirerek metinde toplam kaç adet değişiklik yaptığımızı görebiliriz.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Karadeniz Ereğlisi denince akla ilk olarak kömür ve demir-çelik</span>
+<span class="s2">gelir. Kokusu ve tadıyla dünyaya nam salmış meşhur Osmanlı çileği ise ismini</span>
+<span class="s2">verdiği festival günleri dışında pek hatırlanmaz. Oysa Çin&#39;den Arnavutköy&#39;e</span>
+<span class="s2">oradan da Ereğli&#39;ye getirilen kralların meyvesi çilek, burada geçirdiği değişim</span>
+<span class="s2">sonucu tadına doyulmaz bir hal alır. Ereğli&#39;nin havasından mı suyundan mı</span>
+<span class="s2">bilinmez, kokusu, tadı bambaşka bir hale dönüşür ve meşhur Osmanlı çileği</span>
+<span class="s2">unvanını hak eder. Bu nazik ve aromalı çilekten yapılan reçel de likör de bir</span>
+<span class="s2">başka olur. Bu yıl dokuzuncusu düzenlenen Uluslararası Osmanlı Çileği Kültür</span>
+<span class="s2">Festivali&#39;nde 36 üretici arasında yetiştirdiği çileklerle birinci olan Kocaali</span>
+<span class="s2">Köyü&#39;nden Güner Özdemir, yılda bir ton ürün alıyor. 60 yaşındaki Özdemir,</span>
+<span class="s2">çileklerinin sırrını yoğun ilgiye ve içten duyduğu sevgiye bağlıyor: &quot;Erkekler</span>
+<span class="s2">bahçemize giremez. Koca ayaklarıyla ezerler çileklerimizi&quot; Çileği toplamanın zor</span>
+<span class="s2">olduğunu söyleyen Ayşe Özhan da çocukluğundan bu yana çilek bahçesinde</span>
+<span class="s2">çalışıyor. Her sabah 04.00&#39;te kalkan Özhan, çileklerini özenle suluyor. Kasım</span>
+<span class="s2">başında ektiği çilek fideleri haziran başında meyve veriyor.&quot;&quot;&quot;</span>
+
+
+<span class="n">derle</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;çile[kğ]&quot;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">degistir</span><span class="p">(</span><span class="n">nesne</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;çileğ&quot;</span><span class="p">:</span><span class="s2">&quot;eriğ&quot;</span><span class="p">,</span> <span class="s2">&quot;Çileğ&quot;</span><span class="p">:</span><span class="s2">&quot;Eriğ&quot;</span><span class="p">,</span> <span class="s2">&quot;Çilek&quot;</span><span class="p">:</span><span class="s2">&quot;Erik&quot;</span><span class="p">,</span> <span class="s2">&quot;çilek&quot;</span><span class="p">:</span><span class="s2">&quot;erik&quot;</span><span class="p">}</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">nesne</span><span class="o">.</span><span class="n">group</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">b</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+<span class="n">degisiklik</span> <span class="o">=</span> <span class="n">derle</span><span class="o">.</span><span class="n">subn</span><span class="p">(</span><span class="n">degistir</span><span class="p">,</span> <span class="n">metin</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Toplam </span><span class="si">{}</span><span class="s2"> değişiklik yapılmıştır.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">degisiklik</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
 </code></pre></div>
 
 <div class="highlight"><pre><span></span><code>Toplam 12 değişiklik yapılmıştır.

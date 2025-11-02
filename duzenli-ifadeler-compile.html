@@ -77,40 +77,42 @@
 <div class="post">
 	<h1 class="post-title">Düzenli İfadeler - compile</h1>
 	<span class="post-date">Cum 01 Eylül 2023</span>
-	<h2>Önemli Not</h2>
-<p>Düzenli ifadeler konusunu öğrenmeye yeni başladığımız için, aşağıdaki örneklerde <strong>özel karakterleri</strong> kullanarak konuyu anlatmak öğrenmeyi zorlaştıracaktır. Bu nedenle  aşağıdaki örneklerde direkt string ifade kullanacağız. İlk etapta kullanım saçma gelecektir. </p>
-<h1>compile() Fonksiyonu</h1>
+	<h1>compile() Fonksiyonu</h1>
 <h2>Düzenli İfadelerin Derlenmesi</h2>
-<p>En başta da söylediğimiz gibi, düzenli ifadeler, karakter dizilerine göre biraz daha yavaş çalışırlar. Ancak düzenli ifadelerin işleyişini hızlandırmanın da bazı yolları vardır. Bu yollardan biri de <code>compile()</code> metodunu kullanmaktır.</p>
-<p><strong>compile</strong> kelimesi İngilizcede <strong>derlemek</strong> anlamına gelir. İşte biz de bu <code>compile()</code> metodu yardımıyla düzenli ifade kalıplarımızı kullanmadan önce derleyerek daha hızlı çalışmalarını sağlayacağız. </p>
+<p>En başta da söylediğimiz gibi, düzenli ifadeler, karakter dizilerine göre biraz daha yavaş çalışırlar. Ancak düzenli ifadelerin işleyişini hızlandırmanın da bazı yolları vardır. Bu yollardan biri de <code>compile()</code> metodunu kullanmaktır. </p>
+<p>Elimizde birden fazla arama yapılacak metin (örneğin metin1, metin2, ...) ve eşleşme için kullanacağımız bir tek desen varsa, findall(), finditer() gibi metotları kullanmak istediğimizde, python her seferinde deseni kendi anlayacağı biçimde derleyip sonra metin içinde arayacaktır. Kaç farklı eşleşme / arama yapılacak yapı (metin) varsa işlem o kadar uzun sürecektir.</p>
+<p><strong>compile</strong> kelimesi İngilizcede <strong>derlemek</strong> anlamına gelir. İşte biz de bu <code>compile()</code> metodu yardımıyla <strong>düzenli ifade desenlerimizi/kalıplarımızı kullanmadan önce derleyerek</strong> daha hızlı çalışmalarını sağlayacağız. </p>
 <p>Küçük boyutlu projelerde <code>compile()</code> metodu pek hissedilir bir fark yaratmasa da özellikle büyük çaplı programlarda bu metodu kullanmak oldukça faydalı olacaktır.</p>
 <p>Basit bir örnekle başlayalım:</p>
-<div class="highlight"><pre><span></span><code><span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Python2.7&quot;</span><span class="p">,</span> <span class="s2">&quot;Python3.2&quot;</span><span class="p">,</span> <span class="s2">&quot;Python3.3&quot;</span><span class="p">,</span> <span class="s2">&quot;Python3.4&quot;</span><span class="p">,</span> <span class="s2">&quot;Java&quot;</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
 
-<span class="n">derli</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;[A-Za-z]+[0-9]\.[0-9]&quot;</span><span class="p">)</span>
+<span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Python2.7&quot;</span><span class="p">,</span> <span class="s2">&quot;Python3.2&quot;</span><span class="p">,</span> <span class="s2">&quot;Python3.3&quot;</span><span class="p">,</span> <span class="s2">&quot;Python3.4&quot;</span><span class="p">,</span> <span class="s2">&quot;Java&quot;</span><span class="p">]</span>
 
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">liste</span><span class="p">:</span>
-    <span class="n">nesne</span> <span class="o">=</span> <span class="n">derli</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="n">derli</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[A-Za-z]+[0-9]\.[0-9]&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">eleman</span> <span class="ow">in</span> <span class="n">liste</span><span class="p">:</span>
+    <span class="n">nesne</span> <span class="o">=</span> <span class="n">derli</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">eleman</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">nesne</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">nesne</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
 </code></pre></div>
 
-<div class="highlight"><pre><span></span><code>Python2.7
-Python3.2
-Python3.3
-Python3.4
+<p><strong>Çıktı</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Python2</span><span class="mf">.7</span>
+<span class="n">Python3</span><span class="mf">.2</span>
+<span class="n">Python3</span><span class="mf">.3</span>
+<span class="n">Python3</span><span class="mf">.4</span>
 </code></pre></div>
 
-<p>Burada öncelikle düzenli ifade kalıbımızı derledik. Derleme işlemini nasıl yaptığımıza dikkat edin. </p>
-<p>Derlenecek düzenli ifade kalıbını <code>compile()</code> metodunda parantez içinde belirtiyoruz. </p>
-<p>Daha sonra <code>search()</code> metodunu kullanırken ise, <code>re.search()</code> demek yerine, <code>derli.search()</code> şeklinde bir ifade kullanıyoruz. Ayrıca dikkat ederseniz <code>derli.search()</code> kullanımında parantez içinde sadece eşleşecek karakter dizisini <code>(i)</code> kullandık. </p>
-<p>Eğer derleme işlemi yapmamış olsaydık, hem bu karakter dizisini, hem de düzenli ifade kalıbını yan yana kullanmamız gerekecektir <code>.search("[A-Za-z]+[0-9].[0-9], i)"</code>. Ama düzenli ifade kalıbımızı yukarıda derleme işlemi esnasında belirttiğimiz için, bu kalıbı ikinci kez yazmamıza gerek kalmadı. </p>
-<p>Ayrıca burada kullandığımız düzenli ifade kalıbına da dikkat edin. Nasıl bir şablon oturttuğumuzu anlamaya çalışın. Gördüğünüz gibi, liste öğelerinde bulunan <code>.</code> işaretini eşleştirmek için düzenli ifade kalıbı içinde <code>\.</code> ifadesini kullandık. Çünkü bildiğiniz gibi, tek başına <code>.</code> işaretinin Python açısından özel bir anlamı var. Dolayısıyla bu özel anlamdan kaçmak için <code>\</code> işaretini de kullanmamız gerekiyor.</p>
+<p>Burada öncelikle düzenli ifade desenimizi/kalıbımızı derledik. Derleme işlemini nasıl yaptığımıza dikkat edin. </p>
+<p>Derlenecek düzenli ifade desenini <code>compile()</code> metodunda parantez içinde belirtiyoruz. </p>
+<p>Daha sonra <code>search()</code> metodunu kullanırken ise, <code>re.search()</code> demek yerine, <code>derli.search()</code> şeklinde bir ifade kullanıyoruz. Ayrıca dikkat ederseniz <code>derli.search()</code> kullanımında parantez içinde sadece eşleşecek karakter dizisini <code>(eleman)</code> kullandık. </p>
+<p>Eğer derleme işlemi yapmamış olsaydık, hem bu karakter dizisini, hem de düzenli ifade kalıbını yan yana kullanmamız gerekecektir <code>.search("[A-Za-z]+[0-9].[0-9], eleman)"</code>. Ama düzenli ifade desenimizi yukarıda derleme işlemi esnasında belirttiğimiz için, bu kalıbı ikinci kez yazmamıza gerek kalmadı. </p>
+<p>Ayrıca burada kullandığımız düzenli ifade desenine de dikkat edin. Nasıl bir şablon oturttuğumuzu anlamaya çalışın. Gördüğünüz gibi, liste öğelerinde bulunan <code>.</code> işaretini eşleştirmek için düzenli ifade kalıbı içinde <code>\.</code> ifadesini kullandık. Çünkü bildiğiniz gibi, tek başına <code>.</code> işaretinin <code>re</code> modülü açısından özel bir anlamı var. Dolayısıyla bu özel anlamdan kaçmak için <code>\</code> karakterini de kullanmamız gerekiyor.</p>
 <h2>Detaylandıralım;</h2>
 <p><code>re.compile()</code>fonksiyonu, düzenli ifade desenini derler ve bir<code>re.RegexObject</code> nesnesi döner. Bu nesne, derlenmiş düzenli ifadeyi temsil eder ve aynı deseni birden çok kez kullanmak için daha verimli bir yol sunar.</p>
 <p>İşte <code>re.compile()</code> fonksiyonunun temel amacı ve avantajları:</p>
 <p><strong>Performans Artışı:</strong> </p>
-<p>Düzenli ifade desenleri büyük ve karmaşık olabilir. Bu desenleri her seferinde kullanmak yerine, <code>re.compile()</code> ile derlenmiş bir nesneyi oluşturabilir ve bu nesneyi kullanarak performans avantajı elde edebilirsiniz. Derleme işlemi, desenin daha hızlı eşleşmesine ve işlenmesine olanak tanır.</p>
+<p>Düzenli ifade desenleri büyük ve karmaşık olabilir. Bu desenleri her seferinde derleyip kullanmak yerine, <code>re.compile()</code> ile derlenmiş bir nesne oluşturabilir ve bu nesneyi kullanarak performans avantajı elde edebiliriz. Derleme işlemi, desenin daha hızlı eşleşmesine ve işlenmesine olanak tanır.</p>
 <p>Örneğin:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
 
@@ -119,7 +121,7 @@ Python3.4
 </code></pre></div>
 
 <p><strong>Tekrar Kullanım Kolaylığı:</strong> </p>
-<p>Derlenmiş bir düzenli ifade nesnesi oluşturduktan sonra, aynı deseni farklı metinler üzerinde birden çok kez kullanabilirsiniz. Bu, aynı deseni defalarca yazmak yerine daha temiz ve okunabilir kod sağlar.</p>
+<p>Derlenmiş bir düzenli ifade nesnesi oluşturduktan sonra, aynı deseni farklı metinler üzerinde birden çok kez kullanabilirsiniz. Bu, aynı deseni defalarca yazmak ve kodu çalıştırdıktan sonra her seferinde python tarafından derlemekten daha hızlı, temiz ve okunabilirlik sağlar.</p>
 <p>Örneğin:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
 
@@ -130,15 +132,20 @@ Python3.4
 </code></pre></div>
 
 <p><strong>Bayrakları Ayarlama:</strong> </p>
-<p><code>re.compile()</code> fonksiyonu, düzenli ifadenin derlenmesi sırasında bayrakları (flags) ayarlamanıza olanak tanır. (<em>Bayraklar konusu </em><em>metakarakterler</em><em> sayfasında detaylı olarak anlatılmaktadır.</em>) Örneğin, <code>re.IGNORECASE</code> veya <code>re.UNICODE</code> bayraklarını belirleyerek deseni derleyebilirsiniz.</p>
+<p><code>re.compile()</code> fonksiyonu, düzenli ifadenin derlenmesi sırasında bayrakları (flags) ayarlamanıza olanak tanır. (<em>Bayraklar konusu ilgili sayfada detaylı olarak anlatılmaktadır.</em>) Örneğin, <code>re.IGNORECASE</code> veya <code>re.UNICODE</code> bayraklarını belirleyerek deseni derleyebilirsiniz.</p>
 <p>Örneğin:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
 
-<span class="n">pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\b\w+\b&#39;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span>
+<span class="n">pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\b\w+\b&#39;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span>    <span class="c1"># re.IGNORECASE bayrağı, küçük/büyük harf fark etmeksizin tüm kelimeleri döndürsün anlamına gelir.</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">pattern</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s2">&quot;Python is case-insensitive&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 </code></pre></div>
 
-<p>Bu avantajlar, <code>re.compile()</code> fonksiyonunu kullanmanın genellikle tercih edilen bir yöntem haline getirir. Ancak, küçük uygulamalarda veya tek seferlik kullanımlarda <code>re.compile()</code> kullanmak zorunlu değildir; <code>re.findall()</code> veya diğer <code>re</code> fonksiyonları doğrudan düzenli ifade desenini alabilir.</p>
+<p><strong>Çıktı</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="s1">&#39;Python&#39;</span><span class="p">,</span> <span class="s1">&#39;is&#39;</span><span class="p">,</span> <span class="s1">&#39;case&#39;</span><span class="p">,</span> <span class="s1">&#39;insensitive&#39;</span><span class="p">]</span>
+</code></pre></div>
+
+<p>Bu avantajlar, <code>re.compile()</code> fonksiyonunu kullanmanın genellikle tercih edilen bir yöntem haline getirir. Ancak, küçük uygulamalarda veya tek seferlik kullanımlarda <code>re.compile()</code> kullanmak zorunlu değildir.</p>
 
 		<span class="post-tags">
 			Tags:
