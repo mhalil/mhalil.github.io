@@ -163,7 +163,7 @@ Python, <strong>köşeli parantez içinde gördüğü bütün karakterleri tek t
         <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </code></pre></div>
 
-<p>Burada <code>.</code> sembolü “ah” ve “meh” hecelerinin yerini tutamaz. <code>.</code> sembolünün görevi sadece tek bir karakterin yerini tutmaktır (yeni satır karakteri hariç). Ama biraz sonra öğreneceğimiz metakarakter yardımıyla “ah” ve “meh” hecelerinin yerini de tutabileceğiz.</p>
+<p>Bu kodu çalıştırıldığında hiç bir çıktı vermez. Burada <code>.</code> sembolü “ah” ve “meh” hecelerinin yerini tutamaz. <code>.</code> sembolünün görevi sadece tek bir karakterin yerini tutmaktır (yeni satır karakteri hariç). Ama biraz sonra öğreneceğimiz metakarakter yardımıyla “ah” ve “meh” hecelerinin yerini de tutabileceğiz.</p>
 <p><code>.</code> sembolünü kullanarak bir örnek daha yapalım.</p>
 <div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;23BH56&#39;</span><span class="p">,</span> <span class="s1">&#39;TY76Z&#39;</span><span class="p">,</span> <span class="s1">&#39;4Y7UZ&#39;</span><span class="p">,</span> <span class="s1">&#39;TYUDZ&#39;</span><span class="p">,</span> <span class="s1">&#39;34534&#39;</span><span class="p">,</span> <span class="s2">&quot;1agAY54&quot;</span><span class="p">]</span>
 
@@ -185,7 +185,7 @@ Python, <strong>köşeli parantez içinde gördüğü bütün karakterleri tek t
 </ol>
 <p>Yukarıdaki ölçütlere uyan karakter dizilerimiz: “23BH56”, “34534”, “1agAY54”</p>
 <h2>* Yıldız</h2>
-<p>Bu metakarakter, <strong>kendinden önce gelen karakteri SIFIR veya daha fazla</strong> sayıda eşleştirir. Tanımı biraz karışık olsa da örnek yardımıyla bunu da anlayacağız:</p>
+<p>Bu metakarakter, <strong>kendinden önce gelen karakteri SIFIR veya DAHA FAZLA</strong> sayıda eşleştirir. Tanımı biraz karışık olsa da örnek yardımıyla bunu da anlayacağız:</p>
 <div class="highlight"><pre><span></span><code><span class="n">yeniliste</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;st&quot;</span><span class="p">,</span> <span class="s2">&quot;sat&quot;</span><span class="p">,</span> <span class="s2">&quot;saat&quot;</span><span class="p">,</span> <span class="s2">&quot;saaat&quot;</span><span class="p">,</span> <span class="s2">&quot;falanca&quot;</span><span class="p">]</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">yeniliste</span><span class="p">:</span>
@@ -309,7 +309,9 @@ saaat
 
 <p><code>sa{0,3}t</code> ifadesiyle, <code>a</code> harfinin en az sıfır kez, en çok da üç kez tekrar etmesini istediğimiz söyledik. Dolayısıyla, “a” harfinin sıfır, bir, iki ve üç kez tekrar ettiği durumlar ayıklanmış oldu. </p>
 <h2>^ Şapka</h2>
-<p><code>^</code> sembolünün iki işlevi var. Birinci işlevi, <strong>Çok satırlı desende ya da bir karakter dizisinin en başındaki veriyi sorgulamaktır</strong>. <code>^</code> Şapka metakarakteri, düzenli ifadenin <strong>metnin herhangi bir satırının başında uyması durumunu kontrol eder.</strong> Bu metakarakter çok satırlı bir metin içinde kullanılıyorsa, her satırın başındaki kelime ile eşleşme olup olmadığını sorgular. Bunun için <code>re.M</code> ya da <code>re.MULTILINE</code> ifadesini koda eklemek gerekir. Yani aslında <code>match()</code> metodunun varsayılan olarak yerine getirdiği işlevi bu metakarakter yardımıyla <code>search()</code> metodunda da kullanabiliyoruz. <strong>Sadece kendinden sonra gelen BİR karaktere BAKMIYOR</strong>.</p>
+<p><code>^</code> sembolünün iki işlevi var. </p>
+<p><strong>Birinci işlevi :</strong></p>
+<p><strong>Çok satırlı (örneğin parafraf) yapısında ya da bir karakter dizisinin en başındaki veriyi sorgulamaktır</strong>. <code>^</code> Şapka metakarakteri, düzenli ifadenin <strong>metnin herhangi bir satırının başında uyması durumunu kontrol eder.</strong> Bu metakarakter çok satırlı bir metin içinde kullanılıyorsa, her satırın başındaki kelime ile eşleşme olup olmadığını sorgular. Bunun için <code>re.M</code> ya da <code>re.MULTILINE</code> ifadesini koda eklemek gerekir. Yani aslında <code>match()</code> metodunun varsayılan olarak yerine getirdiği işlevi bu metakarakter yardımıyla <code>search()</code> metodunda da kullanabiliyoruz. <strong>Sadece kendinden sonra gelen BİR karaktere BAKMIYOR</strong>.</p>
 <div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;23BH56&#39;</span><span class="p">,</span> <span class="s1">&#39;TY76Z&#39;</span><span class="p">,</span> <span class="s1">&#39;4Y7UZ&#39;</span><span class="p">,</span> <span class="s1">&#39;TYUDZ&#39;</span><span class="p">,</span> <span class="s1">&#39;34534&#39;</span><span class="p">,</span> <span class="s1">&#39;1agAY54&#39;</span><span class="p">]</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
@@ -360,8 +362,41 @@ AY54
 </code></pre></div>
 
 <p>Bu kodlarda düzenli ifade kalıbının sonuna <code>.*</code> sembolünü eklediğimize dikkat edin. Böylelikle metodumuzun sonu herhangi bir şekilde biten öğeleri bize vermesini sağladık.</p>
-<p><code>^</code> metakarakterinin, karakter dizilerinin en başına demir atmak dışında başka bir görevi daha vardır: <strong>Hariç</strong> anlamına gelmektedir.</p>
-<p>Bu görevini sadece <code>[]</code> metakarakterinin içinde kullanıldığı zaman yerine getirir. Bunu bir örnekle görelim. Yukarıdaki listemiz üzerinde öyle bir süzgeç uygulayalım ki, <strong>1agAY54</strong> öğesi çıktılarımız arasında görünmesin. </p>
+<p>Bir örnek daha yapalım. Bu kez elimde bir liste değil, çok satırlı String ifadesi (metin)  olsun.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">Guido Van Rossum Python&#39;ı geliştirmeye 1990 yılında başlamış... Yani aslında Python için nispeten yeni</span>
+<span class="s2">bir dil denebilir. Ancak Python&#39;un çok uzun bir geçmişi olmasa da, bu dil öteki dillere kıyasla kolay olması, hızlı</span>
+<span class="s2">olması, ayrı bir derleyici programa ihtiyaç duymaması ve bunun gibi pek çok nedenden ötürü çoğu kimsenin gözdesi</span>
+<span class="s2">haline gelmiştir. Ayrıca Google&#39;ın da Python&#39;a özel bir önem ve değer verdiğini, çok iyi derecede Python bilenlere</span>
+<span class="s2">iş olanağı sunduğunu da hemen söyleyelim. Mesela bundan kısa bir süre önce Python&#39;ın yaratıcısı Guido Van Rossum </span>
+<span class="s2">Google&#39;de işe başladı...</span>
+<span class="s2">Python 1980&#39;lerin sonunda ABC programlama diline alternatif olarak tasarlanmıştı. Python 2.0, ilk kez 2000 yılında </span>
+<span class="s2">yayınlandı. 2008&#39;de yayınlanan Python 3.0, dilin önceki versiyonuyla tam uyumlu değildir ve Python 2.x&#39;te yazılan </span>
+<span class="s2">kodların Python 3.x&#39;te çalışması için değiştirilmesi gerekmektedir. Python 2 versiyonun resmi geliştirilme süreci, </span>
+<span class="s2">dilin son sürümü olan Python 2.7.x serisi versiyonların ardından 1 Ocak 2020 itibarıyla resmi olarak sona erdi. </span>
+<span class="s2">Python 2.x geliştirilme desteğinin sona ermesinin ardından, Python dilinin 3.7.x ve sonraki sürümlerinin </span>
+<span class="s2">geliştirilmesi devam etmektedir.</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">desen</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;^[Gg].+&quot;</span>
+
+<span class="n">sonuc</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="n">desen</span><span class="p">,</span> <span class="n">metin</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">M</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sonuc</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+</code></pre></div>
+
+<p><code>re.M</code> ifadesi ile çoklu satırları tara demiş olduk. <code>r"^[Gg].+"</code> ifadesi ile de her satırın başına baş küçük ya da büyük harfle başlıyorsa satırı ekrana yazdır demiş oluyoruz.</p>
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Guido</span> <span class="n">Van</span> <span class="n">Rossum</span> <span class="n">Python</span><span class="s1">&#39;ı geliştirmeye 1990 yılında başlamış... Yani aslında Python için nispeten yeni</span>
+<span class="n">Google</span><span class="s1">&#39;de işe başladı...</span>
+<span class="n">geliştirilmesi</span> <span class="n">devam</span> <span class="n">etmektedir</span><span class="o">.</span>
+</code></pre></div>
+
+<p><strong>İkinci İşlevi:</strong></p>
+<p><code>^</code> metakarakterinin, karakter dizilerinin en başına demir atmak dışında başka bir görevi daha vardır: <strong>Hariç tut</strong> anlamına gelmektedir.</p>
+<p><strong>Bu görevini sadece <code>[]</code> metakarakterinin içinde kullanıldığı zaman yerine getirir.</strong> Bunu bir örnekle görelim. Yukarıdaki listemiz üzerinde öyle bir süzgeç uygulayalım ki, <strong>1agAY54</strong> öğesi çıktılarımız arasında görünmesin. </p>
 <p>Bu öğeyi avlayabilmek için kullanmamız gereken düzenli ifade şöyle olacaktır: <code>[0-9A-Z][^a-z]+</code></p>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
     <span class="n">nesne</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;[0-9A-Z][^a-z]+&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
@@ -531,7 +566,7 @@ sat
 abi
 </code></pre></div>
 
-<p>Parantez ile gruplanan desenler, <strong>bir bütünsel yapı olarak</strong> değerlendirilir. Yani <code>ha+</code> kodu yazıldığında <code>h</code> harfinden sonra <code>a</code> harfinden Bir veya daha fazla olması anlaşılırken, <code>(ha)+</code> kodu ile <code>ha</code> ifadesinden bir veya daha fazla olması istenildiği ifade edilmiş olunur. Bir örnek yapalım;</p>
+<p>Parantez ile gruplanan desenler, <strong>bir bütünsel yapı olarak</strong> değerlendirilir. Yani <code>ha+</code> kodu yazıldığında <code>h</code> harfinden sonra <code>a</code> harfinden bir veya daha fazla olması anlaşılırken, <code>(ha)+</code> kodu ile <code>ha</code> ifadesinden bir veya daha fazla olması istenildiği ifade edilmiş olunur. Bir örnek yapalım;</p>
 <div class="highlight"><pre><span></span><code><span class="n">veri</span> <span class="o">=</span> <span class="s2">&quot;ali veli hakiki deli zeki abi samimi&quot;</span>
 
 <span class="n">desen</span> <span class="o">=</span> <span class="s2">&quot;\w+(\w</span><span class="si">{2}</span><span class="s2">)</span><span class="si">{2}</span><span class="s2">&quot;</span>
@@ -621,6 +656,8 @@ samimi
 <span class="mf">7425</span>
 <span class="mf">1653</span>
 </code></pre></div>
+
+<p>Parantez metakarakteri hakkında detaylı bilgiye <a href="/duzenli-ifadeler-gruplar.html">Gruplama ve Etikeleme</a> sayfasından erişebilirsiniz.</p>
 
 		<span class="post-tags">
 			Tags:
