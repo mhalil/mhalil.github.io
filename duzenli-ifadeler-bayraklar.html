@@ -82,7 +82,7 @@
 <h2>re.IGNORECASE veya re.I</h2>
 <p>Bildiğiniz gibi, Python’da büyük-küçük harfler önemlidir. Yani eğer <strong>python</strong> kelimesini arıyorsanız, alacağınız çıktılar arasında <strong>Python</strong> olmayacaktır. Çünkü <strong>python</strong> ve <strong>Python</strong> birbirlerinden farklı iki karakter dizisidir. </p>
 <h3>Neden Kullanılır?</h3>
-<p><code>re.IGNORECASE</code> özelliği, metin maddeleme, metin analizi veya kullanıcı girdileri gibi durumlarda, kullanıcıların büyük harf küçük harf karışımıyla yazdığı verilere karşı daha esnek olmak için kullanılır. Özellikle, arama işlemlerini sırasında harf büyüklüğünün önemli olmadığı durumlarda faydalıdır.</p>
+<p><code>re.IGNORECASE</code> özelliği, metin maddeleme, metin analizi veya kullanıcı girdileri gibi durumlarda, kullanıcıların büyük harf küçük harf karışımıyla yazdığı verilere karşı daha esnek olmak için kullanılır. Bu özellik, arama işlemleri sırasında harf büyüklüğünün ya da küçüklüğünün önemli olmadığı, gözardı edileceği durumlarda faydalıdır.</p>
 <p>Bir kullanıcı tarafından sağlanan veriyle çalışırken veya çok dilli metinlerle uğraşırken <code>re.IGNORECASE</code> özelliği, arama işlemlerini daha geniş bir kapsama yaymak ve daha fazla esneklik sağlamak için kullanışlı bir araçtır.</p>
 <p><code>re.IGNORECASE</code> veya kısaca <code>re.I</code> adlı bayrak, bize <strong>büyük-küçük harfe dikkat etmeden (büyük harf ve küçük harf arasındaki farkı önemsemeden) arama / eşleme yapma</strong> imkanı sağlar. Hemen bir örnek verelim: </p>
 <div class="highlight"><pre><span></span><code><span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Programlama dili, programcının bir bilgisayara ne yapmasını</span>
@@ -94,12 +94,13 @@
 <span class="s2">C++, Java, Cobol, Perl, Python, Ada, Fortran, Delphi programlama</span>
 <span class="s2">dilleridir.&quot;&quot;&quot;</span>
 
-<span class="c1"># `re.compile()` ile kullanım</span>
+<span class="c1"># `re.compile()` ile kullanım örneği</span>
 <span class="n">derli</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;programlama&quot;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">derli</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">metin</span><span class="p">))</span>
 </code></pre></div>
 
-<div class="highlight"><pre><span></span><code>[&#39;Programlama&#39;, &#39;Programlama&#39;, &#39;programlama&#39;, &#39;programlama&#39;]
+<p><strong>Çıktı</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="s1">&#39;Programlama&#39;</span><span class="p">,</span> <span class="s1">&#39;Programlama&#39;</span><span class="p">,</span> <span class="s1">&#39;programlama&#39;</span><span class="p">,</span> <span class="s1">&#39;programlama&#39;</span><span class="p">]</span>
 </code></pre></div>
 
 <p>Gördüğünüz gibi, metinde geçen hem <strong>programlama</strong> kelimesini hem de <strong>Programlama</strong> kelimesini ayıklayabildik. Bunu yapmamızı sağlayan şey de <code>re.IGNORECASE</code> adlı bayrak (flag) oldu. </p>
@@ -109,10 +110,30 @@
 <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
 </code></pre></div>
 
-<div class="highlight"><pre><span></span><code>Python
+<p><strong>Çıktı</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Python</span>
 </code></pre></div>
 
-<p>Bayraklar, <code>Flags</code> etiketi ile de kullanılabilir;</p>
+<p>Bir örnek daha verelim.</p>
+<div class="highlight"><pre><span></span><code><span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Programlama dili, programcının bir bilgisayara ne yapmasını</span>
+<span class="s2">istediğini anlatmasının standartlaştırılmış bir yoludur. Programlama</span>
+<span class="s2">dilleri, programcının bilgisayara hangi veri üzerinde işlem yapacağını,</span>
+<span class="s2">verinin nasıl depolanıp iletileceğini, hangi koşullarda hangi işlemlerin</span>
+<span class="s2">yapılacağını tam olarak anlatmasını sağlar. Şu ana kadar 2500’den fazla</span>
+<span class="s2">programlama dili yapılmıştır. Bunlardan bazıları: Pascal, Basic, C, C#,</span>
+<span class="s2">C++, Java, Cobol, Perl, Python, Ada, Fortran, Delphi programlama</span>
+<span class="s2">dilleridir.&quot;&quot;&quot;</span>
+
+<span class="n">derli</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\sp\w+&quot;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">derli</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">metin</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>Çıktı</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="s1">&#39; programcının&#39;</span><span class="p">,</span> <span class="s1">&#39; Programlama&#39;</span><span class="p">,</span> <span class="s1">&#39; programcının&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">programlama&#39;</span><span class="p">,</span> <span class="s1">&#39; Pascal&#39;</span><span class="p">,</span> <span class="s1">&#39; Perl&#39;</span><span class="p">,</span> <span class="s1">&#39; Python&#39;</span><span class="p">,</span> <span class="s1">&#39; programlama&#39;</span><span class="p">]</span>
+</code></pre></div>
+
+<p>Çıktıya bakınca, boşluk <code>\s</code> ve <code>p</code> harfi (hem küçük hem büyük) ile başlayan tüm kelimelerin eşleştiğini görüyoruz.</p>
+<p>Bayraklar, <code>flags</code> etiketi ile de kullanılabilir;</p>
 <div class="highlight"><pre><span></span><code><span class="n">derli</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;programlama&quot;</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">derli</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">metin</span><span class="p">))</span>
 </code></pre></div>
@@ -120,52 +141,58 @@
 <h2>re.MULTILINE veya re.M</h2>
 <p><code>re.MULTILINE</code> bayrağı (flag), bir düzenli ifadenin <strong>çok satırlı</strong> bir metin içindeki eşleşmeleri nasıl ele aldığını kontrol etmek için kullanılır. Bu bayrak, bir metin içindeki <strong>her bir satırı ayrı ayrı ele alarak</strong> düzenli ifadenin davranışını etkiler. Özellikle, <code>^</code> (başlangıç) ve <code>$</code> (bitiş) meta karakterlerinin metnin başı ve sonu yerine her satırın başı ve sonuyla eşleşmesini sağlar.</p>
 <h3>Neden Kullanılır?</h3>
-<p><code>re.MULTILINE</code> özelliği, çok satırlı metinlerle çalışırken ve her bir satırın başı veya sonu ile eşleşme yapmak istediğinizde kullanılır. Özellikle, metni satırlara bölüp her bir satıra ayrı ayrı düzenli ifadeler uygulamak istediğiniz durumlar için uygundur.</p>
+<p><code>re.MULTILINE</code> bayrağı, çok satırlı metinlerle çalışırken ve her bir satırın başı veya sonu ile eşleşme yapmak istediğinizde kullanılır. Özellikle, metni satırlara bölüp her bir satıra ayrı ayrı düzenli ifadeler uygulamak istediğiniz durumlar için uygundur.</p>
 <p>Bu özellik, metin maddeleme, metin analizi veya log dosyaları gibi çok satırlı metinlerle çalışırken kullanışlıdır. <code>re.MULTILINE</code> sayesinde, düzenli ifadelerle satırları tek tek ele alabilir ve her bir satır için eşleşmeleri bulabilirsiniz.</p>
 <h3>Kullanımı</h3>
 <p><code>re.MULTILINE</code> bayrağı, <code>re.compile()</code> fonksiyonu ile birlikte veya bir düzenli ifade string'i içinde kullanılabilir. İşte kullanım örnekleri:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
 
+<span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Programlama dili, programcının bir bilgisayara ne yapmasını</span>
+<span class="s2">istediğini anlatmasının standartlaştırılmış bir yoludur. Programlama</span>
+<span class="s2">dilleri, programcının bilgisayara hangi veri üzerinde işlem yapacağını,</span>
+<span class="s2">verinin nasıl depolanıp iletileceğini, hangi koşullarda hangi işlemlerin</span>
+<span class="s2">yapılacağını tam olarak anlatmasını sağlar. Şu ana kadar 2500’den fazla</span>
+<span class="s2">programlama dili yapılmıştır. Bunlardan bazıları: Pascal, Basic, C, C#,</span>
+<span class="s2">C++, Java, Cobol, Perl, Python, Ada, Fortran, Delphi programlama</span>
+<span class="s2">dilleridir.&quot;&quot;&quot;</span>
+
 <span class="c1"># `re.compile()` ile kullanım</span>
-<span class="n">pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^\w+&#39;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">MULTILINE</span><span class="p">)</span>
-<span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Python</span>
-<span class="s2">is</span>
-<span class="s2">awesome&quot;&quot;&quot;</span>
+<span class="n">desen</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^\w+&#39;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">MULTILINE</span><span class="p">)</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="n">pattern</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="n">sonuc</span> <span class="o">=</span> <span class="n">desen</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">metin</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sonuc</span><span class="p">)</span>
 </code></pre></div>
 
-<div class="highlight"><pre><span></span><code><span class="c1"># [&#39;Python&#39;, &#39;is&#39;, &#39;awesome&#39;]</span>
+<p><strong>Çıktı</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="s1">&#39;Programlama&#39;</span><span class="p">,</span> <span class="s1">&#39;istediğini&#39;</span><span class="p">,</span> <span class="s1">&#39;dilleri&#39;</span><span class="p">,</span> <span class="s1">&#39;verinin&#39;</span><span class="p">,</span> <span class="s1">&#39;yapılacağını&#39;</span><span class="p">,</span> <span class="s1">&#39;programlama&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;dilleridir&#39;</span><span class="p">]</span>
 </code></pre></div>
 
-<div class="highlight"><pre><span></span><code><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Python</span>
-<span class="s2">is</span>
-<span class="s2">awesome&quot;&quot;&quot;</span>
-
-<span class="c1"># Düzenli ifade içinde kullanım</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^\w+&#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">MULTILINE</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<p>Kod, her bir satırın ilk kelimesini döndürdü.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Düzenli ifade içinde kullanım</span>
+<span class="n">sonuc</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^\w+&#39;</span><span class="p">,</span> <span class="n">metin</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">MULTILINE</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sonuc</span><span class="p">)</span>
 </code></pre></div>
 
-<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="s1">&#39;Python&#39;</span><span class="p">,</span> <span class="s1">&#39;is&#39;</span><span class="p">,</span> <span class="s1">&#39;awesome&#39;</span><span class="p">]</span>
+<p><strong>Çıktı</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="s1">&#39;Programlama&#39;</span><span class="p">,</span> <span class="s1">&#39;istediğini&#39;</span><span class="p">,</span> <span class="s1">&#39;dilleri&#39;</span><span class="p">,</span> <span class="s1">&#39;verinin&#39;</span><span class="p">,</span> <span class="s1">&#39;yapılacağını&#39;</span><span class="p">,</span> <span class="s1">&#39;programlama&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;dilleridir&#39;</span><span class="p">]</span>
 </code></pre></div>
 
-<p>Bu örneklerde, <code>re.MULTILINE</code> bayrağı kullanılarak <code>^\w+</code> düzenli ifadesi her satırın başındaki kelimeyi eşleştirmektedir.</p>
+<p>Yukarıdaki kod ile aynı sonucu elde ettik.</p>
 <h2>re.DOTALL veya re.S</h2>
-<p>Bildiğiniz gibi, metakarakterler arasında yer alan <code>.</code> sembolü herhangi bir karakterin yerini tutuyordu. Bu metakarakter bütün karakterlerin yerini tutmak üzere kullanılabilir. Hatırlarsanız, <code>.</code> metakarakterini anlatırken, <strong>bu metakarakterin, yeni satır karakterinin yerini tutmayacağını</strong> söylemiştik.  <code>re.DOTALL</code> veya <code>re.S</code> bayrağı, bir düzenli ifadenin <code>.</code> karakterinin metin içinde yeni satır karakterleriyle de eşleşmesini sağlar. Bunu bir örnek yardımıyla görelim. Diyelim ki elimizde şöyle bir karakter dizisi var:</p>
-<div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Ben Python,</span>
-<span class="s2">Monty Python&quot;&quot;&quot;</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<p>Bildiğiniz gibi, metakarakterler arasında yer alan <code>.</code> sembolü herhangi bir karakterin yerini tutuyordu. Bu metakarakter bütün karakterlerin yerini tutmak üzere kullanılabilir. Hatırlarsanız, <code>.</code> metakarakterini anlatırken, <strong>bu metakarakterin, yeni satır karakterinin yerini tutmayacağını</strong> söylemiştik.  <code>re.DOTALL</code> veya <code>re.S</code> <strong>bayrağı</strong>, bir düzenli ifadenin <code>.</code> karakterinin metin içinde <strong>yeni satır karakterleriyle de eşleşmesini sağlar</strong>. Bunu bir örnek yardımıyla görelim. Diyelim ki elimizde şöyle bir karakter dizisi var:</p>
+<div class="highlight"><pre><span></span><code><span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Ben Python,</span>
+<span class="s2">Monty Python</span><span class="se">\n</span><span class="s2">Nam-ı diğer Süper Python&quot;&quot;&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">metin</span><span class="p">)</span>
 </code></pre></div>
 
 <div class="highlight"><pre><span></span><code>Ben Python,
 Monty Python
+Nam-ı diğer Süper Python
 </code></pre></div>
 
 <p>Bu karakter dizisi içinde <strong>Python</strong> kelimesini temel alarak bir arama yapmak istiyorsak eğer, kullanacağımız şu kod istediğimiz şeyi yeterince yerine getiremeyecektir:</p>
 <div class="highlight"><pre><span></span><code><span class="n">derle</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;Python.*&quot;</span><span class="p">)</span>
-<span class="n">nesne</span> <span class="o">=</span> <span class="n">derle</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">nesne</span> <span class="o">=</span> <span class="n">derle</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">metin</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="n">nesne</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">nesne</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
@@ -177,26 +204,27 @@ Monty Python
 <p>Bunun sebebi, <code>.</code> metakarakterinin <code>\n</code> (yeni satır) kaçış dizisini dikkate almamasıdır. Bu yüzden <strong>bu kaçış dizisinin ötesine geçip orada arama yapmıyor</strong>. Ama şimdi biz ona bu yeteneği de kazandıracağız:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># `re.compile()` ile kullanım</span>
 <span class="n">derle</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;Python.*&quot;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">DOTALL</span><span class="p">)</span>
-<span class="n">nesne</span> <span class="o">=</span> <span class="n">derle</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">nesne</span> <span class="o">=</span> <span class="n">derle</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">metin</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="n">nesne</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">nesne</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
 </code></pre></div>
 
-<div class="highlight"><pre><span></span><code>Python,
-Monty Python
+<div class="highlight"><pre><span></span><code><span class="n">Python</span><span class="p">,</span>
+<span class="n">Monty</span> <span class="n">Python</span>
+<span class="n">Nam</span><span class="o">-</span><span class="n">ı</span> <span class="n">diğer</span> <span class="n">Süper</span> <span class="n">Python</span>
 </code></pre></div>
 
 <p><code>re.DOTALL</code> seçeneğini <code>re.S</code> şeklinde de kısaltabilirsiniz / kullanabilirsiniz.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
 
-<span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;This is a multiline</span>
+<span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;This is a multiline</span>
 <span class="s2">text with new lines.</span>
 <span class="s2">&quot;&quot;&quot;</span>
 
 <span class="c1"># Düzenli ifade içinde kullanım</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;.+&#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">S</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>  
+<span class="n">sonuc</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;.+&#39;</span><span class="p">,</span> <span class="n">metin</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">S</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sonuc</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>  
 </code></pre></div>
 
 <div class="highlight"><pre><span></span><code>This is a multiline
@@ -226,7 +254,34 @@ text with new lines.
 </code></pre></div>
 
 <p>Bu örnekte, <code>re.UNICODE</code> bayrağı kullanılarak <code>\w+</code> düzenli ifadesi Unicode karakterlerle kelime karakterlerini eşleştirmektedir.</p>
-<h1></h1>
+<h2>Bayrakların Birlikte Kullanımı</h2>
+<p>Bayraklar konusunda anlatılacak bir konu da birden fazla bayrağın aynı desen ile birlikte kullanımı. Örneğin hem <strong>çok satırlı</strong> tarama hem de <strong>büyük-küçük harf duyarlıksız</strong>  eşleşme yapılmak istenirse <code>re.M</code> (<code>re.MULTILINE</code>) ve <code>re.I</code> (<code>re.IGNORECASE</code>)  bayraklarını <strong>birlikte</strong> kullanmak gerekir. Bu iki bayrağı birlikte kullanmak için yapılması gereken <code>|</code> (pipe) işaretini kullanmaktır.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Guido Van Rossum Python&#39;ı geliştirmeye 1990 yılında başlamış... Yani aslında Python için nispeten yeni</span>
+<span class="s2">bir dil denebilir. Ancak Python&#39;un çok uzun bir geçmişi olmasa da, bu dil öteki dillere kıyasla kolay olması, hızlı</span>
+<span class="s2">olması, ayrı bir derleyici programa ihtiyaç duymaması ve bunun gibi pek çok nedenden ötürü çoğu kimsenin gözdesi</span>
+<span class="s2">haline gelmiştir. Ayrıca Google&#39;ın da Python&#39;a özel bir önem ve değer verdiğini, çok iyi derecede Python bilenlere</span>
+<span class="s2">iş olanağı sunduğunu da hemen söyleyelim. Mesela bundan kısa bir süre önce Python&#39;ın yaratıcısı Guido Van Rossum </span>
+<span class="s2">Google&#39;de işe başladı...</span>
+<span class="s2">Python 1980&#39;lerin sonunda ABC programlama diline alternatif olarak tasarlanmıştı. Python 2.0, ilk kez 2000 yılında </span>
+<span class="s2">yayınlandı. 2008&#39;de yayınlanan Python 3.0, dilin önceki versiyonuyla tam uyumlu değildir ve Python 2.x&#39;te yazılan </span>
+<span class="s2">kodların Python 3.x&#39;te çalışması için değiştirilmesi gerekmektedir. Python 2 versiyonun resmi geliştirilme süreci, </span>
+<span class="s2">dilin son sürümü olan Python 2.7.x Serisi versiyonların ardından 1 Ocak 2020 itibarıyla resmi olarak sona erdi. </span>
+<span class="s2">Python 2.x geliştirilme desteğinin sona ermesinin ardından, Python dilinin 3.7.x ve sonraki sürümlerinin </span>
+<span class="s2">geliştirilmesi devam etmektedir.&quot;&quot;&quot;</span>
+
+<span class="n">desen</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^g\w+&quot;</span><span class="p">,</span> <span class="n">flags</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">M</span> <span class="o">|</span> <span class="n">re</span><span class="o">.</span><span class="n">I</span><span class="p">)</span>
+<span class="n">sonuc</span> <span class="o">=</span> <span class="n">desen</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">metin</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sonuc :&quot;</span><span class="p">,</span> <span class="n">sonuc</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>Çıktı</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Sonuc</span> <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Guido&#39;</span><span class="p">,</span> <span class="s1">&#39;Google&#39;</span><span class="p">,</span> <span class="s1">&#39;geliştirilmesi&#39;</span><span class="p">]</span>
+</code></pre></div>
+
+<p><code>r"^g\w+", flags = re.M | re.I)</code> deseni, her bir satırın başında, büyük-küçük harfe bakmaksızın <strong>g</strong> harfi ile başlayan kelimeleri aradık ve bulduk.</p>
 
 		<span class="post-tags">
 			Tags:

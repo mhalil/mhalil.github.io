@@ -121,30 +121,80 @@
 </code></pre></div>
 
 <p><strong>Tekrar Kullanım Kolaylığı:</strong> </p>
-<p>Derlenmiş bir düzenli ifade nesnesi oluşturduktan sonra, aynı deseni farklı metinler üzerinde birden çok kez kullanabilirsiniz. Bu, aynı deseni defalarca yazmak ve kodu çalıştırdıktan sonra her seferinde python tarafından derlemekten daha hızlı, temiz ve okunabilirlik sağlar.</p>
+<p>Derlenmiş bir düzenli ifade nesnesi oluşturduktan sonra, <strong>aynı deseni farklı metinler üzerinde birden çok kez kullanabilirsiniz</strong>. Bu, aynı deseni defalarca yazmak ve kodu çalıştırdıktan sonra her seferinde python tarafından derlemekten daha hızlı, temiz ve okunabilirlik sağlar.</p>
 <p>Örneğin:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
 
-<span class="n">pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\b\w+\b&#39;</span><span class="p">)</span>
+<span class="n">metin1</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Guido Van Rossum Python&#39;ı geliştirmeye 1990 yılında başlamış... Yani aslında Python için nispeten yeni</span>
+<span class="s2">bir dil denebilir. Ancak Python&#39;un çok uzun bir geçmişi olmasa da, bu dil öteki dillere kıyasla kolay olması, hızlı</span>
+<span class="s2">olması, ayrı bir derleyici programa ihtiyaç duymaması ve bunun gibi pek çok nedenden ötürü çoğu kimsenin gözdesi</span>
+<span class="s2">haline gelmiştir. Ayrıca Google&#39;ın da Python&#39;a özel bir önem ve değer verdiğini, çok iyi derecede Python bilenlere</span>
+<span class="s2">iş olanağı sunduğunu da hemen söyleyelim. Mesela bundan kısa bir süre önce Python&#39;ın yaratıcısı Guido Van Rossum </span>
+<span class="s2">Google&#39;de işe başladı...</span>
+<span class="s2">Python 1980&#39;lerin sonunda ABC programlama diline alternatif olarak tasarlanmıştı. Python 2.0, ilk kez 2000 yılında </span>
+<span class="s2">yayınlandı. 2008&#39;de yayınlanan Python 3.0, dilin önceki versiyonuyla tam uyumlu değildir ve Python 2.x&#39;te yazılan </span>
+<span class="s2">kodların Python 3.x&#39;te çalışması için değiştirilmesi gerekmektedir. Python 2 versiyonun resmi geliştirilme süreci, </span>
+<span class="s2">dilin son sürümü olan Python 2.7.x serisi versiyonların ardından 1 Ocak 2020 itibarıyla resmi olarak sona erdi. </span>
+<span class="s2">Python 2.x geliştirilme desteğinin sona ermesinin ardından, Python dilinin 3.7.x ve sonraki sürümlerinin </span>
+<span class="s2">geliştirilmesi devam etmektedir.&quot;&quot;&quot;</span>
 
-<span class="n">result1</span> <span class="o">=</span> <span class="n">pattern</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s2">&quot;Python is powerful&quot;</span><span class="p">)</span>
-<span class="n">result2</span> <span class="o">=</span> <span class="n">pattern</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s2">&quot;Regular expressions are versatile&quot;</span><span class="p">)</span>
-</code></pre></div>
 
-<p><strong>Bayrakları Ayarlama:</strong> </p>
-<p><code>re.compile()</code> fonksiyonu, düzenli ifadenin derlenmesi sırasında bayrakları (flags) ayarlamanıza olanak tanır. (<em>Bayraklar konusu ilgili sayfada detaylı olarak anlatılmaktadır.</em>) Örneğin, <code>re.IGNORECASE</code> veya <code>re.UNICODE</code> bayraklarını belirleyerek deseni derleyebilirsiniz.</p>
-<p>Örneğin:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+<span class="n">metin2</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Python (C, C++, Perl, Ruby ve benzerleri gibi) bir programlama dilidir ve tıpkı öteki programlama dilleri gibi, önünüzde duran kara kutuya, yani bilgisayara hükmetmenizi sağlar.</span>
+<span class="s2">Bu programlama dili Guido Van Rossum adlı Hollandalı bir programcı tarafından 90’lı yılların başında geliştirilmeye başlanmıştır. Çoğu insan, isminin Python olmasına aldanarak, bu programlama dilinin, adını piton yılanından aldığını düşünür. </span>
+<span class="s2">Dediğimiz gibi, Python bir programlama dilidir. Üstelik pek çok dile kıyasla öğrenmesi kolay bir programlama dilidir. Bu yüzden, eğer daha önce hiç programlama deneyiminiz olmamışsa, programlama maceranıza Python’la başlamayı tercih edebilirsiniz.</span>
+<span class="s2">Eğer daha önce Python programlama dili ile ilgili araştırma yaptıysanız, şu anda piyasada iki farklı Python serisinin olduğu dikkatinizi çekmiş olmalı. 15.12.2023 tarihi itibariyle piyasada olan en yeni Python sürümleri Python 2.7.18 ve Python 3.12.1’dir.</span>
+<span class="s2">Eğer bir Python sürümü 2 sayısı ile başlıyorsa (mesela 2.7.15), o sürüm Python 2.x serisine aittir. Yok eğer bir Python sürümü 3 sayısı ile başlıyorsa (mesela 3.7.0), o sürüm Python 3.x serisine aittir.&quot;&quot;&quot;</span>
 
-<span class="n">pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\b\w+\b&#39;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span>    <span class="c1"># re.IGNORECASE bayrağı, küçük/büyük harf fark etmeksizin tüm kelimeleri döndürsün anlamına gelir.</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">pattern</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s2">&quot;Python is case-insensitive&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="n">metin3</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Programlama dili, programcının bir bilgisayara ne yapmasını</span>
+<span class="s2">istediğini anlatmasının standartlaştırılmış bir yoludur. Programlama</span>
+<span class="s2">dilleri, programcının bilgisayara hangi veri üzerinde işlem yapacağını,</span>
+<span class="s2">verinin nasıl depolanıp iletileceğini, hangi koşullarda hangi işlemlerin</span>
+<span class="s2">yapılacağını tam olarak anlatmasını sağlar. Şu ana kadar 2500’den fazla</span>
+<span class="s2">programlama dili yapılmıştır. Bunlardan bazıları: Pascal, Basic, C, C#,</span>
+<span class="s2">C++, Java, Cobol, Perl, Python, Ada, Fortran, Delphi programlama</span>
+<span class="s2">dilleridir.&quot;&quot;&quot;</span>
+
+<span class="n">desen</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\ba\w+\b&quot;</span><span class="p">)</span>
+
+<span class="n">sonuc1</span> <span class="o">=</span> <span class="n">desen</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">metin1</span><span class="p">)</span>
+<span class="n">sonuc2</span> <span class="o">=</span> <span class="n">desen</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">metin2</span><span class="p">)</span>
+<span class="n">sonuc3</span> <span class="o">=</span> <span class="n">desen</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">metin3</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sonuc 1:&quot;</span><span class="p">,</span> <span class="n">sonuc1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sonuc 2:&quot;</span><span class="p">,</span> <span class="n">sonuc2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sonuc 3:&quot;</span><span class="p">,</span> <span class="n">sonuc3</span><span class="p">)</span>
 </code></pre></div>
 
 <p><strong>Çıktı</strong>:</p>
-<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="s1">&#39;Python&#39;</span><span class="p">,</span> <span class="s1">&#39;is&#39;</span><span class="p">,</span> <span class="s1">&#39;case&#39;</span><span class="p">,</span> <span class="s1">&#39;insensitive&#39;</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="n">Sonuc</span> <span class="mi">1</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;aslında&#39;</span><span class="p">,</span> <span class="s1">&#39;ayrı&#39;</span><span class="p">,</span> <span class="s1">&#39;alternatif&#39;</span><span class="p">,</span> <span class="s1">&#39;ardından&#39;</span><span class="p">,</span> <span class="s1">&#39;ardından&#39;</span><span class="p">]</span>
+<span class="n">Sonuc</span> <span class="mi">2</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;adlı&#39;</span><span class="p">,</span> <span class="s1">&#39;aldanarak&#39;</span><span class="p">,</span> <span class="s1">&#39;adını&#39;</span><span class="p">,</span> <span class="s1">&#39;aldığını&#39;</span><span class="p">,</span> <span class="s1">&#39;araştırma&#39;</span><span class="p">,</span> <span class="s1">&#39;anda&#39;</span><span class="p">,</span> <span class="s1">&#39;aittir&#39;</span><span class="p">,</span> <span class="s1">&#39;aittir&#39;</span><span class="p">]</span>
+<span class="n">Sonuc</span> <span class="mi">3</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;anlatmasının&#39;</span><span class="p">,</span> <span class="s1">&#39;anlatmasını&#39;</span><span class="p">,</span> <span class="s1">&#39;ana&#39;</span><span class="p">]</span>
 </code></pre></div>
 
+<p><code>r"\ba\w+\b"</code> deseni ile küçük  <code>a</code> harfi ile başlayan kelimeleri 3 farklı metinde aratıp ekrana yazdırdık. Deseni bir kez oluşturduk ancak birden fazla metinde kullanabildik.</p>
+<p><strong>Bayrakları Ayarlama:</strong> </p>
+<p><code>re.compile()</code> fonksiyonu, düzenli ifadenin derlenmesi sırasında bayrakları (flags) ayarlamanıza olanak tanır. (Bayraklar konusu <a href="/duzenli-ifadeler-bayraklar.html">ilgili sayfada</a> detaylı olarak anlatılmaktadır.) Örneğin, <code>re.IGNORECASE</code> veya <code>re.UNICODE</code> bayraklarını belirleyerek deseni derleyebilirsiniz.</p>
+<p>Örneğin:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">desen</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\ba\w+\b&quot;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span> <span class="c1"># re.IGNORECASE bayrağı, küçük/büyük harf fark etmeksizin tüm kelimeleri döndürsün anlamına gelir.</span>
+
+<span class="n">sonuc1</span> <span class="o">=</span> <span class="n">desen</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">metin1</span><span class="p">)</span>
+<span class="n">sonuc2</span> <span class="o">=</span> <span class="n">desen</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">metin2</span><span class="p">)</span>
+<span class="n">sonuc3</span> <span class="o">=</span> <span class="n">desen</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">metin3</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sonuc 1:&quot;</span><span class="p">,</span> <span class="n">sonuc1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sonuc 2:&quot;</span><span class="p">,</span> <span class="n">sonuc2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sonuc 3:&quot;</span><span class="p">,</span> <span class="n">sonuc3</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>Çıktı</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Sonuc</span> <span class="mi">1</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;aslında&#39;</span><span class="p">,</span> <span class="s1">&#39;Ancak&#39;</span><span class="p">,</span> <span class="s1">&#39;ayrı&#39;</span><span class="p">,</span> <span class="s1">&#39;Ayrıca&#39;</span><span class="p">,</span> <span class="s1">&#39;ABC&#39;</span><span class="p">,</span> <span class="s1">&#39;alternatif&#39;</span><span class="p">,</span> <span class="s1">&#39;ardından&#39;</span><span class="p">,</span> <span class="s1">&#39;ardından&#39;</span><span class="p">]</span>
+<span class="n">Sonuc</span> <span class="mi">2</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;adlı&#39;</span><span class="p">,</span> <span class="s1">&#39;aldanarak&#39;</span><span class="p">,</span> <span class="s1">&#39;adını&#39;</span><span class="p">,</span> <span class="s1">&#39;aldığını&#39;</span><span class="p">,</span> <span class="s1">&#39;araştırma&#39;</span><span class="p">,</span> <span class="s1">&#39;anda&#39;</span><span class="p">,</span> <span class="s1">&#39;aittir&#39;</span><span class="p">,</span> <span class="s1">&#39;aittir&#39;</span><span class="p">]</span>
+<span class="n">Sonuc</span> <span class="mi">3</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;anlatmasının&#39;</span><span class="p">,</span> <span class="s1">&#39;anlatmasını&#39;</span><span class="p">,</span> <span class="s1">&#39;ana&#39;</span><span class="p">,</span> <span class="s1">&#39;Ada&#39;</span><span class="p">]</span>
+</code></pre></div>
+
+<p><code>r"\ba\w+\b", re.IGNORECASE</code> deseni ile küçük ya da büyük harf farketmeksizin <code>a</code> harfi ile başlayan kelimeleri 3 farklı metinde aratıp ekrana yazdırdık. Deseni bir kez oluşturduk ancak birden fazla metinde kullanabildik.</p>
 <p>Bu avantajlar, <code>re.compile()</code> fonksiyonunu kullanmanın genellikle tercih edilen bir yöntem haline getirir. Ancak, küçük uygulamalarda veya tek seferlik kullanımlarda <code>re.compile()</code> kullanmak zorunlu değildir.</p>
 
 		<span class="post-tags">
