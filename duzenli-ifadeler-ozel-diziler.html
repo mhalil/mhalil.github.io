@@ -78,7 +78,7 @@
 	<h1 class="post-title">Düzenli İfadeler - Ozel Diziler</h1>
 	<span class="post-date">Cts 02 Eylül 2023</span>
 	<h1>Özel Diziler</h1>
-<h2>\s   Boşluk Karakterinin Yerini Tutan Özel Dizi.</h2>
+<h2>\s   Boşluk (Space) Karakterinin Yerini Tutan Özel Dizi.</h2>
 <p>Bu sembol (<code>\s</code>), bir karakter dizisi içinde geçen <strong>boşlukları (boşluk, tab ve enter karakterlerini) yakalamak</strong> için kullanılır.</p>
 <div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;5 Ocak&quot;</span><span class="p">,</span> <span class="s2">&quot;27Mart&quot;</span><span class="p">,</span> <span class="s2">&quot;4 Ekim&quot;</span><span class="p">,</span> <span class="s2">&quot;Nisan 3&quot;</span><span class="p">]</span>
 
@@ -94,8 +94,10 @@
 
 <p>Yukarıdaki örnekte, bir sayı ile başlayan, ardından bir adet boşluk karakteri içeren, sonra da bir büyük veya küçük harfle devam eden karakter dizilerini ayıkladık. Burada boşluk karakterini <code>\s</code> simgesi ile gösterdiğimize dikkat edin.</p>
 <h2>\S   Boşluk Karakterinin Dışındaki Karakterlerin Tutan Özel Dizi.</h2>
-<p><code>\S</code> özel dizisi, <strong>boşluk olmayan karakterleri</strong> avlar.</p>
-<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+<p><code>\S</code> özel dizisi, <strong>boşluk olmayan karakterleri</strong> yakalar.</p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;5 Ocak&quot;</span><span class="p">,</span> <span class="s2">&quot;27Mart&quot;</span><span class="p">,</span> <span class="s2">&quot;4 Ekim&quot;</span><span class="p">,</span> <span class="s2">&quot;Nisan 3&quot;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
     <span class="n">nesne</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;\d+\S\w+&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">nesne</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">nesne</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
@@ -104,7 +106,7 @@
 <div class="highlight"><pre><span></span><code><span class="mf">27</span><span class="n">Mart</span>
 </code></pre></div>
 
-<h2>\d   Sayıların Yerini Tutan Özel Dizi.</h2>
+<h2>\d   Rakamların (Digit) Yerini Tutan Özel Dizi.</h2>
 <p>Bu sembol, bir karakter dizisi içinde geçen <strong>rakamları (ondalık sayıları) eşleştirmek için</strong> kullanılır. <code>[0-9]</code> ifadesi ile arasında önemli bir fark vardır. <strong>\d</strong> yazdığımızda, Arapça, Rusça, Çince,...vb dillerdeki rakamları da yakalar, eşleştirir. Çok dilli metinlerle çalışırken bu konuya dikkat etmek gerekir.</p>
 <p>Buraya kadar olan örneklerde bu işlevi yerine getirmek için <code>[0-9]</code> ifadesinden yararlanıyorduk. Şimdi artık aynı işlevi daha kısa yoldan, <code>\d</code> dizisi ile yerine getirebiliriz. İsterseniz yine yukarıdaki örnekten gidelim:</p>
 <div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;5 Ocak&quot;</span><span class="p">,</span> <span class="s2">&quot;27Mart&quot;</span><span class="p">,</span> <span class="s2">&quot;4 Ekim&quot;</span><span class="p">,</span> <span class="s2">&quot;Nisan 3&quot;</span><span class="p">]</span>
@@ -120,9 +122,11 @@
 </code></pre></div>
 
 <p>Burada, <code>[0-9]</code> yerine <code>\d</code> yerleştirerek daha kısa yoldan sonuca vardık.</p>
-<h2>\D   Sayı Olmayan Karakterlerin Yerini Tutan Özel Dizi.</h2>
-<p><code>\D</code> özel dizisi <strong>rakam (ondalık sayı) olmayan karakterleri</strong> avlar. Yani <code>[^0-9]</code> ile eşdeğerdir.</p>
-<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+<h2>\D  Rakam Olmayan Karakterlerin Yerini Tutan Özel Dizi.</h2>
+<p><code>\D</code> özel dizisi <strong>rakam (ondalık sayı) olmayan karakterleri</strong> yakalar. Yani <code>[^0-9]</code> ile eşdeğerdir.</p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;5 Ocak&quot;</span><span class="p">,</span> <span class="s2">&quot;27Mart&quot;</span><span class="p">,</span> <span class="s2">&quot;4 Ekim&quot;</span><span class="p">,</span> <span class="s2">&quot;Nisan 3&quot;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
     <span class="n">nesne</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;\D+&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">nesne</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">nesne</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
@@ -167,13 +171,17 @@ Nisan
 </code></pre></div>
 
 <p>Şimdi bu özel diziler için genel bir örnek verip konuyu kapatalım.</p>
-<div class="highlight"><pre><span></span><code><span class="n">veriler</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;esra : istinye 05331233445&quot;</span><span class="p">,</span> <span class="s2">&quot;esma : levent 05322134344&quot;</span><span class="p">,</span> <span class="s2">&quot;sevgi : dudullu 05354445434&quot;</span><span class="p">,</span> 
-           <span class="s2">&quot;kemal : sanayi 05425455555&quot;</span><span class="p">,</span> <span class="s2">&quot;osman : tahtakale 02124334444&quot;</span><span class="p">,</span><span class="s2">&quot;metin : taksim 02124344332&quot;</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="n">veriler</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;esra : istinye 05331233445&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;esma : levent 05322134344&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;sevgi : dudullu 05354445434&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;kemal : sanayi 05425455555&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;osman : tahtakale 02124334444&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;metin : taksim 02124344332&quot;</span><span class="p">]</span>
 </code></pre></div>
 
 <p>Amacımız bu listede yer alan isim ve telefon numaralarını <code>isim &gt; telefon numarası</code> şeklinde almak:</p>
-<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">veriler</span><span class="p">:</span>
-    <span class="n">nesne</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;(\w+)\s+:\s(\w+)\s+(\d+)&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">veri</span> <span class="ow">in</span> <span class="n">veriler</span><span class="p">:</span>
+    <span class="n">nesne</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(\w+)\s+:\s(\w+)\s+(\d+)&quot;</span><span class="p">,</span><span class="n">veri</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">nesne</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> &gt; </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">nesne</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">nesne</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">3</span><span class="p">)))</span>
 </code></pre></div>
@@ -187,6 +195,22 @@ metin &gt; 02124344332
 </code></pre></div>
 
 <p>Burada formülümüz şu şekilde: <code>Bir veya daha fazla karakter</code> + <code>bir veya daha fazla boşluk</code> + <code>’:’ işareti</code> + <code>“bir adet boşluk</code> + <code>bir veya daha fazla sayı</code></p>
+<p><strong>.format</strong> biçimi kullanmak zorunda değiliz, aynı çıktıya aşağıdaki kod ile de ulaşabiliriz;</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">veri</span> <span class="ow">in</span> <span class="n">veriler</span><span class="p">:</span>
+    <span class="n">nesne</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(\w+)\s+:\s(\w+)\s+(\d+)&quot;</span><span class="p">,</span><span class="n">veri</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">nesne</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">nesne</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="s2">&quot;&gt;&quot;</span><span class="p">,</span> <span class="n">nesne</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+</code></pre></div>
+
+<p><strong>Çıktı</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">esra</span> <span class="o">&gt;</span> <span class="mi">05331233445</span>
+<span class="n">esma</span> <span class="o">&gt;</span> <span class="mi">05322134344</span>
+<span class="n">sevgi</span> <span class="o">&gt;</span> <span class="mi">05354445434</span>
+<span class="n">kemal</span> <span class="o">&gt;</span> <span class="mi">05425455555</span>
+<span class="n">osman</span> <span class="o">&gt;</span> <span class="mi">02124334444</span>
+<span class="n">metin</span> <span class="o">&gt;</span> <span class="mi">02124344332</span>
+</code></pre></div>
+
 <h2>\A Metin Başında Eşleşme Kontrolü</h2>
 <p><code>\A</code> meta karakteri, <strong>bir düzenli ifadenin (string ifade çok satırlı da olsa) yalnız başlangıcı ile eşleşme olup olmadığını tespit eder.</strong> Başka bir deyişle, <code>\A</code> ifadesi sadece tüm metnin başlangıcında eşleşmeye çalışır. <code>^</code> (şapka) metakarakteri ile tüm paragraf başlarında eşleşme olup olmadığı kontrol edilirken <code>\A</code> ile sadece metnin en baş kısmına bakılır. </p>
 <p><code>\A</code> metakarakterinin <code>findall</code> fonksiyonu ile (çok satırlı / paragraflı metin içinde) kullanımına bir örnek verelim.</p>
@@ -203,7 +227,7 @@ metin &gt; 02124344332
     <span class="nb">print</span><span class="p">(</span><span class="n">eslesen</span><span class="p">)</span>
 </code></pre></div>
 
-<p>Yukarıdaki kodu incelersek; desen ile <strong>P</strong> harfi ile başlayan ve devamında harf gruplarının geldiği tüm kelimelerin tespit edilmeye çalışıldığını görüyoruz. <code>findall</code> fonksiyonu içerisinde <code>re.MULTILINE</code> ifadesi kullanılmasına rağmen <code>\A</code> metakarakteri tüm paragraflarda eşleşme aramaz, sadece metnin başını kontrol eder. Kodun çıktısı aşağıdadır.</p>
+<p>Yukarıdaki kodu incelersek; desen, <strong>P</strong> harfi ile başlayan ve devamında alfanümerik harf gruplarının geldiği tüm kelimelerin tespit edilmeye çalışıldığını görüyoruz. <code>findall</code> fonksiyonu içerisinde <code>re.MULTILINE</code> ifadesi kullanılmasına rağmen <code>\A</code> metakarakteri tüm paragraflarda eşleşme aramaz, sadece metnin başını kontrol eder. Kodun çıktısı aşağıdadır.</p>
 <div class="highlight"><pre><span></span><code><span class="n">Python</span>
 </code></pre></div>
 
@@ -226,8 +250,23 @@ metin &gt; 02124344332
     <span class="nb">print</span><span class="p">(</span><span class="n">eslesen</span><span class="p">)</span>
 </code></pre></div>
 
-<p>Yukarıdaki kodu incelersek; desen ile öncesinde harf gruplarının geldiği sonrasında ise <strong>r.</strong> ile biten kelimelerin tespit edilmeye çalışıldığını görüyoruz. <code>findall</code> fonksiyonu içerisinde <code>re.MULTILINE</code> ifadesi kullanılmasına rağmen tüm paragraflarda eşleşme aranmaz. <code>\Z</code> metakarakteri ile <strong>sadece son paragrafın bitiminde</strong> eşleşme olup olmadığı sorgulanır. Kodun çıktısı aşağıdaki gibidir.</p>
+<p>Yukarıdaki kodu incelersek; desen ile öncesinde alfanümerik harf gruplarının geldiği sonrasında ise <strong>r.</strong> ile biten kelimelerin tespit edilmeye çalışıldığını görüyoruz. <code>findall</code> fonksiyonu içerisinde <code>re.MULTILINE</code> ifadesi kullanılmasına rağmen tüm paragraflarda eşleşme aranmaz. <code>\Z</code> metakarakteri ile <strong>sadece son paragrafın bitiminde</strong> eşleşme olup olmadığı sorgulanır. Kodun çıktısı aşağıdaki gibidir.</p>
 <div class="highlight"><pre><span></span><code><span class="n">aittir</span><span class="o">.</span>
+</code></pre></div>
+
+<p>Eğer desende <code>\Z</code> yerine <code>$</code> karakteri kullanılsaydı, sonuç nasıl olurdu, inceleyelim.</p>
+<div class="highlight"><pre><span></span><code><span class="n">desen</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;\w+r\.$&quot;</span>       
+
+<span class="n">eslesme</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">desen</span><span class="p">,</span> <span class="n">metin</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">MULTILINE</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">eslesen</span> <span class="ow">in</span> <span class="n">eslesme</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">eslesen</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>Çıktı</strong>:</p>
+<div class="highlight"><pre><span></span><code>sağlar.
+dir.
+aittir.
 </code></pre></div>
 
 <h2>\b Kelime Sınırını Belirten Özel Dizi</h2>
@@ -243,7 +282,7 @@ metin &gt; 02124344332
 </code></pre></div>
 
 <p>Büyük harf ile başlayan kelimeleri görmek istediğimizde yukarıdaki deseni kullanabiliriz.</p>
-<p>Cümle sonlarını bulmak için ise aşağıdaki desen işimize yarayabilir.</p>
+<p>Cümle sonlarını bulmak için ise aşağıdaki (nokta ve boşluktan oluşan) desen işimize yarayabilir.</p>
 <div class="highlight"><pre><span></span><code><span class="n">desen</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;\w+\.\s\b&quot;</span>
 <span class="n">cumle_sonu</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">desen</span><span class="p">,</span> <span class="n">veri</span><span class="p">)</span>
 
@@ -287,7 +326,7 @@ metin &gt; 02124344332
 <div class="highlight"><pre><span></span><code>[&#39;01.02.1980&#39;, &#39;03/04/1975&#39;]
 </code></pre></div>
 
-<p>Gördüğünüz gibi nokta (.) ve taksim, bölü (/) işaretini, köşeli parantez içerisine yazarak alternatif seçenekler oluşturmuş olduk.</p>
+<p>Gördüğünüz gibi nokta (.) ve taksim nam-ı diğer bölü (/) işaretini, köşeli parantez içerisine yazarak alternatif seçenekler oluşturmuş olduk.</p>
 <p><strong>NOT:</strong> <strong>Nokta işaretini</strong> desen içinde doğrudan yazarken kaçış dizisi olan ters taksim işaretini yazmamız gerekiyor. Oysa köşeli parantez içerisinde yazdığımızda kaçış dizini olan ters bölü işaretini kullanmıyoruz. Bu, Köşeli parantezin bir özelliğidir. Diğer sembolleri de nokta gibi yazabiliyoruz.</p>
 <h2>\B Özel Dizisi</h2>
 <p><code>\b</code> özel dizisinin tam tersidir.</p>
@@ -302,8 +341,9 @@ metin &gt; 02124344332
 </code></pre></div>
 
 <p><code>"\w+er\b"</code> deseni ile, başında alfanümerik karakterler olan sonu <strong>er</strong> ile biten kelimeleri bulmaya çalıştık.</p>
-<div class="highlight"><pre><span></span><code><span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Recep&#39;</span><span class="p">,</span> <span class="s1">&#39;Ramazan&#39;</span><span class="p">,</span> <span class="s1">&#39;Seher&#39;</span><span class="p">,</span> <span class="s1">&#39;(Halil)&#39;</span><span class="p">,</span> <span class="s1">&#39;manzara&#39;</span><span class="p">,</span> <span class="s1">&#39;Sertaç&#39;</span><span class="p">,</span> <span class="s1">&#39;Halili&#39;</span><span class="p">,</span> <span class="s1">&#39;zaman&#39;</span><span class="p">,</span> <span class="s1">&#39;erkek&#39;</span><span class="p">,</span> <span class="s1">&#39;Halil.&#39;</span><span class="p">,</span> 
-         <span class="s1">&#39;şeker&#39;</span><span class="p">,</span> <span class="s1">&#39;2.345&#39;</span><span class="p">,</span> <span class="s1">&#39;python,&#39;</span><span class="p">,</span> <span class="s1">&#39;py3,&#39;</span><span class="p">,</span> <span class="s1">&#39;py2&#39;</span><span class="p">,</span><span class="s1">&#39;py&#39;</span><span class="p">,</span> <span class="s1">&#39;py.&#39;</span><span class="p">,</span> <span class="s1">&#39;py!&#39;</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Recep&#39;</span><span class="p">,</span> <span class="s1">&#39;Ramazan&#39;</span><span class="p">,</span> <span class="s1">&#39;Seher&#39;</span><span class="p">,</span> <span class="s1">&#39;(Halil)&#39;</span><span class="p">,</span> <span class="s1">&#39;manzara&#39;</span><span class="p">,</span> <span class="s1">&#39;Sertaç&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;Halili&#39;</span><span class="p">,</span> <span class="s1">&#39;zaman&#39;</span><span class="p">,</span> <span class="s1">&#39;erkek&#39;</span><span class="p">,</span> <span class="s1">&#39;Halil.&#39;</span><span class="p">,</span> <span class="s1">&#39;şeker&#39;</span><span class="p">,</span> <span class="s1">&#39;2.345&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;python,&#39;</span><span class="p">,</span> <span class="s1">&#39;py3,&#39;</span><span class="p">,</span> <span class="s1">&#39;py2&#39;</span><span class="p">,</span> <span class="s1">&#39;py&#39;</span><span class="p">,</span> <span class="s1">&#39;py.&#39;</span><span class="p">,</span> <span class="s1">&#39;py!&#39;</span><span class="p">]</span>
 
 <span class="n">desen</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;er\B&quot;</span> 
 
@@ -316,7 +356,7 @@ metin &gt; 02124344332
 erkek
 </code></pre></div>
 
-<p><code>"er\B"</code> deseni ile, içinde <strong>er</strong> ifadesi olan ancak sonu <strong>er</strong> ile <strong>bitmeyen</strong> kelimeleri bulmaya çalıştık.</p>
+<p><code>"er\B"</code> deseni ile, içinde <strong>er</strong> ifadesi <strong>olan</strong> ancak sonu <strong>er</strong> ile <strong>bitmeyen</strong> kelimeleri bulmaya çalıştık.</p>
 <div class="highlight"><pre><span></span><code><span class="n">desen</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;\Ber\B&quot;</span> 
 
 <span class="k">for</span> <span class="n">oge</span> <span class="ow">in</span> <span class="n">liste</span><span class="p">:</span>
@@ -327,7 +367,7 @@ erkek
 <div class="highlight"><pre><span></span><code>Sertaç
 </code></pre></div>
 
-<p><code>"\Ber\B"</code> deseni ile, içinde <strong>er</strong> ifadesi olan ancak başında ve sonunda <strong>er</strong> ifadesi <strong>bulunmayan</strong> kelimeleri bulmaya çalıştık.</p>
+<p><code>"\Ber\B"</code> deseni ile, içinde <strong>er</strong> ifadesi <strong>olan</strong> ancak başında ve sonunda <strong>er</strong> ifadesi <strong>bulunmayan</strong> kelimeleri bulmaya çalıştık.</p>
 
 		<span class="post-tags">
 			Tags:
