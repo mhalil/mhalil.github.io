@@ -89,7 +89,7 @@ Python, <strong>köşeli parantez içinde gördüğü bütün karakterleri tek t
          <span class="s2">&quot;özlem&quot;</span><span class="p">]</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">liste</span><span class="p">:</span>
-    <span class="n">nesne</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;öz[chk]an&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+    <span class="n">nesne</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;öz[chk]an&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">nesne</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">nesne</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
 </code></pre></div>
@@ -109,7 +109,7 @@ Python, <strong>köşeli parantez içinde gördüğü bütün karakterleri tek t
 
 <p>Mesela biz bu listedeki öğeler içinde, sayıyla başlayanları ayıklayalım:</p>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;[0-9]&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[0-9]&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </code></pre></div>
 
@@ -121,7 +121,7 @@ Python, <strong>köşeli parantez içinde gördüğü bütün karakterleri tek t
 <p>Burada parantez içinde kullandığımız ifadeye dikkat edin. <strong>0</strong> ile <strong>9</strong> arasındaki bütün öğeleri içeren bir karakter dizisi tanımladık. Yani kısaca, içinde herhangi bir sayı barındıran öğeleri kapsama alanımıza aldık. Burada ayrıca <code>search()</code> yerine <code>match()</code> metodunu kullandığımıza da dikkat edin. <code>match()</code> metodunu kullanmamızın nedeni, bu metodun bir karakter dizisinin sadece en başına bakması. Amacımız sayı ile başlayan bütün öğeleri ayıklamak olduğuna göre, yukarıda yazdığımız kod, liste öğeleri içinde yer alan ve sayı ile başlayan bütün öğeleri ayıklayacaktır.</p>
 <p>Şimdi de isterseniz listedeki <strong>TY76Z</strong> öğesini nasıl alabileceğimize bakalım:</p>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;[A-Z][A-Z][0-9]&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[A-Z][A-Z][0-9]&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </code></pre></div>
 
@@ -134,7 +134,7 @@ Python, <strong>köşeli parantez içinde gördüğü bütün karakterleri tek t
 <h2>. Nokta</h2>
 <p>Bu metakarakter, <strong>yeni satır karakteri hariç bütün karakterleri temsil etmek için kullanılır.</strong>  <code>.</code> metakarakteri, <strong>sadece tek bir karakterin yerini tutar</strong>. Aşağıdaki örneği inceleyelim:</p>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">liste</span><span class="p">:</span>
-    <span class="n">nesne</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;öz.an&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">nesne</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;öz.an&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">nesne</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">nesne</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
 </code></pre></div>
@@ -146,7 +146,7 @@ Python, <strong>köşeli parantez içinde gördüğü bütün karakterleri tek t
 
 <p>Gördüğünüz gibi, daha önce <code>[]</code> metakarakterini kullanarak yazdığımız bir düzenli ifadeyi bu kez farklı şekilde yazıyoruz. Unutmayın, bir düzenli ifade birkaç farklı şekilde yazılabilir. Biz bunlar içinde en basit ve en anlaşılır olanını seçmeliyiz. Ayrıca yukarıdaki kodu birkaç farklı şekilde de yazabilirsiniz. Mesela şu yazım da bizim durumumuzda geçerli bir seçenek olacaktır:</p>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">liste</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;öz.an&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;öz.an&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </code></pre></div>
 
@@ -159,7 +159,7 @@ Python, <strong>köşeli parantez içinde gördüğü bütün karakterleri tek t
 <div class="highlight"><pre><span></span><code><span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ahmet&quot;</span><span class="p">,</span><span class="s2">&quot;kemal&quot;</span><span class="p">,</span> <span class="s2">&quot;kamil&quot;</span><span class="p">,</span> <span class="s2">&quot;mehmet&quot;</span><span class="p">]</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">liste</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;.met&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;.met&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </code></pre></div>
 
@@ -168,7 +168,7 @@ Python, <strong>köşeli parantez içinde gördüğü bütün karakterleri tek t
 <div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;23BH56&#39;</span><span class="p">,</span> <span class="s1">&#39;TY76Z&#39;</span><span class="p">,</span> <span class="s1">&#39;4Y7UZ&#39;</span><span class="p">,</span> <span class="s1">&#39;TYUDZ&#39;</span><span class="p">,</span> <span class="s1">&#39;34534&#39;</span><span class="p">,</span> <span class="s2">&quot;1agAY54&quot;</span><span class="p">]</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;.[0-9a-z]&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;.[0-9a-z]&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </code></pre></div>
 
@@ -189,7 +189,7 @@ Python, <strong>köşeli parantez içinde gördüğü bütün karakterleri tek t
 <div class="highlight"><pre><span></span><code><span class="n">yeniliste</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;st&quot;</span><span class="p">,</span> <span class="s2">&quot;sat&quot;</span><span class="p">,</span> <span class="s2">&quot;saat&quot;</span><span class="p">,</span> <span class="s2">&quot;saaat&quot;</span><span class="p">,</span> <span class="s2">&quot;falanca&quot;</span><span class="p">]</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">yeniliste</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;sa*t&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;sa*t&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </code></pre></div>
 
@@ -205,7 +205,7 @@ saaat
 <div class="highlight"><pre><span></span><code><span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ahmet&quot;</span><span class="p">,</span> <span class="s2">&quot;kemal&quot;</span><span class="p">,</span> <span class="s2">&quot;kamil&quot;</span><span class="p">,</span> <span class="s2">&quot;mehmet&quot;</span><span class="p">]</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">liste</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;.*met&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;.*met&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </code></pre></div>
 
@@ -220,7 +220,7 @@ mehmet
 <div class="highlight"><pre><span></span><code><span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ahmet&quot;</span><span class="p">,</span> <span class="s2">&quot;mehmet&quot;</span><span class="p">,</span> <span class="s2">&quot;met&quot;</span><span class="p">,</span> <span class="s2">&quot;kezban&quot;</span><span class="p">]</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">liste</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;.+met&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;.+met&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </code></pre></div>
 
@@ -231,7 +231,7 @@ mehmet
 <div class="highlight"><pre><span></span><code><span class="n">yeniliste</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;st&quot;</span><span class="p">,</span> <span class="s2">&quot;sat&quot;</span><span class="p">,</span> <span class="s2">&quot;saat&quot;</span><span class="p">,</span> <span class="s2">&quot;saaat&quot;</span><span class="p">,</span> <span class="s2">&quot;falanca&quot;</span><span class="p">]</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">yeniliste</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;sa+t&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;sa+t&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </code></pre></div>
 
@@ -243,7 +243,7 @@ saaat
 <div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;23BH56&quot;</span><span class="p">,</span> <span class="s2">&quot;TY76Z&quot;</span><span class="p">,</span> <span class="s2">&quot;4Y7UZ&quot;</span><span class="p">,</span> <span class="s2">&quot;TYUDZ&quot;</span><span class="p">,</span> <span class="s2">&quot;34534&quot;</span><span class="p">]</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;[A-Z]+[0-9]&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[A-Z]+[0-9]&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </code></pre></div>
 
@@ -255,7 +255,7 @@ saaat
 <div class="highlight"><pre><span></span><code><span class="n">yeniliste</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;st&quot;</span><span class="p">,</span> <span class="s2">&quot;sat&quot;</span><span class="p">,</span> <span class="s2">&quot;saat&quot;</span><span class="p">,</span> <span class="s2">&quot;saaat&quot;</span><span class="p">,</span> <span class="s2">&quot;falanca&quot;</span><span class="p">]</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">yeniliste</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;sa?t&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;sa?t&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </code></pre></div>
 
@@ -271,7 +271,7 @@ sat
 </code></pre></div>
 
 <p>Şimdi yapmak istediğimiz şey <code>uluslararası</code> kelimesini bulmak. Ama dikkat ederseniz metin içinde <code>uluslararası</code> kelimesi aynı zamanda <code>uluslar arası</code> şeklinde de geçiyor. Bizim bu iki kullanımı da kapsayacak bir düzenli ifade yazmamız gerekecek.</p>
-<div class="highlight"><pre><span></span><code><span class="n">nesne</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s2">&quot;[Uu]luslar ?arası&quot;</span><span class="p">,</span> <span class="n">metin</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">nesne</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[Uu]luslar ?arası&quot;</span><span class="p">,</span> <span class="n">metin</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">nesne</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
@@ -287,7 +287,7 @@ uluslar arası
 <h2>{} Küme Parantezi</h2>
 <p>{ } Küme Parantezi metakarakterimiz yardımıyla <strong>bir eşleşmeden kaç adet istediğimizi</strong> belirtebiliyoruz. Yine aynı örnek üzerinden gidelim:</p>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">yeniliste</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;sa</span><span class="si">{3}</span><span class="s2">t&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;sa</span><span class="si">{3}</span><span class="s2">t&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </code></pre></div>
 
@@ -297,7 +297,7 @@ uluslar arası
 <p>Burada <code>a</code> karakterinin <strong>3 kez</strong> tekrar etmesini istediğimizi belirttik. Python da bu emrimizi hemen yerine getirdi.</p>
 <p>Bu metakarakterin ilginç bir özelliği daha vardır. Küme içinde iki farklı sayı yazarak, <strong>bir karakterin en az ve en çok</strong> kaç kez tekrar etmesini istediğimizi belirtebiliriz. Örneğin:</p>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">yeniliste</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;sa{0,3}t&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;sa{0,3}t&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </code></pre></div>
 
@@ -315,7 +315,7 @@ saaat
 <div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;23BH56&#39;</span><span class="p">,</span> <span class="s1">&#39;TY76Z&#39;</span><span class="p">,</span> <span class="s1">&#39;4Y7UZ&#39;</span><span class="p">,</span> <span class="s1">&#39;TYUDZ&#39;</span><span class="p">,</span> <span class="s1">&#39;34534&#39;</span><span class="p">,</span> <span class="s1">&#39;1agAY54&#39;</span><span class="p">]</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
-    <span class="n">nesne</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;^[A-Z]+[0-9]&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">nesne</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^[A-Z]+[0-9]&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">nesne</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">nesne</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
 </code></pre></div>
@@ -326,7 +326,7 @@ saaat
 <p>Gördüğünüz gibi, <code>^</code> (şapka) metakarakteri <code>search()</code> metodunun, karakter dizilerinin sadece en başına bakmasını sağladı. O yüzden de bize sadece, <code>TY7</code> çıktısını verdi. </p>
 <p>Aynı kodu, şapkasız olarak, şu şekilde kullanırsak:</p>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
-    <span class="n">nesne</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;[A-Z]+[0-9]&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">nesne</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[A-Z]+[0-9]&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">nesne</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">nesne</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
 </code></pre></div>
@@ -340,7 +340,7 @@ AY5
 <p>Gördüğünüz gibi, <code>^</code> şapka sembolü olmadığında <code>search()</code> metodu karakter dizisinin tamamını tarıyor. Biz yukarıdaki koda bir <code>^</code> sembolü ekleyerek, metodumuzun sadece karakter dizisinin en başına bakmasını istedik. </p>
 <p>Burada dikkatimizi çekmesi gereken başka bir nokta da, <code>search()</code> metodundaki çıktının <strong>kırpılmış</strong> olması. Dikkat ettiyseniz, <code>search()</code> metodu bize öğenin tamamını vermedi. Öğelerin yalnızca <code>[A-Z]+[0-9]</code> kalıbına uyan kısımlarını verdi. Çünkü biz ona tersini söylemedik. Eğer öğelerin tamamını istiyorsak bunu açık açık belirtmemiz gerekir:</p>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
-    <span class="n">nesne</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;[A-Z]+[0-9].*&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">nesne</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[A-Z]+[0-9].*&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">nesne</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">nesne</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
 </code></pre></div>
@@ -353,7 +353,7 @@ AY54
 
 <p>Veya metodumuzun karakter dizisinin sadece en başına bakmasını istersek:</p>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
-    <span class="n">nesne</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;^[A-Z]+[0-9].*&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">nesne</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^[A-Z]+[0-9].*&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">nesne</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">nesne</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
 </code></pre></div>
@@ -399,7 +399,7 @@ AY54
 <p><strong>Bu görevini sadece <code>[]</code> metakarakterinin içinde kullanıldığı zaman yerine getirir.</strong> Bunu bir örnekle görelim. Yukarıdaki listemiz üzerinde öyle bir süzgeç uygulayalım ki, <strong>1agAY54</strong> öğesi çıktılarımız arasında görünmesin. </p>
 <p>Bu öğeyi avlayabilmek için kullanmamız gereken düzenli ifade şöyle olacaktır: <code>[0-9A-Z][^a-z]+</code></p>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
-    <span class="n">nesne</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;[0-9A-Z][^a-z]+&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">nesne</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[0-9A-Z][^a-z]+&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">nesne</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">nesne</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
 </code></pre></div>
@@ -446,7 +446,7 @@ AY54
 
 <p>Diyelim ki yukarıda tanımlı listeden, <strong>at</strong> hecesiyle biten kelimeleri ayıklamak istiyoruz:</p>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">liste</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;at$&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;at$&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </code></pre></div>
 
@@ -460,7 +460,7 @@ sat
 
 <p>Burada <code>$</code> metakarakteri sayesinde aradığımız karakter dizisinin nasıl bitmesi gerektiğini belirleyebildik. Eğer biz <strong>at</strong> ile başlayan bütün öğeleri ayıklamak isteseydik ne yapmamız gerektiğini biliyorsunuz:</p>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">liste</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;^at&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^at&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </code></pre></div>
 
@@ -504,14 +504,14 @@ atkı
 
 <p>Amacımız bu listedeki <strong>dolarlı</strong> değerleri ayıklamaksa ne yapacağız? Şunu deneyelim önce:</p>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">liste</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;[0-9]+$&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[0-9]+$&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </code></pre></div>
 
 <p>Python <code>$</code> işaretinin özel anlamından dolayı, bizim sayıyla biten bir karakter dizisi aradığımızı zannedecek, dolayısıyla da herhangi bir çıktı vermeyecektir. Çünkü listemizde sayıyla biten bir karakter dizisi yok.</p>
 <p>Peki biz ne yapacağız? İşte bu noktada <code>\</code> metakarakteri devreye girecek. Hemen bakalım:</p>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">liste</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;[0-9]+\$&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[0-9]+\$&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </code></pre></div>
 
@@ -525,7 +525,7 @@ atkı
 <div class="highlight"><pre><span></span><code><span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;at&quot;</span><span class="p">,</span> <span class="s2">&quot;katkı&quot;</span><span class="p">,</span> <span class="s2">&quot;fakat&quot;</span><span class="p">,</span> <span class="s2">&quot;atkı&quot;</span><span class="p">,</span> <span class="s2">&quot;rahat&quot;</span><span class="p">,</span> <span class="s2">&quot;mat&quot;</span><span class="p">,</span> <span class="s2">&quot;yat&quot;</span><span class="p">,</span> <span class="s2">&quot;sat&quot;</span><span class="p">,</span> <span class="s2">&quot;satılık&quot;</span><span class="p">,</span> <span class="s2">&quot;katılım&quot;</span><span class="p">]</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">liste</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;^at|at$&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^at|at$&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </code></pre></div>
 
@@ -540,13 +540,13 @@ sat
 
 <p>Gördüğünüz gibi <code>|</code> metakarakterini kullanarak <strong>at</strong> ile başlayan <strong>ve</strong> biten kelimeleri bulduk / ayıkladık. <code>|</code> sembolünü kullanmasaydık ve aşağıdaki ifadesiyi yazsaydık <strong>atat</strong> ile başlayan ve biten kelime aramış olurduk ve sonuç bulamazdık.</p>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">liste</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;^atat$&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^atat$&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </code></pre></div>
 
 <p>Aşağıdaki ifadesiyi yazmış olsaydık ise <strong>at</strong> ile başlayan ve biten kelime aramış olurduk ve sadece <strong>at</strong> sonucunu elde ederdik.</p>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">liste</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;^at$&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^at$&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </code></pre></div>
 
@@ -558,7 +558,7 @@ sat
 <div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ali&quot;</span><span class="p">,</span> <span class="s2">&quot;veli&quot;</span><span class="p">,</span> <span class="s2">&quot;deli&quot;</span><span class="p">,</span> <span class="s2">&quot;zeki&quot;</span><span class="p">,</span> <span class="s2">&quot;abi&quot;</span><span class="p">]</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;a(b|l)i&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;a(b|l)i&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </code></pre></div>
 
@@ -569,7 +569,7 @@ abi
 <p>Parantez ile gruplanan desenler, <strong>bir bütünsel yapı olarak</strong> değerlendirilir. Yani <code>ha+</code> kodu yazıldığında <code>h</code> harfinden sonra <code>a</code> harfinden bir veya daha fazla olması anlaşılırken, <code>(ha)+</code> kodu ile <code>ha</code> ifadesinden bir veya daha fazla olması istenildiği ifade edilmiş olunur. Bir örnek yapalım;</p>
 <div class="highlight"><pre><span></span><code><span class="n">veri</span> <span class="o">=</span> <span class="s2">&quot;ali veli hakiki deli zeki abi samimi&quot;</span>
 
-<span class="n">desen</span> <span class="o">=</span> <span class="s2">&quot;\w+(\w</span><span class="si">{2}</span><span class="s2">)</span><span class="si">{2}</span><span class="s2">&quot;</span>
+<span class="n">desen</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;\w+(\w</span><span class="si">{2}</span><span class="s2">)</span><span class="si">{2}</span><span class="s2">&quot;</span>
 <span class="n">sonuc</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="n">desen</span><span class="p">,</span> <span class="n">veri</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">sonuc</span><span class="p">:</span>

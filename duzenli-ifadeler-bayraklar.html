@@ -254,6 +254,85 @@ text with new lines.
 </code></pre></div>
 
 <p>Bu örnekte, <code>re.UNICODE</code> bayrağı kullanılarak <code>\w+</code> düzenli ifadesi Unicode karakterlerle kelime karakterlerini eşleştirmektedir.</p>
+<h2>re.VERBOSE veya re.X</h2>
+<p>Bu bayrak, desenin mantıksal bölümlerini görsel olarak ayırmanıza ve yorumlar eklemenize olanak tanıyarak daha güzel ve okunabilir düzenli ifadeler yazmanıza olanak tanır. Desen içindeki boşluklar, karakter sınıfında olmadıkları sürece, kaçış karakteri olmayan ters eğik çizgi ile başlamadıkları sürece veya *?, (?: veya (?P&lt;...&gt; gibi belirteçler içinde olmadıkları sürece yok sayılır. Örneğin, (? : ve * ? kullanılamaz. Bir satırda karakter sınıfında olmayan ve öncesinde kaçış karakteri olmayan bir # işareti varsa, en soldaki bu # işaretinden satırın sonuna kadar tüm karakterler yok sayılır.</p>
+<p>Bu, ondalık sayıyla eşleşen aşağıdaki iki düzenli ifade nesnesinin işlevsel olarak eşit olduğu anlamına gelir:</p>
+<div class="highlight"><pre><span></span><code><span class="n">b</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\d+\.\d*&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Bu ifade aşağıdaki şekilde daha okunaklı yazılabilir.</p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;&quot;&quot;\d +  # the integral part</span>
+<span class="s2">                   \.    # the decimal point</span>
+<span class="s2">                   \d *  # some fractional digits&quot;&quot;&quot;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">X</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Bir başka örnek;</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">Ali: 234,789 TL</span>
+<span class="s2">Hasan: 345,980 TL</span>
+<span class="s2">Mahmut: 12,000,000 TL</span>
+<span class="s2">Semih: 1,655,000 TL</span>
+<span class="s2">Merve: 345,765,120 TL</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">desen</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;\b\d{1,3}(,\d</span><span class="si">{3}</span><span class="s2">)*\b&quot;</span>
+
+<span class="n">eslesmeler</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="n">desen</span><span class="p">,</span> <span class="n">metin</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">VERBOSE</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">eslesme</span> <span class="ow">in</span> <span class="n">eslesmeler</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">eslesme</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+</code></pre></div>
+
+<p><strong>Çıktı</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="mi">234</span><span class="p">,</span><span class="mi">789</span>
+<span class="mi">345</span><span class="p">,</span><span class="mi">980</span>
+<span class="mi">12</span><span class="p">,</span><span class="mi">000</span><span class="p">,</span><span class="mi">000</span>
+<span class="mi">1</span><span class="p">,</span><span class="mi">655</span><span class="p">,</span><span class="mi">000</span>
+<span class="mi">345</span><span class="p">,</span><span class="mi">765</span><span class="p">,</span><span class="mi">120</span>
+</code></pre></div>
+
+<p>Normal şartlarda yukarıdaki deseni, daha okunaklı olması için aşağıdaki şekilde yazarsak sorun yaşarız. Çok satırlı desenler kabul edilmez.</p>
+<div class="highlight"><pre><span></span><code><span class="n">desen</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    \b             # kelimenin basinda olsun</span>
+<span class="s2">    \d{1,3}     # ilk üç rakam</span>
+<span class="s2">    (,\d</span><span class="si">{3}</span><span class="s2">)*</span>
+<span class="s2">    \b             # kelimenin sonunda olsun</span>
+<span class="s2">    &quot;&quot;&quot;</span>
+</code></pre></div>
+
+<p>Yukarıdaki desen gayet okunaklı. Deseni bu şekilde kullanabilmek için  <code>flags=re.VERBOSE</code> ya da <code>flags=re.X</code> bayrağını kullanmak gerekir. Aşağıdaki kodu inceleyebilirsiniz.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+<span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">Ali: 234,789 TL</span>
+<span class="s2">Hasan: 345,980 TL</span>
+<span class="s2">Mahmut: 12,000,000 TL</span>
+<span class="s2">Semih: 1,655,000 TL</span>
+<span class="s2">Merve: 345,765,120 TL</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">desen</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    \b             # kelimenin basinda olsun</span>
+<span class="s2">    \d{1,3}     # ilk üç rakam</span>
+<span class="s2">    (,\d</span><span class="si">{3}</span><span class="s2">)*</span>
+<span class="s2">    \b             # kelimenin sonunda olsun</span>
+<span class="s2">    &quot;&quot;&quot;</span>
+
+<span class="n">eslesmeler</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="n">desen</span><span class="p">,</span> <span class="n">metin</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">VERBOSE</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">eslesme</span> <span class="ow">in</span> <span class="n">eslesmeler</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">eslesme</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+</code></pre></div>
+
+<p><strong>Çıktı</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="mi">234</span><span class="p">,</span><span class="mi">789</span>
+<span class="mi">345</span><span class="p">,</span><span class="mi">980</span>
+<span class="mi">12</span><span class="p">,</span><span class="mi">000</span><span class="p">,</span><span class="mi">000</span>
+<span class="mi">1</span><span class="p">,</span><span class="mi">655</span><span class="p">,</span><span class="mi">000</span>
+<span class="mi">345</span><span class="p">,</span><span class="mi">765</span><span class="p">,</span><span class="mi">120</span>
+</code></pre></div>
+
 <h2>Bayrakların Birlikte Kullanımı</h2>
 <p>Bayraklar konusunda anlatılacak bir konu da birden fazla bayrağın aynı desen ile birlikte kullanımı. Örneğin hem <strong>çok satırlı</strong> tarama hem de <strong>büyük-küçük harf duyarlıksız</strong>  eşleşme yapılmak istenirse <code>re.M</code> (<code>re.MULTILINE</code>) ve <code>re.I</code> (<code>re.IGNORECASE</code>)  bayraklarını <strong>birlikte</strong> kullanmak gerekir. Bu iki bayrağı birlikte kullanmak için yapılması gereken <code>|</code> (pipe) işaretini kullanmaktır.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
