@@ -425,7 +425,99 @@ Sütun bazlı eksik/kayıp veri olup olmadığını incelersek;</p>
 <li><strong>isim</strong> ve <strong>yaş</strong> sütunlarında Eksik veri bulunuyor</li>
 <li><strong>iş-meslek</strong> sütununda hiç eksik veri bulunmuyor.</li>
 </ul>
-<p>Bir bakşa örneği daha inceleyelim, <strong>IMDB</strong> listemizde eksik veri var mı? varsa hangi sütunda ne kadar eksik veri var?</p>
+<p>Bir bakşa örneği daha inceleyelim, <strong>IMDB</strong> listemizde eksik veri var mı? varsa hangi sütunda ne kadar eksik veri var?
+<strong>Verimiz</strong>;</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Film_Adı</th>
+<th>Yıl</th>
+<th>Puan</th>
+<th>Oylayan_Kişi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>The Shawshank Redemption</td>
+<td>1994</td>
+<td>9.2</td>
+<td>1071904</td>
+</tr>
+<tr>
+<td>1</td>
+<td>The Godfather</td>
+<td>1972</td>
+<td>9.2</td>
+<td>751381</td>
+</tr>
+<tr>
+<td>2</td>
+<td>The Godfather: Part II</td>
+<td>1974</td>
+<td>9.0</td>
+<td>488889</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Pulp Fiction</td>
+<td>1994</td>
+<td>8.9</td>
+<td>830504</td>
+</tr>
+<tr>
+<td>4</td>
+<td>The Dark Knight</td>
+<td>2008</td>
+<td>8.9</td>
+<td>1045186</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>242</td>
+<td>Mystic River</td>
+<td>2003</td>
+<td>7.9</td>
+<td>256159</td>
+</tr>
+<tr>
+<td>243</td>
+<td>In the Heat of the Night</td>
+<td>1967</td>
+<td>7.9</td>
+<td>37081</td>
+</tr>
+<tr>
+<td>244</td>
+<td>Arsenic and Old Lace</td>
+<td>1944</td>
+<td>7.9</td>
+<td>45893</td>
+</tr>
+<tr>
+<td>245</td>
+<td>Before Sunrise</td>
+<td>1995</td>
+<td>7.9</td>
+<td>100974</td>
+</tr>
+<tr>
+<td>246</td>
+<td>Papillon</td>
+<td>1973</td>
+<td>7.9</td>
+<td>62517</td>
+</tr>
+</tbody>
+</table>
+<p>247 rows × 4 columns</p>
 <div class="highlight"><pre><span></span><code><span class="n">imdb</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/imdb.xlsx&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">imdb</span><span class="o">.</span><span class="n">isnull</span><span class="p">())</span>
 </code></pre></div>

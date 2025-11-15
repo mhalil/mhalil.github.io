@@ -280,6 +280,113 @@
 </tr>
 </tbody>
 </table>
+<blockquote>
+<p>NOT: Python'da sayısal işlem yaparken, Nokta <code>.</code> karakterinin ondalık ayırıcı olarak kullanıldığını öğrenmiştik. Peki Binlik ayırıcı için alternatif bir yol oluşturulmamış mı? derseniz; Binlik ayırıcı olarak altçizgi <code>_</code> karakterini kullanabileceğimizi ifade edebilirim.</p>
+</blockquote>
+<p>Yukarıdaki kodu ilk okuduğumuzda <code>2000</code> ifadesinin <strong>İki Bin</strong> mi? <strong>Yirmi Bin</strong> mi olduğunu ya da <code>500000</code> ifadesinin <strong>Beş Milyon</strong> mu? <strong>Beşyüz Bin</strong> mi? olduğunu hemen farkedemiyor olabiliriz. Bunu kolaylaştırmak için Binlik ayırıcı <code>_</code> karakterini kullanarak kodu aşağıdaki şekilde revize edebiliriz. Bu durumda da aynı sonucu elde ederiz.</p>
+<div class="highlight"><pre><span></span><code><span class="n">yıl_2000den_buyuk</span> <span class="o">=</span> <span class="n">imdb</span><span class="p">[</span><span class="s2">&quot;Yıl&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">2_000</span>    <span class="c1"># 2000 ile aynı</span>
+<span class="n">Oylayan_Kişi_500000</span> <span class="o">=</span> <span class="n">imdb</span><span class="p">[</span><span class="s2">&quot;Oylayan_Kişi&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">500_000</span>    <span class="c1"># 500000 ile aynı</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">imdb</span><span class="p">[</span><span class="n">yıl_2000den_buyuk</span> <span class="o">&amp;</span> <span class="n">Oylayan_Kişi_500000</span><span class="p">])</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Film_Adı</th>
+<th>Yıl</th>
+<th>Puan</th>
+<th>Oylayan_Kişi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4</td>
+<td>The Dark Knight</td>
+<td>2008</td>
+<td>8.9</td>
+<td>1045186</td>
+</tr>
+<tr>
+<td>7</td>
+<td>The Lord of the Rings: The Return of the King</td>
+<td>2003</td>
+<td>8.8</td>
+<td>758388</td>
+</tr>
+<tr>
+<td>10</td>
+<td>The Lord of the Rings: The Fellowship of the R...</td>
+<td>2001</td>
+<td>8.8</td>
+<td>784999</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Inception</td>
+<td>2010</td>
+<td>8.7</td>
+<td>844938</td>
+</tr>
+<tr>
+<td>18</td>
+<td>The Lord of the Rings: The Two Towers</td>
+<td>2002</td>
+<td>8.7</td>
+<td>680983</td>
+</tr>
+<tr>
+<td>49</td>
+<td>The Departed</td>
+<td>2006</td>
+<td>8.4</td>
+<td>540726</td>
+</tr>
+<tr>
+<td>56</td>
+<td>The Dark Knight Rises</td>
+<td>2012</td>
+<td>8.4</td>
+<td>672751</td>
+</tr>
+<tr>
+<td>105</td>
+<td>Batman Begins</td>
+<td>2005</td>
+<td>8.3</td>
+<td>604923</td>
+</tr>
+<tr>
+<td>107</td>
+<td>Inglourious Basterds</td>
+<td>2009</td>
+<td>8.2</td>
+<td>505702</td>
+</tr>
+<tr>
+<td>162</td>
+<td>V for Vendetta</td>
+<td>2005</td>
+<td>8.1</td>
+<td>507750</td>
+</tr>
+<tr>
+<td>165</td>
+<td>The Avengers</td>
+<td>2012</td>
+<td>8.1</td>
+<td>568037</td>
+</tr>
+<tr>
+<td>216</td>
+<td>Pirates of the Caribbean: The Curse of the Bla...</td>
+<td>2003</td>
+<td>8.0</td>
+<td>519625</td>
+</tr>
+</tbody>
+</table>
 
 		<span class="post-tags">
 			Tags:

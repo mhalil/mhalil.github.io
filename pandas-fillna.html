@@ -90,6 +90,153 @@ düşünülebilir) yazdırabiliriz/atayabiliriz.</p>
 
 <h2>value Parametresi</h2>
 <p><strong>value</strong> parametresi, Eksik verilerin yerine istersek yazdırmak istediğimiz değerin belirtildiği kısımdır. <strong>value</strong> parametresine sayısal değer yazacağımız zaman doğrudan değerin kendisini, <strong>metinsel (string)</strong> ifadeler de yazacağımız zaman ise <strong>tırnak işareti "</strong> kullanmamız gerektiğini unutmamalıyız. Şimdiki örnekte, Veri çerçevemizdeki eksik verilerin yerine <strong>Mustafa Halil</strong> ismini yazdıracağım.</p>
+<p>Eksik (NaN) Veri bulunan tablomuz:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Film_Adı</th>
+<th>Yıl</th>
+<th>Puan</th>
+<th>Oylayan_Kişi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>The Shawshank Redemption</td>
+<td>1994.0</td>
+<td>9,2</td>
+<td>1071904.0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>The Godfather</td>
+<td>1972.0</td>
+<td>9,2</td>
+<td>751381.0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>The Godfather: Part II</td>
+<td>1974.0</td>
+<td>9</td>
+<td>488889.0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Pulp Fiction</td>
+<td>1994.0</td>
+<td>8,9</td>
+<td>830504.0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>The Dark Knight</td>
+<td>2008.0</td>
+<td>8,9</td>
+<td>1045186.0</td>
+</tr>
+<tr>
+<td>5</td>
+<td>12 Angry Men</td>
+<td>1957.0</td>
+<td>8,9</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Schindler's List</td>
+<td>1993.0</td>
+<td>8,9</td>
+<td>545703.0</td>
+</tr>
+<tr>
+<td>7</td>
+<td>The Lord of the Rings: The Return of the King</td>
+<td>2003.0</td>
+<td>8,8</td>
+<td>758388.0</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Fight Club</td>
+<td>1999.0</td>
+<td>8,8</td>
+<td>814389.0</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Star Wars: Episode V - The Empire Strikes Back</td>
+<td>1980.0</td>
+<td>8,8</td>
+<td>519895.0</td>
+</tr>
+<tr>
+<td>10</td>
+<td>The Lord of the Rings: The Fellowship of the R...</td>
+<td>2001.0</td>
+<td>8,8</td>
+<td>784999.0</td>
+</tr>
+<tr>
+<td>11</td>
+<td>One Flew Over the Cuckoo's Nest</td>
+<td>1975.0</td>
+<td>8,7</td>
+<td>447005.0</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Goodfellas</td>
+<td>1990.0</td>
+<td>8,7</td>
+<td>465445.0</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Seven Samurai</td>
+<td>NaN</td>
+<td>8,7</td>
+<td>161969.0</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Inception</td>
+<td>2010.0</td>
+<td>8,7</td>
+<td>844938.0</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Star Wars</td>
+<td>1977.0</td>
+<td>8,7</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Forrest Gump</td>
+<td>1994.0</td>
+<td>8,7</td>
+<td>711386.0</td>
+</tr>
+<tr>
+<td>17</td>
+<td>The Matrix</td>
+<td>1999.0</td>
+<td>8,7</td>
+<td>770559.0</td>
+</tr>
+<tr>
+<td>18</td>
+<td>The Lord of the Rings: The Two Towers</td>
+<td>2002.0</td>
+<td>8,7</td>
+<td>680983.0</td>
+</tr>
+</tbody>
+</table>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">value</span> <span class="o">=</span> <span class="s2">&quot;Mustafa Halil&quot;</span><span class="p">))</span>
 </code></pre></div>
 

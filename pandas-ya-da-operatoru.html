@@ -274,6 +274,107 @@
 </tbody>
 </table>
 <p>81 rows × 4 columns</p>
+<blockquote>
+<p>NOT: Python'da sayısal işlem yaparken, Nokta <code>.</code> karakterinin ondalık ayırıcı olarak kullanıldığını öğrenmiştik. Peki Binlik ayırıcı için alternatif bir yol oluşturulmamış mı? derseniz; Binlik ayırıcı olarak altçizgi <code>_</code> karakterini kullanabileceğimizi ifade edebilirim.</p>
+</blockquote>
+<p>Yukarıdaki kodu ilk okuduğumuzda <code>2000</code> ifadesinin <strong>İki Bin</strong> mi? <strong>Yirmi Bin</strong> mi olduğunu ya da <code>500000</code> ifadesinin <strong>Beş Milyon</strong> mu? <strong>Beşyüz Bin</strong> mi? olduğunu hemen farkedemiyor olabiliriz. Bunu kolaylaştırmak için Binlik ayırıcı <code>_</code> karakterini kullanarak kodu aşağıdaki şekilde revize edebiliriz. Bu durumda da aynı sonucu elde ederiz.</p>
+<div class="highlight"><pre><span></span><code><span class="n">yıl_2000den_buyuk</span> <span class="o">=</span> <span class="n">imdb</span><span class="p">[</span><span class="s2">&quot;Yıl&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">2_000</span>    <span class="c1"># 2000 ile aynı</span>
+<span class="n">Oylayan_Kişi_500000</span> <span class="o">=</span> <span class="n">imdb</span><span class="p">[</span><span class="s2">&quot;Oylayan_Kişi&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">500_000</span>    <span class="c1"># 500000 ile aynı</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">imdb</span><span class="p">[</span><span class="n">yıl_2000den_buyuk</span> <span class="o">|</span> <span class="n">Oylayan_Kişi_500000</span><span class="p">])</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Film_Adı</th>
+<th>Yıl</th>
+<th>Puan</th>
+<th>Oylayan_Kişi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>The Shawshank Redemption</td>
+<td>1994</td>
+<td>9.2</td>
+<td>1071904</td>
+</tr>
+<tr>
+<td>1</td>
+<td>The Godfather</td>
+<td>1972</td>
+<td>9.2</td>
+<td>751381</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Pulp Fiction</td>
+<td>1994</td>
+<td>8.9</td>
+<td>830504</td>
+</tr>
+<tr>
+<td>4</td>
+<td>The Dark Knight</td>
+<td>2008</td>
+<td>8.9</td>
+<td>1045186</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Schindler's List</td>
+<td>1993</td>
+<td>8.9</td>
+<td>545703</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>231</td>
+<td>Shutter Island</td>
+<td>2010</td>
+<td>8.0</td>
+<td>436151</td>
+</tr>
+<tr>
+<td>233</td>
+<td>Incendies</td>
+<td>2010</td>
+<td>8.0</td>
+<td>36751</td>
+</tr>
+<tr>
+<td>236</td>
+<td>3 Idiots</td>
+<td>2009</td>
+<td>8.0</td>
+<td>83178</td>
+</tr>
+<tr>
+<td>237</td>
+<td>The Artist</td>
+<td>2011</td>
+<td>8.0</td>
+<td>132672</td>
+</tr>
+<tr>
+<td>242</td>
+<td>Mystic River</td>
+<td>2003</td>
+<td>7.9</td>
+<td>256159</td>
+</tr>
+</tbody>
+</table>
+<p>81 rows × 4 columns</p>
 
 		<span class="post-tags">
 			Tags:
