@@ -86,21 +86,46 @@ Rotation Sweep, Bir veya birkaç profili bir yol boyunca ve bir nokta etrafında
 <li>Curves araç çubuğunda bulunan ilgili düğmeye basın, ya da</li>
 <li><strong>Curves WB</strong> (Çalışma Tezgahındayken) <strong>Surface</strong> menüsündeki <strong>Rotation Sweep</strong> seçeneğini kullanın.</li>
 </ul>
-<p>Profiller
- ile çalışırken aklınızda bulunması gereken bir kaç husus; — Profiller 
-merkezin veya süpürme yolunun dışına taşarsa otomatik olarak kırpılır. —
- Yüzey giriş eğrilerine mükemmel şekilde uyar. — Yolun uçlarında profil 
-yoksa, yüzey dış profillerde durabilir (TrimPath=True) veya süpürme 
-yolunun uçlarına kadar uzanabilir (TrimPath=False) — — Gerektiğinde 
-eskiz çizgilerini <strong>JoinCurve</strong> komutu ile birleştirmek, — Süpürme yolu ya da profilleri gerektiğinde ortadan bölmek ve 2 süpürme profili elde etmek için <strong>SplitCurve</strong> komutunu kullanabileceğinizi unutmayın. — <strong>Rotation Sweep</strong> tarafından desteklenmeyen rasyonel bspline’ları önlemek için, <strong>JoinCurve</strong>’nin <strong>ShapeApproximation</strong> özellikleri <strong>True</strong> olarak ayarlanmıştır. — Teğet desteği elde etmek için süpürme yolu ekstrüde edilir. — <strong>ExtraProfiles (EkstraProfiller)</strong> özelliği, yüzey oluşturulmadan önce ekstrapole edilebilecek ekstra 
-profil sayısını belirtir. Süpürmeye bazı ekstra yüzey teğetlik 
-profilleri eklemek için artırılır. — <strong>FaceSupport (YüzeyDesteği</strong> özelliği, süpürme yolu için bir yüzey desteğinin belirtilmesini sağlar.
- Giriş profilleri bu yüzle G1 sürekliliğine sahipse, oluşturulan ekstra 
-profiller de yüzeyle G1 sürekliliğine sahip olacak ve yüzey de öyle 
-olacaktır. — <strong>SmoothTop</strong> özelliği, yüzeyin 
-dönme merkezi etrafında teğet olmaya zorlanmasını sağlar. Girdi 
-profilleri dönme merkezi etrafında ortak bir düzleme teğet DEĞİLSE, 
-yüzey bu bölgedeki profillere uymayacaktır. — <strong>Rotation Sweep</strong> komutu ile yüzey oluşturulduktan sonra, istenirse ilave profiller eklenerek yüzey revize edilebilir. Bu <strong>Input Shapes</strong> başlığı altında bulunan <strong>Profiles</strong> özelliği sayesinde gerçekleştirilir.</p>
+<p><strong>Profiller ile çalışırken aklınızda bulunması gereken bir kaç husus;</strong></p>
+<ul>
+<li>
+<p>Profiller merkezin veya süpürme yolunun dışına taşarsa otomatik olarak kırpılır.</p>
+</li>
+<li>
+<p>Yüzey giriş eğrilerine mükemmel şekilde uyar.</p>
+</li>
+<li>
+<p>Yolun uçlarında profil yoksa, yüzey dış profillerde durabilir (TrimPath=True) veya süpürme yolunun uçlarına kadar uzanabilir (TrimPath=False)</p>
+</li>
+<li>
+<p>Gerektiğinde eskiz çizgilerini <strong>JoinCurve</strong> komutu ile birleştirmek,</p>
+</li>
+<li>
+<p>Süpürme yolu ya da profilleri gerektiğinde ortadan bölmek ve 2 süpürme profili elde etmek için <strong>SplitCurve</strong> komutunu kullanabileceğinizi unutmayın.</p>
+</li>
+<li>
+<p><strong>Rotation Sweep</strong> tarafından desteklenmeyen rasyonel bspline’ları önlemek için, <strong>JoinCurve</strong>’nin <strong>ShapeApproximation</strong> özellikleri <strong>True</strong> olarak ayarlanmıştır.</p>
+</li>
+<li>
+<p>Teğet desteği elde etmek için süpürme yolu ekstrüde edilir.</p>
+</li>
+<li>
+<p><strong>ExtraProfiles (EkstraProfiller)</strong> özelliği, yüzey oluşturulmadan önce ekstrapole edilebilecek ekstra 
+  profil sayısını belirtir. Süpürmeye bazı ekstra yüzey teğetlik 
+  profilleri eklemek için artırılır.</p>
+</li>
+<li>
+<p><strong>FaceSupport (YüzeyDesteği)</strong> özelliği, süpürme yolu için bir yüzey desteğinin belirtilmesini sağlar. Giriş profilleri bu yüzle G1 sürekliliğine sahipse, oluşturulan ekstra profiller de yüzeyle G1 sürekliliğine sahip olacak ve yüzey de öyle 
+  olacaktır.</p>
+</li>
+<li>
+<p><strong>SmoothTop</strong> özelliği, yüzeyin dönme merkezi etrafında teğet olmaya zorlanmasını sağlar. Girdi profilleri dönme merkezi etrafında ortak bir düzleme teğet DEĞİLSE, 
+  yüzey bu bölgedeki profillere uymayacaktır.</p>
+</li>
+<li>
+<p><strong>Rotation Sweep</strong> komutu ile yüzey oluşturulduktan sonra, istenirse ilave profiller eklenerek yüzey revize edilebilir. Bu <strong>Input Shapes</strong> başlığı altında bulunan <strong>Profiles</strong> özelliği sayesinde gerçekleştirilir.</p>
+</li>
+</ul>
 <h2>1. Çalışma;</h2>
 <p>Elimizde 3 Eskizden (Sketch) oluşan bir çalışma var. Aşağıda çalışmanın izometrik görüntüsü mevcut.</p>
 <p><img alt="Rotation_Sweep_01" src="../../images/freecad/curves_wb/surfaces_menu/Rotation_Sweep_01.png"></p>
