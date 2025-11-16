@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Pandas - pyarrow" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/pandas-pyarrow.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Pandas - pyarrow</h1>
+	<span class="post-date">Paz 16 Kasım 2025</span>
+	<h1>pyarrow String Türü ile Hızlanmak</h1>
+<p>Pandas'ta dizelerle (strings) mi çalışıyorsunuz ve beklediğinizden biraz daha yavaş olduğunu mu görüyorsunuz? Bu eğitimde, <strong>PyArrow</strong>'u kullanarak işleri nasıl hızlandırabileceğimizi öğreneceğiz.</p>
+<p>Örnek olarak kullanacağımız dosyanın adı <strong>TDK_imla.txt</strong>. Bu dosya, satır başına bir kelime olacak şekilde toplam 76.183 kelime içeren bir imla sözlüğüdür.</p>
+<p>Elimizdeki dosyaya dayanarak bir seri (series) oluşturalım.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">dosya</span> <span class="o">=</span> <span class="s2">&quot;TDK_imla.txt&quot;</span>
+<span class="n">seri</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">ilk_kelime</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">ilk_kelime</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="n">dosya</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">seri</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Oluşturulan seri <code>seri</code> olarak adlandırılır ve <code>pd.series</code> kullanılarak, dosya adının üzerindeki her kelimeyi yineleyip (iterate edip) yeni satır karakterlerinden ve baştaki/sondaki boşluklardan temizleyerek (<code>strip()</code>) oluşturulur. Serinin uzunluğu kontrol edildiğinde, 76.183 kelime olduğu görülür</p>
+<p>Çıktı (dosya içeriği):</p>
+<div class="highlight"><pre><span></span><code><span class="mi">0</span>                    <span class="n">ab</span>
+<span class="mi">1</span>                   <span class="n">aba</span>
+<span class="mi">2</span>                 <span class="n">abacı</span>
+<span class="mi">3</span>              <span class="n">abacılık</span>
+<span class="mi">4</span>                 <span class="n">abadi</span>
+              <span class="o">...</span>      
+<span class="mi">76178</span>        <span class="n">zürriyetli</span>
+<span class="mi">76179</span>       <span class="n">zürriyetsiz</span>
+<span class="mi">76180</span>    <span class="n">zürriyetsizlik</span>
+<span class="mi">76181</span>             <span class="n">züyuf</span>
+<span class="mi">76182</span>        <span class="n">züyuf</span> <span class="n">akçe</span>
+<span class="n">Length</span><span class="p">:</span> <span class="mi">76183</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
+</code></pre></div>
+
+<p>Serinin uzunluğunu bulmak için aşağıdaki kodu kullanabiliriz.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">len</span><span class="p">(</span><span class="n">seri</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="mi">76183</span>
+</code></pre></div>
+
+<p>Her bir satırdaki kelimenin karakter uzunluğunu bulmak istediğimizi düzünelim.</p>
+<p><strong>Yöntem 1: <code>apply()</code> Kullanımı</strong></p>
+<p>Pandas'ta döngü çalıştırmanın çok kötü bir fikir olduğu bilinmektedir, çünkü uzun sürer. Alternatif olarak <strong>apply()</strong> metodu kullanılabilir.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">seri</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">len</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="mi">0</span>         <span class="mi">2</span>
+<span class="mi">1</span>         <span class="mi">3</span>
+<span class="mi">2</span>         <span class="mi">5</span>
+<span class="mi">3</span>         <span class="mi">8</span>
+<span class="mi">4</span>         <span class="mi">5</span>
+         <span class="o">..</span>
+<span class="mi">76178</span>    <span class="mi">10</span>
+<span class="mi">76179</span>    <span class="mi">11</span>
+<span class="mi">76180</span>    <span class="mi">14</span>
+<span class="mi">76181</span>     <span class="mi">5</span>
+<span class="mi">76182</span>    <span class="mi">10</span>
+<span class="n">Length</span><span class="p">:</span> <span class="mi">76183</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+</code></pre></div>
+
+<p>Yukarıdaki kod, orijinal serinin indeksiyle eşleşen ve değeri her bir elemanın uzunluğu olan yeni bir seri döndürür.</p>
+<p>Bu işlemi <strong>Jupyter Notebook</strong>'ta uygularken <code>%timeit</code> kodunu ekleyip (çalışmayı zamanlayıp) çalıştırırsak ;</p>
+<div class="highlight"><pre><span></span><code><span class="o">%</span><span class="n">timeit</span> <span class="n">seri</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">len</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="mf">17.8</span> <span class="n">ms</span> <span class="err">±</span> <span class="mi">278</span> <span class="n">μs</span> <span class="n">per</span> <span class="n">loop</span> <span class="p">(</span><span class="n">mean</span> <span class="err">±</span> <span class="n">std</span><span class="o">.</span> <span class="n">dev</span><span class="o">.</span> <span class="n">of</span> <span class="mi">7</span> <span class="n">runs</span><span class="p">,</span> <span class="mi">100</span> <span class="n">loops</span> <span class="n">each</span><span class="p">)</span>
+</code></pre></div>
+
+<p>işlemin <strong>17.8 milisaniye</strong> sürdüğü gösterilir.</p>
+<p><strong>Yöntem 2: <code>str</code> Erişimcisi Kullanımı (Vektörleştirilmiş Yöntem)</strong></p>
+<p>Pandas'ta dizelerle (string ifadelerle) çalışırken en iyi ve en hızlı olarak kabul edilen yol, <strong>str</strong> <strong>erişimcisi (accessor)</strong> kullanmak olabilir. <strong>seri.str.len()</strong> ifadesi kullanılır</p>
+<div class="highlight"><pre><span></span><code> <span class="nb">print</span><span class="p">(</span><span class="n">seri</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">len</span><span class="p">())</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="mi">0</span>         <span class="mi">2</span>
+<span class="mi">1</span>         <span class="mi">3</span>
+<span class="mi">2</span>         <span class="mi">5</span>
+<span class="mi">3</span>         <span class="mi">8</span>
+<span class="mi">4</span>         <span class="mi">5</span>
+         <span class="o">..</span>
+<span class="mi">76178</span>    <span class="mi">10</span>
+<span class="mi">76179</span>    <span class="mi">11</span>
+<span class="mi">76180</span>    <span class="mi">14</span>
+<span class="mi">76181</span>     <span class="mi">5</span>
+<span class="mi">76182</span>    <span class="mi">10</span>
+<span class="n">Length</span><span class="p">:</span> <span class="mi">76183</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+</code></pre></div>
+
+<p>Bu işlemi <strong>Jupyter Notebook</strong>'ta uygularken <code>%timeit</code> kodunu ekleyip (çalışmayı zamanlayıp) çalıştırırsak ;</p>
+<div class="highlight"><pre><span></span><code><span class="o">%</span><span class="n">timeit</span> <span class="n">seri</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">len</span><span class="p">()</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mf">17.4</span> <span class="n">ms</span> <span class="err">±</span> <span class="mf">1.12</span> <span class="n">ms</span> <span class="n">per</span> <span class="n">loop</span> <span class="p">(</span><span class="n">mean</span> <span class="err">±</span> <span class="n">std</span><span class="o">.</span> <span class="n">dev</span><span class="o">.</span> <span class="n">of</span> <span class="mi">7</span> <span class="n">runs</span><span class="p">,</span> <span class="mi">10</span> <span class="n">loops</span> <span class="n">each</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Bu işlemin, 17.8 milisaniye yerine <strong>17.4 milisaniye</strong> sürerek, yaklaşık <strong>% 2,25 daha hızlı olduğunu gösterir.</strong> Ancak bu hızlanma son derecede azdır.</p>
+<p><strong>Ek Örnekler: İlk Karakteri Almak / Elde etmek</strong></p>
+<ol>
+<li><strong>apply</strong> <strong>ile:</strong> İlk karakteri almak için lambda fonksiyonu (<code>lambda x: x[0]</code>) ile <strong>seri.apply</strong> kodu kullanılır.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="n">seri</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="mi">0</span>        <span class="n">a</span>
+<span class="mi">1</span>        <span class="n">a</span>
+<span class="mi">2</span>        <span class="n">a</span>
+<span class="mi">3</span>        <span class="n">a</span>
+<span class="mi">4</span>        <span class="n">a</span>
+        <span class="o">..</span>
+<span class="mi">76178</span>    <span class="n">z</span>
+<span class="mi">76179</span>    <span class="n">z</span>
+<span class="mi">76180</span>    <span class="n">z</span>
+<span class="mi">76181</span>    <span class="n">z</span>
+<span class="mi">76182</span>    <span class="n">z</span>
+<span class="n">Length</span><span class="p">:</span> <span class="mi">76183</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="o">%</span><span class="n">timeit</span> <span class="n">seri</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mf">7.6</span> <span class="n">ms</span> <span class="err">±</span> <span class="mi">193</span> <span class="n">μs</span> <span class="n">per</span> <span class="n">loop</span> <span class="p">(</span><span class="n">mean</span> <span class="err">±</span> <span class="n">std</span><span class="o">.</span> <span class="n">dev</span><span class="o">.</span> <span class="n">of</span> <span class="mi">7</span> <span class="n">runs</span><span class="p">,</span> <span class="mi">100</span> <span class="n">loops</span> <span class="n">each</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Bu işlem <strong>7.6 milisaniye</strong> sürer.</p>
+<ol>
+<li><strong>str.get()</strong> <strong>ile:</strong> Köşeli parantezin eşdeğeri olan <code>seri.str.get(0)</code> kullanılır.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">seri</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="mi">0</span>        <span class="n">a</span>
+<span class="mi">1</span>        <span class="n">a</span>
+<span class="mi">2</span>        <span class="n">a</span>
+<span class="mi">3</span>        <span class="n">a</span>
+<span class="mi">4</span>        <span class="n">a</span>
+        <span class="o">..</span>
+<span class="mi">76178</span>    <span class="n">z</span>
+<span class="mi">76179</span>    <span class="n">z</span>
+<span class="mi">76180</span>    <span class="n">z</span>
+<span class="mi">76181</span>    <span class="n">z</span>
+<span class="mi">76182</span>    <span class="n">z</span>
+<span class="n">Length</span><span class="p">:</span> <span class="mi">76183</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="o">%</span><span class="n">timeit</span> <span class="n">seri</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="mf">14.8</span> <span class="n">ms</span> <span class="err">±</span> <span class="mi">176</span> <span class="n">μs</span> <span class="n">per</span> <span class="n">loop</span> <span class="p">(</span><span class="n">mean</span> <span class="err">±</span> <span class="n">std</span><span class="o">.</span> <span class="n">dev</span><span class="o">.</span> <span class="n">of</span> <span class="mi">7</span> <span class="n">runs</span><span class="p">,</span> <span class="mi">10</span> <span class="n">loops</span> <span class="n">each</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Bu işlem daha uzun sürer; 7.6 milisaniye yerine <strong>14.8 milisaniye</strong> sürerek neredeyse <strong>iki kat daha uzun</strong> sürer.</p>
+<p><strong>Ek Örnekler: İlk Üç Karakteri Alma (Dilimleme - Slice)</strong></p>
+<ol>
+<li><strong><em>*apply()</em>* ile: Dilimleme (<code>[:3]</code>) içeren bir lambda fonksiyonu ile </strong>seri.apply** kullanılır.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">seri</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[:</span><span class="mi">3</span><span class="p">]))</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="mi">0</span>         <span class="n">ab</span>
+<span class="mi">1</span>        <span class="n">aba</span>
+<span class="mi">2</span>        <span class="n">aba</span>
+<span class="mi">3</span>        <span class="n">aba</span>
+<span class="mi">4</span>        <span class="n">aba</span>
+        <span class="o">...</span> 
+<span class="mi">76178</span>    <span class="n">zür</span>
+<span class="mi">76179</span>    <span class="n">zür</span>
+<span class="mi">76180</span>    <span class="n">zür</span>
+<span class="mi">76181</span>    <span class="n">züy</span>
+<span class="mi">76182</span>    <span class="n">züy</span>
+<span class="n">Length</span><span class="p">:</span> <span class="mi">76183</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="o">%</span><span class="n">timeit</span> <span class="n">seri</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="mf">11.1</span> <span class="n">ms</span> <span class="err">±</span> <span class="mi">357</span> <span class="n">μs</span> <span class="n">per</span> <span class="n">loop</span> <span class="p">(</span><span class="n">mean</span> <span class="err">±</span> <span class="n">std</span><span class="o">.</span> <span class="n">dev</span><span class="o">.</span> <span class="n">of</span> <span class="mi">7</span> <span class="n">runs</span><span class="p">,</span> <span class="mi">100</span> <span class="n">loops</span> <span class="n">each</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Bu işlem <strong>11.1</strong> milisaniye sürer.</p>
+<ol>
+<li><strong>str.slice</strong> <strong>ile:</strong> <strong>s.str.slice(0, 3)</strong> kullanılır.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">seri</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="mi">0</span>         <span class="n">ab</span>
+<span class="mi">1</span>        <span class="n">aba</span>
+<span class="mi">2</span>        <span class="n">aba</span>
+<span class="mi">3</span>        <span class="n">aba</span>
+<span class="mi">4</span>        <span class="n">aba</span>
+        <span class="o">...</span> 
+<span class="mi">76178</span>    <span class="n">zür</span>
+<span class="mi">76179</span>    <span class="n">zür</span>
+<span class="mi">76180</span>    <span class="n">zür</span>
+<span class="mi">76181</span>    <span class="n">züy</span>
+<span class="mi">76182</span>    <span class="n">züy</span>
+<span class="n">Length</span><span class="p">:</span> <span class="mi">76183</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="o">%</span><span class="n">timeit</span> <span class="n">seri</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="n">Çıktı</span><span class="p">:</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="mf">10.2</span> <span class="n">ms</span> <span class="err">±</span> <span class="mi">226</span> <span class="n">μs</span> <span class="n">per</span> <span class="n">loop</span> <span class="p">(</span><span class="n">mean</span> <span class="err">±</span> <span class="n">std</span><span class="o">.</span> <span class="n">dev</span><span class="o">.</span> <span class="n">of</span> <span class="mi">7</span> <span class="n">runs</span><span class="p">,</span> <span class="mi">100</span> <span class="n">loops</span> <span class="n">each</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Bu işlem <strong>10.2</strong> milisaniye sürer. Bu, yine %8 kadar daha hızlıdır, ancak hala şüpheli bir durum vardır.</p>
+<p><strong>Sorunun Kaynağı: <code>DType</code> ve Bellek Yükü</strong></p>
+<p>Neden hızlı olması gereken bu vektörleştirilmiş yöntemler ya sadece biraz daha hızlıdır ya da daha yavaştır? 76.183 kelime çok küçük bir veri seti değildir.</p>
+<p>Sorun temel olarak <strong>DType</strong>'tır:</p>
+<p><strong>seri.dtype</strong> sorgulandığında, değerin <strong>O</strong> veya <strong>object</strong> olduğu görülür.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">seri</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">dtype</span><span class="p">(</span><span class="s1">&#39;O&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Bu, serideki değerlerin <strong>Python nesneleri</strong> olarak depolandığı anlamına gelir.</p>
+<p>Normalde, Pandas'ta tam sayılar gibi veriler perde arkasında NumPy değerleri (örneğin 64 bitlik <code>int64</code>'ler) kullanılarak depolanır, ancak dizeler söz konusu olduğunda durum böyle değildir.</p>
+<p>Dizeler (String ifadeler), <strong>PyArrow</strong> yerine <strong>Python dizeleri</strong> olarak depolanmaktadır.</p>
+<p>Hem <code>apply</code> hem de <code>str</code> yöntemlerini çalıştırdığımızda, <strong>Python belleğine gidilmesi, dize nesnesinin çekilmesi ve ardından üzerinde metodun çağrılması</strong> gerekir.</p>
+<p>Buradaki <strong>ek yük (overhead)</strong> yöntemin kendisi veya vektörleştirme değildir; Yük, verinin Python'ın belleğinden alınmasını gerektiren <strong>veri tipinin kendisidir.</strong></p>
+<h2>Çözüm: PyArrow Kullanımı</h2>
+<p>Diğer seçenek <strong>PyArrow</strong> kullanmaktır.</p>
+<p>PyArrow, Pandas'ın birçok bölümünde hala deneyseldir, ancak dizeler için oldukça iyi çalışmaktadır.</p>
+<p>PyArrow, <strong>Arrow kütüphanesi</strong> ile çalışmak için bir Python sarmalayıcısıdır (wrapper).</p>
+<p>Arrow, sıkıştırmayı yöneten ve dizeleri dahili olarak işleyen, <strong>süper hızlı, bellekteki bir veri yapısıdır</strong>.</p>
+<p>PyArrow kullanıldığında, artık dizeleri kullanmak için Python belleğine gitmek gerekmeyecektir.</p>
+<h2>PyArrow ile Testlerin Yeniden Yapılması</h2>
+<p>Testleri yeniden yapalım, ancak bu sefer seriyi oluştururken <code>dtype=</code> parametresi <code>"string[pyarrow]"</code> olarak belirtelim. Bu, verinin farklı bir şekilde depolandığını gösterir.</p>
+<div class="highlight"><pre><span></span><code><span class="n">seri</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="n">ilk_kelime</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> 
+                 <span class="k">for</span> <span class="n">ilk_kelime</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="n">dosya</span><span class="p">)],</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;string[pyarrow]&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">seri</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="mi">0</span>                    <span class="n">ab</span>
+<span class="mi">1</span>                   <span class="n">aba</span>
+<span class="mi">2</span>                 <span class="n">abacı</span>
+<span class="mi">3</span>              <span class="n">abacılık</span>
+<span class="mi">4</span>                 <span class="n">abadi</span>
+              <span class="o">...</span>      
+<span class="mi">76178</span>        <span class="n">zürriyetli</span>
+<span class="mi">76179</span>       <span class="n">zürriyetsiz</span>
+<span class="mi">76180</span>    <span class="n">zürriyetsizlik</span>
+<span class="mi">76181</span>             <span class="n">züyuf</span>
+<span class="mi">76182</span>        <span class="n">züyuf</span> <span class="n">akçe</span>
+<span class="n">Length</span><span class="p">:</span> <span class="mi">76183</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">string</span>
+</code></pre></div>
+
+<p>Daha önceki (ilk) çıktıda <code>Length: 76183, dtype: object</code> yazarken bu kez <code>Length: 76183, dtype: string</code> çıktısını alıyoruz.</p>
+<p><code>dtype</code> çıktısına da bakalım;</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">seri</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">string</span><span class="p">[</span><span class="n">pyarrow</span><span class="p">]</span>
+</code></pre></div>
+
+<p>Yukarıdaki kodları uzun uzun yazmadan sadece zaman kodları ve çıktılarını inceleyelim. </p>
+<p>Her bir satırdaki kelimenin karakter uzunluğunu bulmak için <code>apply()</code> metodunu kullanalım.</p>
+<div class="highlight"><pre><span></span><code><span class="o">%</span><span class="n">timeit</span> <span class="n">seri2</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">len</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="mi">16</span> <span class="n">ms</span> <span class="err">±</span> <span class="mf">70.4</span> <span class="n">μs</span> <span class="n">per</span> <span class="n">loop</span> <span class="p">(</span><span class="n">mean</span> <span class="err">±</span> <span class="n">std</span><span class="o">.</span> <span class="n">dev</span><span class="o">.</span> <span class="n">of</span> <span class="mi">7</span> <span class="n">runs</span><span class="p">,</span> <span class="mi">100</span> <span class="n">loops</span> <span class="n">each</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Aynı işlemi string metodu ile bulalım;</p>
+<div class="highlight"><pre><span></span><code><span class="o">%</span><span class="n">timeit</span> <span class="n">seri2</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">len</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="mi">992</span> <span class="n">μs</span> <span class="err">±</span> <span class="mf">1.33</span> <span class="n">μs</span> <span class="n">per</span> <span class="n">loop</span> <span class="p">(</span><span class="n">mean</span> <span class="err">±</span> <span class="n">std</span><span class="o">.</span> <span class="n">dev</span><span class="o">.</span> <span class="n">of</span> <span class="mi">7</span> <span class="n">runs</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="mi">000</span> <span class="n">loops</span> <span class="n">each</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Görüldüğü gibi string metodu apply() metoduna kıyasla <strong>(16 / 0.99 =) 16</strong> kat daha hızlı.</p>
+<p>Kelimelerin ilk karakterini apply metodu ile ne kadar sürede elde ederiz;</p>
+<div class="highlight"><pre><span></span><code><span class="o">%</span><span class="n">timeit</span> <span class="n">seri2</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="mf">26.6</span> <span class="n">ms</span> <span class="err">±</span> <span class="mi">202</span> <span class="n">μs</span> <span class="n">per</span> <span class="n">loop</span> <span class="p">(</span><span class="n">mean</span> <span class="err">±</span> <span class="n">std</span><span class="o">.</span> <span class="n">dev</span><span class="o">.</span> <span class="n">of</span> <span class="mi">7</span> <span class="n">runs</span><span class="p">,</span> <span class="mi">10</span> <span class="n">loops</span> <span class="n">each</span><span class="p">)</span><span class="n">ss</span>
+</code></pre></div>
+
+<p>Kelimelerin ilk 3 karakterini apply metodu ile ne kadar sürede elde ederiz;</p>
+<div class="highlight"><pre><span></span><code><span class="o">%</span><span class="n">timeit</span> <span class="n">seri2</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="mf">11.6</span> <span class="n">ms</span> <span class="err">±</span> <span class="mf">83.5</span> <span class="n">μs</span> <span class="n">per</span> <span class="n">loop</span> <span class="p">(</span><span class="n">mean</span> <span class="err">±</span> <span class="n">std</span><span class="o">.</span> <span class="n">dev</span><span class="o">.</span> <span class="n">of</span> <span class="mi">7</span> <span class="n">runs</span><span class="p">,</span> <span class="mi">100</span> <span class="n">loops</span> <span class="n">each</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Kelimelerin ilk 3 karakterini string metodu ile ne kadar sürede elde ederiz;</p>
+<div class="highlight"><pre><span></span><code><span class="o">%</span><span class="n">timeit</span> <span class="n">seri2</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="mi">847</span> <span class="n">μs</span> <span class="err">±</span> <span class="mi">726</span> <span class="n">ns</span> <span class="n">per</span> <span class="n">loop</span> <span class="p">(</span><span class="n">mean</span> <span class="err">±</span> <span class="n">std</span><span class="o">.</span> <span class="n">dev</span><span class="o">.</span> <span class="n">of</span> <span class="mi">7</span> <span class="n">runs</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="mi">000</span> <span class="n">loops</span> <span class="n">each</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Aradaki hız farkı, (11.6/0.847 = 13.695) yaklaşık 14 kat</p>
+<h2>PyArrow Sonuçları (Karşılaştırmalı)</h2>
+<table>
+<thead>
+<tr>
+<th>İşlem</th>
+<th>Orijinal DType (<code>object</code>) Süresi</th>
+<th>PyArrow DType (<code>string[pyarrow]</code>) Süresi</th>
+<th>Hızlanma</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>seri.apply(len)</code></td>
+<td>17,8 ms</td>
+<td>16 milisaniye</td>
+<td>Hızlanma yok, Yavaşlama var</td>
+</tr>
+<tr>
+<td><code>seri.str.len()</code></td>
+<td>17,4 ms</td>
+<td><strong>992 μs</strong></td>
+<td>Yaklaşık <strong>%95</strong> zaman tasarrufu (<strong>17,5</strong> kat daha hızlı)</td>
+</tr>
+<tr>
+<td><code>seri.str.get(0)</code></td>
+<td>14,8 ms</td>
+<td><strong>26,6 milisaniye</strong></td>
+<td>Hızlanma yok, Yavaşlama var</td>
+</tr>
+<tr>
+<td><code>seri.str.slice(0, 3)</code></td>
+<td>10,2 ms</td>
+<td><strong>847 μs</strong></td>
+<td><strong>12 kat</strong> daha hızlı</td>
+</tr>
+</tbody>
+</table>
+<p><strong>PyArrow</strong> ile <code>str.len()</code> ve <code>str.slice()</code> gibi vektörleştirilmiş yöntemler kullanıldığında, hız inanılmaz derecede artmaktadır. Daha büyük dosya boyutu ile çalışıldığında elde ettiğimiz hız daha fazla artacaktır.</p>
+<p>PyArrow'un performansı artırma şeklini, bir kütüphanenin yavaş bir depo alanındaki (Python belleği) dağınık verileri tek tek çağırıp işlemesine kıyasla, <strong>verileri hızlı bir depoya (Arrow) taşıyıp düzenli bir şekilde içeride toplu olarak işlemesine</strong> benzetebiliriz; bu, tüm işin hızını veri transferi yerine doğrudan hesaplamaya odaklar.</p>
+<p>Pandas'ta dizelerle (strings) çalışırken karşılaşılan performans darboğazlarının temel nedeni, <strong>verinin depolanma biçimi</strong> ile ilgilidir</p>
+<p>Bu darboğaz, kullanılan yöntemden (örneğin, <code>apply</code> veya vektörleştirilmiş <code>str</code> erişimcisi) ziyade, verinin altında yatan <strong>veri tipi (DType)</strong> kaynaklıdır.</p>
+<h2>Sonuç ve Uyarı</h2>
+<p>Sonuçlara baktığımızda, Pandas'taki dizelerle yapılan her şey için <strong>PyArrow</strong>'a geçirilmesi gerektiğini <strong>söyleyemeyiz.</strong></p>
+<p>PyArrow'un hala daha yavaş olduğu yerler mevcuttur ve kullanıma geçmeden önce kullanım durumunun dikkatlice kontrol edilmesi önerilir. Ancak kullanım durumunuz PyArrow dizeleriyle çalışıyorsa, gerçek kodunuzda neredeyse hiçbir değişiklik yapmadan süper, süper hızlı dize çalışmalarından gerçekten fayda sağlayabilirsiniz.</p>
+<h2>Kaynak:</h2>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=Ovz8F464uo0">Why Pandas string methods are slow — and how PyArrow makes them 20× faster - YouTube</a></li>
+</ul>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/pandas.html">Pandas</a></li>
+					<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+					<li><a href="/tag/modul.html">Modül</a></li>
+					<li><a href="/tag/pyarrow.html">pyarrow</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>
