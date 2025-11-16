@@ -328,6 +328,153 @@
 </tbody>
 </table>
 <p>Gördüğünüz gibi artık <strong>indeks bilgileri</strong>, <strong>Oyuncu isimleri</strong>ne dönüşmüş oldu.</p>
+<h2>Ondalık ve Binlik Ayırıcı Uygulaması</h2>
+<h3>Ondalık Ayırıcı</h3>
+<p>CSV dosyası okurken birlikte kullanılabilecek pek çok parametre vardır. Kodun okunurluğunu artırmak adına farklı yazım tarzı da kullanılabilir. Bir örnekle açıklayalım.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="p">(</span><span class="n">pd</span>
+        <span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;nba.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s2">&quot;Name&quot;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Team&quot;</span><span class="p">)[</span><span class="s2">&quot;Age&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+        <span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="p">)</span>
+</code></pre></div>
+
+<p>Yukarıdaki kodun çıktısına <code>print(df)</code> komutu ile bakıp, kod parçalarını teker teker açıklayalım.</p>
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Team</span>
+<span class="n">San</span> <span class="n">Antonio</span> <span class="n">Spurs</span>        <span class="mf">31.60</span>
+<span class="n">Dallas</span> <span class="n">Mavericks</span>         <span class="mf">29.73</span>
+<span class="n">Cleveland</span> <span class="n">Cavaliers</span>      <span class="mf">29.53</span>
+<span class="n">Los</span> <span class="n">Angeles</span> <span class="n">Clippers</span>     <span class="mf">29.47</span>
+<span class="n">Miami</span> <span class="n">Heat</span>               <span class="mf">28.93</span>
+<span class="n">Memphis</span> <span class="n">Grizzlies</span>        <span class="mf">28.39</span>
+<span class="n">Atlanta</span> <span class="n">Hawks</span>            <span class="mf">28.20</span>
+<span class="n">Washington</span> <span class="n">Wizards</span>       <span class="mf">27.87</span>
+<span class="n">Golden</span> <span class="n">State</span> <span class="n">Warriors</span>    <span class="mf">27.67</span>
+<span class="n">Los</span> <span class="n">Angeles</span> <span class="n">Lakers</span>       <span class="mf">27.53</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">Age</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
+</code></pre></div>
+
+<p>Kod parçalarını açıklayalım;</p>
+<div class="highlight"><pre><span></span><code><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;nba.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s2">&quot;Name&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Bu kod, <code>py</code> uzantılı dosya ile aynı konumdaki <code>nba.csv</code> dosyasını, veri çerçevesine dönüştürüp <code>df</code> adına atar. <code>index</code> bilgisi olarak <code>Name</code> sütunu ayarlanır.</p>
+<div class="highlight"><pre><span></span><code><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Team&quot;</span><span class="p">)[</span><span class="s2">&quot;Age&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</code></pre></div>
+
+<p><code>Team</code> yani <strong>Takım</strong> adına göre gruplama yapılır, <code>Age</code> yani <strong>Yaş</strong> ortalamaları hesaplatılır.</p>
+<div class="highlight"><pre><span></span><code><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div>
+
+<p>En büyük 10 değer seçilir.</p>
+<div class="highlight"><pre><span></span><code><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Hesaplanan yaş ortalamalarının ondalık kısmı 2 basamakla sınırlandırılır.</p>
+<h3>Binlik Ayırıcı</h3>
+<p>Bir de <strong>Salary (Maaş)</strong> bilgilerine göre sıralama yapalım ve <strong>binlik ayırıcıyı</strong> görelim.</p>
+<p>Maaş ortalamalarına göre en yüksek 15 Takım bilgisini görelim;</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="p">(</span><span class="n">pd</span>
+        <span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;nba.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s2">&quot;Name&quot;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Team&quot;</span><span class="p">)[</span><span class="s2">&quot;Salary&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+        <span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;$</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Team</span>
+<span class="n">Cleveland</span> <span class="n">Cavaliers</span>      <span class="err">$</span><span class="mf">7642049.21</span>
+<span class="n">Miami</span> <span class="n">Heat</span>               <span class="err">$</span><span class="mf">6347359.46</span>
+<span class="n">Los</span> <span class="n">Angeles</span> <span class="n">Clippers</span>     <span class="err">$</span><span class="mf">6323642.67</span>
+<span class="n">Oklahoma</span> <span class="n">City</span> <span class="n">Thunder</span>    <span class="err">$</span><span class="mf">6251019.87</span>
+<span class="n">Golden</span> <span class="n">State</span> <span class="n">Warriors</span>    <span class="err">$</span><span class="mf">5924599.80</span>
+<span class="n">Chicago</span> <span class="n">Bulls</span>            <span class="err">$</span><span class="mf">5785558.53</span>
+<span class="n">San</span> <span class="n">Antonio</span> <span class="n">Spurs</span>        <span class="err">$</span><span class="mf">5629515.53</span>
+<span class="n">Memphis</span> <span class="n">Grizzlies</span>        <span class="err">$</span><span class="mf">5467920.00</span>
+<span class="n">Charlotte</span> <span class="n">Hornets</span>        <span class="err">$</span><span class="mf">5222728.00</span>
+<span class="n">Washington</span> <span class="n">Wizards</span>       <span class="err">$</span><span class="mf">5088575.73</span>
+<span class="n">Houston</span> <span class="n">Rockets</span>          <span class="err">$</span><span class="mf">5018868.07</span>
+<span class="n">Atlanta</span> <span class="n">Hawks</span>            <span class="err">$</span><span class="mf">4860196.67</span>
+<span class="n">Los</span> <span class="n">Angeles</span> <span class="n">Lakers</span>       <span class="err">$</span><span class="mf">4784695.40</span>
+<span class="n">Sacramento</span> <span class="n">Kings</span>         <span class="err">$</span><span class="mf">4778911.07</span>
+<span class="n">Dallas</span> <span class="n">Mavericks</span>         <span class="err">$</span><span class="mf">4746582.13</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">Salary</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
+</code></pre></div>
+
+<p>Ondalık ayırıcı 2 basamakla sınırlandırıldı ancak binlik ayırıcı ayarlanmadı. O nedenle ücretlerin okunması zor. Kodun <code>.map(lambda x: f"{x:.2f}"</code> kısmında <code>.2f</code> 'ten önce  virgül konulursa <code>.map(lambda x: f"{x:,.2f}"</code> binlik ayırıcı olarak virgül belirlenmiş olur. Kodu ve çıktısını görelim;</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="p">(</span><span class="n">pd</span>
+        <span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;nba.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s2">&quot;Name&quot;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Team&quot;</span><span class="p">)[</span><span class="s2">&quot;Salary&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+        <span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;$</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">,.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Team</span>
+<span class="n">Cleveland</span> <span class="n">Cavaliers</span>      <span class="err">$</span><span class="mi">7</span><span class="p">,</span><span class="mi">642</span><span class="p">,</span><span class="mf">049.21</span>
+<span class="n">Miami</span> <span class="n">Heat</span>               <span class="err">$</span><span class="mi">6</span><span class="p">,</span><span class="mi">347</span><span class="p">,</span><span class="mf">359.46</span>
+<span class="n">Los</span> <span class="n">Angeles</span> <span class="n">Clippers</span>     <span class="err">$</span><span class="mi">6</span><span class="p">,</span><span class="mi">323</span><span class="p">,</span><span class="mf">642.67</span>
+<span class="n">Oklahoma</span> <span class="n">City</span> <span class="n">Thunder</span>    <span class="err">$</span><span class="mi">6</span><span class="p">,</span><span class="mi">251</span><span class="p">,</span><span class="mf">019.87</span>
+<span class="n">Golden</span> <span class="n">State</span> <span class="n">Warriors</span>    <span class="err">$</span><span class="mi">5</span><span class="p">,</span><span class="mi">924</span><span class="p">,</span><span class="mf">599.80</span>
+<span class="n">Chicago</span> <span class="n">Bulls</span>            <span class="err">$</span><span class="mi">5</span><span class="p">,</span><span class="mi">785</span><span class="p">,</span><span class="mf">558.53</span>
+<span class="n">San</span> <span class="n">Antonio</span> <span class="n">Spurs</span>        <span class="err">$</span><span class="mi">5</span><span class="p">,</span><span class="mi">629</span><span class="p">,</span><span class="mf">515.53</span>
+<span class="n">Memphis</span> <span class="n">Grizzlies</span>        <span class="err">$</span><span class="mi">5</span><span class="p">,</span><span class="mi">467</span><span class="p">,</span><span class="mf">920.00</span>
+<span class="n">Charlotte</span> <span class="n">Hornets</span>        <span class="err">$</span><span class="mi">5</span><span class="p">,</span><span class="mi">222</span><span class="p">,</span><span class="mf">728.00</span>
+<span class="n">Washington</span> <span class="n">Wizards</span>       <span class="err">$</span><span class="mi">5</span><span class="p">,</span><span class="mi">088</span><span class="p">,</span><span class="mf">575.73</span>
+<span class="n">Houston</span> <span class="n">Rockets</span>          <span class="err">$</span><span class="mi">5</span><span class="p">,</span><span class="mi">018</span><span class="p">,</span><span class="mf">868.07</span>
+<span class="n">Atlanta</span> <span class="n">Hawks</span>            <span class="err">$</span><span class="mi">4</span><span class="p">,</span><span class="mi">860</span><span class="p">,</span><span class="mf">196.67</span>
+<span class="n">Los</span> <span class="n">Angeles</span> <span class="n">Lakers</span>       <span class="err">$</span><span class="mi">4</span><span class="p">,</span><span class="mi">784</span><span class="p">,</span><span class="mf">695.40</span>
+<span class="n">Sacramento</span> <span class="n">Kings</span>         <span class="err">$</span><span class="mi">4</span><span class="p">,</span><span class="mi">778</span><span class="p">,</span><span class="mf">911.07</span>
+<span class="n">Dallas</span> <span class="n">Mavericks</span>         <span class="err">$</span><span class="mi">4</span><span class="p">,</span><span class="mi">746</span><span class="p">,</span><span class="mf">582.13</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">Salary</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
+</code></pre></div>
+
+<p>Görüldüğü gibi, maaşın binlik kısımları virgül ile ayrılmı oldu ve okunurluğu kolaylaştırıldı.</p>
+<p>İstersek Binlik ayırıcı olarak virgül <code>,</code> yerine alt çizgi <code>_</code> karakteri de kullanılabilir.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="p">(</span><span class="n">pd</span>
+        <span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;nba.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s2">&quot;Name&quot;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Team&quot;</span><span class="p">)[</span><span class="s2">&quot;Salary&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+        <span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;$</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">_.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Team</span>
+<span class="n">Cleveland</span> <span class="n">Cavaliers</span>      <span class="err">$</span><span class="mf">7_642_049.21</span>
+<span class="n">Miami</span> <span class="n">Heat</span>               <span class="err">$</span><span class="mf">6_347_359.46</span>
+<span class="n">Los</span> <span class="n">Angeles</span> <span class="n">Clippers</span>     <span class="err">$</span><span class="mf">6_323_642.67</span>
+<span class="n">Oklahoma</span> <span class="n">City</span> <span class="n">Thunder</span>    <span class="err">$</span><span class="mf">6_251_019.87</span>
+<span class="n">Golden</span> <span class="n">State</span> <span class="n">Warriors</span>    <span class="err">$</span><span class="mf">5_924_599.80</span>
+<span class="n">Chicago</span> <span class="n">Bulls</span>            <span class="err">$</span><span class="mf">5_785_558.53</span>
+<span class="n">San</span> <span class="n">Antonio</span> <span class="n">Spurs</span>        <span class="err">$</span><span class="mf">5_629_515.53</span>
+<span class="n">Memphis</span> <span class="n">Grizzlies</span>        <span class="err">$</span><span class="mf">5_467_920.00</span>
+<span class="n">Charlotte</span> <span class="n">Hornets</span>        <span class="err">$</span><span class="mf">5_222_728.00</span>
+<span class="n">Washington</span> <span class="n">Wizards</span>       <span class="err">$</span><span class="mf">5_088_575.73</span>
+<span class="n">Houston</span> <span class="n">Rockets</span>          <span class="err">$</span><span class="mf">5_018_868.07</span>
+<span class="n">Atlanta</span> <span class="n">Hawks</span>            <span class="err">$</span><span class="mf">4_860_196.67</span>
+<span class="n">Los</span> <span class="n">Angeles</span> <span class="n">Lakers</span>       <span class="err">$</span><span class="mf">4_784_695.40</span>
+<span class="n">Sacramento</span> <span class="n">Kings</span>         <span class="err">$</span><span class="mf">4_778_911.07</span>
+<span class="n">Dallas</span> <span class="n">Mavericks</span>         <span class="err">$</span><span class="mf">4_746_582.13</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">Salary</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
+</code></pre></div>
 
 		<span class="post-tags">
 			Tags:

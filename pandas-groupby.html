@@ -582,8 +582,8 @@
 <span class="n">Name</span><span class="p">:</span> <span class="n">Age</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">float64</span>
 </code></pre></div>
 
-<h2>sort() Metodu</h2>
-<p>Takımlardaki en genç Oyuncuları, Oyuncu yaşına göre <strong>küçükten büyüğe doğru listelemek/sıralamak</strong> istersek , bu işlemi <code>sort()</code> metodu ile gerçekleştirebiliriz.</p>
+<h2>sort_values() Metodu</h2>
+<p>Takımlardaki en genç Oyuncuları, Oyuncu yaşına göre <strong>küçükten büyüğe doğru listelemek/sıralamak</strong> istersek , bu işlemi <code>sort_values()</code> metodu ile gerçekleştirebiliriz.</p>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">nba</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Team&quot;</span><span class="p">)[</span><span class="s2">&quot;Age&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">())</span>
 </code></pre></div>
 

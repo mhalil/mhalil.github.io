@@ -162,6 +162,7 @@
 </tr>
 </tbody>
 </table>
+<h2>Kullanıcı Tanımlı Fonksiyon ile Kullanım</h2>
 <p>Yukarıdaki <strong>iş-meslek</strong> sütunundaki metinlerin büyük harfe dönüştürülmesi örneğini, bir de <code>apply()</code> fonksiyonu ile uygulayalım.</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">buyuk_harf</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">x</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
@@ -259,6 +260,276 @@
 </tr>
 </tbody>
 </table>
+<p><strong>apply()</strong> Fonksiyonu ile alakalı farklı bir örnek yapalım. <strong>ilceler.txt</strong> isimli dosya içeriğini okuyup bir seriye dönüştürelim.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">dosya</span> <span class="o">=</span> <span class="s2">&quot;ilceler.txt&quot;</span>
+
+<span class="n">seri</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">ilk_kelime</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> 
+                <span class="k">for</span> <span class="n">ilk_kelime</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="n">dosya</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">seri</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</code></pre></div>
+
+<p>İlk 5 satırın çıktısı:</p>
+<div class="highlight"><pre><span></span><code><span class="mi">0</span>    <span class="n">Arnavutköy</span>
+<span class="mi">1</span>    <span class="n">Bayrampaşa</span>
+<span class="mi">2</span>      <span class="n">Beşiktaş</span>
+<span class="mi">3</span>       <span class="n">Beyoğlu</span>
+<span class="mi">4</span>       <span class="n">Esenler</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
+</code></pre></div>
+
+<p><strong>ilceler.txt</strong> isimli dosya içeriğinde kaç satır veri var, <code>len()</code> fonksiyonu ile öğrenelim.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">seri</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="mi">39</span>
+</code></pre></div>
+
+<p>Peki <code>len()</code> fonksiyonunu, <code>apply()</code> fonksiyonu ile birlikte kullanarak her bir satırdaki string'in uzunluğunu bulmak istersek nasıl kod yazmalıyız derseniz;</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">seri</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">len</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="mi">0</span>     <span class="mi">10</span>
+<span class="mi">1</span>     <span class="mi">10</span>
+<span class="mi">2</span>      <span class="mi">8</span>
+<span class="mi">3</span>      <span class="mi">7</span>
+<span class="mi">4</span>      <span class="mi">7</span>
+<span class="mi">5</span>     <span class="mi">10</span>
+<span class="mi">6</span>      <span class="mi">5</span>
+<span class="mi">7</span>     <span class="mi">13</span>
+<span class="mi">8</span>      <span class="mi">9</span>
+<span class="mi">9</span>      <span class="mi">7</span>
+<span class="mi">10</span>    <span class="mi">10</span>
+<span class="mi">11</span>     <span class="mi">5</span>
+<span class="mi">12</span>     <span class="mi">7</span>
+<span class="mi">13</span>     <span class="mi">8</span>
+<span class="mi">14</span>    <span class="mi">12</span>
+<span class="mi">15</span>     <span class="mi">8</span>
+<span class="mi">16</span>    <span class="mi">10</span>
+<span class="mi">17</span>    <span class="mi">10</span>
+<span class="mi">18</span>    <span class="mi">12</span>
+<span class="mi">19</span>     <span class="mi">7</span>
+<span class="mi">20</span>     <span class="mi">8</span>
+<span class="mi">21</span>     <span class="mi">8</span>
+<span class="mi">22</span>    <span class="mi">12</span>
+<span class="mi">23</span>     <span class="mi">7</span>
+<span class="mi">24</span>    <span class="mi">11</span>
+<span class="mi">25</span>     <span class="mi">6</span>
+<span class="mi">26</span>     <span class="mi">8</span>
+<span class="mi">27</span>     <span class="mi">6</span>
+<span class="mi">28</span>     <span class="mi">8</span>
+<span class="mi">29</span>     <span class="mi">7</span>
+<span class="mi">30</span>     <span class="mi">6</span>
+<span class="mi">31</span>     <span class="mi">7</span>
+<span class="mi">32</span>     <span class="mi">6</span>
+<span class="mi">33</span>    <span class="mi">10</span>
+<span class="mi">34</span>    <span class="mi">11</span>
+<span class="mi">35</span>     <span class="mi">4</span>
+<span class="mi">36</span>     <span class="mi">5</span>
+<span class="mi">37</span>     <span class="mi">8</span>
+<span class="mi">38</span>     <span class="mi">7</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+</code></pre></div>
+
+<p>Yukarıdaki sonuca, aşağıdaki kod ile de ulaşabiliriz.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">seri</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">len</span><span class="p">())</span>
+</code></pre></div>
+
+<blockquote>
+<p><strong>String metotları, apply()</strong> metodundan daha hızlıdır. İmkan varsa string metotlarını kullanın.</p>
+</blockquote>
+<h2>lambda() Fonksiyonu ile Kullanım</h2>
+<p>Dosya içeriğindeki her bir satırın ilk karakterini ekrana yazdıralım;</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">seri</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="mi">0</span>     <span class="n">A</span>
+<span class="mi">1</span>     <span class="n">B</span>
+<span class="mi">2</span>     <span class="n">B</span>
+<span class="mi">3</span>     <span class="n">B</span>
+<span class="mi">4</span>     <span class="n">E</span>
+<span class="mi">5</span>     <span class="n">E</span>
+<span class="mi">6</span>     <span class="n">F</span>
+<span class="mi">7</span>     <span class="n">G</span>
+<span class="mi">8</span>     <span class="n">K</span>
+<span class="mi">9</span>     <span class="n">S</span>
+<span class="mi">10</span>    <span class="n">S</span>
+<span class="mi">11</span>    <span class="n">Ş</span>
+<span class="mi">12</span>    <span class="n">A</span>
+<span class="mi">13</span>    <span class="n">B</span>
+<span class="mi">14</span>    <span class="n">B</span>
+<span class="mi">15</span>    <span class="n">B</span>
+<span class="mi">16</span>    <span class="n">B</span>
+<span class="mi">17</span>    <span class="n">B</span>
+<span class="mi">18</span>    <span class="n">B</span>
+<span class="mi">19</span>    <span class="n">Ç</span>
+<span class="mi">20</span>    <span class="n">E</span>
+<span class="mi">21</span>    <span class="n">G</span>
+<span class="mi">22</span>    <span class="n">K</span>
+<span class="mi">23</span>    <span class="n">S</span>
+<span class="mi">24</span>    <span class="n">Z</span>
+<span class="mi">25</span>    <span class="n">A</span>
+<span class="mi">26</span>    <span class="n">A</span>
+<span class="mi">27</span>    <span class="n">B</span>
+<span class="mi">28</span>    <span class="n">Ç</span>
+<span class="mi">29</span>    <span class="n">K</span>
+<span class="mi">30</span>    <span class="n">K</span>
+<span class="mi">31</span>    <span class="n">M</span>
+<span class="mi">32</span>    <span class="n">P</span>
+<span class="mi">33</span>    <span class="n">S</span>
+<span class="mi">34</span>    <span class="n">S</span>
+<span class="mi">35</span>    <span class="n">Ş</span>
+<span class="mi">36</span>    <span class="n">T</span>
+<span class="mi">37</span>    <span class="n">Ü</span>
+<span class="mi">38</span>    <span class="n">Ü</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
+</code></pre></div>
+
+<p>Aynı sonucu string metotları kullanarak elde edelim;</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">seri</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="mi">0</span>     <span class="n">A</span>
+<span class="mi">1</span>     <span class="n">B</span>
+<span class="mi">2</span>     <span class="n">B</span>
+<span class="mi">3</span>     <span class="n">B</span>
+<span class="mi">4</span>     <span class="n">E</span>
+<span class="mi">5</span>     <span class="n">E</span>
+<span class="mi">6</span>     <span class="n">F</span>
+<span class="mi">7</span>     <span class="n">G</span>
+<span class="mi">8</span>     <span class="n">K</span>
+<span class="mi">9</span>     <span class="n">S</span>
+<span class="mi">10</span>    <span class="n">S</span>
+<span class="mi">11</span>    <span class="n">Ş</span>
+<span class="mi">12</span>    <span class="n">A</span>
+<span class="mi">13</span>    <span class="n">B</span>
+<span class="mi">14</span>    <span class="n">B</span>
+<span class="mi">15</span>    <span class="n">B</span>
+<span class="mi">16</span>    <span class="n">B</span>
+<span class="mi">17</span>    <span class="n">B</span>
+<span class="mi">18</span>    <span class="n">B</span>
+<span class="mi">19</span>    <span class="n">Ç</span>
+<span class="mi">20</span>    <span class="n">E</span>
+<span class="mi">21</span>    <span class="n">G</span>
+<span class="mi">22</span>    <span class="n">K</span>
+<span class="mi">23</span>    <span class="n">S</span>
+<span class="mi">24</span>    <span class="n">Z</span>
+<span class="mi">25</span>    <span class="n">A</span>
+<span class="mi">26</span>    <span class="n">A</span>
+<span class="mi">27</span>    <span class="n">B</span>
+<span class="mi">28</span>    <span class="n">Ç</span>
+<span class="mi">29</span>    <span class="n">K</span>
+<span class="mi">30</span>    <span class="n">K</span>
+<span class="mi">31</span>    <span class="n">M</span>
+<span class="mi">32</span>    <span class="n">P</span>
+<span class="mi">33</span>    <span class="n">S</span>
+<span class="mi">34</span>    <span class="n">S</span>
+<span class="mi">35</span>    <span class="n">Ş</span>
+<span class="mi">36</span>    <span class="n">T</span>
+<span class="mi">37</span>    <span class="n">Ü</span>
+<span class="mi">38</span>    <span class="n">Ü</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
+</code></pre></div>
+
+<p><strong>lambda() fonksiyonu</strong> ile her satırın ilk üç karakterini yazdıralım.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">seri</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[:</span><span class="mi">3</span><span class="p">]))</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="mi">0</span>     <span class="n">Arn</span>
+<span class="mi">1</span>     <span class="n">Bay</span>
+<span class="mi">2</span>     <span class="n">Beş</span>
+<span class="mi">3</span>     <span class="n">Bey</span>
+<span class="mi">4</span>     <span class="n">Ese</span>
+<span class="mi">5</span>     <span class="n">Eyü</span>
+<span class="mi">6</span>     <span class="n">Fat</span>
+<span class="mi">7</span>     <span class="n">Gaz</span>
+<span class="mi">8</span>     <span class="n">Kağ</span>
+<span class="mi">9</span>     <span class="n">Sar</span>
+<span class="mi">10</span>    <span class="n">Sul</span>
+<span class="mi">11</span>    <span class="n">Şiş</span>
+<span class="mi">12</span>    <span class="n">Avc</span>
+<span class="mi">13</span>    <span class="n">Bağ</span>
+<span class="mi">14</span>    <span class="n">Bah</span>
+<span class="mi">15</span>    <span class="n">Bak</span>
+<span class="mi">16</span>    <span class="n">Baş</span>
+<span class="mi">17</span>    <span class="n">Bey</span>
+<span class="mi">18</span>    <span class="n">Büy</span>
+<span class="mi">19</span>    <span class="n">Çat</span>
+<span class="mi">20</span>    <span class="n">Ese</span>
+<span class="mi">21</span>    <span class="n">Gün</span>
+<span class="mi">22</span>    <span class="n">Küç</span>
+<span class="mi">23</span>    <span class="n">Sil</span>
+<span class="mi">24</span>    <span class="n">Zey</span>
+<span class="mi">25</span>    <span class="n">Ada</span>
+<span class="mi">26</span>    <span class="n">Ata</span>
+<span class="mi">27</span>    <span class="n">Bey</span>
+<span class="mi">28</span>    <span class="n">Çek</span>
+<span class="mi">29</span>    <span class="n">Kad</span>
+<span class="mi">30</span>    <span class="n">Kar</span>
+<span class="mi">31</span>    <span class="n">Mal</span>
+<span class="mi">32</span>    <span class="n">Pen</span>
+<span class="mi">33</span>    <span class="n">San</span>
+<span class="mi">34</span>    <span class="n">Sul</span>
+<span class="mi">35</span>    <span class="n">Şil</span>
+<span class="mi">36</span>    <span class="n">Tuz</span>
+<span class="mi">37</span>    <span class="n">Ümr</span>
+<span class="mi">38</span>    <span class="n">Üsk</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
+</code></pre></div>
+
+<p><strong>String metotlarında</strong>n biri olan <code>slice()</code>'ı kullanarak her satırın ilk üç karakterini yazdıralım.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">seri</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+</code></pre></div>
+
+<p>çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="mi">0</span>     <span class="n">Arn</span>
+<span class="mi">1</span>     <span class="n">Bay</span>
+<span class="mi">2</span>     <span class="n">Beş</span>
+<span class="mi">3</span>     <span class="n">Bey</span>
+<span class="mi">4</span>     <span class="n">Ese</span>
+<span class="mi">5</span>     <span class="n">Eyü</span>
+<span class="mi">6</span>     <span class="n">Fat</span>
+<span class="mi">7</span>     <span class="n">Gaz</span>
+<span class="mi">8</span>     <span class="n">Kağ</span>
+<span class="mi">9</span>     <span class="n">Sar</span>
+<span class="mi">10</span>    <span class="n">Sul</span>
+<span class="mi">11</span>    <span class="n">Şiş</span>
+<span class="mi">12</span>    <span class="n">Avc</span>
+<span class="mi">13</span>    <span class="n">Bağ</span>
+<span class="mi">14</span>    <span class="n">Bah</span>
+<span class="mi">15</span>    <span class="n">Bak</span>
+<span class="mi">16</span>    <span class="n">Baş</span>
+<span class="mi">17</span>    <span class="n">Bey</span>
+<span class="mi">18</span>    <span class="n">Büy</span>
+<span class="mi">19</span>    <span class="n">Çat</span>
+<span class="mi">20</span>    <span class="n">Ese</span>
+<span class="mi">21</span>    <span class="n">Gün</span>
+<span class="mi">22</span>    <span class="n">Küç</span>
+<span class="mi">23</span>    <span class="n">Sil</span>
+<span class="mi">24</span>    <span class="n">Zey</span>
+<span class="mi">25</span>    <span class="n">Ada</span>
+<span class="mi">26</span>    <span class="n">Ata</span>
+<span class="mi">27</span>    <span class="n">Bey</span>
+<span class="mi">28</span>    <span class="n">Çek</span>
+<span class="mi">29</span>    <span class="n">Kad</span>
+<span class="mi">30</span>    <span class="n">Kar</span>
+<span class="mi">31</span>    <span class="n">Mal</span>
+<span class="mi">32</span>    <span class="n">Pen</span>
+<span class="mi">33</span>    <span class="n">San</span>
+<span class="mi">34</span>    <span class="n">Sul</span>
+<span class="mi">35</span>    <span class="n">Şil</span>
+<span class="mi">36</span>    <span class="n">Tuz</span>
+<span class="mi">37</span>    <span class="n">Ümr</span>
+<span class="mi">38</span>    <span class="n">Üsk</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
+</code></pre></div>
 
 		<span class="post-tags">
 			Tags:

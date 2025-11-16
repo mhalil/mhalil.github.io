@@ -160,7 +160,7 @@
 </tr>
 </tbody>
 </table>
-<h2>upper()</h2>
+<h2>upper() Metodu</h2>
 <p>Veri çerçevemizim <strong>sütun başlık</strong>larının <strong>tüm karakterlerini büyük harfe çevirelim</strong>.</p>
 <div class="highlight"><pre><span></span><code><span class="n">veri</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">veri</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="p">)</span>
@@ -333,7 +333,7 @@
 </tr>
 </tbody>
 </table>
-<h2>lower()</h2>
+<h2>lower() Metodu</h2>
 <p><u>İlk oluşturulan</u> veri çerçevemizdeki <strong>isim</strong> sütunundaki verilerin <strong>tüm karakterlerini küçük harfe çevirelim</strong>.</p>
 <div class="highlight"><pre><span></span><code><span class="n">veri</span><span class="o">.</span><span class="n">isim</span> <span class="o">=</span> <span class="n">veri</span><span class="o">.</span><span class="n">isim</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
 
@@ -412,7 +412,7 @@
 </tr>
 </tbody>
 </table>
-<h2>capitalize()</h2>
+<h2>capitalize() Metodu</h2>
 <p><u>İlk oluşturulan</u> veri çerçevemizdeki <strong>iş-meslek</strong> Sütunundaki verilerin <strong>sadece baş harflerini büyük</strong> yapalım.</p>
 <div class="highlight"><pre><span></span><code><span class="n">veri</span><span class="p">[</span><span class="s2">&quot;iş-meslek&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">veri</span><span class="p">[</span><span class="s2">&quot;iş-meslek&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="p">)</span>
@@ -490,7 +490,7 @@
 </tr>
 </tbody>
 </table>
-<h2>contains</h2>
+<h2>contains() Metodu</h2>
 <p><strong>String</strong> metotlarından biri olan <strong>contains</strong> ile metin içerisinde <strong>içeren</strong> kelime ya da kelimeleri aratabiliyoruz. <code>lower()</code> metodu ile <strong>isim</strong> sütunundaki  tüm karakterleri küçük harfe çevirelim ve ardından isim içinde <strong>er</strong> ibaresi bulunan tüm verileri filtreleyelim.</p>
 <div class="highlight"><pre><span></span><code><span class="n">veri</span><span class="o">.</span><span class="n">isim</span> <span class="o">=</span> <span class="n">veri</span><span class="o">.</span><span class="n">isim</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
 <span class="n">iceren</span> <span class="o">=</span> <span class="n">veri</span><span class="o">.</span><span class="n">isim</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;er&quot;</span><span class="p">)</span>
@@ -1027,6 +1027,234 @@
 </tr>
 </tbody>
 </table>
+<h2>get() Metodu</h2>
+<p><code>get()</code> metodu ile ile bir string'in istediğimiz karakterini elde edebiliriz.</p>
+<p>Örnek verimiz;</p>
+<div class="highlight"><pre><span></span><code><span class="n">sozluk</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;isim&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Mustafa&quot;</span><span class="p">,</span> <span class="s2">&quot;Halil&quot;</span><span class="p">,</span> <span class="s2">&quot;Burak&quot;</span><span class="p">,</span> <span class="s2">&quot;Emre&quot;</span><span class="p">,</span> <span class="s2">&quot;Ersin&quot;</span><span class="p">,</span> <span class="s2">&quot;Sertaç&quot;</span><span class="p">,</span> <span class="s2">&quot;Furkan&quot;</span><span class="p">,</span><span class="s2">&quot;Murat&quot;</span><span class="p">,</span><span class="s2">&quot;Ahmet&quot;</span><span class="p">,</span><span class="s2">&quot;Abdülkadir&quot;</span><span class="p">],</span>
+                   <span class="s2">&quot;yaş&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">41</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">52</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">38</span><span class="p">],</span>
+                  <span class="s2">&quot;iş-meslek&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;mühendis&quot;</span><span class="p">,</span> <span class="s2">&quot;programcı&quot;</span><span class="p">,</span> <span class="s2">&quot;akademisyen&quot;</span><span class="p">,</span> <span class="s2">&quot;yönetici&quot;</span><span class="p">,</span><span class="s2">&quot;amir&quot;</span><span class="p">,</span><span class="s2">&quot;mühendis&quot;</span><span class="p">,</span> <span class="s2">&quot;yönetici&quot;</span><span class="p">,</span><span class="s2">&quot;müdür&quot;</span><span class="p">,</span><span class="s2">&quot;veteriner&quot;</span><span class="p">,</span><span class="s2">&quot;yönetici&quot;</span><span class="p">]}</span>
+<span class="n">veri</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">sozluk</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>isim</th>
+<th>yaş</th>
+<th>iş-meslek</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Mustafa</td>
+<td>25</td>
+<td>mühendis</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Halil</td>
+<td>38</td>
+<td>programcı</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Burak</td>
+<td>41</td>
+<td>akademisyen</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Emre</td>
+<td>23</td>
+<td>yönetici</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Ersin</td>
+<td>37</td>
+<td>amir</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Sertaç</td>
+<td>52</td>
+<td>mühendis</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Furkan</td>
+<td>30</td>
+<td>yönetici</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Murat</td>
+<td>23</td>
+<td>müdür</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Ahmet</td>
+<td>40</td>
+<td>veteriner</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Abdülkadir</td>
+<td>38</td>
+<td>yönetici</td>
+</tr>
+</tbody>
+</table>
+<p>Şimdi <code>get()</code> metodu ile <strong>isim</strong> sütunundaki verilerin ilk karakterlerini ekrana yazdıralım;</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="p">[</span><span class="s2">&quot;isim&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="mi">0</span>    <span class="n">M</span>
+<span class="mi">1</span>    <span class="n">H</span>
+<span class="mi">2</span>    <span class="n">B</span>
+<span class="mi">3</span>    <span class="n">E</span>
+<span class="mi">4</span>    <span class="n">E</span>
+<span class="mi">5</span>    <span class="n">S</span>
+<span class="mi">6</span>    <span class="n">F</span>
+<span class="mi">7</span>    <span class="n">M</span>
+<span class="mi">8</span>    <span class="n">A</span>
+<span class="mi">9</span>    <span class="n">A</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">isim</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
+</code></pre></div>
+
+<p>Peki <strong>isim</strong> sütunundaki verilerin son karakterlerini ekrana yazdırmak istersek ne yapmalıyız;</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="p">[</span><span class="s2">&quot;isim&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="mi">0</span>    <span class="n">a</span>
+<span class="mi">1</span>    <span class="n">l</span>
+<span class="mi">2</span>    <span class="n">k</span>
+<span class="mi">3</span>    <span class="n">e</span>
+<span class="mi">4</span>    <span class="n">n</span>
+<span class="mi">5</span>    <span class="n">ç</span>
+<span class="mi">6</span>    <span class="n">n</span>
+<span class="mi">7</span>    <span class="n">t</span>
+<span class="mi">8</span>    <span class="n">t</span>
+<span class="mi">9</span>    <span class="n">r</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">isim</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
+</code></pre></div>
+
+<h2>slice() Metodu</h2>
+<p><code>slice()</code> metodu ile ile bir string'in istediğimiz karakter aralığını elde edebiliriz.
+Verimiz:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>isim</th>
+<th>yaş</th>
+<th>iş-meslek</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Mustafa</td>
+<td>25</td>
+<td>mühendis</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Halil</td>
+<td>38</td>
+<td>programcı</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Burak</td>
+<td>41</td>
+<td>akademisyen</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Emre</td>
+<td>23</td>
+<td>yönetici</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Ersin</td>
+<td>37</td>
+<td>amir</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Sertaç</td>
+<td>52</td>
+<td>mühendis</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Furkan</td>
+<td>30</td>
+<td>yönetici</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Murat</td>
+<td>23</td>
+<td>müdür</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Ahmet</td>
+<td>40</td>
+<td>veteriner</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Abdülkadir</td>
+<td>38</td>
+<td>yönetici</td>
+</tr>
+</tbody>
+</table>
+<p><strong>isim</strong> sütunundaki verilerin ilk 3 karakterlerini ekrana yazdırmak isteyelim;</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="p">[</span><span class="s2">&quot;isim&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="mi">0</span>    <span class="n">Mus</span>
+<span class="mi">1</span>    <span class="n">Hal</span>
+<span class="mi">2</span>    <span class="n">Bur</span>
+<span class="mi">3</span>    <span class="n">Emr</span>
+<span class="mi">4</span>    <span class="n">Ers</span>
+<span class="mi">5</span>    <span class="n">Ser</span>
+<span class="mi">6</span>    <span class="n">Fur</span>
+<span class="mi">7</span>    <span class="n">Mur</span>
+<span class="mi">8</span>    <span class="n">Ahm</span>
+<span class="mi">9</span>    <span class="n">Abd</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">isim</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
+</code></pre></div>
+
+<p>Son 3 karakteri görelim;</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="p">[</span><span class="s2">&quot;isim&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="mi">0</span>    <span class="n">afa</span>
+<span class="mi">1</span>    <span class="n">lil</span>
+<span class="mi">2</span>    <span class="n">rak</span>
+<span class="mi">3</span>    <span class="n">mre</span>
+<span class="mi">4</span>    <span class="n">sin</span>
+<span class="mi">5</span>    <span class="n">taç</span>
+<span class="mi">6</span>    <span class="n">kan</span>
+<span class="mi">7</span>    <span class="n">rat</span>
+<span class="mi">8</span>    <span class="n">met</span>
+<span class="mi">9</span>    <span class="nb">dir</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">isim</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
+</code></pre></div>
 
 		<span class="post-tags">
 			Tags:
