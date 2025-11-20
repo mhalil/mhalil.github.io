@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Python - string metotlari" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/python-string-metotlari.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Python - string metotlari</h1>
+	<span class="post-date">Prş 20 Kasım 2025</span>
+	<h1>String Metotları</h1>
+<p>Python’da her veri tipinde olduğu gibi stringler için de hazır bir çok metot bulunmaktadır. Bu metotlar sayesinde dizgi, metin (string) tipindeki veriler üzerinde hızlı ve esnek bir şekilde oynayabiliriz.</p>
+<h2>String Nedir?</h2>
+<p>String metotlarını anlatmadan önce kısaca string'in nam-ı diğer dizgi ve metin ifadesinin ne olduğundan kısaca bahsedelim.</p>
+<p>Python’da herhangi bir karakter dizisine <strong>string</strong> denir. String, tek bir harften oluşabileceği gibi, içerisinde boşluklar, özel karakterler veya rakamlar da barındırabilir. Python’da string veri tipi <code>str</code> ile ifade edilir.  </p>
+<p>Python’da string değişkenleri tırnak (‘) karakteri yardımıyla oluşturulur. String oluşturmak için <strong>tek tırnak (<code>‘ ‘</code>)</strong> veya <strong>çift tırnak (<code>" "</code>)</strong> kullanılabilir. Tek ve çift tırnak ile oluşturulan stringler tek satırda başlar ve biter.</p>
+<p>Çok satırlı string oluşturmak için <strong>üç tırnak (<code>""" """</code>)</strong> kullanılır.</p>
+<p>Python’da değişken ismi belirlerken şu kurallara uyulmalıdır:</p>
+<ul>
+<li>Herhangi bir ön tanımlı kelime (Ör: Python’ın <code>upper</code> ya da <code>print</code>fonksiyonu) ismi kullanılamaz.</li>
+<li>Değişken ismi rakam ile başlayamaz.</li>
+<li>Alt tire (_) dışında bir özel karakter kullanılamaz.</li>
+<li>Boşluk içeremez.</li>
+</ul>
+<p>Bu kurallardan herhangi birini ihlal ettiğiniz durumlarda <strong>“SyntaxError”</strong> hatası ile karşılaşacaksınız.</p>
+<h2>Karakter dönüşüm metotları</h2>
+<p>Veri girişi sırasında girilen metin değerlerinin sabit bir formatta bulunmaması çok yaygın bir durumdur. Bazı değerler tümüyle büyük harf içerirken, bazı değerlerin sadece ilk harfleri büyük olabilir.</p>
+<p>Karakter dönüşüm metotları sayesinde string değişkenine ait değerleri sabit bir biçime dönüştürebilirsiniz.</p>
+<table>
+<thead>
+<tr>
+<th><strong>String Metodu</strong></th>
+<th><strong>İşlevi</strong></th>
+<th><strong>Kullanım örneği</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>capitalize()</td>
+<td><strong>String’in ilk karakterini</strong> büyük harfe çevirir.</td>
+<td>ornek.capitalize()</td>
+</tr>
+<tr>
+<td>lower()</td>
+<td><strong>String’in tüm karakterlerini</strong> küçük harfe çevirir.</td>
+<td>ornek.lower()</td>
+</tr>
+<tr>
+<td>upper()</td>
+<td><strong>String’in tüm karakterlerini</strong> büyük harfe çevirir.</td>
+<td>ornek.upper()</td>
+</tr>
+<tr>
+<td>casefold()</td>
+<td>lower() metodundan da agresif bir şekilde <strong>tüm karakterleri</strong> küçük harfe çevirir. İngilizce dışındaki diller için kullanışlıdır.</td>
+<td>ornek.casefold()</td>
+</tr>
+<tr>
+<td>swapcase()</td>
+<td>Büyük olan karakterleri küçük, küçük olan karakterleri büyük harfe çevirir.</td>
+<td>ornek.swapcase()</td>
+</tr>
+<tr>
+<td>title()</td>
+<td>String’de bulunan <strong>tüm kelimelerin ilk karakterini</strong> büyük harfe</td>
+<td>ornek.title()</td>
+</tr>
+<tr>
+<td>replace()</td>
+<td>String’de bulunan herhangi bir karakteri, verilen başka bir karakter ile değiştirir.</td>
+<td>ornek.replace(“eski karakter”, “yeni karakter”)</td>
+</tr>
+</tbody>
+</table>
+<h2>Arama metotları</h2>
+<p>Arama metotları ile metin değerleri içerisinde bir metin arayabilirsiniz. Kullandığınız fonksiyona göre “<code>True, False</code>” gibi mantıksal bir değer, indeks veya adet değeri gibi sayısal bir değer elde edebilirsiniz.</p>
+<table>
+<thead>
+<tr>
+<th><strong>String Metodu</strong></th>
+<th><strong>İşlevi</strong></th>
+<th><strong>Kullanım örneği</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>startswith()</td>
+<td>String belirli bir değer ile <strong>başlıyorsa</strong>, <code>TRUE</code> değeri üretir.</td>
+<td>ornek.startswith(“aranan değer”)</td>
+</tr>
+<tr>
+<td>endswith()</td>
+<td>String belirli bir değer ile <strong>bitiyorsa</strong>, <code>TRUE</code> değeri üretir.</td>
+<td>ornek.endswith(“aranan değer”)</td>
+</tr>
+<tr>
+<td>find()</td>
+<td>String içerisinde aranan değer <strong>bulunduğunda, ilk indeks değeri</strong> döndürülür, bulunmadığında ise <code>-1</code> değeri üretir.</td>
+<td>ornek.find(“aranan değer”)</td>
+</tr>
+<tr>
+<td>rfind()</td>
+<td>Aramaya sağdan başlanır, String içerisinde aranan değer <strong>bulunduğunda, bulunan en yüksek indeks değeri</strong> (sağdaki ilk değer) döndürülür,  bulunmadığında ise <code>-1</code> değeri üretir.</td>
+<td>ornek.rfind(“aranan değer”)</td>
+</tr>
+<tr>
+<td>index()</td>
+<td>Verilen string ifade içinde arama yapar ve <strong>bulduğu ilk indeks numarasını</strong> döndürür. Eğer bulamazsa find metodundan farklı olarak geriye <code>-1</code> değerini döndürür.</td>
+<td>ornek.index(“aranan değer”)</td>
+</tr>
+<tr>
+<td>count()</td>
+<td>String’de bulunan herhangi bir değerin, <strong>kaç adet bulunduğunu</strong> gösterir.</td>
+<td>ornek.count(“aranan değer”)</td>
+</tr>
+</tbody>
+</table>
+<h2>String oluşturma metotları</h2>
+<p>Bazı değişkenlerde, gözleme dair birden fazla değer bulunabilir. 
+Örnek olarak adres satırında, ilçe değerinin yanı sıra mahalle değeri de aynı değişkende bulunuyor olabilir (Ör: Altunizade Mah. Üsküdar). Bu tarz durumlarda metinleri belirli kurallara göre parçalayarak yeni stringler oluşturmak isteyebilirsiniz. String oluşturma metotları, metin değerleri belirli bir ayırıcıya göre bölerek yeni stringler oluşturur.</p>
+<table>
+<thead>
+<tr>
+<th><strong>String Metodu</strong></th>
+<th><strong>İşlevi</strong></th>
+<th><strong>Kullanım örneği</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>split()</td>
+<td>String’i belirli bir ayırıcı yardımı ile <strong>böler</strong> ve yeni bir <strong>liste üretir</strong>. <code>sep</code> ve <code>maxsplit</code> adında 2 parametre alır. <code>maxsplit</code> parametresi, birden fazla bölme gerçekleşeceği zamanlarda en fazla kaç adet bölünme işlemi olacağını belirler.</td>
+<td>ornek.split(“ayırıcı”, maxsplit değeri)</td>
+</tr>
+<tr>
+<td>rsplit()</td>
+<td>String’i belirli bir ayırıcı yardımı ile <strong>böler</strong> ve yeni bir liste üretir. Split’ten farklı olarak <code>maxsplit</code> parametresi girildiğinde bölmeye sağ uçtan başlar.</td>
+<td>ornek.rsplit(“ayırıcı”, maxsplit değeri)</td>
+</tr>
+<tr>
+<td>splitlines()</td>
+<td>String’i satır sınırlarından <code>(\n, \r</code> vs.) <strong>böler</strong> ve yeni bir <strong>liste üretir</strong>.</td>
+<td>ornek.splitlines()</td>
+</tr>
+<tr>
+<td>partition()</td>
+<td>String’i belirli bir ayırıcı yardımı ile <strong>böler</strong> ve 3 elemanlı bir <strong>demet (tuple) üretir.</strong> Sırasıyla bu elemanlar: (Ayırıcıdan önceki değerler, ayırıcı ve ayırıcıdan sonraki değerler) Eğer ayırıcı değer string’de bulunmazsa, 3 elemanlı demet şu şekilde oluşur: (String, boş değer, boş değer)</td>
+<td>ornek.partition()</td>
+</tr>
+<tr>
+<td>rpartition()</td>
+<td>String’i belirli bir ayırıcı yardımı ile <strong>böler</strong> ve 3 elemanlı bir <strong>demet (tuple) üretir</strong>. partition()’ın aksine bölme işlemine sağdan başlar.</td>
+<td>ornek.rpartition()</td>
+</tr>
+<tr>
+<td>join()</td>
+<td>Bir ayırıcı yardımı ile <strong>stringleri birbirine bağlar.</strong></td>
+<td>ayirici.join(ornek)</td>
+</tr>
+</tbody>
+</table>
+<h2>Sorgulama metotları</h2>
+<p>Sorgulama metotları ile string değişkeninin barındırdığı karakterlerin sayısal veya alfabetik değerlerden mi oluştuğunu, boşluk veya özel bir karakter içerip içermediğini sorgulayabilirsiniz. 
+Sorgulama metotları yanıt olarak “<code>True, False</code>” mantıksal değerlerini üretir.</p>
+<table>
+<thead>
+<tr>
+<th><strong>String Metodu</strong></th>
+<th><strong>İşlevi</strong></th>
+<th><strong>Kullanım örneği</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>isalnum()</td>
+<td>String, en az bir karakterden oluşuyor ve tüm karakterler alfanümerik (<strong>harf veya rakam</strong>) değerlerden oluşuyorsa, <code>TRUE</code> değeri üretir.</td>
+<td>ornek.isalnum()</td>
+</tr>
+<tr>
+<td>isalpha()</td>
+<td>String, en az bir karakterden oluşuyor ve tüm karakterler alfabetik (<strong>harf</strong>) değerlerden oluşuyorsa, <code>TRUE</code> değeri üretir.</td>
+<td>ornek.isalpha()</td>
+</tr>
+<tr>
+<td>isdecimal()</td>
+<td>String, en az bir karakterden oluşuyor ve tüm karakterler <strong>ondalık değerlerden</strong> oluşuyorsa, <code>TRUE</code> değeri üretir.</td>
+<td>ornek.isdecimal()</td>
+</tr>
+<tr>
+<td>isdigit()</td>
+<td>String, en az bir karakterden oluşuyor ve tüm karakterler <strong>rakamlardan</strong> oluşuyorsa, <code>TRUE</code> değeri üretir.</td>
+<td>ornek.isdigit()</td>
+</tr>
+<tr>
+<td>isidentifier()</td>
+<td>String, Python’da bulunan bir <a href="https://docs.python.org/3/reference/lexical_analysis.html#identifiers">tanımlayıcı (identifier)</a> kelimeden oluşuyorsa, <code>TRUE</code> değeri üretir.</td>
+<td>ornek.isidentifier()</td>
+</tr>
+<tr>
+<td>islower()</td>
+<td>String, en az bir karakterden oluşuyor ve <strong>tüm karakterler küçük harflerden oluşuyorsa</strong>, <code>TRUE</code> değeri üretir.</td>
+<td>ornek.islower()</td>
+</tr>
+<tr>
+<td>isupper()</td>
+<td>String, en az bir karakterden oluşuyor ve <strong>tüm karakterler büyük harflerden oluşuyorsa</strong>, <code>TRUE</code> değeri üretir.</td>
+<td>ornek.isupper()</td>
+</tr>
+<tr>
+<td>isspace()</td>
+<td>String’de bulunan <strong>tüm karakterler boşluk</strong> ise, <code>TRUE</code> değeri üretir.</td>
+<td>ornek.isspace()</td>
+</tr>
+<tr>
+<td>istitle()</td>
+<td>String, en az bir karakterden oluşuyor ve <strong>tüm kelimelerin ilk harfi büyük</strong> harflerden oluşuyorsa, <code>TRUE</code> değeri üretir.</td>
+<td>ornek.istitle()</td>
+</tr>
+<tr>
+<td>isnumeric()</td>
+<td>String, en az bir karakterden oluşuyor ve tüm karakterler nümerik (<strong>rakam, ondalık sayı, unicode değerler vs.</strong>) karakterlerden oluşuyorsa, <code>TRUE</code> değeri üretir.</td>
+<td>ornek.isnumeric()</td>
+</tr>
+<tr>
+<td>isprintable()</td>
+<td>String, en az bir karakterden oluşuyor ve tüm karakterler yazdırılabilir (<strong>harf, sembol, rakam, nokta, boşluk vs.</strong>) karakterlerden oluşuyorsa, <code>TRUE</code> değeri üretir.</td>
+<td>ornek.isprintable()</td>
+</tr>
+</tbody>
+</table>
+<h2>Kırpma metotları</h2>
+<p>Metnin başında, sonunda veya her iki ucunda bulunabilen boşlukları Kırpma metotları ile giderebiliriz.</p>
+<table>
+<thead>
+<tr>
+<th><strong>String Metodu</strong></th>
+<th><strong>İşlevi</strong></th>
+<th><strong>Kullanım örneği</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>strip()</td>
+<td><strong>String’in başındaki ve sonundaki</strong> boşluk veya kullanıcı tarafından verilen belirli bir karakteri <strong>temizler</strong>.</td>
+<td>ornek.strip()</td>
+</tr>
+<tr>
+<td>lstrip()</td>
+<td>String’in <strong>başındaki</strong> boşluk veya kullanıcı tarafından verilen belirli bir karakteri <strong>temizler</strong>.</td>
+<td>ornek.lstrip()</td>
+</tr>
+<tr>
+<td>rstrip()</td>
+<td>String’in <strong>sonundaki</strong> boşluk veya kullanıcı tarafından verilen belirli bir karakteri <strong>temizler</strong>.</td>
+<td>ornek.rstrip()</td>
+</tr>
+</tbody>
+</table>
+<h2>Hizalama metotları</h2>
+<p>Metin değişkenlerini belirli bir biçimde ortalamak, sola veya sağa yaslamak için hizalama metotları kullanılır. Hizalama için boşluk değeri kullanılabileceği gibi tercihe göre farklı bir karakter de kullanılabilir.</p>
+<table>
+<thead>
+<tr>
+<th><strong>String Metodu</strong></th>
+<th><strong>İşlevi</strong></th>
+<th><strong>Kullanım örneği</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>center()</td>
+<td>String’i belirtilen değer kadar boşluk veya tercihen herhangi bir karakter ile <strong>ortalar</strong>. Belirtilen değer dizenin uzunluğundan kısa ise değişiklik yapılmaz.</td>
+<td>ornek.center(sayi, tercihi karakter değeri)</td>
+</tr>
+<tr>
+<td>ljust()</td>
+<td>String’i belirtilen değer kadar boşluk veya tercihen herhangi bir karakter ile <strong>sola doğru yaslar</strong>. Belirtilen değer dizenin uzunluğundan kısa ise değişiklik yapılmaz.</td>
+<td>ornek.ljust(sayi, tercihi karakter değeri)</td>
+</tr>
+<tr>
+<td>rjust()</td>
+<td>String’i belirtilen değer kadar boşluk veya tercihen herhangi bir karakter ile <strong>sağa doğru yaslar</strong>. Belirtilen değer dizenin uzunluğundan kısa ise değişiklik yapılmaz.</td>
+<td>ornek.rjust(sayi, tercihi karakter değeri)</td>
+</tr>
+</tbody>
+</table>
+<h2>Kaynak:</h2>
+<ul>
+<li><a href="https://ravenfo.com/2021/02/21/pythonda-string-metotlari/">Python&#039;da Stringler: String Metotları ve İşlemleri</a></li>
+</ul>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/string.html">String</a></li>
+					<li><a href="/tag/metot.html">Metot</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>
