@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Python - getattr fonksiyonu" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/python-getattr-fonksiyonu.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Python - getattr fonksiyonu</h1>
+	<span class="post-date">Cum 21 Kasım 2025</span>
+	<h1>getattr() Fonksiyonu</h1>
+<p><code>getattr()</code> fonksiyonu, Python'da <strong>bir nesnenin, adı belirtilen özniteliğinin değerini dinamik olarak almak için</strong> kullanılan yerleşik bir fonksiyondur. Bu fonksiyon, öznitelik adlarının çalışma zamanında (runtime) belirlendiği durumlarda veya metodları dinamik olarak çağırmak gerektiğinde kullanılır.</p>
+<p>İşte <code>getattr()</code> işlevinin temel sözdizimi ve dönüş mekanizmaları:</p>
+<h2>Temel Sözdizimi</h2>
+<p><code>getattr()</code> fonksiyonu iki ana imza ile kullanılabilir, bunlardan ikincisi isteğe bağlı bir <code>default</code> (varsayılan) değer içerir:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">getattr</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+<span class="nb">getattr</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">default</span><span class="p">)</span>
+</code></pre></div>
+
+<p>veya genel olarak:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">getattr</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="n">name</span><span class="p">[,</span> <span class="n">default</span><span class="p">])</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</code></pre></div>
+
+<h2>Parametreler</h2>
+<p><code>getattr()</code> işlevi üç ana parametre kabul eder:</p>
+<ol>
+<li>
+<p><strong>object</strong> <strong>(Nesne):</strong> Özniteliğin değerini almak istediğiniz nesnedir.</p>
+</li>
+<li>
+<p><strong>name</strong> <strong>(Ad/Öznitelik):</strong> Alınmak istenen özniteliğin adını belirten bir dizedir (string).</p>
+</li>
+<li>
+<p><strong>default</strong> <strong>(Varsayılan):</strong> Bu parametre isteğe bağlıdır. Eğer adlandırılmış öznitelik nesnede mevcut değilse, <code>getattr()</code> işlevi bu varsayılan değeri döndürür.</p>
+</li>
+</ol>
+<h2>Dönüş Mekanizmaları</h2>
+<p><code>getattr()</code> fonksiyonunun dönüş değeri, istenen özniteliğin varlığına ve isteğe bağlı <code>default</code> parametresinin sağlanıp sağlanmadığına bağlıdır:</p>
+<ol>
+<li><strong>Öznitelik Mevcutsa:</strong></li>
+</ol>
+<p>◦ <code>getattr()</code> fonksiyonu, adı belirtilen özniteliğin <strong>değerini döndürür</strong>.</p>
+<p>◦ Dinamik erişim için önemli bir not; <strong>Bir metodun da nesnenin bir özniteliği olmasıdır</strong>. Dolayısıyla, <code>getattr()</code> bir metot adına uygulandığında, metodu döndürür ve bu metot daha sonra dinamik olarak çağrılabilir.</p>
+<p>Python'da metotlar, özel bir tür olsalar da, tıpkı değişkenler gibi bir nesneye ait olan öznitelikler (attribute) olarak kabul edilir.</p>
+<p>Bu temel kural şunları ifade eder:</p>
+<ul>
+<li>
+<p><strong>Nokta Gösterimi:</strong> Normalde bir metodu <code>nesne.metot_adi()</code> şeklinde çağırırsınız. Bu, aslında nesnenin <code>metot_adi</code> özniteliğine eriştiğiniz ve ardından bu özniteliği çalıştırdığınız (parantezlerle çağırdığınız) anlamına gelir.</p>
+</li>
+<li>
+<p><strong>getattr()</strong> <strong>Gösterimi:</strong> <code>getattr(nesne, "metot_adi")</code> kullandığınızda, <code>getattr()</code> fonksiyonu, nesne içinde bu dize adına sahip olan özniteliği arar. Bu öznitelik bir metot olduğunda, <code>getattr()</code> işlevi metodu çağırmaz, bunun yerine <strong>metodun kendisini (metot objesini)</strong> döndürür.</p>
+</li>
+</ul>
+<p>Bu durum, <code>getattr()</code> işlevinin metotları dinamik olarak erişilebilir ve daha sonra yürütülebilir hale getirmesini sağlar.</p>
+<ol>
+<li><strong>Öznitelik Mevcut Değilse:</strong></li>
+</ol>
+<p>◦ <strong>Eğer</strong> <strong>default</strong> <strong>değeri sağlanmışsa:</strong> Fonksiyon, <code>default</code> olarak belirtilen değeri döndürür. Bu, istisnayı önlemenin bir yoludur. Örneğin, mevcut olmayan bir öznitelik için <code>None</code> varsayılan değer olarak geçilebilir.</p>
+<p>◦ <strong>Eğer</strong> <strong>default</strong> <strong>değeri atlanmışsa (belirtilmemişse):</strong> Fonksiyon, bir <code>AttributeError</code> istisnası (hata) yükseltir.</p>
+<p><strong>Özetle,</strong> <code>getattr()</code> işlevi, öznitelik adına dinamik olarak bir dize aracılığıyla erişilmesini sağlayarak, programın öznitelik adlarını çalışma zamanında oluşturabilmesine olanak tanır. Bu, doğrudan <code>member.name</code> gibi nokta gösterimiyle erişime benzer bir sonuç verir, ancak öznitelik adının değişken olmasını sağlar.</p>
+<p>Bu mekanizma, bir nesnedeki bir özelliğe ulaşmak için kullandığınız adrese bir postacı göndermeye benzer; adresi (öznitelik adını) bir mektup (dize) olarak sağlarsınız. Eğer adres doğruysa (öznitelik varsa), size o adresteki içeriği (öznitelik değeri) getirir. Eğer adres hatalıysa, postacı geri döner ve size bir hata bildirimi (varsayılan değer) veya bir istisna (<code>AttributeError</code>) verir.</p>
+<h2>Örnekler</h2>
+<p>Konuyu örneklerle inceleyelim.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Personel</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ad</span><span class="p">,</span> <span class="n">yas</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ad</span> <span class="o">=</span> <span class="n">ad</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">yas</span> <span class="o">=</span> <span class="n">yas</span>
+
+<span class="n">kullanici1</span> <span class="o">=</span> <span class="n">Personel</span><span class="p">(</span><span class="s2">&quot;Yusuf&quot;</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>kullanici1</strong> adında  bir nesne oluşturup <code>ad</code> olarak <strong>Yusuf</strong>, <code>yaş</code> olarak ta <strong>25</strong> değerini atıyoruz.</p>
+<p>Şimdi <strong>kullanici1</strong>'in <code>ad</code> ve <code>yaş</code> bilgilerini <code>getattr()</code> fonksiyonu yardımıyla elde edelim.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">kullanici1</span><span class="p">,</span> <span class="s2">&quot;ad&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">kullanici1</span><span class="p">,</span> <span class="s2">&quot;yas&quot;</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Yusuf</span>
+<span class="mi">25</span>
+</code></pre></div>
+
+<p><strong>kullanici1</strong> nesnesinin <code>meslek</code> bilgisini (özniteliğini) sorgulayalım. Eğer böyle bir bilgi yoksa <code>None</code> değeri dönmesini isteyelim.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">kullanici1</span><span class="p">,</span> <span class="s2">&quot;meslek&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="kc">None</span>
+</code></pre></div>
+
+<p>Bulamadığı öznitelik karşısında <code>None</code> değeri yerine kendi mesajımızı da döndürebiliriz;</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">kullanici1</span><span class="p">,</span> <span class="s2">&quot;boy&quot;</span><span class="p">,</span> <span class="s2">&quot;Bu bilgi mevcut değil&quot;</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Bu</span> <span class="n">bilgi</span> <span class="n">mevcut</span> <span class="n">değil</span>
+</code></pre></div>
+
+<p>Bir sınıfa ait fonksiyonu, <code>getattr()</code> içerisinde nasıl kullanabiliriz derseniz;</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">AI</span><span class="p">:</span>
+   <span class="k">def</span> <span class="nf">genAI</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      <span class="k">return</span> <span class="s2">&quot;This is your prompt&quot;</span>
+
+<span class="n">chatGpt</span> <span class="o">=</span> <span class="n">AI</span><span class="p">()</span>
+<span class="n">output</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">chatGpt</span><span class="p">,</span> <span class="s2">&quot;genAI&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The chat GPT wrote:&quot;</span><span class="p">,</span> <span class="n">output</span><span class="p">())</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">The</span> <span class="n">chat</span> <span class="n">GPT</span> <span class="n">wrote</span><span class="p">:</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">your</span> <span class="n">prompt</span>
+</code></pre></div>
+
+<p>Aşağıdaki örnekte gösterildiği gibi, <code>getattr()</code> fonksiyonunu <code>for</code> döngüsü içinde kullanarak verilen bir özniteliklerin değerine erişebiliriz.</p>
+<div class="highlight"><pre><span></span><code><span class="n">info</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;emp_id&quot;</span><span class="p">,</span> <span class="s2">&quot;status&quot;</span><span class="p">]</span>
+
+<span class="k">class</span> <span class="nc">Emp</span><span class="p">:</span>
+   <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">emp_id</span><span class="p">,</span> <span class="n">status</span><span class="p">):</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">emp_id</span> <span class="o">=</span> <span class="n">emp_id</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="n">status</span>
+
+<span class="n">emp</span> <span class="o">=</span> <span class="n">Emp</span><span class="p">(</span><span class="s2">&quot;Ansh&quot;</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="s2">&quot;Present&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The information of Employee:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">info</span><span class="p">:</span>
+   <span class="nb">print</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">emp</span><span class="p">,</span> <span class="n">i</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">The</span> <span class="n">information</span> <span class="n">of</span> <span class="n">Employee</span><span class="p">:</span>
+<span class="n">Ansh</span>
+<span class="mi">30</span>
+<span class="n">Present</span>
+</code></pre></div>
+
+<p>Bir başka örnek;</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Car</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">brand</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">year</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">brand</span> <span class="o">=</span> <span class="n">brand</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">year</span> <span class="o">=</span> <span class="n">year</span>
+
+<span class="n">cars</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">Car</span><span class="p">(</span><span class="s2">&quot;Toyota&quot;</span><span class="p">,</span> <span class="s2">&quot;Corolla&quot;</span><span class="p">,</span> <span class="mi">2020</span><span class="p">),</span>
+    <span class="n">Car</span><span class="p">(</span><span class="s2">&quot;Ford&quot;</span><span class="p">,</span> <span class="s2">&quot;Mustang&quot;</span><span class="p">,</span> <span class="mi">2018</span><span class="p">),</span>
+    <span class="n">Car</span><span class="p">(</span><span class="s2">&quot;Tesla&quot;</span><span class="p">,</span> <span class="s2">&quot;Model S&quot;</span><span class="p">,</span> <span class="mi">2022</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="k">for</span> <span class="n">car</span> <span class="ow">in</span> <span class="n">cars</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">car</span><span class="p">,</span> <span class="s2">&quot;brand&quot;</span><span class="p">,</span> <span class="s2">&quot;Unknown&quot;</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Toyota</span>
+<span class="n">Ford</span>
+<span class="n">Tesla</span>
+</code></pre></div>
+
+<p><strong>Dinamik Çağırma Mekanizması</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Validation</span><span class="p">:</span>
+    <span class="n">ERRORS</span> <span class="o">=</span> <span class="p">{</span> 
+        <span class="s1">&#39;required&#39;</span> <span class="p">:</span> <span class="s1">&#39;The </span><span class="si">{}</span><span class="s1"> is required&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;email&#39;</span> <span class="p">:</span> <span class="s1">&#39;The </span><span class="si">{}</span><span class="s1"> is not a valid email address&#39;</span> 
+    <span class="p">}</span>
+    <span class="c1"># ... required() ve email() metotları burada tanımlı ... [10]</span>
+
+    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">rules</span><span class="p">):</span>
+        <span class="n">errors</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">field</span><span class="p">,</span> <span class="n">rule</span> <span class="ow">in</span> <span class="n">rules</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="c1"># 1. Kural Adını Metoda Dönüştürme</span>
+            <span class="c1"># Örneğin, &#39;required&#39; dizesi, self.required metoduna dönüşür.</span>
+            <span class="n">is_valid_method</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rule</span><span class="p">)</span> <span class="c1"># [9, 11]</span>
+
+            <span class="c1"># 2. Metodu Dinamik Olarak Çağırma</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">is_valid_method</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">field</span><span class="p">]):</span>
+                <span class="n">errors</span><span class="p">[</span><span class="n">field</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ERRORS</span><span class="p">[</span><span class="n">rule</span><span class="p">]</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">field</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">errors</span>
+</code></pre></div>
+
+<p>Bu örnekte, <code>getattr(self, rule)</code> satırı:</p>
+<p>• <code>rule</code> dizesini alır (<code>'required'</code> veya <code>'email'</code>).</p>
+<p>• <code>Validation</code> nesnesi içindeki ilgili metodu bulur ve döndürür.</p>
+<p>• Dönen metot, <code>is_valid_method(data[field])</code> ile anında çağrılarak dinamik akış sağlar.</p>
+<p>Bu sayede, hangi doğrulama metodunun çağrılacağı kodu statik olarak yazmak yerine, çalışma zamanında kurallar sözlüğünden okunabilir.</p>
+<p><strong>Konuyu detaylı incelersek;</strong></p>
+<p>Dinamik metot çağırma işlemi iki ayrı aşamada gerçekleşir:</p>
+<p><strong>A. Aşama: Metodu Dize Adıyla Alma (Retrieval)</strong></p>
+<p>Bu aşamada, metot çalışma zamanında (runtime) belirlenen bir dize adı kullanılarak nesneden alınır ve bir değişkene atanır.</p>
+<p><strong>Sözdizimi:</strong></p>
+<div class="highlight"><pre><span></span><code>is_valid_method = getattr(self, rule)
+</code></pre></div>
+
+<p>• <strong>self</strong>: Metodu içeren nesnedir (genellikle bir sınıf örneği).</p>
+<p>• <strong>rule</strong>: Çağrılacak metodun adını içeren dizedir (örneğin: <code>'required'</code> veya <code>'email'</code>).</p>
+<p>• <strong>is_valid_method</strong>: Bu değişken artık doğrudan <code>required()</code> veya <code>email()</code> metodunun kendisine referans veren bir metot objesidir.</p>
+<p><strong>B. Aşama: Alınan Metodu Çalıştırma (Execution)</strong></p>
+<p>Metot objesi bir değişkene atandıktan sonra, bu değişken normal bir fonksiyon gibi parantezlerle çağrılabilir ve argümanları iletilebilir.</p>
+<p><strong>Sözdizimi:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">is_valid_method</span><span class="p">(</span><span class="k">data</span><span class="o">[</span><span class="n">field</span><span class="o">]</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Bu, programın hangi metodu çağıracağını <em>derleme zamanında</em> değil, <em>çalışma zamanında</em> karar vermesini sağlar.</p>
+<p>Pratik Örnek: Dinamik Doğrulama Sınıfı</p>
+<p>Kaynaklarda detaylı olarak açıklanan <code>Validation</code> (Doğrulama) sınıfı örneği, bu dinamiğin en net uygulamasını gösterir.</p>
+<p><strong>Senaryo:</strong> Bir <code>rules</code> sözlüğünde, hangi alan için hangi doğrulama kuralının (metodunun) kullanılacağı dize olarak tutulur (<code>'required'</code>, <code>'email'</code>).</p>
+<p><strong>Uygulama Adımları (Kaynaklara göre):</strong></p>
+<ol>
+<li>
+<p><strong>Kuralları Yineleme:</strong> <code>validate()</code> metodu, <code>rules</code> sözlüğünde (alan adı, kural adı) çiftlerini yineler (döngüye alır).</p>
+</li>
+<li>
+<p><strong>Metodu Bulma:</strong> Her bir döngüde, kural adını (<code>rule</code>) kullanarak <code>getattr()</code> işlevi çağrılır:</p>
+</li>
+<li>
+<p><em>Eğer</em> <em>rule</em> <em>dizesi</em> <em>'required'</em> <em>ise,</em> <em>getattr()</em> <em>işlevi</em> <em>self.required</em> <em>metodunu döndürür.</em> <em>Eğer</em> <em>rule</em> <em>dizesi</em> <em>'email'</em> <em>ise,</em> <em>getattr()</em> <em>işlevi</em> <em>self.email</em> <em>metodunu döndürür</em>.</p>
+</li>
+<li>
+<p><strong>Metodu Çağırma:</strong> Dönen metot objesi (<code>is_valid_method</code>), hemen ardından <code>data[field]</code> üzerindeki veriyi doğrulamak için çağrılır:</p>
+</li>
+</ol>
+<p>Bu yöntem sayesinde, doğrulama kurallarını eklemek veya kaldırmak için <code>validate()</code> metodunun içeriğini değiştirmeye gerek kalmaz; sadece kural adlarının dize olarak tutulduğu <code>rules</code> sözlüğünü ve ilgili metotları güncellemek yeterli olur. Bu, kodun esnekliğini (flexibility) artırır.</p>
+<h2>Gizli Metotlara Erişim</h2>
+<p>Bir <code>HesapMakinesi</code> sınıfımızın olduğunu ve yalnızca dahili süreçler için kullanılmasını istediğimiz gizli bir <code>_carp()</code> (çarpma) metodumuz olduğunu varsayalım. Dışarıdan sadece <code>islem_yap()</code> metodu ile erişim sağlamak istiyoruz, ancak hangi işlemin yapılacağını dinamik olarak belirliyoruz.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">HesapMakinesi</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Varsayılan değer</span>
+        <span class="k">pass</span>
+
+    <span class="c1"># Gizli (internal/private) metot:</span>
+    <span class="k">def</span> <span class="nf">_carp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Bu metot sadece dahili kullanıma yönelik tasarlanmıştır.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
+
+    <span class="c1"># Gizli olmayan (public) metot:</span>
+    <span class="k">def</span> <span class="nf">topla</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+
+    <span class="k">def</span> <span class="nf">dinamik_islem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">islem_adi</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+        <span class="c1"># Gizli metot adını oluşturma: &quot;carp&quot; -&gt; &quot;_carp&quot;</span>
+        <span class="n">gizli_metot_adi</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;_</span><span class="si">{</span><span class="n">islem_adi</span><span class="si">}</span><span class="s2">&quot;</span> 
+
+        <span class="c1"># 1. getattr() ile dinamik olarak gizli metodu al:</span>
+        <span class="c1"># getattr(self, &#39;_carp&#39;)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">islem_metodu</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gizli_metot_adi</span><span class="p">)</span>
+
+            <span class="c1"># 2. Elde edilen metodu çağır:</span>
+            <span class="k">return</span> <span class="n">islem_metodu</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Hata: &#39;</span><span class="si">{</span><span class="n">islem_adi</span><span class="si">}</span><span class="s2">&#39; isimli gizli bir işlem bulunamadı.&quot;</span>
+</code></pre></div>
+
+<p>Önce <code>islem</code> nesnemizi olusturalım ardından gizli metoda erişelim.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Kullanım</span>
+<span class="n">islem</span> <span class="o">=</span> <span class="n">HesapMakinesi</span><span class="p">()</span>
+
+<span class="c1"># Gizli metoda dinamik erişim ve çağırma:</span>
+<span class="c1"># &#39;carp&#39; dizesi, içeride _carp metoduna dönüştürülüyor.</span>
+<span class="n">sonuc</span> <span class="o">=</span> <span class="n">islem</span><span class="o">.</span><span class="n">dinamik_islem</span><span class="p">(</span><span class="s2">&quot;carp&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> 
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Çarpma Sonucu (Dinamik Gizli Erişim): </span><span class="si">{</span><span class="n">sonuc</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Çarpma</span> <span class="n">Sonucu</span> <span class="p">(</span><span class="n">Dinamik</span> <span class="n">Gizli</span> <span class="n">Erişim</span><span class="p">):</span> <span class="mi">20</span>
+</code></pre></div>
+
+<p><strong>Kodun Açıklaması / Özeti:</strong></p>
+<ol>
+<li>
+<p><strong>Gizleme Kuralı:</strong> Python'da, bir özniteliğin veya metodun önüne tek bir alt çizgi (<code>_</code>) getirilmesiyle (örneğin <code>_carp</code>), o öznitelik veya metot "özel" (private) olarak işaretlenir.</p>
+</li>
+<li>
+<p><strong>Dinamik İsim Oluşturma:</strong> <code>dinamik_islem</code> metodu içinde, harici olarak verilen dize adının (<code>'carp'</code>) başına alt çizgi eklenerek metot adı dize olarak oluşturulur (<code>'_carp'</code>). Bu, kaynaklarda gösterildiği gibi metot adının alt çizgiyle (<code>f'_{rule}'</code>) öneki yapılmasına benzer.</p>
+</li>
+<li>
+<p><strong>getattr()</strong> <strong>Kullanımı:</strong> <code>getattr(self, gizli_metot_adi)</code> ifadesi, oluşturulan bu dizeyi kullanarak nesne (<code>self</code>) içindeki <strong>tam olarak adlandırılmış</strong> gizli metodu (<code>_carp</code>) dinamik olarak bulur ve döndürür.</p>
+</li>
+<li>
+<p><strong>Çağırma:</strong> Dönen metot (<code>islem_metodu</code>), ardından normal bir fonksiyon gibi çağrılabilir (<code>islem_metodu(a, b)</code>).</p>
+</li>
+</ol>
+<p>Böylece, <code>getattr()</code> sayesinde, program metotların adlarını çalışma zamanında dize olarak birleştirerek, normalde dahili kullanım için tasarlanmış olan metotlara dahi esnek bir şekilde erişim sağlamış olur.</p>
+<h2>Kaynaklar:</h2>
+<ul>
+<li><a href="https://realpython.com/ref/builtin-functions/getattr/">getattr() | Python’s Built-in Functions – Real Python</a></li>
+<li><a href="https://www.pythontutorials.net/blog/call-a-method-of-an-object-with-arguments-in-python/">How to Dynamically Call a Python Object Method with Arguments Using getattr — pythontutorials.net</a></li>
+<li><a href="https://www.pythonmorsels.com/getattr-function/">Python&#x27;s getattr function - Python Morsels</a></li>
+<li><a href="https://www.tutorialspoint.com/python/python_getattr_function.htm">Python getattr() Function</a></li>
+<li>https://notebooklm.google.com/</li>
+</ul>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/getattr.html">getattr</a></li>
+					<li><a href="/tag/fonksiyon.html">Fonksiyon</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>
