@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Pandas - resample" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/pandas-resample.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Pandas - resample</h1>
+	<span class="post-date">Cum 21 Kasım 2025</span>
+	<h1>resample() Fonksiyonu</h1>
+<p><code>resample()</code> Fonksiyonu, <strong>zaman serisi verilerinin frekansını dönüştürmek ve yeniden örneklemek için kullanılan</strong> temel bir metottur. Aşağıda, örneklerle bu konuyu detaylı olarak açıklayacağım.</p>
+<p>Örnekler için temel veri serisi olarak, 9 adet bir dakikalık zaman damgasına sahip bir <code>Series</code> oluşturalım:</p>
+<div class="highlight"><pre><span></span><code><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s1">&#39;1/1/2025&#39;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;min&#39;</span><span class="p">)</span>
+<span class="n">series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">)</span>
+
+<span class="c1"># #Çıktı:</span>
+<span class="c1"># #2025-01-01 00:00:00    0</span>
+<span class="c1"># #2025-01-01 00:01:00    1</span>
+<span class="c1"># #2025-01-01 00:02:00    2</span>
+<span class="c1"># #2025-01-01 00:03:00    3</span>
+<span class="c1"># #2025-01-01 00:04:00    4</span>
+<span class="c1"># #2025-01-01 00:05:00    5</span>
+<span class="c1"># #2025-01-01 00:06:00    6</span>
+<span class="c1"># #2025-01-01 00:07:00    7</span>
+<span class="c1"># #2025-01-01 00:08:00    8</span>
+<span class="c1"># #Freq: min, dtype: int64</span>
+</code></pre></div>
+
+<h3>1. Frekans Düşürme (Downsampling) ve Toplama İşlevleri</h3>
+<p>Frekans düşürme, daha uzun zaman aralıklarına geçiş yapıldığı (örneğin dakikalıktan 3 dakikalığa) ve bu aralıklardaki verilerin birleştirildiği (aggregate) durumdur.</p>
+<h4>A. Basit Toplama (<code>sum()</code>):</h4>
+<p>Seriyi 3 dakikalık zaman aralığına (kovalara) (bin) düşürmek ve bu kovalara düşen zaman damgalarının değerlerini toplamak için kullanılır.</p>
+<ul>
+<li><strong>İşlem:</strong> <code>series.resample('3min').sum()</code></li>
+<li><strong>Açıklama:</strong></li>
+<li>İlk kova (00:00:00'da başlayan): 0, 1, 2 değerlerini içerir. Toplamı 3'tür.</li>
+<li>İkinci kova (00:03:00'da başlayan): 3, 4, 5 değerlerini içerir. Toplamı 12'dir.</li>
+<li>Üçüncü kova (00:06:00'da başlayan): 6, 7, 8 değerlerini içerir. Toplamı 21'dir.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;3min&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+
+<span class="c1"># # Çıktı:</span>
+<span class="c1"># #2025-01-01 00:00:00     3</span>
+<span class="c1"># #2025-01-01 00:03:00    12</span>
+<span class="c1"># #2025-01-01 00:06:00    21</span>
+<span class="c1"># #Freq: 3min, dtype: int64</span>
+</code></pre></div>
+
+<h4>B. Kova Kenarı Etiketlemesi (<code>label</code>) ve Kova Kapatma (<code>closed</code>)</h4>
+<p>Yeniden örnekleme yaparken, oluşturulan zaman aralığı (kova)  kenarı <code>label</code> etiketiyle etiketlenebilir ve kovanın hangi tarafının kapalı (değeri içerdiği) olması gerektiğini (<code>closed</code>) belirleyebiliriz.</p>
+<ul>
+<li>
+<p><strong><code>label='right'</code> kullanımı:</strong> Eğer etiket olarak sağ kenar (<code>'right'</code>) kullanılırsa, varsayılan olarak bu etiketi temsil eden değer kovanın içine dahil edilmez.</p>
+</li>
+<li>
+<p><strong><code>label='right', closed='right'</code> kullanımı:</strong> Sağ kenardaki değeri kovaya dahil etmek için <code>closed='right'</code> parametresi kullanılır.</p>
+</li>
+<li>
+<p><strong>İşlem:</strong> <code>series.resample('3min', label='right', closed='right').sum()</code></p>
+</li>
+<li>
+<p><strong>Açıklama:</strong> Bu durumda, ilk kova (00:00:00 etiketi) 00:00:00'dan 00:03:00'a kadar olan değerleri içerir ve 00:00:00'daki değeri (0) içerir.</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;3min&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">closed</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+
+<span class="c1"># Çıktı:</span>
+<span class="c1"># 2000-01-01 00:00:00    0  (00:00:00&#39;dan önceki veriler)</span>
+<span class="c1"># 2000-01-01 00:03:00    6  (0, 1, 2, 3 toplamı 6 değil, bu örnekteki toplam 00:00&#39;dan 00:03&#39;e kadar olan aralığı sağdan kapalı olarak toplar: (00:00, 00:03]) [6].</span>
+<span class="c1"># 2000-01-01 00:06:00   15</span>
+<span class="c1"># 2000-01-01 00:09:00   15</span>
+</code></pre></div>
+
+<h3>2. Frekans Yükseltme (Upsampling) ve Veri Doldurma</h3>
+<p>Frekans yükseltme (örneğin 1 dakikalıktan 30 saniyeliğe) yapıldığında, aralara yeni zaman damgaları eklenir ve bu yeni girişler varsayılan olarak <code>NaN</code> (boş) değerler içerir.</p>
+<h4>A. Sadece Yeniden Dizinleme (<code>asfreq()</code>):</h4>
+<p>Seriyi 30 saniyelik kovalara yükseltir ve veri olmayan yerlere <code>NaN</code> atar.</p>
+<ul>
+<li><strong>İşlem:</strong> <code>series.resample('30s').asfreq()</code></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;30s&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">asfreq</span><span class="p">())</span>
+
+<span class="c1"># #Çıktı:</span>
+
+<span class="c1"># #2025-01-01 00:00:00    0.0</span>
+<span class="c1"># #2025-01-01 00:00:30    NaN  &lt;-- Yeni eklenen satır</span>
+<span class="c1"># #2025-01-01 00:01:00    1.0</span>
+<span class="c1"># #2025-01-01 00:01:30    NaN  &lt;-- Yeni eklenen satır</span>
+<span class="c1"># #2025-01-01 00:02:00    2.0</span>
+<span class="c1"># #2025-01-01 00:02:30    NaN  &lt;-- Yeni eklenen satır</span>
+<span class="c1"># #2025-01-01 00:03:00    3.0</span>
+<span class="c1"># #2025-01-01 00:03:30    NaN  &lt;-- Yeni eklenen satır</span>
+<span class="c1"># #2025-01-01 00:04:00    4.0</span>
+<span class="c1"># #2025-01-01 00:04:30    NaN  &lt;-- Yeni eklenen satır</span>
+<span class="c1"># #2025-01-01 00:05:00    5.0</span>
+<span class="c1"># #2025-01-01 00:05:30    NaN  &lt;-- Yeni eklenen satır</span>
+<span class="c1"># #2025-01-01 00:06:00    6.0</span>
+<span class="c1"># #2025-01-01 00:06:30    NaN  &lt;-- Yeni eklenen satır</span>
+<span class="c1"># #2025-01-01 00:07:00    7.0</span>
+<span class="c1"># #2025-01-01 00:07:30    NaN  &lt;-- Yeni eklenen satır</span>
+<span class="c1"># #2025-01-01 00:08:00    8.0</span>
+<span class="c1"># #Freq: 30s, dtype: float64</span>
+</code></pre></div>
+
+<h4>B. İleriye Yönlü Doldurma (<code>ffill()</code>):</h4>
+<p>Yükseltilmiş frekanstaki <code>NaN</code> değerleri, kendinden önceki geçerli değerle doldurur (Forward Fill).</p>
+<ul>
+<li><strong>İşlem:</strong> <code>series.resample('30s').ffill()</code></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;30s&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">ffill</span><span class="p">())</span>
+
+<span class="c1"># #Çıktı:</span>
+<span class="c1"># #2025-01-01 00:00:00    0</span>
+<span class="c1"># #2025-01-01 00:00:30    0  &lt;-- Önceki değer ile dolduruldu</span>
+<span class="c1"># #2025-01-01 00:01:00    1</span>
+<span class="c1"># #2025-01-01 00:01:30    1  &lt;-- Önceki değer ile dolduruldu</span>
+<span class="c1"># #2025-01-01 00:02:00    2</span>
+<span class="c1"># #2025-01-01 00:02:30    2  &lt;-- Önceki değer ile dolduruldu</span>
+<span class="c1"># #2025-01-01 00:03:00    3</span>
+<span class="c1"># #2025-01-01 00:03:30    3  &lt;-- Önceki değer ile dolduruldu</span>
+<span class="c1"># #2025-01-01 00:04:00    4</span>
+<span class="c1"># #2025-01-01 00:04:30    4  &lt;-- Önceki değer ile dolduruldu</span>
+<span class="c1"># #2025-01-01 00:05:00    5</span>
+<span class="c1"># #2025-01-01 00:05:30    5  &lt;-- Önceki değer ile dolduruldu</span>
+<span class="c1"># #2025-01-01 00:06:00    6</span>
+<span class="c1"># #2025-01-01 00:06:30    6  &lt;-- Önceki değer ile dolduruldu</span>
+<span class="c1"># #2025-01-01 00:07:00    7</span>
+<span class="c1"># #2025-01-01 00:07:30    7  &lt;-- Önceki değer ile dolduruldu</span>
+<span class="c1"># #2025-01-01 00:08:00    8</span>
+<span class="c1"># #Freq: 30s, dtype: int64</span>
+</code></pre></div>
+
+<h4>C. Geriye Yönlü Doldurma (<code>bfill()</code>):</h4>
+<p>Yükseltilmiş frekanstaki <code>NaN</code> değerleri, kendinden sonraki geçerli değerle doldurur (Backward Fill) [7].</p>
+<ul>
+<li><strong>İşlem:</strong> <code>series.resample('30s').bfill()</code></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;30s&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">bfill</span><span class="p">())</span>
+
+<span class="c1"># #Çıktı:</span>
+<span class="c1"># #2025-01-01 00:00:00    0</span>
+<span class="c1"># #2025-01-01 00:00:30    1  &lt;-- Sonraki değer ile dolduruldu</span>
+<span class="c1"># #2025-01-01 00:01:00    1</span>
+<span class="c1"># #2025-01-01 00:01:30    2  &lt;-- Sonraki değer ile dolduruldu</span>
+<span class="c1"># #2025-01-01 00:02:00    2</span>
+<span class="c1"># #2025-01-01 00:02:30    3  &lt;-- Sonraki değer ile dolduruldu</span>
+<span class="c1"># #2025-01-01 00:03:00    3</span>
+<span class="c1"># #2025-01-01 00:03:30    4  &lt;-- Sonraki değer ile dolduruldu</span>
+<span class="c1"># #2025-01-01 00:04:00    4</span>
+<span class="c1"># #2025-01-01 00:04:30    5  &lt;-- Sonraki değer ile dolduruldu</span>
+<span class="c1"># #2025-01-01 00:05:00    5</span>
+<span class="c1"># #2025-01-01 00:05:30    6  &lt;-- Sonraki değer ile dolduruldu</span>
+<span class="c1"># #2025-01-01 00:06:00    6</span>
+<span class="c1"># #2025-01-01 00:06:30    7  &lt;-- Sonraki değer ile dolduruldu</span>
+<span class="c1"># #2025-01-01 00:07:00    7</span>
+<span class="c1"># #2025-01-01 00:07:30    8  &lt;-- Sonraki değer ile dolduruldu</span>
+<span class="c1"># #2025-01-01 00:08:00    8</span>
+<span class="c1"># #Freq: 30s, dtype: int64</span>
+</code></pre></div>
+
+<h3>3. Özel Fonksiyonlar ve DataFrame Kullanımı</h3>
+<h4>A. Özel Fonksiyon Uygulama (<code>apply()</code>):</h4>
+<p>Yeniden örnekleme sonrasında, standart toplama işlevleri yerine kullanıcı tanımlı bir işlev (<code>custom_resampler</code>) uygulamak mümkündür.</p>
+<ul>
+<li><strong>Örnek İşlev:</strong> Gelen dizinin toplamına 5 ekleyen bir işlev.</li>
+<li><strong>İşlem:</strong> <code>series.resample('3min').apply(custom_resampler)</code></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;3min&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+
+<span class="c1"># #Çıktı:</span>
+<span class="c1"># #2025-01-01 00:00:00     3</span>
+<span class="c1"># #2025-01-01 00:03:00    12</span>
+<span class="c1"># #2025-01-01 00:06:00    21</span>
+<span class="c1"># #Freq: 3min, dtype: int64</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">custom_resampler</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">5</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;3min&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">custom_resampler</span><span class="p">))</span>
+
+<span class="c1"># Önceki toplamlar (3, 12, 21) üzerine 5 eklenir:</span>
+<span class="c1"># Çıktı</span>
+<span class="c1"># 2000-01-01 00:00:00    8  (3 + 5)</span>
+<span class="c1"># 2000-01-01 00:03:00   17 (12 + 5)</span>
+<span class="c1"># 2000-01-01 00:06:00   26 (21 + 5)</span>
+</code></pre></div>
+
+<h4>B. İndeks Dışında Bir Sütun Kullanma (<code>on</code>):</h4>
+<p><code>DataFrame</code> nesneleri için, yeniden örnekleme işlemini varsayılan dizin (<code>index</code>) yerine datetime benzeri bir sütun üzerinden gerçekleştirmek için <strong><code>on</code></strong> parametresi kullanılabilir.</p>
+<ul>
+<li><strong>Örnek Senaryo:</strong> Haftalık başlangıç tarihleri (<code>week_starting</code>) olan bir DataFrame'i aylık esasa göre yeniden örnekleyip ortalamasını almak.</li>
+<li><strong>İşlem:</strong> <code>df.resample('ME', on='week_starting').mean()</code></li>
+</ul>
+<p>Örnek Veri Çerçevesi:</p>
+<div class="highlight"><pre><span></span><code><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;price&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">19</span><span class="p">],</span>
+     <span class="s1">&#39;volume&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">]}</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;week_starting&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s1">&#39;01/01/2018&#39;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;W&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+<span class="c1"># #Çıktı:</span>
+   <span class="c1"># #price  volume week_starting</span>
+<span class="c1"># #0     10      50    2018-01-07</span>
+<span class="c1"># #1     11      60    2018-01-14</span>
+<span class="c1"># #2      9      40    2018-01-21</span>
+<span class="c1"># #3     13     100    2018-01-28</span>
+<span class="c1"># #4     14      50    2018-02-04</span>
+<span class="c1"># #5     18     100    2018-02-11</span>
+<span class="c1"># #6     17      40    2018-02-18</span>
+<span class="c1"># #7     19      50    2018-02-25</span>
+</code></pre></div>
+
+<p>Tablo halinde Çıktı; </p>
+<table>
+<thead>
+<tr>
+<th>İndeks</th>
+<th>price</th>
+<th>volume</th>
+<th>week_starting</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>10</td>
+<td>50</td>
+<td>2018-01-07</td>
+</tr>
+<tr>
+<td>1</td>
+<td>11</td>
+<td>60</td>
+<td>2018-01-14</td>
+</tr>
+<tr>
+<td>2</td>
+<td>9</td>
+<td>40</td>
+<td>2018-01-21</td>
+</tr>
+<tr>
+<td>3</td>
+<td>13</td>
+<td>100</td>
+<td>2018-01-28</td>
+</tr>
+<tr>
+<td>4</td>
+<td>14</td>
+<td>50</td>
+<td>2018-02-04</td>
+</tr>
+<tr>
+<td>5</td>
+<td>18</td>
+<td>100</td>
+<td>2018-02-11</td>
+</tr>
+<tr>
+<td>6</td>
+<td>17</td>
+<td>40</td>
+<td>2018-02-18</td>
+</tr>
+<tr>
+<td>7</td>
+<td>19</td>
+<td>50</td>
+<td>2018-02-25</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;ME&#39;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;week_starting&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+
+<span class="c1"># Sonuç (Ocak ve Şubat ortalamaları):</span>
+<span class="c1">#              price  volume</span>
+<span class="c1"># week_starting</span>
+<span class="c1"># 2018-01-31   10.75    62.5  (Ocak verilerinin ortalaması)</span>
+<span class="c1"># 2018-02-28   17.00    60.0  (Şubat verilerinin ortalaması)</span>
+</code></pre></div>
+
+<p><strong>İşlem Sonucu Tablo halinde (Aylık Ortalama):</strong></p>
+<table>
+<thead>
+<tr>
+<th>week_starting</th>
+<th>price</th>
+<th>volume</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2018-01-31</td>
+<td>10.75</td>
+<td>62.5</td>
+</tr>
+<tr>
+<td>2018-02-28</td>
+<td>17.00</td>
+<td>60.0</td>
+</tr>
+</tbody>
+</table>
+<p>Bu sonuç <strong>price</strong> sütununda, Ocak ayına ait 4 haftanın (10, 11, 9, 13) ve Şubat ayına ait 4 haftanın (14, 18, 17, 19) ortalamasının alındığını gösterir.</p>
+<p><strong>Uygulanan Yeniden Örnekleme (resample) İşleminin Açıklaması:</strong></p>
+<p>Bu <code>df</code> üzerinde <code>df.resample('ME', on='week_starting').mean()</code> işlemi uygulandığında:</p>
+<p>• <code>'ME'</code> (Month End): Veriler aylık bazda gruplanır.</p>
+<p>• <code>on='week_starting'</code>: Yeniden örnekleme işlemi, DataFrame'in dizini yerine <strong>week_starting</strong> sütunundaki <code>datetime</code> benzeri veriler kullanılarak yapılır.</p>
+<p>• <code>mean()</code>: Gruplanan her ay için <code>price</code> ve <code>volume</code> sütunlarının ortalaması hesaplanır.</p>
+<h4>C. MultiIndex Seviyesi Kullanma (<code>level</code>):</h4>
+<p>Bir MultiIndex (Çoklu Dizin) içeren bir DataFrame'de, yeniden örneklemenin hangi <code>datetime</code> benzeri seviyede yapılacağını belirtmek için <strong><code>level</code></strong> parametresi kullanılır.</p>
+<ul>
+<li><strong>Örnek Senaryo:</strong> Hem gün hem de gün içindeki zaman dilimi (<code>morning</code>, <code>afternoon</code>) içeren bir MultiIndex'te, sadece gün seviyesinde (Seviye 0) yeniden örnekleme yapmak.</li>
+</ul>
+<p>Orjinal Verimiz;</p>
+<div class="highlight"><pre><span></span><code><span class="n">days</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s1">&#39;1/1/2025&#39;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;D&#39;</span><span class="p">)</span>
+
+<span class="n">d2</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;price&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">19</span><span class="p">],</span>
+      <span class="s1">&#39;volume&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">]}</span>
+
+<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">d2</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_product</span><span class="p">([</span><span class="n">days</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;morning&#39;</span><span class="p">,</span> <span class="s1">&#39;afternoon&#39;</span><span class="p">]]))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df2</span><span class="p">)</span>
+
+<span class="c1"># #Çıktı:</span>
+                      <span class="c1"># #price  volume</span>
+<span class="c1"># #2025-01-01 morning       10      50</span>
+           <span class="c1"># #afternoon     11      60</span>
+<span class="c1"># #2025-01-02 morning        9      40</span>
+           <span class="c1"># #afternoon     13     100</span>
+<span class="c1"># #2025-01-03 morning       14      50</span>
+           <span class="c1"># #afternoon     18     100</span>
+<span class="c1"># #2025-01-04 morning       17      40</span>
+           <span class="c1"># #afternoon     19      50</span>
+</code></pre></div>
+
+<ul>
+<li><strong>İşlem:</strong> <code>df2.resample('D', level=0).sum()</code></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df2</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+
+<span class="c1"># #Çıktı (Günlük toplam):</span>
+            <span class="c1"># #price  volume</span>
+<span class="c1"># #2025-01-01     21     110 (10+11, 50+60)</span>
+<span class="c1"># #2025-01-02     22     140 (9+13, 40+100)</span>
+<span class="c1"># #2025-01-03     32     150 (14+18, 50+100)</span>
+<span class="c1"># #2025-01-04     36      90 (17+19, 40+50)</span>
+</code></pre></div>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/pandas.html">Pandas</a></li>
+					<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+					<li><a href="/tag/modul.html">Modül</a></li>
+					<li><a href="/tag/resample.html">resample</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>
