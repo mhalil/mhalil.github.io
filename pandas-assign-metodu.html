@@ -94,9 +94,9 @@
 <p><strong>Çok Yönlülük:</strong> Tek bir sütun veya aynı anda birden fazla sütun ekleyebilir.</p>
 </li>
 </ol>
-<h1>Sözdizimi (Kullanım Şekli)</h1>
+<h2>Sözdizimi:</h2>
 <p><code>assign()</code> metodunun genel kullanım şekli oldukça basittir:</p>
-<div class="highlight"><pre><span></span><code><span class="n">DataFrame</span><span class="p">.</span><span class="k">assign</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">DataFrame</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </code></pre></div>
 
 <p>Buradaki <code>**kwargs</code>, eklemek istediğiniz <code>sütun adı = değer</code> çiftleridir.</p>
@@ -320,9 +320,9 @@
 </code></pre></div>
 
 <p>Bu örnek, '<strong>E</strong>' sütununu dinamik olarak, '<strong>A</strong>' sütunundaki değerlere göre "<strong>High</strong>" veya "<strong>Low</strong>" olarak kategorize eder.</p>
-<h2>Kapanış: Neden assign() Kullanmalıyız?</h2>
+<h2>Neden assign() Kullanmalıyız?</h2>
 <p><code>assign()</code> metodu, <code>DataFrame</code>'lere köşeli parantez notasyonuyla (<code>df['yeni_sutun'] = ...</code>) sütun eklemekten farklıdır. Köşeli parantez notasyonu orijinal <code>DataFrame</code>'i doğrudan değiştirirken, <code>assign()</code> metodu orijinal verinizi korur ve her zaman yeni, temiz bir kopya döndürür. Bu, özellikle karmaşık veri akışları oluştururken veya büyük veri setlerinde bellek verimliliği açısından tercih edilir.</p>
-<p><strong>Analoji:</strong></p>
+<p><strong>Analoji / Benzeşim:</strong></p>
 <p><code>assign()</code> metodunu, elinizdeki orijinal bir tablonuza (DataFrame) notlar ekleyen bir asistan olarak düşünebilirsiniz. Siz asistana dersiniz ki, "Bana bu tablonun yeni bir kopyasını çıkar ve 'Özet' başlıklı bir sütun ekle." Asistanınız size, orijinal tablonuza dokunmadan, tüm notlarınızı ve yeni 'Özet' sütununu içeren yepyeni bir tablo (yeni DataFrame) sunar. Bu, orijinal verinizin her zaman güvende olduğu anlamına gelir.</p>
 <h2>Kaynaklar:</h2>
 <ul>

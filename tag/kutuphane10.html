@@ -76,6 +76,34 @@
 </div>		<div class="content container">
 	<div class="posts">
 			<div class="post">
+				<h1 class="post-title" href="/pandas-read_html.html">
+					<a href="/pandas-read_html.html">Pandas - read_html</a>
+				</h1>
+				<span class="post-date">Cts 09 Temmuz 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/dataframe.html">DataFrame</a></li>
+								<li><a href="/tag/veri-cercevesi.html">Veri Çerçevesi</a></li>
+								<li><a href="/tag/read_html.html">read_html</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>read_html() Fonksiyonu Nedir? Nasıl Kullanılır?</h1>
+<p><strong>read_html()</strong> fonksiyonu ile web sitelerinde ya da htm/html uzantılı dosyalardaki tabloları, çalışmalarınıza dahil edebilirsiniz. Öncelikle veri almak istediğimiz sayfanın içerisinde kaç adet tablo olduğunu bulalım.</p>
+<div class="highlight"><pre><span></span><code><span class="n">url_tablo</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_html</span><span class="p">(</span><span class="s2">&quot;https://tr.wikipedia.org/wiki/Van&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sayfada bulunan toplam tablo sayısı: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">url_tablo</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">Sayfada …</span></code></pre></div>
+				</p>
+				<a class="read-more" href="pandas-read_html.html">Continue reading »</a>
+			</div>
+			<div class="post">
 				<h1 class="post-title" href="/pandas-read_json.html">
 					<a href="/pandas-read_json.html">Pandas - read_json</a>
 				</h1>
@@ -343,39 +371,6 @@ desteklenir. Bu, veri işlemeyi önbellek açısından verimli hale getirir ve �
 <p><code>Polars</code> tamamen <a href="https://www.rust-lang.org/">Rust</a>'ta yazılmış olsa da ve temel olarak <code>Arrow</code>'u (<a href="https://github.com/jorgecarleitao/arrow2">yerel arrow2 Rust uygulaması …</a></p>
 				</p>
 				<a class="read-more" href="polars-01-takdim.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="/polars-02-kurulum.html">
-					<a href="/polars-02-kurulum.html">Polars - 02 Kurulum</a>
-				</h1>
-				<span class="post-date">Paz 26 Haziran 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/polars.html">Polars</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1>Kurulum</h1>
-<p><code>Polars</code> bir kitaplıktır/kütüphanedir ve kurulumu, ilgili programlama dilinin paket yöneticisini çağırmak kadar basittir. Aşağıda farklı programlama dillerine göre kurulum kodları verilmiştir. Bu kodları konsoldan yazarak <code>polars</code>'ı yükleyebilirsiniz.</p>
-<h4>Python</h4>
-<div class="highlight"><pre><span></span><code><span class="n">pip</span> <span class="n">install</span> <span class="n">polars</span>
-</code></pre></div>
-
-<h4>Rust</h4>
-<div class="highlight"><pre><span></span><code><span class="n">cargo</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="n">polars</span><span class="w"> </span><span class="o">-</span><span class="n">F</span><span class="w"> </span><span class="n">lazy</span>
-
-<span class="p">#</span><span class="w"> </span><span class="n">Or</span><span class="w"> </span><span class="n">Cargo</span><span class="p">.</span><span class="n">toml</span>
-<span class="p">[</span><span class="n">dependencies</span><span class="p">]</span>
-<span class="n">polars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;x&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">features</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;lazy&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">..</span><span class="p">.]}</span>
-</code></pre></div>
-
-<h4>NodeJS …</h4>
-				</p>
-				<a class="read-more" href="polars-02-kurulum.html">Continue reading »</a>
 			</div>
 	</div>
 	<div class="pagination">

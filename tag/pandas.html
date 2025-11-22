@@ -76,6 +76,38 @@
 </div>		<div class="content container">
 	<div class="posts">
 			<div class="post">
+				<h1 class="post-title" href="/pandas-replace.html">
+					<a href="/pandas-replace.html">Pandas - replace</a>
+				</h1>
+				<span class="post-date">Cts 22 Kasım 2025</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/replace.html">replace</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>replace() Metodu</h1>
+<p>Basitçe anlatmak gerekirse: <strong><code>replace()</code> metodu, bir DataFrame (veri tablosu) içindeki belirli değerleri bulup, onları istediğiniz yeni değerlerle değiştirmenizi sağlar.</strong> Excel'deki "Bul ve Değiştir" (Find &amp; Replace) özelliğinin kodla yapılan hali gibidir.</p>
+<h2>Sözdizimi:</h2>
+<div class="highlight"><pre><span></span><code><span class="n">DataFrame</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">to_replace</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">value</span><span class="o">=&lt;</span><span class="n">no_default</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> 
+<span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">method</span><span class="o">=&lt;</span><span class="n">no_default</span><span class="o">&gt;</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>Parametreler:</h2>
+<table>
+<thead>
+<tr>
+<th>Parametre</th>
+<th>Ne …</th></tr></thead></table>
+				</p>
+				<a class="read-more" href="pandas-replace.html">Continue reading »</a>
+			</div>
+			<div class="post">
 				<h1 class="post-title" href="/pandas-convert_dtypes.html">
 					<a href="/pandas-convert_dtypes.html">Pandas - convert_dtypes</a>
 				</h1>
@@ -93,7 +125,7 @@
 				<p>
 					<h1>convert_dtypes() Metodu</h1>
 <p>Bu metodu, veri setini otomatik olarak temizleyen ve düzenleyen <strong>"akıllı bir çevirmen"</strong> gibi düşünebilirsin.</p>
-<h2>Sözdizimi</h2>
+<h2>Sözdizimi:</h2>
 <div class="highlight"><pre><span></span><code><span class="n">DataFrame</span><span class="o">.</span><span class="n">convert_dtypes</span><span class="p">(</span><span class="n">infer_objects</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">convert_string</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
 <span class="n">convert_integer</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">convert_boolean</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">convert_floating</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
 <span class="n">dtype_backend</span><span class="o">=</span><span class="s1">&#39;numpy_nullable&#39;</span><span class="p">)</span>
@@ -121,9 +153,8 @@
 					</span>
 				<p>
 					<h1>astype() Metodu</h1>
-<p><code>pandas.DataFrame.astype</code> metodu, Pandas'taki veri çerçevelerinin (DataFrame) veya serilerin (Series) veri tiplerini (<strong>dtype</strong>) değiştirmek için kullanılan temel bir fonksiyondur.</p>
-<h2><code>pandas.DataFrame.astype</code> Metodunun İşlevi</h2>
-<p><code>DataFrame.astype()</code> metodu, bir DataFrame'deki tüm sütunları veya belirli sütunları istediğiniz bir veri tipine dönüştürmenizi sağlar. Veri analizi sırasında, verilerin doğru şekilde işlenmesi …</p>
+<p><code>astype()</code> metodu, Pandas'taki veri çerçevelerinin (DataFrame) veya serilerin (Series) veri tiplerini (<strong>dtype</strong>) değiştirmek için kullanılan temel bir fonksiyondur.</p>
+<p><code>astype()</code> metodu ile bir DataFrame'deki tüm sütunları veya belirli sütunları istediğiniz bir veri tipine dönüştürebiliriz. Veri analizi sırasında, verilerin doğru şekilde işlenmesi, filtrelenmesi ve hafızada daha verimli saklanması için veri …</p>
 				</p>
 				<a class="read-more" href="pandas-astype.html">Continue reading »</a>
 			</div>
@@ -145,7 +176,7 @@
 				<p>
 					<h1>resample() Fonksiyonu</h1>
 <p><code>resample()</code> Fonksiyonu, <strong>zaman serisi verilerinin frekansını dönüştürmek ve yeniden örneklemek için kullanılan</strong> temel bir metottur. </p>
-<h2>Sözdizimi</h2>
+<h2>Sözdizimi:</h2>
 <p><code>resample()</code> fonksiyonunun sözdizimi aşağıdaki gibidir. Parametrelerin açıklaması  aşağıda <strong>Parametreler</strong> başlığında bulabilirsiniz.</p>
 <div class="highlight"><pre><span></span><code><span class="n">DataFrame</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">rule</span><span class="p">,</span> <span class="n">axis</span><span class="o">=&lt;</span><span class="n">no_default</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">closed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
 <span class="n">convention</span><span class="o">=</span><span class="s1">&#39;start&#39;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=&lt;</span><span class="n">no_default</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
@@ -399,72 +430,6 @@
 <td>2 …</td></tr></tbody></table>
 				</p>
 				<a class="read-more" href="pandas-carpma-operatoru.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="/pandas-cikarma-operatoru.html">
-					<a href="/pandas-cikarma-operatoru.html">Pandas - Çıkarma Operatörü</a>
-				</h1>
-				<span class="post-date">Prş 28 Temmuz 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/pandas.html">Pandas</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
-								<li><a href="/tag/operator.html">Operatör</a></li>
-								<li><a href="/tag/cikarma.html">çıkarma</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1>- (Çıkarma) Operatörü</h1>
-<p>İki sütun verisini <code>-</code> <strong>çıkarma operatörü</strong> ile çıkarabiliriz, farkını alabiliriz.</p>
-<div class="highlight"><pre><span></span><code><span class="n">baslik</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Birler&quot;</span><span class="p">,</span> <span class="s2">&quot;Onlar&quot;</span><span class="p">,</span> <span class="s2">&quot;Yüzler&quot;</span><span class="p">]</span>
-<span class="n">basliksiz</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/basliksiz.ods&quot;</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">names</span> <span class="o">=</span> <span class="n">baslik</span> <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">basliksiz</span><span class="p">)</span>
-</code></pre></div>
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th>Birler</th>
-<th>Onlar</th>
-<th>Yüzler</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td>9</td>
-<td>82</td>
-<td>246</td>
-</tr>
-<tr>
-<td>1</td>
-<td>7</td>
-<td>78</td>
-<td>180</td>
-</tr>
-<tr>
-<td>2</td>
-<td>8</td>
-<td>83</td>
-<td>565</td>
-</tr>
-<tr>
-<td>3</td>
-<td>6</td>
-<td>82</td>
-<td>486</td>
-</tr>
-<tr>
-<td>4</td>
-<td>4</td>
-<td>37</td>
-<td>615 …</td></tr></tbody></table>
-				</p>
-				<a class="read-more" href="pandas-cikarma-operatoru.html">Continue reading »</a>
 			</div>
 	</div>
 	<div class="pagination">

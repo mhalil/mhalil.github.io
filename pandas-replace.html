@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Pandas - replace" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/pandas-replace.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Pandas - replace</h1>
+	<span class="post-date">Cts 22 Kasım 2025</span>
+	<h1>replace() Metodu</h1>
+<p>Basitçe anlatmak gerekirse: <strong><code>replace()</code> metodu, bir DataFrame (veri tablosu) içindeki belirli değerleri bulup, onları istediğiniz yeni değerlerle değiştirmenizi sağlar.</strong> Excel'deki "Bul ve Değiştir" (Find &amp; Replace) özelliğinin kodla yapılan hali gibidir.</p>
+<h2>Sözdizimi:</h2>
+<div class="highlight"><pre><span></span><code><span class="n">DataFrame</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">to_replace</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">value</span><span class="o">=&lt;</span><span class="n">no_default</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> 
+<span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">method</span><span class="o">=&lt;</span><span class="n">no_default</span><span class="o">&gt;</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>Parametreler:</h2>
+<table>
+<thead>
+<tr>
+<th>Parametre</th>
+<th>Ne İşe Yarar?</th>
+<th>Varsayılan (Default)</th>
+<th>Örnek Kullanım Senaryosu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>to_replace</code></strong></td>
+<td><strong>Aranan Değer.</strong> Tabloda bulup değiştirmek istediğiniz değerdir. Sayı, metin, liste, sözlük veya Regex (kurallı ifade) olabilir.</td>
+<td><code>None</code></td>
+<td>Tablodaki tüm <code>-1</code>'leri bulmak için buraya <code>-1</code> yazarız.</td>
+</tr>
+<tr>
+<td><strong><code>value</code></strong></td>
+<td><strong>Yeni Değer.</strong> Bulunan değerin yerine ne yazılacağıdır.</td>
+<td><code>None</code></td>
+<td><code>-1</code> yerine <code>0</code> yazılacaksa, buraya <code>0</code> yazarız. <em>(Eğer <code>to_replace</code> bir sözlük ise bu parametre boş bırakılabilir.)</em></td>
+</tr>
+<tr>
+<td><strong><code>inplace</code></strong></td>
+<td><strong>Kalıcılık Ayarı.</strong> <code>True</code> yapılırsa değişiklik ana tabloda kalıcı olur. <code>False</code> ise size değiştirilmiş yeni bir kopya verir, ana tablo bozulmaz.</td>
+<td><code>False</code></td>
+<td>Değişikliği değişkene atamadan direkt tabloya işlemek için <code>True</code> yaparız.</td>
+</tr>
+<tr>
+<td><strong><code>regex</code></strong></td>
+<td><strong>Desen Arama.</strong> <code>True</code> yapılırsa, <code>to_replace</code> kısmına yazılan metin bir kalıp (Regex) olarak algılanır.</td>
+<td><code>False</code></td>
+<td>İçinde "Hata" geçen <strong>tüm</strong> metinleri bulmak için kullanılır.</td>
+</tr>
+<tr>
+<td><strong><code>limit</code></strong></td>
+<td><strong>Sınır.</strong> İleri veya geri doldurma yaparken kaç tane değerin değiştirileceğini sınırlar. (Çok sık kullanılmaz).</td>
+<td><code>None</code></td>
+<td>Sadece ilk 2 "Yok" değerini değiştir, gerisine dokunma.</td>
+</tr>
+<tr>
+<td><strong><code>method</code></strong></td>
+<td><strong>Doldurma Yöntemi.</strong> Değer vermeden, önceki (<code>ffill</code>) veya sonraki (<code>bfill</code>) değeri kopyalamak için kullanılır.</td>
+<td><code>pad</code></td>
+<td>Eksik verileri bir üst satırdaki veriyle doldurmak için.</td>
+</tr>
+</tbody>
+</table>
+<h3>Parametreler Arasındaki İlişkiye Dair İpuçları</h3>
+<p>Bu parametreler genellikle kombinasyon halinde kullanılır. En sık karşılaşacağınız 3 senaryo şudur:</p>
+<p><strong>1. Birebir Değiştirme (<code>to_replace</code> + <code>value</code>)</strong> Eski değer ve yeni değer ayrı ayrı verilir.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># -1&#39;i bul, 0 yap</span>
+<span class="n">df</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">to_replace</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>2. Sözlük ile Değiştirme (Sadece <code>to_replace</code>)</strong> Eğer sözlük (dictionary) kullanırsanız, <code>value</code> parametresini kullanmanıza gerek kalmaz. Pandas neyi ne yapacağını sözlükten anlar.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># A&#39;yı 1, B&#39;yi 2 yap (value parametresi yok!)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">to_replace</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">})</span>
+</code></pre></div>
+
+<p><strong>3. Regex ile Değiştirme (<code>to_replace</code> + <code>value</code> + <code>regex</code>)</strong> Kelime parçalarını bulup değiştirmek için <code>regex=True</code> şarttır.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># İçinde &#39;TL&#39; geçen her şeyi sil (boşluk yap)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">to_replace</span><span class="o">=</span><span class="s1">&#39;TL&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Bu parametreler arasında en çok <strong><code>to_replace</code></strong>, <strong><code>value</code></strong> ve <strong><code>inplace</code></strong> üçlüsünü kullanacaksınız.</p>
+<p>Bu tabloda <code>regex</code> (Regular Expressions) kavramı geçti. Regex kullanımı veri temizliğinde çok güçlüdür.</p>
+<blockquote>
+<p><strong>Temel Fark:</strong> Bu işlem, belirli bir konumda (örneğin 3. satır ve A sütunu) güncelleme yapmanızı gerektiren <code>.loc</code> veya <code>.iloc</code> gibi yöntemlerden farklıdır; <code>replace()</code> metodu, belirlediğiniz değeri tüm DataFrame içinde dinamik olarak arar ve değiştirir.</p>
+</blockquote>
+<p>Aşağıda bu metodu nasıl kullanabileceğinizi senaryolarla ve basit örneklerle açıklıyorum.</p>
+<h3>1. Tek Bir Değeri Değiştirmek</h3>
+<p>Diyelim ki tablonuzda hatalı girilmiş bir değer var (örneğin tüm -1'ler aslında 0 olmalı). Bunu tek bir hamlede düzeltebilirsiniz.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># Örnek bir tablo oluşturalım</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Ogrenci&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Ali&#39;</span><span class="p">,</span> <span class="s1">&#39;Ayse&#39;</span><span class="p">,</span> <span class="s1">&#39;Mehmet&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Not&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">85</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">90</span><span class="p">]</span>  <span class="c1"># Ayşe&#39;nin notu yanlışlıkla -1 girilmiş</span>
+<span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="c1"># #Çıktı:</span>
+  <span class="c1"># #Ogrenci  Not</span>
+<span class="c1"># #0     Ali   85</span>
+<span class="c1"># #1    Ayse   -1</span>
+<span class="c1"># #2  Mehmet   90</span>
+</code></pre></div>
+
+<p><code>-1</code> değerini <code>0</code> ile değiştirelim;</p>
+<div class="highlight"><pre><span></span><code><span class="n">yeni_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">yeni_df</span><span class="p">)</span>
+<span class="c1"># #Çıktı:</span>
+  <span class="c1"># #Ogrenci  Not</span>
+<span class="c1"># #0     Ali   85</span>
+<span class="c1"># #1    Ayse    0</span>
+<span class="c1"># #2  Mehmet   90</span>
+
+<span class="c1"># Sonuç: Ayşe&#39;nin notu artık 0 olur.</span>
+</code></pre></div>
+
+<h3>2. Birden Fazla Değeri Aynı Şeyle Değiştirmek</h3>
+<p>Bazen birden fazla farklı değeri tek bir standart değere çevirmek istersiniz. Örneğin, "Yok", "Bilinmiyor" ve "---" gibi girişlerin hepsini <code>NaN</code> (boş değer) veya <code>0</code> yapmak isteyebilirsiniz.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Durum&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Aktif&#39;</span><span class="p">,</span> <span class="s1">&#39;Kapali&#39;</span><span class="p">,</span> <span class="s1">&#39;Yok&#39;</span><span class="p">,</span> <span class="s1">&#39;Bilinmiyor&#39;</span><span class="p">]})</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+<span class="c1"># #Çıktı:</span>
+        <span class="c1"># #Durum</span>
+<span class="c1"># #0       Aktif</span>
+<span class="c1"># #1      Kapali</span>
+<span class="c1"># #2         Yok</span>
+<span class="c1"># #3  Bilinmiyor</span>
+</code></pre></div>
+
+<p>Listelerle değiştirme; <code>to_replace</code> parametresinin liste veri tipi (köşeli parantezli) olduğuna dikkat edin.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># &#39;Yok&#39; ve &#39;Bilinmiyor&#39; değerlerini &#39;Belirsiz&#39; yapalım</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="s1">&#39;Yok&#39;</span><span class="p">,</span> <span class="s1">&#39;Bilinmiyor&#39;</span><span class="p">],</span> <span class="s1">&#39;Belirsiz&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+<span class="c1"># #Çıktı:</span>
+      <span class="c1"># #Durum</span>
+<span class="c1"># #0     Aktif</span>
+<span class="c1"># #1    Kapali</span>
+<span class="c1"># #2  Belirsiz</span>
+<span class="c1"># #3  Belirsiz</span>
+</code></pre></div>
+
+<h3>3. Her Değeri Farklı Bir Şeyle Değiştirmek (Sözlük Yöntemi)</h3>
+<p>Bu, en sık kullanılan yöntemlerden biridir. Bir değer listesini, karşılık gelen başka bir listeyle değiştirirsiniz.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Kod&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">]})</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="c1"># #Çıktı:</span>
+  <span class="c1"># #Kod</span>
+<span class="c1"># #0   A</span>
+<span class="c1"># #1   B</span>
+<span class="c1"># #2   C</span>
+<span class="c1"># #3   A</span>
+</code></pre></div>
+
+<p>A -&gt; 1, B -&gt; 2, C -&gt; 3 olsun istiyoruz. Bunun için bir sözlük (dictionary) veri tipi kullanıyoruz:</p>
+<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">})</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="c1"># #Çıktı:</span>
+   <span class="c1"># #Kod</span>
+<span class="c1"># #0    1</span>
+<span class="c1"># #1    2</span>
+<span class="c1"># #2    3</span>
+<span class="c1"># #3    1</span>
+</code></pre></div>
+
+<h3>4. Sadece Belirli Bir Sütunda Değişiklik Yapmak</h3>
+<p>Bazen bir değer (örneğin <code>0</code>) bir sütunda "Hata" anlamına gelirken, başka bir sütunda gerçek bir sayı olabilir. Bu durumda değişikliği sadece ilgili sütuna uygulayabilirsiniz.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;A_Sutunu&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+    <span class="s1">&#39;B_Sutunu&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">]})</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="c1"># #Çıktı:</span>
+   <span class="c1"># #A_Sutunu  B_Sutunu</span>
+<span class="c1"># #0         0         0</span>
+<span class="c1"># #1         1         5</span>
+<span class="c1"># #2         2        10</span>
+</code></pre></div>
+
+<p>Sadece 'A_Sutunu'ndaki 0'ları 100 yap, B sütununa dokunma;</p>
+<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;A_Sutunu&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="c1"># #Çıktı:</span>
+
+   <span class="c1"># #A_Sutunu  B_Sutunu</span>
+<span class="c1"># #0       100         0</span>
+<span class="c1"># #1         1         5</span>
+<span class="c1"># #2         2        10</span>
+</code></pre></div>
+
+<h3>5. Regex (Düzenli İfade) Kullanımı</h3>
+<p>Regex (Düzenli İfadeler), veri temizliğinde Pandas'ın "süper gücüdür". Verilerinizde standart olmayan metinler olduğunda, bunları tek tek yazmak yerine bir <strong>kalıp/desen (pattern)</strong> tanımlayarak hepsini tek seferde düzeltebilirsiniz. Bu durumda <code>regex=True</code> parametresini kullanabilirsiniz.</p>
+<h4>1. Örnek: Dosya Uzantısına Göre Veri Değiştirme</h4>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Dosya&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;resim.jpg&#39;</span><span class="p">,</span> <span class="s1">&#39;resim.png&#39;</span><span class="p">,</span> <span class="s1">&#39;dokuman.pdf&#39;</span><span class="p">]})</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="c1"># #Çıktı:</span>
+         <span class="c1"># #Dosya</span>
+<span class="c1"># #0    resim.jpg</span>
+<span class="c1"># #1    resim.png</span>
+<span class="c1"># #2  dokuman.pdf</span>
+</code></pre></div>
+
+<p>Sonu .jpg veya .png ile biten her şeyi 'Gorsel' olarak değiştir. (Burada biraz regex bilgisi gerekir)</p>
+<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">to_replace</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;.*\.(jpg|png)$&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;Gorsel&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="c1"># #Çıktı:</span>
+         <span class="c1"># #Dosya</span>
+<span class="c1"># #0       Gorsel</span>
+<span class="c1"># #1       Gorsel</span>
+<span class="c1"># #2  dokuman.pdf</span>
+</code></pre></div>
+
+<h4>2. Örnek: Sayıların Yanındaki Birimleri (TL, kg, m) Temizlemek</h4>
+<p>Veri setlerinde en sık karşılaşılan sorun, sayısal olması gereken sütunlara metin karışmasıdır (örneğin "100 TL"). Hesaplama yapabilmek için bu harfleri silmemiz gerekir.</p>
+<p><strong>Senaryo:</strong> Fiyat sütunundaki "TL", "tl" veya boşlukları silip sadece sayıları bırakmak istiyoruz.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Urun&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Elma&#39;</span><span class="p">,</span> <span class="s1">&#39;Armut&#39;</span><span class="p">,</span> <span class="s1">&#39;Muz&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Fiyat&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;20 TL&#39;</span><span class="p">,</span> <span class="s1">&#39;35tl&#39;</span><span class="p">,</span> <span class="s1">&#39;40  TL&#39;</span><span class="p">]</span> <span class="c1"># Karışık formatlar</span>
+<span class="p">})</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+<span class="c1"># #Çıktı:</span>
+    <span class="c1"># #Urun   Fiyat</span>
+<span class="c1"># #0   Elma   20 TL</span>
+<span class="c1"># #1  Armut    35tl</span>
+<span class="c1"># #2    Muz  40  TL</span>
+</code></pre></div>
+
+<p>Verileri Temizleyelim.</p>
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Fiyat&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Fiyat&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">to_replace</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;[A-Za-z\s]&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+<span class="c1"># #Çıktı:</span>
+     <span class="c1"># #Urun Fiyat</span>
+<span class="c1"># #0   Elma    20</span>
+<span class="c1"># #1  Armut    35</span>
+<span class="c1"># #2    Muz    40</span>
+</code></pre></div>
+
+<p>Sonuç: Fiyatlar artık sadece sayısal veri ('20', '35', '40') oldu.</p>
+<p><strong>Regex Açıklaması:</strong>
+<code>[A-Za-z]</code> : Büyük veya küçük tüm harfleri bul.
+<code>\s</code> : Boşlukları bul.
+Bunları bul ve <code>''</code> (hiçlik) ile değiştir.</p>
+<h4>3. Örnek: Belirli Bir Kelime ile Başlayan Her Şeyi Değiştirmek</h4>
+<p>Bazen kategorileri sadeleştirmek istersiniz. Örneğin, bir sürü farklı "Müdür" unvanı varsa (Satış Müdürü, İK Müdürü, Bölge Müdürü), hepsini sadece "Yönetici" yapmak isteyebilirsiniz.</p>
+<p>Senaryo: İçinde "Müdür" kelimesi geçen veya "Müdür" ile biten her şeyi "Yönetici" yapalım. Orjinal Verimiz;</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Isim&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Ali&#39;</span><span class="p">,</span> <span class="s1">&#39;Veli&#39;</span><span class="p">,</span> <span class="s1">&#39;Ayşe&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Unvan&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Satış Müdürü&#39;</span><span class="p">,</span> <span class="s1">&#39;IT Uzmanı&#39;</span><span class="p">,</span> <span class="s1">&#39;Bölge Müdürü&#39;</span><span class="p">]})</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="c1"># #Çıktı:</span>
+   <span class="c1"># #Isim         Unvan</span>
+<span class="c1"># #0   Ali  Satış Müdürü</span>
+<span class="c1"># #1  Veli     IT Uzmanı</span>
+<span class="c1"># #2  Ayşe  Bölge Müdürü</span>
+</code></pre></div>
+
+<p>Değişiklik yapalım;</p>
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">to_replace</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;.*Müdürü&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;Yönetici&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="c1"># #Çıktı:</span>
+   <span class="c1"># #Isim      Unvan</span>
+<span class="c1"># #0   Ali   Yönetici</span>
+<span class="c1"># #1  Veli  IT Uzmanı</span>
+<span class="c1"># #2  Ayşe   Yönetici</span>
+</code></pre></div>
+
+<p><strong>Sonuç</strong>: 'Satış Müdürü' ve 'Bölge Müdürü' -&gt; 'Yönetici' olur. 'IT Uzmanı' değişmez.</p>
+<p><strong>Regex Açıklaması:</strong>
+<code>.*</code> : Öncesinde ne olursa olsun (nokta her karakter, yıldız hepsi demek)
+<code>Müdürü</code>   : 'Müdürü' kelimesiyle bitenleri yakalar.</p>
+<h4>4. Örnek: Parantez İçindeki Gereksiz Bilgileri Silmek</h4>
+<p>Şehir isimlerinin yanında bazen parantez içinde bölge kodları veya eski isimler olur. "İstanbul (Avrupa)" gibi. Sadece şehir ismini bırakmak için regex harikadır.</p>
+<p><strong>Senaryo:</strong> Parantez açılan yerden sonrasını tamamen silmek istiyoruz.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Sehir&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;İstanbul (Avr)&#39;</span><span class="p">,</span> <span class="s1">&#39;Ankara (Merkez)&#39;</span><span class="p">,</span> <span class="s1">&#39;İzmir&#39;</span><span class="p">]})</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="c1"># #Çıktı:</span>
+             <span class="c1"># #Sehir</span>
+<span class="c1"># #0   İstanbul (Avr)</span>
+<span class="c1"># #1  Ankara (Merkez)</span>
+<span class="c1"># #2            İzmir</span>
+</code></pre></div>
+
+<p>Değişikşiği gerçekleştirelim;</p>
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">to_replace</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;\(.*&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Oluşan boşlukları da temizleyelim (strip)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Sehir&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Sehir&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="c1"># #Çıktı:</span>
+      <span class="c1"># #Sehir</span>
+<span class="c1"># #0  İstanbul</span>
+<span class="c1"># #1    Ankara</span>
+<span class="c1"># #2     İzmir</span>
+</code></pre></div>
+
+<p>Sonuç: 'İstanbul', 'Ankara', 'İzmir' kalır.</p>
+<p><strong>Regex Açıklaması:</strong>
+<code>\(</code>       : Parantez işaretini bul (Ters slash kaçış karakteridir).
+<code>.*</code> : Parantezden sonraki her şeyi seç.</p>
+<blockquote>
+<p><strong>Özetle</strong>; verinizdeki "kirli" veya istenmeyen değerleri temizlemek veya kodlamak için <code>replace</code> metodu, Pandas'ın İsviçre çakısı gibidir.</p>
+</blockquote>
+<h2>Küçük Regex Kopya Kağıdı :)</h2>
+<p><code>replace</code> içinde kullanabileceğiniz en temel regex sembolleri şunlardır:</p>
+<table>
+<thead>
+<tr>
+<th>Sembol</th>
+<th>Anlamı</th>
+<th>Örnek</th>
+<th>Neyi Yakalar?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>^</code></td>
+<td>Metnin <strong>başı</strong></td>
+<td><code>^Ankara</code></td>
+<td>Sadece "Ankara" ile <strong>başlayanları</strong> yakalar.</td>
+</tr>
+<tr>
+<td><code>$</code></td>
+<td>Metnin <strong>sonu</strong></td>
+<td><code>TL$</code></td>
+<td>Sadece "TL" ile <strong>bitenleri</strong> yakalar.</td>
+</tr>
+<tr>
+<td><code>.</code></td>
+<td>Herhangi bir karakter</td>
+<td><code>k.l</code></td>
+<td>"kal", "kel", "kıl" hepsini yakalar.</td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td>Hepsini al</td>
+<td><code>.*</code></td>
+<td>Önündeki kurala uyan her şeyi sonuna kadar alır.</td>
+</tr>
+<tr>
+<td><code>\d</code></td>
+<td>Rakam (Digit)</td>
+<td><code>\d</code></td>
+<td>0'dan 9'a sayıları bulur.</td>
+</tr>
+<tr>
+<td><code>\D</code></td>
+<td>Rakam Olmayan</td>
+<td><code>\D</code></td>
+<td>Harfleri ve sembolleri bulur (Sayıları temizlemek için ideal).</td>
+</tr>
+<tr>
+<td><code>\s</code></td>
+<td>Boşluk (Space)</td>
+<td><code>\s</code></td>
+<td>Boşluk, tab karakterlerini bulur.</td>
+</tr>
+</tbody>
+</table>
+<p>Düzenli İfadeler (Regular Expressions - Regex ) Konusunu detaylıca incelemek isterseniz <a href="/duzenli-ifadeler.html">BU SAYFAYI</a> ziyaret edebilirsiniz.</p>
+<h2>Kaynaklar:</h2>
+<ul>
+<li>
+<p><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.replace.html">pandas.DataFrame.replace &#8212; pandas 2.3.3 documentation</a></p>
+</li>
+<li>
+<p><a href="https://gemini.google.com">Google Gemini</a></p>
+</li>
+<li>
+<p>c<a href="https://notebooklm.google.com">Google NotebookLM</a></p>
+</li>
+</ul>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/pandas.html">Pandas</a></li>
+					<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+					<li><a href="/tag/modul.html">Modül</a></li>
+					<li><a href="/tag/replace.html">replace</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>
