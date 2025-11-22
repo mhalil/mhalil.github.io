@@ -92,9 +92,12 @@
 					</span>
 				<p>
 					<h1>resample() Fonksiyonu</h1>
-<p><code>resample()</code> Fonksiyonu, <strong>zaman serisi verilerinin frekansını dönüştürmek ve yeniden örneklemek için kullanılan</strong> temel bir metottur. Aşağıda, örneklerle bu konuyu detaylı olarak açıklayacağım.</p>
-<p>Örnekler için temel veri serisi olarak, 9 adet bir dakikalık zaman damgasına sahip bir <code>Series</code> oluşturalım:</p>
-<div class="highlight"><pre><span></span><code><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s1">&#39;1/1/2025&#39;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;min …</span></code></pre></div>
+<p><code>resample()</code> Fonksiyonu, <strong>zaman serisi verilerinin frekansını dönüştürmek ve yeniden örneklemek için kullanılan</strong> temel bir metottur. </p>
+<h2>Sözdizimi</h2>
+<p><code>resample()</code> fonksiyonunun sözdizimi aşağıdaki gibidir. Parametrelerin açıklaması  aşağıda <strong>Parametreler</strong> başlığında bulabilirsiniz.</p>
+<div class="highlight"><pre><span></span><code><span class="n">DataFrame</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">rule</span><span class="p">,</span> <span class="n">axis</span><span class="o">=&lt;</span><span class="n">no_default</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">closed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
+<span class="n">convention</span><span class="o">=</span><span class="s1">&#39;start&#39;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=&lt;</span><span class="n">no_default</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
+<span class="n">origin</span><span class="o">=</span><span class="s1">&#39;start_day&#39;</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="kc">None …</span></code></pre></div>
 				</p>
 				<a class="read-more" href="pandas-resample.html">Continue reading »</a>
 			</div>

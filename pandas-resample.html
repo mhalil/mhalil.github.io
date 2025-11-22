@@ -78,7 +78,82 @@
 	<h1 class="post-title">Pandas - resample</h1>
 	<span class="post-date">Cum 21 Kasım 2025</span>
 	<h1>resample() Fonksiyonu</h1>
-<p><code>resample()</code> Fonksiyonu, <strong>zaman serisi verilerinin frekansını dönüştürmek ve yeniden örneklemek için kullanılan</strong> temel bir metottur. Aşağıda, örneklerle bu konuyu detaylı olarak açıklayacağım.</p>
+<p><code>resample()</code> Fonksiyonu, <strong>zaman serisi verilerinin frekansını dönüştürmek ve yeniden örneklemek için kullanılan</strong> temel bir metottur. </p>
+<h2>Sözdizimi</h2>
+<p><code>resample()</code> fonksiyonunun sözdizimi aşağıdaki gibidir. Parametrelerin açıklaması  aşağıda <strong>Parametreler</strong> başlığında bulabilirsiniz.</p>
+<div class="highlight"><pre><span></span><code><span class="n">DataFrame</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">rule</span><span class="p">,</span> <span class="n">axis</span><span class="o">=&lt;</span><span class="n">no_default</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">closed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
+<span class="n">convention</span><span class="o">=</span><span class="s1">&#39;start&#39;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=&lt;</span><span class="n">no_default</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
+<span class="n">origin</span><span class="o">=</span><span class="s1">&#39;start_day&#39;</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">group_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>Zaman Serisini Yeniden Örneklemek</h2>
+<p><code>resample</code> yöntemi, bir <code>DataFrame</code> veya <code>Series</code> nesnesinin zaman tabanlı dizinini (<code>DatetimeIndex</code>, <code>PeriodIndex</code> veya <code>TimedeltaIndex</code>) kullanarak veriyi daha yüksek (yukarı örnekleme/up-sampling) veya daha düşük (aşağı örnekleme/down-sampling) bir frekansa dönüştürmenizi sağlar.</p>
+<p><strong>Örnek:</strong> Günlük sıcaklık verilerini alıp haftalık ortalamalara dönüştürmek bir aşağı örneklemedir (down-sampling). Dakikalık hisse senedi verilerini alıp saniyelik verilere dönüştürmek ise bir yukarı örneklemedir (up-sampling).</p>
+<p>Bu işlemin ana adımları şunlardır:</p>
+<ol>
+<li>
+<p><strong>Gruplama:</strong> Veriyi yeni, belirlenmiş zaman aralıklarına (gruplara) böler.</p>
+</li>
+<li>
+<p><strong>Uygulama:</strong> Her bir grup için bir toplama (aggregation) veya dönüşüm fonksiyonu (örneğin, <code>.mean()</code>, <code>.sum()</code>, <code>.ffill()</code>, <code>.ohlc()</code>) uygular.</p>
+</li>
+</ol>
+<h2>Parametreler</h2>
+<table>
+<thead>
+<tr>
+<th>Parametre</th>
+<th>Parametre Anlamı ve Açıklaması</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>rule</code></strong></td>
+<td><strong>Kural</strong> (Zorunlu). Hedeflenen frekans dönüşümünü temsil eden zaman ofset dizesi (örneğin, <code>'W'</code> haftalık, <code>'M'</code> aylık, <code>'3H'</code> 3 saatlik).</td>
+</tr>
+<tr>
+<td><strong><code>axis</code></strong></td>
+<td><strong>Eksen</strong>. Yeniden örnekleme için kullanılacak eksen. Varsayılan <strong>0</strong> (<code>index</code>). Seriler için kullanılmaz. <em>(Sürüm 2.0.0'dan itibaren kullanım dışı: <code>frame.T.resample(...)</code> kullanın.)</em></td>
+</tr>
+<tr>
+<td><strong><code>closed</code></strong></td>
+<td><strong>Kapalı Taraf</strong>. Yeni zaman aralığı (bin) hangi tarafının <strong>kapalı</strong> (dahil) olacağını belirtir. Varsayılan, çoğu frekans için <strong><code>'left'</code></strong> (sol) iken, ay sonu, yıl sonu gibi (‘ME’, ‘YE’, ‘QE’, ‘BME’, ‘BA’, ‘BQE’, and ‘W’) bazı frekanslar için <strong><code>'right'</code></strong> (sağ) olur.</td>
+</tr>
+<tr>
+<td><strong><code>label</code></strong></td>
+<td><strong>Etiket</strong>. Oluşturulan zaman aralığına etiket olarak hangi <strong>kenarın</strong> (başlangıç veya bitiş) kullanılacağını belirtir. Varsayılan, çoğu frekans (‘ME’, ‘YE’, ‘QE’, ‘BME’, ‘BA’, ‘BQE’, and ‘W’ hariç) için <strong><code>'left'</code></strong> (sol) iken, bazı frekanslar için <strong><code>'right'</code></strong> (sağ) olur.</td>
+</tr>
+<tr>
+<td><strong><code>convention</code></strong></td>
+<td><strong>Kural</strong> (Sadece <code>PeriodIndex</code> için). Zaman aralığının <strong>başlangıcını</strong> (<code>'start'</code>) mı yoksa <strong>sonunu</strong> (<code>'end'</code>) mu kullanacağını kontrol eder. Varsayılan <strong><code>'start'</code></strong>.</td>
+</tr>
+<tr>
+<td><strong><code>kind</code></strong></td>
+<td><strong>Tür</strong>. Sonuç dizininin <code>DatetimeIndex</code> (<code>'timestamp'</code>) mi yoksa <code>PeriodIndex</code> (<code>'period'</code>) mi olacağını belirtir. Varsayılan olarak girdi türü korunur. <em>(Sürüm 2.2.0'dan itibaren kullanım dışı.)</em></td>
+</tr>
+<tr>
+<td><strong><code>on</code></strong></td>
+<td><strong>Üzerinde</strong>. <code>DataFrame</code> için, dizin yerine yeniden örnekleme için kullanılacak <strong>sütun adını</strong> belirtir. Bu sütun zaman serisi türünde olmalıdır.</td>
+</tr>
+<tr>
+<td><strong><code>level</code></strong></td>
+<td><strong>Seviye</strong>. <code>MultiIndex</code> (Çoklu Dizin) için, yeniden örnekleme için kullanılacak <strong>seviyenin adını veya numarasını</strong> belirtir. Bu seviye zaman serisi türünde olmalıdır.</td>
+</tr>
+<tr>
+<td><strong><code>origin</code></strong></td>
+<td><strong>Başlangıç Noktası</strong>. Gruplamanın ayarlanacağı <strong>başlangıç zaman damgasını</strong> belirtir. Özellikle <strong>Tik-frekansları</strong> (sabit frekanslar, örn. saatler, dakikalar) için önemlidir. Varsayılan <strong><code>'start_day'</code></strong> (zaman serisinin ilk gününün gece yarısı). Diğer seçenekler: <code>'epoch'</code>, <code>'start'</code>, <code>'end'</code>, <code>'end_day'</code>.<br> '<strong>epoch</strong>': başlangıç tarihi 1970-01-01'dir.<br/><br/>'<strong>start</strong>': başlangıç tarihi zaman serisinin ilk değeridir.<br/><br/>'<strong>start_day</strong>': başlangıç tarihi zaman serisinin ilk gününün gece yarısıdır.<br/><br/>'<strong>end</strong>': başlangıç tarihi zaman serisinin son değeridir.<br/><br/>'<strong>end_day</strong>': başlangıç tarihi son günün gece yarısıdır.</td>
+</tr>
+<tr>
+<td><strong><code>offset</code></strong></td>
+<td><strong>Ofset</strong>. <code>origin</code>'e eklenen ek bir zaman farkı (<code>Timedelta</code>). Gruplama başlangıcını kaydırmak için kullanılır.</td>
+</tr>
+<tr>
+<td><strong><code>group_keys</code></strong></td>
+<td><strong>Grup Anahtarları</strong>. Yeniden örneklenmiş nesne üzerinde <code>.apply()</code> kullanıldığında, grup anahtarlarının sonuç dizinine dahil edilip edilmeyeceğini belirtir. Varsayılan <strong><code>False</code></strong></td>
+</tr>
+</tbody>
+</table>
+<p>Aşağıda, örneklerle bu konuyu detaylı olarak açıklayacağım.</p>
 <p>Örnekler için temel veri serisi olarak, 9 adet bir dakikalık zaman damgasına sahip bir <code>Series</code> oluşturalım:</p>
 <div class="highlight"><pre><span></span><code><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s1">&#39;1/1/2025&#39;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;min&#39;</span><span class="p">)</span>
 <span class="n">series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">)</span>
@@ -143,8 +218,8 @@
 
 <h3>2. Frekans Yükseltme (Upsampling) ve Veri Doldurma</h3>
 <p>Frekans yükseltme (örneğin 1 dakikalıktan 30 saniyeliğe) yapıldığında, aralara yeni zaman damgaları eklenir ve bu yeni girişler varsayılan olarak <code>NaN</code> (boş) değerler içerir.</p>
-<h4>A. Sadece Yeniden Dizinleme (<code>asfreq()</code>):</h4>
-<p>Seriyi 30 saniyelik kovalara yükseltir ve veri olmayan yerlere <code>NaN</code> atar.</p>
+<h4>A. <code>asfreq()</code> Parametresi ile Sadece Yeniden Dizinleme:</h4>
+<p><code>asfreq()</code> ile Seriyi 30 saniyelik kovalara yükseltir ve veri olmayan yerlere <code>NaN</code> atar.</p>
 <ul>
 <li><strong>İşlem:</strong> <code>series.resample('30s').asfreq()</code></li>
 </ul>
@@ -172,8 +247,8 @@
 <span class="c1"># #Freq: 30s, dtype: float64</span>
 </code></pre></div>
 
-<h4>B. İleriye Yönlü Doldurma (<code>ffill()</code>):</h4>
-<p>Yükseltilmiş frekanstaki <code>NaN</code> değerleri, kendinden önceki geçerli değerle doldurur (Forward Fill).</p>
+<h4>B. <code>ffill()</code> Parametresi ile İleriye Yönlü Doldurma:</h4>
+<p><code>ffill()</code> (Forward Fill) ile Yükseltilmiş frekanstaki <code>NaN</code> değerleri, kendinden önceki geçerli değerle doldurur.</p>
 <ul>
 <li><strong>İşlem:</strong> <code>series.resample('30s').ffill()</code></li>
 </ul>
@@ -200,8 +275,8 @@
 <span class="c1"># #Freq: 30s, dtype: int64</span>
 </code></pre></div>
 
-<h4>C. Geriye Yönlü Doldurma (<code>bfill()</code>):</h4>
-<p>Yükseltilmiş frekanstaki <code>NaN</code> değerleri, kendinden sonraki geçerli değerle doldurur (Backward Fill) [7].</p>
+<h4>C. <code>bfill()</code> Parametresi ile Geriye Yönlü Doldurma:</h4>
+<p><code>bfill()</code> (Backward Fill) ile Yükseltilmiş frekanstaki <code>NaN</code> değerleri, kendinden sonraki geçerli değerle doldurur.</p>
 <ul>
 <li><strong>İşlem:</strong> <code>series.resample('30s').bfill()</code></li>
 </ul>
@@ -229,8 +304,8 @@
 </code></pre></div>
 
 <h3>3. Özel Fonksiyonlar ve DataFrame Kullanımı</h3>
-<h4>A. Özel Fonksiyon Uygulama (<code>apply()</code>):</h4>
-<p>Yeniden örnekleme sonrasında, standart toplama işlevleri yerine kullanıcı tanımlı bir işlev (<code>custom_resampler</code>) uygulamak mümkündür.</p>
+<h4>A. <code>apply()</code> Fonksiyonu ile Özel Fonksiyon Uygulama:</h4>
+<p><code>apply()</code> ile Yeniden örnekleme sonrasında, standart toplama işlevleri yerine kullanıcı tanımlı bir işlev (<code>custom_resampler</code>) uygulamak mümkündür.</p>
 <ul>
 <li><strong>Örnek İşlev:</strong> Gelen dizinin toplamına 5 ekleyen bir işlev.</li>
 <li><strong>İşlem:</strong> <code>series.resample('3min').apply(custom_resampler)</code></li>
@@ -256,7 +331,35 @@
 <span class="c1"># 2000-01-01 00:06:00   26 (21 + 5)</span>
 </code></pre></div>
 
-<h4>B. İndeks Dışında Bir Sütun Kullanma (<code>on</code>):</h4>
+<blockquote>
+<p><strong>NOT</strong>:</p>
+<p><code>GroupBy</code> aracılığıyla kullanılabilen tüm yerleşik metotlar, <code>sum</code>, <code>mean</code>, <code>std</code>, <code>sem</code>, <code>max</code>, <code>min</code>, <code>median</code>, <code>first</code>, <code>last</code>, <code>ohlc</code> dahil olmak üzere, döndürülen nesnenin bir metodu olarak kullanılabilir.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="n">rng</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s2">&quot;1/1/2012&quot;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s2">&quot;s&quot;</span><span class="p">)</span>
+
+<span class="n">ts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">rng</span><span class="p">)),</span> <span class="n">index</span><span class="o">=</span><span class="n">rng</span><span class="p">)</span>
+
+<span class="n">ts</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s2">&quot;5Min&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="c1"># Çıktı:</span>
+<span class="c1"># 2012-01-01    25103</span>
+<span class="c1"># Freq: 5min, dtype: int64</span>
+
+<span class="n">ts</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s2">&quot;5Min&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="c1"># Çıktı:</span>
+<span class="c1"># 2012-01-01    251.03</span>
+<span class="c1"># Freq: 5min, dtype: float64</span>
+
+<span class="n">ts</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s2">&quot;5Min&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">ohlc</span><span class="p">()</span>
+<span class="c1"># Çıktı:            open  high  low  close</span>
+<span class="c1"># 2012-01-01   308   460    9    205</span>
+
+<span class="n">ts</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s2">&quot;5Min&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="c1"># Çıktı:</span>
+<span class="c1"># 2012-01-01    460</span>
+<span class="c1"># Freq: 5min, dtype: int64</span>
+</code></pre></div>
+
+<h4>B. <code>on</code> Parametresi ile İndeks Dışında Bir Sütun Kullanma:</h4>
 <p><code>DataFrame</code> nesneleri için, yeniden örnekleme işlemini varsayılan dizin (<code>index</code>) yerine datetime benzeri bir sütun üzerinden gerçekleştirmek için <strong><code>on</code></strong> parametresi kullanılabilir.</p>
 <ul>
 <li><strong>Örnek Senaryo:</strong> Haftalık başlangıç tarihleri (<code>week_starting</code>) olan bir DataFrame'i aylık esasa göre yeniden örnekleyip ortalamasını almak.</li>
@@ -382,8 +485,8 @@
 <p>• <code>'ME'</code> (Month End): Veriler aylık bazda gruplanır.</p>
 <p>• <code>on='week_starting'</code>: Yeniden örnekleme işlemi, DataFrame'in dizini yerine <strong>week_starting</strong> sütunundaki <code>datetime</code> benzeri veriler kullanılarak yapılır.</p>
 <p>• <code>mean()</code>: Gruplanan her ay için <code>price</code> ve <code>volume</code> sütunlarının ortalaması hesaplanır.</p>
-<h4>C. MultiIndex Seviyesi Kullanma (<code>level</code>):</h4>
-<p>Bir MultiIndex (Çoklu Dizin) içeren bir DataFrame'de, yeniden örneklemenin hangi <code>datetime</code> benzeri seviyede yapılacağını belirtmek için <strong><code>level</code></strong> parametresi kullanılır.</p>
+<h4>C. level ile MultiIndex Seviyesi Kullanma:</h4>
+<p><code>level</code> parametresi ile Bir MultiIndex (Çoklu Dizin) içeren bir DataFrame'de, yeniden örneklemenin hangi <code>datetime</code> benzeri seviyede yapılacağını belirtmek için <strong><code>level</code></strong> parametresi kullanılır.</p>
 <ul>
 <li><strong>Örnek Senaryo:</strong> Hem gün hem de gün içindeki zaman dilimi (<code>morning</code>, <code>afternoon</code>) içeren bir MultiIndex'te, sadece gün seviyesinde (Seviye 0) yeniden örnekleme yapmak.</li>
 </ul>
@@ -421,6 +524,319 @@
 <span class="c1"># #2025-01-03     32     150 (14+18, 50+100)</span>
 <span class="c1"># #2025-01-04     36      90 (17+19, 40+50)</span>
 </code></pre></div>
+
+<h2>📅 Pandas Frekans Takma Adları (Offset Aliases)</h2>
+<p>Bu takma adlar, pandas kütüphanesinde zaman serisi işlemlerinde (örneğin, <strong>yeniden örnekleme (<code>resample</code>)</strong>, tarih aralığı oluşturma (<code>date_range</code>)) bir zaman periyodunu veya aralığını kolayca belirtmek için kullanılan kısa, standartlaştırılmış dizelerdir.</p>
+<p>Bu kodlar, milisaniyeden yıla kadar uzanan geniş bir frekans yelpazesini temsil eder.</p>
+<h3>📝 Başlıca Frekans Takma Adları</h3>
+<p>Aşağıdaki tablo, sıkça kullanılan Frekans Takma Adlarını ve ne anlama geldiklerini göstermektedir:</p>
+<table>
+<thead>
+<tr>
+<th>Takma Ad (Alias)</th>
+<th>Açıklama (Description)</th>
+<th>Türkçe Anlamı</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>B</strong></td>
+<td>Business day frequency</td>
+<td>İş günü frekansı (Pazartesi-Cuma)</td>
+</tr>
+<tr>
+<td><strong>D</strong></td>
+<td>Calendar day frequency</td>
+<td>Takvim günü frekansı (Her gün)</td>
+</tr>
+<tr>
+<td><strong>W</strong></td>
+<td>Weekly frequency</td>
+<td>Haftalık frekans (Pazar günleri sonu)</td>
+</tr>
+<tr>
+<td><strong>M</strong></td>
+<td>Month end frequency</td>
+<td>Ay sonu frekansı</td>
+</tr>
+<tr>
+<td><strong>MS</strong></td>
+<td>Month start frequency</td>
+<td>Ay başlangıcı frekansı</td>
+</tr>
+<tr>
+<td><strong>BM</strong></td>
+<td>Business month end frequency</td>
+<td>İş ayı sonu frekansı</td>
+</tr>
+<tr>
+<td><strong>BMS</strong></td>
+<td>Business month start frequency</td>
+<td>İş ayı başlangıcı frekansı</td>
+</tr>
+<tr>
+<td><strong>Q</strong></td>
+<td>Quarter end frequency</td>
+<td>Çeyrek (3 ay) sonu frekansı</td>
+</tr>
+<tr>
+<td><strong>QS</strong></td>
+<td>Quarter start frequency</td>
+<td>Çeyrek (3 ay) başlangıcı frekansı</td>
+</tr>
+<tr>
+<td><strong>A</strong> veya <strong>Y</strong></td>
+<td>Year end frequency</td>
+<td>Yıl sonu frekansı</td>
+</tr>
+<tr>
+<td><strong>AS</strong> veya <strong>YS</strong></td>
+<td>Year start frequency</td>
+<td>Yıl başlangıcı frekansı</td>
+</tr>
+<tr>
+<td><strong>H</strong></td>
+<td>Hourly frequency</td>
+<td>Saatlik frekans</td>
+</tr>
+<tr>
+<td><strong>T</strong> veya <strong>min</strong></td>
+<td>Minutely frequency</td>
+<td>Dakikalık frekans</td>
+</tr>
+<tr>
+<td><strong>S</strong></td>
+<td>Secondly frequency</td>
+<td>Saniyelik frekans</td>
+</tr>
+<tr>
+<td><strong>L</strong> veya <strong>ms</strong></td>
+<td>Milliseconds</td>
+<td>Milisaniye frekansı</td>
+</tr>
+<tr>
+<td><strong>U</strong> veya <strong>us</strong></td>
+<td>Microseconds</td>
+<td>Mikrosaniye frekansı</td>
+</tr>
+<tr>
+<td><strong>N</strong></td>
+<td>Nanoseconds</td>
+<td>Nanosaniye frekansı</td>
+</tr>
+</tbody>
+</table>
+<h3>🔢 Frekans Çarpanları ve Birleşik Kullanım</h3>
+<p>Bu takma adlar, başında bir sayı kullanılarak periyodun uzunluğunu artırmak için kullanılabilir:</p>
+<ul>
+<li>
+<p><strong><code>3D</code></strong>: Her 3 günde bir.</p>
+</li>
+<li>
+<p><strong><code>2W</code></strong>: Her 2 haftada bir.</p>
+</li>
+<li>
+<p><strong><code>4H</code></strong>: Her 4 saatte bir.</p>
+</li>
+</ul>
+<p>Ayrıca, zamanı daha detaylı belirtmek için birden fazla takma ad birleştirilebilir:</p>
+<ul>
+<li><strong><code>1H30min</code></strong>: 1 saat 30 dakikalık frekans.</li>
+</ul>
+<h3>📍 Çapalı Frekanslar (Anchored Offsets)</h3>
+<p>Haftalık, çeyreklik ve yıllık frekanslar için başlangıç veya bitiş noktasını sabitleyen (<strong>çapalayan</strong>) ek parametreler kullanabilirsiniz. Bu, finansal veya ticari takvimler için kritik öneme sahiptir.</p>
+<h4>Haftalık Çapalar (<code>W-Gün</code>)</h4>
+<p>Varsayılan <strong><code>W</code></strong> Pazar günü bitişini kullanır. Farklı bir gün belirlemek için:</p>
+<table>
+<thead>
+<tr>
+<th>Takma Ad</th>
+<th>Açıklama</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>W-MON</code></strong></td>
+<td>Haftalık, Pazartesi günleri biten (haftalık bazda Pazartesi gününe göre gruplanır).</td>
+</tr>
+<tr>
+<td><strong><code>W-FRI</code></strong></td>
+<td>Haftalık, Cuma günleri biten (iş haftası sonuna göre gruplanır).</td>
+</tr>
+</tbody>
+</table>
+<h4>Yıllık ve Çeyreklik Çapalar (<code>A-Ay</code>, <code>Q-Ay</code>)</h4>
+<p>Varsayılan yıllık ve çeyreklik frekanslar genellikle yıl sonu olarak Aralık'ı kullanır. Farklı bir mali yıl sonu belirlemek için ay adının üç harfli kısaltması kullanılır:</p>
+<table>
+<thead>
+<tr>
+<th>Takma Ad</th>
+<th>Açıklama</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>Q-MAR</code></strong></td>
+<td>Çeyrek sonu, yıl Mart ayında sona erer.</td>
+</tr>
+<tr>
+<td><strong><code>QS-JUN</code></strong></td>
+<td>Çeyrek başlangıcı, yıl Haziran'da sona erer.</td>
+</tr>
+<tr>
+<td><strong><code>A-SEP</code></strong></td>
+<td>Yıl sonu, yıl Eylül ayında sona erer.</td>
+</tr>
+</tbody>
+</table>
+<p>Bu takma adlar, pandas'ın zaman serisi verileriniz üzerinde esnek ve güçlü bir şekilde kontrol sahibi olmanızı sağlayan temel yapı taşlarıdır.</p>
+<h2>📅 DateOffset Objeleri ve Takvim Tabanlı Aralıklar</h2>
+<p>Pandas'taki <strong><code>DateOffset</code></strong> objeleri, yalnızca mutlak bir zaman miktarını (<code>Timedelta</code> gibi, örneğin tam 24 saat) değil, aynı zamanda <strong>takvim kurallarını</strong> (örneğin iş günleri, ay sonları, çeyrek başlangıçları) da dikkate alan göreceli zaman artışlarını temsil eder.</p>
+<p><strong>Önemli Fark:</strong></p>
+<ul>
+<li>
+<p><strong><code>Timedelta</code>:</strong> Mutlak zaman (örneğin, tam 72 saat). Yaz saati uygulaması (DST) geçişlerini dikkate almaz.</p>
+</li>
+<li>
+<p><strong><code>DateOffset</code>:</strong> Takvim tabanlı zaman (örneğin, 3 iş günü). <strong>DST geçişlerini ve hafta sonlarını atlama</strong> gibi kuralları uygular.</p>
+</li>
+</ul>
+<p><code>resample</code> metodunda kullanılan Frekans Takma Adlarının (<code>'B'</code>, <code>'M'</code>, <code>'Q'</code>) arkasında yatan sınıflar bu <code>DateOffset</code> objeleridir.</p>
+<h3>📝 Başlıca DateOffset Sınıfları</h3>
+<p>Aşağıdaki tablo, pandas zaman serisi işlemlerinin karmaşık takvim mantığını sağlayan temel <code>DateOffset</code> sınıflarını ve işlevlerini göstermektedir:</p>
+<table>
+<thead>
+<tr>
+<th>Sınıf Adı (Class Name)</th>
+<th>Alias (Takma Ad)</th>
+<th>Türkçe Açıklaması</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>DateOffset</code></strong></td>
+<td>Yok</td>
+<td>Genel ofset sınıfı. Varsayılan olarak 1 takvim gününe karşılık gelir, ancak anahtar kelimelerle (örn. <code>days=3</code>, <code>months=1</code>) özelleştirilebilir.</td>
+</tr>
+<tr>
+<td><strong><code>BDay</code></strong> veya <code>BusinessDay</code></td>
+<td><strong><code>B</code></strong></td>
+<td><strong>İş günü</strong> (Pazartesi'den Cuma'ya). Hafta sonlarını ve resmi tatilleri atlar (özel bir takvim belirtilmedikçe).</td>
+</tr>
+<tr>
+<td><strong><code>CDay</code></strong> veya <code>CustomBusinessDay</code></td>
+<td><strong><code>C</code></strong></td>
+<td><strong>Özel İş Günü</strong>. Özel olarak tanımlanmış tatil günlerini ve/veya hafta sonlarını atlamak için kullanılır.</td>
+</tr>
+<tr>
+<td><strong><code>MonthEnd</code></strong></td>
+<td><code>ME</code></td>
+<td>Takvim <strong>Ay Sonu</strong> frekansı. Tarihi ayın son gününe yuvarlar.</td>
+</tr>
+<tr>
+<td><strong><code>MonthBegin</code></strong></td>
+<td><code>MS</code></td>
+<td>Takvim <strong>Ay Başlangıcı</strong> frekansı. Tarihi ayın ilk gününe yuvarlar.</td>
+</tr>
+<tr>
+<td><strong><code>BMonthEnd</code></strong></td>
+<td><code>BME</code></td>
+<td><strong>İş Ayı Sonu</strong> frekansı. Ayın son iş gününe yuvarlar.</td>
+</tr>
+<tr>
+<td><strong><code>BMonthBegin</code></strong></td>
+<td><code>BMS</code></td>
+<td><strong>İş Ayı Başlangıcı</strong> frekansı. Ayın ilk iş gününe yuvarlar.</td>
+</tr>
+<tr>
+<td><strong><code>QuarterEnd</code></strong></td>
+<td><code>QE</code></td>
+<td>Takvim <strong>Çeyrek Sonu</strong> frekansı (Mart, Haziran, Eylül, Aralık sonları).</td>
+</tr>
+<tr>
+<td><strong><code>QuarterBegin</code></strong></td>
+<td><code>QS</code></td>
+<td>Takvim <strong>Çeyrek Başlangıcı</strong> frekansı (Ocak, Nisan, Temmuz, Ekim başlangıçları).</td>
+</tr>
+<tr>
+<td><strong><code>YearEnd</code></strong></td>
+<td><code>YE</code></td>
+<td>Takvim <strong>Yıl Sonu</strong> frekansı (Varsayılan: 31 Aralık).</td>
+</tr>
+<tr>
+<td><strong><code>YearBegin</code></strong></td>
+<td><code>YS</code> veya <code>BYS</code></td>
+<td>Takvim <strong>Yıl Başlangıcı</strong> frekansı (Varsayılan: 1 Ocak).</td>
+</tr>
+<tr>
+<td><strong><code>BusinessHour</code></strong></td>
+<td><code>BH</code></td>
+<td><strong>İş Saati</strong> frekansı. Yalnızca iş günleri içindeki çalışma saatlerini sayar (Varsayılan: 9:00 - 17:00).</td>
+</tr>
+<tr>
+<td><strong><code>SemiMonthEnd</code></strong></td>
+<td><code>SME</code></td>
+<td><strong>Yarı Ay Sonu</strong> frekansı. Ayın 15. günü ve ayın son günü.</td>
+</tr>
+<tr>
+<td><strong><code>SemiMonthBegin</code></strong></td>
+<td><code>SMS</code></td>
+<td><strong>Yarı Ay Başlangıcı</strong> frekansı.</td>
+</tr>
+<tr>
+<td><strong><code>Week</code></strong></td>
+<td><code>W</code></td>
+<td><strong>Haftalık</strong> frekans. Opsiyonel olarak haftanın belirli bir gününe çapalanabilir (örneğin, <code>W-MON</code> Pazartesi).</td>
+</tr>
+<tr>
+<td><code>Day</code></td>
+<td><strong><code>D</code></strong></td>
+<td>Bir <strong>mutlak gün</strong> (tam 24 saat).</td>
+</tr>
+<tr>
+<td><code>Hour</code></td>
+<td><strong><code>h</code></strong></td>
+<td>Bir <strong>saat</strong> (60 dakika).</td>
+</tr>
+<tr>
+<td><code>Minute</code></td>
+<td><strong><code>min</code></strong></td>
+<td>Bir <strong>dakika</strong> (60 saniye).</td>
+</tr>
+<tr>
+<td><code>Second</code></td>
+<td><strong><code>s</code></strong></td>
+<td>Bir <strong>saniye</strong>.</td>
+</tr>
+<tr>
+<td><code>Millisecond</code></td>
+<td><strong><code>ms</code></strong></td>
+<td>Bir <strong>milisaniye</strong> (10−3 saniye).</td>
+</tr>
+<tr>
+<td><code>Microsecond</code></td>
+<td><strong><code>us</code></strong></td>
+<td>Bir <strong>mikrosaniye</strong> (10−6 saniye).</td>
+</tr>
+<tr>
+<td><code>Nanosecond</code></td>
+<td><strong><code>ns</code></strong></td>
+<td>Bir <strong>nanosaniye</strong> (10−9 saniye).</td>
+</tr>
+</tbody>
+</table>
+<h2>Kaynaklar:</h2>
+<ul>
+<li>
+<p><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.resample.html">pandas.DataFrame.resample &#8212; pandas 2.3.3 documentation</a></p>
+</li>
+<li>
+<p><a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#resampling">Time series / date functionality &#8212; pandas 2.3.3 documentation</a></p>
+</li>
+<li>
+<p>https://gemini.google.com</p>
+</li>
+</ul>
 
 		<span class="post-tags">
 			Tags:
