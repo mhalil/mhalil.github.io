@@ -162,9 +162,26 @@
     <span class="s2">&quot;e&quot;</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="s2">&quot;float&quot;</span><span class="p">)),</span>      <span class="c1"># Aslında tam sayı ama boşluk var diye float olmuş</span>
     <span class="s2">&quot;f&quot;</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mf">100.5</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="s2">&quot;float&quot;</span><span class="p">)),</span>  <span class="c1"># Gerçek ondalıklı sayı</span>
 <span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- Dönüştürmeden Önceki Tipler ---&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">dtypes</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code>   <span class="n">a</span>  <span class="n">b</span>      <span class="n">c</span>    <span class="n">d</span>     <span class="n">e</span>      <span class="n">f</span>
+<span class="mi">0</span>  <span class="mi">1</span>  <span class="n">x</span>   <span class="kc">True</span>    <span class="n">h</span>  <span class="mf">10.0</span>    <span class="n">NaN</span>
+<span class="mi">1</span>  <span class="mi">2</span>  <span class="n">y</span>  <span class="kc">False</span>    <span class="n">i</span>   <span class="n">NaN</span>  <span class="mf">100.5</span>
+<span class="mi">2</span>  <span class="mi">3</span>  <span class="n">z</span>    <span class="n">NaN</span>  <span class="n">NaN</span>  <span class="mf">20.0</span>  <span class="mf">200.0</span>
+
+<span class="o">---</span> <span class="n">Dönüştürmeden</span> <span class="n">Önceki</span> <span class="n">Tipler</span> <span class="o">---</span>
+<span class="n">a</span>      <span class="n">int32</span>
+<span class="n">b</span>     <span class="nb">object</span>
+<span class="n">c</span>     <span class="nb">object</span>
+<span class="n">d</span>     <span class="nb">object</span>
+<span class="n">e</span>    <span class="n">float64</span>
+<span class="n">f</span>    <span class="n">float64</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
 </code></pre></div>
 
 <p><strong>Dönüştürmeden Önceki Çıktı (Sorunlar):</strong></p>
@@ -179,9 +196,29 @@
 <h3>2. <code>convert_dtypes()</code> ile Dönüştürme (Çözüm)</h3>
 <p>Şimdi sihirli komutumuzu kullanalım:</p>
 <div class="highlight"><pre><span></span><code><span class="n">dfn</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">convert_dtypes</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dfn</span><span class="p">)</span>
+</code></pre></div>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- Dönüştürdükten Sonraki Tipler ---&quot;</span><span class="p">)</span>
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code>   <span class="n">a</span>  <span class="n">b</span>      <span class="n">c</span>     <span class="n">d</span>     <span class="n">e</span>      <span class="n">f</span>
+<span class="mi">0</span>  <span class="mi">1</span>  <span class="n">x</span>   <span class="kc">True</span>     <span class="n">h</span>    <span class="mi">10</span>   <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
+<span class="mi">1</span>  <span class="mi">2</span>  <span class="n">y</span>  <span class="kc">False</span>     <span class="n">i</span>  <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>  <span class="mf">100.5</span>
+<span class="mi">2</span>  <span class="mi">3</span>  <span class="n">z</span>   <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>  <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>    <span class="mi">20</span>  <span class="mf">200.0</span>
+</code></pre></div>
+
+<p>Şimdi dönüştürme sonrası sütun tiplerine (türlerine) bakalım.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- Dönüştürdükten Sonraki Tipler ---&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">dfn</span><span class="o">.</span><span class="n">dtypes</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span>             <span class="n">Int32</span>
+<span class="n">b</span>    <span class="n">string</span><span class="p">[</span><span class="n">python</span><span class="p">]</span>
+<span class="n">c</span>           <span class="n">boolean</span>
+<span class="n">d</span>    <span class="n">string</span><span class="p">[</span><span class="n">python</span><span class="p">]</span>
+<span class="n">e</span>             <span class="n">Int64</span>
+<span class="n">f</span>           <span class="n">Float64</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
 </code></pre></div>
 
 <p><strong>Dönüştürdükten Sonraki Çıktı (Sonuç):</strong></p>
