@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Pandas - astype" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/pandas-astype.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Pandas - astype</h1>
+	<span class="post-date">Cts 22 Kasım 2025</span>
+	<h1>astype() Metodu</h1>
+<p><code>pandas.DataFrame.astype</code> metodu, Pandas'taki veri çerçevelerinin (DataFrame) veya serilerin (Series) veri tiplerini (<strong>dtype</strong>) değiştirmek için kullanılan temel bir fonksiyondur.</p>
+<h2><code>pandas.DataFrame.astype</code> Metodunun İşlevi</h2>
+<p><code>DataFrame.astype()</code> metodu, bir DataFrame'deki tüm sütunları veya belirli sütunları istediğiniz bir veri tipine dönüştürmenizi sağlar. Veri analizi sırasında, verilerin doğru şekilde işlenmesi, filtrelenmesi ve hafızada daha verimli saklanması için veri tiplerini (örneğin, tam sayıları ondalıklı sayıya, objeleri kategoriye veya sayıları tam sayıya) dönüştürmek sıklıkla gereklidir.</p>
+<h3>Temel Sözdizimi</h3>
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">dtype</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;raise&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>Parametreler</h3>
+<table>
+<thead>
+<tr>
+<th>Parametre</th>
+<th>Açıklama</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>dtype</code></strong></td>
+<td>Dönüştürmek istediğiniz yeni veri tipini belirtir. Bir sütun için tek bir tip (örneğin <code>'int64'</code>, <code>float</code>, <code>'category'</code>) veya birden fazla sütun için <code>{'sütun_adı': 'yeni_tip', ...}</code> şeklinde bir <strong>sözlük (dictionary)</strong> olabilir.</td>
+</tr>
+<tr>
+<td><strong><code>copy</code></strong></td>
+<td>Dönüşümden sonra veri çerçevesinin bir kopyasını döndürüp döndürmeyeceğini belirtir. Varsayılanı <code>True</code>'dur. (Not: Pandas'ın yeni Copy-on-Write özelliği ile bu parametrenin davranışı değişmektedir.)</td>
+</tr>
+<tr>
+<td><strong><code>errors</code></strong></td>
+<td>Dönüşüm sırasında bir hata oluşursa ne yapılacağını belirtir: <strong><code>'raise'</code></strong> (varsayılan, hata fırlatır ve durur) veya <strong><code>'ignore'</code></strong> (hatayı yok sayar ve orijinal nesneyi döndürür).</td>
+</tr>
+</tbody>
+</table>
+<h2>Örneklerle Kullanım</h2>
+<p>Aşağıdaki örneklerde, öncelikle bir başlangıç Veri Çerçevesi (DataFrame) oluşturup, ardından <code>astype</code> metodu ile çeşitli dönüşümler yapacağız.</p>
+<h3>Başlangıç DataFrame'i Oluşturma</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># Örnek Veri Çerçevesi</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;UrunID&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;101&#39;</span><span class="p">,</span> <span class="s1">&#39;102&#39;</span><span class="p">,</span> <span class="s1">&#39;103&#39;</span><span class="p">,</span> <span class="s1">&#39;104&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Fiyat&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;15.50&#39;</span><span class="p">,</span> <span class="s1">&#39;22.00&#39;</span><span class="p">,</span> <span class="s1">&#39;5.25&#39;</span><span class="p">,</span> <span class="s1">&#39;10.00&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;StokAdedi&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="s1">&#39;Indirimli&#39;</span><span class="p">:</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Veri Çerçevemiz aşağıdadır;</p>
+<div class="highlight"><pre><span></span><code>  <span class="n">UrunID</span>  <span class="n">Fiyat</span>  <span class="n">StokAdedi</span>  <span class="n">Indirimli</span>
+<span class="mi">0</span>    <span class="mi">101</span>  <span class="mf">15.50</span>         <span class="mi">50</span>       <span class="kc">True</span>
+<span class="mi">1</span>    <span class="mi">102</span>  <span class="mf">22.00</span>         <span class="mi">10</span>      <span class="kc">False</span>
+<span class="mi">2</span>    <span class="mi">103</span>   <span class="mf">5.25</span>         <span class="mi">20</span>      <span class="kc">False</span>
+<span class="mi">3</span>    <span class="mi">104</span>  <span class="mf">10.00</span>          <span class="mi">0</span>       <span class="kc">True</span>
+</code></pre></div>
+
+<p>Sütunların veri tiplerine bakalım;</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- Başlangıç Veri Tipleri ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">dtypes</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="o">---</span> <span class="n">Başlangıç</span> <span class="n">Veri</span> <span class="n">Tipleri</span> <span class="o">---</span>
+<span class="n">UrunID</span>       <span class="nb">object</span> <span class="p">(</span><span class="n">string</span><span class="p">)</span>
+<span class="n">Fiyat</span>        <span class="nb">object</span> <span class="p">(</span><span class="n">string</span><span class="p">)</span>
+<span class="n">StokAdedi</span>      <span class="n">int64</span>
+<span class="n">Indirimli</span>      <span class="nb">bool</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
+</code></pre></div>
+
+<h3>Örnek 1: Tüm Veri Çerçevesini Tek Bir Tipe Dönüştürme (Uyarı: Genellikle bundan kaçınılır, tavsiye edilmez)</h3>
+<p>Tüm sütunları aynı türe dönüştürmek, ancak sadece tüm sütunlar bu dönüşüme uygunsa mantıklıdır.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># &#39;StokAdedi&#39; sütununu (int64) daha küçük bir tam sayı tipi olan int16&#39;ya dönüştürme.</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;StokAdedi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;StokAdedi&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int16&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- Örnek 1 Sonrası Veri Tipleri ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">dtypes</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="o">---</span> <span class="n">Örnek</span> <span class="mi">1</span> <span class="n">Sonrası</span> <span class="n">Veri</span> <span class="n">Tipleri</span> <span class="o">---</span>
+<span class="n">UrunID</span>        <span class="nb">object</span>
+<span class="n">Fiyat</span>         <span class="nb">object</span>
+<span class="n">StokAdedi</span>      <span class="n">int16</span>  <span class="o">&lt;--</span> <span class="n">Değişti</span>
+<span class="n">Indirimli</span>       <span class="nb">bool</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
+</code></pre></div>
+
+<h3>Örnek 2: Birden Fazla Sütunu Sözlük (Dictionary) Kullanarak Dönüştürme</h3>
+<p>Bu, en yaygın kullanım şeklidir. Farklı sütunları kendi hedef tiplerine dönüştürürüz.</p>
+<ul>
+<li>
+<p><code>UrunID</code> (şu anda <code>object</code>/string) -&gt; <strong><code>category</code></strong> (Kategorik veri tipi, string'lere göre daha az bellek kullanır ve bazı işlemlerde daha hızlıdır.)</p>
+</li>
+<li>
+<p><code>Fiyat</code> (şu anda <code>object</code>/string) -&gt; <strong><code>float64</code></strong> (Ondalıklı sayıya dönüştürme.)</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">df_donusmus</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">astype</span><span class="p">({</span>
+    <span class="s1">&#39;UrunID&#39;</span><span class="p">:</span> <span class="s1">&#39;category&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Fiyat&#39;</span><span class="p">:</span> <span class="s1">&#39;float64&#39;</span>
+<span class="p">})</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- Örnek 2 Sonrası Veri Tipleri ve Veri Çerçevesi ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_donusmus</span><span class="o">.</span><span class="n">dtypes</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="o">---</span> <span class="n">Örnek</span> <span class="mi">2</span> <span class="n">Sonrası</span> <span class="n">Veri</span> <span class="n">Tipleri</span> <span class="n">ve</span> <span class="n">Veri</span> <span class="n">Çerçevesi</span> <span class="o">---</span>
+<span class="n">UrunID</span>      <span class="n">category</span>  <span class="o">&lt;--</span> <span class="n">Değişti</span>
+<span class="n">Fiyat</span>        <span class="n">float64</span>  <span class="o">&lt;--</span> <span class="n">Değişti</span>
+<span class="n">StokAdedi</span>      <span class="n">int64</span>
+<span class="n">Indirimli</span>       <span class="nb">bool</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
+</code></pre></div>
+
+<p>Dönüşmüş Veri çerçevesine bakalım;</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;DataFrame:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_donusmus</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">DataFrame</span><span class="p">:</span>
+  <span class="n">UrunID</span>  <span class="n">Fiyat</span>  <span class="n">StokAdedi</span>  <span class="n">Indirimli</span>
+<span class="mi">0</span>    <span class="mi">101</span>  <span class="mf">15.50</span>         <span class="mi">50</span>       <span class="kc">True</span>
+<span class="mi">1</span>    <span class="mi">102</span>  <span class="mf">22.00</span>         <span class="mi">10</span>      <span class="kc">False</span>
+<span class="mi">2</span>    <span class="mi">103</span>   <span class="mf">5.25</span>         <span class="mi">20</span>      <span class="kc">False</span>
+<span class="mi">3</span>    <span class="mi">104</span>  <span class="mf">10.00</span>          <span class="mi">0</span>       <span class="kc">True</span>
+</code></pre></div>
+
+<h3>Örnek 3: Hata Yönetimi (<code>errors='ignore'</code>)</h3>
+<p>Bir dönüşümün başarısız olma ihtimali varsa (örneğin bir metin sütununu sayıya dönüştürmeye çalışırken sayı olmayan karakterler varsa), <code>errors='ignore'</code> kullanarak dönüşüm hatasını yok sayıp orijinal veriyi geri döndürebilirsiniz.</p>
+<p>Ancak, genellikle sayısal dönüşümler için daha güçlü olan <code>pd.to_numeric()</code> fonksiyonunun <code>errors='coerce'</code> parametresi kullanılır, bu da hatalı değerleri <strong>NaN</strong> (Not a Number) olarak değiştirir. Yine de <code>astype</code> örneğini görelim:</p>
+<div class="highlight"><pre><span></span><code><span class="n">df_hata</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Deger&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;10&#39;</span><span class="p">,</span> <span class="s1">&#39;20&#39;</span><span class="p">,</span> <span class="s1">&#39;hata&#39;</span><span class="p">,</span> <span class="s1">&#39;30&#39;</span><span class="p">]})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_hata</span><span class="p">)</span>
+
+<span class="c1"># Çıktı:</span>
+<span class="c1">#   Deger</span>
+<span class="c1"># 0    10</span>
+<span class="c1"># 1    20</span>
+<span class="c1"># 2  hata</span>
+<span class="c1"># 3    30</span>
+
+<span class="c1"># errors=&#39;raise&#39; (Varsayılan): &#39;hata&#39; değeri yüzünden ValueError fırlatır.</span>
+
+<span class="c1"># errors=&#39;ignore&#39;: Hata fırlatmak yerine orijinal DataFrame&#39;i döndürür.</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">df_result</span> <span class="o">=</span> <span class="n">df_hata</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int64&#39;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">df_result</span><span class="o">.</span><span class="n">equals</span><span class="p">(</span><span class="n">df_hata</span><span class="p">):</span>
+         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- Örnek 3: Hata Yönetimi (`errors=&#39;ignore&#39;`) ---&quot;</span><span class="p">)</span>
+         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dönüşüm hatası nedeniyle orijinal DataFrame döndürüldü.&quot;</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="c1"># Bu blok, &#39;raise&#39; olsaydı çalışırdı.</span>
+    <span class="k">pass</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="o">---</span> <span class="n">Örnek</span> <span class="mi">3</span><span class="p">:</span> <span class="n">Hata</span> <span class="n">Yönetimi</span> <span class="p">(</span><span class="err">`</span><span class="n">errors</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="err">`</span><span class="p">)</span> <span class="o">---</span>
+<span class="n">Dönüşüm</span> <span class="n">hatası</span> <span class="n">nedeniyle</span> <span class="n">orijinal</span> <span class="n">DataFrame</span> <span class="n">döndürüldü</span><span class="o">.</span>
+</code></pre></div>
+
+<p>Bu örnek, <code>astype</code> metodunun veri tiplerini yönetmede ne kadar esnek ve güçlü olduğunu göstermektedir.</p>
+<h2>Kaynak:</h2>
+<ul>
+<li><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.astype.html">pandas.DataFrame.astype &#8212; pandas 2.3.3 documentation</a></li>
+</ul>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/pandas.html">Pandas</a></li>
+					<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+					<li><a href="/tag/modul.html">Modül</a></li>
+					<li><a href="/tag/astype.html">astype</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>
