@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Pandas - isna" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/pandas-isna.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Pandas - isna</h1>
+	<span class="post-date">Paz 23 Kasım 2025</span>
+	<h1>isna() Metodu</h1>
+<p><code>isna()</code>, veri analizi yaparken en sık kullanılan ve en temel fonksiyonlardan biridir. Bunu bir <strong>"Kayıp Veri Dedektifi"</strong> gibi düşünebilirsin.</p>
+<h2>Sözdizimi:</h2>
+<div class="highlight"><pre><span></span><code><span class="n">pandas</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>Parametreler:</h2>
+<p><code>pandas.isna</code> fonksiyonu, diğer karmaşık pandas fonksiyonlarının aksine (örneğin <code>read_csv</code> gibi onlarca ayarı olanların aksine) <strong>çok sade ve net</strong> bir yapıya sahiptir.</p>
+<p>Aslında teknik olarak sadece <strong>tek bir</strong> ana parametresi (girdisi) vardır.</p>
+<ul>
+<li><strong>obj</strong> : <strong>skaler veya dizi benzeri</strong></li>
+</ul>
+<p>Null veya eksik değerler için kontrol edilecek nesne. ("kontrol edilmesini istediğin veri" anlamına gelir.)</p>
+<p>Parametrenin (<code>obj</code>) içine ne koyarsak, çıktı olarak ne alacağını şu tabloda özetleyebiliriz:</p>
+<table>
+<thead>
+<tr>
+<th><code>obj</code> Parametresine Ne Verirsen</th>
+<th>Çıktı Olarak Ne Alırsın?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Tek bir değer</strong> (örn. <code>None</code>)</td>
+<td><strong>Tek bir Boolean</strong> (<code>True</code>)</td>
+</tr>
+<tr>
+<td><strong>Liste</strong> (örn. <code>[1, None]</code>)</td>
+<td><strong>Boolean Dizisi</strong> (<code>[False, True]</code>)</td>
+</tr>
+<tr>
+<td><strong>DataFrame</strong> (Tablo)</td>
+<td><strong>Boolean DataFrame</strong> (Aynı boyutta True/False tablosu)</td>
+</tr>
+<tr>
+<td><strong>Series</strong> (Sütun)</td>
+<td><strong>Boolean Series</strong> (Aynı uzunlukta True/False sütunu)</td>
+</tr>
+</tbody>
+</table>
+<h2>Döndürdüğü değer:</h2>
+<p><strong>bool veya bool dizisi benzeri</strong></p>
+<p>Skaler girdi için, skaler boolean döndürür. Dizi girdisi için, karşılık gelen her bir öğenin eksik olup olmadığını gösteren boolean dizisi döndürür.</p>
+<h2>1. <code>pandas.isna()</code> Nedir?</h2>
+<p>Bu fonksiyonun tek bir görevi vardır: <strong>"Bu verinin içi boş mu yoksa dolu mu?"</strong> sorusuna cevap vermek.</p>
+<ul>
+<li>
+<p>Eğer veri <strong>yoksa</strong> (boşsa, tanımsızsa), <code>True</code> (Doğru, evet boş) sonucunu verir.</p>
+</li>
+<li>
+<p>Eğer veri <strong>varsa</strong>, <code>False</code> (Yanlış, hayır boş değil) sonucunu verir.</p>
+</li>
+</ul>
+<p>Veri dünyasında "boş" anlamına gelen birkaç terim vardır ve <code>isna</code> bunların hepsini yakalar:</p>
+<ul>
+<li>
+<p><code>NaN</code> (Not a Number - Sayı değil)</p>
+</li>
+<li>
+<p><code>None</code> (Hiçlik - Python'da boş değer)</p>
+</li>
+<li>
+<p><code>NaT</code> (Not a Time - Zaman verisi yok)</p>
+</li>
+</ul>
+<h2>2. Nasıl Çalışır? (Örneklerle)</h2>
+<p>Öncelikle pandas kütüphanesini <code>pd</code> olarak, numpy kütüphanesini de (boş değerler oluşturmak için) <code>np</code> olarak çağırdığımızı varsayalım.</p>
+<h2>Bilinmesi Gereken Küçük Bir Detay</h2>
+<p>Bu fonksiyonun başka gizli bir ayarı (örneğin <code>axis</code> veya <code>inplace</code> gibi) <strong>yoktur</strong>. Sadece veriyi alır, analiz eder ve sonucu söyler. Verinin kendisini değiştirmez veya silmez.</p>
+<h2>Mantık: Bilgisayar <code>True</code>'yu Sayı Olarak Görür</h2>
+<p>Python'da (ve çoğu programlama dilinde) mantıksal değerlerin sayısal karşılığı vardır:</p>
+<ul>
+<li>
+<p><strong><code>False</code> (Dolu)</strong> = <strong>0</strong></p>
+</li>
+<li>
+<p><strong><code>True</code> (Boş/Kayıp)</strong> = <strong>1</strong></p>
+</li>
+</ul>
+<p>Biz <code>isna()</code> komutunu çalıştırdığımızda, aslında arka planda 1 ve 0'lardan oluşan bir tablo oluştururuz. <code>sum()</code> (topla) fonksiyonunu kullandığımızda ise bilgisayar bu 1'leri toplar. Yani <strong>kaç tane 1 varsa, o kadar boş veri var demektir.</strong></p>
+<h4>Örnek 1: Tek Bir Değeri Kontrol Etmek</h4>
+<p>En basit haliyle başlayalım. Elimizde tek bir değer var ve boş mu diye bakıyoruz.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># &quot;Merhaba&quot; boş bir veri mi?</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="s2">&quot;Merhaba&quot;</span><span class="p">))</span>
+<span class="c1"># Çıktı: False (Hayır, burada bir veri var)</span>
+
+<span class="c1"># np.nan (Not a Number) boş bir veri mi?</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">))</span>
+<span class="c1"># Çıktı: True (Evet, bu bir kayıp veri)</span>
+
+<span class="c1"># None boş bir veri mi?</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="kc">None</span><span class="p">))</span>
+<span class="c1"># Çıktı: True (Evet, bu da boş)</span>
+</code></pre></div>
+
+<h4>Örnek 2: Bir Listeyi Kontrol Etmek</h4>
+<p>Genelde tek bir değerle değil, bir liste dolusu veriyle çalışırız. <code>isna()</code> her bir elemana tek tek bakıp rapor verir.</p>
+<div class="highlight"><pre><span></span><code><span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Elma&quot;</span><span class="p">,</span> <span class="s2">&quot;Armut&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="s2">&quot;Muz&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">liste</span><span class="p">))</span>
+
+<span class="c1"># Çıktı:</span>
+<span class="c1"># [False, False, True, False, True]</span>
+</code></pre></div>
+
+<ul>
+<li>
+<p><strong>Elma:</strong> Dolu -&gt; <code>False</code></p>
+</li>
+<li>
+<p><strong>Armut:</strong> Dolu -&gt; <code>False</code></p>
+</li>
+<li>
+<p><strong>np.nan:</strong> Boş -&gt; <code>True</code></p>
+</li>
+<li>
+<p><strong>Muz:</strong> Dolu -&gt; <code>False</code></p>
+</li>
+<li>
+<p><strong>None:</strong> Boş -&gt; <code>True</code></p>
+</li>
+</ul>
+<h4>Örnek 3: Bir Tabloyu (DataFrame) Kontrol Etmek</h4>
+<p>Veri biliminde en çok karşılaşacağın senaryo budur. Elinde bir Excel tablosu gibi bir veri seti (DataFrame) var ve hangi hücrelerin boş olduğunu görmek istiyorsun.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Küçük bir öğrenci tablosu oluşturalım</span>
+<span class="n">veri</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;İsim&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Ali&#39;</span><span class="p">,</span> <span class="s1">&#39;Ayşe&#39;</span><span class="p">,</span> <span class="s1">&#39;Mehmet&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Not&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">85</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">90</span><span class="p">],</span>  <span class="c1"># Ayşe&#39;nin notu girilmemiş (NaN)</span>
+    <span class="s1">&#39;Şehir&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Ankara&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;İzmir&#39;</span><span class="p">]</span> <span class="c1"># Ayşe&#39;nin şehri girilmemiş (None)}</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">veri</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- Orijinal Tablo ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="o">---</span> <span class="n">Orijinal</span> <span class="n">Tablo</span> <span class="o">---</span>
+     <span class="n">İsim</span>   <span class="n">Not</span>   <span class="n">Şehir</span>
+<span class="mi">0</span>     <span class="n">Ali</span>  <span class="mf">85.0</span>  <span class="n">Ankara</span>
+<span class="mi">1</span>    <span class="n">Ayşe</span>   <span class="n">NaN</span>    <span class="kc">None</span>
+<span class="mi">2</span>  <span class="n">Mehmet</span>  <span class="mf">90.0</span>   <span class="n">İzmir</span>
+</code></pre></div>
+
+<p>Tabloda boşluk var mı? denetleyelim;</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- Boş Değer Kontrolü (isna) ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="o">---</span> <span class="n">Boş</span> <span class="n">Değer</span> <span class="n">Kontrolü</span> <span class="p">(</span><span class="n">isna</span><span class="p">)</span> <span class="o">---</span>
+    <span class="n">İsim</span>    <span class="n">Not</span>  <span class="n">Şehir</span>
+<span class="mi">0</span>  <span class="kc">False</span>  <span class="kc">False</span>  <span class="kc">False</span>
+<span class="mi">1</span>  <span class="kc">False</span>   <span class="kc">True</span>   <span class="kc">True</span>
+<span class="mi">2</span>  <span class="kc">False</span>  <span class="kc">False</span>  <span class="kc">False</span>
+</code></pre></div>
+
+<p><strong>Çıktı tablo olarak şöyle görünecektir:</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>İsim</th>
+<th>Not</th>
+<th>Şehir</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>0</strong></td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<td><strong>1</strong></td>
+<td>False</td>
+<td><strong>True</strong></td>
+<td><strong>True</strong></td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+</tbody>
+</table>
+<p>Gördüğün gibi, 1 numaralı satırda (<strong>Ayşe</strong>) "<strong>Not</strong>" ve "<strong>Şehir</strong>" sütunları <code>True</code> döndü, yani buralarda veri eksik.</p>
+<h4>Örnek 4: Bir Tabloyu (DataFrame) ve Toplamı Kontrol Etmek</h4>
+<p>Orijinal verimiz:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">veri</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;İsim&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Ali&#39;</span><span class="p">,</span> <span class="s1">&#39;Ayşe&#39;</span><span class="p">,</span> <span class="s1">&#39;Mehmet&#39;</span><span class="p">,</span> <span class="s1">&#39;Zeynep&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Not&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">85</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">],</span>  <span class="c1"># 2 tane boş not var</span>
+    <span class="s1">&#39;Şehir&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Ankara&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;İzmir&#39;</span><span class="p">,</span> <span class="s1">&#39;Bursa&#39;</span><span class="p">]</span> <span class="c1"># 1 tane boş şehir var</span>
+<span class="p">}</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">veri</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+<span class="c1"># #Çıktı:</span>
+     <span class="c1"># #İsim   Not   Şehir</span>
+<span class="c1"># #0     Ali  85.0  Ankara</span>
+<span class="c1"># #1    Ayşe   NaN    None</span>
+<span class="c1"># #2  Mehmet  90.0   İzmir</span>
+<span class="c1"># #3  Zeynep   NaN   Bursa</span>
+</code></pre></div>
+
+<h5>Sütun Bazında Sayma (En Sık Kullanılan)</h5>
+<p>"Hangi sütunda kaç eksiğim var?" sorusunun cevabıdır.</p>
+<div class="highlight"><pre><span></span><code><span class="n">eksik_sayisi</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">eksik_sayisi</span><span class="p">)</span>
+
+<span class="c1"># #Çıktı:</span>
+<span class="c1"># #İsim     0</span>
+<span class="c1"># #Not      2</span>
+<span class="c1"># #Şehir    1</span>
+<span class="c1"># #dtype: int64</span>
+</code></pre></div>
+
+<p><strong>Yorum:</strong></p>
+<ul>
+<li>
+<p><strong>İsim:</strong> 0 eksik (Herkesin ismi var, süper).</p>
+</li>
+<li>
+<p><strong>Not:</strong> 2 eksik (2 öğrencinin notu girilmemiş).</p>
+</li>
+<li>
+<p><strong>Şehir:</strong> 1 eksik (1 öğrencinin şehri girilmemiş).</p>
+</li>
+</ul>
+<h5>Toplam Eksik Sayısı</h5>
+<p>"Bu tablonun tamamında toplam kaç tane hücre boş?" sorusunun cevabıdır. Bunun için peşpeşe iki kere topla (<code>sum()</code>) fonksiyonu kullanmamız gerekir.</p>
+<div class="highlight"><pre><span></span><code><span class="n">toplam_eksik</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tabloda toplam </span><span class="si">{</span><span class="n">toplam_eksik</span><span class="si">}</span><span class="s2"> adet eksik veri var.&quot;</span><span class="p">)</span>
+
+<span class="c1"># #Çıktı:</span>
+<span class="c1"># #Tabloda toplam 3 adet eksik veri var.</span>
+</code></pre></div>
+
+<h2>Neden Bu Kadar Önemli?</h2>
+<p>Büyük bir veri setiyle (örneğin 100.000 satırlık bir müşteri listesiyle) çalıştığını düşün.</p>
+<ol>
+<li>
+<p>Veriyi yükler yüklemez ilk yapacağın şey <code>df.isna().sum()</code> yazmaktır.</p>
+</li>
+<li>
+<p>Eğer "Telefon Numarası" sütununda 90.000 eksik varsa, o sütunu analizden çıkarırsın (çünkü çoğu boş).</p>
+</li>
+<li>
+<p>Eğer sadece 5 eksik varsa, o 5 kişiyi bulup veriyi silebilir veya düzeltebilirsin.</p>
+</li>
+</ol>
+<h2>Neden Bunu Kullanıyoruz?</h2>
+<p>Veri temizliği (Data Cleaning) yaparken bu fonksiyon hayati önem taşır. Analize başlamadan önce şunları yapabilmek için <code>isna()</code> kullanırız:</p>
+<ol>
+<li>
+<p><strong>Eksikleri Saymak:</strong> <code>df.isna().sum()</code> diyerek her sütunda kaç tane eksik veri olduğunu bulabilirsin.</p>
+</li>
+<li>
+<p><strong>Filtrelemek:</strong> Sadece eksik verisi olan satırları bulup inceleyebilirsin.</p>
+</li>
+<li>
+<p><strong>Doldurmak:</strong> Boş olan yerleri bulup (True olanları), oralara 0 veya ortalama bir değer yazabilirsin.</p>
+</li>
+</ol>
+<blockquote>
+<p><strong>Özetle;</strong> <code>pandas.isna()</code>, verindeki "çürük elmaları" (eksik bilgileri) bulmana yarayan en pratik araçtır.</p>
+</blockquote>
+<h2>Temizlik ve Veri Doldurma</h2>
+<p>Verideki boşlukları tespit ettik, saydık; şimdi sıra <strong>"Temizlik"</strong> aşamasında.</p>
+<p>Bu aşamada iki ana stratejimiz vardır: Ya o veriyi <strong>gözden çıkarırız (sileriz)</strong> ya da tahmin ederek <strong>doldururuz</strong>.</p>
+<p>İşte örnek senaryomuz için bir veri seti:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Senaryo: Bir şirketin çalışan verileri</span>
+<span class="n">veri</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Çalışan&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Ali&#39;</span><span class="p">,</span> <span class="s1">&#39;Veli&#39;</span><span class="p">,</span> <span class="s1">&#39;Ayşe&#39;</span><span class="p">,</span> <span class="s1">&#39;Fatma&#39;</span><span class="p">,</span> <span class="s1">&#39;Can&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Maaş&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5000</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">7000</span><span class="p">,</span> <span class="mi">4500</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">],</span>  <span class="c1"># Maaşlar eksik</span>
+    <span class="s1">&#39;Departman&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;İK&#39;</span><span class="p">,</span> <span class="s1">&#39;IT&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="s1">&#39;IT&#39;</span><span class="p">,</span> <span class="s1">&#39;Pazarlama&#39;</span><span class="p">]</span> <span class="c1"># Bir departman eksik</span>
+<span class="p">}</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">veri</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- Orijinal Tablo ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+<span class="c1"># #Çıktı:</span>
+<span class="c1"># #--- Orijinal Tablo ---</span>
+  <span class="c1"># #Çalışan    Maaş  Departman</span>
+<span class="c1"># #0     Ali  5000.0         İK</span>
+<span class="c1"># #1    Veli     NaN         IT</span>
+<span class="c1"># #2    Ayşe  7000.0        NaN</span>
+<span class="c1"># #3   Fatma  4500.0         IT</span>
+<span class="c1"># #4     Can     NaN  Pazarlama</span>
+</code></pre></div>
+
+<h3>1. Boş Verileri Filtrelemek (Silmek) - <code>dropna()</code></h3>
+<p>Eğer eksik veri çok fazlaysa veya o satır eksikken işimize yaramıyorsa, en temiz yol o satırı tamamen uçurmaktır.</p>
+<p><strong>Yöntem:</strong> <code>dropna()</code> (Drop Na - Yokları Düşür/At) fonksiyonunu kullanırız.</p>
+<p>İçinde EN AZ bir tane bile boş veri olan satırları silmek için aşağıdaki kodu kullanabiliriz.</p>
+<div class="highlight"><pre><span></span><code><span class="n">temiz_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- Boşlukları Silinmiş Tablo ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">temiz_df</span><span class="p">)</span>
+
+<span class="c1"># #Çıktı:</span>
+<span class="c1"># #--- Boşlukları Silinmiş Tablo ---</span>
+  <span class="c1"># #Çalışan    Maaş Departman</span>
+<span class="c1"># #0     Ali  5000.0        İK</span>
+<span class="c1"># #3   Fatma  4500.0        IT</span>
+</code></pre></div>
+
+<p><strong>Sonuç:</strong> Veli, Ayşe ve Can listeden silinir. Sadece her şeyi tam olan Ali ve Fatma kalır. Bu biraz acımasız bir yöntemdir, çok veri kaybedebilirsiniz.</p>
+<p><strong>İpucu:</strong> Sadece belli bir sütuna bakarak da silme yapabiliriz. Örneğin "Departmanı boş olanı silme, ama Maaşı boş olanı sil" diyebiliriz: <code>df.dropna(subset=['Maaş'])</code></p>
+<h3>2. Boş Verileri Doldurmak - <code>fillna()</code></h3>
+<p>Veri bizim için kıymetliyse silmek istemeyiz. Bunun yerine mantıklı bir değerle "yama" yaparız.</p>
+<h4>A. Sabit Bir Değerle Doldurmak</h4>
+<p>Genelde metin (string) verilerinde kullanılır. Örneğin departmanı bilinmeyene "Bilinmiyor" yazmak gibi.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Departman sütunundaki boşluklara &quot;Bilinmiyor&quot; yazalım</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Departman&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Departman&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;Bilinmiyor&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- Departmanı Doldurulmuş Tablo ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+<span class="c1"># #Çıktı:</span>
+<span class="c1"># #--- Departmanı Doldurulmuş Tablo ---</span>
+  <span class="c1"># #Çalışan    Maaş   Departman</span>
+<span class="c1"># #0     Ali  5000.0          İK</span>
+<span class="c1"># #1    Veli     NaN          IT</span>
+<span class="c1"># #2    Ayşe  7000.0  Bilinmiyor</span>
+<span class="c1"># #3   Fatma  4500.0          IT</span>
+<span class="c1"># #4     Can     NaN   Pazarlama</span>
+</code></pre></div>
+
+<p><strong>Sonuç:</strong> Ayşe'nin departmanı artık <code>NaN</code> değil, "Bilinmiyor" oldu.</p>
+<h4>B. Ortalama ile Doldurmak (En Popüler Yöntem)</h4>
+<p>Sayısal verilerde (Maaş, Yaş, Not gibi) boşluklara "0" yazmak genelde ortalamayı çok düşürür ve analizi bozar. Bunun yerine <strong>mevcut verilerin ortalamasını</strong> boşluklara yazmak en mantıklı yoldur.</p>
+<p>Buna <strong>"Imputation" (Atama)</strong> denir.</p>
+<ol>
+<li>Önce mevcut maaşların ortalamasını bulalım;</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="n">ortalama_maas</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Maaş&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Ortalama Maaş: </span><span class="si">{</span><span class="n">ortalama_maas</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># #Çıktı:</span>
+<span class="c1"># #Ortalama Maaş: 5500.0</span>
+</code></pre></div>
+
+<ol>
+<li>Boş maaş yerlerine bu ortalamayı yazalım;</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Maaş&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Maaş&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">ortalama_maas</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- Maaşları Ortalamayla Doldurulmuş Tablo ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+<span class="c1"># #Çıktı:</span>
+<span class="c1"># #--- Maaşları Ortalamayla Doldurulmuş Tablo ---</span>
+  <span class="c1"># #Çalışan    Maaş   Departman</span>
+<span class="c1"># #0     Ali  5000.0          İK</span>
+<span class="c1"># #1    Veli  5500.0          IT</span>
+<span class="c1"># #2    Ayşe  7000.0  Bilinmiyor</span>
+<span class="c1"># #3   Fatma  4500.0          IT</span>
+<span class="c1"># #4     Can  5500.0   Pazarlama</span>
+</code></pre></div>
+
+<p><strong>Sonuç:</strong> Veli ve Can'ın maaşı boştu. Pandas diğerlerinin ortalamasını (5500) hesapladı ve Veli ile Can'a 5500 maaş atadı. Böylece veri setini kaybetmeden analize devam edebilir hale geldik.</p>
+<h3>Özet: Hangisini Seçmeliyim?</h3>
+<ol>
+<li>
+<p><strong>Silmek (<code>dropna</code>):</strong> Veri setin çok büyükse ve %1-2'lik bir kayıp seni üzmeyecekse silmek en güvenli yoldur. Yanlış tahmin yapma riskin olmaz.</p>
+</li>
+<li>
+<p><strong>Doldurmak (<code>fillna</code>):</strong> Veri setin küçükse ve her satır değerliyse doldurmak daha iyidir. Sayısal verilerde genellikle <strong>ortalama (mean)</strong> veya <strong>ortanca (median)</strong> ile doldurulur.</p>
+</li>
+</ol>
+<h3>Metot Detayları</h3>
+<p><code>dropna()</code> ve <code>fillna()</code> metotlarının geniş anlatımlarına aşağıdaki bağlantılardan erişebilirsiniz;</p>
+<ul>
+<li>
+<p><code>dropna()</code> metoduna ait detaylara <a href="/pandas-dropna.html">BU SAYFADAN</a> ulaşabilirsiniz.</p>
+</li>
+<li>
+<p><code>fillna()</code> metoduna ait detaylara <a href="/pandas-fillna.html">BU SAYFADAN</a> ulaşabilirsiniz.</p>
+</li>
+</ul>
+<h2>Kaynaklar:</h2>
+<ul>
+<li>
+<p><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.isna.html#pandas.isna">pandas.isna &#8212; pandas 2.3.3 documentation</a></p>
+</li>
+<li>
+<p><a href="https://gemini.google.com">Google Gemini</a></p>
+</li>
+</ul>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/pandas.html">Pandas</a></li>
+					<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+					<li><a href="/tag/modul.html">Modül</a></li>
+					<li><a href="/tag/isna.html">isna</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>
