@@ -154,7 +154,8 @@
 					</span>
 				<p>
 					<h1>convert_dtypes() Metodu</h1>
-<p>Bu metodu, veri setini otomatik olarak temizleyen ve düzenleyen <strong>"akıllı bir çevirmen"</strong> gibi düşünebilirsin.</p>
+<p>Bu metodu, veri setini otomatik olarak temizleyen ve düzenleyen <strong>"akıllı bir veri tipi (türü) dönüştürücüsü"</strong> gibi düşünebilirsin.</p>
+<p><img alt="convert_dtypes" src="../../images/python/pandas/convert_dtypes.png"></p>
 <h2>Sözdizimi:</h2>
 <div class="highlight"><pre><span></span><code><span class="n">DataFrame</span><span class="o">.</span><span class="n">convert_dtypes</span><span class="p">(</span><span class="n">infer_objects</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">convert_string</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
 <span class="n">convert_integer</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">convert_boolean</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">convert_floating</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
@@ -162,7 +163,7 @@
 </code></pre></div>
 
 <h3>Temel Sorun Nedir? (Neden Buna İhtiyacımız Var?)</h3>
-<p>Pandas'ın eski sürümlerinde veya standart NumPy kullanımında şöyle can sıkıcı durumlar yaşanır …</p>
+<p>Pandas'ın eski sürümlerinde veya standart NumPy kullanımında şöyle can …</p>
 				</p>
 				<a class="read-more" href="pandas-convert_dtypes.html">Continue reading »</a>
 			</div>
@@ -183,8 +184,9 @@
 					</span>
 				<p>
 					<h1>astype() Metodu</h1>
-<p><code>astype()</code> metodu, Pandas'taki veri çerçevelerinin (DataFrame) veya serilerin (Series) veri tiplerini (<strong>dtype</strong>) değiştirmek için kullanılan temel bir fonksiyondur.</p>
-<p><code>astype()</code> metodu ile bir DataFrame'deki tüm sütunları veya belirli sütunları istediğiniz bir veri tipine dönüştürebiliriz. Veri analizi sırasında, verilerin doğru şekilde işlenmesi, filtrelenmesi ve hafızada daha verimli saklanması için veri …</p>
+<p><code>astype()</code> metodu, Pandas'taki veri çerçevelerinin (DataFrame) veya serilerin (Series) <strong>veri tiplerini / türlerini (dtype) değiştirmek için</strong> kullanılan temel bir fonksiyondur.</p>
+<p><img alt="astype" src="../../images/python/pandas/astype.png"></p>
+<p><code>astype()</code> metodu ile bir DataFrame'deki tüm sütunları veya belirli sütunları istediğiniz bir veri tipine dönüştürebiliriz. Veri analizi sırasında, verilerin doğru şekilde işlenmesi, filtrelenmesi ve hafızada daha verimli saklanması için …</p>
 				</p>
 				<a class="read-more" href="pandas-astype.html">Continue reading »</a>
 			</div>
@@ -206,6 +208,7 @@
 				<p>
 					<h1>resample() Fonksiyonu</h1>
 <p><code>resample()</code> Fonksiyonu, <strong>zaman serisi verilerinin frekansını dönüştürmek ve yeniden örneklemek için kullanılan</strong> temel bir metottur. </p>
+<p><img alt="resample" src="../../images/python/pandas/resample.png"></p>
 <h2>Sözdizimi:</h2>
 <p><code>resample()</code> fonksiyonunun sözdizimi aşağıdaki gibidir. Parametrelerin açıklaması  aşağıda <strong>Parametreler</strong> başlığında bulabilirsiniz.</p>
 <div class="highlight"><pre><span></span><code><span class="n">DataFrame</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">rule</span><span class="p">,</span> <span class="n">axis</span><span class="o">=&lt;</span><span class="n">no_default</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">closed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
@@ -283,6 +286,7 @@
 					<h1>unique() ve nunique() Fonksiyonları</h1>
 <h1>unique() Fonksiyonu</h1>
 <p><code>unique()</code> Fonksiyonu, Veri Çerçevesinden <strong>benzersiz değerler tespit etmek</strong>, kategorik verileri analiz etmek veya <strong>yinelenen verileri tanımlamak</strong> için kullanılır. </p>
+<p><img alt="unique_nunique" src="../../images/python/pandas/unique_nunique.png"></p>
 <h2>unique() Fonksiyonunun Kullanımı</h2>
 <p><code>unique()</code> Fonksiyonu bir NumPy dizisi döndürür. Bir sütundaki benzersiz (farklı) değerleri tanımlamak için kullanışlıdır ve bu, kategorik verilerle çalışırken veya benzersiz değerleri algılarken …</p>
 				</p>
