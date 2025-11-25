@@ -77,11 +77,303 @@
 <div class="post">
 	<h1 class="post-title">Pandas - read_csv</h1>
 	<span class="post-date">Cts 09 Temmuz 2022</span>
-	<h1>read_csv() Fonksiyonu Nedir? Nasıl Kullanılır?</h1>
-<p>Bu bölümde harici kaynaktan bir <strong>CSV</strong> dosyasından verileri okuyarak veri çerçevesine dönüştürmeyi öğreneceğiz.</p>
-<h2>read_csv() Fonksiyonu</h2>
-<p><strong>CSV</strong> uzantılı dosyaların içeriğini projelerimize dahil etmek istersek kullanabileceğimiz fonksiyon, <strong>read_csv()</strong>'dir.</p>
-<p>örneğin <strong>nba.csv</strong> isimli dosyasınının içeriğini çalışmamıza aktarıp, veri çerçevesine dönüştürelim;</p>
+	<h1>read_csv() Fonksiyonu</h1>
+<p><code>read_csv</code> fonksiyonu, Pandas kütüphanesinin en önemli araçlarından biridir ve temel olarak <strong>virgülle ayrılmış değerler (CSV)</strong> formatındaki dosyaları okuyarak bunları <strong>Veri Çerçevesi (DataFrame)</strong> adı verilen, satır ve sütunlardan oluşan tablo yapısına dönüştürmek için kullanılır.</p>
+<p>Basitçe söylemek gerekirse, bu fonksiyon, bilgisayarınızdaki bir veri dosyasını (örneğin, bir Excel dosyasının dışa aktarılan hali gibi) alır ve Python'da kolayca analiz edebileceğiniz, düzenleyebileceğiniz ve işleyebileceğiniz bir tabloya çevirir.</p>
+<h2>Sözdizimi:</h2>
+<div class="highlight"><pre><span></span><code><span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">sep</span><span class="o">=&lt;</span><span class="n">no_default</span><span class="o">&gt;</span><span class="p">,</span> 
+        <span class="n">delimiter</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="s1">&#39;infer&#39;</span><span class="p">,</span> <span class="n">names</span><span class="o">=&lt;</span><span class="n">no_default</span><span class="o">&gt;</span><span class="p">,</span> 
+        <span class="n">index_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
+        <span class="n">converters</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">true_values</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">false_values</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
+        <span class="n">skipinitialspace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">skipfooter</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> 
+        <span class="n">nrows</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">na_values</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">keep_default_na</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+        <span class="n">na_filter</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=&lt;</span><span class="n">no_default</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">skip_blank_lines</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+        <span class="n">parse_dates</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">infer_datetime_format</span><span class="o">=&lt;</span><span class="n">no_default</span><span class="o">&gt;</span><span class="p">,</span> 
+        <span class="n">keep_date_col</span><span class="o">=&lt;</span><span class="n">no_default</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">date_parser</span><span class="o">=&lt;</span><span class="n">no_default</span><span class="o">&gt;</span><span class="p">,</span> 
+        <span class="n">date_format</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dayfirst</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">cache_dates</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+        <span class="n">iterator</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">chunksize</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">compression</span><span class="o">=</span><span class="s1">&#39;infer&#39;</span><span class="p">,</span> 
+        <span class="n">thousands</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">decimal</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">lineterminator</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
+        <span class="n">quotechar</span><span class="o">=</span><span class="s1">&#39;&quot;&#39;</span><span class="p">,</span> <span class="n">quoting</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">doublequote</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">escapechar</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
+        <span class="n">comment</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">encoding_errors</span><span class="o">=</span><span class="s1">&#39;strict&#39;</span><span class="p">,</span> 
+        <span class="n">dialect</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">on_bad_lines</span><span class="o">=</span><span class="s1">&#39;error&#39;</span><span class="p">,</span> 
+        <span class="n">delim_whitespace</span><span class="o">=&lt;</span><span class="n">no_default</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">low_memory</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  
+        <span class="n">memory_map</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">float_precision</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">storage_options</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
+        <span class="n">dtype_backend</span><span class="o">=&lt;</span><span class="n">no_default</span><span class="o">&gt;</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>Temel İşlevi:</h2>
+<p><code>pandas.read_csv()</code>'nin yaptığı şey budur:</p>
+<ol>
+<li>
+<p><strong>Dosyayı bulur ve açar:</strong> Fonksiyona verdiğiniz dosya yolundaki (veya URL'deki) CSV dosyasını açar.</p>
+</li>
+<li>
+<p><strong>Veriyi okur:</strong> Dosyanın içeriğini satır satır okur.</p>
+</li>
+<li>
+<p><strong>Ayırıcıyı kullanır:</strong> Her satırdaki verilerin hangi karakterle ayrıldığını (genellikle <code>,</code> virgül, ama bazen <code>;</code> noktalı virgül veya <code>\t</code> sekme olabilir) belirler.</p>
+</li>
+<li>
+<p><strong>Tablo oluşturur:</strong> Okuduğu veriyi kullanarak bir <strong>Pandas DataFrame</strong> oluşturur. Bu DataFrame, veriyi tablo şeklinde (sütun başlıkları ve satır indeksleri ile) temsil eder.</p>
+</li>
+</ol>
+<p>Bu fonksiyon, dosyanın nerede olduğunu, hangi ayırıcı karakterin kullanıldığını, hangi satırın başlık (header) olduğunu, hangi sütunların veri tipi (dtype) olduğunu ve daha birçok şeyi kontrol etmeniz için çok sayıda <strong>parametreye</strong> sahiptir.</p>
+<h2>Başlıca Parametreleri:</h2>
+<p><code>pandas.read_csv()</code> fonksiyonunun en sık kullanılan ve en önemli parametreleri aşağıda tablo halinde açıklanmıştır:</p>
+<table>
+<thead>
+<tr>
+<th>Parametre</th>
+<th>Tipi</th>
+<th>Varsayılan Değer</th>
+<th>Açıklama</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>filepath_or_buffer</code></td>
+<td>str, path object veya file-like object</td>
+<td><em>Yok</em></td>
+<td>Okunacak dosyanın <strong>yolu</strong> (bilgisayarınızdaki konum) veya <strong>URL'si</strong> (internet adresi). Bu, zorunlu olan tek parametredir.</td>
+</tr>
+<tr>
+<td><code>sep</code> (veya <code>delimiter</code>)</td>
+<td>str</td>
+<td><strong>','</strong> (virgül)</td>
+<td>Veri sütunlarını birbirinden ayırmak için kullanılan karakter. Örneğin, dosya noktalı virgülle ayrılmışsa (<code>name;age;city</code>), <code>sep=';'</code> olarak ayarlanır.</td>
+</tr>
+<tr>
+<td><code>header</code></td>
+<td>int, list of int, <strong>'infer'</strong> veya <strong>None</strong></td>
+<td><strong>'infer'</strong></td>
+<td>Sütun isimlerini içeren satırın satır numarası (<strong>0'dan başlar</strong>). <code>header=0</code> ilk satırı başlık olarak kullanır. <code>None</code> olarak ayarlanırsa Pandas sütunlara otomatik isimler verir (0, 1, 2...).</td>
+</tr>
+<tr>
+<td><code>names</code></td>
+<td>list-like</td>
+<td><em>Yok</em></td>
+<td>Sütun başlıkları için kullanılacak <strong>isimlerin listesi</strong>. Eğer dosyanın başlık satırı yoksa veya var olan başlıkları geçersiz kılmak istiyorsanız kullanılır.</td>
+</tr>
+<tr>
+<td><code>index_col</code></td>
+<td>int, str, list of int veya str</td>
+<td><strong>None</strong></td>
+<td>Hangi sütunun <strong>satır etiketi</strong> (index) olarak kullanılacağını belirtir. Sütun adı veya sütun numarası olarak verilebilir.</td>
+</tr>
+<tr>
+<td><code>dtype</code></td>
+<td>dtype veya dict</td>
+<td><strong>None</strong></td>
+<td>Sütunların veri tipini (örneğin, tam sayı, metin, ondalıklı sayı) belirlemek için kullanılır. Örneğin, <code>{'sutun_adı': str}</code></td>
+</tr>
+<tr>
+<td><code>skiprows</code></td>
+<td>int veya list of int</td>
+<td><strong>None</strong></td>
+<td>Okuma sırasında <strong>atlanacak</strong> satır sayısı veya atlanacak satır numaralarının listesi.</td>
+</tr>
+<tr>
+<td><code>na_values</code></td>
+<td>scalar, list-like veya dict</td>
+<td><em>Varsayılan NA değerleri</em></td>
+<td>Verideki hangi değerlerin <strong>eksik veri</strong> (<code>NaN</code>) olarak yorumlanacağını belirler. Örneğin, <code>na_values=['N/A', 'eksik']</code>.</td>
+</tr>
+<tr>
+<td><code>parse_dates</code></td>
+<td>bool, list of int/str, list of lists veya dict</td>
+<td><strong>False</strong></td>
+<td>Hangi sütunların <strong>tarih ve saat</strong> nesnesi olarak ayrıştırılmaya çalışılacağını belirler. <code>True</code> ise dizin sütununu ayrıştırmaya çalışır.</td>
+</tr>
+<tr>
+<td><code>encoding</code></td>
+<td>str</td>
+<td><strong>'utf-8'</strong></td>
+<td>Dosyanın hangi karakter kodlamasıyla (encoding) yazıldığını belirtir. Türkçe karakter sorunu yaşanıyorsa, <code>encoding='latin1'</code> veya <code>encoding='cp1254'</code> denenebilir.</td>
+</tr>
+</tbody>
+</table>
+<h3><code>header</code> parametresi</h3>
+<p><code>read_csv ()</code> fonksiyonu, CSV dosyasındaki ilk satırı varsayılan olarak bir başlık kabul eder ve bunu Veri Çerçevesi (DataFrame) sütun adları olarak kullanır. CSV dosyasındaki  ilk satırın başlık değil, bir veri olduğu düşünüldüğünde, yani sadece verilerden oluşan CSV dosyası ile çalıştığımızda, <code>header=None</code> parametresi kullanılmalıdır. </p>
+<p>İlk olarak bir CSV dosyasını çalışmamıza dahil edip içeriğine bakalım.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">basliksiz</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/basliksiz.csv&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">basliksiz</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>9</th>
+<th>82</th>
+<th>246</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>7</td>
+<td>78</td>
+<td>180</td>
+</tr>
+<tr>
+<td>1</td>
+<td>8</td>
+<td>83</td>
+<td>565</td>
+</tr>
+<tr>
+<td>2</td>
+<td>6</td>
+<td>82</td>
+<td>486</td>
+</tr>
+<tr>
+<td>3</td>
+<td>4</td>
+<td>37</td>
+<td>615</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2</td>
+<td>18</td>
+<td>341</td>
+</tr>
+</tbody>
+</table>
+<p>Yukarıdaki örnekte gördüğünüz üzere, ilk satır başlık değil, veriden oluşuyor. Bunu <code>header=None</code> parametresi ile düzenleyelim.</p>
+<div class="highlight"><pre><span></span><code><span class="n">basliksiz</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/basliksiz.csv&quot;</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="kc">None</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">basliksiz</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>9</td>
+<td>82</td>
+<td>246</td>
+</tr>
+<tr>
+<td>1</td>
+<td>7</td>
+<td>78</td>
+<td>180</td>
+</tr>
+<tr>
+<td>2</td>
+<td>8</td>
+<td>83</td>
+<td>565</td>
+</tr>
+<tr>
+<td>3</td>
+<td>6</td>
+<td>82</td>
+<td>486</td>
+</tr>
+<tr>
+<td>4</td>
+<td>4</td>
+<td>37</td>
+<td>615</td>
+</tr>
+</tbody>
+</table>
+<p>Bu durumda sütun isimleri (0, 1, 2) otomatik olarak atanır.</p>
+<h3><code>names</code> Parametresi</h3>
+<p>Sadece verilerden oluşan yani başlık satırı bulunmayan bir CSV dosyası ile çalıştığımızda, <code>header=None</code> parametresi kullanılmalıdır demiştik. Bu durumda Başlık (sütun adlarını) belirtmek için <code>names</code> parametresi kullanılmalı. <code>names</code> parametresine değer olarak, sütun sayısı ile eş uzunlukta bir liste tipi veri atanmalı.</p>
+<p>Yukarıdaki örnekte gördüğünüz üzere, ilk satır başlık değil, veriden oluşuyor. Bunu <code>header=None</code> ve <code>names</code> parametreleri ile düzenleyelim.</p>
+<div class="highlight"><pre><span></span><code><span class="n">baslik</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Birler&quot;</span><span class="p">,</span> <span class="s2">&quot;Onlar&quot;</span><span class="p">,</span> <span class="s2">&quot;Yüzler&quot;</span><span class="p">]</span>
+<span class="n">basliksiz</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/basliksiz.csv&quot;</span><span class="p">,</span> 
+                            <span class="n">header</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">names</span> <span class="o">=</span> <span class="n">baslik</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">basliksiz</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Birler</th>
+<th>Onlar</th>
+<th>Yüzler</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>9</td>
+<td>82</td>
+<td>246</td>
+</tr>
+<tr>
+<td>1</td>
+<td>7</td>
+<td>78</td>
+<td>180</td>
+</tr>
+<tr>
+<td>2</td>
+<td>8</td>
+<td>83</td>
+<td>565</td>
+</tr>
+<tr>
+<td>3</td>
+<td>6</td>
+<td>82</td>
+<td>486</td>
+</tr>
+<tr>
+<td>4</td>
+<td>4</td>
+<td>37</td>
+<td>615</td>
+</tr>
+</tbody>
+</table>
+<h3><code>sep</code> veya <code>delimiter</code> Parametreleri:</h3>
+<p>Çalıştığımız dosyada verileri birbirinden ayırmak için kullanılan karakteri belirtmek için <code>sep</code> ya da <code>delimiter</code> parametreleri kullanılır. İkisi de aynı sonucu verir. Örneğin, dosyadaki bilgiler birbirinden noktalı virgülle ayrılmışsa (örneğin: <code>name; age; city</code>), <code>sep=';'</code> olarak ayarlanır.</p>
+<p>Örnek Verimiz (csv dosya içeriğimiz);</p>
+<div class="highlight"><pre><span></span><code> <span class="mi">0</span>   <span class="o">|</span> <span class="mi">9</span>   <span class="o">|</span> <span class="mi">82</span>  <span class="o">|</span> <span class="mi">246</span> 
+ <span class="mi">1</span>   <span class="o">|</span> <span class="mi">7</span>   <span class="o">|</span> <span class="mi">78</span>  <span class="o">|</span> <span class="mi">180</span> 
+ <span class="mi">2</span>   <span class="o">|</span> <span class="mi">8</span>   <span class="o">|</span> <span class="mi">83</span>  <span class="o">|</span> <span class="mi">565</span> 
+ <span class="mi">3</span>   <span class="o">|</span> <span class="mi">6</span>   <span class="o">|</span> <span class="mi">82</span>  <span class="o">|</span> <span class="mi">486</span> 
+ <span class="mi">4</span>   <span class="o">|</span> <span class="mi">4</span>   <span class="o">|</span> <span class="mi">37</span>  <span class="o">|</span> <span class="mi">615</span> 
+</code></pre></div>
+
+<p>Elimizde, yukarıdaki gibi <code>|</code> pipe karakteri ile ayrılmış verilerden oluşan bir csv dosyası olduğunu düşünürsek, <code>read_csv()</code> metodunun <code>sep</code> ya da <code>delimiter</code> parametresini <code>|</code> pipe karakteri ile işaret etmemiz gerekir.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">baslik</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Birler&quot;</span><span class="p">,</span> <span class="s2">&quot;Onlar&quot;</span><span class="p">,</span> <span class="s2">&quot;Yüzler&quot;</span><span class="p">]</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;csv.csv&quot;</span><span class="p">,</span> 
+            <span class="n">delimiter</span> <span class="o">=</span> <span class="s2">&quot;|&quot;</span><span class="p">,</span> <span class="c1"># sep  = &quot;|&quot; ifadesi de yazılabilir</span>
+            <span class="n">header</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">names</span> <span class="o">=</span> <span class="n">baslik</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code>   <span class="n">Birler</span>  <span class="n">Onlar</span>  <span class="n">Yüzler</span>
+<span class="mi">0</span>       <span class="mi">9</span>     <span class="mi">82</span>     <span class="mi">246</span>
+<span class="mi">1</span>       <span class="mi">7</span>     <span class="mi">78</span>     <span class="mi">180</span>
+<span class="mi">2</span>       <span class="mi">8</span>     <span class="mi">83</span>     <span class="mi">565</span>
+<span class="mi">3</span>       <span class="mi">6</span>     <span class="mi">82</span>     <span class="mi">486</span>
+<span class="mi">4</span>       <span class="mi">4</span>     <span class="mi">37</span>     <span class="mi">615</span>
+</code></pre></div>
+
+<h3><code>index_col</code> Parametresi</h3>
+<p><code>index_col</code> parametresini anlatmak için <strong>nba.csv</strong> isimli dosyasınının içeriğini çalışmamıza aktarıp, veri çerçevesine dönüştürelim;</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="n">nba_csv</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/nba.csv&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">nba_csv</span><span class="p">)</span>
@@ -163,83 +455,9 @@
 <td>NaN</td>
 <td>5000000.0</td>
 </tr>
-<tr>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-</tr>
-<tr>
-<td>453</td>
-<td>Shelvin Mack</td>
-<td>Utah Jazz</td>
-<td>8.0</td>
-<td>PG</td>
-<td>26.0</td>
-<td>6-3</td>
-<td>203.0</td>
-<td>Butler</td>
-<td>2433333.0</td>
-</tr>
-<tr>
-<td>454</td>
-<td>Raul Neto</td>
-<td>Utah Jazz</td>
-<td>25.0</td>
-<td>PG</td>
-<td>24.0</td>
-<td>6-1</td>
-<td>179.0</td>
-<td>NaN</td>
-<td>900000.0</td>
-</tr>
-<tr>
-<td>455</td>
-<td>Tibor Pleiss</td>
-<td>Utah Jazz</td>
-<td>21.0</td>
-<td>C</td>
-<td>26.0</td>
-<td>7-3</td>
-<td>256.0</td>
-<td>NaN</td>
-<td>2900000.0</td>
-</tr>
-<tr>
-<td>456</td>
-<td>Jeff Withey</td>
-<td>Utah Jazz</td>
-<td>24.0</td>
-<td>C</td>
-<td>26.0</td>
-<td>7-0</td>
-<td>231.0</td>
-<td>Kansas</td>
-<td>947276.0</td>
-</tr>
-<tr>
-<td>457</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-</tr>
 </tbody>
 </table>
-<p>458 rows × 9 columns</p>
-<h3>index_col Parametresi</h3>
-<p>Harici kaynaktan veri alarak oluşturulan veri çerçevesinin indeks değerini, istediğimiz sütuna eşitleyebiliriz. Bunu yapmak için <code>index_col</code> parametresini kullanmalıyız. Örneğin NBA oyuncularının verileri barındıran CSV uzantılı dosyanın <strong>Name</strong> Sütununu, veri çerçevemizin <strong>indeks sütunu</strong> haline getirip veri çerçevemize göz atalım.</p>
+<p>Harici kaynaktan veri alarak oluşturduğumuz veri çerçevesinin indeks değerini, istediğimiz sütuna eşitleyebiliriz. Bunu yapmak için <code>index_col</code> parametresini kullanmalıyız. Örneğin NBA oyuncularının verileri barındıran CSV uzantılı dosyanın <strong>Name</strong> Sütununu, veri çerçevemizin <strong>indeks sütunu</strong> haline getirip veri çerçevemize göz atalım.</p>
 <div class="highlight"><pre><span></span><code><span class="n">nba_csv</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/nba.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s2">&quot;Name&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">nba_csv</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 </code></pre></div>
@@ -328,9 +546,9 @@
 </tbody>
 </table>
 <p>Gördüğünüz gibi artık <strong>indeks bilgileri</strong>, <strong>Oyuncu isimleri</strong>ne dönüşmüş oldu.</p>
-<h2>Ondalık ve Binlik Ayırıcı Uygulaması</h2>
+<h2>F-String ile Veri Biçimlendirmek</h2>
 <h3>Ondalık Ayırıcı</h3>
-<p>CSV dosyası okurken birlikte kullanılabilecek pek çok parametre vardır. Kodun okunurluğunu artırmak adına farklı yazım tarzı da kullanılabilir. Bir örnekle açıklayalım.</p>
+<p>CSV dosyası okurken birlikte kullanılabilecek pek çok parametre vardır. Kodun okunurluğunu artırmak adına aşağıdaki gibi farklı yazım tarzı da kullanılabilir. Bir örnekle açıklayalım.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 <span class="n">df</span> <span class="o">=</span> <span class="p">(</span><span class="n">pd</span>
@@ -409,7 +627,7 @@
 <span class="n">Name</span><span class="p">:</span> <span class="n">Salary</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
 </code></pre></div>
 
-<p>Ondalık ayırıcı 2 basamakla sınırlandırıldı ancak binlik ayırıcı ayarlanmadı. O nedenle ücretlerin okunması zor. Kodun <code>.map(lambda x: f"{x:.2f}"</code> kısmında <code>.2f</code> 'ten önce  virgül konulursa <code>.map(lambda x: f"{x:,.2f}"</code> binlik ayırıcı olarak virgül belirlenmiş olur. Kodu ve çıktısını görelim;</p>
+<p>Ondalık ayırıcı 2 basamakla sınırlandırıldı ancak binlik ayırıcı ayarlanmadı. O nedenle ücretlerin okunması zor. Kodun <code>.map(lambda x: f"${x:.2f}"</code> kısmında <code>.2f</code> 'ten önce  virgül konulursa <code>.map(lambda x: f"${x:,.2f}"</code> binlik ayırıcı olarak virgül belirlenmiş olur. <code>f"${x:,.2f}</code> ifadeki <code>$</code> ifadesi ise değerin önüne dolar sembolü ($) eklemek için kullanılır. `Kodu ve çıktısını görelim;</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 <span class="n">df</span> <span class="o">=</span> <span class="p">(</span><span class="n">pd</span>
@@ -476,6 +694,17 @@
 <span class="n">Name</span><span class="p">:</span> <span class="n">Salary</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
 </code></pre></div>
 
+<p>F-String konusunu incelemek isterseniz, konunun detaylarına <a href="/python-f-string.html">BURADAN</a> ulaşabilirsiniz.</p>
+<h2>Kaynaklar:</h2>
+<ul>
+<li>
+<p><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html">pandas.read_csv &#8212; pandas 2.3.3 documentation</a></p>
+</li>
+<li>
+<p><a href="https://gemini.google.com">Google Gemini</a></p>
+</li>
+</ul>
+
 		<span class="post-tags">
 			Tags:
 			<ul>
@@ -486,6 +715,7 @@
 					<li><a href="/tag/read_csv.html">read_csv</a></li>
 					<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
 					<li><a href="/tag/modul.html">Modül</a></li>
+					<li><a href="/tag/csv.html">CSV</a></li>
 			</ul>
 		</span>
 
