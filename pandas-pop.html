@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Pandas - pop" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/pandas-pop.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Pandas - pop</h1>
+	<span class="post-date">Cts 29 Kasım 2025</span>
+	<h1>pop() Metodu</h1>
+<p><strong><code>pandas.DataFrame.pop()</code></strong> metodu, <strong>Pandas DataFrame'inizdeki belirli bir sütunu</strong> hem DataFrame'den <strong>kaldırır</strong> hem de <strong>kaldırdığı bu sütunu bir Series olarak size geri verir</strong>.</p>
+<p>Basitçe anlatmak gerekirse, bir DataFrame'in sütununu yerinden söker, onu bize verir ve <strong>orijinal DataFrame'de artık o sütun olmaz</strong>.</p>
+<blockquote>
+<p>Pandas'taki <strong><code>pop()</code></strong> metodu ile doğrudan <strong>satır</strong> silemezsiniz.</p>
+<p><code>pop()</code> metodunun işlevi, bir <code>DataFrame</code>'den sadece <strong>sütunları</strong> (column) silmek ve silinen sütunu bir <code>Series</code> olarak geri döndürmektir. Satırları hedef almaz.</p>
+</blockquote>
+<h2>Sözdizimi:</h2>
+<div class="highlight"><pre><span></span><code><span class="n">DataFrame</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">sütun_adı</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>Detaylı Açıklama</h2>
+<p><code>pandas.DataFrame.pop()</code>** metodunun kullanımı sonucunda;</p>
+<ol>
+<li>
+<p><strong>Sütunu Çıkarır (Pop):</strong> Belirttiğiniz sütun adını (label) alır ve o sütunu DataFrame'den tamamen siler.</p>
+</li>
+<li>
+<p><strong>Geri Döndürür (Return):</strong> Silinen bu sütunun içeriğini yeni bir <strong>Pandas Series</strong> objesi olarak size geri verir, böylece bu veriyi başka amaçlar için kullanabilirsiniz.</p>
+</li>
+<li>
+<p><strong>Yerinde Değişiklik Yapar (In-place):</strong> Bu işlem, DataFrame üzerinde doğrudan değişiklik yapar (<strong>in-place</strong>). Yani, işlemi yaptıktan sonra DataFrame'in eski haline dönme şansı yoktur, sütun kalıcı olarak silinir.</p>
+</li>
+</ol>
+<h2>Neden Sadece Tek Bir Sütun?</h2>
+<p><strong><code>pandas.DataFrame.pop()</code></strong> metodu bir seferde <strong>yalnızca tek bir sütun</strong> silebilir (ve geri döndürebilir).</p>
+<ol>
+<li>
+<p><strong>Series Döndürmesi:</strong> <code>pop()</code> metodunun temel özelliği, silinen sütunun verilerini bir <strong>Series</strong> objesi olarak geri döndürmesidir. Bir Pandas Series, tek boyutlu bir veri yapısıdır; bu nedenle <code>pop()</code> metodunun da tek bir sütun üzerinde çalışması beklenir.</p>
+</li>
+<li>
+<p><strong>Sözdizimi:</strong> Metodun argümanı, kaldırılacak sütunun etiketini belirten tek bir <code>item</code> (etiket) bekler:</p>
+</li>
+</ol>
+<p><code>python
+   DataFrame.pop(item)</code></p>
+<p>Birden fazla sütun etiketi içeren bir liste veya dizi kabul etmez.</p>
+<h3>Örnek</h3>
+<p>Diyelim ki, <code>df</code> adında, <code>isim</code>, <code>sınıf</code> ve <code>hız</code> sütunları olan bir DataFrame'iniz var.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([(</span><span class="s1">&#39;şahin&#39;</span><span class="p">,</span> <span class="s1">&#39;kuş&#39;</span><span class="p">,</span> <span class="mf">389.0</span><span class="p">),</span>
+                   <span class="p">(</span><span class="s1">&#39;papağan&#39;</span><span class="p">,</span> <span class="s1">&#39;kuş&#39;</span><span class="p">,</span> <span class="mf">24.0</span><span class="p">),</span>
+                   <span class="p">(</span><span class="s1">&#39;aslan&#39;</span><span class="p">,</span> <span class="s1">&#39;memeli&#39;</span><span class="p">,</span> <span class="mf">80.5</span><span class="p">),</span>
+                   <span class="p">(</span><span class="s1">&#39;maymun&#39;</span><span class="p">,</span> <span class="s1">&#39;memeli&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)],</span>
+                  <span class="n">columns</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;sınıf&#39;</span><span class="p">,</span> <span class="s1">&#39;hız&#39;</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code>      <span class="n">name</span>   <span class="n">sınıf</span>      <span class="n">hız</span>
+<span class="mi">0</span>    <span class="n">şahin</span>     <span class="n">kuş</span>    <span class="mf">389.0</span>
+<span class="mi">1</span>  <span class="n">papağan</span>     <span class="n">kuş</span>     <span class="mf">24.0</span>
+<span class="mi">2</span>    <span class="n">aslan</span>  <span class="n">memeli</span>     <span class="mf">80.5</span>
+<span class="mi">3</span>   <span class="n">maymun</span>  <span class="n">memeli</span>      <span class="n">NaN</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>isim</th>
+<th>sınıf</th>
+<th>hız</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>şahin</td>
+<td>kuş</td>
+<td>389.0</td>
+</tr>
+<tr>
+<td>papağan</td>
+<td>kuş</td>
+<td>24.0</td>
+</tr>
+<tr>
+<td>aslan</td>
+<td>memeli</td>
+<td>80.5</td>
+</tr>
+<tr>
+<td>maymun</td>
+<td>memeli</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="c1"># &#39;sınıf&#39; sütununu çıkar ve &#39;eski_sınıf&#39; değişkenine ata</span>
+
+<span class="n">eski_sınıf</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;sınıf&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">eski_sınıf</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>Sonuçlar:</strong></p>
+<ol>
+<li><code>eski_sınıf</code> değişkeni artık yalnızca çıkarılan <code>sınıf</code> verilerini içeren bir <strong>Series</strong> olur.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="mi">0</span>       <span class="n">kuş</span>
+<span class="mi">1</span>       <span class="n">kuş</span>
+<span class="mi">2</span>    <span class="n">memeli</span>
+<span class="mi">3</span>    <span class="n">memeli</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">sınıf</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
+</code></pre></div>
+
+<h2>Ne Zaman Kullanılır?</h2>
+<ul>
+<li>
+<p>Bir sütunun verisine ihtiyacınız varsa ve aynı zamanda <strong>bu sütunu orijinal veri kümesinden kaldırmak istiyorsanız</strong>.</p>
+</li>
+<li>
+<p>Örneğin, bir makine öğrenimi modelinde <strong>hedef değişkeni</strong> (çıktı) veri setinden ayırıp, modeli eğitmek için kullanılan özellikler (girdiler) veri setini temizlemek istediğinizde kullanışlıdır. (<code>X = df.pop('hedef'); Y = df</code>)</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>Not:</strong> Sadece bir sütunu silmek istiyor, ancak geri döndürülen veriye ihtiyacınız yoksa, bunun yerine <strong><code>df.drop('sütun_adı', axis=1, inplace=True)</code></strong> yöntemini kullanabilirsiniz.</p>
+</blockquote>
+<h2>pop() ve drop() Metotları Arasındaki Temel Farklar:</h2>
+<p><code>pandas.DataFrame</code> üzerinde kullanılan <strong><code>pop()</code></strong> ve <strong><code>drop()</code></strong> metotları arasındaki temel fark, <strong>ne yaptıkları</strong> ve <strong>ne döndürdükleri</strong> ile ilgilidir.</p>
+<p>İşte bu iki metot arasındaki temel farklar:</p>
+<table>
+<thead>
+<tr>
+<th>Özellik</th>
+<th><code>DataFrame.pop('sütun_adı')</code></th>
+<th><code>DataFrame.drop('sütun_adı', axis=1)</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>İşlev</strong></td>
+<td>Sütunu <strong>kaldırır</strong> ve <strong>geri döndürür</strong>.</td>
+<td>Sütunu (veya satırı) <strong>kaldırır</strong> ancak <strong>geri döndürmez</strong>.</td>
+</tr>
+<tr>
+<td><strong>Geri Dönüş Değeri</strong></td>
+<td>Kaldırılan sütunu içeren bir <strong>Series</strong> objesi döndürür.</td>
+<td>Silme işleminin yapıldığı, ancak sütun/satırın bulunmadığı <strong>yeni bir DataFrame</strong> döndürür.</td>
+</tr>
+<tr>
+<td><strong>DataFrame Üzerindeki Etki</strong></td>
+<td>Orijinal DataFrame'de <strong>yerinde değişiklik yapar</strong> (in-place). Kaldırılan sütun kaybolur.</td>
+<td>Varsayılan olarak <strong>yerinde değişiklik yapmaz</strong>. Değişiklik için yeni bir DataFrame oluşturur veya <code>inplace=True</code> parametresi kullanılır.</td>
+</tr>
+<tr>
+<td><strong>Kullanım Amacı</strong></td>
+<td>Bir sütunu ayırıp, onu kullanmak ve aynı anda orijinal DataFrame'i temizlemek.</td>
+<td>Bir sütunu veya satırı veri kümesinden kalıcı olarak silmek.</td>
+</tr>
+</tbody>
+</table>
+<h3>Detaylı Açıklama</h3>
+<h3>1. <code>pop()</code> Metodu (Yerinden Sökme ve Geri Verme)</h3>
+<p><strong><code>pop()</code></strong> metodu, bir sütunu bir veri listesinden eleman "çekip çıkarmak" gibi çalışır:</p>
+<ul>
+<li>
+<p><strong>Sütunu Silerken Geri Verir:</strong> Belirtilen sütunu siler ve bu silinen sütunun verisini bir <code>Series</code> olarak size <strong>geri döndürür</strong>.</p>
+</li>
+<li>
+<p><strong>Doğrudan Değişiklik:</strong> Bu metot, <strong>orijinal DataFrame üzerinde doğrudan değişiklik yapar</strong>. Yani <code>pop()</code> çağrıldıktan sonra, o sütun orijinal DataFrame'de artık yoktur.</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>Özet:</strong> Bir sütunu ayırıp, kullanmak ve DataFrame'den aynı anda temizlemek için idealdir.</p>
+</blockquote>
+<h3>2. <code>drop()</code> Metodu (Atma ve Yeni Kopyasını Oluşturma)</h3>
+<p><strong><code>drop()</code></strong> metodu, adından da anlaşılacağı gibi, belirtilen satırları veya sütunları "atar":</p>
+<ul>
+<li>
+<p><strong>Axis Parametresi Gerekir:</strong> Sütun silmek için mutlaka <code>axis=1</code> (sütunları ifade eder) veya satır silmek için <code>axis=0</code> (varsayılan) belirtmeniz gerekir.</p>
+</li>
+<li>
+<p><strong>Geri Dönüş:</strong> Silme işleminin uygulandığı, ancak silinen satır/sütunun bulunmadığı <strong>yeni bir DataFrame</strong> döndürür. Silinen veriyi geri döndürmez.</p>
+</li>
+<li>
+<p><strong>İsteğe Bağlı Değişiklik:</strong> Orijinal DataFrame'i değiştirmek için <strong><code>inplace=True</code></strong> argümanını açıkça belirtmeniz gerekir. Aksi takdirde, orijinal DataFrame değişmez.</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>Özet:</strong> Orijinal DataFrame'inize dokunmadan (veya <code>inplace=True</code> ile dokunarak) belirli satırları veya sütunları atmak için standart bir yöntemdir.</p>
+</blockquote>
+<h2>Birden Fazla Sütun Silmek İçin Ne Kullanılır?</h2>
+<p>Eğer bir DataFrame'den birden fazla sütunu aynı anda silmek istiyorsanız, standart olarak <strong><code>drop()</code></strong> metodunu kullanmanız gerekir:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># &#39;Sütun_A&#39; ve &#39;Sütun_B&#39;yi siler ve yeni bir DataFrame döndürür.</span>
+<span class="n">yeni_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Sütun_A&#39;</span><span class="p">,</span> <span class="s1">&#39;Sütun_B&#39;</span><span class="p">])</span>
+</code></pre></div>
+
+<h3>Özet Karşılaştırma</h3>
+<table>
+<thead>
+<tr>
+<th>İşlem</th>
+<th>Metot</th>
+<th>Girdi Tipi</th>
+<th>Geri Dönüş Tipi</th>
+<th>DataFrame'i Değiştirir mi?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tek Sütun Silme</td>
+<td><strong><code>pop()</code></strong></td>
+<td>Tek bir etiket (string)</td>
+<td><code>Series</code></td>
+<td>Evet (Her zaman)</td>
+</tr>
+<tr>
+<td>Birden Fazla Sütun Silme</td>
+<td><strong><code>drop()</code></strong></td>
+<td>Etiket listesi (list of strings)</td>
+<td><code>DataFrame</code></td>
+<td>İsteğe Bağlı (<code>inplace=True</code> ile)</td>
+</tr>
+</tbody>
+</table>
+<h2>Kaynaklar:</h2>
+<ul>
+<li>
+<p><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.pop.html">pandas.DataFrame.pop &#8212; pandas 2.3.3 documentation</a></p>
+</li>
+<li>
+<p><a href="https://gemini.google.com">Google Gemini</a></p>
+</li>
+</ul>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/pandas.html">Pandas</a></li>
+					<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+					<li><a href="/tag/modul.html">Modül</a></li>
+					<li><a href="/tag/pop.html">pop</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>
