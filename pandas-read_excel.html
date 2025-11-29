@@ -77,11 +77,13 @@
 <div class="post">
 	<h1 class="post-title">Pandas - read_excel</h1>
 	<span class="post-date">Cts 09 Temmuz 2022</span>
-	<h1>read_excel() Fonksiyonu Nedir? Nasıl Kullanılır?</h1>
-<p>Bu bölümde <strong>MS Excel</strong> ve <strong>Libre Ofis Calc</strong> programları ile oluşturulan hesap tablolarının Veri Çerçevelerine (Data Frame'e) dönüştürülerek çalışmalarımıza dahil edilmesi konusunu detayı olarak inceleyeceğiz.</p>
-<h1>read_excel() fonksiyonu</h1>
-<p><strong>MS Excel</strong> ve <strong>Libre Ofis Calc</strong> dosyalarının içeriğini çalışmamıza dahil etmek için <strong>read_excel()</strong> fonksiyonunu kullanmalıyız.</p>
-<p><u>Bu fonksiyon;</u></p>
+	<h1>read_excel() Metodu</h1>
+<p><strong>MS Excel</strong> (xls, xlsx, xlsm ve xlsb) ve <strong>Libre Ofis Calc</strong> (odf, ods ve odt) dosyalarının içeriğini çalışmamıza dahil etmek için <code>read_excel()</code> fonksiyonunu kullanmalıyız. </p>
+<blockquote>
+<p><strong>Libre Ofis Calc</strong> dosyalarının içeriğini okuyabilmek için "<strong>openpyxl</strong>" kütüphanelerinin / modüllerinin yüklü olması gerekir.</p>
+</blockquote>
+<p>Aşağıda, <strong>MS Excel</strong> ve <strong>Libre Ofis Calc</strong> programları ile oluşturulan hesap tablolarının Veri Çerçevelerine (Data Frame'e) nasıl dönüştürüleceğini ve nasıl kullanılacağı konusunu detayı olarak inceleyeceğiz.</p>
+<p><u>Bu metot;</u></p>
 <ul>
 <li><strong>xls, xlsx, xlsm, xlsb, odf, ods</strong> ve <strong>odt</strong> uzantılı dosyaları destekler.</li>
 <li>Yerel bir dosya sisteminde veya bir URL'de depolanan excel dosyalarını yükleyebilir.</li>
@@ -89,12 +91,20 @@
 <li>Ayrıca tek bir çalışma sayfasından veya bir sayfa listesinden okumayı da destekler.</li>
 <li>İki sayfa okunurken, <strong>DataFrame</strong> bir Sözlük (Dict) yapısı döndürür.</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">dosya_adi</span><span class="p">)</span>
+<h2>Sözdizimi:</h2>
+<div class="highlight"><pre><span></span><code><span class="n">pandas</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">io</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
+        <span class="n">index_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
+        <span class="n">converters</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">true_values</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">false_values</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
+        <span class="n">nrows</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">na_values</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">keep_default_na</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">na_filter</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">date_parser</span><span class="o">=&lt;</span><span class="n">no_default</span><span class="o">&gt;</span><span class="p">,</span> 
+        <span class="n">date_format</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">thousands</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">decimal</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
+        <span class="n">skipfooter</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">storage_options</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dtype_backend</span><span class="o">=&lt;</span><span class="n">no_default</span><span class="o">&gt;</span><span class="p">,</span> 
+        <span class="n">engine_kwargs</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 </code></pre></div>
 
-<p>Bu fonksiyon kullanıldığında, varsayılan olarak, excel dosyasının <strong>ilk çalışma sayfası</strong> yüklenir ve <strong>ilk satır</strong> Veri Çerçevesi (DataFrame) <strong>başlığı (sütun adı)</strong> olarak ayarlanır.</p>
-<div class="highlight"><pre><span></span><code><span class="n">dogumlar</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/AyaGöreDoğumlar.xlsx&quot;</span><span class="p">)</span>
+<p>Bu metot kullanıldığında, varsayılan olarak, excel dosyasının <strong>ilk çalışma sayfası</strong> yüklenir ve <strong>ilk satır</strong> Veri Çerçevesi (DataFrame) <strong>başlığı (sütun adı)</strong> olarak ayarlanır.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">dogumlar</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/AyaGöreDoğumlar.xlsx&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">dogumlar</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 </code></pre></div>
 
@@ -398,13 +408,11 @@
 </tr>
 </tbody>
 </table>
-<p>Pandas kütüphanesi sayesinde, <strong>Team</strong> Sütunundaki 
-birleştirilmiş hücrelerde bulunan veriler, hücrelere ayrı ayrı 
-kopyalanarak düzgün, bir veri çevçevesi oluşturmamızı sağlamış oldu. 
-Benzer işlemi, <a href="pandas-05-eksik-kayip-veri-yontemleri.html">Eksik / Kayıp Veri Tespiti ve Düzenleme Yöntemleri</a> bölümündeki <strong>fillna</strong> fonksiyonu'nun <strong>method parametresi</strong>ni kullanarak ta gerçekleştirebiliriz.</p>
+<p>Pandas kütüphanesi sayesinde, <strong>Team</strong> Sütunundaki birleştirilmiş hücrelerde bulunan veriler, hücrelere ayrı ayrı kopyalanarak düzgün, bir veri çevçevesi oluşturmamızı sağlamış oldu. 
+Benzer işlemi, <strong>Eksik / Kayıp Veri Tespiti ve Düzenleme Yöntemleri</strong> bölümündeki <a href="/pandas-fillna.html">fillna</a> fonksiyonu'nun <strong>method parametresi</strong>ni kullanarak ta gerçekleştirebiliriz.</p>
 <h1>Parametreler</h1>
 <h2>header ve names parametreleri</h2>
-<p><strong>read_excel ()</strong> fonksiyonu, Excel'deki ilk satırı varsayılan olarak bir başlık kabul eder ve bunu Veri Çerçevesi (DataFrame) sütun adları olarak kullanır. Excel dosyasındaki ilk satırın başlık değil, bir veri olduğu düşünüldüğünde, yani sadece verilerden oluşan excel dosyası ile çalıştığımızda, <strong>header=None</strong> parametresi kullanılmalıdır. Bu durumda Başlık (sütun adlarını) belirtmek için <strong>names</strong> parametresi kullanılır.</p>
+<p><code>read_excel()</code> metodu, Excel'deki ilk satırı varsayılan olarak bir başlık kabul eder ve bunu Veri Çerçevesi (DataFrame) sütun adları olarak kullanır. Excel dosyasındaki ilk satırın başlık değil, bir veri olduğu düşünüldüğünde, yani sadece verilerden oluşan excel dosyası ile çalıştığımızda, <code>header=None</code> parametresi kullanılmalıdır. Bu durumda Başlık (sütun adlarını) belirtmek için <code>names</code> parametresi kullanılır.</p>
 <p>İlk olarak <strong>OSD</strong> uzantılı bir dosyayı (ODS, LibreOfis Calc Programının uzantısıdır , siz bu dosya yerine MS Excel'in kayıt formatı olan XLS ya da XLSX uzantılı dosya da kullanabilirsiniz.) çalışmamıza dahil edip içeriğine bakalım.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="n">basliksiz</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/basliksiz.ods&quot;</span><span class="p">)</span>
@@ -453,7 +461,7 @@ Benzer işlemi, <a href="pandas-05-eksik-kayip-veri-yontemleri.html">Eksik / Kay
 </tr>
 </tbody>
 </table>
-<p>Yukarıdaki örnekte gördüğünüz üzere, ilk satır başlık değil, veriden oluşuyor. Bunu <strong>header=None</strong> ve <strong>names</strong> parametreleri ile düzenleyelim.</p>
+<p>Yukarıdaki örnekte gördüğünüz üzere, ilk satır başlık değil, veriden oluşuyor. Bunu <code>header=None</code> ve <code>names</code> parametreleri ile düzenleyelim.</p>
 <div class="highlight"><pre><span></span><code><span class="n">baslik</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Birler&quot;</span><span class="p">,</span> <span class="s2">&quot;Onlar&quot;</span><span class="p">,</span> <span class="s2">&quot;Yüzler&quot;</span><span class="p">]</span>
 <span class="n">basliksiz</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/basliksiz.ods&quot;</span><span class="p">,</span> 
                             <span class="n">header</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">names</span> <span class="o">=</span> <span class="n">baslik</span> <span class="p">)</span>
@@ -503,7 +511,7 @@ Benzer işlemi, <a href="pandas-05-eksik-kayip-veri-yontemleri.html">Eksik / Kay
 </tbody>
 </table>
 <h2>sheet_name Parametresi</h2>
-<p>Excel dosyamızın içinde birden fazla çalışma sayfası (sekme) bulunması halinde, istediğimiz çalışma sayfasına erişebilmek için, <strong>sheet_name</strong> parametresini kullanmalıyız.</p>
+<p>Excel dosyamızın içinde birden fazla çalışma sayfası (sekme) bulunması halinde, istediğimiz çalışma sayfasına erişebilmek için, <code>sheet_name</code> parametresini kullanmalıyız.</p>
 <p>Aylara göre doğum sayılarını barındıran dosyamızı çalışmamıza dahil edip ilk 5 veriye göz atalım.</p>
 <div class="highlight"><pre><span></span><code><span class="n">dogumlar</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/AyaGöreDoğumlar.xlsx&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">dogumlar</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
@@ -617,7 +625,7 @@ Benzer işlemi, <a href="pandas-05-eksik-kayip-veri-yontemleri.html">Eksik / Kay
 </tr>
 </tbody>
 </table>
-<p>Kodumuza <strong>sheet_name = "ortalama"</strong> ibaresi ekleyerek, aynı dosyadaki "<strong>ortalama</strong>" isimli sekmede bulunan verileri inceleyelim.</p>
+<p>Kodumuza <code>sheet_name = "ortalama"</code> ibaresi ekleyerek, aynı dosyadaki "<strong>ortalama</strong>" isimli sekmede bulunan verileri inceleyelim.</p>
 <div class="highlight"><pre><span></span><code><span class="n">dogumlar</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/AyaGöreDoğumlar.xlsx&quot;</span><span class="p">,</span> 
                             <span class="n">sheet_name</span> <span class="o">=</span> <span class="s2">&quot;ortalama&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">dogumlar</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
@@ -665,8 +673,8 @@ Benzer işlemi, <a href="pandas-05-eksik-kayip-veri-yontemleri.html">Eksik / Kay
 </tr>
 </tbody>
 </table>
-<p>Gördüğünüz gibi, kodumuza <strong>sheet_name = "ortalama"</strong> ibaresi ekleyerek, aynı excel dosyasının <strong>ortalama</strong> isimli çalışma sayfasındaki verileri, çalışmamıza veri çerçevesi olarak ekledik.</p>
-<p>Birden fazla çalışma sayfasını, çalışmamıza dahil etmek (içe aktarmak) istersek, <strong>sheet_name</strong> parametresine bir liste girdisi vermeliyiz. Bu durumda çıktı, bir <strong>sözlük yapısı (dict)</strong> olacaktır.</p>
+<p>Gördüğünüz gibi, kodumuza <code>sheet_name = "ortalama"</code> ibaresi ekleyerek, aynı excel dosyasının <strong>ortalama</strong> isimli çalışma sayfasındaki verileri, çalışmamıza veri çerçevesi olarak ekledik.</p>
+<p>Birden fazla çalışma sayfasını, çalışmamıza dahil etmek (içe aktarmak) istersek, <code>sheet_name</code> parametresine <strong>bir liste girdisi</strong> vermeliyiz. Bu durumda çıktı, bir <strong>sözlük yapısı (dict)</strong> olacaktır.</p>
 <div class="highlight"><pre><span></span><code><span class="n">dogumlar</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/AyaGöreDoğumlar.xlsx&quot;</span><span class="p">,</span> 
                             <span class="n">sheet_name</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ortalama&quot;</span><span class="p">,</span> <span class="s2">&quot;2001-2021&quot;</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">dogumlar</span><span class="p">)</span>
@@ -959,7 +967,7 @@ Elimde, interneten indirmiş olduğum IMDB (Internet Movie Data Base) verilerind
 </table>
 <p>247 rows × 5 columns</p>
 <p>Çıktıya bakarsak, <strong>Puan_2</strong> ismiyle oluşturduğumuz yeni sütundaki değerler, <strong>Puan</strong> isimli sütunun 2 katından değil, 2 defa yanyana yazılmazsından oluştu. Bunun sebebi, verilerin <strong>string (metin)</strong> yapıda olmasıdır.
-Bu tür sorunları bertaraf etmek için, <strong>decimal</strong> paramatresini kullanmamız gerekir. Harici veriyi veri çerçevesine dönüştürürken <strong>decimal = ","</strong> parametresini kullanırsak, "," ibaresi bulunan sayısal değerlerden oluşan string ifadeler, <strong>float (ondalıklı sayı)</strong> veri tipine dönüştürülür.</p>
+Bu tür sorunları bertaraf etmek için, <code>decimal</code> paramatresini kullanmamız gerekir. Harici veriyi veri çerçevesine dönüştürürken <code>decimal = ","</code> parametresini kullanırsak, <code>","</code> ibaresi bulunan sayısal değerlerden oluşan string ifadeler, <strong>float (ondalıklı sayı)</strong> veri tipine dönüştürülür.</p>
 <div class="highlight"><pre><span></span><code><span class="n">imdb_2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/imdb.xlsx&quot;</span><span class="p">,</span> <span class="n">decimal</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">imdb_2</span><span class="p">)</span>
 </code></pre></div>
@@ -1175,7 +1183,7 @@ Bu tür sorunları bertaraf etmek için, <strong>decimal</strong> paramatresini 
 <p>247 rows × 5 columns</p>
 <p>İstediğimiz şeyi başardık. <strong>Puan_2</strong> sütunu, <strong>Puan</strong> sütununun 2 katından oluşmuş oldu.</p>
 <h2>index_col Parametresi</h2>
-<p>Veri Çerçevesi (Data Frame) oluştururken sütunlardan birini, indeks değeri olarak ayarlamak/atamak istersek, <strong>index_col</strong> parametresini kullanabiliriz.
+<p>Veri Çerçevesi (Data Frame) oluştururken sütunlardan birini, indeks değeri olarak ayarlamak/atamak istersek, <code>index_col</code> parametresini kullanabiliriz.
 Öncelikle elimizdeki excel dosyamızı veri çerçevesine dönüştürüp içeriğine göz atalım.</p>
 <div class="highlight"><pre><span></span><code><span class="n">dogumlar</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/AyaGöreDoğumlar.xlsx&quot;</span><span class="p">,</span> 
                             <span class="n">sheet_name</span> <span class="o">=</span> <span class="s2">&quot;ortalama&quot;</span><span class="p">)</span>
@@ -1268,9 +1276,9 @@ Bu tür sorunları bertaraf etmek için, <strong>decimal</strong> paramatresini 
 </table>
 <p>İşlem başarılı. <strong>Yıl</strong> Sütunu, indeks olarak ayarlandı.</p>
 <h2>usecols Parametresi (Sütunları Atla)</h2>
-<p>Bir Excel çalışma sayfasını ya da farklı kaynaktan alınan veriyi, Pandas ile Veri Çerçevesine (DataFrame'e) dönüştürürken, <strong>bazı sütunları atlamamız / göz ardı etmemiz</strong> gerekebilir, bunu <strong>usecols</strong> parametresi kullanarak yapabiliriz. Bu parametre, tamsayı (int), metin (str), list-like veya callable (varsayılan None) değerlerini alır. Sütun
- adlarının veya konumlarının listesini belirtmek için, bir dize (string) listesi veya bir tamsayı (int) listesi kullanmalıyız.</p>
-<p>Aylara Göre Doğum Sayıları tablosunu yukarıda görmüştük. Bu tabloda 14 sütun bulunmaktadır. Sadece istediğimiz aylara ait sütun bilgilerini görüntülemek istersek <strong>usecols</strong> parametresine ya <strong>ay isimlerini</strong> ya da <strong>ayın sütun indis değerini</strong> yazmamız gerekir. Her iki kullanımı da görelim.</p>
+<p>Bir Excel çalışma sayfasını ya da farklı kaynaktan alınan veriyi, Pandas ile Veri Çerçevesine (DataFrame'e) dönüştürürken, <strong>bazı sütunları atlamamız / göz ardı etmemiz</strong> gerekebilir, bunu <code>usecols</code> parametresi kullanarak yapabiliriz. Bu parametre, tamsayı (int), metin (str), list-like veya callable (varsayılan None) değerlerini alır. Sütun
+adlarının veya konumlarının listesini belirtmek için, bir dize (string) listesi veya bir tamsayı (int) listesi kullanmalıyız.</p>
+<p>Aylara Göre Doğum Sayıları tablosunu yukarıda görmüştük. Bu tabloda 14 sütun bulunmaktadır. Sadece istediğimiz aylara ait sütun bilgilerini görüntülemek istersek <code>usecols</code> parametresine ya <strong>ay isimlerini</strong> ya da <strong>ayın sütun indis değerini</strong> yazmamız gerekir. Her iki kullanımı da görelim.</p>
 <div class="highlight"><pre><span></span><code><span class="n">dogumlar</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/AyaGöreDoğumlar.xlsx&quot;</span><span class="p">,</span> 
                         <span class="n">usecols</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Yıl&quot;</span><span class="p">,</span> <span class="s2">&quot;Ocak&quot;</span><span class="p">,</span> <span class="s2">&quot;Haziran&quot;</span><span class="p">,</span> <span class="s2">&quot;Ağustos&quot;</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">dogumlar</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
@@ -1377,8 +1385,8 @@ Bu tür sorunları bertaraf etmek için, <strong>decimal</strong> paramatresini 
 </tr>
 </tbody>
 </table>
-<p><strong>usecols</strong> parametresine, <u>sütun isimlerini yazarken</u>, sütun isimleri metinsel (string) ifade olduğu için <strong>çift tırnak işareti "</strong> kullandığımıza, <u>indis değeri yazarken</u> , indis değerleri tamsayı (int) olduğu için, tırnak işareti kullanmadığımıza dikkat edin.</p>
-<p>Ayrıca, <strong>usecols</strong> parametresini, sütun aralığı belirterek te kullanabiliriz. Veri çerçevemizin sütunlarını, Excel programının sütun isimleri gibi (A, B, C,... şeklinde) düşünerek aralık belirtebiliriz. Aşağıdaki örnek, ne demek istediğimi daha net 
+<p><code>usecols</code> parametresine, <u>sütun isimlerini yazarken</u>, sütun isimleri metinsel (string) ifade olduğu için <strong>çift tırnak işareti <code>"</code></strong> kullandığımıza, <u>indis değeri yazarken</u> , indis değerleri tamsayı (int) olduğu için, tırnak işareti kullanmadığımıza dikkat edin.</p>
+<p>Ayrıca, <code>usecols</code> parametresini, sütun aralığı belirterek te kullanabiliriz. Veri çerçevemizin sütunlarını, Excel programının sütun isimleri gibi (A, B, C,... şeklinde) düşünerek aralık belirtebiliriz. Aşağıdaki örnek, ne demek istediğimi daha net 
 anlatacaktır.</p>
 <div class="highlight"><pre><span></span><code><span class="n">dogumlar</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/AyaGöreDoğumlar.xlsx&quot;</span><span class="p">,</span> 
                         <span class="n">usecols</span><span class="o">=</span><span class="s2">&quot;C:G&quot;</span><span class="p">)</span>
@@ -1441,7 +1449,7 @@ anlatacaktır.</p>
 </table>
 <p>Oluşturduğumuz Veri Çerçevemizdeki <strong>Yıl</strong> Sütunu <strong>A</strong>'ya, <strong>Toplam</strong> sütunu <strong>B</strong>'ye, <strong>Ocak</strong> Sütunu da <strong>C</strong>'ye denk geldiği için, çıktımız <strong>Ocak</strong> Ayından başlayıp <strong>G</strong> sütununa denk gelen <strong>Mayıs</strong> ayına kadar olan aralığı alarak çıktı olarak bize sundu.</p>
 <h2>skiprows Parametresi (Satırları atla)</h2>
-<p>Bir Excel çalışma sayfasını ya da farklı kaynaktan alınan veriyi, Pandas ile Veri Çerçevesine (DataFrame'e) dönüştürürken, <strong>bazı satırları atlamamız / göz ardı etmemiz</strong> gerekebilir, bunu <strong>skiprows</strong> parametresi kullanarak yapabiliriz. Bu, parametre olarak, list-like, tamsayı (int) veya callable (isteğe bağlı) değerlerini alır. Bu parametre ile ilk birkaç satırı, seçilen satırı ve belirttiğimiz satır aralığını atlayabiliriz.</p>
+<p>Bir Excel çalışma sayfasını ya da farklı kaynaktan alınan veriyi, Pandas ile Veri Çerçevesine (DataFrame'e) dönüştürürken, <strong>bazı satırları atlamamız / göz ardı etmemiz</strong> gerekebilir, bunu <code>skiprows</code> parametresi kullanarak yapabiliriz. Bu, parametre olarak, list-like, tamsayı (int) veya callable (isteğe bağlı) değerlerini alır. Bu parametre ile ilk birkaç satırı, seçilen satırı ve belirttiğimiz satır aralığını atlayabiliriz.</p>
 <div class="highlight"><pre><span></span><code><span class="n">basliksiz</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/SatırAtla.xlsx&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">basliksiz</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
 </code></pre></div>
@@ -1620,7 +1628,7 @@ anlatacaktır.</p>
 </table>
 <h2>Ondalık ve Binlik Ayırıcı Uygulaması</h2>
 <h3>Ondalık Ayırıcı</h3>
-<p>CSV dosyası okurken birlikte kullanılabilecek pek çok parametre vardır. Kodun okunurluğunu artırmak adına farklı yazım tarzı da kullanılabilir. Bir örnekle açıklayalım.</p>
+<p>Excel dosyası okurken birlikte kullanılabilecek pek çok parametre vardır. Kodun okunurluğunu artırmak adına farklı yazım tarzı da kullanılabilir. Bir örnekle açıklayalım.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 <span class="n">df</span> <span class="o">=</span> <span class="p">(</span><span class="n">pd</span>
@@ -1651,7 +1659,7 @@ anlatacaktır.</p>
 <div class="highlight"><pre><span></span><code><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;nba.xlsx&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s2">&quot;Name&quot;</span><span class="p">)</span>
 </code></pre></div>
 
-<p>Bu kod, <code>py</code> uzantılı dosya ile aynı konumdaki <code>nba.csv</code> dosyasını, veri çerçevesine dönüştürüp <code>df</code> adına atar. <code>index</code> bilgisi olarak <code>Name</code> sütunu ayarlanır.</p>
+<p>Bu kod, <code>py</code> uzantılı dosya ile aynı konumdaki <code>nba.xlsx</code> dosyasını, veri çerçevesine dönüştürüp <code>df</code> adına atar. <code>index</code> bilgisi olarak <code>Name</code> sütunu ayarlanır.</p>
 <div class="highlight"><pre><span></span><code><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Team&quot;</span><span class="p">)[</span><span class="s2">&quot;Age&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </code></pre></div>
 
@@ -1765,6 +1773,16 @@ anlatacaktır.</p>
 <span class="n">Los</span> <span class="n">Angeles</span> <span class="n">Lakers</span>        <span class="mf">71_770_431.00</span> <span class="err">$</span>
 <span class="n">Name</span><span class="p">:</span> <span class="n">Salary</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
 </code></pre></div>
+
+<h2>Kaynaklar:</h2>
+<ul>
+<li>
+<p><a href="https://pandas.pydata.org/docs/reference/api/pandas.read_excel.html#pandas.read_excel">pandas.read_excel &#8212; pandas 2.3.3 documentation</a></p>
+</li>
+<li>
+<p><a href="https://gemini.google.com">Google Gemini</a></p>
+</li>
+</ul>
 
 		<span class="post-tags">
 			Tags:

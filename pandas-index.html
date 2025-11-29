@@ -77,8 +77,8 @@
 <div class="post">
 	<h1 class="post-title">Pandas - index</h1>
 	<span class="post-date">Paz 10 Temmuz 2022</span>
-	<h1>index Fonksiyonu</h1>
-<p><strong>index</strong> fonksiyonu, Veri Çerçevesinin indeks bilgisini döndürür.</p>
+	<h1><code>index</code> Metodu</h1>
+<p><strong>index</strong> metodu, Veri Çerçevesinin indeks bilgisini döndürür.</p>
 <p>Öncelikle <strong>Pandas</strong> Kütüphanesini içe aktarıp, kodlama esnasında hızlı olması adına bu kütüphaneye <strong>pd</strong> adını atayalım;</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 </code></pre></div>
@@ -164,7 +164,7 @@
 </tr>
 </tbody>
 </table>
-<h1>index Fonksiyonunun Kullanımı</h1>
+<h2><code>index</code> Metodunun Kullanımı</h2>
 <p><strong>index</strong> fonksiyonu aşağıdaki şekilde kullanılır.</p>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
 </code></pre></div>
@@ -179,6 +179,26 @@
 <li><strong>stop=10</strong> : son indeks değerinin 10 olduğu,</li>
 <li><strong>step=1</strong> : indeks değerlerinin 1'er 1'er arttığını belirtmektedir.</li>
 </ul>
+<p>Veri çerçevesi oluşturulduğunda index değerleri otomatik olarak belirlenir. Bu değeri istersek biz de belirleyebiliriz.</p>
+<div class="highlight"><pre><span></span><code><span class="n">veri</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="p">)</span>
+</code></pre></div>
+
+<p><code>veri.index = range(50, 70, 2)</code> ile veri çerçevemizdeki index değerlerini 50'den başlatıp 70'e kadar (70 dahil değil) 2'şer 2'şer artırarak yeniden tanımlıyoruz. Veri çerçevesinde toplamda 10 satır olduğu için yeni atayacağımız indeks sayısı da 10 adet olmalı, aksi halde hata alırız, işlem gerçekleşmez.</p>
+<p><strong>Çıktı</strong>:</p>
+<div class="highlight"><pre><span></span><code>          <span class="n">isim</span>  <span class="n">yaş</span>    <span class="n">iş</span><span class="o">-</span><span class="n">meslek</span>
+<span class="mi">50</span>     <span class="n">Mustafa</span>   <span class="mi">25</span>     <span class="n">mühendis</span>
+<span class="mi">52</span>       <span class="n">Halil</span>   <span class="mi">38</span>    <span class="n">programcı</span>
+<span class="mi">54</span>       <span class="n">Burak</span>   <span class="mi">41</span>  <span class="n">akademisyen</span>
+<span class="mi">56</span>        <span class="n">Emre</span>   <span class="mi">23</span>     <span class="n">yönetici</span>
+<span class="mi">58</span>       <span class="n">Ersin</span>   <span class="mi">37</span>         <span class="n">amir</span>
+<span class="mi">60</span>      <span class="n">Sertaç</span>   <span class="mi">52</span>     <span class="n">mühendis</span>
+<span class="mi">62</span>      <span class="n">Furkan</span>   <span class="mi">30</span>     <span class="n">yönetici</span>
+<span class="mi">64</span>       <span class="n">Murat</span>   <span class="mi">23</span>        <span class="n">müdür</span>
+<span class="mi">66</span>       <span class="n">Ahmet</span>   <span class="mi">40</span>    <span class="n">veteriner</span>
+<span class="mi">68</span>  <span class="n">Abdülkadir</span>   <span class="mi">38</span>     <span class="n">yönetici</span>
+</code></pre></div>
+
 <p>Peki indeks değeri sayılardan oluşmazsa, yani indeks bilgisi tarafımızca belirtilen Metinsel verilerden oluşursa <strong>index</strong> fonksiyonu nasıl çıktı verir?.</p>
 <div class="highlight"><pre><span></span><code><span class="n">imdb</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/imdb.xlsx&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s2">&quot;Film_Adı&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">imdb</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
@@ -246,9 +266,167 @@
 <ul>
 <li><strong>Index(['The Shawshank Redemption ', 'The Godfather ', 'The Godfather: Part II ', ...]</strong> : İndeks bilgileri liste halinde verilir,</li>
 <li><strong>type='object'</strong> : İndeks bilgilerinin "Object" yani "Metinsel (String)" veri olduğu,</li>
-<li><strong>name='Film_Adı'</strong> : İndexks başlığının "Film_Adı" olduğu,</li>
+<li><strong>name='Film_Adı'</strong> : İndex adının (başlığının) "Film_Adı" olduğu,</li>
 <li><strong>length=247</strong> : toplam 247 adet indeks verisi (satır) olduğu ifade etmektedir.</li>
 </ul>
+<h2><code>name</code> Parametresi</h2>
+<p><code>name</code> parametresi, index'in ismini döndürür. Örneğin yukarıdaki Veri çerçevesinin <code>index</code> değerinin başığını öğrenmek içi aşağıdaki kodu kullanabiliriz;</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">imdb</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>     <span class="c1"># index&#39;in ismini (başlığını) döndürür.</span>
+</code></pre></div>
+
+<p><strong>Çıktı</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Film_Adı</span>
+</code></pre></div>
+
+<h3><code>name</code> Parametresi ile index ve/veya başlığı değiştirmek;</h3>
+<ul>
+<li><code>df.index = df["sütun adı"]</code> ile <strong>index başlığı</strong> ve <strong>index değerlerini</strong> değiştirebiliriz;</li>
+</ul>
+<p>Elimizde <strong>imdb</strong> isimli aşağıda gösterildiği gibi bir veri çerçevesi olduğunu düşünelim.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Film_Adı</th>
+<th>Yıl</th>
+<th>Puan</th>
+<th>Oylayan_Kişi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>The Shawshank Redemption</td>
+<td>1994</td>
+<td>9,2</td>
+<td>1071904</td>
+</tr>
+<tr>
+<td>1</td>
+<td>The Godfather</td>
+<td>1972</td>
+<td>9,2</td>
+<td>751381</td>
+</tr>
+<tr>
+<td>2</td>
+<td>The Godfather: Part II</td>
+<td>1974</td>
+<td>9</td>
+<td>488889</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Pulp Fiction</td>
+<td>1994</td>
+<td>8,9</td>
+<td>830504</td>
+</tr>
+<tr>
+<td>4</td>
+<td>The Dark Knight</td>
+<td>2008</td>
+<td>8,9</td>
+<td>1045186</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Film_Adı</strong> isimli sütunu, index verisi olarak kullanmak istersek aşağıdaki kodu kullanabiliriz;</p>
+<div class="highlight"><pre><span></span><code><span class="n">imdb</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">imdb</span><span class="p">[</span><span class="s2">&quot;Film_Adı&quot;</span><span class="p">]</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<table>
+<thead>
+<tr>
+<th>Film_Adı</th>
+<th>Yıl</th>
+<th>Puan</th>
+<th>Oylayan_Kişi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The Shawshank Redemption</td>
+<td>1994</td>
+<td>9,2</td>
+<td>1071904</td>
+</tr>
+<tr>
+<td>The Godfather</td>
+<td>1972</td>
+<td>9,2</td>
+<td>751381</td>
+</tr>
+<tr>
+<td>The Godfather: Part II</td>
+<td>1974</td>
+<td>9</td>
+<td>488889</td>
+</tr>
+<tr>
+<td>Pulp Fiction</td>
+<td>1994</td>
+<td>8,9</td>
+<td>830504</td>
+</tr>
+<tr>
+<td>The Dark Knight</td>
+<td>2008</td>
+<td>8,9</td>
+<td>1045186</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Veri çerçevemizin <strong>Index başlığını bir değerle değiştirmek</strong> istediğimiz zaman <code>name</code> parametresini aşağıdaki şekilde kullanabiliriz.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">imdb</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Movie Name&quot;</span>
+</code></pre></div>
+
+<p><strong>Çıktı:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Movie Name</th>
+<th>Yıl</th>
+<th>Puan</th>
+<th>Oylayan_Kişi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The Shawshank Redemption</td>
+<td>1994</td>
+<td>9,2</td>
+<td>1071904</td>
+</tr>
+<tr>
+<td>The Godfather</td>
+<td>1972</td>
+<td>9,2</td>
+<td>751381</td>
+</tr>
+<tr>
+<td>The Godfather: Part II</td>
+<td>1974</td>
+<td>9</td>
+<td>488889</td>
+</tr>
+<tr>
+<td>Pulp Fiction</td>
+<td>1994</td>
+<td>8,9</td>
+<td>830504</td>
+</tr>
+<tr>
+<td>The Dark Knight</td>
+<td>2008</td>
+<td>8,9</td>
+<td>1045186</td>
+</tr>
+</tbody>
+</table>
 
 		<span class="post-tags">
 			Tags:
