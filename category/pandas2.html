@@ -76,6 +76,39 @@
 </div>		<div class="content container">
 	<div class="posts">
 			<div class="post">
+				<h1 class="post-title" href="/pandas-value_counts.html">
+					<a href="/pandas-value_counts.html">Pandas - value_counts</a>
+				</h1>
+				<span class="post-date">Paz 15 Haziran 2025</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/value_counts.html">value_counts</a></li>
+								<li><a href="/tag/value.html">value</a></li>
+								<li><a href="/tag/counts.html">counts</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/fonksiyon.html">Fonksiyon</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>value_counts() Metodu</h1>
+<p><strong>pandas.DataFrame.value_counts</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">DataFrame</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span> <span class="o">*</span><span class="n">subset</span><span class="o">=</span><span class="kc">None</span><span class="o">*</span><span class="p">,</span> 
+                        <span class="o">*</span><span class="n">normalize</span><span class="o">=</span><span class="kc">False</span><span class="o">*</span><span class="p">,</span> 
+                        <span class="o">*</span><span class="n">sort</span><span class="o">=</span><span class="kc">True</span><span class="o">*</span><span class="p">,</span> 
+                        <span class="o">*</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="o">*</span><span class="p">,</span> 
+                        <span class="o">*</span><span class="n">dropna</span><span class="o">=</span><span class="kc">True</span><span class="o">*</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Veri çerçevemizde sütun bazında <strong>verinin kaç kez tekrar ettiğini</strong> (kaç adet bulunduğunu) öğrenmek için <code>value_counts()</code> fonksiyonunu kullanbiliriz. 
+<code>value_counts</code> metodu, veri frekansını (sıklığını) içeren bir <strong>Seri</strong> döndürün. Excel ve Libre Ofis Calc uygulamalarındaki <u>Yinelenenleri …</u></p>
+				</p>
+				<a class="read-more" href="pandas-value_counts.html">Continue reading »</a>
+			</div>
+			<div class="post">
 				<h1 class="post-title" href="/pandas-bolme-operatoru.html">
 					<a href="/pandas-bolme-operatoru.html">Pandas - Bölme Operatörü</a>
 				</h1>
@@ -531,59 +564,6 @@ Pandasta ise veri çerçevesi adının sonuna metot olarak ekliyoruz.  (Ör. <co
 <p><code>groupby</code> fonksiyonu …</p>
 				</p>
 				<a class="read-more" href="pandas-groupby.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="/pandas-between.html">
-					<a href="/pandas-between.html">Pandas - Between</a>
-				</h1>
-				<span class="post-date">Cts 16 Temmuz 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/pandas.html">Pandas</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
-								<li><a href="/tag/filtre.html">Filtre</a></li>
-								<li><a href="/tag/between.html">Between</a></li>
-								<li><a href="/tag/fonksiyon.html">Fonksiyon</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1>between() Fonksiyonu</h1>
-<p>Bir sayısal aralık belirterek filtreleme yapmak istersek <code>between()</code> metodunu / fonksiyonunu kullanabiliriz.</p>
-<p>Örnek Veri çerçevemiz aşağıda görünmektedir.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="n">imdb</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/imdb.xlsx&quot;</span><span class="p">,</span> <span class="n">decimal</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">imdb</span><span class="p">)</span>
-</code></pre></div>
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th>Film_Adı</th>
-<th>Yıl</th>
-<th>Puan</th>
-<th>Oylayan_Kişi</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td>The Shawshank Redemption</td>
-<td>1994</td>
-<td>9.2</td>
-<td>1071904</td>
-</tr>
-<tr>
-<td>1</td>
-<td>The Godfather</td>
-<td>1972</td>
-<td>9.2</td>
-<td>751381 …</td></tr></tbody></table>
-				</p>
-				<a class="read-more" href="pandas-between.html">Continue reading »</a>
 			</div>
 	</div>
 	<div class="pagination">

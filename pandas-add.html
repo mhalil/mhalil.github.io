@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Pandas - add" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/pandas-add.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Pandas - add</h1>
+	<span class="post-date">Cts 29 Kasım 2025</span>
+	<h1>add() Metodu</h1>
+<p><code>pandas.DataFrame.add</code> metodu, bir DataFrame ile başka bir nesneyi <strong>öğe bazında (element-wise) toplamak</strong> için kullanılan ikili bir operatör sarmalayıcısıdır.</p>
+<h2>Sözdizimi:</h2>
+<div class="highlight"><pre><span></span><code><span class="n">DataFrame</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>Aşama 1: Temel Amaç ve Eşdeğerlik</h3>
+<ol>
+<li>
+<p><strong>Basit Toplama:</strong> Bu metodun temel amacı, bir DataFrame'in her bir hücresini (elementini) başka bir değerle (skaler, Seri veya başka bir DataFrame) toplamaktır.</p>
+</li>
+<li>
+<p><strong>Operatör Eşdeğerliği:</strong> <code>DataFrame.add</code> metodu, Python'daki standart <strong>dataframe + other</strong> operatörüne eşdeğerdir.</p>
+</li>
+<li>
+<p><strong>Esnek Sarmalayıcılar:</strong> Bu metot, <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code> gibi aritmetik operatörler için oluşturulmuş <strong>esnek sarmalayıcılar</strong> (flexible wrappers) grubuna aittir (<code>sub</code>, <code>mul</code>, <code>div</code>, <code>pow</code> gibi diğer işlemler de bu gruba dahildir)</p>
+</li>
+</ol>
+<h3>Aşama 2: Esnekliğin Anlamı (Neden <code>+</code> yerine <code>add</code> kullanılır?)</h3>
+<p>Standart <code>+</code> operatörü ile toplama yapabilirsiniz, ancak <code>add</code> gibi esnek sarmalayıcıları kullanmanın en büyük avantajı, eksik veriler (NaN) için bir doldurma değeri (<strong><em>*fill_value</em></strong>*) belirleme desteği sunmasıdır.</p>
+<ol>
+<li>
+<p><strong>Hizalama (Alignment):</strong> İki DataFrame'i veya bir DataFrame ile bir Seriyi topladığınızda, Pandas otomatik olarak <strong>uyumsuz dizinleri birleştirir</strong> (unioned together). Yani, her iki veri yapısında da mevcut olmayan satır veya sütunlar varsa, bunlar sonuç DataFrame'e eklenir.</p>
+</li>
+<li>
+<p><strong>Eksik Veri Doldurma (fill_value)</strong>: Eğer topladığınız iki girişten birinde veri eksikse (<code>NaN</code>), hesaplama yapılmadan önce bu eksik değerlerin yerine bir <code>fill_value</code> koyabilirsiniz.</p>
+</li>
+</ol>
+<blockquote>
+<p><strong>Önemli Not:</strong> Eğer her iki girişin de aynı konumdaki verileri eksikse (<code>NaN</code> ise), doldurma değeri uygulansa bile sonuç yine eksik (<code>NaN</code>) olacaktır.</p>
+</blockquote>
+<h3>Aşama 3: Parametreler (İşlemi Nasıl Yönlendirirsiniz?)</h3>
+<p><code>add</code> metodu, toplama işlemini kontrol etmenizi sağlayan birkaç önemli parametre alır:</p>
+<table>
+<thead>
+<tr>
+<th>Parametre</th>
+<th>Ne Anlama Gelir?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>other</strong></td>
+<td>Toplama işleminin yapılacağı diğer nesnedir. Bu, bir sayı (skaler), dizi, Series, sözlük veya başka bir DataFrame olabilir.</td>
+</tr>
+<tr>
+<td><strong>axis</strong></td>
+<td>İşlemin hangi eksende eşleşeceğini belirtir. <code>0</code> veya <code>'index'</code> (satırlar arası eşleştirme) ya da <code>1</code> veya <code>'columns'</code> ise (sütunlar arası eşleştirme) olarak ayarlanabilir.</td>
+</tr>
+<tr>
+<td><strong>fill_value</strong></td>
+<td>Hesaplama öncesinde eksik (<code>NaN</code>) değerlerin yerine konulacak değerdir.</td>
+</tr>
+<tr>
+<td><strong>level</strong></td>
+<td>MultiIndex (Çoklu Dizin) kullanılıyorsa, eşleştirmenin hangi dizin seviyesinde yapılacağını belirtir.</td>
+</tr>
+</tbody>
+</table>
+<p><code>axis</code> parametresi için kullanabileceği iki ana değer vardır:</p>
+<table>
+<thead>
+<tr>
+<th>Değer</th>
+<th>Anlamı</th>
+<th>Eşleştirme Yönü</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>0</strong> <strong>veya</strong> <strong>'index'</strong></td>
+<td><strong>Dizin (Satırlar)</strong> boyunca karşılaştır</td>
+<td>Yatay (Satır İsimleri)</td>
+</tr>
+<tr>
+<td><strong>1</strong> <strong>veya</strong> <strong>'columns'</strong></td>
+<td><strong>Sütunlar</strong> boyunca karşılaştır</td>
+<td>Dikey (Sütun İsimleri)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Önemli Not:</strong> <code>DataFrame.add</code> metodunda varsayılan (default) değer <strong>'columns'</strong> (yani 1) olarak ayarlanmıştır.</p>
+</blockquote>
+<h3>Aşama 4: Basit Uygulama Örnekleri</h3>
+<p>Örnek Veri Çerçevemiz;</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;angles&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+                    <span class="s1">&#39;degrees&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">360</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">360</span><span class="p">]},</span>
+                    <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;circle&#39;</span><span class="p">,</span> <span class="s1">&#39;triangle&#39;</span><span class="p">,</span> <span class="s1">&#39;rectangle&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>Çıktı</strong>:</p>
+<div class="highlight"><pre><span></span><code>           <span class="n">angles</span>  <span class="n">degrees</span>
+<span class="n">circle</span>          <span class="mi">0</span>      <span class="mi">360</span>
+<span class="n">triangle</span>        <span class="mi">3</span>      <span class="mi">180</span>
+<span class="n">rectangle</span>       <span class="mi">4</span>      <span class="mi">360</span>
+</code></pre></div>
+
+<p><strong>1. Skaler Değer ile Matematiksel İşlemler</strong></p>
+<p><strong>TOPLAMA İŞLEMİ</strong></p>
+<p>Bir DataFrame'e sabit bir değer eklemek istediğinizde, hem toplama  (<code>+</code>) operatörü hem de <code>add</code> metodunu kullanabilirsiniz ve sonuçlar aynı olacaktır.</p>
+<p><strong>Girdi (Örnek DataFrame</strong> <strong>df</strong>):</p>
+<ul>
+<li>
+<p>'angles' (Açılar) sütununda 0, 3, 4 değerleri.</p>
+</li>
+<li>
+<p><strong>İşlem:</strong> <code>df + 1</code> veya <code>df.add(1)</code>.</p>
+</li>
+<li>
+<p><strong>Sonuç:</strong> DataFrame'deki her bir değer 1 artar (0 olur 1, 360 olur 361 vb.).</p>
+</li>
+</ul>
+<p><strong>Kod ve Çıktısı:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>    <span class="c1"># print(df + 1) işlemi ile eşdeğer </span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code>           <span class="n">angles</span>  <span class="n">degrees</span>
+<span class="n">circle</span>          <span class="mi">1</span>      <span class="mi">361</span>
+<span class="n">triangle</span>        <span class="mi">4</span>      <span class="mi">181</span>
+<span class="n">rectangle</span>       <span class="mi">5</span>      <span class="mi">361</span>
+</code></pre></div>
+
+<p><strong>ÇIKARMA İŞLEMİ:</strong></p>
+<p>İlk sütundan (<strong>angles</strong>) <strong>1</strong> değerini, ikinci sütundan (<strong>degrees</strong>) <strong>2</strong> değerini çıkaralım.</p>
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">sub</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span>    <span class="c1">#  print(df - [1, 2]) işlemi ile eşdeğer</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code>          <span class="n">angles</span>  <span class="n">degrees</span>
+<span class="n">circle</span>         <span class="o">-</span><span class="mi">1</span>      <span class="mi">358</span>
+<span class="n">triangle</span>        <span class="mi">2</span>      <span class="mi">178</span>
+<span class="n">rectangle</span>       <span class="mi">3</span>      <span class="mi">358</span>
+</code></pre></div>
+
+<p><code>axis</code> parametresi ile eksenlere göre liste ve seriyi çıkaralım;</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> 
+            <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;circle&#39;</span><span class="p">,</span> <span class="s1">&#39;triangle&#39;</span><span class="p">,</span> <span class="s1">&#39;rectangle&#39;</span><span class="p">]),</span> 
+            <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code>           <span class="n">angles</span>  <span class="n">degrees</span>
+<span class="n">circle</span>         <span class="o">-</span><span class="mi">1</span>      <span class="mi">359</span>
+<span class="n">triangle</span>        <span class="mi">0</span>      <span class="mi">177</span>
+<span class="n">rectangle</span>      <span class="o">-</span><span class="mi">1</span>      <span class="mi">355</span>
+</code></pre></div>
+
+<p>Görüldüğü gibi, <code>circle</code> satırından <code>1</code>, <code>triangle</code> satırından <code>3</code> ve <code>rectangle</code> satırından <code>5</code> değerleri çıkarıldı.</p>
+<p><strong>BÖLME İŞLEMİ:</strong></p>
+<p>Orjinal Veri çerçevesindeki tüm değerleri 10'a bölelim;</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>    <span class="c1"># print(df / 10) işlemi ile eşdeğer</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code>           <span class="n">angles</span>  <span class="n">degrees</span>
+<span class="n">circle</span>        <span class="mf">0.0</span>     <span class="mf">36.0</span>
+<span class="n">triangle</span>      <span class="mf">0.3</span>     <span class="mf">18.0</span>
+<span class="n">rectangle</span>     <span class="mf">0.4</span>     <span class="mf">36.0</span>
+</code></pre></div>
+
+<p><strong>ÇARPMA İŞLEMİ:</strong></p>
+<p>Basit çarpma işlemi yapalım;</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>    <span class="c1"># print(df * 5) ile eşdeğer</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code>           <span class="n">angles</span>  <span class="n">degrees</span>
+<span class="n">circle</span>          <span class="mi">0</span>     <span class="mi">1800</span>
+<span class="n">triangle</span>       <span class="mi">15</span>      <span class="mi">900</span>
+<span class="n">rectangle</span>      <span class="mi">20</span>     <span class="mi">1800</span>
+</code></pre></div>
+
+<p>Eksenleri (sütunları) bir Sözlük yapısı ile belirtilen değerğerle çarpalım;</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">mul</span><span class="p">({</span><span class="s1">&#39;angles&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;degrees&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}))</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code>           <span class="n">angles</span>  <span class="n">degrees</span>
+<span class="n">circle</span>          <span class="mi">0</span>      <span class="mi">720</span>
+<span class="n">triangle</span>        <span class="mi">0</span>      <span class="mi">360</span>
+<span class="n">rectangle</span>       <span class="mi">0</span>      <span class="mi">720</span>
+</code></pre></div>
+
+<p><code>angles</code> sütununu<code>0</code> ile <code>degrees</code> sütununu <code>2</code> değeri ile çarpmış olduk.</p>
+<p>Bir de satırlara göre farklı değerlerle çarpma işlemi uygulayalım;</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">mul</span><span class="p">({</span><span class="s1">&#39;circle&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> 
+            <span class="s1">&#39;triangle&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> 
+            <span class="s1">&#39;rectangle&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span> 
+            <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code>           <span class="n">angles</span>  <span class="n">degrees</span>
+<span class="n">circle</span>          <span class="mi">0</span>        <span class="mi">0</span>
+<span class="n">triangle</span>        <span class="mi">6</span>      <span class="mi">360</span>
+<span class="n">rectangle</span>      <span class="mi">12</span>     <span class="mi">1080</span>
+</code></pre></div>
+
+<p><code>circle</code> satırı <code>0</code> ile, <code>triangle</code> satırı <code>2</code> ile, <code>rectangle</code> satırı da <code>3</code> ile çarpıldı.</p>
+<p><strong>2. Uyumsuz Şekillerle Çalışma ve</strong> <strong><code>fill_value**</code> </strong>Kullanımı**</p>
+<p><code>fill_value</code> parametresinin kullanımı, <code>add</code> metodunun (ve diğer <code>mul</code>, <code>sub</code> ve <code>div</code> gibi esnek sarmalayıcıların) gücünü gösterir. Farklı şekillerdeki iki DataFrame'i çarptığımızı varsayalım. </p>
+<p>• <strong>Senaryo:</strong> iki sütunlu <code>df</code> ile sadece tek bir sütunu olan <code>other</code> isimli başka bir DataFrame'i çarpmak (<code>mul</code>) istiyoruz.</p>
+<p>• <strong>Operatör Kullanımı (df other):</strong> Eğer <code>other</code>'da olmayan bir sütun varsa (örneğin 'degrees'), bu sütundaki sonuçlar <code>NaN</code> (Not a Number - Eksik değer) olarak döner.</p>
+<p>• <strong>Esnek Metot Kullanımı (<code>df.mul(other, fill_value=0)</code></strong>): Eğer <code>fill_value=0</code> olarak ayarlanırsa, ikinci DataFrame'de (<code>other</code>) eksik olan yerler hesaplama yapılmadan önce 0 ile doldurulur. Böylece, normalde <code>NaN</code> olacak çarpma sonuçları (çünkü 0 ile çarpılır), 0.0 olarak döner.</p>
+<blockquote>
+<p>Bu, <code>add</code> metodu için de geçerlidir. Eğer toplama işleminde eksik verilerinizi 0 ile doldurursanız, o verilerin kaybolmasını engellemiş olursunuz.</p>
+</blockquote>
+<p><strong>İKİ FARKLI VERİ ÇERÇEVESİNİ ÇARPALIM:</strong></p>
+<p>Öncelikle <code>other</code> adında <code>angles</code> adında tek sütundan oluşan bir veri çerçevesi oluşturalım.</p>
+<div class="highlight"><pre><span></span><code><span class="n">other</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;angles&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]},</span>
+                     <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;circle&#39;</span><span class="p">,</span> <span class="s1">&#39;triangle&#39;</span><span class="p">,</span> <span class="s1">&#39;rectangle&#39;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code>           <span class="n">angles</span>
+<span class="n">circle</span>          <span class="mi">0</span>
+<span class="n">triangle</span>        <span class="mi">3</span>
+<span class="n">rectangle</span>       <span class="mi">4</span>
+</code></pre></div>
+
+<p>Şimdi <code>df</code> ile <code>other</code> tablolarını çarpalım;</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">other</span><span class="p">))</span>    <span class="c1"># print(df * other) ile eşdeğer</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code>           <span class="n">angles</span>  <span class="n">degrees</span>
+<span class="n">circle</span>          <span class="mi">0</span>      <span class="n">NaN</span>
+<span class="n">triangle</span>        <span class="mi">9</span>      <span class="n">NaN</span>
+<span class="n">rectangle</span>      <span class="mi">16</span>      <span class="n">NaN</span>
+</code></pre></div>
+
+<p><code>other</code> tablomuzda <code>degrees</code> sütunu olmadığı için çarpma işlemi sonucundaki <code>degrees</code> sütunu değerleri <code>NaN</code> olarak karşımıza çıktı.</p>
+<p>Bu sorunu çözmek için <code>fill_value</code> parametresinden yararlanabiliriz;</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code>           <span class="n">angles</span>  <span class="n">degrees</span>
+<span class="n">circle</span>          <span class="mi">0</span>      <span class="mf">0.0</span>
+<span class="n">triangle</span>        <span class="mi">9</span>      <span class="mf">0.0</span>
+<span class="n">rectangle</span>      <span class="mi">16</span>      <span class="mf">0.0</span>
+</code></pre></div>
+
+<p><strong>İKİ FARKLI VERİ ÇERÇEVESİNİ TOPLAMAYALIM:</strong></p>
+<p>Önce <code>df2</code> isimli <code>angles</code> adında tek sütundan oluşan bir veri çerçevesi oluşturalım. Hem <code>df</code> hem de <code>df2</code> tablomuza bakalım;</p>
+<div class="highlight"><pre><span></span><code><span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;angles&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">70</span><span class="p">]},</span>
+                     <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;circle&#39;</span><span class="p">,</span> <span class="s1">&#39;triangle&#39;</span><span class="p">,</span> <span class="s1">&#39;rectangle&#39;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;df:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;df2:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">df2</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="p">:</span>
+            <span class="n">angles</span>  <span class="n">degrees</span>
+<span class="n">circle</span>          <span class="mi">0</span>      <span class="mi">360</span>
+<span class="n">triangle</span>        <span class="mi">3</span>      <span class="mi">180</span>
+<span class="n">rectangle</span>       <span class="mi">4</span>      <span class="mi">360</span>
+
+<span class="n">df2</span><span class="p">:</span>
+            <span class="n">angles</span>
+<span class="n">circle</span>         <span class="mi">50</span>
+<span class="n">triangle</span>       <span class="mi">60</span>
+<span class="n">rectangle</span>      <span class="mi">70</span>
+</code></pre></div>
+
+<p>Şimdi bu iki tablomuzu <code>add</code> metodu ile toplayalım;</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">df2</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code>           <span class="n">angles</span>  <span class="n">degrees</span>
+<span class="n">circle</span>         <span class="mi">50</span>      <span class="n">NaN</span>
+<span class="n">triangle</span>       <span class="mi">63</span>      <span class="n">NaN</span>
+<span class="n">rectangle</span>      <span class="mi">74</span>      <span class="n">NaN</span>
+</code></pre></div>
+
+<p><code>df2</code> tablomuzda <code>degrees</code> sütunu olmadığı için toplama işlemi sonucundaki <code>degrees</code> sütunu değerleri <code>NaN</code> olarak karşımıza çıktı.</p>
+<p>Bu sorunu çözmek için yine <code>fill_value</code> parametresinden yararlanıyoruz;</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code>           <span class="n">angles</span>  <span class="n">degrees</span>
+<span class="n">circle</span>         <span class="mi">50</span>    <span class="mf">360.0</span>
+<span class="n">triangle</span>       <span class="mi">63</span>    <span class="mf">180.0</span>
+<span class="n">rectangle</span>      <span class="mi">74</span>    <span class="mf">360.0</span>
+</code></pre></div>
+
+<p><code>fill_value=0</code> olarak ayarlandığı için, ikinci DataFrame'de (<code>df2</code>) eksik olan yerler hesaplama yapılmadan önce <code>0</code> ile dolduruldu. Böylece, normalde <code>NaN</code> olacak toplama işlemi sonuçları, (<code>0</code> ile toplandığı için) geçerli bir değer olarak döndü.</p>
+<h2>Kaynak:</h2>
+<ul>
+<li><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.add.html">pandas.DataFrame.add &#8212; pandas 2.3.3 documentation</a></li>
+</ul>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/pandas.html">Pandas</a></li>
+					<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+					<li><a href="/tag/modul.html">Modül</a></li>
+					<li><a href="/tag/add.html">add</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>
