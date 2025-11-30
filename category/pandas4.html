@@ -76,6 +76,49 @@
 </div>		<div class="content container">
 	<div class="posts">
 			<div class="post">
+				<h1 class="post-title" href="/pandas-ya-da-operatoru.html">
+					<a href="/pandas-ya-da-operatoru.html">Pandas - ya da operatörü</a>
+				</h1>
+				<span class="post-date">Cts 16 Temmuz 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/filtre.html">Filtre</a></li>
+								<li><a href="/tag/yada.html">yada</a></li>
+								<li><a href="/tag/operatoru.html">operatörü</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>| (ya da) Operatörü</h1>
+<p>İki farklı kriterin de geçerli olduğu verileri filtrelemek istediğimizde <strong>YA DA (or)</strong> simgesi olan <strong>|</strong> karakteri kullanılır.  <strong>|</strong> karakteri yerine <strong>or</strong> kelimesi kullanırsanız <strong>hata alırsınız.</strong></p>
+<p>Örnek Veri çerçevemiz aşağıda görünmektedir.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">imdb</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/imdb.xlsx&quot;</span><span class="p">,</span> <span class="n">decimal</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">imdb</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Film_Adı</th>
+<th>Yıl</th>
+<th>Puan</th>
+<th>Oylayan_Kişi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>The …</td></tr></tbody></table>
+				</p>
+				<a class="read-more" href="pandas-ya-da-operatoru.html">Continue reading »</a>
+			</div>
+			<div class="post">
 				<h1 class="post-title" href="/pandas-apply.html">
 					<a href="/pandas-apply.html">Pandas - apply</a>
 				</h1>
@@ -310,35 +353,6 @@ ya da sütun …</p>
 <p>Konuya ait yöntemleri incelemek amacıyla <strong>imdb.xlsx</strong> dosyamızı içe aktararak bir veri çerçevesi oluşturarak işe başlayalım. Oluşturacağımız …</p>
 				</p>
 				<a class="read-more" href="pandas-sort_index.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="/pandas-sort_values.html">
-					<a href="/pandas-sort_values.html">Pandas - sort_values</a>
-				</h1>
-				<span class="post-date">Cum 15 Temmuz 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/pandas.html">Pandas</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
-								<li><a href="/tag/veri.html">Veri</a></li>
-								<li><a href="/tag/siralama.html">Sıralama</a></li>
-								<li><a href="/tag/sort_values.html">sort_values</a></li>
-								<li><a href="/tag/by.html">by</a></li>
-								<li><a href="/tag/ascending.html">ascending</a></li>
-								<li><a href="/tag/na_position.html">na_position</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1>sort_values() Fonksiyonu</h1>
-<p>Veri çerçevesini <strong>sütun(lar)daki değerlere göre</strong> sıralamak istersek (sütun başlıklarına göre <strong>değil)</strong>, <code>sort_values()</code> fonksiyonunu kullanmalıyız. Sütun başlıklarına (isimlerine) göre sıralama yapmak isterseniz, <a href="/pandas-sort_index.html">sort_index() Fonksiyonu</a>nu ya da <a href="/pandas-reindex.html">reindex() Fonksiyonu</a> inceleyebilirsiniz</p>
-<h1>Parametreler</h1>
-<h2>by Parametresi</h2>
-<p><code>sort_values()</code> fonksiyonu ile sütun değerlerine göre sıralama yapmak için <code>by</code> parametresi kullanılmalıdır. <code>by</code> parametresi …</p>
-				</p>
-				<a class="read-more" href="pandas-sort_values.html">Continue reading »</a>
 			</div>
 	</div>
 	<div class="pagination">

@@ -81,7 +81,7 @@
 <p><strong>Python'a Giriş</strong> konusuna ait notları, FreeCAD için Python ile Komut Dosyası Oluşturma (Scripting) Eğitiminde paylaşmıştık.  İlave olarak Python'ın en güçlü ve işlevsel kütüphanelerinden biri olan <strong>Pandas</strong>'a ait notları paylaşmaya devam ediyorum.</p>
 <p><img alt="pandas" src="../../images/pandas_logo.png"></p>
 <h2>PANDAS NEDİR?</h2>
-<p><strong>Python'a Giriş</strong> konusu ile alakalı bilgileri, <a href="../freecad-scripting.html">FreeCAD Eğitim Notları</a> bölümünde <a href="../freecad-scripting-01-pythona-giris.html">1. Python'a Giriş</a> başlığı altında paylaşmıştık. Python'da yeniyseniz ya da Python 
+<p><strong>Python'a Giriş</strong> konusu ile alakalı bilgileri, <a href="/freecad-scripting.html">FreeCAD Eğitim Notları</a> bölümünde <a href="/freecad-scripting-01-pythona-giris.html">1. Python'a Giriş</a> başlığı altında paylaşmıştık. Python'da yeniyseniz ya da Python 
 hakkında hiç bir şey bilmiyorsanız, öncelikle bu bölüme göz atmanızı öneririm.  </p>
 <p>Önceki bölüme ilave olarak burada, Python'ın en güçlü ve işlevsel kütüphanelerinden biri olan <strong>Pandas</strong> notlarını paylaşmaya devam ediyorum.</p>
 <p>Pandas Kütüphanesinin ne olduğu ve bu kütüphane ile (<strong>Özellikle Veri Çerçevesi (Data Frame) konusunda</strong>) neler yapılabildiğine dair öğrendiklerimi bu bölümde paylaşıyorum.</p>
@@ -108,270 +108,270 @@ Eğitimlerde kullandığım Veri Setlerine <a href="https://github.com/mhalil/Pa
 <p>Bu başlık altında, sıfırdan <strong>Veri Çerçevesi</strong> (<strong>Data Frame</strong>) oluşturma ya da harici kaynaktan <strong>(MS Excel, LibreOfis Calc, CSV, JSON, URL ve Pano'dan)</strong> okunarak veri çerçevesi oluşturma konularında kullanabileceğimiz Fonksiyonlar anlatılmıştır.</p>
 <ul>
 <li>
-<p><a href="pandas-dataframe.html">DataFrame() Metodu</a></p>
+<p><a href="pandas-dataframe.html"><code>DataFrame()</code> Metodu</a></p>
 </li>
 <li>
-<p><a href="pandas-read_csv.html">read_csv() Metodu</a></p>
+<p><a href="pandas-read_csv.html"><code>read_csv()</code> Metodu</a></p>
 </li>
 </ul>
-<p><em>...... header Parametresi</em></p>
-<p><em>...... names Parametresi</em></p>
-<p><em>...... sep ve delimiter Parametreleri</em></p>
-<p><em>...... index_col Parametresi</em></p>
+<p><em>...... <code>header</code> Parametresi</em></p>
+<p><em>...... <code>names</code> Parametresi</em></p>
+<p><em>...... <code>sep</code> ve <code>delimiter</code> Parametreleri</em></p>
+<p><em>...... <code>index_col</code> Parametresi</em></p>
 <p><em>...... Ondalık ve Binlik Ayırıcı Uygulaması</em></p>
 <ul>
 <li>
-<p><a href="pandas-read_clipboard.html">read_clipboard() Metodu</a></p>
+<p><a href="pandas-read_clipboard.html"><code>read_clipboard()</code> Metodu</a></p>
 </li>
 <li>
-<p><a href="pandas-read_excel.html">read_excel() Metodu</a></p>
+<p><a href="pandas-read_excel.html"><code>read_excel()</code> Metodu</a></p>
 </li>
 </ul>
-<p><em>...... header ve names Parametreleri</em></p>
-<p><em>...... sheet_name Parametresi</em></p>
-<p><em>...... decimal Parametresi</em></p>
-<p><em>...... index_col Parametresi</em></p>
-<p><em>...... usecols Parametresi (Sütunları Atla)</em></p>
-<p><em>...... skiprows Parametresi (Satırları atla)</em></p>
+<p><em>...... <code>header</code> ve <code>names</code> Parametreleri</em></p>
+<p><em>...... <code>sheet_name</code> Parametresi</em></p>
+<p><em>...... <code>decimal</code> Parametresi</em></p>
+<p><em>...... <code>index_col</code> Parametresi</em></p>
+<p><em>...... <code>usecols</code> Parametresi (Sütunları Atla)</em></p>
+<p><em>...... <code>skiprows</code> Parametresi (Satırları atla)</em></p>
 <p><em>...... Ondalık ve Binlik Ayırıcı Uygulaması</em></p>
 <ul>
 <li>
-<p><a href="pandas-read_html.html">read_html() Metodu</a></p>
+<p><a href="pandas-read_html.html"><code>read_html()</code> Metodu</a></p>
 </li>
 <li>
-<p><a href="pandas-read_json.html">read_json() Metodu</a></p>
+<p><a href="pandas-read_json.html"><code>read_json()</code> Metodu</a></p>
 </li>
 <li>
-<p><a href="pandas-read_table.html">read_table() Metodu</a> </p>
+<p><a href="pandas-read_table.html"><code>read_table()</code> Metodu</a> </p>
 </li>
 </ul>
-<p><em>...... delimiter Parametresi</em></p>
+<p><em>...... <code>delimiter</code> Parametresi</em></p>
 <h2>VERİYİ KEŞFET (İNCELE)</h2>
 <p>Bu başlık altında, <strong>Veri Çerçevesi</strong> (<strong>Data Frame</strong>) içeriğini, sayısal bazı değerlerini ve biçimlerinin görüntülemeye dair fonksiyonları öğreneceğiz.</p>
 <ul>
 <li>
-<p><a href="/pandas-columns.html">columns Metodu</a> </p>
+<p><a href="/pandas-columns.html"><code>columns</code> Metodu</a> </p>
 </li>
 <li>
-<p><a href="/pandas-describe.html">describe() Metodu</a> </p>
+<p><a href="/pandas-describe.html"><code>describe()</code> Metodu</a> </p>
 </li>
 <li>
-<p><a href="/pandas-dtypes.html">dtypes Metodu</a> </p>
+<p><a href="/pandas-dtypes.html"><code>dtypes</code> Metodu</a> </p>
 </li>
 <li>
-<p><a href="/pandas-head.html">head() Metodu</a> </p>
+<p><a href="/pandas-head.html"><code>head()</code> Metodu</a> </p>
 </li>
 <li>
-<p><a href="/pandas-index.html">index Metodu</a> </p>
+<p><a href="/pandas-index.html"><code>index</code> Metodu</a> </p>
 </li>
 <li>
-<p><a href="/pandas-info.html">info() Metodu</a> </p>
+<p><a href="/pandas-info.html"><code>info()</code> Metodu</a> </p>
 </li>
 <li>
-<p><a href="/pandas-len.html">len() Metodu</a> </p>
+<p><a href="/pandas-len.html"><code>len()</code> Metodu</a> </p>
 </li>
 <li>
-<p><a href="/pandas-shape.html">shape Metodu</a> </p>
+<p><a href="/pandas-shape.html"><code>shape</code> Metodu</a> </p>
 </li>
 <li>
-<p><a href="/pandas-tail.html">tail() Metodu</a> </p>
+<p><a href="/pandas-tail.html"><code>tail()</code> Metodu</a> </p>
 </li>
 <li>
-<p><a href="/pandas-unique-ve-nunique.html">unique() ve nunique() Metotları</a>  </p>
+<p><a href="/pandas-unique-ve-nunique.html"><code>unique()</code> ve nunique()` Metotları</a>  </p>
 </li>
 <li>
-<p><a href="/pandas-value_counts.html">value_counts() Metodu</a> </p>
+<p><a href="/pandas-value_counts.html"><code>value_counts()</code> Metodu</a> </p>
 </li>
 </ul>
 <h2>VERİ SEÇİM YÖNTEMLERİ</h2>
 <p>Bu başlık altında, Veri Çerçevesi oluştururken ya da oluşturduktan sonra istenilen satır ve sütunların seçilmesi ya da seçilmemesi konusunda kullanabileceğimiz Fonksiyonları / metotları inceleyelim. Veri çerçevesinde işimize yaramayacak verileri devre dışı bırakmak için bu yöntemleri kullanabiliriz.</p>
 <ul>
 <li>
-<p><a href="/pandas-at.html">at[] Metodu</a> </p>
+<p><a href="/pandas-at.html"><code>at[]</code> Metodu</a> </p>
 </li>
 <li>
-<p><a href="/pandas-iat.html">iat[] Metodu</a> </p>
+<p><a href="/pandas-iat.html"><code>iat[]</code> Metodu</a> </p>
 </li>
 <li>
-<p><a href="/pandas-pandas-index.html">Index() Metodu</a> </p>
+<p><a href="/pandas-pandas-index.html"><code>Index()</code> Metodu</a> </p>
 </li>
 <li>
-<p><a href="/pandas-iloc.html">iloc[] Metodu</a> </p>
+<p><a href="/pandas-iloc.html"><code>iloc[]</code> Metodu</a> </p>
 </li>
 <li>
-<p><a href="/pandas-loc.html">loc[] Metodu</a> </p>
+<p><a href="/pandas-loc.html"><code>loc[]</code> Metodu</a> </p>
 </li>
 </ul>
 <h2>EKSİK - KAYIP VERİ YÖNTEMLERİ</h2>
 <p>Bu başlık altında, Veri çerçevemizde eksik veri (excel tablosundaki boş hücre gibi düşünebiliriz) olup olmadığını, varsa kaç adet olduğunu tespit edebileceğimiz Pandas fonksiyonları mevcuttur. Eksik / Kayıp verileri istersek farklı fonksiyonları kullanarak silebilir ya da istediğimiz değer ile doldurabiliriz.</p>
 <ul>
-<li><a href="/pandas-dropna.html">dropna() Metodu</a></li>
+<li><a href="/pandas-dropna.html"><code>dropna()</code> Metodu</a></li>
 </ul>
-<p><em>...... axis Parametresi</em></p>
-<p><em>...... inplace Parametresi</em></p>
-<p><em>...... thresh Parametresi</em></p>
+<p><em>...... <code>axis</code> Parametresi</em></p>
+<p><em>...... <code>inplace</code> Parametresi</em></p>
+<p><em>...... <code>thresh</code> Parametresi</em></p>
 <ul>
-<li><a href="/pandas-fillna.html">fillna() Metodu</a></li>
+<li><a href="/pandas-fillna.html"><code>fillna()</code> Metodu</a></li>
 </ul>
-<p><em>...... value Parametresi</em></p>
-<p><em>...... method Parametresi</em></p>
-<p><em>......... backfill</em></p>
-<p><em>......... bfill</em></p>
-<p><em>......... pad</em></p>
-<p><em>......... ffill</em></p>
-<p><em>......... None</em></p>
+<p><em>...... <code>value</code> Parametresi</em></p>
+<p><em>...... <code>method</code> Parametresi</em></p>
+<p><em>......... <code>backfill</code></em></p>
+<p><em>......... <code>bfill</code></em></p>
+<p><em>......... <code>pad</code></em></p>
+<p><em>......... <code>ffill</code></em></p>
+<p><em>......... <code>None</code></em></p>
 <ul>
 <li>
-<p><a href="/pandas-isna.html">isna() Metodu</a></p>
+<p><a href="/pandas-isna.html"><code>isna()</code> Metodu</a></p>
 </li>
 <li>
-<p><a href="/pandas-isnull.html">isnull() Metodu</a></p>
+<p><a href="/pandas-isnull.html"><code>isnull()</code> Metodu</a></p>
 </li>
 <li>
-<p><a href="/pandas-notna.html">notna() Metodu</a></p>
+<p><a href="/pandas-notna.html"><code>notna()</code> Metodu</a></p>
 </li>
 </ul>
 <h2>VERİ DÜZENLEME YÖNTEMLERİ</h2>
 <p>Bu başlık altında, Veri çerçevemizi düzenlemek ve değiştirmek için kullanabileceğimiz fonksiyonlar anlatılmaktadır.</p>
 <ul>
 <li>
-<p><a href="/pandas-add.html">add() Metodu</a></p>
+<p><a href="/pandas-add.html"><code>add()</code> Metodu</a></p>
 </li>
 <li>
-<p><a href="/pandas-apply.html">apply() Metodu</a></p>
+<p><a href="/pandas-apply.html"><code>apply()</code> Metodu</a></p>
 </li>
 </ul>
 <p><em>...... Kullanıcı Tanımlı Fonksiyon ile Kullanım</em></p>
-<p><em>...... lambda() Fonksiyonu ile Kullanım</em></p>
+<p><em>...... <code>lambda()</code> Fonksiyonu ile Kullanım</em></p>
 <ul>
 <li>
-<p><a href="/pandas-assign-metodu.html">assign() Metodu</a></p>
+<p><a href="/pandas-assign-metodu.html"><code>assign()</code> Metodu</a></p>
 </li>
 <li>
-<p><a href="/pandas-astype.html">astype() Metodu</a></p>
+<p><a href="/pandas-astype.html"><code>astype()</code> Metodu</a></p>
 </li>
 <li>
-<p><a href="/pandas-convert_dtypes.html">convert_dtypes() Metodu</a></p>
+<p><a href="/pandas-convert_dtypes.html"><code>convert_dtypes()</code> Metodu</a></p>
 </li>
 <li>
-<p><a href="/pandas-drop.html">drop() Metodu</a></p>
+<p><a href="/pandas-drop.html"><code>drop()</code> Metodu</a></p>
 </li>
 </ul>
-<p><em>...... axis Parametresi</em></p>
-<p><em>...... inplace Parametresi</em></p>
+<p><em>...... <code>axis</code> Parametresi</em></p>
+<p><em>...... <code>inplace</code> Parametresi</em></p>
 <ul>
-<li><a href="/pandas-drop_duplicates.html">drop_duplicates() Metodu</a></li>
+<li><a href="/pandas-drop_duplicates.html"><code>drop_duplicates()</code> Metodu</a></li>
 </ul>
-<p><em>...... subset Parametresi</em></p>
-<p><em>...... keep Parametresi</em></p>
+<p><em>...... <code>subset</code> Parametresi</em></p>
+<p><em>...... <code>keep</code> Parametresi</em></p>
 <ul>
 <li>
-<p><a href="/pandas-pop.html">pop() Metodu</a></p>
+<p><a href="/pandas-pop.html"><code>pop()</code> Metodu</a></p>
 </li>
 <li>
-<p><a href="/pandas-replace.html">replace() Metodu</a></p>
+<p><a href="/pandas-replace.html"><code>replace()</code> Metodu</a></p>
 </li>
 <li>
-<p><a href="/pandas-resample.html">resample() Metodu</a></p>
+<p><a href="/pandas-resample.html"><code>resample()</code> Metodu</a></p>
 </li>
 <li>
-<p><a href="/pandas-set_index.html">set_index() Metodu</a></p>
+<p><a href="/pandas-set_index.html"><code>set_index()</code> Metodu</a></p>
 </li>
 <li>
 <p><a href="/pandas-string_metotlari.html">String Metotları</a></p>
 </li>
 </ul>
-<p><em>......... upper() Metodu</em></p>
-<p><em>......... lower() Metodu</em></p>
-<p><em>......... capitalize() Metodu</em></p>
-<p><em>......... contains() Metodu</em></p>
-<p><em>......... get() Metodu</em></p>
-<p><em>......... slice() Metodu</em></p>
+<p><em>......... <code>upper()</code> Metodu</em></p>
+<p><em>......... <code>lower()</code> Metodu</em></p>
+<p><em>......... <code>capitalize()</code> Metodu</em></p>
+<p><em>......... <code>contains()</code> Metodu</em></p>
+<p><em>......... <code>get()</code> Metodu</em></p>
+<p><em>......... <code>slice()</code> Metodu</em></p>
 <ul>
-<li><a href="/pandas-transpose.html">transpose() Metodu</a></li>
+<li><a href="/pandas-transpose.html"><code>transpose()</code> Metodu</a></li>
 </ul>
 <h3>Metot ve Operatör Kullanımı ile Yeni Sütun Eklemek</h3>
 <ul>
 <li>
-<p><a href="/pandas-sum-operatoru.html">sum() Metodu (Toplam)</a></p>
+<p><a href="/pandas-sum-operatoru.html"><code>sum()</code> Metodu (Toplam)</a></p>
 </li>
 <li>
-<p><a href="/pandas-mean.html">mean() Metodu (Ortalama)</a></p>
+<p><a href="/pandas-mean.html"><code>mean()</code> Metodu (Ortalama)</a></p>
 </li>
 <li>
-<p><a href="/pandas-toplama-operatoru.html">+ (Toplama) Operatörü</a></p>
+<p><a href="/pandas-toplama-operatoru.html"><code>+</code>(Toplama) Operatörü</a></p>
 </li>
 <li>
-<p><a href="/pandas-cikarma-operatoru.html">- (Çıkarma) Operatörü</a></p>
+<p><a href="/pandas-cikarma-operatoru.html"><code>-</code> (Çıkarma) Operatörü</a></p>
 </li>
 <li>
-<p><a href="/pandas-carpma-operatoru.html">* (Çarpma) Operatörü</a></p>
+<p><a href="/pandas-carpma-operatoru.html"><code>*</code> (Çarpma) Operatörü</a></p>
 </li>
 <li>
-<p><a href="/pandas-bolme-operatoru.html">/ (Bölme) Operatörü</a></p>
+<p><a href="/pandas-bolme-operatoru.html"><code>/</code> (Bölme) Operatörü</a></p>
 </li>
 </ul>
 <h2>VERİ ÇERÇEVELERİNİ BİRLEŞTİR</h2>
 <p>Pandas Kütüphanesinde Veri çerçevelerini birleştirmek için kullanılabilecek birden fazla Fonksiyon/Metot vardır. Bu başlık altında, bu Fonksiyonların kullanımı anlatılmıştır</p>
 <ul>
 <li>
-<p><a href="/pandas-concat.html">concat() Metodu</a></p>
+<p><a href="/pandas-concat.html"><code>concat()</code> Metodu</a></p>
 </li>
 <li>
-<p><a href="/pandas-join.html">join() Metodu</a></p>
+<p><a href="/pandas-join.html"><code>join()</code> Metodu</a></p>
 </li>
 </ul>
-<p><em>...... how Parametresi</em></p>
-<p><em>......... left</em></p>
-<p><em>......... right</em></p>
-<p><em>......... outer</em></p>
-<p><em>......... inner</em></p>
+<p><em>...... <code>how</code> Parametresi</em></p>
+<p><em>......... <code>left</code></em></p>
+<p><em>......... <code>right</code></em></p>
+<p><em>......... <code>outer</code></em></p>
+<p><em>......... <code>inner</code></em></p>
 <ul>
-<li><a href="/pandas-merge.html">merge() Metodu</a></li>
+<li><a href="/pandas-merge.html"><code>merge()</code> Metodu</a></li>
 </ul>
-<p><em>...... on Parametresi</em></p>
-<p><em>...... how Parametresi</em></p>
-<p><em>......... inner</em></p>
-<p><em>......... outer</em></p>
-<p><em>......... left</em></p>
-<p><em>......... right</em></p>
-<p><em>......... cross</em></p>
-<p><em>...... left_on Parametresi</em></p>
-<p><em>...... right_on Parametresi</em></p>
-<p><em>...... suffixes Parametresi</em></p>
+<p><em>...... <code>on</code> Parametresi</em></p>
+<p><em>...... <code>how</code> Parametresi</em></p>
+<p><em>......... <code>inner</code></em></p>
+<p><em>......... <code>outer</code></em></p>
+<p><em>......... <code>left</code></em></p>
+<p><em>......... <code>right</code></em></p>
+<p><em>......... <code>cross</code></em></p>
+<p><em>...... <code>left_on</code> Parametresi</em></p>
+<p><em>...... <code>right_on</code> Parametresi</em></p>
+<p><em>...... <code>suffixes</code> Parametresi</em></p>
 <h2>VERİ SIRALAMA YÖNTEMLERİ</h2>
 <p>Oluşturulan Veri Çerçevelerinin, isteğimiz doğrultusunda sıralanması için kullanabileceğimiz yöntemlere, bu başlık altında değineceğiz.</p>
 <p>Pandas üç tür sıralamayı destekler ; İndeks (dizin) etiketlerine göre sıralama, Sütun değerlerine göre sıralama ve Her ikisinin birleşimine göre sıralama.)</p>
 <ul>
-<li><a href="/pandas-reindex.html">reindex() Metodu</a></li>
+<li><a href="/pandas-reindex.html"><code>reindex()</code> Metodu</a></li>
 </ul>
-<p><em>...... columns Parametresi</em></p>
-<p><em>...... index Parametresi</em></p>
-<p><em>...... axis Parametresi</em></p>
-<p><em>......... index Seçeneği</em></p>
-<p><em>......... columns Seçeneği</em></p>
+<p><em>...... <code>columns</code> Parametresi</em></p>
+<p><em>...... <code>index</code> Parametresi</em></p>
+<p><em>...... <code>axis</code> Parametresi</em></p>
+<p><em>......... <code>index</code> Seçeneği</em></p>
+<p><em>......... <code>columns</code> Seçeneği</em></p>
 <ul>
-<li><a href="/pandas-sort_index.html">sort_index() Metodu</a></li>
+<li><a href="/pandas-sort_index.html"><code>sort_index()</code> Metodu</a></li>
 </ul>
-<p><em>...... ascending Parametresi</em></p>
-<p><em>...... axis Parametresi</em></p>
+<p><em>...... <code>ascending</code> Parametresi</em></p>
+<p><em>...... <code>axis</code> Parametresi</em></p>
 <ul>
-<li><a href="/pandas-sort_values.html">sort_values() Metodu</a></li>
+<li><a href="/pandas-sort_values.html"><code>sort_values()</code> Metodu</a></li>
 </ul>
-<p><em>...... by Parametresi</em></p>
-<p><em>...... ascending Parametresi</em></p>
-<p><em>...... na_position Parametresi</em></p>
+<p><em>...... <code>by</code> Parametresi</em></p>
+<p><em>...... <code>ascending</code> Parametresi</em></p>
+<p><em>...... <code>na_position</code> Parametresi</em></p>
 <h2>VERİ FİLTRELEME YÖNTEMLERİ</h2>
 <p>Pandas kütüphanesi ile en sık yapılan işlemlerden biri de Filtreleme işlemidir. Binlerce, onbinlerce hatta milyonlarca kayıt arasından istediğimize ulaşmak için filreleme komutlarını kullanacağız. Bu bölümdeki anlatılanları da dikkatle okuyup öğrenmenizi tavsiye ederim.</p>
 <p>Sütun içerisindeki verilere göre filtreleme uygulamak istersek; 
 <code>VeriCervecesiAdı["SütunAdı"] operatör (==, &lt;, ...vb) "Filtre_Kriteri"</code> yöntemi kullanılabilir.</p>
-<p>Pythonda kullanıdığımız <strong>Karşılaştırma operatörlerini (&lt; , &gt; , &lt;=, &gt;=, ==, !=, )</strong> ve <strong>Mantıksal Operatörleri ( (and, ve) &amp; ve (or, Ya da) |</strong> Pandas içerisinde de kullanabiliriz.</p>
+<p>Pythonda kullanıdığımız <strong>Karşılaştırma operatörlerini (<code>&lt;</code> , <code>&gt;</code> , <code>&lt;=</code>, <code>&gt;=</code>, <code>==</code>, <code>!=</code>, )</strong> ve <strong>Mantıksal Operatörleri ( (and, ve) <code>&amp;</code> ve (or, Ya da) <code>|</code></strong> Pandas içerisinde de kullanabiliriz.</p>
 <ul>
 <li>
-<p><a href="/pandas-between.html">between() Metodu</a></p>
+<p><a href="/pandas-between.html"><code>between()</code> Metodu</a></p>
 </li>
 <li>
-<p><a href="/pandas-lambda.html">lambda() Metodu</a></p>
+<p><a href="/pandas-lambda.html"><code>lambda()</code> Metodu</a></p>
 </li>
 <li>
 <p><a href="/pandas-sutun-filtrele.html">Sütun Filtrelemek</a></p>
@@ -380,22 +380,22 @@ Eğitimlerde kullandığım Veri Setlerine <a href="https://github.com/mhalil/Pa
 <h3>Karşılaştırma Operatorleri</h3>
 <ul>
 <li>
-<p><a href="/pandas-buyuktur-operatoru.html">büyüktür (&gt;) Operatörü</a></p>
+<p><a href="/pandas-buyuktur-operatoru.html">büyüktür (<code>&gt;</code>) Operatörü</a></p>
 </li>
 <li>
-<p><a href="/pandas-buyukesit-operatoru.html">büyükeşit (&gt;=) Operatörü</a></p>
+<p><a href="/pandas-buyukesit-operatoru.html">büyükeşit (<code>&gt;=</code>) Operatörü</a></p>
 </li>
 <li>
-<p><a href="/pandas-esittir-operatoru.html">esittir (==) Operatörü</a></p>
+<p><a href="/pandas-esittir-operatoru.html">esittir (<code>==</code>) Operatörü</a></p>
 </li>
 <li>
-<p><a href="/pandas-esit-degil-operatoru.html">esit değil (!=) Operatörü</a></p>
+<p><a href="/pandas-esit-degil-operatoru.html">esit değil (<code>!=</code>) Operatörü</a></p>
 </li>
 <li>
-<p><a href="/pandas-kucuktur-operatoru.html">küçüktür (&lt;) Operatörü</a></p>
+<p><a href="/pandas-kucuktur-operatoru.html">küçüktür (<code>&lt;</code>) Operatörü</a></p>
 </li>
 <li>
-<p><a href="/pandas-kucukesittir-operatoru.html">küçükeşit (&lt;=) Operatörü</a></p>
+<p><a href="/pandas-kucukesittir-operatoru.html">küçükeşit (<code>&lt;=</code>) Operatörü</a></p>
 </li>
 <li>
 <p><a href="/pandas-metot-ve-operator-kullanarak-filtreleme.html">Metot ve Operatörü Birlikte Kullanarak Filtrelemek</a></p>
@@ -404,40 +404,59 @@ Eğitimlerde kullandığım Veri Setlerine <a href="https://github.com/mhalil/Pa
 <h3>Mantıksal Operatörler</h3>
 <ul>
 <li>
-<p><a href="/pandas-ve-operatoru.html">ve (&amp;) Operatörü</a></p>
+<p><a href="/pandas-ve-operatoru.html">ve (<code>&amp;</code>) Operatörü</a></p>
 </li>
 <li>
-<p><a href="/pandas-ya-da-operatoru.html">ya da (|) Operatörü</a></p>
+<p><a href="/pandas-ya-da-operatoru.html">ya da (<code>|</code>) Operatörü</a></p>
 </li>
 </ul>
 <h2>GRUPLAMA YÖNTEMLERİ</h2>
 <ul>
-<li><a href="/pandas-groupby.html">groupby() Metodu</a></li>
+<li><a href="/pandas-groupby.html"><code>groupby()</code> Metodu</a></li>
 </ul>
-<p><em>...... mean() Metodu</em></p>
-<p><em>...... max() Metodu</em></p>
-<p><em>...... min() Metodu</em></p>
-<p><em>...... sort_values() Metodu</em></p>
-<p><em>...... count() Metodu</em></p>
-<p><em>...... value_counts() Metodu</em></p>
+<p><em>...... <code>mean()</code> Metodu</em></p>
+<p><em>...... <code>max()</code> Metodu</em></p>
+<p><em>...... <code>min()</code> Metodu</em></p>
+<p><em>...... <code>sort_values()</code> Metodu</em></p>
+<p><em>...... <code>count()</code> Metodu</em></p>
+<p><em>...... <code>value_counts()</code> Metodu</em></p>
+<ul>
+<li><a href="/pandas-pdgrouper.html"><code>pandas.Grouper</code> Nesnesi</a></li>
+</ul>
+<p><em>...... <code>key</code> Parametresi</em></p>
+<p><em>...... <code>level</code> Parametresi</em></p>
+<p><em>...... <code>freq</code> Parametresi</em></p>
+<p><em>...... <code>closed</code> Parametresi</em></p>
+<p><em>......... <code>left</code></em></p>
+<p><em>......... <code>right</code></em></p>
+<p><em>...... <code>label</code> Parametresi</em></p>
+<p><em>......... <code>left</code></em></p>
+<p><em>......... <code>right</code></em></p>
+<p><em>...... <code>origin</code> Parametresi</em></p>
+<p><em>......... <code>epoch</code></em></p>
+<p><em>......... <code>start</code></em></p>
+<p><em>......... <code>start_day</code></em></p>
+<p><em>......... <code>end</code></em></p>
+<p><em>......... <code>end_day</code></em></p>
+<p><em>...... <code>offset</code> Parametresi</em></p>
 <h2>DİĞER BAZI FONKSİYONLAR</h2>
 <ul>
-<li><a href="/pandas-melt.html">melt() Metodu</a></li>
+<li><a href="/pandas-melt.html"><code>melt()</code> Metodu</a></li>
 </ul>
-<p><em>...... id_vars Parametresi</em></p>
-<p><em>...... var_name Parametresi</em></p>
-<p><em>...... value_name Parametresi</em></p>
+<p><em>...... <code>id_vars</code> Parametresi</em></p>
+<p><em>...... <code>var_name</code> Parametresi</em></p>
+<p><em>...... <code>value_name</code> Parametresi</em></p>
 <ul>
-<li><a href="/pandas-pivot_table.html">pivot_table() Metodu</a></li>
+<li><a href="/pandas-pivot_table.html"><code>pivot_table()</code> Metodu</a></li>
 </ul>
-<p><em>...... values Parametresi</em></p>
-<p><em>...... index Parametresi</em></p>
-<p><em>...... columns Parametresi</em></p>
-<p><em>...... aggfunc Parametresi</em></p>
-<p><em>...... fill_value Parametresi</em></p>
-<p><em>...... margins Parametresi</em></p>
-<p><em>...... margins_name Parametresi</em></p>
-<p><em>...... sort Parametresi</em></p>
+<p><em>...... <code>values</code> Parametresi</em></p>
+<p><em>...... <code>index</code> Parametresi</em></p>
+<p><em>...... <code>columns</code> Parametresi</em></p>
+<p><em>...... <code>aggfunc</code> Parametresi</em></p>
+<p><em>...... <code>fill_value</code> Parametresi</em></p>
+<p><em>...... <code>margins</code> Parametresi</em></p>
+<p><em>...... <code>margins_name</code> Parametresi</em></p>
+<p><em>...... <code>sort</code> Parametresi</em></p>
 <h1>Pandas Veri Çerçevesi Özet Bilgileri (CheatSheet)</h1>
 <p>Pandas Veri Çerçevesi (Data Frame) komutlarını (fonksiyon, metot, parametre) bir yerde toplayarak ihtiyaç halinde, farklı konulara ait komutlara daha hızlı ulaşabileceğimiz bir <strong>Başvuru Kılavuzu / Özet Bilgi Tablosu (CheatSheet)</strong> oluşturmaya çalışıyorum. Başvuru kılavuzunu / Özet Bilgi Tablosunu (CheatSheet) oluştururken, komutları, <strong>Pandas Veri Çerçevesi (Data Frame) Konu Başlıkları</strong>na göre kategorize etmeyi planlıyorum.</p>
 <p>Sayfaya Yeni Konu başlıkları ekledikçe, Özet Bilgi Tablosunu da güncellemeye gayret edeceğim.<br>

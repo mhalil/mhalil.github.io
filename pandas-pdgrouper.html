@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Pandas - pd.Grouper" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/pandas-pdgrouper.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Pandas - pd.Grouper</h1>
+	<span class="post-date">Paz 30 Kasım 2025</span>
+	<h2>🐼 pandas.Grouper Nedir?</h2>
+<p><code>pandas.Grouper</code>, özellikle bir DataFrame veya Series üzerinde <code>.groupby()</code> metodunu kullanırken, <strong>gruplama talimatlarını detaylı bir şekilde belirtmenize</strong> olanak tanıyan bir nesnedir.</p>
+<p>En temel amacı, sütun adı veya index seviyesi gibi standart gruplama anahtarlarının yanı sıra, özellikle <strong>zaman serisi verileri</strong> (datetime-like) üzerinde <strong>yeniden örnekleme (resampling)</strong> tabanlı gruplamalar yapmaktır.</p>
+<p>Özetle, <code>pandas.Grouper</code>, özellikle karmaşık yeniden örnekleme senaryolarında, aralık sınırlarını, etiketleme noktalarını ve başlangıç zamanlarını (<code>origin</code>/<code>offset</code>) özelleştirmek istediğinizde standart <code>groupby()</code> kullanımının ötesine geçerek size esneklik sağlar.</p>
+<h2>Parametreler</h2>
+<table>
+<thead>
+<tr>
+<th>Parametre</th>
+<th>Tip / Seçenekler</th>
+<th>Varsayılan</th>
+<th>Açıklama</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>key</code></strong></td>
+<td><code>str</code></td>
+<td><code>None</code></td>
+<td>Gruplama için kullanılacak <strong>sütun adını</strong> (anahtarını) belirtir.</td>
+</tr>
+<tr>
+<td><strong><code>level</code></strong></td>
+<td><code>str</code> veya <code>int</code></td>
+<td><code>None</code></td>
+<td>Gruplama için kullanılacak <strong>index seviyesini</strong> (adını/numarasını) belirtir.</td>
+</tr>
+<tr>
+<td><strong><code>freq</code></strong></td>
+<td><code>str</code> / Frekans Nesnesi</td>
+<td><code>None</code></td>
+<td>Anahtar bir zaman objesi ise (datetime), veriyi yeniden örneklemek için kullanılacak <strong>zaman aralığını</strong> (örneğin: '<code>1W</code>', '<code>D</code>', '<code>M</code>') belirtir.</td>
+</tr>
+<tr>
+<td><strong><code>axis</code></strong></td>
+<td><code>str</code> veya <code>int</code></td>
+<td><code>0</code> (Index)</td>
+<td>Gruplamanın yapılacağı ekseni (satırlar için <code>0/index</code>, sütunlar için <code>1/columns</code>) belirtir.</td>
+</tr>
+<tr>
+<td><strong><code>sort</code></strong></td>
+<td><code>bool</code></td>
+<td><code>False</code></td>
+<td>Ortaya çıkan etiketlerin (grup anahtarlarının) sıralanıp sıralanmayacağını belirtir.</td>
+</tr>
+<tr>
+<td><strong><code>closed</code></strong></td>
+<td><code>{'left', 'right'}</code></td>
+<td><code>None</code></td>
+<td>Sadece <code>freq</code> kullanıldığında geçerlidir. Zaman aralıklarının hangi ucunun <strong>kapalı (dahil)</strong> olacağını belirtir.</td>
+</tr>
+<tr>
+<td><strong><code>label</code></strong></td>
+<td><code>{'left', 'right'}</code></td>
+<td><code>None</code></td>
+<td>Sadece <code>freq</code> kullanıldığında geçerlidir. Ortaya çıkan grupları etiketlemek için aralığın hangi sınırının kullanılacağını belirtir.</td>
+</tr>
+<tr>
+<td><strong><code>origin</code></strong></td>
+<td><code>Timestamp</code> veya <code>str</code></td>
+<td><code>'start_day'</code></td>
+<td>Sadece <code>freq</code> kullanıldığında geçerlidir. Gruplama kutularının hesaplanacağı <strong>sabit başlangıç noktasını</strong> ayarlar (örneğin: <code>'epoch'</code>, <code>'start'</code>, <code>'start_day'</code>).</td>
+</tr>
+<tr>
+<td><strong><code>offset</code></strong></td>
+<td><code>Timedelta</code> veya <code>str</code></td>
+<td><code>None</code></td>
+<td>Sadece <code>freq</code> kullanıldığında geçerlidir. <code>origin</code>'e eklenecek bir <strong>kaydırma (<code>offset</code>)</strong> zaman farkını belirtir. (Kullanımdan kaldırılan <code>base</code> argümanının yerine geçer.)</td>
+</tr>
+<tr>
+<td><strong><code>dropna</code></strong></td>
+<td><code>bool</code></td>
+<td><code>True</code></td>
+<td><code>True</code> ise, grup anahtarlarındaki <strong><code>NA</code> (eksik)</strong> değerler içeren satırlar/sütunlar gruplamadan çıkarılır. <code>False</code> ise, <code>NA</code> değerler de bir grup anahtarı olarak değerlendirilir.</td>
+</tr>
+</tbody>
+</table>
+<h2>🛠️ Temel Kullanım ve Parametreler</h2>
+<p><code>pandas.Grouper</code> nesnesi, Pandas'ta en yaygın <code>groupby()</code> metodu kullanımı olan, parantez içine doğrudan bir <strong>sütun adı (string)</strong> vermek yerine, bir sütun adını (string) değil, o sütun üzerinde <strong>nasıl bir gruplama yapılacağına dair bir dizi talimatı</strong> içeren bir nesneyi <code>groupby()</code> fonksiyonuna iletmemizi sağlar.</p>
+<p>Yani bir sütunu seçerken, aynı anda gruplama mantığına dair ek ayarlar (parametrik kontrol) tanımlamanıza olanak tanır.</p>
+<h3>Neden "Daha Fazla Kontrol" Sağlar?</h3>
+<p>Basit bir string (örneğin; <code>'Tarih'</code>) sadece sütunun kendisini seçerken, <code>pd.Grouper(...)</code> şunları yapmanızı sağlar:</p>
+<ol>
+<li>
+<p><strong><code>key='Tarih'</code></strong>: Hangi sütunun seçileceğini belirtir (Tıpkı string gibi).</p>
+</li>
+<li>
+<p><strong><code>freq='W'</code></strong>: Gruplamayı <strong>rastgele değerler</strong> yerine, <strong>Haftalık</strong> (Weekly) zaman aralıklarına göre yapılacağını söyler.</p>
+</li>
+<li>
+<p><strong><code>closed='left'</code></strong>: Haftalık aralıkların sol sınırının (haftanın başlangıcının) gruplamaya dahil edileceğini söyler.</p>
+</li>
+</ol>
+<p><strong>Özetle:</strong> String sadece <strong>"neye göre"</strong> gruplanacağını söylerken; <code>pandas.Grouper</code>, <strong>"neye göre"</strong> gruplanacağını, <strong>"nasıl"</strong> (haftalık mı, aylık mı) ve <strong>"hangi kurallarla"</strong> (aralıkların başlangıcı nasıl olacak) gruplanacağını bir paket halinde <code>groupby()</code>'a iletir. Özellikle zaman serisi verilerinde <strong>Yeniden Örnekleme (Resampling)</strong> yapmak için bu kontrol hayati önem taşır.</p>
+<h3>Sütun veya Index Seviyesine Göre Gruplama</h3>
+<p>Standart bir sütuna göre gruplama yapmak için <code>key</code> veya <code>level</code> parametrelerini kullanabilirsiniz.</p>
+<ul>
+<li>
+<p><strong><code>key</code> (str, varsayılan: <code>None</code>):</strong> Gruplama yapılacak sütunun adını belirtir.</p>
+</li>
+<li>
+<p><em>Örnek:</em> <code>df.groupby(pd.Grouper(key="Animal"))</code></p>
+</li>
+<li>
+<p><strong><code>level</code> (str veya int, varsayılan: <code>None</code>):</strong> Gruplama yapılacak index seviyesini belirtir.</p>
+</li>
+</ul>
+<h3>Zaman Serisi Yeniden Örnekleme (Resampling)</h3>
+<p><code>pandas.Grouper</code>'ın en önemli özelliği, bir tarih/saat sütununa veya indekse göre zaman periyotlarına dayalı gruplama yapmaktır. Bu, <code>freq</code> parametresi ile sağlanır.</p>
+<ul>
+<li>
+<p><strong><code>freq</code> (str/frekans nesnesi, varsayılan: <code>None</code>):</strong> Eğer gruplama anahtarı (<code>key</code> veya <code>level</code>) bir zaman objesi ise, gruplamanın yapılacağı zaman aralığını belirtir. (örneğin: '<code>D</code>' günlük, '<code>W</code>' haftalık, '<code>M</code>' aylık, '<code>1H</code>' saatlik). Bu parametre kullanıldığında, <code>Grouper</code> aslında bir <strong><code>TimeGrouper</code></strong> davranışı sergiler.</p>
+</li>
+<li>
+<p><strong><code>closed</code> ('<code>left</code>' veya '<code>right</code>'):</strong> Gruplama aralığının hangi ucunun kapalı (dahil) olacağını belirtir. (Sadece <code>freq</code> kullanıldığında geçerlidir.)</p>
+</li>
+<li>
+<p><strong><code>label</code> ('<code>left</code>' veya '<code>right</code>'):</strong> Gruplama sonucunda etiketleme için aralığın hangi sınırının kullanılacağını belirtir. (Sadece <code>freq</code> kullanıldığında geçerlidir.)</p>
+</li>
+<li>
+<p><strong><code>origin</code> (Timestamp veya str):</strong> Gruplama kutularının (bin) ayarlanacağı başlangıç zamanını belirtir (örneğin: '<code>epoch</code>' veya '<code>start_day</code>').</p>
+</li>
+</ul>
+<p><strong><code>orijin</code></strong> parametresinde gruplandırmayı ayarlamak için kullanılacak zaman damgaları; Kaynak zaman dilimi, dizinin zaman dilimi ile eşleşmelidir. Dize ise, aşağıdakilerden biri olmalıdır:</p>
+<p>‘<code>epoch</code>’: kaynak 1970-01-01'dir.</p>
+<p>‘<code>start</code>’: kaynak, zaman serisinin ilk değeridir</p>
+<p>‘<code>start_day</code>’: kaynak, zaman serisinin ilk gününün gece yarısıdır</p>
+<p>‘<code>end</code>’: kaynak, zaman serisinin son değeridir</p>
+<p>‘<code>end_day</code>’: kaynak, son günün gece yarısıdır</p>
+<h4>Örnek Kullanım (Zaman Serisi)</h4>
+<p>Diyelim ki, Elimizdeki veri çerçevesinde <strong>"Publish date"</strong> adında bir tarih sütununuz var.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+   <span class="p">{</span>
+       <span class="s2">&quot;Publish date&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s2">&quot;2000-01-02&quot;</span><span class="p">),</span>
+            <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s2">&quot;2000-01-02&quot;</span><span class="p">),</span>
+            <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s2">&quot;2000-01-09&quot;</span><span class="p">),</span>
+            <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s2">&quot;2000-01-16&quot;</span><span class="p">)</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;ID&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+        <span class="s2">&quot;Price&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code>  <span class="n">Publish</span> <span class="n">date</span>  <span class="n">ID</span>  <span class="n">Price</span>
+<span class="mi">0</span>   <span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span>   <span class="mi">0</span>     <span class="mi">10</span>
+<span class="mi">1</span>   <span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span>   <span class="mi">1</span>     <span class="mi">20</span>
+<span class="mi">2</span>   <span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">09</span>   <span class="mi">2</span>     <span class="mi">30</span>
+<span class="mi">3</span>   <span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">16</span>   <span class="mi">3</span>     <span class="mi">40</span>
+</code></pre></div>
+
+<p>Yukarıdaki tablodaki verileri haftalık (<code>1W</code>) bazda gruplayıp ortalama almak istediğimizi düşünelim;</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># &#39;Publish date&#39; sütununa göre haftalık gruplama ve ortalama alma</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Grouper</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s2">&quot;Publish date&quot;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s2">&quot;1W&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">mean</span><span class="p">()):</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code>               <span class="n">ID</span>  <span class="n">Price</span>
+<span class="n">Publish</span> <span class="n">date</span>            
+<span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span>    <span class="mf">0.5</span>   <span class="mf">15.0</span>
+<span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">09</span>    <span class="mf">2.0</span>   <span class="mf">30.0</span>
+<span class="mi">2000</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">16</span>    <span class="mf">3.0</span>   <span class="mf">40.0</span>
+</code></pre></div>
+
+<p>Özellikle zaman serisi verilerinde gruplama aralıklarını (bins) nasıl özelleştirebileceğinizi gösteren aşağıdaki örnekler, <code>pandas.Grouper</code>'ın gücünü ortaya koyuyor.</p>
+<p>Bu örnekler, genellikle <strong><code>freq</code> (frekans)</strong> parametresi ile birlikte kullanılan <strong><code>origin</code> (başlangıç noktası)</strong> ve <strong><code>offset</code> (kaydırma)</strong> parametrelerinin işlevini açıklamaktadır.</p>
+<h2>🕒 Zaman Aralıklarını Ayarlama (<code>origin</code> ve <code>offset</code>)</h2>
+<p>Standart <code>groupby(freq="...")</code> işlemi, gruplama aralıklarını varsayılan bir başlangıç noktasına göre oluşturur. Ancak bu örnekler, aralıkların başlangıcını sizin belirlediğiniz bir zaman noktasına göre kaydırmanıza olanak tanır.</p>
+<p>Bu örnekler için kullanılan başlangıç veri serisi (<code>ts</code>) şöyledir:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="s1">&#39;2000-10-01 23:30:00&#39;</span><span class="p">,</span> <span class="s1">&#39;2000-10-02 00:30:00&#39;</span>
+<span class="n">rng</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;7min&#39;</span><span class="p">)</span>
+<span class="n">ts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">rng</span><span class="p">))</span> <span class="o">*</span> <span class="mi">3</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">rng</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Verimiz;</p>
+<div class="highlight"><pre><span></span><code><span class="mi">2000</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">01</span> <span class="mi">23</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">00</span>     <span class="mi">0</span>
+<span class="mi">2000</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">01</span> <span class="mi">23</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mi">00</span>     <span class="mi">3</span>
+<span class="mi">2000</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">01</span> <span class="mi">23</span><span class="p">:</span><span class="mi">44</span><span class="p">:</span><span class="mi">00</span>     <span class="mi">6</span>
+<span class="mi">2000</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">01</span> <span class="mi">23</span><span class="p">:</span><span class="mi">51</span><span class="p">:</span><span class="mi">00</span>     <span class="mi">9</span>
+<span class="mi">2000</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">01</span> <span class="mi">23</span><span class="p">:</span><span class="mi">58</span><span class="p">:</span><span class="mi">00</span>    <span class="mi">12</span>
+<span class="mi">2000</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">02</span> <span class="mi">00</span><span class="p">:</span><span class="mi">05</span><span class="p">:</span><span class="mi">00</span>    <span class="mi">15</span>
+<span class="mi">2000</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">02</span> <span class="mi">00</span><span class="p">:</span><span class="mi">12</span><span class="p">:</span><span class="mi">00</span>    <span class="mi">18</span>
+<span class="mi">2000</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">02</span> <span class="mi">00</span><span class="p">:</span><span class="mi">19</span><span class="p">:</span><span class="mi">00</span>    <span class="mi">21</span>
+<span class="mi">2000</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">02</span> <span class="mi">00</span><span class="p">:</span><span class="mi">26</span><span class="p">:</span><span class="mi">00</span>    <span class="mi">24</span>
+<span class="n">Freq</span><span class="p">:</span> <span class="mi">7</span><span class="nb">min</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+</code></pre></div>
+
+<h3>1. Varsayılan Gruplama (Kontrol Örneği)</h3>
+<p>Sadece <code>freq='17min'</code> belirtildiğinde, gruplama aralıkları varsayılan başlangıç noktasına göre hesaplanır.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Sadece frekans belirtildiğinde (Varsayılan davranış)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ts</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Grouper</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="s1">&#39;17min&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="mi">2000</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">01</span> <span class="mi">23</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mi">00</span>     <span class="mi">0</span>
+<span class="mi">2000</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">01</span> <span class="mi">23</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">00</span>     <span class="mi">9</span>
+<span class="mi">2000</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">01</span> <span class="mi">23</span><span class="p">:</span><span class="mi">48</span><span class="p">:</span><span class="mi">00</span>    <span class="mi">21</span>
+<span class="mi">2000</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">02</span> <span class="mi">00</span><span class="p">:</span><span class="mi">05</span><span class="p">:</span><span class="mi">00</span>    <span class="mi">54</span>
+<span class="mi">2000</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">02</span> <span class="mi">00</span><span class="p">:</span><span class="mi">22</span><span class="p">:</span><span class="mi">00</span>    <span class="mi">24</span>
+<span class="n">Freq</span><span class="p">:</span> <span class="mi">17</span><span class="nb">min</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+</code></pre></div>
+
+<h3>2. Başlangıç Noktasını Belirleme (<code>origin</code>)</h3>
+<p><code>origin</code> parametresi, zaman aralıklarının oluşturulmaya başlanacağı sabit bir zaman noktasını tanımlamanıza olanak tanır. Aralıklar, bu <code>origin</code> noktasından başlayarak <code>freq</code> kadar ileri veya geri sayılarak oluşturulur.</p>
+<h4>a. Epoch'a Göre Başlatma</h4>
+<p><code>origin='epoch'</code>, aralık başlangıcını <strong>1970-01-01 00:00:00</strong>'a göre ayarlar.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Aralıkları Epoch (1970-01-01) baz alınarak 17 dakikalık periyotlarla oluşturur</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ts</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Grouper</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="s1">&#39;17min&#39;</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;epoch&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="mi">2000</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">01</span> <span class="mi">23</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span><span class="mi">00</span>     <span class="mi">0</span>
+<span class="mi">2000</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">01</span> <span class="mi">23</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">00</span>    <span class="mi">18</span>
+<span class="mi">2000</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">01</span> <span class="mi">23</span><span class="p">:</span><span class="mi">52</span><span class="p">:</span><span class="mi">00</span>    <span class="mi">27</span>
+<span class="mi">2000</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">02</span> <span class="mi">00</span><span class="p">:</span><span class="mi">09</span><span class="p">:</span><span class="mi">00</span>    <span class="mi">39</span>
+<span class="mi">2000</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">02</span> <span class="mi">00</span><span class="p">:</span><span class="mi">26</span><span class="p">:</span><span class="mi">00</span>    <span class="mi">24</span>
+<span class="n">Freq</span><span class="p">:</span> <span class="mi">17</span><span class="nb">min</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+</code></pre></div>
+
+<h4>b. Özel Bir Tarih/Saate Göre Başlatma</h4>
+<p><code>origin</code> parametresine istediğiniz bir <strong>Timestamp</strong> değerini dize (string) olarak verebilirsiniz.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Aralıkları &#39;2000-01-01&#39; zaman noktasından başlatır</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ts</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Grouper</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="s1">&#39;17min&#39;</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;2000-01-01&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="mi">2000</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">01</span> <span class="mi">23</span><span class="p">:</span><span class="mi">24</span><span class="p">:</span><span class="mi">00</span>     <span class="mi">3</span>
+<span class="mi">2000</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">01</span> <span class="mi">23</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mi">00</span>    <span class="mi">15</span>
+<span class="mi">2000</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">01</span> <span class="mi">23</span><span class="p">:</span><span class="mi">58</span><span class="p">:</span><span class="mi">00</span>    <span class="mi">45</span>
+<span class="mi">2000</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">02</span> <span class="mi">00</span><span class="p">:</span><span class="mi">15</span><span class="p">:</span><span class="mi">00</span>    <span class="mi">45</span>
+<span class="n">Freq</span><span class="p">:</span> <span class="mi">17</span><span class="nb">min</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+</code></pre></div>
+
+<h3>3. Başlangıç Değerine Göre Kaydırma (<code>origin='start'</code>) ve Eşdeğer <code>offset</code></h3>
+<p>Veri kümesindeki ilk değerin başlangıç noktası olmasını istiyorsanız <code>origin='start'</code> kullanabilirsiniz. Bu, veri kümesi içindeki en erken zaman damgasına göre gruplama aralıklarını hizalar.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Gruplama aralıklarını zaman serisinin ilk değeri olan &#39;2000-10-01 23:30:00&#39;dan başlatır</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ts</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Grouper</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="s1">&#39;17min&#39;</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;start&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="mi">2000</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">01</span> <span class="mi">23</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">00</span>     <span class="mi">9</span>
+<span class="mi">2000</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">01</span> <span class="mi">23</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mi">00</span>    <span class="mi">21</span>
+<span class="mi">2000</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">02</span> <span class="mi">00</span><span class="p">:</span><span class="mi">04</span><span class="p">:</span><span class="mi">00</span>    <span class="mi">54</span>
+<span class="mi">2000</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">02</span> <span class="mi">00</span><span class="p">:</span><span class="mi">21</span><span class="p">:</span><span class="mi">00</span>    <span class="mi">24</span>
+<span class="n">Freq</span><span class="p">:</span> <span class="mi">17</span><span class="nb">min</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+</code></pre></div>
+
+<p>Bu kullanım, belirli bir zaman farkı (<code>Timedelta</code>) ile kaydırma yapan <code>offset</code> parametresiyle aynı sonucu verebilir.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># offset=&#39;23h30min&#39;, aralıkları aynı şekilde kaydırır (origin=&#39;start&#39; ile eşdeğer)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ts</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Grouper</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="s1">&#39;17min&#39;</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="s1">&#39;23h30min&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="mi">2000</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">01</span> <span class="mi">23</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">00</span>     <span class="mi">9</span>
+<span class="mi">2000</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">01</span> <span class="mi">23</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mi">00</span>    <span class="mi">21</span>
+<span class="mi">2000</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">02</span> <span class="mi">00</span><span class="p">:</span><span class="mi">04</span><span class="p">:</span><span class="mi">00</span>    <span class="mi">54</span>
+<span class="mi">2000</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">02</span> <span class="mi">00</span><span class="p">:</span><span class="mi">21</span><span class="p">:</span><span class="mi">00</span>    <span class="mi">24</span>
+<span class="n">Freq</span><span class="p">:</span> <span class="mi">17</span><span class="nb">min</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+</code></pre></div>
+
+<p>Bu örnekte <code>offset</code> değeri, referans noktası olan gece yarısından itibaren veri serisinin başlangıcına kadar olan farkı temsil ederek, <code>origin='start'</code> ile aynı hizalamayı sağlamıştır.</p>
+<h3>4. <code>offset</code> ile Özel Kaydırma</h3>
+<p><code>offset</code> parametresi, kullanımdan kaldırılan (deprecated) <code>base</code> argümanının yerini almıştır ve bir <strong>timedelta</strong> (zaman farkı) değeri alarak aralık başlangıçlarını kaydırır.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Aralık başlangıcını 2 dakika ileri kaydırır</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ts</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Grouper</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="s1">&#39;17min&#39;</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="s1">&#39;2min&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="mi">2000</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">01</span> <span class="mi">23</span><span class="p">:</span><span class="mi">16</span><span class="p">:</span><span class="mi">00</span>     <span class="mi">0</span>
+<span class="mi">2000</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">01</span> <span class="mi">23</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">00</span>     <span class="mi">9</span>
+<span class="mi">2000</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">01</span> <span class="mi">23</span><span class="p">:</span><span class="mi">50</span><span class="p">:</span><span class="mi">00</span>    <span class="mi">36</span>
+<span class="mi">2000</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">02</span> <span class="mi">00</span><span class="p">:</span><span class="mi">07</span><span class="p">:</span><span class="mi">00</span>    <span class="mi">39</span>
+<span class="mi">2000</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">02</span> <span class="mi">00</span><span class="p">:</span><span class="mi">24</span><span class="p">:</span><span class="mi">00</span>    <span class="mi">24</span>
+<span class="n">Freq</span><span class="p">:</span> <span class="mi">17</span><span class="nb">min</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+</code></pre></div>
+
+<p>Bu, gruplama aralıklarının standart sıfır noktasından (örneğin gece yarısından) 2 dakika sonra başlamasını sağlar. Böylece, <strong><code>base=2</code></strong> (deprecated argüman) kullanımına eşdeğer bir sonuç elde edilir.</p>
+<h2>Temel Timedelta Parametreleri</h2>
+<table>
+<thead>
+<tr>
+<th>Parametre</th>
+<th>Takma Ad</th>
+<th>Türkçe Açıklaması</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>Week</code></strong></td>
+<td><code>W</code></td>
+<td><strong>Haftalık</strong> frekans.</td>
+</tr>
+<tr>
+<td><code>Day</code></td>
+<td><code>D</code></td>
+<td>Bir <strong>mutlak gün</strong> (tam 24 saat).</td>
+</tr>
+<tr>
+<td><code>Hour</code></td>
+<td><code>h</code></td>
+<td>Bir <strong>saat</strong> (60 dakika).</td>
+</tr>
+<tr>
+<td><code>Minute</code></td>
+<td><code>min</code></td>
+<td>Bir <strong>dakika</strong> (60 saniye).</td>
+</tr>
+<tr>
+<td><code>Second</code></td>
+<td><code>s</code></td>
+<td>Bir <strong>saniye</strong>.</td>
+</tr>
+<tr>
+<td><code>Millisecond</code></td>
+<td><code>ms</code></td>
+<td>Bir <strong>milisaniye</strong> (10−3 saniye).</td>
+</tr>
+<tr>
+<td><code>Microsecond</code></td>
+<td><code>us</code></td>
+<td>Bir <strong>mikrosaniye</strong> (10−6 saniye).</td>
+</tr>
+<tr>
+<td><code>Nanosecond</code></td>
+<td><code>ns</code></td>
+<td>Bir <strong>nanosaniye</strong> (10−9 saniye).</td>
+</tr>
+</tbody>
+</table>
+<h2>Kaynak:</h2>
+<ul>
+<li><a href="https://pandas.pydata.org/docs/reference/api/pandas.Grouper.html">pandas.Grouper &#8212; pandas 2.3.3 documentation</a></li>
+</ul>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/pandas.html">Pandas</a></li>
+					<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+					<li><a href="/tag/modul.html">Modül</a></li>
+					<li><a href="/tag/pandasgrouper.html">pandas.Grouper</a></li>
+					<li><a href="/tag/pdgrouper.html">pd.Grouper</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>
