@@ -76,6 +76,50 @@
 </div>		<div class="content container">
 	<div class="posts">
 			<div class="post">
+				<h1 class="post-title" href="/pandas-ve-operatoru.html">
+					<a href="/pandas-ve-operatoru.html">Pandas - ve operatörü</a>
+				</h1>
+				<span class="post-date">Cts 16 Temmuz 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/filtre.html">Filtre</a></li>
+								<li><a href="/tag/ve.html">ve</a></li>
+								<li><a href="/tag/operatoru.html">operatörü</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>&amp; (ve) Operatörü</h1>
+<p>Birden fazla kriter içeren filtreleme işlemi uygulamak istediğimizde <strong>ve (and)</strong> simgesi olan <strong>&amp;</strong> karakteri kullanılır. <strong>&amp;</strong> karakteri yerine <strong>and</strong> kelimesi kullanırsanız <strong>hata alırsınız.</strong></p>
+<p>Örnek Veri çerçevemiz aşağıda görünmektedir.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">imdb</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/imdb.xlsx&quot;</span><span class="p">,</span> <span class="n">decimal</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">imdb</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Film_Adı</th>
+<th>Yıl</th>
+<th>Puan</th>
+<th>Oylayan_Kişi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>The Shawshank Redemption</td>
+<td>1994 …</td></tr></tbody></table>
+				</p>
+				<a class="read-more" href="pandas-ve-operatoru.html">Continue reading »</a>
+			</div>
+			<div class="post">
 				<h1 class="post-title" href="/pandas-ya-da-operatoru.html">
 					<a href="/pandas-ya-da-operatoru.html">Pandas - ya da operatörü</a>
 				</h1>
@@ -315,38 +359,6 @@ Adlandırılmış Seri nesnesi (Series), adlandırılmış tek bir sütuna sahip
 ya da sütun …</p>
 				</p>
 				<a class="read-more" href="pandas-reindex.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="/pandas-sort_index.html">
-					<a href="/pandas-sort_index.html">Pandas - sort_index</a>
-				</h1>
-				<span class="post-date">Cum 15 Temmuz 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/pandas.html">Pandas</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
-								<li><a href="/tag/veri.html">Veri</a></li>
-								<li><a href="/tag/siralama.html">Sıralama</a></li>
-								<li><a href="/tag/sort_index.html">sort_index</a></li>
-								<li><a href="/tag/ascending.html">ascending</a></li>
-								<li><a href="/tag/axis.html">axis</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1>Sıralama Yöntemleri</h1>
-<p>Oluşturulan Veri Çerçevelerinin, isteğimiz doğrultusunda sıralanması için kullanabileceğimiz yöntemlere, bu bölümde değineceğiz.</p>
-<p>Pandas üç tür sıralamayı destekler ;</p>
-<ul>
-<li>İndeks (dizin) etiketlerine göre sıralama,</li>
-<li>Sütun değerlerine göre sıralama</li>
-<li>Her ikisinin birleşimine göre sıralama.</li>
-</ul>
-<p>Konuya ait yöntemleri incelemek amacıyla <strong>imdb.xlsx</strong> dosyamızı içe aktararak bir veri çerçevesi oluşturarak işe başlayalım. Oluşturacağımız …</p>
-				</p>
-				<a class="read-more" href="pandas-sort_index.html">Continue reading »</a>
 			</div>
 	</div>
 	<div class="pagination">

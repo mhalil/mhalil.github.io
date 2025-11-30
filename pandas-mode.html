@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Pandas - mode" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/pandas-mode.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Pandas - mode</h1>
+	<span class="post-date">Paz 30 Kasım 2025</span>
+	<h1><code>mode()</code> Metodu</h1>
+<p>Sayısal bir veri serisi içindeki <strong>en çok tekrar eden sayı, o serinin modu</strong> olarak adlandırılır.   <code>pandas.DataFrame.mode()</code> metodu, bir DataFrame'in <strong>satırları</strong> veya <strong>sütunları</strong> boyunca <strong>en sık tekrar eden</strong> (mod) değerleri bulur. Sonuç olarak, orijinal DataFrame ile <strong>aynı indekslere</strong> ve <strong>aynı sütun isimlerine</strong> sahip <strong>yeni bir DataFrame</strong> döndürür. Bazı serilerde maksimum tekrar sayısına sahip birden fazla seri elemanı olabilir. Bu durumda, serinin birden fazla modu olur.</p>
+<h2>Sözdizimi:</h2>
+<div class="highlight"><pre><span></span><code> <span class="n">DataFrame</span><span class="o">.</span><span class="n">mode</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">numeric_only</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">dropna</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>Temel Özellikler ve Davranış</h3>
+<ul>
+<li>
+<p><strong>Veri Tipleri:</strong> Mod, sayısal, kategorik ve metinsel (string) tüm veri tipleri için hesaplanabilir.</p>
+</li>
+<li>
+<p><strong>Birden Fazla Mod:</strong> Bir sütunda <strong>birden fazla</strong> değer aynı en yüksek frekansta görünüyorsa (yani birden fazla mod varsa), fonksiyon bu mod değerlerinin <strong>hepsini</strong> döndürür. Bu nedenle, sonuç DataFrame'i genellikle <strong>orijinal DataFrame'den daha fazla satıra</strong> sahip olabilir.</p>
+</li>
+<li>
+<p>Örneğin, bir sütunda <code>[1, 2, 2, 3, 3, 4]</code> değerleri varsa, hem <strong>2</strong> hem de <strong>3</strong> moddur. Sonuç DataFrame'inde bu sütun için iki ayrı satırda hem 2 hem de 3 yer alacaktır.</p>
+</li>
+<li>
+<p><strong><code>NaN</code> Değerleri:</strong> Varsayılan olarak, <code>NaN</code> (Not a Number - Eksik Değer) değerler hesaplamaya <strong>dahil edilmez</strong>. Mod, yalnızca geçerli (non-NaN) değerler arasında bulunur.</p>
+</li>
+<li>
+<p><strong>Sonuç Tipi:</strong> Her zaman bir <strong>DataFrame</strong> döndürür.</p>
+</li>
+</ul>
+<h2>Parametreler</h2>
+<p>Fonksiyonun iki ana parametresi vardır:</p>
+<ol>
+<li>
+<p><strong><code>axis</code> (Eksen)</strong>: Modun hangi eksen boyunca hesaplanacağını belirtir.</p>
+</li>
+<li>
+<p><code>axis=0</code> (Varsayılan): <strong>Sütunlar boyunca</strong> (yani her bir sütunun modunu) hesaplar. Bu en yaygın kullanımdır.</p>
+</li>
+<li>
+<p><code>axis=1</code>: <strong>Satırlar boyunca</strong> (yani her bir satırın modunu) hesaplar. Satırın modunun ne olduğu daha az kullanılır.</p>
+</li>
+<li>
+<p><strong><code>numeric_only</code> (Yalnızca Sayısal)</strong>: Modun sadece sayısal sütunlar için mi hesaplanacağını belirtir.</p>
+</li>
+<li>
+<p><code>False</code> (Varsayılan): Tüm sütunları (sayısal ve sayısal olmayan) dahil eder.</p>
+</li>
+<li>
+<p><code>True</code>: Yalnızca sayısal veri tiplerine sahip sütunları dahil eder.</p>
+</li>
+</ol>
+<h2>Örnekler</h2>
+<p>Bir ankette en çok verilen cevabı veya bir mağazada en çok satılan ürünü bulmak gibi <strong>kategorik veri analizi</strong> yaparken oldukça kullanışlıdır.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Örnek DataFrame</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+        <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;elma&#39;</span><span class="p">,</span> <span class="s1">&#39;armut&#39;</span><span class="p">,</span> <span class="s1">&#39;elma&#39;</span><span class="p">,</span> <span class="s1">&#39;muz&#39;</span><span class="p">,</span> <span class="s1">&#39;elma&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">]}</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code>   <span class="n">A</span>      <span class="n">B</span>  <span class="n">C</span>
+<span class="mi">0</span>  <span class="mi">1</span>   <span class="n">elma</span>  <span class="mi">5</span>
+<span class="mi">1</span>  <span class="mi">2</span>  <span class="n">armut</span>  <span class="mi">6</span>
+<span class="mi">2</span>  <span class="mi">2</span>   <span class="n">elma</span>  <span class="mi">6</span>
+<span class="mi">3</span>  <span class="mi">3</span>    <span class="n">muz</span>  <span class="mi">7</span>
+<span class="mi">4</span>  <span class="mi">4</span>   <span class="n">elma</span>  <span class="mi">7</span>
+</code></pre></div>
+
+<p>Her sütunun modunu hesaplayalım; </p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Her sütunun modunu hesapla (axis=0 varsayılan)</span>
+<span class="n">sonuc</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">mode</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sonuc</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>     <span class="n">A</span>     <span class="n">B</span>  <span class="n">C</span>
+<span class="mi">0</span>  <span class="mf">2.0</span>  <span class="n">elma</span>  <span class="mi">6</span>
+<span class="mi">1</span>  <span class="n">NaN</span>   <span class="n">NaN</span>  <span class="mi">7</span>
+</code></pre></div>
+
+<p><strong>Çıktı Analizi:</strong></p>
+<ul>
+<li>
+<p><strong>A Sütunu:</strong> 2 ve 3, aynı sıklıkta (birer kez) tekrar ettiği için <strong>iki mod</strong> olarak döndürüldü.</p>
+</li>
+<li>
+<p><strong>B Sütunu:</strong> "elma" en sık görülen değerdir (<strong>tek mod</strong>).</p>
+</li>
+<li>
+<p><strong>C Sütunu:</strong> 6 ve 7, aynı sıklıkta (ikişer kez) tekrar ettiği için <strong>iki mod</strong> olarak döndürüldü.</p>
+</li>
+<li>
+<p>A ve C sütunlarının birden fazla modu olduğu için sonuç DataFrame'i <strong>iki satırdan</strong> oluşur ve ikinci modun olmadığı yerlere <code>NaN</code> atılır.</p>
+</li>
+</ul>
+<h3><strong><code>axis</code></strong> parametresini somut bir örnekle inceleyelim.</h3>
+<p>Veri çerçevemiz aşağıdadır;</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Örnek DataFrame oluşturma</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Sayı1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">],</span>
+    <span class="s1">&#39;Sayı2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span>
+    <span class="s1">&#39;Kategori&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Fiyat&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- Orijinal DataFrame ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="o">---</span> <span class="n">Orijinal</span> <span class="n">DataFrame</span> <span class="o">---</span>
+   <span class="n">Sayı1</span>  <span class="n">Sayı2</span> <span class="n">Kategori</span>  <span class="n">Fiyat</span>
+<span class="mi">0</span>     <span class="mi">10</span>      <span class="mi">5</span>        <span class="n">A</span>    <span class="mf">1.5</span>
+<span class="mi">1</span>     <span class="mi">20</span>      <span class="mi">5</span>        <span class="n">B</span>    <span class="mf">1.5</span>
+<span class="mi">2</span>     <span class="mi">20</span>      <span class="mi">5</span>        <span class="n">A</span>    <span class="n">NaN</span>
+<span class="mi">3</span>     <span class="mi">30</span>      <span class="mi">8</span>        <span class="n">C</span>    <span class="mf">2.0</span>
+<span class="mi">4</span>     <span class="mi">30</span>      <span class="mi">8</span>        <span class="n">A</span>    <span class="mf">2.0</span>
+<span class="mi">5</span>     <span class="mi">40</span>      <span class="mi">9</span>        <span class="n">B</span>    <span class="mf">2.0</span>
+</code></pre></div>
+
+<h4><strong><code>axis=0</code> Kullanımı (Varsayılan);</strong></h4>
+<p>Bu, modun <strong>sütunlar boyunca</strong> (her bir sütunun en sık görülen değeri) hesaplandığı varsayılan davranıştır.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Varsayılan (axis=0, numeric_only=False)</span>
+<span class="n">mod_sutunlar</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">mode</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- Sonuç 1: Sütunların Modu (axis=0) ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mod_sutunlar</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="o">---</span> <span class="n">Sonuç</span> <span class="mi">1</span><span class="p">:</span> <span class="n">Sütunların</span> <span class="n">Modu</span> <span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">---</span>
+   <span class="n">Sayı1</span>  <span class="n">Sayı2</span> <span class="n">Kategori</span>  <span class="n">Fiyat</span>
+<span class="mi">0</span>     <span class="mi">20</span>    <span class="mf">5.0</span>        <span class="n">A</span>    <span class="mf">2.0</span>
+<span class="mi">1</span>     <span class="mi">30</span>    <span class="n">NaN</span>      <span class="n">NaN</span>    <span class="n">NaN</span>
+</code></pre></div>
+
+<p>💡 <strong>Çıktı Analizi:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Sütun</th>
+<th>Değerler</th>
+<th>Mod Değer(ler)i</th>
+<th>Açıklama</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Sayı1</strong></td>
+<td>10, <strong>20, 20</strong>, <strong>30, 30</strong>, 40</td>
+<td>20, 30</td>
+<td>Hem 20 hem de 30 ikişer kez tekrar ediyor (Birden Fazla Mod).</td>
+</tr>
+<tr>
+<td><strong>Sayı2</strong></td>
+<td><strong>5, 5, 5</strong>, 8, 8, 9</td>
+<td>5</td>
+<td>5, üç kez tekrar ederek en sık görülen değerdir (Tek Mod).</td>
+</tr>
+<tr>
+<td><strong>Kategori</strong></td>
+<td><strong>A</strong>, B, <strong>A</strong>, C, <strong>A</strong>, B</td>
+<td>A</td>
+<td>A, üç kez tekrar ederek en sık görülen değerdir (Tek Mod).</td>
+</tr>
+<tr>
+<td><strong>Fiyat</strong></td>
+<td>1.5, 1.5, NaN, <strong>2.0, 2.0, 2.0</strong></td>
+<td>2.0</td>
+<td><code>NaN</code> hariç, 2.0 üç kez tekrar ediyor.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Gördüğünüz gibi:</strong> <code>Sayı1</code> sütununda iki mod olduğu için sonuç DataFrame'i iki satır döndürmüş, diğer sütunlarda tek mod olduğu için ikinci satırda <code>NaN</code> (veya ilgili veri tipinin karşılığı) görünmüştür.</p>
+<h4><code>axis=1</code> <strong>Kullanımı:</strong></h4>
+<p>Bu, modun <strong>satırlar boyunca</strong> (her bir satırın en sık görülen değeri) hesaplandığı durumdur. Bu, genellikle bir satırdaki bazı değerlerin (örneğin anket cevapları) tekrar edip etmediğini kontrol etmek için kullanılır.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Satırların Modu</span>
+<span class="n">mod_satirlar</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">mode</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- Sonuç 3: Satırların Modu (axis=1) ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mod_satirlar</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="o">---</span> <span class="n">Sonuç</span> <span class="mi">3</span><span class="p">:</span> <span class="n">Satırların</span> <span class="n">Modu</span> <span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">---</span>
+    <span class="mi">0</span>  <span class="mi">1</span>  <span class="mi">2</span>    <span class="mi">3</span>
+<span class="mi">0</span>  <span class="mi">10</span>  <span class="mi">5</span>  <span class="n">A</span>  <span class="mf">1.5</span>
+<span class="mi">1</span>  <span class="mi">20</span>  <span class="mi">5</span>  <span class="n">B</span>  <span class="mf">1.5</span>
+<span class="mi">2</span>  <span class="mi">20</span>  <span class="mi">5</span>  <span class="n">A</span>  <span class="n">NaN</span>
+<span class="mi">3</span>  <span class="mi">30</span>  <span class="mi">8</span>  <span class="n">C</span>  <span class="mf">2.0</span>
+<span class="mi">4</span>  <span class="mi">30</span>  <span class="mi">8</span>  <span class="n">A</span>  <span class="mf">2.0</span>
+<span class="mi">5</span>  <span class="mi">40</span>  <span class="mi">9</span>  <span class="n">B</span>  <span class="mf">2.0</span>
+</code></pre></div>
+
+<p>💡 <strong>Çıktı Analizi:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Satır İndeksi</th>
+<th>Değerler</th>
+<th>Mod Değer(ler)i</th>
+<th>Açıklama</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>0</strong></td>
+<td>[10, 5, 'A', 1.5]</td>
+<td>NaN</td>
+<td>Tüm değerler farklıdır, mod yoktur.</td>
+</tr>
+<tr>
+<td><strong>1</strong></td>
+<td>[20, 5, 'B', 1.5]</td>
+<td>NaN</td>
+<td>Tüm değerler farklıdır, mod yoktur.</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td>[20, 5, 'A', NaN]</td>
+<td>NaN</td>
+<td>Tüm geçerli değerler farklıdır, mod yoktur.</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td>[30, 8, 'C', 2.0]</td>
+<td>NaN</td>
+<td>Tüm değerler farklıdır, mod yoktur.</td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td>[30, 8, 'A', 2.0]</td>
+<td>NaN</td>
+<td>Tüm değerler farklıdır, mod yoktur.</td>
+</tr>
+<tr>
+<td><strong>5</strong></td>
+<td>[40, 9, 'B', 2.0]</td>
+<td>NaN</td>
+<td>Tüm değerler farklıdır, mod yoktur.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Not:</strong> Bu örnekte, her satırdaki tüm değerler birbirinden farklı olduğu için (NaN'lar hariç), mod bulunamadı ve sonuç olarak <code>NaN</code> döndürüldü.</p>
+<p><strong>Satır Modu için Ek Örnek (Daha Net Olması İçin)</strong></p>
+<p>Eğer DataFrame'i aşağıdaki gibi olsaydı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">df_row_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">]})</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- Satır Modu Test DataFrame ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_row_test</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="o">---</span> <span class="n">Satır</span> <span class="n">Modu</span> <span class="n">Test</span> <span class="n">DataFrame</span> <span class="o">---</span>
+   <span class="n">a</span>  <span class="n">b</span>  <span class="n">c</span>
+<span class="mi">0</span>  <span class="mi">1</span>  <span class="mi">1</span>  <span class="mi">1</span>
+<span class="mi">1</span>  <span class="mi">2</span>  <span class="mi">5</span>  <span class="mi">5</span>
+<span class="mi">2</span>  <span class="mi">2</span>  <span class="mi">6</span>  <span class="mi">2</span>
+</code></pre></div>
+
+<p>Satırların modunu bulalım;</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df_row_test</span><span class="o">.</span><span class="n">mode</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code>   <span class="mi">0</span>
+<span class="mi">0</span>  <span class="mi">1</span>
+<span class="mi">1</span>  <span class="mi">5</span>
+<span class="mi">2</span>  <span class="mi">2</span>
+</code></pre></div>
+
+<p><strong>Satır Modu Test Çıktı Analizi:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Satır İndeksi</th>
+<th>Değerler</th>
+<th>Mod Değer(ler)i</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>0</strong></td>
+<td>[1, 1, 1]</td>
+<td>1</td>
+</tr>
+<tr>
+<td><strong>1</strong></td>
+<td>[2, 5, 5]</td>
+<td>5</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td>[2, 6, 2]</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p>Bu test örneğinde, <strong>satır 0</strong>'ın modu <strong>1</strong>, <strong>satır 1</strong>'in modu <strong>5</strong> ve <strong>satır 2</strong>'nin modu <strong>2</strong> olacaktır. <code>axis=1</code> bu şekilde çalışır.</p>
+<h3><strong><code>numeric_only</code></strong> parametresini somut bir örnekle inceleyelim.</h3>
+<h4><code>numeric_only=True</code> <strong>Kullanımı</strong></h4>
+<p>Veri çerçevemiz aşağıdaki gibi olsun;</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Örnek DataFrame oluşturma</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Sayı1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">],</span>
+    <span class="s1">&#39;Sayı2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span>
+    <span class="s1">&#39;Kategori&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Fiyat&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- Orijinal DataFrame ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="o">---</span> <span class="n">Orijinal</span> <span class="n">DataFrame</span> <span class="o">---</span>
+   <span class="n">Sayı1</span>  <span class="n">Sayı2</span> <span class="n">Kategori</span>  <span class="n">Fiyat</span>
+<span class="mi">0</span>     <span class="mi">10</span>      <span class="mi">5</span>        <span class="n">A</span>    <span class="mf">1.5</span>
+<span class="mi">1</span>     <span class="mi">20</span>      <span class="mi">5</span>        <span class="n">B</span>    <span class="mf">1.5</span>
+<span class="mi">2</span>     <span class="mi">20</span>      <span class="mi">5</span>        <span class="n">A</span>    <span class="n">NaN</span>
+<span class="mi">3</span>     <span class="mi">30</span>      <span class="mi">8</span>        <span class="n">C</span>    <span class="mf">2.0</span>
+<span class="mi">4</span>     <span class="mi">30</span>      <span class="mi">8</span>        <span class="n">A</span>    <span class="mf">2.0</span>
+<span class="mi">5</span>     <span class="mi">40</span>      <span class="mi">9</span>        <span class="n">B</span>    <span class="mf">2.0</span>
+</code></pre></div>
+
+<p>Bu parametre <code>axis=0</code> (sütun modu) ile birlikte kullanıldığında, sadece <strong>sayısal veri tipine sahip sütunların</strong> modunun hesaplanmasını sağlar.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Yalnızca Sayısal Sütunların Modu</span>
+<span class="n">mod_sayisal</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">mode</span><span class="p">(</span><span class="n">numeric_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- Sonuç 2: Sadece Sayısal Sütunların Modu (numeric_only=True) ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mod_sayisal</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="o">---</span> <span class="n">Sonuç</span> <span class="mi">2</span><span class="p">:</span> <span class="n">Sadece</span> <span class="n">Sayısal</span> <span class="n">Sütunların</span> <span class="n">Modu</span> <span class="p">(</span><span class="n">numeric_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">---</span>
+   <span class="n">Sayı1</span>  <span class="n">Sayı2</span>  <span class="n">Fiyat</span>
+<span class="mi">0</span>     <span class="mi">20</span>    <span class="mf">5.0</span>    <span class="mf">2.0</span>
+<span class="mi">1</span>     <span class="mi">30</span>    <span class="n">NaN</span>    <span class="n">NaN</span>
+</code></pre></div>
+
+<p>💡 <strong>Çıktı Analizi:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Sütun</th>
+<th>Mod Değer(ler)i</th>
+<th>Açıklama</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Kategori</strong></td>
+<td>Yok</td>
+<td>Bu sütun sayısal olmadığı için sonuçtan <strong>çıkarılmıştır</strong>.</td>
+</tr>
+<tr>
+<td><strong>Sayı1</strong></td>
+<td>20, 30</td>
+<td>Değişmedi (öncekiyle aynı).</td>
+</tr>
+<tr>
+<td><strong>Sayı2</strong></td>
+<td>5</td>
+<td>Değişmedi (öncekiyle aynı).</td>
+</tr>
+<tr>
+<td><strong>Fiyat</strong></td>
+<td>2.0</td>
+<td>Değişmedi (öncekiyle aynı).</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Gördüğünüz gibi:</strong> <code>Kategori</code> sütunu, <code>numeric_only=True</code> ayarı sayesinde sonuç DataFrame'inde yer almaz.</p>
+<h2>Kaynaklar:</h2>
+<ul>
+<li><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.mode.html">pandas.DataFrame.mode &#8212; pandas 2.3.3 documentation</a></li>
+<li><a href="https://gemini.google.com">Google Gemini</a></li>
+</ul>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/pandas.html">Pandas</a></li>
+					<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+					<li><a href="/tag/modul.html">Modül</a></li>
+					<li><a href="/tag/mode.html">mode</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>
