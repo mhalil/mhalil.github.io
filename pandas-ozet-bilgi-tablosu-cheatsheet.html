@@ -686,8 +686,8 @@ Başvuru Kılavuzu / Özet Bilgi Tablosunun (CheatSheet) <strong>PDF uzantılı<
 <td>Birden fazla kriter içeren filtreleme işlemi uygulamak istersek,  <strong>İki kriteri bir arada kullanmak</strong> istediğimizde <strong>VE</strong> simgesi olan <strong>&amp;</strong> kullanılmalı; <br><code>filtre1 = df["MİKTAR"] &gt; 80</code> <br><code>filtre2 = df["deger"] &lt; 100</code><br/><code>df[filtre1 &amp; filtre2]</code></td>
 </tr>
 <tr>
-<td><code>\|</code> operatörü</td>
-<td>Birden fazla kriter içeren filtreleme işlemi uygulamak istersek,  <strong>İki kriterden biri sağlandığında</strong> filtrelemek istediğimizde <strong>YA DA / VEYA</strong><strong> simgesi olan </strong>|** kullanılmalı; <br><code>filtre1 = df["MİKTAR"] &gt; 80</code> <br><code>filtre2 = df["deger"] &lt; 100</code><br/><code>df[filtre1 \| filtre2]</code></td>
+<td><code>ǀ</code> operatörü</td>
+<td>Birden fazla kriter içeren filtreleme işlemi uygulamak istersek,  <strong>İki kriterden biri sağlandığında</strong> filtrelemek istediğimizde <strong>YA DA / VEYA</strong> simgesi olan <code>ǀ</code> kullanılmalı; <br><code>filtre1 = df["MİKTAR"] &gt; 80</code> <br><code>filtre2 = df["deger"] &lt; 100</code><br/><code>df[filtre1 ǀ filtre2]</code></td>
 </tr>
 <tr>
 <td><code>between()</code> metodu</td>
@@ -776,7 +776,7 @@ Başvuru Kılavuzu / Özet Bilgi Tablosunun (CheatSheet) <strong>PDF uzantılı<
 </tr>
 <tr>
 <td><code>to_excel()</code></td>
-<td>Veri Çerçevesini <strong>Excel / Calc</strong> olarak <strong>Dışa Aktar/Kaydet</strong> <em>xls, xlsx, xlsm, xlsb, odf, ods ve odt</em> uzantılı dosyalar desteklenir. <code>df.to_excel(“dosya_adı.uzantı”)</code></td>
+<td>Veri Çerçevesini <strong>Excel / Calc</strong> olarak <strong>Dışa Aktar/Kaydet</strong> <em>xls, xlsx, xlsm, xlsb, odf, ods ve odt</em> uzantılı dosyalar desteklenir. <code>df.to_excel(“dosya_adı.xlsx”)</code></td>
 </tr>
 <tr>
 <td><code>to_sql()</code></td>

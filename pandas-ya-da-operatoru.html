@@ -77,8 +77,8 @@
 <div class="post">
 	<h1 class="post-title">Pandas - ya da operatörü</h1>
 	<span class="post-date">Cts 16 Temmuz 2022</span>
-	<h1>| (ya da) Operatörü</h1>
-<p>İki farklı kriterin de geçerli olduğu verileri filtrelemek istediğimizde <strong>YA DA (or)</strong> simgesi olan <strong>|</strong> karakteri kullanılır.  <strong>|</strong> karakteri yerine <strong>or</strong> kelimesi kullanırsanız <strong>hata alırsınız.</strong></p>
+	<h1><code>|</code> (ya da / veya) Operatörü</h1>
+<p>İki farklı kriterin de geçerli olduğu verileri filtrelemek istediğimizde <strong>VEYA / YA DA (or)</strong> simgesi olan <code>|</code> karakteri kullanılır.  <code>|</code> karakteri yerine <code>or</code> kelimesi kullanırsanız <strong>hata alırsınız.</strong></p>
 <p>Örnek Veri çerçevemiz aşağıda görünmektedir.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="n">imdb</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/imdb.xlsx&quot;</span><span class="p">,</span> <span class="n">decimal</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
@@ -296,27 +296,6 @@
 </thead>
 <tbody>
 <tr>
-<td>0</td>
-<td>The Shawshank Redemption</td>
-<td>1994</td>
-<td>9.2</td>
-<td>1071904</td>
-</tr>
-<tr>
-<td>1</td>
-<td>The Godfather</td>
-<td>1972</td>
-<td>9.2</td>
-<td>751381</td>
-</tr>
-<tr>
-<td>3</td>
-<td>Pulp Fiction</td>
-<td>1994</td>
-<td>8.9</td>
-<td>830504</td>
-</tr>
-<tr>
 <td>4</td>
 <td>The Dark Knight</td>
 <td>2008</td>
@@ -324,57 +303,84 @@
 <td>1045186</td>
 </tr>
 <tr>
-<td>6</td>
-<td>Schindler's List</td>
-<td>1993</td>
-<td>8.9</td>
-<td>545703</td>
-</tr>
-<tr>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-</tr>
-<tr>
-<td>231</td>
-<td>Shutter Island</td>
-<td>2010</td>
-<td>8.0</td>
-<td>436151</td>
-</tr>
-<tr>
-<td>233</td>
-<td>Incendies</td>
-<td>2010</td>
-<td>8.0</td>
-<td>36751</td>
-</tr>
-<tr>
-<td>236</td>
-<td>3 Idiots</td>
-<td>2009</td>
-<td>8.0</td>
-<td>83178</td>
-</tr>
-<tr>
-<td>237</td>
-<td>The Artist</td>
-<td>2011</td>
-<td>8.0</td>
-<td>132672</td>
-</tr>
-<tr>
-<td>242</td>
-<td>Mystic River</td>
+<td>7</td>
+<td>The Lord of the Rings: The Return of the King</td>
 <td>2003</td>
-<td>7.9</td>
-<td>256159</td>
+<td>8.8</td>
+<td>758388</td>
+</tr>
+<tr>
+<td>10</td>
+<td>The Lord of the Rings: The Fellowship of the R...</td>
+<td>2001</td>
+<td>8.8</td>
+<td>784999</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Inception</td>
+<td>2010</td>
+<td>8.7</td>
+<td>844938</td>
+</tr>
+<tr>
+<td>18</td>
+<td>The Lord of the Rings: The Two Towers</td>
+<td>2002</td>
+<td>8.7</td>
+<td>680983</td>
+</tr>
+<tr>
+<td>49</td>
+<td>The Departed</td>
+<td>2006</td>
+<td>8.4</td>
+<td>540726</td>
+</tr>
+<tr>
+<td>56</td>
+<td>The Dark Knight Rises</td>
+<td>2012</td>
+<td>8.4</td>
+<td>672751</td>
+</tr>
+<tr>
+<td>105</td>
+<td>Batman Begins</td>
+<td>2005</td>
+<td>8.3</td>
+<td>604923</td>
+</tr>
+<tr>
+<td>107</td>
+<td>Inglourious Basterds</td>
+<td>2009</td>
+<td>8.2</td>
+<td>505702</td>
+</tr>
+<tr>
+<td>162</td>
+<td>V for Vendetta</td>
+<td>2005</td>
+<td>8.1</td>
+<td>507750</td>
+</tr>
+<tr>
+<td>165</td>
+<td>The Avengers</td>
+<td>2012</td>
+<td>8.1</td>
+<td>568037</td>
+</tr>
+<tr>
+<td>216</td>
+<td>Pirates of the Caribbean: The Curse of the Bla...</td>
+<td>2003</td>
+<td>8.0</td>
+<td>519625</td>
 </tr>
 </tbody>
 </table>
-<p>81 rows × 4 columns</p>
 
 		<span class="post-tags">
 			Tags:
