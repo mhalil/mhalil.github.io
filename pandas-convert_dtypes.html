@@ -77,13 +77,14 @@
 <div class="post">
 	<h1 class="post-title">Pandas - convert_dtypes</h1>
 	<span class="post-date">Cts 22 Kasım 2025</span>
-	<h1>convert_dtypes() Metodu</h1>
+	<h1><code>convert_dtypes()</code> Metodu</h1>
 <p>Bu metodu, veri setini otomatik olarak temizleyen ve düzenleyen <strong>"akıllı bir veri tipi (türü) dönüştürücüsü"</strong> gibi düşünebilirsin.</p>
 <p><img alt="convert_dtypes" src="../../images/python/pandas/convert_dtypes.png"></p>
 <h2>Sözdizimi:</h2>
 <div class="highlight"><pre><span></span><code><span class="n">DataFrame</span><span class="o">.</span><span class="n">convert_dtypes</span><span class="p">(</span><span class="n">infer_objects</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">convert_string</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
-<span class="n">convert_integer</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">convert_boolean</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">convert_floating</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
-<span class="n">dtype_backend</span><span class="o">=</span><span class="s1">&#39;numpy_nullable&#39;</span><span class="p">)</span>
+                        <span class="n">convert_integer</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">convert_boolean</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+                        <span class="n">convert_floating</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+                        <span class="n">dtype_backend</span><span class="o">=</span><span class="s1">&#39;numpy_nullable&#39;</span><span class="p">)</span>
 </code></pre></div>
 
 <h3>Temel Sorun Nedir? (Neden Buna İhtiyacımız Var?)</h3>

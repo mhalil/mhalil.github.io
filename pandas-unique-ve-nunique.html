@@ -77,11 +77,11 @@
 <div class="post">
 	<h1 class="post-title">Pandas - unique ve nunique</h1>
 	<span class="post-date">Paz 06 Temmuz 2025</span>
-	<h1>unique() ve nunique() Fonksiyonları</h1>
-<h1>unique() Fonksiyonu</h1>
-<p><code>unique()</code> Fonksiyonu, Veri Çerçevesinden <strong>benzersiz değerler tespit etmek</strong>, kategorik verileri analiz etmek veya <strong>yinelenen verileri tanımlamak</strong> için kullanılır. </p>
+	<h1><code>unique()</code> ve <code>nunique()</code> Metotları</h1>
+<h1><code>unique()</code> Metodu</h1>
+<p><code>unique()</code> Metodu, Veri Çerçevesinden <strong>benzersiz değerler tespit etmek</strong>, kategorik verileri analiz etmek veya <strong>yinelenen verileri tanımlamak</strong> için kullanılır. </p>
 <p><img alt="unique_nunique" src="../../images/python/pandas/unique_nunique.png"></p>
-<h2>unique() Fonksiyonunun Kullanımı</h2>
+<h2><code>unique()</code> Metodunun Kullanımı</h2>
 <p><code>unique()</code> Fonksiyonu bir NumPy dizisi döndürür. Bir sütundaki benzersiz (farklı) değerleri tanımlamak için kullanışlıdır ve bu, kategorik verilerle çalışırken veya benzersiz değerleri algılarken yardımcı olabilir. Benzersiz değerlerin sırası, ilk oluşumlarına göre korunur.</p>
 <p><strong>Sözdizimi</strong>:</p>
 <div class="highlight"><pre><span></span><code><span class="n">Veri_Çerçevesi_Adı</span><span class="p">[</span><span class="s2">&quot;Sütun_Adı&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
@@ -181,10 +181,10 @@
 <span class="p">[</span><span class="s1">&#39;D1&#39;</span> <span class="s1">&#39;D2&#39;</span><span class="p">]</span>
 </code></pre></div>
 
-<h1>nunique() Fonksiyonu</h1>
-<p><strong>Benzersiz değerlerin miktarını (kaç adet olduğunu) bulmak</strong> için <code>nunique()</code> Fonksiyonunu kullanabiliriz. </p>
+<h1><code>nunique()</code> Metodu</h1>
+<p><strong>Benzersiz değerlerin miktarını (kaç adet olduğunu) bulmak</strong> için <code>nunique()</code> Metodunu kullanabiliriz. </p>
 <p><strong>nunique</strong>:  Number of Unique yani Benzersiz Sayısı ifadesini temsil etmektedir.</p>
-<h2>nunique() Fonksiyonunun Kullanımı</h2>
+<h2><code>nunique()</code> Metodunun Kullanımı</h2>
 <p><strong>Sözdizimi</strong>:</p>
 <div class="highlight"><pre><span></span><code><span class="n">Veri_Çerçevesi_Adı</span><span class="o">.</span><span class="n">nunique</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dropna</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
@@ -264,7 +264,7 @@
 </code></pre></div>
 
 <h1>Parametreler</h1>
-<h2>axis Parametresi</h2>
+<h2><code>axis</code> Parametresi</h2>
 <p><code>axis</code> parametresi ile, <strong>satır</strong> ve <strong>sütunlardaki</strong> benzersiz değerleri tespit edelim.
 <code>axis = 0</code> ile <strong>sütunlardaki</strong> benzersiz verileri bulalım;</p>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">nunique</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">))</span>    <span class="c1"># Bu ifade print(df.nunique()) ile aynıdır.</span>
@@ -364,7 +364,7 @@
 <span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
 </code></pre></div>
 
-<h2>dropna Parametresi</h2>
+<h2><code>dropna</code> Parametresi</h2>
 <p>Sıra geldi <code>dropna</code> Parametresini incelemeye. <strong>B</strong> sütunu ve <strong>satir_4</strong> isimli satırın kesişimindeki değeri <code>pd.NA</code> olarak değiştirelim.</p>
 <div class="highlight"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">NA</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
@@ -563,9 +563,9 @@
 <li><a href="/pandas-value_counts.html">value_counts() Fonksiyonu</a></li>
 <li><code>set()</code> Fonksiyonu ( aşağıda açıklanıyor )</li>
 </ul>
-<h1>set() Fonksiyonu</h1>
+<h1><code>set()</code> Metodu</h1>
 <p>Python öğrenirken veri tipleri konusunda karşılaştığımız gömülü fonksiyonlardan biri olan <code>set()</code> (küme) fonksiyonunu, Veri çerçevelerindeki benzersiz verileri tespit etmek için kullanabiliriz. </p>
-<h2>set() Fonksiyonunu Hatırlayalım</h2>
+<h2><code>set()</code> Metodunu Hatırlayalım</h2>
 <p><code>set()</code> fonksiyonunun görevi farklı veri tiplerini kümeye (küme yapısına) dönüştürmektir. Küme yapısı, matematikte gördüğümüz kümelerde olduğu gibi, bir elemandan <strong>sadece bir tane</strong> barındırmaya izin verir.</p>
 <p>Yukarıdaki Veri çerçevesinin '<strong>C</strong>' Sütunundaki benzersiz veri sayısını set() fonksiyonu yardımı ile tespit edelim.</p>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">]))</span>    <span class="c1"># print(set(df.C)) şeklinde de kullanılabilir.</span>

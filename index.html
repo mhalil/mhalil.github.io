@@ -113,7 +113,7 @@
 						</ul>
 					</span>
 				<p>
-					<h2>🐼 pandas.Grouper Nedir?</h2>
+					<h2><code>pandas.Grouper</code> Nesnesi</h2>
 <p><code>pandas.Grouper</code>, özellikle bir DataFrame veya Series üzerinde <code>.groupby()</code> metodunu kullanırken, <strong>gruplama talimatlarını detaylı bir şekilde belirtmenize</strong> olanak tanıyan bir nesnedir.</p>
 <p>En temel amacı, sütun adı veya index seviyesi gibi standart gruplama anahtarlarının yanı sıra, özellikle <strong>zaman serisi verileri</strong> (datetime-like) üzerinde <strong>yeniden örnekleme (resampling)</strong> tabanlı gruplamalar yapmaktır …</p>
 				</p>
@@ -135,7 +135,7 @@
 						</ul>
 					</span>
 				<p>
-					<h1>pop() Metodu</h1>
+					<h1><code>pop()</code> Metodu</h1>
 <p><strong><code>pandas.DataFrame.pop()</code></strong> metodu, <strong>Pandas DataFrame'inizdeki belirli bir sütunu</strong> hem DataFrame'den <strong>kaldırır</strong> hem de <strong>kaldırdığı bu sütunu bir Series olarak size geri verir</strong>.</p>
 <p>Basitçe anlatmak gerekirse, bir DataFrame'in sütununu yerinden söker, onu bize verir ve <strong>orijinal DataFrame'de artık o sütun olmaz</strong>.</p>
 <blockquote>
@@ -159,7 +159,7 @@
 						</ul>
 					</span>
 				<p>
-					<h1>add() Metodu</h1>
+					<h1><code>add()</code> Metodu</h1>
 <p><code>pandas.DataFrame.add</code> metodu, bir DataFrame ile başka bir nesneyi <strong>öğe bazında (element-wise) toplamak</strong> için kullanılan ikili bir operatör sarmalayıcısıdır.</p>
 <h2>Sözdizimi:</h2>
 <div class="highlight"><pre><span></span><code><span class="n">DataFrame</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
@@ -188,7 +188,7 @@
 						</ul>
 					</span>
 				<p>
-					<h1>notna() Metodu</h1>
+					<h1><code>notna()</code> Metodu</h1>
 <p><code>pandas.notna()</code> metodu, bir dizi benzeri nesne için <strong>eksik olmayan (geçerli) değerleri tespit etmek</strong> amacıyla kullanılır.</p>
 <p>Giriş nesnesinin veya dizisinin <code>NaN</code>, <code>None</code> veya <code>NaT</code> (Zaman Değil) gibi tanınan eksik değerler içerip içermediğini kontrol eder. Kontrol sonucunda, geçerli olması durumunda <code>True</code>, eksik olması durumunda ise <code>False</code> değerini döndüren bir …</p>
 				</p>
@@ -210,7 +210,7 @@
 						</ul>
 					</span>
 				<p>
-					<h1>isna() Metodu</h1>
+					<h1><code>isna()</code> Metodu</h1>
 <p><code>isna()</code>, veri analizi yaparken en sık kullanılan ve en temel fonksiyonlardan biridir. Bunu bir <strong>"Kayıp Veri Dedektifi"</strong> gibi düşünebilirsin.</p>
 <p><img alt="isna" src="../../images/python/pandas/isna.png"></p>
 <h2>Sözdizimi:</h2>
@@ -239,12 +239,13 @@
 						</ul>
 					</span>
 				<p>
-					<h1>replace() Metodu</h1>
+					<h1><code>replace()</code> Metodu</h1>
 <p>Basitçe anlatmak gerekirse: <strong><code>replace()</code> metodu, bir DataFrame (veri tablosu) içindeki belirli değerleri bulup, onları istediğiniz yeni değerlerle değiştirmenizi sağlar.</strong> Excel'deki "Bul ve Değiştir" (Find &amp; Replace) özelliğinin kodla yapılan hali gibidir.</p>
 <p><img alt="loading-ag-439" src="../../images/python/pandas/replace.png"></p>
 <h2>Sözdizimi:</h2>
 <div class="highlight"><pre><span></span><code><span class="n">DataFrame</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">to_replace</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">value</span><span class="o">=&lt;</span><span class="n">no_default</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> 
-<span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">method</span><span class="o">=&lt;</span><span class="n">no_default</span><span class="o">&gt;</span><span class="p">)</span>
+                    <span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> 
+<span class="n">method</span><span class="o">=&lt;</span><span class="n">no_default</span><span class="o">&gt;</span><span class="p">)</span>
 </code></pre></div>
 
 <h2>Parametreler:</h2>
@@ -272,13 +273,14 @@
 						</ul>
 					</span>
 				<p>
-					<h1>convert_dtypes() Metodu</h1>
+					<h1><code>convert_dtypes()</code> Metodu</h1>
 <p>Bu metodu, veri setini otomatik olarak temizleyen ve düzenleyen <strong>"akıllı bir veri tipi (türü) dönüştürücüsü"</strong> gibi düşünebilirsin.</p>
 <p><img alt="convert_dtypes" src="../../images/python/pandas/convert_dtypes.png"></p>
 <h2>Sözdizimi:</h2>
 <div class="highlight"><pre><span></span><code><span class="n">DataFrame</span><span class="o">.</span><span class="n">convert_dtypes</span><span class="p">(</span><span class="n">infer_objects</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">convert_string</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
-<span class="n">convert_integer</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">convert_boolean</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">convert_floating</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
-<span class="n">dtype_backend</span><span class="o">=</span><span class="s1">&#39;numpy_nullable&#39;</span><span class="p">)</span>
+                        <span class="n">convert_integer</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">convert_boolean</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+                        <span class="n">convert_floating</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+                        <span class="n">dtype_backend</span><span class="o">=</span><span class="s1">&#39;numpy_nullable&#39;</span><span class="p">)</span>
 </code></pre></div>
 
 <h3>Temel Sorun Nedir? (Neden Buna İhtiyacımız Var?)</h3>
@@ -302,7 +304,7 @@
 						</ul>
 					</span>
 				<p>
-					<h1>astype() Metodu</h1>
+					<h1><code>astype()</code> Metodu</h1>
 <p><code>astype()</code> metodu, Pandas'taki veri çerçevelerinin (DataFrame) veya serilerin (Series) <strong>veri tiplerini / türlerini (dtype) değiştirmek için</strong> kullanılan temel bir fonksiyondur.</p>
 <p><img alt="astype" src="../../images/python/pandas/astype.png"></p>
 <p><code>astype()</code> metodu ile bir DataFrame'deki tüm sütunları veya belirli sütunları istediğiniz bir veri tipine dönüştürebiliriz. Veri analizi sırasında, verilerin doğru şekilde işlenmesi, filtrelenmesi ve hafızada daha verimli saklanması için …</p>
@@ -325,14 +327,14 @@
 						</ul>
 					</span>
 				<p>
-					<h1>resample() Fonksiyonu</h1>
-<p><code>resample()</code> Fonksiyonu, <strong>zaman serisi verilerinin frekansını dönüştürmek ve yeniden örneklemek için kullanılan</strong> temel bir metottur. </p>
+					<h1><code>resample()</code> Metodu</h1>
+<p><code>resample()</code> Metodu, <strong>zaman serisi verilerinin frekansını dönüştürmek ve yeniden örneklemek için kullanılan</strong> temel bir metottur. </p>
 <p><img alt="resample" src="../../images/python/pandas/resample.png"></p>
 <h2>Sözdizimi:</h2>
 <p><code>resample()</code> fonksiyonunun sözdizimi aşağıdaki gibidir. Parametrelerin açıklaması  aşağıda <strong>Parametreler</strong> başlığında bulabilirsiniz.</p>
 <div class="highlight"><pre><span></span><code><span class="n">DataFrame</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">rule</span><span class="p">,</span> <span class="n">axis</span><span class="o">=&lt;</span><span class="n">no_default</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">closed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
-<span class="n">convention</span><span class="o">=</span><span class="s1">&#39;start&#39;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=&lt;</span><span class="n">no_default</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
-<span class="n">origin</span><span class="o">=</span><span class="s1">&#39;start_day&#39;</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="kc">None …</span></code></pre></div>
+                    <span class="n">convention</span><span class="o">=</span><span class="s1">&#39;start&#39;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=&lt;</span><span class="n">no_default</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
+                    <span class="n">level</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;start_day&#39;</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="kc">None …</span></code></pre></div>
 				</p>
 				<a class="read-more" href="pandas-resample.html">Continue reading »</a>
 			</div>

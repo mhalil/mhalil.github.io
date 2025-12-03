@@ -77,8 +77,11 @@
 <div class="post">
 	<h1 class="post-title">Pandas - value_counts</h1>
 	<span class="post-date">Paz 15 Haziran 2025</span>
-	<h1>value_counts() Metodu</h1>
-<p><strong>pandas.DataFrame.value_counts</strong></p>
+	<h1><code>value_counts()</code> Metodu</h1>
+<p>Veri çerçevemizde sütun bazında <strong>verinin kaç kez tekrar ettiğini</strong> (kaç adet bulunduğunu) öğrenmek için <code>value_counts()</code> metodunu kullanabiliriz. 
+<code>value_counts</code> metodu, veri frekansını (sıklığını) içeren bir <strong>Seri</strong> döndürün. Excel ve Libre Ofis Calc uygulamalarındaki <u>Yinelenenleri Kaldır (Remove Duplicates)</u> komutuna benzer bir işlev ile sütundaki benzersiz tüm değerleri içeren bir seri oluşturur ve bu serideki değerlerin veri çerçevesinde sütun temelli olarak <strong>kaçar adet bulunduğunu (frekansını)</strong> hesaplar / döndürür.</p>
+<p><img alt="value_counts" src="../../images/python/pandas/value_counts.png"></p>
+<h2>Sözdizimi:</h2>
 <div class="highlight"><pre><span></span><code><span class="n">DataFrame</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span> <span class="o">*</span><span class="n">subset</span><span class="o">=</span><span class="kc">None</span><span class="o">*</span><span class="p">,</span> 
                         <span class="o">*</span><span class="n">normalize</span><span class="o">=</span><span class="kc">False</span><span class="o">*</span><span class="p">,</span> 
                         <span class="o">*</span><span class="n">sort</span><span class="o">=</span><span class="kc">True</span><span class="o">*</span><span class="p">,</span> 
@@ -86,9 +89,6 @@
                         <span class="o">*</span><span class="n">dropna</span><span class="o">=</span><span class="kc">True</span><span class="o">*</span><span class="p">)</span>
 </code></pre></div>
 
-<p>Veri çerçevemizde sütun bazında <strong>verinin kaç kez tekrar ettiğini</strong> (kaç adet bulunduğunu) öğrenmek için <code>value_counts()</code> fonksiyonunu kullanbiliriz. 
-<code>value_counts</code> metodu, veri frekansını (sıklığını) içeren bir <strong>Seri</strong> döndürün. Excel ve Libre Ofis Calc uygulamalarındaki <u>Yinelenenleri Kaldır (Remove Duplicates)</u> komutuna benzer bir işlev ile sütundaki benzersiz tüm değerleri içeren bir seri oluşturur ve bu serideki değerlerin veri çerçevesinde sütun temelli olarak <strong>kaçar adet bulunduğunu (frekansını)</strong> hesaplar / döndürür.</p>
-<p><img alt="value_counts" src="../../images/python/pandas/value_counts.png"></p>
 <h2>Parametreler</h2>
 <p><strong>subset :</strong> Etiket veya etiket listesi. İsteğe bağlıdır, yani belirtmek şart değil.  </p>
 <p><em>Benzersiz kombinasyonları sayarken kullanılacak </em><em>sütunları</em><em> tanımlar.</em></p>

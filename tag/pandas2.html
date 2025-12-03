@@ -92,9 +92,9 @@
 						</ul>
 					</span>
 				<p>
-					<h1>assign() Metodu Nedir?</h1>
+					<h1><code>assign()</code> Metodu</h1>
 <p><code>assign()</code> metodu, bir veri tablosu üzerinde çalışırken, tablonun <strong>orijinal halini bozmadan</strong> (değiştirilmezlik ilkesi) yeni bir sütun eklemek istediğinizde kullanılır.</p>
-<p>Eğer elinizde bir satış tablosu varsa ve siz bu tabloya "Toplam Gelir" diye bir sütun eklemek istiyorsanız, <code>assign()</code> metodu ile bu yeni sütunu hesaplayıp ekleyebilirsiniz. Sonuç olarak, hem …</p>
+<p>Eğer elinizde bir satış tablosu varsa ve siz bu tabloya "Toplam Gelir" diye bir sütun eklemek istiyorsanız, <code>assign()</code> metodu ile bu yeni sütunu hesaplayıp ekleyebilirsiniz. Sonuç olarak, hem eski …</p>
 				</p>
 				<a class="read-more" href="pandas-assign-metodu.html">Continue reading »</a>
 			</div>
@@ -114,7 +114,7 @@
 						</ul>
 					</span>
 				<p>
-					<h1>pyarrow String Türü ile Hızlanmak</h1>
+					<h1><code>pyarrow</code> String Türü ile Hızlanmak</h1>
 <p>Pandas'ta dizelerle (strings) mi çalışıyorsunuz ve beklediğinizden biraz daha yavaş olduğunu mu görüyorsunuz? Bu eğitimde, <strong>PyArrow</strong>'u kullanarak işleri nasıl hızlandırabileceğimizi öğreneceğiz.</p>
 <p>Örnek olarak kullanacağımız dosyanın adı <strong>TDK_imla.txt</strong>. Bu dosya, satır başına bir kelime olacak şekilde toplam 76.183 kelime içeren bir imla sözlüğüdür …</p>
 				</p>
@@ -141,11 +141,11 @@
 						</ul>
 					</span>
 				<p>
-					<h1>unique() ve nunique() Fonksiyonları</h1>
-<h1>unique() Fonksiyonu</h1>
-<p><code>unique()</code> Fonksiyonu, Veri Çerçevesinden <strong>benzersiz değerler tespit etmek</strong>, kategorik verileri analiz etmek veya <strong>yinelenen verileri tanımlamak</strong> için kullanılır. </p>
+					<h1><code>unique()</code> ve <code>nunique()</code> Metotları</h1>
+<h1><code>unique()</code> Metodu</h1>
+<p><code>unique()</code> Metodu, Veri Çerçevesinden <strong>benzersiz değerler tespit etmek</strong>, kategorik verileri analiz etmek veya <strong>yinelenen verileri tanımlamak</strong> için kullanılır. </p>
 <p><img alt="unique_nunique" src="../../images/python/pandas/unique_nunique.png"></p>
-<h2>unique() Fonksiyonunun Kullanımı</h2>
+<h2><code>unique()</code> Metodunun Kullanımı</h2>
 <p><code>unique()</code> Fonksiyonu bir NumPy dizisi döndürür. Bir sütundaki benzersiz (farklı) değerleri tanımlamak için kullanışlıdır ve bu, kategorik verilerle çalışırken veya benzersiz değerleri algılarken …</p>
 				</p>
 				<a class="read-more" href="pandas-unique-ve-nunique.html">Continue reading »</a>
@@ -169,17 +169,9 @@
 						</ul>
 					</span>
 				<p>
-					<h1>value_counts() Metodu</h1>
-<p><strong>pandas.DataFrame.value_counts</strong></p>
-<div class="highlight"><pre><span></span><code><span class="n">DataFrame</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span> <span class="o">*</span><span class="n">subset</span><span class="o">=</span><span class="kc">None</span><span class="o">*</span><span class="p">,</span> 
-                        <span class="o">*</span><span class="n">normalize</span><span class="o">=</span><span class="kc">False</span><span class="o">*</span><span class="p">,</span> 
-                        <span class="o">*</span><span class="n">sort</span><span class="o">=</span><span class="kc">True</span><span class="o">*</span><span class="p">,</span> 
-                        <span class="o">*</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="o">*</span><span class="p">,</span> 
-                        <span class="o">*</span><span class="n">dropna</span><span class="o">=</span><span class="kc">True</span><span class="o">*</span><span class="p">)</span>
-</code></pre></div>
-
-<p>Veri çerçevemizde sütun bazında <strong>verinin kaç kez tekrar ettiğini</strong> (kaç adet bulunduğunu) öğrenmek için <code>value_counts()</code> fonksiyonunu kullanbiliriz. 
-<code>value_counts</code> metodu, veri frekansını (sıklığını) içeren bir <strong>Seri</strong> döndürün. Excel ve Libre Ofis Calc uygulamalarındaki <u>Yinelenenleri …</u></p>
+					<h1><code>value_counts()</code> Metodu</h1>
+<p>Veri çerçevemizde sütun bazında <strong>verinin kaç kez tekrar ettiğini</strong> (kaç adet bulunduğunu) öğrenmek için <code>value_counts()</code> metodunu kullanabiliriz. 
+<code>value_counts</code> metodu, veri frekansını (sıklığını) içeren bir <strong>Seri</strong> döndürün. Excel ve Libre Ofis Calc uygulamalarındaki <u>Yinelenenleri Kaldır (Remove Duplicates)</u> komutuna benzer bir işlev ile sütundaki benzersiz tüm değerleri içeren bir seri …</p>
 				</p>
 				<a class="read-more" href="pandas-value_counts.html">Continue reading »</a>
 			</div>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Pandas - median" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/pandas-median.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Pandas - median</h1>
+	<span class="post-date">Cum 15 Temmuz 2022</span>
+	<h2><code>median()</code> Metodu</h2>
+<p><code>pandas.DataFrame.median()</code> metodu, bir <strong>DataFrame</strong>'deki (veri çerçevesi) değerlerin, belirtilen eksen (satır veya sütun) üzerindeki <strong>medyanını (ortanca değerini)</strong> döndürmek için kullanılır.</p>
+<p><strong>Medyan</strong>, bir veri kümesindeki değerler küçükten büyüğe sıralandığında tam ortada kalan değerdir.</p>
+<p>Bu yöntem genellikle bir <strong>Series</strong> (Seri) veya bir <strong>Scalar</strong> (tek bir sayı) döndürür.</p>
+<h2>⚙️ Parametreler</h2>
+<p>Yöntemin temel parametreleri şunlardır:</p>
+<table>
+<thead>
+<tr>
+<th>Parametre</th>
+<th>Varsayılan Değer</th>
+<th>Açıklama</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>axis</code></td>
+<td><code>0</code> (index) <br><br> <strong><code>0</code> (index)</strong>: Her <strong>sütunun</strong> medyanını hesaplar ve sonuç olarak bir <strong>Series</strong> döndürür (varsayılan). <br><br> <strong><code>1</code> (columns)</strong>: Her <strong>satırın</strong> medyanını hesaplar ve sonuç olarak bir <strong>Series</strong> döndürür. <br><br> <strong><code>None</code></strong>: Tüm DataFrame'in tek bir medyanını hesaplar (Sürüm 2.0.0'dan itibaren).</td>
+<td>İşlevin uygulanacağı ekseni belirtir.</td>
+</tr>
+<tr>
+<td><code>skipna</code></td>
+<td><code>True</code></td>
+<td>Hesaplama yapılırken <code>NA</code> (boş/null) değerlerinin hariç tutulup tutulmayacağını belirtir. <code>True</code> ise hariç tutulur.</td>
+</tr>
+<tr>
+<td><code>numeric_only</code></td>
+<td><code>False</code></td>
+<td>Hesaplamaya yalnızca <strong>float, integer (tam sayı)</strong> ve <strong>boolean (mantıksal)</strong> sütunların dahil edilip edilmeyeceğini belirtir.</td>
+</tr>
+<tr>
+<td><code>**kwargs</code></td>
+<td></td>
+<td>Fonksiyona iletilecek ek anahtar kelime argümanları.</td>
+</tr>
+</tbody>
+</table>
+<h2>📝 Kullanım Örnekleri</h2>
+<h3>1. Varsayılan Kullanım (<code>axis=0</code>)</h3>
+<p>Varsayılan olarak <code>axis=0</code> kullanılır, yani her sütunun medyanı hesaplanır:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span> <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span> 
+                    <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">32</span><span class="p">],</span> 
+                    <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">33</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">100</span><span class="p">]})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Veri çerçevemize bakalım, Çıktı:</p>
+<div class="highlight"><pre><span></span><code>    <span class="n">a</span>   <span class="n">b</span>    <span class="n">c</span>
+<span class="mi">0</span>   <span class="mi">1</span>  <span class="mi">10</span>   <span class="mi">33</span>
+<span class="mi">1</span>   <span class="mi">2</span>  <span class="mi">15</span>   <span class="mi">50</span>
+<span class="mi">2</span>   <span class="mi">8</span>  <span class="mi">24</span>   <span class="mi">80</span>
+<span class="mi">3</span>  <span class="mi">12</span>  <span class="mi">32</span>  <span class="mi">100</span>
+</code></pre></div>
+
+<p>Veri çerçevesinin medyanını bulalım;</p>
+<div class="highlight"><pre><span></span><code><span class="n">median_result</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">median_result</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span>     <span class="mf">5.0</span> <span class="c1"># ortadaki iki değerin ortalaması (2 + 8) / 2</span>
+<span class="n">b</span>    <span class="mf">19.5</span> <span class="c1"># ortadaki iki değerin ortalaması (15 + 24) / 2</span>
+<span class="n">c</span>    <span class="mf">65.0</span> <span class="c1"># ortadaki iki değerin ortalaması (50 + 80) / 2</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="n">float64</span>
+</code></pre></div>
+
+<p>Sütunlarda 4'er veri olduğu için tam ortadaki değer seçilemiyor, bunun yerine tam ortada bulunan sayıların ortalaması alınıyor.</p>
+<h3>2. Satır Bazında Medyan (<code>axis=1</code>)</h3>
+<p>Satırlar arasındaki medyanı hesaplamak için <code>axis=1</code> kullanılır:</p>
+<div class="highlight"><pre><span></span><code><span class="n">median_result_axis_1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">median_result_axis_1</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="mi">0</span>    <span class="mf">10.0</span> <span class="c1"># Ortadaki sayı 10 [1, 10, 23]</span>
+<span class="mi">1</span>    <span class="mf">15.0</span> <span class="c1"># Ortadaki sayı 10 [2, 15, 50]</span>
+<span class="mi">2</span>    <span class="mf">24.0</span> <span class="c1"># Ortadaki sayı 10 [8, 24, 80]</span>
+<span class="mi">3</span>    <span class="mf">32.0</span> <span class="c1"># Ortadaki sayı 10 [12, 32, 100]</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="n">float64</span>
+</code></pre></div>
+
+<p>Satırlarda 3 adet (tek sayılı) veri olduğu için tam ortadaki sayı, medyan olarak hesaplanıyor. </p>
+<p>Bir de tüm Veri çerçevesinin medyanını bulalım.</p>
+<div class="highlight"><pre><span></span><code><span class="n">median_result_axis_None</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">median_result_axis_None</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="mf">19.5</span> <span class="c1"># (15 + 24) / 2 &lt;- Tablonun tam ortasındaki değerler 15 ve 24&#39;tür.</span>
+</code></pre></div>
+
+<h3>3. Sadece Sayısal Sütunları Kullanma (<code>numeric_only=True</code>)</h3>
+<p>DataFrame'de sayısal olmayan (örneğin metin/string) sütunlar varsa, yalnızca sayısal sütunları dahil etmek için <code>numeric_only=True</code> ayarlanmalıdır. Aksi takdirde hata oluşabilir:</p>
+<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span> <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span> 
+                    <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="s1">&#39;V&#39;</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">],</span> 
+                    <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">33</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">100</span><span class="p">]})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Veri Çerçevemiz:</p>
+<div class="highlight"><pre><span></span><code>    <span class="n">a</span>   <span class="n">b</span>    <span class="n">c</span>
+<span class="mi">0</span>   <span class="mi">1</span>  <span class="mi">10</span>   <span class="mi">33</span>
+<span class="mi">1</span>   <span class="mi">2</span>   <span class="n">V</span>   <span class="mi">50</span>
+<span class="mi">2</span>   <span class="mi">8</span>  <span class="mi">24</span>   <span class="mi">80</span>
+<span class="mi">3</span>  <span class="mi">12</span>   <span class="n">N</span>  <span class="mi">100</span>
+</code></pre></div>
+
+<p>Sadece numerik (sayılardan oluşan) verilerin ortalamasını bulalım;</p>
+<div class="highlight"><pre><span></span><code><span class="n">median_numeric</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">numeric_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">median_numeric</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span>     <span class="mf">5.0</span>
+<span class="n">c</span>    <span class="mf">65.0</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="n">float64</span>
+</code></pre></div>
+
+<p>Satırların medyanını bulalım;</p>
+<div class="highlight"><pre><span></span><code><span class="n">median_numeric</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">numeric_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">median_numeric</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="mi">0</span>    <span class="mf">17.0</span> <span class="c1"># (1 + 33) / 2</span>
+<span class="mi">1</span>    <span class="mf">26.0</span> <span class="c1"># (2 + 50) / 2</span>
+<span class="mi">2</span>    <span class="mf">44.0</span> <span class="c1"># (8 + 80) / 2</span>
+<span class="mi">3</span>    <span class="mf">56.0</span> <span class="c1"># (12 + 100) / 2</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="n">float64</span>
+</code></pre></div>
+
+<p><strong>B</strong> Sütunundaki <strong>Tüm Değerler</strong> devre dışı bırakılıp kalan değerlerin ortalaması alınarak medyan hesaplandı.</p>
+<h2>Kaynak:</h2>
+<ul>
+<li><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.median.html">pandas.DataFrame.median &#8212; pandas 2.3.3 documentation</a></li>
+</ul>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/pandas.html">Pandas</a></li>
+					<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+					<li><a href="/tag/modul.html">Modül</a></li>
+					<li><a href="/tag/median.html">median</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>
