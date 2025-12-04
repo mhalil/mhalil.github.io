@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Pandas - add_prefix" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/pandas-add_prefix.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Pandas - add_prefix</h1>
+	<span class="post-date">Prş 04 Aralık 2025</span>
+	<h1><code>add_prefix()</code> Metodu</h1>
+<p><code>pandas.DataFrame.add_prefix()</code> metodu, bir <strong>DataFrame</strong>'deki <strong>etiketlerin</strong> (varsayılan olarak <strong>sütun isimlerinin</strong>) önüne belirtilen bir <strong>dizeyi (prefix)</strong> eklemek için kullanılır.</p>
+<h2>İşlevi</h2>
+<ul>
+<li>
+<p><strong>Ne yapar:</strong> DataFrame'deki eksen etiketlerinin (varsayılan olarak sütun isimleri) önüne bir önek (<code>prefix</code>) ekler.</p>
+</li>
+<li>
+<p><strong>Döndürdüğü değer:</strong> Önek eklenmiş yeni etiketlere sahip bir <strong>DataFrame</strong> veya <strong>Series</strong> döndürür. <strong>Orijinal DataFrame'i değiştirmez.</strong></p>
+</li>
+</ul>
+<h2>Parametreler</h2>
+<table>
+<thead>
+<tr>
+<th>Parametre</th>
+<th>Tipi</th>
+<th>Açıklama</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>prefix</code></strong></td>
+<td><code>str</code></td>
+<td>Her etiketin önüne eklenecek dize (önek).</td>
+</tr>
+<tr>
+<td><strong><code>axis</code></strong></td>
+<td><code>0</code> veya <code>index</code>,<br><code>1</code> veya <code>columns</code>,<br><code>None}</code>,<br> <strong>Varsayılan</strong>: <code>None</code></td>
+<td>Önekin ekleneceği eksen. <br>Varsayılan olarak (<strong><code>axis=1</code></strong> veya <strong><code>'columns'</code></strong> gibi davranır) <strong>sütun</strong> etiketlerine uygulanır. <br>Eğer <strong><code>0</code></strong> veya <strong><code>'index'</code></strong> belirtilirse, <strong>satır</strong> etiketlerine (index) uygulanır.</td>
+</tr>
+</tbody>
+</table>
+<h3>Örnek Kullanım (Sütunlara Önek Ekleme)</h3>
+<p>Bir DataFrame'in sütun isimlerine <code>Yeni_</code> önekini ekleyelim:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]})</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Orijinal DataFrame:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code>   <span class="n">A</span>  <span class="n">B</span>  <span class="n">C</span>
+<span class="mi">0</span>  <span class="mi">1</span>  <span class="mi">3</span>  <span class="mi">5</span>
+<span class="mi">1</span>  <span class="mi">2</span>  <span class="mi">4</span>  <span class="mi">6</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>3</td>
+<td>5</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>4</td>
+<td>6</td>
+</tr>
+</tbody>
+</table>
+<p>Sütun isimlerine '<strong>Yeni_</strong>' önekini ekleme</p>
+<div class="highlight"><pre><span></span><code><span class="n">df_onekli</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">add_prefix</span><span class="p">(</span><span class="s1">&#39;Yeni_&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Önek Eklenmiş DataFrame:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_onekli</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Önek</span> <span class="n">Eklenmiş</span> <span class="n">DataFrame</span><span class="p">:</span>
+   <span class="n">Yeni_A</span>  <span class="n">Yeni_B</span>  <span class="n">Yeni_C</span>
+<span class="mi">0</span>       <span class="mi">1</span>       <span class="mi">3</span>       <span class="mi">5</span>
+<span class="mi">1</span>       <span class="mi">2</span>       <span class="mi">4</span>       <span class="mi">6</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Yeni_A</th>
+<th>Yeni_B</th>
+<th>Yeni_C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>3</td>
+<td>5</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>4</td>
+<td>6</td>
+</tr>
+</tbody>
+</table>
+<p>Aynı DataFrame'in index isimlerine <code>Yeni_</code> önekini ekleyelim:</p>
+<div class="highlight"><pre><span></span><code><span class="n">df_indeks_onekli</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">add_prefix</span><span class="p">(</span><span class="s1">&#39;Yeni_&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;index&quot;</span><span class="p">)</span> <span class="c1"># index = 0 ile eş.</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;İndekse Önek Eklenmiş DataFrame:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_indeks_onekli</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">İndekse</span> <span class="n">Önek</span> <span class="n">Eklenmiş</span> <span class="n">DataFrame</span><span class="p">:</span>
+        <span class="n">A</span>  <span class="n">B</span>  <span class="n">C</span>
+<span class="n">Yeni_0</span>  <span class="mi">1</span>  <span class="mi">3</span>  <span class="mi">5</span>
+<span class="n">Yeni_1</span>  <span class="mi">2</span>  <span class="mi">4</span>  <span class="mi">6</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Yeni_0</td>
+<td>1</td>
+<td>3</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Yeni_1</td>
+<td>2</td>
+<td>4</td>
+<td>6</td>
+</tr>
+</tbody>
+</table>
+<p>Bu metot, özellikle büyük veri kümelerinde farklı kaynaklardan gelen sütunları birleştirmeden önce isim çakışmalarını önlemek veya sütunların kaynağını belirtmek için kullanışlıdır.</p>
+<h2>Kaynak:</h2>
+<ul>
+<li><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.add_prefix.html">pandas.DataFrame.add_prefix &#8212; pandas 2.3.3 documentation</a></li>
+</ul>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/pandas.html">Pandas</a></li>
+					<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+					<li><a href="/tag/modul.html">Modül</a></li>
+					<li><a href="/tag/add_prefix.html">add_prefix</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>

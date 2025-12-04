@@ -80,6 +80,12 @@
 	<h1><code>concat()</code> Metodu</h1>
 <p><strong>Concat</strong> kelimesi Concatenate kelimesinin kısaltamasıdır. <strong>Concatenate</strong> kelimesinin Türkçe karşılığı <strong>Birleştir</strong>'dir.<br>
 <code>concat()</code> metodu ile veri çerçeveleri <strong>alt alta ya da yan yana birleştirilebilir</strong>. Varsayılan değer satır bazlı yani alt alta birleştirmedir.</p>
+<h2>Sözdizimi:</h2>
+<div class="highlight"><pre><span></span><code><span class="n">pandas</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">objs</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">join</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> 
+                <span class="n">keys</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">verify_integrity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                <span class="n">sort</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</code></pre></div>
+
 <h2>Parametreler:</h2>
 <table>
 <thead>
@@ -90,44 +96,44 @@
 </thead>
 <tbody>
 <tr>
-<td><strong>objs</strong></td>
+<td><strong><code>objs</code></strong></td>
 <td>Birleştirilecek <strong>Series</strong> veya <strong>DataFrame</strong> nesnelerinin bir dizisi (<code>sequence</code>) veya eşlemesi (<code>mapping</code>). Bir eşleme (örneğin bir sözlük) iletilirse, sıralanmış anahtarlar <code>keys</code> argümanı olarak kullanılır.</td>
 </tr>
 <tr>
-<td><strong>axis</strong></td>
-<td>Birleştirmenin yapılacağı eksen. Değerler: <code>{0/'index', 1/'columns'}</code>. <strong>Varsayılan: 0</strong> (satırlar boyunca birleştirir).</td>
+<td><strong><code>axis</code></strong></td>
+<td>Birleştirmenin yapılacağı ekseni belirteceğimiz parametredir. <code>0</code>: Satırlar boyunca birleştirme yapılır. (<strong>Varsayılan</strong>)<br><code>1</code>: Sütunlar boyunca birleştirme yapılır.</td>
 </tr>
 <tr>
-<td><strong>join</strong></td>
-<td>Diğer eksenlerdeki (birleştirme yapılmayan) indekslerin nasıl ele alınacağını belirtir. Değerler: <code>{'inner', 'outer'}</code>. <strong>Varsayılan: 'outer'</strong> (tüm indeksleri birleştirir, eşleşmeyen yerlere <code>NaN</code> koyar).</td>
+<td><strong><code>join</code></strong></td>
+<td>Diğer eksenlerdeki (birleştirme yapılmayan) indekslerin nasıl ele alınacağını belirtir. Değerler: <code>{'inner', 'outer'}</code>. Varsayılan: '<code>outer</code>' (tüm indeksleri birleştirir, eşleşmeyen yerlere <code>NaN</code> koyar).</td>
 </tr>
 <tr>
-<td><strong>ignore_index</strong></td>
-<td><strong>bool</strong>, <strong>Varsayılan: False</strong>. Eğer <strong>True</strong> ise, birleştirme ekseni boyunca mevcut indeks değerlerini kullanmaz. Ortaya çıkan eksen 0'dan başlayarak etiketlenir.</td>
+<td><strong><code>ignore_index</code></strong></td>
+<td><strong>bool</strong>, değer alır. <strong>Varsayılan: <code>False</code></strong>. <br>Eğer <strong><code>True</code></strong> ise, birleştirme ekseni boyunca mevcut indeks değerlerini kullanmaz. Ortaya çıkan eksen 0'dan başlayarak etiketlenir.</td>
 </tr>
 <tr>
-<td><strong>keys</strong></td>
-<td><strong>sequence</strong>, <strong>Varsayılan: None</strong>. Belirtilirse, en dış düzey olarak bu anahtarları kullanarak hiyerarşik bir indeks (<strong>MultiIndex</strong>) oluşturur.</td>
+<td><strong><code>keys</code></strong></td>
+<td><strong>sequence</strong>, <strong>Varsayılan: <code>None</code></strong>. Belirtilirse, en dış düzey olarak bu anahtarları kullanarak hiyerarşik bir indeks (<strong>MultiIndex</strong>) oluşturur.</td>
 </tr>
 <tr>
-<td><strong>levels</strong></td>
-<td><strong>dizilerin listesi</strong>, <strong>Varsayılan: None</strong>. Bir MultiIndex oluşturmak için kullanılacak belirli düzeyleri (benzersiz değerleri) belirtir. Aksi takdirde <code>keys</code> argümanından çıkarılır.</td>
+<td><strong><code>levels</code></strong></td>
+<td><strong>dizilerin listesi</strong>, <strong>Varsayılan: <code>None</code></strong>. Bir MultiIndex oluşturmak için kullanılacak belirli düzeyleri (benzersiz değerleri) belirtir. Aksi takdirde <code>keys</code> argümanından çıkarılır.</td>
 </tr>
 <tr>
-<td><strong>names</strong></td>
-<td><strong>liste</strong>, <strong>Varsayılan: None</strong>. Sonuçtaki hiyerarşik indeksteki düzeyler için adlar belirtir.</td>
+<td><strong><code>names</code></strong></td>
+<td><strong>liste</strong>, <strong>Varsayılan: <code>None</code></strong>. Sonuçtaki hiyerarşik indeksteki düzeyler için adlar belirtir.</td>
 </tr>
 <tr>
-<td><strong>verify_integrity</strong></td>
-<td><strong>bool</strong>, <strong>Varsayılan: False</strong>. Eğer <strong>True</strong> ise, yeni birleştirilmiş eksenin yinelenen değerler içerip içermediğini kontrol eder. Bu, veri birleştirmeye göre oldukça maliyetli olabilir.</td>
+<td><strong><code>verify_integrity</code></strong></td>
+<td><strong>bool</strong>, <strong>Varsayılan: <code>False</code></strong>. Eğer <strong><code>True</code></strong> ise, yeni birleştirilmiş eksenin yinelenen değerler içerip içermediğini kontrol eder. Bu, veri birleştirmeye göre oldukça maliyetli olabilir.</td>
 </tr>
 <tr>
-<td><strong>sort</strong></td>
-<td><strong>bool</strong>, <strong>Varsayılan: False</strong>. Zaten hizalı değilse, birleştirme dışı ekseni sıralar.</td>
+<td><strong><code>sort</code></strong></td>
+<td><strong>bool</strong>, <strong>Varsayılan: <code>False</code></strong>. Zaten hizalı değilse, birleştirme dışı ekseni sıralar.</td>
 </tr>
 <tr>
-<td><strong>copy</strong></td>
-<td><strong>bool</strong>, <strong>Varsayılan: True</strong>. Eğer <strong>False</strong> ise, veriyi gereksiz yere kopyalamamaya çalışır.</td>
+<td><strong><code>copy</code></strong></td>
+<td><strong>bool</strong>, <strong>Varsayılan: <code>True</code></strong>. Eğer <strong><code>False</code></strong> ise, veriyi gereksiz yere kopyalamamaya çalışır.</td>
 </tr>
 </tbody>
 </table>
@@ -300,8 +306,8 @@
 <p>Gördüğünüz gibi, iki veri çerçevesi altalta birleştirildi.</p>
 <h2>Parametreler</h2>
 <h3><code>axis</code> parametresi</h3>
-<p>Hatırlarsanız <strong>drop</strong> metodunu anlatırken <strong>axis</strong> parametresinden bahsetmiştik. <strong>axis</strong> parametresi, <strong>0 ve 1</strong> değerlerini alır, <strong>0 satırları, 1 ise sütunları</strong> temsil eder demiştik. Aynı parametreyi birleştirme işleminde de kullanabiliriz. eğer <strong>axis</strong> parametresi kullanılmaz ise, varsayılan değer <strong>axis = 0</strong> olduğu için yani satırları baz alarak birleştirme yapılır.</p>
-<p>Şimdi <strong>axis=1</strong> parametresini ekleyerek veri çerçevelerini yanyana birleştirmeyi deneyelim.</p>
+<p>Hatırlarsanız <strong><code>drop()</code></strong> metodunu anlatırken <strong><code>axis</code></strong> parametresinden bahsetmiştik. <strong>axis</strong> parametresi, <strong>0 ve 1</strong> değerlerini alır, <strong>0 satırları, 1 ise sütunları</strong> temsil eder demiştik. Aynı parametreyi birleştirme işleminde de kullanabiliriz. eğer <strong>axis</strong> parametresi kullanılmaz ise, varsayılan değer <strong><code>axis = 0</code></strong> olduğu için yani satırları baz alarak birleştirme yapılır.</p>
+<p>Şimdi <strong><code>axis=1</code></strong> parametresini ekleyerek veri çerçevelerini yanyana birleştirmeyi deneyelim.</p>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">))</span>
 </code></pre></div>
 
@@ -392,7 +398,7 @@
 </tr>
 </tbody>
 </table>
-<p>Bu durumda, 2 veri çerçevesi yanyana birleştirildi ancak veri çerçevelerinde aynı indeks değerleri bulunmadığı için ilgili indeks değerinin karşılığında <strong>NaN (Not A Number)</strong> değeri atandı.</p>
+<p>Bu durumda, 2 veri çerçevesi yanyana birleştirildi ancak veri çerçevelerinde aynı indeks değerleri bulunmadığı için ilgili indeks değerinin karşılığında <strong><code>NaN</code> (Not A Number)</strong> değeri atandı.</p>
 <p>Eğer aşağıdaki gibi bir veri çerçevemiz olsaydı ve bu veri çerçevesini df1 ile yanyana birleştirseydik nasıl bir sonuç elde ederdik dersiniz.</p>
 <div class="highlight"><pre><span></span><code><span class="n">veri3</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;A5&#39;</span><span class="p">,</span><span class="s1">&#39;A6&#39;</span><span class="p">,</span><span class="s1">&#39;A7&#39;</span><span class="p">,</span><span class="s1">&#39;A8&#39;</span><span class="p">],</span><span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;B5&#39;</span><span class="p">,</span><span class="s1">&#39;B6&#39;</span><span class="p">,</span><span class="s1">&#39;B7&#39;</span><span class="p">,</span><span class="s1">&#39;B8&#39;</span><span class="p">],</span><span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;C5&#39;</span><span class="p">,</span><span class="s1">&#39;C6&#39;</span><span class="p">,</span><span class="s1">&#39;C7&#39;</span><span class="p">,</span><span class="s1">&#39;C8&#39;</span><span class="p">]}</span>
 <span class="n">df3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">veri3</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">8</span><span class="p">])</span>
@@ -508,7 +514,7 @@
 </tbody>
 </table>
 <p>df1 ve df3'te ortak indeks değerleri olduğu için 1. ve 3. satırlar tamamen geçerli veri ile doldu.</p>
-<p><strong>concat</strong> fonksiyonu sadece 2 veri çerçevesini birleştirmiyor. 2'den fazla veri çerçevesini de birleştiriyor. Oluşturduğumuz df1, df2 ve df3 veri çerçevelerini altalta ve yanyana birleştirip sonuçları inceleyelim.</p>
+<p><strong><code>concat</code></strong> metodu sadece 2 veri çerçevesini birleştirmiyor. 2'den fazla veri çerçevesini de birleştiriyor. Oluşturduğumuz df1, df2 ve df3 veri çerçevelerini altalta ve yanyana birleştirip sonuçları inceleyelim.</p>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">,</span> <span class="n">df3</span><span class="p">]))</span>
 </code></pre></div>
 
