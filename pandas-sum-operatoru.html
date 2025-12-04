@@ -77,14 +77,15 @@
 <div class="post">
 	<h1 class="post-title">Pandas - sum operatörü</h1>
 	<span class="post-date">Prş 28 Temmuz 2022</span>
-	<h1>sum() Metodu</h1>
+	<h1><code>sum()</code> Metodu</h1>
 <p>Python'dan <strong>toplam değeri bulmak</strong> için kullanmaya aşina olduğumuz <code>sum()</code> fonksiyonu, Pandas içerisinde metot olarak bulunuyor.
 Yani Python'da <code>sum()</code> fonksiyonuna parametre olarak bir değişken veriyorduk.  (Ör. <code>sum(liste)</code>).
 Pandasta ise veri çerçevesi adının sonuna metot olarak ekliyoruz.  (Ör. <code>VeriCercevesi.sum()</code>)</p>
 <p>Örneklerle inceleyelim.</p>
 <div class="highlight"><pre><span></span><code><span class="n">baslik</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Birler&quot;</span><span class="p">,</span> <span class="s2">&quot;Onlar&quot;</span><span class="p">,</span> <span class="s2">&quot;Yüzler&quot;</span><span class="p">]</span>
-<span class="n">basliksiz</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/basliksiz.ods&quot;</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">names</span> <span class="o">=</span> <span class="n">baslik</span> <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">basliksiz</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/basliksiz.ods&quot;</span><span class="p">,</span> 
+                            <span class="n">header</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">names</span> <span class="o">=</span> <span class="n">baslik</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </code></pre></div>
 
 <table>
@@ -208,7 +209,7 @@ Pandasta ise veri çerçevesi adının sonuna metot olarak ekliyoruz.  (Ör. <co
 </tbody>
 </table>
 <p>Elimizde, 17 satır ve 3 sütundan oluşan tablomuz var. Bakalım <code>sum()</code> metodunu kullanınca nasıl bir sonuç elde edeceğiz.</p>
-<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">basliksiz</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
 </code></pre></div>
 
 <div class="highlight"><pre><span></span><code><span class="n">Birler</span> <span class="mi">105</span>
@@ -217,14 +218,250 @@ Pandasta ise veri çerçevesi adının sonuna metot olarak ekliyoruz.  (Ör. <co
 <span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
 </code></pre></div>
 
-<p>Görüyoruz ki, <code>sum()</code> metodu sayesinde her sütunun toplam değerleri ekrana yazdırılıyor. Peki Tablodaki tüm değerlerin toplamını bulmak istersek ne yapmalıyız? <code>sum()</code> metodu bize 3 sütun başlığı ve 3 değer verdiğine göre, ikinci bir <code>sum()</code> metodu (yani <code>sum()</code> metodunu peşpeşe iki defa yazmak) bu değerlerin toplamını verir mi dersiniz? Deneyelim.</p>
-<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">basliksiz</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+<p>Görüyoruz ki, <code>sum()</code> metodu sayesinde <strong>her sütunun toplam değerleri</strong> ekrana yazdırılıyor. Peki Tablodaki tüm değerlerin toplamını bulmak istersek ne yapmalıyız? <code>sum()</code> metodu bize 3 sütun başlığı ve 3 değer verdiğine göre, ikinci bir <code>sum()</code> metodu (yani <code>sum()</code> metodunu peşpeşe iki defa yazmak) bu değerlerin toplamını verir mi dersiniz? Deneyelim.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
 </code></pre></div>
 
 <div class="highlight"><pre><span></span><code><span class="mi">9741</span>
 </code></pre></div>
 
 <p>Tahmin ettiğimiz gibi, iki kez <code>sum()</code> metodu kullanmak, tüm veri çerçevesinin toplamını elde etmemizi sağladı.</p>
+<p>Peki her sütunun toplamını Veri çerçevesinin son satırına eklemek istersek nasıl bir yol uygulamak gerekir? derseniz, aşağıdaki kodu inceleyin.</p>
+<div class="highlight"><pre><span></span><code><span class="n">toplam</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="n">df_toplam</span> <span class="o">=</span> <span class="n">toplam</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+<span class="n">df_toplam</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Toplam&quot;</span><span class="p">]</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">,</span> <span class="n">df_toplam</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code>        <span class="n">Birler</span>  <span class="n">Onlar</span>  <span class="n">Yüzler</span>
+<span class="mi">0</span>            <span class="mi">9</span>     <span class="mi">82</span>     <span class="mi">246</span>
+<span class="mi">1</span>            <span class="mi">7</span>     <span class="mi">78</span>     <span class="mi">180</span>
+<span class="mi">2</span>            <span class="mi">8</span>     <span class="mi">83</span>     <span class="mi">565</span>
+<span class="mi">3</span>            <span class="mi">6</span>     <span class="mi">82</span>     <span class="mi">486</span>
+<span class="mi">4</span>            <span class="mi">4</span>     <span class="mi">37</span>     <span class="mi">615</span>
+<span class="mi">5</span>            <span class="mi">2</span>     <span class="mi">18</span>     <span class="mi">341</span>
+<span class="mi">6</span>            <span class="mi">5</span>     <span class="mi">12</span>     <span class="mi">539</span>
+<span class="mi">7</span>            <span class="mi">8</span>     <span class="mi">59</span>     <span class="mi">709</span>
+<span class="mi">8</span>            <span class="mi">1</span>     <span class="mi">89</span>     <span class="mi">675</span>
+<span class="mi">9</span>            <span class="mi">6</span>     <span class="mi">12</span>     <span class="mi">965</span>
+<span class="mi">10</span>           <span class="mi">4</span>     <span class="mi">24</span>     <span class="mi">447</span>
+<span class="mi">11</span>           <span class="mi">6</span>     <span class="mi">35</span>     <span class="mi">555</span>
+<span class="mi">12</span>           <span class="mi">5</span>     <span class="mi">34</span>     <span class="mi">117</span>
+<span class="mi">13</span>           <span class="mi">5</span>     <span class="mi">21</span>     <span class="mi">471</span>
+<span class="mi">14</span>           <span class="mi">7</span>     <span class="mi">31</span>     <span class="mi">171</span>
+<span class="mi">15</span>           <span class="mi">5</span>     <span class="mi">40</span>     <span class="mi">491</span>
+<span class="mi">16</span>           <span class="mi">9</span>     <span class="mi">55</span>     <span class="mi">666</span>
+<span class="mi">17</span>           <span class="mi">8</span>     <span class="mi">48</span>     <span class="mi">557</span>
+<span class="n">Toplam</span>     <span class="mi">105</span>    <span class="mi">840</span>    <span class="mi">8796</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Birler</th>
+<th>Onlar</th>
+<th>Yüzler</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>9</td>
+<td>82</td>
+<td>246</td>
+</tr>
+<tr>
+<td>1</td>
+<td>7</td>
+<td>78</td>
+<td>180</td>
+</tr>
+<tr>
+<td>2</td>
+<td>8</td>
+<td>83</td>
+<td>565</td>
+</tr>
+<tr>
+<td>3</td>
+<td>6</td>
+<td>82</td>
+<td>486</td>
+</tr>
+<tr>
+<td>4</td>
+<td>4</td>
+<td>37</td>
+<td>615</td>
+</tr>
+<tr>
+<td>5</td>
+<td>2</td>
+<td>18</td>
+<td>341</td>
+</tr>
+<tr>
+<td>6</td>
+<td>5</td>
+<td>12</td>
+<td>539</td>
+</tr>
+<tr>
+<td>7</td>
+<td>8</td>
+<td>59</td>
+<td>709</td>
+</tr>
+<tr>
+<td>8</td>
+<td>1</td>
+<td>89</td>
+<td>675</td>
+</tr>
+<tr>
+<td>9</td>
+<td>6</td>
+<td>12</td>
+<td>965</td>
+</tr>
+<tr>
+<td>10</td>
+<td>4</td>
+<td>24</td>
+<td>447</td>
+</tr>
+<tr>
+<td>11</td>
+<td>6</td>
+<td>35</td>
+<td>555</td>
+</tr>
+<tr>
+<td>12</td>
+<td>5</td>
+<td>34</td>
+<td>117</td>
+</tr>
+<tr>
+<td>13</td>
+<td>5</td>
+<td>21</td>
+<td>471</td>
+</tr>
+<tr>
+<td>14</td>
+<td>7</td>
+<td>31</td>
+<td>171</td>
+</tr>
+<tr>
+<td>15</td>
+<td>5</td>
+<td>40</td>
+<td>491</td>
+</tr>
+<tr>
+<td>16</td>
+<td>9</td>
+<td>55</td>
+<td>666</td>
+</tr>
+<tr>
+<td>17</td>
+<td>8</td>
+<td>48</td>
+<td>557</td>
+</tr>
+<tr>
+<td>Toplam</td>
+<td>105</td>
+<td>840</td>
+<td>8796</td>
+</tr>
+</tbody>
+</table>
+<p>Kodu parçalara ayırarak açıklayalım;</p>
+<ul>
+<li>Sütun toplamları;</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">toplam</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">toplam</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Birler</span>     <span class="mi">105</span>
+<span class="n">Onlar</span>      <span class="mi">840</span>
+<span class="n">Yüzler</span>    <span class="mi">8796</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+</code></pre></div>
+
+<p>Çıktı bir <code>Series</code> objesidir.</p>
+<ul>
+<li><code>Series</code> objesini <strong>Veri Çerçevesi</strong>ne (<strong>DataFrame</strong>'e) dönüştürmek için <code>.to_frame()</code> metodunu kullanıyoruz. </li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">df_toplam</span> <span class="o">=</span> <span class="n">toplam</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_toplam</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code>           <span class="mi">0</span>
+<span class="n">Birler</span>   <span class="mi">105</span>
+<span class="n">Onlar</span>    <span class="mi">840</span>
+<span class="n">Yüzler</span>  <span class="mi">8796</span>
+</code></pre></div>
+
+<p>Veri çerçeveleri şuan birleştirilmeye uygun değil. Önce <strong>df_toplam</strong> isimli veri çerçevemizin transpozunu almalıyız ki, birleştirme işlemi öncesi veri çerçevelerinin sütun isimleri aynı olsun.</p>
+<div class="highlight"><pre><span></span><code><span class="n">df_toplam</span> <span class="o">=</span> <span class="n">df_toplam</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_toplam</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code>   <span class="n">Birler</span>  <span class="n">Onlar</span>  <span class="n">Yüzler</span>
+<span class="mi">0</span>     <span class="mi">105</span>    <span class="mi">840</span>    <span class="mi">8796</span>
+</code></pre></div>
+
+<p><strong>df_toplam</strong> isimli veri çerçevemizin indek değerini de Toplam diye değiştirelim;</p>
+<div class="highlight"><pre><span></span><code><span class="n">df_toplam</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Toplam&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_toplam</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code>        <span class="n">Birler</span>  <span class="n">Onlar</span>  <span class="n">Yüzler</span>
+<span class="n">Toplam</span>     <span class="mi">105</span>    <span class="mi">840</span>    <span class="mi">8796</span>
+</code></pre></div>
+
+<p>Şuan veri çerçevelerini birleştirme için herşey hazır görünüyor.</p>
+<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">,</span> <span class="n">df_toplam</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code>        <span class="n">Birler</span>  <span class="n">Onlar</span>  <span class="n">Yüzler</span>
+<span class="mi">0</span>            <span class="mi">9</span>     <span class="mi">82</span>     <span class="mi">246</span>
+<span class="mi">1</span>            <span class="mi">7</span>     <span class="mi">78</span>     <span class="mi">180</span>
+<span class="mi">2</span>            <span class="mi">8</span>     <span class="mi">83</span>     <span class="mi">565</span>
+<span class="mi">3</span>            <span class="mi">6</span>     <span class="mi">82</span>     <span class="mi">486</span>
+<span class="mi">4</span>            <span class="mi">4</span>     <span class="mi">37</span>     <span class="mi">615</span>
+<span class="mi">5</span>            <span class="mi">2</span>     <span class="mi">18</span>     <span class="mi">341</span>
+<span class="mi">6</span>            <span class="mi">5</span>     <span class="mi">12</span>     <span class="mi">539</span>
+<span class="mi">7</span>            <span class="mi">8</span>     <span class="mi">59</span>     <span class="mi">709</span>
+<span class="mi">8</span>            <span class="mi">1</span>     <span class="mi">89</span>     <span class="mi">675</span>
+<span class="mi">9</span>            <span class="mi">6</span>     <span class="mi">12</span>     <span class="mi">965</span>
+<span class="mi">10</span>           <span class="mi">4</span>     <span class="mi">24</span>     <span class="mi">447</span>
+<span class="mi">11</span>           <span class="mi">6</span>     <span class="mi">35</span>     <span class="mi">555</span>
+<span class="mi">12</span>           <span class="mi">5</span>     <span class="mi">34</span>     <span class="mi">117</span>
+<span class="mi">13</span>           <span class="mi">5</span>     <span class="mi">21</span>     <span class="mi">471</span>
+<span class="mi">14</span>           <span class="mi">7</span>     <span class="mi">31</span>     <span class="mi">171</span>
+<span class="mi">15</span>           <span class="mi">5</span>     <span class="mi">40</span>     <span class="mi">491</span>
+<span class="mi">16</span>           <span class="mi">9</span>     <span class="mi">55</span>     <span class="mi">666</span>
+<span class="mi">17</span>           <span class="mi">8</span>     <span class="mi">48</span>     <span class="mi">557</span>
+<span class="n">Toplam</span>     <span class="mi">105</span>    <span class="mi">840</span>    <span class="mi">8796</span>
+</code></pre></div>
 
 		<span class="post-tags">
 			Tags:

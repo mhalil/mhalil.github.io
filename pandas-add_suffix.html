@@ -159,7 +159,7 @@
 </tbody>
 </table>
 <p>Aşağıdaki kod ile (<code>add_suffix()</code>) sütun isimlerinin sonuna <code>_sütun</code> ifadesi ekleniyor.</p>
-<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">add_suffix(&#39;_sütun&#39;) sonrası:&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;add_suffix(&#39;_sütun&#39;) sonrası:&quot;</span><span class="p">)</span>
 <span class="n">df_sonuc</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">add_suffix</span><span class="p">(</span><span class="s1">&#39;_sütun&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df_sonuc</span><span class="p">)</span>
 </code></pre></div>
@@ -206,7 +206,7 @@
 </table>
 <h3>İndekslere (Satır Etiketlerine) Son Ek Ekleme</h3>
 <p><code>axis=0</code> parametresi kullanılarak son ek <strong>index etiketlerine</strong> (satır adlarına) de eklenebilir:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">axis=0 ile indekslere son ek ekleme:&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;axis=0 ile indekslere son ek ekleme:&quot;</span><span class="p">)</span>
 <span class="n">df_index_sonuc</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">add_suffix</span><span class="p">(</span><span class="s1">&#39;.Satır&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df_index_sonuc</span><span class="p">)</span>
 </code></pre></div>
