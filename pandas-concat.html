@@ -77,12 +77,82 @@
 <div class="post">
 	<h1 class="post-title">Pandas - concat</h1>
 	<span class="post-date">Cum 15 Temmuz 2022</span>
-	<h1>concat() Fonksiyonu</h1>
+	<h1><code>concat()</code> Metodu</h1>
 <p><strong>Concat</strong> kelimesi Concatenate kelimesinin kısaltamasıdır. <strong>Concatenate</strong> kelimesinin Türkçe karşılığı <strong>Birleştir</strong>'dir.<br>
-<code>concat()</code> fonksiyonu ile veri çerçeveleri <strong>alt alta ya da yan yana birleştirilebilir</strong>. Varsayılan değer satır bazlı yani alt alta birleştirmedir.</p>
+<code>concat()</code> metodu ile veri çerçeveleri <strong>alt alta ya da yan yana birleştirilebilir</strong>. Varsayılan değer satır bazlı yani alt alta birleştirmedir.</p>
+<h2>Parametreler:</h2>
+<table>
+<thead>
+<tr>
+<th>Parametre</th>
+<th>Açıklama</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>objs</strong></td>
+<td>Birleştirilecek <strong>Series</strong> veya <strong>DataFrame</strong> nesnelerinin bir dizisi (<code>sequence</code>) veya eşlemesi (<code>mapping</code>). Bir eşleme (örneğin bir sözlük) iletilirse, sıralanmış anahtarlar <code>keys</code> argümanı olarak kullanılır.</td>
+</tr>
+<tr>
+<td><strong>axis</strong></td>
+<td>Birleştirmenin yapılacağı eksen. Değerler: <code>{0/'index', 1/'columns'}</code>. <strong>Varsayılan: 0</strong> (satırlar boyunca birleştirir).</td>
+</tr>
+<tr>
+<td><strong>join</strong></td>
+<td>Diğer eksenlerdeki (birleştirme yapılmayan) indekslerin nasıl ele alınacağını belirtir. Değerler: <code>{'inner', 'outer'}</code>. <strong>Varsayılan: 'outer'</strong> (tüm indeksleri birleştirir, eşleşmeyen yerlere <code>NaN</code> koyar).</td>
+</tr>
+<tr>
+<td><strong>ignore_index</strong></td>
+<td><strong>bool</strong>, <strong>Varsayılan: False</strong>. Eğer <strong>True</strong> ise, birleştirme ekseni boyunca mevcut indeks değerlerini kullanmaz. Ortaya çıkan eksen 0'dan başlayarak etiketlenir.</td>
+</tr>
+<tr>
+<td><strong>keys</strong></td>
+<td><strong>sequence</strong>, <strong>Varsayılan: None</strong>. Belirtilirse, en dış düzey olarak bu anahtarları kullanarak hiyerarşik bir indeks (<strong>MultiIndex</strong>) oluşturur.</td>
+</tr>
+<tr>
+<td><strong>levels</strong></td>
+<td><strong>dizilerin listesi</strong>, <strong>Varsayılan: None</strong>. Bir MultiIndex oluşturmak için kullanılacak belirli düzeyleri (benzersiz değerleri) belirtir. Aksi takdirde <code>keys</code> argümanından çıkarılır.</td>
+</tr>
+<tr>
+<td><strong>names</strong></td>
+<td><strong>liste</strong>, <strong>Varsayılan: None</strong>. Sonuçtaki hiyerarşik indeksteki düzeyler için adlar belirtir.</td>
+</tr>
+<tr>
+<td><strong>verify_integrity</strong></td>
+<td><strong>bool</strong>, <strong>Varsayılan: False</strong>. Eğer <strong>True</strong> ise, yeni birleştirilmiş eksenin yinelenen değerler içerip içermediğini kontrol eder. Bu, veri birleştirmeye göre oldukça maliyetli olabilir.</td>
+</tr>
+<tr>
+<td><strong>sort</strong></td>
+<td><strong>bool</strong>, <strong>Varsayılan: False</strong>. Zaten hizalı değilse, birleştirme dışı ekseni sıralar.</td>
+</tr>
+<tr>
+<td><strong>copy</strong></td>
+<td><strong>bool</strong>, <strong>Varsayılan: True</strong>. Eğer <strong>False</strong> ise, veriyi gereksiz yere kopyalamamaya çalışır.</td>
+</tr>
+</tbody>
+</table>
+<h3>📝 Özet Bilgi</h3>
+<p><code>pandas.concat</code> fonksiyonu, temel olarak birden fazla <strong>Series</strong> veya <strong>DataFrame</strong> nesnesini belirli bir eksen boyunca (satır veya sütun) birleştirmek için kullanılır. En yaygın kullanımları şunlardır:</p>
+<ol>
+<li>
+<p><strong>Satır Ekleme (<code>axis=0</code>):</strong> Birden çok DataFrame'i alt alta (satırlar boyunca) birleştirir.</p>
+</li>
+<li>
+<p><strong>Sütun Ekleme (<code>axis=1</code>):</strong> Birden çok DataFrame'i yan yana (sütunlar boyunca) birleştirir.</p>
+</li>
+<li>
+<p><strong>İndeks Yönetimi:</strong> <code>join</code> parametresi ile eksik verilerin nasıl ele alınacağını (<code>inner</code> veya <code>outer</code>), <code>ignore_index</code> ile de indekslerin sıfırlanıp sıfırlanmayacağını kontrol edebilirsiniz.</p>
+</li>
+</ol>
 <p>Birleştirme örneklerini öğrenemek için öncelikle 2 sözlük yapısı oluşturup, bunları veri çerçevesine dönüştürelim.</p>
-<div class="highlight"><pre><span></span><code><span class="n">veri1</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;A1&#39;</span><span class="p">,</span><span class="s1">&#39;A2&#39;</span><span class="p">,</span><span class="s1">&#39;A3&#39;</span><span class="p">,</span><span class="s1">&#39;A4&#39;</span><span class="p">],</span><span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;B1&#39;</span><span class="p">,</span><span class="s1">&#39;B2&#39;</span><span class="p">,</span><span class="s1">&#39;B3&#39;</span><span class="p">,</span><span class="s1">&#39;B4&#39;</span><span class="p">],</span><span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;C1&#39;</span><span class="p">,</span><span class="s1">&#39;C2&#39;</span><span class="p">,</span><span class="s1">&#39;C3&#39;</span><span class="p">,</span><span class="s1">&#39;C4&#39;</span><span class="p">]}</span>
-<span class="n">veri2</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;A5&#39;</span><span class="p">,</span><span class="s1">&#39;A6&#39;</span><span class="p">,</span><span class="s1">&#39;A7&#39;</span><span class="p">,</span><span class="s1">&#39;A8&#39;</span><span class="p">],</span><span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;B5&#39;</span><span class="p">,</span><span class="s1">&#39;B6&#39;</span><span class="p">,</span><span class="s1">&#39;B7&#39;</span><span class="p">,</span><span class="s1">&#39;B8&#39;</span><span class="p">],</span><span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;C5&#39;</span><span class="p">,</span><span class="s1">&#39;C6&#39;</span><span class="p">,</span><span class="s1">&#39;C7&#39;</span><span class="p">,</span><span class="s1">&#39;C8&#39;</span><span class="p">]}</span>
+<div class="highlight"><pre><span></span><code><span class="n">veri1</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;A1&#39;</span><span class="p">,</span><span class="s1">&#39;A2&#39;</span><span class="p">,</span><span class="s1">&#39;A3&#39;</span><span class="p">,</span><span class="s1">&#39;A4&#39;</span><span class="p">],</span>
+         <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;B1&#39;</span><span class="p">,</span><span class="s1">&#39;B2&#39;</span><span class="p">,</span><span class="s1">&#39;B3&#39;</span><span class="p">,</span><span class="s1">&#39;B4&#39;</span><span class="p">],</span>
+         <span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;C1&#39;</span><span class="p">,</span><span class="s1">&#39;C2&#39;</span><span class="p">,</span><span class="s1">&#39;C3&#39;</span><span class="p">,</span><span class="s1">&#39;C4&#39;</span><span class="p">]}</span>
+
+<span class="n">veri2</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;A5&#39;</span><span class="p">,</span><span class="s1">&#39;A6&#39;</span><span class="p">,</span><span class="s1">&#39;A7&#39;</span><span class="p">,</span><span class="s1">&#39;A8&#39;</span><span class="p">],</span>
+         <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;B5&#39;</span><span class="p">,</span><span class="s1">&#39;B6&#39;</span><span class="p">,</span><span class="s1">&#39;B7&#39;</span><span class="p">,</span><span class="s1">&#39;B8&#39;</span><span class="p">],</span>
+         <span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;C5&#39;</span><span class="p">,</span><span class="s1">&#39;C6&#39;</span><span class="p">,</span><span class="s1">&#39;C7&#39;</span><span class="p">,</span><span class="s1">&#39;C8&#39;</span><span class="p">]}</span>
+
 <span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">veri1</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
 <span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">veri2</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df1</span><span class="p">)</span>
@@ -228,8 +298,8 @@
 </tbody>
 </table>
 <p>Gördüğünüz gibi, iki veri çerçevesi altalta birleştirildi.</p>
-<h1>Parametreler</h1>
-<h2>axis parametresi</h2>
+<h2>Parametreler</h2>
+<h3><code>axis</code> parametresi</h3>
 <p>Hatırlarsanız <strong>drop</strong> metodunu anlatırken <strong>axis</strong> parametresinden bahsetmiştik. <strong>axis</strong> parametresi, <strong>0 ve 1</strong> değerlerini alır, <strong>0 satırları, 1 ise sütunları</strong> temsil eder demiştik. Aynı parametreyi birleştirme işleminde de kullanabiliriz. eğer <strong>axis</strong> parametresi kullanılmaz ise, varsayılan değer <strong>axis = 0</strong> olduğu için yani satırları baz alarak birleştirme yapılır.</p>
 <p>Şimdi <strong>axis=1</strong> parametresini ekleyerek veri çerçevelerini yanyana birleştirmeyi deneyelim.</p>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">))</span>
@@ -643,6 +713,69 @@
 </tr>
 </tbody>
 </table>
+<h3><code>ignore_index</code> Parametresi</h3>
+<p>Bu parametre, birleştirme işlemi esnasında index değerlerinin orijinal değerlerinin tutulması ya da birleştirilme sonrası yeni index değeri atanması için kullanılır.</p>
+<p>Mevcut klasördeki tüm CSV uzantılı dosyaları hem <code>ignore_index</code></p>
+<p>parametresi kullanarak hemde kullanmadan birleştirelim.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">dosyalar</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;*.csv&quot;</span><span class="p">)</span>
+
+<span class="n">Tumu</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">dosya</span><span class="p">)</span> <span class="k">for</span> <span class="n">dosya</span> <span class="ow">in</span> <span class="n">dosyalar</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Tumu</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code>   <span class="n">baslik1</span>   <span class="n">baslik2</span>   <span class="n">baslik3</span>
+<span class="mi">0</span>      <span class="mi">100</span>       <span class="mi">200</span>       <span class="mi">300</span>
+<span class="mi">1</span>      <span class="mi">400</span>       <span class="mi">500</span>       <span class="mi">600</span>
+<span class="mi">2</span>      <span class="mi">700</span>       <span class="mi">800</span>       <span class="mi">900</span>
+<span class="mi">0</span>       <span class="mi">10</span>        <span class="mi">20</span>        <span class="mi">30</span>
+<span class="mi">1</span>       <span class="mi">40</span>        <span class="mi">50</span>        <span class="mi">60</span>
+<span class="mi">2</span>       <span class="mi">70</span>        <span class="mi">80</span>        <span class="mi">90</span>
+<span class="mi">0</span>        <span class="mi">1</span>         <span class="mi">2</span>         <span class="mi">3</span>
+<span class="mi">1</span>        <span class="mi">4</span>         <span class="mi">5</span>         <span class="mi">6</span>
+<span class="mi">2</span>        <span class="mi">7</span>         <span class="mi">8</span>         <span class="mi">9</span>
+</code></pre></div>
+
+<p><code>ignore_index</code> Parametresi kullanılmadan birleştirme yapıldığında, index değerleri, her dosyada olduğu gibi kalır. </p>
+<p><code>ignore_index</code> Parametresini kullanarak birleştirme işlemi sonucuna bakalım;</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">dosyalar</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;*.csv&quot;</span><span class="p">)</span>
+
+<span class="n">Tumu</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">dosya</span><span class="p">)</span> <span class="k">for</span> <span class="n">dosya</span> <span class="ow">in</span> <span class="n">dosyalar</span><span class="p">),</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Tumu</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code>   <span class="n">baslik1</span>   <span class="n">baslik2</span>   <span class="n">baslik3</span>
+<span class="mi">0</span>      <span class="mi">100</span>       <span class="mi">200</span>       <span class="mi">300</span>
+<span class="mi">1</span>      <span class="mi">400</span>       <span class="mi">500</span>       <span class="mi">600</span>
+<span class="mi">2</span>      <span class="mi">700</span>       <span class="mi">800</span>       <span class="mi">900</span>
+<span class="mi">3</span>       <span class="mi">10</span>        <span class="mi">20</span>        <span class="mi">30</span>
+<span class="mi">4</span>       <span class="mi">40</span>        <span class="mi">50</span>        <span class="mi">60</span>
+<span class="mi">5</span>       <span class="mi">70</span>        <span class="mi">80</span>        <span class="mi">90</span>
+<span class="mi">6</span>        <span class="mi">1</span>         <span class="mi">2</span>         <span class="mi">3</span>
+<span class="mi">7</span>        <span class="mi">4</span>         <span class="mi">5</span>         <span class="mi">6</span>
+<span class="mi">8</span>        <span class="mi">7</span>         <span class="mi">8</span>         <span class="mi">9</span>
+</code></pre></div>
+
+<p>Görüldüğü üzere,  koda<code>ignore_index=True</code> ifadesi eklendiğinde dosyaların <strong>index</strong> değerleri gözardı edilerek birleştirme işlemi sonrası yeniden oluşturuluyor.</p>
+<h2>Kaynaklar:</h2>
+<ul>
+<li>
+<p><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.concat.html">pandas.concat &#8212; pandas 2.3.3 documentation</a></p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/watch?v=8pn4hSZ-5ds">Tanıtım | Pandas Dersleri - YouTube</a></p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/watch?v=SoATtjBv4Iw">Temel Bilgiler | Pandas Dersleri - YouTube</a></p>
+</li>
+</ul>
 
 		<span class="post-tags">
 			Tags:
