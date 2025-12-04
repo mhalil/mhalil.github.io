@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Pandas - add_suffix" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/pandas-add_suffix.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Pandas - add_suffix</h1>
+	<span class="post-date">Prş 04 Aralık 2025</span>
+	<h1><code>add_suffix()</code> Metodu</h1>
+<p>Bu metot, bir <strong>DataFrame</strong>'in veya <strong>Series</strong>'in etiketlerine (varsayılan olarak <strong>sütun adlarına</strong>) belirtilen bir dizeyi son ek olarak eklemek için kullanılır.</p>
+<h2>Sözdizimi:</h2>
+<div class="highlight"><pre><span></span><code><span class="n">DataFrame</span><span class="o">.</span><span class="n">add_suffix</span><span class="p">(</span><span class="n">suffix</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>Parametreler</h2>
+<table>
+<thead>
+<tr>
+<th>Parametre</th>
+<th>Tipi</th>
+<th>Açıklama</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>suffix</code></strong></td>
+<td><code>str</code></td>
+<td>Her etiketin sonuna eklenecek olan dize.</td>
+</tr>
+<tr>
+<td><strong><code>axis</code></strong></td>
+<td><code>0</code> ya da <code>index</code>, <br><code>1</code> ya da <code>columns</code>, <br> <code>None</code> (<strong>Varsayılan</strong>)</td>
+<td>Son ekin ekleneceği eksen.<br>- Varsayılan (<strong><code>None</code></strong> veya <strong><code>1</code></strong>): <strong>Sütun</strong> etiketlerine ekler.<br>- <strong><code>0</code></strong> veya <strong><code>'index'</code></strong>: <strong>Satır</strong> etiketlerine (index) ekler.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Dönüş Değeri:</strong> Etiketleri güncellenmiş yeni bir <code>Series</code> veya <code>DataFrame</code> döndürür. <strong>Orijinal DataFrame üzerinde değişiklik yapmaz</strong>.</p>
+<h2>📝 Örnekler</h2>
+<p>Bu metot en çok, birden fazla DataFrame birleştirilirken (merge/join) hangi verinin hangi kaynaktan geldiğini belirtmek için sütun adlarına topluca son ek eklemek amacıyla kullanılır.</p>
+<h3>Sütunlara Son Ek Ekleme (Varsayılan)</h3>
+<p>Aşağıdaki örnekte, varsayılan davranış olan <strong>sütun etiketlerinin</strong> sonuna <code>_sütun</code> dizesi eklenmiştir. Orjinal Veri çerçevemiz;</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]})</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Orijinal DataFrame:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Orijinal</span> <span class="n">DataFrame</span><span class="p">:</span>
+   <span class="n">A</span>  <span class="n">B</span>
+<span class="mi">0</span>  <span class="mi">1</span>  <span class="mi">3</span>
+<span class="mi">1</span>  <span class="mi">2</span>  <span class="mi">4</span>
+<span class="mi">2</span>  <span class="mi">3</span>  <span class="mi">5</span>
+<span class="mi">3</span>  <span class="mi">4</span>  <span class="mi">6</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>3</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>4</td>
+</tr>
+<tr>
+<td>2</td>
+<td>3</td>
+<td>5</td>
+</tr>
+<tr>
+<td>3</td>
+<td>4</td>
+<td>6</td>
+</tr>
+</tbody>
+</table>
+<p>Aşağıdaki kod ile (<code>add_suffix()</code>) sütun isimlerinin sonuna <code>_sütun</code> ifadesi ekleniyor.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">add_suffix(&#39;_sütun&#39;) sonrası:&quot;</span><span class="p">)</span>
+<span class="n">df_sonuc</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">add_suffix</span><span class="p">(</span><span class="s1">&#39;_sütun&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_sonuc</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">add_suffix</span><span class="p">(</span><span class="s1">&#39;_sütun&#39;</span><span class="p">)</span> <span class="n">sonrası</span><span class="p">:</span>
+   <span class="n">A_sütun</span>  <span class="n">B_sütun</span>
+<span class="mi">0</span>        <span class="mi">1</span>        <span class="mi">3</span>
+<span class="mi">1</span>        <span class="mi">2</span>        <span class="mi">4</span>
+<span class="mi">2</span>        <span class="mi">3</span>        <span class="mi">5</span>
+<span class="mi">3</span>        <span class="mi">4</span>        <span class="mi">6</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A_Sütun</th>
+<th>B_Sütun</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>3</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>4</td>
+</tr>
+<tr>
+<td>2</td>
+<td>3</td>
+<td>5</td>
+</tr>
+<tr>
+<td>3</td>
+<td>4</td>
+<td>6</td>
+</tr>
+</tbody>
+</table>
+<h3>İndekslere (Satır Etiketlerine) Son Ek Ekleme</h3>
+<p><code>axis=0</code> parametresi kullanılarak son ek <strong>index etiketlerine</strong> (satır adlarına) de eklenebilir:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">axis=0 ile indekslere son ek ekleme:&quot;</span><span class="p">)</span>
+<span class="n">df_index_sonuc</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">add_suffix</span><span class="p">(</span><span class="s1">&#39;.Satır&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_index_sonuc</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">axis</span><span class="o">=</span><span class="mi">0</span> <span class="n">ile</span> <span class="n">indekslere</span> <span class="n">son</span> <span class="n">ek</span> <span class="n">ekleme</span><span class="p">:</span>
+         <span class="n">A</span>  <span class="n">B</span>
+<span class="mf">0.</span><span class="n">Satır</span>  <span class="mi">1</span>  <span class="mi">3</span>
+<span class="mf">1.</span><span class="n">Satır</span>  <span class="mi">2</span>  <span class="mi">4</span>
+<span class="mf">2.</span><span class="n">Satır</span>  <span class="mi">3</span>  <span class="mi">5</span>
+<span class="mf">3.</span><span class="n">Satır</span>  <span class="mi">4</span>  <span class="mi">6</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.Satır</td>
+<td>1</td>
+<td>3</td>
+</tr>
+<tr>
+<td>1.Satır</td>
+<td>2</td>
+<td>4</td>
+</tr>
+<tr>
+<td>2.Satır</td>
+<td>3</td>
+<td>5</td>
+</tr>
+<tr>
+<td>3.Satır</td>
+<td>4</td>
+<td>6</td>
+</tr>
+</tbody>
+</table>
+<h2>Kaynak:</h2>
+<ul>
+<li><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.add_suffix.html">pandas.DataFrame.add_suffix &#8212; pandas 2.3.3 documentation</a></li>
+</ul>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/pandas.html">Pandas</a></li>
+					<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+					<li><a href="/tag/modul.html">Modül</a></li>
+					<li><a href="/tag/add_suffix.html">add_suffix</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>
