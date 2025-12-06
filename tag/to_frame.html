@@ -16,7 +16,7 @@
 		<!-- Enable responsiveness on mobile devices-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-		<title>mhalil - Kütüphane tag - Programlama ve 3D</title>
+		<title>mhalil - to_frame tag - Programlama ve 3D</title>
 
 		<!-- CSS -->
 		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
@@ -76,43 +76,10 @@
 </div>		<div class="content container">
 	<div class="posts">
 			<div class="post">
-				<h1 class="post-title" href="/polars-02-kurulum.html">
-					<a href="/polars-02-kurulum.html">Polars - 02 Kurulum</a>
+				<h1 class="post-title" href="/pandas-to_frame.html">
+					<a href="/pandas-to_frame.html">Pandas - to_frame</a>
 				</h1>
-				<span class="post-date">Paz 26 Haziran 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/polars.html">Polars</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1>Kurulum</h1>
-<p><code>Polars</code> bir kitaplıktır/kütüphanedir ve kurulumu, ilgili programlama dilinin paket yöneticisini çağırmak kadar basittir. Aşağıda farklı programlama dillerine göre kurulum kodları verilmiştir. Bu kodları konsoldan yazarak <code>polars</code>'ı yükleyebilirsiniz.</p>
-<h4>Python</h4>
-<div class="highlight"><pre><span></span><code><span class="n">pip</span> <span class="n">install</span> <span class="n">polars</span>
-</code></pre></div>
-
-<h4>Rust</h4>
-<div class="highlight"><pre><span></span><code><span class="n">cargo</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="n">polars</span><span class="w"> </span><span class="o">-</span><span class="n">F</span><span class="w"> </span><span class="n">lazy</span>
-
-<span class="p">#</span><span class="w"> </span><span class="n">Or</span><span class="w"> </span><span class="n">Cargo</span><span class="p">.</span><span class="n">toml</span>
-<span class="p">[</span><span class="n">dependencies</span><span class="p">]</span>
-<span class="n">polars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;x&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">features</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;lazy&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">..</span><span class="p">.]}</span>
-</code></pre></div>
-
-<h4>NodeJS …</h4>
-				</p>
-				<a class="read-more" href="polars-02-kurulum.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="/pandas-ozet-bilgi-tablosu-cheatsheet.html">
-					<a href="/pandas-ozet-bilgi-tablosu-cheatsheet.html">Pandas Özet Bilgi Tablosu (CheatSheet)</a>
-				</h1>
-				<span class="post-date">Pzt 28 Şubat 2022</span>
+				<span class="post-date">Cts 06 Aralık 2025</span>
 					<span class="post-tags">
 						Tags:
 						<ul>
@@ -120,19 +87,28 @@
 								<li><a href="/tag/pandas.html">Pandas</a></li>
 								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
 								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/to_frame.html">to_frame</a></li>
 						</ul>
 					</span>
 				<p>
-					<h1>Pandas Özet Bilgi Tablosu (CheatSheet)</h1>
-<p>Pandas Veri Çerçevesi (Data Frame) komutlarını (fonksiyon, metot, parametre) bir yerde toplayarak ihtiyaç halinde, farklı konulara ait komutlara daha hızlı ulaşabileceğimiz bir <strong>Başvuru Kılavuzu / Özet Bilgi Tablosu (CheatSheet)</strong> oluşturmaya çalışıyorum. </p>
-<p>Başvuru kılavuzunu / Özet Bilgi Tablosunu (CheatSheet) oluştururken, komutları, <strong>Pandas Veri Çerçevesi (Data Frame) Konu Başlıkları …</strong></p>
+					<h1><code>.to_frame()</code> Metodu</h1>
+<p><code>pandas.Series.to_frame()</code> metodu, Serileri DataFrame'e (Veri çerçevesine) dönüştürür. <code>to_frame</code> sözcüğü, <strong>Çerçeveye, Veri çerçevesine</strong> anlamına gelir. Metodun İşlevi, isminden anlaşılıyor. </p>
+<h2>Sözdizimi:</h2>
+<div class="highlight"><pre><span></span><code> <span class="n">Series</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(</span><span class="n">name</span><span class="o">=&lt;</span><span class="n">no_default</span><span class="o">&gt;</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>Parametreler:</h2>
+<p><strong>name</strong> : nesne, isteğe bağlı</p>
+<p><em>Yazılan isim, seri isminin yerine geçer (eğer varsa).</em></p>
+<h2>Döndürdüğü değer:</h2>
+<p><strong>DataFrame</strong> : Serinin DataFrame temsili. İşlem sonrası seri dataframe'e …</p>
 				</p>
-				<a class="read-more" href="pandas-ozet-bilgi-tablosu-cheatsheet.html">Continue reading »</a>
+				<a class="read-more" href="pandas-to_frame.html">Continue reading »</a>
 			</div>
 	</div>
 	<div class="pagination">
 
-		<span class="pagination-item older"><a href="/tag/kutuphane11.html">Newer</a></span>
+		<span class="pagination-item older">Newer</span>
 
 		<span class="pagination-item newer">Older</span>
 	</div>
