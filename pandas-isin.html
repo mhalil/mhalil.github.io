@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Pandas - isin" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/pandas-isin.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Pandas - isin</h1>
+	<span class="post-date">Cts 06 Aralık 2025</span>
+	<h1><code>isin()</code> Metodu</h1>
+<p>Bu metodun (<code>pandas.DataFrame.isin(values)</code>) temel amacı, bir <strong>DataFrame</strong> içindeki her bir elemanın, sağlanan <code>values</code> (değerler) <strong>koleksiyonunda bulunup bulunmadığını kontrol etmektir.</strong></p>
+<h2>Sözdizimi</h2>
+<div class="highlight"><pre><span></span><code><span class="n">DataFrame</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>İşlevi</h2>
+<p><strong>DataFrame</strong>'in her bir hücresini alır ve bu değeri, girdi olarak sağlanan <code>values</code> içinde arar. Sonuç olarak, orijinal DataFrame ile aynı boyutlara sahip, aranan değerin bulunup bulunmadığına bağlı olarak her hücrede <strong><code>True</code></strong> veya <strong><code>False</code></strong> değeri bulunan bir boolean (mantıksal) DataFrame döndürür.</p>
+<h2>Parametre</h2>
+<table>
+<thead>
+<tr>
+<th>Parametre</th>
+<th>Tipi</th>
+<th>Açıklama</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>values</code></strong></td>
+<td><code>iterable</code>, <code>Series</code>, <code>DataFrame</code> veya <code>dict</code></td>
+<td>Kontrol edilecek değerleri içerir. Bu parametrenin tipi, eşleşme davranışını değiştirir.</td>
+</tr>
+</tbody>
+</table>
+<p><strong><code>values</code> parametresinin farklı tiplere göre davranışı:</strong></p>
+<ol>
+<li>
+<p><strong>Iterable (Liste, Küme vb.)</strong>: DataFrame'deki her bir eleman, iterasyon nesnesindeki herhangi bir değerle eşleşiyorsa sonuç <code>True</code> olur.</p>
+</li>
+<li>
+<p><strong>dict (Sözlük)</strong>: Sözlüğün <strong>anahtarları</strong> DataFrame'deki <strong>sütun isimleri</strong> olmalıdır. Kontrol, yalnızca anahtarla eşleşen sütun için yapılır. Örneğin, <code>{'sutun_ismi': [deger1, deger2]}</code> şeklinde bir girdi, yalnızca <code>sutun_ismi</code> sütunundaki değerleri <code>[deger1, deger2]</code> listesiyle karşılaştırır.</p>
+</li>
+<li>
+<p><strong>DataFrame veya  Series</strong>: Bu durumda, <strong>hem indeks hem de sütun etiketleri</strong> (etiketler eşleşen bir <code>Series</code> için indeks) eşleşmelidir. Bir konumdaki sonuç, ancak ilgili hücrenin değeri <em>ve</em> indeksi/sütun etiketi <code>values</code> içindeki karşılık gelen konumla eşleşirse <code>True</code> olur.</p>
+</li>
+</ol>
+<h2>Dönüş Değeri</h2>
+<ul>
+<li>
+<p><strong>Tipi</strong>: <strong><code>DataFrame</code></strong></p>
+</li>
+<li>
+<p><strong>Açıklaması</strong>: Orijinal DataFrame ile aynı boyutlara ve indekslere sahip, her bir elemanın <code>values</code> içinde olup olmadığını belirten boolean (mantıksal) değerler içeren bir DataFrame döndürür.</p>
+</li>
+</ul>
+<h2>Örnek Kullanım</h2>
+<p>Elimizde aşağıdaki şekilde bir veri çerçevesi var.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;bacak_sayisi&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> 
+                   <span class="s1">&#39;kanat_sayisi&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">]},</span>
+                  <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;doğan&#39;</span><span class="p">,</span> <span class="s1">&#39;köpek&#39;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>bacak_sayisi</th>
+<th>kanat_sayisi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>doğan</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>köpek</td>
+<td>4</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>1. iterable (Liste) ile kontrol:</strong></p>
+<p>DataFrame'deki her değerin <code>[0, 2]</code> listesinde olup olmadığını kontrol edelim;</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]))</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>bacak_sayisi</th>
+<th>kanat_sayisi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>doğan</td>
+<td>True</td>
+<td>True</td>
+</tr>
+<tr>
+<td>köpek</td>
+<td>False</td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+<p>Veri çerçevesinde sadece <code>4</code> değeri <code>[0, 2]</code> listesinde olmadığı için bu değere ait çıktı <code>False</code> oldu.</p>
+<ul>
+<li>Bunun tam <strong>tersini kontrol etmek</strong> için <code>~</code> karakterini kullanmalıyız;</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="o">~</span><span class="n">df</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]))</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>bacak_sayisi</th>
+<th>kanat_sayisi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>doğan</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<td>köpek</td>
+<td>True</td>
+<td>False</td>
+</tr>
+</tbody>
+</table>
+<p><strong>2. dict (Sözlük) ile sütuna özel kontrol:</strong></p>
+<p>Yalnızca '<strong>kanat_sayisi</strong>' sütunundaki değerlerin <code>[0, 3]</code> listesinde olup olmadığını kontrol edelim;</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">isin</span><span class="p">({</span><span class="s1">&#39;kanat_sayisi&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">]}))</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>bacak_sayisi</th>
+<th>kanat_sayisi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>doğan</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<td>köpek</td>
+<td>False</td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+<p><strong>kanat_sayisi</strong> sütunudaki değerlerden sadece <code>2</code> değeri <code>[0, 3]</code> listesinde yok.</p>
+<h2>Kaynak:</h2>
+<ul>
+<li><a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.isin.html#pandas.DataFrame.isin">pandas.DataFrame.isin &#8212; pandas 2.3.3 documentation</a></li>
+</ul>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/pandas.html">Pandas</a></li>
+					<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+					<li><a href="/tag/modul.html">Modül</a></li>
+					<li><a href="/tag/isin.html">isin</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>
