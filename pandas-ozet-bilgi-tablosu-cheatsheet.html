@@ -88,7 +88,7 @@ Başvuru Kılavuzu / Özet Bilgi Tablosunun (CheatSheet) <strong>PDF uzantılı<
 </ul>
 <h2>Tablonun <strong>PNG Uzantılı</strong> Hali;</h2>
 <p><img alt="CheatSheet" src="../../images/python/pandas/Pandas_Veri_Cercevesi_Ozet_Bilgileri_(CheatSheet).png"></p>
-<h2>KÜTÜPHANEYİ İÇE AKTAR ( IMPORT )</h2>
+<h2>PANDAS KÜTÜPHANESİNİ İÇE AKTAR</h2>
 <table>
 <thead>
 <tr>
@@ -99,11 +99,11 @@ Başvuru Kılavuzu / Özet Bilgi Tablosunun (CheatSheet) <strong>PDF uzantılı<
 <tbody>
 <tr>
 <td><code>import</code></td>
-<td><strong>pd</strong> : pandas kütüphanesi için atanmış kısaltmayı temsil eder. <strong>Ör.</strong> <code>import pandas as pd</code></td>
+<td><strong>pd</strong> : Pandas kütüphanesi için atanmış kısaltmayı temsil eder. <strong>Ör.</strong> <code>import pandas as pd</code></td>
 </tr>
 <tr>
 <td><code>df</code></td>
-<td><strong>df</strong> : Oluşturulan Veri Çerçevesine (Data Frame’e) atanan kısaltmayı temsil eder. Bu kısaltmalar aşağıda kullanılmıştır. <strong>Ör.1.</strong> <code>df = pd.DataFrame(Veri_Yapısı)</code> <strong>Ör.2.</strong> <code>df = pd.read_excel(“Verilerim.xlsx”)</code></td>
+<td>Aşağıdaki tablolarda göreceğiniz <strong>df</strong> ifadesi, Oluşturulan Veri Çerçevesine (Data Frame’e) atanan kısaltmayı temsil eder. Bu kısaltmalar aşağıda kullanılmıştır. <br><strong>Ör.1.</strong> <code>df = pd.DataFrame(Veri_Yapısı)</code><br><strong>Ör.2.</strong> <code>df = pd.read_excel(“Verilerim.xlsx”)</code></td>
 </tr>
 </tbody>
 </table>
@@ -119,6 +119,10 @@ Başvuru Kılavuzu / Özet Bilgi Tablosunun (CheatSheet) <strong>PDF uzantılı<
 <tr>
 <td><code>DataFrame()</code></td>
 <td>Bir Dosyadan, İterable Nesneden ya da Sözlük yapısından Veri Çerçevesi (Data Frame) Oluştur. <strong>Ör.</strong> <code>pd.DataFrame(dosya, nesne ya da sözlük)</code></td>
+</tr>
+<tr>
+<td><code>read_clipboard()</code></td>
+<td><strong>CTRL + C</strong> ile Panoya kopyaladığımız veriden (örneğin bir Excel tablosundan ya da websitesindeki tablodan) Veri Çerçevesine oluştur. <strong>Ör.</strong> <code>pd.read_clipboard()</code></td>
 </tr>
 <tr>
 <td><code>read_csv()</code></td>
@@ -165,20 +169,20 @@ Başvuru Kılavuzu / Özet Bilgi Tablosunun (CheatSheet) <strong>PDF uzantılı<
 <td>Okuma sırasında atlanacak satır sayısı veya atlanacak satır numaralarının listesi.</td>
 </tr>
 <tr>
-<td><code>read_table()</code></td>
-<td><strong>CSV</strong> dosya içeriğinden <strong>tablo olarak</strong>  Veri Çerçevesi Oluştur. <strong>Ör.</strong> <code>pd.read_table(dosya_adı.csv)</code></td>
-</tr>
-<tr>
-<td>...<code>read_table(delimiter=)</code></td>
-<td><code>delimiter</code> parametresi ile, tablo verilerini sütunlara bölebiliriz. <em>Aksi halde her satırdaki veri bir sütuna yazılır.</em> <strong>Ör.</strong> <code>pd.read_table(“dosya_adı.csv”, delimiter=”,”)</code></td>
-</tr>
-<tr>
 <td><code>read_excel()</code></td>
 <td><strong>Excel</strong>, <strong><em>*Calc</em>* dosyalarını içeriğinden Veri Çerçevesi Oluştur. Bu fonksiyon </strong>xls, xlsx, xlsm, xlsb, odf, ods<strong> ve </strong>odt<strong> uzantılı dosyaları destekler. </strong>Ör.** <code>pd.read_excel(“dosya_adı.uzantı”)</code></td>
 </tr>
 <tr>
+<td>...<code>read_excel(decimal=)</code></td>
+<td>Veri çerçevesi oluşturuken <strong>ondalık ayırıcı ifadeyi belitrmek</strong> için <code>decimal = ","</code> parametresini kullanırız. <strong>Ör.</strong><code>pd.read_excel("Veri_Setleri/imdb.xlsx", decimal=",")</code></td>
+</tr>
+<tr>
 <td>...<code>read_excel(header=)</code></td>
 <td>Excel / Libre Ofis dosyasındaki ilk satırın <strong>başlık olmadığı,</strong>  yani sadece verilerden oluşan dosya ile çalıştığımızda, <code>header=None</code> parametresi kullanılmalıdır. <strong>Ör.</strong> <code>df = pd.read_excel("Veri.ods", header = None)</code></td>
+</tr>
+<tr>
+<td>... <code>read_excel(index_col=)</code></td>
+<td>Veri Çerçevesi (Data Frame) oluştururken, sütunlardan birini, <strong>indeks değeri olarak ayarlamak, atamak</strong> için <code>index_col</code> parametresi kullanılır. Parametreye, değer olarak, indis olarak atanacak Sütunun <strong>indis değeri</strong> yazılır. <strong>Ör.</strong> <code>df = pd.read_excel(“dosya_adı.xls” ,index_col=0)</code></td>
 </tr>
 <tr>
 <td>...<code>read_excel(names=)</code></td>
@@ -189,20 +193,12 @@ Başvuru Kılavuzu / Özet Bilgi Tablosunun (CheatSheet) <strong>PDF uzantılı<
 <td>Excel dosyasındaki istediğimiz <strong>çalışma sayfasına erişebilmek</strong> için, <code>sheet_name</code> parametresini kullanmalıyız. <strong>Ör.</strong> <code>pd.read_excel(“Maliyet.xlsx”, sheet_name="birim fiyat")</code></td>
 </tr>
 <tr>
-<td>... <code>read_excel(index_col=)</code></td>
-<td>Veri Çerçevesi (Data Frame) oluştururken, sütunlardan birini, <strong>indeks değeri olarak ayarlamak, atamak</strong> için <code>index_col</code> parametresi kullanılır. Parametreye, değer olarak, indis olarak atanacak Sütunun <strong>indis değeri</strong> yazılır. <strong>Ör.</strong> <code>df = pd.read_excel(“dosya_adı.xls” ,index_col=0)</code></td>
+<td>...<code>read_excel(skiprows=)</code></td>
+<td>Veri Çerçevesi (DataFrame) oluştururken, <strong>satırları atlamak / göz ardı etmek</strong> Veri Çerçevesine <strong>dahil etmemek</strong> için, <code>skiprows</code> parametresi kullanırız. <code>df= pd.read_excel(“dosya_adı.xls”, skiprows = [0,5,6]</code></td>
 </tr>
 <tr>
 <td>...<code>read_excel(usecols=)</code></td>
-<td>Veri Çerçevesi (DataFrame) oluştururken, sadece <strong>istediğimiz sütunları kullanmak</strong> istediğimizde <code>usecols</code> parametresini kullanmalıyız. Değer olarak <strong>sütun adı</strong> da yazılabilir. <strong>Ör.</strong> <code>df = pd.read_excel(“dosya_adı.xls”, usecols = [“Sütun1”, “Sütun5”, Sütun9”]</code></td>
-</tr>
-<tr>
-<td>...<code>read_excel(decimal=)</code></td>
-<td>Veri çerçevesi oluşturuken <strong>ondalık ayırıcı ifadeyi belitrmek</strong> için <code>decimal = ","</code> parametresini kullanırız. <strong>Ör.</strong><code>pd.read_excel("Veri_Setleri/imdb.xlsx", decimal=",")</code></td>
-</tr>
-<tr>
-<td><code>read_sql()</code></td>
-<td>Bir <strong>SQL</strong> veritabanını okuyarak Veri Çerçevesi Oluştur. <strong>Ör.</strong> <code>pd.read_sql(query,connection_object)</code></td>
+<td>Veri Çerçevesi (DataFrame) oluştururken, sadece <strong>istediğimiz sütunları kullanmak</strong> istediğimizde <code>usecols</code> parametresini kullanmalıyız. Değer olarak <strong>sütun adı</strong> da yazılabilir. <strong>Ör.</strong> <code>df = pd.read_excel(“dosya_adı.xls”, usecols = [“Sütun1”, “Sütun5”, Sütun9”]</code><br></td>
 </tr>
 <tr>
 <td><code>read_html()</code></td>
@@ -213,8 +209,16 @@ Başvuru Kılavuzu / Özet Bilgi Tablosunun (CheatSheet) <strong>PDF uzantılı<
 <td><strong>JSON</strong> biçimindeki dosyayı içe aktararak Veri Çerçevesi Oluştur. <strong>Ör.</strong> <code>pd.read_json(dosya_adı.json)</code></td>
 </tr>
 <tr>
-<td><code>read_clipboard()</code></td>
-<td><strong>CTRL + C</strong> ile Panoya kopyaladığımız veriden (örneğin bir Excel tablosundan ya da websitesindeki tablodan) Veri Çerçevesine oluştur. <strong>Ör.</strong> <code>pd.read_clipboard()</code></td>
+<td><code>read_table()</code></td>
+<td><strong>CSV</strong> dosya içeriğinden <strong>tablo olarak</strong>  Veri Çerçevesi Oluştur. <strong>Ör.</strong> <code>pd.read_table(dosya_adı.csv)</code></td>
+</tr>
+<tr>
+<td>...<code>read_table(delimiter=)</code></td>
+<td><code>delimiter</code> parametresi ile, tablo verilerini sütunlara bölebiliriz. <em>Aksi halde her satırdaki veri bir sütuna yazılır.</em> <strong>Ör.</strong> <code>pd.read_table(“dosya_adı.csv”, delimiter=”,”)</code></td>
+</tr>
+<tr>
+<td><code>read_sql()</code></td>
+<td>Bir <strong>SQL</strong> veritabanını okuyarak Veri Çerçevesi Oluştur. <strong>Ör.</strong> <code>pd.read_sql(query,connection_object)</code></td>
 </tr>
 </tbody>
 </table>
@@ -228,6 +232,18 @@ Başvuru Kılavuzu / Özet Bilgi Tablosunun (CheatSheet) <strong>PDF uzantılı<
 </thead>
 <tbody>
 <tr>
+<td><code>columns</code></td>
+<td>Veri Çerçevelerinin <strong>başlık satırını</strong> çıktı olarak verir, görüntüler. <code>df.columns</code></td>
+</tr>
+<tr>
+<td><code>describe()</code></td>
+<td>Sayısal veri barındıran sütunlar hakkında detaylı <strong>matematiksel bilgiler</strong> verir. (Kaç adet veri olduğu, ortalamaları, en küçük ve en büyük sayı,...vb) <code>df.describe()</code></td>
+</tr>
+<tr>
+<td><code>dtypes</code></td>
+<td>Veri çerçevesinin <strong>başlık tiplerini</strong> görüntüler. <code>df.dtypes</code></td>
+</tr>
+<tr>
 <td><code>head()</code></td>
 <td>Veri Çerçevesinin <strong>ilk 5 satırını</strong> görüntüler.  Böylece Veri Çerçevesi hakkında ön bilgi edinmemizi sağlar. <code>df.head()</code></td>
 </tr>
@@ -236,36 +252,16 @@ Başvuru Kılavuzu / Özet Bilgi Tablosunun (CheatSheet) <strong>PDF uzantılı<
 <td>Parantez içerisine sayı yazarsak <strong>ilk "n" adet satır</strong> görüntülenir. <strong>Ör.</strong> <code>df.head(11)</code></td>
 </tr>
 <tr>
-<td><code>tail()</code></td>
-<td>Veri Çerçevesinin <strong>son 5 satırını</strong> görüntüler. <code>df.tail()</code></td>
-</tr>
-<tr>
-<td>...<code>tail(n)</code></td>
-<td>Parantez içerisine sayı yazarsak <strong>son "n"" adet satır</strong> görüntülenir. <strong>Ör.</strong> <code>df.tail(3)</code></td>
-</tr>
-<tr>
-<td><code>columns</code></td>
-<td>Veri Çerçevelerinin <strong>başlık satırını</strong> çıktı olarak verir, görüntüler. <code>df.columns</code></td>
-</tr>
-<tr>
 <td><code>info()</code></td>
 <td>Veri Çerçevesinin <strong>satır ve sütun sayısı, başlık tipleri</strong> (sayı, metin, ...vb) ve <strong>doluluk oranı</strong> (boş olmayan hücre sayısı) hakkında bilgi görüntüler. <code>df.info()</code></td>
 </tr>
 <tr>
-<td><code>dtypes</code></td>
-<td>Veri çerçevesinin <strong>başlık tiplerini</strong> görüntüler. <code>df.dtypes</code></td>
-</tr>
-<tr>
-<td><code>describe()</code></td>
-<td>Sayısal veri barındıran sütunlar hakkında detaylı <strong>matematiksel bilgiler</strong> verir. (Kaç adet veri olduğu, ortalamaları, en küçük ve en büyük sayı,...vb) <code>df.describe()</code></td>
-</tr>
-<tr>
-<td><code>shape</code></td>
-<td>Veri Çerçevesinin <strong>satır ve sütun bilgisini</strong> döndürür, görüntüler. <code>df.shape</code></td>
-</tr>
-<tr>
 <td><code>index</code></td>
 <td>Veri Çerçevesinin <strong>indeks isimlerini</strong> döndürür, görüntüler. <code>df.index</code> Aynı zamanda İndeks başlığını atamak için de kullanılır. <code>df.index = "Yeni baslik"</code></td>
+</tr>
+<tr>
+<td><code>isin()</code></td>
+<td>Bir DataFrame içindeki her bir elemanın, belirtilen değerler koleksiyonunda <strong>bulunup bulunmadığını</strong> kontrol eder.</td>
 </tr>
 <tr>
 <td><code>isnull()</code></td>
@@ -276,20 +272,40 @@ Başvuru Kılavuzu / Özet Bilgi Tablosunun (CheatSheet) <strong>PDF uzantılı<
 <td>Veri Çerçevesinin herhangi bir <strong>boş değer (eksik veri) içerip içermediğini</strong> görüntüler. <code>True</code> eksik veri <strong><u>bulunuyor</u></strong>; <code>False</code>, eksik veri <u><strong>bulunmuyor</strong></u> demek. <code>df.isnull().any()</code></td>
 </tr>
 <tr>
-<td><code>unique()</code></td>
-<td>Veri Çerçevesinden benzersiz değerler tespit etmek, kategorik verileri analiz etmek veya yinelenen verileri tanımlamak için kullanılır. Bu metot bir NumPy dizisi döndürür.</td>
+<td><code>len(df)</code></td>
+<td>Veri Çerçevesinin <strong>kaç satırdan oluştuğu bilgisini</strong> döndürür.</td>
+</tr>
+<tr>
+<td><code>median()</code></td>
+<td>Bir DataFrame'deki  değerlerin, belirtilen eksen (satır veya sütun) üzerindeki <strong>medyanını (ortanca değerini)</strong> döndürür.</td>
+</tr>
+<tr>
+<td><code>mode()</code></td>
+<td>Bir DataFrame'in satırları veya sütunları boyunca <strong>en sık tekrar eden </strong>(mod) değerleri bulur</td>
 </tr>
 <tr>
 <td><code>nunique()</code></td>
 <td>Benzersiz değerlerin miktarını (kaç adet olduğunu) bulmak için bu metodu kullanabiliriz.</td>
 </tr>
 <tr>
-<td><code>value_counts()</code></td>
-<td>Veri çerçevemizde bir sütunda <strong>aynı verinin kaç kez tekrar ettiğini</strong> (kaç adet bulunduğunu) öğrenmek için kullanılır. <code>df.value_counts()</code></td>
+<td><code>shape</code></td>
+<td>Veri Çerçevesinin <strong>satır ve sütun bilgisini</strong> döndürür, görüntüler. <code>df.shape</code></td>
 </tr>
 <tr>
-<td><code>len(df)</code></td>
-<td>Veri Çerçevesinin <strong>kaç satırdan oluştuğu bilgisini</strong> döndürür.</td>
+<td><code>tail()</code></td>
+<td>Veri Çerçevesinin <strong>son 5 satırını</strong> görüntüler. <code>df.tail()</code></td>
+</tr>
+<tr>
+<td>...<code>tail(n)</code></td>
+<td>Parantez içerisine sayı yazarsak <strong>son "n"" adet satır</strong> görüntülenir. <strong>Ör.</strong> <code>df.tail(3)</code></td>
+</tr>
+<tr>
+<td><code>unique()</code></td>
+<td>Veri Çerçevesinden benzersiz değerler tespit etmek, kategorik verileri analiz etmek veya yinelenen verileri tanımlamak için kullanılır. Bu metot bir NumPy dizisi döndürür.</td>
+</tr>
+<tr>
+<td><code>value_counts()</code></td>
+<td>Veri çerçevemizde bir sütunda <strong>aynı verinin kaç kez tekrar ettiğini</strong> (kaç adet bulunduğunu) öğrenmek için kullanılır. <code>df.value_counts()</code></td>
 </tr>
 </tbody>
 </table>
@@ -303,20 +319,24 @@ Başvuru Kılavuzu / Özet Bilgi Tablosunun (CheatSheet) <strong>PDF uzantılı<
 </thead>
 <tbody>
 <tr>
-<td><code>iloc[]</code></td>
-<td>Veri Çerçevesinde istenilen  <strong>indeks değerlerine göre satır ve sütunu seçmek/görüntülemek</strong> için kullanılır. <strong>Ör.1.</strong> Satır ve sütunun kesişim değeri için;<code>df.iloc[Satir_Numarası, Sütun_Numarası]</code> <strong>Ör.2.</strong> Bir aralık için; <code>df.iloc[[satır_listesi], [sütun_listesi]]</code></td>
-</tr>
-<tr>
-<td><code>loc[]</code></td>
-<td><strong>Etiketlere veya mantık (boole) dizisine göre bir satır ve sütun</strong> seçmek için kullanılır. <strong>Ör.1.</strong> Satır ve sütunun kesişim değeri için; <code>df.loc["Star Wars", "Puan"]</code> <strong>Ör.2.</strong> Bir aralık için; <code>df.loc["Star Wars"]</code> <strong>UYARI:</strong> <code>loc[]</code>metodu ile dilimleme işlemi yapılırken<code>:</code> karakterinin sağındaki bitiş değeri, standart python dilimleme işlemlerinin aksine, seçime <strong>DAHİL EDİLİR</strong>, unutmayın.</td>
-</tr>
-<tr>
 <td><code>at[]</code></td>
 <td>Bir <strong>satır/sütun etiket çifti belirterek tek bir değeri seçmek</strong> için kullanabiliriz. MS Excel ya da Libre Ofis Calc uygulamalarındaki satır ve sütun değerlerinin kesişimindeki hücre değerine ulaşmak ile aynı mantık. <code>loc[]</code> metoduna benzer şekilde kullanılır. yalnız tek bir değer almanız veya ayarlamanız gerekiyorsa <code>at[]</code>metodunu kullanın. <strong>Ör.</strong> <code>df.at["satır etiketi", "sütun etiketi"]</code></td>
 </tr>
 <tr>
+<td><code>df.Sütun</code></td>
+<td>Sütun başlığını yazarak (eğer sütun başlığı, ismi boşluksuz ise), <strong>istediğimiz TEK sütunu</strong> seçebiliriz. <strong>Ör.1.</strong> <code>VeriCervecesiAdı.SütunAdı</code> , <strong>Ör.2.</strong> <code>df.Puan</code></td>
+</tr>
+<tr>
+<td><code>df.[["Sütun1",  "Sütun2"]]</code></td>
+<td>Sütun başlıklarını <strong>liste halinde</strong> yazarak, <strong>istediğimiz sütunları</strong> seçebiliriz. <strong>Ör.</strong> <code>df[["Yıl", "Puan"]]</code></td>
+</tr>
+<tr>
 <td><code>iat[]</code></td>
 <td><strong>Satır/sütun çiftinde tamsayı belirtilerek tek bir değeri seçmek</strong> için kullanılır.  <code>iloc[]</code> metoduna benzerdir, her iki metot ta tamsayı tabanlı aramalar sağlar. <code>at[]</code> metodunda etiket kullanırken<code>iat[]</code> <strong>metodunda indeks değeri olan tamsayı kullanılır</strong>. <strong>Ör.1.</strong> <code>df.iat[1, 2]</code> <strong>Ör.2.</strong> <code>df.loc[0].iat[1]</code></td>
+</tr>
+<tr>
+<td><code>iloc[]</code></td>
+<td>Veri Çerçevesinde istenilen  <strong>indeks değerlerine göre satır ve sütunu seçmek/görüntülemek</strong> için kullanılır. <strong>Ör.1.</strong> Satır ve sütunun kesişim değeri için;<code>df.iloc[Satir_Numarası, Sütun_Numarası]</code> <strong>Ör.2.</strong> Bir aralık için; <code>df.iloc[[satır_listesi], [sütun_listesi]]</code></td>
 </tr>
 <tr>
 <td><code>Index()</code></td>
@@ -327,12 +347,8 @@ Başvuru Kılavuzu / Özet Bilgi Tablosunun (CheatSheet) <strong>PDF uzantılı<
 <td><code>lambda()</code> fonksiyonu ile, <strong>belirteceğimiz koşulu sağlayan satırı seçmek</strong> için aşağıdaki kod mantığını kullanabiliriz. <strong>Ör.</strong> <strong>shield</strong> satırında <strong>8</strong>'e eşit değer barındıran satırları seçelim. <code>df.loc[lambda df: df['shield'] == 8]</code></td>
 </tr>
 <tr>
-<td><code>df.Sütun</code></td>
-<td>Sütun başlığını yazarak (eğer sütun başlığı, ismi boşluksuz ise), <strong>istediğimiz TEK sütunu</strong> seçebiliriz. <strong>Ör.1.</strong> <code>VeriCervecesiAdı.SütunAdı</code> , <strong>Ör.2.</strong> <code>df.Puan</code></td>
-</tr>
-<tr>
-<td><code>df.[["Sütun1",  "Sütun2"]]</code></td>
-<td>Sütun başlıklarını <strong>liste halinde</strong> yazarak, <strong>istediğimiz sütunları</strong> seçebiliriz. <strong>Ör.</strong> <code>df[["Yıl", "Puan"]]</code></td>
+<td><code>loc[]</code></td>
+<td><strong>Etiketlere veya mantık (boole) dizisine göre bir satır ve sütun</strong> seçmek için kullanılır. <strong>Ör.1.</strong> Satır ve sütunun kesişim değeri için; <code>df.loc["Star Wars", "Puan"]</code> <strong>Ör.2.</strong> Bir aralık için; <code>df.loc["Star Wars"]</code> <strong>UYARI:</strong> <code>loc[]</code>metodu ile dilimleme işlemi yapılırken<code>:</code> karakterinin sağındaki bitiş değeri, standart python dilimleme işlemlerinin aksine, seçime <strong>DAHİL EDİLİR</strong>, unutmayın.</td>
 </tr>
 </tbody>
 </table>
@@ -345,22 +361,6 @@ Başvuru Kılavuzu / Özet Bilgi Tablosunun (CheatSheet) <strong>PDF uzantılı<
 </tr>
 </thead>
 <tbody>
-<tr>
-<td><code>isnull()</code></td>
-<td>Veri çerçevemizde <strong>eksik verileri tespit ederiz</strong>. <code>isnull</code> ifadesini, <strong>boş mu?, geçersiz mi?, kayıp/eksik mi?</strong> sorusu olarak düşünebilirsiniz. <strong>False</strong> (Yanlış) Eksik/Kayıp veri <strong>YOK</strong>, <strong>True</strong> (Doğru) ise Eksik/Kayıp veri <strong>VAR</strong> anlamına gelir. <code>df.isnull()</code></td>
-</tr>
-<tr>
-<td>...<code>isnull().sum()</code></td>
-<td>Veri çerçecevesinde <strong>kaç adet eksik, kayıp  veri olduğunu</strong> belirtir. Çıktı olarak Sütun isimlerinde eksik veri değerlerini verir. <code>df.isnull().sum()</code></td>
-</tr>
-<tr>
-<td>...<code>isnull().any()</code></td>
-<td>Veri Çerçevesinin herhangi bir <strong>boş değer (eksik veri) içerip içermediğini</strong> görüntüler. <code>True</code> eksik veri <strong><u>bulunuyor</u></strong>; <code>False</code>, eksik veri <u><strong>bulunmuyor</strong></u> demek. <code>df.isnull().any()</code></td>
-</tr>
-<tr>
-<td><code>isna()</code></td>
-<td>Bu fonksiyonun tek bir görevi vardır: "Bu verinin içi boş mu yoksa dolu mu?" sorusuna cevap vermek.<br/> Eğer veri yoksa (boşsa, tanımsızsa), <code>True</code>, veri varsa, <code>False</code> sonucunu verir.<br/><code>isna</code> metodu <code>NaN</code>, <code>None</code> ve <code>NaT</code> bunların hepsini yakalar.</td>
-</tr>
 <tr>
 <td><code>dropna()</code></td>
 <td>Veri Çerçevelerinde <strong>eksik veri bulunan satır ve sütunları otomatik olarak silmek</strong> için kullanırız. <strong>Ör.</strong> <code>df.dropna(axis = 0)</code> Bu metodu parametresiz olarak kullandığımızda ( <code>df.dropna()</code> ), sadece eksik veri tespit edilen satırlar silinir. <code>df.dropna()</code></td>
@@ -406,6 +406,22 @@ Başvuru Kılavuzu / Özet Bilgi Tablosunun (CheatSheet) <strong>PDF uzantılı<
 <td><code>ffill</code> seçeneği ile  boş hücreler, <strong>kendinden önceki (üstünde bulunan) son geçerli hücrenin değeri ile</strong> doldurulur.</td>
 </tr>
 <tr>
+<td><code>isna()</code></td>
+<td>Bu fonksiyonun tek bir görevi vardır: "Bu verinin içi boş mu yoksa dolu mu?" sorusuna cevap vermek.<br/> Eğer veri yoksa (boşsa, tanımsızsa), <code>True</code>, veri varsa, <code>False</code> sonucunu verir.<br/><code>isna</code> metodu <code>NaN</code>, <code>None</code> ve <code>NaT</code> bunların hepsini yakalar.</td>
+</tr>
+<tr>
+<td><code>isnull()</code></td>
+<td>Veri çerçevemizde <strong>eksik verileri tespit ederiz</strong>. <code>isnull</code> ifadesini, <strong>boş mu?, geçersiz mi?, kayıp/eksik mi?</strong> sorusu olarak düşünebilirsiniz. <strong>False</strong> (Yanlış) Eksik/Kayıp veri <strong>YOK</strong>, <strong>True</strong> (Doğru) ise Eksik/Kayıp veri <strong>VAR</strong> anlamına gelir. <code>df.isnull()</code></td>
+</tr>
+<tr>
+<td>...<code>isnull().sum()</code></td>
+<td>Veri çerçecevesinde <strong>kaç adet eksik, kayıp  veri olduğunu</strong> belirtir. Çıktı olarak Sütun isimlerinde eksik veri değerlerini verir. <code>df.isnull().sum()</code></td>
+</tr>
+<tr>
+<td>...<code>isnull().any()</code></td>
+<td>Veri Çerçevesinin herhangi bir <strong>boş değer (eksik veri) içerip içermediğini</strong> görüntüler. <code>True</code> eksik veri <strong><u>bulunuyor</u></strong>; <code>False</code>, eksik veri <u><strong>bulunmuyor</strong></u> demek. <code>df.isnull().any()</code></td>
+</tr>
+<tr>
 <td><code>notna()</code></td>
 <td>Bir dizi benzeri nesne için eksik olmayan (geçerli) değerleri tespit etmek amacıyla kullanılır. <br><code>NaN</code>, <code>None</code> veya <code>NaT</code> gibi eksik değerler içerip içermediğini kontrol eder. Kontrol sonucunda, geçerli olması durumunda <code>True</code>, eksik olması durumunda ise <code>False</code> değerini döndür.</td>
 </tr>
@@ -425,6 +441,10 @@ Başvuru Kılavuzu / Özet Bilgi Tablosunun (CheatSheet) <strong>PDF uzantılı<
 <td>DataFrame ile başka bir nesneyi öğe bazında toplamak için kullanılan bir metottur. <code>df.add(other, axis='columns', level=None, fill_value=None)</code></td>
 </tr>
 <tr>
+<td><code>apply()</code></td>
+<td><strong>Bir Fonksiyonu, veri çerçevemize uygulamak</strong> istersek, <code>apply()</code> fonksiyonu kullanmamız gerekir. Ör. <code>df.["İsim"].apply(buyuk_harf)</code></td>
+</tr>
+<tr>
 <td><code>assign()</code></td>
 <td>Bir veri tablosu üzerinde çalışırken, tablonun orijinal halini bozmadan (değiştirilmezlik ilkesi) yeni bir sütun eklemek istediğinizde kullanılır. <code>df.assign(**kwargs)</code></td>
 </tr>
@@ -435,38 +455,6 @@ Başvuru Kılavuzu / Özet Bilgi Tablosunun (CheatSheet) <strong>PDF uzantılı<
 <tr>
 <td><code>convert_dtypes()</code></td>
 <td>Veri setini otomatik olarak temizleyen ve düzenleyen "akıllı bir veri tipi (türü) dönüştürücüsü" gibi düşünebilirsin.<br><code>DataFrame.convert_dtypes(infer_objects=True, convert_string=True, &lt;br/&gt;convert_integer=True, convert_boolean=True, convert_floating=True, &lt;br/&gt;dtype_backend='numpy_nullable')</code></td>
-</tr>
-<tr>
-<td><code>pop()</code></td>
-<td>Veri çerçevemizdeki belirli bir sütunu hem kaldırır hem de kaldırdığı bu sütunu bir Series olarak size geri verir.  Orijinal Veri çerçevemizde artık o sütun olmaz<br> <code>pop()</code> metodu ile doğrudan satır silinemez.</td>
-</tr>
-<tr>
-<td><code>replace()</code></td>
-<td>Bir DataFrame içindeki belirli değerleri bulup, onları istediğiniz yeni değerlerle değiştirmenizi sağlar. Kısaca "Bul ve Değiştir" işlevidir. <br> <code>DataFrame.replace(to_replace=None, value=&lt;no_default&gt;, *, &lt;br/&gt;inplace=False, limit=None, regex=False, method=&lt;no_default&gt;)</code></td>
-</tr>
-<tr>
-<td><code>resample()</code></td>
-<td>Zaman serisi verilerinin frekansını dönüştürmek ve yeniden örneklemek için kullanılır. <br> <code>DataFrame.resample(rule, axis=&lt;no_default&gt;, closed=None, label=None, &lt;br/&gt;convention='start', kind=&lt;no_default&gt;, on=None, level=None, &lt;br/&gt;origin='start_day', offset=None, group_keys=False)</code></td>
-</tr>
-<tr>
-<td><code>set_index()</code></td>
-<td>Veri Çerçevesi oluşturduktan sonra, istediğimiz zaman <strong>indeks değerlerini değiştiremek / atamak</strong> için <code>set_index()</code> parametresi kullanılır. <strong>Ör.</strong> <code>df.set_index(“Sütun_adı”)</code></td>
-</tr>
-<tr>
-<td>...<code>read_excel(index_col=)</code></td>
-<td>Veri Çerçevesi (Data Frame) oluştururken, sütunlardan birini, <strong>indeks değeri olarak ayarlamak, atamak</strong> için <code>index_col</code> parametresi kullanılır. Parametreye, değer olarak, indis olarak atanacak Sütunun <strong>indis değeri</strong> yazılır. <strong>Ör.</strong> <code>df = pd.read_excel(“dosya_adı.xls” ,index_col=0)</code></td>
-</tr>
-<tr>
-<td>...<code>read_excel(usecols=)</code></td>
-<td>Veri Çerçevesi (DataFrame) oluştururken, sadece <strong>istediğimiz sütunları kullanmak</strong> istediğimizde <code>usecols</code> parametresini kullanmalıyız. Değer olarak <strong>sütun adı</strong> da yazılabilir. <strong>Ör.</strong> <code>df = pd.read_excel(“dosya_adı.xls”, usecols=[“Sütun1”, “Sütun5”, Sütun9”]</code></td>
-</tr>
-<tr>
-<td>...<code>read_excel(usecols=)</code></td>
-<td><code>usecols</code> parametresine değer olarak <strong>sütun indisi</strong> de yazılabilir. <strong>Ör.</strong> <code>df = pd.read_excel(“dosya_adı.xls”, usecols = [2,3,8]</code></td>
-</tr>
-<tr>
-<td>...<code>read_excel(skiprows=)</code></td>
-<td>Veri Çerçevesi (DataFrame) oluştururken, <strong>satırları atlamak / göz ardı etmek</strong> Veri Çerçevesine <strong>dahil etmemek</strong> için, <code>skiprows</code> parametresi kullanırız. <code>df= pd.read_excel(“dosya_adı.xls”, skiprows = [0,5,6]</code></td>
 </tr>
 <tr>
 <td><code>drop()</code></td>
@@ -497,12 +485,32 @@ Başvuru Kılavuzu / Özet Bilgi Tablosunun (CheatSheet) <strong>PDF uzantılı<
 <td>Veri Çerçevesi (DataFrame) <strong>Yeni Sütun eklemek</strong> ve bu <strong>sütuna Değer Atamak</strong> için bu yapıyı kullanabiliriz. Atanacak_Değerler, Liste yapısında olabileceği gibi, Diğer sütunların kopyası, matematik, mantık ya da karşılaştırma operatörleri ile belirlenmiş halleri de olabilir. <strong>Ör.</strong> <code>df[“Toplam”] = df[“Sütun1”] + df[“Sütun2”]</code></td>
 </tr>
 <tr>
-<td><code>transpose()</code></td>
-<td><strong>Satırları sütuna, sütunları satıra çevirme</strong> işlemini <code>transpose()</code> fonksiyonu yardımıyla gerçekleştirebiliriz. <strong>Ör.</strong> <code>df.transpose()</code></td>
+<td><code>pop()</code></td>
+<td>Veri çerçevemizdeki belirli bir sütunu hem kaldırır hem de kaldırdığı bu sütunu bir Series olarak size geri verir.  Orijinal Veri çerçevemizde artık o sütun olmaz<br> <code>pop()</code> metodu ile doğrudan satır silinemez.</td>
 </tr>
 <tr>
-<td><code>apply()</code></td>
-<td><strong>Bir Fonksiyonu, veri çerçevemize uygulamak</strong> istersek, <code>apply()</code> fonksiyonu kullanmamız gerekir. Ör. <code>df.["İsim"].apply(buyuk_harf)</code></td>
+<td><code>replace()</code></td>
+<td>Bir DataFrame içindeki belirli değerleri bulup, onları istediğiniz yeni değerlerle değiştirmenizi sağlar. Kısaca "Bul ve Değiştir" işlevidir. <br> <code>DataFrame.replace(to_replace=None, value=&lt;no_default&gt;, *, &lt;br/&gt;inplace=False, limit=None, regex=False, method=&lt;no_default&gt;)</code></td>
+</tr>
+<tr>
+<td><code>resample()</code></td>
+<td>Zaman serisi verilerinin frekansını dönüştürmek ve yeniden örneklemek için kullanılır. <br> <code>DataFrame.resample(rule, axis=&lt;no_default&gt;, closed=None, label=None, &lt;br/&gt;convention='start', kind=&lt;no_default&gt;, on=None, level=None, &lt;br/&gt;origin='start_day', offset=None, group_keys=False)</code></td>
+</tr>
+<tr>
+<td><code>set_index()</code></td>
+<td>Veri Çerçevesi oluşturduktan sonra, istediğimiz zaman <strong>indeks değerlerini değiştiremek / atamak</strong> için <code>set_index()</code> parametresi kullanılır. <strong>Ör.</strong> <code>df.set_index(“Sütun_adı”)</code></td>
+</tr>
+<tr>
+<td><code>to_frame()</code></td>
+<td><strong>Serileri</strong> <strong>DataFrame</strong>'e <strong>dönüştürür</strong>. <strong>Ör</strong>: <code>df.to_frame()</code></td>
+</tr>
+<tr>
+<td><code>to_numpy()</code></td>
+<td><strong>DataFrame</strong>'i bir <strong>NumPy dizisine</strong> <strong>dönüştürür</strong>. <strong>Ör</strong>: <code>df.to_numpy()</code></td>
+</tr>
+<tr>
+<td><code>transpose()</code></td>
+<td><strong>Satırları sütuna, sütunları satıra çevirme</strong> işlemini <code>transpose()</code> fonksiyonu yardımıyla gerçekleştirebiliriz. <strong>Ör.</strong> <code>df.transpose()</code></td>
 </tr>
 </tbody>
 </table>
@@ -552,10 +560,6 @@ Başvuru Kılavuzu / Özet Bilgi Tablosunun (CheatSheet) <strong>PDF uzantılı<
 <td><code>join()</code> fonksiyonuna benzer ancak bazı farklı özellikleri vardır. Veri Çerçevesi veya adlandırılmış Seri nesneleri <strong>veritabanı stili birleştirme yöntemi</strong> ile (<em>SQL’de bulunan inner join, outer join … ‘e benzer</em>) birleştirmek için <code>merge()</code> fonksiyonunu kullanılabilir. <strong>Ör.</strong> <code>DataFrame.merge(right, how='inner', on=None, left_on=None, right_on=None, left_index=False, right_index=False, sort=False, suffixes=('_x', '_y'), copy=True, indicator=False, validate=None)</code></td>
 </tr>
 <tr>
-<td>...<code>merge(on=)</code></td>
-<td><code>on</code>parametresi, Veri Çerçevelerinin <strong>hangi sütun baz alınarak birleştirileceğini</strong> belirteceğimiz parametredir. <strong>Ör.</strong> <code>pd.merge(vize, final, on = "Ogrenci")</code></td>
-</tr>
-<tr>
 <td>...<code>merge(how=)</code></td>
 <td><code>how</code> parametresi, veri çerçevelerini birleştirirken <strong>matematikteki Kümeler konusuna benzer seçenekler sunar</strong>. <code>merge()</code>fonksiyonunda <code>how</code> parametresi kullanılmadığı taktirde varsayılan olarak <code>inner</code> seçeneği belirtilmiş olur ve birleştirilecek veri çerçevelerinin <strong>sadece ortak değerleri alınarak birleştirme</strong> işlemi gerçekleştirilir. <strong>Ör.</strong> <code>pd.merge(vize, final, on = "Ogrenci", how = "inner")</code> <br><code>how</code> Parametresi için kullanılabilecek seçenekler:<br/><br/>    <strong>inner</strong> (varsayılan)<br/>    <strong>outer</strong><br/>    <strong>left</strong><br/>    <strong>right</strong><br/>    <strong>cross</strong></td>
 </tr>
@@ -584,6 +588,10 @@ Başvuru Kılavuzu / Özet Bilgi Tablosunun (CheatSheet) <strong>PDF uzantılı<
 <td><strong>Soldaki</strong> Veri Çerçevesi üzerinde <strong>birleştirmenin hangi düzeyde yapılacağını belirtmek</strong> için kullanılır. Sütun başlıklarının sonuna varsayılan <strong>_x</strong> ve <strong>_y</strong> sonekleri eklenir.<br/><code>left_on</code> parametresi, etiket veya liste ya da dizi benzeri veri alır. <strong>Ör.</strong> <code>df1.merge(df2, left_on='Manav_1', right_on='Manav_2')</code></td>
 </tr>
 <tr>
+<td>...<code>merge(on=)</code></td>
+<td><code>on</code>parametresi, Veri Çerçevelerinin <strong>hangi sütun baz alınarak birleştirileceğini</strong> belirteceğimiz parametredir. <strong>Ör.</strong> <code>pd.merge(vize, final, on = "Ogrenci")</code></td>
+</tr>
+<tr>
 <td>...... <code>merge(right_on=)</code></td>
 <td><strong>Sağdaki</strong> Veri Çerçevesi üzerinde <strong>birleştirmenin hangi düzeyde yapılacağını belirtmek</strong> için kullanılır. Sütun başlıklarının sonuna varsayılan <strong>_x</strong> ve <strong>_y</strong> sonekleri eklenir.<br/><code>right_on</code> parametresi, etiket veya liste ya da dizi benzeri veri alır. <strong>Ör.</strong> <code>df1.merge(df2, right_on='Manav_1', left_on='Manav_2')</code></td>
 </tr>
@@ -602,6 +610,26 @@ Başvuru Kılavuzu / Özet Bilgi Tablosunun (CheatSheet) <strong>PDF uzantılı<
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><code>reindex()</code></td>
+<td><code>reindex()</code>, Pandas'ta temel veri sıralama (hizalama) yöntemlerinden biridir. Bir veri çerçevesinin satır ya da sütunlarını yeniden sıralamak için kullanılan en yaygın yöntemdir. Bu fonksiyon, <strong>hem seçim hem de sıralama</strong> (<strong>Dilimleme ve Filtreleme</strong>) mantığıyla çalışır. <code>df.reindex(["Fight Club ", "Pulp Fiction", "Inception", "The Godfather ", "The Dark Knight ", "Seven Samurai "])</code></td>
+</tr>
+<tr>
+<td>... <code>columns</code></td>
+<td>Sütun isimlerinin sırasını <code>reindex()</code> fonksiyonu yardımı ile değiştirmek istersek, <code>columns</code> parametresini kullanabiliriz. <code>df.reindex(columns=["Puan", "Yıl", "Oylayan_Kişi"])</code></td>
+</tr>
+<tr>
+<td>... <code>axis</code></td>
+<td>Veri çerçevenizin indeks değerlerini (satırlar) ya da sütun isimlerini <code>reindex()</code> fonksiyonun, <code>axis</code> parametresi ile de sıralayabilirsiniz. Bu parametre <code>index</code> ya da <code>columns</code> seçeneğini alır;</td>
+</tr>
+<tr>
+<td>...... <code>index</code></td>
+<td><strong>Belirtilen bir index değerine göre sıralama yapmak</strong> için <code>axis</code> parametresine <code>index</code> seçeneğini yazmalıyız. <code>df.reindex([2,1,0], axis="index"</code> bu kod ile <strong>index</strong>'i <strong>2,1,0</strong> şeklinde sıralamış olduk.</td>
+</tr>
+<tr>
+<td>...... <code>columns</code></td>
+<td><strong>Belirtilen bir Sütun ismine göre sıralama yapmak</strong> için <code>axis</code> parametresine <code>columns</code> seçeneğini yazmalıyız. <code>df.reindex(["S2","S1","S0"], axis="columns")</code></td>
+</tr>
 <tr>
 <td><code>sort_index()</code></td>
 <td>Veri çerçevesini <strong>indeks</strong> (dizin) değerine göre alfabetik olarak <strong>sıralamak</strong> için kullanılır. <code>df.sort_index()</code></td>
@@ -626,26 +654,6 @@ Başvuru Kılavuzu / Özet Bilgi Tablosunun (CheatSheet) <strong>PDF uzantılı<
 <td>... <code>na_position</code></td>
 <td><code>sort_values()</code> fonksiyonu, <code>na_position</code> parametresi aracılığıyla <strong>NA (yani kayıp / eksik veri)</strong> değerlerini özel işleme tabi tutarak sıralayabilir. <code>df2.sort_values(by= "Sütun_4", na_position="first")</code> bu kod ile <strong>Sütun_4</strong>'e göre yapılacak sıralama işleminde, <strong>NaN</strong> değerlerini en üstte yer alır. Tersi istenirse <code>na_position</code> parametresine <code>"last"</code> seçeneğini vermemiz gerekir.</td>
 </tr>
-<tr>
-<td><code>reindex()</code></td>
-<td><code>reindex()</code>, Pandas'ta temel veri sıralama (hizalama) yöntemlerinden biridir. Bir veri çerçevesinin satır ya da sütunlarını yeniden sıralamak için kullanılan en yaygın yöntemdir. Bu fonksiyon, <strong>hem seçim hem de sıralama</strong> (<strong>Dilimleme ve Filtreleme</strong>) mantığıyla çalışır. <code>df.reindex(["Fight Club ", "Pulp Fiction", "Inception", "The Godfather ", "The Dark Knight ", "Seven Samurai "])</code></td>
-</tr>
-<tr>
-<td>... <code>columns</code></td>
-<td>Sütun isimlerinin sırasını <code>reindex()</code> fonksiyonu yardımı ile değiştirmek istersek, <code>columns</code> parametresini kullanabiliriz. <code>df.reindex(columns=["Puan", "Yıl", "Oylayan_Kişi"])</code></td>
-</tr>
-<tr>
-<td>... <code>axis</code></td>
-<td>Veri çerçevenizin indeks değerlerini (satırlar) ya da sütun isimlerini <code>reindex()</code> fonksiyonun, <code>axis</code> parametresi ile de sıralayabilirsiniz. Bu parametre <code>index</code> ya da <code>columns</code> seçeneğini alır;</td>
-</tr>
-<tr>
-<td>...... <code>index</code></td>
-<td><strong>Belirtilen bir index değerine göre sıralama yapmak</strong> için <code>axis</code> parametresine <code>index</code> seçeneğini yazmalıyız. <code>df.reindex([2,1,0], axis="index"</code> bu kod ile <strong>index</strong>'i <strong>2,1,0</strong> şeklinde sıralamış olduk.</td>
-</tr>
-<tr>
-<td>...... <code>columns</code></td>
-<td><strong>Belirtilen bir Sütun ismine göre sıralama yapmak</strong> için <code>axis</code> parametresine <code>columns</code> seçeneğini yazmalıyız. <code>df.reindex(["S2","S1","S0"], axis="columns")</code></td>
-</tr>
 </tbody>
 </table>
 <h2>VERİ FİLTRELEME YÖNTEMLERİ</h2>
@@ -657,6 +665,10 @@ Başvuru Kılavuzu / Özet Bilgi Tablosunun (CheatSheet) <strong>PDF uzantılı<
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><code>between()</code> metodu</td>
+<td>Bir sayısal aralık belirterek filtreleme yapmak istersek <code>between()</code> metodunu kullanabiliriz. Örneği 1960 ile 1980 yılları arasındaki filmleri filtrelemeye çalışalım. <code>df[df["Yıl"].between(1960,1980)]</code></td>
+</tr>
 <tr>
 <td><code>==</code> operatörü</td>
 <td>Veri çerçevesinin <strong>Yıl</strong> sütunu <strong>2010</strong>'a <strong>eşit</strong> <strong>olan</strong> verileri filtrelemek istersek; <code>df[df["Yıl"] == 2010]</code></td>
@@ -688,10 +700,6 @@ Başvuru Kılavuzu / Özet Bilgi Tablosunun (CheatSheet) <strong>PDF uzantılı<
 <tr>
 <td><code>ǀ</code> operatörü</td>
 <td>Birden fazla kriter içeren filtreleme işlemi uygulamak istersek,  <strong>İki kriterden biri sağlandığında</strong> filtrelemek istediğimizde <strong>YA DA / VEYA</strong> simgesi olan <code>ǀ</code> kullanılmalı; <br><code>filtre1 = df["MİKTAR"] &gt; 80</code> <br><code>filtre2 = df["deger"] &lt; 100</code><br/><code>df[filtre1 ǀ filtre2]</code></td>
-</tr>
-<tr>
-<td><code>between()</code> metodu</td>
-<td>Bir sayısal aralık belirterek filtreleme yapmak istersek <code>between()</code> metodunu kullanabiliriz. Örneği 1960 ile 1980 yılları arasındaki filmleri filtrelemeye çalışalım. <code>df[df["Yıl"].between(1960,1980)]</code></td>
 </tr>
 </tbody>
 </table>
@@ -728,14 +736,6 @@ Başvuru Kılavuzu / Özet Bilgi Tablosunun (CheatSheet) <strong>PDF uzantılı<
 <td>Filtreleme esnasında <strong>String</strong> Metotlarını kullanmak için <code>str</code> kelimesinden yararlanıyoruz.</td>
 </tr>
 <tr>
-<td>... <code>str.lower()</code></td>
-<td>"<strong>Film Adı</strong>" sütunundaki tüm metinsel ifadeleri <strong>küçük harfe dönüştürmek</strong> istersek <code>lower()</code> metodunu kullanmalıyız; <br><code>df["Film Adı"] = df["Film Adı"].str.lower()</code></td>
-</tr>
-<tr>
-<td>... <code>str.upper()</code></td>
-<td>"<strong>Film Adı</strong>" sütunundaki tüm metinsel ifadeleri <strong>büyük harfe dönüştürmek</strong> istersek <code>upper()</code> metodunu kullanmalıyız; <br><code>df["Film Adı"] = df["Film Adı"].str.upper()</code></td>
-</tr>
-<tr>
 <td>... <code>str.capitalize()</code></td>
 <td>"<strong>Film Adı</strong>" sütunundaki tüm metinsel ifadelerin sadece <strong>baş harflerini büyük harf çevirir.</strong> <br><code>df["Film Adı"] = df[“Film Adı”].str.capitalize()</code></td>
 </tr>
@@ -744,8 +744,16 @@ Başvuru Kılavuzu / Özet Bilgi Tablosunun (CheatSheet) <strong>PDF uzantılı<
 <td>String metotlarından biri olan <code>contains</code> ile <strong>metin içerisinde içeren kelime ya da kelimeleri aratabiliyoruz</strong> <code>df[df["Film Adı"].str.contains("star wars")]</code></td>
 </tr>
 <tr>
+<td>... <code>str.endswith()</code></td>
+<td><code>endswith()</code> metodu ile bir karakter dizisinin hangi karakter veya karakterlerle <strong>bittiğini</strong> denetleyebiliriz. Örneğin <strong>Ü</strong> harfi ile biten malzemeleri filtreleyelim; <code>df[df["MALZEME"].str.endswith("Ü")]</code></td>
+</tr>
+<tr>
 <td>... <code>str.get()</code></td>
 <td>Bir string'in istediğimiz karakterini elde edebiliriz. <code>df["Sütun_adı"].str.get(0)</code> -&gt; Sütunlardaki ilk Karakteri döndürür.</td>
+</tr>
+<tr>
+<td>... <code>str.lower()</code></td>
+<td>"<strong>Film Adı</strong>" sütunundaki tüm metinsel ifadeleri <strong>küçük harfe dönüştürmek</strong> istersek <code>lower()</code> metodunu kullanmalıyız; <br><code>df["Film Adı"] = df["Film Adı"].str.lower()</code></td>
 </tr>
 <tr>
 <td>... <code>str.slice()</code></td>
@@ -756,8 +764,8 @@ Başvuru Kılavuzu / Özet Bilgi Tablosunun (CheatSheet) <strong>PDF uzantılı<
 <td><code>startswith()</code> metodu ile bir karakter dizisinin hangi karakter veya karakterlerle <strong>başladığını</strong> denetleyebiliriz. Örneğin <strong>E</strong> harfi ile başlayan malzemeleri filtreleyelim; <code>df[df["MALZEME"].str.startswith("E")]</code></td>
 </tr>
 <tr>
-<td>... <code>str.endswith()</code></td>
-<td><code>endswith()</code> metodu ile bir karakter dizisinin hangi karakter veya karakterlerle <strong>bittiğini</strong> denetleyebiliriz. Örneğin <strong>Ü</strong> harfi ile biten malzemeleri filtreleyelim; <code>df[df["MALZEME"].str.endswith("Ü")]</code></td>
+<td>... <code>str.upper()</code></td>
+<td>"<strong>Film Adı</strong>" sütunundaki tüm metinsel ifadeleri <strong>büyük harfe dönüştürmek</strong> istersek <code>upper()</code> metodunu kullanmalıyız; <br><code>df["Film Adı"] = df["Film Adı"].str.upper()</code></td>
 </tr>
 </tbody>
 </table>
@@ -779,12 +787,12 @@ Başvuru Kılavuzu / Özet Bilgi Tablosunun (CheatSheet) <strong>PDF uzantılı<
 <td>Veri Çerçevesini <strong>Excel / Calc</strong> olarak <strong>Dışa Aktar/Kaydet</strong> <em>xls, xlsx, xlsm, xlsb, odf, ods ve odt</em> uzantılı dosyalar desteklenir. <code>df.to_excel(“dosya_adı.xlsx”)</code></td>
 </tr>
 <tr>
-<td><code>to_sql()</code></td>
-<td>Veri Çerçevesini <strong>SQL</strong> Veri Tabanı olarak <strong>Dışa Aktar/Kaydet.</strong> <code>df.to_sql(tablo_adı,baglantı_nesnesi)</code></td>
-</tr>
-<tr>
 <td><code>to_json()</code></td>
 <td>Veri Çerçevesini <strong>JSON</strong> dosyası olarak <strong>Dışa Aktar/Kaydet.</strong> <code>df.to_json(“dosya_adı.json”)</code></td>
+</tr>
+<tr>
+<td><code>to_sql()</code></td>
+<td>Veri Çerçevesini <strong>SQL</strong> Veri Tabanı olarak <strong>Dışa Aktar/Kaydet.</strong> <code>df.to_sql(tablo_adı,baglantı_nesnesi)</code></td>
 </tr>
 </tbody>
 </table>

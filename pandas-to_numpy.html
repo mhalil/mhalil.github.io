@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Pandas - to_numpy" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/pandas-to_numpy.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Pandas - to_numpy</h1>
+	<span class="post-date">Cts 06 Aralık 2025</span>
+	<h1><code>to_numpy()</code> Metodu</h1>
+<p><strong><code>pandas.DataFrame.to_numpy()</code></strong> metodu, bir <strong>pandas DataFrame</strong>'i bir <strong>NumPy dizisine</strong> (<code>numpy.ndarray</code>) dönüştürmek için kullanılır.</p>
+<p>Bu, bir <strong>DataFrame</strong>'deki verileri, hesaplama ve analiz için yaygın olarak kullanılan temel bir veri yapısı olan <strong>NumPy</strong> formatında elde etmenin tercih edilen yoludur.</p>
+<h2>Sözdizimi:</h2>
+<div class="highlight"><pre><span></span><code><span class="n">DataFrame</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
+                    <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> 
+                    <span class="n">na_value</span><span class="o">=&lt;</span><span class="n">no_default</span><span class="o">&gt;</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>Metodun Kullanımı ve Özeti</h2>
+<p>Varsayılan olarak, dönen dizinin veri türü (dtype), DataFrame'deki tüm türlerin <strong>ortak NumPy veri türü</strong> olacaktır. Örneğin, DataFrame'de <code>float16</code> ve <code>float32</code> türleri varsa, sonuç <code>float32</code> olacaktır. Farklı veri türlerinin olduğu durumlarda, çıktı dizisi <code>object</code> (nesne) veri türüne sahip olabilir.</p>
+<h2>Parametreler</h2>
+<table>
+<thead>
+<tr>
+<th>Parametre</th>
+<th>Tür</th>
+<th>Açıklama</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>dtype</code></strong></td>
+<td><code>str</code> veya <code>numpy.dtype</code>, <strong>isteğe bağlı</strong></td>
+<td><code>numpy.asarray()</code>'ye iletilecek veri türü. Belirtilirse, dönen dizinin veri türü bu olacaktır.</td>
+</tr>
+<tr>
+<td><strong><code>copy</code></strong></td>
+<td><code>bool</code>, <strong>varsayılan <code>False</code></strong></td>
+<td>Dönüş değerinin bir kopyasının istenip istenmediğini belirtir. <code>copy=True</code>, kesinlikle gerekli olmasa bile bir kopyanın oluşturulmasını sağlar. <code>copy=False</code> ise kopyalama yapılmayacağını garanti etmez.</td>
+</tr>
+<tr>
+<td><strong><code>na_value</code></strong></td>
+<td><code>Any</code>, <strong>isteğe bağlı</strong></td>
+<td>Eksik değerler (<code>NaN</code>, <code>None</code>, vb.) için kullanılacak değer. Varsayılan değer, <code>dtype</code>'a ve DataFrame sütunlarının veri türlerine bağlıdır.</td>
+</tr>
+</tbody>
+</table>
+<h2>Dönüş Değeri</h2>
+<ul>
+<li><strong><code>numpy.ndarray</code></strong>: DataFrame'deki verileri içeren bir <strong>NumPy dizisi</strong>.</li>
+</ul>
+<h2>Örnek Kullanım</h2>
+<p><strong>1. Basit bir DataFrame'i NumPy dizisine dönüştürme:</strong></p>
+<p>Veri çerçevemiz;</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+    <span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="p">})</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>3</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<p>DataFrame'i NumPy dizisine dönüştür;</p>
+<div class="highlight"><pre><span></span><code><span class="n">array</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="p">[[</span><span class="mi">1</span> <span class="mi">3</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">2</span> <span class="mi">4</span><span class="p">]]</span>
+</code></pre></div>
+
+<p><strong>2. Farklı veri türlerinin olduğu durumda, en düşük ortak tür kullanılır:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">]})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>3.0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>4.5</td>
+</tr>
+</tbody>
+</table>
+<p>A sütununda tamsayı (integer) değerler, B sütununda ise ondalıklı (float) değerler var. Bakalım dönüştürme işlemi sonucu türler nasıl değişecek?</p>
+<div class="highlight"><pre><span></span><code><span class="n">array</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="p">[[</span><span class="mf">1.</span>  <span class="mf">3.</span> <span class="p">]</span>
+ <span class="p">[</span><span class="mf">2.</span>  <span class="mf">4.5</span><span class="p">]]</span>
+</code></pre></div>
+
+<blockquote>
+<p><strong>Not</strong>: Tam sayı (int) ve ondalık sayı (float) içerdiği için ortak tür float olmuştur.</p>
+</blockquote>
+<p>Sayısal ve sayısal olmayan türlerin karışımı için, çıktı <strong>dizisi obje / nesne türüne</strong> sahip olacaktır.</p>
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="p">[</span><span class="s1">&#39;C&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s1">&#39;2000&#39;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>3.0</td>
+<td>2000-01-01</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>4.5</td>
+<td>2000-01-02</td>
+</tr>
+</tbody>
+</table>
+<p>Dönüşümü gerçekleştirelim;</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">())</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="n">Timestamp</span><span class="p">(</span><span class="s1">&#39;2000-01-01 00:00:00&#39;</span><span class="p">)],</span>
+       <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">,</span> <span class="n">Timestamp</span><span class="p">(</span><span class="s1">&#39;2000-01-02 00:00:00&#39;</span><span class="p">)]],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktıda görüldüğü üzere (<code>dtype=object</code>) sayısal ve sayısal olmayan (zaman) türlerin karışımı için, çıktı <strong>dizisi obje / nesne türüne</strong> dönüştü.</p>
+<h2>Kaynak:</h2>
+<ul>
+<li><a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_numpy.html">pandas.DataFrame.to_numpy &#8212; pandas 2.3.3 documentation</a></li>
+</ul>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/pandas.html">Pandas</a></li>
+					<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+					<li><a href="/tag/modul.html">Modül</a></li>
+					<li><a href="/tag/to_numpy.html">to_numpy</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>
