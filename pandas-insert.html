@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Pandas - insert" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/pandas-insert.html" />
+		<meta property="og:image" content="/images/avatar.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Pandas - insert</h1>
+	<span class="post-date">Paz 07 Aralık 2025</span>
+	<h1><code>insert()</code> Metodu</h1>
+<p><code>pandas.DataFrame.insert()</code> metodu, bir <strong>DataFrame</strong>'e <strong>belirtilen bir konuma yeni bir sütun eklemek</strong> için kullanılır. Bu işlem, orijinal DataFrame üzerinde gerçekleşir (yerinde değişiklik yapar).</p>
+<h2>Amacı</h2>
+<ul>
+<li>
+<p>Belirtilen bir dizine (<code>loc</code>) yeni bir sütun (<code>column</code>) ekler.</p>
+</li>
+<li>
+<p>Bu sayede, sütunların sırasını kontrol ederek veri setine yeni veriler dahil etmeye olanak tanır.</p>
+</li>
+</ul>
+<h2>Sözdizimi:</h2>
+<div class="highlight"><pre><span></span><code><span class="n">DataFrame</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">loc</span><span class="p">,</span> <span class="n">column</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">allow_duplicates</span><span class="o">=&lt;</span><span class="n">no_default</span><span class="o">&gt;</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>Parametreler</h2>
+<ol>
+<li>
+<p><strong><code>loc</code></strong> (int):</p>
+</li>
+<li>
+<p>Sütunun ekleneceği konumun dizini (indeksi).</p>
+</li>
+<li>
+<p><code>0 &lt;= loc &lt;= len(columns)</code> koşulunu sağlamalıdır. Örneğin, 1, ilk sütundan sonra ekleneceği anlamına gelir.</p>
+</li>
+<li>
+<p><strong><code>column</code></strong> (str, sayı veya karma nesne):</p>
+</li>
+<li>
+<p>Eklenecek yeni sütunun etiketi (adı).</p>
+</li>
+<li>
+<p><strong><code>value</code></strong> (Scalar, Series veya dizi benzeri):</p>
+</li>
+<li>
+<p>Eklenecek yeni sütunun içeriği.</p>
+</li>
+<li>
+<p>Eğer <strong>Series</strong> tipinde bir değer verilirse, mevcut DataFrame'in indeksi ile <strong>hizalanır</strong>.</p>
+</li>
+<li>
+<p><strong><code>allow_duplicates</code></strong> (bool, opsiyonel, varsayılan <code>False</code>):</p>
+</li>
+<li>
+<p>Eğer <code>False</code> ise (varsayılan), eklenmek istenen sütun etiketi (<code>column</code>) zaten varsa bir <code>ValueError</code> hatası verir.</p>
+</li>
+<li>
+<p>Eğer <code>True</code> olarak ayarlanırsa, aynı isimde birden fazla sütun oluşturulmasına izin verir.</p>
+</li>
+</ol>
+<h2>Basit Kullanım Örneği</h2>
+<p>Aşağıdaki örnek, <code>col1</code> ve <code>col2</code> sütunlarına sahip bir DataFrame'e <strong>1</strong> konumuna (yani <code>col1</code>'den sonra) <code>newcol</code> adında yeni bir sütun eklemeyi göstermektedir:</p>
+<p>Orijinal DataFrame;</p>
+<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;sütun1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;cosütun2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]})</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Orijinal DataFrame:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Orijinal</span> <span class="n">DataFrame</span><span class="p">:</span>
+   <span class="n">sütun1</span>  <span class="n">sütun2</span>
+<span class="mi">0</span>      <span class="mi">1</span>        <span class="mi">3</span>
+<span class="mi">1</span>      <span class="mi">2</span>        <span class="mi">4</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>sütun1</th>
+<th>sütun2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>3</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>konuma "<strong>yeni_sütun</strong>" sütununu ekleme</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;yeni_sütun&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">99</span><span class="p">,</span> <span class="mi">99</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ekleme sonrası DataFrame:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Ekleme</span> <span class="n">sonrası</span> <span class="n">DataFrame</span><span class="p">:</span>
+   <span class="n">col1</span>  <span class="n">yeni_sütun</span>  <span class="n">col2</span>
+<span class="mi">0</span>     <span class="mi">1</span>          <span class="mi">99</span>     <span class="mi">3</span>
+<span class="mi">1</span>     <span class="mi">2</span>          <span class="mi">99</span>     <span class="mi">4</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>sütun1</th>
+<th>yeni_sütun</th>
+<th>sütun2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>99</td>
+<td>3</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>99</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<h3>İndeks Hizalama Örneği</h3>
+<p>Eğer <code>value</code> olarak bir <strong>Series</strong> kullanılırsa, pandas DataFrame'in indeksi ile <strong>hizalama</strong> yapar:</p>
+<p>df'ye '<strong>sütun0</strong>' sütununu <strong>0. konuma</strong> ekliyoruz.
+Series'in indeksi <code>[1, 2]</code> olduğu için, <strong>0.</strong> indekse <code>NaN</code> (Not a Number) atanır.</p>
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;sütun0&quot;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]))</span> 
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Series ile ekleme sonrası DataFrame:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Series ile ekleme sonrası DataFrame:</p>
+<div class="highlight"><pre><span></span><code>   <span class="n">sütun0</span>  <span class="n">sütun1</span>  <span class="n">yeni_sütun</span>  <span class="n">sütun2</span>
+<span class="mi">0</span>     <span class="n">NaN</span>       <span class="mi">1</span>          <span class="mi">99</span>       <span class="mi">3</span>
+<span class="mi">1</span>     <span class="mf">5.0</span>       <span class="mi">2</span>          <span class="mi">99</span>       <span class="mi">4</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>sütun0</th>
+<th>sütun1</th>
+<th>yeni_sütun</th>
+<th>sütun2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>NaN</td>
+<td>1</td>
+<td>99</td>
+<td>3</td>
+</tr>
+<tr>
+<td>1</td>
+<td>5.0</td>
+<td>2</td>
+<td>99</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Not: Bu çıktı, yukarıdaki df.insert(1, "yeni_sütun", ...) işleminden sonraki df üzerinden devam eder.</p>
+</blockquote>
+<h2>Kaynak:</h2>
+<ul>
+<li><a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.insert.html">pandas.DataFrame.insert &#8212; pandas 2.3.3 documentation</a></li>
+</ul>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/pandas.html">Pandas</a></li>
+					<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+					<li><a href="/tag/modul.html">Modül</a></li>
+					<li><a href="/tag/insert.html">insert</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>
