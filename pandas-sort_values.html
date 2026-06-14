@@ -11,7 +11,6 @@
 	<meta property="og:title" content="Pandas - sort_values" />
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content="/pandas-sort_values.html" />
-		<meta property="og:image" content="/images/avatar.png" />
 
 		<!-- Enable responsiveness on mobile devices-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -83,7 +82,7 @@
 <h2>by Parametresi</h2>
 <p><code>sort_values()</code> fonksiyonu ile sütun değerlerine göre sıralama yapmak için <code>by</code> parametresi kullanılmalıdır. <code>by</code> parametresi, bir veya daha fazla sütunu belirtmek için kullanılabilir. 
 Bu durumda sütun isimlerini köşeli parantez içinde yani bir <strong>liste</strong> olarak yazmalıyız. Fonksiyonu, örneklerle inceleyelim.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/imdb.xlsx&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s2">&quot;Film_Adı&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
 </code></pre></div>
@@ -414,7 +413,7 @@ Bu durumda sütun isimlerini köşeli parantez içinde yani bir <strong>liste</s
 <h2>na_position Parametresi</h2>
 <p><code>sort_values()</code> fonksiyonu, <code>na_position</code> parametresi aracılığıyla <strong>NA</strong> (yani kayıp / eksik veri) değerlerini özel işleme tabi tutarak sıralayabilir.</p>
 <p><strong>Numpy</strong> Kütüphanesini kullanarak Rastgele sayılardan müteşekkil örnek bir veri çerçevesi oluşturup içeriğine bakalım.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
     <span class="p">{</span>
         <span class="s2">&quot;Sütun_1&quot;</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">]),</span>

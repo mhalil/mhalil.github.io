@@ -11,7 +11,6 @@
 	<meta property="og:title" content="Python - glob" />
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content="/python-glob.html" />
-		<meta property="og:image" content="/images/avatar.png" />
 
 		<!-- Enable responsiveness on mobile devices-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -89,7 +88,7 @@
 <p>Dosya yolu adı (pathname) mutlak (<code>/usr/src/Python-1.5/Makefile</code> gibi) veya göreli (<code>../../Tools/*/*.gif</code> gibi) olabilir ve kabuk tarzı joker karakterler içerebilir. Bozuk sembolik bağlantılar sonuçlara dahil edilir (kabukta olduğu gibi). Sonuçların sıralanıp sıralanmayacağı dosya sistemine bağlıdır. Bu fonksiyonun çağrılması sırasında koşulları sağlayan bir dosya kaldırılır veya eklenirse, bu dosya için bir yol adının dahil edilip edilmeyeceği belirtilmez.</p>
 <p>Bu kadar teknik anlatım yeterli biraz örnek yapalım.</p>
 <p><code>/home/mhalil/veriler/</code> klasörü içerisinde bulunan tüm dosyaları listelemek istediğimizi düşünelim. Bu durumda aşağıdaki kodu çalıştırmamız yeterli olacaktır.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">glob</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">glob</span>
 
 <span class="n">dosyalar</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;/home/mhalil/veriler/*&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">dosyalar</span><span class="p">)</span>
@@ -100,7 +99,7 @@
 </code></pre></div>
 
 <p>Bu çıktı pek te istediğimiz gibi bir sonuç vermedi. Her dosyayı ayrı bir satırda görmek için <code>for</code> döngüsü kullanabiliriz.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">glob</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">glob</span>
 
 <span class="n">dosyalar</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;/home/mhalil/veriler/*&quot;</span><span class="p">)</span>
 
@@ -129,7 +128,7 @@
 </code></pre></div>
 
 <p>Eğer dosyayolunu değil sadece dosya adlarını listelemek istersek, Karakter Dizisi Metotlarından olan <code>split()</code> ya da <code>rsplit()</code> metotlarını kullanabiliriz.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">glob</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">glob</span>
 
 <span class="n">dosyalar</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;/home/mhalil/veriler/*&quot;</span><span class="p">)</span>
 
@@ -160,7 +159,7 @@
 
 <p>Gördüğünüz gibi sonuç alfabetik değil. Eğer dosya isimlerini alfabetik sıralamak istersek, <code>dosyalar</code> listesini <code>sort()</code> metodu ile alfabetik sıraya dizebiliriz.
 Şunu da unutmamak gerekir ki, Büyükharf ve küçükharf ile başlayan kelimeler kendi içleinde alfabetik olarak sıralanır. İsterseniz sıralama işleminden önce dosya isimlerinin tamamını, <code>lower()</code> , <code>upper()</code> ya da  <code>title()</code> fonksiyonları yardımı ile aynı formata getirebilirsiniz. Sıralama işleminde bilmeniz gereken önemli noktalardan biri de, Türkçe karakterler ile başlayan isimlerin, sıralamanınen sonunda yer alacağıdır. Bunun sebebi, <code>lower()</code> , <code>upper()</code> ya da  <code>title()</code> fonksiyonlarının Türkçe karakterleri doğru şekilde tanımıyor olması diye düşünüyorum.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">glob</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">glob</span>
 
 <span class="n">dosyalar</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;/home/mhalil/veriler/*&quot;</span><span class="p">)</span>
 <span class="n">dosyalar</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
@@ -191,7 +190,7 @@
 
 <h3>Filtreleme</h3>
 <p>Sıra geldi filtreleme işlemine. Yani belirli klasör içerisindeki tüm dosyaları değil de sadece belli uzantıya sahip ya da belirli karakter(ler) içeren veyahut belli karakter (harf / sayı) ile başlayan dosyaları listelemek isteyelim. Örneğin <code>/home/mhalil/veriler/</code> klasörü içerisinde bulunan <code>.pdf</code> uzantılı dosyaları listeleyelim. Bunun için dosya sonuna (<code>.pdf</code> ibaresinden önce) <code>*</code> özel karakterini eklemeliyiz. Yani <code>*.pdf</code> ifadesini kullanmalıyız. Bunun anlamı; dosya adı ne olursa olsun, uzantısı <code>pdf</code> olsun yeterli demektir. Bir başka ifadeyle tüm pdf dosyaları demek oluyor.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">glob</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">glob</span>
 
 <span class="n">dosyalar</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;/home/mhalil/veriler/*.pdf&quot;</span><span class="p">)</span>
 <span class="n">dosyalar</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
@@ -209,7 +208,7 @@
 </code></pre></div>
 
 <p>Şimdi <code>P</code> harfi ile başlayan dosyaları listelemek isteyelim. Bunun için `P*);</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">glob</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">glob</span>
 
 <span class="n">dosyalar</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;/home/mhalil/veriler/P*&quot;</span><span class="p">)</span>
 <span class="n">dosyalar</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
@@ -225,7 +224,7 @@
 </code></pre></div>
 
 <p>Bu çıkıda bir şeyi fark etmiş olmalısınız. <code>P</code> ile başlayan dosya isimleri yazılırken <code>personel listesi.xlsx</code> dosyası yazılmadı. Bunun sebebi, <code>personel listesi.xlsx</code> dosyasının büyük P ile başlamıyor olması. Yani yazılan karakterler büyük / küçük harfe karşı duyarlı. eğer <code>P*</code> yerine <code>[Pp*]</code> yazmış olsaydık nasıl bir çıktı elde edrdik, inceleyelim.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">glob</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">glob</span>
 
 <span class="n">dosyalar</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;/home/mhalil/veriler/[Pp]*&quot;</span><span class="p">)</span>
 <span class="n">dosyalar</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
@@ -269,7 +268,7 @@
 <p><code>veriler</code> isimli klasörde 5 dosya ve 2 klasör (Okunacaklar ve Resimler) bulunuyor. Klasörlerin içerisinde de farklı isim ve uzantılara sahip dosyalar mevcut.</p>
 <p>Öncelikle yukarıdaki temel kodu kullanarak çıktı alalım.</p>
 <p><strong>Kod;</strong></p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">glob</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">glob</span>
 
 <span class="n">dosyalar</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;/home/mhalil/veriler/*&quot;</span><span class="p">)</span>
 <span class="n">dosyalar</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
@@ -291,7 +290,7 @@
 <p>Çıktıda, mevcut <code>/home/mhalil/veriler/</code> klasöründe bulunan dosya ve klasör isimleri görüyoruz. Alt klasörlere ait dosya isimleri bulunmuyor.</p>
 <p>Alt Klasördeki dosyaları görmek için <code>*/*</code> ifadesini kullanmalıyız. <code>*/</code> ifadesi, tüm klasörleri temsil ediyor. <code>Okunacaklar/</code> yazsaydık sadece <strong>Okunacaklar</strong> klasörünü belirtmiş olacaktık.
 <strong>Kod;</strong></p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">glob</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">glob</span>
 
 <span class="n">dosyalar</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;/home/mhalil/veriler/*/*&quot;</span><span class="p">)</span>
 <span class="n">dosyalar</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
@@ -319,7 +318,7 @@
 <p>Mevcut klasör içerisindeki dosyalar ile birlikte tüm alt klasördeki dosyaları listelemek istersek <code>**/*</code> ifadesi ile birlikte <code>recursive = True</code> parametresini de kullanmak zorundayız. <code>recursive = True</code> argümanının eklenmesi, arama terimimizin tam olarak hangi klasörde olacağından emin olmadığımız durumda çok yararlı olabilir. <code>recursive</code> parametresinin belirtilmemesi veya <code>False</code> olarak ayarlanması durumunda, yalnızca klasörde arama yapılır.</p>
 <p>Aşağıdaki kodu ve çıktıyı inceleyin.</p>
 <p><strong>Kod;</strong></p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">glob</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">glob</span>
 
 <span class="n">dosyalar</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;/home/mhalil/veriler/**/*&quot;</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">dosyalar</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
@@ -359,7 +358,7 @@
 <p>Ayrıca, verilen bir dizeyi içeren dosyalar için birçok dizini özyinelemeli olarak aramak için <code>iglob</code> kullanımını da tartıştık.</p>
 <p><code>iglob</code> metodu, bir <code>generator nesnesi</code> döndürür. sonuçları ekrana yazdırmak için <code>next</code> kullanılabilir.</p>
 <p>Kod;</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">glob</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">glob</span>
 
 <span class="n">dosyalar</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">iglob</span><span class="p">(</span><span class="s2">&quot;/home/mhalil/veriler/**/*.*&quot;</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
@@ -434,7 +433,7 @@
 <h4>Örnek 1:</h4>
 <p>İÇİNDE sayı BULUNAN dosyaları listeleyelim. <code>*[0-9]*</code>
 <strong>Kod;</strong></p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">glob</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">glob</span>
 
 <span class="n">dosyalar</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;/home/mhalil/veriler/*[0-9]*&quot;</span><span class="p">)</span>
 <span class="n">dosyalar</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
@@ -452,7 +451,7 @@
 <h4>Örnek 2:</h4>
 <p>Sayı ile BAŞLAYAN dosya isimlerini listeleyelim. <code>[0-9]*</code>
 <strong>Kod;</strong></p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">glob</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">glob</span>
 
 <span class="n">dosyalar</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;/home/mhalil/veriler/[0-9]*&quot;</span><span class="p">)</span>
 <span class="n">dosyalar</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
@@ -470,7 +469,7 @@
 <p>Büyük harf ile BAŞLAYAN dosyaları listeleyelim. <code>[A-Z]*</code>
 <strong>Önemli:</strong> <code>[A-Z]</code> ifadesi, Türkçe karakterleri kapsamaz. Yani <code>Ü Ğ İ Ş Ç Ö</code> harfleri <code>[A-Z]</code> ifadesinin içinde yoktur.
 <strong>Kod;</strong></p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">glob</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">glob</span>
 
 <span class="n">dosyalar</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;/home/mhalil/veriler/[A-Z]*&quot;</span><span class="p">)</span>
 <span class="n">dosyalar</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
@@ -494,7 +493,7 @@
 <h4>Örnek 4:</h4>
 <p>Büyük harf ile BAŞLAYAN ancak baş harfi <code>A</code> ile <code>N</code> harfleri ARASINDA olan dosyaları listeleyelim. <code>[A-N]*</code></p>
 <p><strong>Kod;</strong></p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">glob</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">glob</span>
 
 <span class="n">dosyalar</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;/home/mhalil/veriler/[A-N]*&quot;</span><span class="p">)</span>
 <span class="n">dosyalar</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
@@ -512,7 +511,7 @@
 <h4>Örnek 5:</h4>
 <p>Küçük harf ile BAŞLAYAN dosyaları listeleyelim. <code>[a-z]*</code>
 <strong>Kod;</strong></p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">glob</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">glob</span>
 
 <span class="n">dosyalar</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;/home/mhalil/veriler/[a-z]*&quot;</span><span class="p">)</span>
 <span class="n">dosyalar</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
@@ -533,7 +532,7 @@
 <h4>Örnek 6:</h4>
 <p>Hem Büyük hemde Küçük harf ile BAŞLAYAN (sayı ya da özel simge ile başlamayan) dosyaları listeleyelim. <code>[A-Za-z]*</code>
 <strong>Kod;</strong></p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">glob</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">glob</span>
 
 <span class="n">dosyalar</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;/home/mhalil/veriler/[A-Za-z]*&quot;</span><span class="p">)</span>
 <span class="n">dosyalar</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
@@ -561,7 +560,7 @@
 <h4>Örnek 7:</h4>
 <p><code>JPG</code> uzantılı dosyaları listeleyelim. <code>*.jpg</code>
 <strong>Kod;</strong></p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">glob</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">glob</span>
 
 <span class="n">dosyalar</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;/home/mhalil/veriler/*.jpg&quot;</span><span class="p">)</span>
 <span class="n">dosyalar</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
@@ -582,7 +581,7 @@
 <h4>Örnek 8:</h4>
 <p>Sayı ile BAŞLAMAYAN <code>JPG</code> dosyaları listeleyelim. <code>[!0-9]*.jpg</code>
 <strong>Kod;</strong></p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">glob</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">glob</span>
 
 <span class="n">dosyalar</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;/home/mhalil/veriler/[!0-9]*.jpg&quot;</span><span class="p">)</span>
 <span class="n">dosyalar</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
@@ -601,7 +600,7 @@
 <h4>Örnek 9:</h4>
 <p>İÇİNDE <code>en</code> ibaresi bulunan dosyaları listeleyelim. <code>*en*</code>
 <strong>Kod;</strong></p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">glob</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">glob</span>
 
 <span class="n">dosyalar</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;/home/mhalil/veriler/*en*&quot;</span><span class="p">)</span>
 <span class="n">dosyalar</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
@@ -621,7 +620,7 @@
 <h4>Örnek 10:</h4>
 <p>Dosya uzantısı dahil TOPLAM 11 KARAKTER uzunluğundaki dosyaları listeleyelim. <code>???????????</code>
 <strong>Kod;</strong></p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">glob</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">glob</span>
 
 <span class="n">dosyalar</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;/home/mhalil/veriler/???????????&quot;</span><span class="p">)</span>
 <span class="n">dosyalar</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
@@ -643,7 +642,7 @@
 
 <p>Bu dosyaların tümünü <code>?</code> özel sembolünü kullanarak tek seferde listelemek için aşağıdaki kodu kullanabiliriz. <code>?ython*</code></p>
 <p><strong>Kod;</strong></p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">glob</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">glob</span>
 
 <span class="n">dosyalar</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;/home/mhalil/veriler/?ython*&quot;</span><span class="p">)</span>
 <span class="n">dosyalar</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
@@ -684,7 +683,7 @@
 <h4>Örnek 12:</h4>
 <p><code>/home/mhalil/veriler/</code> klasörü ve alt klasörlerinde başharfi büyük veya küçük <code>a</code> ve <code>n</code> ile başlayan dosyaları listeleyelim. <code>**/[a-nA-N]*", recursive=True</code>
 <strong>Kod;</strong></p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">glob</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">glob</span>
 
 <span class="n">dosyalar</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;/home/mhalil/veriler/**/[a-nA-N]*&quot;</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">dosyalar</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
@@ -706,7 +705,7 @@
 <h4>Örnek 13:</h4>
 <p><code>/home/mhalil/veriler/</code> klasörü ve alt klasörlerinde <code>txt</code> uzantılı dosyaları listeleyelim. <code>**/*.txt", recursive=True</code>
 <strong>Kod;</strong></p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">glob</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">glob</span>
 
 <span class="n">dosyalar</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;/home/mhalil/veriler/**/*.txt&quot;</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">dosyalar</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
@@ -723,7 +722,7 @@
 <h4>Örnek 14:</h4>
 <p><code>/home/mhalil/veriler/</code> klasörü ve alt klasörlerinde küçük harfle başlayan dosyaları listeleyelim. <code>**/[a-z]*", recursive=True</code>
 <strong>Kod;</strong></p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">glob</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">glob</span>
 
 <span class="n">dosyalar</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;/home/mhalil/veriler/**/[a-z]*&quot;</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">dosyalar</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
@@ -745,7 +744,7 @@
 <h4>Örnek 15:</h4>
 <p><code>/home/mhalil/veriler/</code> klasörü ve alt klasörlerinde içinde sayı bulunan dosyaları listeleyelim. <code>**/*[0-9]*", recursive=True</code>
 <strong>Kod;</strong></p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">glob</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">glob</span>
 
 <span class="n">dosyalar</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;/home/mhalil/veriler/**/*[0-9]*&quot;</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">dosyalar</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
@@ -763,7 +762,7 @@
 <h4>Örnek 16:</h4>
 <p><code>/home/mhalil/veriler/</code> klasörü ve alt klasörlerinde sadece dosyaları listeleyelim. Klasör isimlerinin (ör. <code>Okunacaklar</code> ve <code>Resimler</code>) listelenmesini istemeyelim. <code>**/*.*", recursive=True</code>
 <strong>Kod;</strong></p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">glob</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">glob</span>
 
 <span class="n">dosyalar</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;/home/mhalil/veriler/**/*.*&quot;</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">dosyalar</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>

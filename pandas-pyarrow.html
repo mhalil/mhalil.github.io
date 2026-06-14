@@ -11,7 +11,6 @@
 	<meta property="og:title" content="Pandas - pyarrow" />
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content="/pandas-pyarrow.html" />
-		<meta property="og:image" content="/images/avatar.png" />
 
 		<!-- Enable responsiveness on mobile devices-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -81,7 +80,7 @@
 <p>Pandas'ta dizelerle (strings) mi çalışıyorsunuz ve beklediğinizden biraz daha yavaş olduğunu mu görüyorsunuz? Bu eğitimde, <strong>PyArrow</strong>'u kullanarak işleri nasıl hızlandırabileceğimizi öğreneceğiz.</p>
 <p>Örnek olarak kullanacağımız dosyanın adı <strong>TDK_imla.txt</strong>. Bu dosya, satır başına bir kelime olacak şekilde toplam 76.183 kelime içeren bir imla sözlüğüdür.</p>
 <p>Elimizdeki dosyaya dayanarak bir seri (series) oluşturalım.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="n">dosya</span> <span class="o">=</span> <span class="s2">&quot;TDK_imla.txt&quot;</span>
 <span class="n">seri</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">ilk_kelime</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">ilk_kelime</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="n">dosya</span><span class="p">))</span>

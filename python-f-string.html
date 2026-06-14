@@ -11,7 +11,6 @@
 	<meta property="og:title" content="Python - f-string" />
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content="/python-f-string.html" />
-		<meta property="og:image" content="/images/avatar.png" />
 
 		<!-- Enable responsiveness on mobile devices-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -211,7 +210,7 @@
 
 <p>F-String içinde kullanılan fonksiyon, dahili (yerleşik) bir Python metodu olmak zorunda değildir; kendi fonksiyonlarınızı da oluşturup kullanabilirsiniz.</p>
 <p><strong>Feet</strong> ölçü birimini <strong>metre</strong>ye dönüştüren bir fonksiyon oluşturun ve bunu f-string içinde kullanın.</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">fonksiyonum</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fonksiyonum</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
   <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="mf">0.3048</span>
 
 <span class="n">metin</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Uçak şuan </span><span class="si">{</span><span class="n">fonksiyonum</span><span class="p">(</span><span class="mi">30000</span><span class="p">)</span><span class="si">}</span><span class="s2"> metre yükseklikte uçuyor.&quot;</span>
@@ -585,7 +584,7 @@
 </code></pre></div>
 
 <h3>datetime %x</h3>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
 
 <span class="n">now</span><span class="p">:</span> <span class="n">datetime</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">now</span><span class="si">:</span><span class="s1">%x</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span> 
@@ -596,7 +595,7 @@
 </code></pre></div>
 
 <h3>datetime %c</h3>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
 
 <span class="n">now</span><span class="p">:</span> <span class="n">datetime</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">now</span><span class="si">:</span><span class="s1">%c</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span> 
@@ -607,7 +606,7 @@
 </code></pre></div>
 
 <h3>datetime %H %M %S</h3>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
 
 <span class="n">now</span><span class="p">:</span> <span class="n">datetime</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">now</span><span class="si">:</span><span class="s1">%H:%M:%S</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span> 

@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Polars - 01 Başlarken" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/polars-01-baslarken.html" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Polars - 01 Başlarken</h1>
+	<span class="post-date">Paz 14 Haziran 2026</span>
+	<h1>Başlarken</h1>
+<p>Bu bölüm, Polars ile başlamanıza yardımcı olmak için hazırlanmıştır. İlk kurulum ve yapılandırmadan temel işlevselliklere kadar kütüphanenin tüm temel özelliklerini kapsar. Eğer ileri düzey bir kullanıcıysanız veya dataframe'ler konusunda deneyimliyseniz, doğrudan <a href="../installation/">bir sonraki bölüme</a> geçebilirsiniz.</p>
+<h2>Polars'ı Kurma</h2>
+<p>Python</p>
+<div class="highlight"><pre><span></span><code><span class="n">pip</span> <span class="n">install</span> <span class="n">polars</span>
+</code></pre></div>
+
+<p>Rust</p>
+<div class="highlight"><pre><span></span><code><span class="n">cargo</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="n">polars</span><span class="w"> </span><span class="o">-</span><span class="n">F</span><span class="w"> </span><span class="n">lazy</span><span class="w">  </span><span class="p">#</span><span class="w"> </span><span class="n">veya</span><span class="w"> </span><span class="n">Cargo</span><span class="p">.</span><span class="n">toml</span><span class="w"> </span><span class="p">[</span><span class="n">dependencies</span><span class="p">]</span><span class="w"> </span><span class="n">polars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;x&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">features</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;lazy&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">..</span><span class="p">.]}</span>
+</code></pre></div>
+
+<h2>Okuma &amp; Yazma</h2>
+<p>Polars, yaygın dosya formatları (csv, json, parquet gibi), bulut depolama (S3, Azure Blob, BigQuery) ve veritabanları (postgres, mysql gibi) için okuma ve yazma desteği sunar. Aşağıda küçük bir dataframe oluşturuyor ve bunu diske yazıp geri okumayı gösteriyoruz.</p>
+<p>Python</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polars</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pl</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dt</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Alice Archer&quot;</span><span class="p">,</span> <span class="s2">&quot;Ben Brown&quot;</span><span class="p">,</span> <span class="s2">&quot;Chloe Cooper&quot;</span><span class="p">,</span> <span class="s2">&quot;Daniel Donovan&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;birthdate&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="mi">1997</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+            <span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="mi">1985</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span>
+            <span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="mi">1983</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">22</span><span class="p">),</span>
+            <span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="mi">1981</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">57.9</span><span class="p">,</span> <span class="mf">72.5</span><span class="p">,</span> <span class="mf">53.6</span><span class="p">,</span> <span class="mf">83.1</span><span class="p">],</span>  <span class="c1"># (kg)</span>
+        <span class="s2">&quot;height&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.56</span><span class="p">,</span> <span class="mf">1.77</span><span class="p">,</span> <span class="mf">1.65</span><span class="p">,</span> <span class="mf">1.75</span><span class="p">],</span>  <span class="c1"># (m)</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Rust</p>
+<div class="highlight"><pre><span></span><code><span class="k">use</span><span class="w"> </span><span class="n">chrono</span><span class="p">::</span><span class="n">prelude</span><span class="p">::</span><span class="o">*</span><span class="p">;</span>
+<span class="k">use</span><span class="w"> </span><span class="n">polars</span><span class="p">::</span><span class="n">prelude</span><span class="p">::</span><span class="o">*</span><span class="p">;</span>
+
+<span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">df</span><span class="p">:</span><span class="w"> </span><span class="nc">DataFrame</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df</span><span class="o">!</span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;name&quot;</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;Alice Archer&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Ben Brown&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Chloe Cooper&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Daniel Donovan&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="s">&quot;birthdate&quot;</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="n">NaiveDate</span><span class="p">::</span><span class="n">from_ymd_opt</span><span class="p">(</span><span class="mi">1997</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">).</span><span class="n">unwrap</span><span class="p">(),</span>
+<span class="w">        </span><span class="n">NaiveDate</span><span class="p">::</span><span class="n">from_ymd_opt</span><span class="p">(</span><span class="mi">1985</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">15</span><span class="p">).</span><span class="n">unwrap</span><span class="p">(),</span>
+<span class="w">        </span><span class="n">NaiveDate</span><span class="p">::</span><span class="n">from_ymd_opt</span><span class="p">(</span><span class="mi">1983</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">22</span><span class="p">).</span><span class="n">unwrap</span><span class="p">(),</span>
+<span class="w">        </span><span class="n">NaiveDate</span><span class="p">::</span><span class="n">from_ymd_opt</span><span class="p">(</span><span class="mi">1981</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">).</span><span class="n">unwrap</span><span class="p">(),</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="s">&quot;weight&quot;</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">[</span><span class="mf">57.9</span><span class="p">,</span><span class="w"> </span><span class="mf">72.5</span><span class="p">,</span><span class="w"> </span><span class="mf">53.6</span><span class="p">,</span><span class="w"> </span><span class="mf">83.1</span><span class="p">],</span><span class="w">  </span><span class="c1">// (kg)</span>
+<span class="w">    </span><span class="s">&quot;height&quot;</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">[</span><span class="mf">1.56</span><span class="p">,</span><span class="w"> </span><span class="mf">1.77</span><span class="p">,</span><span class="w"> </span><span class="mf">1.65</span><span class="p">,</span><span class="w"> </span><span class="mf">1.75</span><span class="p">],</span><span class="w">  </span><span class="c1">// (m)</span>
+<span class="p">)</span>
+<span class="p">.</span><span class="n">unwrap</span><span class="p">();</span>
+<span class="fm">println!</span><span class="p">(</span><span class="s">&quot;{df}&quot;</span><span class="p">);</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code>shape: (4, 4)
+┌────────────────┬────────────┬────────┬────────┐
+│ name           ┆ birthdate  ┆ weight ┆ height │
+│ ---            ┆ ---        ┆ ---    ┆ ---    │
+│ str            ┆ date       ┆ f64    ┆ f64    │
+╞════════════════╪════════════╪════════╪════════╡
+│ Alice Archer   ┆ 1997-01-10 ┆ 57.9   ┆ 1.56   │
+│ Ben Brown      ┆ 1985-02-15 ┆ 72.5   ┆ 1.77   │
+│ Chloe Cooper   ┆ 1983-03-22 ┆ 53.6   ┆ 1.65   │
+│ Daniel Donovan ┆ 1981-04-30 ┆ 83.1   ┆ 1.75   │
+└────────────────┴────────────┴────────┴────────┘
+</code></pre></div>
+
+<p>Aşağıdaki örnekte dataframe'i <code>output.csv</code> adlı bir csv dosyasına yazıyoruz. Ardından <code>read_csv</code> ile geri okuyoruz ve sonucu incelemek için yazdırıyoruz.</p>
+<p>Python</p>
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">write_csv</span><span class="p">(</span><span class="s2">&quot;docs/assets/data/output.csv&quot;</span><span class="p">)</span>
+<span class="n">df_csv</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;docs/assets/data/output.csv&quot;</span><span class="p">,</span> <span class="n">try_parse_dates</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_csv</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Rust</p>
+<div class="highlight"><pre><span></span><code><span class="k">use</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">fs</span><span class="p">::</span><span class="n">File</span><span class="p">;</span>
+
+<span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">File</span><span class="p">::</span><span class="n">create</span><span class="p">(</span><span class="s">&quot;docs/assets/data/output.csv&quot;</span><span class="p">).</span><span class="n">expect</span><span class="p">(</span><span class="s">&quot;could not create file&quot;</span><span class="p">);</span>
+<span class="n">CsvWriter</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">file</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">include_header</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">with_separator</span><span class="p">(</span><span class="sc">b&#39;,&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">finish</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">df</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+<span class="kd">let</span><span class="w"> </span><span class="n">df_csv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CsvReadOptions</span><span class="p">::</span><span class="n">default</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="n">with_has_header</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">with_parse_options</span><span class="p">(</span><span class="n">CsvParseOptions</span><span class="p">::</span><span class="n">default</span><span class="p">().</span><span class="n">with_try_parse_dates</span><span class="p">(</span><span class="kc">true</span><span class="p">))</span>
+<span class="w">    </span><span class="p">.</span><span class="n">try_into_reader_with_file_path</span><span class="p">(</span><span class="nb">Some</span><span class="p">(</span><span class="s">&quot;docs/assets/data/output.csv&quot;</span><span class="p">.</span><span class="n">into</span><span class="p">()))</span><span class="o">?</span>
+<span class="w">    </span><span class="p">.</span><span class="n">finish</span><span class="p">()</span><span class="o">?</span><span class="p">;</span>
+<span class="fm">println!</span><span class="p">(</span><span class="s">&quot;{df_csv}&quot;</span><span class="p">);</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code>shape: (4, 4)
+┌────────────────┬────────────┬────────┬────────┐
+│ name           ┆ birthdate  ┆ weight ┆ height │
+│ ---            ┆ ---        ┆ ---    ┆ ---    │
+│ str            ┆ date       ┆ f64    ┆ f64    │
+╞════════════════╪════════════╪════════╪════════╡
+│ Alice Archer   ┆ 1997-01-10 ┆ 57.9   ┆ 1.56   │
+│ Ben Brown      ┆ 1985-02-15 ┆ 72.5   ┆ 1.77   │
+│ Chloe Cooper   ┆ 1983-03-22 ┆ 53.6   ┆ 1.65   │
+│ Daniel Donovan ┆ 1981-04-30 ┆ 83.1   ┆ 1.75   │
+└────────────────┴────────────┴────────┴────────┘
+</code></pre></div>
+
+<p>CSV dosya formatı ve diğer veri formatları hakkında daha fazla örnek için kılavuzun <a href="../io/">IO bölümüne</a> bakın.</p>
+<h2>Expression'lar ve Context'ler</h2>
+<p><em>Expression'lar</em> Polars'ın ana güçlü yönlerinden biridir çünkü veri dönüşümlerini ifade etmek için modüler ve esnek bir yol sağlarlar.</p>
+<p>İşte bir Polars expression örneği:</p>
+<div class="highlight"><pre><span></span><code><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;weight&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;height&quot;</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Tahmin edebileceğiniz gibi, bu expression "weight" adlı sütunu alır ve değerlerini "height" sütunundaki değerlerin karesine bölerek bir kişinin BMI'ını hesaplar. Yukarıdaki kodun soyut bir hesaplamayı ifade ettiğini unutmayın: expression ancak bir Polars <em>context</em>'i içinde sonuçları olan bir seri haline gelir.</p>
+<p>Aşağıda farklı context'ler içinde Polars expression'larına örnekler göstereceğiz:</p>
+<ul>
+<li><code>select</code></li>
+<li><code>with_columns</code></li>
+<li><code>filter</code></li>
+<li><code>group_by</code></li>
+</ul>
+<p>Expression'lar ve context'ler hakkında daha <a href="../concepts/expressions-and-contexts/">detaylı bilgi için ilgili kılavuz bölümüne</a> bakın.</p>
+<h3><code>select</code></h3>
+<p><code>select</code> context'i, bir dataframe'den sütunları seçmenize ve manipüle etmenize olanak tanır. En basit durumda, sağladığınız her expression sonuç dataframe'indeki bir sütuna karşılık gelir:</p>
+<p>Python</p>
+<div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">),</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;birthdate&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span><span class="p">()</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;birth_year&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;weight&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;height&quot;</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;bmi&quot;</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Rust</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df</span>
+<span class="w">    </span><span class="p">.</span><span class="n">clone</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="n">lazy</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="n">select</span><span class="p">([</span>
+<span class="w">        </span><span class="n">col</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">),</span>
+<span class="w">        </span><span class="n">col</span><span class="p">(</span><span class="s">&quot;birthdate&quot;</span><span class="p">).</span><span class="n">dt</span><span class="p">().</span><span class="n">year</span><span class="p">().</span><span class="n">alias</span><span class="p">(</span><span class="s">&quot;birth_year&quot;</span><span class="p">),</span>
+<span class="w">        </span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s">&quot;weight&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">col</span><span class="p">(</span><span class="s">&quot;height&quot;</span><span class="p">).</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">)).</span><span class="n">alias</span><span class="p">(</span><span class="s">&quot;bmi&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="p">])</span>
+<span class="w">    </span><span class="p">.</span><span class="n">collect</span><span class="p">()</span><span class="o">?</span><span class="p">;</span>
+<span class="fm">println!</span><span class="p">(</span><span class="s">&quot;{result}&quot;</span><span class="p">);</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code>shape: (4, 3)
+┌────────────────┬────────────┬───────────┐
+│ name           ┆ birth_year ┆ bmi       │
+│ ---            ┆ ---        ┆ ---       │
+│ str            ┆ i32        ┆ f64       │
+╞════════════════╪════════════╪═══════════╡
+│ Alice Archer   ┆ 1997       ┆ 23.791913 │
+│ Ben Brown      ┆ 1985       ┆ 23.141498 │
+│ Chloe Cooper   ┆ 1983       ┆ 19.687787 │
+│ Daniel Donovan ┆ 1981       ┆ 27.134694 │
+└────────────────┴────────────┴───────────┘
+</code></pre></div>
+
+<p>Polars ayrıca "expression expansion" (expression genişletme) adı verilen bir özelliği de destekler; bu özellikte tek bir expression birden çok expression için kısa yol görevi görür. Aşağıdaki örnekte, "weight" ve "height" sütunlarını tek bir expression ile manipüle etmek için expression expansion kullanıyoruz. Expression expansion kullanırken <code>.name.suffix</code> ile orijinal sütun adlarına bir sonek ekleyebilirsiniz:</p>
+<p>Python</p>
+<div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span> <span class="s2">&quot;height&quot;</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.95</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">suffix</span><span class="p">(</span><span class="s2">&quot;-5%&quot;</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Rust</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df</span>
+<span class="w">    </span><span class="p">.</span><span class="n">clone</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="n">lazy</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="n">select</span><span class="p">([</span>
+<span class="w">        </span><span class="n">col</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">),</span>
+<span class="w">        </span><span class="p">(</span><span class="n">cols</span><span class="p">([</span><span class="s">&quot;weight&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;height&quot;</span><span class="p">]).</span><span class="n">as_expr</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">lit</span><span class="p">(</span><span class="mf">0.95</span><span class="p">))</span>
+<span class="w">            </span><span class="p">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">RoundMode</span><span class="p">::</span><span class="n">default</span><span class="p">())</span>
+<span class="w">            </span><span class="p">.</span><span class="n">name</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="n">suffix</span><span class="p">(</span><span class="s">&quot;-5%&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="p">])</span>
+<span class="w">    </span><span class="p">.</span><span class="n">collect</span><span class="p">()</span><span class="o">?</span><span class="p">;</span>
+<span class="fm">println!</span><span class="p">(</span><span class="s">&quot;{result}&quot;</span><span class="p">);</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code>shape: (4, 3)
+┌────────────────┬───────────┬───────────┐
+│ name           ┆ weight-5% ┆ height-5% │
+│ ---            ┆ ---       ┆ ---       │
+│ str            ┆ f64       ┆ f64       │
+╞════════════════╪═══════════╪═══════════╡
+│ Alice Archer   ┆ 55.0      ┆ 1.48      │
+│ Ben Brown      ┆ 68.88     ┆ 1.68      │
+│ Chloe Cooper   ┆ 50.92     ┆ 1.57      │
+│ Daniel Donovan ┆ 78.94     ┆ 1.66      │
+└────────────────┴───────────┴───────────┘
+</code></pre></div>
+
+<p><a href="../expressions/basic-operations/">Temel işlemler</a> veya <a href="../expressions/expression-expansion/">expression expansion'da sütun seçimleri</a> hakkında daha fazla bilgi için kılavuzun diğer bölümlerine göz atabilirsiniz.</p>
+<h3><code>with_columns</code></h3>
+<p><code>with_columns</code> context'i <code>select</code> context'ine çok benzer ancak <code>with_columns</code> sütunları seçmek yerine dataframe'e ekler. Sonuçta oluşan dataframe'in orijinal dataframe'in dört sütununa ek olarak <code>with_columns</code> içindeki expression'lar tarafından eklenen iki yeni sütunu içerdiğine dikkat edin:</p>
+<p>Python</p>
+<div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">with_columns</span><span class="p">(</span>
+    <span class="n">birth_year</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;birthdate&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span><span class="p">(),</span>
+    <span class="n">bmi</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;weight&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;height&quot;</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Rust</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df</span>
+<span class="w">    </span><span class="p">.</span><span class="n">clone</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="n">lazy</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="n">with_columns</span><span class="p">([</span>
+<span class="w">        </span><span class="n">col</span><span class="p">(</span><span class="s">&quot;birthdate&quot;</span><span class="p">).</span><span class="n">dt</span><span class="p">().</span><span class="n">year</span><span class="p">().</span><span class="n">alias</span><span class="p">(</span><span class="s">&quot;birth_year&quot;</span><span class="p">),</span>
+<span class="w">        </span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s">&quot;weight&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">col</span><span class="p">(</span><span class="s">&quot;height&quot;</span><span class="p">).</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">)).</span><span class="n">alias</span><span class="p">(</span><span class="s">&quot;bmi&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="p">])</span>
+<span class="w">    </span><span class="p">.</span><span class="n">collect</span><span class="p">()</span><span class="o">?</span><span class="p">;</span>
+<span class="fm">println!</span><span class="p">(</span><span class="s">&quot;{result}&quot;</span><span class="p">);</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code>shape: (4, 6)
+┌────────────────┬────────────┬────────┬────────┬────────────┬───────────┐
+│ name           ┆ birthdate  ┆ weight ┆ height ┆ birth_year ┆ bmi       │
+│ ---            ┆ ---        ┆ ---    ┆ ---    ┆ ---        ┆ ---       │
+│ str            ┆ date       ┆ f64    ┆ f64    ┆ i32        ┆ f64       │
+╞════════════════╪════════════╪════════╪════════╪════════════╪═══════════╡
+│ Alice Archer   ┆ 1997-01-10 ┆ 57.9   ┆ 1.56   ┆ 1997       ┆ 23.791913 │
+│ Ben Brown      ┆ 1985-02-15 ┆ 72.5   ┆ 1.77   ┆ 1985       ┆ 23.141498 │
+│ Chloe Cooper   ┆ 1983-03-22 ┆ 53.6   ┆ 1.65   ┆ 1983       ┆ 19.687787 │
+│ Daniel Donovan ┆ 1981-04-30 ┆ 83.1   ┆ 1.75   ┆ 1981       ┆ 27.134694 │
+└────────────────┴────────────┴────────┴────────┴────────────┴───────────┘
+</code></pre></div>
+
+<p>Yukarıdaki örnekte ayrıca yeni sütunların adlarını belirtmek için <code>alias</code> yöntemi yerine adlandırılmış expression'lar kullanmayı tercih ettik. <code>select</code> ve <code>group_by</code> gibi diğer context'ler de adlandırılmış expression'ları kabul eder.</p>
+<h3><code>filter</code></h3>
+<p><code>filter</code> context'i, orijinal dataframe'in satırlarının bir alt kümesiyle ikinci bir dataframe oluşturmamızı sağlar:</p>
+<p>Python</p>
+<div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;birthdate&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">1990</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Rust</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df</span>
+<span class="w">    </span><span class="p">.</span><span class="n">clone</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="n">lazy</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="n">filter</span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s">&quot;birthdate&quot;</span><span class="p">).</span><span class="n">dt</span><span class="p">().</span><span class="n">year</span><span class="p">().</span><span class="n">lt</span><span class="p">(</span><span class="n">lit</span><span class="p">(</span><span class="mi">1990</span><span class="p">)))</span>
+<span class="w">    </span><span class="p">.</span><span class="n">collect</span><span class="p">()</span><span class="o">?</span><span class="p">;</span>
+<span class="fm">println!</span><span class="p">(</span><span class="s">&quot;{result}&quot;</span><span class="p">);</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code>shape: (3, 4)
+┌────────────────┬────────────┬────────┬────────┐
+│ name           ┆ birthdate  ┆ weight ┆ height │
+│ ---            ┆ ---        ┆ ---    ┆ ---    │
+│ str            ┆ date       ┆ f64    ┆ f64    │
+╞════════════════╪════════════╪════════╪════════╡
+│ Ben Brown      ┆ 1985-02-15 ┆ 72.5   ┆ 1.77   │
+│ Chloe Cooper   ┆ 1983-03-22 ┆ 53.6   ┆ 1.65   │
+│ Daniel Donovan ┆ 1981-04-30 ┆ 83.1   ┆ 1.75   │
+└────────────────┴────────────┴────────┴────────┘
+</code></pre></div>
+
+<p>Ayrıca birden çok koşul ifadesini ayrı parametreler olarak sağlayabilirsiniz; bu, hepsini <code>&amp;</code> ile birleştirmekten daha kullanışlıdır:</p>
+<p>Python</p>
+<div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;birthdate&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_between</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="mi">1982</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">31</span><span class="p">),</span> <span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="mi">1996</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;height&quot;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">1.7</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Rust</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df</span>
+<span class="w">    </span><span class="p">.</span><span class="n">clone</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="n">lazy</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="n">filter</span><span class="p">(</span>
+<span class="w">        </span><span class="n">col</span><span class="p">(</span><span class="s">&quot;birthdate&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="n">is_between</span><span class="p">(</span>
+<span class="w">                </span><span class="n">lit</span><span class="p">(</span><span class="n">NaiveDate</span><span class="p">::</span><span class="n">from_ymd_opt</span><span class="p">(</span><span class="mi">1982</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w"> </span><span class="mi">31</span><span class="p">).</span><span class="n">unwrap</span><span class="p">()),</span>
+<span class="w">                </span><span class="n">lit</span><span class="p">(</span><span class="n">NaiveDate</span><span class="p">::</span><span class="n">from_ymd_opt</span><span class="p">(</span><span class="mi">1996</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">).</span><span class="n">unwrap</span><span class="p">()),</span>
+<span class="w">                </span><span class="n">ClosedInterval</span><span class="p">::</span><span class="n">Both</span><span class="p">,</span>
+<span class="w">            </span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="n">and</span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s">&quot;height&quot;</span><span class="p">).</span><span class="n">gt</span><span class="p">(</span><span class="n">lit</span><span class="p">(</span><span class="mf">1.7</span><span class="p">))),</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">collect</span><span class="p">()</span><span class="o">?</span><span class="p">;</span>
+<span class="fm">println!</span><span class="p">(</span><span class="s">&quot;{result}&quot;</span><span class="p">);</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code>shape: (1, 4)
+┌───────────┬────────────┬────────┬────────┐
+│ name      ┆ birthdate  ┆ weight ┆ height │
+│ ---       ┆ ---        ┆ ---    ┆ ---    │
+│ str       ┆ date       ┆ f64    ┆ f64    │
+╞═══════════╪════════════╪════════╪════════╡
+│ Ben Brown ┆ 1985-02-15 ┆ 72.5   ┆ 1.77   │
+└───────────┴────────────┴────────┴────────┘
+</code></pre></div>
+
+<h3><code>group_by</code></h3>
+<p><code>group_by</code> context'i, bir veya daha fazla expression boyunca aynı değeri paylaşan dataframe satırlarını bir araya getirmek için kullanılabilir. Aşağıdaki örnek, her on yılda kaç kişinin doğduğunu sayar:</p>
+<p>Python</p>
+<div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">group_by</span><span class="p">(</span>
+    <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;birthdate&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span><span class="p">()</span> <span class="o">//</span> <span class="mi">10</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;decade&quot;</span><span class="p">),</span>
+    <span class="n">maintain_order</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span><span class="o">.</span><span class="n">len</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Rust</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Python&#39;daki `maintain_order=True` davranışını istiyorsanız `group_by_stable` kullanın.</span>
+<span class="kd">let</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df</span>
+<span class="w">    </span><span class="p">.</span><span class="n">clone</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="n">lazy</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="n">group_by</span><span class="p">([(</span><span class="n">col</span><span class="p">(</span><span class="s">&quot;birthdate&quot;</span><span class="p">).</span><span class="n">dt</span><span class="p">().</span><span class="n">year</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">lit</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">lit</span><span class="p">(</span><span class="mi">10</span><span class="p">)).</span><span class="n">alias</span><span class="p">(</span><span class="s">&quot;decade&quot;</span><span class="p">)])</span>
+<span class="w">    </span><span class="p">.</span><span class="n">agg</span><span class="p">([</span><span class="n">len</span><span class="p">()])</span>
+<span class="w">    </span><span class="p">.</span><span class="n">collect</span><span class="p">()</span><span class="o">?</span><span class="p">;</span>
+<span class="fm">println!</span><span class="p">(</span><span class="s">&quot;{result}&quot;</span><span class="p">);</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code>shape: (2, 2)
+┌────────┬─────┐
+│ decade ┆ len │
+│ ---    ┆ --- │
+│ i32    ┆ u32 │
+╞════════╪═════╡
+│ 1990   ┆ 1   │
+│ 1980   ┆ 3   │
+└────────┴─────┘
+</code></pre></div>
+
+<p><code>maintain_order</code> anahtar kelime argümanı, Polars'ı sonuç gruplarını orijinal dataframe'de göründükleri sırayla sunmaya zorlar. Bu, gruplama işlemini yavaşlatır ancak örneklerin tekrarlanabilirliğini sağlamak için burada kullanılmıştır.</p>
+<p><code>group_by</code> context'ini kullandıktan sonra <code>agg</code> ile sonuç grupları üzerinde toplama işlemleri yapabiliriz:</p>
+<p>Python</p>
+<div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">group_by</span><span class="p">(</span>
+    <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;birthdate&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span><span class="p">()</span> <span class="o">//</span> <span class="mi">10</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;decade&quot;</span><span class="p">),</span>
+    <span class="n">maintain_order</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">len</span><span class="p">()</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;sample_size&quot;</span><span class="p">),</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;weight&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;avg_weight&quot;</span><span class="p">),</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;height&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;tallest&quot;</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Rust</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df</span>
+<span class="w">    </span><span class="p">.</span><span class="n">clone</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="n">lazy</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="n">group_by</span><span class="p">([(</span><span class="n">col</span><span class="p">(</span><span class="s">&quot;birthdate&quot;</span><span class="p">).</span><span class="n">dt</span><span class="p">().</span><span class="n">year</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">lit</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">lit</span><span class="p">(</span><span class="mi">10</span><span class="p">)).</span><span class="n">alias</span><span class="p">(</span><span class="s">&quot;decade&quot;</span><span class="p">)])</span>
+<span class="w">    </span><span class="p">.</span><span class="n">agg</span><span class="p">([</span>
+<span class="w">        </span><span class="n">len</span><span class="p">().</span><span class="n">alias</span><span class="p">(</span><span class="s">&quot;sample_size&quot;</span><span class="p">),</span>
+<span class="w">        </span><span class="n">col</span><span class="p">(</span><span class="s">&quot;weight&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">RoundMode</span><span class="p">::</span><span class="n">default</span><span class="p">())</span>
+<span class="w">            </span><span class="p">.</span><span class="n">alias</span><span class="p">(</span><span class="s">&quot;avg_weight&quot;</span><span class="p">),</span>
+<span class="w">        </span><span class="n">col</span><span class="p">(</span><span class="s">&quot;height&quot;</span><span class="p">).</span><span class="n">max</span><span class="p">().</span><span class="n">alias</span><span class="p">(</span><span class="s">&quot;tallest&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="p">])</span>
+<span class="w">    </span><span class="p">.</span><span class="n">collect</span><span class="p">()</span><span class="o">?</span><span class="p">;</span>
+<span class="fm">println!</span><span class="p">(</span><span class="s">&quot;{result}&quot;</span><span class="p">);</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code>shape: (2, 4)
+┌────────┬─────────────┬────────────┬─────────┐
+│ decade ┆ sample_size ┆ avg_weight ┆ tallest │
+│ ---    ┆ ---         ┆ ---        ┆ ---     │
+│ i32    ┆ u32         ┆ f64        ┆ f64     │
+╞════════╪═════════════╪════════════╪═════════╡
+│ 1990   ┆ 1           ┆ 57.9       ┆ 1.56    │
+│ 1980   ┆ 3           ┆ 69.73      ┆ 1.77    │
+└────────┴─────────────┴────────────┴─────────┘
+</code></pre></div>
+
+<h3>Daha Karmaşık Sorgular</h3>
+<p>Context'ler ve içlerindeki expression'lar, ihtiyaçlarınıza göre daha karmaşık sorgular oluşturmak için zincirlenebilir. Aşağıdaki örnekte, şimdiye kadar gördüğümüz context'lerin bazılarını birleştirerek daha karmaşık bir sorgu oluşturuyoruz:</p>
+<p>Python</p>
+<div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">with_columns</span><span class="p">(</span>
+        <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;birthdate&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span><span class="p">()</span> <span class="o">//</span> <span class="mi">10</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;decade&quot;</span><span class="p">),</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">first</span><span class="p">(),</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">select</span><span class="p">(</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">exclude</span><span class="p">(</span><span class="s2">&quot;birthdate&quot;</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">group_by</span><span class="p">(</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;decade&quot;</span><span class="p">),</span>
+        <span class="n">maintain_order</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">agg</span><span class="p">(</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">),</span>
+        <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span> <span class="s2">&quot;height&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">prefix</span><span class="p">(</span><span class="s2">&quot;avg_&quot;</span><span class="p">),</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Rust</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df</span>
+<span class="w">    </span><span class="p">.</span><span class="n">clone</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="n">lazy</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="n">with_columns</span><span class="p">([</span>
+<span class="w">        </span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s">&quot;birthdate&quot;</span><span class="p">).</span><span class="n">dt</span><span class="p">().</span><span class="n">year</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">lit</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">lit</span><span class="p">(</span><span class="mi">10</span><span class="p">)).</span><span class="n">alias</span><span class="p">(</span><span class="s">&quot;decade&quot;</span><span class="p">),</span>
+<span class="w">        </span><span class="n">col</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">).</span><span class="kt">str</span><span class="p">().</span><span class="n">split</span><span class="p">(</span><span class="n">lit</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">)).</span><span class="n">list</span><span class="p">().</span><span class="n">first</span><span class="p">(),</span>
+<span class="w">    </span><span class="p">])</span>
+<span class="w">    </span><span class="p">.</span><span class="n">select</span><span class="p">([</span><span class="n">all</span><span class="p">().</span><span class="n">exclude_cols</span><span class="p">([</span><span class="s">&quot;birthdate&quot;</span><span class="p">]).</span><span class="n">as_expr</span><span class="p">()])</span>
+<span class="w">    </span><span class="p">.</span><span class="n">group_by</span><span class="p">([</span><span class="n">col</span><span class="p">(</span><span class="s">&quot;decade&quot;</span><span class="p">)])</span>
+<span class="w">    </span><span class="p">.</span><span class="n">agg</span><span class="p">([</span>
+<span class="w">        </span><span class="n">col</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">),</span>
+<span class="w">        </span><span class="n">cols</span><span class="p">([</span><span class="s">&quot;weight&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;height&quot;</span><span class="p">])</span>
+<span class="w">            </span><span class="p">.</span><span class="n">as_expr</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">RoundMode</span><span class="p">::</span><span class="n">default</span><span class="p">())</span>
+<span class="w">            </span><span class="p">.</span><span class="n">name</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="n">prefix</span><span class="p">(</span><span class="s">&quot;avg_&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="p">])</span>
+<span class="w">    </span><span class="p">.</span><span class="n">collect</span><span class="p">()</span><span class="o">?</span><span class="p">;</span>
+<span class="fm">println!</span><span class="p">(</span><span class="s">&quot;{result}&quot;</span><span class="p">);</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code><span class="nl">shape</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span>
+<span class="err">┌────────┬────────────────────────────┬────────────┬────────────┐</span>
+<span class="err">│</span><span class="w"> </span><span class="n">decade</span><span class="w"> </span><span class="err">┆</span><span class="w"> </span><span class="n">name</span><span class="w">                       </span><span class="err">┆</span><span class="w"> </span><span class="n">avg_weight</span><span class="w"> </span><span class="err">┆</span><span class="w"> </span><span class="n">avg_height</span><span class="w"> </span><span class="err">│</span>
+<span class="err">│</span><span class="w"> </span><span class="c1">---    ┆ ---                        ┆ ---        ┆ ---        │</span>
+<span class="err">│</span><span class="w"> </span><span class="n">i32</span><span class="w">    </span><span class="err">┆</span><span class="w"> </span><span class="n">list</span><span class="o">[</span><span class="n">str</span><span class="o">]</span><span class="w">                  </span><span class="err">┆</span><span class="w"> </span><span class="n">f64</span><span class="w">        </span><span class="err">┆</span><span class="w"> </span><span class="n">f64</span><span class="w">        </span><span class="err">│</span>
+<span class="err">╞════════╪════════════════════════════╪════════════╪════════════╡</span>
+<span class="err">│</span><span class="w"> </span><span class="mi">1990</span><span class="w">   </span><span class="err">┆</span><span class="w"> </span><span class="o">[</span><span class="n">&quot;Alice&quot;</span><span class="o">]</span><span class="w">                  </span><span class="err">┆</span><span class="w"> </span><span class="mf">57.9</span><span class="w">       </span><span class="err">┆</span><span class="w"> </span><span class="mf">1.56</span><span class="w">       </span><span class="err">│</span>
+<span class="err">│</span><span class="w"> </span><span class="mi">1980</span><span class="w">   </span><span class="err">┆</span><span class="w"> </span><span class="o">[</span><span class="n">&quot;Ben&quot;, &quot;Chloe&quot;, &quot;Daniel&quot;</span><span class="o">]</span><span class="w"> </span><span class="err">┆</span><span class="w"> </span><span class="mf">69.73</span><span class="w">      </span><span class="err">┆</span><span class="w"> </span><span class="mf">1.72</span><span class="w">       </span><span class="err">│</span>
+<span class="err">└────────┴────────────────────────────┴────────────┴────────────┘</span>
+</code></pre></div>
+
+<h2>Dataframe'leri Birleştirme</h2>
+<p>Polars, iki dataframe'i birleştirmek için çeşitli araçlar sağlar. Bu bölümde, bir join ve bir concat (birleştirme) örneği gösteriyoruz.</p>
+<h3>Dataframe'lerde Join (Birleştirme)</h3>
+<p>Polars birçok farklı join algoritması sunar. Aşağıdaki örnek, bir sütunun dataframe'ler arasındaki satırlar arasında bir karşılık kurmak için benzersiz bir tanımlayıcı olarak kullanılabildiği durumda iki dataframe'i birleştirmek için left outer join'in nasıl kullanılacağını gösterir:</p>
+<p>Python</p>
+<div class="highlight"><pre><span></span><code><span class="n">df2</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Ben Brown&quot;</span><span class="p">,</span> <span class="s2">&quot;Daniel Donovan&quot;</span><span class="p">,</span> <span class="s2">&quot;Alice Archer&quot;</span><span class="p">,</span> <span class="s2">&quot;Chloe Cooper&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;parent&quot;</span><span class="p">:</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+        <span class="s2">&quot;siblings&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Rust</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="n">df2</span><span class="p">:</span><span class="w"> </span><span class="nc">DataFrame</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df</span><span class="o">!</span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;name&quot;</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;Ben Brown&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Daniel Donovan&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Alice Archer&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Chloe Cooper&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="s">&quot;parent&quot;</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">[</span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">],</span>
+<span class="w">    </span><span class="s">&quot;siblings&quot;</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">],</span>
+<span class="p">)</span>
+<span class="p">.</span><span class="n">unwrap</span><span class="p">();</span>
+
+<span class="kd">let</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df</span>
+<span class="w">    </span><span class="p">.</span><span class="n">clone</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="n">lazy</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="n">join</span><span class="p">(</span>
+<span class="w">        </span><span class="n">df2</span><span class="p">.</span><span class="n">lazy</span><span class="p">(),</span>
+<span class="w">        </span><span class="p">[</span><span class="n">col</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">)],</span>
+<span class="w">        </span><span class="p">[</span><span class="n">col</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">)],</span>
+<span class="w">        </span><span class="n">JoinArgs</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="n">JoinType</span><span class="p">::</span><span class="n">Left</span><span class="p">),</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">collect</span><span class="p">()</span><span class="o">?</span><span class="p">;</span>
+
+<span class="fm">println!</span><span class="p">(</span><span class="s">&quot;{result}&quot;</span><span class="p">);</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code>shape: (4, 6)
+┌────────────────┬────────────┬────────┬────────┬────────┬──────────┐
+│ name           ┆ birthdate  ┆ weight ┆ height ┆ parent ┆ siblings │
+│ ---            ┆ ---        ┆ ---    ┆ ---    ┆ ---    ┆ ---      │
+│ str            ┆ date       ┆ f64    ┆ f64    ┆ bool   ┆ i64      │
+╞════════════════╪════════════╪════════╪════════╪════════╪══════════╡
+│ Alice Archer   ┆ 1997-01-10 ┆ 57.9   ┆ 1.56   ┆ false  ┆ 3        │
+│ Ben Brown      ┆ 1985-02-15 ┆ 72.5   ┆ 1.77   ┆ true   ┆ 1        │
+│ Chloe Cooper   ┆ 1983-03-22 ┆ 53.6   ┆ 1.65   ┆ false  ┆ 4        │
+│ Daniel Donovan ┆ 1981-04-30 ┆ 83.1   ┆ 1.75   ┆ false  ┆ 2        │
+└────────────────┴────────────┴────────┴────────┴────────┴──────────┘
+</code></pre></div>
+
+<p>Polars, kılavuzun <a href="../transformations/joins/">joins bölümünde</a> öğrenebileceğiniz birçok farklı join algoritması sağlar.</p>
+<h3>Dataframe'lerde Concat (Birleştirme)</h3>
+<p>Dataframe'leri birleştirmek (concatenate), kullanılan yönteme bağlı olarak daha uzun veya daha geniş bir dataframe oluşturur. Diğer kişilerden veri içeren ikinci bir dataframe'imiz olduğunu varsayarsak, daha uzun bir dataframe oluşturmak için dikey birleştirme kullanabiliriz:</p>
+<p>Python</p>
+<div class="highlight"><pre><span></span><code><span class="n">df3</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Ethan Edwards&quot;</span><span class="p">,</span> <span class="s2">&quot;Fiona Foster&quot;</span><span class="p">,</span> <span class="s2">&quot;Grace Gibson&quot;</span><span class="p">,</span> <span class="s2">&quot;Henry Harris&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;birthdate&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="mi">1977</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+            <span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="mi">1975</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">23</span><span class="p">),</span>
+            <span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="mi">1973</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">22</span><span class="p">),</span>
+            <span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="mi">1971</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">67.9</span><span class="p">,</span> <span class="mf">72.5</span><span class="p">,</span> <span class="mf">57.6</span><span class="p">,</span> <span class="mf">93.1</span><span class="p">],</span>  <span class="c1"># (kg)</span>
+        <span class="s2">&quot;height&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.76</span><span class="p">,</span> <span class="mf">1.6</span><span class="p">,</span> <span class="mf">1.66</span><span class="p">,</span> <span class="mf">1.8</span><span class="p">],</span>  <span class="c1"># (m)</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">,</span> <span class="n">df3</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;vertical&quot;</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Rust</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="n">df3</span><span class="p">:</span><span class="w"> </span><span class="nc">DataFrame</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df</span><span class="o">!</span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;name&quot;</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;Ethan Edwards&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Fiona Foster&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Grace Gibson&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Henry Harris&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="s">&quot;birthdate&quot;</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="n">NaiveDate</span><span class="p">::</span><span class="n">from_ymd_opt</span><span class="p">(</span><span class="mi">1977</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">).</span><span class="n">unwrap</span><span class="p">(),</span>
+<span class="w">        </span><span class="n">NaiveDate</span><span class="p">::</span><span class="n">from_ymd_opt</span><span class="p">(</span><span class="mi">1975</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">23</span><span class="p">).</span><span class="n">unwrap</span><span class="p">(),</span>
+<span class="w">        </span><span class="n">NaiveDate</span><span class="p">::</span><span class="n">from_ymd_opt</span><span class="p">(</span><span class="mi">1973</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">22</span><span class="p">).</span><span class="n">unwrap</span><span class="p">(),</span>
+<span class="w">        </span><span class="n">NaiveDate</span><span class="p">::</span><span class="n">from_ymd_opt</span><span class="p">(</span><span class="mi">1971</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">).</span><span class="n">unwrap</span><span class="p">(),</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="s">&quot;weight&quot;</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">[</span><span class="mf">67.9</span><span class="p">,</span><span class="w"> </span><span class="mf">72.5</span><span class="p">,</span><span class="w"> </span><span class="mf">57.6</span><span class="p">,</span><span class="w"> </span><span class="mf">93.1</span><span class="p">],</span><span class="w">  </span><span class="c1">// (kg)</span>
+<span class="w">    </span><span class="s">&quot;height&quot;</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">[</span><span class="mf">1.76</span><span class="p">,</span><span class="w"> </span><span class="mf">1.6</span><span class="p">,</span><span class="w"> </span><span class="mf">1.66</span><span class="p">,</span><span class="w"> </span><span class="mf">1.8</span><span class="p">],</span><span class="w">  </span><span class="c1">// (m)</span>
+<span class="p">)</span>
+<span class="p">.</span><span class="n">unwrap</span><span class="p">();</span>
+
+<span class="kd">let</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">.</span><span class="n">clone</span><span class="p">().</span><span class="n">lazy</span><span class="p">(),</span><span class="w"> </span><span class="n">df3</span><span class="p">.</span><span class="n">lazy</span><span class="p">()],</span><span class="w"> </span><span class="n">UnionArgs</span><span class="p">::</span><span class="n">default</span><span class="p">())</span><span class="o">?</span><span class="p">.</span><span class="n">collect</span><span class="p">()</span><span class="o">?</span><span class="p">;</span>
+<span class="fm">println!</span><span class="p">(</span><span class="s">&quot;{result}&quot;</span><span class="p">);</span>
+</code></pre></div>
+
+<p>Çıktı:</p>
+<div class="highlight"><pre><span></span><code>shape: (8, 4)
+┌────────────────┬────────────┬────────┬────────┐
+│ name           ┆ birthdate  ┆ weight ┆ height │
+│ ---            ┆ ---        ┆ ---    ┆ ---    │
+│ str            ┆ date       ┆ f64    ┆ f64    │
+╞════════════════╪════════════╪════════╪════════╡
+│ Alice Archer   ┆ 1997-01-10 ┆ 57.9   ┆ 1.56   │
+│ Ben Brown      ┆ 1985-02-15 ┆ 72.5   ┆ 1.77   │
+│ Chloe Cooper   ┆ 1983-03-22 ┆ 53.6   ┆ 1.65   │
+│ Daniel Donovan ┆ 1981-04-30 ┆ 83.1   ┆ 1.75   │
+│ Ethan Edwards  ┆ 1977-05-10 ┆ 67.9   ┆ 1.76   │
+│ Fiona Foster   ┆ 1975-06-23 ┆ 72.5   ┆ 1.6    │
+│ Grace Gibson   ┆ 1973-07-22 ┆ 57.6   ┆ 1.66   │
+│ Henry Harris   ┆ 1971-08-03 ┆ 93.1   ┆ 1.8    │
+└────────────────┴────────────┴────────┴────────┘
+</code></pre></div>
+
+<p>Polars, dikey ve yatay birleştirmenin yanı sıra çapraz birleştirme de sağlar. Bunlar hakkında daha fazla bilgiyi kılavuzun <a href="../transformations/concatenation/">concatenations bölümünde</a> bulabilirsiniz.</p>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/polars.html">Polars</a></li>
+					<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+					<li><a href="/tag/modul.html">Modül</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>

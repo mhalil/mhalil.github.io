@@ -11,7 +11,6 @@
 	<meta property="og:title" content="FreeCAD - Scripting 05 - Topolojik Veri Kodlaması" />
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content="/freecad-scripting-05-topolojik-veri-kodlamasi.html" />
-		<meta property="og:image" content="/images/avatar.png" />
 
 		<!-- Enable responsiveness on mobile devices-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -154,8 +153,8 @@
 <h3>Geometri Oluştur</h3>
 <p>İlk önce bu tel yapısının farklı geometrik kısımlarını oluşturuyoruz. Daha sonra bağlanması gereken parçaların aynı köşeleri paylaştığından emin oluyoruz.</p>
 <p>Bu nedenle öncelikle noktaları oluşturuyoruz:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">Part</span>
-<span class="kn">from</span> <span class="nn">FreeCAD</span> <span class="kn">import</span> <span class="n">Base</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">Part</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">FreeCAD</span><span class="w"> </span><span class="kn">import</span> <span class="n">Base</span>
 <span class="n">V1</span> <span class="o">=</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 <span class="n">V2</span> <span class="o">=</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 <span class="n">V3</span> <span class="o">=</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
@@ -232,8 +231,8 @@
 <p>Part (Parça) modülünün kullanılabilir yöntemlerinin tam listesi için <a href="https://wiki.freecadweb.org/Part_API">Part API</a> sayfasına bakın.</p>
 <h3>Modülleri İçe Aktar</h3>
 <p>İlk önce <code>Part</code>modülünü içe aktarmalıyız, böylece içeriğini Python'da kullanabiliriz. Ayrıca <code>Base</code>modülünü <code>FreeCAD</code> modülünden içe aktaracağız:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">Part</span>
-<span class="kn">from</span> <span class="nn">FreeCAD</span> <span class="kn">import</span> <span class="n">Base</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">Part</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">FreeCAD</span><span class="w"> </span><span class="kn">import</span> <span class="n">Base</span>
 </code></pre></div>
 
 <h3>Vektör Oluştur</h3>
@@ -331,13 +330,13 @@
 </code></pre></div>
 
 <p>Çember (<code>ccircle</code>), X orijinden 10 birim uzaklıkta oluşturulacak ve X ekseni boyunca dışa bakacaktır. <strong>Not:</strong> <code>makeCircle()</code> konum ve normal parametreler için tanımlama gruplarını değil, yalnızca <code>Base.Vector()</code>'u kabul eder. Başlangıç ​​ve bitiş açısı vererek çemberin bir bölümünü de oluşturabilirsiniz:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">pi</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">pi</span>
 <span class="n">arc1</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">makeCircle</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">180</span><span class="p">)</span>
 <span class="n">arc2</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">makeCircle</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">360</span><span class="p">)</span>
 </code></pre></div>
 
 <p>Açılar derece cinsinden verilmelidir. Radyan cinsinden veriniz varsa, bunları <code>derece = radyan * 180/pi</code> formülünü kullanarak ya da Python'un <code>math (matematik)</code> modülünü kullanarak derece cinsine dönüştürün:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">math</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
 <span class="n">degrees</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">radians</span><span class="p">)</span>
 </code></pre></div>
 
@@ -353,7 +352,7 @@
 </code></pre></div>
 
 <p><code>Arc()</code> noktalar için yalnız <code>Base.Vector()</code>'u kabul eder, demetler (tuples) için değil. Bir çemberin bir bölümünü kullanarak da bir yay elde edebilirsiniz:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">pi</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">pi</span>
 <span class="n">circle</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">Circle</span><span class="p">(</span><span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">10</span><span class="p">)</span>
 <span class="n">arc</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">Arc</span><span class="p">(</span><span class="n">circle</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">pi</span><span class="p">)</span>
 </code></pre></div>
@@ -366,7 +365,7 @@
 
 <h3>Bir Bezier Eğrisi Oluştur</h3>
 <p>Bezier eğrileri, bir dizi <strong>kutup (nokta)</strong> ve isteğe bağlı <strong>ağırlık</strong> kullanarak düzgün eğrileri modellemek için kullanılır. Aşağıdaki fonksiyon, bir dizi <code>FreeCAD.Vector()</code> noktasından bir <code>Part.BezierCurve()</code> oluşturur. Not: Tek bir kutup veya ağırlığı "<strong>edinirken</strong>" ve "<strong>ayarlarken (set)</strong>", endeksler 0'dan değil, <strong>1'den başlar</strong>.</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">makeBCurveEdge</span><span class="p">(</span><span class="n">Points</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">makeBCurveEdge</span><span class="p">(</span><span class="n">Points</span><span class="p">):</span>
    <span class="n">geomCurve</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">BezierCurve</span><span class="p">()</span>
    <span class="n">geomCurve</span><span class="o">.</span><span class="n">setPoles</span><span class="p">(</span><span class="n">Points</span><span class="p">)</span>
    <span class="n">edge</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">Edge</span><span class="p">(</span><span class="n">geomCurve</span><span class="p">)</span>
@@ -602,7 +601,7 @@ bir bileşik eğri olan bir kesişme eğrisi oluşur.</p>
 
 <h2>Şekilleri Keşfedin</h2>
 <p>Topolojik veri yapısını kolayca keşfedebilirsiniz:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">Part</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">Part</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">makeBox</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 <span class="n">b</span><span class="o">.</span><span class="n">Wires</span>
 <span class="n">w</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">Wires</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -621,7 +620,7 @@ bir bileşik eğri olan bir kesişme eğrisi oluşur.</p>
 varsa daha fazla olabilir). Telde her bir kenara ayrı ayrı bakabiliriz ve her bir kenarın içinde köşeleri görebiliriz. Düz kenarların açıkçası sadece iki köşesi vardır.</p>
 <h3>Kenar Analizi</h3>
 <p>İsteğe bağlı bir eğri olan bir kenar olması durumunda, büyük olasılıkla bir ayrıklaştırma yapmak istersiniz. FreeCAD'de kenarlar uzunluklarına göre parametrelendirilir. Bu, bir kenarı/eğriyi uzunluğuna göre yürüyebileceğiniz anlamına gelir:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">Part</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">Part</span>
 <span class="n">box</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">makeBox</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 <span class="n">anEdge</span> <span class="o">=</span> <span class="n">box</span><span class="o">.</span><span class="n">Edges</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">anEdge</span><span class="o">.</span><span class="n">Length</span><span class="p">)</span>
@@ -641,7 +640,7 @@ varsa daha fazla olabilir). Telde her bir kenara ayrı ayrı bakabiliriz ve her 
 
 <h3>Bir Seçim Kullanın</h3>
 <p>Burada, kullanıcının görüntüleyicide yaptığı bir seçimi nasıl kullanabileceğimizi görüyoruz. Öncelikle bir kutu oluşturuyoruz ve bunu görüntüleyicide gösteriyoruz.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">Part</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">Part</span>
 <span class="n">Part</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">Part</span><span class="o">.</span><span class="n">makeBox</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
 <span class="n">Gui</span><span class="o">.</span><span class="n">SendMsgToActiveView</span><span class="p">(</span><span class="s2">&quot;ViewFit&quot;</span><span class="p">)</span>
 </code></pre></div>
@@ -666,18 +665,18 @@ varsa daha fazla olabilir). Telde her bir kenara ayrı ayrı bakabiliriz ve her 
 
 <h2>Örnek: OCC şişesi</h2>
 <p><a href="https://www.opencascade.com/doc/occt-6.9.0/overview/html/occt__tutorial.html">OpenCasCade Teknoloji web sitesinde</a> bulunan tipik bir örnek, bir şişenin nasıl oluşturulacağıdır. Bu, FreeCAD için de iyi bir alıştırmadır. Aslında, aşağıdaki örneğimizi ve aynı anda OCC sayfasını takip ederseniz, OCC yapılarının FreeCAD'de ne kadar iyi uygulandığını göreceksiniz. Komut dosyası, FreeCAD kurulumuna dahildir (<strong>Mod/Part</strong> klasörünün içinde) ve Python yorumlayıcısından şunu yazarak çağrılabilir:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">Part</span>
-<span class="kn">import</span> <span class="nn">MakeBottle</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">Part</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">MakeBottle</span>
 <span class="n">bottle</span> <span class="o">=</span> <span class="n">MakeBottle</span><span class="o">.</span><span class="n">makeBottle</span><span class="p">()</span>
 <span class="n">Part</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">bottle</span><span class="p">)</span>
 </code></pre></div>
 
 <h3>Komut Dosyası</h3>
 <p>Bu eğitimin amacı için, komut dosyasının kısıtlı bir sürümünü ele alacağız. Bu versiyonda, şişenin içi boşaltılmayacak ve şişenin ağız kısmına diş açılmayacaktır.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">Part</span><span class="o">,</span> <span class="nn">math</span>
-<span class="kn">from</span> <span class="nn">FreeCAD</span> <span class="kn">import</span> <span class="n">Base</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">Part</span><span class="o">,</span><span class="w"> </span><span class="nn">math</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">FreeCAD</span><span class="w"> </span><span class="kn">import</span> <span class="n">Base</span>
 
-<span class="k">def</span> <span class="nf">makeBottleTut</span><span class="p">(</span><span class="n">myWidth</span> <span class="o">=</span> <span class="mf">50.0</span><span class="p">,</span> <span class="n">myHeight</span> <span class="o">=</span> <span class="mf">70.0</span><span class="p">,</span> <span class="n">myThickness</span> <span class="o">=</span> <span class="mf">30.0</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">makeBottleTut</span><span class="p">(</span><span class="n">myWidth</span> <span class="o">=</span> <span class="mf">50.0</span><span class="p">,</span> <span class="n">myHeight</span> <span class="o">=</span> <span class="mf">70.0</span><span class="p">,</span> <span class="n">myThickness</span> <span class="o">=</span> <span class="mf">30.0</span><span class="p">):</span>
     <span class="n">aPnt1</span><span class="o">=</span><span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="o">-</span><span class="n">myWidth</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
     <span class="n">aPnt2</span><span class="o">=</span><span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="o">-</span><span class="n">myWidth</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">,</span> <span class="o">-</span><span class="n">myThickness</span> <span class="o">/</span> <span class="mf">4.</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
     <span class="n">aPnt3</span><span class="o">=</span><span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="n">myThickness</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
@@ -721,12 +720,12 @@ varsa daha fazla olabilir). Telde her bir kenara ayrı ayrı bakabiliriz ve her 
 </code></pre></div>
 
 <h3>Detaylı Açıklama</h3>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">Part</span><span class="o">,</span> <span class="nn">math</span>
-<span class="kn">from</span> <span class="nn">FreeCAD</span> <span class="kn">import</span> <span class="n">Base</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">Part</span><span class="o">,</span><span class="w"> </span><span class="nn">math</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">FreeCAD</span><span class="w"> </span><span class="kn">import</span> <span class="n">Base</span>
 </code></pre></div>
 
 <p>Elbette <code>Part</code> modülüne ve ayrıca vektörler ve matrisler gibi temel FreeCAD yapılarını içeren <code>FreeCAD.Base</code> modülüne ihtiyacımız olacak.</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">makeBottleTut</span><span class="p">(</span><span class="n">myWidth</span> <span class="o">=</span> <span class="mf">50.0</span><span class="p">,</span> <span class="n">myHeight</span> <span class="o">=</span> <span class="mf">70.0</span><span class="p">,</span> <span class="n">myThickness</span> <span class="o">=</span> <span class="mf">30.0</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">makeBottleTut</span><span class="p">(</span><span class="n">myWidth</span> <span class="o">=</span> <span class="mf">50.0</span><span class="p">,</span> <span class="n">myHeight</span> <span class="o">=</span> <span class="mf">70.0</span><span class="p">,</span> <span class="n">myThickness</span> <span class="o">=</span> <span class="mf">30.0</span><span class="p">):</span>
     <span class="n">aPnt1</span><span class="o">=</span><span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="o">-</span><span class="n">myWidth</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
     <span class="n">aPnt2</span><span class="o">=</span><span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="o">-</span><span class="n">myWidth</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">,</span> <span class="o">-</span><span class="n">myThickness</span> <span class="o">/</span> <span class="mf">4.</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
     <span class="n">aPnt3</span><span class="o">=</span><span class="n">Base</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="n">myThickness</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
@@ -799,8 +798,8 @@ Bir yüzeyimiz olduğunda, onu doğrusal katılayabiliriz / ekstrüde edebiliriz
 <h2>Örnek: Delinmiş Kutu</h2>
 <p>İşte delinmiş bir kutu inşa etmenin tam bir örneği.</p>
 <p>Yapı bir seferde bir tarafta yapılır. Küp bittiğinde, içinden bir silindir kesilerek oyuluyor.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">Part</span><span class="o">,</span> <span class="nn">math</span>
-<span class="kn">from</span> <span class="nn">FreeCAD</span> <span class="kn">import</span> <span class="n">Base</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">Part</span><span class="o">,</span><span class="w"> </span><span class="nn">math</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">FreeCAD</span><span class="w"> </span><span class="kn">import</span> <span class="n">Base</span>
 
 <span class="n">size</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">poly</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">makePolygon</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">size</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">size</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)])</span>
@@ -848,19 +847,19 @@ Bir yüzeyimiz olduğunda, onu doğrusal katılayabiliriz / ekstrüde edebiliriz
 <h3>Yüklemek ve Kaydetmek</h3>
 <p>Çalışmanızı kaydetmenin birkaç yolu vardır. Elbette FreeCAD belgenizi kaydedebilirsiniz, ancak Parça nesnelerini doğrudan BREP, IGS, STEP ve STL gibi yaygın CAD formatlarına da kaydedebilirsiniz.</p>
 <p>Bir şekli bir dosyaya kaydetmek kolaydır. Tüm şekil nesneleri için <code>exportBrep()</code>, <code>exportIges()</code>, <code>exportStep()</code> ve <code>exportStl()</code> yöntemleri mevcuttur. Yani, yöntemleri aşağıdaki şekilde kullanarak çalışmalarınız farklı biçimlerde dışa aktarabilirsiniz :</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">Part</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">Part</span>
 <span class="n">s</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">makeBox</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 <span class="n">s</span><span class="o">.</span><span class="n">exportStep</span><span class="p">(</span><span class="s2">&quot;test.stp&quot;</span><span class="p">)</span>
 </code></pre></div>
 
 <p>Bu komut, kutu oluşturacak ve kutumuzu bir STEP dosyası olarak kaydedecektir. Bir BREP, IGES veya STEP uzantılı dosyayı yüklemek için :</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">Part</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">Part</span>
 <span class="n">s</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">Shape</span><span class="p">()</span>
 <span class="n">s</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;test.stp&quot;</span><span class="p">)</span>
 </code></pre></div>
 
 <p>Bir STEP dosyasını bir IGS dosyasına dönüştürmek için:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">Part</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">Part</span>
  <span class="n">s</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">Shape</span><span class="p">()</span>
  <span class="n">s</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;file.stp&quot;</span><span class="p">)</span>       <span class="c1"># okunan, içe aktarılan dosya igs, stp, stl, brep</span>
  <span class="n">s</span><span class="o">.</span><span class="n">exportIges</span><span class="p">(</span><span class="s2">&quot;file.igs&quot;</span><span class="p">)</span> <span class="c1"># dışa aktarılan, dönüştürülen dosya  igs</span>

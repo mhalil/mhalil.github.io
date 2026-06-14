@@ -11,7 +11,6 @@
 	<meta property="og:title" content="Pandas - to_numpy" />
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content="/pandas-to_numpy.html" />
-		<meta property="og:image" content="/images/avatar.png" />
 
 		<!-- Enable responsiveness on mobile devices-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -122,7 +121,7 @@
 <h2>Örnek Kullanım</h2>
 <p><strong>1. Basit bir DataFrame'i NumPy dizisine dönüştürme:</strong></p>
 <p>Veri çerçevemiz;</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
     <span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
@@ -162,7 +161,7 @@
 </code></pre></div>
 
 <p><strong>2. Farklı veri türlerinin olduğu durumda, en düşük ortak tür kullanılır:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">]})</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>

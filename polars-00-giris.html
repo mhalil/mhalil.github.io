@@ -11,7 +11,6 @@
 	<meta property="og:title" content="Polars - 00 Giriş" />
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content="/polars-00-giris.html" />
-		<meta property="og:image" content="/images/avatar.png" />
 
 		<!-- Enable responsiveness on mobile devices-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -76,7 +75,7 @@
 </div>		<div class="content container">
 <div class="post">
 	<h1 class="post-title">Polars - 00 Giriş</h1>
-	<span class="post-date">Paz 26 Haziran 2022</span>
+	<span class="post-date">Paz 14 Haziran 2026</span>
 	<h1>Polars Notları</h1>
 <p><img alt="polars" src="../../images/python/polars/polars_github_logo.svg"></p>
 <p><strong>Rust ve Python için Işık Hızında VeriÇerçevesi (DataFrame) Kütüphanesi.</strong></p>
@@ -89,85 +88,487 @@
 <h2>Polars - Python</h2>
 <p>Şahsen <code>Python</code> programlama diline aşina olduğum için,  <code>python</code> dilinde <code>polar</code> kütüphanesi kullanımına dair örnekler vereceğim.</p>
 <p><img alt="polars-pyton" src="../../images/python/polars/polars-logo-python.svg"></p>
-<h1>KONU BAŞLIKLARI</h1>
-<p><a href="polars-01-takdim.html">Takdim</a></p>
-<p><a href="polars-02-kurulum.html">Kurulum</a></p>
-<p><strong>Kavramlar</strong></p>
+<h1>Polars Öğrenme Yol Haritası</h1>
+<p>Bu bölüm, Polars kütüphanesinin resmi dokümantasyonunun <a href="https://docs.pola.rs/">docs.pola.rs</a> Türkçe çevirisini içerir.
+Her konu başlığı sıra numaralı olarak düzenlenmiştir.</p>
+<hr>
+<h2>1. Giriş (Foundation)</h2>
+<table>
+<thead>
+<tr>
+<th>Ders</th>
+<th>Konu Başlığı</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01</td>
+<td><a href="/polars-01-baslarken.html">Başlarken - Polars'a giriş ve temel örnek</a></td>
+</tr>
+<tr>
+<td>02</td>
+<td><a href="/polars-02-kurulum.html">Kurulum - Polars'ı yükleme ve feature flag'ler</a></td>
+</tr>
+</tbody>
+</table>
+<h2>2. Temel Kavramlar (Anlamadan ilerleme)</h2>
+<table>
+<thead>
+<tr>
+<th>Ders</th>
+<th>Dosya</th>
+<th>Konu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>03</td>
+<td><code>03-concepts.md</code></td>
+<td>Konseptler - Genel bakış</td>
+</tr>
+<tr>
+<td>04</td>
+<td><code>04-data-types-and-structures.md</code></td>
+<td>Veri Tipleri ve Yapılar</td>
+</tr>
+<tr>
+<td>05</td>
+<td><code>05-expressions-and-contexts.md</code></td>
+<td>Expression'lar ve Context'ler</td>
+</tr>
+<tr>
+<td>06</td>
+<td><code>06-lazy-api.md</code></td>
+<td>Lazy API - Temel anlayış</td>
+</tr>
+<tr>
+<td>07</td>
+<td><code>07-streaming.md</code></td>
+<td>Streaming (Akış) - Büyük veri işleme</td>
+</tr>
+</tbody>
+</table>
+<h2>3. Expression'lar (En çok kullanacağınız şey)</h2>
+<table>
+<thead>
+<tr>
+<th>Ders</th>
+<th>Dosya</th>
+<th>Konu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>08</td>
+<td><code>08-expressions.md</code></td>
+<td>Expression'lar - Genel bakış</td>
+</tr>
+<tr>
+<td>09</td>
+<td><code>09-basic-operations.md</code></td>
+<td>Temel İşlemler</td>
+</tr>
+<tr>
+<td>10</td>
+<td><code>10-casting.md</code></td>
+<td>Tür Dönüşümleri (Casting)</td>
+</tr>
+<tr>
+<td>11</td>
+<td><code>11-strings.md</code></td>
+<td>String İşlemleri</td>
+</tr>
+<tr>
+<td>12</td>
+<td><code>12-lists-and-arrays.md</code></td>
+<td>Listeler ve Diziler</td>
+</tr>
+<tr>
+<td>13</td>
+<td><code>13-categorical-data-and-enums.md</code></td>
+<td>Kategorik Veri ve Enum'lar</td>
+</tr>
+<tr>
+<td>14</td>
+<td><code>14-structs.md</code></td>
+<td>Struct'lar</td>
+</tr>
+<tr>
+<td>15</td>
+<td><code>15-missing-data.md</code></td>
+<td>Eksik Veri</td>
+</tr>
+<tr>
+<td>16</td>
+<td><code>16-aggregation.md</code></td>
+<td>Toplama (Aggregation)</td>
+</tr>
+<tr>
+<td>17</td>
+<td><code>17-window-functions.md</code></td>
+<td>Pencere Fonksiyonları</td>
+</tr>
+<tr>
+<td>18</td>
+<td><code>18-folds.md</code></td>
+<td>Fold'lar (Katlamalar)</td>
+</tr>
+<tr>
+<td>19</td>
+<td><code>19-expression-expansion.md</code></td>
+<td>Expression Genişletme</td>
+</tr>
+<tr>
+<td>20</td>
+<td><code>20-user-defined-python-functions.md</code></td>
+<td>Kullanıcı Tanımlı Python Fonksiyonları</td>
+</tr>
+<tr>
+<td>21</td>
+<td><code>21-numpy-functions.md</code></td>
+<td>NumPy Fonksiyonları</td>
+</tr>
+</tbody>
+</table>
+<h2>4. Dönüşümler (Transformations)</h2>
+<table>
+<thead>
+<tr>
+<th>Ders</th>
+<th>Dosya</th>
+<th>Konu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>22</td>
+<td><code>22-transformations.md</code></td>
+<td>Dönüşümler - Genel bakış</td>
+</tr>
+<tr>
+<td>23</td>
+<td><code>23-joins.md</code></td>
+<td>Birleştirmeler (Joins)</td>
+</tr>
+<tr>
+<td>24</td>
+<td><code>24-concatenation.md</code></td>
+<td>Birleştirme (Concatenation)</td>
+</tr>
+<tr>
+<td>25</td>
+<td><code>25-pivot.md</code></td>
+<td>Pivot Tablolar</td>
+</tr>
+<tr>
+<td>26</td>
+<td><code>26-unpivot.md</code></td>
+<td>Unpivot (Pivot'tan Çevirme)</td>
+</tr>
+<tr>
+<td>27</td>
+<td><code>27-time-series-parsing.md</code></td>
+<td>Zaman Serisi - Parse Etme</td>
+</tr>
+<tr>
+<td>28</td>
+<td><code>28-time-series-filter.md</code></td>
+<td>Zaman Serisi - Filtreleme</td>
+</tr>
+<tr>
+<td>29</td>
+<td><code>29-time-series-grouping.md</code></td>
+<td>Zaman Serisi - Gruplama (Rolling)</td>
+</tr>
+<tr>
+<td>30</td>
+<td><code>30-time-series-resampling.md</code></td>
+<td>Zaman Serisi - Yeniden Örnekleme</td>
+</tr>
+<tr>
+<td>31</td>
+<td><code>31-time-series-timezones.md</code></td>
+<td>Zaman Serisi - Zaman Dilimleri</td>
+</tr>
+</tbody>
+</table>
+<h2>5. Lazy API (Performans)</h2>
+<table>
+<thead>
+<tr>
+<th>Ders</th>
+<th>Dosya</th>
+<th>Konu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>32</td>
+<td><code>32-lazy-overview.md</code></td>
+<td>Lazy API - Genel Bakış</td>
+</tr>
+<tr>
+<td>33</td>
+<td><code>33-lazy-using.md</code></td>
+<td>Lazy API Kullanımı</td>
+</tr>
+<tr>
+<td>34</td>
+<td><code>34-lazy-optimizations.md</code></td>
+<td>Optimizasyonlar</td>
+</tr>
+<tr>
+<td>35</td>
+<td><code>35-lazy-schemas.md</code></td>
+<td>Şemalar</td>
+</tr>
+<tr>
+<td>36</td>
+<td><code>36-lazy-datatype-exprs.md</code></td>
+<td>Veri Tipi Expression'ları</td>
+</tr>
+<tr>
+<td>37</td>
+<td><code>37-lazy-query-plan.md</code></td>
+<td>Sorgu Planı</td>
+</tr>
+<tr>
+<td>38</td>
+<td><code>38-lazy-execution.md</code></td>
+<td>Sorgu Yürütme</td>
+</tr>
+<tr>
+<td>39</td>
+<td><code>39-lazy-sources-sinks.md</code></td>
+<td>Kaynaklar ve Hedefler</td>
+</tr>
+<tr>
+<td>40</td>
+<td><code>40-lazy-multiplexing.md</code></td>
+<td>Sorgu Çoğullama</td>
+</tr>
+<tr>
+<td>41</td>
+<td><code>41-lazy-gpu.md</code></td>
+<td>GPU Desteği</td>
+</tr>
+</tbody>
+</table>
+<h2>6. IO (Veri Okuma/Yazma)</h2>
+<table>
+<thead>
+<tr>
+<th>Ders</th>
+<th>Dosya</th>
+<th>Konu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>42</td>
+<td><code>42-io-overview.md</code></td>
+<td>G/Ç (IO) - Genel Bakış</td>
+</tr>
+<tr>
+<td>43</td>
+<td><code>43-io-csv.md</code></td>
+<td>CSV Okuma/Yazma</td>
+</tr>
+<tr>
+<td>44</td>
+<td><code>44-io-parquet.md</code></td>
+<td>Parquet Okuma/Yazma</td>
+</tr>
+<tr>
+<td>45</td>
+<td><code>45-io-json.md</code></td>
+<td>JSON Okuma/Yazma</td>
+</tr>
+<tr>
+<td>46</td>
+<td><code>46-io-excel.md</code></td>
+<td>Excel Okuma/Yazma</td>
+</tr>
+<tr>
+<td>47</td>
+<td><code>47-io-multiple.md</code></td>
+<td>Çoklu Dosya İşlemleri</td>
+</tr>
+<tr>
+<td>48</td>
+<td><code>48-io-database.md</code></td>
+<td>Veritabanı Bağlantıları</td>
+</tr>
+<tr>
+<td>49</td>
+<td><code>49-io-cloud-storage.md</code></td>
+<td>Bulut Depolama</td>
+</tr>
+<tr>
+<td>50</td>
+<td><code>50-io-bigquery.md</code></td>
+<td>Google BigQuery</td>
+</tr>
+<tr>
+<td>51</td>
+<td><code>51-io-hive.md</code></td>
+<td>Hive Desteği</td>
+</tr>
+<tr>
+<td>52</td>
+<td><code>52-io-hugging-face.md</code></td>
+<td>Hugging Face</td>
+</tr>
+<tr>
+<td>53</td>
+<td><code>53-io-sheets.md</code></td>
+<td>Google Sheets (Colab ile)</td>
+</tr>
+</tbody>
+</table>
+<h2>7. SQL</h2>
+<table>
+<thead>
+<tr>
+<th>Ders</th>
+<th>Dosya</th>
+<th>Konu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>54</td>
+<td><code>54-sql-intro.md</code></td>
+<td>SQL - Giriş</td>
+</tr>
+<tr>
+<td>55</td>
+<td><code>55-sql-show-tables.md</code></td>
+<td>SQL - SHOW TABLES</td>
+</tr>
+<tr>
+<td>56</td>
+<td><code>56-sql-select.md</code></td>
+<td>SQL - SELECT</td>
+</tr>
+<tr>
+<td>57</td>
+<td><code>57-sql-create.md</code></td>
+<td>SQL - CREATE</td>
+</tr>
+<tr>
+<td>58</td>
+<td><code>58-sql-cte.md</code></td>
+<td>SQL - CTE (Common Table Expressions)</td>
+</tr>
+</tbody>
+</table>
+<h2>8. İleri Düzey</h2>
+<table>
+<thead>
+<tr>
+<th>Ders</th>
+<th>Dosya</th>
+<th>Konu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>59</td>
+<td><code>59-plugins-overview.md</code></td>
+<td>Plugin'ler - Genel Bakış</td>
+</tr>
+<tr>
+<td>60</td>
+<td><code>60-expr-plugins.md</code></td>
+<td>Expression Plugin'leri</td>
+</tr>
+<tr>
+<td>61</td>
+<td><code>61-io-plugins.md</code></td>
+<td>IO Plugin'leri</td>
+</tr>
+<tr>
+<td>62</td>
+<td><code>62-gpu-support.md</code></td>
+<td>GPU Desteği</td>
+</tr>
+</tbody>
+</table>
+<h2>9. Geçiş Rehberleri</h2>
+<table>
+<thead>
+<tr>
+<th>Ders</th>
+<th>Dosya</th>
+<th>Konu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>63</td>
+<td><code>63-migration-pandas.md</code></td>
+<td>Pandas'tan Geçiş</td>
+</tr>
+<tr>
+<td>64</td>
+<td><code>64-migration-spark.md</code></td>
+<td>Apache Spark'tan Geçiş</td>
+</tr>
+</tbody>
+</table>
+<h2>10. Çeşitli (Misc)</h2>
+<table>
+<thead>
+<tr>
+<th>Ders</th>
+<th>Dosya</th>
+<th>Konu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>65</td>
+<td><code>65-ecosystem.md</code></td>
+<td>Ekosistem</td>
+</tr>
+<tr>
+<td>66</td>
+<td><code>66-multiprocessing.md</code></td>
+<td>Çoklu İşlem (Multiprocessing)</td>
+</tr>
+<tr>
+<td>67</td>
+<td><code>67-visualization.md</code></td>
+<td>Görselleştirme</td>
+</tr>
+<tr>
+<td>68</td>
+<td><code>68-styling.md</code></td>
+<td>Stil Verme (Styling)</td>
+</tr>
+<tr>
+<td>69</td>
+<td><code>69-comparison.md</code></td>
+<td>Diğer Araçlarla Karşılaştırma</td>
+</tr>
+<tr>
+<td>70</td>
+<td><code>70-arrow.md</code></td>
+<td>Arrow Üretici/Tüketici</td>
+</tr>
+<tr>
+<td>71</td>
+<td><code>71-polars-llms.md</code></td>
+<td>LLM'ler ile Polars Kodu Üretme</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h1>Kaynak:</h1>
 <ul>
-<li><a href="polars-0301-veri-tipleri.html">Veri Tipleri</a></li>
-<li><a href="polars-0302-veri-yapilari.html">Veri Yapıları</a></li>
-<li><a href="polars-0303-baglamlar.html">Bağlamlar</a></li>
-<li><a href="polars-0304-ifadeler.html">İfadeler</a></li>
-<li>Tembel / İstekli API</li>
-<li>Akış API'sı</li>
+<li><a href="https://docs.pola.rs/">Polars Kullanım Kılavuzu - Polars User Guide </a></li>
 </ul>
-<p><strong>İfadeler</strong></p>
-<ul>
-<li>Temel Operatörler</li>
-<li>Fonksiyonlar</li>
-<li>Çevrim (Casting)</li>
-<li>Diziler (Strings)</li>
-<li>Kümeleme (# Aggregation)</li>
-<li>Kayıp Veri</li>
-<li>Pencere Fonksiyonları</li>
-<li>Katlamalar / Kıvrımlar (Folds)</li>
-<li>Listeler ve Diziler</li>
-<li>Kullanıcı Tanımlı Fonksiyonlar</li>
-<li>Numpy</li>
-</ul>
-<p><strong>Dönüşümler</strong></p>
-<ul>
-<li>Birleştirmeler (Joins)</li>
-<li>Birleştirmeler (Concatenation)</li>
-<li>Özet Tablolar (Pivots)</li>
-<li>Eritmeler (Melts)</li>
-<li>Zaman Serileri</li>
-<li>Ayrıştırma (Parsing)</li>
-<li>Filtreleme</li>
-<li>Gruplama</li>
-<li>Yeniden Örnekleme</li>
-<li>Zaman dilimleri</li>
-</ul>
-<p><strong>Tembel API</strong></p>
-<ul>
-<li>Kullanım</li>
-<li>Optimizasyon</li>
-<li>Şema</li>
-<li>Sorgu Planı</li>
-<li>Sorgu yürütme</li>
-</ul>
-<p><strong>IO (Girdi / Çıktı)</strong></p>
-<ul>
-<li>CSV</li>
-<li>Parquet</li>
-<li>JSON dosyaları</li>
-<li>Çoklu</li>
-<li>Veritabanları</li>
-<li>AWS</li>
-<li>Google BigQuery</li>
-</ul>
-<p><strong>SQL</strong></p>
-<ul>
-<li>Giriş</li>
-<li>SHOW TABLES (TABLOLARI GÖSTER)</li>
-<li>SELECT (SEÇİM / SEÇMEK)</li>
-<li>CREATE (OLUŞTUR)</li>
-<li>Ortak Tablo İfadeleri</li>
-</ul>
-<p><strong>Taşıma / Göç</strong></p>
-<ul>
-<li>Pandas'tan Gelenler</li>
-<li>Apache Spark'tan Gelenler</li>
-</ul>
-<p><strong>Çeşitli</strong></p>
-<ul>
-<li>Çoklu İşlem (Multiprocessing)</li>
-<li>Alternatifler</li>
-<li>Başvuru Kılavuzları</li>
-<li>Katkı</li>
-</ul>
-<h2>Kaynak:</h2>
-<p><a href="https://www.pola.rs/">Polars Kullanım Kılavuzu - Polars User Guide </a></p>
 
 		<span class="post-tags">
 			Tags:

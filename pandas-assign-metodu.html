@@ -11,7 +11,6 @@
 	<meta property="og:title" content="Pandas - assign Metodu" />
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content="/pandas-assign-metodu.html" />
-		<meta property="og:image" content="/images/avatar.png" />
 
 		<!-- Enable responsiveness on mobile devices-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -129,7 +128,7 @@
 <p><strong>Örnek 1: Sabit Bir Değerle Yeni Sütun Ekleme</strong></p>
 <p>Bu, en basit kullanımdır. DataFrame'deki her satır için aynı değeri taşıyan bir sütun ekleriz.</p>
 <p>Diyelim ki, sadece 'A' sütunu olan bir <code>DataFrame</code>'imiz var.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="n">a</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]})</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 
@@ -202,7 +201,7 @@
 <p>Bu kod, <strong>"Zamlı_Maas"</strong> adında yeni bir sütun oluşturur. Bu sütundaki her değer, mevcut "Maas" sütunundaki değerin %10 artırılmasıyla hesaplanır.</p>
 <p><strong>Sütunları Çarpma Örneği:</strong></p>
 <p>'A' ve 'B' sütunlarının çarpımını içeren yeni bir 'C' sütunu ekleyelim:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="n">a</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]})</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>

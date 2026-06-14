@@ -11,7 +11,6 @@
 	<meta property="og:title" content="Pandas - concat" />
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content="/pandas-concat.html" />
-		<meta property="og:image" content="/images/avatar.png" />
 
 		<!-- Enable responsiveness on mobile devices-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -723,8 +722,8 @@
 <p>Bu parametre, birleştirme işlemi esnasında index değerlerinin orijinal değerlerinin tutulması ya da birleştirilme sonrası yeni index değeri atanması için kullanılır.</p>
 <p>Mevcut klasördeki tüm CSV uzantılı dosyaları hem <code>ignore_index</code></p>
 <p>parametresi kullanarak hemde kullanmadan birleştirelim.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">glob</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">glob</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="n">dosyalar</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;*.csv&quot;</span><span class="p">)</span>
 
@@ -747,8 +746,8 @@
 
 <p><code>ignore_index</code> Parametresi kullanılmadan birleştirme yapıldığında, index değerleri, her dosyada olduğu gibi kalır. </p>
 <p><code>ignore_index</code> Parametresini kullanarak birleştirme işlemi sonucuna bakalım;</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">glob</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">glob</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="n">dosyalar</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;*.csv&quot;</span><span class="p">)</span>
 

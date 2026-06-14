@@ -11,7 +11,6 @@
 	<meta property="og:title" content="Düzenli İfadeler - Metakarakterler" />
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content="/duzenli-ifadeler-metakarakterler.html" />
-		<meta property="og:image" content="/images/avatar.png" />
 
 		<!-- Enable responsiveness on mobile devices-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -83,7 +82,7 @@
 <p>İlk inceleyeceğimiz metakarakterlerden biri Köşeli Parantez <code>[ ]</code> sembolüdür. 
 Python, <strong>köşeli parantez içinde gördüğü bütün karakterleri tek tek liste öğelerine uygular.</strong></p>
 <p>Şimdi aşağıdaki listeden <strong>özcan</strong>, <strong>özhan</strong> ve <strong>özkan</strong> öğelerini bu sembolden yararlanarak nasıl ayıklayacağımızı görelim:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 
 <span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;özcan&quot;</span><span class="p">,</span> <span class="s2">&quot;mehmet&quot;</span><span class="p">,</span> <span class="s2">&quot;süleyman&quot;</span><span class="p">,</span> <span class="s2">&quot;selim&quot;</span><span class="p">,</span> <span class="s2">&quot;kemal&quot;</span><span class="p">,</span> <span class="s2">&quot;özkan&quot;</span><span class="p">,</span> <span class="s2">&quot;esra&quot;</span><span class="p">,</span> <span class="s2">&quot;dündar&quot;</span><span class="p">,</span> <span class="s2">&quot;esin&quot;</span><span class="p">,</span> <span class="s2">&quot;esma&quot;</span><span class="p">,</span> <span class="s2">&quot;özhan&quot;</span><span class="p">,</span> 
          <span class="s2">&quot;özlem&quot;</span><span class="p">]</span>
@@ -363,7 +362,7 @@ AY54
 
 <p>Bu kodlarda düzenli ifade kalıbının sonuna <code>.*</code> sembolünü eklediğimize dikkat edin. Böylelikle metodumuzun sonu herhangi bir şekilde biten öğeleri bize vermesini sağladık.</p>
 <p>Bir örnek daha yapalım. Bu kez elimde bir liste değil, çok satırlı String ifadesi (metin)  olsun.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 
 <span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">Guido Van Rossum Python&#39;ı geliştirmeye 1990 yılında başlamış... Yani aslında Python için nispeten yeni</span>
@@ -420,7 +419,7 @@ AY54
 <p>Bu ölçütlere uymayan tek öğe “1agAY54” olacaktır. Dolayısıyla bu öğe çıktıda görünmez.</p>
 <p>Burada, <code>^</code> işaretinin nasıl kullanıldığına ve küçük harfleri nasıl dışarıda bıraktığına dikkat edin. Unutmayalım, bu <code>^</code> işaretinin <strong>hariç</strong> anlamı sadece <code>[]</code> metakarakterinin içinde kullanıldığı zaman geçerlidir.</p>
 <p><code>^</code> metakarakterinin <code>findall</code> fonksiyonu ile çok satırlı / paragraflı metin içinde kullanımına bir örnek verelim.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 <span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Python (C, C++, Perl, Ruby ve benzerleri gibi) bir programlama dilidir ve tıpkı öteki programlama dilleri gibi, önünüzde duran kara kutuya, yani bilgisayara hükmetmenizi sağlar.</span>
 <span class="s2">Bu programlama dili Guido Van Rossum adlı Hollandalı bir programcı tarafından 90’lı yılların başında geliştirilmeye başlanmıştır. Çoğu insan, isminin Python olmasına aldanarak, bu programlama dilinin, adını piton yılanından aldığını düşünür.</span>
 <span class="s2">Peki neden piyasada iki farklı Python sürümü var ve bu bizim için ne anlama geliyor?</span>
@@ -470,7 +469,7 @@ atkı
 
 <p>Gördüğünüz gibi, <code>^</code> işareti bir karakter dizisinin nasıl başlayacağını belirlerken, <code>$</code> işareti aynı karakter dizisinin nasıl biteceğini belirliyor. </p>
 <p>Başka bir örnekle devam edelim. Bu defa  <strong>liste</strong> veri tipi yerine <strong>dizgi/dize (string)</strong> veri tipi kullanalım. Elimizde aşağıdaki şekilde bir metin olduğunu düşünerek <code>$</code> metakarakterini inceleyelim.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 
 <span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Python (C, C++, Perl, Ruby ve benzerleri gibi) bir programlama dilidir ve tıpkı öteki programlama dilleri gibi, önünüzde duran kara kutuya, yani bilgisayara hükmetmenizi sağlar.</span>
 <span class="s2">Bu programlama dili Guido Van Rossum adlı Hollandalı bir programcı tarafından 90’lı yılların başında geliştirilmeye başlanmıştır. Çoğu insan, isminin Python olmasına aldanarak, bu programlama dilinin, adını piton yılanından aldığını düşünür. </span>

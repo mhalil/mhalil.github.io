@@ -11,7 +11,6 @@
 	<meta property="og:title" content="Düzenli İfadeler - subn" />
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content="/duzenli-ifadeler-subn.html" />
-		<meta property="og:image" content="/images/avatar.png" />
 
 		<!-- Enable responsiveness on mobile devices-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -81,7 +80,7 @@
 <h1>subn() Fonksiyonu</h1>
 <p>Bu metodu çok kısa bir şekilde anlatıp geçeceğiz. Çünkü bu metot <code>sub()</code> metoduyla neredeyse tamamen aynıdır. Tek farkı, <code>subn()</code> metodunun bir metin içinde yapılan değişiklik sayısını da göstermesidir. Yani bu metodu kullanarak, kullanıcılarınıza <strong>“toplam şu kadar sayıda değişiklik yapılmıştır”</strong> şeklinde bir bilgi verebilirsiniz. Bu metot çıktı olarak iki öğeli bir demet verir. </p>
 <p><strong>Birinci öğe değiştirilen metin, ikinci öğe ise yapılan değişiklik sayısıdır</strong>. Yani kullanıcıya değişiklik sayısını göstermek için yapmanız gereken şey, bu demetin ikinci öğesini almaktır. </p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 
 <span class="n">txt</span> <span class="o">=</span> <span class="s2">&quot;Yaz Yaz Yaz Bir Kenara Yaz&quot;</span>
 <span class="n">say</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">subn</span><span class="p">(</span><span class="s2">&quot;Yaz&quot;</span><span class="p">,</span> <span class="s2">&quot;Çiz&quot;</span><span class="p">,</span> <span class="n">txt</span><span class="p">)</span>
@@ -93,7 +92,7 @@
 </code></pre></div>
 
 <p>Sadece<strong> kaç adet değişiklik yapıldığını</strong> görmek istersek kodu şu şekilde kullanabiliriz;</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 
 <span class="n">txt</span> <span class="o">=</span> <span class="s2">&quot;Yaz Yaz Yaz Bir Kenara Yaz&quot;</span>
 <span class="n">say</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">subn</span><span class="p">(</span><span class="s2">&quot;Yaz&quot;</span><span class="p">,</span> <span class="s2">&quot;Çiz&quot;</span><span class="p">,</span> <span class="n">txt</span><span class="p">)</span>
@@ -105,7 +104,7 @@
 </code></pre></div>
 
 <p><code>sub()</code> metodunu anlatırken verdiğimiz örnekteki kodların son satırını aşağıdaki gibi değiştirerek metinde toplam kaç adet değişiklik yaptığımızı görebiliriz.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 
 <span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Karadeniz Ereğlisi denince akla ilk olarak kömür ve demir-çelik</span>
 <span class="s2">gelir. Kokusu ve tadıyla dünyaya nam salmış meşhur Osmanlı çileği ise ismini</span>
@@ -126,7 +125,7 @@
 
 <span class="n">derle</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;çile[kğ]&quot;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">degistir</span><span class="p">(</span><span class="n">nesne</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">degistir</span><span class="p">(</span><span class="n">nesne</span><span class="p">):</span>
     <span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;çileğ&quot;</span><span class="p">:</span><span class="s2">&quot;eriğ&quot;</span><span class="p">,</span> <span class="s2">&quot;Çileğ&quot;</span><span class="p">:</span><span class="s2">&quot;Eriğ&quot;</span><span class="p">,</span> <span class="s2">&quot;Çilek&quot;</span><span class="p">:</span><span class="s2">&quot;Erik&quot;</span><span class="p">,</span> <span class="s2">&quot;çilek&quot;</span><span class="p">:</span><span class="s2">&quot;erik&quot;</span><span class="p">}</span>
     <span class="n">b</span> <span class="o">=</span> <span class="n">nesne</span><span class="o">.</span><span class="n">group</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">b</span><span class="p">:</span>

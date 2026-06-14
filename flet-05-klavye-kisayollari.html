@@ -11,7 +11,6 @@
 	<meta property="og:title" content="Flet 05 - Klavye Kısayolları" />
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content="/flet-05-klavye-kisayollari.html" />
-		<meta property="og:image" content="/images/avatar.png" />
 
 		<!-- Enable responsiveness on mobile devices-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -99,10 +98,10 @@
 </li>
 </ul>
 <p>Basit bir kullanım örneği görelim:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">flet</span> <span class="k">as</span> <span class="nn">ft</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">flet</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ft</span>
 
-<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">page</span><span class="p">:</span> <span class="n">ft</span><span class="o">.</span><span class="n">Page</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">on_keyboard</span><span class="p">(</span><span class="n">e</span><span class="p">:</span> <span class="n">ft</span><span class="o">.</span><span class="n">KeyboardEvent</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">page</span><span class="p">:</span> <span class="n">ft</span><span class="o">.</span><span class="n">Page</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_keyboard</span><span class="p">(</span><span class="n">e</span><span class="p">:</span> <span class="n">ft</span><span class="o">.</span><span class="n">KeyboardEvent</span><span class="p">):</span>
         <span class="n">page</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
             <span class="n">ft</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span>
                 <span class="sa">f</span><span class="s2">&quot;Key: </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">key</span><span class="si">}</span><span class="s2">, Shift: </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">shift</span><span class="si">}</span><span class="s2">, Control: </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">ctrl</span><span class="si">}</span><span class="s2">, Alt: </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">alt</span><span class="si">}</span><span class="s2">, Meta: </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">meta</span><span class="si">}</span><span class="s2">&quot;</span>

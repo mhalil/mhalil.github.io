@@ -11,7 +11,6 @@
 	<meta property="og:title" content="Pandas - read_csv" />
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content="/pandas-read_csv.html" />
-		<meta property="og:image" content="/images/avatar.png" />
 
 		<!-- Enable responsiveness on mobile devices-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -195,7 +194,7 @@
 <h3><code>header</code> parametresi</h3>
 <p><code>read_csv ()</code> fonksiyonu, CSV dosyasındaki ilk satırı varsayılan olarak bir başlık kabul eder ve bunu Veri Çerçevesi (DataFrame) sütun adları olarak kullanır. CSV dosyasındaki  ilk satırın başlık değil, bir veri olduğu düşünüldüğünde, yani sadece verilerden oluşan CSV dosyası ile çalıştığımızda, <code>header=None</code> parametresi kullanılmalıdır. </p>
 <p>İlk olarak bir CSV dosyasını çalışmamıza dahil edip içeriğine bakalım.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="n">basliksiz</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/basliksiz.csv&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">basliksiz</span>
@@ -353,7 +352,7 @@
 </code></pre></div>
 
 <p>Elimizde, yukarıdaki gibi <code>|</code> pipe karakteri ile ayrılmış verilerden oluşan bir csv dosyası olduğunu düşünürsek, <code>read_csv()</code> metodunun <code>sep</code> ya da <code>delimiter</code> parametresini <code>|</code> pipe karakteri ile işaret etmemiz gerekir.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="n">baslik</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Birler&quot;</span><span class="p">,</span> <span class="s2">&quot;Onlar&quot;</span><span class="p">,</span> <span class="s2">&quot;Yüzler&quot;</span><span class="p">]</span>
 
@@ -374,7 +373,7 @@
 
 <h3><code>index_col</code> Parametresi</h3>
 <p><code>index_col</code> parametresini anlatmak için <strong>nba.csv</strong> isimli dosyasınının içeriğini çalışmamıza aktarıp, veri çerçevesine dönüştürelim;</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="n">nba_csv</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/nba.csv&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">nba_csv</span><span class="p">)</span>
 </code></pre></div>
@@ -549,7 +548,7 @@
 <h2>F-String ile Veri Biçimlendirmek</h2>
 <h3>Ondalık Ayırıcı</h3>
 <p>CSV dosyası okurken birlikte kullanılabilecek pek çok parametre vardır. Kodun okunurluğunu artırmak adına aşağıdaki gibi farklı yazım tarzı da kullanılabilir. Bir örnekle açıklayalım.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="n">df</span> <span class="o">=</span> <span class="p">(</span><span class="n">pd</span>
         <span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;nba.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s2">&quot;Name&quot;</span><span class="p">)</span>
@@ -595,7 +594,7 @@
 <h3>Binlik Ayırıcı</h3>
 <p>Bir de <strong>Salary (Maaş)</strong> bilgilerine göre sıralama yapalım ve <strong>binlik ayırıcıyı</strong> görelim.</p>
 <p>Maaş ortalamalarına göre en yüksek 15 Takım bilgisini görelim;</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="n">df</span> <span class="o">=</span> <span class="p">(</span><span class="n">pd</span>
         <span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;nba.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s2">&quot;Name&quot;</span><span class="p">)</span>
@@ -628,7 +627,7 @@
 </code></pre></div>
 
 <p>Ondalık ayırıcı 2 basamakla sınırlandırıldı ancak binlik ayırıcı ayarlanmadı. O nedenle ücretlerin okunması zor. Kodun <code>.map(lambda x: f"${x:.2f}"</code> kısmında <code>.2f</code> 'ten önce  virgül konulursa <code>.map(lambda x: f"${x:,.2f}"</code> binlik ayırıcı olarak virgül belirlenmiş olur. <code>f"${x:,.2f}</code> ifadeki <code>$</code> ifadesi ise değerin önüne dolar sembolü ($) eklemek için kullanılır. `Kodu ve çıktısını görelim;</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="n">df</span> <span class="o">=</span> <span class="p">(</span><span class="n">pd</span>
         <span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;nba.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s2">&quot;Name&quot;</span><span class="p">)</span>
@@ -662,7 +661,7 @@
 
 <p>Görüldüğü gibi, maaşın binlik kısımları virgül ile ayrılmı oldu ve okunurluğu kolaylaştırıldı.</p>
 <p>İstersek Binlik ayırıcı olarak virgül <code>,</code> yerine alt çizgi <code>_</code> karakteri de kullanılabilir.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="n">df</span> <span class="o">=</span> <span class="p">(</span><span class="n">pd</span>
         <span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;nba.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s2">&quot;Name&quot;</span><span class="p">)</span>

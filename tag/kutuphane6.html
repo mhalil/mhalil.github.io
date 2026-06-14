@@ -11,7 +11,7 @@
 			<meta property="og:title" content="mhalil - Programlama ve 3D" />
 			<meta property="og:type" content="website" />
 			<meta property="og:url" content="" />
-		<meta property="og:image" content="/images/avatar.png" />
+            <meta property="og:image" content="/images/avatar.png" />
 
 		<!-- Enable responsiveness on mobile devices-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -76,6 +76,204 @@
 </div>		<div class="content container">
 	<div class="posts">
 			<div class="post">
+				<h1 class="post-title" href="/pyautogui.html">
+					<a href="/pyautogui.html">PyAutoGUI</a>
+				</h1>
+				<span class="post-date">Cts 15 Nisan 2023</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pyautogui.html">PyAutoGUI</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>PyAutoGUI Kütüphanesi</h1>
+<p><strong>PyAutoGUI</strong>, fare ve klavyeleri kontrol etmemizi sağlayan, böylece otomatik görevler yapan kodlar/botlar yazmamıza yardımcı olan güzel, faydalı bir Python kütüphanesidir (modülüdür).</p>
+<p><img alt="pyautogui" src="../images/python/pyautogui/pyautogui.png"></p>
+<p><strong>PyAutoGUI</strong> kütüphanesi ile aşağıda listelenen işlemleri yapabiliriz;</p>
+<ul>
+<li>İmleci hareket ettirme,</li>
+<li>İstenilen yere tek, çift ya da daha fazla tıklama,</li>
+<li>Pencere, diyalog kutusu taşıma, kaydırma çubuğunu  hareket …</li></ul>
+				</p>
+				<a class="read-more" href="/pyautogui.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="/pandas-12-operator-kullanimi.html">
+					<a href="/pandas-12-operator-kullanimi.html">Pandas 12 - Operator Kullanımı</a>
+				</h1>
+				<span class="post-date">Prş 28 Temmuz 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>Operator Kullanımı</h1>
+<h2>Atama Operatorleri</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+</code></pre></div>
+
+<h1>Aritmetik İşlem Operatörleri</h1>
+<h2>sum() Metodu</h2>
+<p>Python'dan kullanmaya aşina olduğumuz <strong>sum()</strong> fonksiyonu, Pandas içerisinde metot olarak bulunuyor.
+Yani Python'da <strong>sum()</strong> fonksiyonuna parametre olarak değişken veriyorduk. </p>
+<p>(Ör. <strong>sum(liste)</strong>).
+Pandasta ise veri çerçevesi adının sonuna metot olarak ekliyoruz. </p>
+<p>(Ör. <strong>VeriCercevesi.sum()</strong>)
+Örneklerle inceleyelim.</p>
+<div class="highlight"><pre><span></span><code><span class="n">baslik …</span></code></pre></div>
+				</p>
+				<a class="read-more" href="/pandas-12-operator-kullanimi.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="/pandas-bolme-operatoru.html">
+					<a href="/pandas-bolme-operatoru.html">Pandas - Bölme Operatörü</a>
+				</h1>
+				<span class="post-date">Prş 28 Temmuz 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/operator.html">Operatör</a></li>
+								<li><a href="/tag/bolme.html">bölme</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>/ (Bölme) Operatörü</h1>
+<p>İki sütun verisini <code>/</code> <strong>bölme operatörü</strong> ile bölebiliriz.</p>
+<div class="highlight"><pre><span></span><code><span class="n">baslik</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Birler&quot;</span><span class="p">,</span> <span class="s2">&quot;Onlar&quot;</span><span class="p">,</span> <span class="s2">&quot;Yüzler&quot;</span><span class="p">]</span>
+<span class="n">basliksiz</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/basliksiz.ods&quot;</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">names</span> <span class="o">=</span> <span class="n">baslik</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">basliksiz</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Birler</th>
+<th>Onlar</th>
+<th>Yüzler</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>9</td>
+<td>82</td>
+<td>246</td>
+</tr>
+<tr>
+<td>1</td>
+<td>7</td>
+<td>78</td>
+<td>180</td>
+</tr>
+<tr>
+<td>2</td>
+<td>8</td>
+<td>83</td>
+<td>565</td>
+</tr>
+<tr>
+<td>3</td>
+<td>6</td>
+<td>82</td>
+<td>486</td>
+</tr>
+<tr>
+<td>4</td>
+<td>4</td>
+<td>37</td>
+<td>615</td>
+</tr>
+<tr>
+<td>5</td>
+<td>2 …</td></tr></tbody></table>
+				</p>
+				<a class="read-more" href="/pandas-bolme-operatoru.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="/pandas-carpma-operatoru.html">
+					<a href="/pandas-carpma-operatoru.html">Pandas - Çarpma Operatörü</a>
+				</h1>
+				<span class="post-date">Prş 28 Temmuz 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/operator.html">Operatör</a></li>
+								<li><a href="/tag/carpma.html">çarpma</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>* (Çarpma) Operatörü</h1>
+<p>İki sütun verisini <code>*</code> <strong>çarpma operatörü</strong> ile çarpabiliriz.</p>
+<div class="highlight"><pre><span></span><code><span class="n">baslik</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Birler&quot;</span><span class="p">,</span> <span class="s2">&quot;Onlar&quot;</span><span class="p">,</span> <span class="s2">&quot;Yüzler&quot;</span><span class="p">]</span>
+<span class="n">basliksiz</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/basliksiz.ods&quot;</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">names</span> <span class="o">=</span> <span class="n">baslik</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">basliksiz</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Birler</th>
+<th>Onlar</th>
+<th>Yüzler</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>9</td>
+<td>82</td>
+<td>246</td>
+</tr>
+<tr>
+<td>1</td>
+<td>7</td>
+<td>78</td>
+<td>180</td>
+</tr>
+<tr>
+<td>2</td>
+<td>8</td>
+<td>83</td>
+<td>565</td>
+</tr>
+<tr>
+<td>3</td>
+<td>6</td>
+<td>82</td>
+<td>486</td>
+</tr>
+<tr>
+<td>4</td>
+<td>4</td>
+<td>37</td>
+<td>615</td>
+</tr>
+<tr>
+<td>5</td>
+<td>2 …</td></tr></tbody></table>
+				</p>
+				<a class="read-more" href="/pandas-carpma-operatoru.html">Continue reading »</a>
+			</div>
+			<div class="post">
 				<h1 class="post-title" href="/pandas-cikarma-operatoru.html">
 					<a href="/pandas-cikarma-operatoru.html">Pandas - Çıkarma Operatörü</a>
 				</h1>
@@ -139,7 +337,7 @@
 <td>37</td>
 <td>615 …</td></tr></tbody></table>
 				</p>
-				<a class="read-more" href="pandas-cikarma-operatoru.html">Continue reading »</a>
+				<a class="read-more" href="/pandas-cikarma-operatoru.html">Continue reading »</a>
 			</div>
 			<div class="post">
 				<h1 class="post-title" href="/pandas-mean.html">
@@ -205,7 +403,7 @@
 <td>4</td>
 <td>37 …</td></tr></tbody></table>
 				</p>
-				<a class="read-more" href="pandas-mean.html">Continue reading »</a>
+				<a class="read-more" href="/pandas-mean.html">Continue reading »</a>
 			</div>
 			<div class="post">
 				<h1 class="post-title" href="/pandas-sum-operatoru.html">
@@ -233,7 +431,7 @@ Pandasta ise veri çerçevesi adının sonuna metot olarak ekliyoruz.  (Ör. <co
 <div class="highlight"><pre><span></span><code><span class="n">baslik</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Birler&quot;</span><span class="p">,</span> <span class="s2">&quot;Onlar&quot;</span><span class="p">,</span> <span class="s2">&quot;Yüzler&quot;</span><span class="p">]</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel …</span></code></pre></div>
 				</p>
-				<a class="read-more" href="pandas-sum-operatoru.html">Continue reading »</a>
+				<a class="read-more" href="/pandas-sum-operatoru.html">Continue reading »</a>
 			</div>
 			<div class="post">
 				<h1 class="post-title" href="/pandas-toplama-operatoru.html">
@@ -303,7 +501,27 @@ Pandasta ise veri çerçevesi adının sonuna metot olarak ekliyoruz.  (Ör. <co
 <td>5</td>
 <td>2 …</td></tr></tbody></table>
 				</p>
-				<a class="read-more" href="pandas-toplama-operatoru.html">Continue reading »</a>
+				<a class="read-more" href="/pandas-toplama-operatoru.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="/pandas-11-melt-fonksiyonunun-kullanimi.html">
+					<a href="/pandas-11-melt-fonksiyonunun-kullanimi.html">Pandas 11 - melt() Fonksiyonunun Kullanımı</a>
+				</h1>
+				<span class="post-date">Cum 22 Temmuz 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>Pandas Melt Fonksiyonuyla Verilerinizi Yeniden Şekillendirin</h1>
+<p>Bu bölümde, Pandas'ın <code>melt()</code> fonksiyonunun nasıl kullanacağını öğreneceğiz. <code>pd.melt() fonksiyonu, bir Pandas yapısını geniş formattan uzun formata yeniden şekillendirmek için kullanılır.</code> Bunun anlamı, bir veya daha fazla sütunun <strong>tanımlayıcı</strong> olarak kullanılması ve diğer tüm sütunların değer olarak kullanılmasıdır. Kısacası bu fonksiyon, Veri Çerçevenizi …</p>
+				</p>
+				<a class="read-more" href="/pandas-11-melt-fonksiyonunun-kullanimi.html">Continue reading »</a>
 			</div>
 			<div class="post">
 				<h1 class="post-title" href="/pandas-melt.html">
@@ -328,248 +546,7 @@ Pandasta ise veri çerçevesi adının sonuna metot olarak ekliyoruz.  (Ör. <co
 					<h1>Pandas Melt Fonksiyonuyla Verilerinizi Yeniden Şekillendirin</h1>
 <p>Bu bölümde, Pandas'ın <code>melt()</code> fonksiyonunun nasıl kullanacağını öğreneceğiz. <code>pd.melt() fonksiyonu, bir Pandas yapısını geniş formattan uzun formata yeniden şekillendirmek için kullanılır.</code> Bunun anlamı, bir veya daha fazla sütunun <strong>tanımlayıcı</strong> olarak kullanılması ve diğer tüm sütunların değer olarak kullanılmasıdır. Kısacası bu fonksiyon, Veri Çerçevenizi …</p>
 				</p>
-				<a class="read-more" href="pandas-melt.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="/pandas-pivot_table.html">
-					<a href="/pandas-pivot_table.html">Pandas - pivot_table()</a>
-				</h1>
-				<span class="post-date">Sal 19 Temmuz 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/pandas.html">Pandas</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
-								<li><a href="/tag/pivot.html">pivot</a></li>
-								<li><a href="/tag/table.html">table</a></li>
-								<li><a href="/tag/pivot_table.html">pivot_table</a></li>
-								<li><a href="/tag/values.html">values</a></li>
-								<li><a href="/tag/index.html">index</a></li>
-								<li><a href="/tag/columns.html">columns</a></li>
-								<li><a href="/tag/aggfunc.html">aggfunc</a></li>
-								<li><a href="/tag/mean.html">mean</a></li>
-								<li><a href="/tag/fill_value.html">fill_value</a></li>
-								<li><a href="/tag/margins.html">margins</a></li>
-								<li><a href="/tag/margins_name.html">margins_name</a></li>
-								<li><a href="/tag/sort.html">sort</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1>Pandas'ta Pivot Table (Özet Tablo) Fonksiyonunun Kullanımı</h1>
-<p>Verilerinize ilişkin özet tablola oluşturmak konusunda, Excel'deki pivot tablolara aşina olabilirsiniz. Burada, <code>.pivot_table()</code> metodunu kullanarak Python ve Pandas'ta nasıl pivot (özet) tablolar oluşturacağımızı öğreneceğiz. </p>
-<p>Pivot Tablolar, verileri hızlı bir şekilde özetleyebilmek, verilerinizin nasıl göründüğüne dair bir fikir edinebilmek için önemli bir beceridir. Fonksiyon …</p>
-				</p>
-				<a class="read-more" href="pandas-pivot_table.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="/pandas-groupby.html">
-					<a href="/pandas-groupby.html">Pandas - groupby</a>
-				</h1>
-				<span class="post-date">Paz 17 Temmuz 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/pandas.html">Pandas</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
-								<li><a href="/tag/grup.html">Grup</a></li>
-								<li><a href="/tag/groupby.html">groupby</a></li>
-								<li><a href="/tag/mean.html">mean</a></li>
-								<li><a href="/tag/max.html">max</a></li>
-								<li><a href="/tag/min.html">min</a></li>
-								<li><a href="/tag/sort.html">sort</a></li>
-								<li><a href="/tag/count.html">count</a></li>
-								<li><a href="/tag/value_counts.html">value_counts</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1><code>groupby()</code> Metodu</h1>
-<p>Veri Çerçevemizde aynı isme ya da aynı değere sahip birden fazla veri bilgisi olabilir. Verileri gruplayarak, grupların toplam değerleri, ortalama değerleri, grupta kaç adet veri bulunduğu, gruptaki verilerden en küçük ya da en büyük verinin hangisi olduğu gibi pek çok bilgi edinmek için, <code>groupby()</code> metodundan yararlanacağız.</p>
-<p><code>groupby</code> fonksiyonu …</p>
-				</p>
-				<a class="read-more" href="pandas-groupby.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="/pandas-between.html">
-					<a href="/pandas-between.html">Pandas - Between</a>
-				</h1>
-				<span class="post-date">Cts 16 Temmuz 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/pandas.html">Pandas</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
-								<li><a href="/tag/filtre.html">Filtre</a></li>
-								<li><a href="/tag/between.html">Between</a></li>
-								<li><a href="/tag/fonksiyon.html">Fonksiyon</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1>between() Fonksiyonu</h1>
-<p>Bir sayısal aralık belirterek filtreleme yapmak istersek <code>between()</code> metodunu / fonksiyonunu kullanabiliriz.</p>
-<p>Örnek Veri çerçevemiz aşağıda görünmektedir.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="n">imdb</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/imdb.xlsx&quot;</span><span class="p">,</span> <span class="n">decimal</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">imdb</span><span class="p">)</span>
-</code></pre></div>
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th>Film_Adı</th>
-<th>Yıl</th>
-<th>Puan</th>
-<th>Oylayan_Kişi</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td>The Shawshank Redemption</td>
-<td>1994</td>
-<td>9.2</td>
-<td>1071904</td>
-</tr>
-<tr>
-<td>1</td>
-<td>The Godfather</td>
-<td>1972</td>
-<td>9.2</td>
-<td>751381 …</td></tr></tbody></table>
-				</p>
-				<a class="read-more" href="pandas-between.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="/pandas-buyukesit-operatoru.html">
-					<a href="/pandas-buyukesit-operatoru.html">Pandas - BüyükEşit Operatörü</a>
-				</h1>
-				<span class="post-date">Cts 16 Temmuz 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/pandas.html">Pandas</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
-								<li><a href="/tag/filtre.html">Filtre</a></li>
-								<li><a href="/tag/buyukesittir.html">BüyükEşittir</a></li>
-								<li><a href="/tag/operator.html">Operatör</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1>&gt;= (BüyükEşit)Operatörü</h1>
-<p>Örnek Veri çerçevemiz aşağıda görünmektedir.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="n">imdb</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/imdb.xlsx&quot;</span><span class="p">,</span> <span class="n">decimal</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">imdb</span><span class="p">)</span>
-</code></pre></div>
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th>Film_Adı</th>
-<th>Yıl</th>
-<th>Puan</th>
-<th>Oylayan_Kişi</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td>The Shawshank Redemption</td>
-<td>1994</td>
-<td>9.2</td>
-<td>1071904</td>
-</tr>
-<tr>
-<td>1</td>
-<td>The Godfather</td>
-<td>1972</td>
-<td>9.2</td>
-<td>751381</td>
-</tr>
-<tr>
-<td>2</td>
-<td>The Godfather: Part II</td>
-<td>1974</td>
-<td>9.0</td>
-<td>488889</td>
-</tr>
-<tr>
-<td>3</td>
-<td>Pulp …</td></tr></tbody></table>
-				</p>
-				<a class="read-more" href="pandas-buyukesit-operatoru.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="/pandas-buyuktur-operatoru.html">
-					<a href="/pandas-buyuktur-operatoru.html">Pandas - Büyüktür Operatörü</a>
-				</h1>
-				<span class="post-date">Cts 16 Temmuz 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/pandas.html">Pandas</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
-								<li><a href="/tag/filtre.html">Filtre</a></li>
-								<li><a href="/tag/buyuktur.html">Büyüktür</a></li>
-								<li><a href="/tag/operator.html">Operatör</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1>&gt; (Büyüktür) Operatörü</h1>
-<p>Örnek Veri çerçevemiz aşağıda görünmektedir.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="n">imdb</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/imdb.xlsx&quot;</span><span class="p">,</span> <span class="n">decimal</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">imdb</span><span class="p">)</span>
-</code></pre></div>
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th>Film_Adı</th>
-<th>Yıl</th>
-<th>Puan</th>
-<th>Oylayan_Kişi</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td>The Shawshank Redemption</td>
-<td>1994</td>
-<td>9.2</td>
-<td>1071904</td>
-</tr>
-<tr>
-<td>1</td>
-<td>The Godfather</td>
-<td>1972</td>
-<td>9.2</td>
-<td>751381</td>
-</tr>
-<tr>
-<td>2</td>
-<td>The Godfather: Part II</td>
-<td>1974</td>
-<td>9.0</td>
-<td>488889</td>
-</tr>
-<tr>
-<td>3</td>
-<td>Pulp …</td></tr></tbody></table>
-				</p>
-				<a class="read-more" href="pandas-buyuktur-operatoru.html">Continue reading »</a>
+				<a class="read-more" href="/pandas-melt.html">Continue reading »</a>
 			</div>
 	</div>
 	<div class="pagination">

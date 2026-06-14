@@ -11,7 +11,6 @@
 	<meta property="og:title" content="Pandas - apply" />
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content="/pandas-apply.html" />
-		<meta property="og:image" content="/images/avatar.png" />
 
 		<!-- Enable responsiveness on mobile devices-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -164,7 +163,7 @@
 </table>
 <h2>Kullanıcı Tanımlı Fonksiyon ile Kullanım</h2>
 <p>Yukarıdaki <strong>iş-meslek</strong> sütunundaki metinlerin büyük harfe dönüştürülmesi örneğini, bir de <code>apply()</code> fonksiyonu ile uygulayalım.</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">buyuk_harf</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">buyuk_harf</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">x</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">veri</span><span class="p">[</span><span class="s2">&quot;IŞ-MESLEK&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">buyuk_harf</span><span class="p">))</span>
@@ -261,7 +260,7 @@
 </tbody>
 </table>
 <p><strong>apply()</strong> Metodu ile alakalı farklı bir örnek yapalım. <strong>ilceler.txt</strong> isimli dosya içeriğini okuyup bir seriye dönüştürelim.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="n">dosya</span> <span class="o">=</span> <span class="s2">&quot;ilceler.txt&quot;</span>
 

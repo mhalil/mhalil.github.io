@@ -11,7 +11,6 @@
 	<meta property="og:title" content="Pandas - pivot_table()" />
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content="/pandas-pivot_table.html" />
-		<meta property="og:image" content="/images/avatar.png" />
 
 		<!-- Enable responsiveness on mobile devices-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -174,7 +173,7 @@
 </table>
 <p>Artık fonksiyonda bulunan parametreleri anladığınıza göre, veri setimizi yükleyelim ve verilerimizi keşfetmeye başlayalım.</p>
 <p>Bu eğitimi takip etmek için örnek bir Pandas Veri Çerçevesi (DataFrame) oluşturalım. DataFrame'i aşağııdaki GitHub sayfasındaki ilgili dosyadan <code>pd.read_excel()</code> işlevini kullanarak yükleyebiliriz. Ardından, <code>.head()</code> yöntemini kullanarak veri kümesinin ilk beş kaydını yazdırabiliriz.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;https://github.com/datagy/mediumdata/raw/master/sample_pivot.xlsx&#39;</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 </code></pre></div>
@@ -538,8 +537,8 @@ Bunu yapmak için, aşağıdaki gibi anahtar ve değer çifti biçiminde bir <st
 <p>Pandas, ayrıca özel bir fonksiyonu <code>.pivot_table()</code> fonksiyonu olarak kullanmanızı (pandas fonksiyonuna dönüştürmeyi) sağlar. Bu, ihtiyaçlarınıza göre özel olarak tasarlanmış analizlerle çalışma yeteneğimizi büyük ölçüde genişletir. Bir sütunun ortalamasını herhangi bir aykırı değer olmadan hesaplayan bir fonksiyona nasıl 
 dönüştürebileceğimizi görelim.</p>
 <p>Pandas, veri aralığındaki yüzdelerine göre seçmek istediğimiz bir dizi değeri tanımlamamıza izin veren bir <code>.quantiles()</code> yöntemiyle birlikte gelir. Diyelim ki, verilerin üst ve alt <strong>%10</strong>'unu kaldırarak bir sütunun ortalamasını hesaplamak istedik. Aşağıdaki fonksiyonu tanımlayabiliriz:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="k">def</span> <span class="nf">mean_no_outliers</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">mean_no_outliers</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
     <span class="n">no_outliers</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="n">quantile</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">])</span>
     <span class="n">mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">no_outliers</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">mean</span>
@@ -870,7 +869,7 @@ Bu etiketleri yeniden adlandırmak istiyorsanız, değerleri yeniden etiketlemek
 </table>
 <h2>Pandas Özet Tablosunda Eksik/Kayıp Verilerle Başa Çıkmak</h2>
 <p>Pandas hiçbir verinin olmadığı bir kesitle karşılaştığında, ortaya çıkan pivot tabloya bir <code>NaN</code> değeri ekler. DataFrame'imizi bazı eksik verileri içerecek şekilde değiştirelim:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Region&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;East&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Children&#39;s Clothing&quot;</span><span class="p">),</span> <span class="s1">&#39;Sales&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">NaN</span>
 
 <span class="n">pivot</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
@@ -927,7 +926,7 @@ Bu etiketleri yeniden adlandırmak istiyorsanız, değerleri yeniden etiketlemek
 </table>
 <h2>fill_value Parametresi</h2>
 <p>Özellikle teknik bilgisi olmayan kullanıcılar için bir <code>NaN</code> değeri görmek her zaman ideal olmayabilir. Bu nedenle Pandas, bu eksik veri noktalarını doldurmak için bir değer iletmenizi sağlayan <code>fill_value=</code> parametresini sunar. Örneğin, tüm bu <code>NaN</code> değerleri <strong>0</strong> ile doldurmak istersek, basitçe bu parametreyi ekleyebiliriz:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Region&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;East&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Children&#39;s Clothing&quot;</span><span class="p">),</span> <span class="s1">&#39;Sales&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">NaN</span>
 
 <span class="n">pivot</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>

@@ -11,7 +11,6 @@
 	<meta property="og:title" content="Flet 07 - Sürükle ve Bırak" />
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content="/flet-07-surukle-ve-birak.html" />
-		<meta property="og:image" content="/images/avatar.png" />
 
 		<!-- Enable responsiveness on mobile devices-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -80,12 +79,12 @@
 	<h1>Sürükle ve Bırak</h1>
 <p>Flet'te sürükle ve bırak mekanizması oldukça basittir - bir kullanıcı <a href="https://flet.dev/docs/controls/draggable">Sürüklenebilir (<code>Draggable</code>)</a> kontrolü sürüklemeye başlar ve onu <a href="https://flet.dev/docs/controls/dragtarget">SürüklemeHedefi (<code>DragTarget</code>)</a>'ne "bırakır". Hem sürüklenebilir öğe hem de sürüklenebilir hedef aynı <code>gruba (group)</code> sahipse, bir sürükleme hedefi <code>on_accept</code> olay işleyicisini çağırır ve sürüklenebilir kontrol kimliğini (ID) olay verisi olarak iletir. Bu durumda sürüklenebilir öğe, sürükle ve bırak işlemi için bir kaynak "veri" görevi görür.</p>
 <p>Aşağıdaki örneğe bir göz atalım. Aşağıdaki programda "<strong>1</strong>" olarak gösterilen <strong>sol</strong> kontrolü , "<strong>0</strong>" olarak gösterilen <strong>sağ</strong> kontrolün üzerine sürükleyebilirsiniz ve sürükleme işlemi tamamlandığında <strong>sol</strong> kontrol "<strong>0</strong>" ile değiştirilir ve <strong>sağ</strong> kontrol "<strong>1</strong>" olur:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">flet</span> <span class="k">as</span> <span class="nn">ft</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">flet</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ft</span>
 
-<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">page</span><span class="p">:</span> <span class="n">ft</span><span class="o">.</span><span class="n">Page</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">page</span><span class="p">:</span> <span class="n">ft</span><span class="o">.</span><span class="n">Page</span><span class="p">):</span>
     <span class="n">page</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Drag and Drop example&quot;</span>
 
-    <span class="k">def</span> <span class="nf">drag_accept</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">drag_accept</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
         <span class="c1"># get draggable (source) control by its ID</span>
         <span class="n">src</span> <span class="o">=</span> <span class="n">page</span><span class="o">.</span><span class="n">get_control</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">src_id</span><span class="p">)</span>
         <span class="c1"># update text inside draggable control</span>
@@ -161,12 +160,12 @@
 <p><img alt="drag-and-drop-number-2" src="https://flet.dev/img/docs/getting-started/drag-and-drop-number-2.gif"></p>
 <p>Sürükleme hedefi denetimi ayrıca, hedefe bir şey "bırakmak" için iyi bir zaman 
 geldiğinde daha iyi görselleştirmeye yardımcı olan <code>on_will_accept</code> ve <code>on_leave</code> olay işleyicilerine sahiptir. Gelen sürüklemeyi kabul etmeye hazır olduğunda, hedef kontrolün etrafına bir sınır çizmek için örneğimizde DragTarget'ı değiştirelim:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">flet</span> <span class="k">as</span> <span class="nn">ft</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">flet</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ft</span>
 
-<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">page</span><span class="p">:</span> <span class="n">ft</span><span class="o">.</span><span class="n">Page</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">page</span><span class="p">:</span> <span class="n">ft</span><span class="o">.</span><span class="n">Page</span><span class="p">):</span>
     <span class="n">page</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Drag and Drop example 2&quot;</span>
 
-    <span class="k">def</span> <span class="nf">drag_accept</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">drag_accept</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
         <span class="c1"># get draggable (source) control by its ID</span>
         <span class="n">src</span> <span class="o">=</span> <span class="n">page</span><span class="o">.</span><span class="n">get_control</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">src_id</span><span class="p">)</span>
         <span class="c1"># update text inside draggable control</span>
@@ -179,14 +178,14 @@ geldiğinde daha iyi görselleştirmeye yardımcı olan <code>on_will_accept</co
         <span class="n">e</span><span class="o">.</span><span class="n">control</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">border</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="n">page</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">drag_will_accept</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">drag_will_accept</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
         <span class="c1"># black border when it&#39;s allowed to drop and red when it&#39;s not</span>
         <span class="n">e</span><span class="o">.</span><span class="n">control</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">border</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">border</span><span class="o">.</span><span class="n">all</span><span class="p">(</span>
             <span class="mi">2</span><span class="p">,</span> <span class="n">ft</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">BLACK45</span> <span class="k">if</span> <span class="n">e</span><span class="o">.</span><span class="n">data</span> <span class="o">==</span> <span class="s2">&quot;true&quot;</span> <span class="k">else</span> <span class="n">ft</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">RED</span>
         <span class="p">)</span>
         <span class="n">e</span><span class="o">.</span><span class="n">control</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">drag_leave</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">drag_leave</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
         <span class="n">e</span><span class="o">.</span><span class="n">control</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">border</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="n">e</span><span class="o">.</span><span class="n">control</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
 

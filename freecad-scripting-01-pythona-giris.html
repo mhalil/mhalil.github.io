@@ -11,7 +11,6 @@
 	<meta property="og:title" content="FreeCAD - Scripting 01 - Python'a Giriş" />
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content="/freecad-scripting-01-pythona-giris.html" />
-		<meta property="og:image" content="/images/avatar.png" />
 
 		<!-- Enable responsiveness on mobile devices-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -302,7 +301,7 @@ Genellikle listelerle yapabileceklerinizi <strong>string</strong>lerle de yapabi
 <h2>Fonksiyonlar</h2>
 <p>Çok az <a href="https://docs.python.org/3/reference/lexical_analysis.html#identifiers">standart Python komutu</a> vardır ve bunların birçoğunu zaten biliyoruz. Ancak Python'da kendi komutlarınızı oluşturabilirsiniz. Aslında, Python kurulumunuza 
 ekleyebileceğiniz ek modüllerin çoğu tam da bunu yapar, kullanabileceğiniz komutlar eklerler. Python'da özel komuta, <strong>fonksiyon</strong> denir ve şu şekilde tanımlanır:</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">printmkare</span><span class="p">(</span><span class="n">deger</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">printmkare</span><span class="p">(</span><span class="n">deger</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">deger</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; metrekare&quot;</span><span class="p">)</span>
 
 <span class="n">printmkare</span><span class="p">(</span><span class="mi">45</span><span class="p">)</span>
@@ -315,7 +314,7 @@ ekleyebileceğiniz ek modüllerin çoğu tam da bunu yapar, kullanabileceğiniz 
 </code></pre></div>
 
 <p>bu kodu yazdığınızda bir hata oluşacaktır. Çünkü Fonksiyonumuz sadece bir argüman alacak şekilde programlandı, ancak iki adet argüman (45 ve aldı. Başka bir örnek deneyelim:</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">topla</span><span class="p">(</span><span class="n">deger1</span><span class="p">,</span> <span class="n">deger2</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">topla</span><span class="p">(</span><span class="n">deger1</span><span class="p">,</span> <span class="n">deger2</span><span class="p">):</span>
     <span class="n">toplam</span> <span class="o">=</span> <span class="n">deger1</span> <span class="o">+</span> <span class="n">deger2</span>
     <span class="k">return</span> <span class="n">toplam</span>
 
@@ -334,14 +333,14 @@ ekleyebileceğiniz ek modüllerin çoğu tam da bunu yapar, kullanabileceğiniz 
 <li>Mac OSX'te genellikle, <code>/Users/&lt;username&gt;/Library/Preferences/FreeCAD/Mod/</code>.</li>
 </ul>
 <p>Buraya <strong>scripts</strong> adında bir alt klasör ekleyelim ve ardından şöyle bir kod yazalım ve dosyayı buraya kaydedelim:</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">topla</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">topla</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;test.py dosyası başarılı bir şekilde yüklendi &quot;</span><span class="p">)</span>
 </code></pre></div>
 
 <p>Dosyayı <strong>scripts</strong> (komut dosyaları) klasörüne <code>test.py</code> ismiyle kaydedin ve yorumlayıcı penceresinde şunu yazın:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">test</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">test</span>
 </code></pre></div>
 
 <p><code>.py</code> uzantısı olmadan yazıldığına dikkat edin. Bu, dosyanın içeriğini sanki yorumlayıcıda yazmışız gibi satır satır çalıştırılacaktır. Toplama (sum) fonksiyonu oluşturulacak ve yorumlayıcı içerisine mesaj yazdırılacaktır. Bu yazdığımız gibi <code>fonksiyon</code> içeren dosyalara <code>modül</code> denir.</p>
@@ -356,7 +355,7 @@ ekleyebileceğiniz ek modüllerin çoğu tam da bunu yapar, kullanabileceğiniz 
 <p>Yani modül bir <code>container</code> olarak içe aktarılır ve tüm fonksiyonları o <code>konteyner</code>ın
  içindedir. Bu çok kullanışlıdır, çünkü birçok modülü içe aktarabilir ve her şeyi iyi organize edebiliriz. Temel olarak, aralarında bir nokta olan <code>bir_şey.başka_bir_şey</code> gördüğünüzde, bu, <code>başka_bir_şey</code>'in <code>bir_şey</code>'in içinde olduğu anlamına gelir.</p>
 <p>Ayrıca <code>topla()</code> fonksiyonumuzu doğrudan ana yorumlayıcı alanına da aktarabiliriz:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">test</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">test</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 <span class="n">topla</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">54</span><span class="p">)</span>
 </code></pre></div>
 
@@ -369,7 +368,7 @@ hiçbir şey engelleyemez!</p>
 </code></pre></div>
 
 <p>Yukarıdaki kodu konsolda yazdığımızda, bilgisayarımızda yüklü olan mevcut tüm modüller listelenecektir. Bunlardan herhangi birini içe aktarabilir ve modül içeriklerine <code>dir()</code> komutuyla göz atabiliriz:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">math</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
 <span class="nb">dir</span><span class="p">(</span><span class="n">math</span><span class="p">)</span>
 </code></pre></div>
 
@@ -379,7 +378,7 @@ hiçbir şey engelleyemez!</p>
 
 <p>Ekrandaki yazıda belirgin olmayabilir, ancak <code>doc</code> ifadesinin her iki tarafında <code>iki adet alt çizgi (__)</code> karakteri vardır.</p>
 <p><strong>Ve son bir ipucu</strong>: Yeni veya mevcut kod üzerinde çalışırken, FreeCAD'in makro dosyası uzantısı olan <code>.FCMacro</code>'yu kullanmamak, bunun yerine standart <code>.py</code> (python) uzantısını kullanmak daha iyidir. Bunun nedeni Python'un <code>.FCMacro</code> uzantısını tanımamasıdır. Kodlarınızı (modüllerinizi, fonksiyonlarınızı) kaydederken <code>.py</code> uzantılı dosya kullanırsanız, kodunuz daha önce gördüğümüz gibi <code>import</code> yöntemi ile kolayca FreeCAD içerisine dahil edilebilir ve ayrıca <code>importlib.reload()</code> ile yeniden yüklenebilir:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">importlib</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">importlib</span>
 <span class="n">importlib</span><span class="o">.</span><span class="n">reload</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
 </code></pre></div>
 

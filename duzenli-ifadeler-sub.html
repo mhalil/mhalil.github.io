@@ -11,7 +11,6 @@
 	<meta property="og:title" content="Düzenli İfadeler - sub" />
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content="/duzenli-ifadeler-sub.html" />
-		<meta property="og:image" content="/images/avatar.png" />
 
 		<!-- Enable responsiveness on mobile devices-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -152,7 +151,7 @@
 <li><strong>Örnek (Basit):</strong></li>
 </ol>
 <p>Elimizdeki metinde bulunan Türkçe karakterleri, başka karakterlerle değiştirelim. Önce bunu gerçekleştirecek bir fonksiyon oluşturalım. Sonra bu fonksiyonu <code>sub()</code> fonksiyonuna argüman olarak verelim. Bu örnek için yukarıdaki metni kullanalım.</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">degistir_fonk</span><span class="p">(</span><span class="n">eslesme</span><span class="p">):</span>        <span class="c1"># Fonksiyon yazıyoruz / oluşturuyoruz.</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">degistir_fonk</span><span class="p">(</span><span class="n">eslesme</span><span class="p">):</span>        <span class="c1"># Fonksiyon yazıyoruz / oluşturuyoruz.</span>
     <span class="n">turkce_karakter_karsiligi</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;ç&quot;</span> <span class="p">:</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Ç&quot;</span> <span class="p">:</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span>
@@ -201,7 +200,7 @@
 <p>Yukarıdaki örnekten devam edersek, metni tekrar tekrar kopyalamak yerine, düzenli ifadeleri kullanarak şöyle bir çözüm de üretebiliriz:</p>
 <div class="highlight"><pre><span></span><code><span class="n">derle</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;çile[kğ]&quot;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">degistir</span><span class="p">(</span><span class="n">nesne</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">degistir</span><span class="p">(</span><span class="n">nesne</span><span class="p">):</span>
     <span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;çileğ&quot;</span><span class="p">:</span><span class="s2">&quot;eriğ&quot;</span><span class="p">,</span> <span class="s2">&quot;Çileğ&quot;</span><span class="p">:</span><span class="s2">&quot;Eriğ&quot;</span><span class="p">,</span> <span class="s2">&quot;Çilek&quot;</span><span class="p">:</span><span class="s2">&quot;Erik&quot;</span><span class="p">,</span> <span class="s2">&quot;çilek&quot;</span><span class="p">:</span><span class="s2">&quot;erik&quot;</span><span class="p">}</span>
     <span class="n">b</span> <span class="o">=</span> <span class="n">nesne</span><span class="o">.</span><span class="n">group</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">b</span><span class="p">:</span>
@@ -235,7 +234,7 @@ başında ektiği erik fideleri haziran başında meyve veriyor.
 
 <p>Burada amacımız, metin içinde geçen <strong>çilek</strong> ve <strong>çileğ</strong> kelimelerini bulmak. Neden <strong>çileğ</strong>? Çünkü <strong>çilek</strong> kelimesi bir sesli harften önce geldiğinde sonundaki <strong>k</strong> harfi <strong>ğ</strong>'ye dönüşüyor. Bu seçenekli yapıyı, daha önceki bölümlerde gördüğümüz <code>[ ]</code> köşeli parantez adlı metakarakter yardımıyla oluşturduk. Düzenli ifade kalıbımızın hem büyük harfleri hem de küçük harfleri aynı anda bulması için <code>re.IGNORECASE</code> seçeneğinden yararlandık.</p>
 <p>Şimdi de şu satırlara bakalım:</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">degistir</span><span class="p">(</span><span class="n">nesne</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">degistir</span><span class="p">(</span><span class="n">nesne</span><span class="p">):</span>
     <span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;çileğ&quot;</span><span class="p">:</span><span class="s2">&quot;eriğ&quot;</span><span class="p">,</span> <span class="s2">&quot;Çileğ&quot;</span><span class="p">:</span><span class="s2">&quot;Eriğ&quot;</span><span class="p">,</span> <span class="s2">&quot;Çilek&quot;</span><span class="p">:</span><span class="s2">&quot;Erik&quot;</span><span class="p">,</span> <span class="s2">&quot;çilek&quot;</span><span class="p">:</span><span class="s2">&quot;erik&quot;</span><span class="p">}</span>
     <span class="n">b</span> <span class="o">=</span> <span class="n">nesne</span><span class="o">.</span><span class="n">group</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">b</span><span class="p">:</span>
@@ -290,7 +289,7 @@ başında ektiği erik fideleri haziran başında meyve veriyor.
 <p>Bu kodların biraz karışık gibi göründüğünü biliyorum, ama aslında çok basit bir mantığı var: <code>group()</code> metodu ile metin içinde aradığımız kelimeleri ayıklıyor. Ardından da <strong>“a”</strong> sözlüğü içinde bunları anahtar olarak kullanarak <strong>“çilek”</strong> ve çeşitleri yerine <strong>“erik”</strong> ve çeşitlerini koyuyor.</p>
 <h3>Örnek: Tarihleri Düzenle</h3>
 <p>Bir tane de tarih verisi ile ilgili kullanım örneği verelim. Verilerimizde farklı tarih formatları bulunuyor. Örneğin, "01/01/2023", "1.5.2021", "12-2-1980", "25/10/18". Bu tarih formatlarını belirli bir formata dönüştürmek için <code>re.sub()</code> kullanabiliriz. Aşağıda, bu tarih formatlarını "dd/mm/yyyy" formatına dönüştüren bir örnek var:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 
 <span class="n">tarihler</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">01/01/2023</span>
@@ -299,7 +298,7 @@ başında ektiği erik fideleri haziran başında meyve veriyor.
 <span class="s2">25/10/18</span>
 <span class="s2">&quot;&quot;&quot;</span>
 
-<span class="k">def</span> <span class="nf">duzenle</span><span class="p">(</span><span class="n">match</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">duzenle</span><span class="p">(</span><span class="n">match</span><span class="p">):</span>
     <span class="n">gun</span><span class="p">,</span> <span class="n">ay</span><span class="p">,</span> <span class="n">yil</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">groups</span><span class="p">()</span>
     <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">gun</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">ay</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">yil</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
 
@@ -319,7 +318,7 @@ başında ektiği erik fideleri haziran başında meyve veriyor.
 <p>Bu örnekte <code>zfill</code> kullanarak gün, ay ve yılın sırasıyla 2, 2 ve 4 karakterli olmasını sağladık. İhtiyacınıza göre bu düzenlemeleri değiştirebilirsiniz.</p>
 <h3>Örnek: Telefon Numaralarını Düzenle</h3>
 <p>Son olarak ta farklı biçimlerdeki telefon numaralarını düzenlemek için de <code>re.sub()</code> fonksiyonunu kullanarak bir örnek yapalım:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 
 <span class="n">numaralar</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">1234567890</span>
@@ -328,7 +327,7 @@ başında ektiği erik fideleri haziran başında meyve veriyor.
 <span class="s2">(216) 456-7893</span>
 <span class="s2">&quot;&quot;&quot;</span>
 
-<span class="k">def</span> <span class="nf">duzenle_telefon</span><span class="p">(</span><span class="n">match</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">duzenle_telefon</span><span class="p">(</span><span class="n">match</span><span class="p">):</span>
     <span class="n">operator</span><span class="p">,</span> <span class="n">üçhane</span><span class="p">,</span> <span class="n">dorthane</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">groups</span><span class="p">()</span>
     <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{</span><span class="n">operator</span><span class="si">}</span><span class="s2">) </span><span class="si">{</span><span class="n">üçhane</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">dorthane</span><span class="si">}</span><span class="s2">&quot;</span>
 
@@ -364,7 +363,7 @@ başında ektiği erik fideleri haziran başında meyve veriyor.
 </code></pre></div>
 
 <p>Dosya içerisinde geçen tüm <strong>UFO</strong> kelimelerini (<strong>UFO, ufo, Ufo, uFo, ...vb</strong>) <code>***</code> sembolü ile filtreleyerek ayrı bir dosyaya (<strong>filtreli.txt</strong>) kaydetmek isteyelim.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;UFO nedir.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">dosya</span><span class="p">:</span>
     <span class="n">icerik</span> <span class="o">=</span> <span class="n">dosya</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>

@@ -11,7 +11,6 @@
 	<meta property="og:title" content="Düzenli İfadeler - bayraklar" />
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content="/duzenli-ifadeler-bayraklar.html" />
-		<meta property="og:image" content="/images/avatar.png" />
 
 		<!-- Enable responsiveness on mobile devices-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -145,7 +144,7 @@
 <p>Bu özellik, metin maddeleme, metin analizi veya log dosyaları gibi çok satırlı metinlerle çalışırken kullanışlıdır. <code>re.MULTILINE</code> sayesinde, düzenli ifadelerle satırları tek tek ele alabilir ve her bir satır için eşleşmeleri bulabilirsiniz.</p>
 <h3>Kullanımı</h3>
 <p><code>re.MULTILINE</code> bayrağı, <code>re.compile()</code> fonksiyonu ile birlikte veya bir düzenli ifade string'i içinde kullanılabilir. İşte kullanım örnekleri:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 
 <span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Programlama dili, programcının bir bilgisayara ne yapmasını</span>
 <span class="s2">istediğini anlatmasının standartlaştırılmış bir yoludur. Programlama</span>
@@ -216,7 +215,7 @@ Nam-ı diğer Süper Python
 </code></pre></div>
 
 <p><code>re.DOTALL</code> seçeneğini <code>re.S</code> şeklinde de kısaltabilirsiniz / kullanabilirsiniz.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 
 <span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;This is a multiline</span>
 <span class="s2">text with new lines.</span>
@@ -235,7 +234,7 @@ text with new lines.
 <p><code>re.UNICODE</code>, bayrağı (flag), bir düzenli ifadenin <strong>Unicode karakter setini kullanmasını sağlar</strong>. Varsayılan durumda, bazı düzenli ifade karakter sınıfları, yalnızca <strong>ASCII</strong> karakter setini anlar. Ancak, <code>re.UNICODE</code> özelliği ile Unicode karakterler de dikkate alınır. Özellikle, çok dilli uygulamalarda veya farklı dil ve alfabeleri içeren metinlerle uğraşırken kullanışlıdır. Bu özellik sayesinde, Unicode karakterler, düzenli ifadelerde doğru şekilde ele alınır ve beklenen eşleşmeleri sağlar.</p>
 <h3>Kullanımı</h3>
 <p><code>re.UNICODE</code> bayrağı, <code>re.compile()</code> fonksiyonu ile birlikte veya bir düzenli ifade string'i içinde kullanılabilir. İşte kullanım örnekleri:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 
 <span class="c1"># `re.compile()` ile kullanım</span>
 <span class="n">pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\w+&#39;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">U</span><span class="p">)</span>
@@ -267,7 +266,7 @@ text with new lines.
 </code></pre></div>
 
 <p>Bir başka örnek;</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 
 <span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">Ali: 234,789 TL</span>
@@ -303,7 +302,7 @@ text with new lines.
 </code></pre></div>
 
 <p>Yukarıdaki desen gayet okunaklı. Deseni bu şekilde kullanabilmek için  <code>flags=re.VERBOSE</code> ya da <code>flags=re.X</code> bayrağını kullanmak gerekir. Aşağıdaki kodu inceleyebilirsiniz.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 <span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">Ali: 234,789 TL</span>
 <span class="s2">Hasan: 345,980 TL</span>
@@ -335,7 +334,7 @@ text with new lines.
 
 <h2>Bayrakların Birlikte Kullanımı</h2>
 <p>Bayraklar konusunda anlatılacak bir konu da birden fazla bayrağın aynı desen ile birlikte kullanımı. Örneğin hem <strong>çok satırlı</strong> tarama hem de <strong>büyük-küçük harf duyarlıksız</strong>  eşleşme yapılmak istenirse <code>re.M</code> (<code>re.MULTILINE</code>) ve <code>re.I</code> (<code>re.IGNORECASE</code>)  bayraklarını <strong>birlikte</strong> kullanmak gerekir. Bu iki bayrağı birlikte kullanmak için yapılması gereken <code>|</code> (pipe) işaretini kullanmaktır.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 
 <span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Guido Van Rossum Python&#39;ı geliştirmeye 1990 yılında başlamış... Yani aslında Python için nispeten yeni</span>
 <span class="s2">bir dil denebilir. Ancak Python&#39;un çok uzun bir geçmişi olmasa da, bu dil öteki dillere kıyasla kolay olması, hızlı</span>

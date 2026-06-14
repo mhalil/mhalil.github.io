@@ -11,7 +11,7 @@
 			<meta property="og:title" content="mhalil - Programlama ve 3D" />
 			<meta property="og:type" content="website" />
 			<meta property="og:url" content="" />
-		<meta property="og:image" content="/images/avatar.png" />
+            <meta property="og:image" content="/images/avatar.png" />
 
 		<!-- Enable responsiveness on mobile devices-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -76,10 +76,10 @@
 </div>		<div class="content container">
 	<div class="posts">
 			<div class="post">
-				<h1 class="post-title" href="/polars-0302-veri-yapilari.html">
-					<a href="/polars-0302-veri-yapilari.html">Polars - 0302 Veri Yapıları</a>
+				<h1 class="post-title" href="/polars-02-kurulum.html">
+					<a href="/polars-02-kurulum.html">Polars - 02 Kurulum</a>
 				</h1>
-				<span class="post-date">Prş 30 Haziran 2022</span>
+				<span class="post-date">Paz 14 Haziran 2026</span>
 					<span class="post-tags">
 						Tags:
 						<ul>
@@ -90,21 +90,27 @@
 						</ul>
 					</span>
 				<p>
-					<h1>Veri Yapıları</h1>
-<p><code>Polars</code> tarafından sağlanan temel veri yapıları <code>Series (Seriler)</code> ve <code>DataFrame (VeriÇerçeveleri)</code>'dir.</p>
-<h1>Series (Seriler)</h1>
-<p>Seriler, 1-boyutlu bir veri yapısıdır. Bir dizi içindeki tüm öğeler aynı <a href="polars-0301-veri-tipleri.html">Veri Türüne / Tipine</a> sahiptir. Aşağıdaki kod parçacığı, basit bir <code>Series</code> nesnesinin nasıl oluşturulacağını gösterir.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polars</span> <span class="k">as</span> <span class="nn">pl</span>
+					<h1>Kurulum</h1>
+<p>Polars bir kütüphanedir ve kurulumu, ilgili programlama dilinin paket yöneticisini çağırmak kadar basittir.</p>
+<p>Python</p>
+<div class="highlight"><pre><span></span><code><span class="n">pip</span> <span class="n">install</span> <span class="n">polars</span>  <span class="c1"># Veya AVX2 desteği olmayan eski CPU&#39;lar için:</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">polars</span><span class="p">[</span><span class="n">rtcompat</span><span class="p">]</span>
+</code></pre></div>
 
-<span class="n">s</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1 …</span></code></pre></div>
+<p>Rust</p>
+<div class="highlight"><pre><span></span><code><span class="n">cargo</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="n">polars</span><span class="w"> </span><span class="o">-</span><span class="n">F</span><span class="w"> </span><span class="n">lazy</span><span class="w">  </span><span class="p">#</span><span class="w"> </span><span class="n">veya</span><span class="w"> </span><span class="n">Cargo</span><span class="p">.</span><span class="n">toml</span><span class="w"> </span><span class="p">[</span><span class="n">dependencies</span><span class="p">]</span><span class="w"> </span><span class="n">polars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;x&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">features</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;lazy&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">..</span><span class="p">.]}</span>
+</code></pre></div>
+
+<h2>Büyük Index (Big Index)</h2>
+<p>Varsayılan …</p>
 				</p>
-				<a class="read-more" href="polars-0302-veri-yapilari.html">Continue reading »</a>
+				<a class="read-more" href="/polars-02-kurulum.html">Continue reading »</a>
 			</div>
 			<div class="post">
-				<h1 class="post-title" href="/polars-0303-baglamlar.html">
-					<a href="/polars-0303-baglamlar.html">Polars - 0303 Bağlamlar</a>
+				<h1 class="post-title" href="/polars-01-baslarken.html">
+					<a href="/polars-01-baslarken.html">Polars - 01 Başlarken</a>
 				</h1>
-				<span class="post-date">Prş 30 Haziran 2022</span>
+				<span class="post-date">Paz 14 Haziran 2026</span>
 					<span class="post-tags">
 						Tags:
 						<ul>
@@ -115,77 +121,23 @@
 						</ul>
 					</span>
 				<p>
-					<h1>Bağlamlar</h1>
-<p>Polars,  verileri dönüştürmek için kendi EtkiAlanına Özgü Dil (DSL - Domain Specific Language) geliştirmiştir. Dilin kullanımı çok kolaydır ve insan tarafından okunabilen karmaşık sorgulara izin verir. Dilin iki temel bileşeni,  Bağlamlar ve İfadelerdir (sonraki bölümde ele alacağız).</p>
-<p>Adından da anlaşılacağı gibi bir bağlam, bir ifadenin değerlendirilmesi gereken bağlamı ifade eder …</p>
+					<h1>Başlarken</h1>
+<p>Bu bölüm, Polars ile başlamanıza yardımcı olmak için hazırlanmıştır. İlk kurulum ve yapılandırmadan temel işlevselliklere kadar kütüphanenin tüm temel özelliklerini kapsar. Eğer ileri düzey bir kullanıcıysanız veya dataframe'ler konusunda deneyimliyseniz, doğrudan <a href="../installation/">bir sonraki bölüme</a> geçebilirsiniz.</p>
+<h2>Polars'ı Kurma</h2>
+<p>Python</p>
+<div class="highlight"><pre><span></span><code><span class="n">pip</span> <span class="n">install</span> <span class="n">polars</span>
+</code></pre></div>
+
+<p>Rust</p>
+<div class="highlight"><pre><span></span><code><span class="n">cargo</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="n">polars</span><span class="w"> </span><span class="o">-</span><span class="n">F</span><span class="w"> </span><span class="n">lazy</span><span class="w">  </span><span class="p">#</span><span class="w"> </span><span class="n">veya</span><span class="w"> </span><span class="n">Cargo …</span></code></pre></div>
 				</p>
-				<a class="read-more" href="polars-0303-baglamlar.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="/polars-0304-ifadeler.html">
-					<a href="/polars-0304-ifadeler.html">Polars - 0304 İfadeler</a>
-				</h1>
-				<span class="post-date">Prş 30 Haziran 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/polars.html">Polars</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1>İfadeler</h1>
-<p><code>Polars</code>, çok hızlı performansının merkezinde yer alan, ifadeler (expressions) adı verilen güçlü bir konsepte sahiptir.</p>
-<p>İfadeler, birçok veri bilimi işleminin merkezinde yer alır:</p>
-<ul>
-<li>
-<p>bir sütundan satır örneği alma</p>
-</li>
-<li>
-<p>bir sütundaki değerleri çarpma</p>
-</li>
-<li>
-<p>tarihlerden bir yıl sütunu çıkarma</p>
-</li>
-<li>
-<p>bir dize sütununu küçük harfe dönüştürme</p>
-</li>
-<li>
-<p>ve benzeri!</p>
-</li>
-</ul>
-<p>Ancak ifadeler diğer işlemlerde …</p>
-				</p>
-				<a class="read-more" href="polars-0304-ifadeler.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="/polars-0301-veri-tipleri.html">
-					<a href="/polars-0301-veri-tipleri.html">Polars - 0301 Veri Tipleri</a>
-				</h1>
-				<span class="post-date">Pzt 27 Haziran 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/polars.html">Polars</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1>Veri Tipleri</h1>
-<p><code>Polars</code>,  tamamen <code>Arrow</code> veri türlerini temel alır ve <code>Arrow</code> bellek dizileriyle 
-desteklenir. Bu, veri işlemeyi önbellek açısından verimli hale getirir ve İşlemler Arası İletişim için iyi desteklenir. Çoğu veri türü, <code>Utf8</code> (bu aslında <code>LargeUtf8</code>'dir), <code>Kategorik (Categorical)</code> ve <code>Nesne (Object)</code> (destek sınırlıdır) dışında <code>Arrow</code>'daki tam uygulamayı izler …</p>
-				</p>
-				<a class="read-more" href="polars-0301-veri-tipleri.html">Continue reading »</a>
+				<a class="read-more" href="/polars-01-baslarken.html">Continue reading »</a>
 			</div>
 			<div class="post">
 				<h1 class="post-title" href="/polars-00-giris.html">
 					<a href="/polars-00-giris.html">Polars - 00 Giriş</a>
 				</h1>
-				<span class="post-date">Paz 26 Haziran 2022</span>
+				<span class="post-date">Paz 14 Haziran 2026</span>
 					<span class="post-tags">
 						Tags:
 						<ul>
@@ -202,61 +154,7 @@ desteklenir. Bu, veri işlemeyi önbellek açısından verimli hale getirir ve �
 <h2>Polars Nedir?</h2>
 <p><code>Polars</code>, <code>Rust</code> programlama dilinde yazılmış ve temel olarak <code>Apache Arrow</code>’u kullanan bir <strong>DataFrame kütüphanesidir</strong>. Veri düzenleme alışkanlıklarını bilen <code>Polars</code>, okunabilir ve yüksek performanslı kod oluşturmanızı sağlayacak bir ifade dili kullanarak DataFrame'leri işlemek için tüm özellikleri içeren …</p>
 				</p>
-				<a class="read-more" href="polars-00-giris.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="/polars-01-takdim.html">
-					<a href="/polars-01-takdim.html">Polars - 01 Takdim</a>
-				</h1>
-				<span class="post-date">Paz 26 Haziran 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/polars.html">Polars</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1>Takdim</h1>
-<p>Bu Kılavuz, <a href="https://github.com/pola-rs/polars">Polars DataFrame kitaplığına</a> bir giriş niteliğindedir. Amacı, örnekler üzerinden geçerek ve diğer çözümlerle karşılaştırarak size <code>Polars</code> kitaplığını tanıtmaktır. Bazı tasarım seçenekleri burada tanıtılmaktadır. Kılavuz ayrıca size <code>Polars</code>kitaplığının optimum kullanımını tanıtacaktır.</p>
-<p><code>Polars</code> tamamen <a href="https://www.rust-lang.org/">Rust</a>'ta yazılmış olsa da ve temel olarak <code>Arrow</code>'u (<a href="https://github.com/jorgecarleitao/arrow2">yerel arrow2 Rust uygulaması …</a></p>
-				</p>
-				<a class="read-more" href="polars-01-takdim.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="/polars-02-kurulum.html">
-					<a href="/polars-02-kurulum.html">Polars - 02 Kurulum</a>
-				</h1>
-				<span class="post-date">Paz 26 Haziran 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/polars.html">Polars</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1>Kurulum</h1>
-<p><code>Polars</code> bir kitaplıktır/kütüphanedir ve kurulumu, ilgili programlama dilinin paket yöneticisini çağırmak kadar basittir. Aşağıda farklı programlama dillerine göre kurulum kodları verilmiştir. Bu kodları konsoldan yazarak <code>polars</code>'ı yükleyebilirsiniz.</p>
-<h4>Python</h4>
-<div class="highlight"><pre><span></span><code><span class="n">pip</span> <span class="n">install</span> <span class="n">polars</span>
-</code></pre></div>
-
-<h4>Rust</h4>
-<div class="highlight"><pre><span></span><code><span class="n">cargo</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="n">polars</span><span class="w"> </span><span class="o">-</span><span class="n">F</span><span class="w"> </span><span class="n">lazy</span>
-
-<span class="p">#</span><span class="w"> </span><span class="n">Or</span><span class="w"> </span><span class="n">Cargo</span><span class="p">.</span><span class="n">toml</span>
-<span class="p">[</span><span class="n">dependencies</span><span class="p">]</span>
-<span class="n">polars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;x&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">features</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;lazy&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">..</span><span class="p">.]}</span>
-</code></pre></div>
-
-<h4>NodeJS …</h4>
-				</p>
-				<a class="read-more" href="polars-02-kurulum.html">Continue reading »</a>
+				<a class="read-more" href="/polars-00-giris.html">Continue reading »</a>
 			</div>
 	</div>
 	<div class="pagination">

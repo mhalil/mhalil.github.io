@@ -11,7 +11,7 @@
 			<meta property="og:title" content="mhalil - Programlama ve 3D" />
 			<meta property="og:type" content="website" />
 			<meta property="og:url" content="" />
-		<meta property="og:image" content="/images/avatar.png" />
+            <meta property="og:image" content="/images/avatar.png" />
 
 		<!-- Enable responsiveness on mobile devices-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -76,6 +76,87 @@
 </div>		<div class="content container">
 	<div class="posts">
 			<div class="post">
+				<h1 class="post-title" href="/polars-02-kurulum.html">
+					<a href="/polars-02-kurulum.html">Polars - 02 Kurulum</a>
+				</h1>
+				<span class="post-date">Paz 14 Haziran 2026</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/polars.html">Polars</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>Kurulum</h1>
+<p>Polars bir kütüphanedir ve kurulumu, ilgili programlama dilinin paket yöneticisini çağırmak kadar basittir.</p>
+<p>Python</p>
+<div class="highlight"><pre><span></span><code><span class="n">pip</span> <span class="n">install</span> <span class="n">polars</span>  <span class="c1"># Veya AVX2 desteği olmayan eski CPU&#39;lar için:</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">polars</span><span class="p">[</span><span class="n">rtcompat</span><span class="p">]</span>
+</code></pre></div>
+
+<p>Rust</p>
+<div class="highlight"><pre><span></span><code><span class="n">cargo</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="n">polars</span><span class="w"> </span><span class="o">-</span><span class="n">F</span><span class="w"> </span><span class="n">lazy</span><span class="w">  </span><span class="p">#</span><span class="w"> </span><span class="n">veya</span><span class="w"> </span><span class="n">Cargo</span><span class="p">.</span><span class="n">toml</span><span class="w"> </span><span class="p">[</span><span class="n">dependencies</span><span class="p">]</span><span class="w"> </span><span class="n">polars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;x&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">features</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;lazy&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">..</span><span class="p">.]}</span>
+</code></pre></div>
+
+<h2>Büyük Index (Big Index)</h2>
+<p>Varsayılan …</p>
+				</p>
+				<a class="read-more" href="/polars-02-kurulum.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="/polars-01-baslarken.html">
+					<a href="/polars-01-baslarken.html">Polars - 01 Başlarken</a>
+				</h1>
+				<span class="post-date">Paz 14 Haziran 2026</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/polars.html">Polars</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>Başlarken</h1>
+<p>Bu bölüm, Polars ile başlamanıza yardımcı olmak için hazırlanmıştır. İlk kurulum ve yapılandırmadan temel işlevselliklere kadar kütüphanenin tüm temel özelliklerini kapsar. Eğer ileri düzey bir kullanıcıysanız veya dataframe'ler konusunda deneyimliyseniz, doğrudan <a href="../installation/">bir sonraki bölüme</a> geçebilirsiniz.</p>
+<h2>Polars'ı Kurma</h2>
+<p>Python</p>
+<div class="highlight"><pre><span></span><code><span class="n">pip</span> <span class="n">install</span> <span class="n">polars</span>
+</code></pre></div>
+
+<p>Rust</p>
+<div class="highlight"><pre><span></span><code><span class="n">cargo</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="n">polars</span><span class="w"> </span><span class="o">-</span><span class="n">F</span><span class="w"> </span><span class="n">lazy</span><span class="w">  </span><span class="p">#</span><span class="w"> </span><span class="n">veya</span><span class="w"> </span><span class="n">Cargo …</span></code></pre></div>
+				</p>
+				<a class="read-more" href="/polars-01-baslarken.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="/polars-00-giris.html">
+					<a href="/polars-00-giris.html">Polars - 00 Giriş</a>
+				</h1>
+				<span class="post-date">Paz 14 Haziran 2026</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/polars.html">Polars</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>Polars Notları</h1>
+<p><img alt="polars" src="../../images/python/polars/polars_github_logo.svg"></p>
+<p><strong>Rust ve Python için Işık Hızında VeriÇerçevesi (DataFrame) Kütüphanesi.</strong></p>
+<h2>Polars Nedir?</h2>
+<p><code>Polars</code>, <code>Rust</code> programlama dilinde yazılmış ve temel olarak <code>Apache Arrow</code>’u kullanan bir <strong>DataFrame kütüphanesidir</strong>. Veri düzenleme alışkanlıklarını bilen <code>Polars</code>, okunabilir ve yüksek performanslı kod oluşturmanızı sağlayacak bir ifade dili kullanarak DataFrame'leri işlemek için tüm özellikleri içeren …</p>
+				</p>
+				<a class="read-more" href="/polars-00-giris.html">Continue reading »</a>
+			</div>
+			<div class="post">
 				<h1 class="post-title" href="/pandas-insert.html">
 					<a href="/pandas-insert.html">Pandas - insert</a>
 				</h1>
@@ -101,7 +182,7 @@
 <li>
 <p>Bu sayede, sütunların sırasını kontrol ederek veri setine yeni veriler dahil etmeye olanak …</p></li></ul>
 				</p>
-				<a class="read-more" href="pandas-insert.html">Continue reading »</a>
+				<a class="read-more" href="/pandas-insert.html">Continue reading »</a>
 			</div>
 			<div class="post">
 				<h1 class="post-title" href="/pandas-to_numpy.html">
@@ -127,7 +208,7 @@
                     <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> 
                     <span class="n">na_value …</span></code></pre></div>
 				</p>
-				<a class="read-more" href="pandas-to_numpy.html">Continue reading »</a>
+				<a class="read-more" href="/pandas-to_numpy.html">Continue reading »</a>
 			</div>
 			<div class="post">
 				<h1 class="post-title" href="/pandas-isin.html">
@@ -154,7 +235,7 @@
 <h2>İşlevi</h2>
 <p><strong>DataFrame</strong>'in her bir hücresini alır ve bu değeri, girdi olarak sağlanan <code>values</code> içinde arar. Sonuç olarak, orijinal DataFrame ile aynı …</p>
 				</p>
-				<a class="read-more" href="pandas-isin.html">Continue reading »</a>
+				<a class="read-more" href="/pandas-isin.html">Continue reading »</a>
 			</div>
 			<div class="post">
 				<h1 class="post-title" href="/pandas-to_frame.html">
@@ -184,7 +265,7 @@
 <h2>Döndürdüğü değer:</h2>
 <p><strong>DataFrame</strong> : Serinin DataFrame temsili. İşlem sonrası seri dataframe'e …</p>
 				</p>
-				<a class="read-more" href="pandas-to_frame.html">Continue reading »</a>
+				<a class="read-more" href="/pandas-to_frame.html">Continue reading »</a>
 			</div>
 			<div class="post">
 				<h1 class="post-title" href="/pandas-add_suffix.html">
@@ -227,7 +308,7 @@
 <td><strong><code>axis</code></strong></td>
 <td><code>0</code> ya da <code>index</code>, <br><code>1</code> ya da …</td></tr></tbody></table>
 				</p>
-				<a class="read-more" href="pandas-add_suffix.html">Continue reading »</a>
+				<a class="read-more" href="/pandas-add_suffix.html">Continue reading »</a>
 			</div>
 			<div class="post">
 				<h1 class="post-title" href="/pandas-add_prefix.html">
@@ -255,7 +336,7 @@
 <li>
 <p><strong>Döndürdüğü değer:</strong> Önek eklenmiş yeni etiketlere sahip bir <strong>DataFrame</strong> veya <strong>Series</strong> döndürür. <strong>Orijinal …</strong></p></li></ul>
 				</p>
-				<a class="read-more" href="pandas-add_prefix.html">Continue reading »</a>
+				<a class="read-more" href="/pandas-add_prefix.html">Continue reading »</a>
 			</div>
 			<div class="post">
 				<h1 class="post-title" href="/pandas-median.html">
@@ -279,75 +360,7 @@
 <p>Bu yöntem genellikle bir <strong>Series</strong> (Seri) veya bir <strong>Scalar</strong> (tek bir sayı) döndürür.</p>
 <h2>⚙️ Parametreler …</h2>
 				</p>
-				<a class="read-more" href="pandas-median.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="/pandas-mode.html">
-					<a href="/pandas-mode.html">Pandas - mode</a>
-				</h1>
-				<span class="post-date">Paz 30 Kasım 2025</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/pandas.html">Pandas</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
-								<li><a href="/tag/mode.html">mode</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1><code>mode()</code> Metodu</h1>
-<p>Sayısal bir veri serisi içindeki <strong>en çok tekrar eden sayı, o serinin modu</strong> olarak adlandırılır.   <code>pandas.DataFrame.mode()</code> metodu, bir DataFrame'in <strong>satırları</strong> veya <strong>sütunları</strong> boyunca <strong>en sık tekrar eden</strong> (mod) değerleri bulur. Sonuç olarak, orijinal DataFrame ile <strong>aynı indekslere</strong> ve <strong>aynı sütun isimlerine</strong> sahip <strong>yeni bir DataFrame</strong> döndürür …</p>
-				</p>
-				<a class="read-more" href="pandas-mode.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="/pandas-pdgrouper.html">
-					<a href="/pandas-pdgrouper.html">Pandas - pd.Grouper</a>
-				</h1>
-				<span class="post-date">Paz 30 Kasım 2025</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/pandas.html">Pandas</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
-								<li><a href="/tag/pandasgrouper.html">pandas.Grouper</a></li>
-								<li><a href="/tag/pdgrouper.html">pd.Grouper</a></li>
-						</ul>
-					</span>
-				<p>
-					<h2><code>pandas.Grouper</code> Nesnesi</h2>
-<p><code>pandas.Grouper</code>, özellikle bir DataFrame veya Series üzerinde <code>.groupby()</code> metodunu kullanırken, <strong>gruplama talimatlarını detaylı bir şekilde belirtmenize</strong> olanak tanıyan bir nesnedir.</p>
-<p>En temel amacı, sütun adı veya index seviyesi gibi standart gruplama anahtarlarının yanı sıra, özellikle <strong>zaman serisi verileri</strong> (datetime-like) üzerinde <strong>yeniden örnekleme (resampling)</strong> tabanlı gruplamalar yapmaktır …</p>
-				</p>
-				<a class="read-more" href="pandas-pdgrouper.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="/pandas-pop.html">
-					<a href="/pandas-pop.html">Pandas - pop</a>
-				</h1>
-				<span class="post-date">Cts 29 Kasım 2025</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/pandas.html">Pandas</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
-								<li><a href="/tag/pop.html">pop</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1><code>pop()</code> Metodu</h1>
-<p><strong><code>pandas.DataFrame.pop()</code></strong> metodu, <strong>Pandas DataFrame'inizdeki belirli bir sütunu</strong> hem DataFrame'den <strong>kaldırır</strong> hem de <strong>kaldırdığı bu sütunu bir Series olarak size geri verir</strong>.</p>
-<p>Basitçe anlatmak gerekirse, bir DataFrame'in sütununu yerinden söker, onu bize verir ve <strong>orijinal DataFrame'de artık o sütun olmaz</strong>.</p>
-<blockquote>
-<p>Pandas'taki <strong><code>pop()</code></strong> metodu ile doğrudan <strong>satır</strong> silemezsiniz …</p></blockquote>
-				</p>
-				<a class="read-more" href="pandas-pop.html">Continue reading »</a>
+				<a class="read-more" href="/pandas-median.html">Continue reading »</a>
 			</div>
 	</div>
 	<div class="pagination">

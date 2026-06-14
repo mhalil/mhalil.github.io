@@ -11,7 +11,6 @@
 	<meta property="og:title" content="Flet 03 - Python Rehberi" />
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content="/flet-03-python-rehberi.html" />
-		<meta property="og:image" content="/images/avatar.png" />
 
 		<!-- Enable responsiveness on mobile devices-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -112,9 +111,9 @@ Kullanıcılarınıza hazır bir uygulama sunmak için bazı paketleme ve dağı
 <p>Flet uygulamaları WSL2'de çalıştırılabilir. <code>cannot open display (ekran açılamıyor)</code> hatası alıyorsanız, sorun giderme için <a href="https://github.com/microsoft/wslg/wiki/Diagnosing-%22cannot-open-display%22-type-issues-with-WSLg">bu kılavuza</a> göz atın.  </p>
 <h1>Temel uygulama yapısı</h1>
 <p>Çok minimal bir Flet uygulaması aşağıdaki yapıya sahiptir:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">flet</span> <span class="k">as</span> <span class="nn">ft</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">flet</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ft</span>
 
-<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">page</span><span class="p">:</span> <span class="n">ft</span><span class="o">.</span><span class="n">Page</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">page</span><span class="p">:</span> <span class="n">ft</span><span class="o">.</span><span class="n">Page</span><span class="p">):</span>
     <span class="c1"># add/update controls on Page</span>
     <span class="k">pass</span>
 
@@ -148,9 +147,9 @@ Kontrollerin bir kullanıcı tarafından görülebilmesi için bir <code>Sayfaya
 </code></pre></div>
 
 <p>Bir sayfada kontrolü görüntülemek istiyorsanız, o kontrolü sayfanın <code>kontroller (controls)</code> <strong>listesine</strong> eklemeli ve <strong>sayfa değişikliklerini</strong> bir tarayıcıya veya masaüstü istemcisine göndermek / güncellemek için <code>page.update()</code> öğesini çağırmalısınız:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">flet</span> <span class="k">as</span> <span class="nn">ft</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">flet</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ft</span>
 
-<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">page</span><span class="p">:</span> <span class="n">ft</span><span class="o">.</span><span class="n">Page</span><span class="p">):</span>    
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">page</span><span class="p">:</span> <span class="n">ft</span><span class="o">.</span><span class="n">Page</span><span class="p">):</span>    
     <span class="n">t</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s2">&quot;Hello, world!&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">)</span>    
     <span class="n">page</span><span class="o">.</span><span class="n">controls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>    
     <span class="n">page</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
@@ -205,17 +204,17 @@ kadar akıllıdır. Bir sayfaya birkaç yeni kontrol ekleyebilir, bazılarını 
 </code></pre></div>
 
 <p>Düğmeler (Butonlar) gibi bazı kontroller (denetimler), bir kullanıcı girişine tepki veren  "<strong>olay işleyicilere (fonksiyonlara)</strong> sahip olabilir, örneğin <code>ElevatedButton.on_click:</code> (butona tıklamak sonucunda bir işlemin gerçekleşmesi gibi)</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">button_clicked</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">button_clicked</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
     <span class="n">page</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">ft</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s2">&quot;Clicked!&quot;</span><span class="p">))</span>
 
 <span class="n">page</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">ft</span><span class="o">.</span><span class="n">ElevatedButton</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;Click me&quot;</span><span class="p">,</span> <span class="n">on_click</span><span class="o">=</span><span class="n">button_clicked</span><span class="p">))</span>
 </code></pre></div>
 
 <p>ve basit bir Yapılacaklar Lisesi (To-Do) için daha gelişmiş bir örnek:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">flet</span> <span class="k">as</span> <span class="nn">ft</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">flet</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ft</span>
 
-<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">page</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">add_clicked</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">page</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_clicked</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
         <span class="n">page</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">ft</span><span class="o">.</span><span class="n">Checkbox</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">new_task</span><span class="o">.</span><span class="n">value</span><span class="p">))</span>
         <span class="n">new_task</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
         <span class="n">new_task</span><span class="o">.</span><span class="n">focus</span><span class="p">()</span>
@@ -258,15 +257,15 @@ kadar akıllıdır. Bir sayfaya birkaç yeni kontrol ekleyebilir, bazılarını 
 <h1>Kontrol Referansları (Değişkenler)</h1>
 <p>Flet kontrolleri nesnelerdir ve özelliklerine erişmek için bu nesnelere, referanslar (değişkenler) tutmamız gerekir.</p>
 <p>Aşağıdaki örneği göz önünde bulundurun:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">flet</span> <span class="k">as</span> <span class="nn">ft</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">flet</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ft</span>
 
-<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">page</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">page</span><span class="p">):</span>
 
     <span class="n">first_name</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;First name&quot;</span><span class="p">,</span> <span class="n">autofocus</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">last_name</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Last name&quot;</span><span class="p">)</span>
     <span class="n">greetings</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">Column</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">btn_click</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">btn_click</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
         <span class="n">greetings</span><span class="o">.</span><span class="n">controls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ft</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hello, </span><span class="si">{</span><span class="n">first_name</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">last_name</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">!&quot;</span><span class="p">))</span>
         <span class="n">first_name</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
         <span class="n">last_name</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
@@ -316,16 +315,16 @@ kadar akıllıdır. Bir sayfaya birkaç yeni kontrol ekleyebilir, bazılarını 
 <p>Tüm Flet kontrolleri <code>ref</code> özelliğine sahiptir.</p>
 </blockquote>
 <p>Referansları kullanacak şekilde programımızı yeniden yazabiliriz:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">flet</span> <span class="k">as</span> <span class="nn">ft</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">flet</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ft</span>
 
 
-<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">page</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">page</span><span class="p">):</span>
 
     <span class="n">first_name</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">Ref</span><span class="p">[</span><span class="n">ft</span><span class="o">.</span><span class="n">TextField</span><span class="p">]()</span>
     <span class="n">last_name</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">Ref</span><span class="p">[</span><span class="n">ft</span><span class="o">.</span><span class="n">TextField</span><span class="p">]()</span>
     <span class="n">greetings</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">Ref</span><span class="p">[</span><span class="n">ft</span><span class="o">.</span><span class="n">Column</span><span class="p">]()</span>
 
-    <span class="k">def</span> <span class="nf">btn_click</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">btn_click</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
         <span class="n">greetings</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">controls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
             <span class="n">ft</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hello, </span><span class="si">{</span><span class="n">first_name</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">last_name</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">!&quot;</span><span class="p">)</span>
         <span class="p">)</span>

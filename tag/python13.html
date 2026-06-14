@@ -11,7 +11,7 @@
 			<meta property="og:title" content="mhalil - Programlama ve 3D" />
 			<meta property="og:type" content="website" />
 			<meta property="og:url" content="" />
-		<meta property="og:image" content="/images/avatar.png" />
+            <meta property="og:image" content="/images/avatar.png" />
 
 		<!-- Enable responsiveness on mobile devices-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -76,6 +76,273 @@
 </div>		<div class="content container">
 	<div class="posts">
 			<div class="post">
+				<h1 class="post-title" href="/pandas-read_clipboard.html">
+					<a href="/pandas-read_clipboard.html">Pandas - read_clipboard</a>
+				</h1>
+				<span class="post-date">Cts 09 Temmuz 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/dataframe.html">DataFrame</a></li>
+								<li><a href="/tag/veri-cercevesi.html">Veri Çerçevesi</a></li>
+								<li><a href="/tag/read_clipboard.html">read_clipboard</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>read_clipboard() Fonksiyonu Nedir? Nasıl Kullanılır?</h1>
+<p><strong>read_clipboard()</strong> fonksiyonu ile panoya kopyaladığımız veriyi (örneğin bir Excel tablosu ya da websitesindeki tabloyu) Veri Çerçevesine dönüştürebiliriz.</p>
+<div class="highlight"><pre><span></span><code><span class="n">pano</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_clipboard</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pano</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>İlçe</th>
+<th>2020</th>
+<th>2021</th>
+<th>Fark</th>
+<th>Nüfus art. %</th>
+<th>Mah. say.</th>
+<th>Alanı km2</th>
+<th>Yoğunluk</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Adalar</td>
+<td>16.033</td>
+<td>16.372</td>
+<td>339.000</td>
+<td>2.11</td>
+<td>5</td>
+<td>11 …</td></tr></tbody></table>
+				</p>
+				<a class="read-more" href="/pandas-read_clipboard.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="/pandas-read_csv.html">
+					<a href="/pandas-read_csv.html">Pandas - read_csv</a>
+				</h1>
+				<span class="post-date">Cts 09 Temmuz 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/dataframe.html">DataFrame</a></li>
+								<li><a href="/tag/veri-cercevesi.html">Veri Çerçevesi</a></li>
+								<li><a href="/tag/read_csv.html">read_csv</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/csv.html">CSV</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>read_csv() Fonksiyonu</h1>
+<p><code>read_csv</code> fonksiyonu, Pandas kütüphanesinin en önemli araçlarından biridir ve temel olarak <strong>virgülle ayrılmış değerler (CSV)</strong> formatındaki dosyaları okuyarak bunları <strong>Veri Çerçevesi (DataFrame)</strong> adı verilen, satır ve sütunlardan oluşan tablo yapısına dönüştürmek için kullanılır.</p>
+<p>Basitçe söylemek gerekirse, bu fonksiyon, bilgisayarınızdaki bir veri dosyasını (örneğin, bir Excel dosyasının dışa aktarılan …</p>
+				</p>
+				<a class="read-more" href="/pandas-read_csv.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="/pandas-read_html.html">
+					<a href="/pandas-read_html.html">Pandas - read_html</a>
+				</h1>
+				<span class="post-date">Cts 09 Temmuz 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/dataframe.html">DataFrame</a></li>
+								<li><a href="/tag/veri-cercevesi.html">Veri Çerçevesi</a></li>
+								<li><a href="/tag/read_html.html">read_html</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>read_html() Fonksiyonu Nedir? Nasıl Kullanılır?</h1>
+<p><strong>read_html()</strong> fonksiyonu ile web sitelerinde ya da htm/html uzantılı dosyalardaki tabloları, çalışmalarınıza dahil edebilirsiniz. Öncelikle veri almak istediğimiz sayfanın içerisinde kaç adet tablo olduğunu bulalım.</p>
+<div class="highlight"><pre><span></span><code><span class="n">url_tablo</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_html</span><span class="p">(</span><span class="s2">&quot;https://tr.wikipedia.org/wiki/Van&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sayfada bulunan toplam tablo sayısı: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">url_tablo</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">Sayfada …</span></code></pre></div>
+				</p>
+				<a class="read-more" href="/pandas-read_html.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="/pandas-read_json.html">
+					<a href="/pandas-read_json.html">Pandas - read_json</a>
+				</h1>
+				<span class="post-date">Cts 09 Temmuz 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/dataframe.html">DataFrame</a></li>
+								<li><a href="/tag/veri-cercevesi.html">Veri Çerçevesi</a></li>
+								<li><a href="/tag/read_json.html">read_json</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>read_json() Fonksiyonu Nedir? Nasıl Kullanılır?</h1>
+<p><strong>read_json()</strong> fonksiyonu ile <strong>json</strong> uzantılı dosyaları çalışmalarınıza dahil edebilirsiniz.</p>
+<div class="highlight"><pre><span></span><code><span class="n">veri_json</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/json_verisi.json&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">veri_json</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Duration</th>
+<th>Pulse</th>
+<th>Maxpulse</th>
+<th>Calories</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>60</td>
+<td>110</td>
+<td>130</td>
+<td>409</td>
+</tr>
+<tr>
+<td>1</td>
+<td>60</td>
+<td>117</td>
+<td>145</td>
+<td>479</td>
+</tr>
+<tr>
+<td>2</td>
+<td>60</td>
+<td>103</td>
+<td>135</td>
+<td>340</td>
+</tr>
+<tr>
+<td>3</td>
+<td>45</td>
+<td>109</td>
+<td>175</td>
+<td>282</td>
+</tr>
+<tr>
+<td>4</td>
+<td>45</td>
+<td>117</td>
+<td>148 …</td></tr></tbody></table>
+				</p>
+				<a class="read-more" href="/pandas-read_json.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="/pandas-read_table.html">
+					<a href="/pandas-read_table.html">Pandas - read_table</a>
+				</h1>
+				<span class="post-date">Cts 09 Temmuz 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/dataframe.html">DataFrame</a></li>
+								<li><a href="/tag/veri-cercevesi.html">Veri Çerçevesi</a></li>
+								<li><a href="/tag/read_table.html">read_table</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>read_table() Fonksiyonu Nedir? Nasıl Kullanılır?</h1>
+<p>Bu bölümde harici kaynaktan bir <strong>CSV</strong> dosyasından verileri okuyarak veri çerçevesine dönüştürmeyi öğreneceğiz.</p>
+<h3>read_table() Fonksiyonu</h3>
+<p><strong>read_table()</strong> fonksiyonu ile <strong>CSV</strong> uzantılı dosyalar içe aktarıldığında, dosyanın her satırı, tablonun bir sütununa yazılır. Yani tabloda 2 sütun oluşturulur, birinci sütunda index bilgisi, ikinci sütunda ise <strong>csv</strong> dosyasının satırlarındaki …</p>
+				</p>
+				<a class="read-more" href="/pandas-read_table.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="/pandas-giris.html">
+					<a href="/pandas-giris.html">Pandas - Giriş</a>
+				</h1>
+				<span class="post-date">Cts 09 Temmuz 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>Pandas Kütüphanesi Notları</h1>
+<p><strong>Python'a Giriş</strong> konusuna ait notları, FreeCAD için Python ile Komut Dosyası Oluşturma (Scripting) Eğitiminde paylaşmıştık.  İlave olarak Python'ın en güçlü ve işlevsel kütüphanelerinden biri olan <strong>Pandas</strong>'a ait notları paylaşmaya devam ediyorum.</p>
+<p><img alt="pandas" src="../../images/pandas_logo.png"></p>
+<h2>PANDAS NEDİR?</h2>
+<p><strong>Python'a Giriş</strong> konusu ile alakalı bilgileri, <a href="/freecad-scripting.html">FreeCAD Eğitim Notları</a> bölümünde <a href="/freecad-scripting-01-pythona-giris.html">1. Python'a Giriş …</a></p>
+				</p>
+				<a class="read-more" href="/pandas-giris.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="/pandas-ozet-bilgi-tablosu-cheatsheet.html">
+					<a href="/pandas-ozet-bilgi-tablosu-cheatsheet.html">Pandas Özet Bilgi Tablosu (CheatSheet)</a>
+				</h1>
+				<span class="post-date">Pzt 28 Şubat 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>Pandas Özet Bilgi Tablosu (CheatSheet)</h1>
+<p>Pandas Veri Çerçevesi (Data Frame) komutlarını (fonksiyon, metot, parametre) bir yerde toplayarak ihtiyaç halinde, farklı konulara ait komutlara daha hızlı ulaşabileceğimiz bir <strong>Başvuru Kılavuzu / Özet Bilgi Tablosu (CheatSheet)</strong> oluşturmaya çalışıyorum. </p>
+<p>Başvuru kılavuzunu / Özet Bilgi Tablosunu (CheatSheet) oluştururken, komutları, <strong>Pandas Veri Çerçevesi (Data Frame) Konu Başlıkları …</strong></p>
+				</p>
+				<a class="read-more" href="/pandas-ozet-bilgi-tablosu-cheatsheet.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="/freecad-scripting-06-komut-dosyasiyla-yazilmis-nesneler.html">
+					<a href="/freecad-scripting-06-komut-dosyasiyla-yazilmis-nesneler.html">FreeCAD - Scripting 06 - Komut Dosyasıyla Yazılmış Nesneler</a>
+				</h1>
+				<span class="post-date">Cts 26 Şubat 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/freecad.html">FreeCAD</a></li>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/scripting.html">Scripting</a></li>
+								<li><a href="/tag/komut.html">Komut</a></li>
+								<li><a href="/tag/nesne.html">Nesne</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>Komut Dosyasıyla Yazılmış Nesneler</h1>
+<h2>Takdim</h2>
+<p>Açıklamalar, ağlar ve parça nesneleri gibi standart nesne türlerinin yanı sıra, FreeCAD ayrıca <a href="https://wiki.freecadweb.org/App_FeaturePython">Python Özellikleri</a> adı verilen %100 python komut dosyasıyla oluşturulmuş parametrik nesneler oluşturmak için harika bir olanak sunar. Bu nesneler, tam 
+olarak diğer herhangi bir FreeCAD nesnesi gibi davranacak ve dosya kaydetme/yükleme …</p>
+				</p>
+				<a class="read-more" href="/freecad-scripting-06-komut-dosyasiyla-yazilmis-nesneler.html">Continue reading »</a>
+			</div>
+			<div class="post">
 				<h1 class="post-title" href="/freecad-scripting-04-parca-part-komut-dosyasi-olusturmak.html">
 					<a href="/freecad-scripting-04-parca-part-komut-dosyasi-olusturmak.html">FreeCAD - Scripting 04 - Parça (Part) Komut Dosyası Oluşturmak</a>
 				</h1>
@@ -96,7 +363,7 @@
 <h2>Takdim</h2>
 <p><code>Part (Parça)</code> modülünde kullanılan ana veri yapısı, <a href="https://wiki.freecadweb.org/OpenCASCADE">OpenCASCADE</a>'den <a href="http://en.wikipedia.org/wiki/Boundary_representation">BRep</a> veri türüdür. <code>Part</code> modülünün hemen hemen tüm içeriği ve nesne türleri, Python komut dosyasında mevcuttur. Bu, <strong>Çizgiler</strong>, <strong>Daireler</strong> ve <strong>Yaylar</strong> gibi geometrik temel şekilleri ve <strong>Noktalar, Kenarlar, Kafes/Ağ Yapıları, Yüzeyler, Katılar ve Bileşikler …</strong></p>
 				</p>
-				<a class="read-more" href="freecad-scripting-04-parca-part-komut-dosyasi-olusturmak.html">Continue reading »</a>
+				<a class="read-more" href="/freecad-scripting-04-parca-part-komut-dosyasi-olusturmak.html">Continue reading »</a>
 			</div>
 			<div class="post">
 				<h1 class="post-title" href="/freecad-scripting-05-topolojik-veri-kodlamasi.html">
@@ -119,74 +386,14 @@
 <p>Burada, <code>Parça (Part)</code> modülünü, doğrudan FreeCAD Python Yorumlayıcısından veya herhangi bir harici komut dosyasından nasıl kontrol edeceğinizi açıklayacağız. Python komut dosyasının FreeCAD'de nasıl çalıştığı hakkında daha fazla bilgiye ihtiyacınız varsa, <a href="https://wiki.freecadweb.org/Power_users_hub">Komut Dosyası</a> bölümüne ve <a href="freecad-03-komut-dosyasi-olusturmanin-temelleri.html">FreeCAD Komut Dosyası Oluşturma Temelleri 
 </a>sayfalarına göz attığınızdan emin olun. Python'da yeniyseniz …</p>
 				</p>
-				<a class="read-more" href="freecad-scripting-05-topolojik-veri-kodlamasi.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="/freecad-scripting-03-komut-dosyasi-olusturmanin-temelleri.html">
-					<a href="/freecad-scripting-03-komut-dosyasi-olusturmanin-temelleri.html">FreeCAD - Scripting 03 - Komut Dosyası Oluşturmanın Temelleri</a>
-				</h1>
-				<span class="post-date">Prş 17 Şubat 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/freecad.html">FreeCAD</a></li>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/scripting.html">Scripting</a></li>
-								<li><a href="/tag/komut.html">Komut</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1>FreeCAD'de Komut Dosyası Oluşturmanın (Scripting) Temelleri</h1>
-<h2>FreeCAD'de Python komut dosyası oluşturmak</h2>
-<p>FreeCAD, Python komut dosyaları tarafından tamamen kontrol edilecek şekilde sıfırdan oluşturulmuştur. Arayüz, sahne içeriği ve hatta bu içeriğin 3B görünümlerdeki temsili gibi FreeCAD'in neredeyse tüm bölümlerine yerleşik Python yorumlayıcısından veya kendi komut dosyalarınızdan erişilebilir. Sonuç olarak, FreeCAD muhtemelen bugün …</p>
-				</p>
-				<a class="read-more" href="freecad-scripting-03-komut-dosyasi-olusturmanin-temelleri.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="/freecad-scripting-02-python-komut-dosyasi-olusturmak.html">
-					<a href="/freecad-scripting-02-python-komut-dosyasi-olusturmak.html">FreeCAD - Scripting 02 - Python Komut Dosyası Oluşturmak</a>
-				</h1>
-				<span class="post-date">Sal 15 Şubat 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/freecad.html">FreeCAD</a></li>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/scripting.html">Scripting</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1>Python Komut Dosyası Oluşturma (Scripting) Eğitimi</h1>
-<p><a href="http://en.wikipedia.org/wiki/Python_%28programming_language%29">Python</a> kullanımı ve öğrenilmesi çok kolay bir programlama dilidir. Açık kaynak kodlu, çok platformlu ve basit kabuk komut dosyalarının programlanmasından, çok karmaşık programlara kadar pek çok şey için tek başına kullanılabilir. Ancak en yaygın kullanım yönteminden biri, diğer uygulamalara gömülerek kullanılmasıdır. FreeCAD içinde tam …</p>
-				</p>
-				<a class="read-more" href="freecad-scripting-02-python-komut-dosyasi-olusturmak.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="/freecad-scripting-01-pythona-giris.html">
-					<a href="/freecad-scripting-01-pythona-giris.html">FreeCAD - Scripting 01 - Python'a Giriş</a>
-				</h1>
-				<span class="post-date">Paz 13 Şubat 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/freecad.html">FreeCAD</a></li>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/giris.html">Giriş</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1>Python'a Giriş</h1>
-<p>Bu bölümün amacı, Python programlama dili hakkında kısaca bilgi vermek ve ardından FreeCAD programı içerisinde Python kodu yazmayı ve/veya yazdığımız kodları çalıştırmayı öğrenmektir.</p>
-<p>Bu, Python'a yeni başlayanlar için kısa bir eğitimdir. Python, açık kaynaklı, çok platformlu bir programlama dilidir. Onu diğer programlama dillerinden farklı ve yeni kullanıcılar …</p>
-				</p>
-				<a class="read-more" href="freecad-scripting-01-pythona-giris.html">Continue reading »</a>
+				<a class="read-more" href="/freecad-scripting-05-topolojik-veri-kodlamasi.html">Continue reading »</a>
 			</div>
 	</div>
 	<div class="pagination">
 
 		<span class="pagination-item older"><a href="/tag/python12.html">Newer</a></span>
 
-		<span class="pagination-item newer">Older</span>
+		<span class="pagination-item newer"><a href="/tag/python14.html">Older</a></span>
 	</div>
 		</div>
 	</body>

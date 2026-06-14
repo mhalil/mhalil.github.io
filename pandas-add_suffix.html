@@ -11,7 +11,6 @@
 	<meta property="og:title" content="Pandas - add_suffix" />
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content="/pandas-add_suffix.html" />
-		<meta property="og:image" content="/images/avatar.png" />
 
 		<!-- Enable responsiveness on mobile devices-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -110,7 +109,7 @@
 <p>Bu metot en çok, birden fazla DataFrame birleştirilirken (merge/join) hangi verinin hangi kaynaktan geldiğini belirtmek için sütun adlarına topluca son ek eklemek amacıyla kullanılır.</p>
 <h3>Sütunlara Son Ek Ekleme (Varsayılan)</h3>
 <p>Aşağıdaki örnekte, varsayılan davranış olan <strong>sütun etiketlerinin</strong> sonuna <code>_sütun</code> dizesi eklenmiştir. Orjinal Veri çerçevemiz;</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]})</span>
 

@@ -11,7 +11,6 @@
 	<meta property="og:title" content="Pandas - resample" />
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content="/pandas-resample.html" />
-		<meta property="og:image" content="/images/avatar.png" />
 
 		<!-- Enable responsiveness on mobile devices-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -321,7 +320,7 @@
 <span class="c1"># #Freq: 3min, dtype: int64</span>
 </code></pre></div>
 
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">custom_resampler</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">custom_resampler</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">5</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;3min&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">custom_resampler</span><span class="p">))</span>

@@ -11,7 +11,6 @@
 	<meta property="og:title" content="Pandas - merge" />
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content="/pandas-merge.html" />
-		<meta property="og:image" content="/images/avatar.png" />
 
 		<!-- Enable responsiveness on mobile devices-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -89,7 +88,7 @@ Adlandırılmış Seri nesnesi (Series), adlandırılmış tek bir sütuna sahip
 <h1>Parametreler</h1>
 <h2>on Parametresi</h2>
 <p><code>on</code> parametresi, Veri Çerçevelerinin hangi sütun baz alınarak birleştirileceğini belirteceğimiz parametredir. Öğrenci isimleri ile Vize ve Final sonuçlarının bulunduğu iki veri çerçevesi oluşturup, parametrelerin kullanımını görelim.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="n">vize</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;Ogrenci&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;ali&quot;</span><span class="p">,</span> <span class="s2">&quot;busra&quot;</span><span class="p">,</span> <span class="s2">&quot;ceyhun&quot;</span><span class="p">,</span> <span class="s2">&quot;eda&quot;</span><span class="p">,</span> <span class="s2">&quot;gamze&quot;</span><span class="p">,</span> <span class="s2">&quot;kamil&quot;</span><span class="p">],</span> 
                      <span class="s2">&quot;Sinav Sonucu&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">41</span><span class="p">,</span> <span class="mi">58</span><span class="p">,</span> <span class="mi">73</span><span class="p">,</span> <span class="mi">81</span><span class="p">,</span> <span class="mi">95</span><span class="p">,</span> <span class="mi">85</span><span class="p">]})</span>
 

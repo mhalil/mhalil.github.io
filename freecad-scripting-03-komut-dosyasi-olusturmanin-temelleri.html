@@ -11,7 +11,6 @@
 	<meta property="og:title" content="FreeCAD - Scripting 03 - Komut Dosyası Oluşturmanın Temelleri" />
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content="/freecad-scripting-03-komut-dosyasi-olusturmanin-temelleri.html" />
-		<meta property="og:image" content="/images/avatar.png" />
 
 		<!-- Enable responsiveness on mobile devices-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -143,7 +142,7 @@ oluşturalım:</p>
 </code></pre></div>
 
 <p>İlk argüman (<em>"Mesh::Feature"</em>) nesne türüdür, ikincisi (<em>"myMeshName"</em>) nesnenin adıdır. İki nesnemiz neredeyse aynı görünüyor: Henüz herhangi bir geometri içermiyorlar ve <code>dir(myMesh)</code> ve <code>dir(myPart)</code> ile incelediğinizde özelliklerinin çoğu aynı. Bir şey dışında, <code>myMesh</code>'in <strong>Mesh</strong> özelliği ve <code>myPart</code>'ın <strong>Shape</strong> özelliği vardır. <code>Mesh</code> ve <code>Part</code> verilerinin depolandığı yer burasıdır. Örneğin, bir <code>Part</code> küpü oluşturalım ve onu <code>myPart</code> nesnemizde saklayalım:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">Part</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">Part</span>
 <span class="n">cube</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">makeBox</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="n">myPart</span><span class="o">.</span><span class="n">Shape</span> <span class="o">=</span> <span class="n">cube</span>
 </code></pre></div>
@@ -153,14 +152,14 @@ içinde saklamayı deneyebilirsiniz, ancak bu bir hata verecektir. Bunun
 nedeni, her özelliğin yalnızca belirli bir türü depolamak için yapılmış 
 olmasıdır. Bir <strong>Mesh</strong> özelliğinde, yalnızca <code>Mesh</code> modülü ile oluşturulan öğeleri kaydedebilirsiniz. Çoğu modülün ayrıca 
 geometrilerini belgeye eklemek için bir kısayolu olduğunu unutmayın:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">Part</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">Part</span>
 <span class="n">cube</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">makeBox</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="n">Part</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">cube</span><span class="p">)</span>
 </code></pre></div>
 
 <h2>Nesneleri Değiştirmek</h2>
 <p>Bir nesneyi değiştirmek aynı şekilde yapılır:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">Part</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">Part</span>
 <span class="n">cube</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">makeBox</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="n">myPart</span><span class="o">.</span><span class="n">Shape</span> <span class="o">=</span> <span class="n">cube</span>
 </code></pre></div>

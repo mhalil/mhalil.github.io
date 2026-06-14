@@ -11,7 +11,6 @@
 	<meta property="og:title" content="Düzenli İfadeler - Ozel Diziler" />
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content="/duzenli-ifadeler-ozel-diziler.html" />
-		<meta property="og:image" content="/images/avatar.png" />
 
 		<!-- Enable responsiveness on mobile devices-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -214,7 +213,7 @@ metin &gt; 02124344332
 <h2>\A Metin Başında Eşleşme Kontrolü</h2>
 <p><code>\A</code> meta karakteri, <strong>bir düzenli ifadenin (string ifade çok satırlı da olsa) yalnız başlangıcı ile eşleşme olup olmadığını tespit eder.</strong> Başka bir deyişle, <code>\A</code> ifadesi sadece tüm metnin başlangıcında eşleşmeye çalışır. <code>^</code> (şapka) metakarakteri ile tüm paragraf başlarında eşleşme olup olmadığı kontrol edilirken <code>\A</code> ile sadece metnin en baş kısmına bakılır. </p>
 <p><code>\A</code> metakarakterinin <code>findall</code> fonksiyonu ile (çok satırlı / paragraflı metin içinde) kullanımına bir örnek verelim.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 <span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Python (C, C++, Perl, Ruby ve benzerleri gibi) bir programlama dilidir ve tıpkı öteki programlama dilleri gibi, önünüzde duran kara kutuya, yani bilgisayara hükmetmenizi sağlar.</span>
 <span class="s2">Bu programlama dili Guido Van Rossum adlı Hollandalı bir programcı tarafından 90’lı yılların başında geliştirilmeye başlanmıştır. Çoğu insan, isminin Python olmasına aldanarak, bu programlama dilinin, adını piton yılanından aldığını düşünür.</span>
 <span class="s2">Peki neden piyasada iki farklı Python sürümü var ve bu bizim için ne anlama geliyor?</span>
@@ -234,7 +233,7 @@ metin &gt; 02124344332
 <h2>\Z Metin Sonunda Eşleşme Kontrolü</h2>
 <p><code>\Z</code> metakarakteri, <strong>dizelerin (stringlerin) sonunda eşleşme olup olmadığını sorgulamak için kullanılır.</strong> Bu sembol arama/eşleştirme işleminin karakter dizisinin en sonuna bakmasını sağlıyor. Bu metakarakter çok satırlı bir metin içinde kullanılıyorsa, <strong>sadece metnin en sonuna, son satırın sonuna bakar, her satırın sonundaki kelime ile eşleşme olup olmadığına bakmaz.</strong> Çok satırlı metinde eşleştirme yapmak için <code>re.M</code> ya da <code>re.MULTILINE</code> ifadesini koda eklemek gerekir. <strong>Sadece kendinden önceki BİR karaktere BAKMIYOR</strong>. Hatırlarsınız <code>^</code> metakarakteri eşleştirme işleminin karakter dizisinin en başından başlamasını sağlıyordu.</p>
 <p>Bir örnek verelim;</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 
 <span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Python (C, C++, Perl, Ruby ve benzerleri gibi) bir programlama dilidir ve tıpkı öteki programlama dilleri gibi, önünüzde duran kara kutuya, yani bilgisayara hükmetmenizi sağlar.</span>
 <span class="s2">Bu programlama dili Guido Van Rossum adlı Hollandalı bir programcı tarafından 90’lı yılların başında geliştirilmeye başlanmıştır. Çoğu insan, isminin Python olmasına aldanarak, bu programlama dilinin, adını piton yılanından aldığını düşünür. </span>

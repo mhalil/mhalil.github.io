@@ -11,7 +11,6 @@
 	<meta property="og:title" content="Python - getattr fonksiyonu" />
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content="/python-getattr-fonksiyonu.html" />
-		<meta property="og:image" content="/images/avatar.png" />
 
 		<!-- Enable responsiveness on mobile devices-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -130,8 +129,8 @@
 <p>Bu mekanizma, bir nesnedeki bir özelliğe ulaşmak için kullandığınız adrese bir postacı göndermeye benzer; adresi (öznitelik adını) bir mektup (dize) olarak sağlarsınız. Eğer adres doğruysa (öznitelik varsa), size o adresteki içeriği (öznitelik değeri) getirir. Eğer adres hatalıysa, postacı geri döner ve size bir hata bildirimi (varsayılan değer) veya bir istisna (<code>AttributeError</code>) verir.</p>
 <h2>Örnekler</h2>
 <p>Konuyu örneklerle inceleyelim.</p>
-<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Personel</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ad</span><span class="p">,</span> <span class="n">yas</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Personel</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ad</span><span class="p">,</span> <span class="n">yas</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ad</span> <span class="o">=</span> <span class="n">ad</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">yas</span> <span class="o">=</span> <span class="n">yas</span>
 
@@ -166,8 +165,8 @@
 </code></pre></div>
 
 <p>Bir sınıfa ait fonksiyonu, <code>getattr()</code> içerisinde nasıl kullanabiliriz derseniz;</p>
-<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">AI</span><span class="p">:</span>
-   <span class="k">def</span> <span class="nf">genAI</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">AI</span><span class="p">:</span>
+   <span class="k">def</span><span class="w"> </span><span class="nf">genAI</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
       <span class="k">return</span> <span class="s2">&quot;This is your prompt&quot;</span>
 
 <span class="n">chatGpt</span> <span class="o">=</span> <span class="n">AI</span><span class="p">()</span>
@@ -182,8 +181,8 @@
 <p>Aşağıdaki örnekte gösterildiği gibi, <code>getattr()</code> fonksiyonunu <code>for</code> döngüsü içinde kullanarak verilen bir özniteliklerin değerine erişebiliriz.</p>
 <div class="highlight"><pre><span></span><code><span class="n">info</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;emp_id&quot;</span><span class="p">,</span> <span class="s2">&quot;status&quot;</span><span class="p">]</span>
 
-<span class="k">class</span> <span class="nc">Emp</span><span class="p">:</span>
-   <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">emp_id</span><span class="p">,</span> <span class="n">status</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Emp</span><span class="p">:</span>
+   <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">emp_id</span><span class="p">,</span> <span class="n">status</span><span class="p">):</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">emp_id</span> <span class="o">=</span> <span class="n">emp_id</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="n">status</span>
@@ -202,8 +201,8 @@
 </code></pre></div>
 
 <p>Bir başka örnek;</p>
-<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Car</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">brand</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">year</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Car</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">brand</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">year</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">brand</span> <span class="o">=</span> <span class="n">brand</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">year</span> <span class="o">=</span> <span class="n">year</span>
@@ -225,14 +224,14 @@
 </code></pre></div>
 
 <p><strong>Dinamik Çağırma Mekanizması</strong></p>
-<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Validation</span><span class="p">:</span>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Validation</span><span class="p">:</span>
     <span class="n">ERRORS</span> <span class="o">=</span> <span class="p">{</span> 
         <span class="s1">&#39;required&#39;</span> <span class="p">:</span> <span class="s1">&#39;The </span><span class="si">{}</span><span class="s1"> is required&#39;</span><span class="p">,</span> 
         <span class="s1">&#39;email&#39;</span> <span class="p">:</span> <span class="s1">&#39;The </span><span class="si">{}</span><span class="s1"> is not a valid email address&#39;</span> 
     <span class="p">}</span>
     <span class="c1"># ... required() ve email() metotları burada tanımlı ... [10]</span>
 
-    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">rules</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">rules</span><span class="p">):</span>
         <span class="n">errors</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">for</span> <span class="n">field</span><span class="p">,</span> <span class="n">rule</span> <span class="ow">in</span> <span class="n">rules</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="c1"># 1. Kural Adını Metoda Dönüştürme</span>
@@ -289,21 +288,21 @@
 <p>Bu yöntem sayesinde, doğrulama kurallarını eklemek veya kaldırmak için <code>validate()</code> metodunun içeriğini değiştirmeye gerek kalmaz; sadece kural adlarının dize olarak tutulduğu <code>rules</code> sözlüğünü ve ilgili metotları güncellemek yeterli olur. Bu, kodun esnekliğini (flexibility) artırır.</p>
 <h2>Gizli Metotlara Erişim</h2>
 <p>Bir <code>HesapMakinesi</code> sınıfımızın olduğunu ve yalnızca dahili süreçler için kullanılmasını istediğimiz gizli bir <code>_carp()</code> (çarpma) metodumuz olduğunu varsayalım. Dışarıdan sadece <code>islem_yap()</code> metodu ile erişim sağlamak istiyoruz, ancak hangi işlemin yapılacağını dinamik olarak belirliyoruz.</p>
-<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">HesapMakinesi</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">HesapMakinesi</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># Varsayılan değer</span>
         <span class="k">pass</span>
 
     <span class="c1"># Gizli (internal/private) metot:</span>
-    <span class="k">def</span> <span class="nf">_carp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_carp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Bu metot sadece dahili kullanıma yönelik tasarlanmıştır.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
 
     <span class="c1"># Gizli olmayan (public) metot:</span>
-    <span class="k">def</span> <span class="nf">topla</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">topla</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
 
-    <span class="k">def</span> <span class="nf">dinamik_islem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">islem_adi</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">dinamik_islem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">islem_adi</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
         <span class="c1"># Gizli metot adını oluşturma: &quot;carp&quot; -&gt; &quot;_carp&quot;</span>
         <span class="n">gizli_metot_adi</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;_</span><span class="si">{</span><span class="n">islem_adi</span><span class="si">}</span><span class="s2">&quot;</span> 
 

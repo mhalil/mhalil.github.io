@@ -11,7 +11,6 @@
 	<meta property="og:title" content="Pandas - at" />
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content="/pandas-at.html" />
-		<meta property="og:image" content="/images/avatar.png" />
 
 		<!-- Enable responsiveness on mobile devices-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -88,7 +87,7 @@
 <p><code>at[]</code> metoduna parametre olarak yazılan satır/sütun etiket çifti bir demet (tuple) veri tipi değilse ya da parametre çiftinden herhangi biri DataFrame için skaler değilse <code>ValueError</code> hatası alınır.<br>
 <code>at[]</code> metodunun <code>loc[]</code> metoduna benzer şekilde kullanıldığını ifade ettik. O nedenle konuyu uzun uzun açıklamaya gerek görmüyorum. Sadece bir kaç örnek kod inceleyerek konuyu kapatacağım.  </p>
 <p>Örnek uygulamalar için bir veri çerçevesi oluşturarak devam edelim;</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">]],</span> 
                   <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>

@@ -11,7 +11,6 @@
 	<meta property="og:title" content="Python - globals" />
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content="/python-globals.html" />
-		<meta property="og:image" content="/images/avatar.png" />
 
 		<!-- Enable responsiveness on mobile devices-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -143,7 +142,7 @@ Bu kod, global sembol tablosunu içeren bir sözlük yazdırır.</p>
 <p>diyeceksiniz ki, a değişkenine direkt <code>print(a)</code> yazarak ta erişebilirdik, ne anladım bu işten :) Aşağıdaki kodu ve çıktısını inceleyelim:</p>
 <div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="mi">100</span>
 
-<span class="k">def</span> <span class="nf">deger</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">deger</span><span class="p">():</span>
     <span class="n">a</span> <span class="o">=</span> <span class="mi">50</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Lokal a değeri:&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
     <span class="n">global_a</span> <span class="o">=</span> <span class="nb">globals</span><span class="p">()[</span><span class="s2">&quot;a&quot;</span><span class="p">]</span>
@@ -160,7 +159,7 @@ Bu kod, global sembol tablosunu içeren bir sözlük yazdırır.</p>
 </code></pre></div>
 
 <p>Gördüğünüz gibi aynı isme sahip (a) iki değişkeni sorunsuz bir şekilde kullabildik.</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">degis</span><span class="p">():</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">degis</span><span class="p">():</span>
       <span class="k">global</span> <span class="n">a</span>
       <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">degis</span><span class="p">()</span>

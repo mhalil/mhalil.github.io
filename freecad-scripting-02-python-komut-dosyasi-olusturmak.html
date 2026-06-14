@@ -11,7 +11,6 @@
 	<meta property="og:title" content="FreeCAD - Scripting 02 - Python Komut Dosyası Oluşturmak" />
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content="/freecad-scripting-02-python-komut-dosyasi-olusturmak.html" />
-		<meta property="og:image" content="/images/avatar.png" />
 
 		<!-- Enable responsiveness on mobile devices-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -203,7 +202,7 @@ FreeCAD dahil birçok uygulamada, yüzlerin yalnız 3 köşesi olabilir.
 Elbette, birkaç eş düzlemli üçgenden oluşan daha büyük bir yüzeye sahip olmanızı hiçbir şey engelleyemez.</p>
 <p>Kafesler (Mesh) basittir, ancak basit oldukları için tek bir belgede milyonlarcasına kolayca sahip olabilirsiniz. Bununla birlikte, FreeCAD'de daha az kullanımları vardır ve diğer uygulamalardan kafes (mesh) biçimlerinde (<code>.stl, .obj</code>) nesneleri içe aktarabilirsiniz. <code>Mesh</code> modülü, FreeCAD'in ömrünün ilk ayında ana test modülü olarak da yoğun bir şekilde kullanıldı.</p>
 <p>Mesh nesneleri ve FreeCAD nesneleri farklı şeylerdir. FreeCAD nesnesini, Mesh nesnesi için bir kap olarak görebilirsiniz (aşağıda göreceğimiz gibi, Part (Parça) nesneleri için de bu geçerlidir). Bu yüzden FreeCAD'e bir mesh nesnesi eklemek için önce bir FreeCAD nesnesi ve bir Mesh nesnesi oluşturmalı, ardından Mesh nesnesini FreeCAD nesnesine eklemeliyiz:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">Mesh</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">Mesh</span>
 <span class="n">mymesh</span> <span class="o">=</span> <span class="n">Mesh</span><span class="o">.</span><span class="n">createSphere</span><span class="p">()</span>
 <span class="n">mymesh</span><span class="o">.</span><span class="n">Facets</span>
 <span class="n">mymesh</span><span class="o">.</span><span class="n">Points</span>
@@ -220,7 +219,7 @@ Elbette, birkaç eş düzlemli üçgenden oluşan daha büyük bir yüzeye sahip
 <p><code>Part (Parça)</code> modülü, nesneler üzerinde mantıksal (boole), yani ekleme, çıkarma, kesişim alma gibi işlemler gerçekleştirme, kenarları yuvarlama, radyus oluşturma (filleting), farklı geometriye sahip düzlemleri bir birine bağlayarak çatılama 
 (loft), ...vb. çok çeşitli karmaşık işlemlerin gerçekleştirilmesine izin veren güçlü <a href="https://en.wikipedia.org/wiki/Open_CASCADE_Technology">OpenCasCade</a> kitaplığına dayanmaktadır.</p>
 <p><code>Part (Parça)</code> modülü, <code>Mesh (Kafes/Ağ)</code> modülüyle aynı şekilde çalışır: Bir FreeCAD nesnesi ve bir Part (Parça) nesnesi oluşturursunuz, ardından Part (Parça) nesnesini FreeCAD nesnesine eklersiniz:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">Part</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">Part</span>
 <span class="n">myshape</span> <span class="o">=</span> <span class="n">Part</span><span class="o">.</span><span class="n">makeSphere</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">myshape</span><span class="o">.</span><span class="n">Volume</span>
 <span class="n">myshape</span><span class="o">.</span><span class="n">Area</span>
@@ -240,7 +239,7 @@ dosyası oluşturma (scripting) sayfası tüm bunları ayrıntılı olarak açı
 <h2>Draft (Taslak) Modülü</h2>
 <p>FreeCAD, aynı zamanda <code>Parça (Part)</code> nesneleri oluşturan <code>Sketcher</code> ve <code>Draft</code> gibi daha birçok modüle sahiptir. Bu modüller, oluşturulan nesnelere ek parametreler ekler, hatta içlerindeki Parça geometrisini işlemek için tamamen yeni bir yol uygular. Yukarıdaki anlatımlar esnasında oluşturduğumuz <strong>kutu (box nesnesi)</strong> örneğimiz, <strong>parametrik</strong> bir nesnenin mükemmel bir örneğidir. Kutuyu tanımlamanız için gereken tek şey <strong>yükseklik, genişlik</strong> ve <strong>uzunluk</strong> parametrelerini belirtmektir. Bunlara bağlı olarak nesne, Parça şeklini otomatik olarak hesaplayacaktır. FreeCAD, <a href="https://wiki.freecadweb.org/Scripted_objects">Python ile bu tür nesneler oluşturmanıza</a> olanak tanır.</p>
 <p><a href="https://wiki.freecadweb.org/Draft_Workbench">Draft (Taslak) modülü</a>, çizgiler ve daireler gibi 2B (2D) parametrik nesne türleri ekler (tümü <code>Part (Parça)</code> nesneleridir) ve ayrıca yalnız <code>Draft (Taslak)</code> nesnelerinde değil, herhangi bir <code>Parça (Part)</code> nesnesinde de çalışan bazı genel işlevler sağlar. Nelerin mevcut olduğunu keşfetmek için şunları yapmanız yeterlidir:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">Draft</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">Draft</span>
 <span class="n">rec</span> <span class="o">=</span> <span class="n">Draft</span><span class="o">.</span><span class="n">makeRectangle</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="n">mvec</span> <span class="o">=</span> <span class="n">FreeCAD</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 <span class="n">Draft</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">rec</span><span class="p">,</span> <span class="n">mvec</span><span class="p">)</span>
@@ -249,7 +248,7 @@ dosyası oluşturma (scripting) sayfası tüm bunları ayrıntılı olarak açı
 
 <h2>Arayüz / Arabirim</h2>
 <p>FreeCAD kullanıcı arayüzü, <a href="https://wiki.freecadweb.org/3D_view">3B (3D) görünüm</a> etrafındaki tüm kontrolleri, menüleri, araç çubuklarını ve düğmeleri çizmekten ve kullanmaktan sorumlu güçlü bir grafik arayüz sistemi olan <a href="https://en.wikipedia.org/wiki/Qt_(software)">Qt</a> ile yapılmıştır. Qt, Python'un FreeCAD gibi Qt arabirimlerine erişmesine ve değiştirmesine izin veren <a href="https://wiki.freecadweb.org/PySide">PySide</a> adlı bir modül sağlar. <a href="https://en.wikipedia.org/wiki/Qt_(software)">Qt</a> arayüzü ile oynamayı deneyelim ve basit bir diyalog üretelim:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">PySide</span> <span class="kn">import</span> <span class="n">QtGui</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">PySide</span><span class="w"> </span><span class="kn">import</span> <span class="n">QtGui</span>
 <span class="n">QtGui</span><span class="o">.</span><span class="n">QMessageBox</span><span class="o">.</span><span class="n">information</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;Apollo program&quot;</span><span class="p">,</span> <span class="s2">&quot;Houston, we have a problem&quot;</span><span class="p">)</span>
 </code></pre></div>
 

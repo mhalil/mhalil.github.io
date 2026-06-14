@@ -11,7 +11,6 @@
 	<meta property="og:title" content="Düzenli İfadeler - Gruplar" />
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content="/duzenli-ifadeler-gruplar.html" />
-		<meta property="og:image" content="/images/avatar.png" />
 
 		<!-- Enable responsiveness on mobile devices-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -113,7 +112,7 @@ dilidir
 
 <p>Düzenli ifadelerde parantez içine alınan bölümler grup olarak adlandırıldığını ifade etmiştik. Örneğin, <code>(\d+)-(\d+)</code> deseni, iki sayıyı tire ile ayıran bir grup içerir. Bir eşleşme gerçekleştiğinde, bu gruplara erişmek için <code>group()</code> metodu kullanılır.</p>
 <p>İşte bir örnek:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 
 <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;2023-02-14&quot;</span>
 <span class="n">pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(\d+)-(\d+)-(\d+)&#39;</span><span class="p">)</span>
@@ -161,7 +160,7 @@ dilidir
 <p><strong>metin</strong> değişkeni içindeki cümlede peş peşe tekrar eden kelimelerin <strong>ışıl</strong> ve <strong>koşa</strong> olduğunu kolayca tespit etmiş olduk.</p>
 <p>Görüldüğü gibi <code>(\w+\s)\1</code> deseninde önce parantez kullanılarak bir grup oluşturuldu. Ardından aynı desenin tekrar kullanılmasını temsil etmek için <code>\1</code> ifadesi kullanıldı. Biliyoruz ki parantez kulanılarak gruplama yapıldığında <code>.group(1)</code> gibi bir ifade kullanarak ilk eşleşmeyi elde edebiliyorduk. Bu mantığı kullanarak desen içinde bir gruptan bahsetmek istediğimizde <code>\</code> ifadesinden sonra kaçıncı gruptan bahsetmek istediğimize dair ilgili sayı değerini kullanmalıyız. </p>
 <p>Bir başka örnek daha yapalım. Bu kez farklı biçimde gösterilen tarih bilgilerini aynı biçime çevirelim.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 
 <span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;Bugün 02.11.2025. 10 gün önceki tarih 23-10-2025 idi.&quot;</span>
 
@@ -180,7 +179,7 @@ dilidir
 <p>Gördüğünüz gibi, gün ay ve yıl biçimindeki tarih bilgilerini, yıl, ay ve gün farmatına dönüştürmüş olduk. Bunu, gruplama sırasını ters (<code>r"\3/\2/\1"</code>) yazarak sağladık.</p>
 <h2>groups() metodu</h2>
 <p>Bu metot, bize kullanabileceğimiz bütün grupları bir <em>demet</em> halinde sunar:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 <span class="n">kardiz</span> <span class="o">=</span> <span class="s2">&quot;python bir programlama dilidir&quot;</span>
 <span class="n">nesne</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;(python) (bir) (programlama) (dilidir)&quot;</span><span class="p">,</span> <span class="n">kardiz</span><span class="p">)</span>
 
@@ -191,7 +190,7 @@ dilidir
 </code></pre></div>
 
 <p>Başka bir örnek;</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 
 <span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">Guido Van Rossum Python&#39;ı geliştirmeye 1990 yılında başlamış... Yani aslında Python için nispeten yeni</span>
@@ -214,7 +213,7 @@ dilidir
 <p>Gruplama, bu desenler içindeki alt örüntüleri belirlemek ve bu gruplara etiketler eklemek için kullanışlı bir özelliktir. Bu bölüme kadar yaptığımız örneklerde, düzenli ifadeler ile desen oluşturup, oluşturduğumuz gruplara <strong>.group(1), .group(2)</strong>, ...vb şekilde eriştik.  Yani sürekli aşağıdaki şekilde örnekler verdik;</p>
 <h2>Gruplama ve Parantez Kullanımı</h2>
 <p>Gruplama, bir desen içinde belirli bir alt örüntüyü tanımlamak ve bu örüntüyü daha sonra referans almak için kullanılır. Gruplama için parantez <code>()</code> kullanılır. Örneğin:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;John Doe, Jane Smith&quot;</span>
 <span class="n">pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(\w+) (\w+)&#39;</span><span class="p">)</span>
 
@@ -236,7 +235,7 @@ dilidir
 <p>Desen içinde gruplama yaparken, gruplara etiket eklemek, grupları daha anlamlı hale getirmek ve daha sonra bu etiketleri kullanmak için faydalıdır. Etiketleme, <code>?P&lt;etiket&gt;</code> sözdizimi ile yapılır. <code>P</code> harfi <code>Placeholder</code>'ın (Yer Tutucu'nun) kısalmasıdır. </p>
 <p>Biliyoruz ki, <code>?</code> metakarakteri, <strong>kendisinden önce gelen karakterin SIFIR veya BİR defa</strong> eşleştiği durumlarda kullanılırdı. <strong>Bunun istisnası, <code>?</code> karakterinden önce <code>(</code> işaretinin gelmesidir.</strong></p>
 <p>Örneğin:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;John Doe, Jane Smith&quot;</span>
 <span class="n">pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(?P&lt;ad&gt;\w+) (?P&lt;soyad&gt;\w+)&#39;</span><span class="p">)</span>
 
@@ -256,7 +255,7 @@ Soyad: Doe
 
 <p>Etiketleme, özellikle karmaşık desenler içinde belirli alt örüntülerin anlamını artırmak ve kodun daha okunabilir olmasını sağlamak için kullanışlıdır.</p>
 <p>Bir örnek daha yapalım;</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">1234567890</span>
 <span class="s2">533-456-7891</span>
@@ -280,7 +279,7 @@ Soyad: Doe
 </code></pre></div>
 
 <p>Sadece Operatör numaralarını öğrenmek istersek;</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">1234567890</span>
 <span class="s2">533-456-7891</span>
@@ -304,7 +303,7 @@ Soyad: Doe
 </code></pre></div>
 
 <p>Son Örnek tarihle alakalı olsun;</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 
 <span class="n">tarihler</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">30/04/2023</span>
@@ -334,7 +333,7 @@ Soyad: Doe
 <h3>(?= ...) Pozitif Lookahead</h3>
 <p><strong>Bir eşleşme sadece belirli bir desenin arkasında varsa</strong> gerçekleşir. Ancak, bu desen eşleşmenin sonucuna dahil edilmez.</p>
 <p>Örneğin:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 
 <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;elma portakal muz çilek&quot;</span>
 <span class="n">pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\w+(?=\sportakal)&#39;</span><span class="p">)</span>
@@ -348,7 +347,7 @@ Soyad: Doe
 
 <p>Bu örnekte, <code>\w+(?=\sportakal)</code> deseni, boşluk karakteri (<code>\s</code>) ile ayrılmış olarak "<strong>portakal</strong>" kelimesinden önce gelen kelimeyi eşleştirir.</p>
 <p>Bir başka örneğe bakalım;</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 <span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;quantity and qrcode is really useful&quot;</span>
 <span class="n">desen</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;q(?=u)[a-zA-Z0-9]+&quot;</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">desen</span><span class="p">,</span> <span class="n">metin</span><span class="p">))</span>
@@ -359,7 +358,7 @@ Soyad: Doe
 
 <p>Bu desenin açıklaması, <strong>q</strong> ile başlayıp <strong>u</strong> ile devam eden kelime grubunu seç demektir.</p>
 <p>Yine aynı metinden yola çıkarak <strong>u</strong> ile devam eden karakterleri, bir başka ifadeyle, <strong>u</strong> harfinden önceki karakteri <strong>seç</strong> demek istersek;</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 <span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;quantity and qrcode is really useful&quot;</span>
 <span class="n">desen</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;.(?=u)&quot;</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">desen</span><span class="p">,</span> <span class="n">metin</span><span class="p">))</span>
@@ -371,7 +370,7 @@ Soyad: Doe
 
 <p>Bir örnek daha yapalım;</p>
 <p>"<strong>The fat cat ran down the street.</strong>" ifadesinden <strong>at</strong> ile <strong>devam eden karakterleri</strong> seç demek istersek;</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 <span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;The fat cat ran down the street.&quot;</span>
 <span class="n">desen</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;.(?=at)&quot;</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">desen</span><span class="p">,</span> <span class="n">metin</span><span class="p">))</span>
@@ -385,7 +384,7 @@ Soyad: Doe
 <h3>(?! ...) Negatif Lookahead</h3>
 <p><strong>Bir eşleşme, belirli bir desenin arkasında yoksa</strong> gerçekleşir. Yani <strong>belirlediğimiz desen ile devam etmeyen ifadeleri seç</strong>er. Tarif biraz karışık geldiyse bir de şöyle açıklamaya çalışayım; <strong>Belirlediğimiz desene uyan karakter ya da karakter grubunu filtrele, gizle, gösterme</strong> demek istiyoruz.</p>
 <p>Örneğin:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 
 <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;apple orange banana&quot;</span>
 <span class="n">pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\w+(?!\sorange)&#39;</span><span class="p">)</span>
@@ -400,7 +399,7 @@ Soyad: Doe
 <p>Bu örnekte, <code>\w+(?!\sorange)</code> deseni, boşluk karakteri (<code>\s</code>) ile ayrılmış olarak "<strong>orange</strong>" kelimesinden önce gelmeyen kelimeyi eşleştirir.  Çıktıdaki<code>appl</code> kelimesinde <code>e</code>harfinin <strong>olmadığına</strong> dikkat edin.</p>
 <p>Bir diğer örnek;</p>
 <p>"quantity and qrcode is really useful" metninde, <strong>q</strong> ile başlayıp <strong>u</strong> ile devam etmeyen bir ifadeyi seçmek istersek;</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 <span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;quantity and qrcode is really useful&quot;</span>
 <span class="n">desen</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;q(?!u)[a-zA-Z0-9]+&quot;</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">desen</span><span class="p">,</span> <span class="n">metin</span><span class="p">))</span>
@@ -411,7 +410,7 @@ Soyad: Doe
 </code></pre></div>
 
 <p>Eğer bu ifadeyi <strong>u</strong> yerine <strong>r</strong> ile değiştirirsek yani <strong>q</strong> ile başlayıp <strong>r</strong> ile devam <strong>etmeyen</strong> kelime grubunu seç dersek bu durumda <strong>quantity</strong> seçilecektir;</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 <span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;quantity and qrcode is really useful&quot;</span>
 <span class="n">desen</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;q(?!r)[a-zA-Z0-9]+&quot;</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">desen</span><span class="p">,</span> <span class="n">metin</span><span class="p">))</span>
@@ -441,7 +440,7 @@ Soyad: Doe
 
 <p>Bir başka örneğe bakalım;</p>
 <p>"<strong>quantity and qrcode is really unuseful but this is an unethical</strong>" cümlesinde <strong>un</strong> ile başlayan (öncesinde <strong>un</strong> deseni olan) karakterleri seçelim.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 <span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;quantity and qrcode is really unuseful but this is an unethical&quot;</span>
 <span class="n">desen</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;(?&lt;=un).&quot;</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">desen</span><span class="p">,</span> <span class="n">metin</span><span class="p">))</span>
@@ -453,7 +452,7 @@ Soyad: Doe
 
 <p>Farklı bir örnek;</p>
 <p>"<strong>quantity and qrcode is really unuseful but this is an unethical. The punisher was born in early age. Also the man is really old</strong>" cümlesinde eşleştirmek/bulmak istediğimiz kelimeler <strong>punisher</strong> ve <strong>man</strong> kelimeleri olsaydı. Bunu şu şekilde tespit edebilirdik. İki kelimenin de ortak özelliği öncesinde "<strong>The, the</strong>" ifadelerinin olmasıdır. Yani öncesinde "<strong>The</strong>"" veya "<strong>the</strong>" kelimeleri olan elde etmeliyiz;</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 <span class="n">metin</span> <span class="o">=</span> <span class="s2">&quot;quantity and qrcode is really unuseful but this is an unethical. The punisher was born in early age. Also the man is really old&quot;</span>
 <span class="n">desen</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;(?&lt;=[tT]he )[a-zA-Z]+&quot;</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">desen</span><span class="p">,</span> <span class="n">metin</span><span class="p">))</span>
@@ -467,7 +466,7 @@ Soyad: Doe
 <p><strong>Pozitif lookbehind</strong>'ın tam tersidir. <strong>Belirtilen ifade ile başlamayan</strong> ifadeleri kontrol etmek için kullanılır.  Yani <strong>öncesinde şu desen olmayan ifadeleri döndür</strong> demek istediğimizde kullanıyoruz.<code>(?&lt;!ifade)</code> şeklinde kullanılır. </p>
 <p>Örneğin; <strong>a</strong> harfinden önce <strong>b</strong> harfi <strong>olmayan</strong> bütün ifadeleri yakala demek için <code>(?&lt;!b)a</code> ifadesi kullanılır.</p>
 <p>Örnek:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;banana&quot;</span>
 <span class="n">pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(?&lt;!a).?&quot;</span><span class="p">)</span>
 
@@ -480,7 +479,7 @@ Soyad: Doe
 
 <p>Bu örnekte, <code>r"(?&lt;!a).?"</code> deseninde, <code>(?&lt;!a)</code> ifadesi ile öncesinde <code>a</code> karakteri <strong>olmayan</strong> <code>.?</code> karakterleri bulmak istediğimizi ifade etmek istiyoruz.</p>
 <p>Bir diğer örneğe bakalım;</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;pie, apple, orange juice, pie cake, banana split&quot;</span>
 <span class="n">pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(?&lt;!\s)pie&#39;</span><span class="p">)</span>
 

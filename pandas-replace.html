@@ -11,7 +11,6 @@
 	<meta property="og:title" content="Pandas - replace" />
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content="/pandas-replace.html" />
-		<meta property="og:image" content="/images/avatar.png" />
 
 		<!-- Enable responsiveness on mobile devices-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -160,7 +159,7 @@
 <p>Aşağıda bu metodu nasıl kullanabileceğinizi senaryolarla ve basit örneklerle açıklıyorum.</p>
 <h3>1. Tek Bir Değeri Değiştirmek</h3>
 <p>Diyelim ki tablonuzda hatalı girilmiş bir değer var (örneğin tüm -1'ler aslında 0 olmalı). Bunu tek bir hamlede düzeltebilirsiniz.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="c1"># Örnek bir tablo oluşturalım</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
@@ -190,7 +189,7 @@
 
 <h3>2. Birden Fazla Değeri Aynı Şeyle Değiştirmek</h3>
 <p>Bazen birden fazla farklı değeri tek bir standart değere çevirmek istersiniz. Örneğin, "Yok", "Bilinmiyor" ve "---" gibi girişlerin hepsini <code>NaN</code> (boş değer) veya <code>0</code> yapmak isteyebilirsiniz.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
     <span class="s1">&#39;Durum&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Aktif&#39;</span><span class="p">,</span> <span class="s1">&#39;Kapali&#39;</span><span class="p">,</span> <span class="s1">&#39;Yok&#39;</span><span class="p">,</span> <span class="s1">&#39;Bilinmiyor&#39;</span><span class="p">]})</span>
@@ -220,7 +219,7 @@
 
 <h3>3. Her Değeri Farklı Bir Şeyle Değiştirmek (Sözlük Yöntemi)</h3>
 <p>Bu, en sık kullanılan yöntemlerden biridir. Bir değer listesini, karşılık gelen başka bir listeyle değiştirirsiniz.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
     <span class="s1">&#39;Kod&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">]})</span>
@@ -248,7 +247,7 @@
 
 <h3>4. Sadece Belirli Bir Sütunda Değişiklik Yapmak</h3>
 <p>Bazen bir değer (örneğin <code>0</code>) bir sütunda "Hata" anlamına gelirken, başka bir sütunda gerçek bir sayı olabilir. Bu durumda değişikliği sadece ilgili sütuna uygulayabilirsiniz.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
     <span class="s1">&#39;A_Sutunu&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
@@ -277,7 +276,7 @@
 <h3>5. Regex (Düzenli İfade) Kullanımı</h3>
 <p>Regex (Düzenli İfadeler), veri temizliğinde Pandas'ın "süper gücüdür". Verilerinizde standart olmayan metinler olduğunda, bunları tek tek yazmak yerine bir <strong>kalıp/desen (pattern)</strong> tanımlayarak hepsini tek seferde düzeltebilirsiniz. Bu durumda <code>regex=True</code> parametresini kullanabilirsiniz.</p>
 <h4>1. Örnek: Dosya Uzantısına Göre Veri Değiştirme</h4>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
     <span class="s1">&#39;Dosya&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;resim.jpg&#39;</span><span class="p">,</span> <span class="s1">&#39;resim.png&#39;</span><span class="p">,</span> <span class="s1">&#39;dokuman.pdf&#39;</span><span class="p">]})</span>
@@ -304,7 +303,7 @@
 <h4>2. Örnek: Sayıların Yanındaki Birimleri (TL, kg, m) Temizlemek</h4>
 <p>Veri setlerinde en sık karşılaşılan sorun, sayısal olması gereken sütunlara metin karışmasıdır (örneğin "100 TL"). Hesaplama yapabilmek için bu harfleri silmemiz gerekir.</p>
 <p><strong>Senaryo:</strong> Fiyat sütunundaki "TL", "tl" veya boşlukları silip sadece sayıları bırakmak istiyoruz.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
     <span class="s1">&#39;Urun&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Elma&#39;</span><span class="p">,</span> <span class="s1">&#39;Armut&#39;</span><span class="p">,</span> <span class="s1">&#39;Muz&#39;</span><span class="p">],</span>
@@ -340,7 +339,7 @@ Bunları bul ve <code>''</code> (hiçlik) ile değiştir.</p>
 <h4>3. Örnek: Belirli Bir Kelime ile Başlayan Her Şeyi Değiştirmek</h4>
 <p>Bazen kategorileri sadeleştirmek istersiniz. Örneğin, bir sürü farklı "Müdür" unvanı varsa (Satış Müdürü, İK Müdürü, Bölge Müdürü), hepsini sadece "Yönetici" yapmak isteyebilirsiniz.</p>
 <p>Senaryo: İçinde "Müdür" kelimesi geçen veya "Müdür" ile biten her şeyi "Yönetici" yapalım. Orjinal Verimiz;</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
     <span class="s1">&#39;Isim&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Ali&#39;</span><span class="p">,</span> <span class="s1">&#39;Veli&#39;</span><span class="p">,</span> <span class="s1">&#39;Ayşe&#39;</span><span class="p">],</span>
@@ -372,7 +371,7 @@ Bunları bul ve <code>''</code> (hiçlik) ile değiştir.</p>
 <h4>4. Örnek: Parantez İçindeki Gereksiz Bilgileri Silmek</h4>
 <p>Şehir isimlerinin yanında bazen parantez içinde bölge kodları veya eski isimler olur. "İstanbul (Avrupa)" gibi. Sadece şehir ismini bırakmak için regex harikadır.</p>
 <p><strong>Senaryo:</strong> Parantez açılan yerden sonrasını tamamen silmek istiyoruz.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
     <span class="s1">&#39;Sehir&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;İstanbul (Avr)&#39;</span><span class="p">,</span> <span class="s1">&#39;Ankara (Merkez)&#39;</span><span class="p">,</span> <span class="s1">&#39;İzmir&#39;</span><span class="p">]})</span>

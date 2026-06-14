@@ -11,7 +11,6 @@
 	<meta property="og:title" content="Flet 06 - Büyük listeler" />
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content="/flet-06-buyuk-listeler.html" />
-		<meta property="og:image" content="/images/avatar.png" />
 
 		<!-- Enable responsiveness on mobile devices-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -81,9 +80,9 @@
 <p>Listeleri görüntülemek için çoğu durumda  <a href="https://flet.dev/docs/controls/column">Sütun (Column)</a> ve <a href="https://flet.dev/docs/controls/row">Satır (Row)</a> kontrollerini 
 kullanabilirsiniz. Ancak liste yüzlerce veya binlerce öğe içeriyorsa, <strong>Sütun</strong> ve <strong>Satır</strong> kullanmak pek mantıklı olmaz. Bunun sebebi, satır ve sütun kontrolü kullanıldığında, uygulama ekranında (kaydırma konumunda) görünmese bile, tüm öğeler bir kerede oluşturulur. Dolayısı ile uygulama çalıştırıldığında veriler yükleninceye kadar kullanıcı arabirimi tepkisiz kalacak ve fare hareketleri gecikmeli olarak tepki verecektir. </p>
 <p>Aşağıdaki örnekte, bir sayfaya 5.000 metin denetimi ekliyoruz. Sayfa, varsayılan düzen kapsayıcısı (container) olarak <code>Column (Sütun)</code>'u kullanır:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">flet</span> <span class="k">as</span> <span class="nn">ft</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">flet</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ft</span>
 
-<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">page</span><span class="p">:</span> <span class="n">ft</span><span class="o">.</span><span class="n">Page</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">page</span><span class="p">:</span> <span class="n">ft</span><span class="o">.</span><span class="n">Page</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5000</span><span class="p">):</span>
         <span class="n">page</span><span class="o">.</span><span class="n">controls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ft</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Line </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
     <span class="n">page</span><span class="o">.</span><span class="n">scroll</span> <span class="o">=</span> <span class="s2">&quot;always&quot;</span>
@@ -102,9 +101,9 @@ kaydırma konumunda görünür olan öğeleri isteğe bağlı olarak işleyen
 <p><a href="https://flet.dev/docs/controls/listview">ListView (ListeGörünümü)</a> dikey (varsayılan) veya yatay olabilir. ListView öğeleri, kaydırma yönünde birbiri ardına görüntülenir.</p>
 <p>ListView, zaten alt öğelerinin isteğe bağlı olarak işlenmesinde etkilidir, ancak tüm öğeler ("kapsam") için aynı sabit yükseklik veya genişliği (<code>horizontal (yatay)</code> ListView için) ayarlayabilirseniz kaydırma performansı daha da iyileştirilebilir. Bu, <code>item_extent</code> özelliğiyle mutlak kapsamı ayarlayarak veya <code>first_item_prototype</code> öğesini <code>True</code> olarak ayarlayarak tüm alt öğelerin kapsamını ilk alt öğe kapsamına eşit hale getirerek yapılabilir.</p>
 <p>ListView (ListeGörünümü) kontrolünü kullanarak 5.000 öğelik bir liste çıkaralım:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">flet</span> <span class="k">as</span> <span class="nn">ft</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">flet</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ft</span>
 
-<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">page</span><span class="p">:</span> <span class="n">ft</span><span class="o">.</span><span class="n">Page</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">page</span><span class="p">:</span> <span class="n">ft</span><span class="o">.</span><span class="n">Page</span><span class="p">):</span>
     <span class="n">lv</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">ListView</span><span class="p">(</span><span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">spacing</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5000</span><span class="p">):</span>
         <span class="n">lv</span><span class="o">.</span><span class="n">controls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ft</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Line </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
@@ -123,12 +122,12 @@ Mutlak bir boyut ayarlayabilirsiniz, örn. <code>ListView(height=300, space=10)<
 <h1>GridView (IzgaraGörünümü)</h1>
 <p>GridView (IzgaraGörünümü), kontrollerin kaydırılabilir bir ızgarada düzenlenmesine izin verir.</p>
 <p><code>ft.Column(wrap=True)</code>veya <code>ft.Row(wrap=True)</code> ile bir "<strong>grid (ızgara)</strong>" oluşturabilirsiniz, örneğin:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">flet</span> <span class="k">as</span> <span class="nn">ft</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">flet</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ft</span>
 
 <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;FLET_WS_MAX_MESSAGE_SIZE&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;8000000&quot;</span>
 
-<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">page</span><span class="p">:</span> <span class="n">ft</span><span class="o">.</span><span class="n">Page</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">page</span><span class="p">:</span> <span class="n">ft</span><span class="o">.</span><span class="n">Page</span><span class="p">):</span>
     <span class="n">r</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">Row</span><span class="p">(</span><span class="n">wrap</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scroll</span><span class="o">=</span><span class="s2">&quot;always&quot;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">page</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
 
@@ -159,12 +158,12 @@ açıklayan JSON mesajının boyutu 1 MB'ı aşacaktır, bu nedenle izin verilen
 <p>Büyük mesajları WebSocket kanalı aracılığıyla sıkıştırmak genellikle iyi bir fikir değildir, bu nedenle kanal yükünü kontrol etmek için aşağıda anlatılan <strong>Toplu Güncelleme (Batch updates)</strong> konusuna göz atın.</p>
 </blockquote>
 <p>GridView, ListView'e benzer, birçok alt öğeyi işlemek için çok etkilidir. Yukarıdaki örneği GridView kullanarak uygulayalım:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">flet</span> <span class="k">as</span> <span class="nn">ft</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">flet</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ft</span>
 
 <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;FLET_WS_MAX_MESSAGE_SIZE&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;8000000&quot;</span>
 
-<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">page</span><span class="p">:</span> <span class="n">ft</span><span class="o">.</span><span class="n">Page</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">page</span><span class="p">:</span> <span class="n">ft</span><span class="o">.</span><span class="n">Page</span><span class="p">):</span>
     <span class="n">gv</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">GridView</span><span class="p">(</span><span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">max_extent</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">child_aspect_ratio</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">page</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">gv</span><span class="p">)</span>
 
@@ -192,9 +191,9 @@ açıklayan JSON mesajının boyutu 1 MB'ı aşacaktır, bu nedenle izin verilen
 içeren WebSockets üzerinden Flet sunucusuna bir mesaj gönderilmektedir. Binlerce
  ek kontrol içeren büyük bir mesaj göndermek, kullanıcının mesajlar tamamen alınana ve kontroller sağlanana kadar birkaç saniye beklemesine neden olabilir.</p>
 <p>Programınızın kullanılabilirliğini artırmak ve sonuçları bir kullanıcıya en kısa sürede sunmak için sayfa güncellemelerini toplu olarak gönderebilirsiniz. Örneğin, aşağıdaki program, 500 öğelik gruplar halinde bir ListView'e 5.100 alt denetim ekler:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">flet</span> <span class="k">as</span> <span class="nn">ft</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">flet</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ft</span>
 
-<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">page</span><span class="p">:</span> <span class="n">ft</span><span class="o">.</span><span class="n">Page</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">page</span><span class="p">:</span> <span class="n">ft</span><span class="o">.</span><span class="n">Page</span><span class="p">):</span>
 
     <span class="c1"># add ListView to a page first</span>
     <span class="n">lv</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">ListView</span><span class="p">(</span><span class="n">expand</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">spacing</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">item_extent</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>

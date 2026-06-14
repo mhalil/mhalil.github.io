@@ -11,7 +11,6 @@
 	<meta property="og:title" content="Pandas - isna" />
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content="/pandas-isna.html" />
-		<meta property="og:image" content="/images/avatar.png" />
 
 		<!-- Enable responsiveness on mobile devices-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -160,8 +159,8 @@
 <p>Biz <code>isna()</code> komutunu çalıştırdığımızda, aslında arka planda 1 ve 0'lardan oluşan bir tablo oluştururuz. <code>sum()</code> (topla) fonksiyonunu kullandığımızda ise bilgisayar bu 1'leri toplar. Yani <strong>kaç tane 1 varsa, o kadar boş veri var demektir.</strong></p>
 <h4>Örnek 1: Tek Bir Değeri Kontrol Etmek</h4>
 <p>En basit haliyle başlayalım. Elimizde tek bir değer var ve boş mu diye bakıyoruz.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="c1"># &quot;Merhaba&quot; boş bir veri mi?</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="s2">&quot;Merhaba&quot;</span><span class="p">))</span>
@@ -205,8 +204,8 @@
 </ul>
 <h4>Örnek 3: Bir Tabloyu (DataFrame) Kontrol Etmek</h4>
 <p>Veri biliminde en çok karşılaşacağın senaryo budur. Elinde bir Excel tablosu gibi bir veri seti (DataFrame) var ve hangi hücrelerin boş olduğunu görmek istiyorsun.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="c1"># Küçük bir öğrenci tablosu oluşturalım</span>
 <span class="n">veri</span> <span class="o">=</span> <span class="p">{</span>
@@ -275,8 +274,8 @@
 <p>Gördüğün gibi, 1 numaralı satırda (<strong>Ayşe</strong>) "<strong>Not</strong>" ve "<strong>Şehir</strong>" sütunları <code>True</code> döndü, yani buralarda veri eksik.</p>
 <h4>Örnek 4: Bir Tabloyu (DataFrame) ve Toplamı Kontrol Etmek</h4>
 <p>Orijinal verimiz:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="n">veri</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;İsim&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Ali&#39;</span><span class="p">,</span> <span class="s1">&#39;Ayşe&#39;</span><span class="p">,</span> <span class="s1">&#39;Mehmet&#39;</span><span class="p">,</span> <span class="s1">&#39;Zeynep&#39;</span><span class="p">],</span>
@@ -361,8 +360,8 @@
 <p>Verideki boşlukları tespit ettik, saydık; şimdi sıra <strong>"Temizlik"</strong> aşamasında.</p>
 <p>Bu aşamada iki ana stratejimiz vardır: Ya o veriyi <strong>gözden çıkarırız (sileriz)</strong> ya da tahmin ederek <strong>doldururuz</strong>.</p>
 <p>İşte örnek senaryomuz için bir veri seti:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="c1"># Senaryo: Bir şirketin çalışan verileri</span>
 <span class="n">veri</span> <span class="o">=</span> <span class="p">{</span>

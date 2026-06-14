@@ -11,7 +11,6 @@
 	<meta property="og:title" content="Düzenli İfadeler - purge" />
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content="/duzenli-ifadeler-purge.html" />
-		<meta property="og:image" content="/images/avatar.png" />
 
 		<!-- Enable responsiveness on mobile devices-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -80,7 +79,7 @@
 	<h1>purge() Fonksiyonu</h1>
 <p><code>purge()</code> metodu, <strong>düzenli ifade (regex) önbelleğini temizlemek için kullanılır</strong>. <code>re</code> modülü, derlenmiş düzenli ifade desenlerini ve ilgili verileri bir önbellekte saklar. Bu önbellek, aynı desenleri tekrar tekrar derlememek ve performansı artırmak için kullanılır. Ancak, bazen bu önbelleği temizlemek isteyebilirsiniz, özellikle çok sayıda düzenli ifade deseni kullanılıyorsa veya bellek kullanımını kontrol etmek istiyorsanız bu fonksiyonun kullanmalısınız.</p>
 <p>İşte <code>purge()</code> fonksiyonunun kullanımı:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 
 <span class="c1"># Örnek düzenli ifade deseni</span>
 <span class="n">pattern1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\b\w+\b&#39;</span><span class="p">)</span>

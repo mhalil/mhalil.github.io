@@ -11,7 +11,6 @@
 	<meta property="og:title" content="Pandas - Melt" />
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content="/pandas-melt.html" />
-		<meta property="og:image" content="/images/avatar.png" />
 
 		<!-- Enable responsiveness on mobile devices-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -91,7 +90,7 @@
 Örneğin, verileriniz ile <a href="https://mhalil.github.io/Pandas_OzetTablo_PivotTable.html">bir pivot tablosu oluşturmak</a> istiyorsanız, o zaman <strong>melt()</strong> fonksiyonu uygulanmış verilere sahip olmak, size çok yardımcı olacaktır.</p>
 <h2>Örnek Veri Çerçevesi (DataFrame) Yüklemek</h2>
 <p>Geniş formatta yani sütun sayısı fazla olan örnek bir veri çerçevesi yükleyerek başlayalım:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
     <span class="p">{</span><span class="s1">&#39;Ad&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Burak&#39;</span><span class="p">,</span> <span class="s1">&#39;Halil&#39;</span><span class="p">,</span> <span class="s1">&#39;Emre&#39;</span><span class="p">,</span> <span class="s1">&#39;Ersin&#39;</span><span class="p">,</span> <span class="s1">&#39;Sertaç&#39;</span><span class="p">,</span> <span class="s1">&#39;Seydi&#39;</span><span class="p">],</span>

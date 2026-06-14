@@ -11,7 +11,6 @@
 	<meta property="og:title" content="Pandas - pd.Grouper" />
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content="/pandas-pdgrouper.html" />
-		<meta property="og:image" content="/images/avatar.png" />
 
 		<!-- Enable responsiveness on mobile devices-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -208,7 +207,7 @@
 <p>‘<code>end_day</code>’: kaynak, son günün gece yarısıdır</p>
 <h4>Örnek Kullanım (Zaman Serisi)</h4>
 <p>Diyelim ki, Elimizdeki veri çerçevesinde <strong>"Publish date"</strong> adında bir tarih sütununuz var.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
    <span class="p">{</span>
@@ -251,8 +250,8 @@
 <h2>🕒 Zaman Aralıklarını Ayarlama (<code>origin</code> ve <code>offset</code>)</h2>
 <p>Standart <code>groupby(freq="...")</code> işlemi, gruplama aralıklarını varsayılan bir başlangıç noktasına göre oluşturur. Ancak bu örnekler, aralıkların başlangıcını sizin belirlediğiniz bir zaman noktasına göre kaydırmanıza olanak tanır.</p>
 <p>Bu örnekler için kullanılan başlangıç veri serisi (<code>ts</code>) şöyledir:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="s1">&#39;2000-10-01 23:30:00&#39;</span><span class="p">,</span> <span class="s1">&#39;2000-10-02 00:30:00&#39;</span>
 <span class="n">rng</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;7min&#39;</span><span class="p">)</span>

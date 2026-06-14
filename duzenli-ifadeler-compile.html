@@ -11,7 +11,6 @@
 	<meta property="og:title" content="Düzenli İfadeler - compile" />
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content="/duzenli-ifadeler-compile.html" />
-		<meta property="og:image" content="/images/avatar.png" />
 
 		<!-- Enable responsiveness on mobile devices-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -84,7 +83,7 @@
 <p><strong>compile</strong> kelimesi İngilizcede <strong>derlemek</strong> anlamına gelir. İşte biz de bu <code>compile()</code> metodu yardımıyla <strong>düzenli ifade desenlerimizi/kalıplarımızı kullanmadan önce derleyerek</strong> daha hızlı çalışmalarını sağlayacağız. </p>
 <p>Küçük boyutlu projelerde <code>compile()</code> metodu pek hissedilir bir fark yaratmasa da özellikle büyük çaplı programlarda bu metodu kullanmak oldukça faydalı olacaktır.</p>
 <p>Basit bir örnekle başlayalım:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 
 <span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Python2.7&quot;</span><span class="p">,</span> <span class="s2">&quot;Python3.2&quot;</span><span class="p">,</span> <span class="s2">&quot;Python3.3&quot;</span><span class="p">,</span> <span class="s2">&quot;Python3.4&quot;</span><span class="p">,</span> <span class="s2">&quot;Java&quot;</span><span class="p">]</span>
 
@@ -114,7 +113,7 @@
 <p><strong>Performans Artışı:</strong> </p>
 <p>Düzenli ifade desenleri büyük ve karmaşık olabilir. Bu desenleri her seferinde derleyip kullanmak yerine, <code>re.compile()</code> ile derlenmiş bir nesne oluşturabilir ve bu nesneyi kullanarak performans avantajı elde edebiliriz. Derleme işlemi, desenin daha hızlı eşleşmesine ve işlenmesine olanak tanır.</p>
 <p>Örneğin:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 
 <span class="n">pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\b\w+\b&#39;</span><span class="p">)</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">pattern</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s2">&quot;Python is powerful&quot;</span><span class="p">)</span>
@@ -123,7 +122,7 @@
 <p><strong>Tekrar Kullanım Kolaylığı:</strong> </p>
 <p>Derlenmiş bir düzenli ifade nesnesi oluşturduktan sonra, <strong>aynı deseni farklı metinler üzerinde birden çok kez kullanabilirsiniz</strong>. Bu, aynı deseni defalarca yazmak ve kodu çalıştırdıktan sonra her seferinde python tarafından derlemekten daha hızlı, temiz ve okunabilirlik sağlar.</p>
 <p>Örneğin:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 
 <span class="n">metin1</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Guido Van Rossum Python&#39;ı geliştirmeye 1990 yılında başlamış... Yani aslında Python için nispeten yeni</span>
 <span class="s2">bir dil denebilir. Ancak Python&#39;un çok uzun bir geçmişi olmasa da, bu dil öteki dillere kıyasla kolay olması, hızlı</span>
@@ -175,7 +174,7 @@
 <p><strong>Bayrakları Ayarlama:</strong> </p>
 <p><code>re.compile()</code> fonksiyonu, düzenli ifadenin derlenmesi sırasında bayrakları (flags) ayarlamanıza olanak tanır. (Bayraklar konusu <a href="/duzenli-ifadeler-bayraklar.html">ilgili sayfada</a> detaylı olarak anlatılmaktadır.) Örneğin, <code>re.IGNORECASE</code> veya <code>re.UNICODE</code> bayraklarını belirleyerek deseni derleyebilirsiniz.</p>
 <p>Örneğin:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 
 <span class="n">desen</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\ba\w+\b&quot;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span> <span class="c1"># re.IGNORECASE bayrağı, küçük/büyük harf fark etmeksizin tüm kelimeleri döndürsün anlamına gelir.</span>
 

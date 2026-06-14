@@ -11,7 +11,6 @@
 	<meta property="og:title" content="Polars - 02 Kurulum" />
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content="/polars-02-kurulum.html" />
-		<meta property="og:image" content="/images/avatar.png" />
 
 		<!-- Enable responsiveness on mobile devices-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -76,50 +75,52 @@
 </div>		<div class="content container">
 <div class="post">
 	<h1 class="post-title">Polars - 02 Kurulum</h1>
-	<span class="post-date">Paz 26 Haziran 2022</span>
+	<span class="post-date">Paz 14 Haziran 2026</span>
 	<h1>Kurulum</h1>
-<p><code>Polars</code> bir kitaplıktır/kütüphanedir ve kurulumu, ilgili programlama dilinin paket yöneticisini çağırmak kadar basittir. Aşağıda farklı programlama dillerine göre kurulum kodları verilmiştir. Bu kodları konsoldan yazarak <code>polars</code>'ı yükleyebilirsiniz.</p>
-<h4>Python</h4>
-<div class="highlight"><pre><span></span><code><span class="n">pip</span> <span class="n">install</span> <span class="n">polars</span>
+<p>Polars bir kütüphanedir ve kurulumu, ilgili programlama dilinin paket yöneticisini çağırmak kadar basittir.</p>
+<p>Python</p>
+<div class="highlight"><pre><span></span><code><span class="n">pip</span> <span class="n">install</span> <span class="n">polars</span>  <span class="c1"># Veya AVX2 desteği olmayan eski CPU&#39;lar için:</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">polars</span><span class="p">[</span><span class="n">rtcompat</span><span class="p">]</span>
 </code></pre></div>
 
-<h4>Rust</h4>
-<div class="highlight"><pre><span></span><code><span class="n">cargo</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="n">polars</span><span class="w"> </span><span class="o">-</span><span class="n">F</span><span class="w"> </span><span class="n">lazy</span>
-
-<span class="p">#</span><span class="w"> </span><span class="n">Or</span><span class="w"> </span><span class="n">Cargo</span><span class="p">.</span><span class="n">toml</span>
-<span class="p">[</span><span class="n">dependencies</span><span class="p">]</span>
-<span class="n">polars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;x&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">features</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;lazy&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">..</span><span class="p">.]}</span>
+<p>Rust</p>
+<div class="highlight"><pre><span></span><code><span class="n">cargo</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="n">polars</span><span class="w"> </span><span class="o">-</span><span class="n">F</span><span class="w"> </span><span class="n">lazy</span><span class="w">  </span><span class="p">#</span><span class="w"> </span><span class="n">veya</span><span class="w"> </span><span class="n">Cargo</span><span class="p">.</span><span class="n">toml</span><span class="w"> </span><span class="p">[</span><span class="n">dependencies</span><span class="p">]</span><span class="w"> </span><span class="n">polars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;x&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">features</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;lazy&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">..</span><span class="p">.]}</span>
 </code></pre></div>
 
-<h4>NodeJS</h4>
-<div class="highlight"><pre><span></span><code><span class="nx">yarn</span><span class="w"> </span><span class="nx">add</span><span class="w"> </span><span class="nx">nodejs</span><span class="o">-</span><span class="nx">polars</span>
+<h2>Büyük Index (Big Index)</h2>
+<p>Varsayılan olarak, Polars dataframe'leri \(2^{32}\) satır (~4.3 milyar) ile sınırlıdır. Big index uzantısını etkinleştirerek bu sınırı \(2^{64}\) (~18 kentilyon) satıra yükseltin:</p>
+<p>Python</p>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>polars<span class="o">[</span>rt64<span class="o">]</span>
 </code></pre></div>
 
-<h2>İçe Aktar / Çalışmaya Dahil Et (Import)</h2>
-<p>Kütüphaneyi kullanmak için, sisteminize kurmuş olduğunuz modülü projenize dahil etmelisiniz. Kitaplığın/Modülün farklı programlama dillerinde, kod içine nasıl dahil  edilebileceğine dair gösterim aşağıda mevcuttur.</p>
-<h4>Python</h4>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">polars</span> <span class="k">as</span> <span class="nn">pl</span>
+<p>Rust</p>
+<div class="highlight"><pre><span></span><code><span class="n">cargo</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="n">polars</span><span class="w"> </span><span class="o">-</span><span class="n">F</span><span class="w"> </span><span class="n">bigidx</span><span class="w">  </span><span class="p">#</span><span class="w"> </span><span class="n">veya</span><span class="w"> </span><span class="n">Cargo</span><span class="p">.</span><span class="n">toml</span><span class="w"> </span><span class="p">[</span><span class="n">dependencies</span><span class="p">]</span><span class="w"> </span><span class="n">polars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;x&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">features</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;bigidx&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">..</span><span class="p">.]</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
 
-<h4>Rust</h4>
+<h2>Eski CPU'lar (Legacy CPU)</h2>
+<p><a href="https://en.wikipedia.org/wiki/Advanced_Vector_Extensions">AVX</a> desteği olmayan eski bir CPU'da Python için Polars kurmak için:</p>
+<p>Python</p>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>polars<span class="o">[</span>rtcompat<span class="o">]</span>
+</code></pre></div>
+
+<h2>İçe Aktarma (Importing)</h2>
+<p>Kütüphaneyi kullanmak için projenize import edin:</p>
+<p>Python</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polars</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pl</span>
+</code></pre></div>
+
+<p>Rust</p>
 <div class="highlight"><pre><span></span><code><span class="k">use</span><span class="w"> </span><span class="n">polars</span><span class="p">::</span><span class="n">prelude</span><span class="p">::</span><span class="o">*</span><span class="p">;</span>
 </code></pre></div>
 
-<h4>NodeJS</h4>
-<div class="highlight"><pre><span></span><code><span class="c1">// esm</span>
-<span class="k">import</span><span class="w"> </span><span class="nx">pl</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;nodejs-polars&#39;</span><span class="p">;</span>
-
-<span class="c1">// require</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">pl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;nodejs-polars&#39;</span><span class="p">);</span><span class="w"> </span>
-</code></pre></div>
-
-<h2>Özellik Bayrakları</h2>
-<p>Yukarıdaki <strong>kurulum</strong> komutunu kullanarak <code>Polars</code>'ın çekirdeğini sisteminize kurarsınız. Ancak kullanım durumunuza bağlı olarak, isteğe bağlı bağımlılıkları da yüklemek isteyebilirsiniz. Bunlar, kullanım alanını en aza indirmek için isteğe bağlı yapılır. Bayraklar, programlama diline bağlı olarak farklıdır. Kılavuz boyunca, ek bir bağımlılık gerektiren bir işlevsellik kullanıldığında, bu konudan bahsedeceğiz.</p>
+<h2>Özellik Bayrakları (Feature Flags)</h2>
+<p>Yukarıdaki komutu kullanarak Polars'ın çekirdeğini sisteminize kurmuş olursunuz. Ancak, kullanım durumunuza bağlı olarak isteğe bağlı bağımlılıkları da kurmak isteyebilirsiniz. Bunlar, boyutu en aza indirmek için isteğe bağlı hale getirilmiştir. Bayraklar programlama diline göre farklılık gösterir. Kılavuz boyunca, kullanılan bir işlevin ek bir bağımlılık gerektirdiğinde belirteceğiz.</p>
 <h3>Python</h3>
-<div class="highlight"><pre><span></span><code><span class="c1"># For example</span>
-<span class="n">pip</span> <span class="n">install</span> <span class="n">polars</span><span class="p">[</span><span class="n">numpy</span><span class="p">,</span> <span class="n">fsspec</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Örnek:</span>
+pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;polars[numpy,fsspec]&#39;</span>
 </code></pre></div>
 
+<h4>Tümü (All)</h4>
 <table>
 <thead>
 <tr>
@@ -129,58 +130,308 @@
 </thead>
 <tbody>
 <tr>
-<td>all</td>
-<td>Tüm isteğe bağlı bağımlılıkları kurun (aşağıdakilerin tümü)</td>
-</tr>
-<tr>
-<td>pandas</td>
-<td>Verileri Pandas Dataframelere/Serilere dönüştürmek için Pandas ile kurun</td>
-</tr>
-<tr>
-<td>numpy</td>
-<td>Verileri numpy dizilerine ve dizilerden (array) dönüştürmek için numpy ile yükle</td>
-</tr>
-<tr>
-<td>pyarrow</td>
-<td>PyArrow kullanarak veri formatlarını okuma</td>
-</tr>
-<tr>
-<td>fsspec</td>
-<td>Uzak dosya sistemlerinden okuma desteği</td>
-</tr>
-<tr>
-<td>connectorx</td>
-<td>SQL veritabanlarından okuma desteği</td>
-</tr>
-<tr>
-<td>xlsx2csv</td>
-<td>Excel dosyalarından okuma desteği</td>
-</tr>
-<tr>
-<td>deltalake</td>
-<td>Delta Lake Tablolarından okuma desteği</td>
-</tr>
-<tr>
-<td>timezone</td>
-<td>Saat dilimi desteği, yalnızca şu durumlarda gereklidir: <br/>1. Python &lt; 3.9 kullanıyorsanız ve/veya <br/>2. Windows kullanıyorsanız, aksi halde hiçbir bağımlılık kurulmaz</td>
+<td><code>all</code></td>
+<td>Tüm isteğe bağlı bağımlılıkları kur.</td>
 </tr>
 </tbody>
 </table>
-<p><code>Rust</code>bağımlılıkları hakkında bilgi almak için <a href="https://pola-rs.github.io/polars-book/user-guide/installation/#rust">bu sayfayı</a> ziyaret edin.</p>
+<h4>GPU</h4>
 <table>
 <thead>
 <tr>
-<th style="text-align: center;">&lt;&lt; Önceki Bölüm</th>
-<th style="text-align: center;">Sonraki Bölüm &gt;&gt;</th>
+<th>Etiket</th>
+<th>Açıklama</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: center;"><a href="polars-01-takdim.html">Takdim</a></td>
-<td style="text-align: center;"><a href="polars-0301-veri-tipleri.html"> Veri Tipleri</a></td>
+<td><code>gpu</code></td>
+<td>Sorguları NVIDIA GPU'larında çalıştır.</td>
 </tr>
 </tbody>
 </table>
+<p>Not</p>
+<p>Detaylı talimatlar ve ön koşullar için <a href="../gpu-support/">GPU desteği</a> bölümüne bakın.</p>
+<h4>Birlikte Çalışabilirlik (Interoperability)</h4>
+<table>
+<thead>
+<tr>
+<th>Etiket</th>
+<th>Açıklama</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pandas</code></td>
+<td>Verileri pandas dataframe/series ile dönüştür.</td>
+</tr>
+<tr>
+<td><code>numpy</code></td>
+<td>Verileri NumPy dizileri ile dönüştür.</td>
+</tr>
+<tr>
+<td><code>pyarrow</code></td>
+<td>Verileri PyArrow tabloları/dizileri ile dönüştür.</td>
+</tr>
+<tr>
+<td><code>pydantic</code></td>
+<td>Verileri Pydantic modellerinden Polars'a dönüştür.</td>
+</tr>
+</tbody>
+</table>
+<h4>Excel</h4>
+<table>
+<thead>
+<tr>
+<th>Etiket</th>
+<th>Açıklama</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>calamine</code></td>
+<td>Excel dosyalarından calamine motoru ile oku.</td>
+</tr>
+<tr>
+<td><code>openpyxl</code></td>
+<td>Excel dosyalarından openpyxl motoru ile oku.</td>
+</tr>
+<tr>
+<td><code>xlsx2csv</code></td>
+<td>Excel dosyalarından xlsx2csv motoru ile oku.</td>
+</tr>
+<tr>
+<td><code>xlsxwriter</code></td>
+<td>Excel dosyalarına XlsxWriter motoru ile yaz.</td>
+</tr>
+<tr>
+<td><code>excel</code></td>
+<td>Desteklenen tüm Excel motorlarını kur.</td>
+</tr>
+</tbody>
+</table>
+<h4>Veritabanı (Database)</h4>
+<table>
+<thead>
+<tr>
+<th>Etiket</th>
+<th>Açıklama</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>adbc</code></td>
+<td>ADBC motoru ile veritabanlarından oku/yaz.</td>
+</tr>
+<tr>
+<td><code>connectorx</code></td>
+<td>ConnectorX motoru ile veritabanlarından oku.</td>
+</tr>
+<tr>
+<td><code>sqlalchemy</code></td>
+<td>SQLAlchemy motoru ile veritabanlarına yaz.</td>
+</tr>
+<tr>
+<td><code>database</code></td>
+<td>Desteklenen tüm veritabanı motorlarını kur.</td>
+</tr>
+</tbody>
+</table>
+<h4>Bulut (Cloud)</h4>
+<table>
+<thead>
+<tr>
+<th>Etiket</th>
+<th>Açıklama</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fsspec</code></td>
+<td>Uzak dosya sistemlerinden oku/yaz.</td>
+</tr>
+</tbody>
+</table>
+<h4>Diğer G/Ç (Other I/O)</h4>
+<table>
+<thead>
+<tr>
+<th>Etiket</th>
+<th>Açıklama</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>deltalake</code></td>
+<td>Delta tablolarından oku/yaz.</td>
+</tr>
+<tr>
+<td><code>iceberg</code></td>
+<td>Apache Iceberg tablolarından oku.</td>
+</tr>
+</tbody>
+</table>
+<h4>Diğer (Other)</h4>
+<table>
+<thead>
+<tr>
+<th>Etiket</th>
+<th>Açıklama</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>async</code></td>
+<td>LazyFrame'leri asenkron olarak topla.</td>
+</tr>
+<tr>
+<td><code>cloudpickle</code></td>
+<td>Kullanıcı tanımlı fonksiyonları serileştir.</td>
+</tr>
+<tr>
+<td><code>graph</code></td>
+<td>LazyFrame'leri grafik olarak görselleştir.</td>
+</tr>
+<tr>
+<td><code>plot</code></td>
+<td><code>plot</code> namespace'i aracılığıyla dataframe'leri çiz.</td>
+</tr>
+<tr>
+<td><code>style</code></td>
+<td><code>style</code> namespace'i aracılığıyla dataframe'leri stillendir.</td>
+</tr>
+<tr>
+<td><code>timezone</code></td>
+<td>Zaman dilimi desteği.</td>
+</tr>
+</tbody>
+</table>
+<h3>Rust</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Cargo.toml</span>
+<span class="k">[dependencies]</span>
+<span class="n">polars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;0.26.1&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">features</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;lazy&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;temporal&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;describe&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;json&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;parquet&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;dtype-datetime&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+
+<p>İsteğe bağlı özellikler:</p>
+<ul>
+<li>Ek veri türleri:<ul>
+<li><code>dtype-date</code></li>
+<li><code>dtype-datetime</code></li>
+<li><code>dtype-time</code></li>
+<li><code>dtype-duration</code></li>
+<li><code>dtype-i8</code></li>
+<li><code>dtype-i16</code></li>
+<li><code>dtype-i128</code></li>
+<li><code>dtype-u8</code></li>
+<li><code>dtype-u16</code></li>
+<li><code>dtype-u128</code></li>
+<li><code>dtype-categorical</code></li>
+<li><code>dtype-struct</code></li>
+</ul>
+</li>
+<li><code>lazy</code> - Lazy API:<ul>
+<li><code>regex</code> - Sütun seçiminde regex kullan.</li>
+<li><code>dot_diagram</code> - Lazy mantıksal planlardan dot diyagramları oluştur.</li>
+</ul>
+</li>
+<li><code>sql</code> - SQL sorgularını Polars'a geçir.</li>
+<li><code>streaming</code> - RAM'den büyük veri kümelerini işleyebil.</li>
+<li><code>random</code> - Rastgele örneklenmiş değerlerle diziler oluştur.</li>
+<li><code>ndarray</code> - <code>DataFrame</code>'den <code>ndarray</code>'e dönüştür.</li>
+<li><code>temporal</code> - Zaman veri türleri için Chrono ve Polars arasında dönüşüm.</li>
+<li><code>timezones</code> - Zaman dilimi desteğini etkinleştir.</li>
+<li><code>strings</code> - <code>StringChunked</code> için ek string yardımcıları:<ul>
+<li><code>string_pad</code> - <code>pad_start</code>, <code>pad_end</code>, <code>zfill</code> için.</li>
+<li><code>string_to_integer</code> - <code>parse_int</code> için.</li>
+</ul>
+</li>
+<li><code>object</code> - <code>ObjectChunked&lt;T&gt;</code> (T üzerinde generic) adı verilen genel ChunkedArray desteği. Bunlar Series'ten <code>Any</code> trait'i aracılığıyla aşağıya dönüştürülebilir.</li>
+<li>Performans ile ilgili:<ul>
+<li><code>nightly</code> - SIMD ve özelleştirme gibi yalnızca nightly özellikleri.</li>
+<li><code>performant</code> - daha hızlı yollar, daha yavaş derleme süreleri.</li>
+<li><code>bigidx</code> - &gt;&gt; \(2^{32}\) satır bekliyorsanız bu özelliği etkinleştirin. Bu, polars'ın index olarak <code>u64</code> kullanarak çok daha fazla ölçeklenmesini sağlar. Bu özellik etkinleştirildiğinde birçok veri yapısı daha az önbellek verimli olduğu için Polars biraz daha yavaş olacaktır.</li>
+<li><code>cse</code> - Ortak alt plan eleme optimizasyonunu etkinleştir.</li>
+</ul>
+</li>
+<li>IO ile ilgili:<ul>
+<li><code>serde</code> - Serde serileştirme ve deserileştirme desteği. JSON ve daha fazla serde destekli serileştirme formatları için kullanılabilir.</li>
+<li><code>serde-lazy</code> - Serde serileştirme ve deserileştirme desteği. JSON ve daha fazla serde destekli serileştirme formatları için kullanılabilir.</li>
+<li><code>parquet</code> - Apache Parquet formatını oku.</li>
+<li><code>json</code> - JSON serileştirme.</li>
+<li><code>ipc</code> - Arrow'un IPC formatı serileştirme.</li>
+<li><code>decompress</code> - CSV'lerin sıkıştırmasını otomatik olarak algıla ve aç. Desteklenen sıkıştırmalar:<ul>
+<li>gzip</li>
+<li>zlib</li>
+<li>zstd</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>DataFrame işlemleri:<ul>
+<li><code>dynamic_group_by</code> - Önceden tanımlanmış anahtarlar yerine zaman penceresine göre gruplama. Ayrıca kayan pencere group by işlemlerini etkinleştirir.</li>
+<li><code>sort_multiple</code> - Bir dataframe'i birden çok sütuna göre sıralamaya izin ver.</li>
+<li><code>rows</code> - Satırlardan dataframe oluştur ve <code>dataframe</code>'lerden satır çıkar. Ayrıca <code>pivot</code> ve <code>transpose</code> işlemlerini etkinleştirir.</li>
+<li><code>join_asof</code> - ASOF Join, tam eşleşme yerine en yakın anahtarlarla birleştirme.</li>
+<li><code>cross_join</code> - İki dataframe'in Kartezyen çarpımını oluştur.</li>
+<li><code>semi_anti_join</code> - SEMI ve ANTI join'ler.</li>
+<li><code>row_hash</code> - DataFrame satırlarını <code>UInt64Chunked</code>'e hash'lemek için yardımcı.</li>
+<li><code>diagonal_concat</code> - Farklı şemaları birleştirerek çapraz birleştirme.</li>
+<li><code>dataframe_arithmetic</code> - Dataframe'ler ve diğer dataframe'ler veya seriler arasında aritmetik.</li>
+<li><code>partition_by</code> - Gruplara göre bölümlenmiş birden çok dataframe'e böl.</li>
+</ul>
+</li>
+<li>Series/expression işlemleri:<ul>
+<li><code>is_in</code> - Series'te üyelik kontrolü.</li>
+<li><code>zip_with</code> - İki <code>Series</code> / <code>ChunkedArray</code>'i birleştir.</li>
+<li><code>round_series</code> - Series'in temeldeki float türlerini yuvarla.</li>
+<li><code>repeat_by</code> - Bir dizideki öğeyi başka bir dizi tarafından belirtilen sayıda tekrarla.</li>
+<li><code>is_first_distinct</code> - Öğenin ilk benzersiz değer olup olmadığını kontrol et.</li>
+<li><code>is_last_distinct</code> - Öğenin son benzersiz değer olup olmadığını kontrol et.</li>
+<li><code>checked_arithmetic</code> - Geçersiz işlemlerde <code>None</code> döndüren kontrollü aritmetik.</li>
+<li><code>dot_product</code> - Series ve expression'lar üzerinde nokta/iç çarpım.</li>
+<li><code>concat_str</code> - String verilerini lineer zamanda birleştir.</li>
+<li><code>reinterpret</code> - Bitleri işaretli/işaretsiz olarak yeniden yorumlamak için yardımcı.</li>
+<li><code>take_opt_iter</code> - <code>Iterator&lt;Item=Option&lt;usize&gt;&gt;</code> ile bir series'ten al.</li>
+<li><code>mode</code> - En sık tekrarlanan değer(ler)i döndür.</li>
+<li><code>cum_agg</code> - <code>cum_sum</code>, <code>cum_min</code> ve <code>cum_max</code> toplamaları.</li>
+<li><code>rolling_window</code> - <code>rolling_mean</code> gibi kayan pencere fonksiyonları.</li>
+<li><code>interpolate</code> - Aradaki <code>None</code> değerlerini enterpole et.</li>
+<li><code>extract_jsonpath</code> - <code>StringChunked</code> üzerinde jsonpath sorguları çalıştır.</li>
+<li><code>list</code> - Liste yardımcıları:<ul>
+<li><code>list_gather</code> - birden çok index ile alt liste al.</li>
+</ul>
+</li>
+<li><code>rank</code> - Sıralama algoritmaları.</li>
+<li><code>moment</code> - Basıklık ve çarpıklık istatistikleri.</li>
+<li><code>ewma</code> - Üstel hareketli ortalama pencereleri.</li>
+<li><code>abs</code> - Series'in mutlak değerlerini al.</li>
+<li><code>arange</code> - Series üzerinde aralık işlemi.</li>
+<li><code>product</code> - Bir series'in çarpımını hesapla.</li>
+<li><code>diff</code> - <code>diff</code> işlemi.</li>
+<li><code>pct_change</code> - Değişim yüzdelerini hesapla.</li>
+<li><code>unique_counts</code> - Expression'larda benzersiz değerleri say.</li>
+<li><code>log</code> - Series için logaritmalar.</li>
+<li><code>list_to_struct</code> - <code>List</code> veri türünü <code>Struct</code>'a dönüştür.</li>
+<li><code>list_count</code> - Listelerdeki öğeleri say.</li>
+<li><code>list_eval</code> - Liste öğeleri üzerinde expression'lar uygula.</li>
+<li><code>cumulative_eval</code> - Kümülatif olarak artan pencereler üzerinde expression'lar uygula.</li>
+<li><code>arg_where</code> - Koşulun sağlandığı index'leri al.</li>
+<li><code>search_sorted</code> - Öğelerin sırayı korumak için eklenmesi gereken index'leri bul.</li>
+<li><code>offset_by</code> - Ayları ve artık yılları dikkate alan tarihlere ofset ekle.</li>
+<li><code>trigonometry</code> - Trigonometrik fonksiyonlar.</li>
+<li><code>sign</code> - Bir series'in öğe bazında işaretini hesapla.</li>
+<li><code>propagate_nans</code> - NaN yayan min/max toplamaları.</li>
+</ul>
+</li>
+<li>DataFrame güzel yazdırma:<ul>
+<li><code>fmt</code> - DataFrame biçimlendirmeyi etkinleştir.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ol>
+<li>Yalnızca Windows'ta kullanıyorsanız gereklidir.</li>
+</ol>
 
 		<span class="post-tags">
 			Tags:
