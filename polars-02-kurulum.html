@@ -87,8 +87,8 @@
 <div class="highlight"><pre><span></span><code><span class="n">cargo</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="n">polars</span><span class="w"> </span><span class="o">-</span><span class="n">F</span><span class="w"> </span><span class="n">lazy</span><span class="w">  </span><span class="p">#</span><span class="w"> </span><span class="n">veya</span><span class="w"> </span><span class="n">Cargo</span><span class="p">.</span><span class="n">toml</span><span class="w"> </span><span class="p">[</span><span class="n">dependencies</span><span class="p">]</span><span class="w"> </span><span class="n">polars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;x&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">features</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;lazy&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">..</span><span class="p">.]}</span>
 </code></pre></div>
 
-<h2>Büyük Index (Big Index)</h2>
-<p>Varsayılan olarak, Polars dataframe'leri \(2^{32}\) satır (~4.3 milyar) ile sınırlıdır. Big index uzantısını etkinleştirerek bu sınırı \(2^{64}\) (~18 kentilyon) satıra yükseltin:</p>
+<h2>Büyük İndeks (Big Index)</h2>
+<p>Varsayılan olarak, Polars dataframe'leri 2^{32} satır (~4.3 milyar) ile sınırlıdır. Big index uzantısını etkinleştirerek bu sınırı 2^{64} (~18 kentilyon) satıra yükseltin:</p>
 <p>Python</p>
 <div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>polars<span class="o">[</span>rt64<span class="o">]</span>
 </code></pre></div>
@@ -104,7 +104,7 @@
 </code></pre></div>
 
 <h2>İçe Aktarma (Importing)</h2>
-<p>Kütüphaneyi kullanmak için projenize import edin:</p>
+<p>Kütüphaneyi kullanmak için projenize dahil (import) edin:</p>
 <p>Python</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polars</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pl</span>
 </code></pre></div>
@@ -150,8 +150,10 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;
 </tr>
 </tbody>
 </table>
-<p>Not</p>
-<p>Detaylı talimatlar ve ön koşullar için <a href="../gpu-support/">GPU desteği</a> bölümüne bakın.</p>
+<blockquote>
+<p><strong>Not:</strong>
+Detaylı talimatlar ve ön koşullar için <a href="https://docs.pola.rs/user-guide/gpu-support/">GPU desteği</a> bölümüne bakın.</p>
+</blockquote>
 <h4>Birlikte Çalışabilirlik (Interoperability)</h4>
 <table>
 <thead>
@@ -252,7 +254,7 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;
 </tr>
 </tbody>
 </table>
-<h4>Diğer G/Ç (Other I/O)</h4>
+<h4>Diğer Girdi/Çıktı (Other I/O)</h4>
 <table>
 <thead>
 <tr>
@@ -331,7 +333,7 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;
 </li>
 <li><code>lazy</code> - Lazy API:<ul>
 <li><code>regex</code> - Sütun seçiminde regex kullan.</li>
-<li><code>dot_diagram</code> - Lazy mantıksal planlardan dot diyagramları oluştur.</li>
+<li><code>dot_diagram</code> - Lazy mantıksal planlardan <code>dot</code> diyagramları oluştur.</li>
 </ul>
 </li>
 <li><code>sql</code> - SQL sorgularını Polars'a geçir.</li>
@@ -440,6 +442,7 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;
 					<li><a href="/tag/polars.html">Polars</a></li>
 					<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
 					<li><a href="/tag/modul.html">Modül</a></li>
+					<li><a href="/tag/kurulum.html">Kurulum</a></li>
 			</ul>
 		</span>
 
