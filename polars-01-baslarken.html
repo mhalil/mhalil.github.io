@@ -77,7 +77,7 @@
 	<h1 class="post-title">Polars - 01 Başlarken</h1>
 	<span class="post-date">Paz 14 Haziran 2026</span>
 	<h1>Başlarken</h1>
-<p>Bu bölüm, Polars ile başlamanıza yardımcı olmak için hazırlanmıştır. İlk kurulum ve yapılandırmadan temel işlevselliklere kadar kütüphanenin tüm temel özelliklerini kapsar. Eğer ileri düzey bir kullanıcıysanız veya dataframe'ler konusunda deneyimliyseniz, doğrudan <a href="../installation/">bir sonraki bölüme</a> geçebilirsiniz.</p>
+<p>Bu bölüm, Polars ile başlamanıza yardımcı olmak için hazırlanmıştır. İlk kurulum ve yapılandırmadan temel işlevselliklere kadar kütüphanenin tüm temel özelliklerini kapsar. Eğer ileri düzey bir kullanıcıysanız veya dataframe'ler konusunda deneyimliyseniz, doğrudan <a href="/polars-02-kurulum.html">bir sonraki kurulum bölümüne</a> geçebilirsiniz.</p>
 <h2>Polars'ı Kurma</h2>
 <p>Python</p>
 <div class="highlight"><pre><span></span><code><span class="n">pip</span> <span class="n">install</span> <span class="n">polars</span>
@@ -180,14 +180,14 @@
 └────────────────┴────────────┴────────┴────────┘
 </code></pre></div>
 
-<p>CSV dosya formatı ve diğer veri formatları hakkında daha fazla örnek için kılavuzun <a href="../io/">IO bölümüne</a> bakın.</p>
-<h2>Expression'lar ve Context'ler</h2>
+<p>CSV dosya formatı ve diğer veri formatları hakkında daha fazla örnek için kılavuzun <a href="https://docs.pola.rs/user-guide/io/">IO bölümüne</a> bakın.</p>
+<h2>Expression'lar (İfadeler) ve Context'ler (Bağlamlar)</h2>
 <p><em>Expression'lar</em> Polars'ın ana güçlü yönlerinden biridir çünkü veri dönüşümlerini ifade etmek için modüler ve esnek bir yol sağlarlar.</p>
 <p>İşte bir Polars expression örneği:</p>
 <div class="highlight"><pre><span></span><code><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;weight&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;height&quot;</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
 </code></pre></div>
 
-<p>Tahmin edebileceğiniz gibi, bu expression "weight" adlı sütunu alır ve değerlerini "height" sütunundaki değerlerin karesine bölerek bir kişinin BMI'ını hesaplar. Yukarıdaki kodun soyut bir hesaplamayı ifade ettiğini unutmayın: expression ancak bir Polars <em>context</em>'i içinde sonuçları olan bir seri haline gelir.</p>
+<p>Tahmin edebileceğiniz gibi, bu expression "weight" adlı sütunu alır ve değerlerini "height" sütunundaki değerlerin karesine bölerek bir kişinin Vücut Kütle Endeksini (BMI'ını) hesaplar. Yukarıdaki kodun soyut bir hesaplamayı ifade ettiğini unutmayın: expression ancak bir Polars <em>context</em>'i içinde sonuçları olan bir seri haline gelir.</p>
 <p>Aşağıda farklı context'ler içinde Polars expression'larına örnekler göstereceğiz:</p>
 <ul>
 <li><code>select</code></li>
@@ -195,7 +195,7 @@
 <li><code>filter</code></li>
 <li><code>group_by</code></li>
 </ul>
-<p>Expression'lar ve context'ler hakkında daha <a href="../concepts/expressions-and-contexts/">detaylı bilgi için ilgili kılavuz bölümüne</a> bakın.</p>
+<p>Expression'lar ve context'ler hakkında daha <a href="https://docs.pola.rs/user-guide/concepts/expressions-and-contexts/">detaylı bilgi için ilgili kılavuz bölümüne</a> bakın.</p>
 <h3><code>select</code></h3>
 <p><code>select</code> context'i, bir dataframe'den sütunları seçmenize ve manipüle etmenize olanak tanır. En basit durumda, sağladığınız her expression sonuç dataframe'indeki bir sütuna karşılık gelir:</p>
 <p>Python</p>
@@ -272,9 +272,9 @@
 └────────────────┴───────────┴───────────┘
 </code></pre></div>
 
-<p><a href="../expressions/basic-operations/">Temel işlemler</a> veya <a href="../expressions/expression-expansion/">expression expansion'da sütun seçimleri</a> hakkında daha fazla bilgi için kılavuzun diğer bölümlerine göz atabilirsiniz.</p>
+<p><a href="https://docs.pola.rs/user-guide/expressions/basic-operations/">Temel işlemler</a> veya <a href="https://docs.pola.rs/user-guide/expressions/expression-expansion/">expression expansion'da sütun seçimleri</a> hakkında daha fazla bilgi için kılavuzun diğer bölümlerine göz atabilirsiniz.</p>
 <h3><code>with_columns</code></h3>
-<p><code>with_columns</code> context'i <code>select</code> context'ine çok benzer ancak <code>with_columns</code> sütunları seçmek yerine dataframe'e ekler. Sonuçta oluşan dataframe'in orijinal dataframe'in dört sütununa ek olarak <code>with_columns</code> içindeki expression'lar tarafından eklenen iki yeni sütunu içerdiğine dikkat edin:</p>
+<p><code>with_columns</code> context'i <code>select</code> context'ine çok benzer ancak <code>with_columns</code> <strong>sütunları seçmek yerine dataframe'e ekler</strong>. Sonuçta oluşan dataframe'in orijinal dataframe'in dört sütununa ek olarak <code>with_columns</code> içindeki expression'lar tarafından eklenen iki yeni sütunu içerdiğine dikkat edin:</p>
 <p>Python</p>
 <div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">with_columns</span><span class="p">(</span>
     <span class="n">birth_year</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;birthdate&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span><span class="p">(),</span>
@@ -377,7 +377,7 @@
 </code></pre></div>
 
 <h3><code>group_by</code></h3>
-<p><code>group_by</code> context'i, bir veya daha fazla expression boyunca aynı değeri paylaşan dataframe satırlarını bir araya getirmek için kullanılabilir. Aşağıdaki örnek, her on yılda kaç kişinin doğduğunu sayar:</p>
+<p><code>group_by</code> context'i, bir veya daha fazla expression boyunca aynı değeri paylaşaorijinal dataframe'de göründükleri sırayla sunmaya zorlar.orijinal dataframe'de göründükleri sırayla sunmaya zorlar.n dataframe satırlarını bir araya getirmek için kullanılabilir. Aşağıdaki örnek, her on yılda kaç kişinin doğduğunu sayar:</p>
 <p>Python</p>
 <div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">group_by</span><span class="p">(</span>
     <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;birthdate&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span><span class="p">()</span> <span class="o">//</span> <span class="mi">10</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;decade&quot;</span><span class="p">),</span>
@@ -409,7 +409,7 @@
 └────────┴─────┘
 </code></pre></div>
 
-<p><code>maintain_order</code> anahtar kelime argümanı, Polars'ı sonuç gruplarını orijinal dataframe'de göründükleri sırayla sunmaya zorlar. Bu, gruplama işlemini yavaşlatır ancak örneklerin tekrarlanabilirliğini sağlamak için burada kullanılmıştır.</p>
+<p><code>maintain_order</code> anahtar kelime argümanı, Polars'ı sonuç gruplarını <strong>orijinal dataframe'de göründükleri sırayla sunmaya zorlar.</strong> Bu, gruplama işlemini yavaşlatır ancak örneklerin tekrarlanabilirliğini sağlamak için burada kullanılmıştır.</p>
 <p><code>group_by</code> context'ini kullandıktan sonra <code>agg</code> ile sonuç grupları üzerinde toplama işlemleri yapabiliriz:</p>
 <p>Python</p>
 <div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">group_by</span><span class="p">(</span>
@@ -511,9 +511,9 @@
 </code></pre></div>
 
 <h2>Dataframe'leri Birleştirme</h2>
-<p>Polars, iki dataframe'i birleştirmek için çeşitli araçlar sağlar. Bu bölümde, bir join ve bir concat (birleştirme) örneği gösteriyoruz.</p>
-<h3>Dataframe'lerde Join (Birleştirme)</h3>
-<p>Polars birçok farklı join algoritması sunar. Aşağıdaki örnek, bir sütunun dataframe'ler arasındaki satırlar arasında bir karşılık kurmak için benzersiz bir tanımlayıcı olarak kullanılabildiği durumda iki dataframe'i birleştirmek için left outer join'in nasıl kullanılacağını gösterir:</p>
+<p>Polars, iki dataframe'i birleştirmek için çeşitli araçlar sağlar. Bu bölümde, bir <code>join</code> ve bir <code>concat</code> (birleştirme) örneği gösteriyoruz.</p>
+<h3>Dataframe'lerde <code>Join</code> (Birleştirme)</h3>
+<p>Polars birçok farklı <code>join</code> algoritması sunar. Aşağıdaki örnek, bir sütunun dataframe'ler arasındaki satırlar arasında bir karşılık kurmak için benzersiz bir tanımlayıcı olarak kullanılabildiği durumda iki dataframe'i birleştirmek için <code>left outer join</code>'in nasıl kullanılacağını gösterir:</p>
 <p>Python</p>
 <div class="highlight"><pre><span></span><code><span class="n">df2</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
     <span class="p">{</span>
@@ -562,8 +562,8 @@
 └────────────────┴────────────┴────────┴────────┴────────┴──────────┘
 </code></pre></div>
 
-<p>Polars, kılavuzun <a href="../transformations/joins/">joins bölümünde</a> öğrenebileceğiniz birçok farklı join algoritması sağlar.</p>
-<h3>Dataframe'lerde Concat (Birleştirme)</h3>
+<p>Polars, kılavuzun <a href="https://docs.pola.rs/user-guide/transformations/joins/">joins bölümünde</a> öğrenebileceğiniz birçok farklı join algoritması sağlar.</p>
+<h3>Dataframe'lerde <code>Concat</code> (Birleştirme)</h3>
 <p>Dataframe'leri birleştirmek (concatenate), kullanılan yönteme bağlı olarak daha uzun veya daha geniş bir dataframe oluşturur. Diğer kişilerden veri içeren ikinci bir dataframe'imiz olduğunu varsayarsak, daha uzun bir dataframe oluşturmak için dikey birleştirme kullanabiliriz:</p>
 <p>Python</p>
 <div class="highlight"><pre><span></span><code><span class="n">df3</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
@@ -619,7 +619,7 @@
 └────────────────┴────────────┴────────┴────────┘
 </code></pre></div>
 
-<p>Polars, dikey ve yatay birleştirmenin yanı sıra çapraz birleştirme de sağlar. Bunlar hakkında daha fazla bilgiyi kılavuzun <a href="../transformations/concatenation/">concatenations bölümünde</a> bulabilirsiniz.</p>
+<p>Polars, dikey ve yatay birleştirmenin yanı sıra çapraz birleştirme de sağlar. Bunlar hakkında daha fazla bilgiyi kılavuzun <a href="https://docs.pola.rs/user-guide/transformations/concatenation/">concatenations bölümünde</a> bulabilirsiniz.</p>
 
 		<span class="post-tags">
 			Tags:
