@@ -76,6 +76,60 @@
 </div>		<div class="content container">
 	<div class="posts">
 			<div class="post">
+				<h1 class="post-title" href="/pandas-drop.html">
+					<a href="/pandas-drop.html">Pandas - drop</a>
+				</h1>
+				<span class="post-date">Cum 15 Temmuz 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/drop.html">drop</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>drop() Fonksiyonu</h1>
+<p>Bu metodun kullanım/yazım şekli aşağıdaki gibidir.</p>
+<div class="highlight"><pre><span></span><code><span class="n">Veri_Çerçevesi_Adı</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;Satır ya da Sütun Adı&quot;</span><span class="p">,</span> 
+                        <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">ya</span> <span class="n">da</span> <span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="o">/</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+
+<ul>
+<li><strong>Satır ya da Sütun Adı</strong>, adından belli olduğu üzere, silinecek sütunun adıdır. Birden fazla sütun silinmek istenirse, isimler liste şeklinde yani köşeli parantez içinde yazılmalıdır.</li>
+</ul>
+<h2>axis …</h2>
+				</p>
+				<a class="read-more" href="/pandas-drop.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="/pandas-drop_duplicates.html">
+					<a href="/pandas-drop_duplicates.html">Pandas - drop_duplicates</a>
+				</h1>
+				<span class="post-date">Cum 15 Temmuz 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/drop_duplicates.html">drop_duplicates</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>drop_duplicates() Fonksiyonu</h1>
+<p>Veri çerçevemizde <strong>çift kayıt varsa</strong>, yani tüm veriler aynı olan birden fazla satır verisi varsa, bunlardan <strong>biri kalacak şekilde diğerlerinin silmek</strong> için <code>drop_duplicates</code> fonksiyonunu kullanabiliriz.</p>
+<p>Örnek kodları inceleyelim.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="n">sozluk</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;isim&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Mustafa&quot;</span><span class="p">,</span> <span class="s2">&quot;Halil&quot;</span><span class="p">,</span> <span class="s2">&quot;Burak&quot;</span><span class="p">,</span> <span class="s2">&quot;Emre&quot;</span><span class="p">,</span> <span class="s2">&quot;Ersin&quot;</span><span class="p">,</span> <span class="s2">&quot;Sertaç&quot;</span><span class="p">,</span> <span class="s2">&quot;Furkan&quot;</span><span class="p">,</span><span class="s2">&quot;Murat&quot;</span><span class="p">,</span><span class="s2">&quot;Ahmet&quot;</span><span class="p">,</span><span class="s2">&quot;Abdülkadir&quot;</span><span class="p">,</span> <span class="s2">&quot;Halil&quot;</span><span class="p">,</span> <span class="s2">&quot;Ersin&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;yaş&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">25 …</span></code></pre></div>
+				</p>
+				<a class="read-more" href="/pandas-drop_duplicates.html">Continue reading »</a>
+			</div>
+			<div class="post">
 				<h1 class="post-title" href="/pandas-is-operatotu.html">
 					<a href="/pandas-is-operatotu.html">Pandas - is Operatötü</a>
 				</h1>
@@ -293,69 +347,6 @@ ya da sütun …</p>
 <span class="n">sozluk</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;isim&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Mustafa&quot;</span><span class="p">,</span> <span class="s2">&quot;Halil&quot;</span><span class="p">,</span> <span class="s2">&quot;Burak&quot;</span><span class="p">,</span> <span class="s2">&quot;Emre&quot;</span><span class="p">,</span> <span class="s2">&quot;Ersin&quot;</span><span class="p">,</span> <span class="s2">&quot;Sertaç&quot;</span><span class="p">,</span> <span class="s2">&quot;Furkan&quot;</span><span class="p">,</span><span class="s2">&quot;Murat&quot;</span><span class="p">,</span><span class="s2">&quot;Ahmet …</span></code></pre></div>
 				</p>
 				<a class="read-more" href="/pandas-transpose.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="/pandas-05-eksik-kayip-veri-yontemleri.html">
-					<a href="/pandas-05-eksik-kayip-veri-yontemleri.html">Pandas 05 - Eksik - Kayıp Veri Yöntemleri</a>
-				</h1>
-				<span class="post-date">Sal 12 Temmuz 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/pandas.html">Pandas</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
-								<li><a href="/tag/eksik.html">Eksik</a></li>
-								<li><a href="/tag/kayip.html">Kayıp</a></li>
-								<li><a href="/tag/veri.html">Veri</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1>Eksik / Kayıp Veri Tespiti ve Düzenleme Yöntemleri</h1>
-<p>Veri çerçevemizde eksik veri (excel tablosundaki boş hücre gibi düşünebiliriz) olup olmadığını, varsa kaç adet olduğunu tespit edebileceğimiz Pandas yöntemleri mevcuttur. Bunları incelemeye başlayalım.</p>
-<h3>isnull() Fonksiyonu</h3>
-<p>Veri çerçevemizde eksik verileri <strong>isnull()</strong> fonksiyonu ile tespit edebiliriz. <strong>isnull</strong> ifadesini, <strong>boş mu?, geçersiz mi?, kayıp/eksik …</strong></p>
-				</p>
-				<a class="read-more" href="/pandas-05-eksik-kayip-veri-yontemleri.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="/pandas-dropna.html">
-					<a href="/pandas-dropna.html">Pandas - dropna</a>
-				</h1>
-				<span class="post-date">Sal 12 Temmuz 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/pandas.html">Pandas</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
-								<li><a href="/tag/eksik.html">Eksik</a></li>
-								<li><a href="/tag/kayip.html">Kayıp</a></li>
-								<li><a href="/tag/veri.html">Veri</a></li>
-								<li><a href="/tag/dropna.html">dropna</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1>dropna() Fonksiyonu</h1>
-<p>Veri Çerçevelerinde <strong>eksik veri bulunan satır ve sütunları otomatik olarak silmek</strong> için <strong>dropna()</strong> metodunu kullanabiliriz. Metodun kullanım şekli aşağıdaki gibidir.</p>
-<div class="highlight"><pre><span></span><code><span class="n">VeriÇerçevesi_Adı</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">ya</span> <span class="n">da</span> <span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span> <span class="n">ya</span> <span class="n">da</span> <span class="kc">False</span><span class="p">)</span>
-</code></pre></div>
-
-<h2>axis Parametresi</h2>
-<p>Eksenleri tanımlayan parametredir. </p>
-<ul>
-<li>
-<p>Sıfır (0) Satırları, </p>
-</li>
-<li>
-<p>Bir (1) Sütunları </p>
-</li>
-</ul>
-<p>temsil eder. Varsayılan değer Sıfır …</p>
-				</p>
-				<a class="read-more" href="/pandas-dropna.html">Continue reading »</a>
 			</div>
 	</div>
 	<div class="pagination">

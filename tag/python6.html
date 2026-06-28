@@ -76,6 +76,55 @@
 </div>		<div class="content container">
 	<div class="posts">
 			<div class="post">
+				<h1 class="post-title" href="/duzenli-ifadeler-purge.html">
+					<a href="/duzenli-ifadeler-purge.html">Düzenli İfadeler - purge</a>
+				</h1>
+				<span class="post-date">Cum 01 Eylül 2023</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/duzenli-ifadeler.html">Düzenli İfadeler</a></li>
+								<li><a href="/tag/regular-expressions.html">Regular Expressions</a></li>
+								<li><a href="/tag/regex.html">Regex</a></li>
+								<li><a href="/tag/re.html">Re</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/purge.html">Purge</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>purge() Fonksiyonu</h1>
+<p><code>purge()</code> metodu, <strong>düzenli ifade (regex) önbelleğini temizlemek için kullanılır</strong>. <code>re</code> modülü, derlenmiş düzenli ifade desenlerini ve ilgili verileri bir önbellekte saklar. Bu önbellek, aynı desenleri tekrar tekrar derlememek ve performansı artırmak için kullanılır. Ancak, bazen bu önbelleği temizlemek isteyebilirsiniz, özellikle çok sayıda düzenli ifade deseni kullanılıyorsa veya bellek …</p>
+				</p>
+				<a class="read-more" href="/duzenli-ifadeler-purge.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="/duzenli-ifadeler-search.html">
+					<a href="/duzenli-ifadeler-search.html">Düzenli İfadeler - search</a>
+				</h1>
+				<span class="post-date">Cum 01 Eylül 2023</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/duzenli-ifadeler.html">Düzenli İfadeler</a></li>
+								<li><a href="/tag/regular-expressions.html">Regular Expressions</a></li>
+								<li><a href="/tag/regex.html">Regex</a></li>
+								<li><a href="/tag/re.html">Re</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/search.html">Search</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>search() Fonksiyonu</h1>
+<p><code>search()</code> metodu ile <code>match()</code> metodu arasında çok önemli bir fark vardır. <code>match()</code> metodu bir karakter dizisinin (örneğin bir paragrafta) en başına bakıp bir <strong>eşleştirme</strong> işlemi yaparken, <code>search()</code> metodu karakter dizisinin genelinde bir <strong>arama</strong> işlemi yapar. Yani biri eşleştirir, öbürü arar.</p>
+<p><code>search()</code> metodu, <strong>eşleşmenin gerçekleştiği ilk değeri döndürür</strong>. Aranan …</p>
+				</p>
+				<a class="read-more" href="/duzenli-ifadeler-search.html">Continue reading »</a>
+			</div>
+			<div class="post">
 				<h1 class="post-title" href="/duzenli-ifadeler-split.html">
 					<a href="/duzenli-ifadeler-split.html">Düzenli İfadeler - split</a>
 				</h1>
@@ -370,138 +419,6 @@ Pandasta ise veri çerçevesi adının sonuna metot olarak ekliyoruz. </p>
 <td>2 …</td></tr></tbody></table>
 				</p>
 				<a class="read-more" href="/pandas-carpma-operatoru.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="/pandas-cikarma-operatoru.html">
-					<a href="/pandas-cikarma-operatoru.html">Pandas - Çıkarma Operatörü</a>
-				</h1>
-				<span class="post-date">Prş 28 Temmuz 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/pandas.html">Pandas</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
-								<li><a href="/tag/operator.html">Operatör</a></li>
-								<li><a href="/tag/cikarma.html">çıkarma</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1>- (Çıkarma) Operatörü</h1>
-<p>İki sütun verisini <code>-</code> <strong>çıkarma operatörü</strong> ile çıkarabiliriz, farkını alabiliriz.</p>
-<div class="highlight"><pre><span></span><code><span class="n">baslik</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Birler&quot;</span><span class="p">,</span> <span class="s2">&quot;Onlar&quot;</span><span class="p">,</span> <span class="s2">&quot;Yüzler&quot;</span><span class="p">]</span>
-<span class="n">basliksiz</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/basliksiz.ods&quot;</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">names</span> <span class="o">=</span> <span class="n">baslik</span> <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">basliksiz</span><span class="p">)</span>
-</code></pre></div>
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th>Birler</th>
-<th>Onlar</th>
-<th>Yüzler</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td>9</td>
-<td>82</td>
-<td>246</td>
-</tr>
-<tr>
-<td>1</td>
-<td>7</td>
-<td>78</td>
-<td>180</td>
-</tr>
-<tr>
-<td>2</td>
-<td>8</td>
-<td>83</td>
-<td>565</td>
-</tr>
-<tr>
-<td>3</td>
-<td>6</td>
-<td>82</td>
-<td>486</td>
-</tr>
-<tr>
-<td>4</td>
-<td>4</td>
-<td>37</td>
-<td>615 …</td></tr></tbody></table>
-				</p>
-				<a class="read-more" href="/pandas-cikarma-operatoru.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="/pandas-mean.html">
-					<a href="/pandas-mean.html">Pandas - mean</a>
-				</h1>
-				<span class="post-date">Prş 28 Temmuz 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/pandas.html">Pandas</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
-								<li><a href="/tag/mean.html">mean</a></li>
-								<li><a href="/tag/ortalama.html">ortalama</a></li>
-								<li><a href="/tag/metot.html">metot</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1>mean() Metodu</h1>
-<p><strong>Her sütun için ortalama</strong> değer hesaplamak için <code>mean()</code> metodunu kullanabiliriz.</p>
-<div class="highlight"><pre><span></span><code><span class="n">baslik</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Birler&quot;</span><span class="p">,</span> <span class="s2">&quot;Onlar&quot;</span><span class="p">,</span> <span class="s2">&quot;Yüzler&quot;</span><span class="p">]</span>
-<span class="n">basliksiz</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/basliksiz.ods&quot;</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">names</span> <span class="o">=</span> <span class="n">baslik</span> <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">basliksiz</span><span class="p">)</span>
-</code></pre></div>
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th>Birler</th>
-<th>Onlar</th>
-<th>Yüzler</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td>9</td>
-<td>82</td>
-<td>246</td>
-</tr>
-<tr>
-<td>1</td>
-<td>7</td>
-<td>78</td>
-<td>180</td>
-</tr>
-<tr>
-<td>2</td>
-<td>8</td>
-<td>83</td>
-<td>565</td>
-</tr>
-<tr>
-<td>3</td>
-<td>6</td>
-<td>82</td>
-<td>486</td>
-</tr>
-<tr>
-<td>4</td>
-<td>4</td>
-<td>37 …</td></tr></tbody></table>
-				</p>
-				<a class="read-more" href="/pandas-mean.html">Continue reading »</a>
 			</div>
 	</div>
 	<div class="pagination">

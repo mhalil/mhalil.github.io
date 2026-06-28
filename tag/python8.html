@@ -76,6 +76,83 @@
 </div>		<div class="content container">
 	<div class="posts">
 			<div class="post">
+				<h1 class="post-title" href="/pandas-08-veri-filtreleme-yontemleri.html">
+					<a href="/pandas-08-veri-filtreleme-yontemleri.html">Pandas 08 - Veri Filtreleme Yöntemleri</a>
+				</h1>
+				<span class="post-date">Cts 16 Temmuz 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/filtre.html">Filtre</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>Filtreleme Yöntemleri</h1>
+<p>Pandas kütüphanesi ile en sık yapılan işlemlerden biri de Filtreleme işlemidir. Binlerce, onbinlerce hatta milyonlarca kayıt arasından istediğimize ulaşmak için filreleme komutlarını kullanacağız. Bu bölümdeki anlatılanları da dikkatle okuyup öğrenmenizi tavsiye ederim.</p>
+<h3>Karşılaştırma Operatorü Kullanımı</h3>
+<p>Sütun içerisindeki verilere göre filtreleme uygulamak istersek,  <code>VeriCervecesiAdı["SütunAdı"] == "Filtre_Kriteri"</code> yöntemi kullanılabilir.</p>
+<p>Pythonda …</p>
+				</p>
+				<a class="read-more" href="/pandas-08-veri-filtreleme-yontemleri.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="/pandas-between.html">
+					<a href="/pandas-between.html">Pandas - Between</a>
+				</h1>
+				<span class="post-date">Cts 16 Temmuz 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/filtre.html">Filtre</a></li>
+								<li><a href="/tag/between.html">Between</a></li>
+								<li><a href="/tag/fonksiyon.html">Fonksiyon</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>between() Fonksiyonu</h1>
+<p>Bir sayısal aralık belirterek filtreleme yapmak istersek <code>between()</code> metodunu / fonksiyonunu kullanabiliriz.</p>
+<p>Örnek Veri çerçevemiz aşağıda görünmektedir.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="n">imdb</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/imdb.xlsx&quot;</span><span class="p">,</span> <span class="n">decimal</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">imdb</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Film_Adı</th>
+<th>Yıl</th>
+<th>Puan</th>
+<th>Oylayan_Kişi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>The Shawshank Redemption</td>
+<td>1994</td>
+<td>9.2</td>
+<td>1071904</td>
+</tr>
+<tr>
+<td>1</td>
+<td>The Godfather</td>
+<td>1972</td>
+<td>9.2</td>
+<td>751381 …</td></tr></tbody></table>
+				</p>
+				<a class="read-more" href="/pandas-between.html">Continue reading »</a>
+			</div>
+			<div class="post">
 				<h1 class="post-title" href="/pandas-buyukesit-operatoru.html">
 					<a href="/pandas-buyukesit-operatoru.html">Pandas - BüyükEşit Operatörü</a>
 				</h1>
@@ -514,58 +591,6 @@
 <th>Oylayan_Kişi …</th></tr></thead></table>
 				</p>
 				<a class="read-more" href="/pandas-ya-da-operatoru.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="/pandas-06-veri-duzenleme-yontemleri.html">
-					<a href="/pandas-06-veri-duzenleme-yontemleri.html">Pandas 06 - Veri Düzenleme Yöntemleri</a>
-				</h1>
-				<span class="post-date">Cum 15 Temmuz 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/pandas.html">Pandas</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1>Düzenleme Yöntemleri</h1>
-<p>Bu bölümde, Oluşturulan Veri Çerçevelerinin düzenlemesine dair pek çok komut, fonksiyon ve parametre öğreneceğiz. Pandas kullanırken en fazla ihtiyaç duyacağımız Yöntemlerin bir kısmını bu bölümde ele alacak, anlatacağız.</p>
-<h3>İndeks Değerlerini Ayarlamak</h3>
-<h3>index_col Parametresi</h3>
-<p>Veri Çerçevesi (Data Frame) oluştururken sütunlardan birini, indeks değeri olarak ayarlamak/atamak istersek, <strong>index_col</strong> parametresini …</p>
-				</p>
-				<a class="read-more" href="/pandas-06-veri-duzenleme-yontemleri.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="/pandas-07-veri-siralama-yontemleri.html">
-					<a href="/pandas-07-veri-siralama-yontemleri.html">Pandas 07 - Veri Sıralama Yöntemleri</a>
-				</h1>
-				<span class="post-date">Cum 15 Temmuz 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/pandas.html">Pandas</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
-								<li><a href="/tag/veri.html">Veri</a></li>
-								<li><a href="/tag/siralama.html">Sıralama</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1>Sıralama Yöntemleri</h1>
-<p>Oluşturulan Veri Çerçevelerinin, isteğimiz doğrultusunda sıralanması için kullanabileceğimiz yöntemlere, bu bölümde değineceğiz.</p>
-<p>Pandas üç tür sıralamayı destekler ;</p>
-<ul>
-<li>İndeks (dizin) etiketlerine göre sıralama,</li>
-<li>Sütun değerlerine göre sıralama</li>
-<li>Her ikisinin birleşimine göre sıralama.</li>
-</ul>
-<p>Konuya ait yöntemleri incelemek amacıyla <strong>imdb.xlsx</strong> dosyamızı içe aktararak bir veri çerçevesi oluşturarak işe başlayalım. Oluşturacağımız …</p>
-				</p>
-				<a class="read-more" href="/pandas-07-veri-siralama-yontemleri.html">Continue reading »</a>
 			</div>
 	</div>
 	<div class="pagination">

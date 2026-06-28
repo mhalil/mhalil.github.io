@@ -76,6 +76,138 @@
 </div>		<div class="content container">
 	<div class="posts">
 			<div class="post">
+				<h1 class="post-title" href="/pandas-cikarma-operatoru.html">
+					<a href="/pandas-cikarma-operatoru.html">Pandas - Çıkarma Operatörü</a>
+				</h1>
+				<span class="post-date">Prş 28 Temmuz 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/operator.html">Operatör</a></li>
+								<li><a href="/tag/cikarma.html">çıkarma</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>- (Çıkarma) Operatörü</h1>
+<p>İki sütun verisini <code>-</code> <strong>çıkarma operatörü</strong> ile çıkarabiliriz, farkını alabiliriz.</p>
+<div class="highlight"><pre><span></span><code><span class="n">baslik</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Birler&quot;</span><span class="p">,</span> <span class="s2">&quot;Onlar&quot;</span><span class="p">,</span> <span class="s2">&quot;Yüzler&quot;</span><span class="p">]</span>
+<span class="n">basliksiz</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/basliksiz.ods&quot;</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">names</span> <span class="o">=</span> <span class="n">baslik</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">basliksiz</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Birler</th>
+<th>Onlar</th>
+<th>Yüzler</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>9</td>
+<td>82</td>
+<td>246</td>
+</tr>
+<tr>
+<td>1</td>
+<td>7</td>
+<td>78</td>
+<td>180</td>
+</tr>
+<tr>
+<td>2</td>
+<td>8</td>
+<td>83</td>
+<td>565</td>
+</tr>
+<tr>
+<td>3</td>
+<td>6</td>
+<td>82</td>
+<td>486</td>
+</tr>
+<tr>
+<td>4</td>
+<td>4</td>
+<td>37</td>
+<td>615 …</td></tr></tbody></table>
+				</p>
+				<a class="read-more" href="/pandas-cikarma-operatoru.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="/pandas-mean.html">
+					<a href="/pandas-mean.html">Pandas - mean</a>
+				</h1>
+				<span class="post-date">Prş 28 Temmuz 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/mean.html">mean</a></li>
+								<li><a href="/tag/ortalama.html">ortalama</a></li>
+								<li><a href="/tag/metot.html">metot</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>mean() Metodu</h1>
+<p><strong>Her sütun için ortalama</strong> değer hesaplamak için <code>mean()</code> metodunu kullanabiliriz.</p>
+<div class="highlight"><pre><span></span><code><span class="n">baslik</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Birler&quot;</span><span class="p">,</span> <span class="s2">&quot;Onlar&quot;</span><span class="p">,</span> <span class="s2">&quot;Yüzler&quot;</span><span class="p">]</span>
+<span class="n">basliksiz</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/basliksiz.ods&quot;</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">names</span> <span class="o">=</span> <span class="n">baslik</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">basliksiz</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Birler</th>
+<th>Onlar</th>
+<th>Yüzler</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>9</td>
+<td>82</td>
+<td>246</td>
+</tr>
+<tr>
+<td>1</td>
+<td>7</td>
+<td>78</td>
+<td>180</td>
+</tr>
+<tr>
+<td>2</td>
+<td>8</td>
+<td>83</td>
+<td>565</td>
+</tr>
+<tr>
+<td>3</td>
+<td>6</td>
+<td>82</td>
+<td>486</td>
+</tr>
+<tr>
+<td>4</td>
+<td>4</td>
+<td>37 …</td></tr></tbody></table>
+				</p>
+				<a class="read-more" href="/pandas-mean.html">Continue reading »</a>
+			</div>
+			<div class="post">
 				<h1 class="post-title" href="/pandas-sum-operatoru.html">
 					<a href="/pandas-sum-operatoru.html">Pandas - sum operatörü</a>
 				</h1>
@@ -326,83 +458,6 @@ sayfaya ekleyeceğim.</p>
 <p><code>groupby</code> fonksiyonu …</p>
 				</p>
 				<a class="read-more" href="/pandas-groupby.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="/pandas-08-veri-filtreleme-yontemleri.html">
-					<a href="/pandas-08-veri-filtreleme-yontemleri.html">Pandas 08 - Veri Filtreleme Yöntemleri</a>
-				</h1>
-				<span class="post-date">Cts 16 Temmuz 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/pandas.html">Pandas</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
-								<li><a href="/tag/filtre.html">Filtre</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1>Filtreleme Yöntemleri</h1>
-<p>Pandas kütüphanesi ile en sık yapılan işlemlerden biri de Filtreleme işlemidir. Binlerce, onbinlerce hatta milyonlarca kayıt arasından istediğimize ulaşmak için filreleme komutlarını kullanacağız. Bu bölümdeki anlatılanları da dikkatle okuyup öğrenmenizi tavsiye ederim.</p>
-<h3>Karşılaştırma Operatorü Kullanımı</h3>
-<p>Sütun içerisindeki verilere göre filtreleme uygulamak istersek,  <code>VeriCervecesiAdı["SütunAdı"] == "Filtre_Kriteri"</code> yöntemi kullanılabilir.</p>
-<p>Pythonda …</p>
-				</p>
-				<a class="read-more" href="/pandas-08-veri-filtreleme-yontemleri.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="/pandas-between.html">
-					<a href="/pandas-between.html">Pandas - Between</a>
-				</h1>
-				<span class="post-date">Cts 16 Temmuz 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/pandas.html">Pandas</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
-								<li><a href="/tag/filtre.html">Filtre</a></li>
-								<li><a href="/tag/between.html">Between</a></li>
-								<li><a href="/tag/fonksiyon.html">Fonksiyon</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1>between() Fonksiyonu</h1>
-<p>Bir sayısal aralık belirterek filtreleme yapmak istersek <code>between()</code> metodunu / fonksiyonunu kullanabiliriz.</p>
-<p>Örnek Veri çerçevemiz aşağıda görünmektedir.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="n">imdb</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/imdb.xlsx&quot;</span><span class="p">,</span> <span class="n">decimal</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">imdb</span><span class="p">)</span>
-</code></pre></div>
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th>Film_Adı</th>
-<th>Yıl</th>
-<th>Puan</th>
-<th>Oylayan_Kişi</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td>The Shawshank Redemption</td>
-<td>1994</td>
-<td>9.2</td>
-<td>1071904</td>
-</tr>
-<tr>
-<td>1</td>
-<td>The Godfather</td>
-<td>1972</td>
-<td>9.2</td>
-<td>751381 …</td></tr></tbody></table>
-				</p>
-				<a class="read-more" href="/pandas-between.html">Continue reading »</a>
 			</div>
 	</div>
 	<div class="pagination">

@@ -76,6 +76,69 @@
 </div>		<div class="content container">
 	<div class="posts">
 			<div class="post">
+				<h1 class="post-title" href="/pandas-05-eksik-kayip-veri-yontemleri.html">
+					<a href="/pandas-05-eksik-kayip-veri-yontemleri.html">Pandas 05 - Eksik - Kayıp Veri Yöntemleri</a>
+				</h1>
+				<span class="post-date">Sal 12 Temmuz 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/eksik.html">Eksik</a></li>
+								<li><a href="/tag/kayip.html">Kayıp</a></li>
+								<li><a href="/tag/veri.html">Veri</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>Eksik / Kayıp Veri Tespiti ve Düzenleme Yöntemleri</h1>
+<p>Veri çerçevemizde eksik veri (excel tablosundaki boş hücre gibi düşünebiliriz) olup olmadığını, varsa kaç adet olduğunu tespit edebileceğimiz Pandas yöntemleri mevcuttur. Bunları incelemeye başlayalım.</p>
+<h3>isnull() Fonksiyonu</h3>
+<p>Veri çerçevemizde eksik verileri <strong>isnull()</strong> fonksiyonu ile tespit edebiliriz. <strong>isnull</strong> ifadesini, <strong>boş mu?, geçersiz mi?, kayıp/eksik …</strong></p>
+				</p>
+				<a class="read-more" href="/pandas-05-eksik-kayip-veri-yontemleri.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="/pandas-dropna.html">
+					<a href="/pandas-dropna.html">Pandas - dropna</a>
+				</h1>
+				<span class="post-date">Sal 12 Temmuz 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/eksik.html">Eksik</a></li>
+								<li><a href="/tag/kayip.html">Kayıp</a></li>
+								<li><a href="/tag/veri.html">Veri</a></li>
+								<li><a href="/tag/dropna.html">dropna</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>dropna() Fonksiyonu</h1>
+<p>Veri Çerçevelerinde <strong>eksik veri bulunan satır ve sütunları otomatik olarak silmek</strong> için <strong>dropna()</strong> metodunu kullanabiliriz. Metodun kullanım şekli aşağıdaki gibidir.</p>
+<div class="highlight"><pre><span></span><code><span class="n">VeriÇerçevesi_Adı</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">ya</span> <span class="n">da</span> <span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span> <span class="n">ya</span> <span class="n">da</span> <span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>axis Parametresi</h2>
+<p>Eksenleri tanımlayan parametredir. </p>
+<ul>
+<li>
+<p>Sıfır (0) Satırları, </p>
+</li>
+<li>
+<p>Bir (1) Sütunları </p>
+</li>
+</ul>
+<p>temsil eder. Varsayılan değer Sıfır …</p>
+				</p>
+				<a class="read-more" href="/pandas-dropna.html">Continue reading »</a>
+			</div>
+			<div class="post">
 				<h1 class="post-title" href="/pandas-fillna.html">
 					<a href="/pandas-fillna.html">Pandas - fillna</a>
 				</h1>
@@ -333,84 +396,6 @@ düşünülebilir) yazdırabiliriz/atayabiliriz.</p>
 <p><strong>shield</strong> sütununda …</p>
 				</p>
 				<a class="read-more" href="/pandas-metot-ve-operator-kullanarak-filtreleme.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="/pandas-pandas-index.html">
-					<a href="/pandas-pandas-index.html">Pandas - pandas-index</a>
-				</h1>
-				<span class="post-date">Pzt 11 Temmuz 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/pandas.html">Pandas</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
-								<li><a href="/tag/fonksiyon.html">Fonksiyon</a></li>
-								<li><a href="/tag/secim.html">Seçim</a></li>
-								<li><a href="/tag/index.html">index</a></li>
-								<li><a href="/tag/pandasindex.html">pandas.index</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1>Index() Fonksiyonu Nedir? Nasıl Kullanılır?</h1>
-<blockquote>
-<p>Index() Fonksiyonu, df.reindex ile aynı davranır.</p>
-</blockquote>
-<p><code>Index</code> metodu, veri çerçevesindeki index isimlerine göre Sıralama ve satır seçimi yapmamızı sağlar. <code>name</code> parametresi ise, indeks başlığı olarak kullanacağımız değeri atamamıza yarar. </p>
-<p>Önce Veri Çerçevemize göz atalım;</p>
-<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-</code></pre></div>
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th>max_speed</th>
-<th>shield</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>cobra</td>
-<td>1</td>
-<td>2</td>
-</tr>
-<tr>
-<td>viper</td>
-<td>4</td>
-<td>5 …</td></tr></tbody></table>
-				</p>
-				<a class="read-more" href="/pandas-pandas-index.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="/pandas-sutun-filtrele.html">
-					<a href="/pandas-sutun-filtrele.html">Pandas - Sütun Filtrele</a>
-				</h1>
-				<span class="post-date">Pzt 11 Temmuz 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/pandas.html">Pandas</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
-								<li><a href="/tag/fonksiyon.html">Fonksiyon</a></li>
-								<li><a href="/tag/kosul.html">Koşul</a></li>
-								<li><a href="/tag/filtre.html">Filtre</a></li>
-								<li><a href="/tag/sutun.html">Sütun</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1>Sütun Filtrelemek</h1>
-<p>Sadece bir Sütunu filtrelemek/görüntülemek için veri çerçevesinin adı ile birlikte filtrelemek/görüntülemek istediğimiz sütunun ismini yazmak yeterlidir. Bu da iki şekilde gerçekleştirilebilir.</p>
-<ol>
-<li><code>VeriCervecesiAdı.SütunAdı</code></li>
-<li><code>VeriCervecesiAdı["SütunAdı"]</code></li>
-</ol>
-<p>Sütun isminde <strong>boşluk</strong> ya da <strong>nokta</strong> karakterleri bulunması halinde, ilk (noktalı) seçeneği KULLANAMAYIZ, o durumda 2. seçeneği  yani <strong>köşeli parantez</strong>li …</p>
-				</p>
-				<a class="read-more" href="/pandas-sutun-filtrele.html">Continue reading »</a>
 			</div>
 	</div>
 	<div class="pagination">
