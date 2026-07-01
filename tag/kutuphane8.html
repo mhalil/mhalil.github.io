@@ -76,6 +76,69 @@
 </div>		<div class="content container">
 	<div class="posts">
 			<div class="post">
+				<h1 class="post-title" href="/pandas-buyuktur-operatoru.html">
+					<a href="/pandas-buyuktur-operatoru.html">Pandas - Büyüktür Operatörü</a>
+				</h1>
+				<span class="post-date">Cts 16 Temmuz 2022</span>
+					<span class="post-tags">
+						Tags:
+						<ul>
+								<li><a href="/tag/python.html">Python</a></li>
+								<li><a href="/tag/pandas.html">Pandas</a></li>
+								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+								<li><a href="/tag/modul.html">Modül</a></li>
+								<li><a href="/tag/filtre.html">Filtre</a></li>
+								<li><a href="/tag/buyuktur.html">Büyüktür</a></li>
+								<li><a href="/tag/operator.html">Operatör</a></li>
+						</ul>
+					</span>
+				<p>
+					<h1>&gt; (Büyüktür) Operatörü</h1>
+<p>Örnek Veri çerçevemiz aşağıda görünmektedir.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="n">imdb</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;Veri_Setleri/imdb.xlsx&quot;</span><span class="p">,</span> <span class="n">decimal</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">imdb</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Film_Adı</th>
+<th>Yıl</th>
+<th>Puan</th>
+<th>Oylayan_Kişi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>The Shawshank Redemption</td>
+<td>1994</td>
+<td>9.2</td>
+<td>1071904</td>
+</tr>
+<tr>
+<td>1</td>
+<td>The Godfather</td>
+<td>1972</td>
+<td>9.2</td>
+<td>751381</td>
+</tr>
+<tr>
+<td>2</td>
+<td>The Godfather: Part II</td>
+<td>1974</td>
+<td>9.0</td>
+<td>488889</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Pulp …</td></tr></tbody></table>
+				</p>
+				<a class="read-more" href="/pandas-buyuktur-operatoru.html">Continue reading »</a>
+			</div>
+			<div class="post">
 				<h1 class="post-title" href="/pandas-esit-degil-operatoru.html">
 					<a href="/pandas-esit-degil-operatoru.html">Pandas - Eşit Değil Operatörü</a>
 				</h1>
@@ -464,32 +527,6 @@
                     <span class="s2">&quot;Sertaç&quot;</span><span class="p">,</span> <span class="s2">&quot;Furkan&quot;</span><span class="p">,</span><span class="s2">&quot;Murat&quot;</span><span class="p">,</span><span class="s2">&quot;Ahmet …</span></code></pre></div>
 				</p>
 				<a class="read-more" href="/pandas-apply.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="/pandas-concat.html">
-					<a href="/pandas-concat.html">Pandas - concat</a>
-				</h1>
-				<span class="post-date">Cum 15 Temmuz 2022</span>
-					<span class="post-tags">
-						Tags:
-						<ul>
-								<li><a href="/tag/python.html">Python</a></li>
-								<li><a href="/tag/pandas.html">Pandas</a></li>
-								<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
-								<li><a href="/tag/modul.html">Modül</a></li>
-								<li><a href="/tag/bitlestir.html">Bitleştir</a></li>
-								<li><a href="/tag/concat.html">concat</a></li>
-						</ul>
-					</span>
-				<p>
-					<h1><code>concat()</code> Metodu</h1>
-<p><strong>Concat</strong> kelimesi Concatenate kelimesinin kısaltamasıdır. <strong>Concatenate</strong> kelimesinin Türkçe karşılığı <strong>Birleştir</strong>'dir.<br>
-<code>concat()</code> metodu ile veri çerçeveleri <strong>alt alta ya da yan yana birleştirilebilir</strong>. Varsayılan değer satır bazlı yani alt alta birleştirmedir.</p>
-<h2>Sözdizimi:</h2>
-<div class="highlight"><pre><span></span><code><span class="n">pandas</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">objs</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">join</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> 
-                <span class="n">keys</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">verify_integrity …</span></code></pre></div>
-				</p>
-				<a class="read-more" href="/pandas-concat.html">Continue reading »</a>
 			</div>
 	</div>
 	<div class="pagination">

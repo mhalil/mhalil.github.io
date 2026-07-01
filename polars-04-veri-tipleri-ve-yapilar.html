@@ -136,7 +136,7 @@ Series:<span class="w"> </span><span class="s1">&#39;ints&#39;</span><span class
 </code></pre></div>
 
 <h2>Veri Çerçevesi (Dataframe)</h2>
-<p>VeriÇerçevesi (Dataframe), benzersiz adlandırılmış seri'ler içeren 2-boyutlu heterojen bir veri yapısıdır. Verilerinizi bir dataframe'de tutarak, verilerinizi manipüle eden sorgular yazmak için Polars API'sini kullanabilirsiniz. Bunu, daha sonra ele alacağımız <a href="https://docs.pola.rs/user-guide/concepts/expressions-and-contexts/">context'ler ve expression'lar</a> aracılığıyla yapabileceksiniz.</p>
+<p>VeriÇerçevesi (Dataframe), benzersiz adlandırılmış seri'ler içeren 2-boyutlu heterojen bir veri yapısıdır. Verilerinizi bir dataframe'de tutarak, verilerinizi manipüle eden sorgular yazmak için Polars API'sini kullanabilirsiniz. Bunu, daha sonra ele alacağımız <a href="/polars-05-ifadeler-ve-baglamlar.html">İfade’ler ve Bağlam’lar</a> aracılığıyla yapabileceksiniz.</p>
 <p>Aşağıdaki kod parçacığı, bir sözlükten (dictionary) dataframe'in nasıl oluşturulacağını gösterir:</p>
 <p>Python </p>
 <p><a href="https://docs.pola.rs/api/python/stable/reference/dataframe/index.html"><code>DataFrame</code></a></p>
@@ -260,8 +260,8 @@ $<span class="w"> </span>height<span class="w">     </span>&lt;f64&gt;<span clas
 
 <h4>Sample</h4>
 <p>Dataframe'inizin ilk veya son satırlarının verilerinizi temsil etmediğini düşünüyorsanız, DataFrame'den <strong>rastgele seçilmiş belirli sayıda satır almak için</strong> <code>sample</code> kullanabilirsiniz. Satırların, dataframe'de göründükleri sırayla <strong>döndürülmeyebileceğini</strong> unutmayın:</p>
-<p>Python 
-<a href="https://docs.pola.rs/api/python/stable/reference/dataframe/api/polars.DataFrame.sample.html"><code>sample</code></a></p>
+<p>Python </p>
+<p><a href="https://docs.pola.rs/api/python/stable/reference/dataframe/api/polars.DataFrame.sample.html"><code>sample</code></a></p>
 <div class="highlight"><pre><span></span><code><span class="n">pl</span><span class="o">.</span><span class="n">set_random_seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>  <span class="c1"># Tekrarlanabilirlik için.</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>

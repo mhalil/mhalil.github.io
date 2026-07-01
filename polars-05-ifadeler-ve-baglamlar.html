@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:description" content="3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi">
+	<meta property="og:title" content="Polars - 05 İfadeler ve Bağlamlar" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/polars-05-ifadeler-ve-baglamlar.html" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>mhalil - Programlama ve 3D</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" crossorigin="anonymous">
+
+		<!-- Feeds -->
+
+		<!-- Analytics -->
+	</head>
+
+	<body class="theme-base-0c">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/avatar.png">
+					mhalil
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">3D Modelleme, Animasyon, Render, Vektör - Raster Grafik İşleme ve Python ile Programlama konularına meraklı Açık Kaynak Hayranı bir Makine Mühendisi </p>
+			<p></p>
+		</div>
+			<ul class="sidebar-nav">
+					<li><a href="/archives.html">Arşiv</a></li>
+					<li><a href="/categories.html">Kategoriler</a></li>
+					<li><a href="/tags.html">Etiketler</a></li>
+					<li><a href="/pages/blender.html">Blender</a></li>
+					<li><a href="/pages/freecad.html">FreeCAD</a></li>
+					<li><a href="/pages/librecad.html">LibreCAD</a></li>
+					<li><a href="/pages/python.html">Python</a></li>
+					<li><a href="/pages/solvespace.html">Solvespace</a></li>
+			</ul>
+		<nav class="sidebar-social">
+					<a class="sidebar-social-item" href="https://twitter.com/AcikKaynakci" target="_blank">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://www.artstation.com/mustafahalil" target="_blank">
+						<i class="fa fa-artstation"></i>
+					</a>
+					<a class="sidebar-social-item" href="https://github.com/mhalil" target="_blank">
+						<i class="fa fa-github"></i>
+					</a>
+			<a class="sidebar-social-item" href="/">
+				<i class="fa fa-rss"></i>
+			</a>
+		</nav>
+			<p class="sidebar-footer">İlmin zekatı %100'dür. Bildiklerizi paylaşın.</p>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Polars - 05 İfadeler ve Bağlamlar</h1>
+	<span class="post-date">Çrş 01 Temmuz 2026</span>
+	<h1>İfadeler (Expressions) ve Bağlamlar (Contexts)</h1>
+<p>Polars, veri dönüşümü için kendi Spesifik Etki Alanı Dilini (Domain Specific Language - DSL) geliştirmiştir. Bu dilin kullanımı çok kolaydır ve insan tarafından okunabilir kalan karmaşık sorgulara izin verir. Expression'lar (ifadeler) ve context'ler (bağlamlar), bu okunabilirliği sağlarken aynı zamanda Polars sorgu motorunun sorgularınızı olabildiğince hızlı çalıştırmak için optimize etmesine izin vermede çok önemlidir.</p>
+<h2>İfadeler</h2>
+<p>Polars'da bir <em>ifade (expression)</em>, bir veri dönüşümünün lazy (tembel) bir temsilidir. ifadeler (expressions) modüler ve esnektir, yani bunları daha karmaşık ifadeler oluşturmak için yapı taşları olarak kullanabilirsiniz. İşte bir Polars ifade (expression) örneği:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">polars</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pl</span>
+
+<span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;weight&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;height&quot;</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Tahmin edebileceğiniz gibi, bu ifade "weight" adlı bir sütunu alır ve değerlerini "height" sütunundaki değerlerin karesine bölerek bir kişinin BMI'ını (vücut kütle endeksini) hesaplar.</p>
+<p>Yukarıdaki kod, bir değişkende kaydedebileceğimiz, daha fazla manipüle edebileceğimiz veya yazdırabileceğimiz soyut bir hesaplamayı ifade eder:</p>
+<div class="highlight"><pre><span></span><code><span class="n">bmi_expr</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;weight&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;height&quot;</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bmi_expr</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="o">[(</span>col<span class="o">(</span><span class="s2">&quot;weight&quot;</span><span class="o">))</span><span class="w"> </span>/<span class="w"> </span><span class="o">(</span>col<span class="o">(</span><span class="s2">&quot;height&quot;</span><span class="o">)</span>.pow<span class="o">([</span>dyn<span class="w"> </span>int:<span class="w"> </span><span class="m">2</span><span class="o">]))]</span>
+</code></pre></div>
+
+<p>İfadeler lazy olduğu için henüz hiçbir hesaplama gerçekleşmemiştir. İşte bu noktada bağlamlara (contexts) ihtiyacımız var.</p>
+<h2>Bağlamlar (Contexts)</h2>
+<p>Polars ifadelerinin bir sonuç üretmesi için yürütülecekleri bir <em>bağlam</em>'a ihtiyaçları vardır. Kullanıldığı bağlam'a bağlı olarak, aynı Polars ifade’si farklı sonuçlar üretebilir. Bu bölümde, Polars'ın sağladığı dört yaygın bağlam’ı (context'i) öğreneceğiz:</p>
+<ol>
+<li><code>select</code></li>
+<li><code>with_columns</code></li>
+<li><code>filter</code></li>
+<li><code>group_by</code></li>
+</ol>
+<p>Her bir bağlam'ın nasıl çalıştığını göstermek için aşağıdaki veri çerçevesi’ni (dataframe'i) kullanıyoruz.</p>
+<p>Python </p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">date</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Alice Archer&quot;</span><span class="p">,</span> <span class="s2">&quot;Ben Brown&quot;</span><span class="p">,</span> <span class="s2">&quot;Chloe Cooper&quot;</span><span class="p">,</span> <span class="s2">&quot;Daniel Donovan&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;birthdate&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="n">date</span><span class="p">(</span><span class="mi">1997</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+            <span class="n">date</span><span class="p">(</span><span class="mi">1985</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span>
+            <span class="n">date</span><span class="p">(</span><span class="mi">1983</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">22</span><span class="p">),</span>
+            <span class="n">date</span><span class="p">(</span><span class="mi">1981</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">57.9</span><span class="p">,</span> <span class="mf">72.5</span><span class="p">,</span> <span class="mf">53.6</span><span class="p">,</span> <span class="mf">83.1</span><span class="p">],</span>  <span class="c1"># (kg)</span>
+        <span class="s2">&quot;height&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.56</span><span class="p">,</span> <span class="mf">1.77</span><span class="p">,</span> <span class="mf">1.65</span><span class="p">,</span> <span class="mf">1.75</span><span class="p">],</span>  <span class="c1"># (m)</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Rust</p>
+<div class="highlight"><pre><span></span><code><span class="k">use</span><span class="w"> </span><span class="n">chrono</span><span class="p">::</span><span class="n">prelude</span><span class="p">::</span><span class="o">*</span><span class="p">;</span>
+<span class="k">use</span><span class="w"> </span><span class="n">polars</span><span class="p">::</span><span class="n">prelude</span><span class="p">::</span><span class="o">*</span><span class="p">;</span>
+
+<span class="kd">let</span><span class="w"> </span><span class="n">df</span><span class="p">:</span><span class="w"> </span><span class="nc">DataFrame</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df</span><span class="o">!</span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;name&quot;</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;Alice Archer&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Ben Brown&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Chloe Cooper&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Daniel Donovan&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="s">&quot;birthdate&quot;</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="n">NaiveDate</span><span class="p">::</span><span class="n">from_ymd_opt</span><span class="p">(</span><span class="mi">1997</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">).</span><span class="n">unwrap</span><span class="p">(),</span>
+<span class="w">        </span><span class="n">NaiveDate</span><span class="p">::</span><span class="n">from_ymd_opt</span><span class="p">(</span><span class="mi">1985</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">15</span><span class="p">).</span><span class="n">unwrap</span><span class="p">(),</span>
+<span class="w">        </span><span class="n">NaiveDate</span><span class="p">::</span><span class="n">from_ymd_opt</span><span class="p">(</span><span class="mi">1983</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">22</span><span class="p">).</span><span class="n">unwrap</span><span class="p">(),</span>
+<span class="w">        </span><span class="n">NaiveDate</span><span class="p">::</span><span class="n">from_ymd_opt</span><span class="p">(</span><span class="mi">1981</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">).</span><span class="n">unwrap</span><span class="p">(),</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="s">&quot;weight&quot;</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">[</span><span class="mf">57.9</span><span class="p">,</span><span class="w"> </span><span class="mf">72.5</span><span class="p">,</span><span class="w"> </span><span class="mf">53.6</span><span class="p">,</span><span class="w"> </span><span class="mf">83.1</span><span class="p">],</span><span class="w">  </span><span class="c1">// (kg)</span>
+<span class="w">    </span><span class="s">&quot;height&quot;</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">[</span><span class="mf">1.56</span><span class="p">,</span><span class="w"> </span><span class="mf">1.77</span><span class="p">,</span><span class="w"> </span><span class="mf">1.65</span><span class="p">,</span><span class="w"> </span><span class="mf">1.75</span><span class="p">],</span><span class="w">  </span><span class="c1">// (m)</span>
+<span class="p">)</span>
+<span class="p">.</span><span class="n">unwrap</span><span class="p">();</span>
+<span class="fm">println!</span><span class="p">(</span><span class="s">&quot;{df}&quot;</span><span class="p">);</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>shape:<span class="w"> </span><span class="o">(</span><span class="m">4</span>,<span class="w"> </span><span class="m">4</span><span class="o">)</span>
+┌────────────────┬────────────┬────────┬────────┐
+│<span class="w"> </span>name<span class="w">           </span>┆<span class="w"> </span>birthdate<span class="w">  </span>┆<span class="w"> </span>weight<span class="w"> </span>┆<span class="w"> </span>height<span class="w"> </span>│
+│<span class="w"> </span>---<span class="w">            </span>┆<span class="w"> </span>---<span class="w">        </span>┆<span class="w"> </span>---<span class="w">    </span>┆<span class="w"> </span>---<span class="w">    </span>│
+│<span class="w"> </span>str<span class="w">            </span>┆<span class="w"> </span>date<span class="w">       </span>┆<span class="w"> </span>f64<span class="w">    </span>┆<span class="w"> </span>f64<span class="w">    </span>│
+╞════════════════╪════════════╪════════╪════════╡
+│<span class="w"> </span>Alice<span class="w"> </span>Archer<span class="w">   </span>┆<span class="w"> </span><span class="m">1997</span>-01-10<span class="w"> </span>┆<span class="w"> </span><span class="m">57</span>.9<span class="w">   </span>┆<span class="w"> </span><span class="m">1</span>.56<span class="w">   </span>│
+│<span class="w"> </span>Ben<span class="w"> </span>Brown<span class="w">      </span>┆<span class="w"> </span><span class="m">1985</span>-02-15<span class="w"> </span>┆<span class="w"> </span><span class="m">72</span>.5<span class="w">   </span>┆<span class="w"> </span><span class="m">1</span>.77<span class="w">   </span>│
+│<span class="w"> </span>Chloe<span class="w"> </span>Cooper<span class="w">   </span>┆<span class="w"> </span><span class="m">1983</span>-03-22<span class="w"> </span>┆<span class="w"> </span><span class="m">53</span>.6<span class="w">   </span>┆<span class="w"> </span><span class="m">1</span>.65<span class="w">   </span>│
+│<span class="w"> </span>Daniel<span class="w"> </span>Donovan<span class="w"> </span>┆<span class="w"> </span><span class="m">1981</span>-04-30<span class="w"> </span>┆<span class="w"> </span><span class="m">83</span>.1<span class="w">   </span>┆<span class="w"> </span><span class="m">1</span>.75<span class="w">   </span>│
+└────────────────┴────────────┴────────┴────────┘
+</code></pre></div>
+
+<h3><code>select</code> Bağlamı</h3>
+<p><code>select</code> bağlamı, ifadeleri sütunlar üzerinde uygular. <code>select</code> bağlamı, aggregasyonlar, diğer sütunların kombinasyonları veya literal'ler olan <strong>yeni sütunlar üretebilir:</strong></p>
+<p>Python </p>
+<p><a href="https://docs.pola.rs/api/python/stable/reference/dataframe/api/polars.DataFrame.select.html"><code>select</code></a></p>
+<div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
+    <span class="n">bmi</span><span class="o">=</span><span class="n">bmi_expr</span><span class="p">,</span>
+    <span class="n">avg_bmi</span><span class="o">=</span><span class="n">bmi_expr</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
+    <span class="n">ideal_max_bmi</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Rust</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="n">bmi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">col</span><span class="p">(</span><span class="s">&quot;weight&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">col</span><span class="p">(</span><span class="s">&quot;height&quot;</span><span class="p">).</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="kd">let</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df</span>
+<span class="w">    </span><span class="p">.</span><span class="n">clone</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="n">lazy</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="n">select</span><span class="p">([</span>
+<span class="w">        </span><span class="n">bmi</span><span class="p">.</span><span class="n">clone</span><span class="p">().</span><span class="n">alias</span><span class="p">(</span><span class="s">&quot;bmi&quot;</span><span class="p">),</span>
+<span class="w">        </span><span class="n">bmi</span><span class="p">.</span><span class="n">clone</span><span class="p">().</span><span class="n">mean</span><span class="p">().</span><span class="n">alias</span><span class="p">(</span><span class="s">&quot;avg_bmi&quot;</span><span class="p">),</span>
+<span class="w">        </span><span class="n">lit</span><span class="p">(</span><span class="mi">25</span><span class="p">).</span><span class="n">alias</span><span class="p">(</span><span class="s">&quot;ideal_max_bmi&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="p">])</span>
+<span class="w">    </span><span class="p">.</span><span class="n">collect</span><span class="p">()</span><span class="o">?</span><span class="p">;</span>
+<span class="fm">println!</span><span class="p">(</span><span class="s">&quot;{result}&quot;</span><span class="p">);</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>shape:<span class="w"> </span><span class="o">(</span><span class="m">4</span>,<span class="w"> </span><span class="m">3</span><span class="o">)</span>
+┌───────────┬───────────┬───────────────┐
+│<span class="w"> </span>bmi<span class="w">       </span>┆<span class="w"> </span>avg_bmi<span class="w">   </span>┆<span class="w"> </span>ideal_max_bmi<span class="w"> </span>│
+│<span class="w"> </span>---<span class="w">       </span>┆<span class="w"> </span>---<span class="w">       </span>┆<span class="w"> </span>---<span class="w">           </span>│
+│<span class="w"> </span>f64<span class="w">       </span>┆<span class="w"> </span>f64<span class="w">       </span>┆<span class="w"> </span>i32<span class="w">           </span>│
+╞═══════════╪═══════════╪═══════════════╡
+│<span class="w"> </span><span class="m">23</span>.791913<span class="w"> </span>┆<span class="w"> </span><span class="m">23</span>.438973<span class="w"> </span>┆<span class="w"> </span><span class="m">25</span><span class="w">            </span>│
+│<span class="w"> </span><span class="m">23</span>.141498<span class="w"> </span>┆<span class="w"> </span><span class="m">23</span>.438973<span class="w"> </span>┆<span class="w"> </span><span class="m">25</span><span class="w">            </span>│
+│<span class="w"> </span><span class="m">19</span>.687787<span class="w"> </span>┆<span class="w"> </span><span class="m">23</span>.438973<span class="w"> </span>┆<span class="w"> </span><span class="m">25</span><span class="w">            </span>│
+│<span class="w"> </span><span class="m">27</span>.134694<span class="w"> </span>┆<span class="w"> </span><span class="m">23</span>.438973<span class="w"> </span>┆<span class="w"> </span><span class="m">25</span><span class="w">            </span>│
+└───────────┴───────────┴───────────────┘
+</code></pre></div>
+
+<p>Bir <code>select</code> bağlam’ındaki ifade'ler, ya aynı uzunlukta series'ler üretmeli ya da bir skaler (scalar) üretmelidir. Skaler'ler, kalan series'lerin uzunluğuna uyacak şekilde broadcast edilir. Yukarıda kullanılan sayı gibi değişmez değerler (literal'ler) de yayınlanır.</p>
+<p>Yayınlamanın ifade’ler içinde de gerçekleşebileceğini unutmayın. Örneğin, aşağıdaki ifade'yi ele alalım:</p>
+<p>Python </p>
+<p><a href="https://docs.pola.rs/api/python/stable/reference/dataframe/api/polars.DataFrame.select.html"><code>select</code></a></p>
+<div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">deviation</span><span class="o">=</span><span class="p">(</span><span class="n">bmi_expr</span> <span class="o">-</span> <span class="n">bmi_expr</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span> <span class="o">/</span> <span class="n">bmi_expr</span><span class="o">.</span><span class="n">std</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Rust</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df</span>
+<span class="w">    </span><span class="p">.</span><span class="n">clone</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="n">lazy</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="n">select</span><span class="p">([((</span><span class="n">bmi</span><span class="p">.</span><span class="n">clone</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">bmi</span><span class="p">.</span><span class="n">clone</span><span class="p">().</span><span class="n">mean</span><span class="p">())</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">bmi</span><span class="p">.</span><span class="n">clone</span><span class="p">().</span><span class="n">std</span><span class="p">(</span><span class="mi">1</span><span class="p">)).</span><span class="n">alias</span><span class="p">(</span><span class="s">&quot;deviation&quot;</span><span class="p">)])</span>
+<span class="w">    </span><span class="p">.</span><span class="n">collect</span><span class="p">()</span><span class="o">?</span><span class="p">;</span>
+<span class="fm">println!</span><span class="p">(</span><span class="s">&quot;{result}&quot;</span><span class="p">);</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>shape:<span class="w"> </span><span class="o">(</span><span class="m">4</span>,<span class="w"> </span><span class="m">1</span><span class="o">)</span>
+┌───────────┐
+│<span class="w"> </span>deviation<span class="w"> </span>│
+│<span class="w"> </span>---<span class="w">       </span>│
+│<span class="w"> </span>f64<span class="w">       </span>│
+╞═══════════╡
+│<span class="w"> </span><span class="m">0</span>.115645<span class="w">  </span>│
+│<span class="w"> </span>-0.097471<span class="w"> </span>│
+│<span class="w"> </span>-1.22912<span class="w">  </span>│
+│<span class="w"> </span><span class="m">1</span>.210946<span class="w">  </span>│
+└───────────┘
+</code></pre></div>
+
+<p>Hem çıkarma hem de bölme, ifade içinde yayınlama kullanır çünkü ortalamayı ve standart sapmayı hesaplayan alt ifade'ler tek değerlere (skaler) dönüşür.</p>
+<p><code>select</code> bağlam'ı çok esnek ve güçlüdür ve birbirinden bağımsız ve paralel olarak keyfi ifade'lari değerlendirmenize izin verir. Bu, daha sonra göreceğimiz diğer bağlam'lar için de geçerlidir. </p>
+<h3><code>with_columns</code> Bağlamı</h3>
+<p><code>with_columns</code> bağlam’ı <code>select</code> bağlam'ına çok benzer. İkisi arasındaki temel fark, <code>with_columns</code> bağlamı, orijinal dataframe'deki sütunları ve girdi ifade’lerine göre <strong>yeni sütunları içeren yeni bir dataframe oluşturmasıdır</strong>; oysa <code>select</code> bağlamı yalnızca girdi ifade'leri tarafından seçilen sütunları içerir:</p>
+<p>Python </p>
+<p><a href="https://docs.pola.rs/api/python/stable/reference/dataframe/api/polars.DataFrame.with_columns.html"><code>with_columns</code></a></p>
+<div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">with_columns</span><span class="p">(</span>
+    <span class="n">bmi</span><span class="o">=</span><span class="n">bmi_expr</span><span class="p">,</span>
+    <span class="n">avg_bmi</span><span class="o">=</span><span class="n">bmi_expr</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
+    <span class="n">ideal_max_bmi</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Rust</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df</span>
+<span class="w">    </span><span class="p">.</span><span class="n">clone</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="n">lazy</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="n">with_columns</span><span class="p">([</span>
+<span class="w">        </span><span class="n">bmi</span><span class="p">.</span><span class="n">clone</span><span class="p">().</span><span class="n">alias</span><span class="p">(</span><span class="s">&quot;bmi&quot;</span><span class="p">),</span>
+<span class="w">        </span><span class="n">bmi</span><span class="p">.</span><span class="n">mean</span><span class="p">().</span><span class="n">alias</span><span class="p">(</span><span class="s">&quot;avg_bmi&quot;</span><span class="p">),</span>
+<span class="w">        </span><span class="n">lit</span><span class="p">(</span><span class="mi">25</span><span class="p">).</span><span class="n">alias</span><span class="p">(</span><span class="s">&quot;ideal_max_bmi&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="p">])</span>
+<span class="w">    </span><span class="p">.</span><span class="n">collect</span><span class="p">()</span><span class="o">?</span><span class="p">;</span>
+<span class="fm">println!</span><span class="p">(</span><span class="s">&quot;{result}&quot;</span><span class="p">);</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>shape: (4, 7)
+┌────────────────┬────────────┬────────┬────────┬───────────┬───────────┬───────────────┐
+│ name           ┆ birthdate  ┆ weight ┆ height ┆ bmi       ┆ avg_bmi   ┆ ideal_max_bmi │
+│ ---            ┆ ---        ┆ ---    ┆ ---    ┆ ---       ┆ ---       ┆ ---           │
+│ str            ┆ date       ┆ f64    ┆ f64    ┆ f64       ┆ f64       ┆ i32           │
+╞════════════════╪════════════╪════════╪════════╪═══════════╪═══════════╪═══════════════╡
+│ Alice Archer   ┆ 1997-01-10 ┆ 57.9   ┆ 1.56   ┆ 23.791913 ┆ 23.438973 ┆ 25            │
+│ Ben Brown      ┆ 1985-02-15 ┆ 72.5   ┆ 1.77   ┆ 23.141498 ┆ 23.438973 ┆ 25            │
+│ Chloe Cooper   ┆ 1983-03-22 ┆ 53.6   ┆ 1.65   ┆ 19.687787 ┆ 23.438973 ┆ 25            │
+│ Daniel Donovan ┆ 1981-04-30 ┆ 83.1   ┆ 1.75   ┆ 27.134694 ┆ 23.438973 ┆ 25            │
+└────────────────┴────────────┴────────┴────────┴───────────┴───────────┴───────────────┘
+</code></pre></div>
+
+<p><code>select</code> ve <code>with_columns</code> arasındaki bu fark nedeniyle, <code>with_columns</code> bağlamında kullanılan ifadeler, dataframe'deki orijinal sütunlarla aynı uzunlukta series'ler üretmelidir; oysa <code>select</code> bağlam'ındaki ifade'lerin kendi aralarında aynı uzunlukta series'ler üretmesi yeterlidir.</p>
+<h3><code>filter</code> Bağlamı</h3>
+<p><code>filter</code> bağlam'ı, Boolean (<code>Doğru (True) / Yanlış (False)</code>) veri türüne göre değerlendirilen bir veya daha fazla ifadeye dayalı olarak bir veri çerçevesinin satırlarını filtreler.</p>
+<p>Python </p>
+<p><a href="https://docs.pola.rs/api/python/stable/reference/dataframe/api/polars.DataFrame.filter.html"><code>filter</code></a></p>
+<div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;birthdate&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_between</span><span class="p">(</span><span class="n">date</span><span class="p">(</span><span class="mi">1982</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">31</span><span class="p">),</span> <span class="n">date</span><span class="p">(</span><span class="mi">1996</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;height&quot;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">1.7</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Rust</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df</span>
+<span class="w">    </span><span class="p">.</span><span class="n">clone</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="n">lazy</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="n">filter</span><span class="p">(</span>
+<span class="w">        </span><span class="n">col</span><span class="p">(</span><span class="s">&quot;birthdate&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="n">is_between</span><span class="p">(</span>
+<span class="w">                </span><span class="n">lit</span><span class="p">(</span><span class="n">NaiveDate</span><span class="p">::</span><span class="n">from_ymd_opt</span><span class="p">(</span><span class="mi">1982</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w"> </span><span class="mi">31</span><span class="p">).</span><span class="n">unwrap</span><span class="p">()),</span>
+<span class="w">                </span><span class="n">lit</span><span class="p">(</span><span class="n">NaiveDate</span><span class="p">::</span><span class="n">from_ymd_opt</span><span class="p">(</span><span class="mi">1996</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">).</span><span class="n">unwrap</span><span class="p">()),</span>
+<span class="w">                </span><span class="n">ClosedInterval</span><span class="p">::</span><span class="n">Both</span><span class="p">,</span>
+<span class="w">            </span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="n">and</span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s">&quot;height&quot;</span><span class="p">).</span><span class="n">gt</span><span class="p">(</span><span class="n">lit</span><span class="p">(</span><span class="mf">1.7</span><span class="p">))),</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">collect</span><span class="p">()</span><span class="o">?</span><span class="p">;</span>
+<span class="fm">println!</span><span class="p">(</span><span class="s">&quot;{result}&quot;</span><span class="p">);</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>shape:<span class="w"> </span><span class="o">(</span><span class="m">1</span>,<span class="w"> </span><span class="m">4</span><span class="o">)</span>
+┌───────────┬────────────┬────────┬────────┐
+│<span class="w"> </span>name<span class="w">      </span>┆<span class="w"> </span>birthdate<span class="w">  </span>┆<span class="w"> </span>weight<span class="w"> </span>┆<span class="w"> </span>height<span class="w"> </span>│
+│<span class="w"> </span>---<span class="w">       </span>┆<span class="w"> </span>---<span class="w">        </span>┆<span class="w"> </span>---<span class="w">    </span>┆<span class="w"> </span>---<span class="w">    </span>│
+│<span class="w"> </span>str<span class="w">       </span>┆<span class="w"> </span>date<span class="w">       </span>┆<span class="w"> </span>f64<span class="w">    </span>┆<span class="w"> </span>f64<span class="w">    </span>│
+╞═══════════╪════════════╪════════╪════════╡
+│<span class="w"> </span>Ben<span class="w"> </span>Brown<span class="w"> </span>┆<span class="w"> </span><span class="m">1985</span>-02-15<span class="w"> </span>┆<span class="w"> </span><span class="m">72</span>.5<span class="w">   </span>┆<span class="w"> </span><span class="m">1</span>.77<span class="w">   </span>│
+└───────────┴────────────┴────────┴────────┘
+</code></pre></div>
+
+<h3><code>group_by</code> Bağlamı ve Toplamalar/Kümelemeler (Aggregations)</h3>
+<p><code>group_by</code> bağlam’ında, satırlar gruplandırma ifadelerinin benzersiz değerlerine göre gruplandırılır. Daha sonra ortaya çıkan gruplara değişken uzunluklarda olabilecek ifadeler uygulayabilirsiniz.</p>
+<p><code>group_by</code> bağlam'ını kullanırken, gruplamaları dinamik olarak hesaplamak için bir ifade kullanabilirsiniz:</p>
+<p>Python </p>
+<p><a href="https://docs.pola.rs/api/python/stable/reference/dataframe/api/polars.DataFrame.group_by.html"><code>group_by</code></a></p>
+<div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">group_by</span><span class="p">(</span>
+    <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;birthdate&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span><span class="p">()</span> <span class="o">//</span> <span class="mi">10</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;decade&quot;</span><span class="p">),</span>
+<span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Rust</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df</span>
+<span class="w">    </span><span class="p">.</span><span class="n">clone</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="n">lazy</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="n">group_by</span><span class="p">([(</span><span class="n">col</span><span class="p">(</span><span class="s">&quot;birthdate&quot;</span><span class="p">).</span><span class="n">dt</span><span class="p">().</span><span class="n">year</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">lit</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">lit</span><span class="p">(</span><span class="mi">10</span><span class="p">)).</span><span class="n">alias</span><span class="p">(</span><span class="s">&quot;decade&quot;</span><span class="p">)])</span>
+<span class="w">    </span><span class="p">.</span><span class="n">agg</span><span class="p">([</span><span class="n">col</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">)])</span>
+<span class="w">    </span><span class="p">.</span><span class="n">collect</span><span class="p">()</span><span class="o">?</span><span class="p">;</span>
+<span class="fm">println!</span><span class="p">(</span><span class="s">&quot;{result}&quot;</span><span class="p">);</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>shape:<span class="w"> </span><span class="o">(</span><span class="m">2</span>,<span class="w"> </span><span class="m">2</span><span class="o">)</span>
+┌────────┬─────────────────────────────────┐
+│<span class="w"> </span>decade<span class="w"> </span>┆<span class="w"> </span>name<span class="w">                            </span>│
+│<span class="w"> </span>---<span class="w">    </span>┆<span class="w"> </span>---<span class="w">                             </span>│
+│<span class="w"> </span>i32<span class="w">    </span>┆<span class="w"> </span>list<span class="o">[</span>str<span class="o">]</span><span class="w">                       </span>│
+╞════════╪═════════════════════════════════╡
+│<span class="w"> </span><span class="m">1990</span><span class="w">   </span>┆<span class="w"> </span><span class="o">[</span><span class="s2">&quot;Alice Archer&quot;</span><span class="o">]</span><span class="w">                </span>│
+│<span class="w"> </span><span class="m">1980</span><span class="w">   </span>┆<span class="w"> </span><span class="o">[</span><span class="s2">&quot;Ben Brown&quot;</span>,<span class="w"> </span><span class="s2">&quot;Chloe Cooper&quot;</span>,<span class="w"> </span>…<span class="w"> </span>│
+└────────┴─────────────────────────────────┘
+</code></pre></div>
+
+<p><code>group_by</code> kullandıktan sonra, gruplara toplama/kümeleme/yığınlama/birleştirme ifadelerini (aggregating expressions) uygulamak için <code>agg</code> kullanırız. Yukarıdaki örnekte yalnızca bir sütunun adını belirttiğimiz için, bu sütunun gruplarını listeler halinde alırız.</p>
+<p>İstediğimiz kadar gruplama ifadesi (grouping expression) belirtebiliriz ve <code>group_by</code> bağlam’ı, belirtilen ifade’ler arasındaki benzersiz değerlere göre satırları gruplar. Burada, doğum onyılı ve kişinin 1.7 metreden kısa olup olmamasının bir kombinasyonuna göre gruplama yapıyoruz:</p>
+<p>Python </p>
+<p><a href="https://docs.pola.rs/api/python/stable/reference/dataframe/api/polars.DataFrame.group_by.html"><code>group_by</code></a></p>
+<div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">group_by</span><span class="p">(</span>
+    <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;birthdate&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span><span class="p">()</span> <span class="o">//</span> <span class="mi">10</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;decade&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;height&quot;</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1.7</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;short?&quot;</span><span class="p">),</span>
+<span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Rust</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df</span>
+<span class="w">    </span><span class="p">.</span><span class="n">clone</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="n">lazy</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="n">group_by</span><span class="p">([</span>
+<span class="w">        </span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s">&quot;birthdate&quot;</span><span class="p">).</span><span class="n">dt</span><span class="p">().</span><span class="n">year</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">lit</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">lit</span><span class="p">(</span><span class="mi">10</span><span class="p">)).</span><span class="n">alias</span><span class="p">(</span><span class="s">&quot;decade&quot;</span><span class="p">),</span>
+<span class="w">        </span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s">&quot;height&quot;</span><span class="p">).</span><span class="n">lt</span><span class="p">(</span><span class="n">lit</span><span class="p">(</span><span class="mf">1.7</span><span class="p">)).</span><span class="n">alias</span><span class="p">(</span><span class="s">&quot;short?&quot;</span><span class="p">)),</span>
+<span class="w">    </span><span class="p">])</span>
+<span class="w">    </span><span class="p">.</span><span class="n">agg</span><span class="p">([</span><span class="n">col</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">)])</span>
+<span class="w">    </span><span class="p">.</span><span class="n">collect</span><span class="p">()</span><span class="o">?</span><span class="p">;</span>
+<span class="fm">println!</span><span class="p">(</span><span class="s">&quot;{result}&quot;</span><span class="p">);</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="nl">shape</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span>
+<span class="err">┌────────┬────────┬─────────────────────────────────┐</span>
+<span class="err">│</span><span class="w"> </span><span class="n">decade</span><span class="w"> </span><span class="err">┆</span><span class="w"> </span><span class="n">short</span><span class="vm">?</span><span class="w"> </span><span class="err">┆</span><span class="w"> </span><span class="n">name</span><span class="w">                            </span><span class="err">│</span>
+<span class="err">│</span><span class="w"> </span><span class="c1">---    ┆ ---    ┆ ---                             │</span>
+<span class="err">│</span><span class="w"> </span><span class="n">i32</span><span class="w">    </span><span class="err">┆</span><span class="w"> </span><span class="n">bool</span><span class="w">   </span><span class="err">┆</span><span class="w"> </span><span class="n">list</span><span class="o">[</span><span class="n">str</span><span class="o">]</span><span class="w">                       </span><span class="err">│</span>
+<span class="err">╞════════╪════════╪═════════════════════════════════╡</span>
+<span class="err">│</span><span class="w"> </span><span class="mi">1980</span><span class="w">   </span><span class="err">┆</span><span class="w"> </span><span class="k">true</span><span class="w">   </span><span class="err">┆</span><span class="w"> </span><span class="o">[</span><span class="n">&quot;Chloe Cooper&quot;</span><span class="o">]</span><span class="w">                </span><span class="err">│</span>
+<span class="err">│</span><span class="w"> </span><span class="mi">1980</span><span class="w">   </span><span class="err">┆</span><span class="w"> </span><span class="k">false</span><span class="w">  </span><span class="err">┆</span><span class="w"> </span><span class="o">[</span><span class="n">&quot;Ben Brown&quot;, &quot;Daniel Donovan&quot;… │</span>
+<span class="n">│ 1990   ┆ true   ┆ [&quot;Alice Archer&quot;</span><span class="o">]</span><span class="w">                </span><span class="err">│</span>
+<span class="err">└────────┴────────┴─────────────────────────────────┘</span>
+</code></pre></div>
+
+<p>Toplama/kümeleme/yığınlama/birleştirme ifadeleri (aggregating expressions) uygulandıktan sonra ortaya çıkan veri çerçevesi, soldaki her gruplandırma ifadesi için bir sütun ve ardından toplama/kümeleme/yığınlama/birleştirme ifadelerinin sonuçlarını temsil etmek için gereken sayıda sütun içerir. Buna karşılık istediğimiz kadar toplama ifadesi belirtebiliriz:</p>
+<p>Python </p>
+<p><a href="https://docs.pola.rs/api/python/stable/reference/dataframe/api/polars.DataFrame.group_by.html"><code>group_by</code></a></p>
+<div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">group_by</span><span class="p">(</span>
+    <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;birthdate&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span><span class="p">()</span> <span class="o">//</span> <span class="mi">10</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;decade&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;height&quot;</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1.7</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;short?&quot;</span><span class="p">),</span>
+<span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">len</span><span class="p">(),</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;height&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;tallest&quot;</span><span class="p">),</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span> <span class="s2">&quot;height&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">prefix</span><span class="p">(</span><span class="s2">&quot;avg_&quot;</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Rust</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df</span>
+<span class="w">    </span><span class="p">.</span><span class="n">clone</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="n">lazy</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="n">group_by</span><span class="p">([</span>
+<span class="w">        </span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s">&quot;birthdate&quot;</span><span class="p">).</span><span class="n">dt</span><span class="p">().</span><span class="n">year</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">lit</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">lit</span><span class="p">(</span><span class="mi">10</span><span class="p">)).</span><span class="n">alias</span><span class="p">(</span><span class="s">&quot;decade&quot;</span><span class="p">),</span>
+<span class="w">        </span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s">&quot;height&quot;</span><span class="p">).</span><span class="n">lt</span><span class="p">(</span><span class="n">lit</span><span class="p">(</span><span class="mf">1.7</span><span class="p">)).</span><span class="n">alias</span><span class="p">(</span><span class="s">&quot;short?&quot;</span><span class="p">)),</span>
+<span class="w">    </span><span class="p">])</span>
+<span class="w">    </span><span class="p">.</span><span class="n">agg</span><span class="p">([</span>
+<span class="w">        </span><span class="n">len</span><span class="p">(),</span>
+<span class="w">        </span><span class="n">col</span><span class="p">(</span><span class="s">&quot;height&quot;</span><span class="p">).</span><span class="n">max</span><span class="p">().</span><span class="n">alias</span><span class="p">(</span><span class="s">&quot;tallest&quot;</span><span class="p">),</span>
+<span class="w">        </span><span class="n">cols</span><span class="p">([</span><span class="s">&quot;weight&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;height&quot;</span><span class="p">])</span>
+<span class="w">            </span><span class="p">.</span><span class="n">as_expr</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="n">name</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="n">prefix</span><span class="p">(</span><span class="s">&quot;avg_&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="p">])</span>
+<span class="w">    </span><span class="p">.</span><span class="n">collect</span><span class="p">()</span><span class="o">?</span><span class="p">;</span>
+<span class="fm">println!</span><span class="p">(</span><span class="s">&quot;{result}&quot;</span><span class="p">);</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>shape:<span class="w"> </span><span class="o">(</span><span class="m">3</span>,<span class="w"> </span><span class="m">6</span><span class="o">)</span>
+┌────────┬────────┬─────┬─────────┬────────────┬────────────┐
+│<span class="w"> </span>decade<span class="w"> </span>┆<span class="w"> </span>short?<span class="w"> </span>┆<span class="w"> </span>len<span class="w"> </span>┆<span class="w"> </span>tallest<span class="w"> </span>┆<span class="w"> </span>avg_weight<span class="w"> </span>┆<span class="w"> </span>avg_height<span class="w"> </span>│
+│<span class="w"> </span>---<span class="w">    </span>┆<span class="w"> </span>---<span class="w">    </span>┆<span class="w"> </span>---<span class="w"> </span>┆<span class="w"> </span>---<span class="w">     </span>┆<span class="w"> </span>---<span class="w">        </span>┆<span class="w"> </span>---<span class="w">        </span>│
+│<span class="w"> </span>i32<span class="w">    </span>┆<span class="w"> </span>bool<span class="w">   </span>┆<span class="w"> </span>u32<span class="w"> </span>┆<span class="w"> </span>f64<span class="w">     </span>┆<span class="w"> </span>f64<span class="w">        </span>┆<span class="w"> </span>f64<span class="w">        </span>│
+╞════════╪════════╪═════╪═════════╪════════════╪════════════╡
+│<span class="w"> </span><span class="m">1980</span><span class="w">   </span>┆<span class="w"> </span><span class="nb">false</span><span class="w">  </span>┆<span class="w"> </span><span class="m">2</span><span class="w">   </span>┆<span class="w"> </span><span class="m">1</span>.77<span class="w">    </span>┆<span class="w"> </span><span class="m">77</span>.8<span class="w">       </span>┆<span class="w"> </span><span class="m">1</span>.76<span class="w">       </span>│
+│<span class="w"> </span><span class="m">1980</span><span class="w">   </span>┆<span class="w"> </span><span class="nb">true</span><span class="w">   </span>┆<span class="w"> </span><span class="m">1</span><span class="w">   </span>┆<span class="w"> </span><span class="m">1</span>.65<span class="w">    </span>┆<span class="w"> </span><span class="m">53</span>.6<span class="w">       </span>┆<span class="w"> </span><span class="m">1</span>.65<span class="w">       </span>│
+│<span class="w"> </span><span class="m">1990</span><span class="w">   </span>┆<span class="w"> </span><span class="nb">true</span><span class="w">   </span>┆<span class="w"> </span><span class="m">1</span><span class="w">   </span>┆<span class="w"> </span><span class="m">1</span>.56<span class="w">    </span>┆<span class="w"> </span><span class="m">57</span>.9<span class="w">       </span>┆<span class="w"> </span><span class="m">1</span>.56<span class="w">       </span>│
+└────────┴────────┴─────┴─────────┴────────────┴────────────┘
+</code></pre></div>
+
+<p>Diğer gruplama bağlam’ları için <code>group_by_dynamic</code> ve <code>rolling</code> bölümlerine de bakın.</p>
+<h2>İfade Genişletme (Expression Expansion)</h2>
+<p>Son örnek, iki gruplandırma ifadesi ve üç toplama ifadesi içeriyordu, ancak ortaya çıkan veri çerçevesi, beş yerine altı sütun içeriyordu. Yakından bakarsak, son toplama ifadesi iki farklı sütundan bahsediyordu: "weight" ve "height".</p>
+<p>Polars ifade’leri, <em>ifade genişletme (expression expansion)</em> adı verilen bir özelliği destekler. İfade Genişletme, aynı dönüşümü birden fazla sütuna uygulamak istediğinizde kullanılan bir kısa gösterimdir. Gördüğümüz gibi,</p>
+<div class="highlight"><pre><span></span><code><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span> <span class="s2">&quot;height&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">prefix</span><span class="p">(</span><span class="s2">&quot;avg_&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>ifadesi "weight" ve "height" sütunlarının ortalama değerini hesaplar ve bunları sırasıyla "avg_weight" ve "avg_height" olarak yeniden adlandırır. Aslında, yukarıdaki ifade aşağıdaki iki ifade'yi kullanmaya eşdeğerdir:</p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;weight&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;avg_weight&quot;</span><span class="p">),</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;height&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;avg_height&quot;</span><span class="p">),</span>
+<span class="p">]</span>
+</code></pre></div>
+
+<p>Bu durumda, bu ifade, Polars'ın paralel olarak yürütebileceği iki bağımsız ifade'ye genişler. Diğer durumlarda, bir ifade'nin kaç tane bağımsız ifade’ye dönüşeceğini önceden bilemeyebiliriz.</p>
+<p>Şu basit ama açıklayıcı örneği ele alalım:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1.1</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">suffix</span><span class="p">(</span><span class="s2">&quot;*1.1&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Bu ifade, <code>Float64</code> veri tipine sahip tüm sütunları <code>1.1</code> ile çarpar. Bunun uygulandığı sütun sayısı, her veri çerçevesinin şema (schema)'sına bağlıdır. Kullandığımız veri çerçevesi durumunda, iki sütuna uygulanır:</p>
+<p>Python </p>
+<p><a href="https://docs.pola.rs/api/python/stable/reference/dataframe/api/polars.DataFrame.select.html"><code>select</code></a></p>
+<div class="highlight"><pre><span></span><code><span class="n">expr</span> <span class="o">=</span> <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">Float64</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1.1</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">suffix</span><span class="p">(</span><span class="s2">&quot;*1.1&quot;</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Rust</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="n">expr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">dtype_col</span><span class="p">(</span><span class="o">&amp;</span><span class="n">DataType</span><span class="p">::</span><span class="n">Float64</span><span class="p">).</span><span class="n">as_selector</span><span class="p">().</span><span class="n">as_expr</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">lit</span><span class="p">(</span><span class="mf">1.1</span><span class="p">))</span>
+<span class="w">    </span><span class="p">.</span><span class="n">name</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="n">suffix</span><span class="p">(</span><span class="s">&quot;*1.1&quot;</span><span class="p">);</span>
+<span class="kd">let</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df</span><span class="p">.</span><span class="n">lazy</span><span class="p">().</span><span class="n">select</span><span class="p">([</span><span class="n">expr</span><span class="p">.</span><span class="n">clone</span><span class="p">()]).</span><span class="n">collect</span><span class="p">()</span><span class="o">?</span><span class="p">;</span>
+<span class="fm">println!</span><span class="p">(</span><span class="s">&quot;{result}&quot;</span><span class="p">);</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>shape:<span class="w"> </span><span class="o">(</span><span class="m">4</span>,<span class="w"> </span><span class="m">2</span><span class="o">)</span>
+┌────────────┬────────────┐
+│<span class="w"> </span>weight*1.1<span class="w"> </span>┆<span class="w"> </span>height*1.1<span class="w"> </span>│
+│<span class="w"> </span>---<span class="w">        </span>┆<span class="w"> </span>---<span class="w">        </span>│
+│<span class="w"> </span>f64<span class="w">        </span>┆<span class="w"> </span>f64<span class="w">        </span>│
+╞════════════╪════════════╡
+│<span class="w"> </span><span class="m">63</span>.69<span class="w">      </span>┆<span class="w"> </span><span class="m">1</span>.716<span class="w">      </span>│
+│<span class="w"> </span><span class="m">79</span>.75<span class="w">      </span>┆<span class="w"> </span><span class="m">1</span>.947<span class="w">      </span>│
+│<span class="w"> </span><span class="m">58</span>.96<span class="w">      </span>┆<span class="w"> </span><span class="m">1</span>.815<span class="w">      </span>│
+│<span class="w"> </span><span class="m">91</span>.41<span class="w">      </span>┆<span class="w"> </span><span class="m">1</span>.925<span class="w">      </span>│
+└────────────┴────────────┘
+</code></pre></div>
+
+<p>Aşağıdaki <code>df2</code> veri çerçevesi'nde ise, aynı ifade hiçbir sütuna uygulanmaz çünkü <code>Float64</code> veri tipinde hiçbir sütun yoktur:</p>
+<p>Python </p>
+<p><a href="https://docs.pola.rs/api/python/stable/reference/dataframe/api/polars.DataFrame.select.html"><code>select</code></a></p>
+<div class="highlight"><pre><span></span><code><span class="n">df2</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;ints&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+        <span class="s2">&quot;letters&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">],</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Rust</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="n">df2</span><span class="p">:</span><span class="w"> </span><span class="nc">DataFrame</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df</span><span class="o">!</span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;ints&quot;</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">],</span>
+<span class="w">    </span><span class="s">&quot;letters&quot;</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;A&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;B&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;C&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;D&quot;</span><span class="p">],</span>
+<span class="p">)</span>
+<span class="p">.</span><span class="n">unwrap</span><span class="p">();</span>
+<span class="kd">let</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df2</span><span class="p">.</span><span class="n">lazy</span><span class="p">().</span><span class="n">select</span><span class="p">([</span><span class="n">expr</span><span class="p">]).</span><span class="n">collect</span><span class="p">()</span><span class="o">?</span><span class="p">;</span>
+<span class="fm">println!</span><span class="p">(</span><span class="s">&quot;{result}&quot;</span><span class="p">);</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>shape: (0, 0)
+┌┐
+╞╡
+└┘
+</code></pre></div>
+
+<p>Aynı ifade'nin düzinelerce sütuna genişleyeceği bir senaryo hayal etmek de aynı derecede kolaydır.</p>
+<p>Bir sonraki bölümde, bir ifade'nin belirli bir şema (schema) karşısında nasıl genişleyeceğini önizlemek için kullanabileceğiniz <a href="https://docs.pola.rs/user-guide/concepts/lazy-api/#previewing-the-query-plan">lazy API ve <code>explain</code> fonksiyonu</a> hakkında bilgi edineceksiniz.</p>
+<h2>Sonuç</h2>
+<p>İfade’ler (Expressions) lazy olduğu için, bir ifade'yi bir bağlam içinde kullandığınızda Polars, temsil ettiği veri dönüşümünü çalıştırmadan önce ifade’nizi basitleştirmeyi deneyebilir. Bir bağlam içindeki ayrı ifade'ler utandırıcı derecede paraleldir (embarrassingly parallel) ve Polars bundan yararlanırken, ifade genişletmeyi (expression expansion) kullanıldığında ifade yürütmeyi de paralelleştirir. Daha fazla performans kazancı, bir sonraki bölümde tanıtılan <a href="https://docs.pola.rs/user-guide/concepts/lazy-api/">Polars lazy API</a> kullanılarak elde edilebilir.</p>
+<p>İfade’lerin yeteneklerinin yalnızca yüzeyine dokunduk. Çok daha fazla ifade vardır ve bunlar çeşitli şekillerde birleştirilebilir. Mevcut farklı ifade türleri hakkında daha derinlemesine bilgi için <a href="https://docs.pola.rs/user-guide/expressions/">expression'lar bölümüne</a> bakın.</p>
+<hr>
+<ol>
+<li><em>Ek Liste ve SQL bağlam'ları vardır, bunlar bu kılavuzun ilerleyen bölümlerinde ele alınmaktadır. Ancak basitlik adına, şimdilik bunları kapsam dışı bırakıyoruz.</em></li>
+</ol>
+
+		<span class="post-tags">
+			Tags:
+			<ul>
+					<li><a href="/tag/python.html">Python</a></li>
+					<li><a href="/tag/polars.html">Polars</a></li>
+					<li><a href="/tag/kutuphane.html">Kütüphane</a></li>
+					<li><a href="/tag/modul.html">Modül</a></li>
+					<li><a href="/tag/ifade.html">İfade</a></li>
+					<li><a href="/tag/expression.html">Expression</a></li>
+					<li><a href="/tag/baglam.html">Bağlam</a></li>
+					<li><a href="/tag/context.html">Context</a></li>
+			</ul>
+		</span>
+
+</div>
+		</div>
+	</body>
+</html>
